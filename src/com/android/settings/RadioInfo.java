@@ -512,7 +512,8 @@ public class RadioInfo extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(0, MENU_ITEM_SELECT_BAND, 0, R.string.radio_info_band_mode_label).setOnMenuItemClickListener(mSelectBandCallback)
+        menu.add(0, MENU_ITEM_SELECT_BAND, 0, R.string.radio_info_band_mode_label)
+                .setOnMenuItemClickListener(mSelectBandCallback)
                 .setAlphabeticShortcut('b');
         menu.add(1, MENU_ITEM_VIEW_ADN, 0,
                 R.string.radioInfo_menu_viewADN).setOnMenuItemClickListener(mViewADNCallback);
@@ -531,8 +532,7 @@ public class RadioInfo extends Activity {
 
 
     @Override
-    public boolean onPrepareOptionsMenu(Menu menu)
-    {
+    public boolean onPrepareOptionsMenu(Menu menu) {
         // Get the TOGGLE DATA menu item in the right state.
         MenuItem item = menu.findItem(MENU_ITEM_TOGGLE_DATA);
         int state = mTelephonyManager.getDataState();
@@ -569,11 +569,11 @@ public class RadioInfo extends Activity {
     }
     
     private void updatePowerState() {
-    	//log("updatePowerState");
+        //log("updatePowerState");
         String buttonText = isRadioOn() ?
                             getString(R.string.turn_off_radio) :
                             getString(R.string.turn_on_radio);
-        radioPowerButton.setText(buttonText);    	
+        radioPowerButton.setText(buttonText);        
     }
 
     private void updateQxdmState(Boolean newQxdmStatus) {
@@ -638,11 +638,15 @@ public class RadioInfo extends Activity {
     }
 
     private final void updateLocation(CellLocation location) {
-        GsmCellLocation loc = (GsmCellLocation)location;
-        Resources r = getResources();
+        int lac = -1;
+        int cid = -1;
+        if (location instanceof GsmCellLocation) {
+            GsmCellLocation loc = (GsmCellLocation)location;
+            lac = loc.getLac();
+            cid = loc.getCid();
+        }
 
-        int lac = loc.getLac();
-        int cid = loc.getCid();
+        Resources r = getResources();
 
         mLocation.setText(r.getString(R.string.radioInfo_lac) + " = "
                           + ((lac == -1) ? "unknown" : Integer.toHexString(lac))
@@ -1022,7 +1026,7 @@ public class RadioInfo extends Activity {
     private MenuItem.OnMenuItemClickListener mViewSDNCallback = new MenuItem.OnMenuItemClickListener() {
         public boolean onMenuItemClick(MenuItem item) {
             Intent intent = new Intent(
-                Intent.ACTION_VIEW, Uri.parse("content://sim/sdn"));
+                Intent.ACTION_VIEW, Uri.parse("content://icc/sdn"));
             // XXX We need to specify the component here because if we don't
             // the activity manager will try to resolve the type by calling
             // the content provider, which causes it to be loaded in a process

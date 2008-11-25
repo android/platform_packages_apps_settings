@@ -31,30 +31,30 @@ import com.android.internal.telephony.PhoneFactory;
 import android.widget.Toast;
 
 /**
- * Implements the preference screen to enable/disable SIM lock and
- * also the dialogs to change the SIM PIN. In the former case, enabling/disabling
- * the SIM lock will prompt the user for the current PIN.
+ * Implements the preference screen to enable/disable ICC lock and
+ * also the dialogs to change the ICC PIN. In the former case, enabling/disabling
+ * the ICC lock will prompt the user for the current PIN.
  * In the Change PIN case, it prompts the user for old pin, new pin and new pin
  * again before attempting to change it. Calls the SimCard interface to execute
  * these operations.
  *
  */
-public class SimLockSettings extends PreferenceActivity 
+public class IccLockSettings extends PreferenceActivity 
         implements EditPinPreference.OnPinEnteredListener {
 
     private static final int OFF_MODE = 0;
-    // State when enabling/disabling SIM lock
-    private static final int SIM_LOCK_MODE = 1;
+    // State when enabling/disabling ICC lock
+    private static final int ICC_LOCK_MODE = 1;
     // State when entering the old pin
-    private static final int SIM_OLD_MODE = 2;
+    private static final int ICC_OLD_MODE = 2;
     // State when entering the new pin - first time
-    private static final int SIM_NEW_MODE = 3;
+    private static final int ICC_NEW_MODE = 3;
     // State when entering the new pin - second time
-    private static final int SIM_REENTER_MODE = 4;
+    private static final int ICC_REENTER_MODE = 4;
     
     // Keys in xml file
-    private static final String PIN_DIALOG = "sim_pin";
-    private static final String PIN_TOGGLE = "sim_toggle";
+    private static final String PIN_DIALOG = "sim_pin"; //TODO T: should sim_pin renamed to icc? -> Sim_lock_settings.xml
+    private static final String PIN_TOGGLE = "sim_toggle"; //TODO T: should sim_toggle renamed to icc? -> Sim_lock_settings.xml
     // Keys in icicle
     private static final String DIALOG_STATE = "dialogState";
     private static final String DIALOG_PIN = "dialogPin";
@@ -70,7 +70,7 @@ public class SimLockSettings extends PreferenceActivity
     private String mOldPin;
     private String mNewPin;
     private String mError;
-    // Are we trying to enable or disable SIM lock?
+    // Are we trying to enable or disable ICC lock?
     private boolean mToState;
     
     private Phone mPhone;
@@ -81,19 +81,19 @@ public class SimLockSettings extends PreferenceActivity
     private Resources mRes;
 
     // For async handler to identify request type
-    private static final int ENABLE_SIM_PIN_COMPLETE = 100;
-    private static final int CHANGE_SIM_PIN_COMPLETE = 101;
+    private static final int ENABLE_ICC_PIN_COMPLETE = 100;
+    private static final int CHANGE_ICC_PIN_COMPLETE = 101;
 
-    // For replies from SimCard interface
+    // For replies from IccCard interface
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
             AsyncResult ar = (AsyncResult) msg.obj;
             switch (msg.what) {
-                case ENABLE_SIM_PIN_COMPLETE:
-                    simLockChanged(ar.exception == null);
+                case ENABLE_ICC_PIN_COMPLETE:
+                    iccLockChanged(ar.exception == null);
                     break;
-                case CHANGE_SIM_PIN_COMPLETE:
-                    simPinChanged(ar.exception == null);
+                case CHANGE_ICC_PIN_COMPLETE:
+                    iccPinChanged(ar.exception == null);
                     break;
             }
 
@@ -102,14 +102,14 @@ public class SimLockSettings extends PreferenceActivity
     };
     
     // For top-level settings screen to query
-    static boolean isSimLockEnabled() {
-        return PhoneFactory.getDefaultPhone().getSimCard().getSimLockEnabled();
+    static boolean isIccLockEnabled() {
+        return PhoneFactory.getDefaultPhone().getIccCard().getIccLockEnabled();
     }
     
     static String getSummary(Context context) {
         Resources res = context.getResources();
-        String summary = isSimLockEnabled() 
-                ? res.getString(R.string.sim_lock_on) 
+        String summary = isIccLockEnabled() 
+                ? res.getString(R.string.sim_lock_on)
                 : res.getString(R.string.sim_lock_off);
         return summary;
     }
@@ -142,7 +142,7 @@ public class SimLockSettings extends PreferenceActivity
     protected void onResume() {
         super.onResume();
         
-        mPinToggle.setChecked(mPhone.getSimCard().getSimLockEnabled());
+        mPinToggle.setChecked(mPhone.getIccCard().getIccLockEnabled());
         
         if (mDialogState != OFF_MODE) {
             showPinDialog();
@@ -182,23 +182,23 @@ public class SimLockSettings extends PreferenceActivity
         mPinDialog.setText(mPin);
         String message = "";
         switch (mDialogState) {
-            case SIM_LOCK_MODE:
-                message = mRes.getString(R.string.sim_enter_pin);
+            case ICC_LOCK_MODE:
+                message = mRes.getString(R.string.sim_enter_pin); //TODO T: should sim_enter_pin renamed to icc?
                 mPinDialog.setDialogTitle(mToState 
-                        ? mRes.getString(R.string.sim_enable_sim_lock)
-                        : mRes.getString(R.string.sim_disable_sim_lock));
+                        ? mRes.getString(R.string.sim_enable_sim_lock) //TODO T: should sim_enable_sim_lock renamed to icc?
+                        : mRes.getString(R.string.sim_disable_sim_lock)); //TODO T: should sim_disable_sim_lock renamed to icc?
                 break;
-            case SIM_OLD_MODE:
-                message = mRes.getString(R.string.sim_enter_old);
-                mPinDialog.setDialogTitle(mRes.getString(R.string.sim_change_pin));
+            case ICC_OLD_MODE:
+                message = mRes.getString(R.string.sim_enter_old); //TODO T: should sim_enter_old renamed to icc?
+                mPinDialog.setDialogTitle(mRes.getString(R.string.sim_change_pin)); //TODO T: should sim_change_pin renamed to icc?
                 break;
-            case SIM_NEW_MODE:
-                message = mRes.getString(R.string.sim_enter_new);
-                mPinDialog.setDialogTitle(mRes.getString(R.string.sim_change_pin));
+            case ICC_NEW_MODE:
+                message = mRes.getString(R.string.sim_enter_new); //TODO T: should sim_enter_new renamed to icc?
+                mPinDialog.setDialogTitle(mRes.getString(R.string.sim_change_pin)); //TODO T: should sim_change_pin renamed to icc?
                 break;
-            case SIM_REENTER_MODE:
-                message = mRes.getString(R.string.sim_reenter_new);
-                mPinDialog.setDialogTitle(mRes.getString(R.string.sim_change_pin));
+            case ICC_REENTER_MODE:
+                message = mRes.getString(R.string.sim_reenter_new); //TODO T: should sim_reenter_new renamed to icc?
+                mPinDialog.setDialogTitle(mRes.getString(R.string.sim_change_pin)); //TODO T: should sim_change_pin renamed to icc?
                 break;
         }
         if (mError != null) {
@@ -217,31 +217,31 @@ public class SimLockSettings extends PreferenceActivity
         mPin = preference.getText();
         if (!reasonablePin(mPin)) {
             // inject error message and display dialog again
-            mError = mRes.getString(R.string.sim_bad_pin);
+            mError = mRes.getString(R.string.sim_bad_pin); //TODO T: should sim_bad_pin renamed to icc?
             showPinDialog();
             return;
         }
         switch (mDialogState) {
-            case SIM_LOCK_MODE:
-                tryChangeSimLockState();
+            case ICC_LOCK_MODE:
+                tryChangeIccLockState();
                 break;
-            case SIM_OLD_MODE:
+            case ICC_OLD_MODE:
                 mOldPin = mPin;
-                mDialogState = SIM_NEW_MODE;
+                mDialogState = ICC_NEW_MODE;
                 mError = null;
                 mPin = null;
                 showPinDialog();
                 break;
-            case SIM_NEW_MODE:
+            case ICC_NEW_MODE:
                 mNewPin = mPin;
-                mDialogState = SIM_REENTER_MODE;
+                mDialogState = ICC_REENTER_MODE;
                 mPin = null;
                 showPinDialog();
                 break;
-            case SIM_REENTER_MODE:
+            case ICC_REENTER_MODE:
                 if (!mPin.equals(mNewPin)) {
-                    mError = mRes.getString(R.string.sim_pins_dont_match);
-                    mDialogState = SIM_NEW_MODE;
+                    mError = mRes.getString(R.string.sim_pins_dont_match); //TODO T: should sim_pins_dont_match renamed to icc?
+                    mDialogState = ICC_NEW_MODE;
                     mPin = null;
                     showPinDialog();
                 } else {
@@ -258,39 +258,39 @@ public class SimLockSettings extends PreferenceActivity
             mToState = mPinToggle.isChecked();
             // Flip it back and pop up pin dialog  
             mPinToggle.setChecked(!mToState);  
-            mDialogState = SIM_LOCK_MODE;
+            mDialogState = ICC_LOCK_MODE;
             showPinDialog();
         }
         return true;
     }
     
-    private void tryChangeSimLockState() {
-        // Try to change sim lock. If it succeeds, toggle the lock state and 
+    private void tryChangeIccLockState() {
+        // Try to change icc lock. If it succeeds, toggle the lock state and 
         // reset dialog state. Else inject error message and show dialog again.
-        Message callback = Message.obtain(mHandler, ENABLE_SIM_PIN_COMPLETE);
-        mPhone.getSimCard().setSimLockEnabled(mToState, mPin, callback);
+        Message callback = Message.obtain(mHandler, ENABLE_ICC_PIN_COMPLETE);
+        mPhone.getIccCard().setIccLockEnabled(mToState, mPin, callback);
 
     }
     
-    private void simLockChanged(boolean success) {
+    private void iccLockChanged(boolean success) {
         if (success) {
             mPinToggle.setChecked(mToState);
         } else {
             // TODO: I18N
-            Toast.makeText(this, mRes.getString(R.string.sim_lock_failed), Toast.LENGTH_SHORT)
+            Toast.makeText(this, mRes.getString(R.string.sim_lock_failed), Toast.LENGTH_SHORT) //TODO T: should sim_lock_failed renamed to icc?
                     .show();
         }
         resetDialogState();
     }
 
-    private void simPinChanged(boolean success) {
+    private void iccPinChanged(boolean success) {
         if (!success) {
          // TODO: I18N
-            Toast.makeText(this, mRes.getString(R.string.sim_change_failed), 
+            Toast.makeText(this, mRes.getString(R.string.sim_change_failed),  //TODO T: should sim_change_failed renamed to icc?
                     Toast.LENGTH_SHORT)
                     .show();
         } else {
-            Toast.makeText(this, mRes.getString(R.string.sim_change_succeeded), 
+            Toast.makeText(this, mRes.getString(R.string.sim_change_succeeded), //TODO T: should sim_change_succeeded renamed to icc?
                     Toast.LENGTH_SHORT)
                     .show();
 
@@ -299,8 +299,8 @@ public class SimLockSettings extends PreferenceActivity
     }
 
     private void tryChangePin() {
-        Message callback = Message.obtain(mHandler, CHANGE_SIM_PIN_COMPLETE);
-        mPhone.getSimCard().changeSimLockPassword(mOldPin,
+        Message callback = Message.obtain(mHandler, CHANGE_ICC_PIN_COMPLETE);
+        mPhone.getIccCard().changeIccLockPassword(mOldPin,
                 mNewPin, callback);
     }
     
@@ -314,7 +314,7 @@ public class SimLockSettings extends PreferenceActivity
  
     private void resetDialogState() {
         mError = null;
-        mDialogState = SIM_OLD_MODE; // Default for when Change PIN is clicked
+        mDialogState = ICC_OLD_MODE; // Default for when Change PIN is clicked
         mPin = "";
         setDialogValues();
     }
