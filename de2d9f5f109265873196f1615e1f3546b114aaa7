@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "z4ba3bb60cb70cf316a280218a0375870",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1000718
+      },
+      "writtenOn": "2008-12-05T00:56:44Z",
+      "side": 0,
+      "message": "Not sure why all these strings were removed.  Are they unused?  Or was this a merge issue?",
+      "revId": "de2d9f5f109265873196f1615e1f3546b114aaa7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
