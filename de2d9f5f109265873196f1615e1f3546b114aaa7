@@ -16,6 +16,23 @@
       "revId": "de2d9f5f109265873196f1615e1f3546b114aaa7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "z9964e94d90c15cfb838dbc80a8c228e0",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1000095
+      },
+      "writtenOn": "2008-12-17T09:59:03Z",
+      "side": 0,
+      "message": "These strings are moved to /package/apps/Phone/. Due to CDMA implementation we think it makes more sense to have them located there. It will be implemented in the next delivery.\n",
+      "revId": "de2d9f5f109265873196f1615e1f3546b114aaa7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
