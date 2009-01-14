@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "z7c8f69aaac1e7b992e0e0fff6fedfda4",
+        "filename": "src/com/android/settings/RadioInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1001401
+      },
+      "writtenOn": "2009-01-14T20:23:29Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "ab852f0716f714d06c9acf7ba612674bbd0b93bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "z118d821447b02139c23cbab16e83cd52",
+        "filename": "src/com/android/settings/RadioInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1001401
+      },
+      "writtenOn": "2009-01-14T20:23:29Z",
+      "side": 1,
+      "message": "white space at EOL",
+      "revId": "ab852f0716f714d06c9acf7ba612674bbd0b93bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
