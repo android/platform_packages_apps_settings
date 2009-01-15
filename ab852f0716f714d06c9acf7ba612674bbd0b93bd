@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "z490d41171b7a1a2091f9874e48db1ced",
+        "filename": "src/com/android/settings/RadioInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 572,
+      "author": {
+        "id": 1000095
+      },
+      "writtenOn": "2009-01-15T13:22:18Z",
+      "side": 1,
+      "message": "ok, fixed with next update\n",
+      "revId": "ab852f0716f714d06c9acf7ba612674bbd0b93bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "z118d821447b02139c23cbab16e83cd52",
         "filename": "src/com/android/settings/RadioInfo.java",
         "patchSetId": 2
@@ -30,6 +47,23 @@
       "writtenOn": "2009-01-14T20:23:29Z",
       "side": 1,
       "message": "white space at EOL",
+      "revId": "ab852f0716f714d06c9acf7ba612674bbd0b93bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "zb5d64234c0b2471582deb2bb562ab1c0",
+        "filename": "src/com/android/settings/RadioInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1000095
+      },
+      "writtenOn": "2009-01-15T13:22:18Z",
+      "side": 1,
+      "message": "ok, fixed with next update\n",
       "revId": "ab852f0716f714d06c9acf7ba612674bbd0b93bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
