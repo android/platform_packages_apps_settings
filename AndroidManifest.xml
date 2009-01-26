@@ -193,7 +193,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="SimLockSettings" android:label="@string/sim_lock_settings"
+        <activity android:name="IccLockSettings" android:label="@string/sim_lock_settings"
                 android:process="com.android.phone"
                 android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>

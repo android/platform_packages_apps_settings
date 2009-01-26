@@ -526,7 +526,8 @@ public class RadioInfo extends Activity {
         menu.add(1, MENU_ITEM_TOGGLE_DATA,
                 0, R.string.radioInfo_menu_disableData).setOnMenuItemClickListener(mToggleData);
         menu.add(1, MENU_ITEM_TOGGLE_DATA_ON_BOOT,
-                0, R.string.radioInfo_menu_disableDataOnBoot).setOnMenuItemClickListener(mToggleDataOnBoot);
+                0, R.string.radioInfo_menu_disableDataOnBoot).setOnMenuItemClickListener(
+                mToggleDataOnBoot);
         return true;
     }
 
@@ -1025,7 +1026,7 @@ public class RadioInfo extends Activity {
     private MenuItem.OnMenuItemClickListener mViewSDNCallback = new MenuItem.OnMenuItemClickListener() {
         public boolean onMenuItemClick(MenuItem item) {
             Intent intent = new Intent(
-                Intent.ACTION_VIEW, Uri.parse("content://sim/sdn"));
+                    Intent.ACTION_VIEW, Uri.parse("content://icc/sdn"));
             // XXX We need to specify the component here because if we don't
             // the activity manager will try to resolve the type by calling
             // the content provider, which causes it to be loaded in a process
@@ -1080,7 +1081,7 @@ public class RadioInfo extends Activity {
 
     private MenuItem.OnMenuItemClickListener mGetPdpList = new MenuItem.OnMenuItemClickListener() {
         public boolean onMenuItemClick(MenuItem item) {
-            phone.getPdpContextList(null);
+            phone.getDataCallList(null);
             return true;
         }
     };
