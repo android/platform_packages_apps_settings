@@ -1,0 +1,669 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="device_info_default">"Невідомо"</string>
+    <string name="turn_on_radio">"Увімкнути радіозв'язок"</string>
+    <string name="turn_off_radio">"Вимкнути радіозв'язок"</string>
+    <string name="turn_on_qxdm">"Вимкнути журнал QXDM SD"</string>
+    <string name="turn_off_qxdm">"Вимкнути журнал QXDM SD"</string>
+    <string name="radioInfo_menu_viewADN">"Переглянути адресну книгу SIM-карти"</string>
+    <string name="radioInfo_menu_viewFDN">"Перегляд номерів з фіксованим набором"</string>
+    <string name="radioInfo_menu_viewSDN">"Перегляд службових номерів"</string>
+    <string name="radioInfo_menu_getPDP">"Отримати список PDP"</string>
+    <string name="radioInfo_menu_enableData">"Дозволити підключення для передачі даних"</string>
+    <string name="radioInfo_menu_disableData">"Заборонити подключення до даних"</string>
+    <string name="radioInfo_menu_enableDataOnBoot">"Дозволити підключення даних при завантаженні"</string>
+    <string name="radioInfo_menu_disableDataOnBoot">"Заборонити подключення даних при завантаженні"</string>
+    <string name="radioInfo_service_in">"В зоні обслговування"</string>
+    <string name="radioInfo_service_out">"Поза зоною обслуговування"</string>
+    <string name="radioInfo_service_emergency">"Лише екстрені виклики"</string>
+    <string name="radioInfo_service_off">"Радіозв'язок вимкнено"</string>
+    <string name="radioInfo_roaming_in">"Роумінг"</string>
+    <string name="radioInfo_roaming_not">"Поза роумінгом"</string>
+    <string name="radioInfo_phone_idle">"Очікування"</string>
+    <string name="radioInfo_phone_ringing">"Виклик"</string>
+    <string name="radioInfo_phone_offhook">"Виконується виклик"</string>
+    <string name="radioInfo_data_disconnected">"Вимкнено"</string>
+    <string name="radioInfo_data_connecting">"Увімкнення"</string>
+    <string name="radioInfo_data_connected">"Увімкнено"</string>
+    <string name="radioInfo_data_suspended">"Призупинено"</string>
+    <string name="radioInfo_unknown">"невідомо"</string>
+    <string name="radioInfo_display_packets">"пак."</string>
+    <string name="radioInfo_display_bytes">"байт"</string>
+    <string name="radioInfo_display_dbm">"dbm"</string>
+    <string name="radioInfo_display_asu">"asu"</string>
+    <string name="radioInfo_lac">"LAC"</string>
+    <string name="radioInfo_cid">"CID"</string>
+    <string name="sdcard_unmount">"Від'єднатися від карти SD"</string>
+	<string name="sdcard_format">"Форматувати карту SD"</string>
+    <string name="small_font">"Малий"</string>
+    <string name="medium_font">"Средній"</string>
+    <string name="large_font">"Великий"</string>
+    <string name="font_size_save">"ОК"</string>
+    <string name="sdcard_setting">"Карта SD"</string>
+    <string name="battery_info_status_label">"Статус акумулятора:"</string>
+    <string name="battery_info_scale_label">"Шкала акумулятора:"</string>
+    <string name="battery_info_level_label">"Рівень заряду акумулятора:"</string>
+    <string name="battery_info_health_label">"Стан акумулятора:"</string>
+    <string name="battery_info_technology_label">"Технологія акумулятора:"</string>
+    <string name="battery_info_voltage_label">"Напруга акумулятора:"</string>
+    <string name="battery_info_voltage_units">"мВ"</string>
+    <string name="battery_info_temperature_label">"Температура акумулятора:"</string>
+    <string name="battery_info_temperature_units">"° C"</string>
+    <string name="battery_info_uptime">"Час з моменту завантаження:"</string>
+    <string name="battery_info_awake_battery">"Час роботи акумулятора:"</string>
+    <string name="battery_info_awake_plugged">"Час роботи при зарядженні:"</string>
+    <string name="battery_info_screen_on">"Час увімкнення екрану:"</string>
+    <string name="battery_info_status_unknown">"Невідомо"</string>
+    <string name="battery_info_status_charging">"Зарядження"</string>
+    <string name="battery_info_status_charging_ac">"(AC)"</string>
+    <string name="battery_info_status_charging_usb">"(USB)"</string>
+    <string name="battery_info_status_discharging">"Розрядження"</string>
+    <string name="battery_info_status_not_charging">"Не заряджається"</string>
+    <string name="battery_info_status_full">"Повний"</string>
+    <string name="battery_info_health_unknown">"Невідомо"</string>
+    <string name="battery_info_health_good">"Достатньо"</string>
+    <string name="battery_info_health_overheat">"Перегрів"</string>
+    <string name="battery_info_health_dead">"Розряджена"</string>
+    <string name="battery_info_health_over_voltage">"Перепад напруги"</string>
+    <string name="battery_info_health_unspecified_failure">"Невідома помилка"</string>
+    <string name="bluetooth">"Bluetooth"</string>
+    <string name="bluetooth_visibility">"Видно всім"</string>
+    <string name="bluetooth_is_discoverable">"Видно впродовж <xliff:g id="DISCOVERABLE_TIME_PERIOD">%1$s</xliff:g> сек…"</string>
+    <string name="bluetooth_not_discoverable">"Зробити пристрій видимим"</string>
+    <string name="bluetooth_devices">"Пристрій Bluetooth"</string>
+    <string name="bluetooth_device_name">"Назва пристрою"</string>
+    <string name="bluetooth_name_not_set">"Ім'я не задано, використовується ім'я "</string>
+    <string name="bluetooth_scan_for_devices">"Пошук пристрою"</string>
+    <string name="bluetooth_disconnect_blank">"<xliff:g id="DEVICE_NAME">%1$s</xliff:g> буде вимкнено."</string>
+    <string name="bluetooth_connected">"Увімкнено"</string>
+    <string name="bluetooth_disconnected">"Вимкнено"</string>
+    <string name="bluetooth_disconnecting">"Вимкнення…"</string>
+    <string name="bluetooth_connecting">"Вмикається…"</string>
+    <!-- no translation found for bluetooth_unknown (1905151516611093010) -->
+    <skip />
+    <string name="bluetooth_not_connected">"Створити пару з цим пристроєм"</string>
+    <string name="bluetooth_pairing">"Відбувається створення пари..."</string>
+	<!-- no translation found for bluetooth_paired (1247541089000057726) -->
+	<skip />
+    <string name="bluetooth_device">"гарнітура"</string>
+    <string name="progress_scanning">"Сканувати"</string>
+    <string name="bluetooth_notif_ticker">"Запит на з'єднання Bluetooth"</string>
+    <string name="bluetooth_notif_title">"Запит на з'єднання"</string>
+    <string name="bluetooth_notif_message">"Вибрати для з'єднання"</string>
+    <string name="date_and_time">"Налаштування дати і часу"</string>
+    <string name="date_time_12_hour_sample">"13:00"</string>
+    <string name="date_time_24_hour_sample">"13:00"</string>
+    <string name="choose_timezone">"Вибрати часовий пояс"</string>
+    <string name="display_preview_label">"Попередній перегляд:"</string>
+    <string name="display_font_size_label">"Розмір шрифту:"</string>
+    <!-- no translation found for intent_sender_data_label (8363026381459131554) -->
+    <skip />
+    <string name="intent_sender_sendbroadcast_text">"Відправити <xliff:g id="BROADCAST">broadcast</xliff:g>"</string>
+    <string name="intent_sender_action_label">"<xliff:g id="ACTION">Action</xliff:g>:"</string>
+    <string name="intent_sender_startactivity_text">"Запустити <xliff:g id="ACTIVITY">activity</xliff:g>"</string>
+    <string name="intent_sender_resource_label">"<xliff:g id="RESOURCE">Resource</xliff:g>:"</string>
+    <string name="intent_sender_account_label">"Обліковий запис:"</string>
+    <string name="proxy_clear_text">"Очистити"</string>
+    <string name="proxy_port_label">"Порт"</string>
+    <string name="proxy_defaultView_text">"Відновити значення за замовчуванням"</string>
+    <string name="proxy_action_text">"Зберегти"</string>
+    <string name="proxy_hostname_label">"Ім'я хосту"</string>
+    <string name="proxy_error">"Увага"</string>
+    <string name="proxy_error_dismiss">"ОК"</string>
+    <string name="proxy_error_invalid_host">"Вказано неправильне ім'я хосту."</string>
+    <string name="proxy_error_empty_port">"Необхідно заповнити поле порту."</string>
+    <string name="proxy_error_empty_host_set_port">"Якщо поле хосту пусте, поле порту також має бути пустим."</string>
+    <string name="proxy_error_invalid_port">"Вказаний порт недійсний."</string>
+    <string name="radio_info_signal_location_label">"Розміщення:"</string>
+    <string name="radio_info_neighboring_location_label">"сусідній CID:"</string>
+    <string name="radio_info_data_attempts_label">"Спроб даних:"</string>
+    <string name="radio_info_gprs_service_label">"Обслуговування GPRS:"</string>
+    <string name="radio_info_roaming_label">"Роумінг:"</string>
+    <string name="radio_info_imei_label">"IMEI:"</string>
+    <string name="radio_info_call_redirect_label">"Переадресація дзвінків:"</string>
+    <string name="radio_info_ppp_resets_label">"Кількість  скидань PPP з моменту завантаженя:"</string>
+    <string name="radio_info_gsm_disconnects_label">"GSM вимикається:"</string>
+    <string name="radio_info_current_network_label">"Поточна мережа:"</string>
+    <string name="radio_info_data_successes_label">"Вдалі дані:"</string>
+    <string name="radio_info_ppp_received_label">"Отримано PPP:"</string>
+    <string name="radio_info_gsm_service_label">"Обслуговування GSM:"</string>
+    <string name="radio_info_signal_strength_label">"Рівень сигналу:"</string>
+    <string name="radio_info_call_status_label">"Стан виклику:"</string>
+    <string name="radio_info_ppp_sent_label">"Відправлено PPP:"</string>
+    <string name="radio_info_radio_resets_label">"Скидання радіозв'язку:"</string>
+    <string name="radio_info_message_waiting_label">"Очікує повідомлення:"</string>
+    <string name="radio_info_phone_number_label">"Номер телефону:"</string>
+    <string name="radio_info_band_mode_label">"Вибір діапазону радіозв'язку"</string>
+    <string name="radio_info_network_type_label">"Тип мережі:"</string>
+    <string name="radio_info_set_perferred_label">"Задати обраний тип мережі:"</string>
+    <string name="radio_info_ping_ipaddr">"IP-адрес Ping:"</string>
+    <string name="radio_info_ping_hostname">"Ім'я хосту для ping (www.google.com):"</string>
+    <string name="radio_info_http_client_test">"Перевірка HTTP-клиента:"</string>
+    <string name="radio_info_toggle_ciph_label">"Увімкнути шифрування"</string>
+    <string name="ping_test_label">"Виконати ping"</string>
+    <string name="radio_info_smsc_label">"SMSC:"</string>
+    <string name="radio_info_smsc_update_label">"Оновити"</string>
+    <string name="radio_info_smsc_refresh_label">"Оновити"</string>
+	<string name="radio_info_toggle_dns_check_label">"Вибір перевірки DNS"</string>
+    <string name="band_mode_title">"Встановити діапазон GSM/UMTS"</string>
+    <string name="band_mode_loading">"Завантаження списку діапазонів…"</string>
+    <string name="band_mode_set">"Встановити"</string>
+    <string name="band_mode_failed">"Помилка"</string>
+    <string name="band_mode_succeeded">"Вдало"</string>
+    <string name="sdcard_changes_instructions">"Зміни вступлять в дію після повторного підключення кабелю USB"</string>
+    <string name="sdcard_settings_screen_mass_storage_text">"Увімкніть пристрій зберігання USB"</string>
+    <string name="sdcard_settings_total_bytes_label">"Всього байт:"</string>
+    <string name="sdcard_settings_not_present_status">"Немає карти SD"</string>
+    <string name="sdcard_settings_available_bytes_label">"Доступно байт:"</string>
+    <string name="sdcard_settings_mass_storage_status">"Карта SD використовується як пристрій зберігання даних."</string>
+    <string name="sdcard_settings_unmounted_status">"Тепер можна безпечно вийняти карту SD"</string>
+    <string name="sdcard_settings_bad_removal_status">"Карта SD використовується!"</string>
+    <string name="sdcard_settings_used_bytes_label">"Зайнято, байт:"</string>
+    <string name="sdcard_settings_scanning_status">"Пошук мультимедіа на карті SD…"</string>
+    <string name="sdcard_settings_read_only_status">"Підключення до карти SD тільки для читання"</string>
+    <string name="next_label">"Дальше"</string>
+    <string name="language_picker_title">"Параметри"</string>
+    <string name="select_your_language">"Оберіть мову"</string>
+    <string name="activity_picker_label">"Оберіть дію"</string>
+    <string name="device_info_label">"Дані про пристрій"</string>
+    <string name="battery_info_label">"Дані про акумулятор"</string>
+    <string name="battery_history_label">"Журнал даних про акумулятор"</string>
+    <string name="display_label">"Екран"</string>
+    <string name="phone_info_label">"Дані про телефон"</string>
+    <string name="sd_card_settings_label">"Карта SD"</string>
+    <string name="proxy_settings_label">"Налаштування проксі"</string>
+    <string name="cancel">"Відмінити"</string>
+    <string name="settings_label">"Налаштування"</string>
+    <string name="airplane_mode">"Режим "В літаку""</string>
+    <string name="airplane_mode_summary">"Вимкнути усі безпровідні підключення"</string>
+    <string name="airplane_mode_turning_on">"Увімкнути безпровідні з'єднання…"</string>
+    <string name="airplane_mode_turning_off">"Вимкнути безпровідні з'єднання..."</string>
+    <string name="radio_controls_title">"Управління безпровідним зв'язком"</string>
+    <string name="radio_controls_summary">"Управління Wi-Fi, Bluetooth, режимом "В літаку" і мобільними мережами"</string>
+    <string name="date_and_time_settings_title">"Дата і час"</string>
+    <string name="date_and_time_settings_summary">"Встановлення датм, часу, часового поясу і форматів"</string>
+    <string name="date_time_auto">"Автоматично"</string>
+    <string name="date_time_auto_summaryOn">"Використовувати значення, надані мережею"</string>
+    <string name="date_time_auto_summaryOff">"Використовувати значення, надані мережею"</string>
+    <string name="date_time_24hour">"Використовувати 24-годинний формат"</string>
+    <string name="date_time_set_time">"Вибір часу"</string>
+    <string name="date_time_set_timezone">"Обрати часовий пояс"</string>
+    <string name="date_time_set_date">"Встановлення дати"</string>
+    <string name="date_time_date_format">"Вибір формату дати"</string>
+    <string name="zone_list_menu_sort_alphabetically">"Розмістити в алфавітному порядку"</string>
+    <string name="zone_list_menu_sort_by_timezone">"Сортувати згідно часового поясу"</string>
+    <string name="security_settings_title">"Безпека і місцезнаходження"</string>
+    <string name="security_settings_summary">"Задати місцезнаходження, розблокування екрану, блокування SIM-карти"</string>
+    <string name="security_passwords_title">"Паролі"</string>
+    <string name="bluetooth_quick_toggle_title">"Bluetooth"</string>
+    <string name="bluetooth_quick_toggle_summary">"Увімкнути Bluetooth"</string>
+    <string name="bluetooth_settings">"Налаштування Bluetooth"</string>
+    <string name="bluetooth_settings_title">"Налаштування Bluetooth"</string>
+    <string name="bluetooth_settings_summary">"Управління підключеннями, встановлення назви і видимості приладу"</string>
+    <string name="bluetooth_pin_entry">"Запит на з'єднання з Bluetooth"</string>
+    <string name="bluetooth_device_info">"Дані про прилад Bluetooth"</string>
+    <string name="bluetooth_enter_pin_msg">"<xliff:g id="DEVICE_NAME">%1$s</xliff:g>"\n\n"Для створення пари вкажіть PIN."\n"(Спробуйте 0000 або 1234.)"</string>
+    <string name="bluetooth_error_title">"Увага"</string>
+    <string name="bluetooth_pairing_error_message">"Не вдалося створити пару з приладом <xliff:g id="DEVICE_NAME">%1$s</xliff:g>."</string>
+    <string name="bluetooth_pairing_pin_error_message">"Не вдалося створити пару з приладом <xliff:g id="DEVICE_NAME">%1$s</xliff:g>, оскільки вказано невірний PIN."</string>
+    <string name="bluetooth_connecting_error_message">"Не вдалося підключитись до приладу <xliff:g id="DEVICE_NAME">%1$s</xliff:g>."</string>
+    <string name="bluetooth_preference_scan_title">"Пошук приладів"</string> 
+    <string name="bluetooth_device_context_connect">"З'єднатися"</string>
+    <string name="bluetooth_device_context_disconnect">"Від'єднатися"</string>
+    <string name="bluetooth_device_context_pair_connect">"Створити пару і з'єднатися"</string>
+    <string name="bluetooth_device_context_unpair">"Від'єднати"</string>
+    <string name="bluetooth_device_context_disconnect_unpair">"Від'єднатися і роз'єднати пару"</string>
+    <string name="bluetooth_device_context_connect_advanced">"Параметри…"</string>
+    <string name="bluetooth_connect_specific_profiles_title">"Під'єднатися до…"</string>
+    <string name="bluetooth_profile_a2dp">"Мультимедіа"</string>
+    <string name="bluetooth_profile_headset">"Телефон"</string>
+    <string name="bluetooth_summary_connected_to_a2dp">"Під'єднано до мультимедійного звукового виходу"</string>
+    <string name="bluetooth_summary_connected_to_headset">"Під'єднано до звукового виходу телефону"</string>
+    <string name="bluetooth_summary_connected_to_a2dp_headset">"Під'єднано до звукового виходу телефону і мультимедіа"</string>
+    <string name="bluetooth_device_advanced_title">"Параметри <xliff:g id="DEVICE_NAME">%1$s</xliff:g>"</string>
+    <string name="bluetooth_device_advanced_online_mode_title">"Під'єднатися"</string>
+    <string name="bluetooth_device_advanced_online_mode_summary">"Під'єднатися до приладу Bluetooth"</string>
+    <string name="bluetooth_device_advanced_profile_header_title">"Профілі"</string>
+    <string name="bluetooth_a2dp_profile_summary_connected">"Під'єднано до мультимедійного звукового виходу"</string>
+    <string name="bluetooth_headset_profile_summary_connected">"Під'єднано до звукового виходу телефону"</string>
+    <string name="bluetooth_a2dp_profile_summary_use_for">"Використовувати для звуку мультимедіа"</string>
+    <string name="bluetooth_headset_profile_summary_use_for">"Використовувати для звуку телефону"</string>
+    <string name="wifi">"Wi-Fi"</string>
+    <string name="wifi_quick_toggle_title">"Wi-Fi"</string>
+    <string name="wifi_quick_toggle_summary">"Увімкнути Wi-Fi"</string>
+    <string name="wifi_settings">"Налаштування Wi-Fi"</string>
+    <string name="wifi_settings_category">"Налаштування Wi-Fi"</string>
+    <string name="wifi_settings_summary">"Налаштування і управління точками доступу безпровідного зв'язку"</string>
+    <string name="forget_network">"Видалити назавжди"</string>
+    <string name="wifi_status">"Стан"</string>
+    <string name="wifi_link_speed">"Швидкість"</string>
+    <string name="wifi_signal_3">"Відмінний"</string>
+    <string name="wifi_signal_2">"Добрий"</string>
+    <string name="wifi_signal_1">"Средній"</string>
+    <string name="wifi_signal_0">"Поганий"</string>
+    <string name="security">"Безпека"</string>
+    <string name="wifi_security_open">"Без шифрування"</string>
+    <string name="wifi_security_wep">"WEP"</string>
+    <string name="wifi_security_wpa">"WPA"</string>
+    <string name="wifi_security_wpa2">"WPA2"</string>
+    <string name="wifi_security_unknown">"Невідомо"</string>
+    <string name="wifi_security_verbose_open">"Відкрита мережа"</string>
+    <string name="wifi_security_verbose_wep">"Захищений WEP"</string>
+    <string name="wifi_security_verbose_wpa">"Захищений WPA"</string>
+    <string name="wifi_security_verbose_wpa2">"Захищений WPA2"</string>
+    <string name="ip_address">"IP-адрес"</string>
+    <string name="signal">"Рівень сигналу"</string>
+    <string name="wifi_starting">"Вмикання…"</string>
+    <string name="wifi_stopping">"Вимикання"</string>
+    <string name="wifi_error">"Помилка"</string>
+    <string name="error_starting">"Не вдаєтьсятся запустити Wi-Fi"</string>
+    <string name="error_stopping">"Не вдаєтьсятся зупинити Wi-Fi"</string>
+    <string name="error_scanning">"Не вдаєтьсятся розпочати пошук мережі"</string>
+    <string name="error_connecting">"Не вдаєтьсятся подключитися до мережі"</string>
+    <string name="error_saving">"Не вдаєтьсятся зберегти мережу"</string>
+    <string name="connect">"Під'єднатися"</string>
+    <string name="connect_to_blank">"Під'єднатися до мережі <xliff:g id="NETWORK_NAME">%1$s</xliff:g>"</string>
+    <string name="please_type_passphrase">"Пароль безпробідної мережі"</string>
+    <string name="please_type_hex_key">"Шістнадцятковий ключ WEP (0-9, A-F)"</string>
+    <string name="wifi_show_password">"Відобразити пароль."</string>
+    <string name="scan_wifi">"Сканувати"</string>
+    <string name="summary_not_in_range">"Поза зоною дії"</string>
+    <string name="summary_remembered">"Запам'ятовано раніше"</string>
+    <string name="summary_connection_failed">"З'єднання не встановлено, повторіть спробу"</string>
+    <string name="wifi_access_points">"Мережі Wi-Fi"</string>
+    <string name="wifi_type_ssid">"SSID мережі"</string>
+    <string name="wifi_security">"Безпека"</string>
+    <string name="wifi_save_config">"Зберегти"</string>
+    <string name="wifi_password_unchanged">"(не змінено)"</string>
+    <string name="wifi_add_other_network">"Добавити мережу Wi-Fi"</string>
+    <string name="wifi_notify_open_networks">"Повідомлення про мережу"</string>
+    <string name="wifi_notify_open_networks_summary">"Повідомити мене при наявності відкритої мережі"</string>
+    <string name="wifi_password_incorrect_error">"Вказано неправильний пароль мережі. Повторіть спробу."</string>
+    <string name="wifi_generic_connection_error">"Проблема при підключенні до мережі. Повторіть спробу."</string>
+    <string name="wifi_menu_advanced">"Додатково"</string>
+    <string name="wifi_ip_settings_titlebar">"Налаштування IP"</string>
+    <string name="wifi_ip_settings_menu_save">"Зберегти"</string>
+    <string name="wifi_ip_settings_menu_cancel">"Відмінити"</string>
+    <string name="wifi_ip_settings_invalid_ip">"Вкажіть дійсний IP-адрес."</string>
+    <string name="wifi_use_static_ip">"Використовувати статичний IP"</string>
+    <string name="wifi_ip_address">"IP-адрес"</string>
+    <string name="wifi_dns1">"DNS 1"</string>
+    <string name="wifi_dns2">"DNS 2"</string>
+    <string name="wifi_gateway">"Шлюз"</string>
+    <string name="wifi_netmask">"Маска мережі"</string>
+    <string name="wifi_context_menu_connect">"Під'єднатися до мережі"</string>
+    <string name="wifi_context_menu_forget">"Видалити мережу"</string>
+    <string name="wifi_context_menu_change_password">"Змінити пароль"</string>
+    <string name="wifi_advanced_titlebar">"Додатково"</string>
+    <string name="wifi_setting_num_channels_title">"Керуючий домен"</string>
+    <string name="wifi_setting_num_channels_summary">"Встановити кількість використовуваних каналів"</string>
+    <string name="wifi_setting_num_channels_error">"При встановленні керуючого домену виникла проблема."</string>
+    <string name="wifi_setting_num_channels_channel_phrase">"Каналів: <xliff:g id="NUM_CHANNELS">%1$d</xliff:g>"</string>
+	<string name="wifi_setting_sleep_policy_title">"Правила переходу Wi-Fi в сплячий режим"</string>
+    <string name="wifi_setting_sleep_policy_summary">"Вкажіть, коли необхідно перейти від Wi-Fi до мобильних даних"</string>
+    <string name="wifi_setting_sleep_policy_error">"При встановленні правил переходу в сплячий режим виникла проблема."</string>
+    <string name="wifi_advanced_mac_address_title">"MAC-адрес"</string>
+    <string name="fragment_status_scanning">"Відбувається сканування…"</string>
+    <string name="fragment_status_connecting">"Відбувається підключення до <xliff:g id="NETWORK_NAME">%1$s</xliff:g>…"</string>
+    <string name="fragment_status_authenticating">"Авторизація в мережі <xliff:g id="NETWORK_NAME">%1$s</xliff:g>…"</string>
+    <string name="fragment_status_obtaining_ip">"Отримання IP-адресу в <xliff:g id="NETWORK_NAME">%1$s</xliff:g>…"</string>
+    <string name="fragment_status_connected">"Під'єднано до <xliff:g id="NETWORK_NAME">%1$s</xliff:g>"</string>
+    <string name="fragment_status_disconnecting">"Від'єднано від мережі <xliff:g id="NETWORK_NAME">%1$s</xliff:g>…"</string>
+    <string name="fragment_status_disconnected">"Від'єднано"</string>
+    <string name="fragment_status_failed">"Помилка"</string>
+    <string name="status_scanning">"Відбувається сканування…"</string>
+    <string name="status_connecting">"Відбувається підключення…"</string>
+    <string name="status_authenticating">"Відбувається авторизація…"</string>
+    <string name="status_obtaining_ip">"Отримання адресу…"</string>
+    <string name="status_connected">"Під'єднано"</string>
+    <string name="status_disconnecting">"Від'єднано…"</string>
+    <string name="status_disconnected">"Від'єднано"</string>
+    <string name="status_failed">"Помилка"</string>
+    <string name="sound_and_display_settings">"Звук і екран"</string>
+    <string name="sound_settings">"Налаштування звуку"</string>
+    <string name="sound_and_display_settings_summary">"Встановлення мелодій дзвінка, повідомлень, яскравість екрану"</string>
+    <string name="silent_mode_title">"Беззвучний режим"</string>
+    <string name="silent_mode_summary">"Вимкнення всіх звуків, крім мультимедіа і будильників"</string>
+    <string name="ringtone_title">"Мелодія дзвінка телефону"</string>
+    <string name="ringtone_summary">"Встановити мелодію дзвінка для вхідних викликів по замовчуванню"</string>
+    <string name="ring_volume_title">"Гучність дзвінка"</string>
+    <string name="ring_volume_summary">"Встановити гучність вхідних дзвінків і повідомлень"</string>
+    <string name="vibrate_title">"Вібродзвінок"</string>
+    <string name="vibrate_summary">"Вібро при вхідних викликах"</string>
+    <string name="notification_sound_title">"Мелодія повідомлень"</string>
+    <string name="notification_sound_summary">"Задати мелодію повідомлень по замовчуванню"</string>
+    <string name="incoming_call_volume_title">"Гучність вхідних викликів"</string>
+    <string name="notification_volume_title">"Гучність повідомлень"</string>
+    <string name="checkbox_notification_same_as_incoming_call">"Використовувати гучність вхідних викликів для інформування"</string>
+    <string name="notification_sound_dialog_title">"Обрати мелодію для повідомлень"</string>
+    <string name="media_volume_title">"Гучність звуку мультимедіа"</string>
+    <string name="media_volume_summary">"Встановити гучність музики і відео"</string>
+    <string name="dtmf_tone_enable_title">"Звук при натисненні"</string>
+    <string name="dtmf_tone_enable_summary_on">"Видавати сигнали при використовуванні клавіатури"</string>
+    <string name="dtmf_tone_enable_summary_off">"Видавати сигнали при використовуванні клавіатури"</string>
+    <string name="sound_effects_enable_title">"Звук при виборі"</string>
+    <string name="sound_effects_enable_summary_on">"Відтворити звук при виборі на екрані"</string>
+    <string name="sound_effects_enable_summary_off">"Відтворити звук при виборі на екрані"</string>
+	<string name="play_media_notification_sounds_enable_title">"Сповіщення карти SD"</string>
+    <string name="play_media_notification_sounds_enable_summary_on">"Вимкнути звукові сигнали для карти SD"</string>
+    <string name="play_media_notification_sounds_enable_summary_off">"Увімкнути попереджуючі звуки карти SD"</string>
+    <string name="sync_settings">"Синхронізація даних"</string>
+    <string name="sync_settings_summary">"Вибрати синхронізовані додатки"</string>
+    <string name="display_settings">"Налаштування екрану"</string>
+    <string name="animations_title">"Анімація"</string>
+    <string name="animations_summary_on">"Показувати анімацію при відкриванні і закриванні вікон"</string>
+    <string name="animations_summary_off">"Показувати анімацію при відкриванні і закриванні вікон"</string>
+    <string name="brightness">"Яскравість"</string>
+    <string name="brightness_summary">"Налаштувати яскравість екрану"</string>
+    <string name="screen_timeout">"Час до відключення екрану"</string>
+    <string name="screen_timeout_summary">"Налаштувати затримку автоматичного відключення екрану"</string>
+    <string name="sim_lock_settings">"Налаштування блокування SIM-карти"</string>
+    <string name="sim_lock_settings_category">"Встановити блокування SIM-карти"</string>
+    <string name="sim_lock_settings_title">"Блокування SIM-карти"</string>
+    <string name="sim_pin_toggle">"Блокування SIM-карти"</string>
+    <string name="sim_lock_on">"Для використання телефону необхідно ввести PIN"</string>
+    <string name="sim_lock_off">"Для використання телефону необхідно ввести PIN"</string>
+    <string name="sim_pin_change">"Зміна PIN SIM-карти"</string>
+    <string name="sim_enter_pin">"PIN SIM-карти"</string>
+    <string name="sim_enable_sim_lock">"Блокування SIM-карти"</string>
+    <string name="sim_disable_sim_lock">"Розблокувати SIM-карту"</string>
+    <string name="sim_enter_old">"Старий PIN SIM-карти"</string>
+    <string name="sim_enter_new">"Новий PIN SIM-карти"</string>
+    <string name="sim_reenter_new">"Введіть новий PIN ще раз"</string>
+    <string name="sim_change_pin">"PIN SIM-карти"</string>
+    <string name="sim_bad_pin">"Неправильний PIN!"</string>
+    <string name="sim_pins_dont_match">"PIN-коди не співпадають!"</string>
+    <string name="sim_change_failed">"Не вдається змінити PIN."\n"Можливо, вказано неправильний PIN."</string>
+    <string name="sim_change_succeeded">"PIN SIM-карти вдало змінено"</string>
+    <string name="sim_lock_failed">"Не вдається змінити стан блокування SIM-карти."\n"Можливо, вказано неправильний PIN."</string>
+    <string name="sim_enter_ok">"ОК"</string>
+    <string name="sim_enter_cancel">"Відмінити"</string>
+    <string name="device_info_settings">"Стан телефону"</string>
+    <string name="system_update_settings_list_item_title">"Системне оновлення"</string>
+    <string name="system_update_settings_list_item_summary">"Перевірити наявність системних оновлень"</string>
+    <string name="firmware_version">"Версія мікропрограмного забезпечення"</string>
+    <string name="model_number">"Номер моделі"</string>
+    <string name="baseband_version">"Версія основного діапазону"</string>
+    <string name="kernel_version">"Версія Kernel"</string>
+    <string name="build_number">"Номер білду"</string>
+    <string name="device_info_not_available">"Недоступно"</string>
+    <string name="device_status_activity_title">"Стан"</string>
+    <string name="device_status">"Стан"</string>
+    <string name="device_status_summary">"IMEI, номер телефону, сигналу і т.д."</string>
+    <string name="storage_settings_title">"Карта SD і пам'ять телефону"</string>
+    <string name="storage_settings_summary">"Вимкнути карту SD, переглянути об'єм вільного місця"</string>
+    <string name="status_number">"Номер телефону"</string>
+    <string name="status_network_type">"Тип мобільної мережі"</string>
+    <string name="status_data_state">"Стан мобільної мережі"</string>
+    <string name="status_service_state">"Наявність обслуговування"</string>
+    <string name="status_signal_strength">"Рівень сигналу"</string>
+    <string name="status_roaming">"Роумінг"</string>
+    <string name="status_operator">"Мережа"</string>
+    <string name="status_wifi_mac_address">"MAC-адрес Wi-Fi"</string>
+    <string name="status_bt_address">"Адрес Bluetooth"</string>
+    <string name="status_unavailable">"Недоступно"</string>
+    <string name="status_up_time">"Час роботи"</string>
+    <string name="status_awake_time">"Час активності"</string>
+    <string name="internal_memory">"Зберігання в пам'яті телефону"</string>
+    <string name="sd_memory">"Карта SD"</string>
+    <string name="memory_available">"Доступне місце"</string>
+    <string name="memory_size">"Загалом місця"</string>
+    <string name="sd_eject">"Демонструвати карту SD"</string>
+	<string name="sd_eject_summary">"Демонструвати карту SD для безпечного видалення"</string>
+    <string name="sd_format">"Форматувати карту SD"</string>
+    <string name="sd_format_summary">"Форматувати (очистити) карту SD"</string>
+    <string name="sd_unavailable">"Недоступно"</string>
+    <string name="read_only">"(Лише для читання)"</string>
+    <string name="battery_status_title">"Стан акумулятора"</string>
+    <string name="battery_level_title">"Рівень акумулятора"</string>
+    <string name="apn_settings">"APN"</string>
+    <string name="apn_edit">"Зміна точки доступу"</string>
+    <string name="apn_not_set">"&lt;Не задано&gt;"</string>
+    <string name="apn_name">"Ім'я"</string>
+    <string name="apn_apn">"APN"</string>
+    <string name="apn_http_proxy">"Проксі"</string>
+    <string name="apn_http_port">"Порт"</string>
+    <string name="apn_user">"Ім'я користувача"</string>
+    <string name="apn_password">"Пароль"</string>
+    <string name="apn_server">"Сервер"</string>
+    <string name="apn_mmsc">"MMSC"</string>
+    <string name="apn_mms_proxy">"Проксі MMS"</string>
+    <string name="apn_mms_port">"Порт MMS"</string>
+    <string name="apn_mcc">"MCC"</string>
+    <string name="apn_mnc">"MNC"</string>
+    <string name="apn_type">"Тип APN"</string>
+    <string name="menu_delete">"Видалити APN"</string>
+    <string name="menu_new">"Створити APN"</string>
+    <string name="menu_save">"Зберегти"</string>
+    <string name="menu_cancel">"Закрити"</string>
+    <string name="error_title">"Увага"</string>
+    <string name="error_name_empty">"Поле Ім'я не може бути пустим."</string>
+    <string name="error_apn_empty">"APN не може бути пустим."</string>
+    <string name="error_mcc_not3">"Поле MCC повинно містити 3 цифри."</string>
+    <string name="error_mnc_not23">"Поле MNC повинно містити 2 або 3 цифри."</string>
+    <string name="master_clear_title">"Скидання заводських даних"</string>
+    <string name="master_clear_summary">"Видалення всіх даних з телефону"</string>
+    <string name="master_clear_desc">"Ця дія скине налаштування телефону до вихідного заводського стану, видаливши всі дані і завантажені додатки!"</string>
+    <string name="master_clear_button_text">"Скинути налаштування телефону"</string>
+    <string name="master_clear_final_desc">"Скинути налаштування телефону? Всі дані і додатки будуть видалені; зміни необоротні!"</string>
+    <string name="master_clear_final_button_text">"Видалити все"</string>
+    <string name="master_clear_gesture_prompt">"Виконати комбінацію розблокування"</string>
+    <string name="master_clear_gesture_explanation">"Для підтвердження скидання налаштувань телефону потрібно виконати комбінацію  розблокування."</string>
+	<string name="media_format_title">"Форматувати карту SD."</string>
+    <string name="media_format_summary">"Видаляє всі дані з карти SD"</string>
+    <string name="media_format_desc">"Ця дія приведе до очищення карти SD в телефоні. Уся інформація, що знаходиться на карті, буде видалена!"</string>
+    <string name="media_format_button_text">"Форматувати карту SD"</string>
+    <string name="media_format_final_desc">"Форматувати карту SD з видаленням всіх ваших даних? Цю дію неможна відмінити!"</string>
+    <string name="media_format_final_button_text">"Витерти все"</string>
+    <string name="media_format_gesture_prompt">"Відтворити шаблон зняття блоку"</string>
+    <string name="media_format_gesture_explanation">"Для підтвердження форматування карті SD потрібно відтворити шаблон зняття блоку."</string>
+    <string name="call_settings_title">"Налаштування викликів"</string>
+    <string name="call_settings_summary">"Налаштування голосової пошти, переадресація викликів, утримання викликів, ідентифікатора телефонуючого"</string>
+    <string name="network_settings_title">"Мобільніе мережі"</string>
+    <string name="network_settings_summary">"Встановити параметри роумингу, мереж, APN"</string>
+    <string name="location_title">"Джерела мого місцезнаходження"</string>
+    <string name="location_network_based">"Використовувати безпровідні мережі"</string>
+    <string name="location_networks_disabled">"Перегляд місцезнаходження в додатках (наприклад в Картах) за допомогою безпровідних мереж"</string>
+    <string name="location_neighborhood_level">"Місцезнаходження визначається за допомогою Wi-Fi і/або мобільних мереж"</string>
+    <string name="location_gps">"Увімкнути супутники GPS"</string>
+    <string name="location_street_level">"Визначення місцезнаходження з точністю до вулиці (для економії заряду акумулятора відмініть вибір)"
+    <string name="location_gps_disabled">"Знаходити мене до рівня вулиці (необхідно більше заряду акумулятора, а також пряма видимість неба)"
+    <string name="about_settings">"Про телефон"</string>
+    <string name="about_settings_summary">"Переглянути юридичні дані, стан телефону, версію ПЗ"</string>
+    <string name="legal_information">"Юридична інформація"</string>
+    <string name="contributors_title">"Автори"</string>
+    <string name="copyright_title">"Авторскі права"</string>
+    <string name="license_title">"Ліцензія"</string>
+    <string name="terms_title">"Умови надання послуг"</string>
+    <string name="settings_license_activity_title">"Ліцензя Open Source"</string>
+    <string name="settings_license_activity_unavailable">"При завантаженні ліцензій виникла помилка."</string>
+    <string name="settings_license_activity_loading">"Відбувається завантаження…"</string>
+    <string name="lock_settings_title">"Комбінація розблокування екрану"</string>
+    <string name="lockpattern_change_lock_pattern_label">"Змінити послідовність розблокування"</string>
+    <string name="lockpattern_need_to_unlock">"Підтвердіть збережену комбінацію"</string>
+    <string name="lockpattern_need_to_unlock_wrong">"Невірно, спробуйте ще раз:"</string>
+    <string name="lockpattern_recording_intro_header">"Створіть комбінацію розблокування"</string>
+    <string name="lockpattern_recording_intro_footer">"Для довідки натисніть Menu"</string>
+    <string name="lockpattern_recording_inprogress">"Після закінчення заберіть палець."</string>
+    <string name="lockpattern_recording_incorrect_too_short">"З'єднайте не менше <xliff:g id="NUMBER">%d</xliff:g> точок. Спробуйте ще раз:"</string>
+    <string name="lockpattern_pattern_entered_header">"Послідовність записана!"</string>
+    <string name="lockpattern_need_to_confirm">"Для підтвердження ще раз введіть комбінацію:"</string>
+    <string name="lockpattern_pattern_confirmed_header">"Нова комбінація розблокування:"</string>
+    <string name="lockpattern_confirm_button_text">"Підтвердження"</string>
+    <string name="lockpattern_restart_button_text">"Змінити"</string>
+    <string name="lockpattern_retry_button_text">"Повторіть"</string>
+    <string name="lockpattern_continue_button_text">"Продовжити"</string>
+    <string name="lockpattern_settings_title">"Комбінація розблокування"</string>
+    <string name="lockpattern_settings_enable_title">"Комбінація обов'язкова"</string>
+    <string name="lockpattern_settings_enable_summary">"Для розблокування экрану введіть комбінацію"</string>
+    <string name="lockpattern_settings_enable_visible_pattern_title">"Використовувати видиму комбінацію"</string>
+    <string name="lockpattern_settings_enable_tactile_feedback_title">"Використовувати тактильний зворотній зв'язок"</string>
+    <string name="lockpattern_settings_choose_lock_pattern">"Задати комбінацію розблокування"</string>
+    <string name="lockpattern_settings_change_lock_pattern">"Змінити послідовність розблокування"</string>
+    <string name="lockpattern_settings_help_how_to_record">"Як створити комбінацію розблокування"</string>
+    <string name="lockpattern_too_many_failed_confirmation_attempts_header">"Надто багато неправильних спроб!"</string>
+    <string name="lockpattern_too_many_failed_confirmation_attempts_footer">"Повторіть спробу через <xliff:g id="NUMBER">%d</xliff:g> сек."</string>
+    <string name="skip_button_label">"Відміна"</string>
+    <string name="next_button_label">"Дальше"</string>
+    <string name="lock_title">"Захист телефону"</string>
+    <string name="lock_intro_message"><font size="17">"Захистіть телефон від несанкціонваного використання, створивши особисту комбінацію розблокування екрану. "\n<font height="17">\n</font><b>"1"</b>"  На наступному екрані показано приклад створення комбінації "\n<font height="17">\n</font><b>"2"</b>"  Перегляньте его и создайте собственную комбінацію розблокування. Пробуйте разные комбінації, але з'єднуйте не менше чотирьох точок. "\n<font height="17">\n</font><b>"3"</b>"  Відтворіть комбінацію повторно для підтвердження. "\n<font height="17">\n</font><b>"Готові розпочати? Натисніть \"Дальше\""</b>". "\n<font height="3">\n</font>"Щоб зупинити телефон без захисту, натисніть \"Відміна\"."</font></string>
+    <string name="lock_example_title">"Приклад комбінації"</string>
+    <string name="lock_example_message">"З'єднайте не меньше чотирьох точок."\n" "\n"Виберіть \"Дальше\", коли будете готові створити свою комбінацію."</string>
+    <string name="manageapplications_settings_title">"Керування додатками"</string>
+	<string name="manageapplications_settings_summary">"Керування встановленими додатками і видаляти їх"</string>
+    <string name="applications_settings">"Приложения"</string>
+    <string name="applications_settings_summary">"Керування додатками, налаштування гарячих клавіш"</string>
+    <string name="applications_settings_header">"Налаштування додатків"</string>
+    <string name="install_applications">"Невідомі джерела"</string>
+    <string name="install_unknown_applications">"Дозволити встановлення додатків не із Android Маркет"</string>
+    <string name="install_all_warning">"Атака додатків із невідомих джерел більше небезпечна для телефону і особистих даних. Ви погоджуєтеся, що несете всю відповідальність за збитки телефону або втрату даних, які можуть відбутися від використання таких додатків."</string>
+    <string name="application_info_label">"Дані про додатки"</string>
+    <string name="storage_label">"Зберігання"</string>
+    <string name="auto_launch_label">"Запуск за замовчуанням"</string>
+    <string name="permissions_label">"Дозвіл"</string>
+    <string name="cache_header_label">"Кеш"</string>
+    <string name="clear_cache_btn_text">"Очистити кеш"</string>
+    <string name="cache_size_label">"Кеш"</string>
+    <string name="controls_label">"Елементи керування"</string>
+    <string name="force_stop">"Зупинити примусово"</string>
+    <string name="total_size_label">"Всього"</string>
+    <string name="application_size_label">"Додатки"</string>
+    <string name="data_size_label">"Дані"</string>
+    <string name="uninstall_text">"Видалити"</string>
+    <string name="clear_user_data_text">"Очистити дані"</string>
+    <string name="auto_launch_enable_text">"Цей додаток за замовчуанням запускається для деяких дій."</string>
+    <string name="auto_launch_disable_text">"Значення за замовчуанням не встановлені."</string>
+    <string name="clear_activities">"Очистити значення за замовчуанням"</string>
+    <string name="unknown">"Невідомо"</string>
+    <string name="sort_order_alpha">"Сортувати"</string>
+    <string name="sort_order_size">"Сортувати за разміром"</string>
+    <string name="manage_space_text">"Керування пам'яттю"</string>
+    <string name="filter">"Фільтр"</string>
+    <string name="filter_dlg_title">"Обрати параметри фільтру"</string>
+    <string name="filter_apps_all">"Все"</string>
+    <string name="filter_apps_third_party">"Стан"</string>
+    <string name="filter_apps_running">"Виконуються"</string>
+    <string name="loading">"Відбувається завантаження…"</string>
+    <string name="recompute_size">"Перерахунок розміру…"</string>
+    <string name="clear_data_dlg_title">"Видалити"</string>
+    <string name="clear_data_dlg_text">"Вся інформація, збережена в цьому додатку, буде видалена назавжди."</string>
+    <string name="dlg_ok">"ОК"</string>
+    <string name="dlg_cancel">"Відміна"</string>
+    <string name="app_not_found_dlg_title">"Додаток не знайдено"</string>
+    <string name="app_not_found_dlg_text">"Додаток не знайдено в списку встановлених додатків."</string>
+    <string name="clear_data_failed">"Не вдається очистити дані додатку."</string>
+    <string name="security_settings_desc">"Цей додаток має доступ до наступного на телефоні:"</string>
+    <string name="computing_size">"Відбувається розрахунок…"</string>
+    <string name="invalid_size_value">"Неможливо вирахувати розмір пакету"</string>
+    <string name="empty_list_msg">"У вас не встановлено додатки інших розробників."</string>
+    <string name="language_settings">"Мовних параметрів і тексту"</string>
+    <string name="language_settings_summary">"Вибір мовних параметрів (мови і регіону), параметрів вводу тексту і автовиправлень"</string>
+    <string name="language_category">"Налаштування мовних параметрів"</string>
+    <string name="text_category">"Налаштування тексту"</string>
+    <string name="phone_language">"Обрати мову"</string>
+	<string name="phone_language_summary">"Обрати мову і країну"</string>
+    <string name="auto_replace">"Автозаміна"</string>
+    <string name="auto_replace_summary">"Виправляти слова з опечатками"</string>
+    <string name="auto_caps">"Автоматично замінювати заголовною буквою"</string>
+    <string name="auto_caps_summary">"Великі букви на початку речення"</string>
+    <string name="auto_punctuate">"Автоматична пунктуація"</string>
+	<string name="hardkeyboard_category">"Налаштування зовнішньої клавіатури"</string>
+    <string name="auto_punctuate_summary">"Щоб вставити символ \".\", двічі натисніть пробіл."</string>
+    <string name="show_password">"Показувати паролі"</string>
+    <string name="show_password_summary">"Показувати пароль при вводі"</string>
+	<string name="user_dict_settings_titlebar">"Користувацький словник"</string>
+    <string name="user_dict_settings_title">"Користувацький словник"</string>
+    <string name="user_dict_settings_summary">"Додати або видалити слова із користувацького словника"</string>
+    <string name="user_dict_settings_add_menu_title">"Додати"</string>
+    <string name="user_dict_settings_add_dialog_title">"Додавання у словник"</string>
+    <string name="user_dict_settings_context_menu_edit_title">"Змінити"</string>
+    <string name="user_dict_settings_context_menu_delete_title">"Видалити"</string>
+    <string name="user_dict_settings_empty_text">"В користувацькому словнику відсутні слова. Додати слово можна за допомогою меню."</string>
+    <string name="testing">"Тестування"</string>
+    <string name="testing_phone_info">"Дані про телефон"</string>
+    <string name="testing_battery_info">"Дані про акумулятор"</string>
+    <string name="testing_battery_history">"Журнал даних про батарею"</string>
+    <string name="quick_launch_title">"Швидкий запуск"</string>
+    <string name="quick_launch_summary">"Задати швидкі клавіші для запуску додатків"</string>
+    <string name="quick_launch_assign_application">"Назначити додаток"</string>
+    <string name="quick_launch_no_shortcut">"Відсутній ярлик"</string>
+    <string name="quick_launch_shortcut">"Пошук + <xliff:g id="SHORTCUT_LETTER">%1$s</xliff:g>"</string>
+    <string name="quick_launch_clear_dialog_title">"Очистити"</string>
+    <string name="quick_launch_clear_dialog_message">"Ярлик <xliff:g id="SHORTCUT_LETTER">%1$s</xliff:g> (для додатку <xliff:g id="APPLICATION_NAME">%2$s</xliff:g>) буде видалено."</string>
+    <string name="quick_launch_clear_ok_button">"ОК"</string>
+    <string name="quick_launch_clear_cancel_button">"Відміна"</string>
+    <string name="quick_launch_display_mode_applications">"Додатки"</string>
+    <string name="quick_launch_display_mode_shortcuts">"Ярлики"</string>
+    <string name="input_methods_settings_title">"Ввід тексту"</string>
+    <string name="input_methods_settings_summary">"Керування параметрами вводу тексту"</string>
+    <string name="input_methods_settings_label_format">"Налаштування %s"</string>
+    <string name="development_settings_title">"Розробка"</string>
+    <string name="development_settings_summary">"Вибрати параметри розробки додатків"</string>
+    <string name="enable_adb">"Відлагодження USB"</string>
+    <string name="enable_adb_summary">"Режим відлагодження при підключенні USB"</string>
+    <string name="keep_screen_on">"Не вимикати"</string>
+    <string name="keep_screen_on_summary">"При зарядженні екран не вимикається"</string>
+    <string name="allow_mock_location">"Дозволити фіктивне місцезнаходження"</string>
+    <string name="allow_mock_location_summary">"Дозволити фіктивне місцезнаходження"</string>
+    <!-- no translation found for gadget_picker_title (98374951396755811) -->
+    <skip />
+    <!-- no translation found for widget_picker_title (9130684134213467557) -->
+    <skip />
+    <string name="battery_history_details_for">"Дані для ідентифікатора користувача %d"</string>
+    <string name="battery_history_uid">"Ідентифікатор користувача <xliff:g id="USER_ID">%1$d</xliff:g>"</string>
+    <string name="battery_history_network_usage">"Дані про використання мережі додатками <xliff:g id="APP_NAME">%1$s</xliff:g>:"</string>
+    <string name="battery_history_bytes_received">"Отримано байт: <xliff:g id="BYTES">%1$d</xliff:g>"</string>
+    <string name="battery_history_bytes_sent">"Відправлено байт: <xliff:g id="BYTES">%1$d</xliff:g>"</string>
+    <string name="battery_history_bytes_total">"Всього байт: <xliff:g id="BYTES">%1$d</xliff:g>"</string>
+    <string name="battery_history_cpu_usage">"Дані про використання процесора додатками <xliff:g id="APP_NAME">%1$s</xliff:g>:"</string>
+    <string name="battery_history_user_time">"Користувацький час:"</string>
+    <string name="battery_history_system_time">"Системний час:"</string>
+    <string name="battery_history_total_time">"Загальний час:"</string>
+    <string name="battery_history_starts">"Запусків: <xliff:g id="STARTS">%1$d</xliff:g>"</string>
+    <string name="battery_history_days">"<xliff:g id="DAYS">%1$d</xliff:g> дн., <xliff:g id="HOURS">%2$d</xliff:g> год., <xliff:g id="MINUTES">%3$d</xliff:g> хв., <xliff:g id="SECONDS">%4$d</xliff:g> сек."</string>
+    <string name="battery_history_hours">"<xliff:g id="HOURS">%1$d</xliff:g> год., <xliff:g id="MINUTES">%2$d</xliff:g> хв., <xliff:g id="SECONDS">%3$d</xliff:g>сек."</string>
+    <string name="battery_history_minutes">"<xliff:g id="MINUTES">%1$d</xliff:g> хв., <xliff:g id="SECONDS">%2$d</xliff:g> сек."</string>
+    <string name="battery_history_seconds">"<xliff:g id="SECONDS">%1$d</xliff:g> секунд"</string>
+    <string name="battery_history_packages_sharing_this_uid">"Пакети з цим ідентифікатором користувача:"</string>
+    <string name="battery_history_no_data">"Дані про використання батареї недоступні"</string>
+    <string name="battery_history_sensor">"Сенсор:"</string>
+    <!-- no translation found for battery_history_wakelock (608683447522396293) -->
+    <skip />
+    <string name="battery_history_used_by_packages">"Використання сенсора пакетами:"</string>
+    <string name="battery_history_sensor_usage">"Використано пакетом <xliff:g id="PACKAGE">%2$s</xliff:g>: <xliff:g id="COUNT">%1$d</xliff:g> раз(а)"</string>
+    <string name="battery_history_sensor_usage_multi">"Використано <xliff:g id="COUNT">%1$d</xliff:g> раз(а) одним із:"</string>
+    <!-- no translation found for battery_history_awake_label (8449792868990080882) -->
+    <skip />
+    <!-- no translation found for battery_history_screen_on_label (1848936521786339362) -->
+    <skip />
+    <!-- no translation found for battery_history_phone_on_label (700191958853142297) -->
+    <skip />
+    <!-- no translation found for battery_history_awake (4350886665719031057) -->
+    <skip />
+    <string name="battery_history_screen_on">"Час перебування екрану включеним:"</string>
+    <!-- no translation found for battery_history_phone_on (4891504401623839532) -->
+    <skip />
+    <string name="battery_history_screen_on_battery">"Від акумулятора:"</string>
+    <string name="battery_history_screen_on_plugged">"Подключен к питанию:"</string>
+    <string name="usage_stats_label">"Статистика використання"</string>
+    <string name="testing_usage_stats">"Статистика використання"</string>
+    <string name="display_order_text">"Впорядкувати по:"</string>
+    <string name="app_name_label">"Приложение"</string>
+    <string name="launch_count_label">"Підрахунок"</string>
+    <string name="usage_time_label">"Час використання"</string>
+</resources>
