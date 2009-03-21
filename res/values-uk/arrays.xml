@@ -50,8 +50,8 @@
     <item>"WEP ASCII"</item>
     <item>"Шістнадцятирічний WEP"</item>
   </string-array>
-    <string-array name="wifi_sleep_policy_entries">
-    <item>"При виключенні екрану"</item>
+  <string-array name="wifi_sleep_policy_entries">
+    <item>"При вимкненні екрану"</item>
     <item>"Ніколи, якщо пристрій підключено до мережі живлення"</item>
     <item>"Ніколи"</item>
   </string-array>

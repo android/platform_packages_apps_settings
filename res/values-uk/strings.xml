@@ -25,12 +25,12 @@
     <string name="radioInfo_menu_viewSDN">"Перегляд службових номерів"</string>
     <string name="radioInfo_menu_getPDP">"Отримати список PDP"</string>
     <string name="radioInfo_menu_enableData">"Дозволити підключення для передачі даних"</string>
-    <string name="radioInfo_menu_disableData">"Заборонити подключення до даних"</string>
+    <string name="radioInfo_menu_disableData">"Заборонити підключення до даних"</string>
     <string name="radioInfo_menu_enableDataOnBoot">"Дозволити підключення даних при завантаженні"</string>
-    <string name="radioInfo_menu_disableDataOnBoot">"Заборонити подключення даних при завантаженні"</string>
-    <string name="radioInfo_service_in">"В зоні обслговування"</string>
+    <string name="radioInfo_menu_disableDataOnBoot">"Заборонити підключення даних при завантаженні"</string>
+    <string name="radioInfo_service_in">"В зоні обслуговування"</string>
     <string name="radioInfo_service_out">"Поза зоною обслуговування"</string>
-    <string name="radioInfo_service_emergency">"Лише екстрені виклики"</string>
+    <string name="radioInfo_service_emergency">"Лише екстренні виклики"</string>
     <string name="radioInfo_service_off">"Радіозв'язок вимкнено"</string>
     <string name="radioInfo_roaming_in">"Роумінг"</string>
     <string name="radioInfo_roaming_not">"Поза роумінгом"</string>
@@ -136,7 +136,7 @@
     <string name="radio_info_roaming_label">"Роумінг:"</string>
     <string name="radio_info_imei_label">"IMEI:"</string>
     <string name="radio_info_call_redirect_label">"Переадресація дзвінків:"</string>
-    <string name="radio_info_ppp_resets_label">"Кількість  скидань PPP з моменту завантаженя:"</string>
+    <string name="radio_info_ppp_resets_label">"Кількість скидань PPP з моменту завантаженя:"</string>
     <string name="radio_info_gsm_disconnects_label">"GSM вимикається:"</string>
     <string name="radio_info_current_network_label">"Поточна мережа:"</string>
     <string name="radio_info_data_successes_label">"Вдалі дані:"</string>
@@ -151,7 +151,7 @@
     <string name="radio_info_band_mode_label">"Вибір діапазону радіозв'язку"</string>
     <string name="radio_info_network_type_label">"Тип мережі:"</string>
     <string name="radio_info_set_perferred_label">"Задати обраний тип мережі:"</string>
-    <string name="radio_info_ping_ipaddr">"IP-адрес Ping:"</string>
+    <string name="radio_info_ping_ipaddr">"IP-адреса Ping:"</string>
     <string name="radio_info_ping_hostname">"Ім'я хосту для ping (www.google.com):"</string>
     <string name="radio_info_http_client_test">"Перевірка HTTP-клиента:"</string>
     <string name="radio_info_toggle_ciph_label">"Увімкнути шифрування"</string>
@@ -196,7 +196,7 @@
     <string name="radio_controls_title">"Управління безпровідним зв'язком"</string>
     <string name="radio_controls_summary">"Управління Wi-Fi, Bluetooth, режимом "В літаку" і мобільними мережами"</string>
     <string name="date_and_time_settings_title">"Дата і час"</string>
-    <string name="date_and_time_settings_summary">"Встановлення датм, часу, часового поясу і форматів"</string>
+    <string name="date_and_time_settings_summary">"Встановлення дати, часу, часового поясу і форматів"</string>
     <string name="date_time_auto">"Автоматично"</string>
     <string name="date_time_auto_summaryOn">"Використовувати значення, надані мережею"</string>
     <string name="date_time_auto_summaryOff">"Використовувати значення, надані мережею"</string>
@@ -253,8 +253,8 @@
     <string name="wifi_status">"Стан"</string>
     <string name="wifi_link_speed">"Швидкість"</string>
     <string name="wifi_signal_3">"Відмінний"</string>
-    <string name="wifi_signal_2">"Добрий"</string>
-    <string name="wifi_signal_1">"Средній"</string>
+    <string name="wifi_signal_2">"Хороший"</string>
+    <string name="wifi_signal_1">"Середній"</string>
     <string name="wifi_signal_0">"Поганий"</string>
     <string name="security">"Безпека"</string>
     <string name="wifi_security_open">"Без шифрування"</string>
@@ -266,7 +266,7 @@
     <string name="wifi_security_verbose_wep">"Захищений WEP"</string>
     <string name="wifi_security_verbose_wpa">"Захищений WPA"</string>
     <string name="wifi_security_verbose_wpa2">"Захищений WPA2"</string>
-    <string name="ip_address">"IP-адрес"</string>
+    <string name="ip_address">"IP-адреса"</string>
     <string name="signal">"Рівень сигналу"</string>
     <string name="wifi_starting">"Вмикання…"</string>
     <string name="wifi_stopping">"Вимикання"</string>
@@ -274,11 +274,11 @@
     <string name="error_starting">"Не вдаєтьсятся запустити Wi-Fi"</string>
     <string name="error_stopping">"Не вдаєтьсятся зупинити Wi-Fi"</string>
     <string name="error_scanning">"Не вдаєтьсятся розпочати пошук мережі"</string>
-    <string name="error_connecting">"Не вдаєтьсятся подключитися до мережі"</string>
+    <string name="error_connecting">"Не вдаєтьсятся підключитися до мережі"</string>
     <string name="error_saving">"Не вдаєтьсятся зберегти мережу"</string>
     <string name="connect">"Під'єднатися"</string>
     <string name="connect_to_blank">"Під'єднатися до мережі <xliff:g id="NETWORK_NAME">%1$s</xliff:g>"</string>
-    <string name="please_type_passphrase">"Пароль безпробідної мережі"</string>
+    <string name="please_type_passphrase">"Пароль безпровідної мережі"</string>
     <string name="please_type_hex_key">"Шістнадцятковий ключ WEP (0-9, A-F)"</string>
     <string name="wifi_show_password">"Відобразити пароль."</string>
     <string name="scan_wifi">"Сканувати"</string>
@@ -299,9 +299,9 @@
     <string name="wifi_ip_settings_titlebar">"Налаштування IP"</string>
     <string name="wifi_ip_settings_menu_save">"Зберегти"</string>
     <string name="wifi_ip_settings_menu_cancel">"Відмінити"</string>
-    <string name="wifi_ip_settings_invalid_ip">"Вкажіть дійсний IP-адрес."</string>
+    <string name="wifi_ip_settings_invalid_ip">"Вкажіть дійсний IP-адреса."</string>
     <string name="wifi_use_static_ip">"Використовувати статичний IP"</string>
-    <string name="wifi_ip_address">"IP-адрес"</string>
+    <string name="wifi_ip_address">"IP-адреса"</string>
     <string name="wifi_dns1">"DNS 1"</string>
     <string name="wifi_dns2">"DNS 2"</string>
     <string name="wifi_gateway">"Шлюз"</string>
@@ -317,7 +317,7 @@
 	<string name="wifi_setting_sleep_policy_title">"Правила переходу Wi-Fi в сплячий режим"</string>
     <string name="wifi_setting_sleep_policy_summary">"Вкажіть, коли необхідно перейти від Wi-Fi до мобильних даних"</string>
     <string name="wifi_setting_sleep_policy_error">"При встановленні правил переходу в сплячий режим виникла проблема."</string>
-    <string name="wifi_advanced_mac_address_title">"MAC-адрес"</string>
+    <string name="wifi_advanced_mac_address_title">"MAC-адреса"</string>
     <string name="fragment_status_scanning">"Відбувається сканування…"</string>
     <string name="fragment_status_connecting">"Відбувається підключення до <xliff:g id="NETWORK_NAME">%1$s</xliff:g>…"</string>
     <string name="fragment_status_authenticating">"Авторизація в мережі <xliff:g id="NETWORK_NAME">%1$s</xliff:g>…"</string>
@@ -329,7 +329,7 @@
     <string name="status_scanning">"Відбувається сканування…"</string>
     <string name="status_connecting">"Відбувається підключення…"</string>
     <string name="status_authenticating">"Відбувається авторизація…"</string>
-    <string name="status_obtaining_ip">"Отримання адресу…"</string>
+    <string name="status_obtaining_ip">"Отримання адреси…"</string>
     <string name="status_connected">"Під'єднано"</string>
     <string name="status_disconnecting">"Від'єднано…"</string>
     <string name="status_disconnected">"Від'єднано"</string>
@@ -340,13 +340,13 @@
     <string name="silent_mode_title">"Беззвучний режим"</string>
     <string name="silent_mode_summary">"Вимкнення всіх звуків, крім мультимедіа і будильників"</string>
     <string name="ringtone_title">"Мелодія дзвінка телефону"</string>
-    <string name="ringtone_summary">"Встановити мелодію дзвінка для вхідних викликів по замовчуванню"</string>
+    <string name="ringtone_summary">"Встановити мелодію дзвінка для вхідних викликів за замовчуванням"</string>
     <string name="ring_volume_title">"Гучність дзвінка"</string>
     <string name="ring_volume_summary">"Встановити гучність вхідних дзвінків і повідомлень"</string>
-    <string name="vibrate_title">"Вібродзвінок"</string>
-    <string name="vibrate_summary">"Вібро при вхідних викликах"</string>
+    <string name="vibrate_title">"Вібросигнал"</string>
+    <string name="vibrate_summary">"Вібросигнал при вхідних викликах"</string>
     <string name="notification_sound_title">"Мелодія повідомлень"</string>
-    <string name="notification_sound_summary">"Задати мелодію повідомлень по замовчуванню"</string>
+    <string name="notification_sound_summary">"Задати мелодію повідомлень за замовчуванням"</string>
     <string name="incoming_call_volume_title">"Гучність вхідних викликів"</string>
     <string name="notification_volume_title">"Гучність повідомлень"</string>
     <string name="checkbox_notification_same_as_incoming_call">"Використовувати гучність вхідних викликів для інформування"</string>
@@ -369,9 +369,9 @@
     <string name="animations_summary_on">"Показувати анімацію при відкриванні і закриванні вікон"</string>
     <string name="animations_summary_off">"Показувати анімацію при відкриванні і закриванні вікон"</string>
     <string name="brightness">"Яскравість"</string>
-    <string name="brightness_summary">"Налаштувати яскравість екрану"</string>
-    <string name="screen_timeout">"Час до відключення екрану"</string>
-    <string name="screen_timeout_summary">"Налаштувати затримку автоматичного відключення екрану"</string>
+    <string name="brightness_summary">"Налаштувати яскравості екрану"</string>
+    <string name="screen_timeout">"Час до вимкнення екрану"</string>
+    <string name="screen_timeout_summary">"Налаштувати затримку автоматичного вимкнення екрану"</string>
     <string name="sim_lock_settings">"Налаштування блокування SIM-карти"</string>
     <string name="sim_lock_settings_category">"Встановити блокування SIM-карти"</string>
     <string name="sim_lock_settings_title">"Блокування SIM-карти"</string>
@@ -414,8 +414,8 @@
     <string name="status_signal_strength">"Рівень сигналу"</string>
     <string name="status_roaming">"Роумінг"</string>
     <string name="status_operator">"Мережа"</string>
-    <string name="status_wifi_mac_address">"MAC-адрес Wi-Fi"</string>
-    <string name="status_bt_address">"Адрес Bluetooth"</string>
+    <string name="status_wifi_mac_address">"MAC-адреса Wi-Fi"</string>
+    <string name="status_bt_address">"Адреса Bluetooth"</string>
     <string name="status_unavailable">"Недоступно"</string>
     <string name="status_up_time">"Час роботи"</string>
     <string name="status_awake_time">"Час активності"</string>
@@ -423,8 +423,8 @@
     <string name="sd_memory">"Карта SD"</string>
     <string name="memory_available">"Доступне місце"</string>
     <string name="memory_size">"Загалом місця"</string>
-    <string name="sd_eject">"Демонструвати карту SD"</string>
-	<string name="sd_eject_summary">"Демонструвати карту SD для безпечного видалення"</string>
+    <string name="sd_eject">"Демонтувати карту SD"</string>
+	<string name="sd_eject_summary">"Демонтувати карту SD для безпечного видалення"</string>
     <string name="sd_format">"Форматувати карту SD"</string>
     <string name="sd_format_summary">"Форматувати (очистити) карту SD"</string>
     <string name="sd_unavailable">"Недоступно"</string>
@@ -464,6 +464,7 @@
     <string name="master_clear_final_button_text">"Видалити все"</string>
     <string name="master_clear_gesture_prompt">"Виконати комбінацію розблокування"</string>
     <string name="master_clear_gesture_explanation">"Для підтвердження скидання налаштувань телефону потрібно виконати комбінацію  розблокування."</string>
+	<string name="master_clear_failed">"Скидання не відбувається, так як служба очистки системи недоступна."</string>
 	<string name="media_format_title">"Форматувати карту SD."</string>
     <string name="media_format_summary">"Видаляє всі дані з карти SD"</string>
     <string name="media_format_desc">"Ця дія приведе до очищення карти SD в телефоні. Уся інформація, що знаходиться на карті, буде видалена!"</string>
@@ -474,8 +475,8 @@
     <string name="media_format_gesture_explanation">"Для підтвердження форматування карті SD потрібно відтворити шаблон зняття блоку."</string>
     <string name="call_settings_title">"Налаштування викликів"</string>
     <string name="call_settings_summary">"Налаштування голосової пошти, переадресація викликів, утримання викликів, ідентифікатора телефонуючого"</string>
-    <string name="network_settings_title">"Мобільніе мережі"</string>
-    <string name="network_settings_summary">"Встановити параметри роумингу, мереж, APN"</string>
+    <string name="network_settings_title">"Мобільні мережі"</string>
+    <string name="network_settings_summary">"Встановити параметри роумінгу, мереж, APN"</string>
     <string name="location_title">"Джерела мого місцезнаходження"</string>
     <string name="location_network_based">"Використовувати безпровідні мережі"</string>
     <string name="location_networks_disabled">"Перегляд місцезнаходження в додатках (наприклад в Картах) за допомогою безпровідних мереж"</string>
@@ -516,25 +517,25 @@
     <string name="lockpattern_settings_choose_lock_pattern">"Задати комбінацію розблокування"</string>
     <string name="lockpattern_settings_change_lock_pattern">"Змінити послідовність розблокування"</string>
     <string name="lockpattern_settings_help_how_to_record">"Як створити комбінацію розблокування"</string>
-    <string name="lockpattern_too_many_failed_confirmation_attempts_header">"Надто багато неправильних спроб!"</string>
+    <string name="lockpattern_too_many_failed_confirmation_attempts_header">"Надто багато невірнихспроб!"</string>
     <string name="lockpattern_too_many_failed_confirmation_attempts_footer">"Повторіть спробу через <xliff:g id="NUMBER">%d</xliff:g> сек."</string>
     <string name="skip_button_label">"Відміна"</string>
     <string name="next_button_label">"Дальше"</string>
     <string name="lock_title">"Захист телефону"</string>
-    <string name="lock_intro_message"><font size="17">"Захистіть телефон від несанкціонваного використання, створивши особисту комбінацію розблокування екрану. "\n<font height="17">\n</font><b>"1"</b>"  На наступному екрані показано приклад створення комбінації "\n<font height="17">\n</font><b>"2"</b>"  Перегляньте его и создайте собственную комбінацію розблокування. Пробуйте разные комбінації, але з'єднуйте не менше чотирьох точок. "\n<font height="17">\n</font><b>"3"</b>"  Відтворіть комбінацію повторно для підтвердження. "\n<font height="17">\n</font><b>"Готові розпочати? Натисніть \"Дальше\""</b>". "\n<font height="3">\n</font>"Щоб зупинити телефон без захисту, натисніть \"Відміна\"."</font></string>
+    <string name="lock_intro_message"><font size="17">"Захистіть телефон від несанкціонваного використання, створивши власну комбінацію розблокування екрану. "\n<font height="17">\n</font><b>"1"</b>"  На наступному екрані показано приклад створення комбінації "\n<font height="17">\n</font><b>"2"</b>"  Перегляньте його і створіть власну комбінацію розблокування. Пробуйте різні комбінації, але з'єднуйте не менше чотирьох точок. "\n<font height="17">\n</font><b>"3"</b>"  Відтворіть комбінацію повторно для підтвердження. "\n<font height="17">\n</font><b>"Готові розпочати? Натисніть \"Дальше\""</b>". "\n<font height="3">\n</font>"Щоб зупинити телефон без захисту, натисніть \"Відміна\"."</font></string>
     <string name="lock_example_title">"Приклад комбінації"</string>
     <string name="lock_example_message">"З'єднайте не меньше чотирьох точок."\n" "\n"Виберіть \"Дальше\", коли будете готові створити свою комбінацію."</string>
     <string name="manageapplications_settings_title">"Керування додатками"</string>
-	<string name="manageapplications_settings_summary">"Керування встановленими додатками і видаляти їх"</string>
-    <string name="applications_settings">"Приложения"</string>
-    <string name="applications_settings_summary">"Керування додатками, налаштування гарячих клавіш"</string>
+	<string name="manageapplications_settings_summary">"Керування встановленими додатками і видалення їх"</string>
+    <string name="applications_settings">"Додатки"</string>
+    <string name="applications_settings_summary">"Керування додатками, налаштування швидких клавіш"</string>
     <string name="applications_settings_header">"Налаштування додатків"</string>
     <string name="install_applications">"Невідомі джерела"</string>
     <string name="install_unknown_applications">"Дозволити встановлення додатків не із Android Маркет"</string>
-    <string name="install_all_warning">"Атака додатків із невідомих джерел більше небезпечна для телефону і особистих даних. Ви погоджуєтеся, що несете всю відповідальність за збитки телефону або втрату даних, які можуть відбутися від використання таких додатків."</string>
+    <string name="install_all_warning">"Атака додатків із невідомих джерел більш небезпечна для телефону і особистих даних. Ви погоджуєтеся, що несете всю відповідальність за збитки телефону або втрату даних, які можуть відбутися при використанні таких додатків."</string>
     <string name="application_info_label">"Дані про додатки"</string>
     <string name="storage_label">"Зберігання"</string>
-    <string name="auto_launch_label">"Запуск за замовчуанням"</string>
+    <string name="auto_launch_label">"Запуск за замовчуванням"</string>
     <string name="permissions_label">"Дозвіл"</string>
     <string name="cache_header_label">"Кеш"</string>
     <string name="clear_cache_btn_text">"Очистити кеш"</string>
@@ -546,9 +547,9 @@
     <string name="data_size_label">"Дані"</string>
     <string name="uninstall_text">"Видалити"</string>
     <string name="clear_user_data_text">"Очистити дані"</string>
-    <string name="auto_launch_enable_text">"Цей додаток за замовчуанням запускається для деяких дій."</string>
-    <string name="auto_launch_disable_text">"Значення за замовчуанням не встановлені."</string>
-    <string name="clear_activities">"Очистити значення за замовчуанням"</string>
+    <string name="auto_launch_enable_text">"Цей додаток за замовчуванням запускається для деяких дій."</string>
+    <string name="auto_launch_disable_text">"Значення за замовчуванням не встановлені."</string>
+    <string name="clear_activities">"Очистити значення за замовчуванням"</string>
     <string name="unknown">"Невідомо"</string>
     <string name="sort_order_alpha">"Сортувати"</string>
     <string name="sort_order_size">"Сортувати за разміром"</string>
@@ -570,7 +571,7 @@
     <string name="security_settings_desc">"Цей додаток має доступ до наступного на телефоні:"</string>
     <string name="computing_size">"Відбувається розрахунок…"</string>
     <string name="invalid_size_value">"Неможливо вирахувати розмір пакету"</string>
-    <string name="empty_list_msg">"У вас не встановлено додатки інших розробників."</string>
+    <string name="empty_list_msg">"У вас не встановлені додатки інших розробників."</string>
     <string name="language_settings">"Мовних параметрів і тексту"</string>
     <string name="language_settings_summary">"Вибір мовних параметрів (мови і регіону), параметрів вводу тексту і автовиправлень"</string>
     <string name="language_category">"Налаштування мовних параметрів"</string>
@@ -578,7 +579,7 @@
     <string name="phone_language">"Обрати мову"</string>
 	<string name="phone_language_summary">"Обрати мову і країну"</string>
     <string name="auto_replace">"Автозаміна"</string>
-    <string name="auto_replace_summary">"Виправляти слова з опечатками"</string>
+    <string name="auto_replace_summary">"Виправляти слова з помилками"</string>
     <string name="auto_caps">"Автоматично замінювати заголовною буквою"</string>
     <string name="auto_caps_summary">"Великі букви на початку речення"</string>
     <string name="auto_punctuate">"Автоматична пунктуація"</string>
@@ -640,7 +641,7 @@
     <string name="battery_history_minutes">"<xliff:g id="MINUTES">%1$d</xliff:g> хв., <xliff:g id="SECONDS">%2$d</xliff:g> сек."</string>
     <string name="battery_history_seconds">"<xliff:g id="SECONDS">%1$d</xliff:g> секунд"</string>
     <string name="battery_history_packages_sharing_this_uid">"Пакети з цим ідентифікатором користувача:"</string>
-    <string name="battery_history_no_data">"Дані про використання батареї недоступні"</string>
+    <string name="battery_history_no_data">"Дані про використання акумулятора недоступні"</string>
     <string name="battery_history_sensor">"Сенсор:"</string>
     <!-- no translation found for battery_history_wakelock (608683447522396293) -->
     <skip />
@@ -655,15 +656,15 @@
     <skip />
     <!-- no translation found for battery_history_awake (4350886665719031057) -->
     <skip />
-    <string name="battery_history_screen_on">"Час перебування екрану включеним:"</string>
+    <string name="battery_history_screen_on">"Час перебування екрану увімкненим:"</string>
     <!-- no translation found for battery_history_phone_on (4891504401623839532) -->
     <skip />
     <string name="battery_history_screen_on_battery">"Від акумулятора:"</string>
-    <string name="battery_history_screen_on_plugged">"Подключен к питанию:"</string>
+    <string name="battery_history_screen_on_plugged">"Підключено до живлення:"</string>
     <string name="usage_stats_label">"Статистика використання"</string>
     <string name="testing_usage_stats">"Статистика використання"</string>
-    <string name="display_order_text">"Впорядкувати по:"</string>
-    <string name="app_name_label">"Приложение"</string>
+    <string name="display_order_text">"Впорядкувати за:"</string>
+    <string name="app_name_label">"Додатки"</string>
     <string name="launch_count_label">"Підрахунок"</string>
     <string name="usage_time_label">"Час використання"</string>
 </resources>
