@@ -47,6 +47,14 @@ public class DefaultRingtonePreference extends RingtonePreference {
          * Similarly, 'Silent' shouldn't be shown here. 
          */
         ringtonePickerIntent.putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_SILENT, false);
+
+        /*
+         * It is fine for the default ringtone to be a video, but not notifications. 
+         */
+        if (getRingtoneType() == RingtoneManager.TYPE_RINGTONE) {
+            ringtonePickerIntent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE,
+                                          RingtoneManager.TYPE_RINGTONE|RingtoneManager.TYPE_VIDEO);
+        }
     }
 
     @Override
