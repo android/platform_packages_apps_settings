@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAATn///3c\u003d",
+        "filename": "src/com/android/settings/DefaultRingtonePreference.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001146
+      },
+      "writtenOn": "2009-05-21T03:30:18Z",
+      "side": 1,
+      "message": "Please add spaces around the | operator",
+      "revId": "8e5db9692e32acaa2ac17331ad268c2e63f50930",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
