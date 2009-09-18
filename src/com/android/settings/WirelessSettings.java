@@ -18,8 +18,10 @@ package com.android.settings;
 
 import com.android.settings.bluetooth.BluetoothEnabler;
 import com.android.settings.wifi.WifiEnabler;
+import com.android.settings.wimax.WimaxEnabler;
 
 import android.net.wifi.WifiManager;
+import android.net.wimax.WimaxManager;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.CheckBoxPreference;
@@ -29,11 +31,13 @@ public class WirelessSettings extends PreferenceActivity {
     private static final String KEY_TOGGLE_AIRPLANE = "toggle_airplane";
     private static final String KEY_TOGGLE_BLUETOOTH = "toggle_bluetooth";
     private static final String KEY_TOGGLE_WIFI = "toggle_wifi";
+    private static final String KEY_TOGGLE_WIMAX = "toggle_wimax";
 
     private WifiEnabler mWifiEnabler;
     private AirplaneModeEnabler mAirplaneModeEnabler;
     private BluetoothEnabler mBtEnabler;
-    
+    private WimaxEnabler mWimaxEnabler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +54,7 @@ public class WirelessSettings extends PreferenceActivity {
         mWifiEnabler.resume();
         mAirplaneModeEnabler.resume();
         mBtEnabler.resume();
+        mWimaxEnabler.resume();
     }
     
     @Override
@@ -59,6 +64,7 @@ public class WirelessSettings extends PreferenceActivity {
         mWifiEnabler.pause();
         mAirplaneModeEnabler.pause();
         mBtEnabler.pause();
+        mWimaxEnabler.pause();
     }
     
     private void initToggles() {
@@ -75,6 +81,11 @@ public class WirelessSettings extends PreferenceActivity {
         mBtEnabler = new BluetoothEnabler(
                 this,
                 (CheckBoxPreference) findPreference(KEY_TOGGLE_BLUETOOTH));
+
+        mWimaxEnabler = new WimaxEnabler(
+                this,
+                (WimaxManager) getSystemService(WIMAX_SERVICE),
+                (CheckBoxPreference) findPreference(KEY_TOGGLE_WIMAX));
     }
     
 }

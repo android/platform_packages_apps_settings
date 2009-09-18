@@ -36,6 +36,23 @@
                 </PreferenceScreen>
 
                 <CheckBoxPreference
+                    android:key="toggle_wimax"
+                    android:title="@string/wimax_quick_toggle_title"
+                    android:summary="@string/wimax_quick_toggle_summary"
+                    android:persistent="false"
+                    android:dependency="toggle_airplane" />
+
+                <PreferenceScreen
+                    android:title="@string/wimax_settings"
+                    android:summary="@string/wimax_settings_summary"
+                    android:dependency="toggle_airplane">
+                    <intent
+                        android:action="android.intent.action.MAIN"
+                        android:targetPackage="com.android.settings"
+                        android:targetClass="com.android.settings.wimax.WimaxSettings" />
+                </PreferenceScreen>
+
+                <CheckBoxPreference
                     android:key="toggle_bluetooth"
                     android:title="@string/bluetooth_quick_toggle_title"
                     android:summary="@string/bluetooth_quick_toggle_summary"

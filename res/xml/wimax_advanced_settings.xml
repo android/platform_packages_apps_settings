@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+            android:title="@string/wimax_advanced_titlebar"
+            />
+    <Preference android:key="mac_address"
+        style="?android:attr/preferenceInformationStyle"
+        android:title="@string/wimax_advanced_mac_address_title"
+        />
+    <Preference android:key="hw_version"
+        style="?android:attr/preferenceInformationStyle"
+        android:title="@string/wimax_advanced_hw_version_title"
+        />
+    <Preference android:key="sw_version"
+        style="?android:attr/preferenceInformationStyle"
+        android:title="@string/wimax_advanced_sw_version_title"
+        />
+
+
+    <PreferenceCategory
+            android:title="@string/wimax_ip_settings_titlebar"
+            />
+
+    <Preference android:key="ip_address"
+        style="?android:attr/preferenceInformationStyle"
+        android:title="@string/wimax_ip_address"
+        />
+    <Preference android:key="gateway"
+        style="?android:attr/preferenceInformationStyle"
+        android:title="@string/wimax_gateway"
+        />
+
+
+</PreferenceScreen>

@@ -437,7 +437,7 @@
     <!-- Main Settings screen settings title for things like Wi-Fi, bluetooth, airplane mode.  This will take you to another screen with those settings. -->
     <string name="radio_controls_title">Wireless controls</string>
     <!-- Main Settings screen settings summary text for the "Wireless controls" setting -->
-    <string name="radio_controls_summary">Manage Wi-Fi, Bluetooth, airplane mode, mobile networks, &amp; VPNs</string>
+    <string name="radio_controls_summary">Manage Wi-Fi, WiMAX, Bluetooth, airplane mode, mobile networks, &amp; VPNs</string>
 
 
     <!-- mobile network settings screen, setting check box title -->
@@ -794,6 +794,94 @@
     <string name="status_disconnected">Disconnected</string>
     <!-- Status message of Wi-Fi when it is a failure (but the network is not known right now) -->
     <string name="status_failed">Unsuccessful</string>
+
+	<!-- Wimax settings -->
+    <!-- Used in the 1st-level settings screen to turn on Wimax -->
+    <string name="wimax_quick_toggle_title">WiMAX</string>
+    <!-- Used in the 1st-level settings screen as the turn-on summary -->
+    <string name="wimax_quick_toggle_summary">Turn on WiMAX</string>
+    <!--Wireless controls setting screen, Wimax check box summary text when turning Wimax on -->
+    <string name="wimax_starting">Turning on\u2026</string>
+    <!--Wireless controls setting screen, Wimax check box summary text when turning Wimax off -->
+    <string name="wimax_stopping">Turning off\u2026</string>
+    <!-- Generic error message -->
+    <string name="wimax_error">Error</string>
+    <!-- Error message when Wimax can't start -->
+    <string name="error_wimax_starting">Unable to start WiMAX</string>
+    <!-- Error message when Wimax can't stop -->
+    <string name="error_wimax_stopping">Unable to stop WiMAX</string>
+
+    <!-- Used in the 1st-level settings screen to go to the 2nd-level settings screen -->
+    <string name="wimax_settings">WiMAX settings</string>
+    <!--Wireless controls setting screen, Wimax settings summary text -->
+    <string name="wimax_settings_summary">Manage (connect/disconnect) wimax networks</string>
+
+    <!-- Title of the Wimax settings screen -->
+    <string name="wimax_settings_category">WiMAX settings</string>
+    <!-- Used in the 2nd-level settings screen to turn on Wimax -->
+    <string name="wimax">WiMAX</string>
+    <!--Wimax settings screen menu option -->
+    <string name="scan_wimax">Scan</string>
+    <!--Wimax settings screen menu option -->
+    <string name="wimax_menu_advanced">Advanced</string>
+    <!-- Header for the list of wimax networks-->
+    <string name="wimax_networks">WiMAX networks</string>
+    <!-- Action message to scan for wimax network -->
+    <string name="wimax_scan_networks">Scan WiMAX networks</string>
+    <!-- Error message when Wimax can't scan for networks -->
+    <string name="error_wimax_scanning">Unable to scan for networks</string>
+
+    <!-- Checkbox title for option to auto connect to last connected wimax network -->
+    <string name="wimax_auto_connect">Auto Connect</string>
+    <!-- Checkbox summary for option to auto connect to last connected wimax network -->
+    <string name="wimax_auto_connect_summary">Auto connect to last connected network, if available</string>
+    <!--Wimax settings screen, network context menu item -->
+    <string name="wimax_context_menu_connect">Connect to network</string>
+    <!--Wimax settings screen, network context menu item -->
+    <string name="wimax_context_menu_disconnect">Disconnect From network</string>
+    <!-- Error message when Wimax can't connect -->
+    <string name="error_wimax_connecting">Unable to connect to the network</string>
+
+    <!-- Verbose wimax signal strength.  This is the best out of 4 levels. -->
+    <string name="wimax_signal_3">Excellent</string>
+    <!-- Verbose wimax signal strength.  This is the 2nd best out of 4 levels. -->
+    <string name="wimax_signal_2">Good</string>
+    <!-- Verbose wimax signal strength.  This is the 3rd best out of 4 levels. -->
+    <string name="wimax_signal_1">Fair</string>
+    <!-- Verbose wimax signal strength.  This is the worst out of 4 levels. -->
+    <string name="wimax_signal_0">Poor</string>
+
+	<!-- Wimax settings screen, advanced, settings section.  This is a header shown above advanced wimax settings. -->
+    <string name="wimax_advanced_titlebar">Advanced</string>
+    <!-- Wimax settings screen, advanced, title of the item to show the Wimax device's MAC address. -->
+    <string name="wimax_advanced_mac_address_title">MAC address</string>
+    <!-- Wimax settings screen, advanced, title of the item to show the Wimax device's Hardware Version. -->
+    <string name="wimax_advanced_hw_version_title">Hardware Version</string>
+    <!-- Wimax settings screen, advanced, title of the item to show the Wimax device's Firmware Version. -->
+    <string name="wimax_advanced_sw_version_title">Firmware Version</string>
+    <!-- Title of the screen to adjust IP settings -->
+    <string name="wimax_ip_settings_titlebar">IP settings</string>
+    <!-- Label for the IP address -->
+    <string name="wimax_ip_address">IP address</string>
+    <!-- Label for the gateway of the network -->
+    <string name="wimax_gateway">Gateway</string>
+
+    <!-- Status message of Wimax when it is scanning -->
+    <string name="wimax_status_scanning">Scanning\u2026</string>
+    <!-- Status message of Wimax when it is connecting (but the network is not known right now) -->
+    <string name="wimax_status_connecting">Connecting\u2026</string>
+    <!-- Status message of wimax when it is connecting to a particular network -->
+    <string name="wimax_status_connecting_to">Connecting to <xliff:g id="network_name">%1$s</xliff:g>\u2026</string>
+    <!--Wimax settings screen, summary text for network when connected -->
+    <string name="wimax_status_connected">Connected</string>
+    <!-- Status message of wimax when it is connected to a network -->
+    <string name="wimax_status_connected_to">Connected to <xliff:g id="network_name">%1$s</xliff:g></string>
+    <!-- Status message of wimax when it is disconnecting (but the network is not known right now) -->
+    <string name="wimax_status_disconnecting">Disconnecting\u2026</string>
+    <!-- Status message of wimax when it is disconnecting from a network -->
+    <string name="wimax_status_disconnecting_from">Disconnecting from <xliff:g id="network_name">%1$s</xliff:g>\u2026</string>
+    <!-- Status message of wimax when it is disconnected -->
+    <string name="wimax_status_disconnected">Disconnected</string>
 
     <!-- Sound and alerts settings -->
     <!-- Main Settings screen setting option name to go into the sound and display settings screen -->
