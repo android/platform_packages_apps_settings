@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAm3///Yk\u003d",
+        "filename": "src/com/android/settings/widget/SettingsAppWidgetProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1000748
+      },
+      "writtenOn": "2009-09-21T22:55:26Z",
+      "side": 1,
+      "message": "Is this import needed? Doesn\u0027t look like it.",
+      "revId": "aecd4239ae8ed51507ed603521677c25fa42c7c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAm3///Yo\u003d",
+        "filename": "src/com/android/settings/widget/SettingsAppWidgetProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1000748
+      },
+      "writtenOn": "2009-09-21T22:55:26Z",
+      "side": 1,
+      "message": "Looks like some tabs snuck in here.",
+      "revId": "aecd4239ae8ed51507ed603521677c25fa42c7c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
