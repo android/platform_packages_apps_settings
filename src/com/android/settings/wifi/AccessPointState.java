@@ -75,6 +75,8 @@ public final class AccessPointState implements Comparable<AccessPointState>, Par
     public NetworkInfo.DetailedState status;
     public String security;
     public boolean disabled;
+    public boolean adhoc;
+    public int frequency;
     
     /**
      * Use this for sorting based on signal strength. It is a heavily-damped
@@ -139,6 +141,8 @@ public final class AccessPointState implements Comparable<AccessPointState>, Par
         ssid = "";
         networkId = NETWORK_ID_NOT_SET;
         hiddenSsid = false;
+        adhoc = false;
+        frequency = 0;
     }
 
     void setContext(Context context) {
@@ -243,6 +247,20 @@ public final class AccessPointState implements Comparable<AccessPointState>, Par
             requestRefresh();
         }
     }
+    
+    public void setAdhoc(boolean adhoc) {
+    	if (this.adhoc != adhoc) {
+    		this.adhoc = adhoc;
+    		requestRefresh();
+    	}
+    }
+    
+    public void setFrequency(int frequency) {
+    	if (this.frequency != frequency) {
+    		this.frequency = frequency;
+    		requestRefresh();
+    	}
+    }
 
     public void setLinkSpeed(int linkSpeed) {
         if (this.linkSpeed != linkSpeed) {
@@ -309,6 +327,11 @@ public final class AccessPointState implements Comparable<AccessPointState>, Par
         }
         setSignal(scanResult.level);
         setSecurity(getScanResultSecurity(scanResult));
+        if (isAdhoc(scanResult)) {
+        	Log.v(TAG, "AP Frequency is : " + scanResult.frequency);
+        	setAdhoc(true);
+        	setFrequency(scanResult.frequency);
+        }
         unblockRefresh();
     }
     
@@ -348,6 +371,8 @@ public final class AccessPointState implements Comparable<AccessPointState>, Par
             setNetworkId(wifiConfig.networkId);
             setPriority(wifiConfig.priority);
             setHiddenSsid(wifiConfig.hiddenSSID);
+            setAdhoc(wifiConfig.isAdhoc);
+            setFrequency(wifiConfig.frequency);
             setSsid(wifiConfig.SSID);
             setConfigured(true);
             setDisabled(wifiConfig.status == WifiConfiguration.Status.DISABLED);
@@ -478,6 +503,8 @@ public final class AccessPointState implements Comparable<AccessPointState>, Par
         config.BSSID = getWpaSupplicantBssid();
         config.priority = priority;
         config.hiddenSSID = hiddenSsid;
+        config.isAdhoc = adhoc;
+        config.frequency = frequency;
         config.SSID = convertToQuotedString(ssid);
         config.eap.setValue(mEap);
 
@@ -845,6 +872,8 @@ public final class AccessPointState implements Comparable<AccessPointState>, Par
         dest.writeInt(primary ? 1 : 0);
         dest.writeInt(priority);
         dest.writeInt(hiddenSsid ? 1 : 0);
+        dest.writeInt(adhoc ? 1 : 0);
+        dest.writeInt(frequency);
         dest.writeString(security);
         dest.writeInt(seen ? 1 : 0);
         dest.writeInt(disabled ? 1 : 0);
@@ -874,6 +903,8 @@ public final class AccessPointState implements Comparable<AccessPointState>, Par
                 state.primary = in.readInt() == 1;
                 state.priority = in.readInt();
                 state.hiddenSsid = in.readInt() == 1;
+                state.adhoc = in.readInt() == 1;
+                state.frequency = in.readInt();
                 state.security = in.readString();
                 state.seen = in.readInt() == 1;
                 state.disabled = in.readInt() == 1;

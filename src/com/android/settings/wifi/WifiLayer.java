@@ -348,6 +348,15 @@ public class WifiLayer {
             return false;
         }
         
+    	//If we are connecting to an adhoc network, we should activate the correct mode
+        if (config.isAdhoc) {
+    		Log.v(TAG, "Setting Adhoc Mode");
+    		mWifiManager.setAdhocMode(true);
+    	} else {
+    		Log.v(TAG, "Setting Normal Mode");
+    		mWifiManager.setAdhocMode(false);
+    	}        
+        
         /*
          * Give it highest priority, this could cause a network ID change, so do
          * it after any modifications to the network we're connecting to
@@ -1063,6 +1072,11 @@ public class WifiLayer {
             
         } else if (isDisconnected) {
             
+        	if (ap != null && ap.adhoc == true) {
+        		//We have to reset the adhoc mode for the wifi service, since we're not using it anymore
+        		mWifiManager.setAdhocMode(false);
+        		mWifiManager.saveConfiguration();
+        	}
             /*
              * When we drop off a network (for example, the router is powered
              * down when we were connected), we received a DISCONNECT event
@@ -1076,6 +1090,12 @@ public class WifiLayer {
             
         } else if (detailedState.equals(DetailedState.FAILED)) {
 
+        	if (ap != null && ap.adhoc == true) {
+        		//We have to reset the adhoc mode for the wifi service, since we're not using it anymore
+        		mWifiManager.setAdhocMode(false);
+        		mWifiManager.saveConfiguration();
+        	}        	
+        	
             /*
              * Doh, failed for whatever reason. Unset the primary AP, but set
              * failed status on the AP that failed.
@@ -1147,9 +1167,10 @@ public class WifiLayer {
                      * Ignore adhoc, enterprise-secured, or hidden networks.
                      * Hidden networks show up with empty SSID.
                      */
-                    if (AccessPointState.isAdhoc(scanResult)
-                            || TextUtils.isEmpty(scanResult.SSID)) {
-                        continue;
+                    //if (AccessPointState.isAdhoc(scanResult)
+                    //        || TextUtils.isEmpty(scanResult.SSID)) {
+                    if (TextUtils.isEmpty(scanResult.SSID)) {
+                    	continue;
                     }
                     
                     final String ssid = AccessPointState.convertToQuotedString(scanResult.SSID);
