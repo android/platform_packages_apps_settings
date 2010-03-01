@@ -135,6 +135,13 @@
             android:summaryOn="@string/accelerometer_summary_on"
             android:summaryOff="@string/accelerometer_summary_off"/>
 
+        <CheckBoxPreference
+            android:key="use_180_orientation"
+            android:title="@string/use_180_orientation_title"
+            android:summaryOn="@string/use_180_orientation_summary_on"
+            android:summaryOff="@string/use_180_orientation_summary_off"
+            android:dependency="accelerometer" />  
+
         <ListPreference
             android:key="animations"
             android:title="@string/animations_title"

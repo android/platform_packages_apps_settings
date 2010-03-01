@@ -980,6 +980,15 @@
     <string name="accelerometer_summary_on">Switch orientation automatically when rotating phone</string>
     <!-- Sound & display settings screen, accelerometer-based rotation summary text when check box is clear -->
     <string name="accelerometer_summary_off">Switch orientation automatically when rotating phone</string>
+
+    <!-- settings changes to enable/disable 180 degree rotation thx to cyanogen -->
+    <!-- Sound & display settings screen, 180 degree orientation check box label -->
+    <string name="use_180_orientation_title">180 degree orientation</string>
+    <!-- Sound & display settings screen, 180 degree orientation summary text when check box is selected -->
+    <string name="use_180_orientation_summary_on">Allow 180 degree orientation</string>
+    <!-- Sound & display settings screen, 180 degree orientation summary text when check box is clear -->
+    <string name="use_180_orientation_summary_off">Allow 180 degree orientation</string>
+
     <!-- Sound & display settings screen, setting option name to change brightness -->
     <string name="brightness">Brightness</string>
     <!-- Sound & display settings screen, setting option summary to change brightness -->
