@@ -268,10 +268,10 @@ public class SoundAndDisplaySettings extends PreferenceActivity implements
                 AudioManager.RINGER_MODE_SILENT);
         } else {
             mAudioManager.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
-            mAudioManager.setVibrateSetting(AudioManager.VIBRATE_TYPE_RINGER,
-                    vibrate ? AudioManager.VIBRATE_SETTING_ON
-                            : AudioManager.VIBRATE_SETTING_OFF);
         }
+        mAudioManager.setVibrateSetting(AudioManager.VIBRATE_TYPE_RINGER,
+                vibrate ? AudioManager.VIBRATE_SETTING_ON
+                        : AudioManager.VIBRATE_SETTING_OFF);
     }
 
     @Override
