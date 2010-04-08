@@ -22,6 +22,7 @@ import android.graphics.drawable.Drawable;
 import android.preference.Preference;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 
 public class IconPreferenceScreen extends Preference {
@@ -47,5 +48,29 @@ public class IconPreferenceScreen extends Preference {
         if (imageView != null && mIcon != null) {
             imageView.setImageDrawable(mIcon);
         }
+    }
+
+    /**
+     * Sets the icon for this Preference with a Drawable. This icon will be
+     * placed into the ID {@link android.R.id#icon} within the View created by
+     * {@link #onCreateView(ViewGroup)}.
+     *
+     * @param icon The icon for this Preference
+     */
+    public void setIcon(Drawable icon) {
+        if ((icon == null && mIcon != null) || (icon != null && !icon.equals(mIcon))) {
+            mIcon = icon;
+            notifyChanged();
+        }
+    }
+
+    /**
+     * Returns the icon of this Preference.
+     *
+     * @return The icon.
+     * @see #setIcon(Drawable)
+     */
+    public Drawable getIcon() {
+        return mIcon;
     }
 }
