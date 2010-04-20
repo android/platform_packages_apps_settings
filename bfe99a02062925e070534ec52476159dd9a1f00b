@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAAwn///lY\u003d",
+        "filename": "src/com/android/settings/wifi/AdvancedSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1000830
+      },
+      "writtenOn": "2010-04-20T17:43:17Z",
+      "side": 1,
+      "message": "Yes, we do need it because Java doesn\u0027t have unsigned int types.  So if the high bit is set, Java interprets it as a negative number.",
+      "parentUuid": "AAAAwn///lo\u003d",
+      "revId": "bfe99a02062925e070534ec52476159dd9a1f00b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAAwn///lk\u003d",
         "filename": "src/com/android/settings/wifi/AdvancedSettings.java",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2010-04-20T17:11:55Z",
       "side": 1,
       "message": "do we need \\n",
+      "revId": "bfe99a02062925e070534ec52476159dd9a1f00b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAwn///lU\u003d",
+        "filename": "src/com/android/settings/wifi/AdvancedSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1000830
+      },
+      "writtenOn": "2010-04-20T17:43:17Z",
+      "side": 1,
+      "message": "No, we don\u0027t need it - I\u0027ll take it out.",
+      "parentUuid": "AAAAwn///lk\u003d",
       "revId": "bfe99a02062925e070534ec52476159dd9a1f00b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
