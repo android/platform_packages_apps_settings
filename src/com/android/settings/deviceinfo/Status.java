@@ -36,6 +36,7 @@ import android.os.UserHandle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
+import android.provider.Telephony;
 import android.telephony.CellBroadcastMessage;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.PhoneStateListener;
@@ -47,7 +48,9 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.PhoneStateIntentReceiver;
+import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.util.ArrayUtils;
+
 import com.android.settings.R;
 import com.android.settings.Utils;
 
@@ -191,6 +194,15 @@ public class Status extends PreferenceActivity {
             }
         }
     }
+
+    private BroadcastReceiver mPlmnInfoReciever = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            if (TelephonyIntents.SPN_STRINGS_UPDATED_ACTION.equals(intent.getAction())) {
+                String plmn = intent.getStringExtra(TelephonyIntents.EXTRA_PLMN);
+                Status.this.setSummaryText(KEY_OPERATOR_NAME, plmn);
+            }
+        }
+    };
 
     private BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
 
@@ -372,6 +384,8 @@ public class Status extends PreferenceActivity {
 
         if (mPhone != null && !Utils.isWifiOnly(getApplicationContext())) {
             mPhoneStateReceiver.registerIntent();
+            registerReceiver(mPlmnInfoReciever,
+                    new IntentFilter(TelephonyIntents.SPN_STRINGS_UPDATED_ACTION));
 
             updateSignalStrength();
             updateServiceState(mPhone.getServiceState());
@@ -399,6 +413,7 @@ public class Status extends PreferenceActivity {
 
         if (mPhone != null && !Utils.isWifiOnly(getApplicationContext())) {
             mPhoneStateReceiver.unregisterIntent();
+            unregisterReceiver(mPlmnInfoReciever);
             mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_NONE);
         }
         if (mShowLatestAreaInfo) {
@@ -499,7 +514,6 @@ public class Status extends PreferenceActivity {
         } else {
             setSummaryText(KEY_ROAMING_STATE, mRes.getString(R.string.radioInfo_roaming_not));
         }
-        setSummaryText(KEY_OPERATOR_NAME, serviceState.getOperatorAlphaLong());
     }
 
     private void updateAreaInfo(String areaInfo) {
