@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAwn///lo\u003d",
+        "filename": "src/com/android/settings/wifi/AdvancedSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1003344
+      },
+      "writtenOn": "2010-04-20T17:11:55Z",
+      "side": 1,
+      "message": "not sure if we need this since we access four octets",
+      "revId": "bfe99a02062925e070534ec52476159dd9a1f00b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAwn///lk\u003d",
+        "filename": "src/com/android/settings/wifi/AdvancedSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1003344
+      },
+      "writtenOn": "2010-04-20T17:11:55Z",
+      "side": 1,
+      "message": "do we need \\n",
+      "revId": "bfe99a02062925e070534ec52476159dd9a1f00b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
