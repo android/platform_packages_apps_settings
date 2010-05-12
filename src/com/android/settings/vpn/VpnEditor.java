@@ -51,6 +51,8 @@ public class VpnEditor extends PreferenceActivity {
     private boolean mAddingProfile;
     private byte[] mOriginalProfileData;
 
+    private AlertDialog mDialog = null;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -172,20 +174,37 @@ public class VpnEditor extends PreferenceActivity {
     }
 
     private void showCancellationConfirmDialog() {
-        new AlertDialog.Builder(this)
-                .setTitle(android.R.string.dialog_alert_title)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setMessage(mAddingProfile
-                        ? R.string.vpn_confirm_add_profile_cancellation
-                        : R.string.vpn_confirm_edit_profile_cancellation)
-                .setPositiveButton(R.string.vpn_yes_button,
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int w) {
-                                finish();
-                            }
-                        })
-                .setNegativeButton(R.string.vpn_mistake_button, null)
-                .show();
+        if (mDialog != null) {
+            mDialog.setMessage(mAddingProfile
+                    ? getString(R.string.vpn_confirm_add_profile_cancellation)
+                    : getString(R.string.vpn_confirm_edit_profile_cancellation));
+            mDialog.show();
+        } else {
+            mDialog = new AlertDialog.Builder(this)
+                    .setTitle(android.R.string.dialog_alert_title)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setMessage(mAddingProfile
+                            ? R.string.vpn_confirm_add_profile_cancellation
+                            : R.string.vpn_confirm_edit_profile_cancellation)
+                    .setPositiveButton(R.string.vpn_yes_button,
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int w) {
+                                    finish();
+                                }
+                            })
+                    .setNegativeButton(R.string.vpn_mistake_button, null)
+                    .show();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (mDialog != null) {
+            mDialog.dismiss();
+            mDialog = null;
+        }
     }
 
     private VpnProfile getProfile() {

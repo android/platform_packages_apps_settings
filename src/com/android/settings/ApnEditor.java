@@ -67,6 +67,7 @@ public class ApnEditor extends PreferenceActivity
     private EditTextPreference mMmsPort;
     private ListPreference mAuthType;
     private EditTextPreference mApnType;
+    private AlertDialog mErrorDialog = null;
 
     private String mCurMnc;
     private String mCurMcc;
@@ -415,11 +416,26 @@ public class ApnEditor extends PreferenceActivity
     }
 
     private void showErrorMessage(String message) {
-        new AlertDialog.Builder(this)
-            .setTitle(R.string.error_title)
-            .setMessage(message)
-            .setPositiveButton(android.R.string.ok, null)
-            .show();
+        if (mErrorDialog != null) {
+            mErrorDialog.setMessage(message);
+            mErrorDialog.show();
+        } else {
+            mErrorDialog = new AlertDialog.Builder(this)
+                    .setTitle(R.string.error_title)
+                    .setMessage(message)
+                    .setPositiveButton(android.R.string.ok, null)
+                    .show();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (mErrorDialog != null) {
+            mErrorDialog.dismiss();
+            mErrorDialog = null;
+        }
     }
 
     private void deleteApn() {

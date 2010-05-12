@@ -102,6 +102,7 @@ public class AccessPointDialog extends AlertDialog implements DialogInterface.On
     private TextView mPasswordText;
     private EditText mPasswordEdit;
     private CheckBox mShowPasswordCheckBox;
+    private AlertDialog mErrorDialog = null;
 
     // Enterprise fields
     private TextView mEapText;
@@ -542,18 +543,32 @@ public class AccessPointDialog extends AlertDialog implements DialogInterface.On
               (mState.security != null) &&
               !mState.security.equals(AccessPointState.OPEN) &&
               !mState.isEnterprise()) {
-          new AlertDialog.Builder(getContext())
-                  .setTitle(R.string.error_title)
-                  .setIcon(android.R.drawable.ic_dialog_alert)
-                  .setMessage(R.string.wifi_password_incorrect_error)
-                  .setPositiveButton(android.R.string.ok, null)
-                  .show();
+          if (mErrorDialog != null) {
+              mErrorDialog.show();
+          } else {
+              mErrorDialog = new AlertDialog.Builder(getContext())
+                      .setTitle(R.string.error_title)
+                      .setIcon(android.R.drawable.ic_dialog_alert)
+                      .setMessage(R.string.wifi_password_incorrect_error)
+                      .setPositiveButton(android.R.string.ok, null)
+                      .show();
+          }
           return;
       }
 
       if (!passwordIsEmpty) {
           mState.setPassword(password);
       }
+    }
+
+    @Override
+    public void dismiss() {
+        super.dismiss();
+
+        if (mErrorDialog != null) {
+            mErrorDialog.dismiss();
+            mErrorDialog = null;
+        }
     }
 
     private void handleSave() {

@@ -71,6 +71,8 @@ public class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> 
 
     private final LocalBluetoothManager mLocalManager;
 
+    private AlertDialog mDialog = null;
+
     private List<Callback> mCallbacks = new ArrayList<Callback>();
 
     /**
@@ -367,12 +369,28 @@ public class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> 
             }
         };
 
-        new AlertDialog.Builder(context)
-                .setTitle(getName())
-                .setMessage(message)
-                .setPositiveButton(android.R.string.ok, disconnectListener)
-                .setNegativeButton(android.R.string.cancel, null)
-                .show();
+        if (mDialog != null) {
+            mDialog.setTitle(getName());
+            mDialog.setMessage(message);
+            mDialog.show();
+        } else {
+            mDialog = new AlertDialog.Builder(context)
+                    .setTitle(getName())
+                    .setMessage(message)
+                    .setPositiveButton(android.R.string.ok, disconnectListener)
+                    .setNegativeButton(android.R.string.cancel, null)
+                    .show();
+        }
+    }
+
+    @Override
+    protected void finalize() throws Throwable {
+        super.finalize();
+
+        if (mDialog != null) {
+            mDialog.dismiss();
+            mDialog = null;
+        }
     }
 
     public void connect() {

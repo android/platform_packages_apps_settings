@@ -53,6 +53,8 @@ public class MasterClear extends Activity {
     private View mFinalView;
     private Button mFinalButton;
 
+    private AlertDialog mDialog = null;
+
     /** 
      * The user has gone through the multiple confirmation, so now we go ahead
      * and invoke the Checkin Service to reset the device to its factory-default
@@ -85,10 +87,14 @@ public class MasterClear extends Activity {
                  * the implementation of masterClear() may have returned instead
                  * of resetting the device.
                  */
-                new AlertDialog.Builder(MasterClear.this)
-                        .setMessage(getText(R.string.master_clear_failed))
-                        .setPositiveButton(getText(android.R.string.ok), null)
-                        .show();
+                if (mDialog != null) {
+                    mDialog.show();
+                } else {
+                    mDialog = new AlertDialog.Builder(MasterClear.this)
+                            .setMessage(getText(R.string.master_clear_failed))
+                            .setPositiveButton(getText(android.R.string.ok), null)
+                            .show();
+                }
             }
         };
 
@@ -187,6 +193,16 @@ public class MasterClear extends Activity {
         mLockUtils = new LockPatternUtils(getContentResolver());
 
         establishInitialState();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (mDialog != null) {
+            mDialog.dismiss();
+            mDialog = null;
+        }
     }
 
     /** Abandon all progress through the confirmation sequence by returning

@@ -130,6 +130,7 @@ public class RadioInfo extends Activity {
     private Button updateSmscButton;
     private Button refreshSmscButton;
     private Spinner preferredNetworkType;
+    private AlertDialog mDialog = null;
 
     private TelephonyManager mTelephonyManager;
     private Phone phone = null;
@@ -987,10 +988,25 @@ public class RadioInfo extends Activity {
         disconnects.setText(sb.toString());
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (mDialog != null) {
+            mDialog.dismiss();
+            mDialog = null;
+        }
+    }
+
     private void displayQxdmEnableResult() {
         String status = mQxdmLogEnabled ? "Start QXDM Log" : "Stop QXDM Log";
 
-        new AlertDialog.Builder(this).setMessage(status).show();
+        if (mDialog != null) {
+            mDialog.setMessage(status);
+            mDialog.show();
+        } else {
+            mDialog = new AlertDialog.Builder(this).setMessage(status).show();
+        }
 
         mHandler.postDelayed(
                 new Runnable() {

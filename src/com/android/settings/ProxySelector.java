@@ -65,6 +65,7 @@ public class ProxySelector extends Activity
     EditText    mHostnameField;
     EditText    mPortField;
     Button      mOKButton;
+    private AlertDialog mErrorDialog = null;
 
     // Matches blank input, ips, and domain names
     private static final String HOSTNAME_REGEXP = "^$|^[a-zA-Z0-9]+(\\-[a-zA-Z0-9]+)*(\\.[a-zA-Z0-9]+(\\-[a-zA-Z0-9]+)*)*$";
@@ -86,11 +87,26 @@ public class ProxySelector extends Activity
 
     protected void showError(int error) {
 
-        new AlertDialog.Builder(this)
-                .setTitle(R.string.proxy_error)
-                .setMessage(error)
-                .setPositiveButton(R.string.proxy_error_dismiss, null)
-                .show();
+        if (mErrorDialog != null) {
+            mErrorDialog.setMessage(getResources().getString(error));
+            mErrorDialog.show();
+        } else {
+            mErrorDialog = new AlertDialog.Builder(this)
+                    .setTitle(R.string.proxy_error)
+                    .setMessage(error)
+                    .setPositiveButton(R.string.proxy_error_dismiss, null)
+                    .show();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+
+        if (mErrorDialog != null) {
+            mErrorDialog.dismiss();
+            mErrorDialog = null;
+        }
     }
 
     void initView() {
