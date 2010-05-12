@@ -18,6 +18,7 @@ package com.android.settings;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -95,6 +96,8 @@ public class RadioInfo extends Activity {
     private static final int MENU_ITEM_GET_PDP_LIST = 4;
     private static final int MENU_ITEM_TOGGLE_DATA  = 5;
     private static final int MENU_ITEM_TOGGLE_DATA_ON_BOOT = 6;
+
+    private static final int STATUS_DIALOG_ID = 0;
 
     private TextView mDeviceId; //DeviceId is the IMEI in GSM and the MEID in CDMA
     private TextView number;
@@ -988,9 +991,7 @@ public class RadioInfo extends Activity {
     }
 
     private void displayQxdmEnableResult() {
-        String status = mQxdmLogEnabled ? "Start QXDM Log" : "Stop QXDM Log";
-
-        new AlertDialog.Builder(this).setMessage(status).show();
+        showDialog(STATUS_DIALOG_ID);
 
         mHandler.postDelayed(
                 new Runnable() {
@@ -998,6 +999,27 @@ public class RadioInfo extends Activity {
                         finish();
                     }
                 }, 2000);
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+
+        if (id == STATUS_DIALOG_ID) {
+            String status = mQxdmLogEnabled ? "Start QXDM Log" : "Stop QXDM Log";
+            return new AlertDialog.Builder(this).setMessage(status).create();
+        }
+
+        return super.onCreateDialog(id);
+    }
+
+    @Override
+    protected void onPrepareDialog(int id, Dialog dialog) {
+        super.onPrepareDialog(id, dialog);
+
+        if (id == STATUS_DIALOG_ID) {
+            String status = mQxdmLogEnabled ? "Start QXDM Log" : "Stop QXDM Log";
+            ((AlertDialog)dialog).setMessage(status);
+        }
     }
 
     private MenuItem.OnMenuItemClickListener mViewADNCallback = new MenuItem.OnMenuItemClickListener() {

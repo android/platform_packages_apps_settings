@@ -20,6 +20,7 @@ import com.android.internal.widget.LockPatternUtils;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -43,6 +44,7 @@ import android.widget.Button;
 public class MasterClear extends Activity {
 
     private static final int KEYGUARD_REQUEST = 55;
+    private static final int ERROR_DIALOG_ID = 0;
 
     private LayoutInflater mInflater;
     private LockPatternUtils mLockUtils;
@@ -85,10 +87,7 @@ public class MasterClear extends Activity {
                  * the implementation of masterClear() may have returned instead
                  * of resetting the device.
                  */
-                new AlertDialog.Builder(MasterClear.this)
-                        .setMessage(getText(R.string.master_clear_failed))
-                        .setPositiveButton(getText(android.R.string.ok), null)
-                        .show();
+                showDialog(ERROR_DIALOG_ID);
             }
         };
 
@@ -198,6 +197,19 @@ public class MasterClear extends Activity {
         super.onPause();
 
         establishInitialState();
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int id) {
+
+        if (id == ERROR_DIALOG_ID) {
+            return new AlertDialog.Builder(MasterClear.this)
+                    .setMessage(getText(R.string.master_clear_failed))
+                    .setPositiveButton(getText(android.R.string.ok), null)
+                    .create();
+        }
+
+        return super.onCreateDialog(id);
     }
 
 }
