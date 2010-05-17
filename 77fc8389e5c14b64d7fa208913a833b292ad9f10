@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAzH///jQ\u003d",
+        "filename": "src/com/android/settings/LanguageSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1002598
+      },
+      "writtenOn": "2010-05-17T18:21:01Z",
+      "side": 1,
+      "message": "This comment applies to every file in this patch.  It\u0027s best not to repeat any code. How about the following pattern?\n\nIf (mDialog \u003d\u003d null) {\n    mDialog \u003d new AlertDialog.Builder().setXXX().create();\n}\n\nmDialog.setMessage(...);\n\nmDialog.show();",
+      "revId": "77fc8389e5c14b64d7fa208913a833b292ad9f10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAzH///jM\u003d",
+        "filename": "src/com/android/settings/bluetooth/CachedBluetoothDevice.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1002598
+      },
+      "writtenOn": "2010-05-17T18:21:01Z",
+      "side": 1,
+      "message": "What if the dialog already exist? Does it need to be dismissed first?",
+      "revId": "77fc8389e5c14b64d7fa208913a833b292ad9f10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAzH///jw\u003d",
+        "filename": "src/com/android/settings/bluetooth/CachedBluetoothDevice.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1002598
+      },
+      "writtenOn": "2010-05-17T18:21:01Z",
+      "side": 1,
+      "message": "It\u0027s safer to call super.finalize() last.",
+      "revId": "77fc8389e5c14b64d7fa208913a833b292ad9f10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
