@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAzH///fE\u003d",
+        "filename": "res/layout/master_clear_primary.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1001146
+      },
+      "writtenOn": "2010-05-17T22:47:43Z",
+      "side": 1,
+      "message": "The height should be 0dip",
+      "revId": "2a70cefd3947c0df841d392e0b58a20591d246a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
