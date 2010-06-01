@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAzX///1E\u003d",
+        "filename": "res/xml/settings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2010-06-01T21:39:27Z",
+      "side": 1,
+      "message": "How do you assume that these should be at the top of the list? Not that they shouldn\u0027t, but would they always need to be the most visible settings screen for the user?",
+      "revId": "7ebb28aa2e74dccb06ef9e876a2b6a4a13ec56cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAzX///0s\u003d",
+        "filename": "res/xml/settings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2010-06-01T21:39:27Z",
+      "side": 1,
+      "message": "Please reserve the action naming convention \"android.settings.*\" to those that are documented in the Settings provider API. Use \"com.android.settings.*\" instead.",
+      "revId": "7ebb28aa2e74dccb06ef9e876a2b6a4a13ec56cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAzX///0o\u003d",
+        "filename": "res/xml/settings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2010-06-01T21:39:27Z",
+      "side": 1,
+      "message": "Please reserve the action naming convention \"android.settings.*\" to those that are documented in the Settings provider API. Use \"com.android.settings.*\" instead.",
+      "revId": "7ebb28aa2e74dccb06ef9e876a2b6a4a13ec56cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAzX///1A\u003d",
+        "filename": "src/com/android/settings/IconPreferenceScreen.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2010-06-01T21:39:27Z",
+      "side": 1,
+      "message": "Second sentence doesn\u0027t seem relevant to this function. It should be about setting the icon for the ImageView contained in the layout, or simply remove the second sentence.",
+      "revId": "7ebb28aa2e74dccb06ef9e876a2b6a4a13ec56cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAzX///08\u003d",
+        "filename": "src/com/android/settings/Settings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2010-06-01T21:39:27Z",
+      "side": 1,
+      "message": "line too long \u003e 100",
+      "revId": "7ebb28aa2e74dccb06ef9e876a2b6a4a13ec56cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAzX///04\u003d",
+        "filename": "src/com/android/settings/Settings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2010-06-01T21:39:27Z",
+      "side": 1,
+      "message": "Line too long \u003e 100",
+      "revId": "7ebb28aa2e74dccb06ef9e876a2b6a4a13ec56cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAzX///00\u003d",
+        "filename": "src/com/android/settings/Utils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2010-06-01T21:39:27Z",
+      "side": 1,
+      "message": "Line too long, \u003e 100",
+      "revId": "7ebb28aa2e74dccb06ef9e876a2b6a4a13ec56cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAzX///0w\u003d",
+        "filename": "src/com/android/settings/Utils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2010-06-01T21:39:27Z",
+      "side": 1,
+      "message": "Line too long, \u003e 100",
+      "revId": "7ebb28aa2e74dccb06ef9e876a2b6a4a13ec56cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAzX///0k\u003d",
+        "filename": "tests/src/com/android/settings/SettingsHookTests.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2010-06-01T21:39:27Z",
+      "side": 1,
+      "message": "Please reserve the action naming convention \"android.settings.*\" to those that are documented in the Settings provider API. Use \"com.android.settings.*\" instead.",
+      "revId": "7ebb28aa2e74dccb06ef9e876a2b6a4a13ec56cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAzX///0g\u003d",
+        "filename": "tests/src/com/android/settings/SettingsHookTests.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2010-06-01T21:39:27Z",
+      "side": 1,
+      "message": "Please reserve the action naming convention \"android.settings.*\" to those that are documented in the Settings provider API. Use \"com.android.settings.*\" instead.",
+      "revId": "7ebb28aa2e74dccb06ef9e876a2b6a4a13ec56cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
