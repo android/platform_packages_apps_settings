@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAzX//+24\u003d",
+        "filename": "tests/AndroidManifest.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2010-06-10T15:57:50Z",
+      "side": 1,
+      "message": "You forgot to change this to \"com.android....\"",
+      "revId": "44c5b8aaad70c1bc66e111bf1ae9bc43e8c83959",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAAzX//+20\u003d",
+        "filename": "tests/AndroidManifest.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2010-06-10T15:57:50Z",
+      "side": 1,
+      "message": "You forgot to change this to \"com.android...\"",
+      "revId": "44c5b8aaad70c1bc66e111bf1ae9bc43e8c83959",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
