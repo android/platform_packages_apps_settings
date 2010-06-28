@@ -24,6 +24,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.admin.DevicePolicyManager;
+import android.appwidget.AppWidgetManager;
 import android.content.ContentQueryMap;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -95,6 +96,7 @@ public class SecuritySettings extends PreferenceActivity {
     private final class SettingsObserver implements Observer {
         public void update(Observable o, Object arg) {
             updateToggles();
+            updateWidget();
         }
     }
 
@@ -281,6 +283,20 @@ public class SecuritySettings extends PreferenceActivity {
                     Settings.Secure.ASSISTED_GPS_ENABLED, 2) == 1);
             mAssistedGps.setEnabled(gpsEnabled);
         }
+    }
+
+    /*
+     * Update the widget when the state is changed
+     */
+    private void updateWidget() {
+        // When changing the state in the Settings menu, and press the
+        // "Back" key until the home screen the widget does not
+        // reflect the update. Therefore we send an intent to the widget
+        // to re-read the current state, and update the icon.
+        Intent widgetUpdate = new Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+        widgetUpdate.setClassName("com.android.settings",
+                "com.android.settings.widget.SettingsAppWidgetProvider");
+        sendBroadcast(widgetUpdate);
     }
 
     private boolean isToggled(Preference pref) {
