@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAAzX//+2k\u003d",
+        "filename": "src/com/android/settings/ApnEditor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2010-06-30T17:57:44Z",
+      "side": 1,
+      "message": "These 4 lines are repeated. Could they just be moved into getErrorMsg()?",
+      "revId": "499b844d8305d104421bf7427fd5f449728003d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
