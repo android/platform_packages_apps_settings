@@ -36,7 +36,7 @@ public class Utils {
      * @return the formatted elapsed time
      */
     public static String formatElapsedTime(Context context, double millis) {
-        StringBuilder sb = new StringBuilder();
+        final StringBuilder sb = new StringBuilder();
         int seconds = (int) Math.floor(millis / 1000);
 
         int days = 0, hours = 0, minutes = 0;

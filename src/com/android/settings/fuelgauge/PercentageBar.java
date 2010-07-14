@@ -24,7 +24,7 @@ import android.graphics.drawable.Drawable;
 /**
  * A drawable for drawing a bar with a background.
  */
-class PercentageBar extends Drawable {
+final class PercentageBar extends Drawable {
 
     Drawable bar;
     double percent;
@@ -55,8 +55,8 @@ class PercentageBar extends Drawable {
     }
 
     private int getBarWidth() {
-        int width = (int) ((this.getBounds().width() * percent) / 100);
-        int intrinsicWidth = bar.getIntrinsicWidth();
+        final int width = (int) ((this.getBounds().width() * percent) / 100);
+        final int intrinsicWidth = bar.getIntrinsicWidth();
         return Math.max(width, intrinsicWidth);
     }
 

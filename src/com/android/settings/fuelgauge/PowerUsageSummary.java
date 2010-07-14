@@ -61,7 +61,7 @@ import java.util.Map;
  * Displays a list of apps and subsystems that consume power, ordered by how much power was
  * consumed since the last time it was unplugged.
  */
-public class PowerUsageSummary extends PreferenceActivity implements Runnable {
+public final class PowerUsageSummary extends PreferenceActivity implements Runnable {
 
     private static final boolean DEBUG = false;
 
@@ -224,7 +224,7 @@ public class PowerUsageSummary extends PreferenceActivity implements Runnable {
     }
 
     @Override
-    public boolean onPrepareOptionsMenu(Menu menu) {
+    public boolean onPrepareOptionsMenu(final Menu menu) {
         if (DEBUG) {
             menu.findItem(MENU_STATS_TYPE).setTitle(mStatsType == BatteryStats.STATS_TOTAL
                     ? R.string.menu_stats_unplugged
@@ -234,7 +234,7 @@ public class PowerUsageSummary extends PreferenceActivity implements Runnable {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(final MenuItem item) {
         switch (item.getItemId()) {
             case MENU_STATS_TYPE:
                 if (mStatsType == BatteryStats.STATS_TOTAL) {
@@ -273,7 +273,7 @@ public class PowerUsageSummary extends PreferenceActivity implements Runnable {
             final double percentOfTotal =  ((sipper.getSortValue() / mTotalPower) * 100);
             if (percentOfTotal < 1) continue;
             PowerGaugePreference pref = new PowerGaugePreference(this, sipper.getIcon(), sipper);
-            double percentOfMax = (sipper.getSortValue() * 100) / mMaxPower;
+            final double percentOfMax = (sipper.getSortValue() * 100) / mMaxPower;
             sipper.percent = percentOfTotal;
             pref.setTitle(sipper.name);
             pref.setPercent(percentOfTotal);
@@ -298,7 +298,7 @@ public class PowerUsageSummary extends PreferenceActivity implements Runnable {
         }
     }
 
-    private void updateStatsPeriod(long duration) {
+    private void updateStatsPeriod(final long duration) {
         String durationString = Utils.formatElapsedTime(this, duration / 1000);
         String label = getString(mStats.isOnBattery()
                 ? R.string.battery_stats_duration
@@ -316,7 +316,7 @@ public class PowerUsageSummary extends PreferenceActivity implements Runnable {
             powerCpuNormal[p] = mPowerProfile.getAveragePower(PowerProfile.POWER_CPU_ACTIVE, p);
         }
         final double averageCostPerByte = getAverageDataCost();
-        long uSecTime = mStats.computeBatteryRealtime(SystemClock.elapsedRealtime() * 1000, which);
+        final long uSecTime = mStats.computeBatteryRealtime(SystemClock.elapsedRealtime() * 1000, which);
         mStatsPeriod = uSecTime;
         updateStatsPeriod(uSecTime);
         SparseArray<? extends Uid> uidStats = mStats.getUidStats();
@@ -421,15 +421,15 @@ public class PowerUsageSummary extends PreferenceActivity implements Runnable {
         }
     }
 
-    private void addPhoneUsage(long uSecNow) {
-        long phoneOnTimeMs = mStats.getPhoneOnTime(uSecNow, mStatsType) / 1000;
-        double phoneOnPower = mPowerProfile.getAveragePower(PowerProfile.POWER_RADIO_ACTIVE)
+    private void addPhoneUsage(final long uSecNow) {
+        final long phoneOnTimeMs = mStats.getPhoneOnTime(uSecNow, mStatsType) / 1000;
+        final double phoneOnPower = mPowerProfile.getAveragePower(PowerProfile.POWER_RADIO_ACTIVE)
                 * phoneOnTimeMs / 1000;
         addEntry(getString(R.string.power_phone), DrainType.PHONE, phoneOnTimeMs,
                 R.drawable.ic_settings_voice_calls, phoneOnPower);
     }
 
-    private void addScreenUsage(long uSecNow) {
+    private void addScreenUsage(final long uSecNow) {
         double power = 0;
         long screenOnTimeMs = mStats.getScreenOnTime(uSecNow, mStatsType) / 1000;
         power += screenOnTimeMs * mPowerProfile.getAveragePower(PowerProfile.POWER_SCREEN_ON);

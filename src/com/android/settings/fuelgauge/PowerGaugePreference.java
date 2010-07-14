@@ -37,9 +37,9 @@ import com.android.settings.fuelgauge.PowerUsageSummary.BatterySipper;
 public class PowerGaugePreference extends Preference {
 
     private Drawable mIcon;
-    private PercentageBar mGauge;
+    private final PercentageBar mGauge;
     private double mValue;
-    private BatterySipper mInfo;
+    private final BatterySipper mInfo;
     private double mPercent;
 
     public PowerGaugePreference(Context context, Drawable icon, BatterySipper info) {
@@ -55,12 +55,12 @@ public class PowerGaugePreference extends Preference {
      * Sets the width of the gauge in percentage (0 - 100)
      * @param percent
      */
-    void setGaugeValue(double percent) {
+    void setGaugeValue(final double percent) {
         mValue = percent;
         mGauge.percent = mValue;
     }
 
-    void setPercent(double percent) {
+    void setPercent(final double percent) {
         mPercent = percent;
     }
 
@@ -77,16 +77,16 @@ public class PowerGaugePreference extends Preference {
     protected void onBindView(View view) {
         super.onBindView(view);
 
-        ImageView appIcon = (ImageView) view.findViewById(R.id.appIcon);
+        final ImageView appIcon = (ImageView) view.findViewById(R.id.appIcon);
         if (mIcon == null) {
             mIcon = getContext().getResources().getDrawable(android.R.drawable.sym_def_app_icon);
         }
         appIcon.setImageDrawable(mIcon);
 
-        ImageView appGauge = (ImageView) view.findViewById(R.id.appGauge);
+        final ImageView appGauge = (ImageView) view.findViewById(R.id.appGauge);
         appGauge.setImageDrawable(mGauge);
 
-        TextView percentView = (TextView) view.findViewById(R.id.percent);
+        final TextView percentView = (TextView) view.findViewById(R.id.percent);
         percentView.setText((int) (Math.ceil(mPercent)) + "%");
     }
 
