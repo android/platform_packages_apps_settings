@@ -35,8 +35,8 @@ public class Utils {
      * @param millis the elapsed time in milli seconds
      * @return the formatted elapsed time
      */
-    public static String formatElapsedTime(Context context, double millis) {
-        StringBuilder sb = new StringBuilder();
+    public static String formatElapsedTime(final Context context, final double millis) {
+        final StringBuilder sb = new StringBuilder();
         int seconds = (int) Math.floor(millis / 1000);
 
         int days = 0, hours = 0, minutes = 0;
@@ -71,7 +71,7 @@ public class Utils {
      * @param bytes data size in bytes
      * @return the formatted size such as 4.52 MB or 245 KB or 332 bytes
      */
-    public static String formatBytes(Context context, double bytes) {
+    public static String formatBytes(final Context context, final double bytes) {
         // TODO: I18N
         if (bytes > 1000 * 1000) {
             return String.format("%.2f MB", ((int) (bytes / 1000)) / 1000f);

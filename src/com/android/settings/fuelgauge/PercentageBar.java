@@ -31,7 +31,7 @@ class PercentageBar extends Drawable {
     int lastWidth = -1;
 
     @Override
-    public void draw(Canvas canvas) {
+    public void draw(final Canvas canvas) {
         if (lastWidth == -1) {
             lastWidth = getBarWidth();
             bar.setBounds(0, 0, lastWidth, bar.getIntrinsicHeight());
@@ -45,18 +45,18 @@ class PercentageBar extends Drawable {
     }
 
     @Override
-    public void setAlpha(int alpha) {
+    public void setAlpha(final int alpha) {
         // Ignore
     }
 
     @Override
-    public void setColorFilter(ColorFilter cf) {
+    public void setColorFilter(final ColorFilter cf) {
         // Ignore
     }
 
     private int getBarWidth() {
-        int width = (int) ((this.getBounds().width() * percent) / 100);
-        int intrinsicWidth = bar.getIntrinsicWidth();
+        final int width = (int) ((this.getBounds().width() * percent) / 100);
+        final int intrinsicWidth = bar.getIntrinsicWidth();
         return Math.max(width, intrinsicWidth);
     }
 
