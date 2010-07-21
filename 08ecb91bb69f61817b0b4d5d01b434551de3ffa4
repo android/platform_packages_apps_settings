@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA3H///ww\u003d",
+        "filename": "src/com/android/settings/ZoneList.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2010-07-21T21:33:42Z",
+      "side": 1,
+      "message": "Trailing whitespace",
+      "revId": "08ecb91bb69f61817b0b4d5d01b434551de3ffa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA3H///ws\u003d",
+        "filename": "src/com/android/settings/ZoneList.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2010-07-21T21:33:42Z",
+      "side": 1,
+      "message": "Trailing whitespace",
+      "revId": "08ecb91bb69f61817b0b4d5d01b434551de3ffa4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
