@@ -39,8 +39,8 @@ public class ZonePicker extends ListActivity {
         setListAdapter(mFilterAdapter);
     }
     
-    protected void addItem(List<Map> data, String name, String zone) {
-        HashMap temp = new HashMap();
+    protected void addItem(List<Map<String,String>> data, String name, String zone) {
+        HashMap<String,String> temp = new HashMap<String,String>();
         temp.put("title", name);
         temp.put("zone", zone);
         data.add(temp);
