@@ -21,19 +21,16 @@ import android.app.ListActivity;
 import android.content.Context;
 import android.content.res.XmlResourceParser;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
@@ -58,8 +55,6 @@ public class ZoneList extends ListActivity {
     private static final String XMLTAG_TIMEZONE = "timezone";
 
     private static final int HOURS_1 = 60 * 60000;
-    private static final int HOURS_24 = 24 * HOURS_1;
-    private static final int HOURS_HALF = HOURS_1 / 2;
     
     private static final int MENU_TIMEZONE = Menu.FIRST+1;
     private static final int MENU_ALPHABETICAL = Menu.FIRST;
@@ -81,7 +76,7 @@ public class ZoneList extends ListActivity {
 
         MyComparator comparator = new MyComparator(KEY_OFFSET);
         
-        List<HashMap> timezoneSortedList = getZones();
+        List<HashMap<String,Object>> timezoneSortedList = getZones();
         Collections.sort(timezoneSortedList, comparator);
         mTimezoneSortedAdapter = new SimpleAdapter(this,
                 (List) timezoneSortedList,
@@ -89,7 +84,7 @@ public class ZoneList extends ListActivity {
                 from,
                 to);
 
-        List<HashMap> alphabeticalList = new ArrayList<HashMap>(timezoneSortedList);
+        List<HashMap<String,Object>> alphabeticalList = new ArrayList<HashMap<String,Object>>(timezoneSortedList);
         comparator.setSortingKey(KEY_DISPLAYNAME);
         Collections.sort(alphabeticalList, comparator);
         mAlphabeticalAdapter = new SimpleAdapter(this,
@@ -154,8 +149,8 @@ public class ZoneList extends ListActivity {
         mSortedByTimezone = timezone;
     }
     
-    private List<HashMap> getZones() {
-        List<HashMap> myData = new ArrayList<HashMap>();
+    private List<HashMap<String,Object>> getZones() {
+        List<HashMap<String,Object>> myData = new ArrayList<HashMap<String,Object>>();
         long date = Calendar.getInstance().getTimeInMillis();
         try {
             XmlResourceParser xrp = getResources().getXml(R.xml.timezones);
@@ -189,9 +184,9 @@ public class ZoneList extends ListActivity {
         return myData;
     }
 
-    protected void addItem(List<HashMap> myData, String id, String displayName, 
+    protected void addItem(List<HashMap<String,Object>> myData, String id, String displayName,
             long date) {
-        HashMap map = new HashMap();
+        HashMap<String,Object> map = new HashMap<String,Object>();
         map.put(KEY_ID, id);
         map.put(KEY_DISPLAYNAME, displayName);
         TimeZone tz = TimeZone.getTimeZone(id);
@@ -238,7 +233,7 @@ public class ZoneList extends ListActivity {
     }
     
     private static class MyComparator implements Comparator<HashMap> {
-        private String mSortingKey; 
+        private String mSortingKey;
         
         public MyComparator(String sortingKey) {
             mSortingKey = sortingKey;
@@ -266,7 +261,7 @@ public class ZoneList extends ListActivity {
         }
         
         private boolean isComparable(Object value) {
-            return (value != null) && (value instanceof Comparable); 
+            return (value != null) && (value instanceof Comparable<?>);
         }
     }
     
