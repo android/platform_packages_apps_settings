@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA3X///74\u003d",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2010-07-26T21:34:07Z",
+      "side": 1,
+      "message": "Style nitpick: please wrap this line to 100 columns.",
+      "revId": "c1eced8a2cf709b57d45f03191eb25642f34cd4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
