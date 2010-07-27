@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA3X///0c\u003d",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1003856
+      },
+      "writtenOn": "2010-07-27T16:40:05Z",
+      "side": 1,
+      "message": "Please replace the tabs(red arrows) with spaces according to the android coding style guide.",
+      "revId": "c93902e0432114b5a9c563a797183b5fadc3ddc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
