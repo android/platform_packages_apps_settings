@@ -340,7 +340,9 @@ public class Status extends PreferenceActivity {
         } else {
             setSummaryText("roaming_state", mRes.getString(R.string.radioInfo_roaming_not));
         }
-        setSummaryText("operator_name", serviceState.getOperatorAlphaLong());
+        String name = mPhone.getEons();
+        if (name == null) name = serviceState.getOperatorAlphaLong();
+        setSummaryText("operator_name", name);
     }
     
     void updateSignalStrength() {
