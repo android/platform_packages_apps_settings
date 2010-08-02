@@ -20,7 +20,6 @@ import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.ServiceManager;
 import android.os.SystemProperties;
@@ -29,7 +28,6 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
-import android.util.Log;
 
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.TelephonyProperties;
@@ -145,21 +143,21 @@ public class WirelessSettings extends PreferenceActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        
+
         mAirplaneModeEnabler.resume();
         mWifiEnabler.resume();
         mBtEnabler.resume();
     }
-    
+
     @Override
     protected void onPause() {
         super.onPause();
-        
+
         mAirplaneModeEnabler.pause();
         mWifiEnabler.pause();
         mBtEnabler.pause();
     }
-    
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_CODE_EXIT_ECM) {
