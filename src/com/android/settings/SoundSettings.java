@@ -23,8 +23,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.media.AudioManager;
 import android.os.Bundle;
-import android.os.RemoteException;
-import android.os.ServiceManager;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -35,14 +33,12 @@ import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.telephony.TelephonyManager;
 import android.util.Log;
-import android.view.IWindowManager;
 
 public class SoundSettings extends PreferenceActivity implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "SoundAndDisplaysSettings";
 
     /** If there is no setting in the provider, use this. */
-    private static final int FALLBACK_SCREEN_TIMEOUT_VALUE = 30000;
     private static final int FALLBACK_EMERGENCY_TONE_VALUE = 0;
 
     private static final String KEY_SILENT = "silent";
@@ -176,7 +172,7 @@ public class SoundSettings extends PreferenceActivity implements
             1) == 1);
 
         // Control phone vibe independent of silent mode
-        int callsVibrateSetting = 
+        int callsVibrateSetting =
             mAudioManager.getVibrateSetting(AudioManager.VIBRATE_TYPE_RINGER);
 
         if (vibeInSilent) {
