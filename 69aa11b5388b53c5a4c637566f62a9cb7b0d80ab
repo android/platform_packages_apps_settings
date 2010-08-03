@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA33///e0\u003d",
+        "filename": "src/com/android/settings/ZoneList.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2010-08-03T17:25:00Z",
+      "side": 1,
+      "message": "line is too long - 100 char max please",
+      "revId": "69aa11b5388b53c5a4c637566f62a9cb7b0d80ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
