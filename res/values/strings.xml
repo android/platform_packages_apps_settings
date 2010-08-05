@@ -1776,6 +1776,14 @@ found in the list of installed applications.</string>
     <!-- Text to label a process entry with the process name. -->
     <string name="service_process_name">Process: <xliff:g id="process">%1$s</xliff:g></string>
 
+    <!-- Permission Settings -->
+    <!-- Title of permission settings Screen -->
+    <string name="permission_settings_title">Show Permissions</string>
+    <!-- Summary of permission settings Screen -->
+    <string name="permission_settings_summary">Displays a list of permissions and which apps are using them</string>
+    <!-- Loading text displayed while loading permissions -->
+    <string name="permission_settings_loading">Loading</string>
+
     <!-- Language Settings --> <skip />
     <!-- Title of setting on main settings screen.  This item will take the user to the screen to tweak settings realted to locale and text -->
     <string name="language_settings">Language &amp; keyboard</string>
