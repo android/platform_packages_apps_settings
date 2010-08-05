@@ -58,6 +58,14 @@
                 android:targetPackage="com.android.settings"
                 android:targetClass="com.android.settings.RunningServices" />
     </PreferenceScreen>
+    
+    <PreferenceScreen
+            android:title="@string/permission_settings_title"
+            android:summary="@string/permission_settings_summary">
+        <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.android.settings"
+                android:targetClass="com.android.settings.Permissions" />
+    </PreferenceScreen>
 
     <PreferenceScreen 
             android:title="@string/development_settings_title" 
