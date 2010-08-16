@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA4n///S8\u003d",
+        "filename": "src/com/android/settings/ProgressCategory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2010-08-16T17:14:59Z",
+      "side": 1,
+      "message": "Trailing whitespace (also on line below)",
+      "revId": "36c79489ce7200ed6c41aabc8420d58cfc4d1393",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///S4\u003d",
+        "filename": "src/com/android/settings/bluetooth/BluetoothSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2010-08-16T17:14:59Z",
+      "side": 1,
+      "message": "Fails to compile (missing semicolon)",
+      "revId": "36c79489ce7200ed6c41aabc8420d58cfc4d1393",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
