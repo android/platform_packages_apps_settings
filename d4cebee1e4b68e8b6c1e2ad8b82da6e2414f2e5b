@@ -16,6 +16,24 @@
       "revId": "d4cebee1e4b68e8b6c1e2ad8b82da6e2414f2e5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///E0\u003d",
+        "filename": "src/com/android/settings/ProgressCategory.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1004266
+      },
+      "writtenOn": "2010-08-17T23:48:12Z",
+      "side": 1,
+      "message": "Hi. Every time a scan begins, a device is found, or a scan ends a new view is passed to onBindView. The old view is left in memory with the animation turned on. So, if you keep scanning for devices memory use will only increase as the number of views increase.\nThe animation will be turned off and the memory released if you change the visibility to View.GONE or View.INVISIBLE. In that case you can keep track of the old view and toggle its visibility.\n\nI discovered using proper hardware because emulator doesn\u0027t have bluetooth support.",
+      "parentUuid": "AAAA4n///Fo\u003d",
+      "revId": "d4cebee1e4b68e8b6c1e2ad8b82da6e2414f2e5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
