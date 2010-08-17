@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA4n///J8\u003d",
+        "filename": "src/com/android/settings/ProgressCategory.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2010-08-17T15:17:37Z",
+      "side": 1,
+      "message": "Minor style issue: Android style uses a space between \"if\" and \"(\"",
+      "revId": "4a70e8d61e2c082fb7a42a250cd52261a8ed9103",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA4n///J4\u003d",
+        "filename": "src/com/android/settings/ProgressCategory.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2010-08-17T15:17:37Z",
+      "side": 1,
+      "message": "Minor style issue: Android style sets the opening brace on the same line as the \"if\"",
+      "revId": "4a70e8d61e2c082fb7a42a250cd52261a8ed9103",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
