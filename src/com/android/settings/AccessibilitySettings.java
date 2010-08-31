@@ -17,6 +17,7 @@
 package com.android.settings;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.Service;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -57,13 +58,22 @@ public class AccessibilitySettings extends PreferenceActivity {
     private static final String ACCESSIBILITY_SERVICES_CATEGORY =
         "accessibility_services_category";
 
+    private static final String SERVICE_PREFERENCE_KEY =
+        "service_preference_key";
+
     private static final String POWER_BUTTON_CATEGORY =
         "power_button_category";
 
     private final String POWER_BUTTON_ENDS_CALL_CHECKBOX =
         "power_button_ends_call";
 
+    private static final int ACCESSIBILITY_DIALOG_ID = 1;
+
+    private static final int ACCESSIBILITY_SERVICE_DIALOG_ID = 2;
+
     private CheckBoxPreference mToggleCheckBox;
+
+    private CheckBoxPreference mServiceCheckBox;
 
     private PreferenceCategory mPowerButtonCategory;
     private CheckBoxPreference mPowerButtonEndsCallCheckBox;
@@ -183,23 +193,90 @@ public class AccessibilitySettings extends PreferenceActivity {
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         final String key = preference.getKey();
 
-        if (TOGGLE_ACCESSIBILITY_SERVICE_CHECKBOX.equals(key)) {
-            boolean isChecked = ((CheckBoxPreference) preference).isChecked();
-            handleEnableAccessibilityStateChange((CheckBoxPreference) preference);
-        } else if (POWER_BUTTON_ENDS_CALL_CHECKBOX.equals(key)) {
-            boolean isChecked = ((CheckBoxPreference) preference).isChecked();
-            // The checkbox is labeled "Power button ends call"; thus the in-call
-            // Power button behavior is INCALL_POWER_BUTTON_BEHAVIOR_HANGUP if
-            // checked, and INCALL_POWER_BUTTON_BEHAVIOR_SCREEN_OFF if unchecked.
-            Settings.Secure.putInt(getContentResolver(),
-                    Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR,
-                    (isChecked ? Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR_HANGUP
-                            : Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR_SCREEN_OFF));
-        } else if (preference instanceof CheckBoxPreference) {
-            handleEnableAccessibilityServiceStateChange((CheckBoxPreference) preference);
+        if (preference instanceof CheckBoxPreference) {
+            if (TOGGLE_ACCESSIBILITY_SERVICE_CHECKBOX.equals(key)) {
+                boolean isChecked = ((CheckBoxPreference) preference).isChecked();
+                handleEnableAccessibilityStateChange((CheckBoxPreference) preference);
+            } else if (POWER_BUTTON_ENDS_CALL_CHECKBOX.equals(key)) {
+                boolean isChecked = ((CheckBoxPreference) preference).isChecked();
+                // The checkbox is labeled "Power button ends call"; thus the in-call
+                // Power button behavior is INCALL_POWER_BUTTON_BEHAVIOR_HANGUP if
+                // checked, and INCALL_POWER_BUTTON_BEHAVIOR_SCREEN_OFF if unchecked.
+                Settings.Secure.putInt(getContentResolver(),
+                        Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR,
+                        (isChecked ? Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR_HANGUP
+                                : Settings.Secure.INCALL_POWER_BUTTON_BEHAVIOR_SCREEN_OFF));
+            } else if (preference instanceof CheckBoxPreference) {
+                handleEnableAccessibilityServiceStateChange((CheckBoxPreference) preference);
+            }
         }
 
         return super.onPreferenceTreeClick(preferenceScreen, preference);
+    }
+
+    public void onSaveInstanceState(Bundle outState) {
+        if(mServiceCheckBox != null) {
+            outState.putCharSequence(SERVICE_PREFERENCE_KEY, mServiceCheckBox.getKey());
+        }
+    }
+
+    public void onRestoreInstanceState(Bundle state) {
+        if(state.containsKey(SERVICE_PREFERENCE_KEY)) {
+            mServiceCheckBox = (CheckBoxPreference)findPreference(state.getCharSequence(SERVICE_PREFERENCE_KEY));
+        }
+    }
+
+    protected Dialog onCreateDialog(int id) {
+        AlertDialog dialog;
+        switch (id) {
+
+            case ACCESSIBILITY_DIALOG_ID:
+                dialog = (new AlertDialog.Builder(this)).setTitle(
+                        android.R.string.dialog_alert_title).setIcon(
+                        android.R.drawable.ic_dialog_alert).setMessage(
+                        getString(R.string.accessibility_service_disable_warning)).setCancelable(
+                        true).setPositiveButton(android.R.string.ok,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                Settings.Secure.putInt(getContentResolver(),
+                                        Settings.Secure.ACCESSIBILITY_ENABLED, 0);
+                                setAccessibilityServicePreferencesState(false);
+                                mToggleCheckBox.setChecked(false);
+                            }
+                        }).setNegativeButton(android.R.string.cancel,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                mToggleCheckBox.setChecked(true);
+                            }
+                        }).create();
+                break;
+
+            case ACCESSIBILITY_SERVICE_DIALOG_ID:
+                dialog = (new AlertDialog.Builder(this))
+                        .setTitle(android.R.string.dialog_alert_title)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setMessage(
+                                getString(
+                                        R.string.accessibility_service_security_warning,
+                                        mAccessibilityServices.get(mServiceCheckBox.getKey()).applicationInfo
+                                                .loadLabel(getPackageManager()))).setCancelable(
+                                true).setPositiveButton(android.R.string.ok,
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        mServiceCheckBox.setChecked(true);
+                                        persistEnabledAccessibilityServices();
+                                    }
+                                }).setNegativeButton(android.R.string.cancel,
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        mServiceCheckBox.setChecked(false);
+                                    }
+                                }).create();
+                break;
+            default:
+                dialog = null;
+        }
+        return dialog;
     }
 
     /**
@@ -213,28 +290,7 @@ public class AccessibilitySettings extends PreferenceActivity {
                 Settings.Secure.ACCESSIBILITY_ENABLED, 1);
             setAccessibilityServicePreferencesState(true);
         } else {
-            final CheckBoxPreference checkBoxPreference = preference;
-            AlertDialog dialog = (new AlertDialog.Builder(this))
-                .setTitle(android.R.string.dialog_alert_title)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setMessage(getString(R.string.accessibility_service_disable_warning))
-                .setCancelable(true)
-                .setPositiveButton(android.R.string.ok,
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Settings.Secure.putInt(getContentResolver(),
-                                Settings.Secure.ACCESSIBILITY_ENABLED, 0);
-                            setAccessibilityServicePreferencesState(false);
-                        }
-                })
-                .setNegativeButton(android.R.string.cancel,
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            checkBoxPreference.setChecked(true);
-                        }
-                })
-                .create();
-            dialog.show();
+            showDialog(ACCESSIBILITY_DIALOG_ID);
         }
     }
 
@@ -245,29 +301,7 @@ public class AccessibilitySettings extends PreferenceActivity {
      */
     private void handleEnableAccessibilityServiceStateChange(CheckBoxPreference preference) {
         if (preference.isChecked()) {
-            final CheckBoxPreference checkBoxPreference = preference;
-            AlertDialog dialog = (new AlertDialog.Builder(this))
-                .setTitle(android.R.string.dialog_alert_title)
-                .setIcon(android.R.drawable.ic_dialog_alert)
-                .setMessage(getString(R.string.accessibility_service_security_warning,
-                    mAccessibilityServices.get(preference.getKey())
-                    .applicationInfo.loadLabel(getPackageManager())))
-                .setCancelable(true)
-                .setPositiveButton(android.R.string.ok,
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                checkBoxPreference.setChecked(true);
-                                persistEnabledAccessibilityServices();
-                            }
-                })
-                .setNegativeButton(android.R.string.cancel,
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                checkBoxPreference.setChecked(false);
-                            }
-                })
-                .create();
-            dialog.show();
+            showDialog(ACCESSIBILITY_SERVICE_DIALOG_ID);
         } else {
             persistEnabledAccessibilityServices();
         }

@@ -17,6 +17,7 @@
 package com.android.settings;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -28,8 +29,7 @@ import android.preference.PreferenceScreen;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.provider.Settings;
 
-public class ApplicationSettings extends PreferenceActivity implements
-        DialogInterface.OnClickListener {
+public class ApplicationSettings extends PreferenceActivity {
     
     private static final String KEY_TOGGLE_INSTALL_APPLICATIONS = "toggle_install_applications";
     private static final String KEY_APP_INSTALL_LOCATION = "app_install_location";
@@ -39,6 +39,7 @@ public class ApplicationSettings extends PreferenceActivity implements
     private static final int APP_INSTALL_AUTO = 0;
     private static final int APP_INSTALL_DEVICE = 1;
     private static final int APP_INSTALL_SDCARD = 2;
+    private static final int WARN_INSTALL_DIALOG_ID = 3;
     
     private static final String APP_INSTALL_DEVICE_ID = "device";
     private static final String APP_INSTALL_SDCARD_ID = "sdcard";
@@ -47,8 +48,6 @@ public class ApplicationSettings extends PreferenceActivity implements
     private CheckBoxPreference mToggleAppInstallation;
 
     private ListPreference mInstallLocation;
-
-    private DialogInterface mWarnInstallApps;
 
     @Override
     protected void onCreate(Bundle icicle) {
@@ -102,32 +101,17 @@ public class ApplicationSettings extends PreferenceActivity implements
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (mWarnInstallApps != null) {
-            mWarnInstallApps.dismiss();
-        }
-    }
-
-    @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         if (preference == mToggleAppInstallation) {
             if (mToggleAppInstallation.isChecked()) {
                 mToggleAppInstallation.setChecked(false);
-                warnAppInstallation();
+                showDialog(WARN_INSTALL_DIALOG_ID);
             } else {
                 setNonMarketAppsAllowed(false);
             }
         }
 
         return super.onPreferenceTreeClick(preferenceScreen, preference);
-    }
-
-    public void onClick(DialogInterface dialog, int which) {
-        if (dialog == mWarnInstallApps && which == DialogInterface.BUTTON_POSITIVE) {
-            setNonMarketAppsAllowed(true);
-            mToggleAppInstallation.setChecked(true);
-        }
     }
 
     private void setNonMarketAppsAllowed(boolean enabled) {
@@ -156,13 +140,26 @@ public class ApplicationSettings extends PreferenceActivity implements
         }
     }
 
-    private void warnAppInstallation() {
-        mWarnInstallApps = new AlertDialog.Builder(this)
-                .setTitle(getString(R.string.error_title))
-                .setIcon(com.android.internal.R.drawable.ic_dialog_alert)
-                .setMessage(getResources().getString(R.string.install_all_warning))
-                .setPositiveButton(android.R.string.yes, this)
-                .setNegativeButton(android.R.string.no, null)
-                .show();
+    protected Dialog onCreateDialog(int id) {
+        AlertDialog dialog;
+        switch (id) {
+            case WARN_INSTALL_DIALOG_ID:
+                dialog = new AlertDialog.Builder(this)
+                        .setTitle(getString(R.string.error_title))
+                        .setIcon(com.android.internal.R.drawable.ic_dialog_alert)
+                        .setMessage(getResources().getString(R.string.install_all_warning))
+                        .setPositiveButton(android.R.string.yes,
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                setNonMarketAppsAllowed(true);
+                                mToggleAppInstallation.setChecked(true);
+                            }
+                        }).setNegativeButton(android.R.string.no, null)
+                        .create();
+                break;
+            default:
+                dialog = null;
+        }
+        return dialog;
     }
 }

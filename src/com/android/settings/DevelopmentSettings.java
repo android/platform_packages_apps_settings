@@ -32,21 +32,16 @@ import android.text.TextUtils;
 /*
  * Displays preferences for application developers.
  */
-public class DevelopmentSettings extends PreferenceActivity
-        implements DialogInterface.OnClickListener, DialogInterface.OnDismissListener {
+public class DevelopmentSettings extends PreferenceActivity {
 
     private static final String ENABLE_ADB = "enable_adb";
     private static final String KEEP_SCREEN_ON = "keep_screen_on";
     private static final String ALLOW_MOCK_LOCATION = "allow_mock_location";
+    private static final int USB_DEBUG_DIALOG_ID = 1;
 
     private CheckBoxPreference mEnableAdb;
     private CheckBoxPreference mKeepScreenOn;
     private CheckBoxPreference mAllowMockLocation;
-
-    // To track whether Yes was clicked in the adb warning dialog
-    private boolean mOkClicked;
-
-    private Dialog mOkDialog;
 
     @Override
     protected void onCreate(Bundle icicle) {
@@ -80,16 +75,8 @@ public class DevelopmentSettings extends PreferenceActivity
 
         if (preference == mEnableAdb) {
             if (mEnableAdb.isChecked()) {
-                mOkClicked = false;
-                if (mOkDialog != null) dismissDialog();
-                mOkDialog = new AlertDialog.Builder(this).setMessage(
-                        getResources().getString(R.string.adb_warning_message))
-                        .setTitle(R.string.adb_warning_title)
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .setPositiveButton(android.R.string.yes, this)
-                        .setNegativeButton(android.R.string.no, this)
-                        .show();
-                mOkDialog.setOnDismissListener(this);
+                mEnableAdb.setChecked(false);
+                showDialog(USB_DEBUG_DIALOG_ID);
             } else {
                 Settings.Secure.putInt(getContentResolver(), Settings.Secure.ADB_ENABLED, 0);
             }
@@ -105,32 +92,27 @@ public class DevelopmentSettings extends PreferenceActivity
         return false;
     }
 
-    private void dismissDialog() {
-        if (mOkDialog == null) return;
-        mOkDialog.dismiss();
-        mOkDialog = null;
-    }
-
-    public void onClick(DialogInterface dialog, int which) {
-        if (which == DialogInterface.BUTTON_POSITIVE) {
-            mOkClicked = true;
-            Settings.Secure.putInt(getContentResolver(), Settings.Secure.ADB_ENABLED, 1);
-        } else {
-            // Reset the toggle
-            mEnableAdb.setChecked(false);
+    protected Dialog onCreateDialog(int id) {
+        AlertDialog dialog;
+        switch (id) {
+            case USB_DEBUG_DIALOG_ID:
+                dialog = new AlertDialog.Builder(this).setMessage(
+                        getResources().getString(R.string.adb_warning_message))
+                        .setTitle(R.string.adb_warning_title)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setPositiveButton(android.R.string.yes,
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        Settings.Secure.putInt(getContentResolver(),
+                                                Settings.Secure.ADB_ENABLED, 1);
+                                        mEnableAdb.setChecked(true);
+                                    }
+                                }).setNegativeButton(android.R.string.no, null)
+                                .create();
+                break;
+            default:
+                dialog = null;
         }
-    }
-
-    public void onDismiss(DialogInterface dialog) {
-        // Assuming that onClick gets called first
-        if (!mOkClicked) {
-            mEnableAdb.setChecked(false);
-        }
-    }
-
-    @Override
-    public void onDestroy() {
-        dismissDialog();
-        super.onDestroy();
+        return dialog;
     }
 }
