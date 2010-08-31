@@ -54,6 +54,8 @@ public class ApnEditor extends PreferenceActivity
     private static final int MENU_CANCEL = Menu.FIRST + 2;
     private static final int ERROR_DIALOG_ID = 0;
 
+    private static final int APN_CARRIER_LOCKED = 1;
+
     private static String sNotSet;
     private EditTextPreference mName;
     private EditTextPreference mApn;
@@ -72,6 +74,8 @@ public class ApnEditor extends PreferenceActivity
 
     private String mCurMnc;
     private String mCurMcc;
+
+    private int mApnLock;
 
     private Uri mUri;
     private Cursor mCursor;
@@ -99,6 +103,7 @@ public class ApnEditor extends PreferenceActivity
             Telephony.Carriers.MMSPORT, // 13
             Telephony.Carriers.AUTH_TYPE, // 14
             Telephony.Carriers.TYPE, // 15
+            Telephony.Carriers.LOCK  // 16
     };
 
     private static final int ID_INDEX = 0;
@@ -116,7 +121,7 @@ public class ApnEditor extends PreferenceActivity
     private static final int MMSPORT_INDEX = 13;
     private static final int AUTH_TYPE_INDEX = 14;
     private static final int TYPE_INDEX = 15;
-
+    private static final int APN_LOCK_INDEX = 16;
 
     @Override
     protected void onCreate(Bundle icicle) {
@@ -235,7 +240,7 @@ public class ApnEditor extends PreferenceActivity
             if (authVal != -1) {
                 mAuthType.setValueIndex(authVal);
             }
-
+            mApnLock = mCursor.getInt(APN_LOCK_INDEX);
         }
 
         mName.setSummary(checkNull(mName.getText()));
@@ -262,6 +267,23 @@ public class ApnEditor extends PreferenceActivity
         } else {
             mAuthType.setSummary(sNotSet);
         }
+
+        if (mApnLock == APN_CARRIER_LOCKED) {
+            mName.setEnabled(false);
+            mApn.setEnabled(false);
+            mProxy.setEnabled(false);
+            mPort.setEnabled(false);
+            mUser.setEnabled(false);
+            mServer.setEnabled(false);
+            mPassword.setEnabled(false);
+            mMmsProxy.setEnabled(false);
+            mMmsPort.setEnabled(false);
+            mMmsc.setEnabled(false);
+            mMcc.setEnabled(false);
+            mMnc.setEnabled(false);
+            mApnType.setEnabled(false);
+            mAuthType.setEnabled(false);
+        }
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -283,16 +305,21 @@ public class ApnEditor extends PreferenceActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
-        // If it's a new APN, then cancel will delete the new entry in onPause
-        if (!mNewApn) {
-            menu.add(0, MENU_DELETE, 0, R.string.menu_delete)
-                .setIcon(android.R.drawable.ic_menu_delete);
+        boolean result = true;
+        if (mApnLock == APN_CARRIER_LOCKED) {
+            result = false;
+        } else {
+            // If it's a new APN, then cancel will delete the new entry in onPause
+            if (!mNewApn) {
+                menu.add(0, MENU_DELETE, 0, R.string.menu_delete)
+                    .setIcon(android.R.drawable.ic_menu_delete);
+            }
+            menu.add(0, MENU_SAVE, 0, R.string.menu_save)
+                .setIcon(android.R.drawable.ic_menu_save);
+            menu.add(0, MENU_CANCEL, 0, R.string.menu_cancel)
+                .setIcon(android.R.drawable.ic_menu_close_clear_cancel);
         }
-        menu.add(0, MENU_SAVE, 0, R.string.menu_save)
-            .setIcon(android.R.drawable.ic_menu_save);
-        menu.add(0, MENU_CANCEL, 0, R.string.menu_cancel)
-            .setIcon(android.R.drawable.ic_menu_close_clear_cancel);
-        return true;
+        return result;
     }
 
     @Override
