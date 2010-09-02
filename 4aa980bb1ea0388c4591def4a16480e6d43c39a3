@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA7H///ek\u003d",
+        "filename": "res/layout/power_usage_detail_item_text.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2010-09-02T20:32:46Z",
+      "side": 1,
+      "message": "When there are multiple items one below the other, this kind of staggered layout between the left and right edges could be kind of ugly. Wouldn\u0027t it be better to change the font size or just fix the translations? I\u0027m a little hesitant to approve this without checking with the designers.\n\nOther option is to ellipsize the label so that it doesn\u0027t overlap.",
+      "revId": "4aa980bb1ea0388c4591def4a16480e6d43c39a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
