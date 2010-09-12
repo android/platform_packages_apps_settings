@@ -1780,7 +1780,10 @@ public class ManageApplications extends TabActivity implements
                 mAppPropCache.clear();
                 while(fis.available() > 0) {
                     fis.read(lenBytes, 0, 2);
-                    int buffLen = (lenBytes[0] << 8) | lenBytes[1];
+                    // byte is signed, storing in ints before the logical or
+                    int buffLen0 = lenBytes[0] & 0x00ff;
+                    int buffLen1 = lenBytes[1] & 0x00ff;
+                    int buffLen = (buffLen0 << 8) | buffLen1;
                     if ((buffLen <= 0) || (buffLen > byteBuff.length)) {
                         err = true;
                         break;
