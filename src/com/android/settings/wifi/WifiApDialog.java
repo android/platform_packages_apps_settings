@@ -52,6 +52,8 @@ class WifiApDialog extends AlertDialog implements View.OnClickListener,
     private static final int OPEN_INDEX = 0;
     private static final int WPA_INDEX = 1;
 
+    private static final int MAX_SSID_LENGTH = 32;
+
     private View mView;
     private TextView mSsid;
     private int mSecurityType = AccessPoint.SECURITY_NONE;
@@ -142,7 +144,7 @@ class WifiApDialog extends AlertDialog implements View.OnClickListener,
     }
 
     private void validate() {
-        if ((mSsid != null && mSsid.length() == 0) ||
+        if ((mSsid != null && (mSsid.length() == 0 || mSsid.length() > MAX_SSID_LENGTH)) ||
                    (mSecurityType == AccessPoint.SECURITY_PSK && mPassword.length() < 8)) {
             getButton(BUTTON_SUBMIT).setEnabled(false);
         } else {
