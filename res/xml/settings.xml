@@ -44,6 +44,15 @@
         </com.android.settings.IconPreferenceScreen>
 
         <com.android.settings.IconPreferenceScreen
+            android:title="@string/eth_radio_ctrl_title"
+            settings:icon="@drawable/ic_settings_ethernet">
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="com.android.settings"
+                android:targetClass="com.android.settings.EthernetSettings" />
+        </com.android.settings.IconPreferenceScreen>
+
+        <com.android.settings.IconPreferenceScreen
             android:key="call_settings"
             settings:icon="@drawable/ic_settings_call"
             android:title="@string/call_settings_title">

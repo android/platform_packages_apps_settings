@@ -2531,4 +2531,23 @@ found in the list of installed applications.</string>
     <string name="sound_category_calls_title">Incoming calls</string>
     <string name="sound_category_notification_title">Notifications</string>
     <string name="sound_category_feedback_title">Feedback</string>
+
+    <!-- Ethernet configuration dialog -->
+    <string name="eth_config_title">Configure Ethernet device</string>
+    <string name="eth_setting">Ethernet setting</string>
+    <string name="eth_dev_list">Ethernet Devices:</string>
+    <string name="eth_con_type">Connection Type</string>
+    <string name="eth_con_type_dhcp">Dhcp</string>
+    <string name="eth_con_type_manual">Static IP</string>
+    <string name="eth_dns">DNS address</string>
+    <string name="eth_gw">Default Router</string>
+    <string name="eth_ipaddr">IP address</string>
+    <string name="eth_quick_toggle_title">Ethernet</string>
+    <string name="eth_quick_toggle_summary">Turn on Ethernet</string>
+    <string name="eth_radio_ctrl_title">Ethernet configuration</string>
+    <string name="eth_conf_perf_title">Ethernet configuration</string>
+    <string name="eth_conf_summary">Configure Ethernet devices</string>
+    <string name="eth_mask">Netmask</string>
+    <string name="eth_toggle_summary_off">Turn off Ethernet</string>
+    <string name="eth_toggle_summary_on">Turn on Ethernet</string>
 </resources>
