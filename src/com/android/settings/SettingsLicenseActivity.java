@@ -46,6 +46,8 @@ public class SettingsLicenseActivity extends AlertActivity {
     private static final String DEFAULT_LICENSE_PATH = "/system/etc/NOTICE.html.gz";
     private static final String PROPERTY_LICENSE_PATH = "ro.config.license_path";
 
+    private WebView mWebView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -95,11 +97,11 @@ public class SettingsLicenseActivity extends AlertActivity {
             return;
         }
 
-        WebView webView = new WebView(this);
+        mWebView = new WebView(getApplicationContext());
 
         // Begin the loading.  This will be done in a separate thread in WebView.
-        webView.loadDataWithBaseURL(null, data.toString(), "text/html", "utf-8", null);
-        webView.setWebViewClient(new WebViewClient() {
+        mWebView.loadDataWithBaseURL(null, data.toString(), "text/html", "utf-8", null);
+        mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
                 // Change from 'Loading...' to the real title
@@ -109,7 +111,7 @@ public class SettingsLicenseActivity extends AlertActivity {
 
         final AlertController.AlertParams p = mAlertParams;
         p.mTitle = getString(R.string.settings_license_activity_loading);
-        p.mView = webView;
+        p.mView = mWebView;
         p.mForceInverseBackground = true;
         setupAlert();
     }
@@ -120,4 +122,12 @@ public class SettingsLicenseActivity extends AlertActivity {
         finish();
     }
 
+    @Override
+    protected void onDestroy() {
+        if (mWebView != null) {
+            mWebView.destroy();
+            mWebView = null;
+        }
+        super.onDestroy();
+    }
 }
