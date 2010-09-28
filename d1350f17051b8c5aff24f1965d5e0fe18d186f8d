@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA7n//+9Y\u003d",
+        "filename": "src/com/android/settings/bluetooth/BluetoothNamePreference.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1000269
+      },
+      "writtenOn": "2010-09-28T14:01:43Z",
+      "side": 1,
+      "message": "the comma after bytes should probably be a semicolon or period.\n\nI read this a few times as saying that the bluetooth spec set the limit at 248 *because* of the UTF-8 encoding properties.\n\ndon\u0027t think that\u0027s what was meant here.",
+      "revId": "d1350f17051b8c5aff24f1965d5e0fe18d186f8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
