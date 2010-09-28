@@ -40,8 +40,9 @@ import android.widget.EditText;
  */
 public class BluetoothNamePreference extends EditTextPreference implements TextWatcher {
     private static final String TAG = "BluetoothNamePreference";
-    // TODO(): Investigate bluetoothd/dbus crash when length is set to 248, limit as per spec.
-    private static final int BLUETOOTH_NAME_MAX_LENGTH = 200;
+    // Bluetooth spec says length is limited to 248 bytes, since utf-8 encoding can be 4 bytes
+    // per character it is only safe with max length of 62.
+    private static final int BLUETOOTH_NAME_MAX_LENGTH = 62;
 
     private LocalBluetoothManager mLocalManager;
 
