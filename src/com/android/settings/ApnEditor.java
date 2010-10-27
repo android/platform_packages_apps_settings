@@ -334,9 +334,8 @@ public class ApnEditor extends PreferenceActivity
     @Override
     protected void onSaveInstanceState(Bundle icicle) {
         super.onSaveInstanceState(icicle);
-        if (validateAndSave(true)) {
-            icicle.putInt(SAVED_POS, mCursor.getInt(ID_INDEX));
-        }
+        validateAndSave(true);
+        icicle.putInt(SAVED_POS, mCursor.getInt(ID_INDEX));
     }
 
     /**
@@ -359,12 +358,6 @@ public class ApnEditor extends PreferenceActivity
         if (!mCursor.moveToFirst()) {
             Log.w(TAG,
                     "Could not go to the first row in the Cursor when saving data.");
-            return false;
-        }
-
-        // If it's a new APN and a name or apn haven't been entered, then erase the entry
-        if (force && mNewApn && name.length() < 1 && apn.length() < 1) {
-            getContentResolver().delete(mUri, null, null);
             return false;
         }
 
