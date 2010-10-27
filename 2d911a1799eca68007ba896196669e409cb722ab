@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA8H//+Tc\u003d",
+        "filename": "res/layout/vpn_connect_dialog_view.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1001146
+      },
+      "writtenOn": "2010-10-27T16:38:46Z",
+      "side": 1,
+      "message": "No need to use a TableLayout, the EditText simply should have layout_width \u003d 0dip and layout_weight \u003d 1.0",
+      "revId": "2d911a1799eca68007ba896196669e409cb722ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA8H//+To\u003d",
+        "filename": "res/layout/vpn_connect_dialog_view.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001146
+      },
+      "writtenOn": "2010-10-27T16:38:46Z",
+      "side": 1,
+      "message": "This shouldn\u0027t be match_parent anymore.",
+      "revId": "2d911a1799eca68007ba896196669e409cb722ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA8H//+Tk\u003d",
+        "filename": "res/layout/vpn_connect_dialog_view.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1001146
+      },
+      "writtenOn": "2010-10-27T16:38:46Z",
+      "side": 1,
+      "message": "Same here",
+      "revId": "2d911a1799eca68007ba896196669e409cb722ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA8H//+Tg\u003d",
+        "filename": "res/layout/vpn_connect_dialog_view.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001146
+      },
+      "writtenOn": "2010-10-27T16:38:46Z",
+      "side": 1,
+      "message": "Indent is wrong",
+      "revId": "2d911a1799eca68007ba896196669e409cb722ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
