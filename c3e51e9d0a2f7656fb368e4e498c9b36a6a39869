@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA8H//+F4\u003d",
+        "filename": "src/com/android/settings/SettingsLicenseActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2010-10-28T14:59:42Z",
+      "side": 1,
+      "message": "may as well create this on L80?",
+      "revId": "c3e51e9d0a2f7656fb368e4e498c9b36a6a39869",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA8H//+F8\u003d",
+        "filename": "src/com/android/settings/SettingsLicenseActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2010-10-28T14:59:42Z",
+      "side": 1,
+      "message": "char[]",
+      "revId": "c3e51e9d0a2f7656fb368e4e498c9b36a6a39869",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
