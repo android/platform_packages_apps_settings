@@ -38,6 +38,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.android.internal.telephony.TelephonyProperties;
+import com.android.internal.util.ArrayUtils;
 
 
 public class ApnEditor extends PreferenceActivity
@@ -48,6 +49,7 @@ public class ApnEditor extends PreferenceActivity
 
     private final static String SAVED_POS = "pos";
     private final static String KEY_AUTH_TYPE = "auth_type";
+    private final static String KEY_NETWORK_TYPE = "network_type";
 
     private static final int MENU_DELETE = Menu.FIRST;
     private static final int MENU_SAVE = Menu.FIRST + 1;
@@ -69,6 +71,7 @@ public class ApnEditor extends PreferenceActivity
     private EditTextPreference mMmsPort;
     private ListPreference mAuthType;
     private EditTextPreference mApnType;
+    private ListPreference mNetworkType;
 
     private String mCurMnc;
     private String mCurMcc;
@@ -99,6 +102,7 @@ public class ApnEditor extends PreferenceActivity
             Telephony.Carriers.MMSPORT, // 13
             Telephony.Carriers.AUTH_TYPE, // 14
             Telephony.Carriers.TYPE, // 15
+            Telephony.Carriers.NETWORK_TYPE, // 16
     };
 
     private static final int ID_INDEX = 0;
@@ -116,6 +120,7 @@ public class ApnEditor extends PreferenceActivity
     private static final int MMSPORT_INDEX = 13;
     private static final int AUTH_TYPE_INDEX = 14;
     private static final int TYPE_INDEX = 15;
+    private static final int NETWORK_TYPE_INDEX = 16;
 
 
     @Override
@@ -141,6 +146,8 @@ public class ApnEditor extends PreferenceActivity
 
         mAuthType = (ListPreference) findPreference("auth_type");
         mAuthType.setOnPreferenceChangeListener(this);
+        mNetworkType = (ListPreference) findPreference("network_type");
+        mNetworkType.setOnPreferenceChangeListener(this);
 
         mRes = getResources();
 
@@ -238,6 +245,15 @@ public class ApnEditor extends PreferenceActivity
                 mAuthType.setValue(null);
             }
 
+            String networkVal = mCursor.getString(NETWORK_TYPE_INDEX);
+            if (networkVal.length()!=0) {
+                String []values = mRes.getStringArray(R.array.apn_network_values);
+                for (int i = 0; i < values.length; i++) {
+                    if (values[i].equals(networkVal)) {
+                        mNetworkType.setValueIndex(i);
+                    }
+                }
+            }
         }
 
         mName.setSummary(checkNull(mName.getText()));
@@ -264,6 +280,16 @@ public class ApnEditor extends PreferenceActivity
         } else {
             mAuthType.setSummary(sNotSet);
         }
+        String networkVal = mNetworkType.getValue();
+        if (networkVal != null) {
+            int networkValIndex = mNetworkType.findIndexOfValue(networkVal);
+            mNetworkType.setValueIndex(networkValIndex);
+
+            String []values = mRes.getStringArray(R.array.apn_network_entries);
+            mNetworkType.setSummary(values[networkValIndex]);
+        } else {
+            mNetworkType.setSummary(sNotSet);
+        }
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
@@ -275,6 +301,17 @@ public class ApnEditor extends PreferenceActivity
 
                 String []values = mRes.getStringArray(R.array.apn_auth_entries);
                 mAuthType.setSummary(values[index]);
+            } catch (NumberFormatException e) {
+                return false;
+            }
+        }
+        if (KEY_NETWORK_TYPE.equals(key)) {
+            try {
+                int index = mNetworkType.findIndexOfValue((String) newValue);
+                mNetworkType.setValueIndex(index);
+
+                String []values = mRes.getStringArray(R.array.apn_network_entries);
+                mNetworkType.setSummary(values[index]);
             } catch (NumberFormatException e) {
                 return false;
             }
@@ -387,6 +424,11 @@ public class ApnEditor extends PreferenceActivity
         String authVal = mAuthType.getValue();
         if (authVal != null) {
             values.put(Telephony.Carriers.AUTH_TYPE, Integer.parseInt(authVal));
+        }
+
+        String networkVal = mNetworkType.getValue();
+        if (networkVal != null) {
+            values.put(Telephony.Carriers.NETWORK_TYPE, networkVal);
         }
 
         values.put(Telephony.Carriers.TYPE, checkNotSet(mApnType.getText()));

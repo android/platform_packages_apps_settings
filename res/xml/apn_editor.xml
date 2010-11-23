@@ -114,4 +114,10 @@
         android:singleLine="true"
         android:inputType="textNoSuggestions"
         />
+    <ListPreference
+        android:title="@string/apn_network_type"
+        android:key="network_type"
+        android:entries="@array/apn_network_entries"
+        android:entryValues="@array/apn_network_values"
+        />
 </PreferenceScreen>   

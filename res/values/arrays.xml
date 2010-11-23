@@ -309,6 +309,22 @@
         <item>Application Name</item>
     </string-array>
 
+    <!-- Network Types used in APN editor -->
+    <string-array name="apn_network_entries">
+        <item>IPv4</item>
+        <item>IPv6</item>
+        <item>Dual-stack</item>
+    </string-array>
+
+    <string-array translatable="false" name="apn_network_values">
+        <!-- Do not translate. -->
+        <item>IP</item>
+        <!-- Do not translate. -->
+        <item>IPV6</item>
+        <!-- Do not translate. -->
+        <item>IPV4V6</item>
+    </string-array>
+
     <!-- EAP method -->
     <string-array name="wifi_eap_entries">
         <item>PEAP</item>
