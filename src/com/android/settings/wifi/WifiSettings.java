@@ -465,6 +465,8 @@ public class WifiSettings extends PreferenceActivity implements DialogInterface.
         } else {
             mScanner.pause();
             mAccessPoints.removeAll();
+            mLastInfo = null;
+            mLastState = null;
         }
     }
 
