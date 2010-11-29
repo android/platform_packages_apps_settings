@@ -54,12 +54,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.EditText;
 
-import com.android.internal.telephony.DataConnection;
+import com.android.internal.net.IPVersion;
+import com.android.internal.telephony.data.DataConnection;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.PhoneStateIntentReceiver;
 import com.android.internal.telephony.TelephonyProperties;
-import com.android.internal.telephony.gsm.GsmDataConnection;
+import com.android.internal.telephony.data.MMDataConnection;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -769,17 +770,17 @@ public class RadioInfo extends Activity {
                   .append(" and elapsed ")
                   .append(DateUtils.formatElapsedTime(timeElapsed));
 
-                if (dc instanceof GsmDataConnection) {
-                    GsmDataConnection pdp = (GsmDataConnection)dc;
+                if (dc instanceof MMDataConnection) {
+                    MMDataConnection pdp = (MMDataConnection)dc;
                     sb.append("\n    to ")
-                      .append(pdp.getApn().toString());
+                      .append(pdp.getDataProfile().toString());
                 }
                 sb.append("\ninterface: ")
-                  .append(phone.getInterfaceName(phone.getActiveApnTypes()[0]))
+                  .append(phone.getInterfaceName(phone.getActiveApnTypes()[0], IPVersion.INET))
                   .append("\naddress: ")
                   .append(phone.getIpAddress(phone.getActiveApnTypes()[0]))
                   .append("\ngateway: ")
-                  .append(phone.getGateway(phone.getActiveApnTypes()[0]));
+                  .append(phone.getGateway(phone.getActiveApnTypes()[0], IPVersion.INET));
                 String[] dns = phone.getDnsServers(phone.getActiveApnTypes()[0]);
                 if (dns != null) {
                     sb.append("\ndns: ").append(dns[0]).append(", ").append(dns[1]);
@@ -790,10 +791,10 @@ public class RadioInfo extends Activity {
                   .append("\n    fail because ")
                   .append(dc.getLastFailCause().toString());
             } else {
-                if (dc instanceof GsmDataConnection) {
-                    GsmDataConnection pdp = (GsmDataConnection)dc;
+                if (dc instanceof MMDataConnection) {
+                    MMDataConnection pdp = (MMDataConnection)dc;
                     sb.append("    is connecting to ")
-                      .append(pdp.getApn().toString());
+                      .append(pdp.getDataProfile().toString());
                 } else {
                     sb.append("    is connecting");
                 }
