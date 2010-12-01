@@ -35,6 +35,8 @@ public class AirplaneModeEnabler implements Preference.OnPreferenceChangeListene
     private final Context mContext;
 
     private PhoneStateIntentReceiver mPhoneStateReceiver;
+
+    private int mRadioTech;
     
     private final CheckBoxPreference mCheckBoxPref;
 
@@ -57,9 +59,12 @@ public class AirplaneModeEnabler implements Preference.OnPreferenceChangeListene
         mCheckBoxPref = airplaneModeCheckBoxPreference;
         
         airplaneModeCheckBoxPreference.setPersistent(false);
-    
+
         mPhoneStateReceiver = new PhoneStateIntentReceiver(mContext, mHandler);
         mPhoneStateReceiver.notifyServiceState(EVENT_SERVICE_STATE_CHANGED);
+
+        ServiceState serviceState = mPhoneStateReceiver.getServiceState();
+        mRadioTech = serviceState.getRadioTechnology();
     }
 
     public void resume() {
@@ -96,14 +101,28 @@ public class AirplaneModeEnabler implements Preference.OnPreferenceChangeListene
         Intent intent = new Intent(Intent.ACTION_AIRPLANE_MODE_CHANGED);
         intent.putExtra("state", enabling);
         mContext.sendBroadcast(intent);
+        // There is no modem or it is not known so don't rely on the
+        // service state or the intent response.
+        if (mRadioTech == ServiceState.RADIO_TECHNOLOGY_UNKNOWN) {
+            onAirplaneModeChanged();
+        }
     }
 
     /**
      * Called when we've received confirmation that the airplane mode was set.
      */
     private void onAirplaneModeChanged() {
-        ServiceState serviceState = mPhoneStateReceiver.getServiceState();
-        boolean airplaneModeEnabled = serviceState.getState() == ServiceState.STATE_POWER_OFF;
+        boolean airplaneModeEnabled = false;
+
+        // If the radio technology is not known the service state returns out of service
+        if (mRadioTech != ServiceState.RADIO_TECHNOLOGY_UNKNOWN) {
+            ServiceState serviceState = mPhoneStateReceiver.getServiceState();
+            airplaneModeEnabled = serviceState.getState() == ServiceState.STATE_POWER_OFF;
+        } else {
+            airplaneModeEnabled = Settings.System.getInt(mContext.getContentResolver(),
+                                      Settings.System.AIRPLANE_MODE_ON, 0) != 0;
+        }
+
         mCheckBoxPref.setChecked(airplaneModeEnabled);
         mCheckBoxPref.setSummary(airplaneModeEnabled ? null : 
                 mContext.getString(R.string.airplane_mode_summary));            
