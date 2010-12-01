@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA9n//9/A\u003d",
+        "filename": "src/com/android/settings/AirplaneModeEnabler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2010-12-01T22:48:21Z",
+      "side": 1,
+      "message": "Style issue: please use spaces instead of tabs for the indentation. Thanks!",
+      "revId": "e168fad44b2e047356ee5637f662cf1871852627",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
