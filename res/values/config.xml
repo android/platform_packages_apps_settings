@@ -41,4 +41,8 @@
     <!-- When true enable color temperature setting. -->
     <bool name="config_enableColorTemperature">false</bool>
 
+    <!-- List of APNs that should be protected against editing and deletion. -->
+    <string-array name="config_locked_apn_names" translatable="false">
+    </string-array>
+
 </resources>

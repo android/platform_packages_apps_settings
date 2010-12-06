@@ -65,6 +65,7 @@ public class ApnEditor extends InstrumentedPreferenceActivity
     private static final int MENU_CANCEL = Menu.FIRST + 2;
     private static final int ERROR_DIALOG_ID = 0;
 
+    private HashSet<String> mLockSettingsCache = new HashSet<String>();
     private static String sNotSet;
     private EditTextPreference mName;
     private EditTextPreference mApn;
@@ -392,6 +393,10 @@ public class ApnEditor extends InstrumentedPreferenceActivity
         } else {
             mCarrierEnabled.setEnabled(false);
         }
+
+        if (!mNewApn && isApnLocked()) {
+            getPreferenceScreen().setEnabled(false);
+        }
     }
 
     /**
@@ -531,6 +536,10 @@ public class ApnEditor extends InstrumentedPreferenceActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
+        if (isApnLocked()) {
+            return false;
+        }
+
         // If it's a new APN, then cancel will delete the new entry in onPause
         if (!mNewApn) {
             menu.add(0, MENU_DELETE, 0, R.string.menu_delete)
@@ -568,7 +577,7 @@ public class ApnEditor extends InstrumentedPreferenceActivity
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         switch (keyCode) {
             case KeyEvent.KEYCODE_BACK: {
-                if (validateAndSave(false)) {
+                if (isApnLocked() || validateAndSave(false)) {
                     finish();
                 }
                 return true;
@@ -586,6 +595,25 @@ public class ApnEditor extends InstrumentedPreferenceActivity
     }
 
     /**
+     * Check whether it can go on to save the APN
+     * @return true if OK
+     */
+    private boolean checkCanSaveApn(boolean force) {
+        // Don't ever save a locked APN
+        if (isApnLocked()) {
+            if (getPreferenceScreen().isEnabled()) {
+                showDialog(ERROR_DIALOG_ID);
+            }
+            return false;
+        }
+        if (getErrorMsg() != null && !force) {
+            showDialog(ERROR_DIALOG_ID);
+            return false;
+        }
+        return true;
+    }
+
+    /**
      * Check the key fields' validity and save if valid.
      * @param force save even if the fields are not valid, if the app is
      *        being suspended
@@ -597,11 +625,7 @@ public class ApnEditor extends InstrumentedPreferenceActivity
         String mcc = checkNotSet(mMcc.getText());
         String mnc = checkNotSet(mMnc.getText());
 
-        if (getErrorMsg() != null && !force) {
-            showDialog(ERROR_DIALOG_ID);
-            return false;
-        }
-
+        if (!checkCanSaveApn(force)) return false;
         if (!mCursor.moveToFirst()) {
             Log.w(TAG,
                     "Could not go to the first row in the Cursor when saving data.");
@@ -702,6 +726,8 @@ public class ApnEditor extends InstrumentedPreferenceActivity
             errorMsg = mRes.getString(R.string.error_mcc_not3);
         } else if ((mnc.length() & 0xFFFE) != 2) {
             errorMsg = mRes.getString(R.string.error_mnc_not23);
+        } else if (isApnLocked()) {
+            errorMsg = mRes.getString(R.string.error_name_conflict);
         }
 
         return errorMsg;
@@ -780,5 +806,29 @@ public class ApnEditor extends InstrumentedPreferenceActivity
                 pref.setSummary(checkNull(sharedPreferences.getString(key, "")));
             }
         }
+    }
+
+    /**
+     * Return if current APN should be locked or not.
+     *
+     * @return true if apn is locked
+     */
+    private boolean isApnLocked() {
+        final String apnName = checkNull(mName.getText());
+        boolean result = false;
+        if (mLockSettingsCache.isEmpty()) {
+            // Reloads data to cache.
+            String[] lockInfoArray = getResources().getStringArray(R.array.config_locked_apn_names);
+            for (String name: lockInfoArray) {
+                mLockSettingsCache.add(name);
+            }
+        }
+        // Gets lock info from cache.
+        if (!mLockSettingsCache.isEmpty()) {
+            if (mLockSettingsCache.contains(apnName)) {
+                result = true;
+            }
+        }
+        return result;
     }
 }

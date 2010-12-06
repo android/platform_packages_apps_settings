@@ -7055,4 +7055,7 @@
 
     <!-- Description of the setting to change the display's color temperature -->
     <string name="color_temperature_desc">Enable cool temperature</string>
+
+    <!-- APN error dialog messages: text when the input name conflict with the locked name -->
+    <string name="error_name_conflict">Name conflict with locked internet Access Point. Please change.</string>
 </resources>
