@@ -7044,4 +7044,8 @@
 
     <!-- Description of feature to change color setting for the display [CHAR LIMIT=NONE] -->
     <string name="picture_color_mode_desc">Use sRGB</string>
+
+    <!-- APN error dialog messages: text when the input name conflict with the locked name -->
+    <string name="error_name_conflict">Name conflict with locked internet Access Point. Please change.</string>
+
 </resources>

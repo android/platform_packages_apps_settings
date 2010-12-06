@@ -38,4 +38,8 @@
     <!-- The duration (in milliseconds) of activity transitions -->
     <integer name="setup_wizard_transition_duration">300</integer>
 
+    <!-- List of APNs that should be protected against editing and deletion. -->
+    <string-array name="config_locked_apn_names" translatable="false">
+    </string-array>
+
 </resources>
