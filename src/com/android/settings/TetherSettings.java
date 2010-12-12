@@ -157,8 +157,9 @@ public class TetherSettings extends PreferenceActivity {
                         ConnectivityManager.EXTRA_ACTIVE_TETHER);
                 ArrayList<String> errored = intent.getStringArrayListExtra(
                         ConnectivityManager.EXTRA_ERRORED_TETHER);
-                updateState((String[]) available.toArray(), (String[]) active.toArray(),
-                        (String[]) errored.toArray());
+                updateState(available.toArray(new String[available.size()]),
+                        active.toArray(new String[active.size()]),
+                        errored.toArray(new String[errored.size()]));
             } else if (intent.getAction().equals(Intent.ACTION_MEDIA_SHARED) ||
                        intent.getAction().equals(Intent.ACTION_MEDIA_UNSHARED)) {
                 updateState();
