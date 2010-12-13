@@ -20,8 +20,16 @@ import com.android.internal.os.storage.ExternalStorageFormatter;
 import com.android.internal.widget.LockPatternUtils;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.BatteryManager;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -31,13 +39,22 @@ import android.widget.CheckBox;
  * Confirm and execute a reset of the device to a clean "just out of the box"
  * state.  Multiple confirmations are required: first, a general "are you sure
  * you want to do this?" prompt, followed by a keyguard pattern trace if the user
- * has defined one, followed by a final strongly-worded "THIS WILL ERASE EVERYTHING
- * ON THE PHONE" prompt.  If at any time the phone is allowed to go to sleep, is
- * locked, et cetera, then the confirmation sequence is abandoned.
+ * has defined one, followed by a strongly-worded "THIS WILL ERASE EVERYTHING
+ * ON THE PHONE" prompt. Finally if battery level is below a predefined value of
+ * MASTER_CLEAR_EXECUTE_LEVEL the master clear will not be allowed to proceed.
+ * Instead a dialog will show and inform the user. If at any time the phone is
+ * allowed to go to sleep, is locked, et cetera, then the confirmation sequence
+ * is abandoned.
  */
 public class MasterClear extends Activity {
 
     private static final int KEYGUARD_REQUEST = 55;
+    /** Master clear minimum execute level. */
+    private static final int MASTER_CLEAR_EXECUTE_LEVEL = 20;
+    /** Dialog ID of MasterClear failed. */
+    private static final int DIALOG_MASTER_CLEAR_FAILED = 0;
+    /** Dialog ID of MasterClear battery short. */
+    private static final int DIALOG_MASTER_CLEAR_BATTERY_SHORT = 1;
 
     private LayoutInflater mInflater;
     private LockPatternUtils mLockUtils;
@@ -49,6 +66,19 @@ public class MasterClear extends Activity {
 
     private View mFinalView;
     private Button mFinalButton;
+    /** Battery low flag */
+    private boolean mBatteryLevelOk;
+    /** Is the BroadcastReceiver registered */
+    private boolean mReceiverRegistered;
+    private BroadcastReceiver mBatteryReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (Intent.ACTION_BATTERY_CHANGED.equals(action)) {
+                updateBatteryState(intent);
+            }
+        }
+    };
 
     /**
      * The user has gone through the multiple confirmation, so now we go ahead
@@ -66,8 +96,13 @@ public class MasterClear extends Activity {
                     intent.setComponent(ExternalStorageFormatter.COMPONENT_NAME);
                     startService(intent);
                 } else {
-                    sendBroadcast(new Intent("android.intent.action.MASTER_CLEAR"));
-                    // Intent handling is asynchronous -- assume it will happen soon.
+                    if (mBatteryLevelOk) {
+                        sendBroadcast(new Intent("android.intent.action.MASTER_CLEAR"));
+                        // Intent handling is asynchronous -- assume it will happen soon.
+                    } else {
+                        // Alert dialog (low battery alert).
+                        showDialog(DIALOG_MASTER_CLEAR_BATTERY_SHORT);
+                    }
                 }
             }
         };
@@ -127,7 +162,6 @@ public class MasterClear extends Activity {
                     (Button) mFinalView.findViewById(R.id.execute_master_clear);
             mFinalButton.setOnClickListener(mFinalClickListener);
         }
-
         setContentView(mFinalView);
     }
 
@@ -160,7 +194,6 @@ public class MasterClear extends Activity {
                 }
             });
         }
-
         setContentView(mInitialView);
     }
 
@@ -173,6 +206,10 @@ public class MasterClear extends Activity {
         mInflater = LayoutInflater.from(this);
         mLockUtils = new LockPatternUtils(this);
 
+        // Setup initial values
+        mBatteryLevelOk = true;
+        mReceiverRegistered = false;
+
         establishInitialState();
     }
 
@@ -184,8 +221,74 @@ public class MasterClear extends Activity {
     public void onPause() {
         super.onPause();
 
+        if (mReceiverRegistered) {
+            unregisterReceiver(mBatteryReceiver);
+            mReceiverRegistered = false;
+        }
+
         if (!isFinishing()) {
             establishInitialState();
         }
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        registerReceiver(mBatteryReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+        mReceiverRegistered = true;
+    }
+
+    private void updateBatteryState(final Intent intent) {
+        int level = intent.getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
+        int scale = intent.getIntExtra(BatteryManager.EXTRA_SCALE, -1);
+        mBatteryLevelOk = scale > 0 &&
+            level * 100 / scale >= MASTER_CLEAR_EXECUTE_LEVEL;
+    }
+
+    @Override
+    protected Dialog onCreateDialog(int dialogId) {
+        Dialog dialog = null;
+        switch (dialogId) {
+        case DIALOG_MASTER_CLEAR_FAILED:
+            dialog = new AlertDialog.Builder(MasterClear.this)
+                    .setMessage(getText(R.string.master_clear_failed))
+                    .setPositiveButton(getText(android.R.string.ok), null)
+                    .create();
+            break;
+        case DIALOG_MASTER_CLEAR_BATTERY_SHORT:
+            dialog = new AlertDialog.Builder(MasterClear.this)
+                    .setTitle(R.string.master_clear_dialog_title_battery_short_txt)
+                    .setMessage(getText(R.string.master_clear_dialog_message_battery_short_txt))
+                    .setPositiveButton(getText(android.R.string.ok),
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(final DialogInterface dialog,
+                                    final int button) {
+                                    establishInitialState();
+                                }
+                            }
+                    )
+                    .setOnKeyListener(new DialogInterface.OnKeyListener() {
+                        public boolean onKey(final DialogInterface d,
+                                final int keyCode, final KeyEvent event) {
+                            if (KeyEvent.ACTION_DOWN == event.getAction()) {
+                                switch (keyCode) {
+                                    case KeyEvent.KEYCODE_BACK:
+                                        establishInitialState();
+                                        d.dismiss();
+                                        return true;
+                                    default:
+                                        break;
+                                }
+                            }
+                            return false;
+                        }
+                    }).create();
+            break;
+        default:
+            break;
+        }
+        return dialog;
+    }
+
 }
