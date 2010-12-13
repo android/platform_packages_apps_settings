@@ -1453,6 +1453,10 @@
     <string name="master_clear_gesture_explanation">You must draw your unlock pattern to confirm a phone reset.</string>
     <!-- Master clear failed message -->
     <string name="master_clear_failed">No reset was performed because the System Clear service is not available.</string>
+    <!-- Informs the user that the battery charge level is low -->
+    <string name="master_clear_dialog_title_battery_short_txt">Battery low</string>
+    <!-- Informs the user that the battery level is low and that the battery needs re-charging. -->
+    <string name="master_clear_dialog_message_battery_short_txt">Battery low. Re-charge battery and try again. </string>
 
     <!-- Media Format -->
     <!-- SD card & phone storage settings screen, setting option name under Internal phone storage heading [CHAR LIMIT=25] -->
