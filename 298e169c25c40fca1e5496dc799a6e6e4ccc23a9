@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA+n///6Q\u003d",
+        "filename": "src/com/android/settings/AirplaneModeEnabler.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000269
+      },
+      "writtenOn": "2010-12-14T17:22:21Z",
+      "side": 1,
+      "message": "Doesn\u0027t look like this even compiles.  Where\u0027s the closing brace?",
+      "revId": "298e169c25c40fca1e5496dc799a6e6e4ccc23a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
