@@ -1,0 +1,123 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA+n///4c\u003d",
+        "filename": "src/com/android/settings/MasterClear.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1004017
+      },
+      "writtenOn": "2010-12-14T22:10:05Z",
+      "side": 1,
+      "message": "This seems excessive to me.  I would expect anything above 10% to be enough. Maybe 20% for safety.",
+      "revId": "7cb469fe0868db489c0c31aa78df699180f8bc44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA+n///4s\u003d",
+        "filename": "src/com/android/settings/MasterClear.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1004017
+      },
+      "writtenOn": "2010-12-14T22:10:05Z",
+      "side": 1,
+      "message": "Note that onReceive() doesn\u0027t run in the UI thread. It\u0027s probably safe in this context since it\u0027s the only modifier of mBatteryLevelOK, but beware if anything else does.",
+      "revId": "7cb469fe0868db489c0c31aa78df699180f8bc44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA+n///4o\u003d",
+        "filename": "src/com/android/settings/MasterClear.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1004017
+      },
+      "writtenOn": "2010-12-14T22:10:05Z",
+      "side": 1,
+      "message": "In order to guarantee you have the most recent battery status, this should register the receiver in onResume() and unregister in onPause().\n\nAs written, there\u0027s a race condition since the code registers the receiver just before kicking off the erase.  Conceivably the callback to the receiver could be delayed, in which case battery data will be incorrect and you\u0027ll see an inappropriate message.",
+      "revId": "7cb469fe0868db489c0c31aa78df699180f8bc44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA+n///4k\u003d",
+        "filename": "src/com/android/settings/MasterClear.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1004017
+      },
+      "writtenOn": "2010-12-14T22:10:05Z",
+      "side": 1,
+      "message": "Suggest renaming this to updateBatteryState().",
+      "revId": "7cb469fe0868db489c0c31aa78df699180f8bc44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA+n///4w\u003d",
+        "filename": "src/com/android/settings/MasterClear.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1004017
+      },
+      "writtenOn": "2010-12-14T22:10:05Z",
+      "side": 1,
+      "message": "Please use constants defined in BatteryManager (EXTRA_LEVEL, EXTRA_SCALE)",
+      "revId": "7cb469fe0868db489c0c31aa78df699180f8bc44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA+n///3k\u003d",
+        "filename": "src/com/android/settings/MasterClear.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1004017
+      },
+      "writtenOn": "2010-12-14T22:10:05Z",
+      "side": 1,
+      "message": "Suggest renaming/removing constant \"DENOMINATOR\" since it seems more like \"convert to percentage\" than a denominator.",
+      "revId": "7cb469fe0868db489c0c31aa78df699180f8bc44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA+n///3o\u003d",
+        "filename": "src/com/android/settings/MasterClear.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1004017
+      },
+      "writtenOn": "2010-12-14T22:10:05Z",
+      "side": 1,
+      "message": "You shouldn\u0027t need this function if you use onPause()/onResume() to register the receiver.",
+      "revId": "7cb469fe0868db489c0c31aa78df699180f8bc44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
