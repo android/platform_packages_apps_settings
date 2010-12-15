@@ -54,6 +54,7 @@ public class LocalBluetoothManager {
     /** If a BT-related activity is in the foreground, this will be it. */
     private Activity mForegroundActivity;
     private AlertDialog mErrorDialog = null;
+    private List<AlertDialog> mDialogs = new ArrayList<AlertDialog>();
 
     private BluetoothAdapter mAdapter;
 
@@ -139,6 +140,12 @@ public class LocalBluetoothManager {
         if (mErrorDialog != null) {
             mErrorDialog.dismiss();
             mErrorDialog = null;
+        }
+        synchronized (mDialogs) {
+            for (AlertDialog dialog : mDialogs) {
+                dialog.dismiss();
+            }
+            mDialogs.clear();
         }
         mForegroundActivity = activity;
     }
@@ -378,5 +385,17 @@ public class LocalBluetoothManager {
         SharedPreferences.Editor editor = getSharedPreferences().edit();
         editor.remove(SHARED_PREFERENCES_KEY_DOCK_AUTO_CONNECT + addr);
         editor.commit();
+    }
+
+    public void registerDialog(AlertDialog dialog) {
+        synchronized (mDialogs) {
+            mDialogs.add(dialog);
+        }
+    }
+
+    public void unregisterDialog(AlertDialog dialog) {
+        synchronized (mDialogs) {
+            mDialogs.remove(dialog);
+        }
     }
 }
