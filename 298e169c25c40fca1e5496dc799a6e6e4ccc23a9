@@ -16,6 +16,24 @@
       "revId": "298e169c25c40fca1e5496dc799a6e6e4ccc23a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA+3///qU\u003d",
+        "filename": "src/com/android/settings/AirplaneModeEnabler.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1004816
+      },
+      "writtenOn": "2010-12-20T14:11:55Z",
+      "side": 1,
+      "message": "Holy Snikes!! How did that happen?  I will fix that and compile to make sure.",
+      "parentUuid": "AAAA+n///6Q\u003d",
+      "revId": "298e169c25c40fca1e5496dc799a6e6e4ccc23a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
