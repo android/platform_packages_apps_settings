@@ -17,6 +17,7 @@
 package com.android.settings.wifi;
 
 import com.android.settings.R;
+import com.android.settings.wifi.WifiDialog.PasswordWPAFilter;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -26,6 +27,7 @@ import android.net.wifi.WifiConfiguration.AuthAlgorithm;
 import android.net.wifi.WifiConfiguration.KeyMgmt;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -132,6 +134,7 @@ class WifiApDialog extends AlertDialog implements View.OnClickListener,
 
         mSsid.addTextChangedListener(this);
         mPassword.addTextChangedListener(this);
+        mPassword.setFilters(new InputFilter[] {new PasswordWPAFilter(true)});
         ((CheckBox) mView.findViewById(R.id.show_password)).setOnClickListener(this);
         mSecurity.setOnItemSelectedListener(this);
 
