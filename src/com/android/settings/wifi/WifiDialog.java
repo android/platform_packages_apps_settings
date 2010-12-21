@@ -31,7 +31,9 @@ import android.os.Bundle;
 import android.security.Credentials;
 import android.security.KeyStore;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.InputType;
+import android.text.Spanned;
 import android.text.TextWatcher;
 import android.text.format.Formatter;
 import android.view.View;
@@ -57,6 +59,47 @@ class WifiDialog extends AlertDialog implements View.OnClickListener,
     private TextView mSsid;
     private int mSecurity;
     private TextView mPassword;
+
+    /**
+     * This filter will constrain password length according to the WPA standard
+     * when it is enabled.
+     */
+    public static class PasswordWPAFilter implements InputFilter {
+        private static final int WPA_ASCII_MAX = 63;
+        private static final int WPA_HEX_MAX = 64;
+        private boolean mIsEnabled;
+
+        public PasswordWPAFilter(boolean enabled) {
+            mIsEnabled = enabled;
+        }
+
+        public void setEnabled(boolean enabled) {
+            mIsEnabled = enabled;
+        }
+
+        public CharSequence filter(CharSequence source, int start, int end, Spanned dest,
+                int dstart, int dend) {
+
+            if (mIsEnabled) {
+                boolean isHex = source.subSequence(start, end).toString().matches("[0-9A-Fa-f]*")
+                        && dest.subSequence(0, dstart).toString().matches("[0-9A-Fa-f]*")
+                        && dest.subSequence(dend, dest.length()).toString().matches("[0-9A-Fa-f]*");
+                int limit = isHex ? WPA_HEX_MAX : WPA_ASCII_MAX;
+                int keep = limit - (dest.length() - (dend - dstart));
+                if (keep <= 0) {
+                    return "";
+                } else if (keep >= end - start) {
+                    return null; // keep original
+                } else {
+                    return source.subSequence(start, start + keep);
+                }
+            }
+
+            return null; // keep original
+        }
+    };
+
+    private PasswordWPAFilter mPasswordWPAFilter = new PasswordWPAFilter(false);
 
     private Spinner mEapMethod;
     private Spinner mEapCaCert;
@@ -275,10 +318,21 @@ class WifiDialog extends AlertDialog implements View.OnClickListener,
     public void onItemSelected(AdapterView parent, View view, int position, long id) {
         mSecurity = position;
         showSecurityFields();
+        setPasswordFilter();
         validate();
     }
 
     public void onNothingSelected(AdapterView parent) {
+    }
+
+    private void setPasswordFilter() {
+        switch (mSecurity) {
+            case AccessPoint.SECURITY_PSK:
+                mPasswordWPAFilter.setEnabled(true);
+                break;
+            default:
+                mPasswordWPAFilter.setEnabled(false);
+        }
     }
 
     private void showSecurityFields() {
@@ -291,6 +345,9 @@ class WifiDialog extends AlertDialog implements View.OnClickListener,
         if (mPassword == null) {
             mPassword = (TextView) mView.findViewById(R.id.password);
             mPassword.addTextChangedListener(this);
+            mPassword.setFilters(new InputFilter[] {mPasswordWPAFilter});
+            setPasswordFilter();
+
             ((CheckBox) mView.findViewById(R.id.show_password)).setOnClickListener(this);
 
             if (mAccessPoint != null && mAccessPoint.networkId != -1) {
