@@ -45,6 +45,7 @@
             <EditText android:id="@+id/ssid"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:maxLength="32"
                     android:singleLine="true"
                     android:inputType="textNoSuggestions" />
 
