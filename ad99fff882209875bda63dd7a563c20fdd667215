@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA+3//+6w\u003d",
+        "filename": "src/com/android/settings/AirplaneModeEnabler.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2010-12-29T23:29:09Z",
+      "side": 1,
+      "message": "Another style issue (sorry): please use braces around the conditional block.",
+      "revId": "ad99fff882209875bda63dd7a563c20fdd667215",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
