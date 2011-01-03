@@ -233,6 +233,13 @@ public class AccessibilitySettings extends PreferenceActivity {
                             checkBoxPreference.setChecked(true);
                         }
                 })
+                .setOnKeyListener(new DialogInterface.OnKeyListener() {
+                    public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                        checkBoxPreference.setChecked(true);
+                        dialog.dismiss();
+                        return false;
+                    }
+                })
                 .create();
             dialog.show();
         }
@@ -246,6 +253,7 @@ public class AccessibilitySettings extends PreferenceActivity {
     private void handleEnableAccessibilityServiceStateChange(CheckBoxPreference preference) {
         if (preference.isChecked()) {
             final CheckBoxPreference checkBoxPreference = preference;
+            checkBoxPreference.setChecked(false); // Only set it true after OK button is pressed
             AlertDialog dialog = (new AlertDialog.Builder(this))
                 .setTitle(android.R.string.dialog_alert_title)
                 .setIcon(android.R.drawable.ic_dialog_alert)
@@ -265,6 +273,13 @@ public class AccessibilitySettings extends PreferenceActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 checkBoxPreference.setChecked(false);
                             }
+                })
+                .setOnKeyListener(new DialogInterface.OnKeyListener() {
+                    public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+                        checkBoxPreference.setChecked(false);
+                        dialog.dismiss();
+                        return false;
+                    }
                 })
                 .create();
             dialog.show();
