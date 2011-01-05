@@ -32,12 +32,20 @@ import android.widget.ImageView;
 
 class AccessPoint extends Preference {
     private static final int[] STATE_SECURED = {R.attr.state_encrypted};
+    private static final int[] STATE_LIMITED = {R.attr.state_limited};
+    private static final int[] STATE_SECURED_AND_LIMITED = {
+        R.attr.state_encrypted,
+        R.attr.state_limited
+    };
     private static final int[] STATE_NONE = {};
 
     static final int SECURITY_NONE = 0;
     static final int SECURITY_WEP = 1;
     static final int SECURITY_PSK = 2;
     static final int SECURITY_EAP = 3;
+
+    // 169.254.0.0 in little-endian
+    private static final int IPV4LL_PREFIX = 0xfea9;
 
     final String ssid;
     final int security;
@@ -71,6 +79,19 @@ class AccessPoint extends Preference {
         return SECURITY_NONE;
     }
 
+    /* Returns true if IP address is 169.254.x.x, e,g if it's in the IPV4LL range.
+     * The IP address is expected to be in little-endian format (LSB first). That
+     * is, 0x01020304 represents the address "4.3.2.1".
+     */
+    static boolean isLocalLinkAddress(int ipAddress) {
+        return (ipAddress & 0xffff) == IPV4LL_PREFIX;
+    }
+
+    /* Returns true if this AP:s IP address is 169.254.x.x, e,g if it's in the IPV4LL range. */
+    boolean hasLimitedConnectivity() {
+        return (DetailedState.CONNECTED == mState) && isLocalLinkAddress(mInfo.getIpAddress());
+    }
+
     AccessPoint(Context context, WifiConfiguration config) {
         super(context);
         setWidgetLayoutResource(R.layout.preference_widget_wifi_signal);
@@ -97,9 +118,19 @@ class AccessPoint extends Preference {
         if (mRssi == Integer.MAX_VALUE) {
             mSignal.setImageDrawable(null);
         } else {
-            mSignal.setImageResource(R.drawable.wifi_signal);
-            mSignal.setImageState((security != SECURITY_NONE) ?
-                    STATE_SECURED : STATE_NONE, true);
+            if (security != SECURITY_NONE) {
+                if (hasLimitedConnectivity()) {
+                    mSignal.setImageState(STATE_SECURED_AND_LIMITED, true);
+                } else {
+                    mSignal.setImageState(STATE_SECURED, true);
+                }
+            } else {
+                if (hasLimitedConnectivity()) {
+                    mSignal.setImageState(STATE_LIMITED, true);
+                } else {
+                    mSignal.setImageState(STATE_NONE, true);
+                }
+            }
         }
         refresh();
         super.onBindView(view);
@@ -202,7 +233,7 @@ class AccessPoint extends Preference {
         mSignal.setImageLevel(getLevel());
 
         if (mState != null) {
-            setSummary(Summary.get(context, mState));
+            setSummary(Summary.get(context, mState, hasLimitedConnectivity()));
         } else {
             String status = null;
             if (mRssi == Integer.MAX_VALUE) {

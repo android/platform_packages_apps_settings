@@ -188,7 +188,8 @@ class WifiDialog extends AlertDialog implements View.OnClickListener,
 
             DetailedState state = mAccessPoint.getState();
             if (state != null) {
-                addRow(group, R.string.wifi_status, Summary.get(getContext(), state));
+                addRow(group, R.string.wifi_status, Summary.get(getContext(), state,
+                        mAccessPoint.hasLimitedConnectivity()));
             }
 
             String[] type = resources.getStringArray(R.array.wifi_security);
@@ -219,6 +220,9 @@ class WifiDialog extends AlertDialog implements View.OnClickListener,
             } else {
                 if (state == null && level != -1) {
                     setButton(BUTTON_SUBMIT, context.getString(R.string.wifi_connect), mListener);
+                } else if (DetailedState.CONNECTED == state &&
+                        mAccessPoint.hasLimitedConnectivity()) {
+                    setButton(BUTTON_SUBMIT, context.getString(R.string.wifi_reconnect), mListener);
                 }
                 if (mAccessPoint.networkId != -1) {
                     setButton(BUTTON_FORGET, context.getString(R.string.wifi_forget), mListener);

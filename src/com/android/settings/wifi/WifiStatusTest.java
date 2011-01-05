@@ -294,8 +294,9 @@ public class WifiStatusTest extends Activity {
 
     private void handleNetworkStateChanged(NetworkInfo networkInfo) {
         if (mWifiManager.isWifiEnabled()) {
-            String summary = Summary.get(this, mWifiManager.getConnectionInfo().getSSID(),
-                    networkInfo.getDetailedState());
+            WifiInfo info = mWifiManager.getConnectionInfo();
+            String summary = Summary.get(this, info.getSSID(), networkInfo.getDetailedState(),
+                    AccessPoint.isLocalLinkAddress(info.getIpAddress()));
             mNetworkState.setText(summary);
         }
     }

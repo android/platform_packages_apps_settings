@@ -261,7 +261,11 @@ public class WifiSettings extends PreferenceActivity implements DialogInterface.
 
             if (config == null) {
                 if (mSelected != null && !requireKeyStore(mSelected.getConfig())) {
-                    connect(mSelected.networkId);
+                    if (mSelected.hasLimitedConnectivity()) {
+                        reconnect(mSelected.networkId);
+                    } else {
+                        connect(mSelected.networkId);
+                    }
                 }
             } else if (config.networkId != -1) {
                 if (mSelected != null) {
@@ -336,6 +340,10 @@ public class WifiSettings extends PreferenceActivity implements DialogInterface.
         mWifiManager.enableNetwork(networkId, true);
         mWifiManager.reconnect();
         mResetNetworks = true;
+    }
+
+    private void reconnect(int networkId) {
+        mWifiManager.reassociate();
     }
 
     private void enableNetworks() {

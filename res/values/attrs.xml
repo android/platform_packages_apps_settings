@@ -18,6 +18,9 @@
     <declare-styleable name="WifiEncryptionState">
         <attr name="state_encrypted" format="boolean" />
     </declare-styleable>
+    <declare-styleable name="WifiLimitedState">
+        <attr name="state_limited" format="boolean" />
+    </declare-styleable>
     <declare-styleable name="IconPreferenceScreen">
         <attr name="icon" format="reference" />
     </declare-styleable>

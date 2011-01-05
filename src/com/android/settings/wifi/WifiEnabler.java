@@ -143,7 +143,8 @@ public class WifiEnabler implements Preference.OnPreferenceChangeListener {
         if (state != null && mCheckBox.isChecked()) {
             WifiInfo info = mWifiManager.getConnectionInfo();
             if (info != null) {
-                mCheckBox.setSummary(Summary.get(mContext, info.getSSID(), state));
+                mCheckBox.setSummary(Summary.get(mContext, info.getSSID(), state,
+                        AccessPoint.isLocalLinkAddress(info.getIpAddress())));
             }
         }
     }

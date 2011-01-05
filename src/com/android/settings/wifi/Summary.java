@@ -23,7 +23,8 @@ import android.net.NetworkInfo.DetailedState;
 import android.text.TextUtils;
 
 class Summary {
-    static String get(Context context, String ssid, DetailedState state) {
+    static String get(Context context, String ssid, DetailedState state,
+            boolean limitedConnectivity) {
         String[] formats = context.getResources().getStringArray((ssid == null)
                 ? R.array.wifi_status : R.array.wifi_status_with_ssid);
         int index = state.ordinal();
@@ -31,10 +32,18 @@ class Summary {
         if (index >= formats.length || formats[index].length() == 0) {
             return null;
         }
-        return String.format(formats[index], ssid);
+
+        if (DetailedState.CONNECTED == state && limitedConnectivity) {
+            String format = context.getResources().getString(
+                    (ssid == null) ? R.string.wifi_connected_limited :
+                        R.string.wifi_connected_limited_with_ssid);
+            return String.format(format, ssid);
+        } else {
+            return String.format(formats[index], ssid);
+        }
     }
 
-    static String get(Context context, DetailedState state) {
-        return get(context, null, state);
+    static String get(Context context, DetailedState state, boolean limitedConnectivity) {
+        return get(context, null, state, limitedConnectivity);
     }
 }
