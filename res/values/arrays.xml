@@ -72,6 +72,26 @@
         <item>11</item>
     </string-array>
 
+    <!-- Dual SIM settings.  The type of Subscriptions to show. -->
+    <string-array name="dualsim_entries">
+        <item>Subscription 1</item>
+        <item>Subscription 2</item>
+    </string-array>
+
+    <!-- Display settings.  Summary for each type of Subscription. -->
+    <string-array name="dualsim_summaries">
+        <item> Subscription 1 </item>
+        <item> Subscription 2 </item>
+    </string-array>
+
+    <!-- Do not translate.  Value for each type of Subscription. -->
+    <string-array name="dualsim_values">
+        <!-- Do not translate. -->
+        <item>0</item>
+        <!-- Do not translate. -->
+        <item>1</item>
+    </string-array>
+
     <!-- Display settings.  The delay in inactivity before the screen is turned off. These are shown ain a list dialog. -->
     <string-array name="screen_timeout_entries">
         <item>15 seconds</item>

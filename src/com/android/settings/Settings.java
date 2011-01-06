@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
+import android.telephony.TelephonyManager;
 
 public class Settings extends PreferenceActivity {
 
@@ -31,6 +32,8 @@ public class Settings extends PreferenceActivity {
     
     private static final String KEY_OPERATOR_SETTINGS = "operator_settings";
     private static final String KEY_MANUFACTURER_SETTINGS = "manufacturer_settings";
+    private static final String KEY_DUAL_SETTINGS = "dual_settings";
+    private static final String KEY_WIRELESS_SETTINGS = "wireless_settings";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +41,18 @@ public class Settings extends PreferenceActivity {
         
         addPreferencesFromResource(R.xml.settings);
 
+        int dsdsPreferenceScreen;
         PreferenceGroup parent = (PreferenceGroup) findPreference(KEY_PARENT);
+        if (!TelephonyManager.isDsdsEnabled()) {
+            parent.removePreference(findPreference(
+                    KEY_DUAL_SETTINGS));
+            dsdsPreferenceScreen = 0;
+        } else {
+            dsdsPreferenceScreen = 1;
+        }
+        findPreference(KEY_CALL_SETTINGS).getIntent().putExtra("RESOURCE_INDEX", dsdsPreferenceScreen);
+        findPreference(KEY_WIRELESS_SETTINGS).getIntent().putExtra("RESOURCE_INDEX", dsdsPreferenceScreen);
+
         Utils.updatePreferenceToSpecificActivityOrRemove(this, parent, KEY_SYNC_SETTINGS, 0);
 
         Preference dockSettings = parent.findPreference(KEY_DOCK_SETTINGS);

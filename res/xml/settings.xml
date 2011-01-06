@@ -35,6 +35,7 @@
         </com.android.settings.IconPreferenceScreen>
 
         <com.android.settings.IconPreferenceScreen
+            android:key="wireless_settings"
             android:title="@string/radio_controls_title"
             settings:icon="@drawable/ic_settings_wireless">
             <intent
@@ -50,7 +51,7 @@
             <intent
                 android:action="android.intent.action.MAIN"
                 android:targetPackage="com.android.phone"
-                android:targetClass="com.android.phone.CallFeaturesSetting" />
+                android:targetClass="com.android.phone.CallIndependentServices" />
         </com.android.settings.IconPreferenceScreen>
 
         <!-- Sound -->
@@ -73,6 +74,17 @@
                 android:action="android.intent.action.MAIN"
                 android:targetPackage="com.android.settings"
                 android:targetClass="com.android.settings.DisplaySettings" />
+        </com.android.settings.IconPreferenceScreen>
+
+        <!-- Dual sim Settings -->
+        <com.android.settings.IconPreferenceScreen
+            android:key="dual_settings"
+            settings:icon="@drawable/ic_settings_sim"
+            android:title="@string/dual_settings_title">
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="com.android.settings"
+                android:targetClass="com.android.settings.DualSimSettings" />
         </com.android.settings.IconPreferenceScreen>
 
         <!-- Security & Location -->

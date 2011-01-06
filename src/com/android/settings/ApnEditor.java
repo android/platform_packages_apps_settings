@@ -36,6 +36,9 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.telephony.TelephonyManager;
+import android.provider.Settings;
+import android.provider.Settings.SettingNotFoundException;
 
 import com.android.internal.telephony.TelephonyProperties;
 
@@ -72,6 +75,7 @@ public class ApnEditor extends PreferenceActivity
 
     private String mCurMnc;
     private String mCurMcc;
+    private int mSubscription = 0;
 
     private Uri mUri;
     private Cursor mCursor;
@@ -146,7 +150,9 @@ public class ApnEditor extends PreferenceActivity
 
         final Intent intent = getIntent();
         final String action = intent.getAction();
-
+        // Read the subscription received from Phone settings.
+        mSubscription = intent.getIntExtra(SelectSubscription.SUBSCRIPTION_ID, 0);
+        Log.d(TAG,"onCreate Subscription: " + mSubscription);
         mFirstTime = icicle == null;
 
         if (action.equals(Intent.ACTION_EDIT)) {
@@ -217,7 +223,8 @@ public class ApnEditor extends PreferenceActivity
             mApnType.setText(mCursor.getString(TYPE_INDEX));
             if (mNewApn) {
                 String numeric =
-                    SystemProperties.get(TelephonyProperties.PROPERTY_ICC_OPERATOR_NUMERIC);
+                TelephonyManager.getTelephonyProperty
+                        (TelephonyProperties.PROPERTY_ICC_OPERATOR_NUMERIC, mSubscription, null);
                 // MCC is first 3 chars and then in 2 - 3 chars of MNC
                 if (numeric != null && numeric.length() > 4) {
                     // Country code
