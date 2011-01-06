@@ -41,6 +41,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+import android.telephony.TelephonyManager;
 
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.TelephonyIntents;
@@ -82,6 +83,7 @@ public class ApnSettings extends PreferenceActivity implements
     private RestoreApnProcessHandler mRestoreApnProcessHandler;
 
     private String mSelectedKey;
+    private int mSubscription = 0;
 
     private IntentFilter mMobileStateFilter;
 
@@ -119,7 +121,8 @@ public class ApnSettings extends PreferenceActivity implements
 
         addPreferencesFromResource(R.xml.apn_settings);
         getListView().setItemsCanFocus(true);
-
+        mSubscription = getIntent().getIntExtra(SelectSubscription.SUBSCRIPTION_ID, TelephonyManager.getDefaultSubscription());
+        Log.d(TAG, "onCreate received sub :" + mSubscription);
         mMobileStateFilter = new IntentFilter(
                 TelephonyIntents.ACTION_ANY_DATA_CONNECTION_STATE_CHANGED);
     }
@@ -146,9 +149,9 @@ public class ApnSettings extends PreferenceActivity implements
 
     private void fillList() {
         String where = "numeric=\""
-            + android.os.SystemProperties.get(TelephonyProperties.PROPERTY_ICC_OPERATOR_NUMERIC, "")
-            + "\"";
-
+                + TelephonyManager.getTelephonyProperty
+                    (TelephonyProperties.PROPERTY_ICC_OPERATOR_NUMERIC, mSubscription, "")
+                + "\"";
         Cursor cursor = managedQuery(Telephony.Carriers.CONTENT_URI, new String[] {
                 "_id", "name", "apn", "type"}, where,
                 Telephony.Carriers.DEFAULT_SORT_ORDER);
@@ -220,7 +223,9 @@ public class ApnSettings extends PreferenceActivity implements
     }
 
     private void addNewApn() {
-        startActivity(new Intent(Intent.ACTION_INSERT, Telephony.Carriers.CONTENT_URI));
+        Intent intent = new Intent(Intent.ACTION_INSERT, Telephony.Carriers.CONTENT_URI);
+        intent.putExtra(SelectSubscription.SUBSCRIPTION_ID, mSubscription);
+        startActivity(intent);
     }
 
     @Override

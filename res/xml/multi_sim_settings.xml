@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2010-2011, Code Aurora Forum. All rights reserved.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:settings="http://schemas.android.com/apk/res/com.android.settings">
+
+    <PreferenceCategory android:key="multi_sim_settings">
+
+        <ListPreference
+            android:key="voice"
+            android:title="@string/voice_title"
+            android:persistent="false"
+            android:entries="@array/multi_sim_entries"
+            android:entryValues="@array/multi_sim_values" />
+
+        <ListPreference
+            android:key="data"
+            android:title="@string/data_title"
+            android:persistent="false"
+            android:entries="@array/multi_sim_entries"
+            android:entryValues="@array/multi_sim_values" />
+
+        <ListPreference
+            android:key="sms"
+            android:title="@string/sms_title"
+            android:persistent="false"
+            android:entries="@array/multi_sim_entries"
+            android:entryValues="@array/multi_sim_values" />
+
+        <PreferenceScreen
+            android:key="config_sub"
+            android:title="@string/sel_sub_title"
+            android:summary="@string/sel_sub_summary"
+            android:persistent="false">
+            <intent android:action="android.intent.action.MAIN"
+                    android:targetPackage="com.android.phone"
+                    android:targetClass="com.android.phone.SetSubscription" />
+        </PreferenceScreen>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1299,6 +1299,10 @@
     <string name="sd_eject_summary" product="nosdcard">Unmount the internal USB storage</string>
     <!-- SD card & phone storage settings item title that will result in the phone unmounting the SD card.  This will be done before the user phyiscally removes the SD card from the phone.  Kind of like the "Safely remove" on some operating systems.   -->
     <string name="sd_eject_summary" product="default">Unmount the SD card so you can safely remove it</string>
+    <!-- Multi Sim Settings screen, Select Sub label -->
+    <string name="sel_sub_title">Configure Subscriptions </string>
+    <!-- Multi Sim Settings screen, Select Sub Summary label -->
+    <string name="sel_sub_summary">Select the Subscription for SUB-1 and SUB-2</string>
 
     <!-- SD card & phone storage settings item summary that is displayed when no SD card is inserted.  This version of the string can probably never come up on current hardware. [CHAR LIMIT=25] -->
     <string name="sd_insert_summary" product="nosdcard">Insert USB storage for mounting</string>
@@ -1424,6 +1428,9 @@
     <!-- APNs screen toast message to inform reset default APN settings is completed -->
     <string name="restore_default_apn_completed">Reset default APN settings completed</string>
 
+    <!-- Select Subscription screen title -->
+    <string name="select_subscription">Select Subscription</string>
+
     <!-- Master Clear -->
     <!-- SD card & phone storage settings screen, setting option name under Internal phone storage heading -->
     <string name="master_clear_title">Factory data reset</string>
@@ -1515,10 +1522,46 @@
     <!-- Thethering help button - calls up a web view with general tethering info -->
     <string name="tethering_help_button_text">Help</string>
 
+    <!-- Main settings screen, Multi Sim settings title for item to go into the Multi settings -->
+    <string name="multi_sim_settings_title">Multi Sim Settings</string>
+    <!-- Main settings screen, Multi Sim settings summary for item to go into Multi settings -->
+    <string name="multi_sim_settings_summary">Set up Multi Sim Settings for Voice, Data and SMS</string>
+
+    <!-- Multi Sim Settings screen, Voice box label -->
+    <string name="voice_title">Voice/USSD/MMI</string>
+    <!-- Multi Sim Settings screen, Voice Summary label -->
+    <string name="voice_summary">Select Subscription for Voice Call</string>
+
+    <!-- Multi Sim Settings screen, Data box label -->
+    <string name="data_title">Data Call</string>
+    <!-- Multi Sim Settings screen, Voice Summary label -->
+    <string name="data_summary">Select Subscription for Data Call</string>
+
+    <!-- Multi Sim Settings screen, SMS box label -->
+    <string name="sms_title">SMS </string>
+    <!-- Multi Sim Settings screen, Voice Summary label -->
+    <string name="sms_summary">Select the Subscription for Sending SMS</string>
+
+    <!-- Multi Sim Settings screen, Set DDS progress dialog message -->
+    <string name="set_data_subscription_progress">Set data subscription in progress</string>
+    <!-- Multi Sim Settings screen, Set DDS success message -->
+    <string name="set_dds_success">Set data subscription success</string>
+    <!-- Multi Sim Settings screen, Set DDS failure message -->
+    <string name="set_dds_failed">Error in set data subscription.  Clean up any existing data connection and try again.</string>
+
     <!-- Wireless controls, item title to go into the network settings -->
     <string name="network_settings_title">Mobile networks</string>
     <!-- Wireless controls, the item summary for the user to go into the network settings -->
     <string name="network_settings_summary">Set options for roaming, networks, APNs</string>
+
+    <!-- Mobile networks, item title to go into the network settings -->
+    <string name="subscription_01_title">SUB 1</string>
+    <!-- Mobile networks, the item summary for the user to go into the network settings -->
+    <string name="subscription_01_summary">Set options for SUB1 network settings</string>
+    <!-- Mobile networks, item title to go into the network settings -->
+    <string name="subscription_02_title">SUB 2</string>
+    <!-- Mobile networks, the item summary for the user to go into the network settings -->
+    <string name="subscription_02_summary">Set options for SUB2 network settings</string>
 
     <!-- Security & location settings screen, section header for settings relating to location -->
     <string name="location_title">My Location</string>
