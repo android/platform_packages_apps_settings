@@ -265,6 +265,8 @@ public class Memory extends PreferenceActivity implements OnCancelListener {
                 Log.e(TAG, "Mount service is null, can't mount");
             }
         } catch (RemoteException ex) {
+            // Failed for some reason, try to update UI to actual state
+            updateMemoryStatus();
         }
     }
 
@@ -276,6 +278,8 @@ public class Memory extends PreferenceActivity implements OnCancelListener {
             readOnly = mRes.getString(R.string.read_only);
         }
  
+        mSdFormat.setEnabled(false);
+
         if (status.equals(Environment.MEDIA_MOUNTED)) {
             if (!Environment.isExternalStorageRemovable()) {
                 // This device has built-in storage that is not removable.
@@ -325,6 +329,7 @@ public class Memory extends PreferenceActivity implements OnCancelListener {
                 mSdMountToggle.setEnabled(true);
                 mSdMountToggle.setTitle(mRes.getString(R.string.sd_mount));
                 mSdMountToggle.setSummary(mRes.getString(R.string.sd_mount_summary));
+                mSdFormat.setEnabled(true);
             } else {
                 mSdMountToggle.setEnabled(false);
                 mSdMountToggle.setTitle(mRes.getString(R.string.sd_mount));
