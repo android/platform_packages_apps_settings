@@ -24,6 +24,7 @@ import android.bluetooth.BluetoothA2dp;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.util.Config;
 import android.util.Log;
@@ -52,7 +53,8 @@ public class LocalBluetoothManager {
     private Context mContext;
     /** If a BT-related activity is in the foreground, this will be it. */
     private Activity mForegroundActivity;
-    private AlertDialog mErrorDialog = null;
+    private DialogInterface mErrorDialog = null;
+    private DialogInterface mDisconnectDialog = null;
 
     private BluetoothAdapter mAdapter;
 
@@ -138,6 +140,10 @@ public class LocalBluetoothManager {
         if (mErrorDialog != null) {
             mErrorDialog.dismiss();
             mErrorDialog = null;
+        }
+        if (mDisconnectDialog != null) {
+            // dismiss listener will set mDisconnectDialog to null
+            mDisconnectDialog.dismiss();
         }
         mForegroundActivity = activity;
     }
@@ -377,5 +383,15 @@ public class LocalBluetoothManager {
         SharedPreferences.Editor editor = getSharedPreferences().edit();
         editor.remove(SHARED_PREFERENCES_KEY_DOCK_AUTO_CONNECT + addr);
         editor.apply();
+    }
+
+    public void registerDialog(DialogInterface dialog) {
+        mDisconnectDialog = dialog;
+    }
+
+    public void unregisterDialog(DialogInterface dialog) {
+        if (mDisconnectDialog == dialog) {
+            mDisconnectDialog = null;
+        }
     }
 }

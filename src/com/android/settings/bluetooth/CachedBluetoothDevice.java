@@ -67,7 +67,12 @@ public class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> 
 
     private final LocalBluetoothManager mLocalManager;
 
-    private AlertDialog mDialog = null;
+    private final DialogInterface.OnDismissListener mDismissListener =
+            new DialogInterface.OnDismissListener() {
+        public void onDismiss(DialogInterface dialog) {
+            mLocalManager.unregisterDialog(dialog);
+        }
+    };
 
     private List<Callback> mCallbacks = new ArrayList<Callback>();
 
@@ -196,29 +201,17 @@ public class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> 
             }
         };
 
-        if (mDialog == null) {
-            mDialog = new AlertDialog.Builder(context)
-                    .setPositiveButton(android.R.string.ok, disconnectListener)
-                    .setNegativeButton(android.R.string.cancel, null)
-                    .create();
-        } else {
-            if (mDialog.isShowing()) {
-                mDialog.dismiss();
-            }
-        }
-        mDialog.setTitle(getName());
-        mDialog.setMessage(message);
-        mDialog.show();
-    }
+        AlertDialog dialog = new AlertDialog.Builder(context)
+            .setPositiveButton(android.R.string.ok, disconnectListener)
+            .setNegativeButton(android.R.string.cancel, null)
+            .create();
 
-    @Override
-    protected void finalize() throws Throwable {
-        if (mDialog != null) {
-            mDialog.dismiss();
-            mDialog = null;
-        }
+        dialog.setOnDismissListener(mDismissListener);
+        mLocalManager.registerDialog(dialog);
 
-        super.finalize();
+        dialog.setTitle(getName());
+        dialog.setMessage(message);
+        dialog.show();
     }
 
     public void connect() {
