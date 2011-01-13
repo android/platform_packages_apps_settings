@@ -59,6 +59,7 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.PhoneStateIntentReceiver;
 import com.android.internal.telephony.TelephonyProperties;
+import com.android.internal.telephony.gsm.ApnSetting;
 import com.android.internal.telephony.gsm.GsmDataConnection;
 
 import org.apache.http.HttpResponse;
@@ -790,12 +791,13 @@ public class RadioInfo extends Activity {
                   .append("\n    fail because ")
                   .append(dc.getLastFailCause().toString());
             } else {
+                sb.append("    is connecting");
                 if (dc instanceof GsmDataConnection) {
                     GsmDataConnection pdp = (GsmDataConnection)dc;
-                    sb.append("    is connecting to ")
-                      .append(pdp.getApn().toString());
-                } else {
-                    sb.append("    is connecting");
+                    ApnSetting apn = pdp.getApn();
+                    if (apn != null) {
+                        sb.append(" to ").append(apn.toString());
+                    }
                 }
             }
             sb.append("\n===================");
