@@ -292,6 +292,7 @@
         <activity android:name="DisplaySettings"
                 android:label="@string/display_settings"
                 android:clearTaskOnLaunch="true"
+                android:configChanges="orientation|keyboardHidden"
                 >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -478,7 +479,8 @@
         </activity>
 
         <activity android:name="IccLockSettings" android:label="@string/sim_lock_settings"
-                android:process="com.android.phone">
+                android:process="com.android.phone"
+                android:configChanges="orientation|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -585,7 +587,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="MasterClear" android:label="@string/master_clear_title">
+        <activity android:name="MasterClear" android:label="@string/master_clear_title"
+                android:configChanges="orientation|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
