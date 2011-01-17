@@ -44,7 +44,8 @@
 
     <application android:label="@string/settings_label"
             android:icon="@drawable/ic_launcher_settings"
-            android:taskAffinity="">
+            android:taskAffinity=""
+            android:theme="@style/DefaultSettingsTheme">
 
         <!-- Settings -->
 
@@ -328,7 +329,7 @@
 
         <activity android:name="SettingsLicenseActivity"
                 android:label="@string/settings_license_activity_title"
-                android:theme="@*android:style/Theme.Dialog.Alert">
+                android:theme="@style/DeviceInfo.LicenseTheme">
             <intent-filter>
                 <action android:name="android.settings.LICENSE" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -337,7 +338,7 @@
 
         <activity android:name="SettingsSafetyLegalActivity"
                 android:label="@string/settings_safetylegal_activity_title"
-                android:theme="@*android:style/Theme.Dialog.Alert">
+                android:theme="@style/DeviceInfo.LegalTheme">
             <intent-filter>
                 <action android:name="android.settings.SAFETY" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -357,7 +358,7 @@
         <activity android:name=".applications.ManageApplications"
                   android:label="@string/manageapplications_settings_title"
                   android:clearTaskOnLaunch="true"
-                  android:theme="@android:style/Theme.NoTitleBar">
+                  android:theme="@style/ManageApplicationsTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.MANAGE_PACKAGE_STORAGE" />
@@ -376,7 +377,7 @@
             android:exported="true" />
         
         <activity android:name=".applications.InstalledAppDetails"
-                android:theme="@android:style/Theme.NoTitleBar"
+                android:theme="@style/ManageApplicationsTheme"
                 android:label="@string/application_info_label">
             <intent-filter>
                 <action android:name="android.settings.APPLICATION_DETAILS_SETTINGS" />
@@ -412,7 +413,7 @@
         </activity-alias>
         
         <activity android:name=".applications.RunningServiceDetails"
-                android:theme="@android:style/Theme.NoTitleBar"
+                android:theme="@style/ManageApplicationsTheme"
                 android:label="@string/runningservicedetails_settings_title">
         </activity>
 
@@ -433,7 +434,7 @@
         </activity>
 
         <activity android:name="CredentialInstaller"
-                android:theme="@android:style/Theme.Translucent.NoTitleBar">
+                android:theme="@style/CredentialInstallerTheme">
             <intent-filter>
                 <action android:name="android.credentials.SYSTEM_INSTALL" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -519,7 +520,7 @@
 
         <activity android:name="ConfirmLockPattern"/>
         <activity android:name="ConfirmLockPassword"
-            android:theme="@android:style/Theme.NoTitleBar">
+            android:theme="@style/Lock.ConfirmTheme">
         </activity>
 
         <activity android:name="ChooseLockGeneric">
@@ -536,7 +537,7 @@
 
         <activity android:name="ChooseLockPassword"
                 android:label="@string/lockpattern_change_lock_pin_label"
-            android:theme="@android:style/Theme.NoTitleBar"
+            android:theme="@style/Lock.ChooseTheme"
             android:exported="false">
         </activity>
 
@@ -634,7 +635,7 @@
         <activity android:name=".bluetooth.BluetoothPairingDialog"
                   android:label="@string/bluetooth_pairing_request"
                   android:excludeFromRecents="true"
-                  android:theme="@*android:style/Theme.Dialog.Alert">
+                  android:theme="@style/Bluetooth.PairingTheme">
             <intent-filter>
                 <action android:name="android.bluetooth.device.action.PAIRING_REQUEST" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -658,7 +659,7 @@
                   android:label="@string/bluetooth_permission_request"
                   android:excludeFromRecents="true"
                   android:permission="android.permission.BLUETOOTH"
-                  android:theme="@*android:style/Theme.Dialog.Alert">
+                  android:theme="@style/Bluetooth.PermissionTheme">
             <intent-filter>
                 <action android:name="android.bluetooth.adapter.action.REQUEST_DISCOVERABLE" />
                 <action android:name="android.bluetooth.adapter.action.REQUEST_ENABLE" />
@@ -670,7 +671,7 @@
                   android:label="@string/bluetooth_pairing_request"
                   android:excludeFromRecents="true"
                   android:permission="android.permission.BLUETOOTH"
-                  android:theme="@*android:style/Theme.Dialog.Alert">
+                  android:theme="@style/Bluetooth.PermissionTheme">
         </activity>
 
         <receiver android:name=".bluetooth.BluetoothPairingRequest">
@@ -682,7 +683,7 @@
 
         <activity android:name="ActivityPicker"
                 android:label="@string/activity_picker_label"
-                android:theme="@*android:style/Theme.Dialog.Alert"
+                android:theme="@style/ActivityPickerTheme"
                 android:finishOnCloseSystemDialogs="true">
             <intent-filter>
                 <action android:name="android.intent.action.PICK_ACTIVITY" />
@@ -735,7 +736,7 @@
         </activity>
 
         <activity android:name="ProxySelector" android:label="@string/proxy_settings_label"
-                android:theme="@android:style/Theme.Dialog">
+                android:theme="@style/ProxySelectorTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEVELOPMENT_PREFERENCE" />
@@ -745,7 +746,7 @@
 
         <!-- TODO: Is this needed? -->
         <activity android:name="BandMode"
-                  android:theme="@android:style/Theme.Dialog"
+                  android:theme="@style/BandModeTheme"
                   android:process="com.android.phone">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -771,7 +772,7 @@
         <!-- Standard picker for widgets -->
         <activity android:name="AppWidgetPickActivity"
                 android:label="@string/widget_picker_title"
-                android:theme="@*android:style/Theme.Dialog.Alert"
+                android:theme="@style/WidgetPickerTheme"
                 android:finishOnCloseSystemDialogs="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_PICK" />
@@ -787,7 +788,7 @@
         </activity>
 
         <activity android:name=".fuelgauge.PowerUsageSummary"
-                android:theme="@android:style/Theme.NoTitleBar"
+                android:theme="@style/FuelGauge.SummaryTheme"
                 android:label="@string/power_usage_summary_title"
                 android:clearTaskOnLaunch="true"
                 >
@@ -800,7 +801,7 @@
         </activity>
 
         <activity android:name=".fuelgauge.PowerUsageDetail"
-                android:theme="@android:style/Theme.NoTitleBar"
+                android:theme="@style/FuelGauge.DetailTheme"
                 android:label="@string/details_title">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -809,7 +810,7 @@
         </activity>
 
         <activity android:name=".fuelgauge.BatteryHistoryDetail"
-                android:theme="@android:style/Theme.NoTitleBar">
+                android:theme="@style/FuelGauge.BatteryTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />

@@ -81,5 +81,21 @@
     <style name="TallTitleBarTheme" parent="android:Theme.NoTitleBar">
         <item name="android:windowContentOverlay">@null</item>
     </style>
-    
+
+    <style name="DefaultSettingsTheme" parent="@android:style/Theme"/>
+    <style name="DeviceInfo.LicenseTheme" parent="@android:style/Theme.Dialog.Alert" />
+    <style name="DeviceInfo.LegalTheme" parent="@android:style/Theme.Dialog.Alert" />
+    <style name="ManageApplicationsTheme" parent="@android:style/Theme.NoTitleBar" />
+    <style name="CredentialInstallerTheme" parent="@android:style/Theme.Translucent.NoTitleBar" />
+    <style name="Lock.ConfirmTheme" parent="@android:style/Theme.NoTitleBar" />
+    <style name="Lock.ChooseTheme" parent="@android:style/Theme.NoTitleBar" />
+    <style name="Bluetooth.PairingTheme" parent="@android:style/Theme.Dialog.Alert" />
+    <style name="Bluetooth.PermissionTheme" parent="@android:style/Theme.Dialog.Alert" />
+    <style name="ActivityPickerTheme" parent="@android:style/Theme.Dialog.Alert" />
+    <style name="ProxySelectorTheme" parent="@android:style/Theme.Dialog" />
+    <style name="BandModeTheme" parent="@android:style/Theme.Dialog" />
+    <style name="WidgetPickerTheme" parent="@android:style/Theme.Dialog.Alert" />
+    <style name="FuelGauge.SummaryTheme" parent="@android:style/Theme.NoTitleBar" />
+    <style name="FuelGauge.DetailTheme" parent="@android:style/Theme.NoTitleBar" />
+    <style name="FuelGauge.BatteryTheme" parent="@android:style/Theme.NoTitleBar" />
 </resources>
