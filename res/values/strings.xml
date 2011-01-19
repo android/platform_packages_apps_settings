@@ -613,7 +613,7 @@
     <!-- Hint shown in dialog screen when password is too short -->
     <string name="lockpassword_password_too_short">Password must be at least %d characters</string>
     <!-- Hint shown in dialog screen when PIN is too short -->
-    <string name="lockpassword_pin_too_short">PIN must be at least %d characters</string>
+    <string name="lockpassword_pin_too_short">PIN must be at least %d digits</string>
 
     <!-- Hint shown after minimum password criteria is met -->
     <string name="lockpassword_press_continue">Press Continue when done</string>
@@ -622,7 +622,7 @@
     <string name="lockpassword_continue_label">Continue</string>
 
     <!-- Error shown in popup when password is too long -->
-    <string name="lockpassword_password_too_long">PIN can be no longer than %d digits</string>
+    <string name="lockpassword_password_too_long">Password can be no longer than %d characters</string>
     <!-- Error shown in popup when PIN is too long -->
     <string name="lockpassword_pin_too_long">PIN can be no longer than %d digits</string>
 
