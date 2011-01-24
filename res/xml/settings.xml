@@ -64,6 +64,17 @@
                 android:targetClass="com.android.settings.SoundSettings" />
         </com.android.settings.IconPreferenceScreen>
 
+        <!-- Profiles -->
+
+        <com.android.settings.IconPreferenceScreen
+            settings:icon="@drawable/ic_settings_profile"
+            android:title="@string/profile_settings_title">
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="com.android.settings"
+                android:targetClass="com.android.settings.ProfileSettings" />
+        </com.android.settings.IconPreferenceScreen>
+
         <!-- Display -->
 
         <com.android.settings.IconPreferenceScreen

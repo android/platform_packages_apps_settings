@@ -1028,6 +1028,8 @@
     <!-- Sound and alerts settings -->
     <!-- Main Settings screen setting option name to go into the sound settings screen -->
     <string name="sound_settings_title">Sound</string>
+    <!-- Main Settings screen setting option name to go into the profile settings screen -->
+    <string name="profile_settings_title">Profiles</string>
     <!-- Main Settings screen setting option name to go into the display settings screen -->
     <string name="display_settings_title">Display</string>
     <!-- Sound settings screen heading -->
@@ -1042,6 +1044,10 @@
     <string name="ringtone_title">Phone ringtone</string>
     <!-- Sound settings screen, setting option summary text -->
     <string name="ringtone_summary">""</string>
+    <!-- Sound settings screen, setting option name to pick ringtone (a list dialog comes up)-->
+    <string name="soundtone_title">Notification tone</string>
+    <!-- Sound settings screen, setting option summary text -->
+    <string name="soundtone_summary">""</string>
     <!-- Sound settings screen, volume title -->
     <string name="all_volume_title">Volume</string>
     <!-- Sound settings screen, setting option name -->
@@ -2593,6 +2599,70 @@ found in the list of installed applications.</string>
     <!-- Sound settings screen, setting option summary text -->
     <string name="emergency_tone_summary">Set behavior when an emergency call is placed</string>
 
+    <!-- Profile Settings screen --><skip/>
+    <!-- Profile Settings profile config screen title -->
+    <string name="profile_title">Configure profiles</string>
+    <!-- Profile Settings apgroup config screen title -->
+    <string name="profile_appgroup_list_title">Configure application groups</string>
+    <!-- Profile Settings sound mode label -->
+    <string name="sound_mode">Notification mode</string>
+    <!-- Profile Settings ringer mode label -->
+    <string name="ringer_mode">Ring mode</string>
+    <!-- Profile Settings lights mode label -->
+    <string name="lights_mode">Lights mode</string>
+    <!-- Profile Settings vibrate mode label -->
+    <string name="vibrate_mode">Vibrate mode</string>
+    <!-- Profile notification tone -->
+    <string name="choose_soundtone">Choose notification tone</string>
+    <!-- Profile ringtone -->
+    <string name="choose_ringtone">Choose ringtone</string>
+    <!-- Profile settings screen, section header for settings related to notification profiles -->
+    <string name="profile_settings">Profile settings</string>
+    <!-- Name of the profile, setting caption -->
+    <string name="profile_name">Profile name</string>
+    <!-- Profile summary - hint that touching configures profile -->
+    <string name="profile_summary">Touch to configure profile</string>
+    <!-- Title for application group setting screen -->
+    <string name="profile_appgroup_title">Application group: %s</string>
+    <!-- Title for application group list screen -->
+    <string name="profile_appgroups_title">Application groups</string>
+    <!-- Title for application group list section, hint at delete action -->
+    <string name="profile_applist_title">Applications - click to remove from group</string>
+    <!-- Prompt for name when adding a new app group -->
+    <string name="profile_appgroup_name_prompt">Enter name for app group</string>
+    <!-- Delete profile setting item -->
+    <string name="profile_delete">Delete profile</string>
+    <!-- Delete profile confimation message -->
+    <string name="profile_delete_confirm">Are you sure you want to delete this profile</string>
+    <!-- Delete application from group confirm message -->
+    <string name="profile_app_delete_confirm">Are you sure you want to remove this application</string>
+    <!-- Add application dialog box title -->
+    <string name="profile_choose_app">Choose application</string>
+    <!-- Title for profile settings screen -->
+    <string name="profile_settings_header">Profile settings: %s</string>
+    <!-- Profile category settings heading -->
+    <string name="profile_group_header">Profile: %1$s category: %2$s</string>
+    <!-- Menu item for managing app groups -->
+    <string name="menu_appgroups">Manage app groups</string>
+    <!-- Menu item for adding a new profile -->
+    <string name="menu_new_profile">New profile</string>
+    <!-- Menu item for adding a new profile - summary -->
+    <string name="menu_new_profile_summary">Add and configure a new profile</string>
+    <!-- Delete an item context menu item -->
+    <string name="profile_menu_delete">Delete</string>
+    <!-- Menu item for adding a new app group -->
+    <string name="profile_new_appgroup">New application group</string>
+    <!-- Menu item for deleting an app group -->
+    <string name="profile_delete_appgroup">Delete this application group</string>
+    <!-- Menu item for adding an app -->
+    <string name="profile_add_app">Add application</string>
+    <!-- Menu item for managing profiles -->
+    <string name="profile_manage">Manage profiles</string>
+    <!-- Menu item for managing app groups -->
+    <string name="profile_appgroups_manage">Manage application groups</string>
+    <!-- Menu item for managing app list -->
+    <string name="profile_applist_manage">Manage application list</string>
+    
     <!-- Privacy Settings screen --><skip/>
     <!-- Privacy settings menu title -->
     <string name="privacy_settings">Privacy</string>
