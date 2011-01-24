@@ -383,4 +383,19 @@
         <item>silent</item>
         <item>notsilent</item>
     </string-array>
+    
+<!-- Profile mode options. -->
+    <string-array name="profile_entries">
+        <item>On</item>
+        <item>Off</item>
+        <item>No override</item>
+    </string-array>
+
+    <!-- Values for vibrate_entries matching constants in SoundSettings. Do not translate. -->
+    <string-array name="profile_values" translatable="false">
+        <item>OVERRIDE</item>
+        <item>SUPPRESS</item>
+        <item>DEFAULT</item>
+    </string-array>
+    
 </resources>

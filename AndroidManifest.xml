@@ -303,6 +303,36 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="ProfileSettings"
+                android:label="@string/profile_settings"
+                android:clearTaskOnLaunch="true"
+                >
+        </activity>
+
+        <activity android:name="ProfileGroupConfig"
+                android:label="@string/profile_settings"
+                android:clearTaskOnLaunch="false"
+                >
+        </activity>
+
+        <activity android:name="AppGroupSettings"
+                android:label="@string/profile_settings"
+                android:clearTaskOnLaunch="false"
+                >
+        </activity>
+
+        <activity android:name="AppGroupConfig"
+                android:label="@string/profile_settings"
+                android:clearTaskOnLaunch="false"
+                >
+        </activity>
+
+        <activity android:name="ProfileConfig"
+                android:label="@string/profile_settings"
+                android:clearTaskOnLaunch="false"
+                >
+        </activity>
+
         <activity android:name="DockSettings"
                 android:label="@string/dock_settings_title"
                 android:clearTaskOnLaunch="true"
