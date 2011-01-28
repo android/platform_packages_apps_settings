@@ -437,7 +437,12 @@ public class WifiSettings extends PreferenceActivity implements DialogInterface.
         }
 
         if (state == DetailedState.OBTAINING_IPADDR) {
-            mScanner.pause();
+            if (mWifiManager.getConnectionInfo().getIpAddress() != 0) {
+                state = DetailedState.CONNECTED;
+                mScanner.resume();
+            } else {
+                mScanner.pause();
+            }
         } else {
             mScanner.resume();
         }

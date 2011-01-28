@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.NetworkInfo;
+import android.net.NetworkInfo.DetailedState;
 import android.net.wifi.SupplicantState;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
@@ -143,6 +144,9 @@ public class WifiEnabler implements Preference.OnPreferenceChangeListener {
         if (state != null && mCheckBox.isChecked()) {
             WifiInfo info = mWifiManager.getConnectionInfo();
             if (info != null) {
+                if (state == DetailedState.OBTAINING_IPADDR && info.getIpAddress() != 0) {
+                    state = DetailedState.CONNECTED;
+                }
                 mCheckBox.setSummary(Summary.get(mContext, info.getSSID(), state));
             }
         }
