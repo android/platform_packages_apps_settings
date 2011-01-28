@@ -284,10 +284,14 @@ public class WifiSettings extends PreferenceActivity implements DialogInterface.
     }
 
     private void showDialog(AccessPoint accessPoint, boolean edit) {
+        showDialog(accessPoint, edit, 0);
+    }
+
+    private void showDialog(AccessPoint accessPoint, boolean edit, int error) {
         if (mDialog != null) {
             mDialog.dismiss();
         }
-        mDialog = new WifiDialog(this, this, accessPoint, edit);
+        mDialog = new WifiDialog(this, this, accessPoint, edit, error);
         mDialog.show();
     }
 
@@ -419,13 +423,65 @@ public class WifiSettings extends PreferenceActivity implements DialogInterface.
             }
             updateAccessPoints();
         } else if (WifiManager.SUPPLICANT_STATE_CHANGED_ACTION.equals(action)) {
-            updateConnectionState(WifiInfo.getDetailedStateOf((SupplicantState)
-                    intent.getParcelableExtra(WifiManager.EXTRA_NEW_STATE)));
+            DetailedState state = WifiInfo.getDetailedStateOf((SupplicantState)intent
+                    .getParcelableExtra(WifiManager.EXTRA_NEW_STATE));
+            if (intent.hasExtra(WifiManager.EXTRA_SUPPLICANT_ERROR)) {
+                handleError(state,
+                        intent.getIntExtra(WifiManager.EXTRA_SUPPLICANT_ERROR, 0));
+            } else {
+                updateConnectionState(state);
+            }
         } else if (WifiManager.NETWORK_STATE_CHANGED_ACTION.equals(action)) {
             updateConnectionState(((NetworkInfo) intent.getParcelableExtra(
                     WifiManager.EXTRA_NETWORK_INFO)).getDetailedState());
         } else if (WifiManager.RSSI_CHANGED_ACTION.equals(action)) {
             updateConnectionState(null);
+        }
+    }
+
+    private AccessPoint getFailingPasswordAccessPoint() {
+        // Get the AccessPoint that you are currently trying to connect to.
+        // It is assumed you are in AUTHENTICATING state and have not yet updated
+        // to DISCONNECTED when the failure occurs.
+        if (mSelected != null && mSelected.networkId != -1
+                && mSelected.getState() == DetailedState.AUTHENTICATING) {
+            return mSelected;
+        }
+
+        for (int i = mAccessPoints.getPreferenceCount() - 1; i >= 0; i--) {
+            AccessPoint current = ((AccessPoint)mAccessPoints.getPreference(i));
+            if (current.networkId != -1
+                    && current.getState() == DetailedState.AUTHENTICATING) {
+                return current;
+            }
+        }
+
+        return null;
+    }
+
+    private void handleError(DetailedState state, int error) {
+        // Find the related AccessPoint
+        AccessPoint errorAccess = null;
+        if (error == WifiManager.ERROR_AUTHENTICATING) {
+            errorAccess = getFailingPasswordAccessPoint();
+        }
+        updateConnectionState(state);
+
+        if (errorAccess != null) {
+            // Forget network to stop automatic reconnection and
+            // recreate the AccessPoint since the networkId is final
+            // in AccessPoint and needs to be reset at failure
+            WifiConfiguration config = errorAccess.getConfig();
+            forget(errorAccess.networkId);
+            mAccessPoints.removePreference(errorAccess);
+            config.networkId = -1;
+            mSelected = new AccessPoint(this, config);
+            mAccessPoints.addPreference(mSelected);
+            updateAccessPoints();
+            mScanner.pause();
+
+            // Display the dialog with an error
+            showDialog(mSelected, true, error);
         }
     }
 

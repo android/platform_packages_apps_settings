@@ -24,6 +24,7 @@ import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.net.NetworkInfo.DetailedState;
 import android.net.wifi.WifiConfiguration;
+import android.net.wifi.WifiManager;
 import android.net.wifi.WifiConfiguration.AuthAlgorithm;
 import android.net.wifi.WifiConfiguration.KeyMgmt;
 import android.net.wifi.WifiInfo;
@@ -57,6 +58,7 @@ class WifiDialog extends AlertDialog implements View.OnClickListener,
     private TextView mSsid;
     private int mSecurity;
     private TextView mPassword;
+    private int mErrorCode;
 
     private Spinner mEapMethod;
     private Spinner mEapCaCert;
@@ -83,6 +85,17 @@ class WifiDialog extends AlertDialog implements View.OnClickListener,
         mListener = listener;
         mAccessPoint = accessPoint;
         mSecurity = (accessPoint == null) ? AccessPoint.SECURITY_NONE : accessPoint.security;
+        mErrorCode = 0;
+    }
+
+    WifiDialog(Context context, DialogInterface.OnClickListener listener,
+            AccessPoint accessPoint, boolean edit, int error) {
+        this(context, listener, accessPoint, edit);
+        mErrorCode = error;
+        if (error == WifiManager.ERROR_AUTHENTICATING) {
+            setMessage(context
+                    .getString(R.string.wifi_password_incorrect_error));
+        }
     }
 
     WifiConfiguration getConfig() {
@@ -215,7 +228,11 @@ class WifiDialog extends AlertDialog implements View.OnClickListener,
             }
 
             if (edit) {
-                setButton(BUTTON_SUBMIT, context.getString(R.string.wifi_save), mListener);
+                if (mErrorCode != 0) {
+                    setButton(BUTTON_SUBMIT, context.getString(R.string.wifi_connect), mListener);
+                } else {
+                    setButton(BUTTON_SUBMIT, context.getString(R.string.wifi_save), mListener);
+                }
             } else {
                 if (state == null && level != -1) {
                     setButton(BUTTON_SUBMIT, context.getString(R.string.wifi_connect), mListener);

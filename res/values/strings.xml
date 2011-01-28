@@ -879,6 +879,8 @@
     <string name="wifi_save">Save</string>
     <!-- Button label to dismiss the dialog -->
     <string name="wifi_cancel">Cancel</string>
+    <!-- This dialog will use the error_title as the title. -->
+    <string name="wifi_password_incorrect_error">The network password you typed is not correct. Please try again.</string>
 
     <!-- Wi-Fi Advanced Settings --> <skip />
     <!-- Wi-Fi settings screen, advanced, settings section.  This is a header shown above advanced wifi settings. -->
