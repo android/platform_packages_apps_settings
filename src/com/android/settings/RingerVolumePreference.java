@@ -100,7 +100,11 @@ public class RingerVolumePreference extends VolumePreference implements
     @Override
     public void onActivityStop() {
         super.onActivityStop();
-        cleanup();
+        for (int i = 0; i < SEEKBAR_ID.length; i++) {
+            if (mSeekBarVolumizer[i] != null) {
+                mSeekBarVolumizer[i].stopSample();
+            }
+        }
     }
     
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
