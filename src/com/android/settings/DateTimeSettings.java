@@ -156,6 +156,8 @@ public class DateTimeSettings
     public void onDateSet(DatePicker view, int year, int month, int day) {
         Calendar c = Calendar.getInstance();
 
+        year = Math.max(year, 1980);
+        year = Math.min(year, 2037);
         c.set(Calendar.YEAR, year);
         c.set(Calendar.MONTH, month);
         c.set(Calendar.DAY_OF_MONTH, day);
