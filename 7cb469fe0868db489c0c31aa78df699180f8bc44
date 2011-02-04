@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA+3//8WM\u003d",
+        "filename": "src/com/android/settings/MasterClear.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1004644
+      },
+      "writtenOn": "2011-02-04T08:06:24Z",
+      "side": 1,
+      "message": "Done, changed to 20%",
+      "parentUuid": "AAAA+n///4c\u003d",
+      "revId": "7cb469fe0868db489c0c31aa78df699180f8bc44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA+n///4s\u003d",
         "filename": "src/com/android/settings/MasterClear.java",
         "patchSetId": 1
@@ -53,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA+3//8WE\u003d",
+        "filename": "src/com/android/settings/MasterClear.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1004644
+      },
+      "writtenOn": "2011-02-04T08:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAA+n///4o\u003d",
+      "revId": "7cb469fe0868db489c0c31aa78df699180f8bc44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA+n///4k\u003d",
         "filename": "src/com/android/settings/MasterClear.java",
         "patchSetId": 1
@@ -64,6 +100,24 @@
       "writtenOn": "2010-12-14T22:10:05Z",
       "side": 1,
       "message": "Suggest renaming this to updateBatteryState().",
+      "revId": "7cb469fe0868db489c0c31aa78df699180f8bc44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA+3//8V8\u003d",
+        "filename": "src/com/android/settings/MasterClear.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1004644
+      },
+      "writtenOn": "2011-02-04T08:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAA+n///4k\u003d",
       "revId": "7cb469fe0868db489c0c31aa78df699180f8bc44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -87,6 +141,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA+3//8Vw\u003d",
+        "filename": "src/com/android/settings/MasterClear.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1004644
+      },
+      "writtenOn": "2011-02-04T08:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAA+n///4w\u003d",
+      "revId": "7cb469fe0868db489c0c31aa78df699180f8bc44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA+n///3k\u003d",
         "filename": "src/com/android/settings/MasterClear.java",
         "patchSetId": 1
@@ -104,6 +176,24 @@
     },
     {
       "key": {
+        "uuid": "AAAA+3//8Vs\u003d",
+        "filename": "src/com/android/settings/MasterClear.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1004644
+      },
+      "writtenOn": "2011-02-04T08:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAA+n///3k\u003d",
+      "revId": "7cb469fe0868db489c0c31aa78df699180f8bc44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAA+n///3o\u003d",
         "filename": "src/com/android/settings/MasterClear.java",
         "patchSetId": 1
@@ -115,6 +205,24 @@
       "writtenOn": "2010-12-14T22:10:05Z",
       "side": 1,
       "message": "You shouldn\u0027t need this function if you use onPause()/onResume() to register the receiver.",
+      "revId": "7cb469fe0868db489c0c31aa78df699180f8bc44",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA+3//8Vo\u003d",
+        "filename": "src/com/android/settings/MasterClear.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1004644
+      },
+      "writtenOn": "2011-02-04T08:06:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAA+n///3o\u003d",
       "revId": "7cb469fe0868db489c0c31aa78df699180f8bc44",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
