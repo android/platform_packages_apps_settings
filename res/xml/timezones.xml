@@ -31,6 +31,7 @@
     <timezone id="Europe/Amsterdam">Amsterdam, Berlin</timezone>
     <timezone id="Europe/Belgrade">Belgrade</timezone>
     <timezone id="Europe/Brussels">Brussels</timezone>
+    <timezone id="Europe/Paris">Paris</timezone>
     <timezone id="Europe/Sarajevo">Sarajevo</timezone>
     <timezone id="Africa/Windhoek">Windhoek</timezone>
     <timezone id="Africa/Brazzaville">W. Africa Time</timezone>
