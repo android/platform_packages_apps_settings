@@ -408,6 +408,10 @@ public abstract class LocalBluetoothProfileManager {
             // disconnect from any headset first
             BluetoothDevice currDevice = mService.getCurrentHeadset();
             if (currDevice != null) {
+                if (currDevice.equals(device)) {
+                    // In progress or already connected
+                    return true;
+                }
                 mService.disconnectHeadset(currDevice);
             }
             return mService.connectHeadset(device);
