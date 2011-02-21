@@ -49,8 +49,6 @@ public class WifiApSettings extends PreferenceActivity
     private static final int OPEN_INDEX = 0;
     private static final int WPA_INDEX = 1;
 
-    private static final int DIALOG_AP_SETTINGS = 1;
-
     private String[] mSecurityType;
     private Preference mCreateNetwork;
     private CheckBoxPreference mEnableWifiAp;
@@ -87,13 +85,9 @@ public class WifiApSettings extends PreferenceActivity
         }
     }
 
-    @Override
-    protected Dialog onCreateDialog(int id) {
-        if (id == DIALOG_AP_SETTINGS) {
-            mDialog = new WifiApDialog(this, this, mWifiConfig);
-            return mDialog;
-        }
-        return null;
+    private void showDialog() {
+        mDialog = new WifiApDialog(this, this, mWifiConfig);
+        mDialog.show();
     }
 
     @Override
@@ -106,12 +100,16 @@ public class WifiApSettings extends PreferenceActivity
     protected void onPause() {
         super.onPause();
         mWifiApEnabler.pause();
+        if (mDialog != null) {
+            mDialog.dismiss();
+            mDialog = null;
+        }
     }
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen screen, Preference preference) {
         if (preference == mCreateNetwork) {
-            showDialog(DIALOG_AP_SETTINGS);
+            showDialog();
         }
         return true;
     }
