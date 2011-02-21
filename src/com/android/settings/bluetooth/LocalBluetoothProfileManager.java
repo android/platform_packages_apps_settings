@@ -22,6 +22,7 @@ import android.bluetooth.BluetoothA2dp;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothHeadset;
 import android.bluetooth.BluetoothUuid;
+import android.bluetooth.BluetoothPan;
 import android.os.Handler;
 import android.os.ParcelUuid;
 import android.util.Log;
@@ -53,6 +54,10 @@ public abstract class LocalBluetoothProfileManager {
 
     /* package */ static final ParcelUuid[] OPP_PROFILE_UUIDS = new ParcelUuid[] {
         BluetoothUuid.ObexObjectPush
+    };
+
+    /* package */ static final ParcelUuid[] PAN_PROFILE_UUIDS = new ParcelUuid[] {
+        BluetoothUuid.PANU,
     };
 
     /**
@@ -97,6 +102,9 @@ public abstract class LocalBluetoothProfileManager {
 
                 profileManager = new OppProfileManager(localManager);
                 sProfileMap.put(Profile.OPP, profileManager);
+
+                profileManager = new PanProfileManager(localManager);
+                sProfileMap.put(Profile.PAN, profileManager);
             }
         }
     }
@@ -161,6 +169,12 @@ public abstract class LocalBluetoothProfileManager {
         if (BluetoothUuid.containsAnyUuid(uuids, OPP_PROFILE_UUIDS)) {
             profiles.add(Profile.OPP);
         }
+
+        if (BluetoothUuid.containsAnyUuid(uuids, PAN_PROFILE_UUIDS)) {
+            profiles.add(Profile.PAN);
+        }
+
+
     }
 
     protected LocalBluetoothProfileManager(LocalBluetoothManager localManager) {
@@ -195,7 +209,8 @@ public abstract class LocalBluetoothProfileManager {
     public enum Profile {
         HEADSET(R.string.bluetooth_profile_headset),
         A2DP(R.string.bluetooth_profile_a2dp),
-        OPP(R.string.bluetooth_profile_opp);
+        OPP(R.string.bluetooth_profile_opp),
+        PAN(R.string.bluetooth_profile_pan);
 
         public final int localizedString;
 
@@ -565,4 +580,83 @@ public abstract class LocalBluetoothProfileManager {
             }
         }
     }
+
+/**
+ * PANProfileManager
+ */
+    private static class PanProfileManager extends LocalBluetoothProfileManager {
+
+        public PanProfileManager(LocalBluetoothManager localManager) {
+            super(localManager);
+        }
+
+        @Override
+        public Set<BluetoothDevice> getConnectedDevices() {
+
+            BluetoothPan pan = new BluetoothPan();
+            return pan.getConnectedPanDevices();
+
+        }
+
+        @Override
+        public boolean connect(BluetoothDevice device) {
+            return false;
+        }
+
+        @Override
+        public boolean disconnect(BluetoothDevice device) {
+            BluetoothPan pan = new BluetoothPan();
+            return pan.disconnectPan(device.getAddress());
+        }
+
+        @Override
+        public int getConnectionStatus(BluetoothDevice device) {
+            BluetoothPan pan = new BluetoothPan();
+            if (pan.isPanDeviceConnected(device)) {
+                return SettingsBtStatus.CONNECTION_STATUS_CONNECTED;
+            } else {
+                return SettingsBtStatus.CONNECTION_STATUS_DISCONNECTED;
+            }
+        }
+
+        @Override
+        public int getSummary(BluetoothDevice device) {
+            int connectionStatus = getConnectionStatus(device);
+            if (SettingsBtStatus.isConnectionStatusConnected(connectionStatus)) {
+                return R.string.bluetooth_pan_profile_summary_connected;
+            } else {
+                return R.string.bluetooth_pan_profile_summary_not_connected;
+            }
+        }
+
+        @Override
+        public boolean isPreferred(BluetoothDevice device) {
+            return false;
+        }
+
+        @Override
+        public int getPreferred(BluetoothDevice device) {
+            return -1;
+        }
+
+        @Override
+        public void setPreferred(BluetoothDevice device, boolean preferred) {
+        }
+
+        @Override
+        public boolean isProfileReady() {
+            boolean tmp;
+            BluetoothPan pan = new BluetoothPan();
+            tmp = pan.isPanNapServiceEnabled();
+            Log.d(TAG, "Pan isProfileReady -> " + tmp);
+            return true;
+        }
+
+        @Override
+        public int convertState(int panState) {
+            return panState;
+        }
+    }
+
+
 }

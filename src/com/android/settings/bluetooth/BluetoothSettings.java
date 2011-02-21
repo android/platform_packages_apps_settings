@@ -301,6 +301,18 @@ public class BluetoothSettings extends PreferenceActivity
         BluetoothClass bluetoothClass = cachedDevice.getDevice().getBluetoothClass();
 
         switch(mFilterType) {
+        case BluetoothDevicePicker.FILTER_TYPE_NETWORKING:
+            if (uuids != null)
+                if (BluetoothUuid.containsAnyUuid(uuids,
+                        LocalBluetoothProfileManager.PAN_PROFILE_UUIDS)) {
+                    return true;
+                }
+                if (bluetoothClass != null
+                        && bluetoothClass.doesClassMatch(BluetoothClass.PROFILE_PAN)) {
+                    return true;
+                }
+            break;
+
         case BluetoothDevicePicker.FILTER_TYPE_TRANSFER:
             if (uuids != null)
                 if (BluetoothUuid.containsAnyUuid(uuids,

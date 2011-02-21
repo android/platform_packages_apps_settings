@@ -554,6 +554,12 @@ public class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> 
                     Log.v(TAG, "opp classbits != uuid");
                     printUuids = true;
                 }
+
+                if (bluetoothClass.doesClassMatch(BluetoothClass.PROFILE_PAN) !=
+                    mProfiles.contains(Profile.PAN)) {
+                    Log.v(TAG, "pan classbits != uuid");
+                    printUuids = true;
+                }
             }
 
             if (printUuids) {
@@ -653,7 +659,7 @@ public class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> 
      * @return A one-off summary that is applicable for the current state, or 0.
      */
     private int getOneOffSummary() {
-        boolean isA2dpConnected = false, isHeadsetConnected = false, isConnecting = false;
+        boolean isA2dpConnected = false, isHeadsetConnected = false, isConnecting = false, isPANConnected = false;
 
         if (mProfiles.contains(Profile.A2DP)) {
             LocalBluetoothProfileManager profileManager = LocalBluetoothProfileManager
@@ -671,6 +677,15 @@ public class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> 
             isHeadsetConnected = profileManager.isConnected(mDevice);
         }
 
+        if (mProfiles.contains(Profile.PAN)) {
+            LocalBluetoothProfileManager profileManager = LocalBluetoothProfileManager
+                    .getProfileManager(mLocalManager, Profile.PAN);
+            isConnecting |= profileManager.getConnectionStatus(mDevice) ==
+                    SettingsBtStatus.CONNECTION_STATUS_CONNECTING;
+            isPANConnected = profileManager.isConnected(mDevice);
+        }
+
+
         if (isConnecting) {
             // If any of these important profiles is connecting, prefer that
             return SettingsBtStatus.getConnectionStatusSummary(
@@ -681,6 +696,8 @@ public class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> 
             return R.string.bluetooth_summary_connected_to_a2dp;
         } else if (isHeadsetConnected) {
             return R.string.bluetooth_summary_connected_to_headset;
+        } else if (isPANConnected) {
+            return R.string.bluetooth_summary_connected_to_pan;
         } else {
             return 0;
         }

@@ -738,6 +738,8 @@
     <string name="bluetooth_profile_headset">Phone</string>
     <!-- Bluetooth settings.  The user-visible string that is used whenever referring to the OPP profile. -->
     <string name="bluetooth_profile_opp">Transfer</string>
+        <!-- Bluetooth settings.  The user-visible string that is used whenever referring to the PAN profile. -->
+    <string name="bluetooth_profile_pan">Network</string>
 
     <!-- Bluetooth settings.  The summary string when a device is connected to the A2DP profile. -->
     <string name="bluetooth_summary_connected_to_a2dp">Connected to media audio</string>
@@ -745,6 +747,8 @@
     <string name="bluetooth_summary_connected_to_headset">Connected to phone audio</string>
     <!-- Bluetooth settings.  The summary string when a device is connected to the A2DP and headset profiles. -->
     <string name="bluetooth_summary_connected_to_a2dp_headset">Connected to phone and media audio</string>
+    <!-- Bluetooth settings.  The summary string when a device is connected to the PAN profile. -->
+    <string name="bluetooth_summary_connected_to_pan">Connected to phone network</string>
 
     <!-- Bluetooth settings.  Connection options screen.  The title of the screen. -->
     <string name="bluetooth_device_advanced_title"><xliff:g id="device_name">%1$s</xliff:g> options</string>
@@ -762,6 +766,10 @@
     <string name="bluetooth_opp_profile_summary_connected">Connected to file transfer server</string>
     <!-- Bluetooth settings.  Connection options screen.  The summary for the OPP checkbox preference when OPP is not connected. -->
     <string name="bluetooth_opp_profile_summary_not_connected">Not connected to file transfer server</string>
+    <!-- Bluetooth settings.  Connection options screen.  The summary for the PAN checkbox preference when PAN is connected. -->
+    <string name="bluetooth_pan_profile_summary_connected">Connected to phone network</string>
+    <!-- Bluetooth settings.  Connection options screen.  The summary for the PAN checkbox preference when PAN is not connected. -->
+    <string name="bluetooth_pan_profile_summary_not_connected">Not connected to phone network</string>
 
     <!-- Bluetooth settings.  Connection options screen.  The summary for the A2DP checkbox preference that describes how checking it will set the A2DP profile as preferred. -->
     <string name="bluetooth_a2dp_profile_summary_use_for">Use for media audio</string>
@@ -769,6 +777,8 @@
     <string name="bluetooth_headset_profile_summary_use_for">Use for phone audio</string>
     <!-- Bluetooth settings.  Connection options screen.  The summary for the OPP checkbox preference that describes how checking it will set the OPP profile as preferred. -->
     <string name="bluetooth_opp_profile_summary_use_for">Use for file transfer</string>
+    <!-- Bluetooth settings.  Connection options screen.  The summary for the PAN checkbox preference that describes how checking it will set the OPP profile as preferred. -->
+    <string name="bluetooth_pan_profile_summary_use_for">Use for bluetooth tethering</string>
 
     <!-- Bluetooth settings.  Dock Setting Title -->
     <string name="bluetooth_dock_settings">Dock Settings</string>
@@ -1518,11 +1528,11 @@
     <string name="bt_title">Bluetooth</string>
     <string name="bt_tethering_button_text">Bluetooth tethering</string>
     <!-- Bluetooth available subtext - shown when Bluetooth is connected but not currently being tethered -->
-    <string name="bt_tethering_available_subtext">Remote device connected, check to tether</string>
+    <string name="bt_tethering_available_subtext">Bluetooth tethering enabled, but no remote device is connected</string>
     <!-- Bluetooth tethered subtext - shown when Bluetooth is connected and being tethered -->
-    <string name="bt_tethering_active_subtext">Tethered</string>
+    <string name="bt_tethering_active_subtext">Tethered, remote device connected</string>
     <!-- Bluetooth unavailable subtext - shown when Bluetooth is not enabeled -->
-    <string name="bt_tethering_unavailable_subtext">No remote devices connected to PAN service</string>
+    <string name="bt_tethering_unavailable_subtext">Check to enable Bluetooth tethering</string>
     <!-- Bluetooth errored subtext - shown when Bluetooth is broken for some reason -->
     <string name="bt_tethering_errored_subtext">Error</string>
 
