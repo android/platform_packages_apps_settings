@@ -303,7 +303,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="ProfileSettings"
+        <activity android:name="ProfileList"
                 android:label="@string/profile_settings"
                 android:clearTaskOnLaunch="true"
                 >
@@ -315,7 +315,7 @@
                 >
         </activity>
 
-        <activity android:name="AppGroupSettings"
+        <activity android:name="AppGroupList"
                 android:label="@string/profile_settings"
                 android:clearTaskOnLaunch="false"
                 >

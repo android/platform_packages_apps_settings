@@ -25,7 +25,7 @@
             android:title="@string/menu_appgroups">
         <intent android:action="android.intent.action.MAIN"
                 android:targetPackage="com.android.settings"
-                android:targetClass="com.android.settings.AppGroupSettings"/>
+                android:targetClass="com.android.settings.AppGroupList"/>
     </PreferenceScreen>
 
     <PreferenceCategory android:key="profile_title"
