@@ -1491,12 +1491,14 @@
 
     <!-- Tethering controls, item title to go into the tethering settings -->
     <string name="tether_settings_title_usb">Tethering</string>
+    <string name="tether_settings_title_bt">Tethering</string>
     <string name="tether_settings_title_wifi">Portable hotspot</string>
-    <string name="tether_settings_title_both">Tethering &amp; portable hotspot</string>
+    <string name="tether_settings_title_all">Tethering &amp; portable hotspot</string>
     <!-- Tethering controls, the item summary for the user to go into the tethering settings -->
     <string name="tether_settings_summary_usb">Share your phone\'s mobile data connection via USB</string>
+    <string name="tether_settings_summary_bt">Share your phone\'s mobile data connection via Bluetooth</string>
     <string name="tether_settings_summary_wifi">Share your phone\'s mobile connection as a portable Wi-Fi hotspot</string>
-    <string name="tether_settings_summary_both">Share your phone\'s mobile data connection via USB or as a portable Wi-Fi hotspot</string>
+    <string name="tether_settings_summary_all">Share your phone\'s mobile data connection via USB, Bluetooth or as a portable Wi-Fi hotspot</string>
 
     <!-- USB Tethering options -->
     <string name="usb_title">USB</string>
@@ -1511,6 +1513,19 @@
     <string name="usb_tethering_unavailable_subtext">USB not connected</string>
     <!-- USB errored subtext - shown when USB is broken for some reason -->
     <string name="usb_tethering_errored_subtext">USB tethering error</string>
+
+    <!-- Bluetooth Tethering options -->
+    <string name="bt_title">Bluetooth</string>
+    <string name="bt_tethering_button_text">Bluetooth tethering</string>
+    <!-- Bluetooth available subtext - shown when Bluetooth is connected but not currently being tethered -->
+    <string name="bt_tethering_available_subtext">Remote device connected, check to tether</string>
+    <!-- Bluetooth tethered subtext - shown when Bluetooth is connected and being tethered -->
+    <string name="bt_tethering_active_subtext">Tethered</string>
+    <!-- Bluetooth unavailable subtext - shown when Bluetooth is not enabeled -->
+    <string name="bt_tethering_unavailable_subtext">No remote devices connected to PAN service</string>
+    <!-- Bluetooth errored subtext - shown when Bluetooth is broken for some reason -->
+    <string name="bt_tethering_errored_subtext">Error</string>
+
 
     <!-- Thethering help button - calls up a web view with general tethering info -->
     <string name="tethering_help_button_text">Help</string>

@@ -43,6 +43,7 @@ import java.util.Locale;
  */
 public class TetherSettings extends PreferenceActivity {
     private static final String USB_TETHER_SETTINGS = "usb_tether_settings";
+    private static final String BT_TETHER_SETTINGS = "bt_tether_settings";
     private static final String ENABLE_WIFI_AP = "enable_wifi_ap";
     private static final String WIFI_AP_SETTINGS = "wifi_ap_settings";
     private static final String TETHERING_HELP = "tethering_help";
@@ -55,6 +56,7 @@ public class TetherSettings extends PreferenceActivity {
 
     private WebView mView;
     private CheckBoxPreference mUsbTether;
+    private CheckBoxPreference mBtTether;
 
     private CheckBoxPreference mEnableWifiAp;
     private PreferenceScreen mWifiApSettings;
@@ -64,6 +66,9 @@ public class TetherSettings extends PreferenceActivity {
     private BroadcastReceiver mTetherChangeReceiver;
 
     private String[] mUsbRegexs;
+
+    private String[] mBtRegexs;
+    private ArrayList mBtIfaces;
 
     private String[] mWifiRegexs;
 
@@ -76,28 +81,43 @@ public class TetherSettings extends PreferenceActivity {
         mEnableWifiAp = (CheckBoxPreference) findPreference(ENABLE_WIFI_AP);
         mWifiApSettings = (PreferenceScreen) findPreference(WIFI_AP_SETTINGS);
         mUsbTether = (CheckBoxPreference) findPreference(USB_TETHER_SETTINGS);
+        mBtTether = (CheckBoxPreference) findPreference(BT_TETHER_SETTINGS);
         mTetherHelp = (PreferenceScreen) findPreference(TETHERING_HELP);
 
         ConnectivityManager cm =
                 (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
 
         mUsbRegexs = cm.getTetherableUsbRegexs();
-        if (mUsbRegexs.length == 0 || Utils.isMonkeyRunning()) {
-            getPreferenceScreen().removePreference(mUsbTether);
-
-            setTitle(R.string.tether_settings_title_wifi);
-        }
-
+        mBtRegexs = cm.getTetherableBtRegexs();
         mWifiRegexs = cm.getTetherableWifiRegexs();
-        if (mWifiRegexs.length == 0) {
+
+        if ((mUsbRegexs.length == 0 || Utils.isMonkeyRunning()) &&
+					mBtRegexs.length == 0 && mWifiRegexs.length == 0) {
+            getPreferenceScreen().removePreference(mUsbTether);
+            getPreferenceScreen().removePreference(mBtTether);
             getPreferenceScreen().removePreference(mEnableWifiAp);
             getPreferenceScreen().removePreference(mWifiApSettings);
-
             setTitle(R.string.tether_settings_title_usb);
-        } else if (mUsbRegexs.length != 0) {
-            // have both
-            setTitle(R.string.tether_settings_title_both);
+        } else if ((mUsbRegexs.length == 0 || Utils.isMonkeyRunning()) &&
+				mBtRegexs.length == 0) {
+            getPreferenceScreen().removePreference(mUsbTether);
+            getPreferenceScreen().removePreference(mBtTether);
+            setTitle(R.string.tether_settings_title_wifi);
+        } else if (mBtRegexs.length == 0 && mWifiRegexs.length == 0) {
+            getPreferenceScreen().removePreference(mEnableWifiAp);
+            getPreferenceScreen().removePreference(mWifiApSettings);
+            getPreferenceScreen().removePreference(mBtTether);
+            setTitle(R.string.tether_settings_title_usb);
+        } else if ((mUsbRegexs.length == 0 || Utils.isMonkeyRunning()) &&
+				mWifiRegexs.length == 0) {
+            getPreferenceScreen().removePreference(mUsbTether);
+            getPreferenceScreen().removePreference(mEnableWifiAp);
+            getPreferenceScreen().removePreference(mWifiApSettings);
+            setTitle(R.string.tether_settings_title_bt);
+        } else {
+            setTitle(R.string.tether_settings_title_all);
         }
+
         mWifiApEnabler = new WifiApEnabler(this, mEnableWifiAp);
         mView = new WebView(this);
     }
@@ -126,6 +146,7 @@ public class TetherSettings extends PreferenceActivity {
             }
             String url = HELP_URL.replace("%y", locale.getLanguage().toLowerCase());
             url = url.replace("%z", (useCountry ? "_"+locale.getCountry().toLowerCase() : ""));
+            //TODO Add help info for Bluetooth tethering
             if ((mUsbRegexs.length != 0) && (mWifiRegexs.length == 0)) {
                 url = url.replace("%x", USB_HELP_MODIFIER);
             } else if ((mWifiRegexs.length != 0) && (mUsbRegexs.length == 0)) {
@@ -157,8 +178,8 @@ public class TetherSettings extends PreferenceActivity {
                         ConnectivityManager.EXTRA_ACTIVE_TETHER);
                 ArrayList<String> errored = intent.getStringArrayListExtra(
                         ConnectivityManager.EXTRA_ERRORED_TETHER);
-                updateState((String[]) available.toArray(), (String[]) active.toArray(),
-                        (String[]) errored.toArray());
+                updateUsbState(available.toArray(), active.toArray(), errored.toArray());
+                updateBtState(available.toArray(), active.toArray(), errored.toArray());
             } else if (intent.getAction().equals(Intent.ACTION_MEDIA_SHARED) ||
                        intent.getAction().equals(Intent.ACTION_MEDIA_UNSHARED)) {
                 updateState();
@@ -199,11 +220,12 @@ public class TetherSettings extends PreferenceActivity {
         String[] available = cm.getTetherableIfaces();
         String[] tethered = cm.getTetheredIfaces();
         String[] errored = cm.getTetheringErroredIfaces();
-        updateState(available, tethered, errored);
+        updateUsbState(available, tethered, errored);
+        updateBtState(available, tethered, errored);
     }
 
-    private void updateState(String[] available, String[] tethered,
-            String[] errored) {
+    private void updateUsbState(Object[] available, Object[] tethered,
+            Object[] errored) {
         ConnectivityManager cm =
                 (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         boolean usbTethered = false;
@@ -212,7 +234,8 @@ public class TetherSettings extends PreferenceActivity {
         boolean usbErrored = false;
         boolean massStorageActive =
                 Environment.MEDIA_SHARED.equals(Environment.getExternalStorageState());
-        for (String s : available) {
+        for (Object o : available) {
+            String s = (String)o;
             for (String regex : mUsbRegexs) {
                 if (s.matches(regex)) {
                     usbAvailable = true;
@@ -260,6 +283,64 @@ public class TetherSettings extends PreferenceActivity {
         }
     }
 
+    private void updateBtState(Object[] available, Object[] tethered,
+            Object[] errored) {
+        ConnectivityManager cm =
+                (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        boolean btTethered = false;
+        boolean btAvailable = false;
+        int btError = ConnectivityManager.TETHER_ERROR_NO_ERROR;
+        boolean btErrored = false;
+
+        for (Object o : available) {
+            String s = (String)o;
+            for (String regex : mBtRegexs) {
+                if (s.matches(regex)) {
+                    btAvailable = true;
+                    if (btError == ConnectivityManager.TETHER_ERROR_NO_ERROR) {
+                        btError = cm.getLastTetherError(s);
+                    }
+                }
+            }
+        }
+        for (Object o : tethered) {
+            String s = (String)o;
+            for (String regex : mBtRegexs) {
+                if (s.matches(regex)) btTethered = true;
+            }
+        }
+        for (Object o: errored) {
+            String s = (String)o;
+            for (String regex : mBtRegexs) {
+                if (s.matches(regex)) btErrored = true;
+            }
+        }
+
+        if (btTethered) {
+            mBtTether.setSummary(R.string.bt_tethering_active_subtext);
+            mBtTether.setEnabled(true);
+            mBtTether.setChecked(true);
+        } else if (btAvailable) {
+            if (btError == ConnectivityManager.TETHER_ERROR_NO_ERROR) {
+                mBtTether.setSummary(R.string.bt_tethering_available_subtext);
+            } else {
+                mBtTether.setSummary(R.string.bt_tethering_errored_subtext);
+            }
+            mBtTether.setEnabled(true);
+            mBtTether.setChecked(false);
+        } else if (btErrored) {
+            mBtTether.setSummary(R.string.bt_tethering_errored_subtext);
+            mBtTether.setEnabled(false);
+            mBtTether.setChecked(false);
+        } else {
+            mBtTether.setSummary(R.string.bt_tethering_unavailable_subtext);
+            mBtTether.setEnabled(false);
+            mBtTether.setChecked(false);
+        }
+    }
+
+
+
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         if (preference == mUsbTether) {
@@ -295,6 +376,38 @@ public class TetherSettings extends PreferenceActivity {
                     return true;
                 }
                 mUsbTether.setSummary("");
+            }
+        } else if (preference == mBtTether) {
+            boolean newState = mBtTether.isChecked();
+
+            ConnectivityManager cm =
+                    (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+
+            if (newState) {
+                String[] available = cm.getTetherableIfaces();
+                String btIface = findIface(available, mBtRegexs);
+                if (btIface == null) {
+                    updateState();
+                    return true;
+                }
+                if (cm.tether(btIface) != ConnectivityManager.TETHER_ERROR_NO_ERROR) {
+                    mBtTether.setChecked(false);
+                    mBtTether.setSummary(R.string.bt_tethering_errored_subtext);
+                    return true;
+                }
+                mBtTether.setSummary("");
+            } else {
+                String [] tethered = cm.getTetheredIfaces();
+                String btIface = findIface(tethered, mBtRegexs);
+                if (btIface == null) {
+                    updateState();
+                    return true;
+                }
+                if (cm.untether(btIface) != ConnectivityManager.TETHER_ERROR_NO_ERROR) {
+                    mBtTether.setSummary(R.string.bt_tethering_errored_subtext);
+                    return true;
+                }
+                mBtTether.setSummary("");
             }
         } else if (preference == mTetherHelp) {
 
