@@ -294,6 +294,7 @@
         <activity android:name="DisplaySettings"
                 android:label="@string/display_settings"
                 android:clearTaskOnLaunch="true"
+                android:configChanges="orientation|keyboardHidden"
                 >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

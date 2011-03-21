@@ -135,6 +135,13 @@ public class IccLockSettings extends PreferenceActivity
             mToState = savedInstanceState.getBoolean(ENABLE_TO_STATE);
         }
 
+        // Avoid using preferences for security reasons.
+        PinCodes pinCodes = (PinCodes)getLastNonConfigurationInstance();
+        if (pinCodes != null) {
+            mOldPin = pinCodes.mOld;
+            mNewPin = pinCodes.mNew;
+        }
+
         mPinDialog.setOnPinEnteredListener(this);
         
         // Don't need any changes to be remembered
@@ -144,6 +151,13 @@ public class IccLockSettings extends PreferenceActivity
         mRes = getResources();
     }
     
+    @Override
+    public Object onRetainNonConfigurationInstance() {
+        // Avoid using preferences for security reasons.
+        PinCodes pinCodes = new PinCodes(mOldPin, mNewPin);
+        return pinCodes;
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -325,5 +339,15 @@ public class IccLockSettings extends PreferenceActivity
         mPin = "";
         setDialogValues();
         mDialogState = OFF_MODE;
+    }
+
+    private static class PinCodes {
+        String mOld = null;
+        String mNew = null;
+
+      public PinCodes(String oldPin, String newPin) {
+          mOld = oldPin;
+          mNew = newPin;
+      }
     }
 }

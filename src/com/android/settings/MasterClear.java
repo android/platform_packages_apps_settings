@@ -168,12 +168,24 @@ public class MasterClear extends Activity {
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
 
-        mInitialView = null;
-        mFinalView = null;
         mInflater = LayoutInflater.from(this);
         mLockUtils = new LockPatternUtils(this);
 
-        establishInitialState();
+        Boolean finalViewExists = (Boolean)getLastNonConfigurationInstance();
+
+        if (finalViewExists != null && finalViewExists.booleanValue()) {
+            establishFinalConfirmationState();
+        } else {
+            mInitialView = null;
+            mFinalView = null;
+
+            establishInitialState();
+        }
+    }
+
+    @Override
+    public Object onRetainNonConfigurationInstance() {
+        return Boolean.valueOf(mFinalView != null);
     }
 
     /** Abandon all progress through the confirmation sequence by returning
