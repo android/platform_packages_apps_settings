@@ -27,6 +27,8 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.provider.Settings;
+import android.view.KeyCharacterMap;
+import android.view.KeyEvent;
 
 public class ApplicationSettings extends PreferenceActivity implements
         DialogInterface.OnClickListener {
@@ -76,8 +78,9 @@ public class ApplicationSettings extends PreferenceActivity implements
             });
         }
 
-        if (getResources().getConfiguration().keyboard == Configuration.KEYBOARD_NOKEYS) {
-            // No hard keyboard, remove the setting for quick launch
+        if (getResources().getConfiguration().keyboard == Configuration.KEYBOARD_NOKEYS
+                || !KeyCharacterMap.deviceHasKey(KeyEvent.KEYCODE_SEARCH)) {
+            // No hard keyboard or search key, remove the setting for quick launch
             Preference quickLaunchSetting = findPreference(KEY_QUICK_LAUNCH);
             getPreferenceScreen().removePreference(quickLaunchSetting);
         }
