@@ -16,6 +16,8 @@
 
 package com.android.settings.wifi;
 
+import com.android.internal.telephony.ITelephony;
+import com.android.internal.telephony.RILConstants;
 import com.android.settings.R;
 import com.android.settings.WirelessSettings;
 
@@ -33,6 +35,8 @@ import android.net.wifi.SupplicantState;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
+import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.preference.Preference;
 import android.preference.CheckBoxPreference;
 import android.provider.Settings;
@@ -41,6 +45,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 public class WifiApEnabler implements Preference.OnPreferenceChangeListener {
+    private static final String TAG = "WifiApEnabler";
     private final Context mContext;
     private final CheckBoxPreference mCheckBox;
     private final CharSequence mOriginalSummary;
@@ -195,6 +200,10 @@ public class WifiApEnabler implements Preference.OnPreferenceChangeListener {
                 mCheckBox.setChecked(true);
                 /* Doesnt need the airplane check */
                 mCheckBox.setEnabled(true);
+
+                // Request modem to reduce the transmit power when
+                // hotspot is enabled
+                setTransmitPower(RILConstants.TRANSMIT_POWER_WIFI_HOTSPOT);
                 break;
             case WifiManager.WIFI_AP_STATE_DISABLING:
                 mCheckBox.setSummary(R.string.wifi_stopping);
@@ -204,11 +213,36 @@ public class WifiApEnabler implements Preference.OnPreferenceChangeListener {
                 mCheckBox.setChecked(false);
                 mCheckBox.setSummary(mOriginalSummary);
                 enableWifiCheckBox();
+
+                // Request modem to restore the tranmsit power to default values
+                // when hotspot is disabled
+                setTransmitPower(RILConstants.TRANSMIT_POWER_DEFAULT);
                 break;
             default:
                 mCheckBox.setChecked(false);
                 mCheckBox.setSummary(R.string.wifi_error);
                 enableWifiCheckBox();
+        }
+    }
+
+    /**
+     * Sets the transmit power level
+     *
+     * @param powerLevel
+     */
+    private void setTransmitPower(int powerLevel) {
+        ITelephony phone = ITelephony.Stub.asInterface(ServiceManager.checkService("phone"));
+        if (phone == null) {
+            Log.e(TAG, "ITelephony interface is null, can not set transmit power");
+            return;
+        }
+
+        // Request modem to change the transmit power
+        try {
+            Log.d(TAG, "Setting transmit power to " + powerLevel);
+            phone.setTransmitPower(powerLevel);
+        } catch (RemoteException ex) {
+            Log.e(TAG, "RemoteException during setting max transmit power", ex);
         }
     }
 }
