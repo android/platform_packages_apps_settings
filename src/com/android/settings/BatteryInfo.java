@@ -26,7 +26,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IPowerManager;
 import android.os.Message;
-import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.SystemClock;
 import android.text.format.DateUtils;
@@ -93,22 +92,29 @@ public class BatteryInfo extends Activity {
                 
                 int status = intent.getIntExtra("status", BatteryManager.BATTERY_STATUS_UNKNOWN);
                 String statusString;
-                if (status == BatteryManager.BATTERY_STATUS_CHARGING) {
-                    statusString = getString(R.string.battery_info_status_charging);
+                
+                switch(status) {
+                case BatteryManager.BATTERY_STATUS_CHARGING:
+                	statusString = getString(R.string.battery_info_status_charging);
                     if (plugType > 0) {
                         statusString = statusString + " " + getString(
                                 (plugType == BatteryManager.BATTERY_PLUGGED_AC)
                                         ? R.string.battery_info_status_charging_ac
                                         : R.string.battery_info_status_charging_usb);
                     }
-                } else if (status == BatteryManager.BATTERY_STATUS_DISCHARGING) {
-                    statusString = getString(R.string.battery_info_status_discharging);
-                } else if (status == BatteryManager.BATTERY_STATUS_NOT_CHARGING) {
-                    statusString = getString(R.string.battery_info_status_not_charging);
-                } else if (status == BatteryManager.BATTERY_STATUS_FULL) {
-                    statusString = getString(R.string.battery_info_status_full);
-                } else {
-                    statusString = getString(R.string.battery_info_status_unknown);
+                    break;
+                case BatteryManager.BATTERY_STATUS_DISCHARGING:
+                	statusString = getString(R.string.battery_info_status_discharging);
+                	break;
+                case BatteryManager.BATTERY_STATUS_NOT_CHARGING:
+                	statusString = getString(R.string.battery_info_status_not_charging);
+                	break;
+                case BatteryManager.BATTERY_STATUS_FULL:
+                	statusString = getString(R.string.battery_info_status_full);
+                	break;
+                default:
+                	statusString = getString(R.string.battery_info_status_unknown);
+                	break;
                 }
                 mStatus.setText(statusString);
 
@@ -132,20 +138,28 @@ public class BatteryInfo extends Activity {
                 
                 int health = intent.getIntExtra("health", BatteryManager.BATTERY_HEALTH_UNKNOWN);
                 String healthString;
-                if (health == BatteryManager.BATTERY_HEALTH_GOOD) {
-                    healthString = getString(R.string.battery_info_health_good);
-                } else if (health == BatteryManager.BATTERY_HEALTH_OVERHEAT) {
-                    healthString = getString(R.string.battery_info_health_overheat);
-                } else if (health == BatteryManager.BATTERY_HEALTH_DEAD) {
-                    healthString = getString(R.string.battery_info_health_dead);
-                } else if (health == BatteryManager.BATTERY_HEALTH_OVER_VOLTAGE) {
-                    healthString = getString(R.string.battery_info_health_over_voltage);
-                } else if (health == BatteryManager.BATTERY_HEALTH_UNSPECIFIED_FAILURE) {
-                    healthString = getString(R.string.battery_info_health_unspecified_failure);
-                } else if (health == BatteryManager.BATTERY_HEALTH_COLD) {
-                    healthString = getString(R.string.battery_info_health_cold);
-                } else {
-                    healthString = getString(R.string.battery_info_health_unknown);
+                switch(health) {
+	                case BatteryManager.BATTERY_HEALTH_GOOD:
+	                	healthString = getString(R.string.battery_info_health_good);
+	                	break;
+	                case BatteryManager.BATTERY_HEALTH_OVERHEAT:
+	                	healthString = getString(R.string.battery_info_health_overheat);
+	                	break;
+	                case BatteryManager.BATTERY_HEALTH_DEAD:
+	                	healthString = getString(R.string.battery_info_health_dead);
+	                	break;
+	                case BatteryManager.BATTERY_HEALTH_OVER_VOLTAGE:
+	                	healthString = getString(R.string.battery_info_health_over_voltage);
+	                	break;
+	                case BatteryManager.BATTERY_HEALTH_UNSPECIFIED_FAILURE:
+	                	healthString = getString(R.string.battery_info_health_unspecified_failure);
+	                	break;
+	                case BatteryManager.BATTERY_HEALTH_COLD:
+	                	healthString = getString(R.string.battery_info_health_cold);
+	                	break;
+	                default:
+	                	healthString = getString(R.string.battery_info_health_unknown);
+	                	break;
                 }
                 mHealth.setText(healthString);
             }
@@ -198,7 +212,5 @@ public class BatteryInfo extends Activity {
     private void updateBatteryStats() {
         long uptime = SystemClock.elapsedRealtime();
         mUptime.setText(DateUtils.formatElapsedTime(uptime / 1000));
-        
     }
-    
 }
