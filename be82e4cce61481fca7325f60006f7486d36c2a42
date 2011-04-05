@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA/n///y8\u003d",
+        "filename": "src/com/android/settings/BatteryInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2011-04-05T16:30:10Z",
+      "side": 1,
+      "message": "tab",
+      "revId": "be82e4cce61481fca7325f60006f7486d36c2a42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA/n///y4\u003d",
+        "filename": "src/com/android/settings/BatteryInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2011-04-05T16:30:10Z",
+      "side": 1,
+      "message": "tabs on all these lines.",
+      "revId": "be82e4cce61481fca7325f60006f7486d36c2a42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA/n///yw\u003d",
+        "filename": "src/com/android/settings/BatteryInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2011-04-05T16:30:10Z",
+      "side": 1,
+      "message": "line too long and tabs",
+      "revId": "be82e4cce61481fca7325f60006f7486d36c2a42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA/n///y0\u003d",
+        "filename": "src/com/android/settings/BatteryInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2011-04-05T16:30:10Z",
+      "side": 1,
+      "message": "line too long.  Replace tabs with spaces in all these lines.",
+      "revId": "be82e4cce61481fca7325f60006f7486d36c2a42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
