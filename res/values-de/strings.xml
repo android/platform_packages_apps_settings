@@ -369,6 +369,7 @@
     <string name="wifi_eap_anonymous" msgid="2989469344116577955">"Anonyme Identität"</string>
     <string name="wifi_password" msgid="5948219759936151048">"Passwort"</string>
     <string name="wifi_show_password" msgid="4235237470701732009">"Passwort anzeigen"</string>
+    <string name="wifi_use_mobile_as_default_gw">Nutze mobiles Internet</string>
     <string name="wifi_unchanged" msgid="3410422020930397102">"(nicht geändert)"</string>
     <string name="wifi_unspecified" msgid="5431501214192991253">"(keine Angabe)"</string>
     <string name="wifi_remembered" msgid="8426719916135950136">"Gespeichert"</string>

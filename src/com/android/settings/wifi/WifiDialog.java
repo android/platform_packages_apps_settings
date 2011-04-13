@@ -64,6 +64,7 @@ class WifiDialog extends AlertDialog implements View.OnClickListener,
     private Spinner mEapUserCert;
     private TextView mEapIdentity;
     private TextView mEapAnonymous;
+    private CheckBox mUseMobileAsDefaultGw;
 
     static boolean requireKeyStore(WifiConfiguration config) {
         String values[] = {config.ca_cert.value(), config.client_cert.value(),
@@ -103,6 +104,8 @@ class WifiDialog extends AlertDialog implements View.OnClickListener,
         } else {
             config.networkId = mAccessPoint.networkId;
         }
+
+        config.useMobileAsDefaultGw = mUseMobileAsDefaultGw.isChecked() ? "1" : "0";
 
         switch (mSecurity) {
             case AccessPoint.SECURITY_NONE:
@@ -175,6 +178,8 @@ class WifiDialog extends AlertDialog implements View.OnClickListener,
         Context context = getContext();
         Resources resources = context.getResources();
 
+        mUseMobileAsDefaultGw = (CheckBox)mView.findViewById(R.id.wifi_use_mobile_as_default_gw);
+
         if (mAccessPoint == null) {
             setTitle(R.string.wifi_add_network);
             mView.findViewById(R.id.type).setVisibility(View.VISIBLE);
@@ -212,6 +217,12 @@ class WifiDialog extends AlertDialog implements View.OnClickListener,
 
             if (mAccessPoint.networkId == -1 || edit) {
                 showSecurityFields();
+            }
+            if (mAccessPoint.networkId != -1) {
+                mUseMobileAsDefaultGw.setChecked("1".equals(mAccessPoint.getConfig().useMobileAsDefaultGw));
+                if (!edit) {
+                    addRow(group, R.string.wifi_use_mobile_as_default_gw, "" + "1".equals(mAccessPoint.getConfig().useMobileAsDefaultGw));
+                }
             }
 
             if (edit) {

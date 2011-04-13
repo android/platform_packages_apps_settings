@@ -169,6 +169,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/wifi_show_password" />
+
+            <CheckBox android:id="@+id/wifi_use_mobile_as_default_gw"
+                    style="?android:attr/textAppearanceSmallInverse"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/wifi_use_mobile_as_default_gw" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

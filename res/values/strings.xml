@@ -855,6 +855,8 @@
     <string name="wifi_password">Password</string>
     <!-- Label for the check box to show password -->
     <string name="wifi_show_password">Show password.</string>
+    <!-- Label for the check box to use mobile network as default gateway -->
+    <string name="wifi_use_mobile_as_default_gw">Use mobile internet.</string>
     <!-- Hint for unchanged fields -->
     <string name="wifi_unchanged">(unchanged)</string>
     <!-- Hint for unspecified fields -->
