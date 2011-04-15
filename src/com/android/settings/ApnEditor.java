@@ -149,9 +149,9 @@ public class ApnEditor extends PreferenceActivity
 
         mFirstTime = icicle == null;
 
-        if (action.equals(Intent.ACTION_EDIT)) {
+        if (Intent.ACTION_EDIT.equals(action)) {
             mUri = intent.getData();
-        } else if (action.equals(Intent.ACTION_INSERT)) {
+        } else if (Intent.ACTION_INSERT.equals(action)) {
             if (mFirstTime || icicle.getInt(SAVED_POS) == 0) {
                 mUri = getContentResolver().insert(intent.getData(), new ContentValues());
             } else {

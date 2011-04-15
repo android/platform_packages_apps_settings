@@ -396,8 +396,14 @@ public class InstalledAppDetails extends Activity
         }
         
         Intent intent = getIntent();
-        final String packageName = intent.getData().getSchemeSpecificPart();
-        mAppEntry = mState.getEntry(packageName);
+        Uri uri = intent.getData();
+        String packageName = null;
+        mAppEntry = null;
+
+        if (uri != null) {
+            packageName = uri.getSchemeSpecificPart();
+            mAppEntry = mState.getEntry(packageName);
+        }
         
         if (mAppEntry == null) {
             return false; // onCreate must have failed, make sure to exit

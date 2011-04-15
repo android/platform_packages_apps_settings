@@ -86,7 +86,9 @@ public class AppWidgetPickActivity extends ActivityPicker {
         ArrayList<AppWidgetProviderInfo> customInfo = null;
         ArrayList<Bundle> customExtras = null;
         try_custom_items: {
-            customInfo = extras.getParcelableArrayList(AppWidgetManager.EXTRA_CUSTOM_INFO);
+            if (extras != null) {
+                customInfo = extras.getParcelableArrayList(AppWidgetManager.EXTRA_CUSTOM_INFO);
+            }
             if (customInfo == null || customInfo.size() == 0) {
                 Log.i(TAG, "EXTRA_CUSTOM_INFO not present.");
                 break try_custom_items;
@@ -102,7 +104,9 @@ public class AppWidgetPickActivity extends ActivityPicker {
                 }
             }
 
-            customExtras = extras.getParcelableArrayList(AppWidgetManager.EXTRA_CUSTOM_EXTRAS);
+            if (extras != null) {
+                customExtras = extras.getParcelableArrayList(AppWidgetManager.EXTRA_CUSTOM_EXTRAS);
+            }
             if (customExtras == null) {
                 customInfo = null;
                 Log.e(TAG, "EXTRA_CUSTOM_INFO without EXTRA_CUSTOM_EXTRAS");
