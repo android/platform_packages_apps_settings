@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA/n//+Iw\u003d",
+        "filename": "tests/src/com/android/settings/wifi/FWifiDialogTooLongTests.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1005044
+      },
+      "writtenOn": "2011-04-19T23:16:14Z",
+      "side": 1,
+      "message": "WifiDialogTests sounds a better name.",
+      "revId": "5654420791c0c975c60b1b59562291f46964c793",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA/n//+Is\u003d",
+        "filename": "tests/src/com/android/settings/wifi/FWifiDialogTooLongTests.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1005044
+      },
+      "writtenOn": "2011-04-19T23:16:14Z",
+      "side": 1,
+      "message": "com.android.settings.wifi",
+      "revId": "5654420791c0c975c60b1b59562291f46964c793",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
