@@ -24,6 +24,8 @@ import android.bluetooth.BluetoothA2dp;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import android.content.SharedPreferences;
 import android.util.Config;
 import android.util.Log;
@@ -276,6 +278,11 @@ public class LocalBluetoothManager {
     }
 
     public void showError(BluetoothDevice device, int titleResId, int messageResId) {
+        showError(device, titleResId, messageResId, android.R.string.ok, null, 0);
+    }
+
+    public void showError(BluetoothDevice device, int titleResId, int messageResId,
+            int positiveButtonResId, OnClickListener positiveListener, int negativeButtonResId) {
         CachedBluetoothDevice cachedDevice = mCachedDeviceManager.findDevice(device);
         String name = null;
         if (cachedDevice == null) {
@@ -291,12 +298,15 @@ public class LocalBluetoothManager {
 
         if (mForegroundActivity != null) {
             // Need an activity context to show a dialog
-            mErrorDialog = new AlertDialog.Builder(mForegroundActivity)
+            AlertDialog.Builder builder = new AlertDialog.Builder(mForegroundActivity)
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setTitle(titleResId)
                 .setMessage(message)
-                .setPositiveButton(android.R.string.ok, null)
-                .show();
+                .setPositiveButton(positiveButtonResId, positiveListener);
+            if (negativeButtonResId != 0) {
+                builder.setNegativeButton(negativeButtonResId, null);
+            }
+            mErrorDialog = builder.show();
         } else {
             // Fallback on a toast
             Toast.makeText(mContext, message, Toast.LENGTH_LONG).show();

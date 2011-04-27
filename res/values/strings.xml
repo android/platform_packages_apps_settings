@@ -2649,4 +2649,7 @@ found in the list of installed applications.</string>
     <string name="sound_category_calls_title">Incoming calls</string>
     <string name="sound_category_notification_title">Notifications</string>
     <string name="sound_category_feedback_title">Feedback</string>
+
+     <!-- Button text to retry for the error dialog when BT pairing fails because the other device rejected the pairing. -->
+     <string name="bluetooth_pairing_rejected_retry_button_text">Retry</string>
 </resources>
