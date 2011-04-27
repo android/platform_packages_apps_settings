@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA/3///q8\u003d",
+        "filename": "src/com/android/settings/wifi/AccessPoint.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2011-04-27T20:59:50Z",
+      "side": 1,
+      "message": "the fact you need this again suggests we really should do this check centrally and have it in part of the broadcast.\n\nNeed IPv6 check too.",
+      "revId": "baf9a3819fadd1d8abdc23b11dd788c77897313f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA/3///q4\u003d",
+        "filename": "src/com/android/settings/wifi/AccessPoint.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2011-04-27T20:59:50Z",
+      "side": 1,
+      "message": "We\u0027re moving away from passing addresses as ints.  Once you get InetAddresses, just use addr.isLinkLocalAddress().",
+      "revId": "baf9a3819fadd1d8abdc23b11dd788c77897313f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA/3///q0\u003d",
+        "filename": "src/com/android/settings/wifi/WifiSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2011-04-27T20:59:50Z",
+      "side": 1,
+      "message": "reconnect is not quite the right action.  renew?",
+      "revId": "baf9a3819fadd1d8abdc23b11dd788c77897313f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
