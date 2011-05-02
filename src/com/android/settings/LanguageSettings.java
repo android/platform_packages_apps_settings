@@ -18,6 +18,7 @@ package com.android.settings;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -96,7 +97,8 @@ public class LanguageSettings extends PreferenceActivity {
     private void onCreateIMM() {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 
-        mInputMethodProperties = imm.getInputMethodList();
+        String[] order = getResources().getStringArray(R.array.keyboard_priority);
+        mInputMethodProperties = prioritize(imm.getInputMethodList(), order);
 
         mLastInputMethodId = Settings.Secure.getString(getContentResolver(),
             Settings.Secure.DEFAULT_INPUT_METHOD);
@@ -141,6 +143,27 @@ public class LanguageSettings extends PreferenceActivity {
                 keyboardSettingsCategory.addPreference(prefScreen);
             }
         }
+    }
+
+    private static List<InputMethodInfo> prioritize(List<InputMethodInfo> inputMethodList,
+            String[] keyboardPriority) {
+        List<InputMethodInfo> prioList = new ArrayList<InputMethodInfo>(inputMethodList.size());
+
+        // Keyboard targeted for a mother tongue shall be possible to order
+        // at the top, before minority languages.
+        for (String componentString : keyboardPriority) {
+            ComponentName keyboardComponent = ComponentName.unflattenFromString(componentString);
+            InputMethodInfo keyboardInfo = new InputMethodInfo(keyboardComponent.getPackageName(),
+                    keyboardComponent.getClassName(), null, null);
+            int indexOf = inputMethodList.indexOf(keyboardInfo);
+            if (indexOf >= 0) {
+                prioList.add(inputMethodList.get(indexOf));
+                inputMethodList.remove(indexOf);
+            }
+        }
+        // Add the rest
+        prioList.addAll(inputMethodList);
+        return prioList;
     }
 
     @Override
