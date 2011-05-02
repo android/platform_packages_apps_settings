@@ -23,6 +23,7 @@ import com.android.settings.Utils;
 import com.android.settings.VoiceInputOutputSettings;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -117,7 +118,8 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
                 getActivity().getIntent().getAction());
         getActivity().getIntent().setAction(null);
         mImm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-        mImis = mImm.getInputMethodList();
+        String[] order = getResources().getStringArray(R.array.config_keyboardPriority);
+        mImis = prioritize(mImm.getInputMethodList(), order);
         createImePreferenceHierarchy((PreferenceGroup)findPreference("keyboard_settings_category"));
 
         final Intent intent = new Intent(Intent.ACTION_MAIN);
@@ -130,6 +132,27 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
 
         mHandler = new Handler();
         mSettingsObserver = new SettingsObserver(mHandler, getActivity());
+    }
+
+    private static List<InputMethodInfo> prioritize(List<InputMethodInfo> inputMethodList,
+            String[] keyboardPriority) {
+        List<InputMethodInfo> prioList = new ArrayList<InputMethodInfo>(inputMethodList.size());
+
+        // Keyboard targeted for a mother tongue shall be possible to order
+        // at the top, before minority languages.
+        for (String componentString : keyboardPriority) {
+            ComponentName keyboardComponent = ComponentName.unflattenFromString(componentString);
+            InputMethodInfo keyboardInfo = new InputMethodInfo(keyboardComponent.getPackageName(),
+                    keyboardComponent.getClassName(), null, null);
+            int indexOf = inputMethodList.indexOf(keyboardInfo);
+            if (indexOf >= 0) {
+                prioList.add(inputMethodList.get(indexOf));
+                inputMethodList.remove(indexOf);
+            }
+        }
+        // Add the rest
+        prioList.addAll(inputMethodList);
+        return prioList;
     }
 
     private void updateInputMethodSelectorSummary(int value) {

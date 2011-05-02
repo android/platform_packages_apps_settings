@@ -22,4 +22,10 @@
     <string name="additional_system_update" translatable="false"></string>
     <string name="additional_system_update_menu" translatable="false"></string>
 
+    <!-- Values as flattened component names to order InputMethods in LanguageSettings.
+         Keyboard targeted for a mother tongue shall be possible to order
+         at the top, before minority languages. -->
+    <string-array name="config_keyboardPriority" translatable="false">
+    </string-array>
+
 </resources>
