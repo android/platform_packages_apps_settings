@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAA/3///L0\u003d",
+        "filename": "src/com/android/settings/wifi/WifiApEnabler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1003344
+      },
+      "writtenOn": "2011-05-02T23:16:04Z",
+      "side": 1,
+      "message": "This is reducing the power after bringing up wifi hotspot - so there will be a short period (however small) where power will be high. is this ok ? or should this be happening earlier",
+      "revId": "c358924396b4acfdfa3d4d70248064c567dcfb25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
