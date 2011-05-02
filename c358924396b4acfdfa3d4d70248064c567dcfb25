@@ -16,6 +16,24 @@
       "revId": "c358924396b4acfdfa3d4d70248064c567dcfb25",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAA/3///K4\u003d",
+        "filename": "src/com/android/settings/wifi/WifiApEnabler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1005066
+      },
+      "writtenOn": "2011-05-02T23:26:55Z",
+      "side": 1,
+      "message": "This should be happening earlier but then if the wifi hotspot enabling fails then the setTransmitPower API would need to be called again to restore the default power. Another question is whether to check if setting the transmit power itself fails.",
+      "parentUuid": "AAAA/3///L0\u003d",
+      "revId": "c358924396b4acfdfa3d4d70248064c567dcfb25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
