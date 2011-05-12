@@ -147,7 +147,7 @@ public class BluetoothSettings extends PreferenceActivity
 
             mNamePreference = (BluetoothNamePreference) findPreference(KEY_BT_NAME);
 
-            mDeviceList = (ProgressCategory) findPreference(KEY_BT_DEVICE_LIST);
+//            mDeviceList = (ProgressCategory) findPreference(KEY_BT_DEVICE_LIST);
         }
 
         mDeviceList = (ProgressCategory) findPreference(KEY_BT_DEVICE_LIST);
