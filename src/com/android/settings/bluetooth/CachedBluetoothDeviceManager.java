@@ -19,7 +19,9 @@ package com.android.settings.bluetooth;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothClass;
 import android.bluetooth.BluetoothDevice;
+import android.content.DialogInterface;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.android.settings.R;
 import com.android.settings.bluetooth.LocalBluetoothManager.Callback;
@@ -201,7 +203,25 @@ public class CachedBluetoothDeviceManager {
             break;
         case BluetoothDevice.UNBOND_REASON_AUTH_REJECTED:
             errorMsg = R.string.bluetooth_pairing_rejected_error_message;
-            mLocalManager.showError(device, R.string.bluetooth_error_title, errorMsg);
+            final CachedBluetoothDevice cachedDevice = findDevice(device);
+            if (cachedDevice != null) {
+                // Allow the user an easy way to retry pairing
+                DialogInterface.OnClickListener retry = new DialogInterface.OnClickListener() {
+                    private final CachedBluetoothDevice mCachedDevice = cachedDevice;
+                    public void onClick(DialogInterface dialog, int which) {
+                        mCachedDevice.pair();
+                        Toast.makeText(mLocalManager.getContext(),
+                                R.string.bluetooth_pairing_rejected_retry_toast_text,
+                                Toast.LENGTH_LONG).show();
+                    }
+                };
+
+                mLocalManager.showError(device, R.string.bluetooth_error_title, errorMsg,
+                        R.string.bluetooth_pairing_rejected_retry_button_text, retry,
+                        android.R.string.cancel);
+            } else {
+                mLocalManager.showError(device, R.string.bluetooth_error_title, errorMsg);
+            }
             break;
         case BluetoothDevice.UNBOND_REASON_REMOTE_DEVICE_DOWN:
             errorMsg = R.string.bluetooth_pairing_device_down_error_message;
