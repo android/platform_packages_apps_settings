@@ -1,0 +1,8 @@
+Change-Id: I7d7dbafb5b54abc45225019335319e21bac06097
+Code-Review+2: Jean-Baptiste Queru <jbq@google.com>
+Verified+1: Jean-Baptiste Queru <jbq@google.com>
+Submitted-by: Jean-Baptiste Queru <jbq@google.com>
+Submitted-at: Mon, 24 Aug 2009 13:59:25 -0700
+Reviewed-on: https://review.source.android.com/10759
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master

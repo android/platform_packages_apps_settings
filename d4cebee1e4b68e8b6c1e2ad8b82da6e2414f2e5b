@@ -1,0 +1,9 @@
+Change-Id: I36c79489ce7200ed6c41aabc8420d58cfc4d1393
+Verified+1: Jean-Baptiste Queru <jbq@google.com>
+Code-Review+2: Jake Hamby <jhamby@google.com>
+Verified+1: Jake Hamby <jhamby@google.com>
+Submitted-by: Jake Hamby <jhamby@google.com>
+Submitted-at: Wed, 18 Aug 2010 19:29:53 -0700
+Reviewed-on: https://review.source.android.com/16497
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master

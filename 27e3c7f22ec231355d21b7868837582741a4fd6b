@@ -1,0 +1,7 @@
+Change-Id: I316cd7ecbda181d0bd80fcb83bcaf5a17d713f5e
+Code-Review+1: Stefan Schülein <Stefan.Schuelein@teleca.com>
+Code-Review+2: John Huang <jsh@android.com>
+Verified+1: John Huang <jsh@android.com>
+Reviewed-on: https://review.source.android.com/4601
+Project: platform/packages/apps/Settings
+Branch: refs/heads/cdma-import

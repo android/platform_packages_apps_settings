@@ -1,0 +1,9 @@
+Change-Id: I192dc51394476266f49c653c58f0a682e499a6ad
+Code-Review+2: John Huang <jsh@android.com>
+Verified+1: John Huang <jsh@android.com>
+Code-Review+1: Team Android CDMA <oss.android_cdma@teleca.com>
+Submitted-by: John Huang <jsh@android.com>
+Submitted-at: Wed, 18 Feb 2009 18:24:17 -0700
+Reviewed-on: https://review.source.android.com/8663
+Project: platform/packages/apps/Settings
+Branch: refs/heads/cdma-import

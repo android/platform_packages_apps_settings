@@ -1,0 +1,9 @@
+Change-Id: I414ab76fe3cebce39dd49317b4e368a16cca0847
+Verified+1: Jean-Baptiste Queru <jbq@google.com>
+Code-Review+2: Romain Guy <romainguy@android.com>
+Code-Review+1: Kenny Root <kroot@android.com>
+Submitted-by: Romain Guy <romainguy@android.com>
+Submitted-at: Tue, 11 May 2010 10:51:12 -0700
+Reviewed-on: https://review.source.android.com/13885
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master

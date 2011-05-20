@@ -1,0 +1,7 @@
+Code-Review+2: Brad Fitzpatrick <bradfitz@android.com>
+Verified+1: Jean-Baptiste Queru <jbq@google.com>
+Submitted-by: Jean-Baptiste Queru <jbq@google.com>
+Submitted-at: Mon, 25 Oct 2010 16:40:13 -0700
+Reviewed-on: https://review.source.android.com/18551
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
