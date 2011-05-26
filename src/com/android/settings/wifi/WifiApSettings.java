@@ -46,8 +46,8 @@ public class WifiApSettings extends PreferenceActivity
     private static final String ENABLE_WIFI_AP = "enable_wifi_ap";
     private static final int CONFIG_SUBTEXT = R.string.wifi_tether_configure_subtext;
 
-    private static final int OPEN_INDEX = 0;
-    private static final int WPA_INDEX = 1;
+    private static final int WPA_INDEX = 0;
+    private static final int OPEN_INDEX = 1;
 
     private static final int DIALOG_AP_SETTINGS = 1;
 
@@ -76,9 +76,7 @@ public class WifiApSettings extends PreferenceActivity
         mWifiApEnabler = new WifiApEnabler(this, mEnableWifiAp);
 
         if(mWifiConfig == null) {
-            String s = getString(com.android.internal.R.string.wifi_tether_configure_ssid_default);
-            mCreateNetwork.setSummary(String.format(getString(CONFIG_SUBTEXT),
-                                                    s, mSecurityType[OPEN_INDEX]));
+            showDialog(DIALOG_AP_SETTINGS);
         } else {
             mCreateNetwork.setSummary(String.format(getString(CONFIG_SUBTEXT),
                                       mWifiConfig.SSID,
@@ -134,6 +132,7 @@ public class WifiApSettings extends PreferenceActivity
                     mWifiApEnabler.updateConfigSummary(mWifiConfig);
                 } else {
                     mWifiManager.setWifiApConfiguration(mWifiConfig);
+                    mWifiApEnabler.resume();
                 }
                 mCreateNetwork.setSummary(String.format(getString(CONFIG_SUBTEXT),
                             mWifiConfig.SSID,

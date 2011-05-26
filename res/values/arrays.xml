@@ -226,8 +226,8 @@
     <!-- Match this with the constants in AccessPoint. --> <skip />
     <!-- Wi-Fi settings.  The type of security a Wi-Fi network has. -->
     <string-array name="wifi_security">
-        <!-- The Wi-Fi network does not have any security. -->
-        <item>Open</item>
+        <!-- Do not translate. -->
+        <item>@string/wifi_security_type_entry_open</item>
         <!-- Do not translate. -->
         <item>WEP</item>
         <!-- Do not translate. -->
@@ -239,9 +239,10 @@
    <!-- Wi-Fi AP settings.  The type of security a Wi-Fi AP supports. -->
    <!-- Note that adding/removing/moving the items will need wifi settings code change. -->
     <string-array name="wifi_ap_security" translatable="false">
-        <item>Open</item>
         <!-- Do not translate. -->
         <item>WPA2 PSK</item>
+        <!-- Do not translate. -->
+        <item>@string/wifi_security_type_entry_open</item>
     </string-array>
 
     <!-- Match this with the constants in WifiDialog. --> <skip />

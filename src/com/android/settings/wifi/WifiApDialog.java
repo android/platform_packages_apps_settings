@@ -24,6 +24,7 @@ import android.content.DialogInterface;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiConfiguration.AuthAlgorithm;
 import android.net.wifi.WifiConfiguration.KeyMgmt;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputType;
@@ -49,12 +50,12 @@ class WifiApDialog extends AlertDialog implements View.OnClickListener,
 
     private final DialogInterface.OnClickListener mListener;
 
-    private static final int OPEN_INDEX = 0;
-    private static final int WPA_INDEX = 1;
+    private static final int WPA_INDEX = 0;
+    private static final int OPEN_INDEX = 1;
 
     private View mView;
     private TextView mSsid;
-    private int mSecurityType = AccessPoint.SECURITY_NONE;
+    private int mSecurityType = AccessPoint.SECURITY_PSK;
     private EditText mPassword;
 
     WifiConfiguration mWifiConfig;
@@ -128,6 +129,9 @@ class WifiApDialog extends AlertDialog implements View.OnClickListener,
                   mSecurity.setSelection(WPA_INDEX);
                   break;
             }
+        } else {
+            mSecurity.setSelection(WPA_INDEX);
+            mSsid.setText(Build.MODEL);
         }
 
         mSsid.addTextChangedListener(this);

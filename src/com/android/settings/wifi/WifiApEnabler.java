@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2010 The Android Open Source Project
+ * Copyright (C) 2011 Sony Ericsson Mobile Communications AB.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -12,6 +13,9 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
+ *
+ * NOTE: This file has been modified by Sony Ericsson Mobile Communications AB.
+ * Modifications are licensed under the License.
  */
 
 package com.android.settings.wifi;
@@ -50,6 +54,7 @@ public class WifiApEnabler implements Preference.OnPreferenceChangeListener {
 
     ConnectivityManager mCm;
     private String[] mWifiRegexs;
+    private WifiConfiguration mWifiConfig;
 
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
@@ -100,6 +105,18 @@ public class WifiApEnabler implements Preference.OnPreferenceChangeListener {
     private void enableWifiCheckBox() {
         boolean isAirplaneMode = Settings.System.getInt(mContext.getContentResolver(),
                 Settings.System.AIRPLANE_MODE_ON, 0) != 0;
+        if (mWifiConfig == null) {
+            mWifiConfig = mWifiManager.getWifiApConfiguration();
+            if (mWifiConfig == null) {
+                // No tethering until configured
+                mCheckBox.setSummary(R.string.wifi_tether_not_configured_subtext);
+                mCheckBox.setEnabled(false);
+                return;
+            } else {
+                mCheckBox.setSummary("");
+            }
+        }
+
         if(!isAirplaneMode) {
             mCheckBox.setEnabled(true);
         } else {
