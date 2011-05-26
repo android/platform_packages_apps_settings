@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAABBn///h8\u003d",
+        "filename": "src/com/android/settings/applications/RunningState.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1000559
+      },
+      "writtenOn": "2011-05-26T16:16:21Z",
+      "side": 1,
+      "message": "Create this lazily, only if we need to put something in it.",
+      "revId": "9a97882457e31713dd1f91f05943d4e854565066",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAABBn///h0\u003d",
+        "filename": "src/com/android/settings/applications/RunningState.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 793,
+      "author": {
+        "id": 1000559
+      },
+      "writtenOn": "2011-05-26T16:16:21Z",
+      "side": 1,
+      "message": "Use a for loop to avoid creation of a temporary iterator.",
+      "revId": "9a97882457e31713dd1f91f05943d4e854565066",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
