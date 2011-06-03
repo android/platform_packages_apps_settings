@@ -283,19 +283,23 @@ public class IccLockSettings extends PreferenceActivity
     
     private void iccLockChanged(boolean success) {
         if (success) {
+            if (mToState) {
+                Toast.makeText(this, mRes.getString(R.string.sim_pin_enabled), Toast.LENGTH_SHORT)
+                        .show();
+            } else {
+                Toast.makeText(this, mRes.getString(R.string.sim_pin_disabled), Toast.LENGTH_SHORT)
+                        .show();
+            }
             mPinToggle.setChecked(mToState);
         } else {
-            Toast.makeText(this, mRes.getString(R.string.sim_lock_failed), Toast.LENGTH_SHORT)
-                    .show();
+            displayRetryCounter(mRes.getString(R.string.sim_lock_failed));
         }
         resetDialogState();
     }
 
     private void iccPinChanged(boolean success) {
         if (!success) {
-            Toast.makeText(this, mRes.getString(R.string.sim_change_failed),
-                    Toast.LENGTH_SHORT)
-                    .show();
+            displayRetryCounter(mRes.getString(R.string.sim_change_failed));
         } else {
             Toast.makeText(this, mRes.getString(R.string.sim_change_succeeded),
                     Toast.LENGTH_SHORT)
@@ -325,5 +329,17 @@ public class IccLockSettings extends PreferenceActivity
         mPin = "";
         setDialogValues();
         mDialogState = OFF_MODE;
+    }
+
+    private void displayRetryCounter(String s) {
+        int attempts = mPhone.getIccCard().getIccPin1RetryCount();
+        if (attempts >= 0) {
+            String displayMsg = s + mRes.getString(R.string.sim_pin_attempts) + attempts;
+            Toast.makeText(this, displayMsg, Toast.LENGTH_SHORT)
+                    .show();
+        } else {
+            Toast.makeText(this, mRes.getString(R.string.sim_lock_failed), Toast.LENGTH_SHORT)
+                    .show();
+        }
     }
 }
