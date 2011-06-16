@@ -103,7 +103,7 @@
     <string name="large_font">Large</string>
 
     <!-- Do not translate. label for font size preview.  Does not need to be translated. -->
-    <string name="font_size_preview_text">Servez à ce monsieur une bière et des kiwis.</string>
+    <string name="font_size_preview_text">Servez a ce monsieur une biere et des kiwis.</string>
     <!-- Button. Chosen when they want to save the chosen text size. -->
     <string name="font_size_save">OK</string>
 
@@ -2660,4 +2660,14 @@ found in the list of installed applications.</string>
     from their cell phone carrier. The use of the string is similar to the string
     "system_update_settings_list_item_title" in this project. [CHAR LIMIT=25] -->
     <string name="additional_system_update_settings_list_item_title">Additional system updates</string>
+
+    <string name="fontsettings_title">"Text font"</string>
+    <string name="fontsettings_summary">"Change the text font."</string>
+    <string name="common_db_getng">Failed to read setting value.</string>
+    <string name="common_dialog_ok">OK</string>
+    <string name="common_dialog_cancel">Cancel</string>
+    <string name="common_dialog_failed">Failed</string>
+    <string name="display_fonttype_text">" Set."</string>
+    <string name="display_fonttype_explanation">Set this font?\n</string>
+    <string name="display_fonttype_preview">This is a sample sentence\n1 a A</string>
 </resources>
