@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAABDX///zo\u003d",
+        "filename": "src/com/android/settings/MasterClear.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1004017
+      },
+      "writtenOn": "2011-06-18T00:23:43Z",
+      "side": 1,
+      "message": "To be on the safe side, this should probably be initially false until we know the real battery state.\n\nIt would be better to query the state directly from BatteryService unless the broadcast is a sticky one - in which case you\u0027ll get an immediate callback without the battery status having to change.",
+      "revId": "6147d42e293a14ae8c66ea18645eca9c15fadb9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAABDX///zk\u003d",
+        "filename": "src/com/android/settings/MasterClear.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1004017
+      },
+      "writtenOn": "2011-06-18T00:23:43Z",
+      "side": 1,
+      "message": "This should also check mReceiverRegistered to avoid registering the receiver twice.",
+      "revId": "6147d42e293a14ae8c66ea18645eca9c15fadb9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
