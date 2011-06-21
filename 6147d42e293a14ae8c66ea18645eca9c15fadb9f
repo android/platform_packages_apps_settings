@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAABDX///bE\u003d",
+        "filename": "src/com/android/settings/MasterClear.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1004644
+      },
+      "writtenOn": "2011-06-21T15:03:01Z",
+      "side": 1,
+      "message": "The broadcast is sticky so we should get immediate callbacks, so the code should be safe as is. See:\nframeworks/base/services/java/com/android/server/BatteryService.java:\n    private final void sendIntent() {   \n…\n        ActivityManagerNative.broadcastStickyIntent(intent, null);   \n…\n}",
+      "parentUuid": "AAABDX///zo\u003d",
+      "revId": "6147d42e293a14ae8c66ea18645eca9c15fadb9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAABDX///zk\u003d",
         "filename": "src/com/android/settings/MasterClear.java",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2011-06-18T00:23:43Z",
       "side": 1,
       "message": "This should also check mReceiverRegistered to avoid registering the receiver twice.",
+      "revId": "6147d42e293a14ae8c66ea18645eca9c15fadb9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAABDX///bA\u003d",
+        "filename": "src/com/android/settings/MasterClear.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1004644
+      },
+      "writtenOn": "2011-06-21T15:03:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAABDX///zk\u003d",
       "revId": "6147d42e293a14ae8c66ea18645eca9c15fadb9f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
