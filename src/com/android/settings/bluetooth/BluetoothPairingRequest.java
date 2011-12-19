@@ -38,6 +38,8 @@ import android.os.PowerManager;
 public final class BluetoothPairingRequest extends BroadcastReceiver {
 
     private static final int NOTIFICATION_ID = android.R.drawable.stat_sys_data_bluetooth;
+    private static final String TAG = "BluetoothPairingRequest";
+    private static final int SCREEN_OFF_TIMEOUT = 15000;
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -71,6 +73,14 @@ public final class BluetoothPairingRequest extends BroadcastReceiver {
                 // just open the dialog
                 context.startActivity(pairingIntent);
             } else {
+
+                // Declare wakelock and acquire it for a fixed duration to get the
+                // screen to activate
+                powerManager.newWakeLock(PowerManager.FULL_WAKE_LOCK
+                        | PowerManager.ACQUIRE_CAUSES_WAKEUP
+                        | PowerManager.ON_AFTER_RELEASE, TAG).acquire(
+                                SCREEN_OFF_TIMEOUT);
+
                 // Put up a notification that leads to the dialog
                 Resources res = context.getResources();
                 Notification.Builder builder = new Notification.Builder(context)
