@@ -31,11 +31,14 @@ import android.os.Vibrator;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
+import android.preference.PreferenceCategory;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.security.KeyStore;
+import android.telephony.PhoneStateListener;
+import android.telephony.ServiceState;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
@@ -49,6 +52,8 @@ import java.util.ArrayList;
  */
 public class SecuritySettings extends SettingsPreferenceFragment
         implements OnPreferenceChangeListener, DialogInterface.OnClickListener {
+
+    private TelephonyManager mTelephonyManager;
 
     // Lock Settings
     private static final String KEY_UNLOCK_SET_OR_CHANGE = "unlock_set_or_change";
@@ -96,6 +101,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
         mLockPatternUtils = new LockPatternUtils(getActivity());
 
         mDPM = (DevicePolicyManager)getSystemService(Context.DEVICE_POLICY_SERVICE);
+        mTelephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
 
         mChooseLockSettingsHelper = new ChooseLockSettingsHelper(getActivity());
     }
@@ -337,6 +343,13 @@ public class SecuritySettings extends SettingsPreferenceFragment
         // depend on others...
         createPreferenceHierarchy();
 
+        PreferenceCategory simLockPrefCategory = (PreferenceCategory) findPreference(KEY_SIM_LOCK);
+        if (simLockPrefCategory != null) {
+            simLockPrefCategory.setEnabled(mTelephonyManager.hasIccCard());
+        }
+
+        mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_SERVICE_STATE);
+
         final LockPatternUtils lockPatternUtils = mChooseLockSettingsHelper.utils();
         if (mBiometricWeakLiveliness != null) {
             mBiometricWeakLiveliness.setChecked(
@@ -362,6 +375,22 @@ public class SecuritySettings extends SettingsPreferenceFragment
             mResetCredentials.setEnabled(state != KeyStore.State.UNINITIALIZED);
         }
     }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_NONE);
+    }
+
+    private PhoneStateListener mPhoneStateListener = new PhoneStateListener() {
+        @Override
+        public void onServiceStateChanged(ServiceState state) {
+            PreferenceCategory simLockPrefCategory = (PreferenceCategory) findPreference(KEY_SIM_LOCK);
+            if (simLockPrefCategory != null) {
+                simLockPrefCategory.setEnabled(mTelephonyManager.hasIccCard());
+            }
+        }
+    };
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {

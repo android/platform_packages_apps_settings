@@ -29,6 +29,9 @@ import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
+import android.telephony.PhoneStateListener;
+import android.telephony.ServiceState;
+import android.telephony.TelephonyManager;
 import android.widget.Toast;
 
 import com.android.internal.telephony.Phone;
@@ -89,6 +92,7 @@ public class IccLockSettings extends PreferenceActivity
     private CheckBoxPreference mPinToggle;
 
     private Resources mRes;
+    private TelephonyManager mTelephonyManager;
 
     // For async handler to identify request type
     private static final int MSG_ENABLE_ICC_PIN_COMPLETE = 100;
@@ -146,6 +150,9 @@ public class IccLockSettings extends PreferenceActivity
             return;
         }
 
+        mTelephonyManager = (TelephonyManager) (getApplicationContext().getSystemService(
+                                                            Context.TELEPHONY_SERVICE));
+
         addPreferencesFromResource(R.xml.sim_lock_settings);
 
         mPinDialog = (EditPinPreference) findPreference(PIN_DIALOG);
@@ -197,6 +204,14 @@ public class IccLockSettings extends PreferenceActivity
         final IntentFilter filter = new IntentFilter(TelephonyIntents.ACTION_SIM_STATE_CHANGED);
         registerReceiver(mSimStateReceiver, filter);
 
+        mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_SERVICE_STATE);
+        if (!mTelephonyManager.hasIccCard()) {
+            finish();
+            return;
+        }
+
+       mPinToggle.setChecked(mPhone.getIccCard().getIccLockEnabled());
+
         if (mDialogState != OFF_MODE) {
             showPinDialog();
         } else {
@@ -210,6 +225,20 @@ public class IccLockSettings extends PreferenceActivity
         super.onPause();
         unregisterReceiver(mSimStateReceiver);
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_NONE);
+    }
+
+    private PhoneStateListener mPhoneStateListener = new PhoneStateListener() {
+        @Override
+        public void onServiceStateChanged(ServiceState state) {
+            if (mTelephonyManager.getSimState() == TelephonyManager.SIM_STATE_ABSENT)
+                finish();
+        }
+    };
 
     @Override
     protected void onSaveInstanceState(Bundle out) {
