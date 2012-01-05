@@ -59,6 +59,15 @@ class WifiDialog extends AlertDialog implements WifiConfigUiBase {
     }
 
     @Override
+    protected void onStart() {
+        if (mAccessPoint != null) {
+            if ( mAccessPoint.getLevel() != -1 && mAccessPoint.getState() == null && mEdit == false) {
+                mController.afterTextChanged(null);
+            }
+        }
+    }
+
+    @Override
     public boolean isEdit() {
         return mEdit;
     }

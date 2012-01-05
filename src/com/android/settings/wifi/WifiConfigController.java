@@ -262,11 +262,7 @@ public class WifiConfigController implements TextWatcher,
             }
         }
 
-
         mConfigUi.setCancelButton(context.getString(R.string.wifi_cancel));
-        if (mConfigUi.getSubmitButton() != null) {
-            enableSubmitIfAppropriate();
-        }
     }
 
     private void addRow(ViewGroup group, int name, String value) {
