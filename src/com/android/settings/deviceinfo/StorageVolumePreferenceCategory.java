@@ -175,7 +175,7 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory implemen
         mAllowFormat = mStorageVolume != null && !mStorageVolume.isEmulated();
         // For now we are disabling reformatting secondary external storage
         // until some interoperability problems with MTP are fixed
-        if (!isPrimary) mAllowFormat = false;
+        if (!isPrimary && (mStorageVolume != null) && !mStorageVolume.isRemovable()) mAllowFormat = false;
     }
 
     public void init() {
