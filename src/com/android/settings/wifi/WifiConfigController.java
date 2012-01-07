@@ -193,7 +193,8 @@ public class WifiConfigController implements TextWatcher,
 
             DetailedState state = mAccessPoint.getState();
             if (state != null) {
-                addRow(group, R.string.wifi_status, Summary.get(mConfigUi.getContext(), state));
+                addRow(group, R.string.wifi_status, Summary.get(mConfigUi.getContext(), state,
+                        mAccessPoint.hasLimitedConnectivity()));
             }
 
             int level = mAccessPoint.getLevel();
@@ -249,6 +250,8 @@ public class WifiConfigController implements TextWatcher,
             } else {
                 if (state == null && level != -1) {
                     mConfigUi.setSubmitButton(context.getString(R.string.wifi_connect));
+                } else if (mAccessPoint.hasLimitedConnectivity()) {
+                    mConfigUi.setSubmitButton(context.getString(R.string.wifi_reconnect));
                 } else {
                     mView.findViewById(R.id.ip_fields).setVisibility(View.GONE);
                 }

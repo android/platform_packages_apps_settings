@@ -4125,4 +4125,11 @@
     <string name="cell_broadcast_settings">Cell broadcasts</string>
     <!-- Cell Broadcast settings description [CHAR LIMIT=100] -->
     <string name="cell_broadcast_settings_summary">Select the types of emergency alerts to display.</string>
+    <!-- Wi-Fi IPV4LL (local link, e.g limited connectivity) --> <skip />
+    <!-- Button label to attempt reconnect to a Wi-Fi network if we have limited connectivity -->
+    <string name="wifi_reconnect">Reconnect</string>
+    <!-- Status message of Wi-Fi when it is connected, but with limited connectivity. -->
+    <string name="wifi_connected_limited">Limited connectivity</string>
+    <!-- Status message of Wi-Fi when it is connected to a network, but with limited connectivity. -->
+    <string name="wifi_connected_limited_with_ssid">Connected to <xliff:g id="network_name">%1$s</xliff:g> with limited connectivity</string>
 </resources>

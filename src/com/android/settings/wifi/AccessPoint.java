@@ -18,6 +18,7 @@ package com.android.settings.wifi;
 
 import android.content.Context;
 import android.net.NetworkInfo.DetailedState;
+import android.net.NetworkUtils;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiConfiguration.KeyMgmt;
@@ -31,6 +32,8 @@ import android.widget.ImageView;
 
 import com.android.settings.R;
 
+import java.net.InetAddress;
+
 class AccessPoint extends Preference {
     static final String TAG = "Settings.AccessPoint";
 
@@ -41,6 +44,11 @@ class AccessPoint extends Preference {
 
     private static final int[] STATE_SECURED = {
         R.attr.state_encrypted
+    };
+    private static final int[] STATE_LIMITED = {R.attr.state_limited};
+    private static final int[] STATE_SECURED_AND_LIMITED = {
+        R.attr.state_encrypted,
+        R.attr.state_limited
     };
     private static final int[] STATE_NONE = {};
 
@@ -140,6 +148,19 @@ class AccessPoint extends Preference {
         }
     }
 
+    /* Returns true if IP address is in the link local range. */
+    static boolean isLocalLinkAddress(WifiInfo wifiInfo) {
+        //TODO: WifiInfo can't handle IPv6 at this point. Fix when support is added.
+        InetAddress addr = NetworkUtils.intToInetAddress(wifiInfo.getIpAddress());
+        return addr.isLinkLocalAddress();
+    }
+
+    /* Returns true if connected and the AP:s IP address is the IPV4LL range */
+    boolean hasLimitedConnectivity() {
+        return (DetailedState.CONNECTED == mState) &&
+            AccessPoint.isLocalLinkAddress(mInfo);
+    }
+
     AccessPoint(Context context, WifiConfiguration config) {
         super(context);
         setWidgetLayoutResource(R.layout.preference_widget_wifi_signal);
@@ -212,8 +233,19 @@ class AccessPoint extends Preference {
         } else {
             signal.setImageLevel(getLevel());
             signal.setImageResource(R.drawable.wifi_signal);
-            signal.setImageState((security != SECURITY_NONE) ?
-                    STATE_SECURED : STATE_NONE, true);
+            if (security != SECURITY_NONE) {
+                if (hasLimitedConnectivity()) {
+                    signal.setImageState(STATE_SECURED_AND_LIMITED, true);
+                } else {
+                    signal.setImageState(STATE_SECURED, true);
+                }
+            } else {
+                if (hasLimitedConnectivity()) {
+                    signal.setImageState(STATE_LIMITED, true);
+                } else {
+                    signal.setImageState(STATE_NONE, true);
+                }
+            }
         }
     }
 
@@ -321,7 +353,7 @@ class AccessPoint extends Preference {
 
         Context context = getContext();
         if (mState != null) { // This is the active connection
-            setSummary(Summary.get(context, mState));
+            setSummary(Summary.get(context, mState, hasLimitedConnectivity()));
         } else if (mRssi == Integer.MAX_VALUE) { // Wifi out of range
             setSummary(context.getString(R.string.wifi_not_in_range));
         } else if (mConfig != null && mConfig.status == WifiConfiguration.Status.DISABLED) {

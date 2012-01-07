@@ -863,6 +863,10 @@ public class WifiSettings extends SettingsPreferenceFragment
             if (mSelectedAccessPoint != null
                     && !requireKeyStore(mSelectedAccessPoint.getConfig())
                     && mSelectedAccessPoint.networkId != INVALID_NETWORK_ID) {
+                // the reconnect scenario
+                if (mSelectedAccessPoint.hasLimitedConnectivity()) {
+                    mWifiManager.disconnect();
+                }
                 mWifiManager.connect(mChannel, mSelectedAccessPoint.networkId,
                         mConnectListener);
             }

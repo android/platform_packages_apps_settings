@@ -81,4 +81,8 @@
         <attr name="fillColor" format="color" />
         <attr name="fillColorSecondary" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="WifiLimitedState">
+        <attr name="state_limited" format="boolean" />
+    </declare-styleable>
 </resources>
