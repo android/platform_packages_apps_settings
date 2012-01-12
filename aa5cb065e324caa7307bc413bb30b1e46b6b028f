@@ -1,0 +1,9 @@
+Change-Id: Iaa5cb065e324caa7307bc413bb30b1e46b6b028f
+Verified+1: Jean-Baptiste Queru <jbq@google.com>
+Code-Review+2: Amith Yamasani <yamasani@google.com>
+Code-Review+2: Jeff Sharkey <jsharkey@android.com>
+Submitted-by: Jean-Baptiste Queru <jbq@google.com>
+Submitted-at: Thu, 12 Jan 2012 09:12:59 -0800
+Reviewed-on: https://android-review.googlesource.com/30880
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
