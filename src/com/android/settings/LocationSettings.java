@@ -16,7 +16,8 @@
 
 package com.android.settings;
 
-
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.ContentQueryMap;
 import android.content.ContentResolver;
 import android.content.Intent;
@@ -26,10 +27,20 @@ import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
+import android.preference.ListPreference;
 import android.provider.Settings;
 
 import java.util.Observable;
 import java.util.Observer;
+import java.util.ArrayList;
+
+import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.location.LocationManager;
+import android.widget.Toast;
+
 
 /**
  * Gesture lock pattern settings.
@@ -47,6 +58,7 @@ public class LocationSettings extends SettingsPreferenceFragment
     private CheckBoxPreference mGps;
     private CheckBoxPreference mAssistedGps;
     private CheckBoxPreference mUseLocation;
+    private ListPreference mGPSBTPref;
 
     // These provide support for receiving notification when Location Manager settings change.
     // This is necessary because the Network Location Provider can change settings
@@ -104,6 +116,29 @@ public class LocationSettings extends SettingsPreferenceFragment
         if (Utils.isWifiOnly(getActivity())) {
             mNetwork.setSummaryOn(R.string.location_neighborhood_level_wifi);
         }
+        //add BT gps devices
+        mGPSBTPref = (ListPreference) findPreference("location_gps_source");
+        ArrayList<CharSequence> entries = new ArrayList<CharSequence>();
+        for (String e : getResources().getStringArray(R.array.location_entries_gps_source) ) {
+            entries.add(e);
+        }
+        ArrayList<CharSequence> values = new ArrayList<CharSequence>();
+        for (String v: getResources().getStringArray(R.array.location_values_gps_source)) {
+            values.add(v);
+        }
+        // add known bonded BT devices
+        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        if ((mBluetoothAdapter != null) && (mBluetoothAdapter.isEnabled())) {
+            for (BluetoothDevice d : mBluetoothAdapter.getBondedDevices()) {
+                String dname = d.getName() + " - " + d.getAddress();
+                entries.add(dname);
+                values.add(d.getAddress());
+            }
+        }
+        mGPSBTPref.setEntries(entries.toArray(new CharSequence[entries.size()]));
+        mGPSBTPref.setEntryValues(values.toArray(new CharSequence[values.size()]));
+        mGPSBTPref.setDefaultValue("0");
+        mGPSBTPref.setOnPreferenceChangeListener(this);
 
         return root;
     }
@@ -187,6 +222,22 @@ public class LocationSettings extends SettingsPreferenceFragment
             // activity will be restated and the new value re-read, so the checkbox will get its
             // new value then.
             return false;
+        }  else if (preference == mGPSBTPref) {
+            String oldPref = Settings.System.getString(getContentResolver(),
+                    Settings.Secure.EXTERNAL_GPS_BT_DEVICE);
+            String newPref = value == null ? "0" : (String) value;
+            // "0" represents the internal GPS.
+            Settings.System.putString(getContentResolver(), Settings.Secure.EXTERNAL_GPS_BT_DEVICE,
+                    newPref);
+            if (!oldPref.equals(newPref) && ("0".equals(oldPref) || "0".equals(newPref)) ) {
+                LocationManager locationManager =
+                        (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+                locationManager.setGPSSource(newPref);
+                // Show msg to inform user that source has been switched
+                Toast.makeText(this.getActivity(),
+                        getResources().getString(R.string.location_gps_source_notification),
+                        Toast.LENGTH_LONG).show();
+            }
         }
         return true;
     }

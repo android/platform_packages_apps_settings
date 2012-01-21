@@ -27,6 +27,13 @@
             android:title="@string/location_gps"
             android:summary="@string/location_street_level"/>
 
+        <!-- GPS Source pref -->
+        <ListPreference android:key="location_gps_source"
+            android:dialogTitle="@string/location_gps_source_title"
+            android:title="@string/location_gps_source_title"
+            android:summary="@string/location_gps_source_summary"
+            android:entries="@array/location_entries_gps_source"
+            android:entryValues="@array/location_values_gps_source" />
 <!-- Disabled to avoid confusion on devices with no AGPS
      For Google experience devices we want AGPS on by default (if supported) so we don't really need this.
         <CheckBoxPreference
