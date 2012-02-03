@@ -27,6 +27,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.os.SELinux;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -66,6 +67,9 @@ public class SecuritySettings extends SettingsPreferenceFragment
     private static final String KEY_SHOW_PASSWORD = "show_password";
     private static final String KEY_RESET_CREDENTIALS = "reset_credentials";
     private static final String KEY_TOGGLE_INSTALL_APPLICATIONS = "toggle_install_applications";
+    private static final String KEY_SELINUX_SETTINGS = "selinux_settings";
+    private static final String KEY_SELINUX_ENFORCING = "selinux_enforcing";
+    private static final String KEY_SELINUX_ENFORCING_STRING = "selinux_set_enforcing";
 
     DevicePolicyManager mDPM;
 
@@ -82,6 +86,8 @@ public class SecuritySettings extends SettingsPreferenceFragment
 
     private CheckBoxPreference mToggleAppInstallation;
     private DialogInterface mWarnInstallApps;
+
+    private CheckBoxPreference mSELinuxToggleEnforce;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -196,6 +202,13 @@ public class SecuritySettings extends SettingsPreferenceFragment
         mToggleAppInstallation = (CheckBoxPreference) findPreference(
                 KEY_TOGGLE_INSTALL_APPLICATIONS);
         mToggleAppInstallation.setChecked(isNonMarketAppsAllowed());
+
+        if (!SELinux.isSELinuxEnabled()) {
+            root.removePreference(root.findPreference(KEY_SELINUX_SETTINGS));
+        } else {
+            mSELinuxToggleEnforce = (CheckBoxPreference) root.findPreference(KEY_SELINUX_ENFORCING);
+            mSELinuxToggleEnforce.setChecked(SELinux.isSELinuxEnforced());
+        }
 
         return root;
     }
@@ -320,6 +333,10 @@ public class SecuritySettings extends SettingsPreferenceFragment
 
         KeyStore.State state = KeyStore.getInstance().state();
         mResetCredentials.setEnabled(state != KeyStore.State.UNINITIALIZED);
+
+        if (mSELinuxToggleEnforce != null) {
+            mSELinuxToggleEnforce.setChecked(SELinux.isSELinuxEnforced());
+        }
     }
 
     @Override
@@ -353,6 +370,9 @@ public class SecuritySettings extends SettingsPreferenceFragment
             } else {
                 setNonMarketAppsAllowed(false);
             }
+        } else if (preference == mSELinuxToggleEnforce) {
+            SELinux.setSELinuxEnforce(!SELinux.isSELinuxEnforced());
+            mSELinuxToggleEnforce.setChecked(SELinux.isSELinuxEnforced());
         } else {
             // If we didn't handle it, let preferences handle it.
             return super.onPreferenceTreeClick(preferenceScreen, preference);

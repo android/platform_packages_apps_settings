@@ -78,4 +78,18 @@
                     android:targetClass="com.android.settings.CredentialStorage"/>
         </Preference>
     </PreferenceCategory>
+
+    <PreferenceCategory android:key="selinux_settings"
+		android:title="@string/selinux_title"
+		android:persistent="false">
+        <CheckBoxPreference android:key="selinux_enforcing"
+		android:title="@string/selinux_set_enforcing"
+		android:summary="@string/selinux_set_enforcing_summary"
+		android:persistent="false"/>
+	<PreferenceScreen
+            android:fragment="com.android.settings.SELinuxManageBooleans"
+            android:title="@string/selinux_manage_booleans_title"
+            android:summary="@string/selinux_manage_booleans_summary">
+	</PreferenceScreen>
+    </PreferenceCategory>
 </PreferenceScreen>

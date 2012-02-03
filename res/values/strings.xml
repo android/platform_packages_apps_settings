@@ -1712,6 +1712,15 @@
     <string name="kernel_version">Kernel version</string>
     <!-- About phone screen,  setting option name-->
     <string name="build_number">Build number</string>
+    <!-- About phone screen,  setting option name-->
+
+    <string name="selinux_status">SELinux status</string>
+    <string name="selinux_title">SELinux</string>
+    <string name="selinux_set_enforcing">SELinux Enforcing Mode</string>
+    <string name="selinux_set_enforcing_summary"></string>
+    <string name="selinux_manage_booleans_title">SELinux Booleans</string>
+    <string name="selinux_manage_booleans_summary">Manage Booleans</string>
+    <string name="selinux_no_booleans">No Booleans</string>
 
     <!-- About phone screen, show when a value of some status item is unavailable. -->
     <string name="device_info_not_available">Not available</string>
