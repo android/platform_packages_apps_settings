@@ -16,6 +16,7 @@
 ** See the License for the specific language governing permissions and
 ** limitations under the License.
 */
+
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Choices for timezone picker first level.
@@ -299,11 +300,11 @@
    <!-- Wi-Fi AP settings.  The type of security a Wi-Fi AP supports. -->
    <!-- Note that adding/removing/moving the items will need wifi settings code change. -->
     <string-array name="wifi_ap_security" translatable="false">
-        <item>Open</item>
+        <item>@string/wifi_security_none</item>
         <!-- Do not translate. -->
-        <item>WPA PSK</item>
+        <item>@string/wifi_security_wpa</item>
         <!-- Do not translate. -->
-        <item>WPA2 PSK</item>
+        <item>@string/wifi_security_wpa2</item>
     </string-array>
 
     <!-- Match this with the constants in WifiDialog. --> <skip />
