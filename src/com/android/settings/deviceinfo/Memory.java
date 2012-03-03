@@ -200,6 +200,13 @@ public class Memory extends SettingsPreferenceFragment {
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        if (mInternalStorageVolumePreferenceCategory != null) {
+            Intent intent = mInternalStorageVolumePreferenceCategory.intentForClick(preference);
+            if (intent != null) {
+                startActivity(intent);
+                return true;
+            }
+        }
         for (int i = 0; i < mStorageVolumePreferenceCategories.length; i++) {
             StorageVolumePreferenceCategory svpc = mStorageVolumePreferenceCategories[i];
             Intent intent = svpc.intentForClick(preference);
