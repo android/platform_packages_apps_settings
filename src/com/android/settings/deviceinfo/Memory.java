@@ -135,6 +135,10 @@ public class Memory extends SettingsPreferenceFragment {
                 StorageVolumePreferenceCategory svpc = mStorageVolumePreferenceCategories[i];
                 if (path.equals(svpc.getStorageVolume().getPath())) {
                     svpc.onStorageStateChanged();
+                    if (svpc.isUnmountInProgress() &&
+                            Environment.MEDIA_UNMOUNTED.equals(newState)) {
+                        svpc.setUnmountInProgress(false);
+                    }
                     break;
                 }
             }
@@ -215,6 +219,7 @@ public class Memory extends SettingsPreferenceFragment {
                 String state = mStorageManager.getVolumeState(storageVolume.getPath());
                 if (Environment.MEDIA_MOUNTED.equals(state) ||
                         Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
+                    svpc.setUnmountInProgress(true);
                     unmount();
                 } else {
                     mount();
