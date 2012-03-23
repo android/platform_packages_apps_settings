@@ -165,7 +165,9 @@ public class InstalledAppDetails extends AppInfoBase
         // by not allowing disabling of apps signed with the
         // system cert and any launcher app in the system.
         if (mHomePackages.contains(mAppEntry.info.packageName)
-                || Utils.isSystemPackage(mPm, mPackageInfo)) {
+                || (Utils.isSystemPackage(mPm, mPackageInfo)
+                        && !isDisableAppWhitelisted(mPackageName))
+                || isDisableAppBlacklisted(mPackageName)) {
             // Disable button for core system applications.
             button.setText(R.string.disable_text);
         } else if (mAppEntry.info.enabled && !isDisabledUntilUsed()) {
@@ -177,6 +179,26 @@ public class InstalledAppDetails extends AppInfoBase
         }
 
         return disableable;
+    }
+
+    private boolean isDisableAppWhitelisted(String packageName) {
+        Resources res = getResources();
+        List manufacturer = Arrays.asList(res.getStringArray(
+                R.array.config_manufacturerDisableAppWhitelist));
+        List operator = Arrays.asList(res.getStringArray(
+                R.array.config_operatorDisableAppWhitelist));
+
+        return manufacturer.contains(packageName) || operator.contains(packageName);
+    }
+
+    private boolean isDisableAppBlacklisted(String packageName) {
+        Resources res = getResources();
+        List manufacturer = Arrays.asList(res.getStringArray(
+                R.array.config_manufacturerDisableAppBlacklist));
+        List operator = Arrays.asList(res.getStringArray(
+                R.array.config_operatorDisableAppBlacklist));
+
+        return manufacturer.contains(packageName) || operator.contains(packageName);
     }
 
     private boolean isDisabledUntilUsed() {

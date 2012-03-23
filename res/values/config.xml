@@ -41,4 +41,21 @@
     <!-- When true enable color temperature setting. -->
     <bool name="config_enableColorTemperature">false</bool>
 
+    <!-- Whitelist/Blacklists for enable/disable applications for Manufacturers/Operators -->
+    <!-- Enable uninstall despite system signature application -->
+    <string-array name="config_manufacturerDisableAppWhitelist" translatable="false">
+    </string-array>
+
+    <!-- Disable uninstall despite not system signature application -->
+    <string-array name="config_manufacturerDisableAppBlacklist" translatable="false">
+    </string-array>
+
+    <!-- Enable uninstall despite system signature application -->
+    <string-array name="config_operatorDisableAppWhitelist" translatable="false">
+    </string-array>
+
+    <!-- Disable uninstall despite not system signature application -->
+    <string-array name="config_operatorDisableAppBlacklist" translatable="false">
+    </string-array>
+
 </resources>
