@@ -935,6 +935,7 @@
     <string name="usb_tethering_available_subtext" msgid="156779271296152605">"USB 已连接，选中以共享网络"</string>
     <string name="usb_tethering_active_subtext" msgid="8916210851136467042">"已共享网络"</string>
     <string name="usb_tethering_storage_active_subtext" msgid="5210094834194907094">"使用 USB 存储设备时无法共享网络"</string>
+    <string name="usb_tethering_accessory_active_subtext" >"使用 USB 配件时无法共享网络"</string>
     <string name="usb_tethering_unavailable_subtext" msgid="1044622421184007254">"USB 未连接"</string>
     <string name="usb_tethering_errored_subtext" msgid="1377574819427841992">"USB 共享网络出错"</string>
     <string name="bluetooth_tether_checkbox_text" msgid="2379175828878753652">"蓝牙共享网络"</string>
