@@ -42,6 +42,7 @@ import com.android.settings.R;
 public class WifiApDialog extends AlertDialog implements View.OnClickListener,
         TextWatcher, AdapterView.OnItemSelectedListener {
 
+    static final int SSID_MAX_LENGTH = 32;
     static final int BUTTON_SUBMIT = DialogInterface.BUTTON_POSITIVE;
 
     private final DialogInterface.OnClickListener mListener;
@@ -155,7 +156,9 @@ public class WifiApDialog extends AlertDialog implements View.OnClickListener,
     }
 
     private void validate() {
-        if ((mSsid != null && mSsid.length() == 0) ||
+        final byte[] utf8Ssid = mSsid.getText().toString().getBytes();
+
+        if ((mSsid != null && (mSsid.length() == 0 || utf8Ssid.length > SSID_MAX_LENGTH )) ||
                    (((mSecurityTypeIndex == WPA_INDEX) || (mSecurityTypeIndex == WPA2_INDEX))&&
                         mPassword.length() < 8)) {
             getButton(BUTTON_SUBMIT).setEnabled(false);
