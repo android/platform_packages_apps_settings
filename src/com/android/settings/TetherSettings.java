@@ -95,6 +95,7 @@ public class TetherSettings extends SettingsPreferenceFragment
 
     private boolean mUsbConnected;
     private boolean mMassStorageActive;
+    private boolean mAccessoryMode;
 
     private boolean mBluetoothEnableForTether;
 
@@ -233,6 +234,7 @@ public class TetherSettings extends SettingsPreferenceFragment
                 updateState();
             } else if (action.equals(UsbManager.ACTION_USB_STATE)) {
                 mUsbConnected = intent.getBooleanExtra(UsbManager.USB_CONNECTED, false);
+                mAccessoryMode = intent.getBooleanExtra(UsbManager.USB_FUNCTION_ACCESSORY, false);
                 updateState();
             } else if (action.equals(BluetoothAdapter.ACTION_STATE_CHANGED)) {
                 if (mBluetoothEnableForTether) {
@@ -326,7 +328,7 @@ public class TetherSettings extends SettingsPreferenceFragment
             String[] errored) {
         ConnectivityManager cm =
                 (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-        boolean usbAvailable = mUsbConnected && !mMassStorageActive;
+        boolean usbAvailable = mUsbConnected && !mMassStorageActive && !mAccessoryMode;
         int usbError = ConnectivityManager.TETHER_ERROR_NO_ERROR;
         for (String s : available) {
             for (String regex : mUsbRegexs) {
@@ -368,6 +370,10 @@ public class TetherSettings extends SettingsPreferenceFragment
             mUsbTether.setChecked(false);
         } else if (mMassStorageActive) {
             mUsbTether.setSummary(R.string.usb_tethering_storage_active_subtext);
+            mUsbTether.setEnabled(false);
+            mUsbTether.setChecked(false);
+        } else if (mAccessoryMode) {
+            mUsbTether.setSummary(R.string.usb_tethering_accessory_active_subtext);
             mUsbTether.setEnabled(false);
             mUsbTether.setChecked(false);
         } else {

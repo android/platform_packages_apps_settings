@@ -2337,6 +2337,8 @@
     <string name="usb_tethering_active_subtext">Tethered</string>
     <!-- USB storage subtext - shown when tethering is disabled because USB storage is active -->
     <string name="usb_tethering_storage_active_subtext">Can\'t tether when USB storage is in use</string>
+    <!-- USB accessory subtext - shown when tethering is disabled because USB acessory is active -->
+    <string name="usb_tethering_accessory_active_subtext">Can\'t tether when USB accessory is in use</string>
     <!-- USB unavailable subtext - shown when USB is not connected -->
     <string name="usb_tethering_unavailable_subtext">USB not connected</string>
     <!-- USB errored subtext - shown when USB is broken for some reason -->
