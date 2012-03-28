@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAEZn///+8\u003d",
+        "filename": "src/com/android/settings/deviceinfo/Memory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1005346
+      },
+      "writtenOn": "2012-03-28T18:54:25Z",
+      "side": 1,
+      "message": "Remove the if, see below.\n\nCalling this *before* onStorageStateChanged() will make sure the state is correct when the preference is updated.",
+      "revId": "c3a51b4fa37e7ae4088b3a282ecb691a32ee6a1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAEZn////A\u003d",
+        "filename": "src/com/android/settings/deviceinfo/Memory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1005346
+      },
+      "writtenOn": "2012-03-28T18:54:25Z",
+      "side": 1,
+      "message": "We should set that flag when the device is mounted too.\nRename to setMountOperationInProgress?",
+      "revId": "c3a51b4fa37e7ae4088b3a282ecb691a32ee6a1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAEZn///+o\u003d",
+        "filename": "src/com/android/settings/deviceinfo/StorageVolumePreferenceCategory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1005346
+      },
+      "writtenOn": "2012-03-28T18:54:25Z",
+      "side": 1,
+      "message": "This method does not seem needed.",
+      "revId": "c3a51b4fa37e7ae4088b3a282ecb691a32ee6a1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAEZn///+4\u003d",
+        "filename": "src/com/android/settings/deviceinfo/StorageVolumePreferenceCategory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1005346
+      },
+      "writtenOn": "2012-03-28T18:54:25Z",
+      "side": 1,
+      "message": "This should immediately trigger an update of the enabled state.\n\nCall updatePreferencesFromState() or actually not, if you swap the lines in Memory.",
+      "revId": "c3a51b4fa37e7ae4088b3a282ecb691a32ee6a1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAEZn////M\u003d",
+        "filename": "src/com/android/settings/deviceinfo/StorageVolumePreferenceCategory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1005346
+      },
+      "writtenOn": "2012-03-28T18:54:25Z",
+      "side": 1,
+      "message": "These lines should be removed. This is handled by updatePreferencesFromState",
+      "revId": "c3a51b4fa37e7ae4088b3a282ecb691a32ee6a1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAEZn///+0\u003d",
+        "filename": "src/com/android/settings/deviceinfo/StorageVolumePreferenceCategory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1005346
+      },
+      "writtenOn": "2012-03-28T18:54:25Z",
+      "side": 1,
+      "message": "The text should not be affected. Only the enabled state:\n\nmMountTogglePreference.setEnabled(!mUnmountInProgress);",
+      "revId": "c3a51b4fa37e7ae4088b3a282ecb691a32ee6a1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAEZn///+w\u003d",
+        "filename": "src/com/android/settings/deviceinfo/StorageVolumePreferenceCategory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1005346
+      },
+      "writtenOn": "2012-03-28T18:54:25Z",
+      "side": 1,
+      "message": "idem",
+      "revId": "c3a51b4fa37e7ae4088b3a282ecb691a32ee6a1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAEZn///+s\u003d",
+        "filename": "src/com/android/settings/deviceinfo/StorageVolumePreferenceCategory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1005346
+      },
+      "writtenOn": "2012-03-28T18:54:25Z",
+      "side": 1,
+      "message": "No, always false",
+      "revId": "c3a51b4fa37e7ae4088b3a282ecb691a32ee6a1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
