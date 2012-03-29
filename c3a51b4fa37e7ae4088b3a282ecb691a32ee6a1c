@@ -104,6 +104,24 @@
     },
     {
       "key": {
+        "uuid": "AAAEdH////4\u003d",
+        "filename": "src/com/android/settings/deviceinfo/StorageVolumePreferenceCategory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1010597
+      },
+      "writtenOn": "2012-03-29T11:09:44Z",
+      "side": 1,
+      "message": "Did you read patch description?\nDo you understand what is patch about?\nDo you try to reproduce this kind of sutiation?\n\nLet me mark this way as (1)",
+      "parentUuid": "AAAEZn///+0\u003d",
+      "revId": "c3a51b4fa37e7ae4088b3a282ecb691a32ee6a1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAEZn///+w\u003d",
         "filename": "src/com/android/settings/deviceinfo/StorageVolumePreferenceCategory.java",
         "patchSetId": 1
@@ -121,6 +139,24 @@
     },
     {
       "key": {
+        "uuid": "AAAEdH////0\u003d",
+        "filename": "src/com/android/settings/deviceinfo/StorageVolumePreferenceCategory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1010597
+      },
+      "writtenOn": "2012-03-29T11:09:44Z",
+      "side": 1,
+      "message": "Mark this way as (2)",
+      "parentUuid": "AAAEZn///+w\u003d",
+      "revId": "c3a51b4fa37e7ae4088b3a282ecb691a32ee6a1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAEZn///+s\u003d",
         "filename": "src/com/android/settings/deviceinfo/StorageVolumePreferenceCategory.java",
         "patchSetId": 1
@@ -132,6 +168,24 @@
       "writtenOn": "2012-03-28T18:54:25Z",
       "side": 1,
       "message": "No, always false",
+      "revId": "c3a51b4fa37e7ae4088b3a282ecb691a32ee6a1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAEdH////w\u003d",
+        "filename": "src/com/android/settings/deviceinfo/StorageVolumePreferenceCategory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1010597
+      },
+      "writtenOn": "2012-03-29T11:09:44Z",
+      "side": 1,
+      "message": "Mark this way as (3)",
+      "parentUuid": "AAAEZn///+s\u003d",
       "revId": "c3a51b4fa37e7ae4088b3a282ecb691a32ee6a1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
