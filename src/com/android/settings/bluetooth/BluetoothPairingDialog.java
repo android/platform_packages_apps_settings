@@ -125,7 +125,6 @@ public final class BluetoothPairingDialog extends AlertActivity implements
                 break;
 
             case BluetoothDevice.PAIRING_VARIANT_CONSENT:
-            case BluetoothDevice.PAIRING_VARIANT_OOB_CONSENT:
                 createConsentDialog(deviceManager);
                 break;
 
@@ -229,7 +228,6 @@ public final class BluetoothPairingDialog extends AlertActivity implements
                 break;
 
             case BluetoothDevice.PAIRING_VARIANT_CONSENT:
-            case BluetoothDevice.PAIRING_VARIANT_OOB_CONSENT:
                 messageText = getString(R.string.bluetooth_incoming_pairing_msg, name);
                 break;
 
@@ -326,10 +324,6 @@ public final class BluetoothPairingDialog extends AlertActivity implements
             case BluetoothDevice.PAIRING_VARIANT_DISPLAY_PASSKEY:
             case BluetoothDevice.PAIRING_VARIANT_DISPLAY_PIN:
                 // Do nothing.
-                break;
-
-            case BluetoothDevice.PAIRING_VARIANT_OOB_CONSENT:
-                mDevice.setRemoteOutOfBandData();
                 break;
 
             default:
