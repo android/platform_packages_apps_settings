@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAEgn///vs\u003d",
+        "filename": "src/com/android/settings/wifi/WifiSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1003344
+      },
+      "writtenOn": "2012-04-09T16:36:08Z",
+      "side": 1,
+      "message": "multi-line if statements need braces around",
+      "revId": "02c82f58ec1ea0250f27c9f9604315fe9ce32486",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
