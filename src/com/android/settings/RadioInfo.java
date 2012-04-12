@@ -195,7 +195,7 @@ public class RadioInfo extends Activity {
                         int type = ((int[])ar.result)[0];
                         preferredNetworkType.setSelection(type, true);
                     } else {
-                        preferredNetworkType.setSelection(8, true);
+                        preferredNetworkType.setSelection(12, true);
                     }
                     break;
                 case EVENT_SET_PREFERRED_TYPE_DONE:
@@ -1027,5 +1027,9 @@ public class RadioInfo extends Activity {
             "CDMA only",
             "EvDo only",
             "GSM/CDMA auto (PRL)",
+            "LTE/CDMA auto (PRL)",
+            "LTE/GSM auto (PRL)",
+            "LTE/GSM/CDMA auto (PRL)",
+            "LTE only",
             "Unknown"};
 }
