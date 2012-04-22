@@ -34,6 +34,23 @@
       "revId": "3514affd752f2088e3a4c1ef7e2f7c13bfe3d9b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAE6n////4\u003d",
+        "filename": "src/com/android/settings/DeviceInfoSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-04-22T16:28:42Z",
+      "side": 1,
+      "message": "Is it not better to have 3 int constants to represent SE Linux status in android.os.SELinux?\nSay:\n\n    public static final int STATUS_DISABLED \u003d -1;\n    public static final int STATUS_PERMISSIVE \u003d 0;\n    public static final int STATUS_ENFORCING \u003d 1;\n\n\n\nand have SELinux.getSELinuxStatus() return one of them?",
+      "revId": "3514affd752f2088e3a4c1ef7e2f7c13bfe3d9b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
