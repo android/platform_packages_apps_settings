@@ -51,6 +51,24 @@
       "revId": "3514affd752f2088e3a4c1ef7e2f7c13bfe3d9b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAE5n////M\u003d",
+        "filename": "src/com/android/settings/DeviceInfoSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2012-04-23T14:16:39Z",
+      "side": 1,
+      "message": "I don\u0027t think so; in most cases, we want a simple boolean that can be checked to enable/disable SELinux processing in userspace.  Also that would differ from the current SELinux API in other languages.",
+      "parentUuid": "AAAE6n////4\u003d",
+      "revId": "3514affd752f2088e3a4c1ef7e2f7c13bfe3d9b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
