@@ -69,6 +69,24 @@
       "revId": "3514affd752f2088e3a4c1ef7e2f7c13bfe3d9b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAE5n///+4\u003d",
+        "filename": "src/com/android/settings/DeviceInfoSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1010466
+      },
+      "writtenOn": "2012-04-23T15:02:28Z",
+      "side": 1,
+      "message": "It does not make any sense, to me, to have multiple mutually-exclusive variables.",
+      "parentUuid": "AAAE5n////M\u003d",
+      "revId": "3514affd752f2088e3a4c1ef7e2f7c13bfe3d9b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
