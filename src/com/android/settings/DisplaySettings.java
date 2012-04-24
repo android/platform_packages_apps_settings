@@ -107,8 +107,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private void updateTimeoutPreferenceDescription(long currentTimeout) {
         ListPreference preference = mScreenTimeoutPreference;
         String summary;
-        if (currentTimeout < 0) {
+        if (currentTimeout < 0 || preference.getEntryValues().length == 0) {
             // Unsupported value
+            // The preference could be empty because the items might be removed by
+            // disableUnusableTimeouts() if there is a device policy indicating the maximum
+            // time to lock is smaller than 5000ms(defined in res/values/arrays.xml).
             summary = "";
         } else {
             final CharSequence[] entries = preference.getEntries();
