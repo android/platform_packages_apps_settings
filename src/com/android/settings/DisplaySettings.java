@@ -107,7 +107,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private void updateTimeoutPreferenceDescription(long currentTimeout) {
         ListPreference preference = mScreenTimeoutPreference;
         String summary;
-        if (currentTimeout < 0) {
+        if (currentTimeout < 0 || preference.getEntryValues().length == 0) {
             // Unsupported value
             summary = "";
         } else {
