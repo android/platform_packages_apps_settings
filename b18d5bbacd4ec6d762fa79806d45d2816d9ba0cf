@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAFKn///6w\u003d",
+        "filename": "src/com/android/settings/RadioInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1001401
+      },
+      "writtenOn": "2012-05-01T00:57:41Z",
+      "side": 1,
+      "message": "I think it would be a good idea to range check here and default to 12 \"unknown\" so we don\u0027t crash the next time we change the preferred network types. And lets log an error using Log.e.",
+      "revId": "b18d5bbacd4ec6d762fa79806d45d2816d9ba0cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
