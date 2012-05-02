@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAFKn///lY\u003d",
+        "filename": "src/com/android/settings/RadioInfo.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1001401
+      },
+      "writtenOn": "2012-05-02T17:45:00Z",
+      "side": 1,
+      "message": "lets have this read:\n  Log.e(\"[RadioInfo] EVENT_QUERY_PREFERRED_TYPE_DONE: unknown type\u003d\" + type);",
+      "revId": "6262a05237f8259303443859de0b7267802bebab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAFKn///lU\u003d",
+        "filename": "src/com/android/settings/RadioInfo.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1001401
+      },
+      "writtenOn": "2012-05-02T17:45:00Z",
+      "side": 1,
+      "message": "remove unnecessary parens and space around \"-\":\n\n  type \u003d mPreferredNetworkLabels.length - 1;",
+      "revId": "6262a05237f8259303443859de0b7267802bebab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAFKn///lQ\u003d",
+        "filename": "src/com/android/settings/RadioInfo.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1001401
+      },
+      "writtenOn": "2012-05-02T17:45:00Z",
+      "side": 1,
+      "message": "no extra parens and space around \"-\"",
+      "revId": "6262a05237f8259303443859de0b7267802bebab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAFKn///lM\u003d",
+        "filename": "src/com/android/settings/RadioInfo.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1016,
+      "author": {
+        "id": 1001401
+      },
+      "writtenOn": "2012-05-02T17:45:00Z",
+      "side": 1,
+      "message": "remove \"//IS THIS NEEDED ....",
+      "revId": "6262a05237f8259303443859de0b7267802bebab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
