@@ -16,6 +16,24 @@
       "revId": "b18d5bbacd4ec6d762fa79806d45d2816d9ba0cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAFMn////s\u003d",
+        "filename": "src/com/android/settings/RadioInfo.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1005602
+      },
+      "writtenOn": "2012-05-02T09:27:40Z",
+      "side": 1,
+      "message": "How about replacing the hardwired values with counts relative to mPreferredNetworkLabels.length ?",
+      "parentUuid": "AAAFKn///6w\u003d",
+      "revId": "b18d5bbacd4ec6d762fa79806d45d2816d9ba0cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
