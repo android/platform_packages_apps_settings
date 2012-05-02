@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAFK3///s4\u003d",
+        "filename": "src/com/android/settings/deviceinfo/Status.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2012-05-02T21:34:36Z",
+      "side": 1,
+      "message": "This should be changed to mUnknown if it\u0027s no longer static",
+      "revId": "41e70e67fa218858a38a4105b3fbadcd4f82c846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
