@@ -16,6 +16,24 @@
       "revId": "2efc5d8715d5dabb9498464df404bb43d69be1fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAFMn///+Y\u003d",
+        "filename": "src/com/android/settings/RadioInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1005602
+      },
+      "writtenOn": "2012-05-03T14:26:41Z",
+      "side": 1,
+      "message": "Coding style question: The string itself takes this over 80 cols. Break the string, or break at the +? :)",
+      "parentUuid": "AAAFK3///pc\u003d",
+      "revId": "2efc5d8715d5dabb9498464df404bb43d69be1fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
