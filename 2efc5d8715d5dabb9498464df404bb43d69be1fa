@@ -52,6 +52,24 @@
       "revId": "2efc5d8715d5dabb9498464df404bb43d69be1fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAFK3///pI\u003d",
+        "filename": "src/com/android/settings/RadioInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1001401
+      },
+      "writtenOn": "2012-05-03T15:46:36Z",
+      "side": 1,
+      "message": "FYI android max line length 100.\n\nAs for breaking the long line, it can be broken anywhere you like. In this case I\u0027d probably do it after the \"+\":\n\n  Log.e(\".... type\u003d\" +\n              type);\n\nBut I might also do:\n\n  Log.e(\"... _DONE:\" +\n               \" unknown type\u003d\" + type);",
+      "parentUuid": "AAAFMn///+Y\u003d",
+      "revId": "2efc5d8715d5dabb9498464df404bb43d69be1fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
