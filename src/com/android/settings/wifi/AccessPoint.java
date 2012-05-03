@@ -38,6 +38,7 @@ class AccessPoint extends Preference {
     private static final String KEY_WIFIINFO = "key_wifiinfo";
     private static final String KEY_SCANRESULT = "key_scanresult";
     private static final String KEY_CONFIG = "key_config";
+    private static final String KEY_SAVED_RSSI = "key_savedRssi";
 
     private static final int[] STATE_SECURED = {
         R.attr.state_encrypted
@@ -170,6 +171,12 @@ class AccessPoint extends Preference {
         if (savedState.containsKey(KEY_DETAILEDSTATE)) {
             mState = DetailedState.valueOf(savedState.getString(KEY_DETAILEDSTATE));
         }
+        if (savedState.containsKey(KEY_SAVED_RSSI)) {
+            Integer savedRssi=savedState.getInt(KEY_SAVED_RSSI);
+            if (savedRssi != null) {
+                mRssi=savedRssi;
+            }
+        }
         update(mInfo, mState);
     }
 
@@ -180,6 +187,7 @@ class AccessPoint extends Preference {
         if (mState != null) {
             savedState.putString(KEY_DETAILEDSTATE, mState.toString());
         }
+        savedState.putInt(KEY_SAVED_RSSI, mRssi);
     }
 
     private void loadConfig(WifiConfiguration config) {
