@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAFKn///a0\u003d",
+        "filename": "src/com/android/settings/RadioInfo.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1001401
+      },
+      "writtenOn": "2012-05-03T18:10:46Z",
+      "side": 1,
+      "message": "Missing TAG:\n\n  Log.e(TAG, \".....\");\n\nWatch out for a long line, may or may not be too long.",
+      "revId": "30c4b51aedf00a614f06d6c97a9b9b9892ad1e64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
