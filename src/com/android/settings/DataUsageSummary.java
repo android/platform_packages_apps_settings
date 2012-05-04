@@ -1027,6 +1027,10 @@ public class DataUsageSummary extends Fragment {
                 ConfirmLimitFragment.show(DataUsageSummary.this);
             } else {
                 setPolicyLimitBytes(LIMIT_DISABLED);
+                if (getRestrictBackground()) {
+                    // limit is disabled; disable background data restriction
+                    setRestrictBackground(false);
+                }
             }
         }
     };
