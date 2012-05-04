@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAFSn////4\u003d",
+        "filename": "src/com/android/settings/Utils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-05-04T14:03:41Z",
+      "side": 0,
+      "message": "The method should return false if preference is removed, but...",
+      "revId": "b0362b1bb0a3288c8de2cd8d0e5efd44ec1a831e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAFSn////0\u003d",
+        "filename": "src/com/android/settings/Utils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-05-04T14:03:41Z",
+      "side": 0,
+      "message": "Is returning true after deleting the preference.",
+      "revId": "b0362b1bb0a3288c8de2cd8d0e5efd44ec1a831e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
