@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAFUH///jw\u003d",
+        "filename": "src/com/android/settings/wifi/WifiDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-05-06T23:25:29Z",
+      "side": 1,
+      "message": "There might be an opportunity here to wrap this on multiple lines.",
+      "revId": "0f9499c7d970ce0be2b769728e2be3871c6b78f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
