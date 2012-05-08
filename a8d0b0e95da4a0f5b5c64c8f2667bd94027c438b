@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAFX3////0\u003d",
+        "filename": "src/com/android/settings/DisplaySettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-05-08T02:25:46Z",
+      "side": 1,
+      "message": "This seems like an odd way to hide the problem instead of fixing it.",
+      "revId": "a8d0b0e95da4a0f5b5c64c8f2667bd94027c438b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
