@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAFYH///uo\u003d",
+        "filename": "src/com/android/settings/DisplaySettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1005346
+      },
+      "writtenOn": "2012-05-09T20:50:29Z",
+      "side": 1,
+      "message": "Please update the \"Unsupported value\" comment, maybe with a reference to disableUnusableTimeouts() that explains how this can happen.",
+      "revId": "0e398716ec2be0aee1c29441e8954f06c15c72f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
