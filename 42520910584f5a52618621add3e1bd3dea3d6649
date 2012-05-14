@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAFYH///O4\u003d",
+        "filename": "src/com/android/settings/SoundSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-05-14T20:40:08Z",
+      "side": 1,
+      "message": "Please indent continuation lines by 8 space",
+      "revId": "42520910584f5a52618621add3e1bd3dea3d6649",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAFbX///0w\u003d",
+        "filename": "src/com/android/settings/SoundSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-05-14T20:40:08Z",
+      "side": 1,
+      "message": "Please cut this across multiple lines.",
+      "revId": "42520910584f5a52618621add3e1bd3dea3d6649",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
