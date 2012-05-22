@@ -16,6 +16,24 @@
       "revId": "1e143d248e20d289a6fa7e4a72433205ef6b795b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAFoX///7Y\u003d",
+        "filename": "src/com/android/settings/DisplaySettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1004123
+      },
+      "writtenOn": "2012-05-22T17:21:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAFqn////8\u003d",
+      "revId": "1e143d248e20d289a6fa7e4a72433205ef6b795b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
