@@ -69,11 +69,15 @@
 
                 <TextView
                     style="@style/wifi_item_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="@string/wifi_p2p_wps_pin" />
 
                 <EditText android:id="@+id/wps_pin"
                     style="@style/wifi_item_content"
                     android:singleLine="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:inputType="textPassword" />
             </LinearLayout>
 
