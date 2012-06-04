@@ -440,6 +440,8 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory implemen
             // TODO Create a Videos category, type = vnd.android.cursor.dir/video
             intent.setType("vnd.android.cursor.dir/image");
         } else if (preference == mPreferences[MISC]) {
+            if (mStorageVolume != null && !mStorageVolume.isEmulated())
+                return null;
             Context context = getContext().getApplicationContext();
             if (mMeasurement.getMiscSize() > 0) {
                 intent = new Intent(context, MiscFilesHandler.class);

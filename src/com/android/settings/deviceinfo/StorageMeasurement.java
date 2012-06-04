@@ -498,7 +498,18 @@ public class StorageMeasurement {
         File top = new File(mStorageVolume.getPath());
         mFileInfoForMisc = new ArrayList<FileInfo>();
         File[] files = top.listFiles();
-        if (files == null) return;
+        if (files == null) {
+            // primary storage which is not using emulated feature is mounted by
+            // vold, so it has no RWX permission for system users. new file will
+            // be failed
+            if (mIsPrimary && !mStorageVolume.isEmulated()) {
+               mMiscSize = getDirectorySize(imcs, mStorageVolume.getPath());
+               mMiscSize = mMiscSize - mAppsSize - mDownloadsSize;
+               for (int i = 0; i < StorageVolumePreferenceCategory.sMediaCategories.length; i++)
+                   mMiscSize = mMiscSize - mMediaSizes[i];
+            }
+            return;
+        }
         final int len = files.length;
         // Get sizes of all top level nodes except the ones already computed...
         long counter = 0;
