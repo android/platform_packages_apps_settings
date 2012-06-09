@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAGhX////4\u003d",
+        "filename": "src/com/android/settings/inputmethod/InputMethodAndLanguageSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1004338
+      },
+      "writtenOn": "2012-06-09T01:39:28Z",
+      "side": 1,
+      "message": "Unnecessary blank line",
+      "revId": "c01a338e29a1723cd7fdd673b403198cad879a1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAGhX////0\u003d",
+        "filename": "src/com/android/settings/inputmethod/InputMethodAndLanguageSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1004338
+      },
+      "writtenOn": "2012-06-09T01:39:28Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this method rather do everything at l.203 - l.205, not just updateCurrentImeName()?\n\n // IME\n InputMethodAndSubtypeUtil.loadInputMethodSubtypeList(\n         this, getContentResolver(), mImis, null);\n updateActiveInputMethodsSummary();",
+      "revId": "c01a338e29a1723cd7fdd673b403198cad879a1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAGhX////8\u003d",
+        "filename": "src/com/android/settings/inputmethod/InputMethodAndLanguageSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1004338
+      },
+      "writtenOn": "2012-06-09T01:39:28Z",
+      "side": 1,
+      "message": "Unnecessary blank line.",
+      "revId": "c01a338e29a1723cd7fdd673b403198cad879a1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
