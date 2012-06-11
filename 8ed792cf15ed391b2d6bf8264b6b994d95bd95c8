@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAGfX///5Y\u003d",
+        "filename": "src/com/android/settings/DateTimeSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1005346
+      },
+      "writtenOn": "2012-06-11T17:01:33Z",
+      "side": 1,
+      "message": "To be consistent, you could pick 1902 as a min.\nAlso add a comment about the int limitation.",
+      "revId": "8ed792cf15ed391b2d6bf8264b6b994d95bd95c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
