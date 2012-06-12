@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAGgn///80\u003d",
+        "filename": "src/com/android/settings/inputmethod/InputMethodAndLanguageSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-06-12T18:36:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAGhX////4\u003d",
+      "revId": "c01a338e29a1723cd7fdd673b403198cad879a1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAGhX////0\u003d",
         "filename": "src/com/android/settings/inputmethod/InputMethodAndLanguageSettings.java",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "AAAGgn///88\u003d",
+        "filename": "src/com/android/settings/inputmethod/InputMethodAndLanguageSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-06-12T18:36:40Z",
+      "side": 1,
+      "message": "No, I do not think that should be done here.\n\nSwitching the default IME does not necessarily enable/disable sub-types.",
+      "parentUuid": "AAAGhX////0\u003d",
+      "revId": "c01a338e29a1723cd7fdd673b403198cad879a1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAGhX////8\u003d",
         "filename": "src/com/android/settings/inputmethod/InputMethodAndLanguageSettings.java",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2012-06-09T01:39:28Z",
       "side": 1,
       "message": "Unnecessary blank line.",
+      "revId": "c01a338e29a1723cd7fdd673b403198cad879a1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAGgn///8w\u003d",
+        "filename": "src/com/android/settings/inputmethod/InputMethodAndLanguageSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-06-12T18:36:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "AAAGhX////8\u003d",
       "revId": "c01a338e29a1723cd7fdd673b403198cad879a1f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
