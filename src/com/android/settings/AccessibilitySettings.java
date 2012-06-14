@@ -334,7 +334,7 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
 
             PreferenceScreen preference = getPreferenceManager().createPreferenceScreen(
                     getActivity());
-            String title = info.getResolveInfo().loadLabel(getPackageManager()).toString();
+            final String title = info.getResolveInfo().loadLabel(getPackageManager()).toString();
 
             ServiceInfo serviceInfo = info.getResolveInfo().serviceInfo;
             ComponentName componentName = new ComponentName(serviceInfo.packageName,
@@ -352,10 +352,9 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
             }
 
             preference.setOrder(i);
-            preference.setFragment(ToggleAccessibilityServiceFragment.class.getName());
             preference.setPersistent(true);
 
-            Bundle extras = preference.getExtras();
+            final Bundle extras = preference.getExtras();
             extras.putString(EXTRA_PREFERENCE_KEY, preference.getKey());
             extras.putBoolean(EXTRA_CHECKED, serviceEnabled);
             extras.putString(EXTRA_TITLE, title);
@@ -387,6 +386,26 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
                 extras.putString(EXTRA_SETTINGS_COMPONENT_NAME,
                         new ComponentName(info.getResolveInfo().serviceInfo.packageName,
                                 settingsClassName).flattenToString());
+            }
+            if (getActivity() instanceof PreferenceActivity) {
+                // Note that we use this instead of preference.setFragment()
+                // because the title will not be updated correctly in the fragment
+                // breadcrumb since it is not inflated from the XML layout.
+                preference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                    @Override
+                    public boolean onPreferenceClick(Preference preference) {
+                        PreferenceActivity preferenceActivity = (PreferenceActivity) getActivity();
+                        preferenceActivity.startPreferencePanel(
+                                ToggleAccessibilityServiceFragment.class.getName(),
+                                extras, 0, title, null, 0);
+                        // Declare that click has been handled for this preference
+                        return true;
+                    }
+                });
+            } else {
+                // Trying to launch this outside of a PreferenceActivity?
+                // Fall back to the original implementation...
+                preference.setFragment(ToggleAccessibilityServiceFragment.class.getName());
             }
 
             mServicesCategory.addPreference(preference);
