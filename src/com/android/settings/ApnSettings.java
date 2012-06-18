@@ -32,6 +32,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
+import android.os.SystemProperties;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
@@ -58,6 +59,7 @@ public class ApnSettings extends PreferenceActivity implements
         "content://telephony/carriers/restore";
     public static final String PREFERRED_APN_URI =
         "content://telephony/carriers/preferapn";
+    public static final String OPERATOR_NUMERIC_EXTRA = "operator";
 
     public static final String APN_ID = "apn_id";
 
@@ -156,10 +158,8 @@ public class ApnSettings extends PreferenceActivity implements
     }
 
     private void fillList() {
-        String where = "numeric=\""
-            + android.os.SystemProperties.get(TelephonyProperties.PROPERTY_ICC_OPERATOR_NUMERIC, "")
-            + "\"";
-
+        String where = "numeric=\"" + getOperatorNumeric() + "\"";
+        Log.d(TAG, "fillList: where=" + where);
         Cursor cursor = getContentResolver().query(Telephony.Carriers.CONTENT_URI, new String[] {
                 "_id", "name", "apn", "type"}, where, null,
                 Telephony.Carriers.DEFAULT_SORT_ORDER);
@@ -234,7 +234,9 @@ public class ApnSettings extends PreferenceActivity implements
     }
 
     private void addNewApn() {
-        startActivity(new Intent(Intent.ACTION_INSERT, Telephony.Carriers.CONTENT_URI));
+        Intent intent = new Intent(Intent.ACTION_INSERT, Telephony.Carriers.CONTENT_URI);
+        intent.putExtra(OPERATOR_NUMERIC_EXTRA, getOperatorNumeric());
+        startActivity(intent);
     }
 
     @Override
@@ -356,5 +358,11 @@ public class ApnSettings extends PreferenceActivity implements
         if (id == DIALOG_RESTORE_DEFAULTAPN) {
             getPreferenceScreen().setEnabled(false);
         }
+    }
+
+    private String getOperatorNumeric() {
+        String mccMncFromSim = SystemProperties.get(
+                TelephonyProperties.PROPERTY_APN_SIM_OPERATOR_NUMERIC, null);
+        return mccMncFromSim;
     }
 }
