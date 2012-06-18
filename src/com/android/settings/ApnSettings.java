@@ -32,6 +32,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
+import android.os.SystemProperties;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
@@ -58,6 +59,7 @@ public class ApnSettings extends PreferenceActivity implements
         "content://telephony/carriers/restore";
     public static final String PREFERRED_APN_URI =
         "content://telephony/carriers/preferapn";
+    public static final String OPERATOR_NUMERIC_EXTRA = "operator";
 
     public static final String APN_ID = "apn_id";
 
@@ -84,6 +86,9 @@ public class ApnSettings extends PreferenceActivity implements
     private HandlerThread mRestoreDefaultApnThread;
 
     private String mSelectedKey;
+
+    private boolean mUseNvOperatorForEhrpd = SystemProperties.getBoolean(
+            "persist.radio.use_nv_for_ehrpd", false);
 
     private IntentFilter mMobileStateFilter;
 
@@ -156,10 +161,7 @@ public class ApnSettings extends PreferenceActivity implements
     }
 
     private void fillList() {
-        String where = "numeric=\""
-            + android.os.SystemProperties.get(TelephonyProperties.PROPERTY_ICC_OPERATOR_NUMERIC, "")
-            + "\"";
-
+        String where = getOperatorNumericSelection();
         Cursor cursor = getContentResolver().query(Telephony.Carriers.CONTENT_URI, new String[] {
                 "_id", "name", "apn", "type"}, where, null,
                 Telephony.Carriers.DEFAULT_SORT_ORDER);
@@ -234,7 +236,9 @@ public class ApnSettings extends PreferenceActivity implements
     }
 
     private void addNewApn() {
-        startActivity(new Intent(Intent.ACTION_INSERT, Telephony.Carriers.CONTENT_URI));
+        Intent intent = new Intent(Intent.ACTION_INSERT, Telephony.Carriers.CONTENT_URI);
+        intent.putExtra(OPERATOR_NUMERIC_EXTRA, getOperatorNumeric()[0]);
+        startActivity(intent);
     }
 
     @Override
@@ -356,5 +360,30 @@ public class ApnSettings extends PreferenceActivity implements
         if (id == DIALOG_RESTORE_DEFAULTAPN) {
             getPreferenceScreen().setEnabled(false);
         }
+    }
+
+    private String getOperatorNumericSelection() {
+        String[] mccmncs = getOperatorNumeric();
+        String where;
+        where = (mccmncs[0] != null) ? "numeric=\"" + mccmncs[0] + "\"" : "";
+        where += (mccmncs[1] != null) ? " or numeric=\"" + mccmncs[1] + "\"" : "";
+        Log.d(TAG, "getOperatorNumericSelection: " + where);
+        return where;
+    }
+
+    private String[] getOperatorNumeric() {
+        ArrayList<String> result = new ArrayList<String>();
+        if (mUseNvOperatorForEhrpd) {
+            String mccMncForEhrpd = SystemProperties.get("ro.cdma.home.operator.numeric", null);
+            if (mccMncForEhrpd != null && mccMncForEhrpd.length() > 0) {
+                result.add(mccMncForEhrpd);
+            }
+        }
+        String mccMncFromSim = SystemProperties.get(
+                TelephonyProperties.PROPERTY_APN_SIM_OPERATOR_NUMERIC, null);
+        if (mccMncFromSim != null && mccMncFromSim.length() > 0) {
+            result.add(mccMncFromSim);
+        }
+        return result.toArray(new String[2]);
     }
 }
