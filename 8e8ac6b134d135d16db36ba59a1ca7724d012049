@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAGwn///9g\u003d",
+        "filename": "src/com/android/settings/AccessibilitySettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-06-19T19:24:13Z",
+      "side": 1,
+      "message": "Please wrap to 100 columns",
+      "revId": "8e8ac6b134d135d16db36ba59a1ca7724d012049",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
