@@ -143,7 +143,9 @@ public final class DeviceProfilesSettings extends SettingsPreferenceFragment
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putParcelable(EXTRA_DEVICE, mCachedDevice.getDevice());
+        if (mCachedDevice != null) {
+            outState.putParcelable(EXTRA_DEVICE, mCachedDevice.getDevice());
+        }
     }
 
     @Override
