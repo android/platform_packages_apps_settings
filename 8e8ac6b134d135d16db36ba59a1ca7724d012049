@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "AAAGw3///6Q\u003d",
+        "filename": "src/com/android/settings/AccessibilitySettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1010257
+      },
+      "writtenOn": "2012-06-19T21:13:18Z",
+      "side": 1,
+      "message": "Good catch - check again in the function :)",
+      "revId": "8e8ac6b134d135d16db36ba59a1ca7724d012049",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAGw3///50\u003d",
+        "filename": "src/com/android/settings/AccessibilitySettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1010257
+      },
+      "writtenOn": "2012-06-19T21:13:18Z",
+      "side": 1,
+      "message": "Can you please move this check right before showing the dialog. Now we will be checking this even if we already shown the dialog and the user clicked OK?",
+      "revId": "8e8ac6b134d135d16db36ba59a1ca7724d012049",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAGwn///9g\u003d",
         "filename": "src/com/android/settings/AccessibilitySettings.java",
         "patchSetId": 1
