@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "AAAGy3///+w\u003d",
+        "filename": "src/com/android/settings/AccessibilitySettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1005243
+      },
+      "writtenOn": "2012-06-20T01:46:17Z",
+      "side": 1,
+      "message": "I think it\u0027s a good way that we don\u0027t show the dialog if no market installed, of cause I considered it when I fixed this issue.\n\nOtherwise, user maybe confused with why anything happened after clicked OK and we also can show the tip dialog in time if user installed a 3rd party market manually later.\n\nWhat do you think about?",
+      "parentUuid": "AAAGw3///50\u003d",
+      "revId": "8e8ac6b134d135d16db36ba59a1ca7724d012049",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAGwn///9g\u003d",
         "filename": "src/com/android/settings/AccessibilitySettings.java",
         "patchSetId": 1
