@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAG2H///84\u003d",
+        "filename": "src/com/android/settings/AccessibilitySettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-06-22T16:54:23Z",
+      "side": 1,
+      "message": "Sorry to mention this, but can you refine this comment a little bit? Maybe with something similar like this:\n\n// No Market app is found/installed, do not show the the dialog\n\n\nAlso, if possible, move the comment inside the if block.",
+      "revId": "fc418b08e55ef83c6855994e392f7eb2eefa2ee1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
