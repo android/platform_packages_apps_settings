@@ -475,11 +475,13 @@
          from Locale.getDisplayName(). -->
     <string-array translatable="false" name="special_locale_codes">
         <item>zh_CN</item>
+        <item>zh_HK</item>
         <item>zh_TW</item>
     </string-array>
 
     <string-array translatable="false" name="special_locale_names">
         <item>中文 (简体)</item>
+        <item>中文(香港地區)</item>
         <item>中文 (繁體)</item>
     </string-array>
 
@@ -727,5 +729,26 @@
         <item>3</item>
         <item>2</item>
         <item>1</item>
+    </string-array>
+
+    <!-- Locales in this list are displayed with the corresponding
+         language name from special_locale_language_names instead of using the name
+         from Locale.getDisplayLanguage(). -->
+    <string-array translatable="false" name="special_locale_language_codes">
+        <item>bs_BA</item>
+        <item>in_ID</item>
+        <item>jv_ID</item>
+        <item>su_ID</item>
+        <item>sr_RS</item>
+        <item>tl_PH</item>
+    </string-array>
+
+    <string-array translatable="false" name="special_locale_language_names">
+        <item>Bosanski</item>
+        <item>Bahasa Indonesia</item>
+        <item>Jawa</item>
+        <item>Basa Sunda</item>
+        <item>Srpski</item>
+        <item>Tagalog</item>
     </string-array>
 </resources>
