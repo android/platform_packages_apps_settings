@@ -29,4 +29,22 @@
          very long strings too. -->
     <integer name="maximum_user_dictionary_word_length" translatable="false">48</integer>
 
+    <!--- The default locale. This locale will always be presented on top of
+          the language list in the locale selector. -->
+    <string name="config_defaultLocale" translatable="false"></string>
+
+    <!-- The locale set by item config_defaultLocale can be customized to be alone as a top
+         locale (config_localeUseSingleSortOrder=true) or on top but followed by locales of the
+         same country (config_localeUseSingleSortOrder=false).
+
+         Example "single":
+            config_defaultLocale is "es_ES".
+            config_localeUseSingleSortOrder is "true".
+            => the locale es_ES (Spanish) will be alone on top.
+
+         Example "not single":
+            config_defaultLocale is "es_ES".
+            config_localeUseSingleSortOrder is "false".
+            => the locale es_ES (Spanish) will be on top, followed by ca_ES (Catalan). -->
+    <bool name="config_localeUseSingleSortOrder">false</bool>
 </resources>
