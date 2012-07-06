@@ -51,6 +51,8 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
     private BluetoothClass mBtClass;
     private HashMap<LocalBluetoothProfile, Integer> mProfileConnectionState;
 
+    private boolean mUnBonding = false;
+
     private final List<LocalBluetoothProfile> mProfiles =
             new ArrayList<LocalBluetoothProfile>();
 
@@ -144,6 +146,7 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
                           LocalBluetoothAdapter adapter,
                           LocalBluetoothProfileManager profileManager,
                           BluetoothDevice device) {
+        mUnBonding = false;
         mContext = context;
         mLocalAdapter = adapter;
         mProfileManager = profileManager;
@@ -253,6 +256,7 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
 
     private boolean ensurePaired() {
         if (getBondState() == BluetoothDevice.BOND_NONE) {
+            mUnBonding = false;
             startPairing();
             return false;
         } else {
@@ -283,6 +287,8 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
     }
 
     void unpair() {
+        mUnBonding = true;
+
         disconnect();
 
         int state = getBondState();
@@ -412,6 +418,9 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
     }
 
     boolean isBusy() {
+        if(mUnBonding)
+            return true;
+
         for (LocalBluetoothProfile profile : mProfiles) {
             int status = getProfileConnectionState(profile);
             if (status == BluetoothProfile.STATE_CONNECTING
@@ -485,6 +494,7 @@ final class CachedBluetoothDevice implements Comparable<CachedBluetoothDevice> {
 
     void onBondingStateChanged(int bondState) {
         if (bondState == BluetoothDevice.BOND_NONE) {
+            mUnBonding = false;
             mProfiles.clear();
             mConnectAfterPairing = false;  // cancel auto-connect
             setPhonebookPermissionChoice(PHONEBOOK_ACCESS_UNKNOWN);
