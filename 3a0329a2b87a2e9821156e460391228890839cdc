@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAHMH///50\u003d",
+        "filename": "src/com/android/settings/DeviceInfoSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2012-07-10T15:31:36Z",
+      "side": 1,
+      "message": "Use spaces not tabs.",
+      "revId": "3a0329a2b87a2e9821156e460391228890839cdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
