@@ -58,6 +58,8 @@ public final class DevicePickerFragment extends DeviceListPreferenceFragment {
     public void onResume() {
         super.onResume();
         addCachedDevices();
+        if (mLocalAdapter.getBluetoothState() != BluetoothAdapter.STATE_ON)
+            removeAllDevices();
         if (mStartScanOnResume) {
             mLocalAdapter.startScanning(true);
             mStartScanOnResume = false;
