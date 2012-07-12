@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAHK3///78\u003d",
+        "filename": "src/com/android/settings/DeviceInfoSettings.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-07-12T04:50:18Z",
+      "side": 1,
+      "message": "This indicates that default SE Linux status is \"enforcing\". So wouldn\u0027t it be better to set the default summary of KEY_SELINUX_STATUS to \"enforcing\" in device_info_settings.xml (instead of @string/device_info_default)?\n\n    if (!SELinux.isSELinuxEnabled()) {\n        setStringSummary(KEY_SELINUX_STATUS, \"disabled\");\n    } else if (!SELinux.isSELinuxEnforced()) {\n        setStringSummary(KEY_SELINUX_STATUS, \"permissive\");\n    }",
+      "revId": "9735ff27cc89fb1f288bc23ae80997dadd8ad9e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
