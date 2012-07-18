@@ -194,8 +194,9 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
                 "\\w+\\s+" + /* ignore: version */
                 "([^\\s]+)\\s+" + /* group 1: 2.6.22-omap1 */
                 "\\(([^\\s@]+(?:@[^\\s.]+)?)[^)]*\\)\\s+" + /* group 2: (xxxxxx@xxxxx.constant) */
-                "\\((?:[^(]*\\([^)]*\\))?[^)]*\\)\\s+" + /* ignore: (gcc ..) */
+                "(?:\\(gcc.*\\)\\s+\\))?\\s+" + /* ignore: (gcc ..) */
                 "([^\\s]+)\\s+" + /* group 3: #26 */
+                "(?:SMP\\s+)?" + /* ignore: SMP (optional) */
                 "(?:PREEMPT\\s+)?" + /* ignore: PREEMPT (optional) */
                 "(.+)"; /* group 4: date */
 
