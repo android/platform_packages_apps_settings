@@ -1339,6 +1339,7 @@
 
         <activity android:name="Settings$PowerUsageSummaryActivity"
                 android:label="@string/power_usage_summary_title"
+                android:enabled="@bool/has_battery"
                 android:uiOptions="none"
                 android:parentActivityName="Settings">
             <intent-filter>
@@ -1356,6 +1357,7 @@
         <!-- Keep compatibility with old shortcuts. -->
         <activity-alias android:name=".fuelgauge.PowerUsageSummary"
                 android:label="@string/power_usage_summary_title"
+                android:enabled="@bool/has_battery"
                 android:exported="true"
                 android:targetActivity="Settings$PowerUsageSummaryActivity">
             <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
