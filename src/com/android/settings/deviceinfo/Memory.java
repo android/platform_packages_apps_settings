@@ -57,8 +57,8 @@ public class Memory extends SettingsPreferenceFragment {
     // The mountToggle Preference that has last been clicked.
     // Assumes no two successive unmount event on 2 different volumes are performed before the first
     // one's preference is disabled
-    private Preference mLastClickedMountToggle;
-    private String mClickedMountPoint;
+    static private Preference mLastClickedMountToggle;
+    static private String mClickedMountPoint;
 
     // Access using getMountService()
     private IMountService mMountService = null;
