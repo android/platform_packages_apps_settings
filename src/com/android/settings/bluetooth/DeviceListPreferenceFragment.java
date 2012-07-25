@@ -109,7 +109,6 @@ public abstract class DeviceListPreferenceFragment extends
         super.onPause();
         if (mLocalManager == null) return;
 
-        removeAllDevices();
         mLocalManager.setForegroundActivity(null);
         mLocalManager.getEventManager().unregisterCallback(this);
     }
