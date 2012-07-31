@@ -343,6 +343,7 @@ public class Memory extends SettingsPreferenceFragment {
         IMountService mountService = getMountService();
         try {
             if (mountService != null) {
+                sLastClickedMountToggle.setEnabled(false);
                 mountService.mountVolume(sClickedMountPoint);
             } else {
                 Log.e(TAG, "Mount service is null, can't mount");
