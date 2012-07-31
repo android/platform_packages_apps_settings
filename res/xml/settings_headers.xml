@@ -102,6 +102,65 @@
         <intent android:action="com.android.settings.MANUFACTURER_APPLICATION_SETTING" />
     </header>
 
+    <!-- Manufacturer Extra hook 1 -->
+    <header
+        android:id="@+id/manufacturer_extra_settings_1">
+        <intent android:action="com.android.settings.MANUFACTURER_APPLICATION_SETTING" />
+    </header>
+
+    <!-- Manufacturer Extra hook 2 -->
+    <header
+        android:id="@+id/manufacturer_extra_settings_2">
+        <intent android:action="com.android.settings.MANUFACTURER_APPLICATION_SETTING" />
+    </header>
+
+    <!-- Manufacturer Extra hook 3 -->
+    <header
+        android:id="@+id/manufacturer_extra_settings_3">
+        <intent android:action="com.android.settings.MANUFACTURER_APPLICATION_SETTING" />
+    </header>
+
+    <!-- Manufacturer Extra hook 4 -->
+    <header
+        android:id="@+id/manufacturer_extra_settings_4">
+        <intent android:action="com.android.settings.MANUFACTURER_APPLICATION_SETTING" />
+    </header>
+
+    <!-- Manufacturer Extra hook 5 -->
+    <header
+        android:id="@+id/manufacturer_extra_settings_5">
+        <intent android:action="com.android.settings.MANUFACTURER_APPLICATION_SETTING" />
+    </header>
+
+    <!-- Manufacturer Extra hook 6 -->
+    <header
+        android:id="@+id/manufacturer_extra_settings_6">
+        <intent android:action="com.android.settings.MANUFACTURER_APPLICATION_SETTING" />
+    </header>
+
+    <!-- Manufacturer Extra hook 7 -->
+    <header
+        android:id="@+id/manufacturer_extra_settings_7">
+        <intent android:action="com.android.settings.MANUFACTURER_APPLICATION_SETTING" />
+    </header>
+
+    <!-- Manufacturer Extra hook 8 -->
+    <header
+        android:id="@+id/manufacturer_extra_settings_8">
+        <intent android:action="com.android.settings.MANUFACTURER_APPLICATION_SETTING" />
+    </header>
+
+    <!-- Manufacturer Extra hook 9 -->
+    <header
+        android:id="@+id/manufacturer_extra_settings_9">
+        <intent android:action="com.android.settings.MANUFACTURER_APPLICATION_SETTING" />
+    </header>
+
+    <!-- Manufacturer Extra hook 10 -->
+    <header
+        android:id="@+id/manufacturer_extra_settings_10">
+        <intent android:action="com.android.settings.MANUFACTURER_APPLICATION_SETTING" />
+    </header>
 
     <!-- PERSONAL -->
     <header android:title="@string/header_category_personal" />
