@@ -262,8 +262,8 @@ public class DevelopmentSettings extends PreferenceFragment
         mOpenGLTraces.setOnPreferenceChangeListener(this);
         mEnableTracesPref = (MultiCheckPreference)findPreference(ENABLE_TRACES_KEY);
         String[] traceValues = new String[Trace.TRACE_TAGS.length];
-        for (int i=Trace.TRACE_FLAGS_START_BIT; i<traceValues.length; i++) {
-            traceValues[i] = Integer.toString(1<<i);
+        for (int i=0; i<traceValues.length; i++) {
+            traceValues[i] = Integer.toString(1<<(i + Trace.TRACE_FLAGS_START_BIT));
         }
         mEnableTracesPref.setEntries(Trace.TRACE_TAGS);
         mEnableTracesPref.setEntryValues(traceValues);
@@ -923,9 +923,9 @@ public class DevelopmentSettings extends PreferenceFragment
         long flags = SystemProperties.getLong(Trace.PROPERTY_TRACE_TAG_ENABLEFLAGS, 0);
         String[] values = mEnableTracesPref.getEntryValues();
         int numSet = 0;
-        for (int i=Trace.TRACE_FLAGS_START_BIT; i<values.length; i++) {
-            boolean set = (flags&(1<<i)) != 0;
-            mEnableTracesPref.setValue(i-Trace.TRACE_FLAGS_START_BIT, set);
+        for (int i=0; i<values.length; i++) {
+            boolean set = (flags&(1<<(i+Trace.TRACE_FLAGS_START_BIT))) != 0;
+            mEnableTracesPref.setValue(i, set);
             if (set) {
                 numSet++;
             }
@@ -944,9 +944,9 @@ public class DevelopmentSettings extends PreferenceFragment
     private void writeEnableTracesOptions() {
         long value = 0;
         String[] values = mEnableTracesPref.getEntryValues();
-        for (int i=Trace.TRACE_FLAGS_START_BIT; i<values.length; i++) {
-            if (mEnableTracesPref.getValue(i-Trace.TRACE_FLAGS_START_BIT)) {
-                value |= 1<<i;
+        for (int i=0; i<values.length ; i++) {
+            if (mEnableTracesPref.getValue(i)) {
+                value |= 1<<(i+Trace.TRACE_FLAGS_START_BIT);
             }
         }
         writeEnableTracesOptions(value);
