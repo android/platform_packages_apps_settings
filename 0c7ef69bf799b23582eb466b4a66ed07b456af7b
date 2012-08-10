@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAIOn////8\u003d",
+        "filename": "src/com/android/settings/deviceinfo/Memory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-08-10T02:46:11Z",
+      "side": 1,
+      "message": "Keep this consistent with other lines, change to\n\n    private static Preference mLastClickedMountToggle;",
+      "revId": "0c7ef69bf799b23582eb466b4a66ed07b456af7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAIOn////4\u003d",
+        "filename": "src/com/android/settings/deviceinfo/Memory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-08-10T02:46:11Z",
+      "side": 1,
+      "message": "Same as above.",
+      "revId": "0c7ef69bf799b23582eb466b4a66ed07b456af7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
