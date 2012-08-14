@@ -3252,6 +3252,8 @@
     <string name="usage_type_cpu_foreground">CPU foreground</string>
     <!-- [CHAR LIMIT=25] Label for keeping device from sleeping -->
     <string name="usage_type_wake_lock">Keep awake</string>
+    <!-- [CHAR LIMIT=25] Label for waking device from sleeping -->
+    <string name="usage_type_wakeups">Wakeups</string>
     <!-- Label for GPS usage time -->
     <string name="usage_type_gps">GPS</string>
     <!-- [CHAR LIMIT=25] Label for WIFI usage time -->
