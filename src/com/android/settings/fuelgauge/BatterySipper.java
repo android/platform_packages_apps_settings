@@ -48,6 +48,7 @@ class BatterySipper implements Comparable<BatterySipper> {
     long wifiRunningTime;
     long cpuFgTime;
     long wakeLockTime;
+    long wakeups;
     long tcpBytesReceived;
     long tcpBytesSent;
     double percent;

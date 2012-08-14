@@ -228,6 +228,7 @@ public class PowerUsageSummary extends PreferenceFragment implements Runnable {
                     R.string.usage_type_data_recv,
                     R.string.usage_type_audio,
                     R.string.usage_type_video,
+                    R.string.usage_type_wakeups
                 };
                 values = new double[] {
                     sipper.cpuTime,
@@ -238,7 +239,8 @@ public class PowerUsageSummary extends PreferenceFragment implements Runnable {
                     sipper.tcpBytesSent,
                     sipper.tcpBytesReceived,
                     0,
-                    0
+                    0,
+                    sipper.wakeups
                 };
 
                 if (sipper.drainType == DrainType.APP) {
@@ -530,6 +532,19 @@ public class PowerUsageSummary extends PreferenceFragment implements Runnable {
             power += p;
             if (DEBUG && p != 0) Log.i(TAG, String.format("wakelock power=%.2f", p));
             
+            // Process wakeups
+            Map<String, ? extends BatteryStats.Uid.Pkg> packageStats = u.getPackageStats();
+            int wakeups = 0;
+            for (Map.Entry<String, ? extends BatteryStats.Uid.Pkg> packageEntry
+                    : packageStats.entrySet()) {
+                    Uid.Pkg pkg = packageEntry.getValue();
+                    wakeups += pkg.getWakeups(BatteryStats.STATS_SINCE_CHARGED);
+            }
+
+            // Add cost of waking the cpu
+            power += (wakeups
+                    * mPowerProfile.getAveragePower(PowerProfile.POWER_CPU_WAKEUP));
+
             // Add cost of data traffic
             long tcpBytesReceived = u.getTcpBytesReceived(mStatsType);
             long tcpBytesSent = u.getTcpBytesSent(mStatsType);
@@ -594,6 +609,7 @@ public class PowerUsageSummary extends PreferenceFragment implements Runnable {
                 app.wifiRunningTime = wifiRunningTimeMs;
                 app.cpuFgTime = cpuFgTime;
                 app.wakeLockTime = wakelockTime;
+                app.wakeups = wakeups;
                 app.tcpBytesReceived = tcpBytesReceived;
                 app.tcpBytesSent = tcpBytesSent;
                 if (u.getUid() == Process.WIFI_UID) {
