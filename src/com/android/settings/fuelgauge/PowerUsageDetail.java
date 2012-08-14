@@ -323,6 +323,9 @@ public class PowerUsageDetail extends Fragment implements Button.OnClickListener
                         final int percentage = (int) Math.floor(mValues[i]);
                         value = getActivity().getString(R.string.percentage, percentage);
                         break;
+                    case R.string.usage_type_wakeups:
+                        value = String.format("%d", (int) mValues[i]);
+                        break;
                     case R.string.usage_type_gps:
                         mUsesGps = true;
                         // Fall through
