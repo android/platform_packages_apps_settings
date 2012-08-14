@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAIW3///14\u003d",
+        "filename": "src/com/android/settings/bluetooth/DevicePickerFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-08-14T16:27:28Z",
+      "side": 1,
+      "message": "Style issue: please use braces in a multiline conditional.",
+      "revId": "fef99733e0a958f2b9395590b19bb9b8b118a67f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
