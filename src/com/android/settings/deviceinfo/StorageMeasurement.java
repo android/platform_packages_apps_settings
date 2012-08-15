@@ -384,6 +384,8 @@ public class StorageMeasurement {
                 mTotalSize = stats[0];
                 mAvailSize = stats[1];
             } catch (Exception e) {
+                mTotalSize = 0;
+                mAvailSize = 0;
                 Log.w(TAG, "Problem in container service", e);
             }
 
