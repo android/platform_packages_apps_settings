@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAIf3///Oc\u003d",
+        "filename": "src/com/android/settings/deviceinfo/StorageMeasurement.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-08-16T23:59:20Z",
+      "side": 1,
+      "message": "The canonical code style is to use braces here.",
+      "revId": "c9077dac5c93049f8c7c394ae5051b9b4835bee5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAIkX///7k\u003d",
+        "filename": "src/com/android/settings/deviceinfo/StorageVolumePreferenceCategory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-08-16T23:59:20Z",
+      "side": 1,
+      "message": "The standard Google style uses braces here",
+      "revId": "c9077dac5c93049f8c7c394ae5051b9b4835bee5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
