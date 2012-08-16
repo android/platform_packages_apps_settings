@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAIhn///+o\u003d",
+        "filename": "src/com/android/settings/deviceinfo/Memory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-08-16T07:09:54Z",
+      "side": 1,
+      "message": "Why do you need an error level logging here?",
+      "revId": "478df9dd03ce6266640030be31c324387a64dd60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAIhn///+k\u003d",
+        "filename": "src/com/android/settings/deviceinfo/Memory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-08-16T07:09:54Z",
+      "side": 1,
+      "message": "Minor style issue: keep white space usage consistent.",
+      "revId": "478df9dd03ce6266640030be31c324387a64dd60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
