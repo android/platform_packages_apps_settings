@@ -113,7 +113,6 @@ public class BrightnessPreference extends SeekBarDialogPreference implements
             mOldAutomatic = getBrightnessMode(0);
             mAutomaticMode = mOldAutomatic == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC;
             mCheckBox.setChecked(mAutomaticMode);
-            mSeekBar.setEnabled(!mAutomaticMode);
         } else {
             mSeekBar.setEnabled(true);
         }
@@ -136,8 +135,6 @@ public class BrightnessPreference extends SeekBarDialogPreference implements
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         setMode(isChecked ? Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC
                 : Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
-        mSeekBar.setProgress(getBrightness());
-        mSeekBar.setEnabled(!mAutomaticMode);
         setBrightness(mSeekBar.getProgress(), false);
     }
 
@@ -180,7 +177,6 @@ public class BrightnessPreference extends SeekBarDialogPreference implements
                 == Settings.System.SCREEN_BRIGHTNESS_MODE_AUTOMATIC;
         mCheckBox.setChecked(checked);
         mSeekBar.setProgress(getBrightness());
-        mSeekBar.setEnabled(!checked);
     }
 
     @Override
@@ -211,25 +207,29 @@ public class BrightnessPreference extends SeekBarDialogPreference implements
     }
 
     private void setBrightness(int brightness, boolean write) {
+        int range = (MAXIMUM_BACKLIGHT - mScreenBrightnessDim);
         if (mAutomaticMode) {
-            if (false) {
-                float valf = (((float)brightness*2)/SEEK_BAR_RANGE) - 1.0f;
-                try {
-                    IPowerManager power = IPowerManager.Stub.asInterface(
-                            ServiceManager.getService("power"));
-                    if (power != null) {
-                        power.setAutoBrightnessAdjustment(valf);
-                    }
-                    if (write) {
-                        final ContentResolver resolver = getContext().getContentResolver();
-                        Settings.System.putFloat(resolver,
-                                Settings.System.SCREEN_AUTO_BRIGHTNESS_ADJ, valf);
-                    }
-                } catch (RemoteException doe) {
+            float valf = (((float)brightness*2)/SEEK_BAR_RANGE) - 1.0f;
+            try {
+                IPowerManager power = IPowerManager.Stub.asInterface(
+                        ServiceManager.getService("power"));
+                if (power != null) {
+                    power.setAutoBrightnessAdjustment(valf);
                 }
+                if (write) {
+                    final ContentResolver resolver = getContext().getContentResolver();
+                    Settings.System.putFloat(resolver,
+                            Settings.System.SCREEN_AUTO_BRIGHTNESS_ADJ, valf);
+
+                    // since we adjust light sensor using brightness progress bar we need to save it as well
+                    brightness = (brightness*range)/SEEK_BAR_RANGE + mScreenBrightnessDim;
+                    Settings.System.putInt(resolver,
+                            Settings.System.SCREEN_BRIGHTNESS, brightness);
+
+                }
+            } catch (RemoteException doe) {
             }
         } else {
-            int range = (MAXIMUM_BACKLIGHT - mScreenBrightnessDim);
             brightness = (brightness*range)/SEEK_BAR_RANGE + mScreenBrightnessDim;
             try {
                 IPowerManager power = IPowerManager.Stub.asInterface(
