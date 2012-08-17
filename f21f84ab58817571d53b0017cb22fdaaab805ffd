@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAIkH///5I\u003d",
+        "filename": "src/com/android/settings/deviceinfo/Memory.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-08-17T00:14:24Z",
+      "side": 1,
+      "message": "Missing a space before the brace",
+      "revId": "f21f84ab58817571d53b0017cb22fdaaab805ffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAIf3///LE\u003d",
+        "filename": "src/com/android/settings/deviceinfo/Memory.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-08-17T00:14:24Z",
+      "side": 1,
+      "message": "100 columns",
+      "revId": "f21f84ab58817571d53b0017cb22fdaaab805ffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAIf3///K8\u003d",
+        "filename": "src/com/android/settings/deviceinfo/Memory.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-08-17T00:14:24Z",
+      "side": 1,
+      "message": "100 columns, bummer",
+      "revId": "f21f84ab58817571d53b0017cb22fdaaab805ffd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
