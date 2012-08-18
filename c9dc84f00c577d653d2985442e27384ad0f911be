@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAIu3///8Q\u003d",
+        "filename": "src/com/android/settings/Settings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-08-18T20:27:58Z",
+      "side": 1,
+      "message": "This should be single-line or have braces",
+      "revId": "c9dc84f00c577d653d2985442e27384ad0f911be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
