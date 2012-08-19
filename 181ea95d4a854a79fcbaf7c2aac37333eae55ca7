@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAIrn///9w\u003d",
+        "filename": "res/values/bools.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000559
+      },
+      "writtenOn": "2012-08-19T01:24:28Z",
+      "side": 1,
+      "message": "The convention for this is to put them in config.xml and name them config_hasBattery.",
+      "revId": "181ea95d4a854a79fcbaf7c2aac37333eae55ca7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
