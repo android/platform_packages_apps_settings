@@ -36,6 +36,42 @@
     },
     {
       "key": {
+        "uuid": "AAAIx3////w\u003d",
+        "filename": "src/com/android/settings/deviceinfo/StorageMeasurement.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1015280
+      },
+      "writtenOn": "2012-08-21T06:18:35Z",
+      "side": 1,
+      "message": "This calculation is different with \"// Note miscSize !\u003d totalSize - availSize - appsSize - downloadsSize - totalMediaSize\" because, mMiscSize is size of the external storage folder, which is calculated by imcs getDirectorySize(). It is different with the size got from statfs. Application size, download size and media size are all calculated in this way. So the whole folder size minus app size, download size and media size is just the misc size.\n\nI also agree that using IMCS is the best idea, which can help to get the size for each misc files. But the APIs in IMCS cannot allow to do so.\n\nDo you think this way is acceptable or we have to add some additional new APIs in IMCS?",
+      "parentUuid": "AAAIrn///+U\u003d",
+      "revId": "c9077dac5c93049f8c7c394ae5051b9b4835bee5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAIx3////0\u003d",
+        "filename": "src/com/android/settings/deviceinfo/StorageMeasurement.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1015280
+      },
+      "writtenOn": "2012-08-21T06:18:35Z",
+      "side": 1,
+      "message": "Will add the braces to both of them",
+      "parentUuid": "AAAIf3///Oc\u003d",
+      "revId": "c9077dac5c93049f8c7c394ae5051b9b4835bee5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAIkX///7k\u003d",
         "filename": "src/com/android/settings/deviceinfo/StorageVolumePreferenceCategory.java",
         "patchSetId": 1
