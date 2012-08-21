@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAIw3///2U\u003d",
+        "filename": "src/com/android/settings/IccLockSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-08-21T17:27:27Z",
+      "side": 1,
+      "message": "Please indent by one more space",
+      "revId": "65006decf3ee36c784c86fc6e27a2ee030d3df77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAIxn///yA\u003d",
+        "filename": "src/com/android/settings/IccLockSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-08-21T17:27:27Z",
+      "side": 1,
+      "message": "Please use braces for multi-line conditionals.",
+      "revId": "65006decf3ee36c784c86fc6e27a2ee030d3df77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAIw3///2E\u003d",
+        "filename": "src/com/android/settings/SecuritySettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-08-21T17:27:27Z",
+      "side": 1,
+      "message": "100 columns. Also, please remove the space after the cast.",
+      "revId": "65006decf3ee36c784c86fc6e27a2ee030d3df77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
