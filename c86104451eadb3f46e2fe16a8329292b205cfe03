@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAIxn///yI\u003d",
+        "filename": "src/com/android/settings/deviceinfo/StorageVolumePreferenceCategory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-08-21T17:25:30Z",
+      "side": 1,
+      "message": "Please break this so that it doesn\u0027t overflow 100 columns",
+      "revId": "c86104451eadb3f46e2fe16a8329292b205cfe03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
