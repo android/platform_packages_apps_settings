@@ -16,6 +16,24 @@
       "revId": "c86104451eadb3f46e2fe16a8329292b205cfe03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAIxn///xI\u003d",
+        "filename": "src/com/android/settings/deviceinfo/StorageVolumePreferenceCategory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1002975
+      },
+      "writtenOn": "2012-08-21T17:34:49Z",
+      "side": 1,
+      "message": "Were the interoperability problems fixed? I\u0027m not familiar with this code, but it looks like it will show the \"Format\" option for things it shouldn\u0027t like emulated storage.",
+      "parentUuid": "AAAIxn///yI\u003d",
+      "revId": "c86104451eadb3f46e2fe16a8329292b205cfe03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
