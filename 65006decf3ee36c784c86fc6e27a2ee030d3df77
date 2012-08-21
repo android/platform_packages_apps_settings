@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "AAAIwn///tU\u003d",
+        "filename": "src/com/android/settings/IccLockSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1004017
+      },
+      "writtenOn": "2012-08-21T20:52:19Z",
+      "side": 1,
+      "message": "This should be in onPause() instead. See http://developer.android.com/reference/android/app/Activity.html",
+      "revId": "65006decf3ee36c784c86fc6e27a2ee030d3df77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAIxn///yA\u003d",
         "filename": "src/com/android/settings/IccLockSettings.java",
         "patchSetId": 1
@@ -30,6 +47,23 @@
       "writtenOn": "2012-08-21T17:27:27Z",
       "side": 1,
       "message": "Please use braces for multi-line conditionals.",
+      "revId": "65006decf3ee36c784c86fc6e27a2ee030d3df77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAIwn///tA\u003d",
+        "filename": "src/com/android/settings/IccLockSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1004017
+      },
+      "writtenOn": "2012-08-21T20:52:19Z",
+      "side": 1,
+      "message": "Sorry, but calling finish() is the wrong way to do this.  Instead, move this code into SecuritySettings and disable the setting that launches this one. It looks like there\u0027s code that already does this. :/",
       "revId": "65006decf3ee36c784c86fc6e27a2ee030d3df77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
