@@ -34,6 +34,24 @@
       "revId": "c86104451eadb3f46e2fe16a8329292b205cfe03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAI33///0s\u003d",
+        "filename": "src/com/android/settings/deviceinfo/StorageVolumePreferenceCategory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1015280
+      },
+      "writtenOn": "2012-08-23T06:19:27Z",
+      "side": 1,
+      "message": "emulated storage is only for primary storage. If a storage is removable, it cannot be emulated. So i think the format option is only for the none primary removable storage, right?",
+      "parentUuid": "AAAIxn///xI\u003d",
+      "revId": "c86104451eadb3f46e2fe16a8329292b205cfe03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
