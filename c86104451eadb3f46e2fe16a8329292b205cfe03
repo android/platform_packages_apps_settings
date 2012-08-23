@@ -52,6 +52,24 @@
       "revId": "c86104451eadb3f46e2fe16a8329292b205cfe03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAI2H//+XY\u003d",
+        "filename": "src/com/android/settings/deviceinfo/StorageVolumePreferenceCategory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2012-08-23T22:31:51Z",
+      "side": 1,
+      "message": "agree with kenny; were the MTP issues mentioned in the comment fixed?",
+      "parentUuid": "AAAI33///0s\u003d",
+      "revId": "c86104451eadb3f46e2fe16a8329292b205cfe03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
