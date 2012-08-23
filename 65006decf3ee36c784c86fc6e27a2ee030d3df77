@@ -70,6 +70,24 @@
     },
     {
       "key": {
+        "uuid": "AAAI13//+kQ\u003d",
+        "filename": "src/com/android/settings/IccLockSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1010938
+      },
+      "writtenOn": "2012-08-23T14:44:58Z",
+      "side": 1,
+      "message": "For the following case, do you see any other option other than using finish\n\n1. Current UI shown is Menu-\u003eSettings-\u003eSecurity-\u003eSet up SIM card lock(SIM card lock Settings)\n2. Remove the SIM\n\nCurrently, a dialog will be shown to restart the device. But user can ignore this dialog.\n\nSIM card lock settings screen will still be shown when there is no SIM. \n\nEven if we move the handling to SecuritySettings, when the user is in SIM card lock Settings(step 1 above), SecuritySettings will be in paused state and it will not be able to receive SIM state/service change broadcast information. So, it can remove or disable the preference.\n\nAlso may I know why calling finish is bad? Currently, finish has been used in many places.",
+      "parentUuid": "AAAIwn///tA\u003d",
+      "revId": "65006decf3ee36c784c86fc6e27a2ee030d3df77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAIw3///2E\u003d",
         "filename": "src/com/android/settings/SecuritySettings.java",
         "patchSetId": 1
