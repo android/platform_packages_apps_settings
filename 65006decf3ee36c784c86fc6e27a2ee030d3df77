@@ -88,6 +88,24 @@
     },
     {
       "key": {
+        "uuid": "AAAI13//+JI\u003d",
+        "filename": "src/com/android/settings/IccLockSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1004017
+      },
+      "writtenOn": "2012-08-23T21:57:46Z",
+      "side": 1,
+      "message": "I don\u0027t think this change is of much use if we can\u0027t guarantee the device is in a usable state. IIRC that\u0027s why the dialog is there.  I don\u0027t think most devices handle this well and the user experience will vary. \n\nCalling finish() for an asynchronous event like SIM state changes is bad because it\u0027s a very startling and potentially aggravating user experience.  Having a dialog or screen disappear while you\u0027re reading/interacting with it is a very bad experience.",
+      "parentUuid": "AAAI13//+kQ\u003d",
+      "revId": "65006decf3ee36c784c86fc6e27a2ee030d3df77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAIw3///2E\u003d",
         "filename": "src/com/android/settings/SecuritySettings.java",
         "patchSetId": 1
