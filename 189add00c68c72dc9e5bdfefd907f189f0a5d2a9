@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAI63//+4E\u003d",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1455,
+      "author": {
+        "id": 1003344
+      },
+      "writtenOn": "2012-08-28T00:57:02Z",
+      "side": 1,
+      "message": "Lets remove \"(\" and \")\"\n\nDo you want to delete the group xyz?",
+      "revId": "189add00c68c72dc9e5bdfefd907f189f0a5d2a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAI6n///ZQ\u003d",
+        "filename": "src/com/android/settings/wifi/p2p/WifiP2pSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1003344
+      },
+      "writtenOn": "2012-08-28T00:57:02Z",
+      "side": 1,
+      "message": "Lets remove this code. The UX guys did not want to show the connection status and network name in this place - it is meant to show device name alone.\n\nWe can revisit this UX again",
+      "revId": "189add00c68c72dc9e5bdfefd907f189f0a5d2a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
