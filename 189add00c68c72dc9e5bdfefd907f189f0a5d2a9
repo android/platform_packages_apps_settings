@@ -33,6 +33,24 @@
       "revId": "189add00c68c72dc9e5bdfefd907f189f0a5d2a9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAI2n///g8\u003d",
+        "filename": "src/com/android/settings/wifi/p2p/WifiP2pSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1014552
+      },
+      "writtenOn": "2012-08-28T01:06:29Z",
+      "side": 1,
+      "message": "OK, remove them so far.But I\u0027m sure we should display the network name in order that user can know which persistent group is used.",
+      "parentUuid": "AAAI6n///ZQ\u003d",
+      "revId": "189add00c68c72dc9e5bdfefd907f189f0a5d2a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
