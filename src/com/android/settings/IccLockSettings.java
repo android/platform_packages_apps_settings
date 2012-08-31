@@ -29,6 +29,7 @@ import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
+import android.provider.Settings;
 import android.widget.Toast;
 
 import com.android.internal.telephony.Phone;
@@ -94,6 +95,7 @@ public class IccLockSettings extends PreferenceActivity
     private static final int MSG_ENABLE_ICC_PIN_COMPLETE = 100;
     private static final int MSG_CHANGE_ICC_PIN_COMPLETE = 101;
     private static final int MSG_SIM_STATE_CHANGED = 102;
+    private static final int MSG_AIRPLANE_MODE_CHANGED = 103;
 
     // For replies from IccCard interface
     private Handler mHandler = new Handler() {
@@ -106,6 +108,7 @@ public class IccLockSettings extends PreferenceActivity
                 case MSG_CHANGE_ICC_PIN_COMPLETE:
                     iccPinChanged(ar.exception == null);
                     break;
+                case MSG_AIRPLANE_MODE_CHANGED:
                 case MSG_SIM_STATE_CHANGED:
                     updatePreferences();
                     break;
@@ -115,11 +118,13 @@ public class IccLockSettings extends PreferenceActivity
         }
     };
 
-    private final BroadcastReceiver mSimStateReceiver = new BroadcastReceiver() {
+    private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             final String action = intent.getAction();
             if (TelephonyIntents.ACTION_SIM_STATE_CHANGED.equals(action)) {
                 mHandler.sendMessage(mHandler.obtainMessage(MSG_SIM_STATE_CHANGED));
+            } else if (Intent.ACTION_AIRPLANE_MODE_CHANGED.equals(action)) {
+                mHandler.sendMessage(mHandler.obtainMessage(MSG_AIRPLANE_MODE_CHANGED));
             }
         }
     };
@@ -185,7 +190,16 @@ public class IccLockSettings extends PreferenceActivity
     }
 
     private void updatePreferences() {
-        mPinToggle.setChecked(mPhone.getIccCard().getIccLockEnabled());
+        boolean isAirplaneModeOn = Settings.System.getInt(getContentResolver(),
+                                                Settings.System.AIRPLANE_MODE_ON, 0) != 0;
+
+        if (mPhone.getIccCard().hasIccCard() && !isAirplaneModeOn) {
+            getPreferenceScreen().setEnabled(true);
+            mPinToggle.setChecked(mPhone.getIccCard().getIccLockEnabled());
+        } else {
+            mPinDialog.cancelPinDialog();
+            getPreferenceScreen().setEnabled(false);
+        }
     }
 
     @Override
@@ -194,8 +208,10 @@ public class IccLockSettings extends PreferenceActivity
 
         // ACTION_SIM_STATE_CHANGED is sticky, so we'll receive current state after this call,
         // which will call updatePreferences().
-        final IntentFilter filter = new IntentFilter(TelephonyIntents.ACTION_SIM_STATE_CHANGED);
-        registerReceiver(mSimStateReceiver, filter);
+        final IntentFilter filter = new IntentFilter();
+        filter.addAction(TelephonyIntents.ACTION_SIM_STATE_CHANGED);
+        filter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+        registerReceiver(mReceiver, filter);
 
         if (mDialogState != OFF_MODE) {
             showPinDialog();
@@ -208,7 +224,7 @@ public class IccLockSettings extends PreferenceActivity
     @Override
     protected void onPause() {
         super.onPause();
-        unregisterReceiver(mSimStateReceiver);
+        unregisterReceiver(mReceiver);
     }
 
     @Override
