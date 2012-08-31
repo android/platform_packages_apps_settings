@@ -78,4 +78,11 @@ class EditPinPreference extends EditTextPreference {
             showDialog(null);
         }
     }
+
+    public void cancelPinDialog() {
+        Dialog dialog = getDialog();
+        if (dialog != null && dialog.isShowing()) {
+            dialog.cancel();
+        }
+    }
 }

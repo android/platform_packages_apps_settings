@@ -185,7 +185,13 @@ public class IccLockSettings extends PreferenceActivity
     }
 
     private void updatePreferences() {
-        mPinToggle.setChecked(mPhone.getIccCard().getIccLockEnabled());
+        if (mPhone.getIccCard().hasIccCard()) {
+            getPreferenceScreen().setEnabled(true);
+            mPinToggle.setChecked(mPhone.getIccCard().getIccLockEnabled());
+        } else {
+            mPinDialog.cancelPinDialog();
+            getPreferenceScreen().setEnabled(false);
+        }
     }
 
     @Override
