@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAI9n///xs\u003d",
+        "filename": "src/com/android/settings/DateTimeSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2012-09-06T22:41:50Z",
+      "side": 1,
+      "message": "oops. i\u0027ll remove these in ps2...",
+      "revId": "e86bd13f17e54d2454c266ce716c7e685e739691",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
