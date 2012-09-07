@@ -16,6 +16,24 @@
       "revId": "4f300bbe6bb71452d6b74483e00fff0fca85e511",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAI83///oM\u003d",
+        "filename": "src/com/android/settings/DeviceInfoSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1003723
+      },
+      "writtenOn": "2012-09-07T00:47:38Z",
+      "side": 1,
+      "message": "sounds like a new test case to add\n\nare there otther things that can appear? RT for example? maybe this should be generalized to a series of space separated keywords, since we are just ignoring these anyway.",
+      "parentUuid": "AAAI8n///+A\u003d",
+      "revId": "4f300bbe6bb71452d6b74483e00fff0fca85e511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
