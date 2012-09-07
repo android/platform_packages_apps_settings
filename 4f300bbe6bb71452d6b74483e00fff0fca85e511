@@ -34,6 +34,24 @@
       "revId": "4f300bbe6bb71452d6b74483e00fff0fca85e511",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAI9n///Z8\u003d",
+        "filename": "src/com/android/settings/DeviceInfoSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2012-09-07T17:22:28Z",
+      "side": 1,
+      "message": "yeah, see my TODO on L223. i think this is a sign that i should just fix the TODO right now. i\u0027ll lose the explicit SMP and PREEMPT special cases and just skip ahead until i see an RFC822 date. i\u0027d considered that earlier but didn\u0027t want to write out the list of English three-letter day names, but that would solve my no-SMP bug and the TODO in one go...",
+      "parentUuid": "AAAI83///oM\u003d",
+      "revId": "4f300bbe6bb71452d6b74483e00fff0fca85e511",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
