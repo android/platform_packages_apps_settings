@@ -16,6 +16,24 @@
       "revId": "c8f3691f1b09fb55a44cad6cd434f59da2057f15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAI83//+sQ\u003d",
+        "filename": "src/com/android/settings/DeviceInfoSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2012-09-10T18:08:27Z",
+      "side": 1,
+      "message": "yes, the Linux mkcompile_h script is careful about this:\n\n  # Fix the language to get consistent output\n  LC_ALL\u003dC\n  export LC_ALL\n  ...\n  \tTIMESTAMP\u003d`date`",
+      "parentUuid": "AAAI83///A4\u003d",
+      "revId": "c8f3691f1b09fb55a44cad6cd434f59da2057f15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
