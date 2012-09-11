@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAI5n//+i4\u003d",
+        "filename": "src/com/android/settings/tts/TextToSpeechSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1015680
+      },
+      "writtenOn": "2012-09-11T16:17:54Z",
+      "side": 1,
+      "message": "Can\u0027t find this in strings, does not build.",
+      "revId": "56159bfbfa2f04d0b188a100352cf3043b624daa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
