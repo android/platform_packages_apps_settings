@@ -34,6 +34,23 @@
       "revId": "c8f3691f1b09fb55a44cad6cd434f59da2057f15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAI9n//+BI\u003d",
+        "filename": "tests/src/com/android/settings/DeviceInfoSettingsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2012-09-11T00:50:01Z",
+      "side": 1,
+      "message": "Copyright 2012",
+      "revId": "c8f3691f1b09fb55a44cad6cd434f59da2057f15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
