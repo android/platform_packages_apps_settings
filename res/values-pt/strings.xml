@@ -129,7 +129,7 @@
     <string name="bluetooth_connected_no_headset_no_a2dp" msgid="9195757766755553810">"Conectado (sem telefone ou mídia)"</string>
     <string name="bluetooth_disconnected" msgid="6557104142667339895">"Desconectado"</string>
     <string name="bluetooth_disconnecting" msgid="8913264760027764974">"Desconectando…"</string>
-    <string name="bluetooth_connecting" msgid="8555009514614320497">"Conectando..."</string>
+    <string name="bluetooth_connecting" msgid="8555009514614320497">"Conectando\u2026"</string>
     <string name="bluetooth_unknown" msgid="644716244548801421"></string>
     <string name="bluetooth_pairing" msgid="1426882272690346242">"Pareando…"</string>
     <string name="bluetooth_device" msgid="5291950341750186887">"Dispositivo Bluetooth sem nome"</string>
@@ -150,8 +150,8 @@
     <string name="bluetooth_ask_enablement_and_discovery" product="default" msgid="3040361003987241057">"Um aplicativo em seu telefone quer ativar o Bluetooth e tornar seu telefone detectável por outros dispositivos por <xliff:g id="TIMEOUT">%1$d</xliff:g> segundos. Permitir?"</string>
     <string name="bluetooth_ask_enablement_and_lasting_discovery" product="tablet" msgid="7254712987802497615">"Um aplicativo no seu tablet quer ativar o Bluetooth e tornar seu tablet detectável por outros dispositivos. Permitir?"</string>
     <string name="bluetooth_ask_enablement_and_lasting_discovery" product="default" msgid="3947789545028519103">"Um aplicativo em seu telefone quer ativar o Bluetooth e tornar o telefone detectável por outros dispositivos. Permitir?"</string>
-    <string name="bluetooth_turning_on" msgid="4850574877288036646">"Ativando Bluetooth..."</string>
-    <string name="bluetooth_turning_off" msgid="2337747302892025192">"Desligar o Bluetooth…"</string>
+    <string name="bluetooth_turning_on" msgid="4850574877288036646">"Ativando Bluetooth\u2026"</string>
+    <string name="bluetooth_turning_off" msgid="2337747302892025192">"Desligar o Bluetooth\u2026"</string>
     <string name="bluetooth_auto_connect" msgid="40711424456733571">"Conexão automática"</string>
     <string name="bluetooth_connection_permission_request" msgid="4747918249032890077">"Solicitação de conexão Bluetooth"</string>
     <string name="bluetooth_connection_notif_message" msgid="3687933246423942977">"Toque para conectar-se a \"<xliff:g id="DEVICE_NAME">%1$s</xliff:g>\"."</string>
@@ -237,7 +237,7 @@
     <string name="sdcard_settings_bad_removal_status" product="nosdcard" msgid="7761390725880773697">"Armaz. USB removido em uso!"</string>
     <string name="sdcard_settings_bad_removal_status" product="default" msgid="5145797653495907970">"O cartão SD foi removido enquanto ainda estava em uso!"</string>
     <string name="sdcard_settings_used_bytes_label" msgid="8820289486001170836">"Bytes usados:"</string>
-    <string name="sdcard_settings_scanning_status" product="nosdcard" msgid="7503429447676219564">"Procurando mídia armaz. USB..."</string>
+    <string name="sdcard_settings_scanning_status" product="nosdcard" msgid="7503429447676219564">"Procurando mídia armaz. USB\u2026"</string>
     <string name="sdcard_settings_scanning_status" product="default" msgid="2763464949274455656">"Procurando mídia no cartão SD…"</string>
     <string name="sdcard_settings_read_only_status" product="nosdcard" msgid="3624143937437417788">"Armaz. USB somente leitura."</string>
     <string name="sdcard_settings_read_only_status" product="default" msgid="4518291824764698112">"Cartão SD conectado como somente leitura."</string>
@@ -255,10 +255,10 @@
     <string name="proxy_settings_label" msgid="3271174136184391743">"Configurações de proxy"</string>
     <string name="cancel" msgid="6859253417269739139">"Cancelar"</string>
     <string name="settings_label" msgid="1626402585530130914">"Configurações"</string>
-    <string name="settings_label_launcher" msgid="8344735489639482340">"Config."</string>
+    <string name="settings_label_launcher" msgid="8344735489639482340">"Configurações"</string>
     <string name="settings_shortcut" msgid="3936651951364030415">"Atalho para as configurações"</string>
     <string name="airplane_mode" msgid="8837269988154128601">"Modo para avião"</string>
-    <string name="radio_controls_title" msgid="6889937359495515769">"Mais..."</string>
+    <string name="radio_controls_title" msgid="6889937359495515769">"Mais\u2026"</string>
     <string name="wireless_networks_settings_title" msgid="3643009077742794212">"Redes sem fio e outras"</string>
     <string name="radio_controls_summary" msgid="2998818677094465517">"Gerenciar rede Wi-Fi, Bluetooth, modo avião, redes e VPNs"</string>
     <string name="roaming" msgid="3596055926335478572">"Roaming de dados"</string>
@@ -431,7 +431,7 @@
     <string name="bluetooth_connecting_error_message" msgid="229861986106185022">"Não foi possível conectar ao <xliff:g id="DEVICE_NAME">%1$s</xliff:g>."</string>
     <string name="bluetooth_preference_scan_title" msgid="2277464653118896016">"Procurar dispositivos"</string>
     <string name="bluetooth_search_for_devices" msgid="5957007154213560390">"Procurar disposit."</string>
-    <string name="bluetooth_searching_for_devices" msgid="9203739709307871727">"Pesquisando..."</string>
+    <string name="bluetooth_searching_for_devices" msgid="9203739709307871727">"Pesquisando\u2026"</string>
     <string name="bluetooth_preference_device_settings" msgid="907776049862799122">"Configurações do aparelho"</string>
     <string name="bluetooth_preference_paired_devices" msgid="1970524193086791964">"Dispositivos pareados"</string>
     <string name="bluetooth_preference_found_devices" msgid="1647983835063249680">"Dispositivos disponíveis"</string>
@@ -444,7 +444,7 @@
     <string name="bluetooth_menu_advanced" msgid="8572178316357220524">"Avançado"</string>
     <string name="bluetooth_advanced_titlebar" msgid="2142159726881547669">"Bluetooth avançado"</string>
     <string name="bluetooth_empty_list_bluetooth_off" msgid="4793562956642282639">"Para ver os dispositivos, ative  o Bluetooth."</string>
-    <string name="bluetooth_connect_specific_profiles_title" msgid="6952214406025825164">"Conectar-se a..."</string>
+    <string name="bluetooth_connect_specific_profiles_title" msgid="6952214406025825164">"Conectar-se a\u2026"</string>
     <string name="bluetooth_profile_a2dp" msgid="2031475486179830674">"Áudio da mídia"</string>
     <string name="bluetooth_profile_headset" msgid="8658779596261212609">"Áudio do telefone"</string>
     <string name="bluetooth_profile_opp" msgid="9168139293654233697">"Transferência de arquivo"</string>
@@ -498,8 +498,8 @@
     <string name="wifi_settings_title" msgid="4351120897298124250">"Wi-Fi"</string>
     <string name="wifi_settings_summary" msgid="668767638556052820">"Configurar e gerenciar pontos de acesso sem fio"</string>
     <string name="wifi_setup_wizard_title" msgid="70277346338812325">"Selecionar Wi-Fi"</string>
-    <string name="wifi_starting" msgid="6716593470710880000">"Ativando Wi-Fi..."</string>
-    <string name="wifi_stopping" msgid="244864762599017659">"Desativando Wi-Fi..."</string>
+    <string name="wifi_starting" msgid="6716593470710880000">"Ativando Wi-Fi\u2026"</string>
+    <string name="wifi_stopping" msgid="244864762599017659">"Desativando Wi-Fi\u2026"</string>
     <string name="wifi_error" msgid="3207971103917128179">"Erro"</string>
     <string name="wifi_in_airplane_mode" msgid="8652520421778203796">"No modo avião"</string>
     <string name="wifi_fail_to_scan" msgid="1265540342578081461">"Não é possível verificar a existência de redes"</string>
@@ -520,8 +520,8 @@
     <string name="wifi_menu_forget" msgid="8736964302477327114">"Esquecer a rede"</string>
     <string name="wifi_menu_modify" msgid="2068554918652440105">"Modificar rede"</string>
     <string name="wifi_empty_list_wifi_off" msgid="4722299515264875943">"Para ver as redes disponíveis, ative o Wi-Fi."</string>
-    <string name="wifi_empty_list_wifi_on" msgid="3354911729026237372">"Procurando redes Wi-Fi..."</string>
-    <string name="wifi_other_network" msgid="1048006316504242214">"Outra rede..."</string>
+    <string name="wifi_empty_list_wifi_on" msgid="3354911729026237372">"Procurando redes Wi-Fi\u2026"</string>
+    <string name="wifi_other_network" msgid="1048006316504242214">"Outra rede\u2026"</string>
     <string name="wifi_more" msgid="3195296805089107950">"Mais"</string>
     <string name="wifi_setup_wps" msgid="8128702488486283957">"Configuração automática (WPS)"</string>
     <string name="wifi_show_advanced" msgid="1793703023711426246">"Mostrar opções avançadas"</string>
@@ -748,7 +748,7 @@
     <string name="sd_memory" product="default" msgid="151871913888051515">"Cartão SD"</string>
     <string name="memory_available" msgid="5052397223077021181">"Disponível"</string>
     <string name="memory_size" msgid="6629067715017232195">"Espaço total"</string>
-    <string name="memory_calculating_size" msgid="2188358544203768588">"Calculando..."</string>
+    <string name="memory_calculating_size" msgid="2188358544203768588">"Calculando\u2026"</string>
     <string name="memory_apps_usage" msgid="2348501997988663688">"Aplicativos (dados de aplic. e conteúdo de mídia)"</string>
     <string name="memory_media_usage" msgid="3738830697707880405">"Mídia"</string>
     <string name="memory_downloads_usage" msgid="3755173051677533027">"Downloads"</string>
@@ -917,11 +917,11 @@
     <string name="terms_title" msgid="7697580845616764642">"Termos e Condições"</string>
     <string name="settings_license_activity_title" msgid="7553683406244228650">"Licenças código aberto"</string>
     <string name="settings_license_activity_unavailable" msgid="4210539215951487627">"Há um problema ao carregar as licenças."</string>
-    <string name="settings_license_activity_loading" msgid="3337535809093591740">"Carregando..."</string>
+    <string name="settings_license_activity_loading" msgid="3337535809093591740">"Carregando\u2026"</string>
     <string name="settings_safetylegal_title" msgid="1289483965535937431">"Informações de segurança"</string>
     <string name="settings_safetylegal_activity_title" msgid="6901214628496951727">"Informações de segurança"</string>
     <string name="settings_safetylegal_activity_unreachable" msgid="232523852222964470">"Você não tem uma conexão de dados. Para visualizar estas informações agora, acesse %s em qualquer computador conectado à Internet."</string>
-    <string name="settings_safetylegal_activity_loading" msgid="8059022597639516348">"Carregando..."</string>
+    <string name="settings_safetylegal_activity_loading" msgid="8059022597639516348">"Carregando\u2026"</string>
     <string name="lockpassword_choose_your_password_header" msgid="8624900666929394990">"Escolha a sua senha"</string>
     <string name="lockpassword_choose_your_pattern_header" msgid="6949761069941694050">"Escolha seu padrão"</string>
     <string name="lockpassword_choose_your_pin_header" msgid="7598849519816138302">"Escolha o seu PIN"</string>
@@ -1157,7 +1157,7 @@
     <string name="user_dict_settings_context_menu_delete_title" msgid="9140703913776549054">"Excluir"</string>
     <string name="user_dict_settings_empty_text" msgid="8165273379942105271">"Você não possui palavras no dicionário do usuário. Adicione uma palavra tocando no botão \"Adicionar\" ou no símbolo \"+\"."</string>
     <string name="user_dict_settings_all_languages" msgid="6742000040975959247">"Para todos os idiomas"</string>
-    <string name="user_dict_settings_more_languages" msgid="7316375944684977910">"Mais idiomas..."</string>
+    <string name="user_dict_settings_more_languages" msgid="7316375944684977910">"Mais idiomas\u2026"</string>
     <string name="testing" msgid="6584352735303604146">"Testando"</string>
     <string name="testing_phone_info" product="tablet" msgid="193561832258534798">"Informações do tablet"</string>
     <string name="testing_phone_info" product="default" msgid="8656693364332840056">"Informações do telefone"</string>
@@ -1450,17 +1450,17 @@
     <string name="wifi_setup_forget" msgid="2562847595567347526">"Esquecer"</string>
     <string name="wifi_setup_save" msgid="3659235094218508211">"Salvar"</string>
     <string name="wifi_setup_cancel" msgid="3185216020264410239">"Cancelar"</string>
-    <string name="wifi_setup_status_scanning" msgid="5317003416385428036">"Procurando redes..."</string>
+    <string name="wifi_setup_status_scanning" msgid="5317003416385428036">"Procurando redes\u2026"</string>
     <string name="wifi_setup_status_select_network" msgid="7519563569903137003">"Toque em uma rede para se conectar a ela"</string>
     <string name="wifi_setup_status_existing_network" msgid="6394925174802598186">"Conectar-se à rede existente"</string>
     <string name="wifi_setup_status_unsecured_network" msgid="8143046977328718252">"Conectar-se à rede não segura"</string>
     <string name="wifi_setup_status_edit_network" msgid="4765340816724760717">"Digite a configuração de rede"</string>
     <string name="wifi_setup_status_new_network" msgid="7468952850452301083">"Conectar-se à nova rede"</string>
-    <string name="wifi_setup_status_connecting" msgid="4971421484401530740">"Conectando..."</string>
+    <string name="wifi_setup_status_connecting" msgid="4971421484401530740">"Conectando\u2026"</string>
     <string name="wifi_setup_status_proceed_to_next" msgid="6708250000342940031">"Ir para a próxima etapa"</string>
     <string name="wifi_setup_status_eap_not_supported" msgid="5335338851032315905">"EAP não é suportado."</string>
     <string name="wifi_setup_eap_not_supported" msgid="595556546597351489">"Não é possível configurar uma conexão Wi-Fi EAP durante a configuração. É possível fazer isso em seguida, na opção Configurações &gt; Sem fio &amp; redes."</string>
-    <string name="wifi_setup_description_connecting" msgid="2793554932006756795">"A conexão pode levar alguns minutos..."</string>
+    <string name="wifi_setup_description_connecting" msgid="2793554932006756795">"A conexão pode levar alguns minutos\u2026"</string>
     <string name="wifi_setup_description_connected" msgid="5235991893829582459">"Toque em "<b>"Próximo"</b>" para continuar a configuração."\n\n"Toque em "<b>"Voltar"</b>" para conectar-se a outra rede Wi-Fi."</string>
     <string name="accessibility_sync_enabled" msgid="558480439730263116">"Sincronização ativada"</string>
     <string name="accessibility_sync_disabled" msgid="1741194106479011384">"Sincronização desativada"</string>
@@ -1479,7 +1479,7 @@
     <string name="sync_disabled" msgid="8511659877596511991">"A sincronização está DESATIVADA"</string>
     <string name="sync_error" msgid="5060969083117872149">"Erro na sinc."</string>
     <string name="last_synced" msgid="4242919465367022234">"Última sincronização em <xliff:g id="LAST_SYNC_TIME">%1$s</xliff:g>"</string>
-    <string name="sync_in_progress" msgid="5151314196536070569">"Sincronizando agora..."</string>
+    <string name="sync_in_progress" msgid="5151314196536070569">"Sincronizando agora\u2026"</string>
     <string name="settings_backup" msgid="2274732978260797031">"Fazer backup das configurações"</string>
     <string name="settings_backup_summary" msgid="7916877705938054035">"Fazer backup de minhas configurações"</string>
     <string name="sync_menu_sync_now" msgid="6154608350395805683">"Sincronizar agora"</string>
@@ -1561,19 +1561,19 @@
     <string name="debug_applications_category" msgid="4206913653849771549">"Aplicativos"</string>
     <string name="immediately_destroy_activities" msgid="8366775083630234121">"Não manter atividades"</string>
     <string name="immediately_destroy_activities_summary" msgid="3592221124808773368">"Destruir todas as atividades quando o usuário sair"</string>
-    <string name="app_process_limit_title" msgid="4280600650253107163">"Limite do proc. 2o plano"</string>
+    <string name="app_process_limit_title" msgid="4280600650253107163">"Limite do proc. 2º plano"</string>
     <string name="show_all_anrs" msgid="28462979638729082">"Mostrar todos os ANRS"</string>
-    <string name="show_all_anrs_summary" msgid="641908614413544127">"Exibir \"App não responde\" para aplic. em 2o plano"</string>
+    <string name="show_all_anrs_summary" msgid="641908614413544127">"Exibir \"App não responde\" para aplic. em 2º plano"</string>
     <string name="data_usage_summary_title" msgid="3804110657238092929">"Uso de dados"</string>
     <string name="data_usage_cycle" msgid="5652529796195787949">"Ciclo do uso de dados"</string>
     <string name="data_usage_menu_roaming" msgid="8042359966835203296">"Roaming de dados"</string>
-    <string name="data_usage_menu_restrict_background" msgid="1989394568592253331">"Restringir dados de segundo plano"</string>
+    <string name="data_usage_menu_restrict_background" msgid="1989394568592253331">"Restringir dados 2º plano"</string>
     <string name="data_usage_menu_split_4g" msgid="5322857680792601899">"Separar uso dos dados 4G"</string>
     <string name="data_usage_menu_show_wifi" msgid="8266875319417201085">"Mostrar uso do Wi-Fi"</string>
     <string name="data_usage_menu_show_ethernet" msgid="5181361208532314097">"Mostrar o uso da Ethernet"</string>
     <string name="data_usage_menu_metered" msgid="5056695223222541863">"Pontos de acesso móveis"</string>
-    <string name="data_usage_menu_auto_sync" msgid="8203999775948778560">"Sincronizar dados automaticamente"</string>
-    <string name="data_usage_change_cycle" msgid="7776556448920114866">"Alterar ciclo..."</string>
+    <string name="data_usage_menu_auto_sync" msgid="8203999775948778560">"Sincronizar dados"</string>
+    <string name="data_usage_change_cycle" msgid="7776556448920114866">"Alterar ciclo\u2026"</string>
     <string name="data_usage_pick_cycle_day" msgid="4470796861757050966">"Dia do mês para redefinir o ciclo de uso dos dados:"</string>
     <string name="data_usage_empty" msgid="8621855507876539282">"Nenhum aplicativo usou dados durante o período."</string>
     <string name="data_usage_label_foreground" msgid="4938034231928628164">"Primeiro plano"</string>
@@ -1596,8 +1596,8 @@
     <string name="data_usage_enable_4g" msgid="3635854097335036738">"Dados 4G"</string>
     <string name="data_usage_app_settings" msgid="8430240158135453271">"Ver configurações do aplicativo"</string>
     <string name="data_usage_app_restrict_background" msgid="9149728936265100841">"Restringir dados de 2º plano"</string>
-    <string name="data_usage_app_restrict_background_summary" msgid="518658001418490405">"Desat. dados de seg. plano em redes móveis. Usar outras redes se disp."</string>
-    <string name="data_usage_app_restrict_background_summary_disabled" msgid="7401927377070755054">"Definir um limite de dados para restringir dados em 2o plano"</string>
+    <string name="data_usage_app_restrict_background_summary" msgid="518658001418490405">"Desativar dados de 2º plano em redes móveis. Usar outras redes se disponível"</string>
+    <string name="data_usage_app_restrict_background_summary_disabled" msgid="7401927377070755054">"Definir um limite de dados para restringir dados em 2º plano"</string>
     <string name="data_usage_app_restrict_dialog_title" msgid="1613108390242737923">"Restringir dados de segundo plano?"</string>
     <string name="data_usage_app_restrict_dialog" msgid="1466689968707308512">"Este recurso pode fazer com que um aplicativo que depende de dados de segundo plano pare de funcionar quando somente redes de acesso limitado estiverem disponíveis."\n\n"Você pode encontrar controles de uso de dados mais apropriados nas configurações disponíveis no aplicativo."</string>
     <string name="data_usage_restrict_denied_dialog" msgid="7086969103661420799">"Restringir dados de segundo plano só é possível quando você define um limite de dados móveis."</string>
@@ -1608,7 +1608,7 @@
     <string name="data_usage_auto_sync_off_dialog" msgid="4744145757533455623">"Isto preservará o uso de dados e da bateria, mas será necessário sincronizar manualmente cada conta para obter as informações mais recentes, e você não será informado de novas atualizações."</string>
     <string name="data_usage_cycle_editor_title" msgid="1373797281540188533">"Data de redefinição do ciclo de uso"</string>
     <string name="data_usage_cycle_editor_subtitle" msgid="5512903797979928416">"Data de cada mês:"</string>
-    <string name="data_usage_cycle_editor_positive" msgid="8821760330497941117">"Definidas"</string>
+    <string name="data_usage_cycle_editor_positive" msgid="8821760330497941117">"Definir"</string>
     <string name="data_usage_warning_editor_title" msgid="3704136912240060339">"Definir aviso de uso de dados"</string>
     <string name="data_usage_limit_editor_title" msgid="9153595142385030015">"Definir limite do uso de dados"</string>
     <string name="data_usage_limit_dialog_title" msgid="3023111643632996097">"Limitando uso de dados"</string>
@@ -1633,7 +1633,7 @@
     <string name="vpn_name" msgid="4689699885361002297">"Nome"</string>
     <string name="vpn_type" msgid="5435733139514388070">"Tipo"</string>
     <string name="vpn_server" msgid="2123096727287421913">"Endereço do servidor"</string>
-    <string name="vpn_mppe" msgid="6639001940500288972">"criptografia PPP (MPPE)"</string>
+    <string name="vpn_mppe" msgid="6639001940500288972">"Criptografia PPP (MPPE)"</string>
     <string name="vpn_l2tp_secret" msgid="529359749677142076">"Segredo L2TP"</string>
     <string name="vpn_ipsec_identifier" msgid="4098175859460006296">"Identificador IPSec"</string>
     <string name="vpn_ipsec_secret" msgid="4526453255704888704">"Chave pré-compartilhada IPSec"</string>
