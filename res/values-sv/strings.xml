@@ -1295,7 +1295,7 @@
     <string name="usage_type_data_recv" msgid="7251090882025234185">"Mottagna data"</string>
     <string name="usage_type_audio" msgid="6957269406840886290">"Ljud"</string>
     <string name="usage_type_video" msgid="4295357792078579944">"Video"</string>
-    <string name="usage_type_on_time" msgid="3351200096173733159">"Tid som funktionen varit på"</string>
+    <string name="usage_type_on_time" msgid="3351200096173733159">"Tid aktiverad"</string>
     <string name="usage_type_no_coverage" msgid="3797004252954385053">"Tid utan täckning"</string>
     <string name="battery_action_stop" msgid="649958863744041872">"Tvingad avslutning"</string>
     <string name="battery_action_app_details" msgid="7861051816778419018">"Info om appen"</string>
