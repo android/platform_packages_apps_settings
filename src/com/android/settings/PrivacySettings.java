@@ -201,7 +201,19 @@ public class PrivacySettings extends SettingsPreferenceFragment implements
         }
         mBackup.setChecked(enable);
         mAutoRestore.setEnabled(enable);
-        mConfigure.setEnabled(enable);
+        if (!enable) {
+            mConfigure.setEnabled(enable);
+        } else {
+            try {
+                String transport = mBackupManager.getCurrentTransport();
+                Intent configIntent = mBackupManager.getConfigurationIntent(transport);
+                if (configIntent != null) {
+                    mConfigure.setEnabled(enable);
+                }
+            } catch (RemoteException e) {
+                //To do Nothing
+            }
+        }
     }
 
     @Override
