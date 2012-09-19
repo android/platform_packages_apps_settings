@@ -54,7 +54,7 @@ public class WifiApDialog extends AlertDialog implements View.OnClickListener,
     private TextView mSsid;
     private int mSecurityTypeIndex = OPEN_INDEX;
     private EditText mPassword;
-
+    private static boolean mShowPassword = false;
     WifiConfiguration mWifiConfig;
 
     public WifiApDialog(Context context, DialogInterface.OnClickListener listener,
@@ -144,7 +144,12 @@ public class WifiApDialog extends AlertDialog implements View.OnClickListener,
         }
 
         mSsid.addTextChangedListener(this);
+        mPassword.setInputType(
+                InputType.TYPE_CLASS_TEXT | (mShowPassword ?
+                InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD :
+                InputType.TYPE_TEXT_VARIATION_PASSWORD));
         mPassword.addTextChangedListener(this);
+
         ((CheckBox) mView.findViewById(R.id.show_password)).setOnClickListener(this);
         mSecurity.setOnItemSelectedListener(this);
 
@@ -165,8 +170,9 @@ public class WifiApDialog extends AlertDialog implements View.OnClickListener,
     }
 
     public void onClick(View view) {
+        mShowPassword = ((CheckBox) view).isChecked();
         mPassword.setInputType(
-                InputType.TYPE_CLASS_TEXT | (((CheckBox) view).isChecked() ?
+                InputType.TYPE_CLASS_TEXT | (mShowPassword ?
                 InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD :
                 InputType.TYPE_TEXT_VARIATION_PASSWORD));
     }
