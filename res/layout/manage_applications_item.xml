@@ -55,14 +55,14 @@
             android:layout_height="wrap_content"
             android:baselineAlignedChildIndex="0" >
             <TextView android:id="@+id/app_size"
-                android:layout_marginTop="-4dip"
+                android:layout_marginTop="-2dip"
                 android:layout_gravity="center_vertical|start"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
             <TextView android:id="@+id/app_disabled"
-                android:layout_marginTop="-4dip"
+                android:layout_marginTop="-2dip"
                 android:layout_gravity="center_vertical|end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
