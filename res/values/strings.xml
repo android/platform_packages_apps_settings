@@ -4356,7 +4356,7 @@
     <!-- Help menu label [CHAR LIMIT=20] -->
     <string name="help_label">Help</string>
     <!-- Help URL, WiFi [DO NOT TRANSLATE] -->
-    <string name="help_url_wifi" translatable="false"></string>
+    <string name="help_url_wifi" translatable="false">http://support.google.com/mobile/?p=settings_wifi</string>
     <!-- Help URL, Bluetooth [DO NOT TRANSLATE] -->
     <string name="help_url_bluetooth" translatable="false"></string>
     <!-- Help URL, Data usage [DO NOT TRANSLATE] -->
