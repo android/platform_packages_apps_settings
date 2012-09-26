@@ -43,6 +43,7 @@ public class UserDictionaryAddWordContents {
     public static final String EXTRA_WORD = "word";
     public static final String EXTRA_SHORTCUT = "shortcut";
     public static final String EXTRA_LOCALE = "locale";
+    public static final String EXTRA_LENGTH = "maxlength";
 
     public static final int MODE_EDIT = 0;
     public static final int MODE_INSERT = 1;
@@ -55,14 +56,17 @@ public class UserDictionaryAddWordContents {
     private String mLocale;
     private final String mOldWord;
     private final String mOldShortcut;
+    private int mMaxLength;
 
     /* package */ UserDictionaryAddWordContents(final View view, final Bundle args) {
         mWordEditText = (EditText)view.findViewById(R.id.user_dictionary_add_word_text);
         mShortcutEditText = (EditText)view.findViewById(R.id.user_dictionary_add_shortcut);
         final String word = args.getString(EXTRA_WORD);
+
+        mMaxLength = args.getInt(EXTRA_LENGTH);
         if (null != word) {
             mWordEditText.setText(word);
-            mWordEditText.setSelection(word.length());
+            mWordEditText.setSelection(word.length() < mMaxLength ? word.length() : mMaxLength);
         }
         final String shortcut = args.getString(EXTRA_SHORTCUT);
         if (null != shortcut && null != mShortcutEditText) {
