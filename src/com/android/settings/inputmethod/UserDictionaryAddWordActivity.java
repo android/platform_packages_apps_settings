@@ -54,6 +54,9 @@ public class UserDictionaryAddWordActivity extends Activity {
         final Bundle args = intent.getExtras();
         args.putInt(UserDictionaryAddWordContents.EXTRA_MODE, mode);
 
+        int maxlength = getResources().getInteger(R.integer.maximum_user_dictionary_word_length);
+        args.putInt(UserDictionaryAddWordContents.EXTRA_LENGTH, maxlength);
+
         if (null != savedInstanceState) {
             // Override options if we have a saved state.
             args.putAll(savedInstanceState);
