@@ -31,13 +31,13 @@
             android:id="@+id/left_button"
             android:layout_width="120dip"
             android:layout_weight="0.4"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center_vertical"/>
         <!-- Spacer -->
         <View
             android:id="@+id/buttons_spacer_left"
             android:layout_width="0dip"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:visibility="invisible"
             android:layout_weight="0.2" />
         <Button
@@ -45,6 +45,6 @@
             android:layout_width="120dip"
             android:text="@string/cancel"
             android:layout_weight="0.4"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center_vertical"/>
 </LinearLayout>
