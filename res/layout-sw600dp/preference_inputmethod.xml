@@ -76,7 +76,7 @@
     <ImageView
         android:id="@+id/inputmethod_settings"
         android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
+        android:layout_height="match_parent"
         android:paddingLeft="15dip"
         android:paddingRight="?android:attr/scrollbarSize"
         android:src="@drawable/ic_sysbar_quicksettings"

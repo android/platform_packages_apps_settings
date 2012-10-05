@@ -22,7 +22,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="64dip"
         android:layout_marginLeft="2dip"
         android:layout_marginRight="2dip"
@@ -30,7 +30,7 @@
 
         <Button android:id="@+id/one"
             android:layout_width="0sp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginLeft="2dip"
             android:layout_marginRight="2dip"
@@ -40,7 +40,7 @@
 
         <Button android:id="@+id/two"
             android:layout_width="0sp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginLeft="2dip"
             android:layout_marginRight="2dip"
@@ -50,7 +50,7 @@
 
         <Button android:id="@+id/three"
             android:layout_width="0sp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginLeft="2dip"
             android:layout_marginRight="2dip"
@@ -61,7 +61,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="64dip"
         android:layout_marginLeft="2dip"
         android:layout_marginRight="2dip"
@@ -69,7 +69,7 @@
 
         <Button android:id="@+id/four"
             android:layout_width="0sp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginLeft="2dip"
             android:layout_marginRight="2dip"
@@ -79,7 +79,7 @@
 
         <Button android:id="@+id/five"
             android:layout_width="0sp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginLeft="2dip"
             android:layout_marginRight="2dip"
@@ -89,7 +89,7 @@
 
         <Button android:id="@+id/six"
             android:layout_width="0sp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginLeft="2dip"
             android:layout_marginRight="2dip"
@@ -99,7 +99,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="64dip"
         android:layout_marginLeft="2dip"
         android:layout_marginRight="2dip"
@@ -107,7 +107,7 @@
 
         <Button android:id="@+id/seven"
             android:layout_width="0sp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginLeft="2dip"
             android:layout_marginRight="2dip"
@@ -117,7 +117,7 @@
 
         <Button android:id="@+id/eight"
             android:layout_width="0sp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginLeft="2dip"
             android:layout_marginRight="2dip"
@@ -127,7 +127,7 @@
 
         <Button android:id="@+id/nine"
             android:layout_width="0sp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginLeft="2dip"
             android:layout_marginRight="2dip"
@@ -138,7 +138,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="64dip"
         android:layout_marginLeft="2dip"
         android:layout_marginRight="2dip"
@@ -146,7 +146,7 @@
 
         <Button android:id="@+id/ok"
             android:layout_width="0sp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginLeft="2dip"
             android:layout_marginRight="2dip"
@@ -157,7 +157,7 @@
 
         <Button android:id="@+id/zero"
             android:layout_width="0sp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginLeft="2dip"
             android:layout_marginRight="2dip"
@@ -167,7 +167,7 @@
 
         <Button android:id="@+id/cancel"
             android:layout_width="0sp"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginLeft="2dip"
             android:layout_marginRight="2dip"

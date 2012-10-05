@@ -63,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
                 <TextView android:id="@+id/admin_description"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="0dip"
                     android:layout_weight="0"
                     android:padding="0dip" />
@@ -78,14 +78,14 @@
                         android:gravity="center_vertical"
                         android:contentDescription="@null" />
                     <TextView android:id="@+id/add_msg"
-                        android:layout_width="fill_parent"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_vertical"
                         android:padding="10dip" />
                 </LinearLayout>
 
                 <TextView android:id="@+id/admin_warning"
-                    android:layout_width="fill_parent"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:padding="10dip" />

@@ -80,7 +80,7 @@
             android:background="@android:drawable/divider_horizontal_dark" />
         <ImageView
             android:layout_width="40dip"
-            android:layout_height="fill_parent"
+            android:layout_height="match_parent"
             android:paddingLeft="5dip"
             android:paddingRight="5dip"
             android:src="@drawable/ic_sysbar_quicksettings"
@@ -97,7 +97,7 @@
     <ImageView
         android:id="@+id/pref_right_button2"
         android:layout_width="40dip"
-        android:layout_height="fill_parent"
+        android:layout_height="match_parent"
         android:paddingLeft="5dip"
         android:paddingRight="5dip"
         android:src="@drawable/ic_menu_3d_globe"
