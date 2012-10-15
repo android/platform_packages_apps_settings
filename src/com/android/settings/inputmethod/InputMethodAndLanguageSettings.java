@@ -35,6 +35,7 @@ import android.hardware.input.InputManager;
 import android.hardware.input.KeyboardLayout;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.AsyncTask;
 import android.preference.CheckBoxPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -89,6 +90,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     @SuppressWarnings("unused")
     private SettingsObserver mSettingsObserver;
     private Intent mIntentWaitingForResult;
+    private AsyncTask mUpdateUserDictionaryPreferenceTask;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -191,9 +193,7 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         }
     }
 
-    private void updateUserDictionaryPreference(Preference userDictionaryPreference) {
-        final Activity activity = getActivity();
-        final TreeSet<String> localeList = UserDictionaryList.getUserDictionaryLocalesSet(activity);
+    private void updateUserDictionaryPreference(Preference userDictionaryPreference, TreeSet<String> localeList) {
         if (null == localeList) {
             // The locale list is null if and only if the user dictionary service is
             // not present or disabled. In this case we need to remove the preference.
@@ -218,6 +218,29 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
         } else {
             userDictionaryPreference.setTitle(R.string.user_dict_multiple_settings_title);
             userDictionaryPreference.setFragment(UserDictionaryList.class.getName());
+        }
+    }
+
+    private class UpdateUserDictionaryPreferenceTask extends AsyncTask<Preference, Void, TreeSet<String>> {
+        private Preference mPreference;
+        private Activity mActivity;
+
+        @Override
+        protected void onPreExecute() {
+            mActivity = InputMethodAndLanguageSettings.this.getActivity();
+        }
+
+        @Override
+        protected TreeSet<String> doInBackground(Preference... params) {
+            mPreference = params[0];
+            if (mPreference == null) return null;
+            return UserDictionaryList.getUserDictionaryLocalesSet(mActivity);
+        }
+
+        @Override
+        protected void onPostExecute(TreeSet<String> result) {
+            if (result == null) return;
+            updateUserDictionaryPreference(mPreference, result);
         }
     }
 
@@ -251,7 +274,14 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
                 }
             }
 
-            updateUserDictionaryPreference(findPreference(KEY_USER_DICTIONARY_SETTINGS));
+            // kick off background task to update user dictionary preference
+            if (mUpdateUserDictionaryPreferenceTask != null) {
+                mUpdateUserDictionaryPreferenceTask.cancel(true);
+            }
+            Preference pref = findPreference(KEY_USER_DICTIONARY_SETTINGS);
+            mUpdateUserDictionaryPreferenceTask = new UpdateUserDictionaryPreferenceTask().
+                                            executeOnExecutor(AsyncTask.SERIAL_EXECUTOR, pref);
+
             if (SHOW_INPUT_METHOD_SWITCHER_SETTINGS) {
                 mShowInputMethodSelectorPref.setOnPreferenceChangeListener(this);
             }
@@ -278,7 +308,10 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
     @Override
     public void onPause() {
         super.onPause();
-
+        if (mUpdateUserDictionaryPreferenceTask != null
+                && mUpdateUserDictionaryPreferenceTask.getStatus() != AsyncTask.Status.FINISHED) {
+            mUpdateUserDictionaryPreferenceTask.cancel(true);
+        }
         mIm.unregisterInputDeviceListener(this);
         mSettingsObserver.pause();
 
