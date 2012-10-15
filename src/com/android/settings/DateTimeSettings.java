@@ -118,6 +118,11 @@ public class DateTimeSettings extends SettingsPreferenceFragment
         if (currentFormat == null) {
             currentFormat = "";
         }
+
+        // Prevents duplicated values on date format selector.
+        mDummyDate.set(Calendar.DAY_OF_MONTH, 31);
+        mDummyDate.set(Calendar.MONTH, Calendar.DECEMBER);
+
         for (int i = 0; i < formattedDates.length; i++) {
             String formatted =
                     DateFormat.getDateFormatForSetting(getActivity(), dateFormats[i])
