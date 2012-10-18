@@ -566,19 +566,25 @@ public class DataUsageSummary extends Fragment {
     }
 
     @Override
-    public void onDestroy() {
-        mDataEnabledView = null;
-        mDisableAtLimitView = null;
-
-        mUidDetailProvider.clearCache();
-        mUidDetailProvider = null;
-
-        TrafficStats.closeQuietly(mStatsSession);
-
+    public void onStop() {
         if (this.isRemoving()) {
             getFragmentManager()
                     .popBackStack(TAG_APP_DETAILS, FragmentManager.POP_BACK_STACK_INCLUSIVE);
         }
+        super.onStop();
+    }
+
+    @Override
+    public void onDestroy() {
+        mDataEnabledView = null;
+        mDisableAtLimitView = null;
+
+        if (mUidDetailProvider != null) {
+            mUidDetailProvider.clearCache();
+            mUidDetailProvider = null;
+        }
+
+        TrafficStats.closeQuietly(mStatsSession);
 
         super.onDestroy();
     }
