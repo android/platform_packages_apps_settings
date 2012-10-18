@@ -227,6 +227,7 @@ public class RequestPermissionActivity extends Activity implements
             returnCode = RESULT_OK;
         } else if (mLocalAdapter.setScanMode(
                 BluetoothAdapter.SCAN_MODE_CONNECTABLE_DISCOVERABLE, mTimeout)) {
+            mLocalAdapter.setDiscoverableTimeout(mTimeout);
             // If already in discoverable mode, this will extend the timeout.
             long endTime = System.currentTimeMillis() + (long) mTimeout * 1000;
             LocalBluetoothPreferences.persistDiscoverableEndTimestamp(
