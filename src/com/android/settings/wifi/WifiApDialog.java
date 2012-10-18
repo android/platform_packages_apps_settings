@@ -146,6 +146,7 @@ public class WifiApDialog extends AlertDialog implements View.OnClickListener,
         mSsid.addTextChangedListener(this);
         mPassword.addTextChangedListener(this);
         ((CheckBox) mView.findViewById(R.id.show_password)).setOnClickListener(this);
+        ((CheckBox) mView.findViewById(R.id.show_password)).setChecked(mShowPassword);
         mSecurity.setOnItemSelectedListener(this);
 
         super.onCreate(savedInstanceState);
