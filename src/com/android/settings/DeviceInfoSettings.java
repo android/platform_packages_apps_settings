@@ -54,11 +54,9 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
     private static final String KEY_COPYRIGHT = "copyright";
     private static final String KEY_SYSTEM_UPDATE_SETTINGS = "system_update_settings";
     private static final String PROPERTY_URL_SAFETYLEGAL = "ro.url.safetylegal";
-    private static final String PROPERTY_SELINUX_STATUS = "ro.build.selinux";
     private static final String KEY_KERNEL_VERSION = "kernel_version";
     private static final String KEY_BUILD_NUMBER = "build_number";
     private static final String KEY_DEVICE_MODEL = "device_model";
-    private static final String KEY_SELINUX_STATUS = "selinux_status";
     private static final String KEY_BASEBAND_VERSION = "baseband_version";
     private static final String KEY_FIRMWARE_VERSION = "firmware_version";
     private static final String KEY_UPDATE_SETTING = "additional_system_update_settings";
@@ -81,18 +79,6 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
         setStringSummary(KEY_DEVICE_MODEL, Build.MODEL);
         setStringSummary(KEY_BUILD_NUMBER, Build.DISPLAY);
         findPreference(KEY_KERNEL_VERSION).setSummary(getFormattedKernelVersion());
-
-        if (!SELinux.isSELinuxEnabled()) {
-            String status = getResources().getString(R.string.selinux_status_disabled);
-            setStringSummary(KEY_SELINUX_STATUS, status);
-        } else if (!SELinux.isSELinuxEnforced()) {
-            String status = getResources().getString(R.string.selinux_status_permissive);
-            setStringSummary(KEY_SELINUX_STATUS, status);
-        }
-
-        // Remove selinux information if property is not present
-        removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_SELINUX_STATUS,
-                PROPERTY_SELINUX_STATUS);
 
         // Remove Safety information preference if PROPERTY_URL_SAFETYLEGAL is not set
         removePreferenceIfPropertyMissing(getPreferenceScreen(), "safetylegal",
@@ -159,15 +145,14 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
     }
 
     private void removePreferenceIfPropertyMissing(PreferenceGroup preferenceGroup,
-            String preference, String property ) {
-        if (SystemProperties.get(property).equals(""))
-        {
+            String preference, String property) {
+        if (SystemProperties.get(property).equals("")) {
             // Property is missing so remove preference from group
             try {
                 preferenceGroup.removePreference(findPreference(preference));
             } catch (RuntimeException e) {
-                Log.d(LOG_TAG, "Property '" + property + "' missing and no '"
-                        + preference + "' preference");
+                Log.d(LOG_TAG, "Property '" + property + "' missing and no '" + preference
+                        + "' preference");
             }
         }
     }
