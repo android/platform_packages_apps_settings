@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAKgX///yU\u003d",
+        "filename": "res/xml/device_info_status.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1002975
+      },
+      "writtenOn": "2012-10-19T17:55:26Z",
+      "side": 1,
+      "message": "I wonder why the WiMax address is down here. I\u0027m going to move this above up_time and later I\u0027ll move WiMax near the other cellular data.",
+      "revId": "828335cf1214e82eb7553337667bd8fa813cf0fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
