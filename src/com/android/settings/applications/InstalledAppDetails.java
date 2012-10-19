@@ -451,6 +451,14 @@ public class InstalledAppDetails extends Fragment
     }
 
     @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        if (localLOGV)
+            Log.i(TAG, "onDestroyView " + this);
+        mSession.release();
+    }
+
+    @Override
     public void onAllSizesComputed() {
     }
 
