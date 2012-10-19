@@ -54,7 +54,6 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
     private static final String KEY_COPYRIGHT = "copyright";
     private static final String KEY_SYSTEM_UPDATE_SETTINGS = "system_update_settings";
     private static final String PROPERTY_URL_SAFETYLEGAL = "ro.url.safetylegal";
-    private static final String PROPERTY_SELINUX_STATUS = "ro.build.selinux";
     private static final String KEY_KERNEL_VERSION = "kernel_version";
     private static final String KEY_BUILD_NUMBER = "build_number";
     private static final String KEY_DEVICE_MODEL = "device_model";
@@ -90,9 +89,8 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
             setStringSummary(KEY_SELINUX_STATUS, status);
         }
 
-        // Remove selinux information if property is not present
-        removePreferenceIfPropertyMissing(getPreferenceScreen(), KEY_SELINUX_STATUS,
-                PROPERTY_SELINUX_STATUS);
+        // Remove selinux information if on a user build
+        removePreferenceOnUserBuilds(getPreferenceScreen(), KEY_SELINUX_STATUS);
 
         // Remove Safety information preference if PROPERTY_URL_SAFETYLEGAL is not set
         removePreferenceIfPropertyMissing(getPreferenceScreen(), "safetylegal",
@@ -158,16 +156,25 @@ public class DeviceInfoSettings extends SettingsPreferenceFragment {
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }
 
+    private void removePreferenceOnUserBuilds(PreferenceGroup preferenceGroup, String preference) {
+        if ("user".equals(Build.TYPE)) {
+            try {
+                preferenceGroup.removePreference(findPreference(preference));
+            } catch (RuntimeException e) {
+                Log.d(LOG_TAG, "Could not remove preference group: " + preference);
+            }
+        }
+    }
+
     private void removePreferenceIfPropertyMissing(PreferenceGroup preferenceGroup,
-            String preference, String property ) {
-        if (SystemProperties.get(property).equals(""))
-        {
+            String preference, String property) {
+        if (SystemProperties.get(property).equals("")) {
             // Property is missing so remove preference from group
             try {
                 preferenceGroup.removePreference(findPreference(preference));
             } catch (RuntimeException e) {
-                Log.d(LOG_TAG, "Property '" + property + "' missing and no '"
-                        + preference + "' preference");
+                Log.d(LOG_TAG, "Property '" + property + "' missing and no '" + preference
+                        + "' preference");
             }
         }
     }
