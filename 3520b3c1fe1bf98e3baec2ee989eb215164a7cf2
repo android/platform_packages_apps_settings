@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAKhH////0\u003d",
+        "filename": "src/com/android/settings/applications/InstalledAppDetails.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-10-19T05:54:58Z",
+      "side": 1,
+      "message": "Do we really need this log message? It looks redundant.",
+      "revId": "3520b3c1fe1bf98e3baec2ee989eb215164a7cf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
