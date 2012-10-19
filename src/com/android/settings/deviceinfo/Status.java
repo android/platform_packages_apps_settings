@@ -31,6 +31,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.os.SELinux;
 import android.os.SystemClock;
 import android.os.SystemProperties;
 import android.preference.Preference;
@@ -85,6 +86,7 @@ public class Status extends PreferenceActivity {
     private static final String KEY_IP_ADDRESS = "wifi_ip_address";
     private static final String KEY_WIFI_MAC_ADDRESS = "wifi_mac_address";
     private static final String KEY_BT_ADDRESS = "bt_address";
+    private static final String KEY_SELINUX_STATUS = "selinux_status";
     private static final String KEY_SERIAL_NUMBER = "serial_number";
     private static final String KEY_ICC_ID = "icc_id";
     private static final String KEY_WIMAX_MAC_ADDRESS = "wimax_mac_address";
@@ -260,6 +262,19 @@ public class Status extends PreferenceActivity {
             setSummaryText(KEY_SERIAL_NUMBER, serial);
         } else {
             removePreferenceFromScreen(KEY_SERIAL_NUMBER);
+        }
+
+        // Remove selinux information if on a user build
+        if ("user".equals(Build.TYPE)) {
+            removePreferenceFromScreen(KEY_SELINUX_STATUS);
+        }
+
+        if (!SELinux.isSELinuxEnabled()) {
+            String status = getResources().getString(R.string.selinux_status_disabled);
+            setSummaryText(KEY_SELINUX_STATUS, status);
+        } else if (!SELinux.isSELinuxEnforced()) {
+            String status = getResources().getString(R.string.selinux_status_permissive);
+            setSummaryText(KEY_SELINUX_STATUS, status);
         }
     }
 

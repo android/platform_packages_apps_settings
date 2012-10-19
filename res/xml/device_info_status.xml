@@ -120,6 +120,11 @@
         android:title="@string/status_up_time"
         android:summary="@string/device_info_not_available"
         android:persistent="false" />
+    <Preference android:key="selinux_status"
+        style="?android:preferenceInformationStyle"
+        android:title="@string/selinux_status"
+        android:summary="@string/selinux_status_enforcing"
+        android:persistent="false" />
     <Preference android:key="wimax_mac_address"
         style="?android:attr/preferenceInformationStyle"
         android:title="@string/status_wimax_mac_address"
