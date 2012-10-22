@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAKhn///9U\u003d",
+        "filename": "src/com/android/settings/DeviceInfoSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-10-22T14:19:52Z",
+      "side": 1,
+      "message": "Although, unrelated to the actual change, you seem to be re-arranging the code here... Can you position the \"\" literal first also? So, that this line won\u0027t hurt the eyes :)",
+      "revId": "38ee54637f99b77533b80ee1611d5d1a2f53c83a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAKhn///9Y\u003d",
+        "filename": "src/com/android/settings/deviceinfo/Status.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-10-22T14:19:52Z",
+      "side": 1,
+      "message": "Need to move this block to onResume()",
+      "revId": "38ee54637f99b77533b80ee1611d5d1a2f53c83a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
