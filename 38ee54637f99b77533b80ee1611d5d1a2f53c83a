@@ -33,6 +33,23 @@
       "revId": "38ee54637f99b77533b80ee1611d5d1a2f53c83a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAKhn///9M\u003d",
+        "filename": "src/com/android/settings/deviceinfo/Status.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-10-22T14:25:09Z",
+      "side": 1,
+      "message": "Also, it may worth to re-do the \"user\" mode check here and enclose this block with if (!\"user\".equals(Build.TYPE)){} in order not to do redundant SELinux status checks and null pointer checks in setSummaryText() method...",
+      "revId": "38ee54637f99b77533b80ee1611d5d1a2f53c83a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
