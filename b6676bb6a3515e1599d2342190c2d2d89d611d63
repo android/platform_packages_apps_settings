@@ -16,6 +16,24 @@
       "revId": "b6676bb6a3515e1599d2342190c2d2d89d611d63",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAALBH////w\u003d",
+        "filename": "src/com/android/settings/DateTimeSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1016535
+      },
+      "writtenOn": "2012-10-27T09:49:06Z",
+      "side": 1,
+      "message": "Please show me how to reproduce this issue.",
+      "parentUuid": "AAAK63///YU\u003d",
+      "revId": "b6676bb6a3515e1599d2342190c2d2d89d611d63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
