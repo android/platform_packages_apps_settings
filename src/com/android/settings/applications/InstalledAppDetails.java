@@ -1007,15 +1007,18 @@ public class InstalledAppDetails extends Fragment
         if (mClearDataObserver == null) {
             mClearDataObserver = new ClearUserDataObserver();
         }
-        ActivityManager am = (ActivityManager)
-                getActivity().getSystemService(Context.ACTIVITY_SERVICE);
-        boolean res = am.clearApplicationUserData(packageName, mClearDataObserver);
-        if (!res) {
-            // Clearing data failed for some obscure reason. Just log error for now
-            Log.i(TAG, "Couldnt clear application user data for package:"+packageName);
-            showDialogInner(DLG_CANNOT_CLEAR_DATA, 0);
-        } else {
-            mClearDataButton.setText(R.string.recompute_size);
+        Activity activity = getActivity();
+        if (activity != null) {
+            ActivityManager am = (ActivityManager)
+                        activity.getSystemService(Context.ACTIVITY_SERVICE);
+            boolean res = am.clearApplicationUserData(packageName, mClearDataObserver);
+            if (!res) {
+                // Clearing data failed for some obscure reason. Just log error for now
+                Log.i(TAG, "Couldnt clear application user data for package:"+packageName);
+                showDialogInner(DLG_CANNOT_CLEAR_DATA, 0);
+            } else {
+                mClearDataButton.setText(R.string.recompute_size);
+            }
         }
     }
     
