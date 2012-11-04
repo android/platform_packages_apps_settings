@@ -30,6 +30,7 @@ import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
+import android.telephony.MSimTelephonyManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Switch;
@@ -98,6 +99,12 @@ public class WirelessSettings extends SettingsPreferenceFragment {
 
         final Activity activity = getActivity();
         mAirplaneModePreference = (CheckBoxPreference) findPreference(KEY_TOGGLE_AIRPLANE);
+
+        if (MSimTelephonyManager.getDefault().isMultiSimEnabled()) {
+            findPreference(KEY_MOBILE_NETWORK_SETTINGS).getIntent().setClassName(
+                    "com.android.phone", "com.android.phone.MSimMobileNetworkSettings");
+        }
+
         CheckBoxPreference nfc = (CheckBoxPreference) findPreference(KEY_TOGGLE_NFC);
         PreferenceScreen androidBeam = (PreferenceScreen) findPreference(KEY_ANDROID_BEAM_SETTINGS);
         CheckBoxPreference nsd = (CheckBoxPreference) findPreference(KEY_TOGGLE_NSD);

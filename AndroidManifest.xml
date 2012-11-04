@@ -598,6 +598,21 @@
                 android:resource="@id/display_settings" />
         </activity-alias>
 
+        <!-- Multi Sim (Subscription) Settings -->
+        <activity android:name="MultiSimSettings"
+                android:label="@string/multi_sim_settings_title"
+                android:process="com.android.phone"
+                android:configChanges="mcc|mnc"
+                android:clearTaskOnLaunch="true">
+           <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.android.settings.MULTI_SIM_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.VOICE_LAUNCH" />
+                <category android:name="com.android.settings.SHORTCUT" />
+            </intent-filter>
+        </activity>
+
         <activity android:name="Settings$DockSettingsActivity"
                 android:label="@string/dock_settings_title"
                 android:enabled="@bool/has_dock_settings"
@@ -981,6 +996,30 @@
             android:windowSoftInputMode="stateVisible|adjustResize"/>
 
         <activity android:name="ChooseLockPatternTutorial" android:exported="false"/>
+
+        <!-- Runs in the phone process since it needs access to the Phone object -->
+        <activity android:name=".deviceinfo.MSimSubscriptionStatus"
+                android:label="@string/device_status_activity_title"
+                android:theme="@android:style/Theme.Holo.DialogWhenLarge"
+                android:process="com.android.phone">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.VOICE_LAUNCH" />
+            </intent-filter>
+        </activity>
+
+        <!-- Runs in the phone process since it needs access to the Phone object -->
+        <activity android:name=".deviceinfo.MSimStatus"
+                android:label="@string/device_status_activity_title"
+                android:theme="@android:style/Theme.Holo.DialogWhenLarge"
+                android:process="com.android.phone">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.VOICE_LAUNCH" />
+            </intent-filter>
+        </activity>
 
         <!-- Runs in the phone process since it needs access to the Phone object -->
         <activity android:name=".deviceinfo.Status"
@@ -1459,6 +1498,17 @@
                 android:value="com.android.settings.DataUsageSummary" />
             <meta-data android:name="com.android.settings.TOP_LEVEL_HEADER_ID"
                 android:resource="@id/wireless_settings" />
+        </activity>
+
+        <!-- Select Subscription (SUB1 or SUB2) Screen -->
+        <activity android:name=".SelectSubscription"
+                android:label="@string/select_subscription"
+                android:clearTaskOnLaunch="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.VOICE_LAUNCH" />
+            </intent-filter>
         </activity>
 
         <receiver android:name=".widget.SettingsAppWidgetProvider"

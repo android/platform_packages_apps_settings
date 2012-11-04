@@ -73,6 +73,14 @@ public class Utils {
     private static final String META_DATA_PREFERENCE_SUMMARY = "com.android.settings.summary";
 
     /**
+     * Resource index and multisim_resid willbe used to load corresponding xml
+     * files in case of DSDS and NON-DSDS
+     */
+    public static final String RESOURCE_INDEX = "Resource_index";
+    public static final int MULTISIM_DEF_RESID = 0;
+    public static final int MULTISIM_RESID = 1;
+
+    /**
      * Finds a matching activity for a preference's intent. If a matching
      * activity is not found, it will remove the preference.
      *

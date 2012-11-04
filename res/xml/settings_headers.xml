@@ -60,6 +60,17 @@
     <!-- DEVICE -->
     <header android:title="@string/header_category_device" />
 
+    <!-- Multi Sim Settings - this is in the settings process -->
+    <header
+        android:id="@+id/multi_sim_settings"
+        android:icon="@drawable/ic_settings_sim"
+        android:title="@string/multi_sim_settings_title">
+        <intent
+            android:action="android.intent.action.MAIN"
+            android:targetPackage="com.android.settings"
+            android:targetClass="com.android.settings.MultiSimSettings" />
+    </header>
+
     <!-- Sound -->
     <header
         android:id="@+id/sound_settings"
