@@ -20,7 +20,7 @@ import android.test.AndroidTestCase;
 import android.text.InputFilter;
 import android.text.SpannableStringBuilder;
 
-import com.android.settings.bluetooth.Utf8ByteLengthFilter;
+import com.android.settings.Utf8ByteLengthFilter;
 
 import dalvik.annotation.TestLevel;
 import dalvik.annotation.TestTargetClass;

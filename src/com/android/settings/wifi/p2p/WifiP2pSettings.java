@@ -46,6 +46,7 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
+import android.text.InputFilter;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
@@ -56,6 +57,7 @@ import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.android.settings.Utf8ByteLengthFilter;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 
@@ -196,7 +198,10 @@ public class WifiP2pSettings extends SettingsPreferenceFragment
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if (which == DialogInterface.BUTTON_POSITIVE) {
-                    if (mWifiP2pManager != null) {
+                    // Only attempt renaming if the name has changed
+                    if (mWifiP2pManager != null
+                            && (mThisDevice == null || !mDeviceNameText.getText().toString()
+                                    .equals(mThisDevice.deviceName))) {
                         mWifiP2pManager.setDeviceName(mChannel,
                                 mDeviceNameText.getText().toString(),
                                 new WifiP2pManager.ActionListener() {
@@ -431,6 +436,7 @@ public class WifiP2pSettings extends SettingsPreferenceFragment
             return dialog;
         } else if (id == DIALOG_RENAME) {
             mDeviceNameText = new EditText(getActivity());
+            mDeviceNameText.setFilters(new InputFilter[] {new Utf8ByteLengthFilter(32)});
             if (mSavedDeviceName != null) {
                 mDeviceNameText.setText(mSavedDeviceName);
                 mDeviceNameText.setSelection(mSavedDeviceName.length());
