@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings.bluetooth;
+package com.android.settings;
 
 import android.text.InputFilter;
 import android.text.Spanned;
@@ -37,10 +37,10 @@ import android.text.Spanned;
  * pairs are encoded as 4 bytes, with the caveat that the maximum
  * length will be constrained more conservatively than necessary.
  */
-class Utf8ByteLengthFilter implements InputFilter {
+public class Utf8ByteLengthFilter implements InputFilter {
     private final int mMaxBytes;
 
-    Utf8ByteLengthFilter(int maxBytes) {
+    public Utf8ByteLengthFilter(int maxBytes) {
         mMaxBytes = maxBytes;
     }
 
