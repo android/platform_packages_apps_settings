@@ -39,6 +39,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.android.settings.Utf8ByteLengthFilter;
 import com.android.settings.R;
 
 /**
