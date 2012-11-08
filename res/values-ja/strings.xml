@@ -294,7 +294,7 @@
     <string name="biometric_weak_liveliness_title" msgid="2661613702124561096">"生体検知"</string>
     <string name="biometric_weak_liveliness_summary" msgid="4199587000948042325">"ロックを解除するにはまばたきが必要"</string>
     <string name="lock_after_timeout" msgid="4590337686681194648">"自動ロック"</string>
-    <string name="lock_after_timeout_summary" msgid="6128431871360905631">"スリープ開始から<xliff:g id="TIMEOUT_STRING">%1$s</xliff:g>"</string>
+    <string name="lock_after_timeout_summary" msgid="6128431871360905631">"スリープ開始後<xliff:g id="TIMEOUT_STRING">%1$s</xliff:g>"</string>
     <string name="show_owner_info_on_lockscreen_label" msgid="5074906168357568434">"ロック画面に所有者情報を表示"</string>
     <string name="owner_info_settings_title" msgid="2723190010708381889">"所有者情報"</string>
     <string name="owner_info_settings_summary" msgid="3800834657847339570"></string>
