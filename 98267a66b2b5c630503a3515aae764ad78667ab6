@@ -16,6 +16,24 @@
       "revId": "98267a66b2b5c630503a3515aae764ad78667ab6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAALqn///9k\u003d",
+        "filename": "src/com/android/settings/tts/TtsEnginePreference.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-11-18T05:01:20Z",
+      "side": 1,
+      "message": "I am once again convinced that this needs to be defined in resources or in Utils.java.\n\nCurrently, DreamSettings uses 0.33f for disabled icon opacity: https://android.googlesource.com/platform/packages/apps/Settings/+/c825bc8e17cb60cae88397ab77d1e2711c086624%5E%21/#F2",
+      "parentUuid": "AAAJyn///ww\u003d",
+      "revId": "98267a66b2b5c630503a3515aae764ad78667ab6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
