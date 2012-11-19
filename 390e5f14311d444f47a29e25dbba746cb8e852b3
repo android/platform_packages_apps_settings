@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAALtX///7o\u003d",
+        "filename": "src/com/android/settings/tts/TtsEnginePreference.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1015680
+      },
+      "writtenOn": "2012-11-19T17:42:12Z",
+      "side": 1,
+      "message": "Move it to the resources.",
+      "revId": "390e5f14311d444f47a29e25dbba746cb8e852b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
