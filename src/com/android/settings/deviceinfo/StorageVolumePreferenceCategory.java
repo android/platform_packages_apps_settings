@@ -194,8 +194,9 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
         }
 
         final boolean isRemovable = mVolume != null ? mVolume.isRemovable() : false;
+        // Always create the preference since many code rely on it existing
+        mMountTogglePreference = new Preference(context);
         if (isRemovable) {
-            mMountTogglePreference = new Preference(context);
             mMountTogglePreference.setTitle(R.string.sd_eject);
             mMountTogglePreference.setSummary(R.string.sd_eject_summary);
             addPreference(mMountTogglePreference);
@@ -310,7 +311,9 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
     private static long totalValues(HashMap<String, Long> map, String... keys) {
         long total = 0;
         for (String key : keys) {
-            total += map.get(key);
+            if (map.containsKey(key)) {
+                total += map.get(key);
+            }
         }
         return total;
     }
