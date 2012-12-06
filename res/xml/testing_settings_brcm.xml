@@ -18,10 +18,19 @@
         android:title="@string/testing" >
 
     <PreferenceScreen
-            android:title="@string/testing_phone_info">
+            android:title="@string/sim1_testing_phone_info">
         <intent android:action="android.intent.action.MAIN"
                 android:targetPackage="com.android.settings"
-                android:targetClass="com.android.settings.RadioInfo" />
+                android:targetClass="com.android.settings.RadioInfo"
+                android:data="0" />
+    </PreferenceScreen>
+
+    <PreferenceScreen
+            android:title="@string/sim2_testing_phone_info">
+        <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="com.android.settings"
+                android:targetClass="com.android.settings.RadioInfo"
+                android:data="1" />
     </PreferenceScreen>
 
     <PreferenceScreen

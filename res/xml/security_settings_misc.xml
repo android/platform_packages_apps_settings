@@ -16,19 +16,7 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:key="sim_lock"
-            android:title="@string/sim_lock_settings_title"
-            android:persistent="false">
-
-        <Preference android:title="@string/sim_lock_settings_category"
-                android:persistent="false">
-            <intent android:action="android.intent.action.MAIN"
-                     android:targetPackage="com.android.settings"
-                     android:targetClass="com.android.settings.IccLockSettings"/>
-        </Preference>
-    </PreferenceCategory>
-
-    <PreferenceCategory android:title="@string/security_passwords_title"
+<PreferenceCategory android:title="@string/security_passwords_title"
             android:persistent="false">
 
         <CheckBoxPreference android:key="show_password"

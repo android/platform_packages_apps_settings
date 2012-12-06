@@ -39,6 +39,9 @@ public class AuthenticatorHelper {
     private ArrayList<String> mEnabledAccountTypes = new ArrayList<String>();
     private Map<String, Drawable> mAccTypeIconCache = new HashMap<String, Drawable>();
 
+    private static final String LOCAL_CONTACTS_ACCOUNT_TYPE = "com.android.contacts.local";
+    private static final String SIM_CONTACTS_ACCOUNT_TYPE = "com.android.contacts.sim";
+
     public AuthenticatorHelper() {
     }
 
@@ -125,6 +128,10 @@ public class AuthenticatorHelper {
         mEnabledAccountTypes.clear();
         mAccTypeIconCache.clear();
         for (Account account: accounts) {
+            if (LOCAL_CONTACTS_ACCOUNT_TYPE.equals(account.type) || SIM_CONTACTS_ACCOUNT_TYPE.equals(account.type)) {
+                Log.d(TAG, "onAccountsUpdated(): skip account type: " + account.type);
+                continue;
+            }
             if (!mEnabledAccountTypes.contains(account.type)) {
                 mEnabledAccountTypes.add(account.type);
             }

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+<!-- Do not translate. Used for diagnostic screens, precise translation is not necessary
+     Engineering mode Testing on the diagnostic screen-->
+<string name="testing_engmode" translatable="false">Engineering Mode</string>
+<string name="RefreshTime_title">RefreshTime</string>
+<string name="RefreshTime_summary">Set Refresh Period</string>
+
+<string name="EngineeringMode_CaseTitle" translatable="false">Title:</string>
+<string name="EngineeringMode_elapsedTime">Time since boot:</string>
+<string name="EngineeringMode_Phone_Info">Phone Information:</string>
+<string name="EngineeringMode_SIM1_Phone_Info">Sim1 Phone Information:</string>
+<string name="EngineeringMode_SIM2_Phone_Info">Sim2 Phone Information:</string>
+<string name="EngineeringMode_CMAS_Summary">Enable/Disable CMAS</string>
+
+<!-- the following items must in a order-->
+<string name="EngineeringMode_item1" translatable="false">  1. GSM Serving Cell Parameters</string>
+<string name="EngineeringMode_item2" translatable="false">  2. Network Parameters</string>
+<string name="EngineeringMode_item3" translatable="false">  3. Battery Status</string>
+<string name="EngineeringMode_item4" translatable="false">  4. Call Control Failure Cause Code</string>
+<string name="EngineeringMode_item5" translatable="false">  5. Radio Resource Failure Cause Code</string>
+<string name="EngineeringMode_item6" translatable="false">  6. GPRS/ EDGE Data Transfer</string>
+<string name="EngineeringMode_item7" translatable="false">  7. (None)</string>
+<string name="EngineeringMode_item8" translatable="false">  8. Cell Selection/ Reselection Screen</string>
+<string name="EngineeringMode_item9" translatable="false">  9. RAB Screen</string>
+<string name="EngineeringMode_item10" translatable="false">10. RRC Screen</string>
+<string name="EngineeringMode_item11" translatable="false">11. Dedicated Channel power screen</string>
+<string name="EngineeringMode_item12" translatable="false">12. Intra Frequency Measurement screen</string>
+<string name="EngineeringMode_item13" translatable="false">13. Inter Frequency Measurement screen</string>
+<string name="EngineeringMode_item14" translatable="false">14. InterRAT Frequency Measurement screen</string>
+<string name="EngineeringMode_item15" translatable="false">15. HSDPA Screen</string>
+<string name="EngineeringMode_item16" translatable="false">16. RACH Screen</string>
+<string name="EngineeringMode_item17" translatable="false">17. CPC parameters</string>
+<string name="EngineeringMode_item18" translatable="false">18. Fast Dormancy</string>
+<string name="EngineeringMode_item19" translatable="false">19. Receive Diversity</string>
+<string name="EngineeringMode_item20" translatable="false">20. CB/CMAS/PLAN</string>
+<string name="EngineeringMode_item21" translatable="false">21. AMR</string>
+<string name="EngineeringMode_item22" translatable="false">22. CMAS Enable</string>
+<string name="EngineeringMode_item23" translatable="false">23. Data Stall Timer</string>
+
+<!-- Entries listed in the ListPreference for allowed alert durations. [CHAR LIMIT=30] -->
+<string-array name="data_stall_timer_entries">
+  <item>0 (disable)</item>
+  <item>1 min, 6 min in screen off</item>
+  <item>6 min, 12 min in screen off</item>
+</string-array>
+
+<!-- Do not translate. Values that are retrieved from the ListPreference.
+     These must match the alert_sound_duration_entries above. -->
+<string-array name="data_stall_timer_values">
+  <item>0</item>
+  <item>1</item>
+  <item>2</item>
+</string-array>
+
+</resources>

@@ -74,8 +74,11 @@ public class ManageAccountsSettings extends AccountPreferenceBase
 
     // If an account type is set, then show only accounts of that type
     private String mAccountType;
-    // Temporary hack, to deal with backward compatibility 
+    // Temporary hack, to deal with backward compatibility
     private Account mFirstAccount;
+
+    private static final String LOCAL_CONTACTS_ACCOUNT_TYPE = "com.android.contacts.local";
+    private static final String SIM_CONTACTS_ACCOUNT_TYPE = "com.android.contacts.sim";
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -307,6 +310,10 @@ public class ManageAccountsSettings extends AccountPreferenceBase
         addPreferencesFromResource(R.xml.manage_accounts_settings);
         for (int i = 0, n = accounts.length; i < n; i++) {
             final Account account = accounts[i];
+            if (LOCAL_CONTACTS_ACCOUNT_TYPE.equals(account.type) || SIM_CONTACTS_ACCOUNT_TYPE.equals(account.type)) {
+                Log.d(TAG, "onAccountsUpdated(): skip account type: " + account.type);
+                continue;
+            }
             // If an account type is specified for this screen, skip other types
             if (mAccountType != null && !account.type.equals(mAccountType)) continue;
             final ArrayList<String> auths = getAuthoritiesForAccountType(account.type);

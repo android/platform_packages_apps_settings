@@ -63,6 +63,9 @@ import com.android.internal.telephony.PhoneConstants;
 
 import java.util.List;
 
+import com.android.internal.telephony.RILConstants.SimCardID;
+import com.android.settings.Utils;
+
 /**
  * Settings screens to show the UI flows for encrypting/decrypting the device.
  *
@@ -698,9 +701,19 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
             return;
         }
 
-        final int newState = TelephonyManager.getDefault().getCallState();
+        boolean bPhoneAvailable = true;
+        if (Utils.isSupportDualSim()) {
+        int newState = TelephonyManager.getDefault(SimCardID.ID_ZERO).getCallState();
+        int newState1 = TelephonyManager.getDefault(SimCardID.ID_ONE).getCallState();
+            bPhoneAvailable = (newState == TelephonyManager.CALL_STATE_OFFHOOK ||
+                               newState1 == TelephonyManager.CALL_STATE_OFFHOOK);
+        } else {
+            int newState = TelephonyManager.getDefault(SimCardID.ID_ZERO).getCallState();
+            bPhoneAvailable = (newState == TelephonyManager.CALL_STATE_OFFHOOK);
+        }
+
         int textId;
-        if (newState == TelephonyManager.CALL_STATE_OFFHOOK) {
+        if (bPhoneAvailable) {
             // Show "return to call" text and show phone icon
             textId = R.string.cryptkeeper_return_to_call;
             final int phoneCallIcon = R.drawable.stat_sys_phone_call;
@@ -718,7 +731,18 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
     }
 
     private void takeEmergencyCallAction() {
-        if (TelephonyManager.getDefault().getCallState() == TelephonyManager.CALL_STATE_OFFHOOK) {
+        boolean bPhoneAvailable = true;
+        if (Utils.isSupportDualSim()) {
+            bPhoneAvailable = ( TelephonyManager.getDefault(SimCardID.ID_ZERO).getCallState()
+                               == TelephonyManager.CALL_STATE_OFFHOOK
+                               || TelephonyManager.getDefault(SimCardID.ID_ONE).getCallState()
+                               == TelephonyManager.CALL_STATE_OFFHOOK );
+        } else {
+            bPhoneAvailable = TelephonyManager.getDefault(SimCardID.ID_ZERO).getCallState()
+                              == TelephonyManager.CALL_STATE_OFFHOOK;
+        }
+
+        if (bPhoneAvailable) {
             resumeCall();
         } else {
             launchEmergencyDialer();

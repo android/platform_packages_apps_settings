@@ -52,10 +52,14 @@ import com.android.settings.nfc.NfcEnabler;
 
 import java.util.Collection;
 
+import android.os.RemoteException;
+import android.os.ServiceManager;
+import com.android.internal.telephony.ITelephony;
+import com.android.settings.Utils;
+
 public class WirelessSettings extends RestrictedSettingsFragment
         implements OnPreferenceChangeListener {
     private static final String TAG = "WirelessSettings";
-
     private static final String KEY_TOGGLE_AIRPLANE = "toggle_airplane";
     private static final String KEY_TOGGLE_NFC = "toggle_nfc";
     private static final String KEY_WIMAX_SETTINGS = "wimax_settings";
@@ -72,7 +76,7 @@ public class WirelessSettings extends RestrictedSettingsFragment
     public static final String EXIT_ECM_RESULT = "exit_ecm_result";
     public static final int REQUEST_CODE_EXIT_ECM = 1;
 
-    private AirplaneModeEnabler mAirplaneModeEnabler;
+    private AirplaneModeEnablerBrcm mAirplaneModeEnabler;
     private CheckBoxPreference mAirplaneModePreference;
     private NfcEnabler mNfcEnabler;
     private NfcAdapter mNfcAdapter;
@@ -89,6 +93,13 @@ public class WirelessSettings extends RestrictedSettingsFragment
     public WirelessSettings() {
         super(null);
     }
+    private static final String KEY_TOGGLE_PHONE1 = "toggle_phone1";
+    private static final String KEY_TOGGLE_PHONE2 = "toggle_phone2";
+    private static final String KEY_TOGGLE_PHONEBOTH = "toggle_phoneboth";
+
+    private CheckBoxPreference mPhone1ModePreference;
+    private CheckBoxPreference mPhone2ModePreference;
+    private CheckBoxPreference mPhoneBothModePreference;
     /**
      * Invoked on each preference click in this hierarchy, overrides
      * PreferenceActivity's implementation.  Used to make sure we track the
@@ -109,6 +120,11 @@ public class WirelessSettings extends RestrictedSettingsFragment
             return true;
         } else if (preference == findPreference(KEY_MANAGE_MOBILE_PLAN)) {
             onManageMobilePlanClick();
+        } else if (preference == mPhone1ModePreference
+                || preference == mPhone2ModePreference
+                || preference == mPhoneBothModePreference) {
+            onModeChange(preference);
+            return true;
         }
         // Let the intents be launched by the Preference manager
         return super.onPreferenceTreeClick(preferenceScreen, preference);
@@ -261,7 +277,12 @@ public class WirelessSettings extends RestrictedSettingsFragment
         mCm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         mTm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
 
-        addPreferencesFromResource(R.xml.wireless_settings);
+        if (Utils.isSupportDualSim()) {
+            addPreferencesFromResource(R.xml.wireless_settings_brcm);
+        }
+        else {
+            addPreferencesFromResource(R.xml.wireless_settings);
+        }
 
         final boolean isSecondaryUser = UserHandle.myUserId() != UserHandle.USER_OWNER;
 
@@ -271,7 +292,7 @@ public class WirelessSettings extends RestrictedSettingsFragment
         PreferenceScreen androidBeam = (PreferenceScreen) findPreference(KEY_ANDROID_BEAM_SETTINGS);
         CheckBoxPreference nsd = (CheckBoxPreference) findPreference(KEY_TOGGLE_NSD);
 
-        mAirplaneModeEnabler = new AirplaneModeEnabler(activity, mAirplaneModePreference);
+        mAirplaneModeEnabler = new AirplaneModeEnablerBrcm(activity, mAirplaneModePreference);
         mNfcEnabler = new NfcEnabler(activity, nfc, androidBeam);
 
         mSmsApplicationPreference = (SmsListPreference) findPreference(KEY_SMS_APPLICATION);
@@ -402,6 +423,44 @@ public class WirelessSettings extends RestrictedSettingsFragment
         super.onStart();
 
         initSmsApplicationSetting();
+
+        //phones mode
+        if (Utils.isSupportDualSim()) {
+            mPhone1ModePreference = (CheckBoxPreference) findPreference(KEY_TOGGLE_PHONE1);
+            mPhone2ModePreference = (CheckBoxPreference) findPreference(KEY_TOGGLE_PHONE2);
+            mPhoneBothModePreference = (CheckBoxPreference) findPreference(KEY_TOGGLE_PHONEBOTH);
+            boolean phone1On = (Settings.Global.getInt(getContentResolver(), Settings.Global.PHONE1_ON, 1)!=0);
+            boolean phone2On = (Settings.Global.getInt(getContentResolver(), Settings.Global.PHONE2_ON, 1)!=0);
+
+            if (mPhone1ModePreference==null) {
+                log("mPhone1ModePreference is null");
+                return;
+            }
+            if (mPhone2ModePreference==null) {
+                log("mPhone2ModePreference is null");
+                return;
+            }
+            if (mPhoneBothModePreference==null) {
+                log("mPhoneBothModePreference is null");
+                return;
+            }
+            if (!phone1On && !phone2On) {
+                phone1On = true;
+            }
+            if (phone1On && phone2On) {
+                mPhone1ModePreference.setChecked(false);
+                mPhone2ModePreference.setChecked(false);
+                mPhoneBothModePreference.setChecked(true);
+            } else if (phone1On) {
+                mPhone1ModePreference.setChecked(true);
+                mPhone2ModePreference.setChecked(false);
+                mPhoneBothModePreference.setChecked(false);
+            } else {
+                mPhone1ModePreference.setChecked(false);
+                mPhone2ModePreference.setChecked(true);
+                mPhoneBothModePreference.setChecked(false);
+            }
+        }
     }
 
     @Override
@@ -463,5 +522,90 @@ public class WirelessSettings extends RestrictedSettingsFragment
             return true;
         }
         return false;
+    }
+
+    void onModeChange(Preference preference) {
+        boolean phone1On = (Settings.Global.getInt(getContentResolver(), Settings.Global.PHONE1_ON, 1)!=0);
+        boolean phone2On = (Settings.Global.getInt(getContentResolver(), Settings.Global.PHONE2_ON, 1)!=0);
+        boolean phone1OnNew = phone1On;
+        boolean phone2OnNew = phone2On;
+
+        if (preference == mPhone1ModePreference) {
+            boolean checked = mPhone1ModePreference.isChecked();
+            if (checked == false) {
+                mPhone1ModePreference.setChecked(true);
+                return;
+            }
+            phone1OnNew = checked;
+            phone2OnNew = !checked;
+        } else if (preference == mPhone2ModePreference) {
+            boolean checked = mPhone2ModePreference.isChecked();
+            if (checked == false) {
+                mPhone2ModePreference.setChecked(true);
+                return;
+            }
+            phone1OnNew = !checked;
+            phone2OnNew = checked;
+        } else if (preference == mPhoneBothModePreference) {
+            boolean checked = mPhoneBothModePreference.isChecked();
+            if (checked == false) {
+                mPhoneBothModePreference.setChecked(true);
+                return;
+            }
+            phone1OnNew = checked;
+            phone2OnNew = checked;
+        }
+
+        if (phone1OnNew && phone2OnNew) {
+            mPhone1ModePreference.setChecked(false);
+            mPhone2ModePreference.setChecked(false);
+            mPhoneBothModePreference.setChecked(true);
+        } else if (phone1OnNew) {
+            mPhone1ModePreference.setChecked(true);
+            mPhone2ModePreference.setChecked(false);
+            mPhoneBothModePreference.setChecked(false);
+        } else {
+            mPhone1ModePreference.setChecked(false);
+            mPhone2ModePreference.setChecked(true);
+            mPhoneBothModePreference.setChecked(false);
+        }
+
+
+        if ((phone1OnNew != phone1On) && (phone2OnNew != phone2On)) {
+            Settings.Global.putInt(getContentResolver(), Settings.Global.PHONE1_ON,
+                                   phone1OnNew ? 1 : 0);
+            Settings.Global.putInt(getContentResolver(), Settings.Global.PHONE2_ON,
+                                   phone2OnNew ? 1 : 0);
+            try {
+                ITelephony phone = ITelephony.Stub.asInterface(ServiceManager.checkService(Context.TELEPHONY_SERVICE1));
+                if (phone != null)  phone.setRadio(phone1OnNew);
+            } catch (RemoteException e) {
+            }
+
+            try {
+                ITelephony phone = ITelephony.Stub.asInterface(ServiceManager.checkService(Context.TELEPHONY_SERVICE2));
+                if (phone != null)  phone.setRadio(phone2OnNew);
+
+            } catch (RemoteException e) {
+            }
+
+        } else if (phone2OnNew != phone2On) {
+            Settings.Global.putInt(getContentResolver(), Settings.Global.PHONE2_ON,
+                                   phone2OnNew ? 1 : 0);
+            try {
+                ITelephony phone = ITelephony.Stub.asInterface(ServiceManager.checkService(Context.TELEPHONY_SERVICE2));
+                if (phone != null)  phone.setRadio(phone2OnNew);
+
+            } catch (RemoteException e) {
+            }
+        } else if (phone1OnNew != phone1On) {
+            Settings.Global.putInt(getContentResolver(), Settings.Global.PHONE1_ON,
+                                   phone1OnNew ? 1 : 0);
+            try {
+                ITelephony phone = ITelephony.Stub.asInterface(ServiceManager.checkService(Context.TELEPHONY_SERVICE1));
+                if (phone != null)  phone.setRadio(phone1OnNew);
+            } catch (RemoteException e) {
+            }
+        }
     }
 }

@@ -25,25 +25,38 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 
-public class ApplicationSettings extends SettingsPreferenceFragment {
-    
+import com.android.internal.telephony.TelephonyProperties;
+import com.android.internal.telephony.RILConstants.SimCardID;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.res.Configuration;
+import android.os.SystemProperties;
+import android.preference.PreferenceActivity;
+
+public class ApplicationSettings extends PreferenceActivity {
+
     private static final String KEY_TOGGLE_ADVANCED_SETTINGS = "toggle_advanced_settings";
     private static final String KEY_APP_INSTALL_LOCATION = "app_install_location";
+    private static final String KEY_QUICK_LAUNCH = "quick_launch";
+    private static final String KEY_DEFAULT_SIM_FOR_APPLICATIONS = "default_sim_for_applications";
 
     // App installation location. Default is ask the user.
     private static final int APP_INSTALL_AUTO = 0;
     private static final int APP_INSTALL_DEVICE = 1;
     private static final int APP_INSTALL_SDCARD = 2;
-    
+
     private static final String APP_INSTALL_DEVICE_ID = "device";
     private static final String APP_INSTALL_SDCARD_ID = "sdcard";
     private static final String APP_INSTALL_AUTO_ID = "auto";
-    
+
     private CheckBoxPreference mToggleAdvancedSettings;
+
     private ListPreference mInstallLocation;
 
+    private ListPreference mApplicationSim;
+
     @Override
-    public void onCreate(Bundle icicle) {
+    protected void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
         addPreferencesFromResource(R.xml.application_settings);
@@ -74,6 +87,27 @@ public class ApplicationSettings extends SettingsPreferenceFragment {
                 }
             });
         }
+
+        mApplicationSim = (ListPreference) findPreference(KEY_DEFAULT_SIM_FOR_APPLICATIONS);
+        mApplicationSim.setOnPreferenceChangeListener(new OnPreferenceChangeListener() {
+            public boolean onPreferenceChange(Preference preference, Object newValue) {
+                String value = (String) newValue;
+                int newSimId = Integer.parseInt(value);
+                int oldSimId = SystemProperties.getInt(TelephonyProperties.PROPERTY_API_SIM,
+                                                       SimCardID.ID_ZERO.toInt());
+                String oldValue = String.valueOf(oldSimId);
+
+                if (!oldValue.equals(value)) {
+                    SystemProperties.set(TelephonyProperties.PROPERTY_API_SIM, value);
+                        Intent intent = new Intent("android.intent.action.API_SIM");
+                        intent.putExtra("simId", newSimId);
+                        sendBroadcast(intent);
+                }
+
+                mApplicationSim.setValue(value);
+                return false;
+            }
+        });
     }
 
     protected void handleUpdateAppInstallLocation(final String value) {
@@ -95,6 +129,14 @@ public class ApplicationSettings extends SettingsPreferenceFragment {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        int simId = SystemProperties.getInt(TelephonyProperties.PROPERTY_API_SIM, SimCardID.ID_ZERO.toInt());
+        mApplicationSim.setValue(String.valueOf(simId));
+    }
+
+    @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         if (preference == mToggleAdvancedSettings) {
             boolean value = mToggleAdvancedSettings.isChecked();
@@ -105,9 +147,9 @@ public class ApplicationSettings extends SettingsPreferenceFragment {
     }
 
     private boolean isAdvancedSettingsEnabled() {
-        return Settings.System.getInt(getContentResolver(), 
-                                      Settings.System.ADVANCED_SETTINGS,
-                                      Settings.System.ADVANCED_SETTINGS_DEFAULT) > 0;
+        return Settings.System.getInt(getContentResolver(),
+               Settings.System.ADVANCED_SETTINGS,
+               Settings.System.ADVANCED_SETTINGS_DEFAULT) > 0;
     }
 
     private void setAdvancedSettingsEnabled(boolean enabled) {
@@ -117,7 +159,7 @@ public class ApplicationSettings extends SettingsPreferenceFragment {
         // TODO: the settings thing should broadcast this for thread safety purposes.
         Intent intent = new Intent(Intent.ACTION_ADVANCED_SETTINGS_CHANGED);
         intent.putExtra("state", value);
-        getActivity().sendBroadcast(intent);
+        sendBroadcast(intent);
     }
 
     private String getAppInstallLocation() {

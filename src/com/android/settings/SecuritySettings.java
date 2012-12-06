@@ -43,10 +43,17 @@ import android.security.KeyStore;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
+import com.android.internal.telephony.Phone;
 import com.android.internal.widget.LockPatternUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import android.os.SystemProperties;
+import android.preference.PreferenceCategory;
+import com.android.internal.telephony.TelephonyProperties;
+import com.android.internal.telephony.RILConstants.SimCardID;
+import com.android.settings.Utils;
 
 /**
  * Gesture lock pattern settings.
@@ -87,6 +94,9 @@ public class SecuritySettings extends RestrictedSettingsFragment
 
     private PackageManager mPM;
     private DevicePolicyManager mDPM;
+    private static final String PACKAGE = "com.android.settings";
+    private static final String ICC_LOCK_SETTINGS = PACKAGE + ".IccLockSettings";
+
 
     private ChooseLockSettingsHelper mChooseLockSettingsHelper;
     private LockPatternUtils mLockPatternUtils;
@@ -225,22 +235,10 @@ public class SecuritySettings extends RestrictedSettingsFragment
             }
         }
 
+        addSettingsMiscPreference(root);
+
         // Append the rest of the settings
         addPreferencesFromResource(R.xml.security_settings_misc);
-
-        // Do not display SIM lock for devices without an Icc card
-        TelephonyManager tm = TelephonyManager.getDefault();
-        if (!mIsPrimary || !tm.hasIccCard()) {
-            root.removePreference(root.findPreference(KEY_SIM_LOCK));
-        } else {
-            // Disable SIM lock if sim card is missing or unknown
-            if ((TelephonyManager.getDefault().getSimState() ==
-                                 TelephonyManager.SIM_STATE_ABSENT) ||
-                (TelephonyManager.getDefault().getSimState() ==
-                                 TelephonyManager.SIM_STATE_UNKNOWN)) {
-                root.findPreference(KEY_SIM_LOCK).setEnabled(false);
-            }
-        }
 
         // Enable or disable keyguard widget checkbox based on DPM state
         mEnableKeyguardWidgets = (CheckBoxPreference) root.findPreference(KEY_ENABLE_WIDGETS);
@@ -340,6 +338,74 @@ public class SecuritySettings extends RestrictedSettingsFragment
             protectByRestrictions(root.findPreference(KEY_CREDENTIALS_INSTALL));
         }
         return root;
+    }
+
+    private void addSettingsMiscPreference(PreferenceScreen root) {
+        if (Utils.isSupportDualSim()) {
+            int activePhoneType = TelephonyManager.getDefault(SimCardID.ID_ZERO).getPhoneType();
+            // Do not display SIM lock for CDMA phone
+            if (TelephonyManager.PHONE_TYPE_CDMA != activePhoneType)
+            {
+                PreferenceScreen simLockPreferences = getPreferenceManager()
+                        .createPreferenceScreen(getActivity());
+                simLockPreferences.setTitle(R.string.sim1_lock_settings_category);
+                // Intent to launch SIM lock settings
+                simLockPreferences.setIntent(new Intent().setClassName(PACKAGE, ICC_LOCK_SETTINGS));
+                PreferenceCategory simLockCat = new PreferenceCategory(getActivity());
+                simLockCat.setTitle(R.string.sim1_lock_settings_title);
+
+                root.addPreference(simLockCat);
+                simLockCat.addPreference(simLockPreferences);
+
+                String prop = SystemProperties.get(TelephonyProperties.PROPERTY_SIM_STATE);
+                boolean iccAbsent = "ABSENT".equals(prop);
+                simLockPreferences.setEnabled(!iccAbsent);
+            }
+
+            int activePhoneType_2 = TelephonyManager.getDefault(SimCardID.ID_ONE).getPhoneType();
+            // Do not display SIM lock for CDMA phone
+            if (TelephonyManager.PHONE_TYPE_CDMA != activePhoneType_2)
+            {
+                PreferenceScreen simLockPreferences_2 = getPreferenceManager()
+                        .createPreferenceScreen(getActivity());
+                simLockPreferences_2.setTitle(R.string.sim2_lock_settings_category);
+                // Intent to launch SIM lock settings
+                Intent intent_2 = new Intent();
+                intent_2.setClassName(PACKAGE, ICC_LOCK_SETTINGS);
+                intent_2.putExtra(Intent.EXTRA_TEXT, SimCardID.ID_ONE.toInt());
+                simLockPreferences_2.setIntent(intent_2);
+
+                PreferenceCategory simLockCat_2 = new PreferenceCategory(getActivity());
+                simLockCat_2.setTitle(R.string.sim2_lock_settings_title);
+                root.addPreference(simLockCat_2);
+                simLockCat_2.addPreference(simLockPreferences_2);
+
+                String prop = SystemProperties.get(TelephonyProperties.PROPERTY_SIM_STATE + "_" + String.valueOf(SimCardID.ID_ONE.toInt()));
+                boolean iccAbsent = "ABSENT".equals(prop);
+                simLockPreferences_2.setEnabled(!iccAbsent);
+            }
+        }
+        else {
+            int activePhoneType = TelephonyManager.getDefault(SimCardID.ID_ZERO).getPhoneType();
+            // Do not display SIM lock for CDMA phone
+            if (TelephonyManager.PHONE_TYPE_CDMA != activePhoneType)
+            {
+                PreferenceScreen simLockPreferences = getPreferenceManager()
+                        .createPreferenceScreen(getActivity());
+                simLockPreferences.setTitle(R.string.sim_lock_settings_category);
+                // Intent to launch SIM lock settings
+                simLockPreferences.setIntent(new Intent().setClassName(PACKAGE, ICC_LOCK_SETTINGS));
+                PreferenceCategory simLockCat = new PreferenceCategory(getActivity());
+                simLockCat.setTitle(R.string.sim_lock_settings_title);
+
+                root.addPreference(simLockCat);
+                simLockCat.addPreference(simLockPreferences);
+
+                String prop = SystemProperties.get(TelephonyProperties.PROPERTY_SIM_STATE);
+                boolean iccAbsent = "ABSENT".equals(prop);
+                simLockPreferences.setEnabled(!iccAbsent);
+            }
+        }
     }
 
     private int getNumEnabledNotificationListeners() {

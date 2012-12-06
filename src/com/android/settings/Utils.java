@@ -43,6 +43,7 @@ import android.os.Bundle;
 import android.os.ParcelFileDescriptor;
 import android.os.UserHandle;
 import android.os.UserManager;
+import android.os.SystemProperties;
 import android.preference.Preference;
 import android.preference.PreferenceActivity.Header;
 import android.preference.PreferenceFrameLayout;
@@ -61,6 +62,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TabWidget;
+import android.util.Log;
 
 import com.android.settings.users.ProfileUpdateReceiver;
 
@@ -600,5 +602,25 @@ public class Utils {
     public static boolean hasMultipleUsers(Context context) {
         return ((UserManager) context.getSystemService(Context.USER_SERVICE))
                 .getUsers().size() > 1;
+    }
+
+    /**
+     * Name of dual sim property, query from System Property
+     * 1: Dual SIM phone
+     * 0: Single SIM phone
+     */
+    private static final String PROPERTY_DUAL_MODE_PHONE = "ro.dual.sim.phone";
+    private static int m_DualSimProp = -1;
+
+    /**
+     * Return boolean value that is current system support Dual Sim or not.
+     */
+    public static boolean isSupportDualSim()
+    {
+        if (m_DualSimProp == -1) {
+            m_DualSimProp = SystemProperties.getInt(PROPERTY_DUAL_MODE_PHONE, 0);
+            Log.d("SettingsUtils", "Dual Sim Property = " + m_DualSimProp);
+        }
+        return m_DualSimProp == 1 ? true : false;
     }
 }

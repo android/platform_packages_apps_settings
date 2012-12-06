@@ -42,6 +42,7 @@ import android.view.MenuItem;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.RILConstants;
+import com.android.internal.telephony.RILConstants.SimCardID;
 import com.android.internal.telephony.TelephonyProperties;
 
 
@@ -95,6 +96,8 @@ public class ApnEditor extends PreferenceActivity
     private boolean mFirstTime;
     private Resources mRes;
     private TelephonyManager mTelephonyManager;
+
+    private int mSimId = SimCardID.ID_ZERO.toInt();
 
     /**
      * Standard projection for the interesting columns of a normal note.
@@ -175,7 +178,27 @@ public class ApnEditor extends PreferenceActivity
         mProtocol.setOnPreferenceChangeListener(this);
 
         mRoamingProtocol = (ListPreference) findPreference(KEY_ROAMING_PROTOCOL);
-        mRoamingProtocol.setOnPreferenceChangeListener(this);
+
+        final Intent intent = getIntent();
+        final String action = intent.getAction();
+
+        if(intent.hasExtra("simId")) {
+            mSimId = ((SimCardID)(intent.getExtra("simId", SimCardID.ID_ZERO))).toInt();
+        }
+        // Only enable this on CDMA phones for now, since it may cause problems on other phone
+        // types.  (This screen is not normally accessible on CDMA phones, but is useful for
+        // testing.)
+        TelephonyManager tm;
+        if(mSimId == SimCardID.ID_ONE.toInt()) {
+            tm = (TelephonyManager)getSystemService(TELEPHONY_SERVICE2);
+        } else {
+            tm = (TelephonyManager)getSystemService(TELEPHONY_SERVICE1);
+        }
+        if (tm.getCurrentPhoneType() == PhoneConstants.PHONE_TYPE_CDMA) {
+            mRoamingProtocol.setOnPreferenceChangeListener(this);
+        } else {
+            getPreferenceScreen().removePreference(mRoamingProtocol);
+        }
 
         mCarrierEnabled = (CheckBoxPreference) findPreference(KEY_CARRIER_ENABLED);
 
@@ -188,16 +211,15 @@ public class ApnEditor extends PreferenceActivity
 
         mRes = getResources();
 
-        final Intent intent = getIntent();
-        final String action = intent.getAction();
-
         mFirstTime = icicle == null;
 
         if (action.equals(Intent.ACTION_EDIT)) {
             mUri = intent.getData();
         } else if (action.equals(Intent.ACTION_INSERT)) {
             if (mFirstTime || icicle.getInt(SAVED_POS) == 0) {
-                mUri = getContentResolver().insert(intent.getData(), new ContentValues());
+                ContentValues cv = new ContentValues();
+                cv.put(Telephony.Carriers.SIM_ID, mSimId);
+                mUri = getContentResolver().insert(intent.getData(), cv);
             } else {
                 mUri = ContentUris.withAppendedId(Telephony.Carriers.CONTENT_URI,
                         icicle.getInt(SAVED_POS));
@@ -263,7 +285,7 @@ public class ApnEditor extends PreferenceActivity
             mApnType.setText(mCursor.getString(TYPE_INDEX));
             if (mNewApn) {
                 String numeric =
-                    SystemProperties.get(TelephonyProperties.PROPERTY_ICC_OPERATOR_NUMERIC);
+                    SystemProperties.get(TelephonyProperties.PROPERTY_ICC_OPERATOR_NUMERIC +((SimCardID.ID_ZERO.toInt() != mSimId)?("_"+String.valueOf(mSimId)):""));
                 // MCC is first 3 chars and then in 2 - 3 chars of MNC
                 if (numeric != null && numeric.length() > 4) {
                     // Country code

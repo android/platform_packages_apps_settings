@@ -55,7 +55,9 @@ public class ChooseAccountActivity extends PreferenceActivity {
     private HashMap<String, ArrayList<String>> mAccountTypeToAuthorities = null;
     private Map<String, AuthenticatorDescription> mTypeToAuthDescription
             = new HashMap<String, AuthenticatorDescription>();
-    
+    private static final String LOCAL_CONTACTS_ACCOUNT_TYPE = "com.android.contacts.local";
+    private static final String SIM_CONTACTS_ACCOUNT_TYPE = "com.android.contacts.sim";
+
     private static class ProviderEntry implements Comparable<ProviderEntry> {
         private final CharSequence name;
         private final String type;
@@ -111,6 +113,10 @@ public class ChooseAccountActivity extends PreferenceActivity {
         // Create list of providers to show on preference screen
         for (int i = 0; i < mAuthDescs.length; i++) {
             String accountType = mAuthDescs[i].type;
+            if (LOCAL_CONTACTS_ACCOUNT_TYPE.equals(accountType) || SIM_CONTACTS_ACCOUNT_TYPE.equals(accountType)) {
+                Log.d(TAG, "onAuthDescriptionsUpdated(): skip account type: " + accountType);
+                continue;
+            }
             CharSequence providerName = getLabelForType(accountType);
 
             // Skip preferences for authorities not specified. If no authorities specified,

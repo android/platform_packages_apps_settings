@@ -19,13 +19,19 @@ package com.android.settings;
 import android.os.Bundle;
 import android.preference.PreferenceActivity;
 
+import com.android.settings.Utils;
+
 public class TestingSettings extends PreferenceActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        addPreferencesFromResource(R.xml.testing_settings);
+        if (Utils.isSupportDualSim()) {
+            addPreferencesFromResource(R.xml.testing_settings_brcm);
+        } else {
+            addPreferencesFromResource(R.xml.testing_settings);
+        }
     }
 
 }

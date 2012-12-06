@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/* //device/apps/Settings/assets/res/any/layout/engmode_CaseDisplay.xml
+**
+** Copyright 2006, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" style="@style/info_layout" >
+
+    <LinearLayout style="@style/entry_layout">
+        <TextView android:text="@string/EngineeringMode_CaseTitle" style="@style/info_label" />
+        <TextView android:id="@+id/CaseTitle" style="@style/info_value" />
+    </LinearLayout>
+
+    <!-- Elapsed time  -->
+    <LinearLayout style="@style/entry_layout">
+        <TextView android:text="@string/EngineeringMode_elapsedTime" style="@style/info_label" />
+        <TextView android:id="@+id/elapsedTime" style="@style/info_value" />
+    </LinearLayout>
+
+    <!-- SIM1 Phone Information -->
+    <LinearLayout style="@style/entry_layout">
+        <TextView android:text="@string/EngineeringMode_SIM1_Phone_Info" style="@style/info_label" />
+        <TextView android:id="@+id/phone1Title" style="@style/info_value" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/entry_layout">
+        <TextView style="@style/info_label" />
+        <TextView android:id="@+id/phone1info" style="@style/info_value" />
+    </LinearLayout>
+
+    <!-- SIM2 Phone Information -->
+    <LinearLayout style="@style/entry_layout">
+        <TextView android:text="@string/EngineeringMode_SIM2_Phone_Info" style="@style/info_label" />
+        <TextView android:id="@+id/phone2Title" style="@style/info_value" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/entry_layout">
+        <TextView style="@style/info_label" />
+        <TextView android:id="@+id/phone2info" style="@style/info_value" />
+    </LinearLayout>
+</LinearLayout>
+</ScrollView>
+

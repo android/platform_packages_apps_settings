@@ -50,9 +50,13 @@ import android.util.Log;
 
 import java.util.List;
 
+import com.android.internal.telephony.RILConstants.SimCardID;
+import com.android.settings.Utils;
+
 public class SoundSettings extends SettingsPreferenceFragment implements
         Preference.OnPreferenceChangeListener {
     private static final String TAG = "SoundSettings";
+    static final boolean DBG = false;
 
     private static final int DIALOG_NOT_DOCKED = 1;
 
@@ -69,6 +73,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final String KEY_SOUND_SETTINGS = "sound_settings";
     private static final String KEY_LOCK_SOUNDS = "lock_sounds";
     private static final String KEY_RINGTONE = "ringtone";
+    private static final String KEY_RINGTONE_2 = "ringtone2";
     private static final String KEY_NOTIFICATION_SOUND = "notification_sound";
     private static final String KEY_CATEGORY_CALLS = "category_calls_and_notification";
     private static final String KEY_DOCK_CATEGORY = "dock_category";
@@ -83,6 +88,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
 
     private static final int MSG_UPDATE_RINGTONE_SUMMARY = 1;
     private static final int MSG_UPDATE_NOTIFICATION_SUMMARY = 2;
+    private static final int MSG_UPDATE_RINGTONE2_SUMMARY = 3;
 
     private CheckBoxPreference mVibrateWhenRinging;
     private CheckBoxPreference mDtmfTone;
@@ -91,6 +97,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private Preference mMusicFx;
     private CheckBoxPreference mLockSounds;
     private Preference mRingtonePreference;
+    private Preference mRingtone2Preference;
     private Preference mNotificationPreference;
 
     private Runnable mRingtoneLookupRunnable;
@@ -107,6 +114,11 @@ public class SoundSettings extends SettingsPreferenceFragment implements
             switch (msg.what) {
             case MSG_UPDATE_RINGTONE_SUMMARY:
                 mRingtonePreference.setSummary((CharSequence) msg.obj);
+                break;
+            case MSG_UPDATE_RINGTONE2_SUMMARY:
+                if (mRingtone2Preference != null) {
+                    mRingtone2Preference.setSummary((CharSequence) msg.obj);
+                }
                 break;
             case MSG_UPDATE_NOTIFICATION_SUMMARY:
                 mNotificationPreference.setSummary((CharSequence) msg.obj);
@@ -130,11 +142,16 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ContentResolver resolver = getContentResolver();
-        int activePhoneType = TelephonyManager.getDefault().getCurrentPhoneType();
+
+        int activePhoneType = TelephonyManager.getDefault(SimCardID.ID_ZERO).getPhoneType();
 
         mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
 
+        if (Utils.isSupportDualSim()) {
+            addPreferencesFromResource(R.xml.sound_settings_brcm);
+        } else {
         addPreferencesFromResource(R.xml.sound_settings);
+        }
 
         if (TelephonyManager.PHONE_TYPE_CDMA != activePhoneType) {
             // device is not CDMA, do not display CDMA emergency_tone
@@ -174,6 +191,9 @@ public class SoundSettings extends SettingsPreferenceFragment implements
 
         mRingtonePreference = findPreference(KEY_RINGTONE);
         mNotificationPreference = findPreference(KEY_NOTIFICATION_SOUND);
+        if (Utils.isSupportDualSim()) {
+            mRingtone2Preference = findPreference(KEY_RINGTONE_2);
+        }
 
         Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         if (vibrator == null || !vibrator.hasVibrator()) {
@@ -222,6 +242,10 @@ public class SoundSettings extends SettingsPreferenceFragment implements
                 if (mNotificationPreference != null) {
                     updateRingtoneName(RingtoneManager.TYPE_NOTIFICATION, mNotificationPreference,
                             MSG_UPDATE_NOTIFICATION_SUMMARY);
+                }
+                if (mRingtone2Preference != null) {
+                    updateRingtoneName(RingtoneManager.TYPE_RINGTONE_2, mRingtone2Preference,
+                            MSG_UPDATE_RINGTONE2_SUMMARY);
                 }
             }
         };

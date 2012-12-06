@@ -49,12 +49,15 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.PhoneStateIntentReceiver;
 import com.android.internal.telephony.TelephonyProperties;
+import com.android.internal.telephony.RILConstants.SimCardID;
+import com.android.internal.telephony.RILConstants;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -78,6 +81,7 @@ public class RadioInfo extends Activity {
     private static final int EVENT_QUERY_NEIGHBORING_CIDS_DONE = 1002;
     private static final int EVENT_QUERY_SMSC_DONE = 1005;
     private static final int EVENT_UPDATE_SMSC_DONE = 1006;
+    private static final int EVENT_FASTDORMANCY_DONE = 1007;
 
     private static final int MENU_ITEM_SELECT_BAND  = 0;
     private static final int MENU_ITEM_VIEW_ADN     = 1;
@@ -85,6 +89,8 @@ public class RadioInfo extends Activity {
     private static final int MENU_ITEM_VIEW_SDN     = 3;
     private static final int MENU_ITEM_GET_PDP_LIST = 4;
     private static final int MENU_ITEM_TOGGLE_DATA  = 5;
+    private byte[] RAW_HOOK_OEM_FAST_DORMANCY_ON_CMD = {'B','R','C','M',RILConstants.BRIL_HOOK_SET_FAST_DORMANCY, 1,0};
+    private byte[] RAW_HOOK_OEM_FAST_DORMANCY_OFF_CMD = {'B','R','C','M',RILConstants.BRIL_HOOK_SET_FAST_DORMANCY, 0};
 
     static final String ENABLE_DATA_STR = "Enable data connection";
     static final String DISABLE_DATA_STR = "Disable data connection";
@@ -115,6 +121,7 @@ public class RadioInfo extends Activity {
     private TextView mHttpClientTest;
     private TextView dnsCheckState;
     private EditText smsc;
+    private EditText fdEdit;
     private Button radioPowerButton;
     private Button cellInfoListRateButton;
     private Button dnsCheckToggleButton;
@@ -122,6 +129,7 @@ public class RadioInfo extends Activity {
     private Button updateSmscButton;
     private Button refreshSmscButton;
     private Button oemInfoButton;
+    private Button fdEnableButton;
     private Spinner preferredNetworkType;
 
     private TelephonyManager mTelephonyManager;
@@ -134,6 +142,9 @@ public class RadioInfo extends Activity {
     private boolean mMwiValue = false;
     private boolean mCfiValue = false;
     private List<CellInfo> mCellInfoValue;
+    private static boolean[] mFDEnabled = {false,false};
+    private static String[] mFDTime= {null,null};
+    private int mSimId;
 
     private PhoneStateListener mPhoneStateListener = new PhoneStateListener() {
         @Override
@@ -234,6 +245,48 @@ public class RadioInfo extends Activity {
                         smsc.setText("update error");
                     }
                     break;
+                case EVENT_FASTDORMANCY_DONE:
+                    ar= (AsyncResult) msg.obj;
+                    if (ar.exception != null) {
+                        Log.e(TAG, "EVENT_FASTDORMANCY_DONE fail..." );
+
+                        if(mFDEnabled[mSimId])
+                        {
+                            fdEnableButton.setText(R.string.radio_info_FD_Enable_label);
+                            fdEdit.setEnabled(true);
+                            mFDEnabled[mSimId]=false;
+
+                            Log.d(TAG, "set Fast Dormancy UI back to disable");
+                            Toast.makeText(RadioInfo.this,"Enable Fast Dormancy Fail",Toast.LENGTH_LONG).show();
+                        } else {
+                            fdEnableButton.setText(R.string.radio_info_FD_Disable_label);
+                            fdEdit.setEnabled(false);
+                            mFDEnabled[mSimId]=true;
+
+                            RAW_HOOK_OEM_FAST_DORMANCY_ON_CMD[6]=(byte)Integer.parseInt(fdEdit.getText().toString());
+                            mFDTime[mSimId]=fdEdit.getText().toString();
+
+                            Log.d(TAG, "set Fast Dormancy UI back to enable "+fdEdit.getText().toString()+" Secs ");
+                            Toast.makeText(RadioInfo.this,"Disable Fast Dormancy Fail",Toast.LENGTH_LONG).show();
+                        }
+                    } else {
+                        Log.d(TAG, "EVENT_FASTDORMANCY_DONE..." );
+                        String option_property;
+                        String inacttime_property;
+                        if(mSimId == SimCardID.ID_ONE.toInt()) {
+                            option_property = TelephonyProperties.PROPERTY_FASTDORMANCY_ENABLE + "_" + String.valueOf(mSimId);
+                            inacttime_property = TelephonyProperties.PROPERTY_FASTDORMANCY_INACTTIMER + "_" + String.valueOf(mSimId);
+                        } else {
+                            option_property = TelephonyProperties.PROPERTY_FASTDORMANCY_ENABLE;
+                            inacttime_property = TelephonyProperties.PROPERTY_FASTDORMANCY_INACTTIMER;
+                        }
+                        if(mFDEnabled[mSimId])
+                            SystemProperties.set(option_property,"1");
+                        else
+                            SystemProperties.set(option_property,"0");
+                        SystemProperties.set(inacttime_property,mFDTime[mSimId]);
+                    }
+                    break;
                 default:
                     break;
 
@@ -241,14 +294,53 @@ public class RadioInfo extends Activity {
         }
     };
 
+    public void initFastDormancy() {
+        String option_property;
+        String inacttime_property;
+        if(mSimId == SimCardID.ID_ONE.toInt()) {
+            option_property = TelephonyProperties.PROPERTY_FASTDORMANCY_ENABLE + "_" + String.valueOf(mSimId);
+            inacttime_property = TelephonyProperties.PROPERTY_FASTDORMANCY_INACTTIMER + "_" + String.valueOf(mSimId);
+        } else {
+            option_property = TelephonyProperties.PROPERTY_FASTDORMANCY_ENABLE;
+            inacttime_property = TelephonyProperties.PROPERTY_FASTDORMANCY_INACTTIMER;
+        }
+        String propertyValue = SystemProperties.get(option_property, "1");
+        if(propertyValue.equals("1"))
+        {
+            mFDEnabled[mSimId]=true;
+        }
+
+        //default 5 seconds
+        mFDTime[mSimId] = SystemProperties.get(inacttime_property, "5");
+
+        if(mFDEnabled[mSimId])
+        {
+            fdEnableButton.setText(R.string.radio_info_FD_Disable_label);
+            fdEdit.setEnabled(false);
+            Log.d(TAG, "Fast Dormancy Enable==true "+fdEdit.getText().toString()+" Secs ");
+        }
+        fdEdit.setText(mFDTime[mSimId],TextView.BufferType.EDITABLE);
+    }
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
 
+        try {
+            mSimId = Integer.parseInt(getIntent().getDataString());
+        } catch (NumberFormatException ex) {
+            mSimId = SimCardID.ID_ZERO.toInt();
+        }
+
         setContentView(R.layout.radio_info);
 
-        mTelephonyManager = (TelephonyManager)getSystemService(TELEPHONY_SERVICE);
-        phone = PhoneFactory.getDefaultPhone();
+        if (SimCardID.ID_ONE.toInt() == mSimId) {
+            mTelephonyManager = (TelephonyManager)getSystemService(TELEPHONY_SERVICE2);
+            phone = PhoneFactory.getDefaultPhone(SimCardID.ID_ONE);
+        } else {
+            mTelephonyManager = (TelephonyManager)getSystemService(TELEPHONY_SERVICE1);
+            phone = PhoneFactory.getDefaultPhone(SimCardID.ID_ZERO);
+        }
 
         mDeviceId= (TextView) findViewById(R.id.imei);
         number = (TextView) findViewById(R.id.number);
@@ -273,6 +365,7 @@ public class RadioInfo extends Activity {
         sent = (TextView) findViewById(R.id.sent);
         received = (TextView) findViewById(R.id.received);
         smsc = (EditText) findViewById(R.id.smsc);
+        fdEdit = (EditText) findViewById(R.id.FD);
         dnsCheckState = (TextView) findViewById(R.id.dnsCheckState);
 
         mPingIpAddr = (TextView) findViewById(R.id.pingIpAddr);
@@ -310,6 +403,9 @@ public class RadioInfo extends Activity {
         dnsCheckToggleButton = (Button) findViewById(R.id.dns_check_toggle);
         dnsCheckToggleButton.setOnClickListener(mDnsCheckButtonHandler);
 
+        fdEnableButton = (Button) findViewById(R.id.enable_FD);
+        fdEnableButton.setOnClickListener(mFastDormancyButtonHandler);
+
         oemInfoButton = (Button) findViewById(R.id.oem_info);
         oemInfoButton.setOnClickListener(mOemInfoButtonHandler);
         PackageManager pm = getPackageManager();
@@ -330,6 +426,8 @@ public class RadioInfo extends Activity {
                 mHandler.obtainMessage(EVENT_QUERY_NEIGHBORING_CIDS_DONE));
 
         CellLocation.requestLocationUpdate();
+
+        initFastDormancy();
 
         // Get current cell info
         mCellInfoValue = mTelephonyManager.getAllCellInfo();
@@ -580,7 +678,7 @@ public class RadioInfo extends Activity {
             roamingState.setText(R.string.radioInfo_roaming_not);
         }
 
-        operatorName.setText(serviceState.getOperatorAlphaLong());
+        operatorName.setText(mTelephonyManager.getNetworkOperatorName());
     }
 
     private final void
@@ -630,9 +728,15 @@ public class RadioInfo extends Activity {
 
     private final void updateNetworkType() {
         Resources r = getResources();
-        String display = SystemProperties.get(TelephonyProperties.PROPERTY_DATA_NETWORK_TYPE,
+        String display;
+        if (SimCardID.ID_ONE == phone.getSimCardId()) {
+            display = SystemProperties.get(TelephonyProperties.PROPERTY_DATA_NETWORK_TYPE +
+                    "_" + String.valueOf(SimCardID.ID_ONE.toInt()),
                 r.getString(R.string.radioInfo_unknown));
-
+        } else {
+            display = SystemProperties.get(TelephonyProperties.PROPERTY_DATA_NETWORK_TYPE,
+                r.getString(R.string.radioInfo_unknown));
+        }
         network.setText(display);
     }
 
@@ -1061,6 +1165,28 @@ public class RadioInfo extends Activity {
     OnClickListener mRefreshSmscButtonHandler = new OnClickListener() {
         public void onClick(View v) {
             refreshSmsc();
+        }
+    };
+
+    OnClickListener mFastDormancyButtonHandler = new OnClickListener() {
+        public void onClick(View v) {
+            Log.d(TAG, "mFastDormancyButtonHandler..." );
+            if(mFDEnabled[mSimId])
+            {
+                fdEnableButton.setText(R.string.radio_info_FD_Enable_label);
+                fdEdit.setEnabled(true);
+                mFDEnabled[mSimId]=false;
+                phone.invokeOemRilRequestRaw(RAW_HOOK_OEM_FAST_DORMANCY_OFF_CMD, mHandler.obtainMessage(EVENT_FASTDORMANCY_DONE));
+                Log.d(TAG, "Fast Dormancy Enable==false ");
+            } else {
+                fdEnableButton.setText(R.string.radio_info_FD_Disable_label);
+                fdEdit.setEnabled(false);
+                mFDEnabled[mSimId]=true;
+                RAW_HOOK_OEM_FAST_DORMANCY_ON_CMD[6]=(byte)Integer.parseInt(fdEdit.getText().toString());
+                mFDTime[mSimId]=fdEdit.getText().toString();
+                phone.invokeOemRilRequestRaw(RAW_HOOK_OEM_FAST_DORMANCY_ON_CMD, mHandler.obtainMessage(EVENT_FASTDORMANCY_DONE));
+                Log.d(TAG, "Fast Dormancy Enable==true "+fdEdit.getText().toString()+" Secs ");
+            }
         }
     };
 

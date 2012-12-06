@@ -49,6 +49,11 @@ import com.android.internal.telephony.TelephonyProperties;
 
 import java.util.ArrayList;
 
+import com.android.internal.telephony.RILConstants.SimCardID;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import com.android.settings.Utils;
+
 public class ApnSettings extends PreferenceActivity implements
         Preference.OnPreferenceChangeListener {
     static final String TAG = "ApnSettings";
@@ -60,6 +65,10 @@ public class ApnSettings extends PreferenceActivity implements
         "content://telephony/carriers/preferapn";
 
     public static final String APN_ID = "apn_id";
+
+    public static final String PREFERRED_APN_URI_2 =
+            "content://telephony/carriers/preferapn2";
+    public static final String APN_ID_2 = "apn_id_2";
 
     private static final int ID_INDEX = 0;
     private static final int NAME_INDEX = 1;
@@ -76,6 +85,7 @@ public class ApnSettings extends PreferenceActivity implements
 
     private static final Uri DEFAULTAPN_URI = Uri.parse(RESTORE_CARRIERS_URI);
     private static final Uri PREFERAPN_URI = Uri.parse(PREFERRED_APN_URI);
+    private static final Uri PREFERAPN_URI_2 = Uri.parse(PREFERRED_APN_URI_2);
 
     private static boolean mRestoreDefaultApnMode;
 
@@ -86,6 +96,8 @@ public class ApnSettings extends PreferenceActivity implements
     private String mSelectedKey;
 
     private IntentFilter mMobileStateFilter;
+
+    private int mSimId;
 
     private final BroadcastReceiver mMobileStateReceiver = new BroadcastReceiver() {
         @Override
@@ -120,6 +132,14 @@ public class ApnSettings extends PreferenceActivity implements
         super.onCreate(icicle);
 
         addPreferencesFromResource(R.xml.apn_settings);
+
+        String strSimId = getIntent().getDataString();
+        try {
+            mSimId = Integer.parseInt(strSimId);
+        } catch (NumberFormatException ex) {
+            mSimId = SimCardID.ID_ZERO.toInt();
+        }
+
         getListView().setItemsCanFocus(true);
 
         mMobileStateFilter = new IntentFilter(
@@ -129,6 +149,16 @@ public class ApnSettings extends PreferenceActivity implements
     @Override
     protected void onResume() {
         super.onResume();
+
+        if (mSimId == SimCardID.ID_ONE.toInt()){
+            setTitle(R.string.sim_2_apn_title);
+        } else {
+            if (Utils.isSupportDualSim()) {
+                setTitle(R.string.sim_1_apn_title);
+            } else {
+                setTitle(R.string.apn_settings);
+            }
+        }
 
         registerReceiver(mMobileStateReceiver, mMobileStateFilter);
 
@@ -157,8 +187,8 @@ public class ApnSettings extends PreferenceActivity implements
 
     private void fillList() {
         String where = "numeric=\""
-            + android.os.SystemProperties.get(TelephonyProperties.PROPERTY_ICC_OPERATOR_NUMERIC, "")
-            + "\"";
+            + android.os.SystemProperties.get(TelephonyProperties.PROPERTY_ICC_OPERATOR_NUMERIC+((SimCardID.ID_ZERO.toInt() != mSimId)?("_"+String.valueOf(mSimId)):""), "")
+            + "\" AND (" + Telephony.Carriers.SIM_ID + "=" + mSimId +" OR " + Telephony.Carriers.SIM_ID + "=-1)";
 
         Cursor cursor = getContentResolver().query(Telephony.Carriers.CONTENT_URI, new String[] {
                 "_id", "name", "apn", "type"}, where, null,
@@ -170,7 +200,12 @@ public class ApnSettings extends PreferenceActivity implements
 
             ArrayList<Preference> mmsApnList = new ArrayList<Preference>();
 
+        if(mSimId == SimCardID.ID_ONE.toInt()){
+            mSelectedKey = getSelectedApnKey(SimCardID.ID_ONE.toInt());
+        }else{
             mSelectedKey = getSelectedApnKey();
+        }
+
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
                 String name = cursor.getString(NAME_INDEX);
@@ -227,14 +262,29 @@ public class ApnSettings extends PreferenceActivity implements
             return true;
 
         case MENU_RESTORE:
-            restoreDefaultApn();
+            new AlertDialog.Builder(this).setTitle(R.string.title_restore).
+            setMessage(R.string.msg_restore).
+            setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener()
+            {
+                public void onClick(DialogInterface dialog, int which){
+                    restoreDefaultApn();
+                }
+            }).
+            setNegativeButton(android.R.string.cancel, null).show();
+
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
     private void addNewApn() {
-        startActivity(new Intent(Intent.ACTION_INSERT, Telephony.Carriers.CONTENT_URI));
+        Intent intent = new Intent(Intent.ACTION_INSERT, Telephony.Carriers.CONTENT_URI);
+        if(mSimId == SimCardID.ID_ONE.toInt()){
+            intent.putExtra("simId", SimCardID.ID_ONE);
+        } else {
+            intent.putExtra("simId", SimCardID.ID_ZERO);
+        }
+        startActivity(intent);
     }
 
     @Override
@@ -250,7 +300,11 @@ public class ApnSettings extends PreferenceActivity implements
                 + ", newValue - " + newValue + ", newValue type - "
                 + newValue.getClass());
         if (newValue instanceof String) {
-            setSelectedApnKey((String) newValue);
+            if(mSimId == SimCardID.ID_ONE.toInt()){
+                setSelectedApnKey((String) newValue, SimCardID.ID_ONE.toInt());
+            } else {
+                setSelectedApnKey((String) newValue);
+            }
         }
 
         return true;
@@ -265,11 +319,44 @@ public class ApnSettings extends PreferenceActivity implements
         resolver.update(PREFERAPN_URI, values, null, null);
     }
 
+    private void setSelectedApnKey(String key, int simId) {
+        mSelectedKey = key;
+        ContentResolver resolver = getContentResolver();
+
+        ContentValues values = new ContentValues();
+        if(simId == SimCardID.ID_ONE.toInt()){
+            values.put(APN_ID_2, mSelectedKey);
+            resolver.update(PREFERAPN_URI_2, values, null, null);
+        } else {
+            values.put(APN_ID, mSelectedKey);
+            resolver.update(PREFERAPN_URI, values, null, null);
+        }
+    }
+
     private String getSelectedApnKey() {
         String key = null;
 
         Cursor cursor = getContentResolver().query(PREFERAPN_URI, new String[] {"_id"},
                 null, null, Telephony.Carriers.DEFAULT_SORT_ORDER);
+        if (cursor.getCount() > 0) {
+            cursor.moveToFirst();
+            key = cursor.getString(ID_INDEX);
+        }
+        cursor.close();
+        return key;
+    }
+
+    private String getSelectedApnKey(int simId) {
+        String key = null;
+        Cursor cursor = null;
+        if(simId == SimCardID.ID_ONE.toInt()){
+            cursor = getContentResolver().query(PREFERAPN_URI_2, new String[] {"_id"},
+                    null, null, Telephony.Carriers.DEFAULT_SORT_ORDER);
+        } else {
+            cursor = getContentResolver().query(PREFERAPN_URI, new String[] {"_id"},
+                    null, null, Telephony.Carriers.DEFAULT_SORT_ORDER);
+        }
+
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             key = cursor.getString(ID_INDEX);

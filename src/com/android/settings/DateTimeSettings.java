@@ -48,11 +48,12 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 import java.util.TimeZone;
+import android.util.Log;
 
 public class DateTimeSettings extends SettingsPreferenceFragment
         implements OnSharedPreferenceChangeListener,
                 TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
-
+    static final String LOG_TAG = "DateTimeSettings";
     private static final String HOURS_12 = "12";
     private static final String HOURS_24 = "24";
 
@@ -77,6 +78,7 @@ public class DateTimeSettings extends SettingsPreferenceFragment
     private Preference mTimeZone;
     private Preference mDatePref;
     private ListPreference mDateFormat;
+    private static CheckBoxPreference mGCFFormat;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -149,6 +151,13 @@ public class DateTimeSettings extends SettingsPreferenceFragment
         mTimePref.setEnabled(!autoTimeEnabled);
         mDatePref.setEnabled(!autoTimeEnabled);
         mTimeZone.setEnabled(!autoTimeZoneEnabled);
+
+        mGCFFormat = new CheckBoxPreference(getActivity());
+        mGCFFormat.setKey("GCF_Format");
+        mGCFFormat.setTitle("Use GCF format");
+        mGCFFormat.setSummaryOn("Engineering Mode");
+        mGCFFormat.setSummaryOff("Engineering Mode");
+        getPreferenceScreen().addPreference(mGCFFormat);
     }
 
     @Override
@@ -229,6 +238,11 @@ public class DateTimeSettings extends SettingsPreferenceFragment
                     autoEnabled ? 1 : 0);
             mTimePref.setEnabled(!autoEnabled);
             mDatePref.setEnabled(!autoEnabled);
+
+            mGCFFormat.setEnabled(autoEnabled);
+            if (mGCFFormat.isChecked()&&!autoEnabled) {
+                mGCFFormat.setChecked(false);
+            }
         } else if (key.equals(KEY_AUTO_TIME_ZONE)) {
             boolean autoZoneEnabled = preferences.getBoolean(key, true);
             Settings.Global.putInt(
@@ -311,6 +325,8 @@ public class DateTimeSettings extends SettingsPreferenceFragment
             set24Hour(((CheckBoxPreference)mTime24Pref).isChecked());
             updateTimeAndDateDisplay(getActivity());
             timeUpdated();
+        }else if (preference == mGCFFormat) {
+            updateTimeAndDateDisplay(getActivity());
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
     }

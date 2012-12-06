@@ -53,6 +53,11 @@ import com.android.settings.Utils;
 
 import java.lang.ref.WeakReference;
 
+import android.telephony.SignalStrength;
+import com.android.internal.telephony.RILConstants;
+import com.android.internal.telephony.RILConstants.SimCardID;
+import com.android.internal.telephony.TelephonyProperties;
+
 /**
  * Display the following information
  * # Phone Number
@@ -107,6 +112,34 @@ public class Status extends PreferenceActivity {
         KEY_SIGNAL_STRENGTH,
         KEY_ICC_ID
     };
+    private static final String KEY_DATA_STATE2 = "data_state2";
+    private static final String KEY_SERVICE_STATE2 = "service_state2";
+    private static final String KEY_OPERATOR_NAME2 = "operator_name2";
+    private static final String KEY_ROAMING_STATE2 = "roaming_state2";
+    private static final String KEY_NETWORK_TYPE2 = "network_type2";
+    private static final String KEY_PHONE_NUMBER2 = "number2";
+    private static final String KEY_IMEI_SV2 = "imei_sv2";
+    private static final String KEY_IMEI2 = "imei2";
+    private static final String KEY_PRL_VERSION2 = "prl_version2";
+    private static final String KEY_MIN_NUMBER2 = "min_number2";
+    private static final String KEY_MEID_NUMBER2 = "meid_number2";
+    private static final String KEY_SIGNAL_STRENGTH2 = "signal_strength2";
+    private static final String KEY_ICC_ID2 = "icc_id2";
+    private static final String[] PHONE_RELATED_ENTRIES2 = {
+        KEY_DATA_STATE2,
+        KEY_SERVICE_STATE2,
+        KEY_OPERATOR_NAME2,
+        KEY_ROAMING_STATE2,
+        KEY_NETWORK_TYPE2,
+        KEY_PHONE_NUMBER2,
+        KEY_IMEI2,
+        KEY_IMEI_SV2,
+        KEY_PRL_VERSION2,
+        KEY_MIN_NUMBER2,
+        KEY_MEID_NUMBER2,
+        KEY_SIGNAL_STRENGTH2,
+        KEY_ICC_ID2
+    };
 
     static final String CB_AREA_INFO_RECEIVED_ACTION =
             "android.cellbroadcastreceiver.CB_AREA_INFO_RECEIVED";
@@ -129,6 +162,9 @@ public class Status extends PreferenceActivity {
     private static final int EVENT_SIGNAL_STRENGTH_CHANGED = 200;
     private static final int EVENT_SERVICE_STATE_CHANGED = 300;
 
+    private static final int EVENT_SIGNAL_STRENGTH_CHANGED_2 = 1200;
+    private static final int EVENT_SERVICE_STATE_CHANGED_2 = 1300;
+
     private static final int EVENT_UPDATE_STATS = 500;
 
     private static final int EVENT_UPDATE_CONNECTIVITY = 600;
@@ -138,6 +174,10 @@ public class Status extends PreferenceActivity {
     private WifiManager mWifiManager;
 
     private Phone mPhone = null;
+
+    private TelephonyManager mTelephonyManager2;
+    private Phone mPhone2 = null;
+
     private PhoneStateIntentReceiver mPhoneStateReceiver;
     private Resources mRes;
     private boolean mShowLatestAreaInfo;
@@ -171,15 +211,6 @@ public class Status extends PreferenceActivity {
             }
 
             switch (msg.what) {
-                case EVENT_SIGNAL_STRENGTH_CHANGED:
-                    status.updateSignalStrength();
-                    break;
-
-                case EVENT_SERVICE_STATE_CHANGED:
-                    ServiceState serviceState = status.mPhoneStateReceiver.getServiceState();
-                    status.updateServiceState(serviceState);
-                    break;
-
                 case EVENT_UPDATE_STATS:
                     status.updateTimes();
                     sendEmptyMessageDelayed(EVENT_UPDATE_STATS, 1000);
@@ -208,7 +239,43 @@ public class Status extends PreferenceActivity {
         @Override
         public void onDataConnectionStateChanged(int state) {
             updateDataState();
+        }
+
+        @Override
+        public void onDataConnectionStateChanged(int state, int networkType) {
             updateNetworkType();
+        }
+
+        @Override
+        public void onServiceStateChanged(ServiceState serviceState) {
+            updateServiceState(serviceState);
+        }
+
+        @Override
+        public void onSignalStrengthsChanged(SignalStrength signalStrength){
+            updateSignalStrength(signalStrength);
+        }
+    };
+
+    private PhoneStateListener mPhoneStateListener2 = new PhoneStateListener() {
+        @Override
+        public void onDataConnectionStateChanged(int state) {
+            updateDataState2();
+        }
+
+        @Override
+        public void onDataConnectionStateChanged(int state, int networkType) {
+            updateNetworkType2();
+        }
+
+        @Override
+        public void onServiceStateChanged(ServiceState serviceState) {
+            updateServiceState2(serviceState);
+        }
+
+        @Override
+        public void onSignalStrengthsChanged(SignalStrength signalStrength){
+            updateSignalStrength2(signalStrength);
         }
     };
 
@@ -259,7 +326,12 @@ public class Status extends PreferenceActivity {
         mTelephonyManager = (TelephonyManager)getSystemService(TELEPHONY_SERVICE);
         mWifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
 
-        addPreferencesFromResource(R.xml.device_info_status);
+        if (Utils.isSupportDualSim()) {
+            addPreferencesFromResource(R.xml.device_info_status_brcm);
+        } else {
+            addPreferencesFromResource(R.xml.device_info_status);
+        }
+
         mBatteryLevel = findPreference(KEY_BATTERY_LEVEL);
         mBatteryStatus = findPreference(KEY_BATTERY_STATUS);
         mBtAddress = findPreference(KEY_BT_ADDRESS);
@@ -278,9 +350,20 @@ public class Status extends PreferenceActivity {
         mSignalStrength = findPreference(KEY_SIGNAL_STRENGTH);
         mUptime = findPreference("up_time");
 
+        if (Utils.isSupportDualSim()) {
+            mTelephonyManager2 = (TelephonyManager)getSystemService(TELEPHONY_SERVICE2);
+            mPhone2 = PhoneFactory.getDefaultPhone(SimCardID.ID_ONE);
+            mSignalStrength2 = findPreference(KEY_SIGNAL_STRENGTH2);
+        }
+
         if (mPhone == null || Utils.isWifiOnly(getApplicationContext())) {
             for (String key : PHONE_RELATED_ENTRIES) {
                 removePreferenceFromScreen(key);
+            }
+            if (Utils.isSupportDualSim()) {
+                for (String key : PHONE_RELATED_ENTRIES2) {
+                    removePreferenceFromScreen(key);
+                }
             }
         } else {
             // NOTE "imei" is the "Device ID" since it represents
@@ -308,7 +391,7 @@ public class Status extends PreferenceActivity {
                 setSummaryText(KEY_IMEI, mPhone.getDeviceId());
 
                 setSummaryText(KEY_IMEI_SV,
-                        ((TelephonyManager) getSystemService(TELEPHONY_SERVICE))
+                        ((TelephonyManager) getSystemService(TELEPHONY_SERVICE1))
                             .getDeviceSoftwareVersion());
 
                 // device is not CDMA, do not display CDMA features
@@ -324,6 +407,44 @@ public class Status extends PreferenceActivity {
                 }
             }
 
+            // NOTE "imei" is the "Device ID" since it represents
+            //  the IMEI in GSM and the MEID in CDMA
+            if (Utils.isSupportDualSim()) {
+                if (mPhone2.getPhoneName().equals("CDMA")) {
+                    setSummaryText(KEY_MEID_NUMBER2, mPhone2.getMeid());
+                    setSummaryText(KEY_MIN_NUMBER2, mPhone2.getCdmaMin());
+                    if (getResources().getBoolean(R.bool.config_msid_enable)) {
+                        findPreference(KEY_MIN_NUMBER2).setTitle(R.string.status_msid_number);
+                    }
+                    setSummaryText(KEY_PRL_VERSION2, mPhone2.getCdmaPrlVersion());
+                    removePreferenceFromScreen(KEY_IMEI_SV2);
+
+                    if (mPhone2.getLteOnCdmaMode() == PhoneConstants.LTE_ON_CDMA_TRUE) {
+                        // Show ICC ID and IMEI for LTE device
+                        setSummaryText(KEY_ICC_ID2, mPhone2.getIccSerialNumber());
+                        setSummaryText(KEY_IMEI2, mPhone2.getImei());
+                    } else {
+                        // device is not GSM/UMTS, do not display GSM/UMTS features
+                        // check Null in case no specified preference in overlay xml
+                        removePreferenceFromScreen(KEY_IMEI2);
+                        removePreferenceFromScreen(KEY_ICC_ID2);
+                    }
+                } else {
+                    setSummaryText(KEY_IMEI2, mPhone2.getDeviceId());
+
+                    setSummaryText(KEY_IMEI_SV2,
+                            ((TelephonyManager) getSystemService(TELEPHONY_SERVICE2))
+                                .getDeviceSoftwareVersion());
+
+                    // device is not CDMA, do not display CDMA features
+                    // check Null in case no specified preference in overlay xml
+                    removePreferenceFromScreen(KEY_PRL_VERSION2);
+                    removePreferenceFromScreen(KEY_MEID_NUMBER2);
+                    removePreferenceFromScreen(KEY_MIN_NUMBER2);
+                    removePreferenceFromScreen(KEY_ICC_ID2);
+                }
+            }
+
             String rawNumber = mPhone.getLine1Number();  // may be null or empty
             String formattedNumber = null;
             if (!TextUtils.isEmpty(rawNumber)) {
@@ -332,9 +453,15 @@ public class Status extends PreferenceActivity {
             // If formattedNumber is null or empty, it'll display as "Unknown".
             setSummaryText(KEY_PHONE_NUMBER, formattedNumber);
 
-            mPhoneStateReceiver = new PhoneStateIntentReceiver(this, mHandler);
-            mPhoneStateReceiver.notifySignalStrength(EVENT_SIGNAL_STRENGTH_CHANGED);
-            mPhoneStateReceiver.notifyServiceState(EVENT_SERVICE_STATE_CHANGED);
+            if (Utils.isSupportDualSim()) {
+                String rawNumber2 = mPhone2.getLine1Number();  // may be null or empty
+                String formattedNumber2 = null;
+                if (!TextUtils.isEmpty(rawNumber2)) {
+                    formattedNumber2 = PhoneNumberUtils.formatNumber(rawNumber2);
+                }
+                // If formattedNumber is null or empty, it'll display as "Unknown".
+                setSummaryText(KEY_PHONE_NUMBER2, formattedNumber2);
+            }
 
             if (!mShowLatestAreaInfo) {
                 removePreferenceFromScreen(KEY_LATEST_AREA_INFO);
@@ -371,13 +498,18 @@ public class Status extends PreferenceActivity {
         super.onResume();
 
         if (mPhone != null && !Utils.isWifiOnly(getApplicationContext())) {
-            mPhoneStateReceiver.registerIntent();
+            //mPhoneStateReceiver.registerIntent();
 
-            updateSignalStrength();
+            //2009-09-07:Use android.telephony.TelephonyManager
+            //and PhoneStateListener instead(see detail in PhoneStateIntentReceiver Class).
+            //updateSignalStrength();
             updateServiceState(mPhone.getServiceState());
             updateDataState();
             mTelephonyManager.listen(mPhoneStateListener,
-                    PhoneStateListener.LISTEN_DATA_CONNECTION_STATE);
+                      PhoneStateListener.LISTEN_DATA_CONNECTION_STATE |
+                      PhoneStateListener.LISTEN_SIGNAL_STRENGTHS |
+                      PhoneStateListener.LISTEN_SERVICE_STATE);
+
             if (mShowLatestAreaInfo) {
                 registerReceiver(mAreaInfoReceiver, new IntentFilter(CB_AREA_INFO_RECEIVED_ACTION),
                         CB_AREA_INFO_SENDER_PERMISSION, null);
@@ -385,6 +517,15 @@ public class Status extends PreferenceActivity {
                 Intent getLatestIntent = new Intent(GET_LATEST_CB_AREA_INFO_ACTION);
                 sendBroadcastAsUser(getLatestIntent, UserHandle.ALL,
                         CB_AREA_INFO_SENDER_PERMISSION);
+            }
+
+            if (Utils.isSupportDualSim()) {
+                updateServiceState2(mPhone2.getServiceState());
+                updateDataState2();
+                mTelephonyManager2.listen(mPhoneStateListener2,
+                        PhoneStateListener.LISTEN_DATA_CONNECTION_STATE |
+                        PhoneStateListener.LISTEN_SIGNAL_STRENGTHS |
+                        PhoneStateListener.LISTEN_SERVICE_STATE);
             }
         }
         registerReceiver(mConnectivityReceiver, mConnectivityIntentFilter,
@@ -398,8 +539,11 @@ public class Status extends PreferenceActivity {
         super.onPause();
 
         if (mPhone != null && !Utils.isWifiOnly(getApplicationContext())) {
-            mPhoneStateReceiver.unregisterIntent();
+            //mPhoneStateReceiver.unregisterIntent();
             mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_NONE);
+            if (Utils.isSupportDualSim()) {
+                mTelephonyManager2.listen(mPhoneStateListener2, PhoneStateListener.LISTEN_NONE);
+            }
         }
         if (mShowLatestAreaInfo) {
             unregisterReceiver(mAreaInfoReceiver);
@@ -508,33 +652,45 @@ public class Status extends PreferenceActivity {
         }
     }
 
-    void updateSignalStrength() {
-        // TODO PhoneStateIntentReceiver is deprecated and PhoneStateListener
-        // should probably used instead.
-
+    void updateSignalStrength(SignalStrength signalStrength) {
         // not loaded in some versions of the code (e.g., zaku)
-        if (mSignalStrength != null) {
-            int state =
-                    mPhoneStateReceiver.getServiceState().getState();
-            Resources r = getResources();
+        if (!signalStrength.isGsm()){
+            if (mSignalStrength != null) {
+                Resources r = getResources();
 
-            if ((ServiceState.STATE_OUT_OF_SERVICE == state) ||
-                    (ServiceState.STATE_POWER_OFF == state)) {
-                mSignalStrength.setSummary("0");
+                int signalDbm = signalStrength.getCdmaDbm();
+
+                int signalAsu = 31*(125 + signalDbm)/50;
+                if (signalAsu < 0){
+                    signalAsu = 0;
+                }
+
+                mSignalStrength.setSummary(String.valueOf(signalDbm) + " "
+                            + r.getString(R.string.radioInfo_display_dbm) + "   "
+                            + String.valueOf(signalAsu) + " "
+                            + r.getString(R.string.radioInfo_display_asu));
             }
+        } else {
+            if (mSignalStrength != null) {
+                Resources r = getResources();
 
-            int signalDbm = mPhoneStateReceiver.getSignalStrengthDbm();
+                int signalDbm = -113 + 2*signalStrength.getGsmSignalStrength();
+                int signalAsu = signalStrength.getGsmSignalStrength();
 
-            if (-1 == signalDbm) signalDbm = 0;
+                if (-1 == signalAsu){
+                    signalDbm = -113;
+                    signalAsu = 0;
+                }
 
-            int signalAsu = mPhoneStateReceiver.getSignalStrengthLevelAsu();
-
-            if (-1 == signalAsu) signalAsu = 0;
-
-            mSignalStrength.setSummary(String.valueOf(signalDbm) + " "
-                        + r.getString(R.string.radioInfo_display_dbm) + "   "
-                        + String.valueOf(signalAsu) + " "
-                        + r.getString(R.string.radioInfo_display_asu));
+                if(signalAsu == 99) {
+                    mSignalStrength.setSummary(r.getString(R.string.device_info_default));
+                } else {
+                    mSignalStrength.setSummary(String.valueOf(signalDbm) + " "
+                                + r.getString(R.string.radioInfo_display_dbm) + "   "
+                                + String.valueOf(signalAsu) + " "
+                                + r.getString(R.string.radioInfo_display_asu));
+                }
+            }
         }
     }
 
@@ -605,5 +761,98 @@ public class Status extends PreferenceActivity {
         int h = (int)((t / 3600));
 
         return h + ":" + pad(m) + ":" + pad(s);
+    }
+
+    private void updateNetworkType2() {
+        // Whether EDGE, UMTS, etc...
+        setSummary(KEY_NETWORK_TYPE2, TelephonyProperties.PROPERTY_DATA_NETWORK_TYPE + "_" + String.valueOf(SimCardID.ID_ONE.toInt()), sUnknown);
+    }
+    private void updateDataState2() {
+        int state = mTelephonyManager2.getDataState();
+        String display = mRes.getString(R.string.radioInfo_unknown);
+
+        switch (state) {
+            case TelephonyManager.DATA_CONNECTED:
+                display = mRes.getString(R.string.radioInfo_data_connected);
+                break;
+            case TelephonyManager.DATA_SUSPENDED:
+                display = mRes.getString(R.string.radioInfo_data_suspended);
+                break;
+            case TelephonyManager.DATA_CONNECTING:
+                display = mRes.getString(R.string.radioInfo_data_connecting);
+                break;
+            case TelephonyManager.DATA_DISCONNECTED:
+                display = mRes.getString(R.string.radioInfo_data_disconnected);
+                break;
+        }
+
+        setSummaryText(KEY_DATA_STATE2, display);
+    }
+    private void updateServiceState2(ServiceState serviceState) {
+        int state = serviceState.getState();
+        String display = mRes.getString(R.string.radioInfo_unknown);
+
+        switch (state) {
+            case ServiceState.STATE_IN_SERVICE:
+                display = mRes.getString(R.string.radioInfo_service_in);
+                break;
+            case ServiceState.STATE_OUT_OF_SERVICE:
+            case ServiceState.STATE_EMERGENCY_ONLY:
+                display = mRes.getString(R.string.radioInfo_service_out);
+                break;
+            case ServiceState.STATE_POWER_OFF:
+                display = mRes.getString(R.string.radioInfo_service_off);
+                break;
+        }
+
+        setSummaryText(KEY_SERVICE_STATE2, display);
+
+        if (serviceState.getRoaming()) {
+            setSummaryText(KEY_ROAMING_STATE2, mRes.getString(R.string.radioInfo_roaming_in));
+        } else {
+            setSummaryText(KEY_ROAMING_STATE2, mRes.getString(R.string.radioInfo_roaming_not));
+        }
+        setSummaryText(KEY_OPERATOR_NAME2, serviceState.getOperatorAlphaLong());
+    }
+    void updateSignalStrength2(SignalStrength signalStrength) {
+        // not loaded in some versions of the code (e.g., zaku)
+        if (!signalStrength.isGsm()){
+            if (mSignalStrength2 != null) {
+                Resources r = getResources();
+
+                int signalDbm = signalStrength.getCdmaDbm();
+
+                int signalAsu = 31*(125 + signalDbm)/50;
+                if (signalAsu < 0){
+                    signalAsu = 0;
+                }
+
+                mSignalStrength2.setSummary(String.valueOf(signalDbm) + " "
+                            + r.getString(R.string.radioInfo_display_dbm) + "   "
+                            + String.valueOf(signalAsu) + " "
+                            + r.getString(R.string.radioInfo_display_asu));
+            }
+        } else {
+            if (mSignalStrength2 != null) {
+                Resources r = getResources();
+
+                int signalDbm = -113 + 2*signalStrength.getGsmSignalStrength();
+                int signalAsu = signalStrength.getGsmSignalStrength();
+
+                if (-1 == signalAsu){
+                    signalDbm = -113;
+                    signalAsu = 0;
+                }
+
+                if(signalAsu == 99) {
+                    mSignalStrength2.setSummary(r.getString(R.string.device_info_default));
+                } else {
+                    mSignalStrength2.setSummary(String.valueOf(signalDbm) + " "
+                                + r.getString(R.string.radioInfo_display_dbm) + "   "
+                                + String.valueOf(signalAsu) + " "
+                                + r.getString(R.string.radioInfo_display_asu));
+                }
+            }
+        }
     }
 }
