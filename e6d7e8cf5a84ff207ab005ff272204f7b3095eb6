@@ -33,6 +33,24 @@
       "revId": "e6d7e8cf5a84ff207ab005ff272204f7b3095eb6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "MooPWAE4",
+        "filename": "src/com/android/settings/deviceinfo/Status.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-12-06T08:02:50Z",
+      "side": 1,
+      "message": "+ I guess, an else {} block is also needed.\nLike, for example, what happens if network type changes from/to unknown/GPRS?",
+      "parentUuid": "MogPq8AI",
+      "revId": "e6d7e8cf5a84ff207ab005ff272204f7b3095eb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
