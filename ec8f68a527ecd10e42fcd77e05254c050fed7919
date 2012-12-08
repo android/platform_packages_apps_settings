@@ -1,0 +1,10 @@
+Code-Review+2: Amith Yamasani <yamasani@google.com>
+Code-Review+2: Robert Greenwalt <rgreenwalt@google.com>
+Code-Review+1: Elliott Hughes <enh@google.com>
+Verified+1: Deckard Autoverifier <deckard@android.com>
+Code-Review+1: Erez A. Korn <erezakandroid@gmail.com>
+Submitted-by: Elliott Hughes <enh@google.com>
+Submitted-at: Sat, 08 Dec 2012 09:55:08 -0800
+Reviewed-on: https://android-review.googlesource.com/43352
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
