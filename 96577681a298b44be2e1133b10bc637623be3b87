@@ -1,0 +1,9 @@
+Code-Review+2: Amith Yamasani <yamasani@google.com>
+Code-Review+1: Shuhrat Dehkanov <uzbmaster@gmail.com>
+Verified+1: Deckard Autoverifier <deckard@android.com>
+Code-Review+1: Narayan Kamath <narayan@google.com>
+Submitted-by: Amith Yamasani <yamasani@google.com>
+Submitted-at: Wed, 12 Dec 2012 09:12:46 -0800
+Reviewed-on: https://android-review.googlesource.com/43911
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
