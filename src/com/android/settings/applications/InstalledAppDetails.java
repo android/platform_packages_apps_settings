@@ -608,6 +608,14 @@ public class InstalledAppDetails extends Fragment
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (mSession != null) {
+            mSession.release();
+        }
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         mSession.release();
