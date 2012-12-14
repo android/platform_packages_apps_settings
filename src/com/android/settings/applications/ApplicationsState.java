@@ -287,6 +287,28 @@ public class ApplicationsState {
     final ArrayList<Session> mActiveSessions = new ArrayList<Session>();
 
     /**
+     * Releases the member variables in ApplicationsState
+     */
+    public void releaseApplicationState() {
+        synchronized (mEntriesMap) {
+            releaseSessions(mSessions);
+            mEntriesMap.clear();
+            mAppEntries.clear();
+            if (mApplications != null) {
+                mApplications.clear();
+            }
+        }
+    }
+
+    private void releaseSessions(ArrayList<Session> sessions) {
+        if (sessions == null) return;
+        while (!sessions.isEmpty()) {
+            sessions.get(0).release();
+        }
+        sessions.clear();
+    }
+
+    /**
      * Receives notifications when applications are added/removed.
      */
     private class PackageIntentReceiver extends BroadcastReceiver {
