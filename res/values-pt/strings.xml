@@ -1642,7 +1642,7 @@
     <string name="show_hw_screen_updates_summary" msgid="1115593565980196197">"Piscar visualizações em janelas ao desenhar c/GPU"</string>
     <string name="show_hw_layers_updates" msgid="5645728765605699821">"Atual. camad. de hardware"</string>
     <string name="show_hw_layers_updates_summary" msgid="5296917233236661465">"Piscar camadas de hardware em verde ao atualizar"</string>
-    <string name="show_hw_overdraw" msgid="1136884304711318251">"Mostrar overdraw da CPU"</string>
+    <string name="show_hw_overdraw" msgid="1136884304711318251">"Mostrar overdraw da GPU"</string>
     <string name="show_hw_overdraw_summary" msgid="4295714000923082647">"Melhor p/ pior: azul, verde, verm. claro, vermelho"</string>
     <string name="disable_overlays" msgid="2074488440505934665">"Desativar sobreposição HW"</string>
     <string name="disable_overlays_summary" msgid="3578941133710758592">"Sempre usar a GPU para composição de tela"</string>
