@@ -1285,6 +1285,8 @@
     <string name="wifi_menu_more_options">More options</string>
     <!-- Menu option to do WPS Pin Entry [CHAR LIMIT=25]-->
     <string name="wifi_menu_wps_pin">WPS Pin Entry</string>
+    <!-- Menu option to do WPS NFC Entry [CHAR LIMIT=25]-->
+    <string name="wifi_menu_wps_nfc">WPS NFC Entry</string>
     <!-- Menu option to launch Wi-Fi Direct settings [CHAR LIMIT=20]-->
     <string name="wifi_menu_p2p">Wi-Fi Direct</string>
     <!-- Menu option to scan Wi-Fi networks -->
@@ -4395,4 +4397,16 @@
     <string name="cell_broadcast_settings">Cell broadcasts</string>
     <!-- Cell Broadcast settings description [CHAR LIMIT=100] -->
     <string name="cell_broadcast_settings_summary">Select the types of emergency alerts to display.</string>
+    <string name="wifi_wps_config">WPS</string>
+    <string name="wps_nfc_check_to_enable">Enable WPS NFC</string>
+    <string name="wifi_wps_onstart_wps_starting">WPS is starting!</string>
+    <string name="wifi_wps_onstart_wps_require_tag">TAG detecting...</string>
+    <string name="wifi_wps_tag_not_invalid">The TAG is invalid!</string>
+    <string name="wifi_wps_tag_not_writeable">The TAG is not writeable!</string>
+    <string name="wifi_wps_tag_write_success">Success!</string>
+    <string name="wifi_wps_tag_write_fail">Fail to write! Please retry.</string>
+    <string name="wifi_wps_oob_pwd_start">Please put the TAG close to your AP BEFORE the time bar ends.</string>
+    <string name="wps_fail_nfc_is_disabled"> NFC is disabled!</string>
+    <string name="wps_fail_title"> Fail to start WPS!</string>
+    <string name="wps_go_to_set_nfc">Go to set NFC</string>
 </resources>

@@ -64,6 +64,7 @@ public class WpsDialog extends AlertDialog {
 
     private Context mContext;
     private Handler mHandler = new Handler();
+    public static final String WPS_OOB_READY_ACTION = "com.android.settings.wifi.WpsDialog.WpsOobReady";
 
     private enum DialogState {
         WPS_INIT,
@@ -83,7 +84,18 @@ public class WpsDialog extends AlertDialog {
             public void onStartSuccess(String pin) {
                 if (pin != null) {
                     updateDialog(DialogState.WPS_START, String.format(
-                            mContext.getString(R.string.wifi_wps_onstart_pin), pin));
+                                mContext.getString(R.string.wifi_wps_onstart_pin), pin));
+                } else if ((mWpsSetup == WpsInfo.NFC_CRED) ||
+                           (mWpsSetup == WpsInfo.NFC_PWD)){
+                    updateDialog(DialogState.WPS_START,
+                            mContext.getString(R.string.wifi_wps_onstart_wps_require_tag));
+                    Intent intent = new Intent(WPS_OOB_READY_ACTION);
+                    intent.addFlags(Intent.FLAG_RECEIVER_REGISTERED_ONLY);
+
+                    /* Note: Sent Sticky Broadcast here. Sometimes WpsNfcActivity is not ready */
+                    /* and would miss this message. WpsNfcActivity would remove this sticky */
+                    /* broadcast after receive it. */
+                    mContext.sendStickyBroadcast(intent);
                 } else {
                     updateDialog(DialogState.WPS_START, mContext.getString(
                             R.string.wifi_wps_onstart_pbc));
@@ -118,8 +130,6 @@ public class WpsDialog extends AlertDialog {
         }
 
         mWpsListener = new WpsListener();
-
-
         mFilter = new IntentFilter();
         mFilter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
         mReceiver = new BroadcastReceiver() {
@@ -169,7 +179,6 @@ public class WpsDialog extends AlertDialog {
             @Override
             public void run() {
                 mHandler.post(new Runnable() {
-
                     @Override
                     public void run() {
                         mTimeoutBar.incrementProgressBy(1);
@@ -201,6 +210,10 @@ public class WpsDialog extends AlertDialog {
         }
     }
 
+    public void updateMsg(String msg) {
+        mTextView.setText(msg);
+    }
+
     private void updateDialog(final DialogState state, final String msg) {
         if (mDialogState.ordinal() >= state.ordinal()) {
             //ignore.
@@ -230,7 +243,7 @@ public class WpsDialog extends AlertDialog {
                     mTextView.setText(msg);
                 }
             });
-   }
+    }
 
     private void handleEvent(Context context, Intent intent) {
         String action = intent.getAction();
