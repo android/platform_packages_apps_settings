@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "NCBpofa0",
+        "filename": "src/com/android/settings/wifi/WifiApDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-12-19T12:44:16Z",
+      "side": 1,
+      "message": "Static field names start with s.",
+      "revId": "78166466f046fe20871caf8db8373a2fae2607b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
