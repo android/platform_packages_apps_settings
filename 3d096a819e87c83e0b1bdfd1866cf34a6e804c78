@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "NCFpF1UQ",
+        "filename": "src/com/android/settings/inputmethod/UserDictionaryAddWordActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-12-19T11:55:51Z",
+      "side": 1,
+      "message": "Unused import",
+      "revId": "3d096a819e87c83e0b1bdfd1866cf34a6e804c78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "NCDpKIVU",
+        "filename": "src/com/android/settings/inputmethod/UserDictionaryAddWordContents.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-12-19T11:55:51Z",
+      "side": 1,
+      "message": "Does not really needed to be a \u0027private\u0027",
+      "revId": "3d096a819e87c83e0b1bdfd1866cf34a6e804c78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "NCBpPXWU",
+        "filename": "src/com/android/settings/inputmethod/UserDictionaryAddWordFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-12-19T11:55:51Z",
+      "side": 1,
+      "message": "Unused import",
+      "revId": "3d096a819e87c83e0b1bdfd1866cf34a6e804c78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
