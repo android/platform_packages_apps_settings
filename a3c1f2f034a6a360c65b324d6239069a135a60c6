@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "NCHqWWa8",
+        "filename": "src/com/android/settings/deviceinfo/Memory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-12-19T13:07:13Z",
+      "side": 1,
+      "message": "Static field names start with s",
+      "revId": "a3c1f2f034a6a360c65b324d6239069a135a60c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "NCFqbldM",
+        "filename": "src/com/android/settings/deviceinfo/Memory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-12-19T13:07:13Z",
+      "side": 1,
+      "message": "Why error level logging?",
+      "revId": "a3c1f2f034a6a360c65b324d6239069a135a60c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "NCDqg4fc",
+        "filename": "src/com/android/settings/deviceinfo/Memory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-12-19T13:07:13Z",
+      "side": 1,
+      "message": "Unused local variable?",
+      "revId": "a3c1f2f034a6a360c65b324d6239069a135a60c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "NCPqpSeI",
+        "filename": "src/com/android/settings/deviceinfo/Memory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-12-19T13:07:13Z",
+      "side": 1,
+      "message": "Enclose with braces.\nAlso, what should be the action if the conditions are not satisfied?",
+      "revId": "a3c1f2f034a6a360c65b324d6239069a135a60c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
