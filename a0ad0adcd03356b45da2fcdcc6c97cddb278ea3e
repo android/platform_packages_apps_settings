@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "NCHp-eV0",
+        "filename": "src/com/android/settings/deviceinfo/StorageVolumePreferenceCategory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-12-19T13:23:11Z",
+      "side": 1,
+      "message": "Logically, checking if storage is internal should come prior to calling isStorageLow()",
+      "revId": "a0ad0adcd03356b45da2fcdcc6c97cddb278ea3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
