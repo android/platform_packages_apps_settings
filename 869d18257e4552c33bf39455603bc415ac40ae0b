@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "NCJo6TcQ",
+        "filename": "src/com/android/settings/applications/InstalledAppDetails.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1011,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2012-12-19T12:29:24Z",
+      "side": 1,
+      "message": "What should be the action if the activity is null?",
+      "revId": "869d18257e4552c33bf39455603bc415ac40ae0b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
