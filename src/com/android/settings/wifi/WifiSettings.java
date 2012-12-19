@@ -100,6 +100,7 @@ public class WifiSettings extends SettingsPreferenceFragment
     private static final int MENU_ID_CONNECT = Menu.FIRST + 6;
     private static final int MENU_ID_FORGET = Menu.FIRST + 7;
     private static final int MENU_ID_MODIFY = Menu.FIRST + 8;
+    private static final int MENU_ID_WPS_NFC = Menu.FIRST + 9;
 
     private static final int WIFI_DIALOG_ID = 1;
     private static final int WPS_PBC_DIALOG_ID = 2;
@@ -123,6 +124,7 @@ public class WifiSettings extends SettingsPreferenceFragment
     private WifiManager.ActionListener mSaveListener;
     private WifiManager.ActionListener mForgetListener;
     private boolean mP2pSupported;
+    private boolean mNfcSupported;
 
 
     private WifiEnabler mWifiEnabler;
@@ -274,6 +276,7 @@ public class WifiSettings extends SettingsPreferenceFragment
         super.onActivityCreated(savedInstanceState);
 
         mP2pSupported = getPackageManager().hasSystemFeature(PackageManager.FEATURE_WIFI_DIRECT);
+        mNfcSupported = getPackageManager().hasSystemFeature(PackageManager.FEATURE_NFC);
         mWifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
 
         mConnectListener = new WifiManager.ActionListener() {
@@ -450,6 +453,11 @@ public class WifiSettings extends SettingsPreferenceFragment
             menu.add(Menu.NONE, MENU_ID_WPS_PIN, 0, R.string.wifi_menu_wps_pin)
                     .setEnabled(wifiIsEnabled)
                     .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+            if (mNfcSupported) {
+                menu.add(Menu.NONE, MENU_ID_WPS_NFC, 0, R.string.wifi_menu_wps_nfc)
+                        .setEnabled(wifiIsEnabled)
+                        .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+            }
             if (mP2pSupported) {
                 menu.add(Menu.NONE, MENU_ID_P2P, 0, R.string.wifi_menu_p2p)
                         .setEnabled(wifiIsEnabled)
@@ -496,6 +504,9 @@ public class WifiSettings extends SettingsPreferenceFragment
                 return true;
             case MENU_ID_WPS_PIN:
                 showDialog(WPS_PIN_DIALOG_ID);
+                return true;
+            case MENU_ID_WPS_NFC:
+                requestNfcWrite(WpsInfo.NFC_PWD);
                 return true;
             case MENU_ID_SCAN:
                 if (mWifiManager.isWifiEnabled()) {
@@ -688,6 +699,18 @@ public class WifiSettings extends SettingsPreferenceFragment
                && telephonyManager.getSimState() != TelephonyManager.SIM_STATE_READY
                && telephonyManager.getSimState() != TelephonyManager.SIM_STATE_UNKNOWN;
    }
+
+    private void requestNfcWrite(int wpsNfcMethod) {
+        final Activity activity = getActivity();
+        final Context context = activity.getApplicationContext();
+        Intent dialogIntent = new Intent(context, WpsNfcActivity.class);
+
+        dialogIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        dialogIntent.putExtra(WpsNfcActivity.EXTRA_WPS_NFC_METHOD, wpsNfcMethod);
+
+        context.startActivity(dialogIntent);
+    }
 
     /**
      * Shows the latest access points available with supplimental information like

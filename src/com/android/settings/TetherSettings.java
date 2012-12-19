@@ -18,6 +18,14 @@ package com.android.settings;
 
 import com.android.settings.wifi.WifiApEnabler;
 import com.android.settings.wifi.WifiApDialog;
+import com.android.settings.wifi.WpsDialog;
+import android.net.wifi.WpsInfo;
+
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.content.pm.PackageManager;
+
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -50,6 +58,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.Locale;
+import com.android.settings.wifi.WpsNfcActivity;
 
 /*
  * Displays preferences for Tethering.
@@ -63,6 +72,7 @@ public class TetherSettings extends SettingsPreferenceFragment
     private static final String ENABLE_BLUETOOTH_TETHERING = "enable_bluetooth_tethering";
 
     private static final int DIALOG_AP_SETTINGS = 1;
+    private static final int MENU_ID_WPS_NFC = Menu.FIRST;
 
     private WebView mView;
     private CheckBoxPreference mUsbTether;
@@ -107,6 +117,7 @@ public class TetherSettings extends SettingsPreferenceFragment
     /* Stores the package name and the class name of the provisioning app */
     private String[] mProvisionApp;
     private static final int PROVISION_REQUEST = 0;
+    private boolean mNfcSupported;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -164,6 +175,8 @@ public class TetherSettings extends SettingsPreferenceFragment
                 com.android.internal.R.array.config_mobile_hotspot_provision_app);
 
         mView = new WebView(activity);
+        mNfcSupported = getPackageManager().hasSystemFeature(PackageManager.FEATURE_NFC);
+        setHasOptionsMenu(true);
     }
 
     private void initWifiTethering() {
@@ -199,8 +212,8 @@ public class TetherSettings extends SettingsPreferenceFragment
 
     @Override
     public Dialog onCreateDialog(int id) {
+        final Activity activity = getActivity();
         if (id == DIALOG_AP_SETTINGS) {
-            final Activity activity = getActivity();
             mDialog = new WifiApDialog(activity, this, mWifiConfig);
             return mDialog;
         }
@@ -254,6 +267,19 @@ public class TetherSettings extends SettingsPreferenceFragment
                     }
                 }
                 updateState();
+            }else if (action.equals(WifiManager.WIFI_AP_STATE_CHANGED_ACTION)) {
+                int apState =  intent.getIntExtra(WifiManager.EXTRA_WIFI_AP_STATE, WifiManager.WIFI_AP_STATE_FAILED);
+                switch (apState) {
+                    case WifiManager.WIFI_AP_STATE_ENABLED :
+                    case WifiManager.WIFI_AP_STATE_DISABLED :
+                        /* we need to call invalidateOptionsMenu()
+                         *to update the Menu when AP state changed */
+                        getActivity().invalidateOptionsMenu();
+                        break;
+                    default:
+                        /* do nothing */
+                        break;
+                }
             }
         }
     }
@@ -281,6 +307,7 @@ public class TetherSettings extends SettingsPreferenceFragment
 
         filter = new IntentFilter();
         filter.addAction(BluetoothAdapter.ACTION_STATE_CHANGED);
+        filter.addAction(WifiManager.WIFI_AP_STATE_CHANGED_ACTION);
         activity.registerReceiver(mTetherChangeReceiver, filter);
 
         if (intent != null) mTetherChangeReceiver.onReceive(activity, intent);
@@ -589,5 +616,37 @@ public class TetherSettings extends SettingsPreferenceFragment
     @Override
     public int getHelpResource() {
         return R.string.help_url_tether;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        final boolean wifiApIsEnabled = mWifiManager.isWifiApEnabled();
+
+        if (mNfcSupported && mWifiConfig.wpsNfcEnabled) {
+            menu.add(Menu.NONE, MENU_ID_WPS_NFC, 0, R.string.wifi_menu_wps_nfc)
+                .setEnabled(wifiApIsEnabled)
+                .setShowAsAction(MenuItem.SHOW_AS_ACTION_NEVER);
+        }
+        super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case MENU_ID_WPS_NFC:
+                requestNfcWrite(WpsInfo.NFC_CRED);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void requestNfcWrite(int wpsNfcMethod) {
+        final Activity activity = getActivity();
+        final Context context = activity.getApplicationContext();
+        Intent dialogIntent = new Intent(context, WpsNfcActivity.class);
+
+        dialogIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        dialogIntent.putExtra(WpsNfcActivity.EXTRA_WPS_NFC_METHOD, wpsNfcMethod);
+        context.startActivity(dialogIntent);
     }
 }

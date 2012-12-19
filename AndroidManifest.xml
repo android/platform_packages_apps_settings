@@ -1437,6 +1437,13 @@
             android:launchMode="singleTop"
             android:theme="@style/CryptKeeperBlankTheme"
         />
+        <activity android:name=".wifi.WpsNfcActivity"
+            android:launchMode="singleTop"
+            android:finishOnCloseSystemDialogs="true"
+            android:excludeFromRecents="true"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:noHistory="true"
+        />
 
         <!-- Pseudo-activity used to provide an intent-filter entry point to encryption settings -->
         <activity android:name="Settings$CryptKeeperSettingsActivity"

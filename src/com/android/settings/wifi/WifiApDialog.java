@@ -32,6 +32,8 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.content.pm.PackageManager;
+
 
 import com.android.settings.R;
 
@@ -54,6 +56,8 @@ public class WifiApDialog extends AlertDialog implements View.OnClickListener,
     private TextView mSsid;
     private int mSecurityTypeIndex = OPEN_INDEX;
     private EditText mPassword;
+    private boolean mNfcSupported;
+    private CheckBox mWpsCb;
 
     WifiConfiguration mWifiConfig;
 
@@ -87,6 +91,7 @@ public class WifiApDialog extends AlertDialog implements View.OnClickListener,
          * make things consistent and clean it up
          */
         config.SSID = mSsid.getText().toString();
+        config.wpsNfcEnabled = mWpsCb.isChecked();
 
         switch (mSecurityTypeIndex) {
             case OPEN_INDEX:
@@ -124,11 +129,14 @@ public class WifiApDialog extends AlertDialog implements View.OnClickListener,
         setInverseBackgroundForced(true);
 
         Context context = getContext();
+        mNfcSupported = context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_NFC);
 
         setTitle(R.string.wifi_tether_configure_ap_text);
         mView.findViewById(R.id.type).setVisibility(View.VISIBLE);
         mSsid = (TextView) mView.findViewById(R.id.ssid);
         mPassword = (EditText) mView.findViewById(R.id.password);
+        mWpsCb = (CheckBox) mView.findViewById(R.id.wps_nfc_cb);
+        mWpsCb.setChecked(mWifiConfig.wpsNfcEnabled);
 
         setButton(BUTTON_SUBMIT, context.getString(R.string.wifi_save), mListener);
         setButton(DialogInterface.BUTTON_NEGATIVE,
@@ -151,6 +159,7 @@ public class WifiApDialog extends AlertDialog implements View.OnClickListener,
         super.onCreate(savedInstanceState);
 
         showSecurityFields();
+        showWpsFields();
         validate();
     }
 
@@ -198,5 +207,11 @@ public class WifiApDialog extends AlertDialog implements View.OnClickListener,
             return;
         }
         mView.findViewById(R.id.fields).setVisibility(View.VISIBLE);
+    }
+
+    private void showWpsFields() {
+        if (mNfcSupported) {
+            mView.findViewById(R.id.wps).setVisibility(View.VISIBLE);
+        }
     }
 }

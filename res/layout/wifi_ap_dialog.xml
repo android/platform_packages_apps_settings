@@ -97,5 +97,24 @@
                     android:layout_height="wrap_content"
                     android:text="@string/wifi_show_password" />
         </LinearLayout>
+        <LinearLayout android:id="@+id/wps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+            <TextView
+                    style="?android:attr/textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dip"
+                    android:text="@string/wifi_wps_config" />
+
+            <CheckBox android:id="@+id/wps_nfc_cb"
+                    style="?android:attr/textAppearanceSmall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/wps_nfc_check_to_enable" />
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>
