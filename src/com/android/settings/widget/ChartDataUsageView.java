@@ -128,8 +128,8 @@ public class ChartDataUsageView extends ChartView {
         mSweepWarning.addOnSweepListener(mVertListener);
         mSweepLimit.addOnSweepListener(mVertListener);
 
-        mSweepWarning.setDragInterval(5 * MB_IN_BYTES);
-        mSweepLimit.setDragInterval(5 * MB_IN_BYTES);
+        mSweepWarning.setDragInterval(1 * MB_IN_BYTES);
+        mSweepLimit.setDragInterval(1 * MB_IN_BYTES);
 
         // tell everyone about our axis
         mGrid.init(mHoriz, mVert);
