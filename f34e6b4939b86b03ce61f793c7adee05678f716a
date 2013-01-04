@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "Noh3GxPo",
+        "filename": "res/values-sv/strings.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1018026
+      },
+      "writtenOn": "2013-01-04T14:52:04Z",
+      "side": 1,
+      "message": "Please make sure source of translated string is corrected, otherwise next import will overwrite this change.\n\nhttps://tc.corp.google.com/btviewer/edittranslation?project\u003dAndroidSettings\u0026msgId\u003d1136191511238508967\u0026language\u003dsv",
+      "revId": "f34e6b4939b86b03ce61f793c7adee05678f716a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
