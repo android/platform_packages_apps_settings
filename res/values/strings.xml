@@ -1737,6 +1737,10 @@
     <string name="ring_volume_title">Ringer volume</string>
     <!-- Sound settings screen, setting option name checkbox -->
     <string name="vibrate_in_silent_title">Vibrate when silent</string>
+    <!-- Sound settings screen, setting option name checkbox. About increasing ringtone
+         for incoming call. Ringtone will be increased if call is not answered. [CHAR LIMIT=30] -->
+    <string name="increasing_ringtone_title">Increasing ringtone</string>
+
     <!-- Sound settings screen, setting option name -->
     <string name="notification_sound_title">Default notification sound</string>
     <!-- Sound settings screen, notification light repeat pulsing title -->

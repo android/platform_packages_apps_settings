@@ -60,6 +60,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final int FALLBACK_EMERGENCY_TONE_VALUE = 0;
 
     private static final String KEY_VIBRATE = "vibrate_when_ringing";
+    private static final String KEY_INCREASING = "increasing_ringtone";
     private static final String KEY_RING_VOLUME = "ring_volume";
     private static final String KEY_MUSICFX = "musicfx";
     private static final String KEY_DTMF_TONE = "dtmf_tone";
@@ -85,6 +86,7 @@ public class SoundSettings extends SettingsPreferenceFragment implements
     private static final int MSG_UPDATE_NOTIFICATION_SUMMARY = 2;
 
     private CheckBoxPreference mVibrateWhenRinging;
+    private CheckBoxPreference mIncreasingRingtone;
     private CheckBoxPreference mDtmfTone;
     private CheckBoxPreference mSoundEffects;
     private CheckBoxPreference mHapticFeedback;
@@ -154,6 +156,11 @@ public class SoundSettings extends SettingsPreferenceFragment implements
         mVibrateWhenRinging.setPersistent(false);
         mVibrateWhenRinging.setChecked(Settings.System.getInt(resolver,
                 Settings.System.VIBRATE_WHEN_RINGING, 0) != 0);
+
+        mIncreasingRingtone = (CheckBoxPreference) findPreference(KEY_INCREASING);
+        mIncreasingRingtone.setPersistent(false);
+        mIncreasingRingtone.setChecked(Settings.System.getInt(resolver,
+                Settings.System.INCREASING_RINGTONE, 0) != 0);
 
         mDtmfTone = (CheckBoxPreference) findPreference(KEY_DTMF_TONE);
         mDtmfTone.setPersistent(false);
@@ -279,7 +286,10 @@ public class SoundSettings extends SettingsPreferenceFragment implements
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
-        if (preference == mVibrateWhenRinging) {
+        if (preference == mIncreasingRingtone) {
+            Settings.System.putInt(getContentResolver(), Settings.System.INCREASING_RINGTONE,
+                    mIncreasingRingtone.isChecked() ? 1 : 0);
+        } else if (preference == mVibrateWhenRinging) {
             Settings.System.putInt(getContentResolver(), Settings.System.VIBRATE_WHEN_RINGING,
                     mVibrateWhenRinging.isChecked() ? 1 : 0);
         } else if (preference == mDtmfTone) {

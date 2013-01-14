@@ -46,6 +46,11 @@
             android:ringtoneType="ringtone" />
 
     <CheckBoxPreference
+         android:key="increasing_ringtone"
+         android:title="@string/increasing_ringtone_title"
+         android:persistent="false" />
+
+    <CheckBoxPreference
          android:key="vibrate_when_ringing"
          android:title="@string/vibrate_when_ringing_title"
          android:persistent="false" />
