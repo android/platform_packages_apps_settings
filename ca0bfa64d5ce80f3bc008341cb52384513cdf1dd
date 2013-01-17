@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "OZkbCg.k",
+        "filename": "src/com/android/settings/deviceinfo/MiscFilesHandler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-01-17T17:25:55Z",
+      "side": 1,
+      "message": "you don\u0027t actually need both these tests. File.list() will return null if this isn\u0027t a directory, and you need the null test anyway, so you can get rid of this one.",
+      "revId": "ca0bfa64d5ce80f3bc008341cb52384513cdf1dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
