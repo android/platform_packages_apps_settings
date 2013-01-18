@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "OZ8d75Go",
+        "filename": "src/com/android/settings/BatteryInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-01-18T17:44:18Z",
+      "side": 1,
+      "message": "i\u0027d be tempted to put the Math.abs on the previous line with a comment something like \"avoid -1.-2\".\n\n(do we really need to avoid the conversion to float here? how often does this get called? if we\u0027d just used String.format we\u0027d never have had this bug.)",
+      "revId": "3f5290cc2a0b9ea53c3ceb2ff76ab9f3a4c440d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
