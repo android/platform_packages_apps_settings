@@ -371,9 +371,10 @@ public class WifiP2pSettings extends SettingsPreferenceFragment
                         config.wps.setup = WpsInfo.PBC;
                     } else if (mSelectedWifiPeer.device.wpsKeypadSupported()) {
                         config.wps.setup = WpsInfo.KEYPAD;
-                    } else {
+                    } else if (mSelectedWifiPeer.device.wpsDisplaySupported()) {
                         config.wps.setup = WpsInfo.DISPLAY;
-                    }
+                    } else
+                        config.wps.setup = WpsInfo.PBC;
                 }
 
                 mWifiP2pManager.connect(mChannel, config,
