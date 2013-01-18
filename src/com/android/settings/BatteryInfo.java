@@ -67,7 +67,7 @@ public class BatteryInfo extends Activity {
      */
     private final String tenthsToFixedString(int x) {
         int tens = x / 10;
-        return Integer.toString(tens) + "." + (x - 10 * tens);
+        return Integer.toString(tens) + "." + Math.abs(x - 10 * tens);
     }
 
    /**
