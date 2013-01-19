@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "OoGIsFp0",
+        "filename": "src/com/android/settings/wifi/WifiConfigInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2013-01-19T13:02:03Z",
+      "side": 0,
+      "message": "Never used locally",
+      "revId": "f141594c0507dccd26e876bf2cd40ba15a34d68b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "OoIIpGo4",
+        "filename": "src/com/android/settings/wifi/WifiConfigInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2013-01-19T13:02:03Z",
+      "side": 0,
+      "message": "IMHO, not a useful comment.",
+      "revId": "f141594c0507dccd26e876bf2cd40ba15a34d68b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
