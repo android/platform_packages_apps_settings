@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "OqRlYKyA",
+        "filename": "src/com/android/settings/inputmethod/UserDictionaryAddWordContents.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2013-01-21T04:40:13Z",
+      "side": 1,
+      "message": "I actually meant, no need for this class level variable; init one where it is used.",
+      "revId": "658da62e6f14960b75fed7dd99f752221801bf93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
