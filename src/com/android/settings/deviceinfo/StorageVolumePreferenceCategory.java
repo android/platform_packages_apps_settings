@@ -387,6 +387,10 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
         measure();
     }
 
+    public void onMediaScannerScanFile() {
+        measure();
+    }
+
     public void onCacheCleared() {
         measure();
     }
