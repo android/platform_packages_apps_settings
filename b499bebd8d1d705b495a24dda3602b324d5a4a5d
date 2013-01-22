@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "OvIwFy3c",
+        "filename": "res/values/arrays.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1003344
+      },
+      "writtenOn": "2013-01-22T23:00:31Z",
+      "side": 1,
+      "message": "since you are now referring to another resource, can you remove the Do not translate and translatable entries here ?",
+      "revId": "b499bebd8d1d705b495a24dda3602b324d5a4a5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
