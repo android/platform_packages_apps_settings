@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "OoGK2Vow",
+        "filename": "src/com/android/settings/deviceinfo/Memory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2013-01-22T04:55:07Z",
+      "side": 1,
+      "message": "Adding Intent.ACTION_MEDIA_SCANNER_SCAN_FILE to the above intentFilter should be fine (instead of re-initializing it).",
+      "revId": "9ed9d436d74bc483b4f6f0ff4edcbd9138344a54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
