@@ -28,6 +28,7 @@ import android.content.pm.IPackageDataObserver;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.hardware.usb.UsbManager;
+import android.mtp.MtpStorage;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.IBinder;
@@ -127,6 +128,7 @@ public class Memory extends SettingsPreferenceFragment {
 
         intentFilter = new IntentFilter();
         intentFilter.addAction(UsbManager.ACTION_USB_STATE);
+        intentFilter.addAction(MtpStorage.ACTION_MTP_STORAGE_STATE);
         getActivity().registerReceiver(mMediaScannerReceiver, intentFilter);
 
         for (StorageVolumePreferenceCategory category : mCategories) {
@@ -255,6 +257,10 @@ public class Memory extends SettingsPreferenceFragment {
             } else if (action.equals(Intent.ACTION_MEDIA_SCANNER_FINISHED)) {
                 for (StorageVolumePreferenceCategory category : mCategories) {
                     category.onMediaScannerFinished();
+                }
+            } else if (action.equals(MtpStorage.ACTION_MTP_STORAGE_STATE)) {
+                for (StorageVolumePreferenceCategory category : mCategories) {
+                    category.onMtpStorageStateChanged();
                 }
             }
         }
