@@ -387,6 +387,10 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
         measure();
     }
 
+    public void onMtpStorageStateChanged() {
+        measure();
+    }
+
     public void onCacheCleared() {
         measure();
     }
