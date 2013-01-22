@@ -129,6 +129,10 @@ public class Memory extends SettingsPreferenceFragment {
         intentFilter.addAction(UsbManager.ACTION_USB_STATE);
         getActivity().registerReceiver(mMediaScannerReceiver, intentFilter);
 
+        intentFilter = new IntentFilter();
+        intentFilter.addAction(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
+        getActivity().registerReceiver(mMediaScannerReceiver, intentFilter);
+
         for (StorageVolumePreferenceCategory category : mCategories) {
             category.onResume();
         }
@@ -255,6 +259,10 @@ public class Memory extends SettingsPreferenceFragment {
             } else if (action.equals(Intent.ACTION_MEDIA_SCANNER_FINISHED)) {
                 for (StorageVolumePreferenceCategory category : mCategories) {
                     category.onMediaScannerFinished();
+                }
+            } else if (action.equals(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE)) {
+                for (StorageVolumePreferenceCategory category : mCategories) {
+                    category.onMediaScannerScanFile();
                 }
             }
         }
