@@ -16,6 +16,24 @@
       "revId": "9ed9d436d74bc483b4f6f0ff4edcbd9138344a54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "OqwAq7Ow",
+        "filename": "src/com/android/settings/deviceinfo/Memory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1016953
+      },
+      "writtenOn": "2013-01-22T06:02:20Z",
+      "side": 1,
+      "message": "how about remove \"getActivity().registerReceiver(mMediaScannerReceiver, intentFilter);\", too?",
+      "parentUuid": "OoGK2Vow",
+      "revId": "9ed9d436d74bc483b4f6f0ff4edcbd9138344a54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
