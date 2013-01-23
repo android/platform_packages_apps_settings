@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "OvJAd2cs",
+        "filename": "res/values/arrays.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1004424
+      },
+      "writtenOn": "2013-01-23T08:12:53Z",
+      "side": 1,
+      "message": "Will upload another patch set, this should not be modified.",
+      "revId": "19b9f0ebe427ed6112762c4410c65c3874e4497a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
