@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "OwtuAhFk",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1001401
+      },
+      "writtenOn": "2013-01-25T23:36:56Z",
+      "side": 1,
+      "message": "Use the same Change-Id for all dependent changes (pick one of them as the \"master\" doesn\u0027t matter which one). Although we don\u0027t have atomic commits the auto verifier will test all changes with the same Change-Id together, hopefully allow it to pass.",
+      "revId": "f2a460c39e1a03aeed253a7cb1b9ef6e6d180eda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
