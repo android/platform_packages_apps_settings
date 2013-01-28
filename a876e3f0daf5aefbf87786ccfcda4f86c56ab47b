@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "O2DjnCww",
+        "filename": "src/com/android/settings/accounts/AccountSyncSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2013-01-28T18:06:18Z",
+      "side": 1,
+      "message": "You should also check that getActivity() doesn\u0027t return null.",
+      "revId": "a876e3f0daf5aefbf87786ccfcda4f86c56ab47b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
