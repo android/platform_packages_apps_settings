@@ -16,6 +16,40 @@
       "revId": "f2a460c39e1a03aeed253a7cb1b9ef6e6d180eda",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "O9Dru9q0",
+        "filename": "src/com/android/settings/ApnSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1001401
+      },
+      "writtenOn": "2013-01-29T22:37:59Z",
+      "side": 1,
+      "message": "Why, when and who should be setting this, I don\u0027t see it in our code?\n\nWhat devices have NV when in EHRPD, can\u0027t we have those devices report the operator numeric via RIL_REQUEST_OPERATOR",
+      "revId": "f2a460c39e1a03aeed253a7cb1b9ef6e6d180eda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "O9NrN8jA",
+        "filename": "src/com/android/settings/ApnSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1001401
+      },
+      "writtenOn": "2013-01-29T22:37:59Z",
+      "side": 1,
+      "message": "Why introduce yet another OPERATOR_NUMERIC why not use PROPERTY_ICC_OPERATOR_NUMERIC?",
+      "revId": "f2a460c39e1a03aeed253a7cb1b9ef6e6d180eda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
