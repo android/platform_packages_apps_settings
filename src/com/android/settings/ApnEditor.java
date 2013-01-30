@@ -85,6 +85,10 @@ public class ApnEditor extends PreferenceActivity
 
     private String mCurMnc;
     private String mCurMcc;
+    private String mSpn;
+    private String mImsi;
+    private String mGid;
+    private String mMvnoType;
 
     private Uri mUri;
     private Cursor mCursor;
@@ -115,7 +119,11 @@ public class ApnEditor extends PreferenceActivity
             Telephony.Carriers.PROTOCOL, // 16
             Telephony.Carriers.CARRIER_ENABLED, // 17
             Telephony.Carriers.BEARER, // 18
-            Telephony.Carriers.ROAMING_PROTOCOL // 19
+            Telephony.Carriers.ROAMING_PROTOCOL, // 19
+            Telephony.Carriers.SPN,         // 20
+            Telephony.Carriers.IMSI,        // 21
+            Telephony.Carriers.GID,         // 22
+            Telephony.Carriers.MVNO_TYPE    // 23
     };
 
     private static final int ID_INDEX = 0;
@@ -137,6 +145,10 @@ public class ApnEditor extends PreferenceActivity
     private static final int CARRIER_ENABLED_INDEX = 17;
     private static final int BEARER_INDEX = 18;
     private static final int ROAMING_PROTOCOL_INDEX = 19;
+    private static final int SPN_INDEX = 20;
+    private static final int IMSI_INDEX = 21;
+    private static final int GID_INDEX = 22;
+    private static final int MVNO_TYPE_INDEX = 23;
 
 
     @Override
@@ -175,6 +187,11 @@ public class ApnEditor extends PreferenceActivity
         mBearer.setOnPreferenceChangeListener(this);
 
         mRes = getResources();
+
+        mSpn = "";
+        mImsi = "";
+        mGid = "";
+        mMvnoType = "";
 
         final Intent intent = getIntent();
         final String action = intent.getAction();
@@ -247,6 +264,10 @@ public class ApnEditor extends PreferenceActivity
             mMcc.setText(mCursor.getString(MCC_INDEX));
             mMnc.setText(mCursor.getString(MNC_INDEX));
             mApnType.setText(mCursor.getString(TYPE_INDEX));
+            mSpn = mCursor.getString(SPN_INDEX);
+            mImsi = mCursor.getString(IMSI_INDEX);
+            mGid = mCursor.getString(GID_INDEX);
+            mMvnoType = mCursor.getString(MVNO_TYPE_INDEX);
             if (mNewApn) {
                 String numeric =
                     SystemProperties.get(TelephonyProperties.PROPERTY_ICC_OPERATOR_NUMERIC);
@@ -261,6 +282,18 @@ public class ApnEditor extends PreferenceActivity
                     mMnc.setText(mnc);
                     mCurMnc = mnc;
                     mCurMcc = mcc;
+                }
+                // TODO: How can seperate MVNO operator.... and then set MVNO type and keys.
+                String mvno_type = SystemProperties.get("gsm.mvno.type", "");
+                if (mvno_type.equalsIgnoreCase("spn")) {
+                    mMvnoType = "spn";
+                    mSpn = SystemProperties.get("gsm.mvno.item", "");
+                } else if (mvno_type.equalsIgnoreCase("gid")) {
+                    mMvnoType = "gid";
+                    mGid = SystemProperties.get("gsm.mvno.item", "");
+                } else if (mvno_type.equalsIgnoreCase("imsi")) {
+                    mMvnoType = "imsi";
+                    mImsi = SystemProperties.get("gsm.mvno.item", "");
                 }
             }
             int authVal = mCursor.getInt(AUTH_TYPE_INDEX);
@@ -507,6 +540,11 @@ public class ApnEditor extends PreferenceActivity
         if (bearerVal != null) {
             values.put(Telephony.Carriers.BEARER, Integer.parseInt(bearerVal));
         }
+
+        values.put(Telephony.Carriers.SPN, mSpn);
+        values.put(Telephony.Carriers.IMSI, mImsi);
+        values.put(Telephony.Carriers.GID, mGid);
+        values.put(Telephony.Carriers.MVNO_TYPE, mMvnoType);
 
         getContentResolver().update(mUri, values, null, null);
 
