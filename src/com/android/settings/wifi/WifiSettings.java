@@ -835,7 +835,12 @@ public class WifiSettings extends SettingsPreferenceFragment
                     WifiManager.EXTRA_NEW_STATE);
             if (!mConnected.get() && SupplicantState.isHandshakeState(state)) {
                 updateConnectionState(WifiInfo.getDetailedStateOf(state));
-            }
+             } else {
+                 //supplicant state change from connecting to disconnected state
+                 //results in updation of netID in networkinfo to -1 in framework
+                 // this changes in networkinfo needs to be updated here.
+                 updateConnectionState(null);
+             }
         } else if (WifiManager.NETWORK_STATE_CHANGED_ACTION.equals(action)) {
             NetworkInfo info = (NetworkInfo) intent.getParcelableExtra(
                     WifiManager.EXTRA_NETWORK_INFO);
