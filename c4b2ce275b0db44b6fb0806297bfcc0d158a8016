@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "Pg7-ldwQ",
+        "filename": "src/com/android/settings/wifi/WifiSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1003344
+      },
+      "writtenOn": "2013-02-06T06:29:14Z",
+      "side": 1,
+      "message": "Can you please change comment as follows:\n\n// During a connect, we may have the supplicant\n// state change affect the detailed network state.\n// Make sure a lost connection is updated as well",
+      "revId": "c4b2ce275b0db44b6fb0806297bfcc0d158a8016",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
