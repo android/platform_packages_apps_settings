@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "PhfdGgFM",
+        "filename": "src/com/android/settings/wifi/p2p/WifiP2pSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1003344
+      },
+      "writtenOn": "2013-02-06T16:49:36Z",
+      "side": 1,
+      "message": "Rename group_formed to mLastGroupFormed and make it non static",
+      "revId": "94be3f878c5c833e99f25cfb94b93498dc12a644",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
