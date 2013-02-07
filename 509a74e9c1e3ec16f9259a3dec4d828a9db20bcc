@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "PlU2IGSs",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPairingRequest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1003957
+      },
+      "writtenOn": "2013-02-07T03:40:42Z",
+      "side": 1,
+      "message": "This is just wrong.  We\u0027ll end up keeping the screen on for some completely arbitrary timeout.",
+      "revId": "509a74e9c1e3ec16f9259a3dec4d828a9db20bcc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
