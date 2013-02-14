@@ -26,6 +26,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -160,9 +161,14 @@ public class ApnSettings extends PreferenceActivity implements
             + android.os.SystemProperties.get(TelephonyProperties.PROPERTY_ICC_OPERATOR_NUMERIC, "")
             + "\"";
 
-        Cursor cursor = getContentResolver().query(Telephony.Carriers.CONTENT_URI, new String[] {
-                "_id", "name", "apn", "type"}, where, null,
-                Telephony.Carriers.DEFAULT_SORT_ORDER);
+        Cursor cursor = null;
+        try {
+            cursor = getContentResolver().query(Telephony.Carriers.CONTENT_URI, new String[] {
+                    "_id", "name", "apn", "type"}, where, null,
+                    Telephony.Carriers.DEFAULT_SORT_ORDER);
+        } catch (SQLException e) {
+            return;
+        }
 
         PreferenceGroup apnList = (PreferenceGroup) findPreference("apn_list");
         apnList.removeAll();
