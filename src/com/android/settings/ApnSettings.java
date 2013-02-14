@@ -26,6 +26,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -160,47 +161,54 @@ public class ApnSettings extends PreferenceActivity implements
             + android.os.SystemProperties.get(TelephonyProperties.PROPERTY_ICC_OPERATOR_NUMERIC, "")
             + "\"";
 
-        Cursor cursor = getContentResolver().query(Telephony.Carriers.CONTENT_URI, new String[] {
-                "_id", "name", "apn", "type"}, where, null,
-                Telephony.Carriers.DEFAULT_SORT_ORDER);
-
-        PreferenceGroup apnList = (PreferenceGroup) findPreference("apn_list");
-        apnList.removeAll();
-
-        ArrayList<Preference> mmsApnList = new ArrayList<Preference>();
-
-        mSelectedKey = getSelectedApnKey();
-        cursor.moveToFirst();
-        while (!cursor.isAfterLast()) {
-            String name = cursor.getString(NAME_INDEX);
-            String apn = cursor.getString(APN_INDEX);
-            String key = cursor.getString(ID_INDEX);
-            String type = cursor.getString(TYPES_INDEX);
-
-            ApnPreference pref = new ApnPreference(this);
-
-            pref.setKey(key);
-            pref.setTitle(name);
-            pref.setSummary(apn);
-            pref.setPersistent(false);
-            pref.setOnPreferenceChangeListener(this);
-
-            boolean selectable = ((type == null) || !type.equals("mms"));
-            pref.setSelectable(selectable);
-            if (selectable) {
-                if ((mSelectedKey != null) && mSelectedKey.equals(key)) {
-                    pref.setChecked();
-                }
-                apnList.addPreference(pref);
-            } else {
-                mmsApnList.add(pref);
-            }
-            cursor.moveToNext();
+        Cursor cursor = null;
+        try {
+            cursor = getContentResolver().query(Telephony.Carriers.CONTENT_URI, new String[] {
+                    "_id", "name", "apn", "type"}, where, null,
+                    Telephony.Carriers.DEFAULT_SORT_ORDER);
+        } catch (SQLException e) {
+            Log.e(TAG, "got exception when querying: " + e);
         }
-        cursor.close();
 
-        for (Preference preference : mmsApnList) {
-            apnList.addPreference(preference);
+        if (cursor != null) {
+            PreferenceGroup apnList = (PreferenceGroup) findPreference("apn_list");
+            apnList.removeAll();
+
+            ArrayList<Preference> mmsApnList = new ArrayList<Preference>();
+
+            mSelectedKey = getSelectedApnKey();
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                String name = cursor.getString(NAME_INDEX);
+                String apn = cursor.getString(APN_INDEX);
+                String key = cursor.getString(ID_INDEX);
+                String type = cursor.getString(TYPES_INDEX);
+
+                ApnPreference pref = new ApnPreference(this);
+
+                pref.setKey(key);
+                pref.setTitle(name);
+                pref.setSummary(apn);
+                pref.setPersistent(false);
+                pref.setOnPreferenceChangeListener(this);
+
+                boolean selectable = ((type == null) || !type.equals("mms"));
+                pref.setSelectable(selectable);
+                if (selectable) {
+                    if ((mSelectedKey != null) && mSelectedKey.equals(key)) {
+                        pref.setChecked();
+                    }
+                    apnList.addPreference(pref);
+                } else {
+                    mmsApnList.add(pref);
+                }
+                cursor.moveToNext();
+            }
+            cursor.close();
+
+            for (Preference preference : mmsApnList) {
+                apnList.addPreference(preference);
+            }
         }
     }
 
@@ -330,10 +338,15 @@ public class ApnSettings extends PreferenceActivity implements
             switch (msg.what) {
                 case EVENT_RESTORE_DEFAULTAPN_START:
                     ContentResolver resolver = getContentResolver();
-                    resolver.delete(DEFAULTAPN_URI, null, null);                    
-                    mRestoreApnUiHandler
-                        .sendEmptyMessage(EVENT_RESTORE_DEFAULTAPN_COMPLETE);
-                    break;
+                    try {
+                        resolver.delete(DEFAULTAPN_URI, null, null);
+                    } catch (SQLException e) {
+                        Log.e(TAG, "got exception when restoring default apn: " + e);
+                    } finally {
+                        mRestoreApnUiHandler
+                            .sendEmptyMessage(EVENT_RESTORE_DEFAULTAPN_COMPLETE);
+                        break;
+                    }
             }
         }
     }
