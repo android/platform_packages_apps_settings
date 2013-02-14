@@ -16,6 +16,24 @@
       "revId": "ca714d8d0c11c904b25bc20a0a9b2f2cc8d78ad5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "P36-g1PQ",
+        "filename": "src/com/android/settings/SecuritySettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1002975
+      },
+      "writtenOn": "2013-02-14T20:17:59Z",
+      "side": 1,
+      "message": "The next change I\u0027ll have to use it for another check, so I thought I\u0027d just leave it like this.",
+      "parentUuid": "P3.8YDDU",
+      "revId": "ca714d8d0c11c904b25bc20a0a9b2f2cc8d78ad5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
