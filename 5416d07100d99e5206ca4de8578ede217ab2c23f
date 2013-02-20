@@ -1,0 +1,7 @@
+Code-Review+2: Amith Yamasani <yamasani@google.com>
+Verified+1: Deckard Autoverifier <deckard@android.com>
+Submitted-by: Amith Yamasani <yamasani@google.com>
+Submitted-at: Wed, 20 Feb 2013 16:57:49 +0000
+Reviewed-on: https://android-review.googlesource.com/50833
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
