@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "QWyfZOnk",
+        "filename": "res/values/arrays.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2013-02-27T19:55:37Z",
+      "side": 1,
+      "message": "Excellent - I was torn on whether to ask you to do it like this rather than a dumb string.  I\u0027m glad you did the extra work to make it easy/self-checking.",
+      "revId": "2b4084bee4d9ad44d1f1b2ed09887997a8fd14e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "QW8eq3qc",
+        "filename": "src/com/android/settings/ApnEditor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2013-02-27T19:55:37Z",
+      "side": 1,
+      "message": "should match data also be cleared?",
+      "revId": "2b4084bee4d9ad44d1f1b2ed09887997a8fd14e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "QW2cxcsk",
+        "filename": "src/com/android/settings/ApnEditor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2013-02-27T19:55:37Z",
+      "side": 1,
+      "message": "should this only put if the type is set?  We want to avoid cases where the match data has a value but the type does not.",
+      "revId": "2b4084bee4d9ad44d1f1b2ed09887997a8fd14e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
