@@ -36,6 +36,24 @@
     },
     {
       "key": {
+        "uuid": "QY98629I",
+        "filename": "src/com/android/settings/ApnEditor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1016953
+      },
+      "writtenOn": "2013-02-28T02:22:15Z",
+      "side": 1,
+      "message": "OK, I\u0027ll set empty (\"\") value",
+      "parentUuid": "QW8eq3qc",
+      "revId": "2b4084bee4d9ad44d1f1b2ed09887997a8fd14e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "QW2cxcsk",
         "filename": "src/com/android/settings/ApnEditor.java",
         "patchSetId": 2
@@ -47,6 +65,24 @@
       "writtenOn": "2013-02-27T19:55:37Z",
       "side": 1,
       "message": "should this only put if the type is set?  We want to avoid cases where the match data has a value but the type does not.",
+      "revId": "2b4084bee4d9ad44d1f1b2ed09887997a8fd14e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "QY-83n.c",
+        "filename": "src/com/android/settings/ApnEditor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1016953
+      },
+      "writtenOn": "2013-02-28T02:22:15Z",
+      "side": 1,
+      "message": "If type does not be set, type and data will be set to empty(\"\"). And in TelephonyProviders, default values of Mvno already used empty(\"\"), too.",
+      "parentUuid": "QW2cxcsk",
       "revId": "2b4084bee4d9ad44d1f1b2ed09887997a8fd14e4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
