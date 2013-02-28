@@ -377,6 +377,10 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
         measure();
     }
 
+    public void onStorageVolumeChanged() {
+        measure();
+    }
+
     public void onUsbStateChanged(boolean isUsbConnected, String usbFunction) {
         mUsbConnected = isUsbConnected;
         mUsbFunction = usbFunction;

@@ -27,10 +27,13 @@ import android.content.IntentFilter;
 import android.content.pm.IPackageDataObserver;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.database.ContentObserver;
 import android.hardware.usb.UsbManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.IBinder;
+import android.os.Handler;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.storage.IMountService;
@@ -78,6 +81,13 @@ public class Memory extends SettingsPreferenceFragment {
     private UsbManager mUsbManager;
 
     private ArrayList<StorageVolumePreferenceCategory> mCategories = Lists.newArrayList();
+
+    private ContentObserver mStorageVolumeObserver = new ContentObserver(new Handler()) {
+        @Override
+        public void onChange(boolean selfChange) {
+            onStorageVolumeChanged();
+        }
+    };
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -129,6 +139,9 @@ public class Memory extends SettingsPreferenceFragment {
         intentFilter.addAction(UsbManager.ACTION_USB_STATE);
         getActivity().registerReceiver(mMediaScannerReceiver, intentFilter);
 
+        getContentResolver().registerContentObserver(
+                Uri.parse("content://media"), true, mStorageVolumeObserver);
+
         for (StorageVolumePreferenceCategory category : mCategories) {
             category.onResume();
         }
@@ -153,6 +166,7 @@ public class Memory extends SettingsPreferenceFragment {
     public void onPause() {
         super.onPause();
         getActivity().unregisterReceiver(mMediaScannerReceiver);
+        getContentResolver().unregisterContentObserver(mStorageVolumeObserver);
         for (StorageVolumePreferenceCategory category : mCategories) {
             category.onPause();
         }
@@ -193,6 +207,12 @@ public class Memory extends SettingsPreferenceFragment {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onStorageVolumeChanged() {
+        for (StorageVolumePreferenceCategory category : mCategories) {
+            category.onStorageVolumeChanged();
+        }
     }
 
     private synchronized IMountService getMountService() {
