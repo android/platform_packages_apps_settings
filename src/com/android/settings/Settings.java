@@ -39,6 +39,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.INetworkManagementService;
@@ -795,6 +796,21 @@ public class Settings extends PreferenceActivity
         mAuthenticatorHelper.updateAuthDescriptions(this);
         mAuthenticatorHelper.onAccountsUpdated(this, accounts);
         invalidateHeaders();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Configuration config = getResources().getConfiguration();
+        if (config != null && config.navigation == Configuration.NAVIGATION_DPAD) {
+            View currentFocus = getCurrentFocus();
+            if (currentFocus != null && currentFocus != getListView()) {
+                // Do not exit if focus is at the second pane.
+                getListView().requestFocus();
+                return;
+            }
+        }
+
+        super.onBackPressed();
     }
 
     /*
