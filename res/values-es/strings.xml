@@ -26,8 +26,8 @@
     <item quantity="one" msgid="5295687242294085452">"Solo te queda <xliff:g id="STEP_COUNT">%1$d</xliff:g> paso para ser un desarrollador."</item>
     <item quantity="other" msgid="6722953419953594148">"Solo te quedan <xliff:g id="STEP_COUNT">%1$d</xliff:g> pasos para ser un desarrollador."</item>
   </plurals>
-    <string name="show_dev_on" msgid="1110711554982716293">"¡Ahora eres un desarrollador!"</string>
-    <string name="show_dev_already" msgid="2151632240145446227">"No es necesario, ya eres un desarrollador."</string>
+    <string name="show_dev_on" msgid="1110711554982716293">"¡Ahora están activadas las opciones de desarrollo!"</string>
+    <string name="show_dev_already" msgid="2151632240145446227">"No es necesario, están activadas las opciones de desarrollo."</string>
     <string name="header_category_wireless_networks" msgid="4944823405420438623">"CONEXIONES INALÁMBRICAS Y REDES"</string>
     <string name="header_category_device" msgid="5781174212691167553">"DISPOSITIVO"</string>
     <string name="header_category_personal" msgid="6225932173498802187">"PERSONAL"</string>
@@ -54,7 +54,7 @@
     <string name="radioInfo_phone_ringing" msgid="4883724645684297895">"Sonando"</string>
     <string name="radioInfo_phone_offhook" msgid="4174402846862780998">"Llamada en curso"</string>
     <string name="radioInfo_data_disconnected" msgid="1959735267890719418">"Desconectada"</string>
-    <string name="radioInfo_data_connecting" msgid="8404571440697917823">"Estableciendo conexión..."</string>
+    <string name="radioInfo_data_connecting" msgid="8404571440697917823">"Estableciendo conexión\u2026"</string>
     <string name="radioInfo_data_connected" msgid="7074301157399238697">"Conectado"</string>
     <string name="radioInfo_data_suspended" msgid="5315325487890334196">"Suspendido"</string>
     <string name="radioInfo_unknown" msgid="737385314432468266">"desconocido"</string>
@@ -89,7 +89,7 @@
     <string name="battery_info_awake_plugged" msgid="176716874713478188">"Tiempo de actividad durante la carga:"</string>
     <string name="battery_info_screen_on" msgid="376277447175613889">"Pantalla de duración de encendido"</string>
     <string name="battery_info_status_unknown" msgid="196130600938058547">"Desconocido"</string>
-    <string name="battery_info_status_charging" msgid="1705179948350365604">"Cargando..."</string>
+    <string name="battery_info_status_charging" msgid="1705179948350365604">"Cargando\u2026"</string>
     <string name="battery_info_status_charging_ac" msgid="5874340256342956252">"(CA)"</string>
     <string name="battery_info_status_charging_usb" msgid="4059070156126770959">"(USB)"</string>
     <string name="battery_info_status_charging_wireless" msgid="1822125795446772771">"(conexiones inalámbricas)"</string>
@@ -135,10 +135,10 @@
     <string name="bluetooth_connected_no_a2dp" msgid="4576188601581440337">"Conectado (sin audio multimedia)"</string>
     <string name="bluetooth_connected_no_headset_no_a2dp" msgid="9195757766755553810">"Conectado (sin teléfono ni multimedia)"</string>
     <string name="bluetooth_disconnected" msgid="6557104142667339895">"Desconectada"</string>
-    <string name="bluetooth_disconnecting" msgid="8913264760027764974">"Desconectando..."</string>
-    <string name="bluetooth_connecting" msgid="8555009514614320497">"Estableciendo conexión..."</string>
+    <string name="bluetooth_disconnecting" msgid="8913264760027764974">"Desconectando\u2026"</string>
+    <string name="bluetooth_connecting" msgid="8555009514614320497">"Estableciendo conexión\u2026"</string>
     <string name="bluetooth_unknown" msgid="644716244548801421"></string>
-    <string name="bluetooth_pairing" msgid="1426882272690346242">"Sincronizando..."</string>
+    <string name="bluetooth_pairing" msgid="1426882272690346242">"Sincronizando\u2026"</string>
     <string name="bluetooth_device" msgid="5291950341750186887">"Dispositivo Bluetooth sin nombre"</string>
     <string name="progress_scanning" msgid="192587958424295789">"Buscando"</string>
     <string name="bluetooth_no_devices_found" msgid="1085232930277181436">"No hay dispositivos Bluetooth cercanos."</string>
@@ -157,11 +157,11 @@
     <string name="bluetooth_ask_enablement_and_discovery" product="default" msgid="4724094889807196118">"Una aplicación quiere activar el Bluetooth y hacer visible tu teléfono para otros dispositivos durante <xliff:g id="TIMEOUT">%1$d</xliff:g> segundos."</string>
     <string name="bluetooth_ask_enablement_and_lasting_discovery" product="tablet" msgid="989613204829097159">"Una aplicación quiere activar el Bluetooth y hacer visible tu tablet para otros dispositivos. Puedes cambiar esta configuración más tarde en los ajustes de Bluetooth."</string>
     <string name="bluetooth_ask_enablement_and_lasting_discovery" product="default" msgid="6671615712909139801">"Una aplicación quiere activar el Bluetooth y hacer visible tu teléfono para otros dispositivos. Puedes cambiar esta configuración más tarde en los ajustes de Bluetooth."</string>
-    <string name="bluetooth_turning_on" msgid="4850574877288036646">"Activando Bluetooth…"</string>
-    <string name="bluetooth_turning_off" msgid="2337747302892025192">"Desactivando Bluetooth..."</string>
+    <string name="bluetooth_turning_on" msgid="4850574877288036646">"Activando Bluetooth\u2026"</string>
+    <string name="bluetooth_turning_off" msgid="2337747302892025192">"Desactivando Bluetooth\u2026"</string>
     <string name="bluetooth_auto_connect" msgid="40711424456733571">"Conexión automática"</string>
     <string name="bluetooth_connection_permission_request" msgid="4747918249032890077">"Solicitud para establecer conexión de Bluetooth"</string>
-    <string name="bluetooth_connection_notif_message" msgid="3687933246423942977">"Toca para conectarte a \"<xliff:g id="DEVICE_NAME">%1$s</xliff:g>\"."</string>
+    <string name="bluetooth_connection_notif_message" msgid="3687933246423942977">"Toca para conectarte a \u00AB<xliff:g id="DEVICE_NAME">%1$s</xliff:g>\u00BB."</string>
     <string name="bluetooth_connection_dialog_text" msgid="8455427559949998023">"¿Quieres conectarte a <xliff:g id="DEVICE_NAME">%1$s</xliff:g>?"</string>
     <string name="bluetooth_phonebook_request" msgid="457033227379858269">"Solicitud de agenda telefónica"</string>
     <string name="bluetooth_pb_acceptance_dialog_text" msgid="6555508756987053866">"%1$s quiere acceder a tus contactos y a tu historial de llamadas. ¿Quieres permitir el acceso a %2$s?"</string>
@@ -228,7 +228,7 @@
     <string name="radio_info_toggle_dns_check_label" msgid="8292252930563286858">"alternar comprobación de DNS"</string>
     <string name="oem_radio_info_label" msgid="6163141792477958941">"Ajustes/información específica de OEM"</string>
     <string name="band_mode_title" msgid="954174198903776205">"Establecer banda GSM/UMTS"</string>
-    <string name="band_mode_loading" msgid="548764766363847336">"Cargando lista de bandas..."</string>
+    <string name="band_mode_loading" msgid="548764766363847336">"Cargando lista de bandas\u2026"</string>
     <string name="band_mode_set" msgid="5730560180249458484">"Establecer"</string>
     <string name="band_mode_failed" msgid="1495968863884716379">"Con error"</string>
     <string name="band_mode_succeeded" msgid="2701016190055887575">"Correcto"</string>
@@ -245,8 +245,8 @@
     <string name="sdcard_settings_bad_removal_status" product="nosdcard" msgid="7761390725880773697">"USB extraído en uso"</string>
     <string name="sdcard_settings_bad_removal_status" product="default" msgid="5145797653495907970">"La tarjeta SD se ha extraído mientras estaba en uso."</string>
     <string name="sdcard_settings_used_bytes_label" msgid="8820289486001170836">"Bytes usados:"</string>
-    <string name="sdcard_settings_scanning_status" product="nosdcard" msgid="7503429447676219564">"Buscando archivos almac USB…"</string>
-    <string name="sdcard_settings_scanning_status" product="default" msgid="2763464949274455656">"Buscando medios en tarjeta SD..."</string>
+    <string name="sdcard_settings_scanning_status" product="nosdcard" msgid="7503429447676219564">"Buscando archivos almac USB\u2026"</string>
+    <string name="sdcard_settings_scanning_status" product="default" msgid="2763464949274455656">"Buscando medios en tarjeta SD\u2026"</string>
     <string name="sdcard_settings_read_only_status" product="nosdcard" msgid="3624143937437417788">"Almacenamiento USB activado como solo lectura"</string>
     <string name="sdcard_settings_read_only_status" product="default" msgid="4518291824764698112">"La tarjeta SD está activada en modo de solo lectura."</string>
     <string name="skip_label" msgid="47510779345218297">"Saltar"</string>
@@ -266,7 +266,7 @@
     <string name="settings_label_launcher" msgid="8344735489639482340">"Ajustes"</string>
     <string name="settings_shortcut" msgid="3936651951364030415">"Acceso a Ajustes"</string>
     <string name="airplane_mode" msgid="8837269988154128601">"Modo avión"</string>
-    <string name="radio_controls_title" msgid="6889937359495515769">"Más…"</string>
+    <string name="radio_controls_title" msgid="6889937359495515769">"Más\u2026"</string>
     <string name="wireless_networks_settings_title" msgid="3643009077742794212">"Conexiones inalámbricas y redes"</string>
     <string name="radio_controls_summary" msgid="2998818677094465517">"Administrar Wi-Fi, Bluetooth, modo avión, redes móviles y VPN"</string>
     <string name="roaming" msgid="3596055926335478572">"Itinerancia de datos"</string>
@@ -443,7 +443,7 @@
     <string name="bluetooth_connecting_error_message" msgid="229861986106185022">"No se ha podido establecer conexión con <xliff:g id="DEVICE_NAME">%1$s</xliff:g>."</string>
     <string name="bluetooth_preference_scan_title" msgid="2277464653118896016">"Buscar dispositivos"</string>
     <string name="bluetooth_search_for_devices" msgid="5957007154213560390">"Buscar dispositivos"</string>
-    <string name="bluetooth_searching_for_devices" msgid="9203739709307871727">"Buscando..."</string>
+    <string name="bluetooth_searching_for_devices" msgid="9203739709307871727">"Buscando\u2026"</string>
     <string name="bluetooth_preference_device_settings" msgid="907776049862799122">"Ajustes del dispositivo"</string>
     <string name="bluetooth_preference_paired_devices" msgid="1970524193086791964">"Dispositivos sincronizados"</string>
     <string name="bluetooth_preference_found_devices" msgid="1647983835063249680">"Dispositivos disponibles"</string>
@@ -452,11 +452,11 @@
     <string name="bluetooth_device_context_pair_connect" msgid="7611522504813927727">"Sincronizar y conectar"</string>
     <string name="bluetooth_device_context_unpair" msgid="662992425948536144">"Desincronizar"</string>
     <string name="bluetooth_device_context_disconnect_unpair" msgid="7644014238070043798">"Desconectar y desincronizar"</string>
-    <string name="bluetooth_device_context_connect_advanced" msgid="2643129703569788771">"Opciones…"</string>
+    <string name="bluetooth_device_context_connect_advanced" msgid="2643129703569788771">"Opciones\u2026"</string>
     <string name="bluetooth_menu_advanced" msgid="8572178316357220524">"Ajustes avanzados"</string>
     <string name="bluetooth_advanced_titlebar" msgid="2142159726881547669">"Ajustes avanzados de Bluetooth"</string>
     <string name="bluetooth_empty_list_bluetooth_off" msgid="4793562956642282639">"Para ver dispositivos, activa el Bluetooth."</string>
-    <string name="bluetooth_connect_specific_profiles_title" msgid="6952214406025825164">"Establecer conexión con…"</string>
+    <string name="bluetooth_connect_specific_profiles_title" msgid="6952214406025825164">"Establecer conexión con\u2026"</string>
     <string name="bluetooth_profile_a2dp" msgid="2031475486179830674">"Audio multimedia"</string>
     <string name="bluetooth_profile_headset" msgid="8658779596261212609">"Audio del teléfono"</string>
     <string name="bluetooth_profile_opp" msgid="9168139293654233697">"Transferencia de archivos"</string>
@@ -487,8 +487,8 @@
     <string name="bluetooth_opp_profile_summary_use_for" msgid="1255674547144769756">"Uso de la transferencia de archivos"</string>
     <string name="bluetooth_hid_profile_summary_use_for" msgid="232727040453645139">"Usar para entrada"</string>
     <string name="bluetooth_pan_profile_summary_use_for" msgid="5664884523822068653">"Usar para acceder a Internet"</string>
-    <string name="bluetooth_dock_settings" msgid="3218335822716052885">"Ajustes del conector"</string>
-    <string name="bluetooth_dock_settings_title" msgid="5543069893044375188">"Uso del conector para audio"</string>
+    <string name="bluetooth_dock_settings" msgid="3218335822716052885">"Ajustes de la base"</string>
+    <string name="bluetooth_dock_settings_title" msgid="5543069893044375188">"Uso de la base para audio"</string>
     <string name="bluetooth_dock_settings_headset" msgid="1001821426078644650">"Como altavoz del teléfono"</string>
     <string name="bluetooth_dock_settings_a2dp" msgid="8791004998846630574">"Para música y contenido multimedia"</string>
     <string name="bluetooth_dock_settings_remember" msgid="5551459057010609115">"Ajustes de recordatorio"</string>
@@ -496,11 +496,11 @@
     <string name="wifi_display_settings_empty_list_wifi_display_off" msgid="1225626898926363100">"Para ver los dispositivos, activa la pantalla inalámbrica."</string>
     <string name="wifi_display_settings_empty_list_wifi_display_disabled" msgid="7363832031876872257">"La pantalla inalámbrica está inhabilitada porque la red Wi-Fi está desactivada."</string>
     <string name="wifi_display_search_for_devices" msgid="5065526281193354502">"Buscar pantallas"</string>
-    <string name="wifi_display_searching_for_devices" msgid="5172373825348672137">"Buscando…"</string>
+    <string name="wifi_display_searching_for_devices" msgid="5172373825348672137">"Buscando\u2026"</string>
     <string name="wifi_display_no_devices_found" msgid="8180582698282377626">"Sin pantallas inalámbricas cercanas"</string>
     <string name="wifi_display_paired_devices" msgid="7395326840730024303">"Pantallas sincronizadas"</string>
     <string name="wifi_display_available_devices" msgid="4558314642853513487">"Dispositivos disponibles"</string>
-    <string name="wifi_display_status_connecting" msgid="5688608834000748607">"Conectando..."</string>
+    <string name="wifi_display_status_connecting" msgid="5688608834000748607">"Conectando\u2026"</string>
     <string name="wifi_display_status_connected" msgid="8364125226376985558">"Conectada"</string>
     <string name="wifi_display_status_available" msgid="1924167525172207067">"Disponible"</string>
     <string name="wifi_display_details" msgid="7791118209992162698">"Ajustes de pantalla"</string>
@@ -531,8 +531,8 @@
     <string name="wifi_settings_title" msgid="4351120897298124250">"Wi-Fi"</string>
     <string name="wifi_settings_summary" msgid="668767638556052820">"Configurar y administrar puntos de acceso inalámbricos"</string>
     <string name="wifi_setup_wizard_title" msgid="70277346338812325">"Seleccionar Wi-Fi"</string>
-    <string name="wifi_starting" msgid="6716593470710880000">"Activando Wi-Fi..."</string>
-    <string name="wifi_stopping" msgid="244864762599017659">"Desactivando Wi-Fi…"</string>
+    <string name="wifi_starting" msgid="6716593470710880000">"Activando Wi-Fi\u2026"</string>
+    <string name="wifi_stopping" msgid="244864762599017659">"Desactivando Wi-Fi\u2026"</string>
     <string name="wifi_error" msgid="3207971103917128179">"Error"</string>
     <string name="wifi_in_airplane_mode" msgid="8652520421778203796">"Modo avión"</string>
     <string name="wifi_fail_to_scan" msgid="1265540342578081461">"No se puede buscar redes."</string>
@@ -556,17 +556,17 @@
     <string name="wifi_menu_forget" msgid="8736964302477327114">"Borrar red"</string>
     <string name="wifi_menu_modify" msgid="2068554918652440105">"Modificar red"</string>
     <string name="wifi_empty_list_wifi_off" msgid="4722299515264875943">"Para ver redes disponibles, activa la conexión Wi-Fi."</string>
-    <string name="wifi_empty_list_wifi_on" msgid="3354911729026237372">"Buscando redes Wi-Fi…"</string>
-    <string name="wifi_other_network" msgid="1048006316504242214">"Otra red…"</string>
+    <string name="wifi_empty_list_wifi_on" msgid="3354911729026237372">"Buscando redes Wi-Fi\u2026"</string>
+    <string name="wifi_other_network" msgid="1048006316504242214">"Otra red\u2026"</string>
     <string name="wifi_more" msgid="3195296805089107950">"Más"</string>
     <string name="wifi_setup_wps" msgid="8128702488486283957">"Configuración automática (WPS)"</string>
     <string name="wifi_required_info_text" msgid="9014073093293520112">"Necesitas conexión Wi-Fi para completar la configuración. Una vez finalizada, podrás alternar entre Wi-Fi y conexión de datos."</string>
     <string name="wifi_show_advanced" msgid="1793703023711426246">"Mostrar opciones avanzadas"</string>
     <string name="wifi_wps_setup_title" msgid="6034518116333042484">"Configuración WPS"</string>
-    <string name="wifi_wps_setup_msg" msgid="315174329121275092">"Iniciando configuración WPS…"</string>
+    <string name="wifi_wps_setup_msg" msgid="315174329121275092">"Iniciando configuración WPS\u2026"</string>
     <string name="wifi_wps_onstart_pbc" msgid="7204827509934892103">"Pulsa el botón Configuración WPS del router. Es posible que se llame WPS o que incluya este símbolo:"</string>
     <string name="wifi_wps_onstart_pin" msgid="8067502591043979939">"Introduce el código PIN <xliff:g id="NUMBER">%1$s</xliff:g> en el router Wi-Fi. El proceso de configuración puede tardar hasta dos minutos."</string>
-    <string name="wifi_wps_complete" msgid="2388138550456729134">"La configuración WPS se ha iniciado correctamente. Estableciendo conexión con la red…"</string>
+    <string name="wifi_wps_complete" msgid="2388138550456729134">"La configuración WPS se ha iniciado correctamente. Estableciendo conexión con la red\u2026"</string>
     <string name="wifi_wps_connected" msgid="5754399645462924103">"Conexión establecida con la red Wi-Fi <xliff:g id="NETWORK_NAME">%s</xliff:g>"</string>
     <string name="wifi_wps_in_progress" msgid="3372311348221357944">"El proceso de configuración de WPS está en curso y puede tardar hasta dos minutos."</string>
     <string name="wifi_wps_failed_generic" msgid="5668775022238832527">"Se ha producido un error en la configuración WPS. Inténtalo de nuevo en unos minutos."</string>
@@ -637,7 +637,7 @@
     <string name="wifi_p2p_device_info" msgid="3191876744469364173">"Información del dispositivo"</string>
     <string name="wifi_p2p_persist_network" msgid="1646424791818168590">"Recordar esta conexión"</string>
     <string name="wifi_p2p_menu_search" msgid="3436429984738771974">"Buscar dispositivos"</string>
-    <string name="wifi_p2p_menu_searching" msgid="2396704492143633876">"Buscando…"</string>
+    <string name="wifi_p2p_menu_searching" msgid="2396704492143633876">"Buscando\u2026"</string>
     <string name="wifi_p2p_menu_rename" msgid="8448896306960060415">"Cambiar nombre del dispositivo"</string>
     <string name="wifi_p2p_peer_devices" msgid="299526878463303432">"Otros dispositivos"</string>
     <string name="wifi_p2p_remembered_groups" msgid="3847022927914068230">"Grupos recordados"</string>
@@ -650,8 +650,8 @@
     <string name="wifi_p2p_cancel_connect_message" msgid="7477756213423749402">"¿Quieres cancelar la invitación para establecer conexión con <xliff:g id="PEER_NAME">%1$s</xliff:g>?"</string>
     <string name="wifi_p2p_delete_group_message" msgid="834559380069647086">"¿Borrar este grupo?"</string>
     <string name="wifi_tether_checkbox_text" msgid="6961605862058056788">"Zona Wi-Fi portátil"</string>
-    <string name="wifi_tether_starting" msgid="1322237938998639724">"Activando zona Wi-Fi…"</string>
-    <string name="wifi_tether_stopping" msgid="4835852171686388107">"Desactivando zona Wi-Fi…"</string>
+    <string name="wifi_tether_starting" msgid="1322237938998639724">"Activando zona Wi-Fi\u2026"</string>
+    <string name="wifi_tether_stopping" msgid="4835852171686388107">"Desactivando zona Wi-Fi\u2026"</string>
     <string name="wifi_tether_enabled_subtext" msgid="8948641212931906143">"Zona Wi-Fi portátil <xliff:g id="NETWORK_SSID">%1$s</xliff:g> activa"</string>
     <string name="wifi_tether_failed_subtext" msgid="2654888578056042315">"Error de zona Wi-Fi portátil"</string>
     <string name="wifi_tether_configure_ap_text" msgid="61237027772641155">"Configurar zona Wi-Fi"</string>
@@ -674,7 +674,7 @@
     <string name="media_volume_title" msgid="3576565767317118106">"Multimedia"</string>
     <string name="media_volume_summary" msgid="5363248930648849974">"Establecer volumen para música y vídeos"</string>
     <string name="alarm_volume_title" msgid="2285597478377758706">"Alarma"</string>
-    <string name="dock_settings_summary" msgid="455802113668982481">"Ajustes de audio del conector adjunto"</string>
+    <string name="dock_settings_summary" msgid="455802113668982481">"Ajustes de audio de la base"</string>
     <string name="dtmf_tone_enable_title" msgid="8533399267725365088">"Sonar al marcar número"</string>
     <string name="sound_effects_enable_title" msgid="1171590821131077296">"Sonido al tocar"</string>
     <string name="lock_sounds_enable_title" msgid="450098505659399520">"Sonido de pantalla de bloqueo"</string>
@@ -689,22 +689,22 @@
     <string name="volume_notification_mute" msgid="7955193480006444159">"Silenciar notificaciones"</string>
     <string name="volume_alarm_mute" msgid="4452239420351035936">"Silenciar alarmas"</string>
     <string name="vibrate_when_ringing_title" msgid="3885857358303178029">"Vibrar al sonar"</string>
-    <string name="dock_settings" msgid="1820107306693002541">"Conector"</string>
-    <string name="dock_settings_title" msgid="9161438664257429372">"Ajustes del conector"</string>
+    <string name="dock_settings" msgid="1820107306693002541">"Base"</string>
+    <string name="dock_settings_title" msgid="9161438664257429372">"Ajustes de la base"</string>
     <string name="dock_audio_settings_title" msgid="3324750259959570305">"Audio"</string>
     <string name="dock_audio_summary_desk" msgid="6487784412371139335">"Ajustes de la base"</string>
-    <string name="dock_audio_summary_car" msgid="6740897586006248450">"Ajustes del conector del coche adjunto"</string>
+    <string name="dock_audio_summary_car" msgid="6740897586006248450">"Ajustes de la base del vehículo"</string>
     <string name="dock_audio_summary_none" product="tablet" msgid="8215337394914283607">"Tablet no conectado"</string>
     <string name="dock_audio_summary_none" product="default" msgid="289909253741048784">"Teléfono no conectado"</string>
-    <string name="dock_audio_summary_unknown" msgid="4465059868974255693">"Ajustes del conector adjunto"</string>
-    <string name="dock_not_found_title" msgid="3290961741828952424">"No se ha encontrado el conector"</string>
-    <string name="dock_not_found_text" product="tablet" msgid="8405432495282299143">"Para configurar el audio del conector, debes insertar el tablet en el conector."</string>
-    <string name="dock_not_found_text" product="default" msgid="1460497923342627801">"Para configurar el audio del conector, debes insertar el teléfono en el conector."</string>
+    <string name="dock_audio_summary_unknown" msgid="4465059868974255693">"Ajustes de la base"</string>
+    <string name="dock_not_found_title" msgid="3290961741828952424">"No se ha encontrado la base"</string>
+    <string name="dock_not_found_text" product="tablet" msgid="8405432495282299143">"Para configurar el audio de la base, debes insertar el tablet en la base."</string>
+    <string name="dock_not_found_text" product="default" msgid="1460497923342627801">"Para configurar el audio de la base, debes insertar el teléfono en la base."</string>
     <string name="dock_sounds_enable_title" msgid="885839627097024110">"Sonido al insertar dispositivo"</string>
-    <string name="dock_sounds_enable_summary_on" product="tablet" msgid="838102386448981339">"Reproducir sonido al insertar o extraer el tablet del conector"</string>
-    <string name="dock_sounds_enable_summary_on" product="default" msgid="8491180514199743771">"Reproducir sonido al insertar o extraer el teléfono del conector"</string>
-    <string name="dock_sounds_enable_summary_off" product="tablet" msgid="5077843049805652363">"No reproducir sonido al insertar o extraer el tablet del conector"</string>
-    <string name="dock_sounds_enable_summary_off" product="default" msgid="3151046599205265919">"No reproducir sonido al insertar o extraer el teléfono del conector"</string>
+    <string name="dock_sounds_enable_summary_on" product="tablet" msgid="838102386448981339">"Reproducir sonido al insertar o extraer el tablet de la base"</string>
+    <string name="dock_sounds_enable_summary_on" product="default" msgid="8491180514199743771">"Reproducir sonido al insertar o extraer el teléfono de la base"</string>
+    <string name="dock_sounds_enable_summary_off" product="tablet" msgid="5077843049805652363">"No reproducir sonido al insertar o extraer el tablet de la base"</string>
+    <string name="dock_sounds_enable_summary_off" product="default" msgid="3151046599205265919">"No reproducir sonido al insertar o extraer el teléfono de la base"</string>
     <string name="account_settings" msgid="6403589284618783461">"Cuentas"</string>
     <string name="search_settings" msgid="1910951467596035063">"Búsqueda"</string>
     <string name="search_settings_summary" msgid="9205656546570654169">"Administrar historial y configuración de búsqueda"</string>
@@ -721,10 +721,10 @@
     <string name="wallpaper_settings_title" msgid="5449180116365824625">"Fondo de pantalla"</string>
     <string name="wallpaper_settings_fragment_title" msgid="519078346877860129">"Selecciona una categoría"</string>
     <string name="screensaver_settings_title" msgid="3349790120327233241">"Salvapantallas"</string>
-    <string name="screensaver_settings_summary_either_long" msgid="2458481525925378465">"Cuando el dispositivo esté en un conector o inactivo y cargando"</string>
+    <string name="screensaver_settings_summary_either_long" msgid="2458481525925378465">"Cuando el dispositivo esté en una base o inactivo y cargando"</string>
     <string name="screensaver_settings_summary_either_short" msgid="6140527286137331478">"Ambos casos"</string>
     <string name="screensaver_settings_summary_sleep" msgid="9086186698140423493">"Durante la carga"</string>
-    <string name="screensaver_settings_summary_dock" msgid="2072657401664633283">"Cuando el dispositivo esté en un conector"</string>
+    <string name="screensaver_settings_summary_dock" msgid="2072657401664633283">"Cuando el dispositivo esté en una base"</string>
     <string name="screensaver_settings_summary_off" msgid="2481581696365146473">"Desactivado"</string>
     <string name="screensaver_settings_disabled_prompt" msgid="3857507943322777651">"Para controlar lo que ocurre cuando el teléfono está conectado o inactivo, debes activar el salvapantallas."</string>
     <string name="screensaver_settings_when_to_dream" msgid="8352267826043957746">"Cuándo activarlo"</string>
@@ -802,7 +802,7 @@
     <string name="memory_available" msgid="5052397223077021181">"Disponible"</string>
     <string name="memory_available_read_only" msgid="6497534390167920206">"Disponible (solo lectura)"</string>
     <string name="memory_size" msgid="6629067715017232195">"Espacio total"</string>
-    <string name="memory_calculating_size" msgid="2188358544203768588">"Calculando..."</string>
+    <string name="memory_calculating_size" msgid="2188358544203768588">"Calculando\u2026"</string>
     <string name="memory_apps_usage" msgid="2348501997988663688">"Aplicaciones (datos aplicaciones y contenido multimedia)"</string>
     <string name="memory_media_usage" msgid="3738830697707880405">"Multimedia"</string>
     <string name="memory_downloads_usage" msgid="3755173051677533027">"Descargas"</string>
@@ -899,7 +899,7 @@
     <string name="master_clear_accounts" product="default" msgid="6412857499147999073">\n\n"Has accedido a las cuentas que se indican a continuación:"\n</string>
     <string name="master_clear_desc_also_erases_external" msgid="1903185203791274237"><li>"Música"</li>\n<li>"Fotos"</li>\n<li>"Otros datos de usuario"</li></string>
     <string name="master_clear_desc_erase_external_storage" product="nosdcard" msgid="7744115866662613411">\n\n"Para eliminar la música, las imágenes y otros datos de usuario, debes borrar el "<b>"almacenamiento USB"</b>"."</string>
-    <string name="master_clear_desc_erase_external_storage" product="default" msgid="4801026652617377093">\n\n"Para eliminar la música, las imágenes y otros datos de usuario, deber borrar la "<b>"tarjeta SD"</b>"."</string>
+    <string name="master_clear_desc_erase_external_storage" product="default" msgid="4801026652617377093">\n\n"Para eliminar la música, las imágenes y otros datos de usuario, debes borrar la "<b>"tarjeta SD"</b>"."</string>
     <string name="erase_external_storage" product="nosdcard" msgid="969364037450286809">"Borrar almacenamiento USB"</string>
     <string name="erase_external_storage" product="default" msgid="1397239046334307625">"Borrar tarjeta SD"</string>
     <string name="erase_external_storage_description" product="nosdcard" msgid="4728558173931599429">"Borra todos los datos del almacenamiento USB interno, como la música o las fotos."</string>
@@ -980,11 +980,11 @@
     <string name="terms_title" msgid="7697580845616764642">"Términos y condiciones"</string>
     <string name="settings_license_activity_title" msgid="7553683406244228650">"Licencias de código abierto"</string>
     <string name="settings_license_activity_unavailable" msgid="4210539215951487627">"Se ha producido un problema al intentar cargar las licencias."</string>
-    <string name="settings_license_activity_loading" msgid="3337535809093591740">"Cargando..."</string>
+    <string name="settings_license_activity_loading" msgid="3337535809093591740">"Cargando\u2026"</string>
     <string name="settings_safetylegal_title" msgid="1289483965535937431">"Información de seguridad"</string>
     <string name="settings_safetylegal_activity_title" msgid="6901214628496951727">"Información de seguridad"</string>
     <string name="settings_safetylegal_activity_unreachable" msgid="232523852222964470">"No tienes conexión de datos. Para ver esta información, accede a %s desde cualquier ordenador conectado a Internet."</string>
-    <string name="settings_safetylegal_activity_loading" msgid="8059022597639516348">"Cargando..."</string>
+    <string name="settings_safetylegal_activity_loading" msgid="8059022597639516348">"Cargando\u2026"</string>
     <string name="lockpassword_choose_your_password_header" msgid="8624900666929394990">"Selecciona tu contraseña"</string>
     <string name="lockpassword_choose_your_pattern_header" msgid="6949761069941694050">"Elige un patrón"</string>
     <string name="lockpassword_choose_your_pin_header" msgid="7598849519816138302">"Selecciona tu PIN"</string>
@@ -1092,7 +1092,7 @@
     <string name="internal_storage" msgid="1584700623164275282">"Almacenamiento interno"</string>
     <string name="sd_card_storage" product="nosdcard" msgid="2673203150465132465">"Almacenamiento USB"</string>
     <string name="sd_card_storage" product="default" msgid="7623513618171928235">"Tarjeta SD"</string>
-    <string name="recompute_size" msgid="7722567982831691718">"Recalculando tamaño..."</string>
+    <string name="recompute_size" msgid="7722567982831691718">"Recalculando tamaño\u2026"</string>
     <string name="clear_data_dlg_title" msgid="5605258400134511197">"¿Eliminar datos de la aplicación?"</string>
     <string name="clear_data_dlg_text" msgid="8847257251846779938">"Todos los datos de esta aplicación se eliminarán de forma permanente. Esto incluye todos los archivos, configuración, cuentas, bases de datos, etc."</string>
     <string name="dlg_ok" msgid="2402639055725653590">"Aceptar"</string>
@@ -1114,7 +1114,7 @@
     <string name="join_many_items_middle" msgid="7556692394478220814">"<xliff:g id="ADDED_ITEM">%1$s</xliff:g>, <xliff:g id="REST_OF_ITEMS">%2$s</xliff:g>"</string>
     <string name="security_settings_billing_desc" msgid="8061019011821282358">"Puede que se cobre dinero por usar esta aplicación:"</string>
     <string name="security_settings_premium_sms_desc" msgid="8734171334263713717">"Enviar SMS premium"</string>
-    <string name="computing_size" msgid="1599186977475211186">"Calculando…"</string>
+    <string name="computing_size" msgid="1599186977475211186">"Calculando\u2026"</string>
     <string name="invalid_size_value" msgid="7563537715280712285">"No se ha podido calcular el tamaño del paquete."</string>
     <string name="empty_list_msg" msgid="5993162337235907160">"No tienes instalada ninguna aplicación externa."</string>
     <string name="version_text" msgid="9189073826278676425">"versión <xliff:g id="VERSION_NUM">%1$s</xliff:g>"</string>
@@ -1190,7 +1190,7 @@
     <string name="auto_caps_summary" msgid="6358102538315261466">"Escribir en mayúsculas la primera letra de las frases"</string>
     <string name="auto_punctuate" msgid="4595367243950425833">"Puntuación automática"</string>
     <string name="hardkeyboard_category" msgid="5957168411305769899">"Ajustes del teclado físico"</string>
-    <string name="auto_punctuate_summary" msgid="4372126865670574837">"Pulsa la barra espaciadora dos veces para insertar el carácter \".\""</string>
+    <string name="auto_punctuate_summary" msgid="4372126865670574837">"Pulsa la barra espaciadora dos veces para insertar el carácter \u00AB.\u00BB"</string>
     <string name="show_password" msgid="3001113966880559611">"Mostrar las contraseñas"</string>
     <string name="ime_security_warning" msgid="4135828934735934248">"Este método de entrada puede registrar todo lo que escribas, incluidos datos personales, como las contraseñas y los números de las tarjetas de crédito. Procede de la aplicación <xliff:g id="IME_APPLICATION_NAME">%1$s</xliff:g>. ¿Quieres usar este método de entrada?"</string>
     <string name="spellchecker_security_warning" msgid="9060897418527708922">"Este corrector ortográfico puede registrar todo lo que escribas, incluidos datos personales, como las contraseñas y los números de las tarjetas de crédito. Procede de la aplicación <xliff:g id="SPELLCHECKER_APPLICATION_NAME">%1$s</xliff:g>. ¿Quieres usar este corrector ortográfico?"</string>
@@ -1225,7 +1225,7 @@
     <string name="user_dict_settings_context_menu_delete_title" msgid="9140703913776549054">"Eliminar"</string>
     <string name="user_dict_settings_empty_text" msgid="8165273379942105271">"No tienes ninguna palabra en el diccionario del usuario. Toca el botón Añadir (+) para añadir una palabra."</string>
     <string name="user_dict_settings_all_languages" msgid="6742000040975959247">"Para todos los idiomas"</string>
-    <string name="user_dict_settings_more_languages" msgid="7316375944684977910">"Más idiomas..."</string>
+    <string name="user_dict_settings_more_languages" msgid="7316375944684977910">"Más idiomas\u2026"</string>
     <string name="testing" msgid="6584352735303604146">"Prueba"</string>
     <string name="testing_phone_info" product="tablet" msgid="193561832258534798">"Información del tablet"</string>
     <string name="testing_phone_info" product="default" msgid="8656693364332840056">"Información sobre el teléfono"</string>
@@ -1341,7 +1341,7 @@
     <string name="battery_since_reset" msgid="7464546661121187045">"Uso de la batería desde que se restableció"</string>
     <string name="battery_stats_on_battery" msgid="4970762168505236033">"<xliff:g id="TIME">%1$s</xliff:g> de batería"</string>
     <string name="battery_stats_duration" msgid="7464501326709469282">"<xliff:g id="TIME">%1$s</xliff:g> desde que se cargó"</string>
-    <string name="battery_stats_charging_label" msgid="4223311142875178785">"Cargando..."</string>
+    <string name="battery_stats_charging_label" msgid="4223311142875178785">"Cargando\u2026"</string>
     <string name="battery_stats_screen_on_label" msgid="7150221809877509708">"Pantalla encendida"</string>
     <string name="battery_stats_gps_on_label" msgid="1193657533641951256">"GPS activado"</string>
     <string name="battery_stats_wifi_running_label" msgid="3093545080361658269">"Wi-Fi"</string>
@@ -1414,7 +1414,7 @@
     <string name="voice_category" msgid="1430370497125803904">"Voz"</string>
     <string name="recognizer_title" msgid="3231385184559054457">"Reconocedor de voz"</string>
     <string name="recognizer_settings_title" msgid="432493301215113154">"Búsqueda por voz"</string>
-    <string name="recognizer_settings_summary" msgid="4472287934134546902">"Configuración de \"<xliff:g id="RECOGNIZER_NAME">%s</xliff:g>\""</string>
+    <string name="recognizer_settings_summary" msgid="4472287934134546902">"Configuración de \u00AB<xliff:g id="RECOGNIZER_NAME">%s</xliff:g>\u00BB"</string>
     <string name="tts_settings" msgid="8186971894801348327">"Configuración síntesis voz"</string>
     <string name="tts_settings_title" msgid="1237820681016639683">"Síntesis de voz"</string>
     <string name="use_default_tts_settings_title" msgid="1577063839539732930">"Utilizar siempre mi configuración"</string>
@@ -1460,8 +1460,8 @@
     <string name="gadget_state_template" msgid="5156935629902649932">"<xliff:g id="ID_1">%1$s</xliff:g> <xliff:g id="ID_2">%2$s</xliff:g>"</string>
     <string name="gadget_state_on" msgid="6909119593004937688">"activado"</string>
     <string name="gadget_state_off" msgid="5220212352953066317">"desactivado"</string>
-    <string name="gadget_state_turning_on" msgid="3395992057029439039">"activando..."</string>
-    <string name="gadget_state_turning_off" msgid="2395546048102176157">"desactivando..."</string>
+    <string name="gadget_state_turning_on" msgid="3395992057029439039">"activando\u2026"</string>
+    <string name="gadget_state_turning_off" msgid="2395546048102176157">"desactivando\u2026"</string>
     <string name="gadget_wifi" msgid="5960290421313061434">"Wi-Fi"</string>
     <string name="gadget_bluetooth" msgid="8998572807378694410">"Bluetooth"</string>
     <string name="gadget_gps" msgid="1558173602059236567">"GPS"</string>
@@ -1532,7 +1532,7 @@
     <string name="sound_category_system_title" msgid="1480844520622721141">"Sistema"</string>
     <string name="wifi_setup_title" msgid="661074868726906436">"Configuración de Wi-Fi"</string>
     <string name="wifi_setup_title_editing_network" msgid="7304321031985059969">"Establecer conexión con la red Wi-Fi <xliff:g id="NETWORK_NAME">%s</xliff:g>"</string>
-    <string name="wifi_setup_title_connecting_network" msgid="3747859666621319757">"Estableciendo conexión con la red Wi-Fi <xliff:g id="NETWORK_NAME">%s</xliff:g>..."</string>
+    <string name="wifi_setup_title_connecting_network" msgid="3747859666621319757">"Estableciendo conexión con la red Wi-Fi <xliff:g id="NETWORK_NAME">%s</xliff:g>\u2026"</string>
     <string name="wifi_setup_title_connected_network" msgid="209755856836003839">"Conectado a la red Wi-Fi <xliff:g id="NETWORK_NAME">%s</xliff:g>"</string>
     <string name="wifi_setup_title_add_network" msgid="6932651000151032301">"Añadir una red"</string>
     <string name="wifi_setup_not_connected" msgid="6997432604664057052">"Sin conexión"</string>
@@ -1546,17 +1546,17 @@
     <string name="wifi_setup_forget" msgid="2562847595567347526">"Borrar"</string>
     <string name="wifi_setup_save" msgid="3659235094218508211">"Guardar"</string>
     <string name="wifi_setup_cancel" msgid="3185216020264410239">"Cancelar"</string>
-    <string name="wifi_setup_status_scanning" msgid="5317003416385428036">"Buscando redes..."</string>
+    <string name="wifi_setup_status_scanning" msgid="5317003416385428036">"Buscando redes\u2026"</string>
     <string name="wifi_setup_status_select_network" msgid="7519563569903137003">"Toca en una red para conectarte a ella"</string>
     <string name="wifi_setup_status_existing_network" msgid="6394925174802598186">"Establecer conexión con red existente"</string>
     <string name="wifi_setup_status_unsecured_network" msgid="8143046977328718252">"Conectar con red no segura"</string>
     <string name="wifi_setup_status_edit_network" msgid="4765340816724760717">"Introducir configuración de red"</string>
     <string name="wifi_setup_status_new_network" msgid="7468952850452301083">"Establecer conexión con red nueva"</string>
-    <string name="wifi_setup_status_connecting" msgid="4971421484401530740">"Conectando..."</string>
+    <string name="wifi_setup_status_connecting" msgid="4971421484401530740">"Conectando\u2026"</string>
     <string name="wifi_setup_status_proceed_to_next" msgid="6708250000342940031">"Ir al siguiente paso"</string>
     <string name="wifi_setup_status_eap_not_supported" msgid="5335338851032315905">"EAP no compatible"</string>
     <string name="wifi_setup_eap_not_supported" msgid="595556546597351489">"No puedes definir una conexión Wi-Fi EAP durante la configuración, pero puedes hacerlo cuando haya finalizado a través de Ajustes &gt; Conexiones inalámbricas y redes."</string>
-    <string name="wifi_setup_description_connecting" msgid="2793554932006756795">"Conectando (puede tardar unos minutos)..."</string>
+    <string name="wifi_setup_description_connecting" msgid="2793554932006756795">"Conectando (puede tardar unos minutos)\u2026"</string>
     <string name="wifi_setup_description_connected" msgid="5235991893829582459">"Toca "<b>"Siguiente"</b>" para continuar con la configuración."\n\n"Toca "<b>"Volver"</b>" para conectarte a otra red Wi-Fi."</string>
     <string name="accessibility_sync_enabled" msgid="558480439730263116">"Sincronización habilitada"</string>
     <string name="accessibility_sync_disabled" msgid="1741194106479011384">"Sincronización inhabilitada"</string>
@@ -1575,7 +1575,7 @@
     <string name="sync_disabled" msgid="8511659877596511991">"La sincronización está desactivada"</string>
     <string name="sync_error" msgid="5060969083117872149">"Error de sincronización"</string>
     <string name="last_synced" msgid="4242919465367022234">"Última sincronización: <xliff:g id="LAST_SYNC_TIME">%1$s</xliff:g>"</string>
-    <string name="sync_in_progress" msgid="5151314196536070569">"Sincronizando…"</string>
+    <string name="sync_in_progress" msgid="5151314196536070569">"Sincronizando\u2026"</string>
     <string name="settings_backup" msgid="2274732978260797031">"Hacer copia de seguridad de configuración"</string>
     <string name="settings_backup_summary" msgid="7916877705938054035">"Hacer copia de seguridad de mi configuración"</string>
     <string name="sync_menu_sync_now" msgid="6154608350395805683">"Sincronizar ahora"</string>
@@ -1677,7 +1677,7 @@
     <string name="data_usage_menu_show_ethernet" msgid="5181361208532314097">"Mostrar uso de Ethernet"</string>
     <string name="data_usage_menu_metered" msgid="5056695223222541863">"Puntos de acceso móviles"</string>
     <string name="data_usage_menu_auto_sync" msgid="8203999775948778560">"Sincronización automática"</string>
-    <string name="data_usage_change_cycle" msgid="7776556448920114866">"Cambiar ciclo…"</string>
+    <string name="data_usage_change_cycle" msgid="7776556448920114866">"Cambiar ciclo\u2026"</string>
     <string name="data_usage_pick_cycle_day" msgid="4470796861757050966">"Día del mes para restablecer ciclo de uso de datos:"</string>
     <string name="data_usage_empty" msgid="8621855507876539282">"Ninguna aplicación ha usado datos en este período."</string>
     <string name="data_usage_label_foreground" msgid="4938034231928628164">"Primer plano"</string>
@@ -1817,7 +1817,7 @@
     <string name="user_confirm_remove_self_message" product="default" msgid="5391888073786090274">"Perderás tu espacio y tus datos en este teléfono. Esta acción no se puede deshacer."</string>
     <string name="user_confirm_remove_message" product="tablet" msgid="4610106937214870034">"Los datos y el espacio de este usuario se eliminarán de este tablet. Esta acción no se puede deshacer."</string>
     <string name="user_confirm_remove_message" product="default" msgid="8130264611683731142">"Los datos y el espacio de este usuario se eliminarán de este teléfono. Esta acción no se puede deshacer."</string>
-    <string name="user_adding_new_user" msgid="1521674650874241407">"Añadiendo nuevo usuario…"</string>
+    <string name="user_adding_new_user" msgid="1521674650874241407">"Añadiendo nuevo usuario\u2026"</string>
     <string name="user_delete_user_description" msgid="3158592592118767056">"Eliminar usuario"</string>
     <string name="user_delete_button" msgid="5131259553799403201">"Eliminar"</string>
     <string name="global_change_warning" product="tablet" msgid="8045013389464294039">"Esta configuración afecta a todos los usuarios de este tablet."</string>
