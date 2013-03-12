@@ -1482,6 +1482,10 @@
     <string name="wifi_scan_always_confirm_allow">Allow</string>
     <string name="wifi_scan_always_confirm_deny">Deny</string>
 
+    <string name="wifi_mode">Mode</string>
+    <string name="wifi_mode_ibss">Ad-Hoc (IBSS) Network</string>
+    <string name="wifi_mode_ibss_short">Ad-Hoc</string>
+
     <!-- Button label to connect to a Wi-Fi network -->
     <string name="wifi_connect">Connect</string>
     <!-- Failured notification for connect -->
