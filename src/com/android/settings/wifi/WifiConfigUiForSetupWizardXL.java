@@ -68,7 +68,7 @@ public class WifiConfigUiForSetupWizardXL implements WifiConfigUiBase, OnFocusCh
         mInflater = (LayoutInflater)activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         mView = mInflater.inflate(R.layout.wifi_config_ui_for_setup_wizard, parent, true);
-        mController = new WifiConfigController(this, mView, mAccessPoint, edit);
+        mController = new WifiConfigController(this, mView, mAccessPoint, edit, false, null);
 
         mInputMethodManager = (InputMethodManager)
                 activity.getSystemService(Context.INPUT_METHOD_SERVICE);
