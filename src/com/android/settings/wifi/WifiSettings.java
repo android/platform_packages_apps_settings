@@ -581,7 +581,8 @@ public class WifiSettings extends SettingsPreferenceFragment
             mSelectedAccessPoint = (AccessPoint) preference;
             /** Bypass dialog for unsecured, unsaved networks */
             if (mSelectedAccessPoint.security == AccessPoint.SECURITY_NONE &&
-                    mSelectedAccessPoint.networkId == INVALID_NETWORK_ID) {
+                    mSelectedAccessPoint.networkId == INVALID_NETWORK_ID &&
+                    !mSelectedAccessPoint.isIBSS) {
                 mSelectedAccessPoint.generateOpenNetworkConfig();
                 mWifiManager.connect(mSelectedAccessPoint.getConfig(), mConnectListener);
             } else {
@@ -751,9 +752,8 @@ public class WifiSettings extends SettingsPreferenceFragment
         final List<ScanResult> results = mWifiManager.getScanResults();
         if (results != null) {
             for (ScanResult result : results) {
-                // Ignore hidden and ad-hoc networks.
-                if (result.SSID == null || result.SSID.length() == 0 ||
-                        result.capabilities.contains("[IBSS]")) {
+                // Ignore hidden networks.
+                if (result.SSID == null || result.SSID.length() == 0) {
                     continue;
                 }
 
