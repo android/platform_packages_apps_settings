@@ -366,16 +366,8 @@ public class WifiP2pSettings extends SettingsPreferenceFragment
 
                 if (forceWps != -1) {
                     config.wps.setup = forceWps;
-                } else {
-                    if (mSelectedWifiPeer.device.wpsPbcSupported()) {
-                        config.wps.setup = WpsInfo.PBC;
-                    } else if (mSelectedWifiPeer.device.wpsKeypadSupported()) {
-                        config.wps.setup = WpsInfo.KEYPAD;
-                    } else {
-                        config.wps.setup = WpsInfo.DISPLAY;
-                    }
                 }
-
+                if (DBG) Log.d(TAG, " wps setup=" + config.wps.setup);
                 mWifiP2pManager.connect(mChannel, config,
                         new WifiP2pManager.ActionListener() {
                             public void onSuccess() {
