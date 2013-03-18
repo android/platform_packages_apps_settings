@@ -77,6 +77,7 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
 
     private boolean mUsbConnected;
     private String mUsbFunction;
+    private String mVolumeDescription;
 
     private long mTotalSize;
 
@@ -129,6 +130,10 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
 
         setTitle(volume != null ? volume.getDescription(context)
                 : context.getText(R.string.internal_storage));
+        if (volume != null)
+        {
+            mVolumeDescription = volume.getDescription(context);
+        }
     }
 
     private StorageItemPreference buildItem(int titleRes, int colorRes) {
@@ -208,8 +213,13 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
         final boolean allowFormat = mVolume != null;
         if (allowFormat) {
             mFormatPreference = new Preference(context);
-            mFormatPreference.setTitle(R.string.sd_format);
-            mFormatPreference.setSummary(R.string.sd_format_summary);
+            if (mVolumeDescription.contains("USB")) {
+                mFormatPreference.setTitle(R.string.usb_format);
+                mFormatPreference.setSummary(R.string.usb_format_summary);
+             } else {
+                mFormatPreference.setTitle(R.string.sd_format);
+                mFormatPreference.setSummary(R.string.sd_format_summary);
+             }
             addPreference(mFormatPreference);
         }
 
@@ -250,8 +260,13 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
         if (Environment.MEDIA_MOUNTED.equals(state)
                 || Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
             mMountTogglePreference.setEnabled(true);
-            mMountTogglePreference.setTitle(mResources.getString(R.string.sd_eject));
-            mMountTogglePreference.setSummary(mResources.getString(R.string.sd_eject_summary));
+            if (mVolumeDescription.contains("USB")) {
+                mMountTogglePreference.setTitle(mResources.getString(R.string.usb_eject));
+                mMountTogglePreference.setSummary(mResources.getString(R.string.usb_eject_summary));
+            } else {
+                mMountTogglePreference.setTitle(mResources.getString(R.string.sd_eject));
+                mMountTogglePreference.setSummary(mResources.getString(R.string.sd_eject_summary));
+            }
             addPreference(mUsageBarPreference);
             addPreference(mItemTotal);
             addPreference(mItemAvailable);
@@ -259,12 +274,22 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
             if (Environment.MEDIA_UNMOUNTED.equals(state) || Environment.MEDIA_NOFS.equals(state)
                     || Environment.MEDIA_UNMOUNTABLE.equals(state)) {
                 mMountTogglePreference.setEnabled(true);
-                mMountTogglePreference.setTitle(mResources.getString(R.string.sd_mount));
-                mMountTogglePreference.setSummary(mResources.getString(R.string.sd_mount_summary));
+                if (mVolumeDescription.contains("USB")) {
+                    mMountTogglePreference.setTitle(mResources.getString(R.string.usb_mount));
+                    mMountTogglePreference.setSummary(mResources.getString(R.string.usb_mount_summary));
+                } else {
+                    mMountTogglePreference.setTitle(mResources.getString(R.string.sd_mount));
+                    mMountTogglePreference.setSummary(mResources.getString(R.string.sd_mount_summary));
+                }
             } else {
                 mMountTogglePreference.setEnabled(false);
-                mMountTogglePreference.setTitle(mResources.getString(R.string.sd_mount));
-                mMountTogglePreference.setSummary(mResources.getString(R.string.sd_insert_summary));
+                 if (mVolumeDescription.contains("USB")) {
+                    mMountTogglePreference.setTitle(mResources.getString(R.string.usb_mount));
+                    mMountTogglePreference.setSummary(mResources.getString(R.string.usb_insert_summary));
+                 } else {
+                    mMountTogglePreference.setTitle(mResources.getString(R.string.sd_mount));
+                    mMountTogglePreference.setSummary(mResources.getString(R.string.sd_insert_summary));
+                 }
             }
 
             removePreference(mUsageBarPreference);
@@ -287,7 +312,11 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
             }
         } else if (mFormatPreference != null) {
             mFormatPreference.setEnabled(mMountTogglePreference.isEnabled());
-            mFormatPreference.setSummary(mResources.getString(R.string.sd_format_summary));
+            if (mVolumeDescription.contains("USB")) {
+                mFormatPreference.setSummary(mResources.getString(R.string.usb_format_summary));
+            } else {
+                mFormatPreference.setSummary(mResources.getString(R.string.sd_format_summary));
+            }
         }
     }
 
