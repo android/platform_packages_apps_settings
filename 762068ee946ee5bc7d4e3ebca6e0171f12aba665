@@ -16,6 +16,24 @@
       "revId": "762068ee946ee5bc7d4e3ebca6e0171f12aba665",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "R-UW5KtU",
+        "filename": "src/com/android/settings/DataUsageSummary.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2269,
+      "author": {
+        "id": 1019013
+      },
+      "writtenOn": "2013-03-19T17:13:34Z",
+      "side": 1,
+      "message": "Thank you for your review. I forgot to check destroy logic. In that case, I prefer to move closing session to onDestroyView because simply opening session at onCreate would make another issue.\n\nIf ethernet is really present and there was no data usage so far, mShowEthernet would be set to false at the onCreate. However, if a user connect ethernet afterwards and resume this view, user would experience the same issue because mShowEthernet variable is checked along with hasEthernet() to determine whether to show ethernet related UIs (context menu and tab).\n\nHow do you think? Best way to fix this issue would be creating hardware feature for ethernet and check it instead but we don\u0027t.",
+      "parentUuid": "R-WVapv8",
+      "revId": "762068ee946ee5bc7d4e3ebca6e0171f12aba665",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
