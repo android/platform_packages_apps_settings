@@ -2263,7 +2263,10 @@ public class DataUsageSummary extends Fragment {
         }
 
         // only show ethernet when both hardware present and traffic has occurred
-        return hasEthernet && ethernetBytes > 0;
+        // don't treat mStatsSession == null as no traffic because
+        //   1. it can be happen only if it's called from onCreate
+        //   2. hasEthernet would be called again to whenever we decide to show corresponding UIs
+        return hasEthernet && (mStatsSession == null || ethernetBytes > 0);
     }
 
     /**
