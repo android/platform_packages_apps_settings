@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "R-WVapv8",
+        "filename": "src/com/android/settings/DataUsageSummary.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2269,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2013-03-19T16:45:05Z",
+      "side": 1,
+      "message": "i\u0027d rather fix this by moving the mStatsService.openSession() code into onCreate() before this method is invoked.  (that way the we always have a mStatsSession in this method.)\n\nit also better matches the lifecycle, since we close the session in onDestroy().",
+      "revId": "762068ee946ee5bc7d4e3ebca6e0171f12aba665",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
