@@ -34,6 +34,24 @@
       "revId": "762068ee946ee5bc7d4e3ebca6e0171f12aba665",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "R-eV3dkw",
+        "filename": "src/com/android/settings/DataUsageSummary.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2269,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2013-03-19T17:31:00Z",
+      "side": 1,
+      "message": "thinking about this a bit more, could we just have that \"override preferences when no mobile radio\" if() block in onCreate() set both mShowWifi and mShowEthernet to true?  as you pointed out, we always check against hasEthernet() later before actually showing any UI.\n\nthat should handle the resume-after-traffic case you pointed out.\n\nbtw it shouldn\u0027t be a hardware feature, since network connections can come/go.  for example, consider a USB ethernet adapter that is transient.",
+      "parentUuid": "R-UW5KtU",
+      "revId": "762068ee946ee5bc7d4e3ebca6e0171f12aba665",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
