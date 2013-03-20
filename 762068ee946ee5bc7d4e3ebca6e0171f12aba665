@@ -52,6 +52,24 @@
       "revId": "762068ee946ee5bc7d4e3ebca6e0171f12aba665",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "SFqwhQ68",
+        "filename": "src/com/android/settings/DataUsageSummary.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2269,
+      "author": {
+        "id": 1019013
+      },
+      "writtenOn": "2013-03-20T02:23:42Z",
+      "side": 1,
+      "message": "that sounds more reasonable. thank you for detailed review.",
+      "parentUuid": "R-eV3dkw",
+      "revId": "762068ee946ee5bc7d4e3ebca6e0171f12aba665",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
