@@ -94,6 +94,7 @@ public class ApnEditor extends PreferenceActivity
     private boolean mNewApn;
     private boolean mFirstTime;
     private Resources mRes;
+    private TelephonyManager mTelephonyManager;
 
     /**
      * Standard projection for the interesting columns of a normal note.
@@ -223,6 +224,8 @@ public class ApnEditor extends PreferenceActivity
 
         mCursor = managedQuery(mUri, sProjection, null, null);
         mCursor.moveToFirst();
+
+        mTelephonyManager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
 
         fillUi();
     }
@@ -370,6 +373,13 @@ public class ApnEditor extends PreferenceActivity
                 mMvnoMatchData.setText("");
             } else {
                 mMvnoMatchData.setEnabled(true);
+                if (values[mvnoIndex].equals("SPN")) {
+                    mMvnoMatchData.setText(mTelephonyManager.getSimOperatorName());
+                } else if (values[mvnoIndex].equals("IMSI")) {
+                    mMvnoMatchData.setText(mTelephonyManager.getSubscriberId());
+                } else if (values[mvnoIndex].equals("GID")) {
+                    mMvnoMatchData.setText(mTelephonyManager.getGroupIdLevel1());
+                }
             }
 
             try {
