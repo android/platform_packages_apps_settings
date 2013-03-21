@@ -94,6 +94,7 @@ public class WifiConfigController implements TextWatcher,
     private Spinner mEapUserCertSpinner;
     private TextView mEapIdentityView;
     private TextView mEapAnonymousView;
+    private TextView mEapServerVerificationView;
 
     /* This value comes from "wifi_ip_settings" resource array */
     private static final int DHCP = 0;
@@ -403,6 +404,11 @@ public class WifiConfigController implements TextWatcher,
                 config.enterpriseConfig.setAnonymousIdentity(
                         mEapAnonymousView.getText().toString());
 
+		// Need to prepend CN= to make matching behave the same
+		// as other operating systems.
+		config.enterpriseConfig.setSubjectMatch(
+							"CN=" + mEapServerVerificationView.getText().toString());
+
                 if (mPasswordView.isShown()) {
                     // For security reasons, a previous password is not displayed to user.
                     // Update only if it has been changed.
@@ -576,6 +582,7 @@ public class WifiConfigController implements TextWatcher,
             mEapUserCertSpinner = (Spinner) mView.findViewById(R.id.user_cert);
             mEapIdentityView = (TextView) mView.findViewById(R.id.identity);
             mEapAnonymousView = (TextView) mView.findViewById(R.id.anonymous);
+	    mEapServerVerificationView = (TextView) mView.findViewById(R.id.server_validation);
 
             loadCertificates(mEapCaCertSpinner, Credentials.CA_CERTIFICATE);
             loadCertificates(mEapUserCertSpinner, Credentials.USER_PRIVATE_KEY);
@@ -612,6 +619,7 @@ public class WifiConfigController implements TextWatcher,
                 setSelection(mEapUserCertSpinner, enterpriseConfig.getClientCertificateAlias());
                 mEapIdentityView.setText(enterpriseConfig.getIdentity());
                 mEapAnonymousView.setText(enterpriseConfig.getAnonymousIdentity());
+		mEapServerVerificationView.setText(enterpriseConfig.getSubjectMatch().replace("CN=", ""));
             } else {
                 // Choose a default for a new network and show only appropriate
                 // fields
@@ -654,6 +662,7 @@ public class WifiConfigController implements TextWatcher,
         mView.findViewById(R.id.l_ca_cert).setVisibility(View.VISIBLE);
         mView.findViewById(R.id.password_layout).setVisibility(View.VISIBLE);
         mView.findViewById(R.id.show_password_layout).setVisibility(View.VISIBLE);
+	mView.findViewById(R.id.l_server_validation).setVisibility(View.VISIBLE);
 
         Context context = mConfigUi.getContext();
         switch (eapMethod) {
@@ -661,6 +670,7 @@ public class WifiConfigController implements TextWatcher,
                 setPhase2Invisible();
                 setCaCertInvisible();
                 setAnonymousIdentInvisible();
+		setServerVerifyInvisible();
                 setUserCertInvisible();
                 break;
             case WIFI_EAP_METHOD_TLS:
@@ -710,6 +720,11 @@ public class WifiConfigController implements TextWatcher,
     private void setAnonymousIdentInvisible() {
         mView.findViewById(R.id.l_anonymous).setVisibility(View.GONE);
         mEapAnonymousView.setText("");
+    }
+
+    private void setServerVerifyInvisible() {
+	mView.findViewById(R.id.l_server_validation).setVisibility(View.GONE);
+	mEapServerVerificationView.setText("");
     }
 
     private void setPasswordInvisible() {

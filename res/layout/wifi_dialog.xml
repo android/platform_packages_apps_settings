@@ -91,6 +91,19 @@
                             android:entries="@array/wifi_phase2_entries" />
                 </LinearLayout>
 
+		<LinearLayout android:id="@+id/l_server_validation"
+			android:visibility="gone"
+			style="@style/wifi_item" >
+		    <TextView
+			    style="@style/wifi_item_label"
+			    android:text="@string/wifi_eap_server_name_validate" />
+
+                    <EditText android:id="@+id/server_validation"
+                            style="@style/wifi_item_content"
+                            android:singleLine="true"
+                            android:inputType="textNoSuggestions" />
+		</LinearLayout>
+
                 <LinearLayout android:id="@+id/l_ca_cert"
                         android:visibility="gone"
                         style="@style/wifi_item" >
