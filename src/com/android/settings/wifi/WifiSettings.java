@@ -40,6 +40,7 @@ import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.net.wifi.WpsInfo;
+import android.net.wifi.WifiChannel;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -131,6 +132,7 @@ public class WifiSettings extends SettingsPreferenceFragment
     private boolean mIbssSupported;
 
     private UserManager mUserManager;
+    List<WifiChannel> mSupportedChannels;
 
     private WifiEnabler mWifiEnabler;
     // An access point being editted is stored here.
@@ -653,7 +655,7 @@ public class WifiSettings extends SettingsPreferenceFragment
                 }
                 // If it's still null, fine, it's for Add Network
                 mSelectedAccessPoint = ap;
-                mDialog = new WifiDialog(getActivity(), this, ap, mDlgEdit, mIbssSupported);
+                mDialog = new WifiDialog(getActivity(), this, ap, mDlgEdit, mIbssSupported, mSupportedChannels);
                 return mDialog;
             case WPS_PBC_DIALOG_ID:
                 return new WpsDialog(getActivity(), WpsInfo.PBC);
@@ -919,6 +921,7 @@ public class WifiSettings extends SettingsPreferenceFragment
             case WifiManager.WIFI_STATE_ENABLED:
                 // this function only returns valid results in enabled state
                 mIbssSupported = mWifiManager.isIbssSupported();
+                mSupportedChannels = mWifiManager.getSupportedChannels();
 
                 mScanner.resume();
                 return; // not break, to avoid the call to pause() below
