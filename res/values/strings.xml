@@ -1433,6 +1433,10 @@
     <string name="wifi_mode_ibss">Ad-Hoc (IBSS) Network</string>
     <string name="wifi_mode_ibss_short">Ad-Hoc</string>
 
+    <string name="wifi_ibss_freq_title">Channel / Frequency</string>
+    <string name="wifi_channel">Channel</string>
+    <string name="wifi_mhz">MHz</string>
+
     <!-- Button label to connect to a Wi-Fi network -->
     <string name="wifi_connect">Connect</string>
     <!-- Failured notification for connect -->
