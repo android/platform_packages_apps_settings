@@ -16,6 +16,24 @@
       "revId": "f857eb80b7690bc88ca390948821a26a824617c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Spr-CMyg",
+        "filename": "src/com/android/settings/ApnEditor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1016953
+      },
+      "writtenOn": "2013-03-27T17:59:11Z",
+      "side": 1,
+      "message": "I agree with you. How about use just \"*\", instead of nothing?",
+      "parentUuid": "SkwOdPko",
+      "revId": "f857eb80b7690bc88ca390948821a26a824617c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
