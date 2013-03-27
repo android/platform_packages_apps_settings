@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "SkwOdPko",
+        "filename": "src/com/android/settings/ApnEditor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2013-03-27T17:13:37Z",
+      "side": 1,
+      "message": "I have to submit this internally as we\u0027re adding a new public api, so you don\u0027t have to make changes to this change.\n\nHowever, I think we should probably set to \"\" here - the full IMSI is certainly not the right answer and the user probably doesn\u0027t know what the right mix of digits and \u0027*\u0027 wildcards is.  I don\u0027t think we know either, so I think we should show nothing.  What do you think?",
+      "revId": "f857eb80b7690bc88ca390948821a26a824617c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
