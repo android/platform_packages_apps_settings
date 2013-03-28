@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "Sk8lRlUU",
+        "filename": "src/com/android/settings/CredentialStorage.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1002975
+      },
+      "writtenOn": "2013-03-28T18:33:31Z",
+      "side": 1,
+      "message": "not needed",
+      "revId": "10590b72ebe19d2ab72fd15bf0b3af1e80c31c9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
