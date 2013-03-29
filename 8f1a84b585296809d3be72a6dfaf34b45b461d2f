@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "SwURuYHo",
+        "filename": "res/xml/security_settings_misc.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2013-03-29T18:27:23Z",
+      "side": 1,
+      "message": "Is this purely informational? If so, you can add this style:\n\nstyle\u003d\"?android:attr/preferenceInformationStyle\"",
+      "revId": "8f1a84b585296809d3be72a6dfaf34b45b461d2f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
