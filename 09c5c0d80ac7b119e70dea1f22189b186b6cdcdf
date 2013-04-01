@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "S12vzgWU",
+        "filename": "src/com/android/settings/Settings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2013-04-01T17:56:59Z",
+      "side": 1,
+      "message": "super (PreferenceActivity) doesn\u0027t have this method, so this change doesn\u0027t build.",
+      "revId": "09c5c0d80ac7b119e70dea1f22189b186b6cdcdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
