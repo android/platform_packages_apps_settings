@@ -16,6 +16,24 @@
       "revId": "6e3bb4e784b5b82babdaa2e8a023c9451905405e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "S7-Z4Hj4",
+        "filename": "src/com/android/settings/deviceinfo/StorageVolumePreferenceCategory.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2013-04-02T17:20:00Z",
+      "side": 1,
+      "message": "i\u0027d say always add the preferences; addPreference() will skip them if they\u0027ve already been added.\n\nso no need for the if() check.",
+      "parentUuid": "S3UuOeSM",
+      "revId": "6e3bb4e784b5b82babdaa2e8a023c9451905405e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
