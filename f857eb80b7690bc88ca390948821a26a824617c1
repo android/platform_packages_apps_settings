@@ -34,6 +34,24 @@
       "revId": "f857eb80b7690bc88ca390948821a26a824617c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Sk0OJBto",
+        "filename": "src/com/android/settings/ApnEditor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2013-04-02T22:47:50Z",
+      "side": 1,
+      "message": "Good idea.  I\u0027ll do that.  Thx!",
+      "parentUuid": "Spr-CMyg",
+      "revId": "f857eb80b7690bc88ca390948821a26a824617c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
