@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "S3UuOeSM",
+        "filename": "src/com/android/settings/deviceinfo/StorageVolumePreferenceCategory.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2013-04-02T10:51:21Z",
+      "side": 1,
+      "message": "This looks like a very strange validation method.\nIs it just me?",
+      "revId": "6e3bb4e784b5b82babdaa2e8a023c9451905405e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
