@@ -251,6 +251,12 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
 
         if (Environment.MEDIA_MOUNTED.equals(state)
                 || Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
+            if (mResources.getString(R.string.sd_mount).equals(mMountTogglePreference.getTitle())) {
+                addPreference(mUsageBarPreference);
+                addPreference(mItemTotal);
+                addPreference(mItemAvailable);
+                mPreferenceRemoved = false;
+            }
             mMountTogglePreference.setEnabled(true);
             mMountTogglePreference.setTitle(mResources.getString(R.string.sd_eject));
             mMountTogglePreference.setSummary(mResources.getString(R.string.sd_eject_summary));
