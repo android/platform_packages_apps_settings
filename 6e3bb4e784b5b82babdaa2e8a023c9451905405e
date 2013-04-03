@@ -34,6 +34,24 @@
       "revId": "6e3bb4e784b5b82babdaa2e8a023c9451905405e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "S9I4TO2Y",
+        "filename": "src/com/android/settings/deviceinfo/StorageVolumePreferenceCategory.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1020473
+      },
+      "writtenOn": "2013-04-03T01:00:19Z",
+      "side": 1,
+      "message": "I re-checked the codes and I found that if() check is not necessary. I\u0027ll remove if() check.",
+      "parentUuid": "S7-Z4Hj4",
+      "revId": "6e3bb4e784b5b82babdaa2e8a023c9451905405e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
