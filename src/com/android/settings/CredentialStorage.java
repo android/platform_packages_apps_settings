@@ -109,12 +109,6 @@ public final class CredentialStorage extends Activity {
     protected void onResume() {
         super.onResume();
 
-        if (UserHandle.myUserId() != UserHandle.USER_OWNER) {
-            Log.i(TAG, "Cannot install to CredentialStorage as non-primary user");
-            finish();
-            return;
-        }
-
         Intent intent = getIntent();
         String action = intent.getAction();
 
