@@ -62,4 +62,12 @@
                 android:title="@string/wifi_display_settings_title"
                 android:fragment="com.android.settings.wfd.WifiDisplaySettings" />
 
+        <Preference
+            android:title="@string/calibration_sample_title"
+            android:key="calibration">
+            <intent
+                android:action="android.intent.action.MAIN"
+                android:targetPackage="com.android.settings"
+                android:targetClass="com.android.settings.calibration.SampleActivity" />
+        </Preference>
 </PreferenceScreen>
