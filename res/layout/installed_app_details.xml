@@ -62,6 +62,11 @@
                 android:layout_marginTop="4dip"
                 android:text="@string/app_notifications_switch_label" />
 
+            <!-- Show certificate button -->
+            <include
+                layout="@layout/two_buttons_panel"
+                android:id="@+id/app_certificate_buttons_panel"/>
+
         </LinearLayout>
 
         <TextView

@@ -43,6 +43,7 @@ import android.content.pm.IPackageMoveObserver;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.content.pm.Signature;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.hardware.usb.IUsbManager;
@@ -57,14 +58,23 @@ import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.UserHandle;
 import android.os.UserManager;
+import android.net.http.SslCertificate;
 import android.preference.PreferenceActivity;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.format.Formatter;
 import android.text.style.BulletSpan;
 import android.util.Log;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.lang.ref.WeakReference;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateFactory;
+import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.List;
 import android.view.LayoutInflater;
@@ -139,6 +149,8 @@ public class InstalledAppDetails extends Fragment
     private Button mForceStopButton;
     private Button mClearDataButton;
     private Button mMoveAppButton;
+    private View mAppCertButtons;
+    private Button mAppCertificateButton;
     private CompoundButton mNotificationSwitch;
 
     private PackageMoveObserver mPackageMoveObserver;
@@ -179,6 +191,7 @@ public class InstalledAppDetails extends Fragment
     private static final int DLG_DISABLE = DLG_BASE + 7;
     private static final int DLG_DISABLE_NOTIFICATIONS = DLG_BASE + 8;
     private static final int DLG_SPECIAL_DISABLE = DLG_BASE + 9;
+    private static final int DLG_APP_CERTIFICATE = DLG_BASE + 10;
 
     // Menu identifiers
     public static final int UNINSTALL_ALL_USERS_MENU = 1;
@@ -475,6 +488,15 @@ public class InstalledAppDetails extends Fragment
         mEnableCompatibilityCB = (CheckBox)view.findViewById(R.id.enable_compatibility_cb);
         
         mNotificationSwitch = (CompoundButton) view.findViewById(R.id.notification_switch);
+
+        // App certificate button panel
+        mAppCertButtons = view.findViewById(R.id.app_certificate_buttons_panel);
+        mAppCertButtons.findViewById(R.id.left_button).setVisibility(View.INVISIBLE);
+        mAppCertButtons.findViewById(R.id.left_button).setEnabled(false);
+
+        mAppCertificateButton = (Button) mAppCertButtons.findViewById(R.id.right_button);
+        mAppCertificateButton.setText(R.string.app_certificate);
+        mAppCertificateButton.setOnClickListener(this);
 
         return view;
     }
@@ -978,11 +1000,13 @@ public class InstalledAppDetails extends Fragment
             initDataButtons();
             initMoveButton();
             initNotificationButton();
+            mAppCertificateButton.setEnabled(true);
         } else {
             mMoveAppButton.setText(R.string.moving);
             mMoveAppButton.setEnabled(false);
             mUninstallButton.setEnabled(false);
             mSpecialDisableButton.setEnabled(false);
+            mAppCertificateButton.setEnabled(false);
         }
     }
 
@@ -1181,10 +1205,65 @@ public class InstalledAppDetails extends Fragment
                     })
                     .setNegativeButton(R.string.dlg_cancel, null)
                     .create();
+                case DLG_APP_CERTIFICATE:
+                    CertChainAdapter adapter = new CertChainAdapter(getOwner().mPackageInfo.signatures.length);
+                    ViewPager pager = new ViewPager(getActivity());
+                    pager.setAdapter(adapter);
+                    return new AlertDialog.Builder(getActivity())
+                    .setTitle(getActivity().getText(R.string.app_certificate))
+                    .setPositiveButton(R.string.dlg_ok, null)
+                    .setView(pager)
+                    .create();
             }
             throw new IllegalArgumentException("unknown id " + id);
         }
+
+        private View certificateView(Signature signature) throws CertificateException {
+            final InputStream stream = new ByteArrayInputStream(signature.toByteArray());
+            final CertificateFactory factory = CertificateFactory.getInstance("X.509");
+            final X509Certificate cert = (X509Certificate) factory.generateCertificate(stream);
+            return (new SslCertificate(cert)).inflateCertificateView(getActivity());
+        }
+
+        public class CertChainAdapter extends PagerAdapter {
+
+            private int count;
+
+            public CertChainAdapter(int count) {
+                super();
+                this.count = count;
+            }
+
+            @Override
+            public int getCount() {
+                return count;
+            }
+
+            @Override
+            public Object instantiateItem (ViewGroup container, int position) {
+                View view;
+                try {
+                    view = certificateView(getOwner().mPackageInfo.signatures[position]);
+                } catch (CertificateException e) {
+                    view = new TextView(getActivity());
+                    ((TextView) view).setText(R.string.app_certificate_error);
+                }
+                container.addView(view, position);
+                return view;
+            }
+
+            @Override
+            public void destroyItem (ViewGroup container, int position, Object object) {
+                container.removeView((View) object);
+            }
+
+            @Override
+            public boolean isViewFromObject (View view, Object object) {
+                return view == object;
+            }
+        }
     }
+
 
     private void uninstallPkg(String packageName, boolean allUsers, boolean andDisable) {
          // Create new intent to launch Uninstaller activity
@@ -1307,6 +1386,8 @@ public class InstalledAppDetails extends Fragment
             }
         } else if(v == mSpecialDisableButton) {
             showDialogInner(DLG_SPECIAL_DISABLE, 0);
+        } else if(v == mAppCertificateButton) {
+            showDialogInner(DLG_APP_CERTIFICATE, 0);
         } else if(v == mActivitiesButton) {
             mPm.clearPackagePreferredActivities(packageName);
             try {
