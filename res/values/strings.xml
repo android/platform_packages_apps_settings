@@ -4344,6 +4344,11 @@
     <!-- Warning message title for global font change [CHAR LIMIT=40] -->
     <string name="global_font_change_title">Change font size</string>
 
+    <!-- Label for installed application certificate [CHAR LIMIT=20] -->
+    <string name="app_certificate">Certificate</string>
+    <!-- Label for installed application certificate [CHAR LIMIT=80] -->
+    <string name="app_certificate_error">Could not read the application signature certificate</string>
+
     <!-- Label for are-notifications-enabled checkbox in app details [CHAR LIMIT=20] -->
     <string name="app_notifications_switch_label">Show notifications</string>
 
