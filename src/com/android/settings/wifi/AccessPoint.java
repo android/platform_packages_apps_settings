@@ -286,7 +286,13 @@ class AccessPoint extends Preference {
         if (info != null && networkId != WifiConfiguration.INVALID_NETWORK_ID
                 && networkId == info.getNetworkId()) {
             reorder = (mInfo == null);
+            //refresh icon of  connected AP signal
+            int oldLevel = getLevel();
             mRssi = info.getRssi();
+	    if (getLevel() != oldLevel) {
+                notifyChanged();
+             }
+
             mInfo = info;
             mState = state;
             refresh();

@@ -759,6 +759,11 @@ public class WifiSettings extends SettingsPreferenceFragment
 
                 boolean found = false;
                 for (AccessPoint accessPoint : apMap.getAll(result.SSID)) {
+                   //disable RSSI update for connected AP  through scan result
+                    if(accessPoint.getState() == DetailedState.CONNECTED){
+                       found = true;
+                       continue;
+                    }
                     if (accessPoint.update(result))
                         found = true;
                 }
