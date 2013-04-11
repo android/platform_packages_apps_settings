@@ -197,15 +197,25 @@ public class RingerVolumePreference extends VolumePreference {
             getContext().registerReceiver(mRingModeChangedReceiver, filter);
         }
 
-        // Disable either ringer+notifications or notifications
-        int id;
-        if (!Utils.isVoiceCapable(getContext())) {
-            id = R.id.ringer_section;
+        boolean useMasterVolume = getContext().getResources().
+                getBoolean(com.android.internal.R.bool.config_useMasterVolume);
+        if (useMasterVolume) {
+            // If config_useMasterVolume is true, all streams are treated as STREAM_MASTER.
+            // So hide all except media.
+            view.findViewById(R.id.ringer_section).setVisibility(View.GONE);
+            view.findViewById(R.id.notification_section).setVisibility(View.GONE);
+            view.findViewById(R.id.alarm_section).setVisibility(View.GONE);
         } else {
-            id = R.id.notification_section;
+            // Disable either ringer+notifications or notifications
+            int id;
+            if (!Utils.isVoiceCapable(getContext())) {
+                id = R.id.ringer_section;
+            } else {
+                id = R.id.notification_section;
+            }
+            View hideSection = view.findViewById(id);
+            hideSection.setVisibility(View.GONE);
         }
-        View hideSection = view.findViewById(id);
-        hideSection.setVisibility(View.GONE);
     }
 
     private Uri getMediaVolumeUri(Context context) {
