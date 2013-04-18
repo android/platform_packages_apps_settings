@@ -16,6 +16,24 @@
       "revId": "13bb1b3756306ac230a2e139ec7bf52e6e8593a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ThaNvnsQ",
+        "filename": "src/com/android/settings/inputmethod/UserDictionaryList.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1020248
+      },
+      "writtenOn": "2013-04-18T04:48:46Z",
+      "side": 1,
+      "message": "Of course I haven\u0027t seen this case in the user dictionary.\nAs I know, this is only happened by programming mistakes(when the wrong(or not exist) column is explicitly specified).\nBut if the columnIndex is -1, cusor.getString(columnIndex) makes IllegalStatementException.\nSo, I think this is must be checked -1 or not like cursor.",
+      "parentUuid": "TfkfkUDM",
+      "revId": "13bb1b3756306ac230a2e139ec7bf52e6e8593a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
