@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "TfkfkUDM",
+        "filename": "src/com/android/settings/inputmethod/UserDictionaryList.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2013-04-18T03:31:38Z",
+      "side": 1,
+      "message": "I am perplex at this. The user dictionary is a fundamental part of the system and it *must* contain a LOCALE column as far as I\u0027m aware; I don\u0027t see how the bug that you are trying to fix could happen on a compliant device. If the device does not have a LOCALE column in the user dictionary, it won\u0027t work as expected with most IMEs and should be fixed.\n\nIn which cases do you see this happen?",
+      "revId": "13bb1b3756306ac230a2e139ec7bf52e6e8593a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
