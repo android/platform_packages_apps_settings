@@ -34,6 +34,24 @@
       "revId": "13bb1b3756306ac230a2e139ec7bf52e6e8593a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Tfueg3DM",
+        "filename": "src/com/android/settings/inputmethod/UserDictionaryList.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2013-04-18T10:15:31Z",
+      "side": 1,
+      "message": "All right, I see what you mean.\n\nHowever, I fear this may mask a possible bug. Many IMEs already rely on this column; if for some reason a device in development has this broken, and the settings application does not crash, it makes it more likely that the bug goes unnoticed with disastrous results.\n\nBesides, a user dictionary without a locale column would be completely useless. To some extent, I think crashing if this happens is the right course of action.\n\nAnd furthermore, if the settings application just returns null here, it\u0027s going to crash later when it tries to read individual words anyway.",
+      "parentUuid": "ThaNvnsQ",
+      "revId": "13bb1b3756306ac230a2e139ec7bf52e6e8593a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
