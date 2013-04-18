@@ -53,6 +53,10 @@ public class UserDictionaryList extends SettingsPreferenceFragment {
             return null;
         } else if (cursor.moveToFirst()) {
             final int columnIndex = cursor.getColumnIndex(UserDictionary.Words.LOCALE);
+            if (columnIndex < 0) {
+              // The cursor must contain locale column. Return null.
+              return null;
+            }
             do {
                 String locale = cursor.getString(columnIndex);
                 localeList.add(null != locale ? locale : "");
