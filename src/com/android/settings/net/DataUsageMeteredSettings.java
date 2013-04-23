@@ -58,7 +58,7 @@ public class DataUsageMeteredSettings extends SettingsPreferenceFragment {
         final Context context = getActivity();
 
         mPolicyManager = NetworkPolicyManager.from(context);
-        mWifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        mWifiManager = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
 
         mPolicyEditor = new NetworkPolicyEditor(mPolicyManager);
         mPolicyEditor.read();
