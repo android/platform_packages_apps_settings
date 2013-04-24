@@ -34,7 +34,9 @@ public final class DevicePickerFragment extends DeviceListPreferenceFragment {
     private String mLaunchPackage;
     private String mLaunchClass;
     private boolean mStartScanOnResume;
-
+//modify by huaqin -- start
+    private boolean is_searching;
+//modify by huaqin -- end
     @Override
     void addPreferencesForActivity() {
         addPreferencesFromResource(R.xml.device_picker);
@@ -51,8 +53,34 @@ public final class DevicePickerFragment extends DeviceListPreferenceFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getActivity().setTitle(getString(R.string.device_picker));
-        mStartScanOnResume = (savedInstanceState == null);  // don't start scan after rotation
+//modify by huaqin -- start
+        //mStartScanOnResume = (savedInstanceState == null);  // don't start scan after rotation
+        if(savedInstanceState == null){
+		 mStartScanOnResume = true;
+        }else{
+                mStartScanOnResume = savedInstanceState.getBoolean("is_searching");
+        }
+//modify by huaqin -- end
     }
+
+//modify by huaqin -- start
+    public void onPause() {
+	if(mLocalAdapter.isDiscovering()){
+	   is_searching = true;
+	}else{
+	   is_searching = false;
+	}
+    }
+
+    public void onSaveInstanceState(Bundle outState) {
+
+	if(is_searching){
+	   outState.putBoolean("is_searching", true);
+	}else{
+	   outState.putBoolean("is_searching", false);
+	}
+    }
+//modify by huaqin -- end
 
     @Override
     public void onResume() {
