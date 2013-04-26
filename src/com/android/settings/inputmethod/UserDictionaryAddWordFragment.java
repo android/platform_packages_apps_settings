@@ -127,6 +127,9 @@ public class UserDictionaryAddWordFragment extends Fragment
         if (locale.isMoreLanguages()) {
             PreferenceActivity preferenceActivity = (PreferenceActivity)getActivity();
             preferenceActivity.startPreferenceFragment(new UserDictionaryLocalePicker(this), true);
+            /*hide inputmethod in language choice list when add word in dictionary*/
+            android.view.inputmethod.InputMethodManager imm = (android.view.inputmethod.InputMethodManager)getActivity().getSystemService(getActivity().INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
         } else {
             mContents.updateLocale(locale.getLocaleString());
         }
