@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "Uiz2E10o",
+        "filename": "src/com/android/settings/wifi/AccessPoint.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2013-05-13T21:47:08Z",
+      "side": 1,
+      "message": "please replace tabs with spaces.",
+      "revId": "0aa6943b1c5bf41197b16d7791a154383fc722aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
