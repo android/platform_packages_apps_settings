@@ -22,6 +22,7 @@ import android.content.ContentUris;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.net.Uri;
@@ -33,11 +34,15 @@ import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.provider.Telephony;
+import android.telephony.ServiceState;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
@@ -181,6 +186,11 @@ public class ApnEditor extends PreferenceActivity
 
         mBearer = (ListPreference) findPreference(KEY_BEARER);
         mBearer.setOnPreferenceChangeListener(this);
+
+        if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY_CDMA)) {
+            // Remove eHRPD from the bearer list because it is only used in CDMA.
+            removeBearer(ServiceState.RIL_RADIO_TECHNOLOGY_EHRPD);
+        }
 
         mMvnoType = (ListPreference) findPreference(KEY_MVNO_TYPE);
         mMvnoType.setOnPreferenceChangeListener(this);
@@ -353,13 +363,33 @@ public class ApnEditor extends PreferenceActivity
         if (mBearerIndex == -1) {
             return null;
         } else {
-            String[] values = mRes.getStringArray(R.array.bearer_entries);
+            CharSequence[] values = mBearer.getEntries();
             try {
-                return values[mBearerIndex];
+                return values[mBearerIndex].toString();
             } catch (ArrayIndexOutOfBoundsException e) {
                 return null;
             }
         }
+    }
+
+    /**
+     * Removes specified type from bearer settings.
+     * @param value of bearer type.
+     */
+    private void removeBearer(int type) {
+        final ArrayList<CharSequence> entries =
+                new ArrayList<CharSequence>(Arrays.asList(mBearer.getEntries()));
+        final ArrayList<CharSequence> values =
+                new ArrayList<CharSequence>(Arrays.asList(mBearer.getEntryValues()));
+
+        // Find index of specified network type.
+        final int index = values.indexOf(String.valueOf(type));
+        if (index < 0) return;
+
+        entries.remove(index);
+        values.remove(index);
+        mBearer.setEntries(entries.toArray(new CharSequence[entries.size()]));
+        mBearer.setEntryValues(values.toArray(new CharSequence[values.size()]));
     }
 
     private String mvnoDescription(String newValue) {
