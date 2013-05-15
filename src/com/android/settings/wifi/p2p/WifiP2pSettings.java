@@ -239,7 +239,7 @@ public class WifiP2pSettings extends SettingsPreferenceFragment
             public void onClick(DialogInterface dialog, int which) {
                 if (which == DialogInterface.BUTTON_POSITIVE) {
                     if (mWifiP2pManager != null) {
-                        mWifiP2pManager.cancelConnect(mChannel,
+                        mWifiP2pManager.cancelConnect(mChannel, mSelectedWifiPeer.device,
                                 new WifiP2pManager.ActionListener() {
                             public void onSuccess() {
                                 if (DBG) Log.d(TAG, " cancel connect success");
