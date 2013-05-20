@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "U5H62sco",
+        "filename": "src/com/android/settings/bluetooth/DevicePickerFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1021824
+      },
+      "writtenOn": "2013-05-20T11:13:02Z",
+      "side": 1,
+      "message": "This is shorter:\noutState.putBoolean(\"is_searching\", is_searching);",
+      "revId": "9c015d55df5b4523f6df396cd76a2a09105cb203",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
