@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "U6J0ip3k",
+        "filename": "src/com/android/settings/wifi/p2p/WifiP2pSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000414
+      },
+      "writtenOn": "2013-05-22T17:04:15Z",
+      "side": 1,
+      "message": "Is it Ok voluntarily add parameters?",
+      "revId": "2f698a222aa57bff90f3517a5781dfdf42fdabe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
