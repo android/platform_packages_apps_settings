@@ -16,6 +16,24 @@
       "revId": "2f698a222aa57bff90f3517a5781dfdf42fdabe1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "VA0JZdHA",
+        "filename": "src/com/android/settings/wifi/p2p/WifiP2pSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2013-05-28T18:24:50Z",
+      "side": 1,
+      "message": "This is an api change.  We would do it not by submitting through AOSP, but rather pulling the change in manually, getting api council approval and having it reach AOSP with the next release.",
+      "parentUuid": "U6J0ip3k",
+      "revId": "2f698a222aa57bff90f3517a5781dfdf42fdabe1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
