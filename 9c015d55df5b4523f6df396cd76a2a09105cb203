@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "VDOrWDxg",
+        "filename": "src/com/android/settings/bluetooth/DevicePickerFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1005571
+      },
+      "writtenOn": "2013-05-28T09:49:18Z",
+      "side": 1,
+      "message": "You will have to remove all these \"//modify by huaqin\" comments. You will already be credited in the commit history so they are pointless, besides making the code slightly harder to read.",
+      "revId": "9c015d55df5b4523f6df396cd76a2a09105cb203",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "U5H62sco",
         "filename": "src/com/android/settings/bluetooth/DevicePickerFragment.java",
         "patchSetId": 1
