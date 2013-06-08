@@ -35,6 +35,7 @@ import android.widget.Toast;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyIntents;
+import com.codeaurora.telephony.msim.MSimPhoneFactory;
 
 /**
  * Implements the preference screen to enable/disable ICC lock and
@@ -182,7 +183,11 @@ public class IccLockSettings extends PreferenceActivity
         // Don't need any changes to be remembered
         getPreferenceScreen().setPersistent(false);
 
-        mPhone = PhoneFactory.getDefaultPhone();
+        Intent intent = getIntent();
+        int subscription = intent.getIntExtra(SelectSubscription.SUBSCRIPTION_KEY,
+                MSimPhoneFactory.getDefaultSubscription());
+        // Use the right phone based on the subscription selected.
+        mPhone = MSimPhoneFactory.getPhone(subscription);
         mRes = getResources();
         updatePreferences();
     }
