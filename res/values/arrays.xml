@@ -1163,4 +1163,11 @@
         <item>critical</item>
     </string-array>
 
-</resources>
+    <!-- Display settings.  Entries for each type of Subscription. -->
+    <string-array name="multi_sim_entries">
+        <item> Subscription 1 </item>
+        <item> Subscription 2 </item>
+        <item> Subscription 3 </item>
+    </string-array>
+
+ </resources>
