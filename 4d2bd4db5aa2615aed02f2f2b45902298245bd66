@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd1bf126_0af58b42",
+        "filename": "src/com/android/settings/ApnSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1001401
+      },
+      "writtenOn": "2013-06-12T15:27:14Z",
+      "side": 1,
+      "message": "I hate this, we\u0027ve got to find a better way then using system properties.",
+      "revId": "4d2bd4db5aa2615aed02f2f2b45902298245bd66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
