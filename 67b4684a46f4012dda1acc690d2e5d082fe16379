@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8ab421fd_5c09dd76",
+        "filename": "src/com/android/settings/ApnSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1003902
+      },
+      "writtenOn": "2013-06-21T22:29:20Z",
+      "side": 1,
+      "message": "Thanks. Removed this.",
+      "parentUuid": "8ab421fd_7c35b9ac",
+      "revId": "67b4684a46f4012dda1acc690d2e5d082fe16379",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ab421fd_fc47892e",
         "filename": "src/com/android/settings/ApnSettings.java",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2013-06-21T20:13:39Z",
       "side": 1,
       "message": "Is this supposed to be conditional on mUseNvOperatorForEhrpd?\n\nShould we do it here or in TelephonyManager.getSimOperatorNumeric/getNetworkOperatorNumeric or create getOperatorNumeric?",
+      "revId": "67b4684a46f4012dda1acc690d2e5d082fe16379",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ab421fd_bcf10156",
+        "filename": "src/com/android/settings/ApnSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1003902
+      },
+      "writtenOn": "2013-06-21T22:29:20Z",
+      "side": 1,
+      "message": "No. mUseNvOperatorForEhrpd should really be removed here.",
+      "parentUuid": "8ab421fd_fc47892e",
       "revId": "67b4684a46f4012dda1acc690d2e5d082fe16379",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
