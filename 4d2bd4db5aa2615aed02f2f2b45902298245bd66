@@ -16,6 +16,24 @@
       "revId": "4d2bd4db5aa2615aed02f2f2b45902298245bd66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a9c1583_c144e263",
+        "filename": "src/com/android/settings/ApnSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1003902
+      },
+      "writtenOn": "2013-06-21T17:14:08Z",
+      "side": 1,
+      "message": "Removed this.",
+      "parentUuid": "bd1bf126_0af58b42",
+      "revId": "4d2bd4db5aa2615aed02f2f2b45902298245bd66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
