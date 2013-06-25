@@ -993,7 +993,6 @@ public class AccessibilitySettings extends SettingsPreferenceFragment implements
             onInstallActionBarToggleSwitch();
             onProcessArguments(getArguments());
             getListView().setDivider(null);
-            getListView().setEnabled(false);
         }
 
         @Override
