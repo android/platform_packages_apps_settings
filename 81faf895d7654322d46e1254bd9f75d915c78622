@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8afc21ee_5f53cfeb",
+        "filename": "src/com/android/settings/DateTimeSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-06-25T17:19:43Z",
+      "side": 1,
+      "message": "basically:\n\n  Z, ZZ, and ZZZ \u003d\u003d -0800\n  ZZZZ \u003d\u003d GMT-08:00\n  ZZZZZ \u003d\u003d -08:00\n\nso ZZZZ or \u0027GMT\u0027ZZZZZ would both give what we want.",
+      "revId": "81faf895d7654322d46e1254bd9f75d915c78622",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
