@@ -16,6 +16,24 @@
       "revId": "b85d48fa43e5f7b98492c2ee313f51c072f5ddd8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8afc21ee_bfde5361",
+        "filename": "src/com/android/settings/DateTimeSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-06-25T16:53:20Z",
+      "side": 1,
+      "message": "we haven\u0027t had other complaints, so i wonder if that was a bad driver/RTC hardware in one particular device? if you can reproduce that, we should investigate, but for now i\u0027ll stick with the 1970-01-01 cutoff from the original code.\n\n(do we have CTS tests for the minimum range that the system clock can support? seems like we ought to.)",
+      "parentUuid": "2a0df5e9_62cb8c47",
+      "revId": "b85d48fa43e5f7b98492c2ee313f51c072f5ddd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
