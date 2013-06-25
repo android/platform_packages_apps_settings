@@ -34,6 +34,24 @@
       "revId": "b85d48fa43e5f7b98492c2ee313f51c072f5ddd8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ab2555c_f15be837",
+        "filename": "src/com/android/settings/DateTimeSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1002951
+      },
+      "writtenOn": "2013-06-25T19:05:45Z",
+      "side": 1,
+      "message": "Ok, fine by me.",
+      "parentUuid": "8afc21ee_bfde5361",
+      "revId": "b85d48fa43e5f7b98492c2ee313f51c072f5ddd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
