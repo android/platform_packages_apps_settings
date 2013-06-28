@@ -1,0 +1,8 @@
+Code-Review+2: Robert Greenwalt <rgreenwalt@google.com>
+Verified+1: Robert Greenwalt <rgreenwalt@google.com>
+Verified+1: Deckard Autoverifier <deckard@android.com>
+Submitted-by: Robert Greenwalt <rgreenwalt@google.com>
+Submitted-at: Fri, 28 Jun 2013 15:05:16 +0000
+Reviewed-on: https://android-review.googlesource.com/61580
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
