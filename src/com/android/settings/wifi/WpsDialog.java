@@ -156,6 +156,7 @@ public class WpsDialog extends AlertDialog {
         mWifiManager = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);
 
         setView(mView);
+        setCanceledOnTouchOutside(false);
         super.onCreate(savedInstanceState);
     }
 
