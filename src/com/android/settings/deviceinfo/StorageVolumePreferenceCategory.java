@@ -149,12 +149,9 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
 
         mUsageBarPreference = new UsageBarPreference(context);
         mUsageBarPreference.setOrder(ORDER_USAGE_BAR);
-        addPreference(mUsageBarPreference);
-
         mItemTotal = buildItem(R.string.memory_size, 0);
         mItemAvailable = buildItem(R.string.memory_available, R.color.memory_avail);
-        addPreference(mItemTotal);
-        addPreference(mItemAvailable);
+        addBasicUsageInfoPreferences();
 
         mItemApps = buildItem(R.string.memory_apps_usage, R.color.memory_apps_usage);
         mItemDcim = buildItem(R.string.memory_dcim_usage, R.color.memory_dcim);
@@ -228,6 +225,18 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
         }
     }
 
+    private void addBasicUsageInfoPreferences() {
+        addPreference(mUsageBarPreference);
+        addPreference(mItemTotal);
+        addPreference(mItemAvailable);
+    }
+
+    private void removeBasicUsageInfoPreferences() {
+        removePreference(mUsageBarPreference);
+        removePreference(mItemTotal);
+        removePreference(mItemAvailable);
+    }
+
     public StorageVolume getStorageVolume() {
         return mVolume;
     }
@@ -251,6 +260,7 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
 
         if (Environment.MEDIA_MOUNTED.equals(state)
                 || Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
+            addBasicUsageInfoPreferences();
             mMountTogglePreference.setEnabled(true);
             mMountTogglePreference.setTitle(mResources.getString(R.string.sd_eject));
             mMountTogglePreference.setSummary(mResources.getString(R.string.sd_eject_summary));
@@ -266,9 +276,7 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
                 mMountTogglePreference.setSummary(mResources.getString(R.string.sd_insert_summary));
             }
 
-            removePreference(mUsageBarPreference);
-            removePreference(mItemTotal);
-            removePreference(mItemAvailable);
+            removeBasicUsageInfoPreferences();
             if (mFormatPreference != null) {
                 removePreference(mFormatPreference);
             }
