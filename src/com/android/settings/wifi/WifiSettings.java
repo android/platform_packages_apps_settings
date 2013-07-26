@@ -1049,6 +1049,8 @@ public class WifiSettings extends SettingsPreferenceFragment
     /* package */ void onAddNetworkPressed() {
         // No exact access point is selected.
         mSelectedAccessPoint = null;
+        // Reset the saved access point data
+        mAccessPointSavedState = null;
         showDialog(null, true);
     }
 
