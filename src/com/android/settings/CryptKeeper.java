@@ -174,8 +174,9 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
             } else {
                 final TextView status = (TextView) findViewById(R.id.status);
                 status.setText(R.string.try_again);
-                // Reenable the password entry
+                // Reenable the password entry and Back key
                 mPasswordEntry.setEnabled(true);
+                setBackFunctionality(true); // Motorola IKJBMR2-670
             }
         }
     }
