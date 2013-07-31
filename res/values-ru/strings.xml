@@ -1201,7 +1201,7 @@
     <string name="runningservicedetails_processes_title" msgid="928115582044655268">"Процессы"</string>
     <string name="service_stop" msgid="6369807553277527248">"Остановить"</string>
     <string name="service_manage" msgid="1876642087421959194">"Настройки"</string>
-    <string name="service_stop_description" msgid="9146619928198961643">"Эта служба была запущена соответствующим приложением, в котором может произойти сбой, если ее оставновить."</string>
+    <string name="service_stop_description" msgid="9146619928198961643">"Эта служба была запущена соответствующим приложением, в котором может произойти сбой, если ее остановить."</string>
     <string name="heavy_weight_stop_description" msgid="2979218727598321095">"Если закрыть это приложение, можно потерять несохраненные данные."</string>
     <string name="background_process_stop_description" msgid="5034773197139654588">"Это старый процесс приложения, который по-прежнему запущен на случай, если он снова понадобится. Обычно останавливать его не требуется."</string>
     <string name="service_manage_description" msgid="7050092269951613102">"<xliff:g id="CLIENT_NAME">%1$s</xliff:g>: в настоящий момент используется. Нажмите \"Настройки\" для управления."</string>
