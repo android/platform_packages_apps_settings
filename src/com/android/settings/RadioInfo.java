@@ -1081,16 +1081,17 @@ public class RadioInfo extends Activity {
             "WCDMA preferred",
             "GSM only",
             "WCDMA only",
-            "GSM auto (PRL)",
+            "GSM/WCDMA auto (PRL)",
             "CDMA auto (PRL)",
             "CDMA only",
             "EvDo only",
-            "GSM/CDMA auto (PRL)",
+            "GSM/WCDMA/CDMA auto (PRL)",
             "LTE/CDMA auto (PRL)",
-            "LTE/GSM auto (PRL)",
-            "LTE/GSM/CDMA auto (PRL)",
+            "LTE/GSM/WCDMA auto (PRL)",
+            "LTE/GSM/WCDMA/CDMA auto (PRL)",
             "LTE only",
             "LTE/WCDMA",
+            "LTE/GSM",
             "Unknown"};
 
     private void log(String s) {
