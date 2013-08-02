@@ -1090,6 +1090,7 @@ public class RadioInfo extends Activity {
             "LTE/GSM auto (PRL)",
             "LTE/GSM/CDMA auto (PRL)",
             "LTE only",
+            "LTE/WCDMA",
             "Unknown"};
 
     private void log(String s) {
