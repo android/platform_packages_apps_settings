@@ -83,6 +83,7 @@ public class Memory extends SettingsPreferenceFragment {
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+        setRetainInstance(true);
 
         final Context context = getActivity();
 
