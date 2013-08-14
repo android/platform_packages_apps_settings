@@ -107,7 +107,14 @@ public final class DeviceProfilesSettings extends SettingsPreferenceFragment
 
         if (device == null) {
             Log.w(TAG, "Activity started without a remote Bluetooth device");
-            finish();
+            //It's possible that the activity re-entry due to bluetooth bond state updates late.
+            //If mCachedDevice is null(unpaired), finish() will be called twice and cause IllegalStateException.
+            //Add try/catch to fix fatal exception.
+            try{
+                finish();
+            }catch(IllegalStateException e){
+                Log.e(TAG, "illegal state Exception");
+            }
             return;  // TODO: test this failure path
         }
         mRenameDeviceNamePref = new RenameEditTextPreference();
