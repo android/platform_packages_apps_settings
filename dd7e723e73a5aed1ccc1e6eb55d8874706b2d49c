@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f8773c7c_9680ccf4",
+        "filename": "src/com/android/settings/bluetooth/DeviceProfilesSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2013-08-15T16:16:18Z",
+      "side": 1,
+      "message": "Add space after //",
+      "revId": "dd7e723e73a5aed1ccc1e6eb55d8874706b2d49c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8773c7c_f67f401b",
+        "filename": "src/com/android/settings/bluetooth/DeviceProfilesSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2013-08-15T16:16:18Z",
+      "side": 1,
+      "message": "Need spaces around { } - \ntry {\n...\n} catch() {",
+      "revId": "dd7e723e73a5aed1ccc1e6eb55d8874706b2d49c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
