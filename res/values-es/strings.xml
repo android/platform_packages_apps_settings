@@ -346,7 +346,7 @@
     <string name="backup_lock_settings_picker_title" msgid="8530380598637963916">"Bloqueo alternativo"</string>
     <string name="unlock_set_unlock_launch_picker_title" msgid="2084576942666016993">"Bloqueo de pantalla"</string>
     <string name="unlock_set_unlock_launch_picker_change_title" msgid="5045866882028324941">"Cambiar pantalla de bloqueo"</string>
-    <string name="unlock_set_unlock_launch_picker_change_summary" msgid="2790960639554590668">"Cambia o inhabilit seguridad contraseña, PIN o patrón"</string>
+    <string name="unlock_set_unlock_launch_picker_change_summary" msgid="2790960639554590668">"Cambia o inhabilita seguridad contraseña, PIN o patrón"</string>
     <string name="unlock_set_unlock_launch_picker_enable_summary" msgid="4791110798817242301">"Elige un método para bloquear la pantalla."</string>
     <string name="unlock_backup_info_summary" msgid="108524727803788172">"Si el desbloqueo facial no te reconoce, ¿cómo quieres desbloquear la pantalla?"</string>
     <string name="unlock_set_unlock_off_title" msgid="7117155352183088342">"Sin seguridad"</string>
@@ -1676,7 +1676,7 @@
     <string name="show_hw_screen_updates_summary" msgid="1115593565980196197">"Actualizar vistas de las ventanas creadas con GPU"</string>
     <string name="show_hw_layers_updates" msgid="5645728765605699821">"Ver actualizaciones capas"</string>
     <string name="show_hw_layers_updates_summary" msgid="5296917233236661465">"Iluminar capas de hardware en verde al actualizarse"</string>
-    <string name="show_hw_overdraw" msgid="1136884304711318251">"Mostrar superación de GPU"</string>
+    <string name="show_hw_overdraw" msgid="1136884304711318251">"Mostrar superposición de GPU"</string>
     <string name="show_hw_overdraw_summary" msgid="4295714000923082647">"De mejor a peor: azul, verde, rojo claro, rojo"</string>
     <string name="disable_overlays" msgid="2074488440505934665">"Inhabilitar superposiciones HW"</string>
     <string name="disable_overlays_summary" msgid="3578941133710758592">"Usar siempre GPU para combinar pantallas"</string>
@@ -1684,7 +1684,7 @@
     <string name="debug_layout" msgid="5981361776594526155">"Mostrar límites de diseño"</string>
     <string name="debug_layout_summary" msgid="2001775315258637682">"Mostrar límites de vídeo, márgenes, etc."</string>
     <string name="show_cpu_usage" msgid="2389212910758076024">"Mostrar uso de la CPU"</string>
-    <string name="show_cpu_usage_summary" msgid="2113341923988958266">"Suporponer el uso de la CPU en la pantalla"</string>
+    <string name="show_cpu_usage_summary" msgid="2113341923988958266">"Superponer el uso de la CPU en la pantalla"</string>
     <string name="force_hw_ui" msgid="6426383462520888732">"Forzar aceleración GPU"</string>
     <string name="force_hw_ui_summary" msgid="5535991166074861515">"Forzar uso de GPU para dibujos en 2D"</string>
     <string name="force_msaa" msgid="7920323238677284387">"Forzar MSAA 4x"</string>
@@ -1698,7 +1698,7 @@
     <string name="debug_applications_category" msgid="4206913653849771549">"Aplicaciones"</string>
     <string name="immediately_destroy_activities" msgid="8366775083630234121">"Destruir actividades"</string>
     <string name="immediately_destroy_activities_summary" msgid="3592221124808773368">"Destruir actividades cuando el usuario deje de usarlas"</string>
-    <string name="app_process_limit_title" msgid="4280600650253107163">"Límitar procesos en 2.º plano"</string>
+    <string name="app_process_limit_title" msgid="4280600650253107163">"Limitar procesos en 2.º plano"</string>
     <string name="show_all_anrs" msgid="28462979638729082">"Errores sin respuesta"</string>
     <string name="show_all_anrs_summary" msgid="641908614413544127">"Informar de que una aplicación en segundo plano no responde"</string>
     <string name="experimental_webview" msgid="4492200819033780927">"Usar vista web experimental"</string>
