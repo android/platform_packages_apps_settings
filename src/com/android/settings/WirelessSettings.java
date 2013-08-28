@@ -58,6 +58,7 @@ public class WirelessSettings extends SettingsPreferenceFragment {
     private static final String KEY_MANAGE_MOBILE_PLAN = "manage_mobile_plan";
     private static final String KEY_TOGGLE_NSD = "toggle_nsd"; //network service discovery
     private static final String KEY_CELL_BROADCAST_SETTINGS = "cell_broadcast_settings";
+    private static final String KEY_OPERATOR_TROUBLE_SHOOTING_SETTING = "operator_trouble_shooting_settings";
 
     public static final String EXIT_ECM_RESULT = "exit_ecm_result";
     public static final int REQUEST_CODE_EXIT_ECM = 1;
@@ -314,6 +315,16 @@ public class WirelessSettings extends SettingsPreferenceFragment {
             PreferenceScreen root = getPreferenceScreen();
             Preference ps = findPreference(KEY_CELL_BROADCAST_SETTINGS);
             if (ps != null) root.removePreference(ps);
+        }
+
+        // Read platform settings for operator trouble shooting setting
+        boolean isOperatorTroubleShootingEnabled = this.getResources().getBoolean(
+                R.bool.config_operator_trouble_shooting_setting_enable);
+        if (!isOperatorTroubleShootingEnabled) {
+            Preference pref = findPreference(KEY_OPERATOR_TROUBLE_SHOOTING_SETTING);
+            if (pref != null) {
+                getPreferenceScreen().removePreference(pref);
+            }
         }
     }
 

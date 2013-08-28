@@ -2338,6 +2338,9 @@
     <!-- Manage mobile plan [CHAR LIMIT=35]-->
     <string name="manage_mobile_plan_title" translatable="true">Manage mobile plan</string>
 
+    <!-- Operator trouble shooting -->
+    <string name="operator_trouble_shooting_settings_list_item_title">Operator Trouble Shooting</string>
+
     <!-- The SIM operator is not known [CHAR_ LIMIT=50]-->
     <string name="mobile_unknown_sim_operator" translatable="true">Uknown SIM operator</string>
 

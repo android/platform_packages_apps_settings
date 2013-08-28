@@ -90,4 +90,11 @@
             android:targetClass="com.android.cellbroadcastreceiver.CellBroadcastSettings" />
     </PreferenceScreen>
 
+    <PreferenceScreen android:key="operator_trouble_shooting_settings"
+                      android:title="@string/operator_trouble_shooting_settings_list_item_title">
+        <intent android:action="android.intent.action.MAIN"
+                android:targetPackage="@string/operator_trouble_shooting"
+                android:targetClass="@string/operator_trouble_shooting_menu" />
+    </PreferenceScreen>
+
 </PreferenceScreen>
