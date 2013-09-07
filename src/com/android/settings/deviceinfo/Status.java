@@ -412,6 +412,15 @@ public class Status extends PreferenceActivity {
 
     private void updateServiceState(ServiceState serviceState) {
         int state = serviceState.getState();
+
+        // getState() returns only voiceRegState. In eHRPD only and other similar
+        // data only cases, voice state may be OOS and data state may be IN_SERVICE
+        // Hence, checking data state also in case voice state is OOS.
+        if ((state == ServiceState.STATE_OUT_OF_SERVICE)
+                && (serviceState.getDataRegState() == ServiceState.STATE_IN_SERVICE)) {
+            state = ServiceState.STATE_IN_SERVICE;
+        }
+
         String display = mRes.getString(R.string.radioInfo_unknown);
 
         switch (state) {
