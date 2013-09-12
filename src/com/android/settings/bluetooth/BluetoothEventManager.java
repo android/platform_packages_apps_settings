@@ -255,17 +255,19 @@ final class BluetoothEventManager {
                                                BluetoothDevice.ERROR);
             CachedBluetoothDevice cachedDevice = mDeviceManager.findDevice(device);
             if (cachedDevice == null) {
-                Log.w(TAG, "CachedBluetoothDevice for device " + device +
-                        " not found, calling readPairedDevices().");
-                if (!readPairedDevices()) {
-                    Log.e(TAG, "Got bonding state changed for " + device +
-                            ", but we have no record of that device.");
-                    return;
-                }
+                /* This can happen if we get an incoming pairing request from a
+                 * device which we have never found in any inquiry before.
+                 * -> Add this device to the cached devices (mCachedDevices)
+                 * which lists all devices around.
+                 */
+                Log.d(TAG, "device " + device + " not found in cached devices. Adding it");
+                addNewDeviceToCache(device);
+
+                /* Double check that it was really added: */
                 cachedDevice = mDeviceManager.findDevice(device);
                 if (cachedDevice == null) {
                     Log.e(TAG, "Got bonding state changed for " + device +
-                            ", but device not added in cache.");
+                            ", but device could not be added to cache.");
                     return;
                 }
             }
@@ -369,17 +371,34 @@ final class BluetoothEventManager {
             }
         }
     }
+
+    void addNewDeviceToCache(BluetoothDevice device) {
+        CachedBluetoothDevice cachedDevice = mDeviceManager.addDevice(mLocalAdapter,
+                mProfileManager, device);
+        Log.d(TAG, "addNewDeviceToCache: add new device to mCachedDevices: address = "
+                + cachedDevice.getDevice().toString() + " name = " + cachedDevice.getName());
+        dispatchDeviceAdded(cachedDevice);
+    }
+
     boolean readPairedDevices() {
         Set<BluetoothDevice> bondedDevices = mLocalAdapter.getBondedDevices();
         if (bondedDevices == null) {
+            Log.e(TAG, "readPairedDevices: an error occurs. abort.");
             return false;
+        }
+        if (bondedDevices.size() == 0) {
+            Log.d(TAG, "readPairedDevices: there is no bonded device");
         }
 
         boolean deviceAdded = false;
         for (BluetoothDevice device : bondedDevices) {
+            Log.d(TAG, "readPairedDevices: bondedDevice info: address = " + device.toString()
+                    + " name = " + device.getName() + " type = " + device.getType());
             CachedBluetoothDevice cachedDevice = mDeviceManager.findDevice(device);
             if (cachedDevice == null) {
                 cachedDevice = mDeviceManager.addDevice(mLocalAdapter, mProfileManager, device);
+                Log.d(TAG, "readPairedDevices: add bonded device to mCachedDevices: address = "
+                        + cachedDevice.getDevice().toString() + " name = " + cachedDevice.getName());
                 dispatchDeviceAdded(cachedDevice);
                 deviceAdded = true;
             }
