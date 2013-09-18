@@ -289,7 +289,7 @@ public class ZonePicker extends ListFragment {
             final HashMap<String, Object> map = new HashMap<String, Object>();
             map.put(KEY_ID, olsonId);
             map.put(KEY_DISPLAYNAME, displayName);
-            map.put(KEY_GMT, mGmtFormatter.format(mNow));
+            map.put(KEY_GMT, DateTimeSettings.getTimeZoneText(tz, false));
             map.put(KEY_OFFSET, tz.getOffset(mNow.getTime()));
 
             mZones.add(map);
