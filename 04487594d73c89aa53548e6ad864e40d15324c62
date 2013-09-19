@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c42537aa_41050224",
+        "filename": "src/com/android/settings/DateTimeSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1005088
+      },
+      "writtenOn": "2013-09-19T00:05:28Z",
+      "side": 1,
+      "message": "What about using a StringBuilder for removing extra String alloc ?",
+      "revId": "04487594d73c89aa53548e6ad864e40d15324c62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "64356bd1_618a4017",
+        "filename": "src/com/android/settings/DateTimeSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1005088
+      },
+      "writtenOn": "2013-09-19T00:05:28Z",
+      "side": 1,
+      "message": "StringBuilder result \u003d bidiFormatter.unicodeWrap(gmtFormatter.format(now), ...)",
+      "revId": "04487594d73c89aa53548e6ad864e40d15324c62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0444af55_03cb7e5f",
+        "filename": "src/com/android/settings/DateTimeSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1005088
+      },
+      "writtenOn": "2013-09-19T00:05:28Z",
+      "side": 1,
+      "message": "return result.toString();",
+      "revId": "04487594d73c89aa53548e6ad864e40d15324c62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c42537aa_e1498e65",
+        "filename": "src/com/android/settings/DateTimeSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1005088
+      },
+      "writtenOn": "2013-09-19T00:05:28Z",
+      "side": 1,
+      "message": "result.append(\" \");\nresult.append(zoneNameFormatter.format(now));\n\nreturn result.toString();\n\nI think you even factorize more the full part of the code with:\n\nif (includeName) {\n  SimpleDateFormat zoneNameFormatter \u003d new SimpleDateFormat(\"zzzz\");\n  zoneNameFormatter.setTimeZone(tz);\n  result.append(\" \");\n  result.append(zoneNameFormatter.format(now));\n}\n\nreturn result.toString();",
+      "revId": "04487594d73c89aa53548e6ad864e40d15324c62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
