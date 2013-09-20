@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c4aa9752_a50b7ee2",
+        "filename": "src/com/android/settings/DateTimeSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-09-20T20:44:32Z",
+      "side": 1,
+      "message": "it\u0027s not worth the extra code compared to all the other allocation going on here. if allocations are a problem, we need to do this completely differently. (but they\u0027re not.)",
+      "parentUuid": "c42537aa_41050224",
+      "revId": "04487594d73c89aa53548e6ad864e40d15324c62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64356bd1_618a4017",
         "filename": "src/com/android/settings/DateTimeSettings.java",
         "patchSetId": 2
@@ -64,6 +82,24 @@
       "writtenOn": "2013-09-19T00:05:28Z",
       "side": 1,
       "message": "result.append(\" \");\nresult.append(zoneNameFormatter.format(now));\n\nreturn result.toString();\n\nI think you even factorize more the full part of the code with:\n\nif (includeName) {\n  SimpleDateFormat zoneNameFormatter \u003d new SimpleDateFormat(\"zzzz\");\n  zoneNameFormatter.setTimeZone(tz);\n  result.append(\" \");\n  result.append(zoneNameFormatter.format(now));\n}\n\nreturn result.toString();",
+      "revId": "04487594d73c89aa53548e6ad864e40d15324c62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4a76389_c4cebe4e",
+        "filename": "src/com/android/settings/DateTimeSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2013-09-20T20:44:32Z",
+      "side": 1,
+      "message": "we can remove all this when we switch to the Calendar time zone picker. that code doesn\u0027t need to stitch the two things together at all (they\u0027re placed in separate parts of the UI).",
+      "parentUuid": "c42537aa_e1498e65",
       "revId": "04487594d73c89aa53548e6ad864e40d15324c62",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
