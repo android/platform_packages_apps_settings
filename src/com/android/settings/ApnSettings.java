@@ -37,6 +37,7 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.provider.Telephony;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -65,6 +66,8 @@ public class ApnSettings extends PreferenceActivity implements
     private static final int NAME_INDEX = 1;
     private static final int APN_INDEX = 2;
     private static final int TYPES_INDEX = 3;
+    private static final int MVNO_TYPE_INDEX = 4;
+    private static final int MVNO_MATCH_DATA_INDEX = 5;
 
     private static final int MENU_NEW = Menu.FIRST;
     private static final int MENU_RESTORE = Menu.FIRST + 1;
@@ -84,6 +87,7 @@ public class ApnSettings extends PreferenceActivity implements
     private HandlerThread mRestoreDefaultApnThread;
 
     private String mSelectedKey;
+    private String mMvnoType, mMvnoMatchData;
 
     private IntentFilter mMobileStateFilter;
 
@@ -161,7 +165,7 @@ public class ApnSettings extends PreferenceActivity implements
             + "\"";
 
         Cursor cursor = getContentResolver().query(Telephony.Carriers.CONTENT_URI, new String[] {
-                "_id", "name", "apn", "type"}, where, null,
+                "_id", "name", "apn", "type", "mvno_type", "mvno_match_data"}, where, null,
                 Telephony.Carriers.DEFAULT_SORT_ORDER);
 
         if (cursor != null) {
@@ -177,7 +181,16 @@ public class ApnSettings extends PreferenceActivity implements
                 String apn = cursor.getString(APN_INDEX);
                 String key = cursor.getString(ID_INDEX);
                 String type = cursor.getString(TYPES_INDEX);
+                String mvno_type = cursor.getString(MVNO_TYPE_INDEX);
+                String mvno_match_data = cursor.getString(MVNO_MATCH_DATA_INDEX);
 
+                if ((mSelectedKey != null) && ((!TextUtils.isEmpty(mMvnoType)
+                                && !(mMvnoType.equalsIgnoreCase(mvno_type)
+                                    && mMvnoMatchData.equalsIgnoreCase(mvno_match_data)))
+                            || (TextUtils.isEmpty(mMvnoType) && !TextUtils.isEmpty(mvno_type)))) {
+                    cursor.moveToNext();
+                    continue;
+                }
                 ApnPreference pref = new ApnPreference(this);
 
                 pref.setKey(key);
@@ -267,12 +280,16 @@ public class ApnSettings extends PreferenceActivity implements
 
     private String getSelectedApnKey() {
         String key = null;
+        mMvnoType = null;
+        mMvnoMatchData = null;
 
-        Cursor cursor = getContentResolver().query(PREFERAPN_URI, new String[] {"_id"},
-                null, null, Telephony.Carriers.DEFAULT_SORT_ORDER);
+        Cursor cursor = getContentResolver().query(PREFERAPN_URI, new String[] {"_id",
+                "mvno_type", "mvno_match_data"}, null, null, Telephony.Carriers.DEFAULT_SORT_ORDER);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             key = cursor.getString(ID_INDEX);
+            mMvnoType = cursor.getString(1);
+            mMvnoMatchData = cursor.getString(2);
         }
         cursor.close();
         return key;
