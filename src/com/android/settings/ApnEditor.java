@@ -58,11 +58,15 @@ public class ApnEditor extends PreferenceActivity
     private final static String KEY_CARRIER_ENABLED = "carrier_enabled";
     private final static String KEY_BEARER = "bearer";
     private final static String KEY_MVNO_TYPE = "mvno_type";
+    private final static String KEY_MVNO_MATCH_DATA = "mvno_match_data";
 
     private static final int MENU_DELETE = Menu.FIRST;
     private static final int MENU_SAVE = Menu.FIRST + 1;
     private static final int MENU_CANCEL = Menu.FIRST + 2;
     private static final int ERROR_DIALOG_ID = 0;
+
+    private static final String PREFERRED_APN_URI =
+        "content://telephony/carriers/preferapn";
 
     private static String sNotSet;
     private EditTextPreference mName;
@@ -291,6 +295,16 @@ public class ApnEditor extends PreferenceActivity
             mMvnoType.setValue(mCursor.getString(MVNO_TYPE_INDEX));
             mMvnoMatchData.setEnabled(false);
             mMvnoMatchData.setText(mCursor.getString(MVNO_MATCH_DATA_INDEX));
+            if (mNewApn) {
+                Cursor cursor = managedQuery(Uri.parse(PREFERRED_APN_URI),
+                        new String[] {KEY_MVNO_TYPE, KEY_MVNO_MATCH_DATA},
+                        null, null);
+                if (cursor.getCount() > 0) {
+                    cursor.moveToFirst();
+                    mMvnoType.setValue(cursor.getString(0));
+                    mMvnoMatchData.setText(cursor.getString(1));
+                }
+            }
         }
 
         mName.setSummary(checkNull(mName.getText()));
