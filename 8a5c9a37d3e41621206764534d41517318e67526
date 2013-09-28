@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "641c8bfb_d48354ff",
+        "filename": "src/com/android/settings/ApnSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2013-09-28T01:39:27Z",
+      "side": 1,
+      "message": "I would feel better doing the same MVNO matching we do in DcTracker.  I\u0027m nervous that the prefered APN data may not be applicable with the current SIM or is somehow out of sync showing the wrong APNs here.",
+      "revId": "8a5c9a37d3e41621206764534d41517318e67526",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
