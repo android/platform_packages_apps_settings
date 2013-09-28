@@ -16,6 +16,24 @@
       "revId": "8a5c9a37d3e41621206764534d41517318e67526",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e446bbef_beb9d9be",
+        "filename": "src/com/android/settings/ApnSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1016953
+      },
+      "writtenOn": "2013-09-28T01:49:40Z",
+      "side": 1,
+      "message": "I couldn\u0027t find way to use IccRecord API in here. So I use preferred APN data. And in our test, it works properly.",
+      "parentUuid": "641c8bfb_d48354ff",
+      "revId": "8a5c9a37d3e41621206764534d41517318e67526",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
