@@ -350,7 +350,6 @@ public class TetherSettings extends SettingsPreferenceFragment
 
         if (usbTethered) {
             mUsbTether.setSummary(R.string.usb_tethering_active_subtext);
-            mUsbTether.setEnabled(true);
             mUsbTether.setChecked(true);
         } else if (usbAvailable) {
             if (usbError == ConnectivityManager.TETHER_ERROR_NO_ERROR) {
@@ -358,19 +357,15 @@ public class TetherSettings extends SettingsPreferenceFragment
             } else {
                 mUsbTether.setSummary(R.string.usb_tethering_errored_subtext);
             }
-            mUsbTether.setEnabled(true);
             mUsbTether.setChecked(false);
         } else if (usbErrored) {
             mUsbTether.setSummary(R.string.usb_tethering_errored_subtext);
-            mUsbTether.setEnabled(false);
             mUsbTether.setChecked(false);
         } else if (mMassStorageActive) {
             mUsbTether.setSummary(R.string.usb_tethering_storage_active_subtext);
-            mUsbTether.setEnabled(false);
             mUsbTether.setChecked(false);
         } else {
             mUsbTether.setSummary(R.string.usb_tethering_unavailable_subtext);
-            mUsbTether.setEnabled(false);
             mUsbTether.setChecked(false);
         }
     }
