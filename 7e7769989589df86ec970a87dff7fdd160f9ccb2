@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1efb2135_be9619e9",
+        "filename": "src/com/android/settings/DisplaySettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2013-11-01T09:53:24Z",
+      "side": 1,
+      "message": "Sorry about the white space changes, the editor was set to automatically remove trailing white spaces.",
+      "revId": "7e7769989589df86ec970a87dff7fdd160f9ccb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
