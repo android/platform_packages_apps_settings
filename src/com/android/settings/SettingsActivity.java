@@ -1048,6 +1048,9 @@ public class SettingsActivity extends Activity
     private void buildDashboardCategories(List<DashboardCategory> categories) {
         categories.clear();
         loadCategoriesFromResource(R.xml.dashboard_categories, categories, this);
+        // Customize tiles
+        CustomDashboardTiles.loadTilesFromResource(
+                this, R.xml.custom_dashboard_tiles, categories);
         updateTilesList(categories);
     }
 
