@@ -126,6 +126,8 @@
     <item msgid="7981731051382306293">"TLS"</item>
     <item msgid="2892994535305020162">"TTLS"</item>
     <item msgid="435667726254379514">"PWD"</item>
+    <item>SIM</item>
+    <item>AKA</item>
   </string-array>
   <string-array name="wifi_p2p_wps_setup">
     <item msgid="5085064298144493867">"Naciśnij przycisk"</item>

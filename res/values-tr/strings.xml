@@ -1923,4 +1923,6 @@
     <string name="user_image_take_photo" msgid="1280274310152803669">"Fotoğraf çek"</string>
     <string name="user_image_choose_photo" msgid="7940990613897477057">"Galeri\'den fotoğraf seçin"</string>
     <string name="regulatory_info_text" msgid="5623087902354026557"></string>
+    <string name="eap_sim_aka_airplanemode">EAP-SIM/AKA kullanımı için lütfen Uçak modunu kapatın</string>
+    <string name="eap_sim_aka_no_sim_error">EAP-SIM/AKA kullanımı için bir sim kart takmalısınız</string> 
 </resources>
