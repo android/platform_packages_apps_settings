@@ -38,6 +38,7 @@ import android.net.wifi.WifiInfo;
 import android.os.Handler;
 import android.security.Credentials;
 import android.security.KeyStore;
+import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -110,7 +111,15 @@ public class WifiConfigController implements TextWatcher,
     public static final int WIFI_EAP_METHOD_TLS  = 1;
     public static final int WIFI_EAP_METHOD_TTLS = 2;
     public static final int WIFI_EAP_METHOD_PWD  = 3;
-
+    /* Add for EAP-SIM */
+    public static final int WIFI_EAP_METHOD_SIM = 4;
+    public static final int WIFI_EAP_METHOD_AKA = 5;
+    private static final int BUFFER_LENGTH = 40;
+    private static final int MNC_SUB_BEG = 3;
+    private static final int MNC_SUB_END = 5;
+    private static final int MCC_SUB_BEG = 0;
+    static final String ERROR_IMSI = "error";
+    
     /* These values come from "wifi_peap_phase2_entries" resource array */
     public static final int WIFI_PEAP_PHASE2_NONE 	    = 0;
     public static final int WIFI_PEAP_PHASE2_MSCHAPV2 	= 1;
@@ -374,6 +383,11 @@ public class WifiConfigController implements TextWatcher,
                 int phase2Method = mPhase2Spinner.getSelectedItemPosition();
                 config.enterpriseConfig.setEapMethod(eapMethod);
                 switch (eapMethod) {
+                    // Add for EAP-SIM
+                    case Eap.SIM:
+                    case Eap.AKA:
+                        eapSimAkaConfig(config.enterpriseConfig);
+                        break;
                     case Eap.PEAP:
                         // PEAP supports limited phase2 values
                         // Map the index from the PHASE2_PEAP_ADAPTER to the one used
@@ -660,9 +674,25 @@ public class WifiConfigController implements TextWatcher,
         mView.findViewById(R.id.l_ca_cert).setVisibility(View.VISIBLE);
         mView.findViewById(R.id.password_layout).setVisibility(View.VISIBLE);
         mView.findViewById(R.id.show_password_layout).setVisibility(View.VISIBLE);
+        
+        // Add for EAP-SIM : certain EAP methods
+        mEapIdentityView.setEnabled(true);
+        mPasswordView.setEnabled(true);
+        mShowPassword.setEnabled(true);
 
         Context context = mConfigUi.getContext();
         switch (eapMethod) {
+            // Add for EAP-SIM
+            case WIFI_EAP_METHOD_SIM:
+            case WIFI_EAP_METHOD_AKA:
+                mEapIdentityView.setEnabled(false);
+                mPasswordView.setEnabled(false);
+                mShowPassword.setEnabled(false);
+                setPhase2Invisible();
+                setCaCertInvisible();
+                setAnonymousIdentInvisible();
+                setUserCertInvisible();
+                break;
             case WIFI_EAP_METHOD_PWD:
                 setPhase2Invisible();
                 setCaCertInvisible();
@@ -921,5 +951,60 @@ public class WifiConfigController implements TextWatcher,
         if (pos >= 0) {
             ((EditText)mPasswordView).setSelection(pos);
         }
+    }
+
+      /**
+       * Add for EAP-SIM : make NAI
+       * @param imsi eapMethod
+       * @return the string of NAI
+       */
+      public static String makeNAI(String imsi, String eapMethod) {
+
+            // select wrong sim slot
+            if (imsi == null) {
+                return ERROR_IMSI;
+            }
+
+            StringBuffer NAI = new StringBuffer(BUFFER_LENGTH);
+            // s = sb.append("a = ").append(a).append("!").toString();
+            System.out.println("".length());
+
+            if (eapMethod.equals("SIM")) {
+                  NAI.append("1");
+            } else if (eapMethod.equals("AKA")) {
+                  NAI.append("0");
+            }
+
+            // add imsi
+            NAI.append(imsi);
+            NAI.append("@wlan.mnc");
+            // add mnc
+            NAI.append("0");
+            NAI.append(imsi.substring(MNC_SUB_BEG, MNC_SUB_END));
+            NAI.append(".mcc");
+            // add mcc
+            NAI.append(imsi.substring(MCC_SUB_BEG, MNC_SUB_BEG));
+
+            // NAI.append(imsi.substring(5));
+            NAI.append(".3gppnetwork.org");
+            Log.d(TAG, "makeNAI, result = " + NAI.toString());
+            return NAI.toString();
+      }
+      
+      /**
+       * Add for EAP-SIM
+       * @param config
+       */
+      private void eapSimAkaConfig(WifiEnterpriseConfig config) {
+          if (config != null) {
+              TelephonyManager telephoneManager = (TelephonyManager) mConfigUi.getContext()
+                                                          .getSystemService(Context.TELEPHONY_SERVICE);
+              if (telephoneManager != null) {
+                  String strSimAka = (String) mEapMethodSpinner.getSelectedItem();
+                  config.setImsi(makeNAI(telephoneManager.getSubscriberId(), strSimAka));
+                  config.setSimSlot("0");
+              }
+          }
+          Log.d(TAG, "eap-sim, config =  " + config);
     }
 }

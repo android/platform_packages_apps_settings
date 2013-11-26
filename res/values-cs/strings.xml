@@ -1923,4 +1923,6 @@
     <string name="user_image_take_photo" msgid="1280274310152803669">"Vyfotit"</string>
     <string name="user_image_choose_photo" msgid="7940990613897477057">"Vybrat fotografii z Galerie"</string>
     <string name="regulatory_info_text" msgid="5623087902354026557"></string>
+    <string name="eap_sim_aka_airplanemode">Před používáním EAP-SIM/AKA vypněte režim Letadlo</string>
+    <string name="eap_sim_aka_no_sim_error">Aby bylo možné použít EAP-SIM/AKA, musíte vložit kartu SIM</string> 
 </resources>
