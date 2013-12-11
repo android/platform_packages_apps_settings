@@ -121,7 +121,11 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
      */
     private static class NonConfigurationInstanceState {
         final PowerManager.WakeLock wakelock;
-
+        // Begin Motorola, amittank, 11/12/2013, IKVPREL1KK-2243
+        int coolDownCounter;
+        int sWidgetsToDisable;
+        StatusBarManager mStatusBar;
+        // End IKVPREL1KK-2243
         NonConfigurationInstanceState(PowerManager.WakeLock _wakelock) {
             wakelock = _wakelock;
         }
@@ -235,7 +239,8 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
     private StatusBarManager mStatusBar;
 
     /** All the widgets to disable in the status bar */
-    final private static int sWidgetsToDisable = StatusBarManager.DISABLE_EXPAND
+    // Motorola, amittank, 11/12/2013, IKVPREL1KK-2243
+    private static int sWidgetsToDisable = StatusBarManager.DISABLE_EXPAND
             | StatusBarManager.DISABLE_NOTIFICATION_ICONS
             | StatusBarManager.DISABLE_NOTIFICATION_ALERTS
             | StatusBarManager.DISABLE_SYSTEM_INFO
@@ -310,7 +315,6 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
             finish();
             return;
         }
-
         // Disable the status bar, but do NOT disable back because the user needs a way to go
         // from keyboard settings and back to the password screen.
         mStatusBar = (StatusBarManager) getSystemService(Context.STATUS_BAR_SERVICE);
@@ -324,7 +328,13 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
             NonConfigurationInstanceState retained = (NonConfigurationInstanceState) lastInstance;
             mWakeLock = retained.wakelock;
             Log.d(TAG, "Restoring wakelock from NonConfigurationInstanceState");
+            // Begin Motorola, amittank, 11/12/2013, IKVPREL1KK-2243
+            mCooldown = retained.coolDownCounter;
+            mStatusBar = retained.mStatusBar;
+            sWidgetsToDisable = retained.sWidgetsToDisable;
+            // End IKVPREL1KK-2243
         }
+
     }
 
     /**
@@ -380,7 +390,13 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
     public Object onRetainNonConfigurationInstance() {
         NonConfigurationInstanceState state = new NonConfigurationInstanceState(mWakeLock);
         Log.d(TAG, "Handing wakelock off to NonConfigurationInstanceState");
+
         mWakeLock = null;
+        // Begin Motorola, amittank, 11/12/2013, IKVPREL1KK-2243
+        state.coolDownCounter = mCooldown;
+        state.sWidgetsToDisable = sWidgetsToDisable;
+        state.mStatusBar = mStatusBar;
+        // End IKVPREL1KK-2243
         return state;
     }
 
@@ -561,6 +577,13 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
 
         // Dismiss keyguard while this screen is showing.
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+        // Begin Motorola, amittank, 11/12/2013, IKVPREL1KK-2243
+        if(mCooldown > 0 && mCooldown < 30){
+           cooldown();
+           mPasswordEntry.setEnabled(false);
+           setBackFunctionality(false);
+        }
+        // End IKVPREL1KK-2243
     }
 
     /**
