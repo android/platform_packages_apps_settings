@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2d80bdc3_59ace773",
+        "filename": "src/com/android/settings/fuelgauge/Utils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-01-03T21:28:07Z",
+      "side": 1,
+      "message": "\"it was like that when i found it\".",
+      "parentUuid": "0dabf957_25eb0e23",
+      "revId": "f7cb4b0dda7fcf46df4c912c26bfafd391b74539",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2daefd65_06e61a5c",
         "filename": "src/com/android/settings/fuelgauge/Utils.java",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-01-03T21:04:09Z",
       "side": 1,
       "message": "You could consider getting rid of the StringBuilder, it\u0027s never used for \"building\" strings. There\u0027s always a maximum of 1 call to append",
+      "revId": "f7cb4b0dda7fcf46df4c912c26bfafd391b74539",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d7db99f_b8c65531",
+        "filename": "src/com/android/settings/fuelgauge/Utils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-01-03T21:28:07Z",
+      "side": 1,
+      "message": "i think the real way forward for this code is to extend DateUtils to provide this and then just remove this class.\n\nin DateUtils, we should call down to icu4c so there will be no StringBuilder (and we\u0027ll just use a long rather than a double), but we\u0027re blocked on icu4c; i\u0027m not 100% sure CLDR has everything we need yet.",
+      "parentUuid": "2daefd65_06e61a5c",
       "revId": "f7cb4b0dda7fcf46df4c912c26bfafd391b74539",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
