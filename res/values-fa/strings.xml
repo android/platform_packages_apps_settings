@@ -1923,4 +1923,6 @@
     <string name="user_image_take_photo" msgid="1280274310152803669">"عکس گرفتن"</string>
     <string name="user_image_choose_photo" msgid="7940990613897477057">"انتخاب عکس از گالری"</string>
     <string name="regulatory_info_text" msgid="5623087902354026557"></string>
+    <string name="eap_sim_aka_airplanemode">لطفا حالت هواپیما را خاموش کنید تا از EAP-SIM/AKA استفاده کنید</string>
+    <string name="eap_sim_aka_no_sim_error">برای استفاده از EAP-SIM/AKA باید یک سیم کارت قرار دهید</string> 
 </resources>

@@ -1923,4 +1923,6 @@
     <string name="user_image_take_photo" msgid="1280274310152803669">"Λήψη φωτογραφίας"</string>
     <string name="user_image_choose_photo" msgid="7940990613897477057">"Επιλογή φωτογραφιών από τη Συλλογή"</string>
     <string name="regulatory_info_text" msgid="5623087902354026557"></string>
+    <string name="eap_sim_aka_airplanemode">Απενεργοποιήστε τη λειτουργία πτήσης για να χρησιμοποιήσετε το EAP-SIM/AKA.</string>
+    <string name="eap_sim_aka_no_sim_error">Πρέπει να εισαγάγετε μια κάρτα SIM για να χρησιμοποιήσετε το EAP-SIM/AKA</string> 
 </resources>

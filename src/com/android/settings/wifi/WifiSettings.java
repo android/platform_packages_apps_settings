@@ -42,6 +42,8 @@ import android.net.NetworkInfo.DetailedState;
 import android.net.wifi.ScanResult;
 import android.net.wifi.SupplicantState;
 import android.net.wifi.WifiConfiguration;
+import android.net.wifi.WifiEnterpriseConfig;
+import android.net.wifi.WifiEnterpriseConfig.Eap;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.net.wifi.WpsInfo;
@@ -52,6 +54,7 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
+import android.telephony.TelephonyManager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -775,6 +778,10 @@ public class WifiSettings extends RestrictedSettingsFragment
         final List<WifiConfiguration> configs = mWifiManager.getConfiguredNetworks();
         if (configs != null) {
             for (WifiConfiguration config : configs) {
+                // Add for EAP-SIM
+                if (hasSimCardChanged(config)) {
+                    continue;
+                }
                 AccessPoint accessPoint = new AccessPoint(getActivity(), config);
                 accessPoint.update(mLastInfo, mLastState);
                 accessPoints.add(accessPoint);
@@ -990,6 +997,11 @@ public class WifiSettings extends RestrictedSettingsFragment
 
         final WifiConfiguration config = configController.getConfig();
 
+        //Add for EAP-SIM,remind user when he use eap-sim/aka in a wrong way
+        if (hasSimAkaProblem(config)) {
+            return;
+        }
+
         if (config == null) {
             if (mSelectedAccessPoint != null
                     && mSelectedAccessPoint.networkId != INVALID_NETWORK_ID) {
@@ -1126,4 +1138,66 @@ public class WifiSettings extends RestrictedSettingsFragment
         }
     }
 
+   /**
+     * Add for EAP-SIM
+     * @param config The current AP's configuration
+     * @return
+     */
+    private boolean hasSimCardChanged(WifiConfiguration wifiConfig) {
+        boolean result = false;
+        WifiEnterpriseConfig config = wifiConfig.enterpriseConfig;
+        if (config != null && config.getImsi() != null && !config.getImsi().equals("")) {
+            Log.d(TAG,"config = " + config);
+            TelephonyManager telephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+            if (telephonyManager != null) {
+                String imsiStr = null;
+                int eapMethod = config.getEapMethod();
+                if (eapMethod == Eap.SIM) {
+                    imsiStr = WifiConfigController.makeNAI(telephonyManager.getSubscriberId(), "SIM");
+                } else if (eapMethod == Eap.AKA) {
+                    imsiStr = WifiConfigController.makeNAI(telephonyManager.getSubscriberId(), "AKA");
+                }
+                Log.d(TAG,"makeNAI() = " + imsiStr);
+                if (imsiStr != null && !(config.getImsi()).equals(imsiStr)) {
+                    Log.d(TAG,"user change or remove sim card");
+                    boolean s = mWifiManager.removeNetwork(wifiConfig.networkId);
+                    Log.d(TAG,"removeNetwork: " + s);
+                    s = mWifiManager.saveConfiguration();
+                    Log.d(TAG,"saveNetworks(): " + s);
+                    result = true;
+                }
+            }
+          }
+        return result;
+   }
+    
+    /**
+     * Add for EAP-SIM
+     * @param wifiConfig The current AP's configuration
+     * @return
+     */
+    private boolean hasSimAkaProblem(WifiConfiguration wifiConfig) {
+        // if wifiConfig is null, indicate User connect wifi by click "Connect" from Context Menu 
+        WifiConfiguration config = (wifiConfig != null) ? wifiConfig : mSelectedAccessPoint.getConfig();
+        Log.d(TAG,"hasSimAkaProblem, wifiConfig = " + wifiConfig + " , config = " + config);
+        if (config != null) {
+            WifiEnterpriseConfig wifiEnterpriseConfig = config.enterpriseConfig;
+            Log.d(TAG,"hasSimAkaProblem, wifiEnterpriseConfig = " + wifiEnterpriseConfig);
+            if (wifiEnterpriseConfig != null 
+                    && (wifiEnterpriseConfig.getEapMethod() == Eap.SIM || wifiEnterpriseConfig.getEapMethod() == Eap.AKA)) {
+                // cannot use eap-sim/aka under airplane mode
+                if (Settings.System.getInt(getContentResolver(), Settings.System.AIRPLANE_MODE_ON, 0) == 1) {
+                    Toast.makeText(getActivity(), R.string.eap_sim_aka_airplanemode, Toast.LENGTH_LONG).show();
+                    return true;
+                }
+                // cannot use eap-sim/aka without a sim card
+                if (wifiEnterpriseConfig.getImsi() != null 
+                        && wifiEnterpriseConfig.getImsi().equals(WifiConfigController.ERROR_IMSI)) {
+                    Toast.makeText(getActivity(), R.string.eap_sim_aka_no_sim_error, Toast.LENGTH_LONG).show();
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

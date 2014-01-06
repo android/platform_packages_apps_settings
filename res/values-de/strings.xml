@@ -1924,4 +1924,6 @@
     <string name="user_image_take_photo" msgid="1280274310152803669">"Foto aufnehmen"</string>
     <string name="user_image_choose_photo" msgid="7940990613897477057">"Foto aus Galerie auswählen"</string>
     <string name="regulatory_info_text" msgid="5623087902354026557"></string>
+    <string name="eap_sim_aka_airplanemode">Flugzeugmodus zur Nutzung von EAP-SIM/AKA bitte ausschalten</string>
+    <string name="eap_sim_aka_no_sim_error">Sie müssen zur Nutzung von EAP-SIM/AKA eine SIM-Karte einstecken</string> 
 </resources>

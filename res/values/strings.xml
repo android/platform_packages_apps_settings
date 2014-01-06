@@ -4900,4 +4900,9 @@
 
     <!-- Text to display in regulatory info screen (from device overlay). -->
     <string name="regulatory_info_text"></string>
+    
+    <!-- Label for the toast if user use eap-sim/aka in airplane mode -->
+    <string name="eap_sim_aka_airplanemode">Please turn off Airplane mode to use EAP-SIM/AKA</string>
+    <!-- Label for the toast if user use eap-sim/aka when sim card is absent -->
+    <string name="eap_sim_aka_no_sim_error">You must insert a sim card to use EAP-SIM/AKA</string>  
 </resources>
