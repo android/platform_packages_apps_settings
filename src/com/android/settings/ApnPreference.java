@@ -60,6 +60,7 @@ public class ApnPreference extends Preference implements
         if ((widget != null) && widget instanceof RadioButton) {
             RadioButton rb = (RadioButton) widget;
             if (mSelectable) {
+                rb.setVisibility(View.VISIBLE);
                 rb.setOnCheckedChangeListener(this);
 
                 boolean isChecked = getKey().equals(mSelectedKey);
