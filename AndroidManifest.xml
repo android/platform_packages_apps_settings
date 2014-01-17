@@ -71,11 +71,12 @@
     <application android:label="@string/settings_label"
             android:icon="@mipmap/ic_launcher_settings"
             android:taskAffinity=""
-            android:theme="@style/Theme.Settings"
+            android:theme="@android:style/Theme.Holo.Light"
             android:hardwareAccelerated="true"
             android:requiredForAllUsers="true"
             android:supportsRtl="true">
 
+            <!-- android:theme="@style/Theme.Settings" -->
         <!-- Settings -->
 
         <activity android:name="Settings"

@@ -43,6 +43,9 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.TimePicker;
 
+import com.android.timezonepicker.TimeZoneInfo;
+import com.android.timezonepicker.TimeZonePickerDialog;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -51,7 +54,8 @@ import java.util.TimeZone;
 
 public class DateTimeSettings extends SettingsPreferenceFragment
         implements OnSharedPreferenceChangeListener,
-                TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener {
+                TimePickerDialog.OnTimeSetListener, DatePickerDialog.OnDateSetListener,
+                TimeZonePickerDialog.OnTimeZoneSetListener {
 
     private static final String HOURS_12 = "12";
     private static final String HOURS_24 = "24";
@@ -74,7 +78,7 @@ public class DateTimeSettings extends SettingsPreferenceFragment
     private Preference mTimePref;
     private Preference mTime24Pref;
     private CheckBoxPreference mAutoTimeZonePref;
-    private Preference mTimeZone;
+    private Preference mTimeZonePref;
     private Preference mDatePref;
     private ListPreference mDateFormat;
 
@@ -109,7 +113,7 @@ public class DateTimeSettings extends SettingsPreferenceFragment
 
         mTimePref = findPreference("time");
         mTime24Pref = findPreference("24 hour");
-        mTimeZone = findPreference("timezone");
+        mTimeZonePref = findPreference("timezone");
         mDatePref = findPreference("date");
         mDateFormat = (ListPreference) findPreference(KEY_DATE_FORMAT);
         if (isFirstRun) {
@@ -148,7 +152,7 @@ public class DateTimeSettings extends SettingsPreferenceFragment
 
         mTimePref.setEnabled(!autoTimeEnabled);
         mDatePref.setEnabled(!autoTimeEnabled);
-        mTimeZone.setEnabled(!autoTimeZoneEnabled);
+        mTimeZonePref.setEnabled(!autoTimeZoneEnabled);
     }
 
     @Override
@@ -187,7 +191,7 @@ public class DateTimeSettings extends SettingsPreferenceFragment
         mDummyDate.set(now.get(Calendar.YEAR), 11, 31, 13, 0, 0);
         Date dummyDate = mDummyDate.getTime();
         mTimePref.setSummary(DateFormat.getTimeFormat(getActivity()).format(now.getTime()));
-        mTimeZone.setSummary(getTimeZoneText(now.getTimeZone(), true));
+        mTimeZonePref.setSummary(getTimeZoneText(now.getTimeZone(), true));
         mDatePref.setSummary(shortDateFormat.format(now.getTime()));
         mDateFormat.setSummary(shortDateFormat.format(dummyDate));
         mTime24Pref.setSummary(DateFormat.getTimeFormat(getActivity()).format(dummyDate));
@@ -233,7 +237,7 @@ public class DateTimeSettings extends SettingsPreferenceFragment
             boolean autoZoneEnabled = preferences.getBoolean(key, true);
             Settings.Global.putInt(
                     getContentResolver(), Settings.Global.AUTO_TIME_ZONE, autoZoneEnabled ? 1 : 0);
-            mTimeZone.setEnabled(!autoZoneEnabled);
+            mTimeZonePref.setEnabled(!autoZoneEnabled);
         }
     }
 
@@ -273,32 +277,6 @@ public class DateTimeSettings extends SettingsPreferenceFragment
         datePicker.setMaxDate(t.getTimeInMillis());
     }
 
-    /*
-    @Override
-    public void onPrepareDialog(int id, Dialog d) {
-        switch (id) {
-        case DIALOG_DATEPICKER: {
-            DatePickerDialog datePicker = (DatePickerDialog)d;
-            final Calendar calendar = Calendar.getInstance();
-            datePicker.updateDate(
-                    calendar.get(Calendar.YEAR),
-                    calendar.get(Calendar.MONTH),
-                    calendar.get(Calendar.DAY_OF_MONTH));
-            break;
-        }
-        case DIALOG_TIMEPICKER: {
-            TimePickerDialog timePicker = (TimePickerDialog)d;
-            final Calendar calendar = Calendar.getInstance();
-            timePicker.updateTime(
-                    calendar.get(Calendar.HOUR_OF_DAY),
-                    calendar.get(Calendar.MINUTE));
-            break;
-        }
-        default:
-            break;
-        }
-    }
-    */
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         if (preference == mDatePref) {
@@ -311,8 +289,31 @@ public class DateTimeSettings extends SettingsPreferenceFragment
             set24Hour(((CheckBoxPreference)mTime24Pref).isChecked());
             updateTimeAndDateDisplay(getActivity());
             timeUpdated();
+        } else if (preference == mTimeZonePref) {
+            showTimeZonePicker();
         }
         return super.onPreferenceTreeClick(preferenceScreen, preference);
+    }
+
+    private void showTimeZonePicker() {
+        Bundle b = new Bundle();
+        b.putLong(TimeZonePickerDialog.BUNDLE_START_TIME_MILLIS, 0);
+        b.putString(TimeZonePickerDialog.BUNDLE_TIME_ZONE, TimeZone.getDefault().getID());
+
+        TimeZonePickerDialog d = new TimeZonePickerDialog();
+        d.setArguments(b);
+        d.setOnTimeZoneSetListener(this);
+        d.show(getFragmentManager(), "time-zone-picker-dialog");
+    }
+
+    @Override public void onTimeZoneSet(TimeZoneInfo tzi) {
+        updateSystemTimeZone(tzi.mTzId);
+    }
+
+    private void updateSystemTimeZone(String tzId) {
+        final Activity activity = getActivity();
+        final AlarmManager alarm = (AlarmManager) activity.getSystemService(Context.ALARM_SERVICE);
+        alarm.setTimeZone(tzId);
     }
 
     @Override
