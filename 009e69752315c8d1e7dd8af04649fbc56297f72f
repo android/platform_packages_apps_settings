@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d37e9c2_2fbded98",
+        "filename": "Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1018975
+      },
+      "writtenOn": "2014-01-17T02:46:54Z",
+      "side": 1,
+      "message": "Actually I think we do it manually as well, by just including duplicates of the assets in our built-in assets dir",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 31,
+        "endChar": 6
+      },
+      "revId": "009e69752315c8d1e7dd8af04649fbc56297f72f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
