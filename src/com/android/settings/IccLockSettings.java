@@ -29,6 +29,7 @@ import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -188,7 +189,20 @@ public class IccLockSettings extends PreferenceActivity
     }
 
     private void updatePreferences() {
-        mPinToggle.setChecked(mPhone.getIccCard().getIccLockEnabled());
+        TelephonyManager tm =
+                (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+        if (tm != null) {
+            int simState = tm.getSimState();
+            // Disable the preference screen if sim state is absent or unknown.
+            if (simState == TelephonyManager.SIM_STATE_ABSENT
+                    || simState == TelephonyManager.SIM_STATE_UNKNOWN) {
+                mPinDialog.cancelPinDialog();
+                getPreferenceScreen().setEnabled(false);
+            } else {
+                getPreferenceScreen().setEnabled(true);
+                mPinToggle.setChecked(mPhone.getIccCard().getIccLockEnabled());
+            }
+        }
     }
 
     @Override
