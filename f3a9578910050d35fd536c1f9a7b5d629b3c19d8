@@ -1,0 +1,8 @@
+Code-Review+2: Jeff Sharkey <jsharkey@android.com>
+Verified+1: Deckard Autoverifier <deckard@android.com>
+Code-Review+1: Jun Su <juns@nvidia.com>
+Submitted-by: Jeff Sharkey <jsharkey@android.com>
+Submitted-at: Thu, 06 Feb 2014 22:25:30 +0000
+Reviewed-on: https://android-review.googlesource.com/62407
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
