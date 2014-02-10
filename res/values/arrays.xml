@@ -1162,5 +1162,31 @@
         <!-- Memory is critical. -->
         <item>critical</item>
     </string-array>
+    
+    <!-- Multi sim support  -->
+    <string-array name="sim_info_num_format_entries">
+        <item>Do not display</item>
+        <item>First 4 digits</item>
+        <item>Last 4 digits</item>
+    </string-array>
 
+    <string-array name="sim_info_num_format_entryvalues" translatable="false">
+        <item  translatable="false">0</item>
+        <item  translatable="false">1</item>
+        <item  translatable="false">2</item>
+    </string-array>
+    
+    <!-- Titles for captioning color preference. -->
+    <string-array name="sim_info_picker_color_titles" translatable="false" >
+        <item>@string/color_blue</item>
+        <item>@string/color_orange</item>
+        <item>@string/color_green</item>
+        <item>@string/color_purple</item>
+    </string-array>
+	<integer-array name="sim_info_picker_color_values" translatable="false" >
+        <item>0xFF0098DF</item>
+        <item>0xFFFF7214</item>
+        <item>0xFF35B800</item>
+        <item>0xFF735CFF</item>
+    </integer-array>
 </resources>

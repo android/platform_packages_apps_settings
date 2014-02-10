@@ -21,6 +21,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.preference.Preference;
+import android.preference.PreferenceActivity;
 import android.provider.Telephony;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -114,10 +115,8 @@ public class ApnPreference extends Preference implements
     public void onClick(android.view.View v) {
         if ((v != null) && (R.id.text_layout == v.getId())) {
             Context context = getContext();
-            if (context != null) {
-                int pos = Integer.parseInt(getKey());
-                Uri url = ContentUris.withAppendedId(Telephony.Carriers.CONTENT_URI, pos);
-                context.startActivity(new Intent(Intent.ACTION_EDIT, url));
+            if (context instanceof PreferenceActivity) {
+                performClick(((PreferenceActivity)context).getPreferenceScreen());
             }
         }
     }
