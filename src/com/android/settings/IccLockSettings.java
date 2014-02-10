@@ -35,6 +35,7 @@ import android.widget.Toast;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyIntents;
+import com.android.settings.siminfo.SubscriptionSettingUtility;
 
 /**
  * Implements the preference screen to enable/disable ICC lock and
@@ -78,6 +79,7 @@ public class IccLockSettings extends PreferenceActivity
     private static final int MAX_PIN_LENGTH = 8;
     // Which dialog to show next when popped up
     private int mDialogState = OFF_MODE;
+    private SubscriptionSettingUtility mUtility;
 
     private String mPin;
     private String mOldPin;
@@ -181,10 +183,15 @@ public class IccLockSettings extends PreferenceActivity
 
         // Don't need any changes to be remembered
         getPreferenceScreen().setPersistent(false);
-
-        mPhone = PhoneFactory.getDefaultPhone();
         mRes = getResources();
-        updatePreferences();
+        mUtility = SubscriptionSettingUtility.createUtilityByActivity(this);
+        mUtility.initSubscriptionId(savedInstanceState, getIntent());
+        if (mUtility.isValidSubId()) {
+            //TODO:: Work around 
+            //mPhone = PhoneFactory.getPhoneProxyManager().getPhoneProxy(mUtility.getSimId());
+            mPhone = PhoneFactory.getPhone(mUtility.getSimId());
+            updatePreferences();
+        }
     }
 
     private void updatePreferences() {
@@ -206,12 +213,14 @@ public class IccLockSettings extends PreferenceActivity
             // Prep for standard click on "Change PIN"
             resetDialogState();
         }
+        mUtility.registerReceiver();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         unregisterReceiver(mSimStateReceiver);
+        mUtility.unregisterReceiver();
     }
 
     @Override
@@ -245,6 +254,16 @@ public class IccLockSettings extends PreferenceActivity
             }
         } else {
             super.onSaveInstanceState(out);
+        }
+        mUtility.onSaveInstanceState(out);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        mUtility.onActivityResult(requestCode, resultCode, data);
+        if (mUtility.isValidSubId()) {
+            mPhone = PhoneFactory.getPhone(mUtility.getSimId());
+            updatePreferences();
         }
     }
 

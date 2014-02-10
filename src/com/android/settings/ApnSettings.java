@@ -48,7 +48,7 @@ import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.TelephonyProperties;
 
 import java.util.ArrayList;
-
+//TODO:: Work aroud temp roll back SSS design and redesign for DSDS
 public class ApnSettings extends PreferenceActivity implements
         Preference.OnPreferenceChangeListener {
     static final String TAG = "ApnSettings";
