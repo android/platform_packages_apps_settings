@@ -37,6 +37,7 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.provider.Telephony;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -46,6 +47,7 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.internal.telephony.TelephonyProperties;
+import com.android.settings.siminfo.SubscriptionSettingUtility;
 
 import java.util.ArrayList;
 
@@ -54,11 +56,8 @@ public class ApnSettings extends PreferenceActivity implements
     static final String TAG = "ApnSettings";
 
     public static final String EXTRA_POSITION = "position";
-    public static final String RESTORE_CARRIERS_URI =
-        "content://telephony/carriers/restore";
-    public static final String PREFERRED_APN_URI =
-        "content://telephony/carriers/preferapn";
-
+    public static final String RESTORE_CARRIERS_URI = "/restore";
+    public static final String PREFERRED_APN_URI = "/preferapn"; 
     public static final String APN_ID = "apn_id";
 
     private static final int ID_INDEX = 0;
@@ -74,8 +73,15 @@ public class ApnSettings extends PreferenceActivity implements
 
     private static final int DIALOG_RESTORE_DEFAULTAPN = 1001;
 
-    private static final Uri DEFAULTAPN_URI = Uri.parse(RESTORE_CARRIERS_URI);
-    private static final Uri PREFERAPN_URI = Uri.parse(PREFERRED_APN_URI);
+    private static final Uri[] DEFAULTAPN_URIS = new Uri[Telephony.Carriers.CONTENT_URIS.length];
+    private static final Uri[] PREFERAPN_URIS =  new Uri[Telephony.Carriers.CONTENT_URIS.length];
+    static {
+        for (int i = 0; i < Telephony.Carriers.CONTENT_URIS.length; i++) {
+            PREFERAPN_URIS[i] = Uri.withAppendedPath(Telephony.Carriers.CONTENT_URIS[i], PREFERRED_APN_URI);
+            DEFAULTAPN_URIS[i] = Uri.withAppendedPath(Telephony.Carriers.CONTENT_URIS[i], RESTORE_CARRIERS_URI);
+        }
+    }
+    private SubscriptionSettingUtility mUtility;
 
     private static boolean mRestoreDefaultApnMode;
 
@@ -124,18 +130,24 @@ public class ApnSettings extends PreferenceActivity implements
 
         mMobileStateFilter = new IntentFilter(
                 TelephonyIntents.ACTION_ANY_DATA_CONNECTION_STATE_CHANGED);
+
+        mUtility = SubscriptionSettingUtility.createUtilityByActivity(this);
+        mUtility.initSubscriptionId(icicle, getIntent());
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        registerReceiver(mMobileStateReceiver, mMobileStateFilter);
+        if (mUtility.isValidSubId()) {
+            mUtility.registerReceiver();
+            registerReceiver(mMobileStateReceiver, mMobileStateFilter);
 
-        if (!mRestoreDefaultApnMode) {
-            fillList();
-        } else {
-            showDialog(DIALOG_RESTORE_DEFAULTAPN);
+            if (!mRestoreDefaultApnMode) {
+                fillList();
+            } else {
+                showDialog(DIALOG_RESTORE_DEFAULTAPN);
+            }
         }
     }
 
@@ -143,7 +155,10 @@ public class ApnSettings extends PreferenceActivity implements
     protected void onPause() {
         super.onPause();
 
-        unregisterReceiver(mMobileStateReceiver);
+        if (mUtility.isValidSubId()) {
+            mUtility.unregisterReceiver();
+            unregisterReceiver(mMobileStateReceiver);
+        }
     }
 
     @Override
@@ -156,12 +171,11 @@ public class ApnSettings extends PreferenceActivity implements
     }
 
     private void fillList() {
-        String where = "numeric=\""
-            + android.os.SystemProperties.get(TelephonyProperties.PROPERTY_ICC_OPERATOR_NUMERIC, "")
-            + "\"";
-
-        Cursor cursor = getContentResolver().query(Telephony.Carriers.CONTENT_URI, new String[] {
-                "_id", "name", "apn", "type"}, where, null,
+        TelephonyManager telManager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
+        String numeric = telManager.getSimOperator(mUtility.getSubId());                                                                       
+        String where = "numeric=\"" + numeric + "\"";
+        Cursor cursor = getContentResolver().query(Telephony.Carriers.CONTENT_URIS[mUtility.getSimId()], 
+                new String[] {"_id", "name", "apn", "type"}, where, null,
                 Telephony.Carriers.DEFAULT_SORT_ORDER);
 
         if (cursor != null) {
@@ -234,14 +248,17 @@ public class ApnSettings extends PreferenceActivity implements
     }
 
     private void addNewApn() {
-        startActivity(new Intent(Intent.ACTION_INSERT, Telephony.Carriers.CONTENT_URI));
+        int simId = mUtility.getSimId();
+        startActivity(getApnEditIntent(Intent.ACTION_INSERT,
+                Telephony.Carriers.CONTENT_URIS[simId], mUtility.getSubId()));
     }
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
         int pos = Integer.parseInt(preference.getKey());
-        Uri url = ContentUris.withAppendedId(Telephony.Carriers.CONTENT_URI, pos);
-        startActivity(new Intent(Intent.ACTION_EDIT, url));
+        Uri url = ContentUris.withAppendedId(
+                Telephony.Carriers.CONTENT_URIS[mUtility.getSimId()], pos);
+        startActivity(getApnEditIntent(Intent.ACTION_EDIT, url, mUtility.getSubId()));
         return true;
     }
 
@@ -255,6 +272,20 @@ public class ApnSettings extends PreferenceActivity implements
 
         return true;
     }
+    
+    /**
+     * Get intent for start apn editor activity 
+     * @param action The action for the intent
+     * @param uri The data for the intent
+     * @param simId The simId extra for the intent
+     * @return  A intent instance
+     */
+    private static Intent getApnEditIntent(String action, Uri uri, long subId) {
+        //TODO:: DSDS Subscription
+        Intent intent = new Intent(action, uri);
+        intent.putExtra(PhoneConstants.SLOT_KEY, subId);
+        return intent;
+    }
 
     private void setSelectedApnKey(String key) {
         mSelectedKey = key;
@@ -262,13 +293,13 @@ public class ApnSettings extends PreferenceActivity implements
 
         ContentValues values = new ContentValues();
         values.put(APN_ID, mSelectedKey);
-        resolver.update(PREFERAPN_URI, values, null, null);
+        resolver.update(PREFERAPN_URIS[mUtility.getSimId()], values, null, null);
     }
 
     private String getSelectedApnKey() {
         String key = null;
 
-        Cursor cursor = getContentResolver().query(PREFERAPN_URI, new String[] {"_id"},
+        Cursor cursor = getContentResolver().query(PREFERAPN_URIS[mUtility.getSimId()], new String[] {"_id"},
                 null, null, Telephony.Carriers.DEFAULT_SORT_ORDER);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
@@ -332,7 +363,7 @@ public class ApnSettings extends PreferenceActivity implements
             switch (msg.what) {
                 case EVENT_RESTORE_DEFAULTAPN_START:
                     ContentResolver resolver = getContentResolver();
-                    resolver.delete(DEFAULTAPN_URI, null, null);
+                    resolver.delete(DEFAULTAPN_URIS[mUtility.getSimId()], null, null);
                     mRestoreApnUiHandler
                         .sendEmptyMessage(EVENT_RESTORE_DEFAULTAPN_COMPLETE);
                     break;
@@ -356,5 +387,17 @@ public class ApnSettings extends PreferenceActivity implements
         if (id == DIALOG_RESTORE_DEFAULTAPN) {
             getPreferenceScreen().setEnabled(false);
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mUtility.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        mUtility.onActivityResult(requestCode, resultCode, data);
     }
 }

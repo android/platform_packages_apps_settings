@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:settings="http://schemas.android.com/apk/res/com.android.settings"
+        android:title="@string/siminfo_settings_title">
+     
+    <EditTextPreference	
+        android:key="sim_name"
+        android:title="@string/sim_info_editor_name"
+        android:dialogTitle="@string/sim_info_editor_name"
+        android:persistent="false"
+        android:singleLine="true"/>
+    <EditTextPreference 
+        android:key="sim_number"
+        android:title="@string/sim_info_editor_number"
+        android:dialogTitle="@string/sim_info_editor_number"
+        android:persistent="false"
+        android:phoneNumber="true"/>
+    <com.android.settings.accessibility.ColorPreference
+        android:title="@string/sim_info_editor_color"
+        android:dialogTitle="@string/sim_info_editor_color"
+        android:key="sim_color"
+        android:persistent="false"/>
+    <ListPreference
+        android:key="sim_number_format"
+        android:title="@string/sim_info_editor_num_format"
+        android:dialogTitle="@string/sim_info_editor_num_format"
+        android:persistent="false"
+        android:entries="@array/sim_info_num_format_entries"
+        android:entryValues="@array/sim_info_num_format_entryvalues" />
+</PreferenceScreen> 

@@ -43,6 +43,7 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.RILConstants;
 import com.android.internal.telephony.TelephonyProperties;
+import com.android.settings.siminfo.SubscriptionSettingUtility;
 
 
 public class ApnEditor extends PreferenceActivity
@@ -96,6 +97,7 @@ public class ApnEditor extends PreferenceActivity
     private Resources mRes;
     private TelephonyManager mTelephonyManager;
 
+    private SubscriptionSettingUtility mUtility;
     /**
      * Standard projection for the interesting columns of a normal note.
      */
@@ -193,13 +195,17 @@ public class ApnEditor extends PreferenceActivity
 
         mFirstTime = icicle == null;
 
+        mUtility = SubscriptionSettingUtility.createUtilityByActivity(this);
+        mUtility.getSubIdByIntent(intent);
+
         if (action.equals(Intent.ACTION_EDIT)) {
             mUri = intent.getData();
         } else if (action.equals(Intent.ACTION_INSERT)) {
             if (mFirstTime || icicle.getInt(SAVED_POS) == 0) {
                 mUri = getContentResolver().insert(intent.getData(), new ContentValues());
             } else {
-                mUri = ContentUris.withAppendedId(Telephony.Carriers.CONTENT_URI,
+                mUtility.getSubIdByBundle(icicle);
+                mUri = ContentUris.withAppendedId(Telephony.Carriers.CONTENT_URIS[mUtility.getSimId()],
                         icicle.getInt(SAVED_POS));
             }
             mNewApn = true;
@@ -262,8 +268,7 @@ public class ApnEditor extends PreferenceActivity
             mMnc.setText(mCursor.getString(MNC_INDEX));
             mApnType.setText(mCursor.getString(TYPE_INDEX));
             if (mNewApn) {
-                String numeric =
-                    SystemProperties.get(TelephonyProperties.PROPERTY_ICC_OPERATOR_NUMERIC);
+                String numeric = mTelephonyManager.getSimOperator(mUtility.getSubId());
                 // MCC is first 3 chars and then in 2 - 3 chars of MNC
                 if (numeric != null && numeric.length() > 4) {
                     // Country code
@@ -379,8 +384,7 @@ public class ApnEditor extends PreferenceActivity
                 if (values[mvnoIndex].equals("SPN")) {
                     mMvnoMatchData.setText(mTelephonyManager.getSimOperatorName());
                 } else if (values[mvnoIndex].equals("IMSI")) {
-                    String numeric =
-                            SystemProperties.get(TelephonyProperties.PROPERTY_ICC_OPERATOR_NUMERIC);
+                    String numeric = mTelephonyManager.getSimOperator(mUtility.getSubId());
                     mMvnoMatchData.setText(numeric + "x");
                 } else if (values[mvnoIndex].equals("GID")) {
                     mMvnoMatchData.setText(mTelephonyManager.getGroupIdLevel1());
@@ -494,6 +498,7 @@ public class ApnEditor extends PreferenceActivity
         super.onSaveInstanceState(icicle);
         if (validateAndSave(true)) {
             icicle.putInt(SAVED_POS, mCursor.getInt(ID_INDEX));
+            mUtility.onSaveInstanceState(icicle);
         }
     }
 

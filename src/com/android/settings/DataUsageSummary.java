@@ -89,6 +89,8 @@ import android.os.UserHandle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.provider.Settings;
+import android.telephony.SubscriptionManager;
+import android.telephony.SubInfoRecord;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.text.format.DateUtils;
@@ -136,6 +138,7 @@ import com.android.settings.net.NetworkPolicyEditor;
 import com.android.settings.net.SummaryForAllUidLoader;
 import com.android.settings.net.UidDetail;
 import com.android.settings.net.UidDetailProvider;
+import com.android.settings.siminfo.SubscriptionSettingUtility;
 import com.android.settings.widget.ChartDataUsageView;
 import com.android.settings.widget.ChartDataUsageView.DataUsageChartListener;
 import com.android.settings.widget.PieChartView;
@@ -145,8 +148,11 @@ import libcore.util.Objects;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Panel showing data usage history across various networks, including options
@@ -254,6 +260,9 @@ public class DataUsageSummary extends Fragment {
     private MenuItem mMenuRestrictBackground;
     private MenuItem mMenuAutoSync;
 
+    private List<SubInfoRecord> mSubInfoList;
+    private Map<Long,String> mMobileTagMap;
+
     /** Flag used to ignore listeners during binding. */
     private boolean mBinding;
 
@@ -275,6 +284,9 @@ public class DataUsageSummary extends Fragment {
 
         mPolicyEditor = new NetworkPolicyEditor(mPolicyManager);
         mPolicyEditor.read();
+  
+        mSubInfoList = SubscriptionSettingUtility.getSortedSubInfoList(getActivity());
+        mMobileTagMap = initMobileTabTag(mSubInfoList);
 
         try {
             if (!mNetworkService.isBandwidthControlEnabled()) {
@@ -453,11 +465,14 @@ public class DataUsageSummary extends Fragment {
         final Context context = getActivity();
         final boolean appDetailMode = isAppDetailMode();
         final boolean isOwner = ActivityManager.getCurrentUser() == UserHandle.USER_OWNER;
-
+        final String currentTab = mTabHost.getCurrentTabTag();
         mMenuDataRoaming = menu.findItem(R.id.data_usage_menu_roaming);
-        mMenuDataRoaming.setVisible(hasReadyMobileRadio(context) && !appDetailMode);
-        mMenuDataRoaming.setChecked(getDataRoaming());
-
+        if (isMobileTab(currentTab) && showRoamingMenu(getSubId(currentTab))) {
+            mMenuDataRoaming.setVisible(hasReadyMobileRadio(context,getSubId(currentTab)) && !appDetailMode);
+            mMenuDataRoaming.setChecked(getDataRoaming(getSubId(currentTab)));
+        } else {
+            mMenuDataRoaming.setVisible(false);
+        }
         mMenuRestrictBackground = menu.findItem(R.id.data_usage_menu_restrict_background);
         mMenuRestrictBackground.setVisible(
                 hasReadyMobileRadio(context) && isOwner && !appDetailMode);
@@ -503,16 +518,24 @@ public class DataUsageSummary extends Fragment {
         }
     }
 
+    //TODO:: Current only support SIM 1 to enable / disable data roaming
+    private boolean showRoamingMenu(long subId) {
+        int simId = SubscriptionManager.getSimId(subId);
+        //TODO:: Work around
+        return simId == 0;
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.data_usage_menu_roaming: {
                 final boolean dataRoaming = !item.isChecked();
+                long subId = getSubId(mCurrentTab);
                 if (dataRoaming) {
-                    ConfirmDataRoamingFragment.show(this);
+                    ConfirmDataRoamingFragment.show(this,subId);
                 } else {
                     // no confirmation to disable roaming
-                    setDataRoaming(false);
+                    setDataRoaming(false,subId);
                 }
                 return true;
             }
@@ -623,8 +646,8 @@ public class DataUsageSummary extends Fragment {
         if (mobileSplit && hasReadyMobile4gRadio(context)) {
             mTabHost.addTab(buildTabSpec(TAB_3G, R.string.data_usage_tab_3g));
             mTabHost.addTab(buildTabSpec(TAB_4G, R.string.data_usage_tab_4g));
-        } else if (hasReadyMobileRadio(context)) {
-            mTabHost.addTab(buildTabSpec(TAB_MOBILE, R.string.data_usage_tab_mobile));
+        } else {
+            addMobileTab(context,mSubInfoList);
         }
         if (mShowWifi && hasWifiRadio(context)) {
             mTabHost.addTab(buildTabSpec(TAB_WIFI, R.string.data_usage_tab_wifi));
@@ -662,13 +685,22 @@ public class DataUsageSummary extends Fragment {
         }
     };
 
-    /**
+	/**
      * Build {@link TabSpec} with thin indicator, and empty content.
      */
     private TabSpec buildTabSpec(String tag, int titleRes) {
         return mTabHost.newTabSpec(tag).setIndicator(getText(titleRes)).setContent(
                 mEmptyTabContent);
     }
+
+    /**
+     * Build {@link TabSpec} with thin indicator, and empty content.
+     */
+    private TabSpec buildTabSpec(String tag, String title) {
+        return mTabHost.newTabSpec(tag).setIndicator(title).setContent(
+                mEmptyTabContent);
+    }
+
 
     private OnTabChangeListener mTabListener = new OnTabChangeListener() {
         @Override
@@ -709,11 +741,11 @@ public class DataUsageSummary extends Fragment {
         // TODO: remove mobile tabs when SIM isn't ready
         final TelephonyManager tele = TelephonyManager.from(context);
 
-        if (TAB_MOBILE.equals(currentTab)) {
+        if (isMobileTab(currentTab)) {
             setPreferenceTitle(mDataEnabledView, R.string.data_usage_enable_mobile);
             setPreferenceTitle(mDisableAtLimitView, R.string.data_usage_disable_mobile_limit);
-            mTemplate = buildTemplateMobileAll(getActiveSubscriberId(context));
-
+            updateDataView(getSubId(currentTab));
+            mTemplate = buildTemplateMobileAll(getActiveSubscriberId(context,getSubId(currentTab)));
         } else if (TAB_3G.equals(currentTab)) {
             setPreferenceTitle(mDataEnabledView, R.string.data_usage_enable_3g);
             setPreferenceTitle(mDisableAtLimitView, R.string.data_usage_disable_3g_limit);
@@ -754,6 +786,18 @@ public class DataUsageSummary extends Fragment {
         mBinding = false;
     }
 
+    /*
+     * TODO:: Current current SIM1 support data connection
+     * Only SIM with 3G capability able to data access
+     */
+    private void updateDataView(long subId) {
+        int simId = SubscriptionManager.getSimId(subId);
+        //TODO:: Work around
+        if (simId != 0) {
+            mDataEnabledView.setVisibility(View.GONE);
+            mDisableAtLimitView.setVisibility(View.GONE);
+        }
+    }
     private boolean isAppDetailMode() {
         return mCurrentApp != null;
     }
@@ -854,18 +898,25 @@ public class DataUsageSummary extends Fragment {
      */
     private Boolean mMobileDataEnabled;
 
-    private boolean isMobileDataEnabled() {
+    private boolean isMobileDataEnabled(long subId) {
         if (mMobileDataEnabled != null) {
             // TODO: deprecate and remove this once enabled flag is on policy
-            return mMobileDataEnabled;
+            // Multiple Subscriptions, the value need to be reseted
+            boolean isEnable = mMobileDataEnabled.booleanValue();
+            mMobileDataEnabled = null;
+            return isEnable;
         } else {
+            //TODO:: Work around
             return mConnService.getMobileDataEnabled();
+            //return mConnService.getMobileDataEnabled(subId);
         }
     }
 
-    private void setMobileDataEnabled(boolean enabled) {
+    private void setMobileDataEnabled(boolean enabled, long subId) {
         if (LOGD) Log.d(TAG, "setMobileDataEnabled()");
+        //TODO:: Work around
         mConnService.setMobileDataEnabled(enabled);
+        //mConnService.setMobileDataEnabled(enabled,subId);
         mMobileDataEnabled = enabled;
         updatePolicy(false);
     }
@@ -884,19 +935,56 @@ public class DataUsageSummary extends Fragment {
         }
     }
 
-    private boolean getDataRoaming() {
-        final ContentResolver resolver = getActivity().getContentResolver();
-        return Settings.Global.getInt(resolver, Settings.Global.DATA_ROAMING, 0) != 0;
+
+    private boolean getDataRoaming(long subId) {
+        SubInfoRecord subinfo = SubscriptionManager.getSubInfoUsingSubId(getActivity(), subId);
+        return subinfo.mDataRoaming == SubscriptionManager.DATA_ROAMING_ENABLE;
     }
 
-    private void setDataRoaming(boolean enabled) {
-        // TODO: teach telephony DataConnectionTracker to watch and apply
-        // updates when changed.
+
+    private void setDataRoaming(boolean enabled, long subId) {
         final ContentResolver resolver = getActivity().getContentResolver();
-        Settings.Global.putInt(resolver, Settings.Global.DATA_ROAMING, enabled ? 1 : 0);
+        //TODO:: DSDS Subscription
+        int simId = SubscriptionManager.getSimId(subId);
+        String roamingValue = getRoamingValue(enabled, simId);
+        Log.d(TAG,"roamingValue = " + roamingValue + " simId = " + simId + " enabled = " + enabled);
+        Settings.Global.putString(resolver, Settings.Global.DATA_ROAMING,roamingValue);
+        SubscriptionManager.setDataRoaming(getActivity(), enabled ? SubscriptionManager.DATA_ROAMING_ENABLE :
+                                                               SubscriptionManager.DATA_ROAMING_DISABLE, 
+                                                               subId);
         mMenuDataRoaming.setChecked(enabled);
     }
-
+    
+    private String getRoamingValue(boolean enabled, int simId) {
+        final ContentResolver resolver = getActivity().getContentResolver();
+        String dataRoaming = Settings.Global.getString(resolver, Settings.Global.DATA_ROAMING);
+        String[] roamingValue = dataRoaming.split(",");
+        StringBuffer newRoamingValue = new StringBuffer();
+        if (simId < roamingValue.length) {
+            roamingValue[simId] = enabled ? "1" : "0";
+            for (String value : roamingValue) {
+                newRoamingValue.append(value + ",");
+            }
+        } else {
+            TelephonyManager tele = (TelephonyManager)getActivity().getSystemService(Context.TELEPHONY_SERVICE);
+            int simCount = tele.getSimCount();
+            String value;
+            for (int index = 0 ; index < simCount; index++) {
+                if (index < roamingValue.length) {
+                    value = roamingValue[index];
+                } else {
+                    value = "";
+                    if (index == simId) {
+                        value = enabled ? "1" : "0";
+                    }
+                }
+                newRoamingValue.append(value + ",");
+            }
+        }
+        newRoamingValue.deleteCharAt(newRoamingValue.length()-1);
+        return newRoamingValue.toString();
+    }
+    
     public void setRestrictBackground(boolean restrictBackground) {
         mPolicyManager.setRestrictBackground(restrictBackground);
         mMenuRestrictBackground.setChecked(restrictBackground);
@@ -928,9 +1016,11 @@ public class DataUsageSummary extends Fragment {
         }
 
         // TODO: move enabled state directly into policy
-        if (TAB_MOBILE.equals(mCurrentTab)) {
+        if (isMobileTab(mCurrentTab)) {
             mBinding = true;
-            mDataEnabled.setChecked(isMobileDataEnabled());
+            boolean isEnable = isMobileDataEnabled(getSubId(mCurrentTab));
+            Log.d(TAG,"mCurrentTab = " + mCurrentTab + " isEnable = " + isEnable);
+            mDataEnabled.setChecked(isEnable);
             mBinding = false;
         }
 
@@ -1034,13 +1124,14 @@ public class DataUsageSummary extends Fragment {
 
             final boolean dataEnabled = isChecked;
             final String currentTab = mCurrentTab;
-            if (TAB_MOBILE.equals(currentTab)) {
+            if (isMobileTab(currentTab)) {
+                long subId = getSubId(currentTab);
                 if (dataEnabled) {
-                    setMobileDataEnabled(true);
+                    setMobileDataEnabled(true,subId);
                 } else {
                     // disabling data; show confirmation dialog which eventually
                     // calls setMobileDataEnabled() once user confirms.
-                    ConfirmDataDisableFragment.show(DataUsageSummary.this);
+                    ConfirmDataDisableFragment.show(DataUsageSummary.this, subId);
                 }
             }
 
@@ -1188,8 +1279,8 @@ public class DataUsageSummary extends Fragment {
         final String rangePhrase = formatDateRange(context, start, end);
 
         final int summaryRes;
-        if (TAB_MOBILE.equals(mCurrentTab) || TAB_3G.equals(mCurrentTab)
-                || TAB_4G.equals(mCurrentTab)) {
+        if (isMobileTab(mCurrentTab) || TAB_3G.equals(mCurrentApp)
+                || TAB_4G.equals(mCurrentApp)) {
             summaryRes = R.string.data_usage_total_during_range_mobile;
         } else {
             summaryRes = R.string.data_usage_total_during_range;
@@ -1278,11 +1369,16 @@ public class DataUsageSummary extends Fragment {
             mPolicyEditor.setMobilePolicySplit(getActiveSubscriberId(context), split);
         }
     }
-
-    private static String getActiveSubscriberId(Context context) {
+	
+	private static String getActiveSubscriberId(Context context) {
         final TelephonyManager tele = TelephonyManager.from(context);
         final String actualSubscriberId = tele.getSubscriberId();
         return SystemProperties.get(TEST_SUBSCRIBER_PROP, actualSubscriberId);
+    }
+
+    private static String getActiveSubscriberId(Context context, long subId) {
+        final TelephonyManager tele = TelephonyManager.getDefault();
+        return tele.getSubscriberId(subId);
     }
 
     private DataUsageChartListener mChartListener = new DataUsageChartListener() {
@@ -1663,7 +1759,7 @@ public class DataUsageSummary extends Fragment {
             } else if (TAB_4G.equals(currentTab)) {
                 message = res.getString(R.string.data_usage_limit_dialog_mobile);
                 limitBytes = Math.max(5 * GB_IN_BYTES, minLimitBytes);
-            } else if (TAB_MOBILE.equals(currentTab)) {
+            } else if (isMobileTab(currentTab)) {
                 message = res.getString(R.string.data_usage_limit_dialog_mobile);
                 limitBytes = Math.max(5 * GB_IN_BYTES, minLimitBytes);
             } else {
@@ -1893,12 +1989,14 @@ public class DataUsageSummary extends Fragment {
      * Dialog to request user confirmation before disabling data.
      */
     public static class ConfirmDataDisableFragment extends DialogFragment {
-        public static void show(DataUsageSummary parent) {
+        private static long sSubId;
+        public static void show(DataUsageSummary parent, long subId) {
             if (!parent.isAdded()) return;
 
             final ConfirmDataDisableFragment dialog = new ConfirmDataDisableFragment();
             dialog.setTargetFragment(parent, 0);
             dialog.show(parent.getFragmentManager(), TAG_CONFIRM_DATA_DISABLE);
+            sSubId = subId;
         }
 
         @Override
@@ -1914,7 +2012,7 @@ public class DataUsageSummary extends Fragment {
                     final DataUsageSummary target = (DataUsageSummary) getTargetFragment();
                     if (target != null) {
                         // TODO: extend to modify policy enabled flag.
-                        target.setMobileDataEnabled(false);
+                        target.setMobileDataEnabled(false,sSubId);
                     }
                 }
             });
@@ -1929,18 +2027,20 @@ public class DataUsageSummary extends Fragment {
      * {@link android.provider.Settings.Global#DATA_ROAMING}.
      */
     public static class ConfirmDataRoamingFragment extends DialogFragment {
-        public static void show(DataUsageSummary parent) {
+        private static long sSubId;
+        public static void show(DataUsageSummary parent, long subId) {
             if (!parent.isAdded()) return;
 
             final ConfirmDataRoamingFragment dialog = new ConfirmDataRoamingFragment();
             dialog.setTargetFragment(parent, 0);
             dialog.show(parent.getFragmentManager(), TAG_CONFIRM_DATA_ROAMING);
+            sSubId = subId;
         }
 
         @Override
         public Dialog onCreateDialog(Bundle savedInstanceState) {
             final Context context = getActivity();
-
+            
             final AlertDialog.Builder builder = new AlertDialog.Builder(context);
             builder.setTitle(R.string.roaming_reenable_title);
             if (Utils.hasMultipleUsers(context)) {
@@ -1954,7 +2054,7 @@ public class DataUsageSummary extends Fragment {
                 public void onClick(DialogInterface dialog, int which) {
                     final DataUsageSummary target = (DataUsageSummary) getTargetFragment();
                     if (target != null) {
-                        target.setDataRoaming(true);
+                        target.setDataRoaming(true,sSubId);
                     }
                 }
             });
@@ -2208,10 +2308,31 @@ public class DataUsageSummary extends Fragment {
         }
 
         final ConnectivityManager conn = ConnectivityManager.from(context);
-        final TelephonyManager tele = TelephonyManager.from(context);
-
+        final TelephonyManager tele = TelephonyManager.getDefault();
+        final List<SubInfoRecord> subInfoList = SubscriptionManager.getActivatedSubInfoList(context);
+        // No activated Subscription 
+        if (subInfoList == null) {
+            return false;
+        }
         // require both supported network and ready SIM
-        return conn.isNetworkSupported(TYPE_MOBILE) && tele.getSimState() == SIM_STATE_READY;
+        boolean isReady = true;
+        for (SubInfoRecord subInfo : subInfoList) {
+            isReady = isReady & tele.getSimState(subInfo.mSimId) == SIM_STATE_READY;
+        }
+        return conn.isNetworkSupported(TYPE_MOBILE) && isReady;
+    }
+
+    public static boolean hasReadyMobileRadio(Context context, long subId) {
+        if (TEST_RADIOS) {
+            return SystemProperties.get(TEST_RADIOS_PROP).contains("mobile");
+        }
+
+        final ConnectivityManager conn = ConnectivityManager.from(context);
+        final TelephonyManager tele = TelephonyManager.getDefault();
+        int simId = SubscriptionManager.getSimId(subId);
+        boolean isReady = tele.getSimState(simId) == SIM_STATE_READY;
+        Log.d(TAG,"Sim "+ subId + " isReady = " + isReady);
+        return conn.isNetworkSupported(TYPE_MOBILE) && isReady;
     }
 
     /**
@@ -2388,4 +2509,50 @@ public class DataUsageSummary extends Fragment {
         summary.setVisibility(View.VISIBLE);
         summary.setText(string);
     }
+
+    private void addMobileTab(Context context, List<SubInfoRecord> subInfoList) {
+        if (subInfoList != null) {
+            for (SubInfoRecord subInfo : mSubInfoList) {
+                if (hasReadyMobileRadio(context,subInfo.mSubId)) {
+                    mTabHost.addTab(buildTabSpec(mMobileTagMap.get(subInfo.mSubId), subInfo.mDisplayName));
+                }
+            }
+        }
+    }
+
+    // 
+    /**
+     * Init a map with subId key and mobile tag name
+     * @param subInfoList The subscription Info List
+     * @return The map or null if no activated subscription 
+     */
+    private Map<Long, String> initMobileTabTag(List<SubInfoRecord> subInfoList) {
+        Map<Long,String> map = null;
+        if (subInfoList != null) {
+            String mobileTag;
+            map = new HashMap<Long, String>();
+            for (SubInfoRecord subInfo : subInfoList) {
+                mobileTag = TAB_MOBILE + String.valueOf(subInfo.mSubId);
+                map.put(subInfo.mSubId,mobileTag);
+            }
+        }
+        return map;
+    }
+
+    private static boolean isMobileTab(String currentTab) {
+        return currentTab != null ? currentTab.contains(TAB_MOBILE) :
+                                     false;
+    }
+
+    private long getSubId(String currentTab) {
+        Set<Long> set = mMobileTagMap.keySet();
+        for (Long subId : set) {
+            if (mMobileTagMap.get(subId).equals(currentTab)) {
+                return subId;
+            }
+        }
+        Log.e(TAG, "currentTab = " + currentTab + " non mobile tab called this function");
+        return -1;
+    }
+
 }
