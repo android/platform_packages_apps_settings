@@ -21,7 +21,12 @@
     <!-- WIRELESS and NETWORKS -->
     <header android:id="@+id/wireless_section"
         android:title="@string/header_category_wireless_networks" />
-
+	<!-- SIM Info -->
+    <header
+        android:id="@+id/siminfo_settings"
+        android:fragment="com.android.settings.siminfo.SimInfoEditorSettings"
+        android:title="@string/siminfo_settings_title"
+        android:icon="@drawable/ic_settings_siminfo"/>
     <!-- Wifi -->
     <header
         android:id="@+id/wifi_settings"

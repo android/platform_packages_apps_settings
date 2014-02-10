@@ -29,12 +29,14 @@ import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
+import android.telephony.SimInfoManager;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.TelephonyIntents;
+import com.android.settings.siminfo.SimInfoUtils;
 
 /**
  * Implements the preference screen to enable/disable ICC lock and
@@ -78,6 +80,7 @@ public class IccLockSettings extends PreferenceActivity
     private static final int MAX_PIN_LENGTH = 8;
     // Which dialog to show next when popped up
     private int mDialogState = OFF_MODE;
+    private int mSimId = SimInfoManager.SIM_NOT_INSERTED;
 
     private String mPin;
     private String mOldPin;
@@ -153,6 +156,7 @@ public class IccLockSettings extends PreferenceActivity
 
         mPinDialog = (EditPinPreference) findPreference(PIN_DIALOG);
         mPinToggle = (CheckBoxPreference) findPreference(PIN_TOGGLE);
+        mSimId = getSimCardId(savedInstanceState);
         if (savedInstanceState != null && savedInstanceState.containsKey(DIALOG_STATE)) {
             mDialogState = savedInstanceState.getInt(DIALOG_STATE);
             mPin = savedInstanceState.getString(DIALOG_PIN);
@@ -181,10 +185,20 @@ public class IccLockSettings extends PreferenceActivity
 
         // Don't need any changes to be remembered
         getPreferenceScreen().setPersistent(false);
-
-        mPhone = PhoneFactory.getDefaultPhone();
         mRes = getResources();
-        updatePreferences();
+        if (mSimId == SimInfoManager.SIM_NOT_INSERTED) {
+            startActivityForResult(SimInfoUtils.getSelectSimIntent(),0);
+        } else {
+            mPhone = PhoneFactory.getPhoneProxyManager().getPhoneProxy(mSimId);    
+            updatePreferences();
+        }
+    }
+
+    private int getSimCardId(Bundle bundle) {
+        if (bundle != null && bundle.containsKey(SimInfoUtils.SIM_ID_STATE)) {
+            return bundle.getInt(SimInfoUtils.SIM_ID_STATE);
+        }
+        return SimInfoUtils.getSimId(this,getIntent());
     }
 
     private void updatePreferences() {
@@ -246,6 +260,23 @@ public class IccLockSettings extends PreferenceActivity
         } else {
             super.onSaveInstanceState(out);
         }
+        // Save SIM Id value
+        out.putInt(SimInfoUtils.SIM_ID_STATE, mSimId);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 0 && resultCode == RESULT_OK) {
+            handleSelectSimId(data);
+        } else {
+            finish();
+        }
+    }
+
+    private void handleSelectSimId(Intent data) {
+        mSimId = data.getIntExtra(SimInfoUtils.SIM_ID, SimInfoManager.SIM_NOT_INSERTED);
+        mPhone = PhoneFactory.getPhoneProxyManager().getPhoneProxy(mSimId);    
+        updatePreferences();
     }
 
     private void showPinDialog() {

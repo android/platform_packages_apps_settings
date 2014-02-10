@@ -40,6 +40,8 @@ import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.security.KeyStore;
+import android.telephony.SimInfoManager;
+import android.telephony.SimInfoManager.SimInfoRecord;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 
@@ -229,15 +231,11 @@ public class SecuritySettings extends RestrictedSettingsFragment
         addPreferencesFromResource(R.xml.security_settings_misc);
 
         // Do not display SIM lock for devices without an Icc card
-        TelephonyManager tm = TelephonyManager.getDefault();
-        if (!mIsPrimary || !tm.hasIccCard()) {
+        if (!mIsPrimary || SimInfoManager.getInsertedSimCount(getActivity()) == 0) {
             root.removePreference(root.findPreference(KEY_SIM_LOCK));
         } else {
             // Disable SIM lock if sim card is missing or unknown
-            if ((TelephonyManager.getDefault().getSimState() ==
-                                 TelephonyManager.SIM_STATE_ABSENT) ||
-                (TelephonyManager.getDefault().getSimState() ==
-                                 TelephonyManager.SIM_STATE_UNKNOWN)) {
+            if (isSimNotReady()) {
                 root.findPreference(KEY_SIM_LOCK).setEnabled(false);
             }
         }
@@ -340,6 +338,20 @@ public class SecuritySettings extends RestrictedSettingsFragment
             protectByRestrictions(root.findPreference(KEY_CREDENTIALS_INSTALL));
         }
         return root;
+    }
+
+    private boolean isSimNotReady() {
+        boolean isNotReady = true;
+        int simState = TelephonyManager.SIM_STATE_UNKNOWN;
+        final List<SimInfoRecord> simInfoList = SimInfoManager.getInsertedSimInfoList(getActivity());
+        for (SimInfoRecord simInfo : simInfoList) {
+            simState = TelephonyManager.getDefault().getSimState(simInfo.mSimId);
+            Log.d(TAG,"Sim " + simInfo.mSimId + " state is " + simState);
+            isNotReady = isNotReady && 
+                         ((simState == TelephonyManager.SIM_STATE_ABSENT) || 
+                          (simState == TelephonyManager.SIM_STATE_UNKNOWN));
+        }
+        return isNotReady;
     }
 
     private int getNumEnabledNotificationListeners() {

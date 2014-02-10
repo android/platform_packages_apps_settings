@@ -4845,6 +4845,8 @@
     <string name="help_url_security" translatable="false"></string>
     <!-- Help URL, Tap & pay [DO NOT TRANSLATE] -->
     <string name="help_url_nfc_payment" translatable="false"></string>
+    <!-- Help URL, Remote display [DO NOT TRANSLATE] -->
+    <string name="help_url_remote_display" translatable="false"></string>
 
     <!-- User account title [CHAR LIMIT=30] -->
     <string name="user_account_title">Account for content</string>
@@ -4900,4 +4902,16 @@
 
     <!-- Text to display in regulatory info screen (from device overlay). -->
     <string name="regulatory_info_text"></string>
+    
+    
+    <!-- Multi sim support -->
+    <string name="siminfo_settings_title">SIM information</string>
+    <string name="sim_info_editor_name">Edit SIM name</string>
+    <string name="sim_info_editor_number">Enter phone number</string>
+    <string name="sim_info_editor_color">Set background color</string>
+    <string name="sim_info_editor_num_format">Display numbers</string>
+    <string name="sim_card_select_title">Select SIM card</string>
+    <string name="color_orange">Orange</string>
+    <string name="color_purple">Purple</string>
+    <string name="sim_info_no_inserted_msg">No SIM cards inserted</string>
 </resources>
