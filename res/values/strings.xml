@@ -1882,6 +1882,30 @@
     <string name="summary_font_size" translatable="false">%1$s</string>
     <!-- [CHAR LIMIT=40] Sound & display settings screen, title of dialog for picking font size -->
     <string name="dialog_title_font_size">Font size</string>
+    
+    <!-- Calibration settings -->
+    <!-- Display calibration, title -->
+    <string name="calibration_sample_title">Calibration</string>
+    <!-- Display calibration, description -->
+    <string name="calibration_sample_desc">Display Calibration</string>
+    <!-- Display calibration, user instructions -->
+    <string name="calibration_sample_instructions">Tap the center of each target.</string>
+    <!-- Display calibration, completion message -->
+    <string name="calibration_sample_complete">Calibration Complete</string>
+    <!-- Display calibration test, title -->
+    <string name="calibration_test_title">Calibration Test</string>
+    <!-- Display calibration test, user instructions -->
+    <string name="calibration_test_instructions">Draw to check for correct calibration.</string>
+    <!-- Display calibration test, button label, save current calibration -->
+    <string name="calibration_test_save">Save</string>
+    <!-- Display calibration test, button label, run calibration again -->
+    <string name="calibration_test_redo">Recalibrate</string>
+    <!-- Display calibration, no devices found dialog title -->
+    <string name="calibration_sample_nodevices_title">Unable to Calibrate</string>
+    <!-- Display calibration, no devices found dialog message -->
+    <string name="calibration_sample_nodevices_msg">No suitable devices were detected.</string>
+    <!-- Display calibration, no devices found button label -->
+    <string name="calibration_sample_nodevices_btn">Quit</string>
 
     <!-- SIM lock settings title -->
     <string name="sim_lock_settings">SIM card lock settings</string>

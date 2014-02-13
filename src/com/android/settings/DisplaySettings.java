@@ -35,9 +35,11 @@ import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.provider.Settings.SettingNotFoundException;
 import android.util.Log;
+import android.view.InputDevice;
 
 import com.android.internal.view.RotationPolicy;
 import com.android.settings.DreamSettings;
+import com.android.settings.calibration.Calibrator;
 
 import java.util.ArrayList;
 
@@ -53,6 +55,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_FONT_SIZE = "font_size";
     private static final String KEY_NOTIFICATION_PULSE = "notification_pulse";
     private static final String KEY_SCREEN_SAVER = "screensaver";
+    private static final String KEY_CALIBRATION = "calibration";
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
@@ -64,6 +67,8 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     private ListPreference mScreenTimeoutPreference;
     private Preference mScreenSaverPreference;
+
+    private Preference mCalibrationPreference;
 
     private final RotationPolicy.RotationPolicyListener mRotationPolicyListener =
             new RotationPolicy.RotationPolicyListener() {
@@ -121,6 +126,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             } catch (SettingNotFoundException snfe) {
                 Log.e(TAG, Settings.System.NOTIFICATION_LIGHT_PULSE + " not found");
             }
+        }
+
+        mCalibrationPreference = findPreference(KEY_CALIBRATION);
+        if (Calibrator.getDevices().length == 0) {
+            getPreferenceScreen().removePreference(mCalibrationPreference);
         }
     }
 
