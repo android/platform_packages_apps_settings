@@ -17,6 +17,7 @@
 package com.android.settings;
 
 import com.android.internal.view.RotationPolicy;
+import com.android.settings.calibration.Calibrator;
 import com.android.settings.notification.DropDownPreference;
 import com.android.settings.notification.DropDownPreference.Callback;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -52,6 +53,7 @@ import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.InputDevice;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,6 +72,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private static final String KEY_DOZE = "doze";
     private static final String KEY_AUTO_BRIGHTNESS = "auto_brightness";
     private static final String KEY_AUTO_ROTATE = "auto_rotate";
+    private static final String KEY_CALIBRATION = "calibration";
 
     private static final int DLG_GLOBAL_CHANGE_WARNING = 1;
 
@@ -82,6 +85,7 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mLiftToWakePreference;
     private SwitchPreference mDozePreference;
     private SwitchPreference mAutoBrightnessPreference;
+    private Preference mCalibrationPreference;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -164,6 +168,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
             });
         } else {
             removePreference(KEY_AUTO_ROTATE);
+        }
+
+        mCalibrationPreference = findPreference(KEY_CALIBRATION);
+        if (Calibrator.getDevices().length == 0) {
+            getPreferenceScreen().removePreference(mCalibrationPreference);
         }
     }
 
