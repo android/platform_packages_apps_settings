@@ -20,7 +20,8 @@
             android:title="@string/sim_lock_settings_title"
             android:persistent="false">
 
-        <Preference android:title="@string/sim_lock_settings_category"
+        <Preference android:key="sim_lock_settings"
+                android:title="@string/sim_lock_settings_category"
                 android:persistent="false">
             <intent android:action="android.intent.action.MAIN"
                      android:targetPackage="com.android.settings"
