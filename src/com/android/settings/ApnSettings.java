@@ -37,6 +37,7 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceScreen;
 import android.provider.Telephony;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -83,6 +84,7 @@ public class ApnSettings extends PreferenceActivity implements
     private RestoreApnProcessHandler mRestoreApnProcessHandler;
     private HandlerThread mRestoreDefaultApnThread;
 
+    private int mSubscription = 0;
     private String mSelectedKey;
 
     private IntentFilter mMobileStateFilter;
@@ -121,7 +123,9 @@ public class ApnSettings extends PreferenceActivity implements
 
         addPreferencesFromResource(R.xml.apn_settings);
         getListView().setItemsCanFocus(true);
-
+        mSubscription = getIntent().getIntExtra(SelectSubscription.SUBSCRIPTION_KEY,
+                TelephonyManager.getDefault().getDefaultSubscription());
+        Log.d(TAG, "onCreate received sub :" + mSubscription);
         mMobileStateFilter = new IntentFilter(
                 TelephonyIntents.ACTION_ANY_DATA_CONNECTION_STATE_CHANGED);
     }
@@ -137,6 +141,15 @@ public class ApnSettings extends PreferenceActivity implements
         } else {
             showDialog(DIALOG_RESTORE_DEFAULTAPN);
         }
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+
+        mSubscription = intent.getIntExtra(SelectSubscription.SUBSCRIPTION_KEY,
+                TelephonyManager.getDefault().getDefaultSubscription());
+        Log.d(TAG, "onNewIntent received sub :" + mSubscription);
     }
 
     @Override

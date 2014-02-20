@@ -43,6 +43,7 @@ import android.telephony.ServiceState;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
+import com.android.settings.SelectSubscription;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
@@ -50,6 +51,7 @@ import com.android.internal.telephony.PhoneStateIntentReceiver;
 import com.android.internal.util.ArrayUtils;
 import com.android.settings.R;
 import com.android.settings.Utils;
+import android.util.Log;
 
 import java.lang.ref.WeakReference;
 
@@ -118,6 +120,8 @@ public class Status extends PreferenceActivity {
     static final String CB_AREA_INFO_SENDER_PERMISSION =
             "android.permission.RECEIVE_EMERGENCY_BROADCAST";
 
+    private static final String BUTTON_SELECT_SUB_KEY = "button_aboutphone_msim_status";
+
     // Broadcasts to listen to for connectivity changes.
     private static final String[] CONNECTIVITY_INTENTS = {
             BluetoothAdapter.ACTION_STATE_CHANGED,
@@ -141,6 +145,7 @@ public class Status extends PreferenceActivity {
     private PhoneStateIntentReceiver mPhoneStateReceiver;
     private Resources mRes;
     private boolean mShowLatestAreaInfo;
+    private int mSub = 0;
 
     private String mUnknown;
     private String mUnavailable;
@@ -198,8 +203,12 @@ public class Status extends PreferenceActivity {
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             if (Intent.ACTION_BATTERY_CHANGED.equals(action)) {
-                mBatteryLevel.setSummary(Utils.getBatteryPercentage(intent));
-                mBatteryStatus.setSummary(Utils.getBatteryStatus(getResources(), intent));
+                if (mBatteryLevel != null) {
+                    mBatteryLevel.setSummary(Utils.getBatteryPercentage(intent));
+                }
+                if (mBatteryStatus != null) {
+                    mBatteryStatus.setSummary(Utils.getBatteryStatus(getResources(), intent));
+                }
             }
         }
     };
@@ -259,7 +268,13 @@ public class Status extends PreferenceActivity {
         mTelephonyManager = (TelephonyManager)getSystemService(TELEPHONY_SERVICE);
         mWifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
 
+        // getting selected subscription
+        mSub = getIntent().getIntExtra(SelectSubscription.SUBSCRIPTION_KEY, 0);
+        boolean isSubSettings = getIntent().getBooleanExtra(PhoneConstants.SUB_SETTING, false);
+        Log.d("Status","OnCreate mSub =" + mSub);
+
         addPreferencesFromResource(R.xml.device_info_status);
+
         mBatteryLevel = findPreference(KEY_BATTERY_LEVEL);
         mBatteryStatus = findPreference(KEY_BATTERY_STATUS);
         mBtAddress = findPreference(KEY_BT_ADDRESS);
@@ -272,7 +287,7 @@ public class Status extends PreferenceActivity {
         mUnavailable = mRes.getString(R.string.status_unavailable);
 
         if (UserHandle.myUserId() == UserHandle.USER_OWNER) {
-            mPhone = PhoneFactory.getDefaultPhone();
+            mPhone = PhoneFactory.getPhone(mSub);
         }
         // Note - missing in zaku build, be careful later...
         mSignalStrength = findPreference(KEY_SIGNAL_STRENGTH);
@@ -341,12 +356,12 @@ public class Status extends PreferenceActivity {
             }
         }
 
-        if (!hasBluetooth()) {
+        if (!hasBluetooth() && (mBtAddress != null)) {
             getPreferenceScreen().removePreference(mBtAddress);
             mBtAddress = null;
         }
 
-        if (!hasWimax()) {
+        if (!hasWimax() && (mWimaxMacAddress != null)) {
             getPreferenceScreen().removePreference(mWimaxMacAddress);
             mWimaxMacAddress = null;
         }
@@ -363,6 +378,47 @@ public class Status extends PreferenceActivity {
             setSummaryText(KEY_SERIAL_NUMBER, serial);
         } else {
             removePreferenceFromScreen(KEY_SERIAL_NUMBER);
+        }
+
+        if (TelephonyManager.getDefault().isMultiSimEnabled()) {
+            if (!isSubSettings) {
+                removePreferenceFromScreen(KEY_SERVICE_STATE);
+                removePreferenceFromScreen(KEY_OPERATOR_NAME);
+                removePreferenceFromScreen(KEY_ROAMING_STATE);
+                removePreferenceFromScreen(KEY_LATEST_AREA_INFO);
+                removePreferenceFromScreen(KEY_PHONE_NUMBER);
+                removePreferenceFromScreen(KEY_IMEI);
+                removePreferenceFromScreen(KEY_IMEI_SV);
+                removePreferenceFromScreen(KEY_PRL_VERSION);
+                removePreferenceFromScreen(KEY_MIN_NUMBER);
+                removePreferenceFromScreen(KEY_MEID_NUMBER);
+                removePreferenceFromScreen(KEY_SIGNAL_STRENGTH);
+                removePreferenceFromScreen(KEY_ICC_ID);
+            } else {
+                removePreferenceFromScreen(KEY_BATTERY_STATUS);
+                removePreferenceFromScreen(KEY_BATTERY_LEVEL);
+                removePreferenceFromScreen(KEY_NETWORK_TYPE);
+                removePreferenceFromScreen(KEY_DATA_STATE);
+                removePreferenceFromScreen(KEY_IP_ADDRESS);
+                removePreferenceFromScreen(KEY_WIFI_MAC_ADDRESS);
+                removePreferenceFromScreen(KEY_BT_ADDRESS);
+                removePreferenceFromScreen(KEY_SERIAL_NUMBER);
+                removePreferenceFromScreen("up_time");
+                removePreferenceFromScreen(KEY_WIMAX_MAC_ADDRESS);
+            }
+        }
+
+        PreferenceScreen selectSub = (PreferenceScreen) findPreference(BUTTON_SELECT_SUB_KEY);
+        if (selectSub != null) {
+            if (TelephonyManager.getDefault().isMultiSimEnabled() && !isSubSettings) {
+                Intent intent = selectSub.getIntent();
+                intent.putExtra(SelectSubscription.PACKAGE, "com.android.settings");
+                intent.putExtra(SelectSubscription.TARGET_CLASS,
+                        "com.android.settings.deviceinfo.Status");
+                intent.putExtra(PhoneConstants.SUB_SETTING, true);
+            } else {
+                getPreferenceScreen().removePreference(selectSub);
+            }
         }
     }
 
@@ -546,17 +602,21 @@ public class Status extends PreferenceActivity {
     }
 
     private void setWifiStatus() {
-        WifiInfo wifiInfo = mWifiManager.getConnectionInfo();
-        String macAddress = wifiInfo == null ? null : wifiInfo.getMacAddress();
-        mWifiMacAddress.setSummary(!TextUtils.isEmpty(macAddress) ? macAddress : mUnavailable);
+        if (mWifiMacAddress != null) {
+            WifiInfo wifiInfo = mWifiManager.getConnectionInfo();
+            String macAddress = wifiInfo == null ? null : wifiInfo.getMacAddress();
+            mWifiMacAddress.setSummary(!TextUtils.isEmpty(macAddress) ? macAddress : mUnavailable);
+        }
     }
 
     private void setIpAddressStatus() {
-        String ipAddress = Utils.getDefaultIpAddresses(this.mCM);
-        if (ipAddress != null) {
-            mIpAddress.setSummary(ipAddress);
-        } else {
-            mIpAddress.setSummary(mUnavailable);
+        if (mIpAddress != null) {
+            String ipAddress = Utils.getDefaultIpAddresses(this.mCM);
+            if (ipAddress != null) {
+                mIpAddress.setSummary(ipAddress);
+            } else {
+                mIpAddress.setSummary(mUnavailable);
+            }
         }
     }
 
@@ -588,7 +648,9 @@ public class Status extends PreferenceActivity {
             ut = 1;
         }
 
-        mUptime.setSummary(convert(ut));
+        if (mUptime != null) {
+            mUptime.setSummary(convert(ut));
+        }
     }
 
     private String pad(int n) {
