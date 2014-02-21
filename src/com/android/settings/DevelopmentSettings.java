@@ -91,6 +91,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private static final String ENABLE_ADB = "enable_adb";
     private static final String CLEAR_ADB_KEYS = "clear_adb_keys";
     private static final String ENABLE_TERMINAL = "enable_terminal";
+    private static final String ENABLE_TOMBSTONES = "enable_tombstones";
+    private static final String TOMBSTONES_PROPERTY = "persist.sys.tombstones";
     private static final String KEEP_SCREEN_ON = "keep_screen_on";
     private static final String BT_HCI_SNOOP_LOG = "bt_hci_snoop_log";
     private static final String SELECT_RUNTIME_KEY = "select_runtime";
@@ -164,6 +166,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private CheckBoxPreference mKeepScreenOn;
     private CheckBoxPreference mBtHciSnoopLog;
     private CheckBoxPreference mAllowMockLocation;
+    private CheckBoxPreference mEnableTombstones;
     private PreferenceScreen mPassword;
 
     private String mDebugApp;
@@ -254,6 +257,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mKeepScreenOn = findAndInitCheckboxPref(KEEP_SCREEN_ON);
         mBtHciSnoopLog = findAndInitCheckboxPref(BT_HCI_SNOOP_LOG);
         mAllowMockLocation = findAndInitCheckboxPref(ALLOW_MOCK_LOCATION);
+        mEnableTombstones = findAndInitCheckboxPref(ENABLE_TOMBSTONES);
         mPassword = (PreferenceScreen) findPreference(LOCAL_BACKUP_PASSWORD);
         mAllPrefs.add(mPassword);
 
@@ -470,6 +474,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                 Settings.Secure.BLUETOOTH_HCI_LOG, 0) != 0);
         updateCheckBox(mAllowMockLocation, Settings.Secure.getInt(cr,
                 Settings.Secure.ALLOW_MOCK_LOCATION, 0) != 0);
+        updateTombstonesOptions();
         updateRuntimeValue();
         updateHdcpValues();
         updatePasswordSummary();
@@ -542,6 +547,38 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             pref.setEntryValues(validValues.toArray(new String[count]));
             pref.setEntries(validSummaries.toArray(new String[count]));
         }
+    }
+
+    // Deletes all subdirectories and files within path and then deletes the path directory
+    private static boolean deleteDirectory(File path) {
+        if (path.exists()) {
+            File[] files = path.listFiles();
+            if (files == null) {
+                return true;
+            }
+            for (int i = 0; i < files.length; i++) {
+                if (files[i].isDirectory()) {
+                    deleteDirectory(files[i]);
+                } else {
+                    files[i].delete();
+                }
+            }
+        }
+        return path.delete();
+    }
+
+    private void updateTombstonesOptions() {
+        updateCheckBox(mEnableTombstones, SystemProperties.getBoolean(TOMBSTONES_PROPERTY, true));
+    }
+
+    private void writeTombstonesOptions() {
+        if (!mEnableTombstones.isChecked()) {
+            File path = new File("/data/tombstones");
+            deleteDirectory(path);
+        }
+        SystemProperties.set(TOMBSTONES_PROPERTY, mEnableTombstones.isChecked() ? "true" : "false");
+        pokeSystemProperties();
+        updateTombstonesOptions();
     }
 
     private String currentRuntimeValue() {
@@ -1209,6 +1246,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                     mAllowMockLocation.isChecked() ? 1 : 0);
         } else if (preference == mDebugAppPref) {
             startActivityForResult(new Intent(getActivity(), AppPicker.class), RESULT_DEBUG_APP);
+        } else if (preference == mEnableTombstones) {
+            writeTombstonesOptions();
         } else if (preference == mWaitForDebugger) {
             writeDebuggerOptions();
         } else if (preference == mVerifyAppsOverUsb) {

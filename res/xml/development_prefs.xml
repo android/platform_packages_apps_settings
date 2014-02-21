@@ -88,6 +88,11 @@
             android:title="@string/allow_mock_location"
             android:summary="@string/allow_mock_location_summary"/>
 
+        <CheckBoxPreference
+            android:key="enable_tombstones"
+            android:title="@string/enable_tombstones"
+            android:summary="@string/enable_tombstones_summary" />
+
         <PreferenceScreen android:key="debug_app"
                 android:title="@string/debug_app" />
 
