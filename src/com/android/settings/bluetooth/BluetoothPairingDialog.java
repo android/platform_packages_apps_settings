@@ -209,7 +209,7 @@ public final class BluetoothPairingDialog extends AlertActivity implements
 
         // Format the message string, then parse HTML style tags
         String messageText = getString(messageId1, deviceName);
-        messageView.setText(Html.fromHtml(messageText));
+        messageView.setText(Html.fromHtml(Html.escapeHtml(messageText)));
         messageView2.setText(messageId2);
         mPairingView.setInputType(InputType.TYPE_CLASS_NUMBER);
         mPairingView.setFilters(new InputFilter[] {
@@ -245,7 +245,7 @@ public final class BluetoothPairingDialog extends AlertActivity implements
                 Log.e(TAG, "Incorrect pairing type received, not creating view");
                 return null;
         }
-        messageView.setText(Html.fromHtml(messageText));
+        messageView.setText(Html.fromHtml(Html.escapeHtml(messageText)));
         return view;
     }
 
