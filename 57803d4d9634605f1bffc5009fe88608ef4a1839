@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cf89137_08db7405",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPairingDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1018773
+      },
+      "writtenOn": "2014-02-27T17:37:56Z",
+      "side": 1,
+      "message": "I think the reason Html.fromHtml is used here is because some parts of the message use HTML markup. If so, the escaping the whole message would make this markup visible as text. In that case, the correct solution is to escape only the relevant part of the message (e.g., Bluetooth device name), for example, by providing an escaped deviceName to getString above.",
+      "range": {
+        "startLine": 212,
+        "startChar": 42,
+        "endLine": 212,
+        "endChar": 71
+      },
+      "revId": "57803d4d9634605f1bffc5009fe88608ef4a1839",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
