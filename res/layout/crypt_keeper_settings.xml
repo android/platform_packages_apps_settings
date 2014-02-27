@@ -41,6 +41,18 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/crypt_keeper_desc"
             />
+
+            <TextView
+                android:id="@+id/min_battery_capacity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dip"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textStyle="bold"
+                android:text="@string/crypt_keeper_min_battery_capacity_text"
+                android:visibility="gone"
+            />
+
             <TextView
                 android:id="@+id/warning_low_charge"
                 android:layout_width="match_parent"

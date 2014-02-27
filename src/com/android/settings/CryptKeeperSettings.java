@@ -35,6 +35,7 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Button;
 
 public class CryptKeeperSettings extends Fragment {
@@ -54,6 +55,7 @@ public class CryptKeeperSettings extends Fragment {
     private Button mInitiateButton;
     private View mPowerWarning;
     private View mBatteryWarning;
+    private TextView mBatteryCapacityWarning;
     private IntentFilter mIntentFilter;
 
     private BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
@@ -74,7 +76,17 @@ public class CryptKeeperSettings extends Fragment {
                 // Update UI elements based on power/battery status
                 mInitiateButton.setEnabled(levelOk && pluggedOk);
                 mPowerWarning.setVisibility(pluggedOk ? View.GONE : View.VISIBLE );
-                mBatteryWarning.setVisibility(levelOk ? View.GONE : View.VISIBLE);
+
+                if (levelOk) {
+                    mBatteryCapacityWarning.setVisibility(View.GONE);
+                    mBatteryWarning.setVisibility(View.GONE);
+                }
+                else {
+                    String lowBattCapacity = getResources().getString(R.string.crypt_keeper_min_battery_capacity_text, MIN_BATTERY_LEVEL, level);
+                    mBatteryCapacityWarning.setText((CharSequence)lowBattCapacity);
+                    mBatteryCapacityWarning.setVisibility(View.VISIBLE);
+                    mBatteryWarning.setVisibility(View.VISIBLE);
+                }
             }
         }
     };
@@ -113,6 +125,7 @@ public class CryptKeeperSettings extends Fragment {
 
         mPowerWarning = mContentView.findViewById(R.id.warning_unplugged);
         mBatteryWarning = mContentView.findViewById(R.id.warning_low_charge);
+        mBatteryCapacityWarning = (TextView) mContentView.findViewById(R.id.min_battery_capacity);
 
         return mContentView;
     }
