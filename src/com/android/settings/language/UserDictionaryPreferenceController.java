@@ -22,6 +22,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.preference.Preference;
 
+import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
 import com.android.settings.inputmethod.UserDictionaryList;
 import com.android.settings.inputmethod.UserDictionaryListPreferenceController;
@@ -48,6 +49,7 @@ public class UserDictionaryPreferenceController extends BasePreferenceController
         final TreeSet<String> localeSet = getDictionaryLocales();
         final Bundle extras = preference.getExtras();
         final Class<? extends Fragment> targetFragment;
+        preference.setSummary(R.string.user_dict_settings_summary);
         if (localeSet.size() <= 1) {
             if (!localeSet.isEmpty()) {
                 // If the size of localeList is 0, we don't set the locale
