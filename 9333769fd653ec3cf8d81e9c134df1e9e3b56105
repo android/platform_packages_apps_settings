@@ -22,6 +22,30 @@
       "revId": "9333769fd653ec3cf8d81e9c134df1e9e3b56105",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c2ba1c2_768aab99",
+        "filename": "src/com/android/settings/tts/TextToSpeechSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1005255
+      },
+      "writtenOn": "2014-03-12T15:12:28Z",
+      "side": 1,
+      "message": "Yes, indeed. I will test and upload a new patch.",
+      "parentUuid": "dce519f4_e141c2c6",
+      "range": {
+        "startLine": 302,
+        "startChar": 12,
+        "endLine": 302,
+        "endChar": 29
+      },
+      "revId": "9333769fd653ec3cf8d81e9c134df1e9e3b56105",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
