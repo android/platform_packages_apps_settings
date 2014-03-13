@@ -1,0 +1,8 @@
+Verified+1: Deckard Autoverifier <deckard@android.com>
+Code-Review+2: Fergus Henderson <fergus@google.com>
+Code-Review+2: Przemyslaw Szczepaniak <pszczepaniak@google.com>
+Submitted-by: Przemyslaw Szczepaniak <pszczepaniak@google.com>
+Submitted-at: Thu, 13 Mar 2014 15:26:47 +0000
+Reviewed-on: https://android-review.googlesource.com/87756
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
