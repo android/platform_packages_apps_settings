@@ -64,8 +64,7 @@ public final class SmsDefaultDialog extends AlertActivity implements
 
     private boolean buildDialog(String packageName) {
         TelephonyManager tm = (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
-        if (tm.getPhoneType() == TelephonyManager.PHONE_TYPE_NONE) {
-            // No phone, no SMS
+        if (!tm.isSmsCapable()) {
             return false;
         }
 
