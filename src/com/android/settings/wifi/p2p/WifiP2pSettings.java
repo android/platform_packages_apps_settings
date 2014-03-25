@@ -396,6 +396,7 @@ public class WifiP2pSettings extends SettingsPreferenceFragment
                     }
                 }
 
+                config.wps.setup = WpsInfo.KEYPAD;
                 mWifiP2pManager.connect(mChannel, config,
                         new WifiP2pManager.ActionListener() {
                             public void onSuccess() {
