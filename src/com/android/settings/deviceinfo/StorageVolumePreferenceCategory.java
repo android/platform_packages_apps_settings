@@ -152,7 +152,8 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
 
         mUsageBarPreference = new UsageBarPreference(context);
         mUsageBarPreference.setOrder(ORDER_USAGE_BAR);
-        addPreference(mUsageBarPreference);
+        mUsageBarPreference.setKey("mUsageBarPreference");
+	addPreference(mUsageBarPreference);
 
         mItemTotal = buildItem(R.string.memory_size, 0);
         mItemAvailable = buildItem(R.string.memory_available, R.color.memory_avail);
@@ -249,12 +250,18 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
 
         if (Environment.MEDIA_MOUNTED.equals(state)
                 || Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
-            mMountTogglePreference.setEnabled(true);
-            mMountTogglePreference.setTitle(mResources.getString(R.string.sd_eject));
-            mMountTogglePreference.setSummary(mResources.getString(R.string.sd_eject_summary));
-            addPreference(mUsageBarPreference);
-            addPreference(mItemTotal);
-            addPreference(mItemAvailable);
+            if (findPreference(mUsageBarPreference.getKey()) == null)
+            {
+                removeAll();
+                init();
+            } else {
+                mMountTogglePreference.setEnabled(true);
+                mMountTogglePreference.setTitle(mResources.getString(R.string.sd_eject));
+                mMountTogglePreference.setSummary(mResources.getString(R.string.sd_eject_summary));
+                addPreference(mUsageBarPreference);
+                addPreference(mItemTotal);
+                addPreference(mItemAvailable);
+            }
         } else {
             if (Environment.MEDIA_UNMOUNTED.equals(state) || Environment.MEDIA_NOFS.equals(state)
                     || Environment.MEDIA_UNMOUNTABLE.equals(state)) {
