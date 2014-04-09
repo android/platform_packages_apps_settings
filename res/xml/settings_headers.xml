@@ -17,8 +17,7 @@
 <preference-headers
         xmlns:android="http://schemas.android.com/apk/res/android">
 
-
-    <!-- WIRELESS and NETWORKS -->
+    <!-- Networking Section -->
     <header android:id="@+id/wireless_section"
         android:title="@string/header_category_wireless_networks" />
 
@@ -35,6 +34,13 @@
         android:fragment="com.android.settings.bluetooth.BluetoothSettings"
         android:title="@string/bluetooth_settings_title"
         android:icon="@drawable/ic_settings_bluetooth2" />
+
+    <!-- Location -->
+    <header
+        android:fragment="com.android.settings.location.LocationSettings"
+        android:icon="@drawable/ic_settings_location"
+        android:title="@string/location_settings_title"
+        android:id="@+id/location_settings" />
 
     <!-- Data Usage -->
     <header
@@ -58,7 +64,32 @@
         android:fragment="com.android.settings.WirelessSettings"
         android:icon="@drawable/empty_icon" />
 
-    <!-- DEVICE -->
+    <!-- Personal Section -->
+    <header android:id="@+id/personal_section"
+        android:title="@string/header_category_personal" />
+
+    <!-- Security -->
+    <header
+        android:fragment="com.android.settings.SecuritySettings"
+        android:icon="@drawable/ic_settings_security"
+        android:title="@string/security_settings_title"
+        android:id="@+id/security_settings" />
+
+    <!-- Language -->
+    <header
+        android:id="@+id/language_settings"
+        android:fragment="com.android.settings.inputmethod.InputMethodAndLanguageSettings"
+        android:icon="@drawable/ic_settings_language"
+        android:title="@string/language_settings" />
+
+    <!-- Backup and reset -->
+    <header
+        android:fragment="com.android.settings.PrivacySettings"
+        android:icon="@drawable/ic_settings_backup"
+        android:title="@string/privacy_settings"
+        android:id="@+id/privacy_settings" />
+
+    <!-- Device Section -->
     <header android:id="@+id/device_section"
         android:title="@string/header_category_device" />
 
@@ -125,39 +156,7 @@
         <intent android:action="com.android.settings.MANUFACTURER_APPLICATION_SETTING" />
     </header>
 
-    <!-- PERSONAL -->
-    <header android:id="@+id/personal_section"
-        android:title="@string/header_category_personal" />
-
-    <!-- Location -->
-    <header
-        android:fragment="com.android.settings.location.LocationSettings"
-        android:icon="@drawable/ic_settings_location"
-        android:title="@string/location_settings_title"
-        android:id="@+id/location_settings" />
-
-    <!-- Security -->
-    <header
-        android:fragment="com.android.settings.SecuritySettings"
-        android:icon="@drawable/ic_settings_security"
-        android:title="@string/security_settings_title"
-        android:id="@+id/security_settings" />
-
-    <!-- Language -->
-    <header
-        android:id="@+id/language_settings"
-        android:fragment="com.android.settings.inputmethod.InputMethodAndLanguageSettings"
-        android:icon="@drawable/ic_settings_language"
-        android:title="@string/language_settings" />
-
-    <!-- Backup and reset -->
-    <header
-        android:fragment="com.android.settings.PrivacySettings"
-        android:icon="@drawable/ic_settings_backup"
-        android:title="@string/privacy_settings"
-        android:id="@+id/privacy_settings" />
-
-    <!--  ACCOUNTS section -->
+    <!--  Accounts section -->
     <header
             android:id="@+id/account_settings"
             android:title="@string/account_settings" />
@@ -170,7 +169,7 @@
             android:action="android.settings.ADD_ACCOUNT_SETTINGS"/>
     </header>
 
-    <!-- SYSTEM -->
+    <!-- System Section -->
     <header android:id="@+id/system_section"
         android:title="@string/header_category_system" />
 
@@ -194,6 +193,10 @@
         android:fragment="com.android.settings.print.PrintSettingsFragment"
         android:icon="@*android:drawable/ic_print"
         android:title="@string/print_settings" />
+
+    <!-- Advanced Section -->
+    <header android:id="@+id/advanced_section"
+        android:title="@string/header_category_advanced" />
 
     <!-- Development -->
     <header
