@@ -49,8 +49,10 @@
     <string name="header_category_device">DEVICE</string>
     <!-- Settings main menu category heading. Personal (Accounts, security, language, backup...). [CHAR LIMIT=40] -->
     <string name="header_category_personal">PERSONAL</string>
-    <!-- Settings main menu category heading. System (Updates, data, accessibility, about phone). [CHAR LIMIT=40] -->
+    <!-- Settings main menu category heading. System (Updates, data, accessibility). [CHAR LIMIT=40] -->
     <string name="header_category_system">SYSTEM</string>
+    <!-- Settings main menu category heading. Advanced (Developer and About phone). [CHAR LIMIT=40] -->
+    <string name="header_category_advanced">ADVANCED</string>
 
     <!-- Phone info -->
     <!-- Phone Info screen. Button label to turn on the radio . Only shown in diagnostic screen, so precise translation is not needed. -->
