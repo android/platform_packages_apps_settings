@@ -546,7 +546,9 @@ public class Utils {
                 Profile.CONTENT_URI.buildUpon().appendPath(Contacts.Data.CONTENT_DIRECTORY).build(),
                 new String[] {CommonDataKinds.StructuredName.GIVEN_NAME,
                     CommonDataKinds.StructuredName.FAMILY_NAME},
-                Data.RAW_CONTACT_ID + "=" + localRowProfileId,
+                Data.RAW_CONTACT_ID + "=" + localRowProfileId + " AND " +
+                Data.MIMETYPE + "='" +
+                CommonDataKinds.StructuredName.CONTENT_ITEM_TYPE + "'",
                 null, null);
         if (structuredName == null) return null;
 
