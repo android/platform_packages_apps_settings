@@ -243,8 +243,18 @@ class AccessPoint extends Preference {
         if (difference != 0) {
             return difference;
         }
+        // Sort by ssid ignoring case.
+        int spellDifference = ssid.compareToIgnoreCase(other.ssid);
+        if (spellDifference != 0) {
+            return spellDifference;
+        }
+
+        // Sort by security.
+        if (other.security < security) return -1;
+        if (other.security > security) return 1;
+
         // Sort by ssid.
-        return ssid.compareToIgnoreCase(other.ssid);
+        return ssid.compareTo(other.ssid);
     }
 
     @Override
