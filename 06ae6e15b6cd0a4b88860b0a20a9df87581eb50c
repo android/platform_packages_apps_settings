@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25a61bd4_3f24c712",
+        "filename": "src/com/android/settings/applications/RunningState.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2014-04-25T17:22:53Z",
+      "side": 1,
+      "message": "Could you use getString(R.string.unknown) to ensure this is translated?",
+      "revId": "06ae6e15b6cd0a4b88860b0a20a9df87581eb50c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
