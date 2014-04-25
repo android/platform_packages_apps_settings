@@ -841,8 +841,10 @@ public class RunningState {
                             info, context.getResources());
                 }
                 String name = info != null ? info.name : null;
-                if (name == null) {
+                if (name == null && info != null) {
                     name = Integer.toString(info.id);
+                } else if (info == null) {
+                    name = "null";
                 }
                 userItem.mUser.mLabel = context.getResources().getString(
                         R.string.running_process_item_user_label, name);
