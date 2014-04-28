@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0575973d_2e5127e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1010938
+      },
+      "writtenOn": "2014-04-28T07:46:58Z",
+      "side": 1,
+      "message": "remove the extra space",
+      "range": {
+        "startLine": 10,
+        "startChar": 71,
+        "endLine": 10,
+        "endChar": 72
+      },
+      "revId": "88c059bd6ed6fa435de491a3d756fa6f813950f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0530377d_390acb85",
         "filename": "src/com/android/settings/IccLockSettings.java",
         "patchSetId": 2
@@ -25,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "e52c0330_9545e459",
+        "filename": "src/com/android/settings/IccLockSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1010938
+      },
+      "writtenOn": "2014-04-28T07:46:58Z",
+      "side": 1,
+      "message": "not recommended to use finish()",
+      "parentUuid": "0530377d_390acb85",
+      "range": {
+        "startLine": 114,
+        "startChar": 46,
+        "endLine": 114,
+        "endChar": 47
+      },
+      "revId": "88c059bd6ed6fa435de491a3d756fa6f813950f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0530377d_f91a13d4",
         "filename": "src/com/android/settings/SecuritySettings.java",
         "patchSetId": 2
@@ -36,6 +83,30 @@
       "writtenOn": "2014-04-28T07:08:33Z",
       "side": 1,
       "message": "Can we merge the if block and else-if block here?",
+      "range": {
+        "startLine": 130,
+        "startChar": 40,
+        "endLine": 130,
+        "endChar": 64
+      },
+      "revId": "88c059bd6ed6fa435de491a3d756fa6f813950f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c529bf20_5433cce8",
+        "filename": "src/com/android/settings/SecuritySettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1010938
+      },
+      "writtenOn": "2014-04-28T07:46:58Z",
+      "side": 1,
+      "message": "yes, can be merged. As updateSimPreferences takes care of sim state checking, no need to have the lines from 131-136",
+      "parentUuid": "0530377d_f91a13d4",
       "range": {
         "startLine": 130,
         "startChar": 40,
