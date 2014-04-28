@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0530377d_390acb85",
+        "filename": "src/com/android/settings/IccLockSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1015047
+      },
+      "writtenOn": "2014-04-28T07:08:33Z",
+      "side": 1,
+      "message": "Can we finish the IccLockSettings activity when the airplane mode was swiched on?",
+      "range": {
+        "startLine": 114,
+        "startChar": 46,
+        "endLine": 114,
+        "endChar": 47
+      },
+      "revId": "88c059bd6ed6fa435de491a3d756fa6f813950f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0530377d_f91a13d4",
+        "filename": "src/com/android/settings/SecuritySettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1015047
+      },
+      "writtenOn": "2014-04-28T07:08:33Z",
+      "side": 1,
+      "message": "Can we merge the if block and else-if block here?",
+      "range": {
+        "startLine": 130,
+        "startChar": 40,
+        "endLine": 130,
+        "endChar": 64
+      },
+      "revId": "88c059bd6ed6fa435de491a3d756fa6f813950f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
