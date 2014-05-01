@@ -48,6 +48,7 @@ public final class DevicePickerFragment extends DeviceListPreferenceFragment {
     private String mLaunchPackage;
     private String mLaunchClass;
     private boolean mStartScanOnResume;
+    private boolean mDeviceSelected;
 
     @Override
     void addPreferencesForActivity() {
@@ -103,9 +104,25 @@ public final class DevicePickerFragment extends DeviceListPreferenceFragment {
     public void onResume() {
         super.onResume();
         addCachedDevices();
+        mDeviceSelected = false;
         if (mStartScanOnResume) {
             mLocalAdapter.startScanning(true);
             mStartScanOnResume = false;
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        /* Check if any device was selected, if no device selected
+         * send  ACTION_DEVICE_NOT_SELECTED intent, otherwise
+         * don;t do anything */
+        if (!mDeviceSelected) {
+            Intent intent = new Intent(BluetoothDevicePicker.ACTION_DEVICE_NOT_SELECTED);
+            if (mLaunchPackage != null && mLaunchClass != null) {
+                intent.setClassName(mLaunchPackage, mLaunchClass);
+            }
+            getActivity().sendBroadcast(intent);
         }
     }
 
@@ -144,6 +161,7 @@ public final class DevicePickerFragment extends DeviceListPreferenceFragment {
     }
 
     private void sendDevicePickedIntent(BluetoothDevice device) {
+        mDeviceSelected = true;
         Intent intent = new Intent(BluetoothDevicePicker.ACTION_DEVICE_SELECTED);
         intent.putExtra(BluetoothDevice.EXTRA_DEVICE, device);
         if (mLaunchPackage != null && mLaunchClass != null) {
