@@ -1931,7 +1931,7 @@
 
     <!-- Instructions telling the user that they entered the wrong SIM PIN for the last time.
          Displayed in a dialog box.  -->
-    <string name="wrong_pin_code_pukked">Incorrect SIM PIN code you must now contact your carrier to unlock your device.</string>
+    <string name="wrong_pin_code_pukked">Incorrect SIM PIN code, you must now contact your carrier to unlock your device.</string>
     <!-- Instructions telling the user that they entered the wrong SIM PIN while trying
          to unlock the keyguard.  Displayed in a dialog box.  -->
     <plurals name="wrong_pin_code">
