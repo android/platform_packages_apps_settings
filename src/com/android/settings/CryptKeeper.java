@@ -931,7 +931,7 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
         if (emergencyCall == null)
             return;
 
-        if (isEmergencyCallCapable()) {
+        if (isEmergencyCallButtonEnabled()) {
             emergencyCall.setVisibility(View.VISIBLE);
             emergencyCall.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -955,8 +955,9 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
         emergencyCall.setText(textId);
     }
 
-    private boolean isEmergencyCallCapable() {
-        return getResources().getBoolean(com.android.internal.R.bool.config_voice_capable);
+    private boolean isEmergencyCallButtonEnabled() {
+        return getResources().getBoolean(com.android.internal.R.bool.config_voice_capable)
+                && getResources().getBoolean(R.bool.config_enableEmergencyCallOnDecryptScreen);
     }
 
     private void takeEmergencyCallAction() {
