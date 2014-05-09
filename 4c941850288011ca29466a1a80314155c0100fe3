@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cacd4ca8_b49c805e",
+        "filename": "src/com/android/settings/SecuritySettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1004017
+      },
+      "writtenOn": "2014-05-09T20:56:48Z",
+      "side": 0,
+      "message": "This code needs to be in the change too.  It\u0027s for devices without SIM cards.",
+      "range": {
+        "startLine": 233,
+        "startChar": 8,
+        "endLine": 235,
+        "endChar": 9
+      },
+      "revId": "4c941850288011ca29466a1a80314155c0100fe3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

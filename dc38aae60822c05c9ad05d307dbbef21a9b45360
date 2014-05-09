@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cacd4ca8_14d574ed",
+        "filename": "src/com/android/settings/SecuritySettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1004017
+      },
+      "writtenOn": "2014-05-09T20:56:48Z",
+      "side": 1,
+      "message": "This should update sim prefs with the data passed in the ss field from ACTION_SIM_STATE_CHANGED.",
+      "range": {
+        "startLine": 124,
+        "startChar": 16,
+        "endLine": 124,
+        "endChar": 38
+      },
+      "revId": "dc38aae60822c05c9ad05d307dbbef21a9b45360",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
