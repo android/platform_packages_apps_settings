@@ -22,6 +22,30 @@
       "revId": "4c941850288011ca29466a1a80314155c0100fe3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa26584d_d9fe33d4",
+        "filename": "src/com/android/settings/SecuritySettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1010938
+      },
+      "writtenOn": "2014-05-13T07:05:21Z",
+      "side": 0,
+      "message": "hasIccCard returns false if the card state is absent. So, the check for absent state in line no: 237 is not correct.",
+      "parentUuid": "cacd4ca8_b49c805e",
+      "range": {
+        "startLine": 233,
+        "startChar": 8,
+        "endLine": 235,
+        "endChar": 9
+      },
+      "revId": "4c941850288011ca29466a1a80314155c0100fe3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
