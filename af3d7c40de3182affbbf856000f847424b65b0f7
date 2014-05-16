@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a4e2058_79624994",
+        "filename": "src/com/android/settings/CryptKeeperSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1044551
+      },
+      "writtenOn": "2014-05-16T15:57:36Z",
+      "side": 1,
+      "message": "Don\u0027t encode this kind of formatting. Instead use a format string. This does not internationalize well.\n\nSuggestion: Also display current battery level.",
+      "revId": "af3d7c40de3182affbbf856000f847424b65b0f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
