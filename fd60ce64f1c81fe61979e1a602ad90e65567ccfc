@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff281483_eb4ba692",
+        "filename": "src/com/android/settings/deviceinfo/Status.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1001401
+      },
+      "writtenOn": "2014-05-21T03:36:10Z",
+      "side": 1,
+      "message": "Please check who else calls getState and see if we can put this logic directly in getState? Also, check for uses of STATE_OUT_OF_SERVICE and STATE_IN_SERVICE and see if this logic is used else where, I think it might be.",
+      "revId": "fd60ce64f1c81fe61979e1a602ad90e65567ccfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
