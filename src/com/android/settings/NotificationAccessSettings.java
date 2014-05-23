@@ -102,6 +102,7 @@ public class NotificationAccessSettings extends ListFragment {
                     R.string.notification_listener_security_warning_title, label);
             final String summary = getResources().getString(
                     R.string.notification_listener_security_warning_summary, label);
+            setRetainInstance(true); //IKXREL3KK-4066 - parthaj - 5/23/2014
             return new AlertDialog.Builder(getActivity())
                     .setMessage(summary)
                     .setTitle(title)
@@ -122,6 +123,15 @@ public class NotificationAccessSettings extends ListFragment {
                             })
                     .create();
         }
+        //IKXREL3KK-4066 - BEGIN - parthaj - 5/23/2014
+        //Retain the dialog fragment on orientation change
+        @Override
+        public void onDestroyView() {
+            if (getDialog() != null && getRetainInstance())
+                getDialog().setDismissMessage(null);
+            super.onDestroyView();
+        }
+        //IKXREL3KK-4066 - END
     }
 
     @Override
