@@ -251,6 +251,7 @@ public class DeviceAdminAdd extends Activity {
                                 } catch (RemoteException e) {
                                 }
                                 mDPM.removeActiveAdmin(mDeviceAdmin.getComponent());
+                                waitForDeviceAdminRemoved(mDeviceAdmin.getComponent());
                                 finish();
                             } else {
                                 Bundle args = new Bundle();
@@ -283,6 +284,7 @@ public class DeviceAdminAdd extends Activity {
                         new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         mDPM.removeActiveAdmin(mDeviceAdmin.getComponent());
+                        waitForDeviceAdminRemoved(mDeviceAdmin.getComponent());
                         finish();
                     }
                 });
@@ -294,7 +296,13 @@ public class DeviceAdminAdd extends Activity {
                     
         }
     }
-    
+
+    private void waitForDeviceAdminRemoved(ComponentName who){
+        while (who != null && mDPM.isAdminActive(who)) {
+              Thread.yield();
+        }
+    }
+
     static void setViewVisibility(ArrayList<View> views, int visibility) {
         final int N = views.size();
         for (int i=0; i<N; i++) {
