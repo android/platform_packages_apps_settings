@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7f33447f_1837991b",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 975,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-06-06T19:50:06Z",
+      "side": 1,
+      "message": "Maybe we should ask logd what its current settings are at? \"logcat -b all -g\" will report, if they are all identical limits, use that? This will deal with adjustments in logd\u0027s default in the future.\n\nCurrently, hard coded in logd at 256K and is meant to be controlled by ro.logd.size (SELECT_LOGD_DEFAULT_SIZE_PROPERTY) per-platform if otherwise; so this works fine for today.",
+      "range": {
+        "startLine": 975,
+        "startChar": 20,
+        "endLine": 975,
+        "endChar": 42
+      },
+      "revId": "bae4766923cb2ea93ada24f9803a49cb141f2879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
