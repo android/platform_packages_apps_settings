@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f854c8a_67b0e179",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2014-06-11T20:33:41Z",
+      "side": 1,
+      "message": "For consistency, please place this near where sd_format_summary is defined below.",
+      "revId": "8bdf78d87f0c4633ddd5011f0880b8ead90cbb74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f8a489d_fe0f1801",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2075,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2014-06-11T20:33:41Z",
+      "side": 1,
+      "message": "\"so you can safely remove it\" still seems relevant in this message.",
+      "revId": "8bdf78d87f0c4633ddd5011f0880b8ead90cbb74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f8a489d_5e0724e7",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2082,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2014-06-11T20:33:41Z",
+      "side": 1,
+      "message": "None of the usb_* strings should have a \u0027product\u003d\"default\"\u0027 attribute, since they shouldn\u0027t change based on a phone/tablet/nosdcard.",
+      "revId": "8bdf78d87f0c4633ddd5011f0880b8ead90cbb74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f804079_ea467686",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2122,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2014-06-11T20:33:41Z",
+      "side": 1,
+      "message": "This phrase is not fully relevant for USB mass storage devices connected to the Android device, since we don\u0027t support storing apps on them.  I think we\u0027re fine without a confirmation dialog.",
+      "revId": "8bdf78d87f0c4633ddd5011f0880b8ead90cbb74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f804079_edd9308f",
+        "filename": "src/com/android/settings/deviceinfo/Memory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2014-06-11T20:33:41Z",
+      "side": 1,
+      "message": "Please don\u0027t try determining this by scraping the description.  If you want to support USB mass storage, we should be adding first-class support to the StorageVolume object.\n\nIn addition, we should build out support for n simultaneous USB mass storage devices, not just one.",
+      "revId": "8bdf78d87f0c4633ddd5011f0880b8ead90cbb74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
