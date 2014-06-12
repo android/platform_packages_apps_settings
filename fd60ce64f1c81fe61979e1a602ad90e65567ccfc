@@ -16,6 +16,24 @@
       "revId": "fd60ce64f1c81fe61979e1a602ad90e65567ccfc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f49844c_f59e5253",
+        "filename": "src/com/android/settings/deviceinfo/Status.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1018623
+      },
+      "writtenOn": "2014-06-12T22:41:51Z",
+      "side": 1,
+      "message": "ServiceState.getState() is called from many places, especially before proceeding with dial operation (canDial() method). Since the getState() has to return only the voiceRegState in this occurance, this logic cannot be moved to getState() method.\n\nAlso, this change is more of adding information in UI than doing any functional change.",
+      "parentUuid": "ff281483_eb4ba692",
+      "revId": "fd60ce64f1c81fe61979e1a602ad90e65567ccfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
