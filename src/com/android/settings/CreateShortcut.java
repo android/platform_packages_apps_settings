@@ -17,12 +17,17 @@
 package com.android.settings;
 
 import android.app.LauncherActivity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
+import android.os.INetworkManagementService;
+import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.view.View;
 import android.widget.ListView;
 
+import com.android.settings.Settings.DataUsageSummaryActivity;
 import com.android.settings.Settings.TetherSettingsActivity;
 
 import java.util.List;
@@ -67,6 +72,17 @@ public class CreateShortcut extends LauncherActivity {
             if (info.activityInfo.name.endsWith(TetherSettingsActivity.class.getSimpleName())) {
                 if (!TetherSettings.showInShortcuts(this)) {
                     activities.remove(i);
+                }
+            } else if (info.activityInfo.name.endsWith(DataUsageSummaryActivity.class.getSimpleName())) {
+                // Remove data usage when kernel module not enabled
+                final INetworkManagementService netManager = INetworkManagementService.Stub
+                        .asInterface(ServiceManager.getService(Context.NETWORKMANAGEMENT_SERVICE));
+                try {
+                    if (!netManager.isBandwidthControlEnabled()) {
+                        activities.remove(i);
+                    }
+                } catch (RemoteException e) {
+                    // ignored
                 }
             }
         }

@@ -280,10 +280,12 @@ public class DataUsageSummary extends Fragment {
             if (!mNetworkService.isBandwidthControlEnabled()) {
                 Log.w(TAG, "No bandwidth control; leaving");
                 getActivity().finish();
+                return;
             }
         } catch (RemoteException e) {
             Log.w(TAG, "No bandwidth control; leaving");
             getActivity().finish();
+            return;
         }
 
         try {
