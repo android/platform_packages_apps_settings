@@ -1143,6 +1143,22 @@
                 android:value="true" />
         </activity>
 
+        <activity
+            android:name=".location.LocationConfirmationDialog"
+            android:excludeFromRecents="true"
+            android:theme="@android:style/Theme.Material.Light.Dialog.NoActionBar"
+            android:stateNotNeeded="true"
+            android:label="">
+        </activity>
+
+        <receiver
+            android:name=".location.LocationReceiver"
+            android:permission="android.permission.WRITE_SECURE_SETTINGS">
+            <intent-filter>
+                <action android:name="com.android.settings.location.MODE_CHANGE_REQUEST" />
+            </intent-filter>
+        </receiver>
+
         <activity android:name="Settings$SecuritySettingsActivity"
                 android:label="@string/security_settings_title"
                 android:configChanges="orientation|keyboardHidden|screenSize"
