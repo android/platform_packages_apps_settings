@@ -27,6 +27,7 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.NetworkInfo;
+import android.net.wifi.WifiManager;
 import android.net.wifi.p2p.WifiP2pConfig;
 import android.net.wifi.p2p.WifiP2pInfo;
 import android.net.wifi.p2p.WifiP2pDevice;
@@ -76,6 +77,7 @@ public class WifiP2pSettings extends SettingsPreferenceFragment
 
     private final IntentFilter mIntentFilter = new IntentFilter();
     private WifiP2pManager mWifiP2pManager;
+    private WifiManager mWifiManager;
     private WifiP2pManager.Channel mChannel;
     private OnClickListener mRenameListener;
     private OnClickListener mDisconnectListener;
@@ -100,6 +102,7 @@ public class WifiP2pSettings extends SettingsPreferenceFragment
     private static final int DIALOG_CANCEL_CONNECT = 2;
     private static final int DIALOG_RENAME = 3;
     private static final int DIALOG_DELETE_GROUP = 4;
+    private static final int DIALOG_DISABLE_P2P_5GH = 5;
 
     private static final String SAVE_DIALOG_PEER = "PEER_STATE";
     private static final String SAVE_DEVICE_NAME = "DEV_NAME";
@@ -118,13 +121,24 @@ public class WifiP2pSettings extends SettingsPreferenceFragment
             if (WifiP2pManager.WIFI_P2P_STATE_CHANGED_ACTION.equals(action)) {
                 mWifiP2pEnabled = intent.getIntExtra(WifiP2pManager.EXTRA_WIFI_STATE,
                     WifiP2pManager.WIFI_P2P_STATE_DISABLED) == WifiP2pManager.WIFI_P2P_STATE_ENABLED;
+                int band = mWifiManager.getFrequencyBand();
+                if ((band == WifiManager.WIFI_FREQUENCY_BAND_5GHZ) && (mWifiP2pEnabled)) {
+                    mWifiP2pEnabled = false;
+                    showDialog(DIALOG_DISABLE_P2P_5GH);
+                    return;
+                }
                 handleP2pStateChanged();
             } else if (WifiP2pManager.WIFI_P2P_PEERS_CHANGED_ACTION.equals(action)) {
+                if (!mWifiP2pEnabled) {
+                    return;
+                }
                 mPeers = (WifiP2pDeviceList) intent.getParcelableExtra(
                         WifiP2pManager.EXTRA_P2P_DEVICE_LIST);
                 handlePeersChanged();
             } else if (WifiP2pManager.WIFI_P2P_CONNECTION_CHANGED_ACTION.equals(action)) {
-                if (mWifiP2pManager == null) return;
+                if ((mWifiP2pManager == null) || (!mWifiP2pEnabled)) {
+                    return;
+                }
                 NetworkInfo networkInfo = (NetworkInfo) intent.getParcelableExtra(
                         WifiP2pManager.EXTRA_NETWORK_INFO);
                 WifiP2pInfo wifip2pinfo = (WifiP2pInfo) intent.getParcelableExtra(
@@ -155,6 +169,9 @@ public class WifiP2pSettings extends SettingsPreferenceFragment
                     updateSearchMenu(false);
                 }
             } else if (WifiP2pManager.WIFI_P2P_PERSISTENT_GROUPS_CHANGED_ACTION.equals(action)) {
+                if (!mWifiP2pEnabled) {
+                    return ;
+                }
                 if (mWifiP2pManager != null) {
                     mWifiP2pManager.requestPersistentGroupInfo(mChannel, WifiP2pSettings.this);
                 }
@@ -179,6 +196,7 @@ public class WifiP2pSettings extends SettingsPreferenceFragment
 
         final Activity activity = getActivity();
         mWifiP2pManager = (WifiP2pManager) getSystemService(Context.WIFI_P2P_SERVICE);
+        mWifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
         if (mWifiP2pManager != null) {
             mChannel = mWifiP2pManager.initialize(activity, getActivity().getMainLooper(), null);
             if (mChannel == null) {
@@ -316,6 +334,11 @@ public class WifiP2pSettings extends SettingsPreferenceFragment
     public void onResume() {
         super.onResume();
         getActivity().registerReceiver(mReceiver, mIntentFilter);
+        int band = mWifiManager.getFrequencyBand();
+        if (band == WifiManager.WIFI_FREQUENCY_BAND_5GHZ) {
+            mWifiP2pEnabled = false;
+            showDialog(DIALOG_DISABLE_P2P_5GH);
+        }
     }
 
     @Override
@@ -475,6 +498,14 @@ public class WifiP2pSettings extends SettingsPreferenceFragment
                 .setPositiveButton(getActivity().getString(R.string.dlg_ok), mDeleteGroupListener)
                 .setNegativeButton(getActivity().getString(R.string.dlg_cancel),
                         mDeleteGroupListener).create();
+            return dialog;
+        } else if (id == DIALOG_DISABLE_P2P_5GH) {
+            int stringId = R.string.wifi_p2p_disable_in_5gh_only_message;
+            AlertDialog dialog = new AlertDialog.Builder(getActivity())
+                .setTitle(R.string.wifi_p2p_disable_in_5gh_only_title)
+                .setMessage(getActivity().getString(stringId))
+                .setPositiveButton(getActivity().getString(R.string.dlg_ok), null)
+                .create();
             return dialog;
         }
         return null;

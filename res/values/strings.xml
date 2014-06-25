@@ -1616,6 +1616,10 @@
     <string name="wifi_p2p_cancel_connect_message">Do you want to cancel invitation to connect with <xliff:g id="peer_name">%1$s</xliff:g>?</string>
     <!-- Message text for remembered group deletion-->
     <string name="wifi_p2p_delete_group_message">Forget this group?</string>
+    <!-- Title for p2p disabled in 5G Band -->
+    <string name="wifi_p2p_disable_in_5gh_only_title">P2P DISABLED </string>
+    <!--  Message text for disabled p2p in 5 GHz only band -->
+    <string name="wifi_p2p_disable_in_5gh_only_message">P2P disabled in 5GHz only mode </string>
 
     <!-- Wifi AP settings-->
     <!-- Label for wifi tether checkbox. Toggles Access Point on/off -->
