@@ -84,6 +84,24 @@
       "revId": "8bdf78d87f0c4633ddd5011f0880b8ead90cbb74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e472491f_0b298113",
+        "filename": "src/com/android/settings/deviceinfo/Memory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1048135
+      },
+      "writtenOn": "2014-06-25T15:03:04Z",
+      "side": 1,
+      "message": "For the moment we have a fixed number of USB mass storage devices we can use, 4. We add this in fstab and storage_list.xml for vold and MountService. We can detect an USB storage event in vlod or MountService, but we have to scrap the description or path. We can add a field in StorageVolume, but we prefered not to modify the class.\n\nFor the support of n simultaneous USB mass storage devices, we managed to create volumes dynamically based on netlink events, and add volumes if there are not found, also add sdcard services for each. We also modified MountService to create StorageVolume based on messages from vold. But for the moment we don\u0027t think that this is a reliable modification.",
+      "parentUuid": "5f804079_edd9308f",
+      "revId": "8bdf78d87f0c4633ddd5011f0880b8ead90cbb74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
