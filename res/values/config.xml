@@ -99,4 +99,6 @@
         -->
     </string-array>
 
+    <!-- Whether or not location confirmation dialog is shown -->
+    <bool name="config_showLocationDialog">false</bool>
 </resources>

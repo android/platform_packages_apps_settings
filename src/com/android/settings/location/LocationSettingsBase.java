@@ -38,7 +38,10 @@ public abstract class LocationSettingsBase extends SettingsPreferenceFragment {
     private static final String MODE_CHANGING_ACTION =
             "com.android.settings.location.MODE_CHANGING";
     private static final String CURRENT_MODE_KEY = "CURRENT_MODE";
-    private static final String NEW_MODE_KEY = "NEW_MODE";
+    static final String NEW_MODE_KEY = "NEW_MODE";
+
+    static final String PREFERENCE_FILE_NAME = "location_settings";
+    static final String KEY_NEVER_ASK = "never_ask";
 
     private int mCurrentMode;
     private BroadcastReceiver mReceiver;
@@ -90,7 +93,17 @@ public abstract class LocationSettingsBase extends SettingsPreferenceFragment {
         return um.hasUserRestriction(UserManager.DISALLOW_SHARE_LOCATION);
     }
 
+    public static boolean updateLocationMode(Context context, int oldMode, int newMode) {
+        Intent intent = new Intent(MODE_CHANGING_ACTION);
+        intent.putExtra(CURRENT_MODE_KEY, oldMode);
+        intent.putExtra(NEW_MODE_KEY, newMode);
+        context.sendBroadcast(intent, android.Manifest.permission.WRITE_SECURE_SETTINGS);
+        return Settings.Secure.putInt(context.getContentResolver(), Settings.Secure.LOCATION_MODE,
+                newMode);
+    }
+
     public void setLocationMode(int mode) {
+        Context context = getActivity();
         if (isRestricted()) {
             // Location toggling disabled by user restriction. Read the current location mode to
             // update the location master switch.
@@ -104,12 +117,11 @@ public abstract class LocationSettingsBase extends SettingsPreferenceFragment {
             }
             return;
         }
-        Intent intent = new Intent(MODE_CHANGING_ACTION);
-        intent.putExtra(CURRENT_MODE_KEY, mCurrentMode);
-        intent.putExtra(NEW_MODE_KEY, mode);
-        getActivity().sendBroadcast(intent, android.Manifest.permission.WRITE_SECURE_SETTINGS);
-        Settings.Secure.putInt(getContentResolver(), Settings.Secure.LOCATION_MODE, mode);
-        refreshLocationMode();
+
+        Intent intent = new Intent(context, LocationReceiver.class)
+                .putExtra(NEW_MODE_KEY, mode)
+                .addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
+        context.sendBroadcast(intent, android.Manifest.permission.WRITE_SECURE_SETTINGS);
     }
 
     public void refreshLocationMode() {

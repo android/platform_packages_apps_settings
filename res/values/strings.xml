@@ -8693,4 +8693,15 @@
     <string name="ims_reg_status_registered">"Registered"</string>
     <!--Used when IMS registration state is not registered -->
     <string name="ims_reg_status_not_registered">"Not registered"</string>
+
+    <!-- Title of dialog shown when user enables location setting [CHAR LIMIT=30]-->
+    <string name="location_setting_warning_title">Attention</string>
+    <!-- Message of dialog shown when user enables location setting [CHAR LIMIT=NONE] -->
+    <string name="location_setting_warning_message">Your approximate location may be shared with the providers of apps and services that use location data. </string>
+    <!-- Button to agree location setting [CHAR LIMIT=20] -->
+    <string name="location_setting_agree">Agree</string>
+    <!-- Button to disagree location setting [CHAR LIMT=20] -->
+    <string name="location_setting_disagree">Disagree</string>
+    <!-- Checkbox that allows user to not be questioned about location setting again [CHAR LIMIT=NONE] -->
+    <string name="location_setting_warning_never_ask_again">Don\'t ask again</string>
 </resources>

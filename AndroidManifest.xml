@@ -82,6 +82,7 @@
     <uses-permission android:name="android.permission.MANAGE_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.DELETE_PACKAGES"/>
     <uses-permission android:name="android.permission.MANAGE_APP_OPS_RESTRICTIONS"/>
+    <uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW" />
 
     <application android:label="@string/settings_label"
             android:icon="@drawable/ic_launcher_settings"
@@ -1226,6 +1227,17 @@
             <meta-data android:name="com.android.settings.PRIMARY_PROFILE_CONTROLLED"
                 android:value="true" />
         </activity>
+
+        <activity android:name=".location.LocationConfirmDialog"
+                android:excludeFromRecents="true"
+                android:launchMode="singleInstance"
+                android:theme="@style/Transparent">
+        </activity>
+
+        <receiver android:name=".location.LocationReceiver"
+                android:exported="true"
+                android:permission="android.permission.WRITE_SECURE_SETTINGS">
+        </receiver>
 
         <activity android:name="Settings$SecuritySettingsActivity"
                 android:label="@string/security_settings_title"
