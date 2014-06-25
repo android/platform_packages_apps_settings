@@ -7048,4 +7048,15 @@
 
     <!-- Description of feature to change color setting for the display [CHAR LIMIT=NONE] -->
     <string name="picture_color_mode_desc">Use sRGB</string>
+
+    <!-- This is the generic "attention" string to be used in attention dialogs. Typically combined with setIcon(android.R.drawable.ic_dialog_alert) -->
+    <string name="settings_attention_title">Attention</string>
+    <!-- Text on the confirmation dialog that appears after moving the slider to On position under Location settings. -->
+    <string name="settings_location_anonymous_data_warning_message_txt">Your approximate location may be shared with the providers of apps and services that use location data. </string>
+    <!-- Agree -->
+    <string name="settings_agree_label">Agree</string>
+    <!-- Disagree -->
+    <string name="settings_disagree_label">Disagree</string>
+    <!-- String set in checkbox where the user can opt out of showing the dialog again. -->
+    <string name="settings_dialog_dont_ask_me_again">Don\'t ask me again</string>
 </resources>

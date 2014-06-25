@@ -38,4 +38,9 @@
     <!-- The duration (in milliseconds) of activity transitions -->
     <integer name="setup_wizard_transition_duration">300</integer>
 
+    <!-- Determines whether location confirmation dialog is shown -->
+    <bool name="config_showLocationDialog">false</bool>
+    <!-- Determines whether "Don't ask me again" option is shown under location confirmation dialog -->
+    <bool name="config_showCheckBoxOnLocationDialog">true</bool>
+
 </resources>
