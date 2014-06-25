@@ -104,6 +104,17 @@ public abstract class LocationSettingsBase extends SettingsPreferenceFragment {
             }
             return;
         }
+
+        if (LocationConfirmationDialog.shouldShowDialog(
+                getActivity().getApplicationContext(), mode)) {
+            // show confirmation dialog
+            Intent intent = new Intent(getActivity().getApplicationContext(),
+                    LocationConfirmationDialog.class);
+            intent.putExtra(LocationReceiver.INTENT_EXTRA_NEW_MODE, mode);
+            getActivity().startActivity(intent);
+            return;
+        }
+
         Intent intent = new Intent(MODE_CHANGING_ACTION);
         intent.putExtra(CURRENT_MODE_KEY, mCurrentMode);
         intent.putExtra(NEW_MODE_KEY, mode);
