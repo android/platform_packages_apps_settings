@@ -38,7 +38,10 @@ public abstract class LocationSettingsBase extends SettingsPreferenceFragment {
     private static final String MODE_CHANGING_ACTION =
             "com.android.settings.location.MODE_CHANGING";
     private static final String CURRENT_MODE_KEY = "CURRENT_MODE";
-    private static final String NEW_MODE_KEY = "NEW_MODE";
+    static final String NEW_MODE_KEY = "NEW_MODE";
+
+    static final String PREFERENCE_FILE_NAME = "location_settings";
+    static final String KEY_NEVER_ASK = "never_ask";
 
     private int mCurrentMode;
     private BroadcastReceiver mReceiver;
@@ -115,8 +118,10 @@ public abstract class LocationSettingsBase extends SettingsPreferenceFragment {
             return;
         }
 
-        updateLocationMode(context, mCurrentMode, mode);
-        refreshLocationMode();
+        Intent intent = new Intent(context, LocationReceiver.class)
+                .putExtra(NEW_MODE_KEY, mode)
+                .addFlags(Intent.FLAG_RECEIVER_FOREGROUND);
+        context.sendBroadcast(intent, android.Manifest.permission.WRITE_SECURE_SETTINGS);
     }
 
     public void refreshLocationMode() {
