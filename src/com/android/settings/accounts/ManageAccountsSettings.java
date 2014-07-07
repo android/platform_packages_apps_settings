@@ -407,8 +407,8 @@ public class ManageAccountsSettings extends AccountPreferenceBase
                 // startPreferencePanel() there. In order to inject the title string there, more
                 // dirty further hack is still needed. It's much easier and cleaner to listen to
                 // preference click event here directly.
-                if (intent.getAction().equals(
-                        android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS)) {
+                if (android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS.equals(intent
+                        .getAction())) {
                     // The OnPreferenceClickListener overrides the click event completely. No intent
                     // will get fired.
                     pref.setOnPreferenceClickListener(new FragmentStarter(
