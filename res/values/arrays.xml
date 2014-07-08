@@ -918,6 +918,48 @@
         <item>16M per log buffer</item>
     </string-array>
 
+    <!-- Titles for vtune source type selection preference. [CHAR LIMIT=14] -->
+    <string-array name="select_vtune_src_type_titles">
+        <item>none</item>
+        <item>java</item>
+        <item>dex</item>
+    </string-array>
+
+    <!-- Values for vtune source type selection preference. -->
+    <string-array name="select_vtune_src_type_values" translatable="false" >
+        <item>none</item>
+        <item>java</item>
+        <item>dex</item>
+    </string-array>
+
+    <!-- Summaries for vtune source type selection preference. [CHAR LIMIT=19]-->
+    <string-array name="select_vtune_src_type_summaries" >
+        <item>No source mapping</item>
+        <item>Map to java source</item>
+        <item>Map to dex</item>
+    </string-array>
+
+    <!-- Titles for vtune source type selection preference. [CHAR LIMIT=14] -->
+    <string-array name="select_core_recompile_titles">
+        <item>keep as is</item>
+        <item>source info</item>
+        <item>no source info</item>
+    </string-array>
+
+    <!-- Values for vtune source type selection preference. -->
+    <string-array name="select_core_recompile_values" translatable="false" >
+        <item></item>
+        <item>--gen-src-info</item>
+        <item>--no-gen-src-info</item>
+    </string-array>
+
+    <!-- Summaries for vtune source type selection preference. [CHAR LIMIT=100] -->
+    <string-array name="select_core_recompile_summaries" >
+        <item>No recompilation, keep as is</item>
+        <item>Recompile with additional source info</item>
+        <item>Recompile with minimal source info</item>
+    </string-array>
+
     <!-- Titles for HDCP checking preference. [CHAR LIMIT=35] -->
     <string-array name="hdcp_checking_titles">
         <item>Never check</item>

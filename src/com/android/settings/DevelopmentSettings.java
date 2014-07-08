@@ -96,6 +96,19 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private static final String SELECT_RUNTIME_KEY = "select_runtime";
     private static final String SELECT_RUNTIME_PROPERTY = "persist.sys.dalvik.vm.lib.2";
     private static final String ALLOW_MOCK_LOCATION = "allow_mock_location";
+    private static final String DALVIK_VM_DEX2OAT_FLAGS_PROPERTY = "persist.sys.dalvik.vm.oat";
+    private static final String DALVIK_VM_IMAGE_DEX2OAT_FLAGS_PROPERTY = "persist.sys.dalvik.vm.oat-img";
+    private static final String DALVIK_VM_VTUNE_PKG_PROPERTY = "persist.sys.dalvik.vm.vtune.pkg";
+    private static final String DALVIK_VM_VTUNE_MAP_PROPERTY = "persist.sys.dalvik.vm.vtune.map";
+    private static final String SELECT_VTUNE_SRC_TYPE = "select_vtune_src_type";
+    private static final String SELECT_CORE_RECOMPILE = "select_core_recompile";
+    private static final String OAT_SRC_LINES = "oat_src_lines";
+    private static final String DEX2OAT_GEN_SRC_INFO = "--gen-src-info";
+    private static final String DEX2OAT_NO_GEN_SRC_INFO = "--no-gen-src-info";
+    private static final String VTUNE_APP_KEY = "vtune_app";
+    private static final String VTUNE_CORE_KEY = "vtune_core";
+    private static final String REBOOT_KEY = "reboot";
+
     private static final String HDCP_CHECKING_KEY = "hdcp_checking";
     private static final String HDCP_CHECKING_PROPERTY = "persist.sys.hdcp_checking";
     private static final String LOCAL_BACKUP_PASSWORD = "local_backup_password";
@@ -149,6 +162,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private static final String TERMINAL_APP_PACKAGE = "com.android.terminal";
 
     private static final int RESULT_DEBUG_APP = 1000;
+    private static final int RESULT_VTUNE_APP = 1010;
 
     private static String DEFAULT_LOG_RING_BUFFER_SIZE_IN_BYTES = "262144"; // 256K
 
@@ -170,6 +184,14 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private CheckBoxPreference mBtHciSnoopLog;
     private CheckBoxPreference mAllowMockLocation;
     private PreferenceScreen mPassword;
+
+    private CheckBoxPreference mOatSrcLines;
+    private String mVTuneApp;
+    private Preference mVTuneAppPref;
+    private CheckBoxPreference mVTuneCore;
+    private ListPreference mVTuneSrcType;
+    private ListPreference mCoreRecompile;
+    private CheckBoxPreference mReboot;
 
     private String mDebugApp;
     private Preference mDebugAppPref;
@@ -260,6 +282,13 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mKeepScreenOn = findAndInitCheckboxPref(KEEP_SCREEN_ON);
         mBtHciSnoopLog = findAndInitCheckboxPref(BT_HCI_SNOOP_LOG);
         mAllowMockLocation = findAndInitCheckboxPref(ALLOW_MOCK_LOCATION);
+        mOatSrcLines = findAndInitCheckboxPref(OAT_SRC_LINES);
+        mVTuneSrcType = addListPreference(SELECT_VTUNE_SRC_TYPE);
+        mCoreRecompile = addListPreference(SELECT_CORE_RECOMPILE);
+        mVTuneAppPref = findPreference(VTUNE_APP_KEY);
+        mAllPrefs.add(mVTuneAppPref);
+        mVTuneCore = findAndInitCheckboxPref(VTUNE_CORE_KEY);
+        mReboot = findAndInitCheckboxPref(REBOOT_KEY);
         mPassword = (PreferenceScreen) findPreference(LOCAL_BACKUP_PASSWORD);
         mAllPrefs.add(mPassword);
 
@@ -478,6 +507,10 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                 Settings.Secure.BLUETOOTH_HCI_LOG, 0) != 0);
         updateCheckBox(mAllowMockLocation, Settings.Secure.getInt(cr,
                 Settings.Secure.ALLOW_MOCK_LOCATION, 0) != 0);
+        updateOatSrcLinesOptions();
+        updateVTuneSrcTypeValues();
+        updateVTuneApp();
+        updateCoreRecompileValues();
         updateRuntimeValue();
         updateHdcpValues();
         updatePasswordSummary();
@@ -518,6 +551,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             }
         }
         resetDebuggerOptions();
+        resetOatSrcLinesOptions();
+        resetVTuneOptions();
         writeLogdSizeOption(null);
         writeAnimationScaleOption(0, mWindowAnimationScale, null);
         writeAnimationScaleOption(1, mTransitionAnimationScale, null);
@@ -616,6 +651,158 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                 mBtHciSnoopLog.isChecked() ? 1 : 0);
     }
 
+    private void resetOatSrcLinesOptions() {
+      writeCoreRecompileOption("");
+      updateCheckBox(mOatSrcLines, false);
+      writeOatSrcLinesOptions();
+    }
+
+    private void updateOatSrcLinesOptions() {
+        updateCheckBox(mOatSrcLines,
+                SystemProperties.get(DALVIK_VM_DEX2OAT_FLAGS_PROPERTY, "").indexOf(DEX2OAT_GEN_SRC_INFO) != -1);
+    }
+
+    private void writeOatSrcLinesOptions() {
+      String dex2oatFlags = SystemProperties.get(DALVIK_VM_DEX2OAT_FLAGS_PROPERTY, "");
+      boolean isOn = dex2oatFlags.indexOf(DEX2OAT_GEN_SRC_INFO) != -1;
+      if (mOatSrcLines.isChecked() != isOn) {
+        if (!isOn) {
+          dex2oatFlags += " " + DEX2OAT_GEN_SRC_INFO;
+        } else {
+          dex2oatFlags = dex2oatFlags.replaceAll(" *" + DEX2OAT_GEN_SRC_INFO, "");
+        }
+        SystemProperties.set(DALVIK_VM_DEX2OAT_FLAGS_PROPERTY, dex2oatFlags.trim());
+        pokeSystemProperties();
+        updateOatSrcLinesOptions();
+      }
+    }
+
+    private void updateVTuneSrcTypeValues() {
+        if (mVTuneSrcType != null) {
+            String currentValue = SystemProperties.get(DALVIK_VM_VTUNE_MAP_PROPERTY, "java");
+            String[] values = getResources().getStringArray(R.array.select_vtune_src_type_values);
+            String[] titles = getResources().getStringArray(R.array.select_vtune_src_type_titles);
+            String[] summaries = getResources().getStringArray(R.array.select_vtune_src_type_summaries);
+            int index = 1; // punt to second entry if not found
+            for (int i = 0; i < values.length; i++) {
+                if (currentValue.equals(values[i])
+                        || currentValue.equals(titles[i])) {
+                    index = i;
+                    break;
+                }
+            }
+            mVTuneSrcType.setValue(values[index]);
+            mVTuneSrcType.setSummary(summaries[index]);
+            mVTuneSrcType.setOnPreferenceChangeListener(this);
+
+            mHaveDebugSettings |= "java".equals(currentValue);
+        }
+    }
+
+    private void writeVTuneSrcTypeOption(Object newValue) {
+        SystemProperties.set(DALVIK_VM_VTUNE_MAP_PROPERTY, newValue.toString());
+        pokeSystemProperties();
+        updateVTuneSrcTypeValues();
+    }
+
+    private void updateCoreRecompileValues() {
+        if (mCoreRecompile != null) {
+            String[] values = getResources().getStringArray(R.array.select_core_recompile_values);
+            String[] titles = getResources().getStringArray(R.array.select_core_recompile_titles);
+            String[] summaries = getResources().getStringArray(R.array.select_core_recompile_summaries);
+            String currentValue = SystemProperties.get(DALVIK_VM_IMAGE_DEX2OAT_FLAGS_PROPERTY);
+            int index = 0; // no recompilation is triggered
+            if (currentValue != null && -1 != currentValue.indexOf(DEX2OAT_GEN_SRC_INFO)) {
+              index = 1; // recompile with source info
+            } else if (currentValue != null && -1 != currentValue.indexOf(DEX2OAT_NO_GEN_SRC_INFO)) {
+              index = 2; // recompile without source info
+            }
+            mCoreRecompile.setValue(values[index]);
+            mCoreRecompile.setSummary(summaries[index]);
+            mCoreRecompile.setOnPreferenceChangeListener(this);
+        }
+    }
+
+    private void writeCoreRecompileOption(Object newValue) {
+        String currentValue = SystemProperties.get(DALVIK_VM_IMAGE_DEX2OAT_FLAGS_PROPERTY);
+        String newValueStr = newValue.toString();
+        if (currentValue != null || newValueStr.length() > 0) {
+          SystemProperties.set(DALVIK_VM_IMAGE_DEX2OAT_FLAGS_PROPERTY, newValueStr);
+          pokeSystemProperties();
+        }
+        updateCoreRecompileValues();
+    }
+
+    private String getVTunePackages() {
+      if (!mVTuneCore.isChecked() && mVTuneApp == null) {
+        return "";
+      }
+
+      return (mVTuneCore.isChecked() ? "core" : "") + ":"
+           + (mVTuneApp == null ? "" : mVTuneApp);
+    }
+
+    private void writeVTuneApp() {
+        SystemProperties.set(DALVIK_VM_VTUNE_PKG_PROPERTY, getVTunePackages());
+        pokeSystemProperties();
+        updateVTuneApp();
+    }
+
+    private void resetVTuneOptions() {
+        if (SystemProperties.get(DALVIK_VM_VTUNE_PKG_PROPERTY) != null) {
+            SystemProperties.set(DALVIK_VM_VTUNE_PKG_PROPERTY, "");
+            pokeSystemProperties();
+            updateVTuneApp();
+        }
+
+        if (SystemProperties.get(DALVIK_VM_VTUNE_MAP_PROPERTY) != null) {
+          writeVTuneSrcTypeOption("java");
+        }
+    }
+
+    private void updateVTuneApp() {
+        String vtuneProp = SystemProperties.get(DALVIK_VM_VTUNE_PKG_PROPERTY);
+        if (vtuneProp == null || vtuneProp.length() == 0) {
+            mVTuneApp = null;
+            updateCheckBox(mVTuneCore, false);
+        } else {
+            updateCheckBox(mVTuneCore, vtuneProp.startsWith("core:"));
+            mVTuneApp = vtuneProp.replaceFirst(".*:","").trim();
+            if (mVTuneApp.length() == 0) {
+                mVTuneApp = null;
+            }
+        }
+
+        if (mVTuneApp != null && mVTuneApp.length() > 0) {
+            mVTuneAppPref.setSummary(getResources().getString(R.string.vtune_app_set, getAppLabel(mVTuneApp)));
+            mHaveDebugSettings = true;
+        } else {
+            mVTuneAppPref.setSummary(getResources().getString(R.string.vtune_app_not_set));
+        }
+    }
+
+    private void rebootConfirm() {
+        final Context context = getActivity();
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setMessage(context.getResources().getString(R.string.reboot_warning_message));
+        builder.setPositiveButton(android.R.string.ok, new OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                PowerManager pm = (PowerManager)
+                        context.getSystemService(Context.POWER_SERVICE);
+                pm.reboot(null);
+            }
+        });
+        builder.setNegativeButton(android.R.string.cancel, new OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                ;
+            }
+        });
+        builder.show();
+        mReboot.setChecked(false);
+    }
+
     private void writeDebuggerOptions() {
         try {
             ActivityManagerNative.getDefault().setDebugApp(
@@ -638,22 +825,27 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         updateCheckBox(mWaitForDebugger, Settings.Global.getInt(
                 getActivity().getContentResolver(), Settings.Global.WAIT_FOR_DEBUGGER, 0) != 0);
         if (mDebugApp != null && mDebugApp.length() > 0) {
-            String label;
-            try {
-                ApplicationInfo ai = getActivity().getPackageManager().getApplicationInfo(mDebugApp,
-                        PackageManager.GET_DISABLED_COMPONENTS);
-                CharSequence lab = getActivity().getPackageManager().getApplicationLabel(ai);
-                label = lab != null ? lab.toString() : mDebugApp;
-            } catch (PackageManager.NameNotFoundException e) {
-                label = mDebugApp;
-            }
-            mDebugAppPref.setSummary(getResources().getString(R.string.debug_app_set, label));
+            mDebugAppPref.setSummary(getResources().getString(R.string.debug_app_set, getAppLabel(mDebugApp)));
             mWaitForDebugger.setEnabled(true);
             mHaveDebugSettings = true;
         } else {
             mDebugAppPref.setSummary(getResources().getString(R.string.debug_app_not_set));
             mWaitForDebugger.setEnabled(false);
         }
+    }
+
+    private String getAppLabel(String pkg) {
+        try {
+            ApplicationInfo ai = getActivity().getPackageManager().getApplicationInfo(pkg,
+                    PackageManager.GET_DISABLED_COMPONENTS);
+            CharSequence lab = getActivity().getPackageManager().getApplicationLabel(ai);
+            if (lab != null) {
+              return lab.toString();
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            ;
+        }
+        return pkg;
     }
 
     private void updateVerifyAppsOverUsbOptions() {
@@ -1201,6 +1393,12 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                 writeDebuggerOptions();
                 updateDebuggerOptions();
             }
+        } else if (requestCode == RESULT_VTUNE_APP) {
+            if (resultCode == Activity.RESULT_OK) {
+                mVTuneApp = data.getAction();
+                writeVTuneApp();
+                updateVTuneApp();
+            }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
@@ -1258,6 +1456,14 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             Settings.Secure.putInt(getActivity().getContentResolver(),
                     Settings.Secure.ALLOW_MOCK_LOCATION,
                     mAllowMockLocation.isChecked() ? 1 : 0);
+        } else if (preference == mOatSrcLines) {
+            writeOatSrcLinesOptions();
+        } else if (preference == mVTuneAppPref) {
+            startActivityForResult(new Intent(getActivity(), AppPicker.class), RESULT_VTUNE_APP);
+        } else if (preference == mVTuneCore) {
+            writeVTuneApp();
+        } else if (preference == mReboot) {
+            rebootConfirm();
         } else if (preference == mDebugAppPref) {
             startActivityForResult(new Intent(getActivity(), AppPicker.class), RESULT_DEBUG_APP);
         } else if (preference == mWaitForDebugger) {
@@ -1337,6 +1543,12 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             return true;
         } else if (preference == mLogdSize) {
             writeLogdSizeOption(newValue);
+            return true;
+        } else if (preference == mVTuneSrcType) {
+            writeVTuneSrcTypeOption(newValue);
+            return true;
+        } else if (preference == mCoreRecompile) {
+            writeCoreRecompileOption(newValue);
             return true;
         } else if (preference == mWindowAnimationScale) {
             writeAnimationScaleOption(0, mWindowAnimationScale, newValue);
