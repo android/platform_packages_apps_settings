@@ -3174,6 +3174,45 @@
     <string name="allow_mock_location">Allow mock locations</string>
     <!-- setting Checkbox summary whether to allow mock locations  -->
     <string name="allow_mock_location_summary">Allow mock locations</string>
+
+    <!-- VTune src info type. [CHAR LIMIT=25] -->
+    <string name="select_vtune_src_type_title">VTune source type</string>
+    <!-- VTune src info type summary. [CHAR LIMIT=500] -->
+    <string name="select_vtune_src_type_symmary">Set type of source map information reported to VTune</string>
+    <!-- VTune src info type dialog tytle. [CHAR LIMIT=25] -->
+    <string name="select_vtune_src_type_dialog_title">VTune source type</string>
+
+    <!-- Core oat dex2oat options. [CHAR LIMIT=25] -->
+    <string name="select_core_recompile_title">ART core source line info</string>
+    <!-- Core oat dex2oat options summary. [CHAR LIMIT=500] -->
+    <string name="select_core_recompile_symmary">Generate source line debug info in the core oat file (dex2oat --gen-src-info)</string>
+    <!-- VTune src info type dialog tytle. [CHAR LIMIT=25] -->
+    <string name="select_core_recompile_dialog_title">ART core recompile</string>
+
+    <!-- UI vtune setting: select app to vtune [CHAR LIMIT=50] -->
+    <string name="vtune_app">Select VTune app</string>
+    <!-- UI vtune setting: no debug app has been set [CHAR LIMIT=50] -->
+    <string name="vtune_app_not_set">No VTune application set</string>
+    <!-- UI vtune setting: debug app has been set [CHAR LIMIT=50] -->
+    <string name="vtune_app_set">VTune application: <xliff:g id="app_name">%1$s</xliff:g></string>
+
+    <!-- Setting Checkbox title whether to generate additional source info in the core oat -->
+    <string name="vtune_core_title">VTune core classes</string>
+    <!-- setting Checkbox summary whether to generate additional source info in the core oat -->
+    <string name="vtune_core_summary">Send core classes to VTune</string>
+
+    <!-- Setting Checkbox title whether to generate additional source info in oat -->
+    <string name="oat_src_lines">ART source line info</string>
+    <!-- setting Checkbox summary whether to generate additional source info in oat -->
+    <string name="oat_src_lines_summary">Generate source line debug info in oat files (dex2oat --gen-src-info)</string>
+
+    <!-- Setting Checkbox title to reboot now -->
+    <string name="reboot_title">Reboot</string>
+    <!-- setting Checkbox summary to reboot now -->
+    <string name="reboot_summary">Reboot now for settings to take effect ...</string>
+    <!-- Message of dialog confirming that user wants to restart the device -->
+    <string name="reboot_warning_message">Reboot now for settings to take effect?</string>
+
     <!-- Title of warning dialog about the implications of enabling USB debugging -->
     <string name="adb_warning_title">Allow USB debugging?</string>
     <!-- Warning text to user about the implications of enabling USB debugging -->
@@ -4254,7 +4293,7 @@
     <!-- HDCP checking dialog title, used for debug purposes only. [CHAR LIMIT=25] -->
     <string name="hdcp_checking_dialog_title">Set HDCP checking behavior</string>
 
-    <!-- Preference category for app debugging development settings. [CHAR LIMIT=50] -->
+    <!-- Preference category for app debugging development settings. [CHAR LIMIT=25] -->
     <string name="debug_debugging_category">Debugging</string>
 
     <!-- UI debug setting: select current app to debug [CHAR LIMIT=50] -->
@@ -4274,6 +4313,9 @@
     <!-- UI debug setting: wait for debugger to attach to debugging process summary [CHAR LIMIT=500] -->
     <string name="wait_for_debugger_summary">Debugged application waits for debugger to
             attach before executing</string>
+
+    <!-- Preference category for art vtune development settings. [CHAR LIMIT=25] -->
+    <string name="debug_art_vtune_category">ART VTune</string>
 
     <!-- Preference category for input debugging development settings. [CHAR LIMIT=25] -->
     <string name="debug_input_category">Input</string>
