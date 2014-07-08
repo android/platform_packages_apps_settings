@@ -115,6 +115,43 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory android:key="debug_art_vtune_category"
+            android:title="@string/debug_art_vtune_category">
+
+        <PreferenceScreen android:key="vtune_app"
+                android:title="@string/vtune_app" />
+
+        <CheckBoxPreference
+            android:key="vtune_core"
+            android:title="@string/vtune_core_title"
+            android:summary="@string/vtune_core_summary"/>
+
+        <CheckBoxPreference
+            android:key="oat_src_lines"
+            android:title="@string/oat_src_lines"
+            android:summary="@string/oat_src_lines_summary"/>
+
+        <ListPreference
+            android:key="select_core_recompile"
+            android:title="@string/select_core_recompile_title"
+            android:dialogTitle="@string/select_core_recompile_dialog_title"
+            android:entries="@array/select_core_recompile_titles"
+            android:entryValues="@array/select_core_recompile_values" />
+
+        <ListPreference
+            android:key="select_vtune_src_type"
+            android:title="@string/select_vtune_src_type_title"
+            android:dialogTitle="@string/select_vtune_src_type_dialog_title"
+            android:entries="@array/select_vtune_src_type_titles"
+            android:entryValues="@array/select_vtune_src_type_values" />
+
+        <CheckBoxPreference
+            android:key="reboot"
+            android:title="@string/reboot_title"
+            android:summary="@string/reboot_summary"/>
+
+    </PreferenceCategory>
+
     <PreferenceCategory android:key="debug_input_category"
             android:title="@string/debug_input_category">
 
