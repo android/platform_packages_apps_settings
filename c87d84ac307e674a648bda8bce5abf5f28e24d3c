@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9f75445_7d7777ad",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-07-09T15:24:14Z",
+      "side": 1,
+      "message": "ws",
+      "range": {
+        "startLine": 661,
+        "startChar": 36,
+        "endLine": 661,
+        "endChar": 37
+      },
+      "revId": "c87d84ac307e674a648bda8bce5abf5f28e24d3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9045004_3c421155",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-07-09T15:24:14Z",
+      "side": 1,
+      "message": "ws",
+      "range": {
+        "startLine": 741,
+        "startChar": 57,
+        "endLine": 741,
+        "endChar": 58
+      },
+      "revId": "c87d84ac307e674a648bda8bce5abf5f28e24d3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
