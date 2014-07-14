@@ -112,6 +112,13 @@ public class PrintJobSettingsFragment extends SettingsPreferenceFragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
 
+        //IKXREL3KK-4948 - parthaj - 7/14/2014 - BEGIN
+        if (mPrintJob == null) {
+            finish();
+            return;
+        }
+        //IKXREL3KK-4948 - parthaj - 7/14/2014 - END
+
         if (!mPrintJob.getInfo().isCancelling()) {
             MenuItem cancel = menu.add(0, MENU_ITEM_ID_CANCEL, Menu.NONE,
                     getString(R.string.print_cancel));
@@ -127,6 +134,13 @@ public class PrintJobSettingsFragment extends SettingsPreferenceFragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        //IKXREL3KK-4948 - parthaj - 7/14/2014 - BEGIN
+        if (mPrintJob == null) {
+            finish();
+            return false;
+        }
+        //IKXREL3KK-4948 - parthaj - 7/14/2014 - END
+
         switch (item.getItemId()) {
             case MENU_ITEM_ID_CANCEL: {
                 mPrintJob.cancel();
