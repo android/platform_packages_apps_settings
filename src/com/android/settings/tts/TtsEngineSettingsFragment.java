@@ -135,6 +135,7 @@ public class TtsEngineSettingsFragment extends SettingsPreferenceFragment implem
 
         getActivity().registerReceiver(mLanguagesChangedReceiver,
                 new IntentFilter(TextToSpeech.Engine.ACTION_TTS_DATA_INSTALLED));
+        updateVoiceDetails();//Motorola, amittank, IKDREL3KK-7761
     }
 
     @Override
