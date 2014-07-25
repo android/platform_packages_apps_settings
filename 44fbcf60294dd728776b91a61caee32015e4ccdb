@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f974b47c_ef9e7d12",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1044551
+      },
+      "writtenOn": "2014-07-25T15:02:25Z",
+      "side": 1,
+      "message": "It\u0027s helpful to put xliff:g here like this:\n\n\u003cstring name\u003d\"crypt_keeper_min_battery_capacity_text\u003e\nThe mimimum battery capacity requirement is \u003cxliff:g id\u003d\"percent\" example\u003d\"80\"\u003e^1\u003c/xliff:g\u003e%. Current level is \u003cxliff:g id\u003d\"percent\" example\u003d\"50\"\u003e^1\u003c/xliff:g\u003e%.\u003c/string\u003e\n\nIt has no programmatic significance so far as I know, but it\u0027s supposed to help the translators get context.",
+      "revId": "44fbcf60294dd728776b91a61caee32015e4ccdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
