@@ -95,6 +95,8 @@ public final class BluetoothPairingDialog extends AlertActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        setFinishOnTouchOutside(false);
+
         Intent intent = getIntent();
         if (!intent.getAction().equals(BluetoothDevice.ACTION_PAIRING_REQUEST))
         {
