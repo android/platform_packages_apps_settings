@@ -306,7 +306,11 @@ class AccessPoint extends Preference {
         if (mRssi == Integer.MAX_VALUE) {
             return -1;
         }
-        return WifiManager.calculateSignalLevel(mRssi, 4);
+        int level = WifiManager.calculateSignalLevel(mRssi, WifiManager.RSSI_LEVELS) - 1;
+        if (level < 0) {
+            level = 0;
+        }
+        return level;
     }
 
     WifiConfiguration getConfig() {
