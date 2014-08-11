@@ -870,6 +870,7 @@ public class WifiSettings extends RestrictedSettingsFragment
                 return;
             }
         } else if (WifiManager.RSSI_CHANGED_ACTION.equals(action)) {
+            updateAccessPoints();
             updateConnectionState(null);
         }
     }
