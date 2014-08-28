@@ -57,6 +57,8 @@ public class WpsDialog extends AlertDialog {
 
     private WifiManager mWifiManager;
     private WifiManager.WpsListener mWpsListener;
+    private int mWpsListenerKey;
+    private boolean mWpsListenerIsRegistered = false;
     private int mWpsSetup;
 
     private final IntentFilter mFilter;
@@ -182,13 +184,15 @@ public class WpsDialog extends AlertDialog {
 
         WpsInfo wpsConfig = new WpsInfo();
         wpsConfig.setup = mWpsSetup;
-        mWifiManager.startWps(wpsConfig, mWpsListener);
+        mWpsListenerKey = mWifiManager.startWps(wpsConfig, mWpsListener);
+        mWpsListenerIsRegistered = true;
     }
 
     @Override
     protected void onStop() {
-        if (mDialogState != DialogState.WPS_COMPLETE) {
-            mWifiManager.cancelWps(null);
+        if (mWpsListenerIsRegistered) {
+            mWifiManager.cancelWps(mWpsListenerKey);
+            mWpsListenerIsRegistered = false;
         }
 
         if (mReceiver != null) {
