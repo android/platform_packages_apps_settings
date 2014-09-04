@@ -216,7 +216,7 @@ public class StorageVolumePreferenceCategory extends PreferenceCategory {
 
         final IPackageManager pm = ActivityThread.getPackageManager();
         try {
-            if (pm.isStorageLow()) {
+            if (pm.isStorageLow() && mVolume == null) {
                 mStorageLow = new Preference(context);
                 mStorageLow.setOrder(ORDER_STORAGE_LOW);
                 mStorageLow.setTitle(R.string.storage_low_title);
