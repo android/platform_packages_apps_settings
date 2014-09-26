@@ -645,8 +645,8 @@ public class DatabaseIndexingManager {
                 .setKey(raw.key)
                 .setUserId(raw.userId);
 
-        updateOneRowWithFilteredData(database, builder, raw.title, raw.summaryOn, raw.summaryOff,
-                raw.keywords);
+        updateOneRowWithFilteredData(database, localeStr, builder, raw.title, raw.summaryOn,
+                raw.summaryOff, raw.keywords);
     }
 
     private void indexOneResource(SQLiteDatabase database, String localeStr,
@@ -819,7 +819,7 @@ public class DatabaseIndexingManager {
                             .setPayload(payload);
 
                     // Insert rows for the child nodes of PreferenceScreen
-                    updateOneRowWithFilteredData(database, builder, title, summary,
+                    updateOneRowWithFilteredData(database, localeStr, builder, title, summary,
                             null /* summary off */, keywords);
                 } else {
                     String summaryOn = XmlParserUtils.getDataSummaryOn(context, attrs);
@@ -829,15 +829,15 @@ public class DatabaseIndexingManager {
                         summaryOn = XmlParserUtils.getDataSummary(context, attrs);
                     }
 
-                    updateOneRowWithFilteredData(database, builder, title, summaryOn, summaryOff,
-                            keywords);
+                    updateOneRowWithFilteredData(database, localeStr, builder, title, summaryOn,
+                            summaryOff, keywords);
                 }
             }
 
             // The xml header's title does not match the title of one of the child settings.
             if (isHeaderUnique) {
-                updateOneRowWithFilteredData(database, headerBuilder, headerTitle, headerSummary,
-                        null /* summary off */, headerKeywords);
+                updateOneRowWithFilteredData(database, localeStr, headerBuilder, headerTitle,
+                        headerSummary, null /* summary off */, headerKeywords);
             }
         } catch (XmlPullParserException e) {
             throw new RuntimeException("Error parsing PreferenceScreen", e);
@@ -889,7 +889,7 @@ public class DatabaseIndexingManager {
                         .setKey(raw.key)
                         .setUserId(raw.userId);
 
-                updateOneRowWithFilteredData(database, builder, raw.title, raw.summaryOn,
+                updateOneRowWithFilteredData(database, localeStr, builder, raw.title, raw.summaryOn,
                         raw.summaryOff, raw.keywords);
             }
         }
@@ -913,19 +913,30 @@ public class DatabaseIndexingManager {
         }
     }
 
-    private void updateOneRowWithFilteredData(SQLiteDatabase database, DatabaseRow.Builder builder,
-            String title, String summaryOn, String summaryOff, String keywords) {
+    private void updateOneRowWithFilteredData(SQLiteDatabase database, String localeStr,
+            DatabaseRow.Builder builder, String title, String summaryOn, String summaryOff,
+            String keywords) {
 
         final String updatedTitle = DatabaseIndexingUtils.normalizeHyphen(title);
         final String updatedSummaryOn = DatabaseIndexingUtils.normalizeHyphen(summaryOn);
         final String updatedSummaryOff = DatabaseIndexingUtils.normalizeHyphen(summaryOff);
 
-        final String normalizedTitle = DatabaseIndexingUtils.normalizeString(updatedTitle);
-        final String normalizedSummaryOn = DatabaseIndexingUtils.normalizeString(updatedSummaryOn);
-        final String normalizedSummaryOff = DatabaseIndexingUtils
-                .normalizeString(updatedSummaryOff);
-
-        final String spaceDelimitedKeywords = DatabaseIndexingUtils.normalizeKeywords(keywords);
+        final String normalizedTitle;
+        final String normalizedSummaryOn;
+        final String normalizedSummaryOff;
+        final String spaceDelimitedKeywords;
+        if (Locale.JAPAN.toString().equalsIgnoreCase(localeStr)) {
+            normalizedTitle = DatabaseIndexingUtils.normalizeJapaneseString(updatedTitle);
+            normalizedSummaryOn = DatabaseIndexingUtils.normalizeJapaneseString(updatedSummaryOn);
+            normalizedSummaryOff = DatabaseIndexingUtils.normalizeJapaneseString(updatedSummaryOff);
+            spaceDelimitedKeywords = DatabaseIndexingUtils.normalizeJapaneseString(
+                    DatabaseIndexingUtils.normalizeKeywords(keywords));
+        } else {
+            normalizedTitle = DatabaseIndexingUtils.normalizeString(updatedTitle);
+            normalizedSummaryOn = DatabaseIndexingUtils.normalizeString(updatedSummaryOn);
+            normalizedSummaryOff = DatabaseIndexingUtils.normalizeString(updatedSummaryOff);
+            spaceDelimitedKeywords = DatabaseIndexingUtils.normalizeKeywords(keywords);
+        }
 
         builder.setUpdatedTitle(updatedTitle)
                 .setUpdatedSummaryOn(updatedSummaryOn)

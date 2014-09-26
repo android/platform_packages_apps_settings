@@ -29,6 +29,7 @@ import com.android.settings.utils.AsyncLoader;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import static com.android.settings.search.IndexDatabaseHelper.IndexColumns;
 import static com.android.settings.search.IndexDatabaseHelper.Tables.TABLE_PREFS_INDEX;
@@ -161,6 +162,9 @@ public class DatabaseResultLoader extends AsyncLoader<List<? extends SearchResul
     private static String cleanQuery(String query) {
         if (TextUtils.isEmpty(query)) {
             return null;
+        }
+        if (Locale.getDefault().equals(Locale.JAPAN)) {
+            query = DatabaseIndexingUtils.normalizeJapaneseString(query);
         }
         return query.trim();
     }

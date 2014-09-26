@@ -203,6 +203,24 @@ public class DatabaseIndexingUtils {
         return REMOVE_DIACRITICALS_PATTERN.matcher(normalized).replaceAll("").toLowerCase();
     }
 
+    public static String normalizeJapaneseString(String input){
+        final String nohyphen = (input != null) ? input.replaceAll(HYPHEN, EMPTY) : EMPTY;
+        final String normalized = Normalizer.normalize(nohyphen, Normalizer.Form.NFKD);
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < normalized.length(); i++) {
+            char c = normalized.charAt(i);
+            // Convert Hiragana to full-width Katakana
+            if (c >= '\u3041' && c <= '\u3096') {
+                sb.append((char) (c - '\u3041' + '\u30A1'));
+            } else {
+                sb.append(c);
+            }
+        }
+
+        return REMOVE_DIACRITICALS_PATTERN.matcher(sb.toString()).replaceAll("").toLowerCase();
+    }
+
+
     public static String normalizeKeywords(String input) {
         return (input != null) ? input.replaceAll(LIST_DELIMITERS, SPACE) : EMPTY;
     }
