@@ -112,4 +112,13 @@ public class DatabaseIndexingUtilsTest {
         ResultPayload payload = DatabaseIndexingUtils.getPayloadFromUriMap(map, key);
         assertThat(payload).isInstanceOf(IntentPayload.class);
     }
+
+    @Test
+    public void testNormalizeJapaneseString() {
+        final String japaneseString = "\u3042\u3077\u308a";
+        final String normalizedJapaneseString = "\u30a2\u30d5\u309a\u30ea";
+
+        String result = DatabaseIndexingUtils.normalizeJapaneseString(japaneseString);
+        assertThat(result).isEqualTo(normalizedJapaneseString);
+    }
 }
