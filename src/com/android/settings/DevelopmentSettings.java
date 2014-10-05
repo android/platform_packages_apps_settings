@@ -952,7 +952,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         boolean value = mForceRtlLayout.isChecked();
         Settings.Global.putInt(getActivity().getContentResolver(),
                 Settings.Global.DEVELOPMENT_FORCE_RTL, value ? 1 : 0);
-        SystemProperties.set(Settings.Global.DEVELOPMENT_FORCE_RTL, value ? "1" : "0");
+        SystemProperties.set(Settings.Global.DEVELOPMENT_FORCE_RTL, value ? "true" : "false");
         LocalePicker.updateLocale(getActivity().getResources().getConfiguration().locale);
     }
 
