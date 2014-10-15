@@ -105,10 +105,6 @@ public final class BluetoothSettings extends DeviceListPreferenceFragment implem
             if (action.equals(BluetoothAdapter.ACTION_LOCAL_NAME_CHANGED)) {
                 updateDeviceName(context);
             }
-
-            if (state == BluetoothAdapter.STATE_ON) {
-                mInitiateDiscoverable = true;
-            }
         }
 
         private void updateDeviceName(Context context) {
@@ -371,6 +367,11 @@ public final class BluetoothSettings extends DeviceListPreferenceFragment implem
     @Override
     public void onBluetoothStateChanged(int bluetoothState) {
         super.onBluetoothStateChanged(bluetoothState);
+
+        if (bluetoothState == BluetoothAdapter.STATE_ON) {
+            mInitiateDiscoverable = true;
+        }
+
         updateContent(bluetoothState);
     }
 
