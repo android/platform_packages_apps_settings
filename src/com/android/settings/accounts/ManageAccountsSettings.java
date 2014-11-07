@@ -176,7 +176,7 @@ public class ManageAccountsSettings extends AccountPreferenceBase
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
-        boolean syncActive = ContentResolver.getCurrentSyncsAsUser(
+        boolean syncActive = !ContentResolver.getCurrentSyncsAsUser(
                 mUserHandle.getIdentifier()).isEmpty();
         menu.findItem(MENU_SYNC_NOW_ID).setVisible(!syncActive && mFirstAccount != null);
         menu.findItem(MENU_SYNC_CANCEL_ID).setVisible(syncActive && mFirstAccount != null);
