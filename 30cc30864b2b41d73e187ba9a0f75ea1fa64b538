@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a972356_32b06884",
+        "filename": "src/com/android/settings/DateTimeSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-11-14T19:29:19Z",
+      "side": 1,
+      "message": "(this makes the code order match the visible UI order.)",
+      "revId": "30cc30864b2b41d73e187ba9a0f75ea1fa64b538",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
