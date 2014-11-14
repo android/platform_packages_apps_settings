@@ -44,6 +44,7 @@ import android.widget.Toast;
 import com.android.internal.logging.MetricsLogger;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.search.SearchIndexableRaw;
@@ -152,8 +153,15 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
                         new StorageVolumePreference(context, vol, color));
                 if (vol.isMountedReadable()) {
                     final File path = vol.getPath();
-                    privateUsedBytes += path.getTotalSpace() - path.getFreeSpace();
-                    privateTotalBytes += path.getTotalSpace();
+                    if (VolumeInfo.ID_PRIVATE_INTERNAL.equals(vol.getId())) {
+                        long totalSpace = Utils.estimateTotalSpace(context,
+                                path.getTotalSpace() + Utils.getSystemTotalSpace());
+                        privateUsedBytes += totalSpace - path.getFreeSpace();
+                        privateTotalBytes += totalSpace;
+                    } else {
+                        privateUsedBytes += path.getTotalSpace() - path.getFreeSpace();
+                        privateTotalBytes += path.getTotalSpace();
+                    }
                 }
             } else if (vol.getType() == VolumeInfo.TYPE_PUBLIC) {
                 mExternalCategory.addPreference(
@@ -466,6 +474,11 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
 
                 data = new SearchIndexableRaw(context);
                 data.title = context.getString(R.string.memory_available);
+                data.screenTitle = context.getString(R.string.storage_settings);
+                result.add(data);
+
+                data = new SearchIndexableRaw(context);
+                data.title = context.getString(R.string.memory_android_system_usage);
                 data.screenTitle = context.getString(R.string.storage_settings);
                 result.add(data);
 

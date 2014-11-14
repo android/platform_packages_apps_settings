@@ -2228,6 +2228,8 @@
     <string name="memory_size">Total space</string>
     <!-- SD card & phone storage settings summary. Displayed when the total memory usage is being calculated. Will be replaced with a number like "12.3 GB" when finished calucating. [CHAR LIMIT=30] -->
     <string name="memory_calculating_size">Calculating\u2026</string>
+    <!-- SD card & phone storage settings title. Displayed as a title when showing the total usage of Android system. Below it will be a number like "123.4 MB" indicating used storage. [CHAR LIMIT=50] -->
+    <string name="memory_android_system_usage">Android System</string>
     <!-- SD card & phone storage settings title. Displayed as a title when showing the total usage of applications installed. Below it will be a number like "123.4 MB" indicating used storage. [CHAR LIMIT=50] -->
     <string name="memory_apps_usage">Apps &amp; app data</string>
     <!-- SD card & phone storage settings title. Displayed as a title when showing the total usage of media on the device. Below it will be a number like "123.4 MB" indicating used storage. [CHAR LIMIT=50] -->
@@ -2421,6 +2423,11 @@
     <string name="storage_internal_forget_confirm_title">Forget <xliff:g id="name" example="SD card">^1</xliff:g>?</string>
     <!-- Body of dialog confirming that user wants to forget an internal storage device [CHAR LIMIT=NONE]-->
     <string name="storage_internal_forget_confirm">All the apps, photos, and data stored on this <xliff:g id="name" example="SD card">^1</xliff:g> will be lost forever.</string>
+
+    <!-- Item title describing storage used by Android system [CHAR LIMIT=48] -->
+    <string name="storage_detail_android_system">Android System</string>
+    <!-- Toast message shown when storage item of Android system is clicked [CHAR LIMIT=NONE]-->
+    <string name="storage_detail_android_system_version">Android System <xliff:g id="version">%s</xliff:g></string>
 
     <!-- Item title describing storage used by apps [CHAR LIMIT=48]-->
     <string name="storage_detail_apps">Apps</string>
