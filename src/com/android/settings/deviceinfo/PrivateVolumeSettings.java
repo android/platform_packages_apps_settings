@@ -30,6 +30,7 @@ import android.content.pm.IPackageDataObserver;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.UserInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.UserHandle;
@@ -53,6 +54,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.internal.logging.MetricsLogger;
 import com.android.settings.R;
@@ -87,10 +89,12 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
     private static final String AUTHORITY_MEDIA = "com.android.providers.media.documents";
 
     private static final int[] ITEMS_NO_SHOW_SHARED = new int[] {
+            R.string.storage_detail_android_system,
             R.string.storage_detail_apps,
     };
 
     private static final int[] ITEMS_SHOW_SHARED = new int[] {
+            R.string.storage_detail_android_system,
             R.string.storage_detail_apps,
             R.string.storage_detail_images,
             R.string.storage_detail_videos,
@@ -117,6 +121,9 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
 
     private Preference mExplore;
 
+    private boolean mIsInternal;
+    private long mInternalTotalSpace;
+
     private boolean isVolumeValid() {
         return (mVolume != null) && (mVolume.getType() == VolumeInfo.TYPE_PRIVATE)
                 && mVolume.isMountedReadable();
@@ -138,6 +145,7 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
 
         mVolumeId = getArguments().getString(VolumeInfo.EXTRA_VOLUME_ID);
         mVolume = mStorageManager.findVolumeById(mVolumeId);
+        mIsInternal = VolumeInfo.ID_PRIVATE_INTERNAL.equals(mVolumeId);
 
         // Find the emulated shared storage layered above this private volume
         mSharedVolume = mStorageManager.findEmulatedForPrivate(mVolume);
@@ -218,7 +226,7 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
         }
 
         final File file = mVolume.getPath();
-        final long totalBytes = file.getTotalSpace();
+        final long totalBytes = mIsInternal ? getTotalSpace() : file.getTotalSpace();
         final long freeBytes = file.getFreeSpace();
         final long usedBytes = totalBytes - freeBytes;
 
@@ -230,6 +238,15 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
         mSummary.setPercent((int) ((usedBytes * 100) / totalBytes));
 
         mMeasure.forceMeasure();
+    }
+
+    private long getTotalSpace() {
+        if (mInternalTotalSpace == 0) {
+            final File file = mVolume.getPath();
+            mInternalTotalSpace = Utils.estimateTotalSpace(getActivity(),
+                    file.getTotalSpace() + Utils.getSystemTotalSpace());
+        }
+        return mInternalTotalSpace;
     }
 
     private void addPreference(PreferenceGroup group, Preference pref) {
@@ -256,7 +273,11 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
     private void addDetailItems(PreferenceGroup category, boolean showShared, int userId) {
         final int[] itemsToAdd = (showShared ? ITEMS_SHOW_SHARED : ITEMS_NO_SHOW_SHARED);
         for (int i = 0; i < itemsToAdd.length; ++i) {
-            addItem(category, itemsToAdd[i], null, userId);
+            int item = itemsToAdd[i];
+            if (!mIsInternal && item == R.string.storage_detail_android_system) {
+                continue;
+            }
+            addItem(category, item, null, userId);
         }
     }
 
@@ -398,6 +419,13 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
         final int itemTitleId = pref.getTitleRes();
         Intent intent = null;
         switch (itemTitleId) {
+            case R.string.storage_detail_android_system: {
+                String toastMessage = String.format(
+                        getContext().getString(R.string.storage_detail_android_system_version),
+                        Build.VERSION.RELEASE);
+                Toast.makeText(getContext(), toastMessage, Toast.LENGTH_SHORT).show();
+
+            } break;
             case R.string.storage_detail_apps: {
                 Bundle args = new Bundle();
                 args.putString(ManageApplications.EXTRA_CLASSNAME,
@@ -475,6 +503,10 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
             final int userId = item.userHandle;
             final int itemTitleId = item.getTitleRes();
             switch (itemTitleId) {
+                case R.string.storage_detail_android_system: {
+                    long androidSystemSize = getTotalSpace() - details.totalSize;
+                    updatePreference(item, androidSystemSize);
+                } break;
                 case R.string.storage_detail_apps: {
                     updatePreference(item, details.appsSize.get(userId));
                 } break;
