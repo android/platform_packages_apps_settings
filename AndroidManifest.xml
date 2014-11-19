@@ -298,7 +298,6 @@
                 android:label="@string/apn_settings"
                 android:launchMode="singleTask"
                 android:taskAffinity="com.android.settings"
-                android:configChanges="orientation|keyboardHidden|screenSize"
                 android:parentActivityName="Settings$WirelessSettingsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
