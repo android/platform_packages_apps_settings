@@ -42,6 +42,8 @@ import com.android.settings.SettingsActivity;
 import com.android.settings.Utils;
 import com.android.settings.search.Index;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.HashMap;
 
 public class SearchResultsSummary extends Fragment {
@@ -270,7 +272,12 @@ public class SearchResultsSummary extends Fragment {
     }
 
     private void saveQueryToDatabase() {
-        Index.getInstance(getActivity()).addSavedQuery(mQuery);
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.execute(new Runnable() {
+            public void run() {
+                Index.getInstance(getActivity()).addSavedQuery(mQuery);
+            }
+        });
     }
 
     public boolean onQueryTextSubmit(String query) {
