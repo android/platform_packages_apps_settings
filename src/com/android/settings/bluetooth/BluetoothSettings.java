@@ -185,9 +185,12 @@ public final class BluetoothSettings extends DeviceListPreferenceFragment implem
             mBluetoothEnabler.pause();
         }
 
-        // Make the device only visible to connected devices.
-        mLocalAdapter.setScanMode(BluetoothAdapter.SCAN_MODE_CONNECTABLE);
-
+        if (mLocalAdapter != null) {
+            // Make the device only visible to connected devices.
+            mLocalAdapter.setScanMode(BluetoothAdapter.SCAN_MODE_CONNECTABLE);
+        }else{
+            return;
+        }
         if (isUiRestricted()) {
             return;
         }
