@@ -16,6 +16,24 @@
       "revId": "4c25fe2724d64e65bcbab9c6474a0416155094c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff82dd17_cddcdd9a",
+        "filename": "src/com/android/settings/applications/InstalledAppDetails.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1057369
+      },
+      "writtenOn": "2014-12-02T10:24:08Z",
+      "side": 1,
+      "message": "I thought about that as well. But this is different from the RemoteException case because absence of USB service is not an error (it simply implies that the device does not support USB connection), thus Log.e() might not be appropriate.",
+      "parentUuid": "5f8a0930_1058cad0",
+      "revId": "4c25fe2724d64e65bcbab9c6474a0416155094c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
