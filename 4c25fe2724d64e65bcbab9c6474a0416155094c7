@@ -34,6 +34,24 @@
       "revId": "4c25fe2724d64e65bcbab9c6474a0416155094c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3f70f517_87b9e84f",
+        "filename": "src/com/android/settings/applications/InstalledAppDetails.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1000411
+      },
+      "writtenOn": "2014-12-02T10:25:15Z",
+      "side": 1,
+      "message": "Makes sense, thanks.",
+      "parentUuid": "ff82dd17_cddcdd9a",
+      "revId": "4c25fe2724d64e65bcbab9c6474a0416155094c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
