@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f8a0930_1058cad0",
+        "filename": "src/com/android/settings/applications/InstalledAppDetails.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1000411
+      },
+      "writtenOn": "2014-12-02T10:14:58Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it be simpler to make the catch below generic instead to ensure that the NullPointerException is caught as well?",
+      "revId": "4c25fe2724d64e65bcbab9c6474a0416155094c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
