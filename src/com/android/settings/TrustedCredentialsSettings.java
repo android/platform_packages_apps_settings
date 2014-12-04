@@ -423,12 +423,20 @@ public class TrustedCredentialsSettings extends Fragment {
                     // correctly. Otherwise this could all be in a single loop.
                     SparseArray<List<ParcelableString>> aliasesByProfileId = new SparseArray<
                             List<ParcelableString>>(n);
+
+                    Context context = getActivity();
+                    if (context == null) {
+                        // We might have been detached from the activity before this task is
+                        // scheduled. In that case, bail, the results won't be used anyway.
+                        return certHoldersByProfile;
+                    }
+
                     int max = 0;
                     int progress = 0;
                     for (int i = 0; i < n; ++i) {
                         UserHandle profile = profiles.get(i);
                         int profileId = profile.getIdentifier();
-                        KeyChainConnection keyChainConnection = KeyChain.bindAsUser(getActivity(),
+                        KeyChainConnection keyChainConnection = KeyChain.bindAsUser(context,
                                 profile);
                         // Saving the connection for later use on the certificate dialog.
                         mKeyChainConnectionByProfileId.put(profileId, keyChainConnection);
