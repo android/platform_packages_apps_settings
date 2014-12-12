@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "840d16be_4d85ad97",
+        "filename": "src/com/android/settings/wifi/WifiStatusTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-12-12T16:03:54Z",
+      "side": 1,
+      "message": "factor this out into one of Settings\u0027 many \"Utils\" classes?\n\n(its ping friends too?)",
+      "revId": "f25627c0c960cd31e069a0aed62798dd3a6416aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
