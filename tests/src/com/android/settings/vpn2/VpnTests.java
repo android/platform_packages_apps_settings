@@ -35,8 +35,13 @@ import com.android.internal.net.LegacyVpnInfo;
 import com.android.internal.net.VpnConfig;
 import com.android.internal.net.VpnProfile;
 
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
 import junit.framework.Assert;
 
+import libcore.io.IoUtils;
+import libcore.io.Streams;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
@@ -229,13 +234,19 @@ public class VpnTests extends InstrumentationTestCase {
     private String getIpAddress() {
         String ip = null;
         try {
-            HttpClient httpClient = new DefaultHttpClient();
-            HttpGet httpGet = new HttpGet(EXTERNAL_SERVER);
-            HttpResponse httpResponse = httpClient.execute(httpGet);
-            Log.i(TAG, "Response from httpget: " + httpResponse.getStatusLine().toString());
+            URL url = new URL(EXTERNAL_SERVER);
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+            Log.i(TAG, "Response from httpget: " + urlConnection.getResponseCode());
 
-            String entityStr = EntityUtils.toString(httpResponse.getEntity());
-            JSONObject json_data = new JSONObject(entityStr);
+            InputStream is = urlConnection.getInputStream();
+            String response;
+            try {
+                response = new String(Streams.readFully(is), StandardCharsets.UTF_8);
+            } finally {
+                is.close();
+            }
+
+            JSONObject json_data = new JSONObject(response);
             ip = json_data.getString("ip");
             Log.v(TAG, "json_data: " + ip);
         } catch (IllegalArgumentException e) {
