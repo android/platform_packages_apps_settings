@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e497b25c_a57c48de",
+        "filename": "tests/src/com/android/settings/vpn2/VpnTests.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2014-12-12T14:19:06Z",
+      "side": 1,
+      "message": "Can remove some of these now?",
+      "range": {
+        "startLine": 45,
+        "startChar": 11,
+        "endLine": 45,
+        "endChar": 17
+      },
+      "revId": "43ad9db239f55990e0a91b0944d28bc1f0054feb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e497b25c_c5774cf9",
+        "filename": "tests/src/com/android/settings/vpn2/VpnTests.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2014-12-12T14:19:06Z",
+      "side": 1,
+      "message": "Wow.",
+      "range": {
+        "startLine": 100,
+        "startChar": 20,
+        "endLine": 100,
+        "endChar": 30
+      },
+      "revId": "43ad9db239f55990e0a91b0944d28bc1f0054feb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84f436d2_52955249",
+        "filename": "tests/src/com/android/settings/vpn2/VpnTests.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2014-12-12T14:19:06Z",
+      "side": 1,
+      "message": "disconnect at end?",
+      "range": {
+        "startLine": 238,
+        "startChar": 30,
+        "endLine": 238,
+        "endChar": 43
+      },
+      "revId": "43ad9db239f55990e0a91b0944d28bc1f0054feb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
