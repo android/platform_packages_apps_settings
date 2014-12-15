@@ -16,6 +16,24 @@
       "revId": "f25627c0c960cd31e069a0aed62798dd3a6416aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4adf2fd_552bbe98",
+        "filename": "src/com/android/settings/wifi/WifiStatusTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-12-15T13:32:22Z",
+      "side": 1,
+      "message": "I started cleaning up some of the surrounding code but stopped since the change was getting too gnarly. I\u0027ll do this in a follow up.",
+      "parentUuid": "840d16be_4d85ad97",
+      "revId": "f25627c0c960cd31e069a0aed62798dd3a6416aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
