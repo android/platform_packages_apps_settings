@@ -222,7 +222,7 @@ public final class BluetoothDevicePreference extends Preference implements
             data.screenTitle = context.getResources().getString(R.string.bluetooth_settings);
             data.iconResId = R.drawable.ic_settings_bluetooth2;
             data.enabled = true;
-
+            Index.getInstance(context).deleteIndexableData(data);
             Index.getInstance(context).updateFromSearchIndexableData(data);
         }
     }
