@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7ec137b_a7e84e80",
+        "filename": "src/com/android/settings/DeviceAdminAdd.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2015-01-27T00:12:57Z",
+      "side": 1,
+      "message": "Remove tab characters here and below. Should be spaces only.",
+      "revId": "aaca0ce1891e2b815af743bdf52ba8d7f77357d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
