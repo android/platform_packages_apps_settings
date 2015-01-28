@@ -315,10 +315,14 @@ public class PowerUsageSummary extends PreferenceFragment {
                         badgedIcon, contentDescription, entry);
 
                 final double percentOfMax = (sipper.value * 100) / mStatsHelper.getMaxPower();
-                sipper.percent = percentOfTotal;
+                // The percentOfTotal value is counted using dischargeAmount, which does
+                // not give an intuitive interpretation of percent, and can result in
+                // percentages above 100 (if the device has been charged less than full
+                // after the last full charge). Instead, use true percent (fraction * 100).
+                sipper.percent = (sipper.value * 100) / mStatsHelper.getTotalPower();
                 pref.setTitle(entry.getLabel());
                 pref.setOrder(i + 1);
-                pref.setPercent(percentOfMax, percentOfTotal);
+                pref.setPercent(percentOfMax, sipper.percent);
                 if (sipper.uidObj != null) {
                     pref.setKey(Integer.toString(sipper.uidObj.getUid()));
                 }

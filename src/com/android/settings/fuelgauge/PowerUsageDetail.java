@@ -91,7 +91,7 @@ public class PowerUsageDetail extends Fragment implements Button.OnClickListener
         Bundle args = new Bundle();
         args.putString(PowerUsageDetail.EXTRA_TITLE, entry.name);
         args.putInt(PowerUsageDetail.EXTRA_PERCENT, (int)
-                ((entry.sipper.value * dischargeAmount / helper.getTotalPower()) + .5));
+                (entry.sipper.percent + .5));
         args.putInt(PowerUsageDetail.EXTRA_GAUGE, (int)
                 Math.ceil(entry.sipper.value * 100 / helper.getMaxPower()));
         args.putLong(PowerUsageDetail.EXTRA_USAGE_DURATION, helper.getStatsPeriod());
