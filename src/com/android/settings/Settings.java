@@ -90,6 +90,7 @@ public class Settings extends SettingsActivity {
     public static class UsbSettingsActivity extends SettingsActivity { /* empty */ }
     public static class TrustedCredentialsSettingsActivity extends SettingsActivity { /* empty */ }
     public static class PaymentSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class NfcFSettingsActivity extends SettingsActivity { /* empty */ }
     public static class PrintSettingsActivity extends SettingsActivity { /* empty */ }
     public static class PrintJobSettingsActivity extends SettingsActivity { /* empty */ }
     public static class ZenModeSettingsActivity extends SettingsActivity { /* empty */ }

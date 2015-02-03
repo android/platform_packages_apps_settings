@@ -5320,6 +5320,11 @@
     <string name="nfc_payment_set_default_label">Set as your preference?</string>
     <string name="nfc_payment_set_default">Always use <xliff:g id="app">%1$s</xliff:g> when you tap &amp; pay?</string>
     <string name="nfc_payment_set_default_instead_of">Always use <xliff:g id="app">%1$s</xliff:g> instead of <xliff:g id="app">%2$s</xliff:g> when you tap &amp; pay?</string>
+    <!-- NFC NfcF settings --><skip/>
+    <string name="nfc_nfcf_settings_title">NfcF</string>
+    <!-- String shown before a checkbox, allowing the user to indicate that he wants foreground apps
+         to be able to override the configured default app -->
+    <string name="nfc_nfcf_favor_foreground">Favor foreground app</string>
     <!-- Restrictions settings --><skip/>
 
     <!-- Restriction settings title [CHAR LIMIT=35] -->
