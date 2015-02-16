@@ -93,6 +93,7 @@ import com.android.settings.inputmethod.UserDictionaryList;
 import com.android.settings.location.LocationSettings;
 import com.android.settings.nfc.AndroidBeam;
 import com.android.settings.nfc.PaymentSettings;
+import com.android.settings.nfc.NfcFSettings;
 import com.android.settings.notification.AppNotificationSettings;
 import com.android.settings.notification.ConditionProviderSettings;
 import com.android.settings.notification.NotificationAccessSettings;
@@ -232,6 +233,7 @@ public class SettingsActivity extends Activity
             R.id.accessibility_settings,
             R.id.print_settings,
             R.id.nfc_payment_settings,
+            R.id.nfc_nfcf_settings,
             R.id.home_settings,
             R.id.dashboard
     };
@@ -286,6 +288,7 @@ public class SettingsActivity extends Activity
             PrintJobSettingsFragment.class.getName(),
             TrustedCredentialsSettings.class.getName(),
             PaymentSettings.class.getName(),
+            NfcFSettings.class.getName(),
             KeyboardLayoutPickerFragment.class.getName(),
             ZenModeSettings.class.getName(),
             NotificationSettings.class.getName(),
@@ -1182,6 +1185,18 @@ public class SettingsActivity extends Activity
                         if (adapter == null || !adapter.isEnabled() ||
                                 !getPackageManager().hasSystemFeature(
                                         PackageManager.FEATURE_NFC_HOST_CARD_EMULATION)) {
+                            removeTile = true;
+                        }
+                    }
+                } else if (id == R.id.nfc_nfcf_settings) {
+                    if (!getPackageManager().hasSystemFeature(PackageManager.FEATURE_NFC)) {
+                        removeTile = true;
+                    } else {
+                        // Only show if NFC is on and we have the HCE feature
+                        NfcAdapter adapter = NfcAdapter.getDefaultAdapter(this);
+                        if (adapter == null || !adapter.isEnabled() ||
+                                !getPackageManager().hasSystemFeature(
+                                        PackageManager.FEATURE_NFC_HOST_CARD_EMULATION_NFCF)) {
                             removeTile = true;
                         }
                     }
