@@ -436,6 +436,10 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
             mWakeLock = retained.wakelock;
             Log.d(TAG, "Restoring wakelock from NonConfigurationInstanceState");
         }
+
+        // Dismiss secure & non-secure keyguards while this screen is showing.
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD
+                | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
     }
 
     /**
@@ -800,10 +804,6 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
         // Notify the user in 120 seconds that we are waiting for him to enter the password.
         mHandler.removeMessages(MESSAGE_NOTIFY);
         mHandler.sendEmptyMessageDelayed(MESSAGE_NOTIFY, 120 * 1000);
-
-        // Dismiss secure & non-secure keyguards while this screen is showing.
-        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD
-                | WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
     }
 
     /**
