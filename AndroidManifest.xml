@@ -144,6 +144,12 @@
             </intent-filter>
         </receiver>
 
+        <receiver android:name=".NonDisableableAppSetup">
+            <intent-filter>
+                <action android:name="android.intent.action.PRE_BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
         <activity android:name=".SubSettings"
                 android:taskAffinity="com.android.settings"
                 android:parentActivityName="Settings" />

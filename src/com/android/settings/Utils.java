@@ -966,4 +966,32 @@ public final class Utils extends com.android.settingslib.Utils {
             return packageManager.getDefaultActivityIcon();
         }
     }
+
+    /**
+     * Set the enabled setting for non disableable app.
+     *
+     * @param context The context.
+     * @param newState The new enabled state for the component. The legal values for
+     *            this state are: {@link #COMPONENT_ENABLED_STATE_ENABLED},
+     *            {@link #COMPONENT_ENABLED_STATE_DISABLED} and
+     *            {@link #COMPONENT_ENABLED_STATE_DEFAULT} The last one removes
+     *            the setting, thereby restoring the component's state to
+     *            whatever was set in it's manifest (or enabled, by default).
+     * @param flags Optional behavior flags: {@link #DONT_KILL_APP} or 0.
+     */
+    public static void setNonDisableablePackagesEnabledSetting(Context context,
+                                                               int newState, int flags) {
+        PackageManager pm = context.getPackageManager();
+        initNonDisableablePackages(pm);
+        for (String packageName : sNonDisableablePackages) {
+            try {
+                if (pm.getApplicationEnabledSetting(packageName) != newState) {
+                    pm.setApplicationEnabledSetting(packageName, newState, flags);
+                }
+            } catch (IllegalArgumentException e) {
+                // Package not exist
+            }
+        }
+    }
+
 }
