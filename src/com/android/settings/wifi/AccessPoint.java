@@ -591,7 +591,9 @@ class AccessPoint extends Preference {
                 mConfig.disableReason != WifiConfiguration.DISABLED_UNKNOWN_REASON)
                || mConfig.autoJoinStatus
                 >= WifiConfiguration.AUTO_JOIN_DISABLED_ON_AUTH_FAILURE)) {
-            if (mConfig.autoJoinStatus
+            if (mConfig.autoJoinStatus == WifiConfiguration.AUTO_JOIN_DISABLED_USER_ACTION) {
+                summary.append(context.getString(R.string.wifi_disabled_generic));
+            } else if (mConfig.autoJoinStatus
                     >= WifiConfiguration.AUTO_JOIN_DISABLED_ON_AUTH_FAILURE) {
                 if (mConfig.disableReason == WifiConfiguration.DISABLED_DHCP_FAILURE) {
                     summary.append(context.getString(R.string.wifi_disabled_network_failure));
