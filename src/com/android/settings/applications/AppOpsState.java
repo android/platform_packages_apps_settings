@@ -67,11 +67,21 @@ public class AppOpsState {
         public OpsTemplate(int[] _ops, boolean[] _showPerms) {
             ops = _ops;
             showPerms = _showPerms;
+
+            if (ops.length != showPerms.length) {
+                throw new IllegalArgumentException("ops.length=" + ops.length + " != " +
+                        "showPerms.length=" + showPerms.length);
+            }
         }
 
         OpsTemplate(Parcel src) {
             ops = src.createIntArray();
             showPerms = src.createBooleanArray();
+
+            if (ops.length != showPerms.length) {
+                throw new IllegalStateException("ops.length=" + ops.length + " != " +
+                        "showPerms.length=" + showPerms.length);
+            }
         }
 
         @Override
@@ -97,43 +107,48 @@ public class AppOpsState {
     }
 
     public static final OpsTemplate LOCATION_TEMPLATE = new OpsTemplate(
-            new int[] { AppOpsManager.OP_COARSE_LOCATION,
+            new int[] {
+                    AppOpsManager.OP_COARSE_LOCATION,
                     AppOpsManager.OP_FINE_LOCATION,
                     AppOpsManager.OP_GPS,
                     AppOpsManager.OP_WIFI_SCAN,
                     AppOpsManager.OP_NEIGHBORING_CELLS,
                     AppOpsManager.OP_MONITOR_LOCATION,
-                    AppOpsManager.OP_MONITOR_HIGH_POWER_LOCATION },
-            new boolean[] { true,
-                    true,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false }
-            );
+                    AppOpsManager.OP_MONITOR_HIGH_POWER_LOCATION,
+            }, new boolean[] {
+                    true, /* OP_COARSE_LOCATION */
+                    true, /* OP_FINE_LOCATION */
+                    false, /* OP_GPS */
+                    false, /* OP_WIFI_SCAN */
+                    false, /* OP_NEIGHBORING_CELLS */
+                    false, /* OP_MONITOR_LOCATION */
+                    false, /* OP_MONITOR_HIGH_POWER_LOCATION */
+            });
 
     public static final OpsTemplate PERSONAL_TEMPLATE = new OpsTemplate(
-            new int[] { AppOpsManager.OP_READ_CONTACTS,
+            new int[] {
+                    AppOpsManager.OP_READ_CONTACTS,
                     AppOpsManager.OP_WRITE_CONTACTS,
                     AppOpsManager.OP_READ_CALL_LOG,
                     AppOpsManager.OP_WRITE_CALL_LOG,
                     AppOpsManager.OP_READ_CALENDAR,
                     AppOpsManager.OP_WRITE_CALENDAR,
                     AppOpsManager.OP_READ_CLIPBOARD,
-                    AppOpsManager.OP_WRITE_CLIPBOARD },
-            new boolean[] { true,
-                    true,
-                    true,
-                    true,
-                    true,
-                    true,
-                    false,
-                    false }
-            );
+                    AppOpsManager.OP_WRITE_CLIPBOARD,
+            }, new boolean[] {
+                    true, /* OP_READ_CONTACTS */
+                    true, /* OP_WRITE_CONTACTS */
+                    true, /* OP_READ_CALL_LOG */
+                    true, /* OP_WRITE_CALL_LOG */
+                    true, /* OP_READ_CALENDAR */
+                    true, /* OP_WRITE_CALENDAR */
+                    false, /* OP_READ_CLIPBOARD */
+                    false, /* OP_WRITE_CLIPBOARD */
+            });
 
     public static final OpsTemplate MESSAGING_TEMPLATE = new OpsTemplate(
-            new int[] { AppOpsManager.OP_READ_SMS,
+            new int[] {
+                    AppOpsManager.OP_READ_SMS,
                     AppOpsManager.OP_RECEIVE_SMS,
                     AppOpsManager.OP_RECEIVE_EMERGECY_SMS,
                     AppOpsManager.OP_RECEIVE_MMS,
@@ -141,20 +156,22 @@ public class AppOpsState {
                     AppOpsManager.OP_WRITE_SMS,
                     AppOpsManager.OP_SEND_SMS,
                     AppOpsManager.OP_READ_ICC_SMS,
-                    AppOpsManager.OP_WRITE_ICC_SMS },
-            new boolean[] { true,
-                    true,
-                    true,
-                    true,
-                    true,
-                    true,
-                    true,
-                    true,
-                    true }
-            );
+                    AppOpsManager.OP_WRITE_ICC_SMS,
+            }, new boolean[] {
+                    true, /* OP_READ_SMS */
+                    true, /* OP_RECEIVE_SMS */
+                    true, /* OP_RECEIVE_EMERGECY_SMS */
+                    true, /* OP_RECEIVE_MMS */
+                    true, /* OP_RECEIVE_WAP_PUSH */
+                    true, /* OP_WRITE_SMS */
+                    true, /* OP_SEND_SMS */
+                    true, /* OP_READ_ICC_SMS */
+                    true, /* OP_WRITE_ICC_SMS */
+            });
 
     public static final OpsTemplate MEDIA_TEMPLATE = new OpsTemplate(
-            new int[] { AppOpsManager.OP_VIBRATE,
+            new int[] {
+                    AppOpsManager.OP_VIBRATE,
                     AppOpsManager.OP_CAMERA,
                     AppOpsManager.OP_RECORD_AUDIO,
                     AppOpsManager.OP_PLAY_AUDIO,
@@ -167,40 +184,44 @@ public class AppOpsState {
                     AppOpsManager.OP_AUDIO_ALARM_VOLUME,
                     AppOpsManager.OP_AUDIO_NOTIFICATION_VOLUME,
                     AppOpsManager.OP_AUDIO_BLUETOOTH_VOLUME,
-                    AppOpsManager.OP_MUTE_MICROPHONE},
-            new boolean[] { false,
-                    true,
-                    true,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false,
-                    false }
-            );
+                    AppOpsManager.OP_MUTE_MICROPHONE,
+            }, new boolean[] {
+                    false, /* OP_VIBRATE */
+                    true, /* OP_CAMERA */
+                    true, /* OP_RECORD_AUDIO */
+                    false, /* OP_PLAY_AUDIO */
+                    false, /* OP_TAKE_MEDIA_BUTTONS */
+                    false, /* OP_TAKE_AUDIO_FOCUS */
+                    false, /* OP_AUDIO_MASTER_VOLUME */
+                    false, /* OP_AUDIO_VOICE_VOLUME */
+                    false, /* OP_AUDIO_RING_VOLUME */
+                    false, /* OP_AUDIO_MEDIA_VOLUME */
+                    false, /* OP_AUDIO_ALARM_VOLUME */
+                    false, /* OP_AUDIO_NOTIFICATION_VOLUME */
+                    false, /* OP_AUDIO_BLUETOOTH_VOLUME */
+                    false, /* OP_MUTE_MICROPHONE */
+            });
 
     public static final OpsTemplate DEVICE_TEMPLATE = new OpsTemplate(
-            new int[] { AppOpsManager.OP_POST_NOTIFICATION,
+            new int[] {
+                    AppOpsManager.OP_POST_NOTIFICATION,
                     AppOpsManager.OP_ACCESS_NOTIFICATIONS,
                     AppOpsManager.OP_CALL_PHONE,
                     AppOpsManager.OP_WRITE_SETTINGS,
                     AppOpsManager.OP_SYSTEM_ALERT_WINDOW,
                     AppOpsManager.OP_WAKE_LOCK,
                     AppOpsManager.OP_PROJECT_MEDIA,
-                    AppOpsManager.OP_ACTIVATE_VPN, },
-            new boolean[] { false,
-                    true,
-                    true,
-                    true,
-                    true,
-                    true,
-                    false,
-                    false, }
-            );
+                    AppOpsManager.OP_ACTIVATE_VPN,
+            }, new boolean[] {
+                    false, /* OP_POST_NOTIFICATION */
+                    true, /* OP_ACCESS_NOTIFICATIONS */
+                    true, /* OP_CALL_PHONE */
+                    true, /* OP_WRITE_SETTINGS */
+                    true, /* OP_SYSTEM_ALERT_WINDOW */
+                    true, /* OP_WAKE_LOCK */
+                    false, /* OP_PROJECT_MEDIA */
+                    false, /* OP_ACTIVATE_VPN */
+            });
 
     public static final OpsTemplate[] ALL_TEMPLATES = new OpsTemplate[] {
             LOCATION_TEMPLATE, PERSONAL_TEMPLATE, MESSAGING_TEMPLATE,
