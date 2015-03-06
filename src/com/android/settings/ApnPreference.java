@@ -93,6 +93,11 @@ public class ApnPreference extends Preference implements
         mSelectedKey = getKey();
     }
 
+    public static void clearSelectedKey() {
+        mSelectedKey = null;
+        mCurrentChecked = null;
+    }
+
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         Log.i(TAG, "ID: " + getKey() + " :" + isChecked);
         if (mProtectFromCheckedChange) {

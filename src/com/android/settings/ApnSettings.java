@@ -220,6 +220,7 @@ public class ApnSettings extends SettingsPreferenceFragment implements
         if (cursor != null) {
             PreferenceGroup apnList = (PreferenceGroup) findPreference("apn_list");
             apnList.removeAll();
+            ApnPreference.clearSelectedKey();
 
             ArrayList<Preference> mmsApnList = new ArrayList<Preference>();
 
