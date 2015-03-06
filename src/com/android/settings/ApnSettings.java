@@ -254,6 +254,7 @@ public class ApnSettings extends SettingsPreferenceFragment implements
             }
             PreferenceGroup apnList = (PreferenceGroup) findPreference("apn_list");
             apnList.removeAll();
+            ApnPreference.clearSelectedKey();
 
             ArrayList<ApnPreference> mnoApnList = new ArrayList<ApnPreference>();
             ArrayList<ApnPreference> mvnoApnList = new ArrayList<ApnPreference>();
