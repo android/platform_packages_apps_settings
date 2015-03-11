@@ -100,7 +100,7 @@ public class ZenModeSettings extends SettingsPreferenceFragment implements Index
         }
     };
 
-    private static final SimpleDateFormat DAY_FORMAT = new SimpleDateFormat("EEE");
+    private final SimpleDateFormat DAY_FORMAT = new SimpleDateFormat("EEE");
 
     private static SparseArray<String> allKeyTitles(Context context) {
         final SparseArray<String> rt = new SparseArray<String>();

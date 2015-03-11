@@ -36,7 +36,7 @@ public class ZenModeDowntimeDaysSelection extends ScrollView {
         Calendar.MONDAY, Calendar.TUESDAY, Calendar.WEDNESDAY, Calendar.THURSDAY, Calendar.FRIDAY,
         Calendar.SATURDAY, Calendar.SUNDAY
     };
-    private static final SimpleDateFormat DAY_FORMAT = new SimpleDateFormat("EEEE");
+    private final SimpleDateFormat DAY_FORMAT = new SimpleDateFormat("EEEE");
 
     private final SparseBooleanArray mDays = new SparseBooleanArray();
     private final LinearLayout mLayout;
