@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4683341d_aa84ef0d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1020283
+      },
+      "writtenOn": "2015-03-17T23:34:58Z",
+      "side": 1,
+      "message": "add \"b/19791138\" as the last line",
+      "range": {
+        "startLine": 15,
+        "startChar": 3,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "543c46d7f2d0e4d00bffe5a501bb3cccc910db95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
