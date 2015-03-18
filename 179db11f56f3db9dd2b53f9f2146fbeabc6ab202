@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e67fc8e4_b069b96c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1058798
+      },
+      "writtenOn": "2015-03-18T16:12:18Z",
+      "side": 1,
+      "message": "\"Bluetooth\" (also below)",
+      "revId": "179db11f56f3db9dd2b53f9f2146fbeabc6ab202",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4683341d_7eb6393f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1058798
+      },
+      "writtenOn": "2015-03-18T16:12:18Z",
+      "side": 1,
+      "message": "\"changed\"",
+      "revId": "179db11f56f3db9dd2b53f9f2146fbeabc6ab202",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
