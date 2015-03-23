@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c61c8421_768d10c8",
+        "filename": "src/com/android/settings/bluetooth/BluetoothSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1005450
+      },
+      "writtenOn": "2015-03-23T09:40:02Z",
+      "side": 0,
+      "message": "\u0027state\u0027 is not used anymore",
+      "range": {
+        "startLine": 102,
+        "startChar": 22,
+        "endLine": 102,
+        "endChar": 27
+      },
+      "revId": "cfad6fc1ff4cc23582d8d1a6cb8371ea32c82544",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
