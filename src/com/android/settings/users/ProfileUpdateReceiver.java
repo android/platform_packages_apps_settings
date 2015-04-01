@@ -20,8 +20,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.UserHandle;
 import android.os.UserManager;
+import com.android.internal.util.UserIcons;
 import com.android.settings.Utils;
 
 
@@ -37,10 +39,19 @@ public class ProfileUpdateReceiver extends BroadcastReceiver {
         // Profile changed, lets get the photo and write to user manager
         new Thread() {
             public void run() {
-                Utils.copyMeProfilePhoto(context, null);
+                if (!Utils.copyMeProfilePhoto(context, null)) {
+                    assignDefaultPhoto(context);
+                }
                 copyProfileName(context);
             }
         }.start();
+    }
+
+    static void assignDefaultPhoto(Context context) {
+        int userId = UserHandle.myUserId();
+        UserManager um = (UserManager) context.getSystemService(Context.USER_SERVICE);
+        Bitmap bitmap = UserIcons.convertToBitmap(UserIcons.getDefaultUserIcon(userId, false));
+        um.setUserIcon(userId, bitmap);
     }
 
     static void copyProfileName(Context context) {
