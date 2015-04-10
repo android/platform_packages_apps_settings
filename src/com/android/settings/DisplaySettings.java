@@ -37,10 +37,15 @@ import android.app.ActivityManagerNative;
 import android.app.Dialog;
 import android.app.UiModeManager;
 import android.app.admin.DevicePolicyManager;
+import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ServiceInfo;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.content.res.Resources.NotFoundException;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
 import android.os.Build;
@@ -66,6 +71,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
 
     /** If there is no setting in the provider, use this. */
     private static final int FALLBACK_SCREEN_TIMEOUT_VALUE = 30000;
+
+    /** Auto sleep timeout default entry */
+    private static final int SCREEN_AUTO_SLEEP_VALUE = 1;
 
     private static final String KEY_SCREEN_TIMEOUT = "screen_timeout";
     private static final String KEY_FONT_SIZE = "font_size";
@@ -96,6 +104,9 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
     private SwitchPreference mCameraGesturePreference;
     private SwitchPreference mCameraDoubleTapPowerGesturePreference;
 
+    private static String sAutoSleepTimeoutTitle;
+    private static String sAutoSleepTimeoutSummary;
+
     @Override
     protected int getMetricsCategory() {
         return MetricsLogger.DISPLAY;
@@ -119,10 +130,14 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         mScreenTimeoutPreference = (ListPreference) findPreference(KEY_SCREEN_TIMEOUT);
         final long currentTimeout = Settings.System.getLong(resolver, SCREEN_OFF_TIMEOUT,
                 FALLBACK_SCREEN_TIMEOUT_VALUE);
-        mScreenTimeoutPreference.setValue(String.valueOf(currentTimeout));
         mScreenTimeoutPreference.setOnPreferenceChangeListener(this);
         disableUnusableTimeouts(mScreenTimeoutPreference);
-        updateTimeoutPreferenceDescription(currentTimeout);
+        if (isAutoSleepTimeoutAvailable(activity)) {
+            updateAutoSleepTimeoutPreferences(currentTimeout);
+        } else {
+            mScreenTimeoutPreference.setValue(String.valueOf(currentTimeout));
+            updateTimeoutPreferenceDescription(currentTimeout);
+        }
 
         mFontSizePref = (WarnedListPreference) findPreference(KEY_FONT_SIZE);
         mFontSizePref.setOnPreferenceChangeListener(this);
@@ -258,13 +273,117 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 com.android.internal.R.bool.config_cameraDoubleTapPowerGestureEnabled);
     }
 
+    private static boolean isAutoSleepTimeoutAvailable(Context context) {
+        boolean isAvailable = false;
+
+        // Get AutoSleepTimeout component name
+        final String name = context.getResources().getString(
+                    com.android.internal.R.string.config_autoTimeoutComponent);
+
+        final ComponentName componentName = TextUtils.isEmpty(name)
+                    ? null : ComponentName.unflattenFromString(name);
+        if (componentName != null) {
+            try {
+                // Get the activity's meta-data
+                final PackageManager packageManager = context.getPackageManager();
+                final ServiceInfo serviceInfo = context.getPackageManager().getServiceInfo(
+                                      componentName, PackageManager.GET_META_DATA);
+
+                final Resources res = packageManager.getResourcesForApplication(serviceInfo.packageName);
+                final Bundle metaData = serviceInfo.metaData;
+                String title = null;
+                String summary = null;
+
+                if (res != null && metaData != null) {
+                    final int titleId = metaData.getInt(Utils.META_DATA_PREFERENCE_TITLE, -1);
+                    if (titleId != -1) {
+                        title = res.getString(titleId);
+                    }
+                    final int summaryId = metaData.getInt(Utils.META_DATA_PREFERENCE_SUMMARY, -1);
+                    if (summaryId != -1) {
+                        summary = res.getString(summaryId);
+                    }
+                }
+
+                if (title == null) {
+                    String appLabel = packageManager.getApplicationLabel(
+                        packageManager.getApplicationInfo(serviceInfo.packageName, 0)).toString();
+                    if (appLabel == null) {
+                        appLabel = serviceInfo.packageName;
+                    }
+                    sAutoSleepTimeoutTitle = appLabel;
+                } else {
+                    sAutoSleepTimeoutTitle = title;
+                }
+
+                if (summary == null) {
+                    sAutoSleepTimeoutSummary = sAutoSleepTimeoutTitle;
+                } else {
+                    sAutoSleepTimeoutSummary = summary;
+                }
+                isAvailable = true;
+            } catch (NameNotFoundException e) {
+                Log.d(TAG, e.toString());
+            } catch (NotFoundException e) {
+                Log.d(TAG, e.toString());
+            }
+        }
+        return isAvailable;
+    }
+
+    private void updateAutoSleepTimeoutPreferences(long currentTimeout) {
+        ListPreference screenTimeoutPreference = mScreenTimeoutPreference;
+        final CharSequence[] entries = screenTimeoutPreference.getEntries();
+        final CharSequence[] values = screenTimeoutPreference.getEntryValues();
+        ArrayList<CharSequence> revisedEntries = new ArrayList<CharSequence>();
+        ArrayList<CharSequence> revisedValues = new ArrayList<CharSequence>();
+
+        boolean found = false;
+        for (CharSequence entry : entries) {
+            if (entry.toString().equals(sAutoSleepTimeoutTitle)) {
+                found = true;
+                break;
+            }
+        }
+        // Auto Sleep Timeout has not been added in ListPreference yet, so add it.
+        if (!found) {
+            revisedEntries.add(sAutoSleepTimeoutTitle);
+            revisedValues.add(String.valueOf(SCREEN_AUTO_SLEEP_VALUE));
+
+            for (int i = 0; i < values.length; i++) {
+                revisedEntries.add(entries[i].toString());
+                revisedValues.add(values[i].toString());
+            }
+
+            if (revisedEntries.size() != entries.length
+                || revisedValues.size() != values.length) {
+                screenTimeoutPreference.setEntries(
+                         revisedEntries.toArray(new CharSequence[revisedEntries.size()]));
+                screenTimeoutPreference.setEntryValues(
+                         revisedValues.toArray(new CharSequence[revisedValues.size()]));
+            }
+        }
+        long timeout = currentTimeout;
+        final int timeoutMode = Settings.System.getInt(getContentResolver(),
+                Settings.System.SCREEN_TIMEOUT_MODE,
+                Settings.System.SCREEN_TIMEOUT_MODE_MANUAL);
+
+        if (Settings.System.SCREEN_TIMEOUT_MODE_AUTOMATIC == timeoutMode) {
+            timeout = SCREEN_AUTO_SLEEP_VALUE;
+            mScreenTimeoutPreference.setValue(String.valueOf(SCREEN_AUTO_SLEEP_VALUE));
+        } else {
+            mScreenTimeoutPreference.setValue(String.valueOf(currentTimeout));
+        }
+        updateTimeoutPreferenceDescription(timeout);
+    }
+
     private void updateTimeoutPreferenceDescription(long currentTimeout) {
         ListPreference preference = mScreenTimeoutPreference;
         String summary;
         if (currentTimeout < 0) {
             // Unsupported value
             summary = "";
-        } else {
+        } else if (currentTimeout != SCREEN_AUTO_SLEEP_VALUE) {
             final CharSequence[] entries = preference.getEntries();
             final CharSequence[] values = preference.getEntryValues();
             if (entries == null || entries.length == 0) {
@@ -280,6 +399,17 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
                 summary = preference.getContext().getString(R.string.screen_timeout_summary,
                         entries[best]);
             }
+
+            Settings.System.putInt(getContentResolver(), SCREEN_OFF_TIMEOUT, (int) currentTimeout);
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.SCREEN_TIMEOUT_MODE,
+                    Settings.System.SCREEN_TIMEOUT_MODE_MANUAL);
+        } else {
+            // Auto Sleep Timeout selected
+            Settings.System.putInt(getContentResolver(),
+                    Settings.System.SCREEN_TIMEOUT_MODE,
+                    Settings.System.SCREEN_TIMEOUT_MODE_AUTOMATIC);
+            summary = sAutoSleepTimeoutSummary;
         }
         preference.setSummary(summary);
     }
@@ -446,7 +576,6 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         if (KEY_SCREEN_TIMEOUT.equals(key)) {
             try {
                 int value = Integer.parseInt((String) objValue);
-                Settings.System.putInt(getContentResolver(), SCREEN_OFF_TIMEOUT, value);
                 updateTimeoutPreferenceDescription(value);
             } catch (NumberFormatException e) {
                 Log.e(TAG, "could not persist screen timeout setting", e);
