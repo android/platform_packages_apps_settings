@@ -280,8 +280,8 @@ public class ZonePicker extends ListFragment {
                 displayName = mZoneNameFormatter.format(mNow);
             } else {
                 // For other countries' time zones, we use the exemplar location.
-                final String localeName = Locale.getDefault().toString();
-                displayName = TimeZoneNames.getExemplarLocation(localeName, olsonId);
+                final String localeName = Locale.getDefault();
+                displayName = TimeZoneNames.getExemplarLocation(locale, tz);
             }
 
             final HashMap<String, Object> map = new HashMap<String, Object>();
