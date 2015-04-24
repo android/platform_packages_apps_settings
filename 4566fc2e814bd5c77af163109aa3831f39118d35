@@ -1,0 +1,8 @@
+Code-Review+1: Michael Bestas <mikeioannina@gmail.com>
+Code-Review+2: Alan Viverette <alanv@google.com>
+Verified+1: Deckard Autoverifier <deckard@android.com>
+Submitted-by: Alan Viverette <alanv@google.com>
+Submitted-at: Fri, 24 Apr 2015 18:05:09 +0000
+Reviewed-on: https://android-review.googlesource.com/115869
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
