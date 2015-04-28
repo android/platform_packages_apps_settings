@@ -205,7 +205,8 @@ public class Status extends PreferenceActivity {
         }
 
         //Remove SimStatus and Imei for Secondary user as it access Phone b/19165700
-        if (UserHandle.myUserId() != UserHandle.USER_OWNER) {
+        if (UserHandle.myUserId() != UserHandle.USER_OWNER
+                || Utils.isWifiOnly(getApplicationContext())) {
             removePreferenceFromScreen(KEY_SIM_STATUS);
             removePreferenceFromScreen(KEY_IMEI_INFO);
         }
