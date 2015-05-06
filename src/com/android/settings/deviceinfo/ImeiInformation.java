@@ -20,6 +20,7 @@ import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
 
 import android.content.Context;
+import android.content.ClipboardManager;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -29,6 +30,10 @@ import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListAdapter;
+import android.widget.Toast;
 
 import com.android.settings.R;
 import java.util.List;
@@ -52,6 +57,25 @@ public class ImeiInformation extends PreferenceActivity {
         final TelephonyManager telephonyManager =
             (TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);
         initPreferenceScreen(telephonyManager.getSimCount());
+        getListView().setOnItemLongClickListener(
+            new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view,
+                                           int position, long id) {
+                ListAdapter listAdapter = (ListAdapter) parent.getAdapter();
+                Preference pref = (Preference) listAdapter.getItem(position);
+                
+                ClipboardManager cm = (ClipboardManager)
+                getSystemService(Context.CLIPBOARD_SERVICE);
+                cm.setText(pref.getSummary());
+                Toast.makeText(
+                               ImeiInformation.this,
+                               com.android.internal.R.string.text_copied,
+                               Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+
     }
 
     // Since there are multiple phone for dsds, therefore need to show information for different
