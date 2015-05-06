@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd24a5a6_d079c4c0",
+        "filename": "src/com/android/settings/deviceinfo/ImeiInformation.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-05-06T15:31:22Z",
+      "side": 1,
+      "message": "whitespace.",
+      "revId": "2563683c9ede3a0d9db33d916ac6afc04ae9400d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
