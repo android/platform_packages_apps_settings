@@ -627,8 +627,10 @@ public class WifiConfigController implements TextWatcher,
         if (mPasswordView == null) {
             mPasswordView = (TextView) mView.findViewById(R.id.password);
             mPasswordView.addTextChangedListener(this);
-            ((CheckBox) mView.findViewById(R.id.show_password))
-                .setOnCheckedChangeListener(this);
+            CheckBox showPassword = (CheckBox) mView.findViewById(R.id.show_password);
+            showPassword.setOnCheckedChangeListener(this);
+
+            onCheckedChanged(showPassword, showPassword.isChecked());
 
             if (mAccessPoint != null && mAccessPoint.networkId != INVALID_NETWORK_ID) {
                 mPasswordView.setHint(R.string.wifi_unchanged);
