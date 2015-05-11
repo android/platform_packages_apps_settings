@@ -1,0 +1,7 @@
+Verified+1: Deckard Autoverifier <deckard@android.com>
+Code-Review+2: Nick Kralevich <nnk@google.com>
+Submitted-by: Nick Kralevich <nnk@google.com>
+Submitted-at: Mon, 11 May 2015 19:45:20 +0000
+Reviewed-on: https://android-review.googlesource.com/149914
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
