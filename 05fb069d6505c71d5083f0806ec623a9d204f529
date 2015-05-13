@@ -1,0 +1,7 @@
+Code-Review+2: John Huang <jsh@google.com>
+Verified+1: Deckard Autoverifier <deckard@android.com>
+Submitted-by: Robert Greenwalt <rgreenwalt@google.com>
+Submitted-at: Wed, 13 May 2015 21:20:50 +0000
+Reviewed-on: https://android-review.googlesource.com/149735
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
