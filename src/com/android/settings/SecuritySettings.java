@@ -149,6 +149,12 @@ public class SecuritySettings extends SettingsPreferenceFragment
                 && savedInstanceState.containsKey(TRUST_AGENT_CLICK_INTENT)) {
             mTrustAgentClickIntent = savedInstanceState.getParcelable(TRUST_AGENT_CLICK_INTENT);
         }
+
+        int requirePasswordToDecrypt = Settings.Global.getInt(getContentResolver(),
+                Settings.Global.REQUIRE_PASSWORD_TO_DECRYPT, -1);
+        if (requirePasswordToDecrypt == -1) {
+            Settings.Global.putInt(getContentResolver(), Settings.Global.REQUIRE_PASSWORD_TO_DECRYPT, 0);
+        }
     }
 
     private static int getResIdForLockUnlockScreen(Context context,
