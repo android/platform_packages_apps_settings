@@ -134,24 +134,6 @@ final class PanProfile implements LocalBluetoothProfile {
         }
     }
 
-    public int getSummaryResourceForDevice(BluetoothDevice device) {
-        int state = getConnectionStatus(device);
-        switch (state) {
-            case BluetoothProfile.STATE_DISCONNECTED:
-                return R.string.bluetooth_pan_profile_summary_use_for;
-
-            case BluetoothProfile.STATE_CONNECTED:
-                if (isLocalRoleNap(device)) {
-                    return R.string.bluetooth_pan_nap_profile_summary_connected;
-                } else {
-                    return R.string.bluetooth_pan_user_profile_summary_connected;
-                }
-
-            default:
-                return Utils.getConnectionStateSummary(state);
-        }
-    }
-
     public int getDrawableResource(BluetoothClass btClass) {
         return R.drawable.ic_bt_network_pan;
     }

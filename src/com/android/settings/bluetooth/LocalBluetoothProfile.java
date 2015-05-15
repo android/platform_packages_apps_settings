@@ -58,14 +58,5 @@ interface LocalBluetoothProfile {
      */
     int getNameResource(BluetoothDevice device);
 
-    /**
-     * Returns the string resource ID for the summary text for this profile
-     * for the specified device, e.g. "Use for media audio" or
-     * "Connected to media audio".
-     * @param device the device to query for profile connection status
-     * @return a string resource ID for the profile summary text
-     */
-    int getSummaryResourceForDevice(BluetoothDevice device);
-
     int getDrawableResource(BluetoothClass btClass);
 }

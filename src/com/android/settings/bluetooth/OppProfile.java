@@ -79,10 +79,6 @@ final class OppProfile implements LocalBluetoothProfile {
         return R.string.bluetooth_profile_opp;
     }
 
-    public int getSummaryResourceForDevice(BluetoothDevice device) {
-        return 0;   // OPP profile not displayed in UI
-    }
-
     public int getDrawableResource(BluetoothClass btClass) {
         return 0;   // no icon for OPP
     }

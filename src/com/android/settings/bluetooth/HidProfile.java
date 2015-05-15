@@ -153,20 +153,6 @@ final class HidProfile implements LocalBluetoothProfile {
         return R.string.bluetooth_profile_hid;
     }
 
-    public int getSummaryResourceForDevice(BluetoothDevice device) {
-        int state = getConnectionStatus(device);
-        switch (state) {
-            case BluetoothProfile.STATE_DISCONNECTED:
-                return R.string.bluetooth_hid_profile_summary_use_for;
-
-            case BluetoothProfile.STATE_CONNECTED:
-                return R.string.bluetooth_hid_profile_summary_connected;
-
-            default:
-                return Utils.getConnectionStateSummary(state);
-        }
-    }
-
     public int getDrawableResource(BluetoothClass btClass) {
         if (btClass == null) {
             return R.drawable.ic_lockscreen_ime;

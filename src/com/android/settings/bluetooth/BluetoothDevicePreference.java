@@ -56,6 +56,10 @@ public final class BluetoothDevicePreference extends Preference implements
 
     private AlertDialog mDisconnectDialog;
 
+    private boolean profileConnected = false;       // at least one profile is connected
+    private boolean a2dpNotConnected = false;       // A2DP is preferred but not connected
+    private boolean headsetNotConnected = false;    // Headset is preferred but not connected
+
     public BluetoothDevicePreference(Context context, CachedBluetoothDevice cachedDevice) {
         super(context);
 
@@ -230,10 +234,6 @@ public final class BluetoothDevicePreference extends Preference implements
     private int getConnectionSummary() {
         final CachedBluetoothDevice cachedDevice = mCachedDevice;
 
-        boolean profileConnected = false;       // at least one profile is connected
-        boolean a2dpNotConnected = false;       // A2DP is preferred but not connected
-        boolean headsetNotConnected = false;    // Headset is preferred but not connected
-
         for (LocalBluetoothProfile profile : cachedDevice.getProfiles()) {
             int connectionStatus = cachedDevice.getProfileConnectionState(profile);
 
@@ -244,9 +244,18 @@ public final class BluetoothDevicePreference extends Preference implements
 
                 case BluetoothProfile.STATE_CONNECTED:
                     profileConnected = true;
+                    if (profile.isProfileReady()) {
+                        if (profile instanceof A2dpProfile) {
+                            a2dpNotConnected = false;
+                        }
+                        if (profile instanceof HeadsetProfile) {
+                            headsetNotConnected = false;
+                        }
+                    }
                     break;
 
                 case BluetoothProfile.STATE_DISCONNECTED:
+                    profileConnected = false;
                     if (profile.isProfileReady()) {
                         if (profile instanceof A2dpProfile) {
                             a2dpNotConnected = true;
@@ -304,6 +313,18 @@ public final class BluetoothDevicePreference extends Preference implements
             Log.w(TAG, "mBtClass is null");
         }
 
+
+        /* Update bluetooth icon according to the profile change
+         * when bluetooth device supports A2DP and HSP profile
+         */
+        if (profileConnected) {
+            if (!headsetNotConnected) {
+                return R.drawable.ic_bt_headset_hfp;
+            } else if (!a2dpNotConnected) {
+                return R.drawable.ic_bt_headphones_a2dp;
+            }
+        }
+
         List<LocalBluetoothProfile> profiles = mCachedDevice.getProfiles();
         for (LocalBluetoothProfile profile : profiles) {
             int resId = profile.getDrawableResource(btClass);
@@ -311,15 +332,7 @@ public final class BluetoothDevicePreference extends Preference implements
                 return resId;
             }
         }
-        if (btClass != null) {
-            if (btClass.doesClassMatch(BluetoothClass.PROFILE_A2DP)) {
-                return R.drawable.ic_bt_headphones_a2dp;
 
-            }
-            if (btClass.doesClassMatch(BluetoothClass.PROFILE_HEADSET)) {
-                return R.drawable.ic_bt_headset_hfp;
-            }
-        }
         return R.drawable.ic_settings_bluetooth2;
     }
 }

@@ -130,10 +130,6 @@ final class PbapServerProfile implements LocalBluetoothProfile {
         return R.string.bluetooth_profile_pbap;
     }
 
-    public int getSummaryResourceForDevice(BluetoothDevice device) {
-        return R.string.bluetooth_profile_pbap_summary;
-    }
-
     public int getDrawableResource(BluetoothClass btClass) {
         return R.drawable.ic_bt_cellphone;
     }
