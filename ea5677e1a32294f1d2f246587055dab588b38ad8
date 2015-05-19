@@ -1,0 +1,7 @@
+Verified+1: Deckard Autoverifier <deckard@android.com>
+Code-Review+2: Fyodor Kupolov <fkupolov@google.com>
+Submitted-by: Fyodor Kupolov <fkupolov@google.com>
+Submitted-at: Tue, 19 May 2015 17:50:00 +0000
+Reviewed-on: https://android-review.googlesource.com/150783
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
