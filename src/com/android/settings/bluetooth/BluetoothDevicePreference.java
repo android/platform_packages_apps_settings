@@ -37,6 +37,7 @@ import android.widget.ImageView;
 import com.android.settings.R;
 import com.android.settings.search.Index;
 import com.android.settings.search.SearchIndexableRaw;
+import com.android.settingslib.bluetooth.A2dpProfile;
 import com.android.settingslib.bluetooth.CachedBluetoothDevice;
 import com.android.settingslib.bluetooth.HidProfile;
 import com.android.settingslib.bluetooth.LocalBluetoothProfile;
@@ -279,11 +280,23 @@ public final class BluetoothDevicePreference extends Preference implements
         }
 
         List<LocalBluetoothProfile> profiles = mCachedDevice.getProfiles();
+        int resId = 0;
         for (LocalBluetoothProfile profile : profiles) {
-            int resId = profile.getDrawableResource(btClass);
-            if (resId != 0) {
-                return new Pair<Integer, String>(resId, null);
+
+            int tempResId = profile.getDrawableResource(btClass);
+            if (profile instanceof A2dpProfile) {
+                // A2DP icon has the highest priority, no matter what we have
+                // in previous iteration, we will overwrite with A2DP icon
+                return new Pair<Integer, String>(tempResId, null);
+            } else if (resId == 0 && tempResId > 0) {
+                // We will only set icons for other profiles if never set before
+                // Have to validate because OPP doesn't have an icon
+                resId = tempResId;
             }
+            // Keep looping to check if there's an A2DP profile following.
+        }
+        if (resId != 0) {
+            return new Pair<Integer, String>(resId, null);
         }
         if (btClass != null) {
             if (btClass.doesClassMatch(BluetoothClass.PROFILE_A2DP)) {
