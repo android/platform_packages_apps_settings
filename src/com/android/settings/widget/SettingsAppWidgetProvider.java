@@ -31,6 +31,7 @@ import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.os.Handler;
+import android.os.UserHandle;
 import android.os.IPowerManager;
 import android.os.PowerManager;
 import android.os.RemoteException;
@@ -940,10 +941,12 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
         void startObserving() {
             ContentResolver resolver = mContext.getContentResolver();
             // Listen to brightness and brightness mode
-            resolver.registerContentObserver(Settings.System
-                    .getUriFor(Settings.System.SCREEN_BRIGHTNESS), false, this);
-            resolver.registerContentObserver(Settings.System
-                    .getUriFor(Settings.System.SCREEN_BRIGHTNESS_MODE), false, this);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.SCREEN_BRIGHTNESS), false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.SCREEN_BRIGHTNESS_MODE), false, this, UserHandle.USER_ALL);
+            resolver.registerContentObserver(Settings.System.getUriFor(
+                    Settings.System.SCREEN_AUTO_BRIGHTNESS_ADJ), false, this, UserHandle.USER_ALL);
         }
 
         void stopObserving() {
