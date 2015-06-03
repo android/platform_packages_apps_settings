@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b97b38ac_c87012d4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1059418
+      },
+      "writtenOn": "2015-06-03T02:08:19Z",
+      "side": 1,
+      "message": "Start with a one-line summary (60 characters max), followed by a blank line and a more detailed description. https://source.android.com/source/submit-patches.html#make-your-change",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 87
+      },
+      "revId": "d41922d7a42c76851f2fa89ca2d67de2e8866931",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39d588cf_a8ed7885",
+        "filename": "src/com/android/settings/widget/SettingsAppWidgetProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1059418
+      },
+      "writtenOn": "2015-06-03T02:08:19Z",
+      "side": 1,
+      "message": "SCREEN_BRIGHTNESS is a per user setting. Why do you need a content observer for all users?",
+      "range": {
+        "startLine": 945,
+        "startChar": 36,
+        "endLine": 945,
+        "endChar": 53
+      },
+      "revId": "d41922d7a42c76851f2fa89ca2d67de2e8866931",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
