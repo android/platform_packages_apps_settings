@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7948e0a0_3ef48583",
+        "filename": "src/com/android/settings/users/ProfileUpdateReceiver.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1001986
+      },
+      "writtenOn": "2015-06-03T16:38:51Z",
+      "side": 1,
+      "message": "This would mean that any photo set explicitly from Settings-\u003eUsers will be overridden by the default. Not sure if we want that. Earlier MeProfile was the only way to set the photo, but now (in L) you can do it directly from Settings-\u003eUsers.",
+      "revId": "bf4feb4e618b8bb10780fc6ae429e23122c0aa87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
