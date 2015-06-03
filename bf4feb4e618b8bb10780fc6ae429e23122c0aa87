@@ -16,6 +16,24 @@
       "revId": "bf4feb4e618b8bb10780fc6ae429e23122c0aa87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9a97860_471e45f0",
+        "filename": "src/com/android/settings/users/ProfileUpdateReceiver.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002951
+      },
+      "writtenOn": "2015-06-03T19:17:34Z",
+      "side": 1,
+      "message": "That would happen only when copyMeProfilePhoto fails, right? Does it not make sense to reset to default in that case?",
+      "parentUuid": "7948e0a0_3ef48583",
+      "revId": "bf4feb4e618b8bb10780fc6ae429e23122c0aa87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
