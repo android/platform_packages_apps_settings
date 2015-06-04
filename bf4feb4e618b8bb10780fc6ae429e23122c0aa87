@@ -34,6 +34,24 @@
       "revId": "bf4feb4e618b8bb10780fc6ae429e23122c0aa87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9f1cca3_77e80275",
+        "filename": "src/com/android/settings/users/ProfileUpdateReceiver.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1002951
+      },
+      "writtenOn": "2015-06-04T11:35:06Z",
+      "side": 1,
+      "message": "Aslo, the change just follows the pattern in UserSettings#assignProfilePhoto (https://android.googlesource.com/platform/packages/apps/Settings/+/master/src/com/android/settings/users/UserSettings.java)",
+      "parentUuid": "b9a97860_471e45f0",
+      "revId": "bf4feb4e618b8bb10780fc6ae429e23122c0aa87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
