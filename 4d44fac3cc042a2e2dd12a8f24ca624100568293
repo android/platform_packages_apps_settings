@@ -34,6 +34,24 @@
       "revId": "4d44fac3cc042a2e2dd12a8f24ca624100568293",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39b828d4_c20598c6",
+        "filename": "src/com/android/settings/ZonePicker.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-06-05T16:13:42Z",
+      "side": 1,
+      "message": "oh, because the Settings list doesn\u0027t contain all the AU zones, but L246-249 adds them _if_ your locale is AU. maybe rewrite the L246 comment to something like \"all the time zones used in the user\u0027s locale, whether they\u0027re in Settings\u0027 list or not\"?\n\ni guess i\u0027m just surprised that some ambiguous time zones affect the display of _all_ time zones. i literally meant something like\n\n  if (locale.getCountry().equals(\"AU\") \u0026\u0026 TimeZoneNames.forLocale(locale).contains(olsonId)) // use examplar...\n\nthen when i read your checkin comment i thought you were going to do something cleverer where you\u0027d drop the equals(\"AU\") and just say \"if the user\u0027s country has ambiguity, avoid it\" which sounds good. but i\u0027m having trouble working out whether \"if any country has ambiguity, avoid it for all countries\" is different. i\u0027m now leaning towards it *not* being different because other countries were already using examplars, so only the user\u0027s country can be affected by this.\n\nbut that was too subtle for my little brain, so i\u0027d definitely add a comment explaining.",
+      "parentUuid": "19afe490_e1b8dcb4",
+      "revId": "4d44fac3cc042a2e2dd12a8f24ca624100568293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
