@@ -52,6 +52,24 @@
       "revId": "4d44fac3cc042a2e2dd12a8f24ca624100568293",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39b828d4_a2226430",
+        "filename": "src/com/android/settings/ZonePicker.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2015-06-05T16:49:28Z",
+      "side": 1,
+      "message": "I started by special casing \"AU\" but as mentioned I didn\u0027t like the special casing. The rule will apply where there\u0027s ambiguity, and AU triggers that.\n\n246-249 has no effect on the final list. We always output all entries we were told to by the config. The only question is whether we display the \"long name\" or the \"exemplar location\" for the local olsonIds.\n\nAgree the logic below is confusing. I think because \"use  location\" is actually the common/default case.\n\nThe way I thought about it was:\n\nexemplar location used when: \"olsonId is non local\" OR (\"olson id is local\" (implied) AND longNamesAreAmbiguous)\n\nI flipped the order of the preferLocationDisplayName check because the longNamesAreAmbiguous check is cheapest. Most cases it *will* be false, though so we\u0027ll fall through to \"is local\". It should still mean that the only time we use the long name is when the timezone is local AND long names ARE NOT ambiguous.\n\nI\u0027ll look at making it clearer.",
+      "parentUuid": "39b828d4_c20598c6",
+      "revId": "4d44fac3cc042a2e2dd12a8f24ca624100568293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
