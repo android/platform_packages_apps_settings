@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9a690c2_c9ee95fe",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1059418
+      },
+      "writtenOn": "2015-06-05T22:18:38Z",
+      "side": 1,
+      "message": "Start with a one-line summary (60 characters max), followed by a blank line and a more detailed description. https://source.android.com/source/submit-patches.html#make-your-change",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 87
+      },
+      "revId": "73b499c140f07275e8b5b8c28441282913fb6dfc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
