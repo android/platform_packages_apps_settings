@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19afe490_81f3a098",
+        "filename": "src/com/android/settings/ZonePicker.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-06-05T15:16:52Z",
+      "side": 1,
+      "message": "won\u0027t this always be true because of AU?",
+      "revId": "4d44fac3cc042a2e2dd12a8f24ca624100568293",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
