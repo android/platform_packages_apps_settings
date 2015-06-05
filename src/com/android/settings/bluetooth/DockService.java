@@ -45,6 +45,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
 import java.util.Collection;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.List;
 import java.util.Set;
 
@@ -122,6 +123,18 @@ public final class DockService extends Service implements ServiceListener {
 
     private CheckBox mAudioMediaCheckbox;
 
+    private class ServiceStartId {
+        ServiceStartId(int startId) {
+            mStartId = startId;
+            mStopped = false;
+        }
+        int mStartId;
+        boolean mStopped;
+    }
+
+    private LinkedBlockingQueue<ServiceStartId> mStartIdQueue
+        = new LinkedBlockingQueue<ServiceStartId>();
+
     @Override
     public void onCreate() {
         if (DEBUG) Log.d(TAG, "onCreate");
@@ -183,6 +196,10 @@ public final class DockService extends Service implements ServiceListener {
     public int onStartCommand(Intent intent, int flags, int startId) {
         if (DEBUG) Log.d(TAG, "onStartCommand startId: " + startId + " flags: " + flags);
 
+        synchronized(mStartIdQueue) {
+            mStartIdQueue.offer(new ServiceStartId(startId));
+        }
+
         if (intent == null) {
             // Nothing to process, stop.
             if (DEBUG) Log.d(TAG, "START_NOT_STICKY - intent is null.");
@@ -240,6 +257,46 @@ public final class DockService extends Service implements ServiceListener {
         processMessage(msg);
 
         return START_NOT_STICKY;
+    }
+
+    final boolean stopDockService(int startId) {
+        boolean ret = false;
+        synchronized (mStartIdQueue) {
+            // If the service is started multiple times concurrently, then it
+            // needs to be stopped in the same order it was started. For this
+            // reason everytime this service is started the startId is added to
+            // a queue. Then each time the service is stopped it marks the
+            // startId as stopped in the queue.
+            for (ServiceStartId elem : mStartIdQueue) {
+                if (elem.mStartId == startId) {
+                    if (DEBUG) {
+                        Log.d(TAG, "stopDockService setting stop flag for startId: " + startId);
+                    }
+                    elem.mStopped = true;
+                    ret = true;
+                    break;
+                }
+            }
+            // Once the startId has been marked, the queue is iterated and
+            // stopSelfResult() is called for all startIds that are stopped and
+            // they are removed from the queue until the first one that is not
+            // stopped. Effectively calling stopSelfResult() on the startIds in
+            // the same order that the startIds were started.
+            ServiceStartId elem;
+            while ((elem = mStartIdQueue.peek()) != null) {
+                if (elem.mStopped == true) {
+                    if (DEBUG) {
+                        Log.d(TAG, "stopDockService calling stopSelf for startId: "
+                            + elem.mStartId);
+                    }
+                    stopSelf(elem.mStartId);
+                    mStartIdQueue.poll();
+                } else {
+                    break;
+                }
+            }
+        }
+        return ret;
     }
 
     private final class ServiceHandler extends Handler {
