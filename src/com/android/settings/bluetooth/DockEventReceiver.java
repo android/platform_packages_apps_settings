@@ -145,9 +145,13 @@ public final class DockEventReceiver extends BroadcastReceiver {
         synchronized (sStartingServiceSync) {
             if (sStartingService != null) {
                 if (DEBUG) Log.d(TAG, "stopSelf id = " + startId);
-                if (service.stopSelfResult(startId)) {
-                    Log.d(TAG, "finishStartingService: stopping service");
-                    sStartingService.release();
+                if (service instanceof DockService) {
+                    if (((DockService)service).stopDockService(startId)) {
+                        Log.d(TAG, "finishStartingService: stopping service");
+                        sStartingService.release();
+                    }
+                } else {
+                    Log.e(TAG, "Service is not DockService");
                 }
             }
         }
