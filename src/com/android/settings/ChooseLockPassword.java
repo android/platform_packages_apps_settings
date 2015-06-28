@@ -196,7 +196,7 @@ public class ChooseLockPassword extends SettingsActivity {
             mPasswordMinNonLetter = Math.max(intent.getIntExtra(PASSWORD_MIN_NONLETTER_KEY,
                     mPasswordMinNonLetter), mLockPatternUtils.getRequestedPasswordMinimumNonLetter());
 
-            mChooseLockSettingsHelper = new ChooseLockSettingsHelper(getActivity());
+            mChooseLockSettingsHelper = new ChooseLockSettingsHelper(getActivity(), this);
         }
 
         @Override
