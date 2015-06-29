@@ -64,6 +64,7 @@ import com.android.settings.R;
 
 import java.net.InetAddress;
 import java.net.Inet4Address;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
@@ -81,6 +82,7 @@ public class WifiConfigController implements TextWatcher,
     /* This value comes from "wifi_ip_settings" resource array */
     private static final int DHCP = 0;
     private static final int STATIC_IP = 1;
+    private static final int STATIC_DNS = 2;
 
     /* These values come from "wifi_proxy_settings" resource array */
     public static final int PROXY_NONE = 0;
@@ -132,6 +134,9 @@ public class WifiConfigController implements TextWatcher,
     private TextView mDns1View;
     private TextView mDns2View;
 
+    private TextView mStaticDns1View;
+    private TextView mStaticDns2View;
+
     private Spinner mProxySettingsSpinner;
     private TextView mProxyHostView;
     private TextView mProxyPortView;
@@ -142,6 +147,7 @@ public class WifiConfigController implements TextWatcher,
     private ProxySettings mProxySettings = ProxySettings.UNASSIGNED;
     private ProxyInfo mHttpProxy = null;
     private StaticIpConfiguration mStaticIpConfiguration = null;
+    private ArrayList<InetAddress> mStaticDnsServers = null;
 
     private String[] mLevels;
     private boolean mEdit;
@@ -225,6 +231,17 @@ public class WifiConfigController implements TextWatcher,
                     if (staticConfig != null && staticConfig.ipAddress != null) {
                         addRow(group, R.string.wifi_ip_address,
                            staticConfig.ipAddress.getAddress().getHostAddress());
+                    }
+                } else if (config.getIpAssignment() == IpAssignment.STATIC_DNS) {
+                    Log.d(TAG, "Showing static DNS info in wifi settings pane");
+                    mIpSettingsSpinner.setSelection(STATIC_DNS);
+                    showAdvancedFields = true;
+                    ArrayList<InetAddress> staticDnsServers = config.getStaticDnsServers();
+                    if (staticDnsServers.size() > 1) {
+                        addRow(group, R.string.wifi_dns1,
+                                staticDnsServers.get(0).getHostAddress());
+                        addRow(group, R.string.wifi_dns2,
+                                staticDnsServers.get(1).getHostAddress());
                     }
                 } else {
                     mIpSettingsSpinner.setSelection(DHCP);
@@ -478,22 +495,42 @@ public class WifiConfigController implements TextWatcher,
                 return null;
         }
 
+        Log.d(TAG, "Setting configuration of network: " + mIpAssignment + " with DNS servers: " + mStaticDnsServers);
+
         config.setIpConfiguration(
                 new IpConfiguration(mIpAssignment, mProxySettings,
-                                    mStaticIpConfiguration, mHttpProxy));
+                                    mStaticIpConfiguration, mStaticDnsServers, mHttpProxy));
 
         return config;
     }
 
     private boolean ipAndProxyFieldsAreValid() {
-        mIpAssignment = (mIpSettingsSpinner != null &&
-                mIpSettingsSpinner.getSelectedItemPosition() == STATIC_IP) ?
-                IpAssignment.STATIC : IpAssignment.DHCP;
+        if (mIpSettingsSpinner != null) {
+            switch (mIpSettingsSpinner.getSelectedItemPosition()) {
+                case STATIC_IP:
+                    mIpAssignment = IpAssignment.STATIC;
+                    break;
+                case DHCP:
+                    mIpAssignment = IpAssignment.DHCP;
+                    break;
+                case STATIC_DNS:
+                    mIpAssignment = IpAssignment.STATIC_DNS;
+                    Log.d(TAG, "Setting IP Assignment to static DNS");
+            }
+        }
 
         if (mIpAssignment == IpAssignment.STATIC) {
             mStaticIpConfiguration = new StaticIpConfiguration();
             int result = validateIpConfigFields(mStaticIpConfiguration);
             if (result != 0) {
+                return false;
+            }
+        }
+
+        if (mIpAssignment == IpAssignment.STATIC_DNS) {
+            mStaticDnsServers = new ArrayList<InetAddress>();
+            if (validateStaticDnsConfigFields(mStaticDnsServers) != 0) {
+                Log.d(TAG, "Static dns values are not valid!");
                 return false;
             }
         }
@@ -607,6 +644,29 @@ public class WifiConfigController implements TextWatcher,
             }
             staticIpConfiguration.dnsServers.add(dnsAddr);
         }
+        return 0;
+    }
+
+    /**
+     * If the static DNS fields are valid, place them in the specified ArrayList.
+     * @param staticDnsServers The destination for parsed DNS servers.
+     * @return R.string.wifi_ip_settings_invalid_dns if the given values were incorrect
+     * 0 otherwise.
+     */
+    private int validateStaticDnsConfigFields(ArrayList<InetAddress> staticDnsServers) {
+        if (mStaticDns1View == null) return 0;
+        String staticDns1Input = mStaticDns1View.getText().toString();
+        String staticDns2Input = mStaticDns2View.getText().toString();
+        InetAddress dns1 = getIPv4Address(staticDns1Input);
+        InetAddress dns2 = getIPv4Address(staticDns2Input);
+
+        if (dns1 == null || dns2 == null) {
+            return R.string.wifi_ip_settings_invalid_dns;
+        }
+
+        staticDnsServers.clear();
+        mStaticDnsServers.add(dns1);
+        mStaticDnsServers.add(dns2);
         return 0;
     }
 
@@ -791,6 +851,31 @@ public class WifiConfigController implements TextWatcher,
         mView.findViewById(R.id.show_password_layout).setVisibility(View.GONE);
     }
 
+    private void showStaticDnsConfigFields() {
+        WifiConfiguration config = null;
+        mView.findViewById(R.id.static_dns).setVisibility(View.VISIBLE);
+
+        if (mAccessPoint != null && mAccessPoint.networkId != INVALID_NETWORK_ID) {
+            config = mAccessPoint.getConfig();
+        }
+
+        if (mStaticDns1View == null) {
+            mStaticDns1View = (TextView) mView.findViewById(R.id.static_dns1);
+            mStaticDns1View.addTextChangedListener(this);
+            mStaticDns2View = (TextView) mView.findViewById(R.id.static_dns2);
+            mStaticDns2View.addTextChangedListener(this);
+        }
+
+        if (config != null) {
+            mStaticDnsServers = config.getStaticDnsServers();
+            if (mStaticDnsServers != null && mStaticDnsServers.size() > 0) {
+                mStaticDns1View.setText(mStaticDnsServers.get(0).getHostAddress());
+                mStaticDns2View.setText(mStaticDnsServers.get(1).getHostAddress());
+            }
+        }
+
+    }
+
     private void showIpConfigFields() {
         WifiConfiguration config = null;
 
@@ -801,6 +886,8 @@ public class WifiConfigController implements TextWatcher,
         }
 
         if (mIpSettingsSpinner.getSelectedItemPosition() == STATIC_IP) {
+            // Ensure static dns fields are not visible.
+            mView.findViewById(R.id.static_dns).setVisibility(View.GONE);
             mView.findViewById(R.id.staticip).setVisibility(View.VISIBLE);
             if (mIpAddressView == null) {
                 mIpAddressView = (TextView) mView.findViewById(R.id.ipaddress);
@@ -838,8 +925,33 @@ public class WifiConfigController implements TextWatcher,
                     }
                 }
             }
+        } else if (mIpSettingsSpinner.getSelectedItemPosition() == STATIC_DNS) {
+            Log.d(TAG, "We are in static dns mode");
+            // Ensure static ip fields are not visible.
+            mView.findViewById(R.id.staticip).setVisibility(View.GONE);
+            showStaticDnsConfigFields();
+            if (config != null) {
+                // Have an existing config, and thus must display it in the popup.
+                ArrayList<InetAddress> dnsServers = config.getStaticDnsServers();
+                Log.d(TAG, "Dns servers from saved configuration: " + dnsServers.toString());
+                Iterator<InetAddress> dnsIterator = dnsServers.iterator();
+                if (dnsIterator.hasNext()) {
+                    mStaticDns1View.setText(dnsIterator.next().getHostAddress());
+                    Log.d(TAG, "Setting first DNS server");
+                }
+                if (dnsIterator.hasNext()) {
+                    mStaticDns2View.setText(dnsIterator.next().getHostAddress());
+                    Log.d(TAG, "Setting second DNS server");
+                } else {
+                    Log.d(TAG, "Only one dns entry found!");
+                }
+            } else {
+                Log.d(TAG, "No config found!");
+            }
         } else {
             mView.findViewById(R.id.staticip).setVisibility(View.GONE);
+            mView.findViewById(R.id.static_dns).setVisibility(View.GONE);
+
         }
     }
 

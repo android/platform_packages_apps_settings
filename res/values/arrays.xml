@@ -459,6 +459,8 @@
         <item>DHCP</item>
         <!-- Use statically defined IP settings [CHAR LIMIT=25]-->
         <item>Static</item>
+        <!-- Use DHCP for network configuration with fixed DNS servers [CHAR LIMIT=25] -->
+        <item>Static DNS</item>
     </string-array>
 
     <!-- Wi-Fi proxy settings. -->

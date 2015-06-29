@@ -107,7 +107,7 @@
                             android:prompt="@string/wifi_eap_method"
                             android:entries="@array/wifi_eap_method" />
                 </LinearLayout>
-                
+
                 <LinearLayout android:id="@+id/l_phase2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -403,6 +403,51 @@
                         android:entries="@array/wifi_ip_settings" />
 
             </LinearLayout>
+
+            <LinearLayout android:id="@+id/static_dns"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    style="@style/wifi_section"
+                    android:visibility="gone">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/wifi_item" >
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/wifi_item_label"
+                            android:text="@string/wifi_dns1" />
+
+                    <EditText android:id="@+id/static_dns1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            style="@style/wifi_item_edit_content"
+                            android:singleLine="true"
+                            android:hint="@string/wifi_dns1_hint"
+                            android:inputType="textNoSuggestions" />
+                </LinearLayout>
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/wifi_item" >
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/wifi_item_label"
+                            android:text="@string/wifi_dns2" />
+
+                    <EditText android:id="@+id/static_dns2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            style="@style/wifi_item_edit_content"
+                            android:singleLine="true"
+                            android:hint="@string/wifi_dns2_hint"
+                            android:inputType="textNoSuggestions" />
+                </LinearLayout>
+           </LinearLayout>
 
             <LinearLayout android:id="@+id/staticip"
                     android:layout_width="match_parent"
