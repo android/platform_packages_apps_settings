@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13b505ac_eb44edcc",
+        "filename": "src/com/android/settings/wifi/WifiConfigController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1059423
+      },
+      "writtenOn": "2015-06-30T06:49:58Z",
+      "side": 1,
+      "message": "Remove.",
+      "revId": "2be5115dc126b06f9725c6018a7b0c053d0e40d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3ae0d65_2951a9da",
+        "filename": "src/com/android/settings/wifi/WifiConfigController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1059423
+      },
+      "writtenOn": "2015-06-30T06:49:58Z",
+      "side": 1,
+      "message": "Remove.",
+      "revId": "2be5115dc126b06f9725c6018a7b0c053d0e40d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3a99960_e82e2b48",
+        "filename": "src/com/android/settings/wifi/WifiConfigController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1059423
+      },
+      "writtenOn": "2015-06-30T06:49:58Z",
+      "side": 1,
+      "message": "Remove.",
+      "revId": "2be5115dc126b06f9725c6018a7b0c053d0e40d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3a99960_882bf736",
+        "filename": "src/com/android/settings/wifi/WifiConfigController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1059423
+      },
+      "writtenOn": "2015-06-30T06:49:58Z",
+      "side": 1,
+      "message": "Remove.",
+      "revId": "2be5115dc126b06f9725c6018a7b0c053d0e40d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3b791b3_ca932329",
+        "filename": "src/com/android/settings/wifi/WifiConfigController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 940,
+      "author": {
+        "id": 1059423
+      },
+      "writtenOn": "2015-06-30T06:49:58Z",
+      "side": 1,
+      "message": "Remove.",
+      "revId": "2be5115dc126b06f9725c6018a7b0c053d0e40d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13b505ac_8b41b1bb",
+        "filename": "src/com/android/settings/wifi/WifiConfigController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 944,
+      "author": {
+        "id": 1059423
+      },
+      "writtenOn": "2015-06-30T06:49:58Z",
+      "side": 1,
+      "message": "Remove.",
+      "revId": "2be5115dc126b06f9725c6018a7b0c053d0e40d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
