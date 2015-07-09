@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "789c5e2a_afe4c1cf",
+        "filename": "src/com/android/settings/SecuritySettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1004017
+      },
+      "writtenOn": "2015-07-09T23:06:30Z",
+      "side": 1,
+      "message": "Unset (-1) is a valid state that needs to be preserved.  It means the user hasn\u0027t made a choice yet. It\u0027s required so that we may prompt the user when they enable Accessibility. \n\nSee comment in ToggleAccessibilityServicePreferenceFragment:\n\n// The user confirmed that they accept weaker encryption when\n\n// enabling the accessibility service, so change encryption.\n\n// Since we came here asynchronously, check encryption again.",
+      "range": {
+        "startLine": 153,
+        "startChar": 8,
+        "endLine": 154,
+        "endChar": 65
+      },
+      "revId": "15cbd317411cbcaf643aecf4121463cec309d700",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
