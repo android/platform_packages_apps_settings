@@ -22,6 +22,30 @@
       "revId": "15cbd317411cbcaf643aecf4121463cec309d700",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98cf5247_4fc43109",
+        "filename": "src/com/android/settings/SecuritySettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1076415
+      },
+      "writtenOn": "2015-07-10T22:57:38Z",
+      "side": 1,
+      "message": "Where is Unset (-1) used? Can you please elaborate more? \nIn ToggleAccessibilityServicePreferenceFragment, where do we check the value of REQUIRE_PASSWORD_TO_DECRYPT? I only see we set it to 0.\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n                // The user confirmed that they accept weaker encryption when\n                // enabling the accessibility service, so change encryption.\n                // Since we came here asynchronously, check encryption again.\n                if (LockPatternUtils.isDeviceEncrypted()) {\n                    mLockPatternUtils.clearEncryptionPassword();\n                    Settings.Global.putInt(getContentResolver(),\n                            Settings.Global.REQUIRE_PASSWORD_TO_DECRYPT, 0);",
+      "parentUuid": "789c5e2a_afe4c1cf",
+      "range": {
+        "startLine": 153,
+        "startChar": 8,
+        "endLine": 154,
+        "endChar": 65
+      },
+      "revId": "15cbd317411cbcaf643aecf4121463cec309d700",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
