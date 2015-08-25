@@ -31,6 +31,7 @@ import android.database.DatabaseUtils;
 import android.database.MergeCursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.database.sqlite.SQLiteFullException;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.provider.SearchIndexableData;
@@ -1177,14 +1178,15 @@ public class Index {
 
             final boolean forceUpdate = params[0].forceUpdate;
 
-            final SQLiteDatabase database = getWritableDatabase();
-            if (database == null) {
-                Log.e(LOG_TAG, "Cannot update Index as I cannot get a writable database");
-                return null;
-            }
-            final String localeStr = Locale.getDefault().toString();
+            SQLiteDatabase database = null;
 
             try {
+                database = getWritableDatabase();
+                if (database == null) {
+                    Log.e(LOG_TAG, "Cannot update Index as I cannot get a writable database");
+                    return null;
+                }
+                final String localeStr = Locale.getDefault().toString();
                 database.beginTransaction();
                 if (dataToDelete.size() > 0) {
                     processDataToDelete(database, localeStr, dataToDelete);
@@ -1194,8 +1196,19 @@ public class Index {
                             forceUpdate);
                 }
                 database.setTransactionSuccessful();
+            } catch (SQLiteFullException e) {
+                    Log.e(LOG_TAG, "SQLite database is full. "+e.toString());
+            } catch (SQLiteException e) {
+                    Log.e(LOG_TAG, e.toString());
             } finally {
-                database.endTransaction();
+                try {
+                    if(database!=null)
+                    database.endTransaction();
+                } catch (SQLiteFullException e) {
+                    Log.e(LOG_TAG, "SQLite database is full. "+e.toString());
+                } catch (SQLiteException e) {
+                    Log.e(LOG_TAG, e.toString());
+                }
             }
 
             return null;
