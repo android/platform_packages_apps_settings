@@ -398,6 +398,13 @@ public class VpnSettings extends SettingsPreferenceFragment implements
             } catch (Exception e) {
                 // ignore
             }
+
+            // insight.lee@lge.com added to fix Talkback infinite reading out start
+            if (getListView() != null) {
+                getListView().clearAccessibilityFocus();
+            }
+            // insight.lee@lge.com added to fix Talkback infinite reading out end
+
             mUpdater.sendEmptyMessageDelayed(0, 1000);
         }
         return true;
