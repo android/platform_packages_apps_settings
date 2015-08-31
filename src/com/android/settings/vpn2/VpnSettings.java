@@ -398,6 +398,11 @@ public class VpnSettings extends SettingsPreferenceFragment implements
             } catch (Exception e) {
                 // ignore
             }
+
+            if (getListView() != null) {
+                getListView().clearAccessibilityFocus();
+            }
+
             mUpdater.sendEmptyMessageDelayed(0, 1000);
         }
         return true;
