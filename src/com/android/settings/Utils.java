@@ -79,6 +79,7 @@ import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceGroup;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.preference.PreferenceScreen;
+import android.telephony.ServiceState;
 import android.telephony.TelephonyManager;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -1318,4 +1319,17 @@ public final class Utils extends com.android.settingslib.Utils {
                 && volume.isMountedReadable();
     }
 
+    public static String getServiceStateString(int state, Resources res) {
+        switch (state) {
+            case ServiceState.STATE_IN_SERVICE:
+                return res.getString(R.string.radioInfo_service_in);
+            case ServiceState.STATE_OUT_OF_SERVICE:
+            case ServiceState.STATE_EMERGENCY_ONLY:
+                return res.getString(R.string.radioInfo_service_out);
+            case ServiceState.STATE_POWER_OFF:
+                return res.getString(R.string.radioInfo_service_off);
+            default:
+                return res.getString(R.string.radioInfo_unknown);
+        }
+    }
 }
