@@ -271,6 +271,12 @@ public class HomeSettings extends SettingsPreferenceFragment implements Indexabl
     }
 
     @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        getListView().setItemsCanFocus(true);
+        super.onActivityCreated(savedInstanceState);
+    }
+
+    @Override
     public void onResume() {
         super.onResume();
 
