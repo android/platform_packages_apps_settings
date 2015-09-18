@@ -25,6 +25,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.preference.Preference;
@@ -47,6 +48,7 @@ import com.android.settings.applications.AppInfoBase;
 import com.android.settings.applications.AppInfoWithHeader;
 import com.android.settings.notification.NotificationBackend.AppRow;
 
+import java.util.Arrays;
 import java.util.List;
 
 /** These settings are per app, so should not be returned in global search results. */
@@ -75,6 +77,7 @@ public class AppNotificationSettings extends SettingsPreferenceFragment {
     private boolean mCreated;
     private boolean mIsSystemPackage;
     private int mUid;
+    private boolean mIsBlackListed;
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -131,6 +134,7 @@ public class AppNotificationSettings extends SettingsPreferenceFragment {
             return;
         }
         mIsSystemPackage = Utils.isSystemPackage(pm, info);
+        mIsBlackListed = isBlacklisted(info.packageName);
 
         addPreferencesFromResource(R.xml.app_notification_settings);
         mBlock = (SwitchPreference) findPreference(KEY_BLOCK);
@@ -219,7 +223,7 @@ public class AppNotificationSettings extends SettingsPreferenceFragment {
         final boolean lockscreenNotificationsEnabled = getLockscreenNotificationsEnabled();
         final boolean allowPrivate = getLockscreenAllowPrivateNotifications();
 
-        setVisible(mBlock, !mIsSystemPackage);
+        setVisible(mBlock, !mIsSystemPackage && !mIsBlackListed);
         setVisible(mPriority, mIsSystemPackage || !banned);
         setVisible(mPeekable, mIsSystemPackage || !banned);
         setVisible(mSensitive, mIsSystemPackage || !banned && lockscreenSecure
@@ -307,5 +311,15 @@ public class AppNotificationSettings extends SettingsPreferenceFragment {
             row.settingsIntent = new Intent(APP_NOTIFICATION_PREFS_CATEGORY_INTENT)
                     .setClassName(activityInfo.packageName, activityInfo.name);
         }
+    }
+
+    private boolean isBlacklisted(String packageName) {
+        Resources res = mContext.getResources();
+        List manufacturer = Arrays.asList(res.getStringArray(
+                R.array.config_manufacturerNotificationBlacklist));
+        List operator = Arrays.asList(res.getStringArray(
+                R.array.config_operatorNotificationBlacklist));
+
+        return manufacturer.contains(packageName) || operator.contains(packageName);
     }
 }
