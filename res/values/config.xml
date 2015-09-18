@@ -38,4 +38,12 @@
     <!-- The duration (in milliseconds) of activity transitions -->
     <integer name="setup_wizard_transition_duration">300</integer>
 
+    <!-- Disable bocking all notifications for Manufacturers -->
+    <string-array name="config_manufacturerNotificationBlacklist" translatable="false">
+    </string-array>
+
+    <!-- Disable blocking all notifications for Operators -->
+    <string-array name="config_operatorNotificationBlacklist" translatable="false">
+    </string-array>
+
 </resources>
