@@ -114,7 +114,8 @@ public final class BluetoothPairingRequest extends BroadcastReceiver {
             int oldState = intent.getIntExtra(BluetoothDevice.EXTRA_PREVIOUS_BOND_STATE,
                     BluetoothDevice.ERROR);
             if((oldState == BluetoothDevice.BOND_BONDING) &&
-                    (bondState == BluetoothDevice.BOND_NONE)) {
+                    (bondState == BluetoothDevice.BOND_NONE ||
+                         bondState == BluetoothDevice.BOND_BONDED)) {
                 // Remove the notification
                 NotificationManager manager = (NotificationManager) context
                     .getSystemService(Context.NOTIFICATION_SERVICE);
