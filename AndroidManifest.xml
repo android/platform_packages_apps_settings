@@ -375,6 +375,12 @@
                        android:value="com.android.settings.ApnSettings" />
         </activity>
 
+        <activity android:name=".SubSettings$BluetoothSubSettings"
+                android:taskAffinity="com.android.settings"
+                android:configChanges="orientation|keyboardHidden|screenSize"
+                android:parentActivityName="Settings">
+        </activity>
+
         <activity android:name="Settings$BluetoothSettingsActivity"
                 android:label="@string/bluetooth_settings_title"
                 android:taskAffinity="">

@@ -208,6 +208,14 @@
     <integer name="bluetooth_name_length">32</integer>
     <dimen name="bluetooth_pairing_padding">20dp</dimen>
 
+    <!-- Bluetooth ActionBar -->
+    <dimen name="bluetooth_landscape_title_textsize">14px</dimen>
+    <dimen name="bluetooth_portrait_title_textsize">20px</dimen>
+    <dimen name="bluetooth_landscape_actionbar_height">46px</dimen>
+    <dimen name="bluetooth_portrait_actionbar_height">56px</dimen>
+    <dimen name="bluetooth_landscape_switchbar_height">46px</dimen>
+    <dimen name="bluetooth_portrait_switchbar_height">56px</dimen>
+
     <!-- WiFi Preferences -->
     <dimen name="wifi_divider_height">1px</dimen>
     <dimen name="wifi_preference_badge_padding">8dip</dimen>
