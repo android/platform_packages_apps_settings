@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.hardware.usb.UsbManager;
 import android.os.Bundle;
 import android.os.UserManager;
@@ -49,16 +50,30 @@ public class UsbModeChooserActivity extends Activity {
         mUsbManager = (UsbManager) getSystemService(Context.USB_SERVICE);
         boolean isFileTransferRestricted = ((UserManager) getSystemService(Context.USER_SERVICE))
                 .hasUserRestriction(UserManager.DISALLOW_USB_FILE_TRANSFER);
+        boolean isMidiSupported = getPackageManager().hasSystemFeature(PackageManager.FEATURE_MIDI);
+
         CharSequence[] items;
         if (isFileTransferRestricted) {
-            items = new CharSequence[] { getText(R.string.usb_use_charging_only), getText(R.string.usb_use_MIDI)};
-            mFunctions = new String[] { null, UsbManager.USB_FUNCTION_MIDI };
+            if (isMidiSupported) {
+                items = new CharSequence[] { getText(R.string.usb_use_charging_only), getText(R.string.usb_use_MIDI)};
+                mFunctions = new String[] { null, UsbManager.USB_FUNCTION_MIDI };
+            } else {
+                items = new CharSequence[] { getText(R.string.usb_use_charging_only) };
+                mFunctions = new String[] { null };
+            }
         } else {
-            items = new CharSequence[] {
+            if (isMidiSupported) {
+                items = new CharSequence[] {
                     getText(R.string.usb_use_charging_only), getText(R.string.usb_use_file_transfers),
                     getText(R.string.usb_use_photo_transfers), getText(R.string.usb_use_MIDI)};
-            mFunctions = new String[] { null, UsbManager.USB_FUNCTION_MTP,
-                    UsbManager.USB_FUNCTION_PTP, UsbManager.USB_FUNCTION_MIDI };
+                mFunctions = new String[] { null, UsbManager.USB_FUNCTION_MTP,
+                                            UsbManager.USB_FUNCTION_PTP, UsbManager.USB_FUNCTION_MIDI };
+            } else {
+                items = new CharSequence[] {
+                    getText(R.string.usb_use_charging_only), getText(R.string.usb_use_file_transfers),
+                    getText(R.string.usb_use_photo_transfers) };
+                mFunctions = new String[] { null, UsbManager.USB_FUNCTION_MTP, UsbManager.USB_FUNCTION_PTP };
+            }
         }
 
         final AlertDialog levelDialog;
