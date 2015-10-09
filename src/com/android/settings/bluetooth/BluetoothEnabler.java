@@ -44,6 +44,7 @@ public final class BluetoothEnabler implements SwitchBar.OnSwitchChangeListener 
     private Context mContext;
     private Switch mSwitch;
     private SwitchBar mSwitchBar;
+    private int mLastState;
     private boolean mValidListener;
     private final LocalBluetoothAdapter mLocalAdapter;
     private final IntentFilter mIntentFilter;
@@ -128,6 +129,9 @@ public final class BluetoothEnabler implements SwitchBar.OnSwitchChangeListener 
     }
 
     void handleStateChanged(int state) {
+        if (mLastState == state)
+           return;
+        mLastState = state;
         switch (state) {
             case BluetoothAdapter.STATE_TURNING_ON:
                 mSwitch.setEnabled(false);
