@@ -38,6 +38,7 @@ public class WifiApEnabler {
 
     private WifiManager mWifiManager;
     private final IntentFilter mIntentFilter;
+    private int mWifiSavedState = 0;
 
     ConnectivityManager mCm;
     private String[] mWifiRegexs;
@@ -66,6 +67,14 @@ public class WifiApEnabler {
                 updateTetherState(available.toArray(), active.toArray(), errored.toArray());
             } else if (Intent.ACTION_AIRPLANE_MODE_CHANGED.equals(action)) {
                 enableWifiSwitch();
+            } else if (WifiManager.WIFI_STATE_CHANGED_ACTION.equals(action)) {
+                if (intent.getIntExtra(WifiManager.EXTRA_WIFI_STATE,
+                WifiManager.WIFI_STATE_UNKNOWN) == WifiManager.WIFI_STATE_ENABLED) {
+                    if (mWifiSavedState == 1) {
+                        enableWifiSwitch();
+                        mWifiSavedState = 0;
+                    }
+                }
             }
         }
     };
@@ -84,6 +93,7 @@ public class WifiApEnabler {
         mIntentFilter = new IntentFilter(WifiManager.WIFI_AP_STATE_CHANGED_ACTION);
         mIntentFilter.addAction(ConnectivityManager.ACTION_TETHER_STATE_CHANGED);
         mIntentFilter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+        mIntentFilter.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION);
     }
 
     public void resume() {
@@ -163,6 +173,8 @@ public class WifiApEnabler {
                 mSwitch.setChecked(true);
                 /* Doesnt need the airplane check */
                 mSwitch.setEnabled(true);
+                mWifiSavedState = Settings.Global.getInt(mContext.getContentResolver(),
+                                      Settings.Global.WIFI_SAVED_STATE, 0);
                 break;
             case WifiManager.WIFI_AP_STATE_DISABLING:
                 mSwitch.setSummary(R.string.wifi_tether_stopping);
@@ -172,7 +184,11 @@ public class WifiApEnabler {
             case WifiManager.WIFI_AP_STATE_DISABLED:
                 mSwitch.setChecked(false);
                 mSwitch.setSummary(mOriginalSummary);
-                enableWifiSwitch();
+                /* If saved WiFi state is enabled, WiFi will restore to enabled state
+                   on softAP disable. in this case call enableWifiSwitch on WIFI_STATE_ENABLED
+                   event */
+                if (mWifiSavedState == 0)
+                    enableWifiSwitch();
                 break;
             default:
                 mSwitch.setChecked(false);
