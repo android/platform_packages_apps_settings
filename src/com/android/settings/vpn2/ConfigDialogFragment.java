@@ -122,6 +122,15 @@ public class ConfigDialogFragment extends DialogFragment implements
             // Disable profile if connected
             disconnect(profile);
 
+            if (KeyStore.getInstance().contains(Credentials.LOCKDOWN_VPN)) {
+                 final String profileName = new String(KeyStore.getInstance().get(Credentials.LOCKDOWN_VPN));
+                 final VpnProfile lockProfile = VpnProfile.decode(
+                         profileName, KeyStore.getInstance().get(Credentials.VPN + profileName));
+
+                 if (lockProfile != null && (lockProfile.key).equals(profile.key)) {
+                     KeyStore.getInstance().delete(Credentials.LOCKDOWN_VPN, KeyStore.UID_SELF);
+                 }
+            }
             // Delete from KeyStore
             KeyStore.getInstance().delete(Credentials.VPN + profile.key, KeyStore.UID_SELF);
         }
