@@ -109,7 +109,6 @@ public class VpnSettings extends SettingsPreferenceFragment implements
         if (mUserManager.hasUserRestriction(UserManager.DISALLOW_CONFIG_VPN)) {
             mUnavailable = true;
             setPreferenceScreen(new PreferenceScreen(getActivity(), null));
-            setHasOptionsMenu(false);
             return;
         }
 
@@ -128,6 +127,11 @@ public class VpnSettings extends SettingsPreferenceFragment implements
     @Override
     public void onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
+
+        // Disable all actions if VPN configuration has been disallowed
+        for (int i = 0; i < menu.size(); i++) {
+            menu.getItem(i).setEnabled(!mUnavailable);
+        }
 
         // Hide lockdown VPN on devices that require IMS authentication
         if (SystemProperties.getBoolean("persist.radio.imsregrequired", false)) {
