@@ -87,6 +87,11 @@
             android:title="@string/bugreport_in_power"
             android:summary="@string/bugreport_in_power_summary"/>
 
+        <SwitchPreference
+            android:key="reboot_in_power"
+            android:title="@string/reboot_in_power"
+            android:summary="@string/reboot_in_power_summary"/>
+
         <PreferenceScreen android:key="mock_location_app"
             android:title="@string/mock_location_app" />
 
