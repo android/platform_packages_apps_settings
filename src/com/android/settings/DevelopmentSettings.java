@@ -114,6 +114,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private static final String MSAA_PROPERTY = "debug.egl.force_msaa";
     private static final String BUGREPORT = "bugreport";
     private static final String BUGREPORT_IN_POWER_KEY = "bugreport_in_power";
+    private static final String REBOOT_IN_POWER_KEY = "reboot_in_power";
     private static final String OPENGL_TRACES_PROPERTY = "debug.egl.trace";
     private static final String TUNER_UI_KEY = "tuner_ui";
 
@@ -208,6 +209,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private SwitchPreference mEnableTerminal;
     private Preference mBugreport;
     private SwitchPreference mBugreportInPower;
+    private SwitchPreference mRebootInPower;
     private SwitchPreference mKeepScreenOn;
     private SwitchPreference mBtHciSnoopLog;
     private SwitchPreference mEnableOemUnlock;
@@ -322,6 +324,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
 
         mBugreport = findPreference(BUGREPORT);
         mBugreportInPower = findAndInitSwitchPref(BUGREPORT_IN_POWER_KEY);
+        mRebootInPower = findAndInitSwitchPref(REBOOT_IN_POWER_KEY);
         mKeepScreenOn = findAndInitSwitchPref(KEEP_SCREEN_ON);
         mBtHciSnoopLog = findAndInitSwitchPref(BT_HCI_SNOOP_LOG);
         mEnableOemUnlock = findAndInitSwitchPref(ENABLE_OEM_UNLOCK);
@@ -584,6 +587,8 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         }
         updateSwitchPreference(mBugreportInPower, Settings.Secure.getInt(cr,
                 Settings.Secure.BUGREPORT_IN_POWER_MENU, 0) != 0);
+        updateSwitchPreference(mRebootInPower, Settings.Global.getInt(cr,
+                Settings.Global.REBOOT_IN_POWER_MENU, 0) != 0);
         updateSwitchPreference(mKeepScreenOn, Settings.Global.getInt(cr,
                 Settings.Global.STAY_ON_WHILE_PLUGGED_IN, 0) != 0);
         updateSwitchPreference(mBtHciSnoopLog, Settings.Secure.getInt(cr,
@@ -622,6 +627,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
         updateShowAllANRsOptions();
         updateVerifyAppsOverUsbOptions();
         updateBugreportOptions();
+        updateRebootOptions();
         updateForceRtlOptions();
         updateLogdSizeValues();
         updateWifiDisplayCertificationOptions();
@@ -884,6 +890,23 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             getPackageManager().setComponentEnabledSetting(
                     bugreportStorageProviderComponentName,
                     PackageManager.COMPONENT_ENABLED_STATE_ENABLED, 0);
+        }
+    }
+
+    private void updateRebootOptions() {
+        if ("user".equals(Build.TYPE)) {
+            final ContentResolver resolver = getActivity().getContentResolver();
+            final boolean adbEnabled = Settings.Global.getInt(
+                    resolver, Settings.Global.ADB_ENABLED, 0) != 0;
+            if (adbEnabled) {
+                mRebootInPower.setEnabled(true);
+            } else {
+                mRebootInPower.setEnabled(false);
+                mRebootInPower.setChecked(false);
+                Settings.Global.putInt(resolver, Settings.Global.REBOOT_IN_POWER_MENU, 0);
+            }
+        } else {
+            mRebootInPower.setEnabled(true);
         }
     }
 
@@ -1651,6 +1674,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                 mVerifyAppsOverUsb.setEnabled(false);
                 mVerifyAppsOverUsb.setChecked(false);
                 updateBugreportOptions();
+                updateRebootOptions();
             }
         } else if (preference == mClearAdbKeys) {
             if (mAdbKeysDialog != null) dismissDialogs();
@@ -1668,6 +1692,10 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
             Settings.Secure.putInt(getActivity().getContentResolver(),
                     Settings.Secure.BUGREPORT_IN_POWER_MENU,
                     mBugreportInPower.isChecked() ? 1 : 0);
+        } else if (preference == mRebootInPower) {
+            Settings.Global.putInt(getActivity().getContentResolver(),
+                    Settings.Global.REBOOT_IN_POWER_MENU,
+                    mRebootInPower.isChecked() ? 1 : 0);
         } else if (preference == mKeepScreenOn) {
             Settings.Global.putInt(getActivity().getContentResolver(),
                     Settings.Global.STAY_ON_WHILE_PLUGGED_IN,
@@ -1839,6 +1867,7 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                 mVerifyAppsOverUsb.setEnabled(true);
                 updateVerifyAppsOverUsbOptions();
                 updateBugreportOptions();
+                updateRebootOptions();
             } else {
                 // Reset the toggle
                 mEnableAdb.setChecked(false);
