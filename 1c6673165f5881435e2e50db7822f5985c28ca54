@@ -16,6 +16,24 @@
       "revId": "1c6673165f5881435e2e50db7822f5985c28ca54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "166509c4_1d2cd732",
+        "filename": "src/com/android/settings/deviceinfo/UsbModeChooserActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1010077
+      },
+      "writtenOn": "2015-11-02T14:13:53Z",
+      "side": 1,
+      "message": "Ah, what a silly oversight. Fixing.",
+      "parentUuid": "963d79a1_54b804ac",
+      "revId": "1c6673165f5881435e2e50db7822f5985c28ca54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
