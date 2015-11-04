@@ -18,6 +18,7 @@ package com.android.settings.deviceinfo;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.hardware.usb.UsbManager;
 import android.hardware.usb.UsbPort;
 import android.hardware.usb.UsbPortStatus;
@@ -36,6 +37,7 @@ public class UsbBackend {
     public static final int MODE_DATA_MIDI   = 0x03 << 1;
 
     private final boolean mRestricted;
+    private final boolean mMidi;
 
     private UserManager mUserManager;
     private UsbManager mUsbManager;
@@ -53,6 +55,8 @@ public class UsbBackend {
         mUsbManager = context.getSystemService(UsbManager.class);
 
         mRestricted = mUserManager.hasUserRestriction(UserManager.DISALLOW_USB_FILE_TRANSFER);
+        mMidi = context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_MIDI);
+
         UsbPort[] ports = mUsbManager.getPorts();
         // For now look for a connected port, in the future we should identify port in the
         // notification and pick based on that.
@@ -83,7 +87,8 @@ public class UsbBackend {
             return MODE_DATA_MTP;
         } else if (mUsbManager.isFunctionEnabled(UsbManager.USB_FUNCTION_PTP)) {
             return MODE_DATA_PTP;
-        } else if (mUsbManager.isFunctionEnabled(UsbManager.USB_FUNCTION_MIDI)) {
+        } else if (mUsbManager.isFunctionEnabled(UsbManager.USB_FUNCTION_MIDI) &&
+                   mMidi) {
             return MODE_DATA_MIDI;
         }
         return MODE_DATA_NONE; // ...
