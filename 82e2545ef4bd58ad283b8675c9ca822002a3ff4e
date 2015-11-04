@@ -34,6 +34,24 @@
       "revId": "82e2545ef4bd58ad283b8675c9ca822002a3ff4e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96b57aae_a864bbf3",
+        "filename": "src/com/android/settings/deviceinfo/UsbBackend.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1010077
+      },
+      "writtenOn": "2015-11-04T14:21:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9653ba54_3b22e3e6",
+      "revId": "82e2545ef4bd58ad283b8675c9ca822002a3ff4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
