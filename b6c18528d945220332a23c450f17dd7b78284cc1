@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "568ea242_68459f97",
+        "filename": "src/com/android/settings/deviceinfo/StorageSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2015-11-05T17:49:23Z",
+      "side": 1,
+      "message": "Why do we need this method?  We actually do want to refresh to show the user the \"Ejecting...\" status in the UI, etc.",
+      "range": {
+        "startLine": 133,
+        "startChar": 27,
+        "endLine": 133,
+        "endChar": 45
+      },
+      "revId": "b6c18528d945220332a23c450f17dd7b78284cc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d69a9277_41535cbf",
+        "filename": "src/com/android/settings/deviceinfo/StorageVolumePreference.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1013508
+      },
+      "writtenOn": "2015-11-05T17:49:23Z",
+      "side": 1,
+      "message": "This looks OK to me.",
+      "range": {
+        "startLine": 70,
+        "startChar": 21,
+        "endLine": 70,
+        "endChar": 27
+      },
+      "revId": "b6c18528d945220332a23c450f17dd7b78284cc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
