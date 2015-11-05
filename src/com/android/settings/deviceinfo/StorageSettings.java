@@ -98,7 +98,6 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
         final Context context = getActivity();
 
         mStorageManager = context.getSystemService(StorageManager.class);
-        mStorageManager.registerListener(mStorageListener);
 
         addPreferencesFromResource(R.xml.device_info_storage);
 
@@ -114,7 +113,9 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
         @Override
         public void onVolumeStateChanged(VolumeInfo vol, int oldState, int newState) {
             if (isInteresting(vol)) {
-                refresh();
+                if (isStateInteresting(newState)) {
+                    refresh();
+                }
             }
         }
     };
@@ -123,6 +124,17 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
         switch(vol.getType()) {
             case VolumeInfo.TYPE_PRIVATE:
             case VolumeInfo.TYPE_PUBLIC:
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    private static boolean isStateInteresting(int State) {
+        switch(State) {
+            case VolumeInfo.STATE_UNMOUNTED:
+            case VolumeInfo.STATE_MOUNTED:
+            case VolumeInfo.STATE_MOUNTED_READ_ONLY:
                 return true;
             default:
                 return false;
