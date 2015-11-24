@@ -519,6 +519,8 @@
         <item>IMSI</item>
         <!-- Do not translate. -->
         <item>GID</item>
+        <!-- Do not translate. -->
+        <item>ICCID</item>
     </string-array>
 
     <string-array translatable="false" name="mvno_type_values">
@@ -530,6 +532,8 @@
         <item>imsi</item>
         <!-- Do not translate. -->
         <item>gid</item>
+        <!-- Do not translate. -->
+        <item>iccid</item>
     </string-array>
 
     <!-- Apps on SD installation location options in ApplicationSettings -->
