@@ -15,6 +15,8 @@
 -->
 
 <resources>
+    <!-- Whether or not the charging sounds are to be displayed for this device when charged -->
+    <bool name="has_charging_sounds">true</bool>
     <!-- Whether or not the dock settings are to be displayed for this device when docked -->
     <bool name="has_dock_settings">false</bool>
     <!-- Whether there is a boot sounds checkbox -->
