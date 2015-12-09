@@ -79,7 +79,12 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
             TYPE_SYSTEM, KEY_SCREEN_LOCKING_SOUNDS, System.LOCKSCREEN_SOUNDS_ENABLED, DEFAULT_ON);
 
     private static final SettingPref PREF_CHARGING_SOUNDS = new SettingPref(
-            TYPE_GLOBAL, KEY_CHARGING_SOUNDS, Global.CHARGING_SOUNDS_ENABLED, DEFAULT_ON);
+            TYPE_GLOBAL, KEY_CHARGING_SOUNDS, Global.CHARGING_SOUNDS_ENABLED, DEFAULT_ON) {
+        @Override
+        public boolean isApplicable(Context context) {
+            return hasChargingSounds(context);
+        }
+    };
 
     private static final SettingPref PREF_DOCKING_SOUNDS = new SettingPref(
             TYPE_GLOBAL, KEY_DOCKING_SOUNDS, Global.DOCK_SOUNDS_ENABLED, DEFAULT_ON) {
@@ -204,6 +209,10 @@ public class OtherSoundSettings extends SettingsPreferenceFragment implements In
     public void onPause() {
         super.onPause();
         mSettingsObserver.register(false);
+    }
+
+    private static boolean hasChargingSounds(Context context) {
+        return context.getResources().getBoolean(R.bool.has_charging_sounds);
     }
 
     private static boolean hasDockSettings(Context context) {
