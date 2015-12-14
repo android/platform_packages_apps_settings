@@ -1359,7 +1359,8 @@ public class SettingsActivity extends Activity
                         activityInfo.packageName, activityInfo.name);
                 Utils.updateTileToSpecificActivityFromMetaDataOrRemove(this, tile);
 
-                if (category.externalIndex == -1) {
+                if (category.externalIndex == -1
+                        || category.externalIndex > category.getTilesCount()) {
                     // If no location for external tiles has been specified for this category,
                     // then just put them at the end.
                     category.addTile(tile);
