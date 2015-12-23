@@ -1,0 +1,10 @@
+Code-Review+1: Yu Y Chen <yu.y.chen@intel.com>
+Code-Review+1: Zhiquan Liu <zhiquan.liu@intel.com>
+Code-Review+1: Changbin Du <changbin.du@intel.com>
+Code-Review+2: Nick Kralevich <nnk@google.com>
+Verified+1: Nick Kralevich <nnk@google.com>
+Submitted-by: Nick Kralevich <nnk@google.com>
+Submitted-at: Wed, 23 Dec 2015 18:55:10 +0000
+Reviewed-on: https://android-review.googlesource.com/188974
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
