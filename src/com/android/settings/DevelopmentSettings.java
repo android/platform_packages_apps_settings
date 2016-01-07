@@ -148,6 +148,10 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private static final String SELECT_LOGD_SIZE_KEY = "select_logd_size";
     private static final String SELECT_LOGD_SIZE_PROPERTY = "persist.logd.size";
     private static final String SELECT_LOGD_TAG_PROPERTY = "persist.log.tag";
+    // Tricky, isLoggable only checks for first character, assumes silence
+    private static final String SELECT_LOGD_TAG_SILENCE = "Settings";
+    private static final String SELECT_LOGD_SNET_TAG_PROPERTY = "persist.log.tag.snet_event_log";
+    private static final String SELECT_LOGD_RUNTIME_SNET_TAG_PROPERTY = "log.tag.snet_event_log";
     private static final String SELECT_LOGD_DEFAULT_SIZE_PROPERTY = "ro.logd.size";
 
     private static final String WIFI_DISPLAY_CERTIFICATION_KEY = "wifi_display_certification";
@@ -179,8 +183,6 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     private static final String PERSISTENT_DATA_BLOCK_PROP = "ro.frp.pst";
 
     private static final int REQUEST_CODE_ENABLE_OEM_UNLOCK = 0;
-
-    private static String DEFAULT_LOG_RING_BUFFER_SIZE_IN_BYTES = "262144"; // 256K
 
     private static final int[] MOCK_LOCATION_APP_OPS = new int[] {AppOpsManager.OP_MOCK_LOCATION};
 
@@ -1257,22 +1259,28 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
                 mMobileDataAlwaysOn.isChecked() ? 1 : 0);
     }
 
+    private String defaultLogdSizeValue() {
+        String defaultValue = SystemProperties.get(SELECT_LOGD_DEFAULT_SIZE_PROPERTY);
+        if ((defaultValue == null) || (defaultValue.length() == 0)) {
+            if (SystemProperties.get("ro.config.low_ram").equals("true")) {
+                defaultValue = "65536";
+            } else {
+                defaultValue = "262144";
+            }
+        }
+        return defaultValue;
+    }
+
     private void updateLogdSizeValues() {
         if (mLogdSize != null) {
             String currentTag = SystemProperties.get(SELECT_LOGD_TAG_PROPERTY);
             String currentValue = SystemProperties.get(SELECT_LOGD_SIZE_PROPERTY);
-            if ((currentTag != null) && currentTag.equals("S")) {
+            if ((currentTag != null) && currentTag.startsWith(SELECT_LOGD_TAG_SILENCE)) {
+                // 32768 is merely a marker
                 currentValue = "32768";
             }
-            if (currentValue == null) {
-                currentValue = SystemProperties.get(SELECT_LOGD_DEFAULT_SIZE_PROPERTY);
-                if (currentValue == null) {
-                    if (SystemProperties.get("ro.config.low_ram").equals("true")) {
-                        currentValue = "64K";
-                    } else {
-                        currentValue = "256K";
-                    }
-                }
+            if ((currentValue == null) || (currentValue.length() == 0)) {
+                currentValue = defaultLogdSizeValue();
             }
             String[] values = getResources().getStringArray(R.array.select_logd_size_values);
             String[] titles = getResources().getStringArray(R.array.select_logd_size_titles);
@@ -1297,20 +1305,42 @@ public class DevelopmentSettings extends SettingsPreferenceFragment
     }
 
     private void writeLogdSizeOption(Object newValue) {
-        String currentValue = SystemProperties.get(SELECT_LOGD_DEFAULT_SIZE_PROPERTY);
-        if (currentValue != null) {
-            DEFAULT_LOG_RING_BUFFER_SIZE_IN_BYTES = currentValue;
+        boolean disable = (newValue != null) && (newValue.toString().equals("32768"));
+        String currentTag = SystemProperties.get(SELECT_LOGD_TAG_PROPERTY);
+        if (currentTag == null) {
+            currentTag = "";
         }
-        boolean disable = (newValue != null) && (newValue.equals("32768"));
+        // filter clean and unstack all references to our setting
+        String newTag = currentTag.replaceAll(
+                ",+" + SELECT_LOGD_TAG_SILENCE, "").replaceFirst(
+                "^" + SELECT_LOGD_TAG_SILENCE + ",*", "").replaceAll(
+                ",+", ",").replaceFirst(
+                ",+$", "");
         if (disable) {
+            // 32768 is merely a marker, 64K is our lowest log buffer size
             newValue = "65536";
-            SystemProperties.set(SELECT_LOGD_TAG_PROPERTY, "S");
-        } else {
-            SystemProperties.set(SELECT_LOGD_TAG_PROPERTY, "");
+            // Make sure snet_event_log get through first, but do not override
+            String snetValue = SystemProperties.get(SELECT_LOGD_SNET_TAG_PROPERTY);
+            if ((snetValue == null) || (snetValue.length() == 0)) {
+                snetValue = SystemProperties.get(SELECT_LOGD_RUNTIME_SNET_TAG_PROPERTY);
+                if ((snetValue == null) || (snetValue.length() == 0)) {
+                    SystemProperties.set(SELECT_LOGD_SNET_TAG_PROPERTY, "I");
+                }
+            }
+            // Silence all log sources, security logs notwithstanding
+            if (newTag.length() != 0) {
+                newTag = "," + newTag;
+            }
+            // Stack settings, stack to help preserve original value
+            newTag = SELECT_LOGD_TAG_SILENCE + newTag;
         }
-        final String size = (newValue != null) ?
-                newValue.toString() : DEFAULT_LOG_RING_BUFFER_SIZE_IN_BYTES;
-        SystemProperties.set(SELECT_LOGD_SIZE_PROPERTY, size);
+        if (!newTag.equals(currentTag)) {
+            SystemProperties.set(SELECT_LOGD_TAG_PROPERTY, newTag);
+        }
+        String defaultValue = defaultLogdSizeValue();
+        final String size = ((newValue != null) && (newValue.toString().length() != 0)) ?
+            newValue.toString() : defaultValue;
+        SystemProperties.set(SELECT_LOGD_SIZE_PROPERTY, defaultValue.equals(size) ? "" : size);
         SystemProperties.set("ctl.start", "logd-reinit");
         pokeSystemProperties();
         updateLogdSizeValues();
