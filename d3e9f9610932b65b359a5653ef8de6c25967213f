@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "2a9aa3ee_621a925d",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1310,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2016-01-08T22:06:07Z",
+      "side": 1,
+      "message": "I just don\u0027t like \"32768\" being magical and requiring comments to tell me so. I vote for getting rid of this comment and using a constant above to set \"32768\".\n\nTwist.",
+      "parentUuid": "4a74377b_5893c17e",
+      "revId": "d3e9f9610932b65b359a5653ef8de6c25967213f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a74377b_15267492",
         "filename": "src/com/android/settings/DevelopmentSettings.java",
         "patchSetId": 1
