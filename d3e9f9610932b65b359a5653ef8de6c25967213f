@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "ca6827a1_dcfa61db",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1310,
+      "author": {
+        "id": 1069543
+      },
+      "writtenOn": "2016-01-08T21:50:55Z",
+      "side": 1,
+      "message": "So \"32768\" means \"Off\"? Wouldn\u0027t it be better to define it as a constant then so in the code (eg line 1280) it looks like:\n\n  currentValue \u003d LOG_SIZE_VALUE_OFF;",
+      "parentUuid": "8a62afbe_bacccd42",
+      "revId": "d3e9f9610932b65b359a5653ef8de6c25967213f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a74377b_15267492",
         "filename": "src/com/android/settings/DevelopmentSettings.java",
         "patchSetId": 1
