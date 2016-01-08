@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ca6827a1_fc472531",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1280,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-01-08T21:14:50Z",
+      "side": 1,
+      "message": "I rationalized this with the following thoughts.\n\nThis marker is in a series of translatable strings. We are setting policy here that the smallest log buffer size we will set is 65536. Problem is I would be tempted to use it above in defaultLogdSizeValue which is a separate policy that is written to match what logd actually has built-in. Abstracting them into values above (1000 lines above no less) bothers me, I feel like I want these close at hand.",
+      "parentUuid": "6a901bcb_e14860b7",
+      "revId": "d3e9f9610932b65b359a5653ef8de6c25967213f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a79fb72_79cde386",
         "filename": "src/com/android/settings/DevelopmentSettings.java",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2016-01-08T20:59:37Z",
       "side": 1,
       "message": "Is the marker checked anywhere? What is it for?",
+      "revId": "d3e9f9610932b65b359a5653ef8de6c25967213f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a62afbe_bacccd42",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1310,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-01-08T21:14:50Z",
+      "side": 1,
+      "message": "Marker is checked  on line 1300 and reset in line 1264. It is part of the set of translatable strings inside the xml files where the menu selection for \"Off\" reports back 32768. The check occurs in the layers of window management code and partly in the fragment at 1286-1292.\n\nThere are two lists that are being checked, one is the values (which 32768 is a member of) and the other is the titles (which \"Off\", \"64K\" to \"16M\" are a member of).",
+      "parentUuid": "6a79fb72_79cde386",
       "revId": "d3e9f9610932b65b359a5653ef8de6c25967213f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
