@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a74377b_15267492",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1333,
+      "author": {
+        "id": 1020966
+      },
+      "writtenOn": "2016-01-08T18:23:51Z",
+      "side": 1,
+      "message": "Probably easier to use the String.replace method",
+      "range": {
+        "startLine": 1333,
+        "startChar": 16,
+        "endLine": 1333,
+        "endChar": 21
+      },
+      "revId": "d3e9f9610932b65b359a5653ef8de6c25967213f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
