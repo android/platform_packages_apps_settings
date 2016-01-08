@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "4a74377b_5893c17e",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1310,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-01-08T21:57:05Z",
+      "side": 1,
+      "message": "SELECT_LOGD_OFF_SIZE_MARKER_VALUE\n\nis what I chose (SELECT_LOGD to associate it with this code, OFF to tell me what it means, and SIZE to tell me what units it is describing, MARKER to tell me it is a marker and not to be repeated in the legitimate set, and VALUE to tell me it is).\n\nI could be convinced to change MARKER to UNIQUE if you twist my rubber arm.",
+      "parentUuid": "ca6827a1_dcfa61db",
+      "revId": "d3e9f9610932b65b359a5653ef8de6c25967213f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a74377b_15267492",
         "filename": "src/com/android/settings/DevelopmentSettings.java",
         "patchSetId": 1
