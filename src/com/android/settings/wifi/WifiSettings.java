@@ -197,7 +197,7 @@ public class WifiSettings extends RestrictedSettingsFragment
         super.onActivityCreated(savedInstanceState);
 
         mWifiTracker =
-                new WifiTracker(getActivity(), this, mBgThread.getLooper(), true, true, false);
+                new WifiTracker(getActivity(), this, mBgThread.getLooper(), false, true, false);
         mWifiManager = mWifiTracker.getManager();
 
         mConnectListener = new WifiManager.ActionListener() {
