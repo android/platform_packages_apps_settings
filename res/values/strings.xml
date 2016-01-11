@@ -2018,6 +2018,8 @@
     <string name="wallpaper_settings_title">Wallpaper</string>
     <!-- Wallpaper settings fragment title [CHAR LIMIT=30] -->
     <string name="wallpaper_settings_fragment_title">Choose wallpaper from</string>
+    <!-- Wallpaper settings duplicate labels: shows parenthesis around the application name when duplicate labels exist -->
+    <string name="wallpaper_settings_duplicate_labels">%1$s (%2$s)</string>
     <!-- Display settings screen, trigger for screen saver options -->
     <string name="screensaver_settings_title">Daydream</string>
     <!-- Display settings screen, summary fragment for screen saver options, activated when docked or asleep and charging -->
