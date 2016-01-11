@@ -19,11 +19,15 @@ package com.android.settings;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceScreen;
+import android.text.TextUtils;
+
 import com.android.internal.logging.MetricsLogger;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
@@ -61,6 +65,21 @@ public class WallpaperTypeSettings extends SettingsPreferenceFragment implements
 
         final PreferenceScreen parent = getPreferenceScreen();
         parent.setOrderingAsAdded(false);
+
+        // check for duplicate entry labels
+        List<CharSequence> fullList = new ArrayList<CharSequence>();
+        List<CharSequence> duplicates = new ArrayList<CharSequence>();
+        for (ResolveInfo info : rList) {
+            CharSequence title = info.loadLabel(pm);
+            if (!TextUtils.isEmpty(title)) {
+                if (!fullList.contains(title)) {
+                    fullList.add(title);
+                } else {
+                    duplicates.add(title);
+                }
+            }
+        }
+
         // Add Preference items for each of the matching activities
         for (ResolveInfo info : rList) {
             Preference pref = new Preference(getActivity());
@@ -70,9 +89,26 @@ public class WallpaperTypeSettings extends SettingsPreferenceFragment implements
             pref.setIntent(prefIntent);
             CharSequence label = info.loadLabel(pm);
             if (label == null) label = info.activityInfo.packageName;
-            pref.setTitle(label);
-            parent.addPreference(pref);
+
+            // If we have a duplicate label add the app's name in parenthesis to eliminate confusion
+            if (!duplicates.contains(label)) {
+                pref.setTitle(label);
+                parent.addPreference(pref);
+            } else {
+                pref.setTitle(label + " (" + getApplicationName(pm, info) + ")");
+                parent.addPreference(pref);
+            }
         }
+    }
+
+    private String getApplicationName(PackageManager pm, ResolveInfo info) {
+        ApplicationInfo ai;
+        try {
+            ai = pm.getApplicationInfo(info.activityInfo.packageName, 0);
+        } catch (final NameNotFoundException e) {
+            ai = null;
+        }
+        return (String) (ai != null ? pm.getApplicationLabel(ai) : "(unknown)");
     }
 
     public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
