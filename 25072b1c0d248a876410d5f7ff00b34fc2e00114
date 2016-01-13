@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07623a24_68ae47bd",
+        "filename": "src/com/android/settings/WallpaperTypeSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1060398
+      },
+      "writtenOn": "2016-01-13T20:05:46Z",
+      "side": 1,
+      "message": "use set instead of list?\n\nAnother approach where this can be achieved in a single for-loop below is by using a HashMap\u003cCharSequence, Preference\u003e and reset the title  of an existing entry.",
+      "range": {
+        "startLine": 70,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 12
+      },
+      "revId": "25072b1c0d248a876410d5f7ff00b34fc2e00114",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07623a24_a8e05f26",
+        "filename": "src/com/android/settings/WallpaperTypeSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1060398
+      },
+      "writtenOn": "2016-01-13T20:05:46Z",
+      "side": 1,
+      "message": "You xml strings for such formatting",
+      "range": {
+        "startLine": 98,
+        "startChar": 45,
+        "endLine": 98,
+        "endChar": 63
+      },
+      "revId": "25072b1c0d248a876410d5f7ff00b34fc2e00114",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87562a44_20e62b02",
+        "filename": "src/com/android/settings/WallpaperTypeSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1060398
+      },
+      "writtenOn": "2016-01-13T20:05:46Z",
+      "side": 1,
+      "message": "move this outside if condition?",
+      "range": {
+        "startLine": 99,
+        "startChar": 16,
+        "endLine": 99,
+        "endChar": 43
+      },
+      "revId": "25072b1c0d248a876410d5f7ff00b34fc2e00114",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "678e9643_fd679362",
+        "filename": "src/com/android/settings/WallpaperTypeSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1060398
+      },
+      "writtenOn": "2016-01-13T20:05:46Z",
+      "side": 1,
+      "message": "directly use resolveInfo.activityInfo.applicationInfo?",
+      "range": {
+        "startLine": 105,
+        "startChar": 7,
+        "endLine": 111,
+        "endChar": 80
+      },
+      "revId": "25072b1c0d248a876410d5f7ff00b34fc2e00114",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
