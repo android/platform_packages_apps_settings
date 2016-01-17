@@ -246,6 +246,7 @@ public class WifiConfigController implements TextWatcher,
                     ((CheckBox)mView.findViewById(R.id.wifi_advanced_togglebox)).setChecked(true);
                     mView.findViewById(R.id.wifi_advanced_fields).setVisibility(View.VISIBLE);
                 }
+                mConfigUi.setSubmitButton(res.getString(R.string.wifi_connect));
             }
 
             if (mModify) {
