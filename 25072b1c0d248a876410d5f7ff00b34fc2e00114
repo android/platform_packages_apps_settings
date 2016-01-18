@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e7c1a66d_63299058",
+        "filename": "src/com/android/settings/WallpaperTypeSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1020405
+      },
+      "writtenOn": "2016-01-18T22:22:28Z",
+      "side": 1,
+      "message": "the List interface is faster to add to and iterate over than Set because Set still has to check for pre-existing objects when adding so I didn\u0027t see any advantage to using either interface specifically.  I just used List by default because the imports were already present.",
+      "parentUuid": "07623a24_68ae47bd",
+      "range": {
+        "startLine": 70,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 12
+      },
+      "revId": "25072b1c0d248a876410d5f7ff00b34fc2e00114",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07623a24_a8e05f26",
         "filename": "src/com/android/settings/WallpaperTypeSettings.java",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2016-01-13T20:05:46Z",
       "side": 1,
       "message": "You xml strings for such formatting",
+      "range": {
+        "startLine": 98,
+        "startChar": 45,
+        "endLine": 98,
+        "endChar": 63
+      },
+      "revId": "25072b1c0d248a876410d5f7ff00b34fc2e00114",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e7c1a66d_43368cbc",
+        "filename": "src/com/android/settings/WallpaperTypeSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1020405
+      },
+      "writtenOn": "2016-01-18T22:22:28Z",
+      "side": 1,
+      "message": "Would you like this string to have xliff formatting or will \"$1%s ($2%s)\" be sufficient?",
+      "parentUuid": "07623a24_a8e05f26",
       "range": {
         "startLine": 98,
         "startChar": 45,
