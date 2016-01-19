@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "676db610_8b50ecb8",
+        "filename": "src/com/android/settings/WallpaperTypeSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1060398
+      },
+      "writtenOn": "2016-01-19T18:28:16Z",
+      "side": 1,
+      "message": "How about using a HashMap\u003cCharSequence, Preference\u003e and a single loop?",
+      "parentUuid": "e7c1a66d_63299058",
+      "range": {
+        "startLine": 70,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 12
+      },
+      "revId": "25072b1c0d248a876410d5f7ff00b34fc2e00114",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07623a24_a8e05f26",
         "filename": "src/com/android/settings/WallpaperTypeSettings.java",
         "patchSetId": 1
