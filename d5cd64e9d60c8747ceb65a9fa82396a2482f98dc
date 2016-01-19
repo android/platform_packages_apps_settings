@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2752dead_26eff76a",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 2022,
+      "author": {
+        "id": 1060398
+      },
+      "writtenOn": "2016-01-19T18:28:16Z",
+      "side": 1,
+      "message": "Provide id and example for both formatting strings like:\n\u003cxliff:g id\u003d\"activity_name\" example\u003d\"Wallpapers\"\u003e%1$s\u003c/xliff:g\u003e (\u003cxliff:g id\u003d\"app_name\" example\u003d\"My wallpaper app\"\u003e%2$s\u003c/xliff:g\u003e)\n\nThat would help translators identify whats the difference between %1$s \u0026 %2$s",
+      "range": {
+        "startLine": 2022,
+        "startChar": 0,
+        "endLine": 2022,
+        "endChar": 75
+      },
+      "revId": "d5cd64e9d60c8747ceb65a9fa82396a2482f98dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87562a44_d8e2b7bd",
+        "filename": "src/com/android/settings/WallpaperTypeSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1060398
+      },
+      "writtenOn": "2016-01-19T18:28:16Z",
+      "side": 1,
+      "message": "I don\u0027t think this condition is necessary. This could also lead to one activity name getting formatted and another with the same name not getting formatted.",
+      "range": {
+        "startLine": 102,
+        "startChar": 31,
+        "endLine": 102,
+        "endChar": 55
+      },
+      "revId": "d5cd64e9d60c8747ceb65a9fa82396a2482f98dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
