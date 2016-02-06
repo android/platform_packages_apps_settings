@@ -1097,14 +1097,14 @@
     <string name="restore_default_apn" msgid="8178010218751639581">"Återställer standardinställningar för APN."</string>
     <string name="menu_restore" msgid="8260067415075573273">"Återställ standardinst."</string>
     <string name="restore_default_apn_completed" msgid="2824775307377604897">"Återställning av standardinställningar för APN har slutförts."</string>
-    <string name="reset_network_title" msgid="4557113742173895074">"Nätverksinställningarna har återställts"</string>
+    <string name="reset_network_title" msgid="4557113742173895074">"Återställ nätverksinställningar"</string>
     <string name="reset_network_desc" msgid="581668983587311282">"Alla nätverksinställningar kommer att återställas, inklusive:\n\n"<li>"Wi‑Fi"</li>\n<li>"Mobildata"</li>\n<li>"Bluetooth"</li></string>
     <string name="reset_network_button_text" msgid="2035676527471089853">"Återställ inställningar"</string>
     <string name="reset_network_final_desc" msgid="6388371121099245116">"Vill du återställa alla nätverksinställningar? Det går inte att ångra den här åtgärden."</string>
     <string name="reset_network_final_button_text" msgid="1797434793741744635">"Återställ inställningar"</string>
     <string name="reset_network_confirm_title" msgid="1759888886976962773">"Vill du återställa?"</string>
     <string name="network_reset_not_available" msgid="7188610385577164676">"Den här användaren kan inte återställa nätverket"</string>
-    <string name="reset_network_complete_toast" msgid="787829973559541880">"Nätverksinställningarna har inte återställts"</string>
+    <string name="reset_network_complete_toast" msgid="787829973559541880">"Nätverksinställningarna har återställts"</string>
     <string name="device_reset_title" msgid="2384019005638768076">"Återställ enhet"</string>
     <string name="master_clear_title" msgid="5907939616087039756">"Återställ standardinst."</string>
     <string name="master_clear_desc" product="tablet" msgid="9146059417023157222">"Detta raderar all data från enhetens "<b>"interna lagringsutrymme"</b>", bland annat:\n\n"<li>"ditt Google-konto"</li>\n<li>"system- och appdata och inställningar"</li>\n<li>"hämtade appar"</li></string>
