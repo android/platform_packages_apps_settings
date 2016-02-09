@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dd48f8a2_a1efdaa1",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1071489
+      },
+      "writtenOn": "2016-02-09T01:27:23Z",
+      "side": 1,
+      "message": "Can this be renamed to something more readable, e.g., disable_absolute_volume ?",
+      "range": {
+        "startLine": 174,
+        "startChar": 55,
+        "endLine": 174,
+        "endChar": 68
+      },
+      "revId": "bbf4f66143d1b61ee8de10f0cf796b5f58a91c19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
