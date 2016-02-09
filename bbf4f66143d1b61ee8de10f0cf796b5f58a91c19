@@ -22,6 +22,30 @@
       "revId": "bbf4f66143d1b61ee8de10f0cf796b5f58a91c19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d3aacf7_e9242df5",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1071489
+      },
+      "writtenOn": "2016-02-09T01:29:43Z",
+      "side": 1,
+      "message": "Please ignore - saw your reply in the corresponding CL\n\nhttps://android-review.googlesource.com/#/c/201791/2/btif/src/btif_rc.c",
+      "parentUuid": "dd48f8a2_a1efdaa1",
+      "range": {
+        "startLine": 174,
+        "startChar": 55,
+        "endLine": 174,
+        "endChar": 68
+      },
+      "revId": "bbf4f66143d1b61ee8de10f0cf796b5f58a91c19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
