@@ -32,6 +32,7 @@ import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.Drawable;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.AnimationUtils;
@@ -243,7 +244,10 @@ public class FingerprintEnrollEnrolling extends FingerprintEnrollBase
 
     @Override
     public void onEnrollmentHelp(CharSequence helpString) {
-        mErrorText.setText(helpString);
+        if (!TextUtils.isEmpty(helpString)) {
+            mErrorText.removeCallbacks(mTouchAgainRunnable);
+            showError(helpString);
+        }
     }
 
     @Override
