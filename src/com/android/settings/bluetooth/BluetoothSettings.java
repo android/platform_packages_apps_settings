@@ -20,6 +20,8 @@ import static android.os.UserManager.DISALLOW_CONFIG_BLUETOOTH;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothInputDevice;
+import android.bluetooth.BluetoothProfile;
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -84,6 +86,8 @@ public final class BluetoothSettings extends DeviceListPreferenceFragment implem
 
     private boolean mInitialScanStarted;
     private boolean mInitiateDiscoverable;
+    public  static boolean mHidProfileConnected;
+    private int     mDeviceBondState;
 
     private TextView mEmptyView;
     private SwitchBar mSwitchBar;
@@ -105,6 +109,13 @@ public final class BluetoothSettings extends DeviceListPreferenceFragment implem
                 updateDeviceName(context);
             }
 
+            if (action.equals(BluetoothInputDevice.ACTION_CONNECTION_STATE_CHANGED)) {
+                if (intent.getIntExtra(BluetoothProfile.EXTRA_STATE, -1) == BluetoothProfile.STATE_CONNECTED){
+                    Log.d (TAG, "Hid profile connected");
+                    mHidProfileConnected = true;
+                }
+            }
+
             if (state == BluetoothAdapter.STATE_ON) {
                 mInitiateDiscoverable = true;
             }
@@ -121,6 +132,7 @@ public final class BluetoothSettings extends DeviceListPreferenceFragment implem
     public BluetoothSettings() {
         super(DISALLOW_CONFIG_BLUETOOTH);
         mIntentFilter = new IntentFilter(BluetoothAdapter.ACTION_LOCAL_NAME_CHANGED);
+        mIntentFilter.addAction(BluetoothInputDevice.ACTION_CONNECTION_STATE_CHANGED);
     }
 
     @Override
@@ -295,6 +307,12 @@ public final class BluetoothSettings extends DeviceListPreferenceFragment implem
                 preferenceScreen.setOrderingAsAdded(true);
                 mDevicePreferenceMap.clear();
 
+                /* Enforcing a scan if Hid profile is connected and device bonding is complete */
+                if (mHidProfileConnected && (mDeviceBondState == BluetoothDevice.BOND_BONDED)) {
+                      BluetoothAdapter.getDefaultAdapter().startDiscovery();
+                      mHidProfileConnected = false;
+                }
+
                 if (isUiRestricted()) {
                     messageId = R.string.bluetooth_empty_list_user_restricted;
                     break;
@@ -436,6 +454,7 @@ public final class BluetoothSettings extends DeviceListPreferenceFragment implem
     public void onDeviceBondStateChanged(CachedBluetoothDevice cachedDevice, int bondState) {
         setDeviceListGroup(getPreferenceScreen());
         removeAllDevices();
+        mDeviceBondState = bondState;
         updateContent(mLocalAdapter.getBluetoothState());
     }
 
