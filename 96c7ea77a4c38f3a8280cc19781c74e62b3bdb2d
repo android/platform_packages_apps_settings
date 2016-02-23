@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a29de171_6584eecd",
+        "filename": "res/values/bools.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1042886
+      },
+      "writtenOn": "2016-02-23T14:02:53Z",
+      "side": 1,
+      "message": "This needs to be true or you need a CL for each of the devices in AOSP that support charging sounds, otherwise this will cause a regression for those devices.",
+      "revId": "96c7ea77a4c38f3a8280cc19781c74e62b3bdb2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
