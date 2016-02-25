@@ -129,20 +129,29 @@ public abstract class ManagedServiceSettings extends SettingsPreferenceFragment 
             }
             // show a scary dialog
             new ScaryWarningDialogFragment()
-                    .setServiceInfo(service, title)
-                    .show(getFragmentManager(), "dialog");
+                    .setServiceInfo(service, title, mConfig)
+                    .show(getChildFragmentManager(), "dialog");
             return false;
         }
     }
 
-    public class ScaryWarningDialogFragment extends DialogFragment {
+    private void doPositiveClick(ComponentName cn) {
+        mServiceListing.setEnabled(cn, true);
+    }
+
+    public static class ScaryWarningDialogFragment extends DialogFragment {
         static final String KEY_COMPONENT = "c";
         static final String KEY_LABEL = "l";
+        static final String KEY_TITLE = "t";
+        static final String KEY_SUMMARY = "s";
 
-        public ScaryWarningDialogFragment setServiceInfo(ComponentName cn, String label) {
+        public ScaryWarningDialogFragment setServiceInfo(ComponentName cn, String label,
+                    Config config) {
             Bundle args = new Bundle();
             args.putString(KEY_COMPONENT, cn.flattenToString());
             args.putString(KEY_LABEL, label);
+            args.putInt(KEY_TITLE, config.warningDialogTitle);
+            args.putInt(KEY_SUMMARY, config.warningDialogSummary);
             setArguments(args);
             return this;
         }
@@ -154,17 +163,21 @@ public abstract class ManagedServiceSettings extends SettingsPreferenceFragment 
             final String label = args.getString(KEY_LABEL);
             final ComponentName cn = ComponentName.unflattenFromString(args
                     .getString(KEY_COMPONENT));
+            final int titleRes = args.getInt(KEY_TITLE);
+            final int summaryRes = args.getInt(KEY_SUMMARY);
 
-            final String title = getResources().getString(mConfig.warningDialogTitle, label);
-            final String summary = getResources().getString(mConfig.warningDialogSummary, label);
-            return new AlertDialog.Builder(mContext)
+            final String title = getResources().getString(titleRes, label);
+            final String summary = getResources().getString(summaryRes, label);
+            return new AlertDialog.Builder(getActivity())
                     .setMessage(summary)
                     .setTitle(title)
                     .setCancelable(true)
                     .setPositiveButton(R.string.allow,
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                    mServiceListing.setEnabled(cn, true);
+                                    ManagedServiceSettings parent =
+                                            (ManagedServiceSettings) getParentFragment();
+                                    parent.doPositiveClick(cn);
                                 }
                             })
                     .setNegativeButton(R.string.deny,
