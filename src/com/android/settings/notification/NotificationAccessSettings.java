@@ -85,7 +85,7 @@ public class NotificationAccessSettings extends ManagedServiceSettings {
             // show a friendly dialog
             new FriendlyWarningDialogFragment()
                     .setServiceInfo(service, title)
-                    .show(getFragmentManager(), "friendlydialog");
+                    .show(getChildFragmentManager(), "friendlydialog");
             return false;
         } else {
             return super.setEnabled(service, title, enable);
@@ -102,7 +102,14 @@ public class NotificationAccessSettings extends ManagedServiceSettings {
         });
     }
 
-    public class FriendlyWarningDialogFragment extends DialogFragment {
+    private void doPositiveClick(ComponentName cn) {
+        mServiceListing.setEnabled(cn, false);
+        if (!mNm.isNotificationPolicyAccessGrantedForPackage(cn.getPackageName())) {
+            deleteRules(mContext, cn.getPackageName());
+        }
+    }
+
+    public static class FriendlyWarningDialogFragment extends DialogFragment {
         static final String KEY_COMPONENT = "c";
         static final String KEY_LABEL = "l";
 
@@ -124,17 +131,15 @@ public class NotificationAccessSettings extends ManagedServiceSettings {
 
             final String summary = getResources().getString(
                     R.string.notification_listener_disable_warning_summary, label);
-            return new AlertDialog.Builder(mContext)
+            return new AlertDialog.Builder(getActivity())
                     .setMessage(summary)
                     .setCancelable(true)
                     .setPositiveButton(R.string.notification_listener_disable_warning_confirm,
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                    mServiceListing.setEnabled(cn, false);
-                                    if (!mNm.isNotificationPolicyAccessGrantedForPackage(
-                                            cn.getPackageName())) {
-                                        deleteRules(mContext, cn.getPackageName());
-                                    }
+                                    NotificationAccessSettings parent =
+                                            (NotificationAccessSettings) getParentFragment();
+                                    parent.doPositiveClick(cn);
                                 }
                             })
                     .setNegativeButton(R.string.notification_listener_disable_warning_cancel,
