@@ -65,4 +65,7 @@
     <!-- When true show double-tap gesture setting. -->
     <bool name="config_gesture_double_tap_settings_enabled">false</bool>
 
+    <!-- If true, IMS registration state menu is displayed. -->
+    <bool name="config_showImsRegistrationState">false</bool>
+
 </resources>

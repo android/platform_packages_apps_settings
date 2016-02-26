@@ -36,6 +36,8 @@ import android.os.SystemClock;
 import android.os.SystemProperties;
 import android.os.UserManager;
 import android.support.v7.preference.Preference;
+import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
@@ -65,6 +67,7 @@ public class Status extends SettingsPreferenceFragment {
     private static final String KEY_WIMAX_MAC_ADDRESS = "wimax_mac_address";
     private static final String KEY_SIM_STATUS = "sim_status";
     private static final String KEY_IMEI_INFO = "imei_info";
+    private static final String KEY_IMS_REGISTRATION_STATE = "ims_reg_state";
 
     // Broadcasts to listen to for connectivity changes.
     private static final String[] CONNECTIVITY_INTENTS = {
@@ -93,6 +96,7 @@ public class Status extends SettingsPreferenceFragment {
     private Preference mIpAddress;
     private Preference mWifiMacAddress;
     private Preference mWimaxMacAddress;
+    private Preference mImsStatus;
 
     private Handler mHandler;
 
@@ -170,6 +174,7 @@ public class Status extends SettingsPreferenceFragment {
         mWifiMacAddress = findPreference(KEY_WIFI_MAC_ADDRESS);
         mWimaxMacAddress = findPreference(KEY_WIMAX_MAC_ADDRESS);
         mIpAddress = findPreference(KEY_IP_ADDRESS);
+        mImsStatus = findPreference(KEY_IMS_REGISTRATION_STATE);
 
         mRes = getResources();
         mUnknown = mRes.getString(R.string.device_info_default);
@@ -307,11 +312,26 @@ public class Status extends SettingsPreferenceFragment {
         }
     }
 
+    private void setImsRegistrationStatus() {
+        if (getResources().getBoolean(R.bool.config_showImsRegistrationState)) {
+            TelephonyManager tm = (TelephonyManager)
+                    getSystemService(Context.TELEPHONY_SERVICE);
+            boolean isImsRegistered = tm.isImsRegistered(
+                    SubscriptionManager.getDefaultDataSubscriptionId());
+            mImsStatus.setSummary(isImsRegistered ?
+                    R.string.ims_reg_status_registered : R.string.ims_reg_status_not_registered);
+        } else {
+            removePreferenceFromScreen(KEY_IMS_REGISTRATION_STATE);
+            mImsStatus = null;
+        }
+    }
+
     void updateConnectivity() {
         setWimaxStatus();
         setWifiStatus();
         setBtStatus();
         setIpAddressStatus();
+        setImsRegistrationStatus();
     }
 
     void updateTimes() {

@@ -7867,4 +7867,11 @@
 
     <!-- Warning when activating the automatic storage manager on legacy devices. [CHAR LIMIT=NONE] -->
     <string name="automatic_storage_manager_activation_warning">Your storage is now being managed by the storage manager</string>
+
+    <!--Label of IMS registration header -->
+    <string name="ims_reg_title">"IMS registration state"</string>
+    <!--Used when IMS registration state is registered -->
+    <string name="ims_reg_status_registered">"Registered"</string>
+    <!--Used when IMS registration state is not registered -->
+    <string name="ims_reg_status_not_registered">"Not registered"</string>
 </resources>
