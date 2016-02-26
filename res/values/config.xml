@@ -38,4 +38,7 @@
     <!-- When true enable color temperature setting. -->
     <bool name="config_enableColorTemperature">false</bool>
 
+    <!-- If true, IMS registration state menu is displayed. -->
+    <bool name="config_showImsRegistrationState">false</bool>
+
 </resources>
