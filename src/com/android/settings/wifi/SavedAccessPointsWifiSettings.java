@@ -113,6 +113,15 @@ public class SavedAccessPointsWifiSettings extends SettingsPreferenceFragment
                     context, mUserBadgeCache, true);
             preference.setIcon(null);
             preferenceScreen.addPreference(preference);
+
+            // If this is re-launch from saved state, mDlgAccessPoint is not null
+            // as onCreateDialog() have been already called. Otherwise it's null.
+            if (mDlgAccessPoint != null &&
+                    mDlgAccessPoint.getSsidStr().equals(accessPoints.get(i).getSsidStr())) {
+                // In this case, restored mSelectedAccessPoint needs to be updated because
+                // it haven't been set a tag of the corresponding AccessPointPreference.
+                mSelectedAccessPoint = preference.getAccessPoint();
+            }
         }
 
         if(getPreferenceScreen().getPreferenceCount() < 1) {
