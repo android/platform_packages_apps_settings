@@ -19,6 +19,7 @@ package com.android.settings.notification;
 import android.app.AlertDialog;
 import android.app.AutomaticZenRule;
 import android.app.Dialog;
+import android.app.Fragment;
 import android.app.DialogFragment;
 import android.app.FragmentManager;
 import android.app.TimePickerDialog;
@@ -95,7 +96,7 @@ public class ZenModeScheduleRuleSettings extends ZenModeRuleSettingsBase {
 
         final FragmentManager mgr = getFragmentManager();
 
-        mStart = new TimePickerPreference(getPrefContext(), mgr);
+        mStart = new TimePickerPreference(getPrefContext(), mgr, this);
         mStart.setKey(KEY_START_TIME);
         mStart.setTitle(R.string.zen_mode_start_time);
         mStart.setCallback(new TimePickerPreference.Callback() {
@@ -117,7 +118,7 @@ public class ZenModeScheduleRuleSettings extends ZenModeRuleSettingsBase {
         root.addPreference(mStart);
         mStart.setDependency(mDays.getKey());
 
-        mEnd = new TimePickerPreference(getPrefContext(), mgr);
+        mEnd = new TimePickerPreference(getPrefContext(), mgr, this);
         mEnd.setKey(KEY_END_TIME);
         mEnd.setTitle(R.string.zen_mode_end_time);
         mEnd.setCallback(new TimePickerPreference.Callback() {
@@ -233,7 +234,8 @@ public class ZenModeScheduleRuleSettings extends ZenModeRuleSettingsBase {
         private int mMinute;
         private Callback mCallback;
 
-        public TimePickerPreference(Context context, final FragmentManager mgr) {
+        public TimePickerPreference(Context context, final FragmentManager mgr,
+                final ZenModeScheduleRuleSettings fragment) {
             super(context);
             mContext = context;
             setPersistent(false);
@@ -241,8 +243,8 @@ public class ZenModeScheduleRuleSettings extends ZenModeRuleSettingsBase {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
                     final TimePickerFragment frag = new TimePickerFragment();
-                    frag.pref = TimePickerPreference.this;
-                    frag.show(mgr, TimePickerPreference.class.getName());
+                    frag.setPrefInfo(TimePickerPreference.this.getKey(), fragment)
+                            .show(mgr, TimePickerPreference.class.getName());
                     return true;
                 }
             });
@@ -277,16 +279,35 @@ public class ZenModeScheduleRuleSettings extends ZenModeRuleSettingsBase {
 
         public static class TimePickerFragment extends DialogFragment implements
                 TimePickerDialog.OnTimeSetListener {
+            static final String KEY_PREFERENCE = "key_pref";
+
             public TimePickerPreference pref;
+
+            public TimePickerFragment setPrefInfo(String key, Fragment target) {
+                Bundle args = new Bundle();
+                args.putString(KEY_PREFERENCE, key);
+                setArguments(args);
+                setTargetFragment(target, 0);
+                return this;
+            }
 
             @Override
             public Dialog onCreateDialog(Bundle savedInstanceState) {
+                pref = getPref();
                 final boolean usePref = pref != null && pref.mHourOfDay >= 0 && pref.mMinute >= 0;
                 final Calendar c = Calendar.getInstance();
                 final int hour = usePref ? pref.mHourOfDay : c.get(Calendar.HOUR_OF_DAY);
                 final int minute = usePref ? pref.mMinute : c.get(Calendar.MINUTE);
                 return new TimePickerDialog(getActivity(), this, hour, minute,
                         DateFormat.is24HourFormat(getActivity()));
+            }
+
+            private TimePickerPreference getPref() {
+                final Bundle args = getArguments();
+                final String key = args.getString(KEY_PREFERENCE);
+                ZenModeScheduleRuleSettings parent =
+                        (ZenModeScheduleRuleSettings) getTargetFragment();
+                return (TimePickerPreference) parent.getPreferenceScreen().findPreference(key);
             }
 
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
