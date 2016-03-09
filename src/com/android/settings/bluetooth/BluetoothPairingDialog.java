@@ -195,8 +195,8 @@ public final class BluetoothPairingDialog extends AlertActivity implements
         } else if (mDevice.getPhonebookAccessPermission() == BluetoothDevice.ACCESS_REJECTED){
             contactSharing.setChecked(false);
         } else {
-            if (mDevice.getBluetoothClass().getDeviceClass()
-                    == BluetoothClass.Device.AUDIO_VIDEO_HANDSFREE) {
+            if ((mDevice.getBluetoothClass() != null) && (mDevice.getBluetoothClass().getDeviceClass()
+                    == BluetoothClass.Device.AUDIO_VIDEO_HANDSFREE)) {
                 contactSharing.setChecked(true);
                 mDevice.setPhonebookAccessPermission(BluetoothDevice.ACCESS_ALLOWED);
             } else {
@@ -268,8 +268,8 @@ public final class BluetoothPairingDialog extends AlertActivity implements
         } else if (mDevice.getPhonebookAccessPermission() == BluetoothDevice.ACCESS_REJECTED){
             contactSharing.setChecked(false);
         } else {
-            if (mDevice.getBluetoothClass().getDeviceClass()
-                    == BluetoothClass.Device.AUDIO_VIDEO_HANDSFREE) {
+            if ((mDevice.getBluetoothClass() != null) && (mDevice.getBluetoothClass().getDeviceClass()
+                    == BluetoothClass.Device.AUDIO_VIDEO_HANDSFREE)) {
                 contactSharing.setChecked(true);
                 mDevice.setPhonebookAccessPermission(BluetoothDevice.ACCESS_ALLOWED);
             } else {
