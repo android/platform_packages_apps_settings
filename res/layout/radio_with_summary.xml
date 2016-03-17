@@ -41,6 +41,7 @@
         android:layout_height="wrap_content"
         android:paddingBottom="8dp"
         android:paddingStart="52dp"
+        android:paddingEnd="?android:attr/dialogPreferredPadding"
         android:textAppearance="?android:attr/textAppearanceListItemSecondary"
         android:textColor="?android:attr/textColorSecondary"
         android:maxLines="10" />
