@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string-array name="sim_slot">
+    <item>(көрсетілмеген)</item>
+    <item>1-SIM карта ұяшығы</item>
+    <item>2-SIM карта ұяшығы</item>
+  </string-array>
+</resources>

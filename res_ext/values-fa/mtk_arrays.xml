@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string-array name="sim_slot">
+    <item>"(مشخص نشده)"</item>
+    <item>شیار سیم 1</item>
+    <item>شیار سیم 2</item>
+  </string-array>
+</resources>

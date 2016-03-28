@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+  <string-array name="sim_slot">
+    <item>"(неизвестни)"</item>
+    <item>Гнездо 1 за SIM</item>
+    <item>Гнездо 2 за SIM</item>
+  </string-array>
+
+</resources>

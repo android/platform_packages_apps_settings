@@ -58,6 +58,7 @@ import com.android.settings.ProxySelector;
 import com.android.settings.R;
 import com.android.settingslib.wifi.AccessPoint;
 import com.android.settings.Utils;
+import com.mediatek.wifi.WifiConfigControllerExt;
 
 import java.net.InetAddress;
 import java.net.Inet4Address;
@@ -147,6 +148,9 @@ public class WifiConfigController implements TextWatcher,
 
     private Context mContext;
 
+    /// M: Wi-Fi EAP SIM/AKA
+    private WifiConfigControllerExt mWifiConfigControllerExt;
+
     public WifiConfigController(
             WifiConfigUiBase parent, View view, AccessPoint accessPoint, boolean edit,
             boolean modify) {
@@ -162,6 +166,8 @@ public class WifiConfigController implements TextWatcher,
         mTextViewChangedHandler = new Handler();
         mContext = mConfigUi.getContext();
         final Resources res = mContext.getResources();
+        /// M: Wi-Fi EAP SIM/AKA
+        mWifiConfigControllerExt = new WifiConfigControllerExt(this, mConfigUi, mView);
 
         mLevels = res.getStringArray(R.array.wifi_signal);
         PHASE2_PEAP_ADAPTER = new ArrayAdapter<String>(
@@ -201,6 +207,9 @@ public class WifiConfigController implements TextWatcher,
             mConfigUi.setTitle(mAccessPoint.getSsid());
 
             ViewGroup group = (ViewGroup) mView.findViewById(R.id.info);
+
+            ///M: Wi-Fi EAP SIM/AKA
+            mWifiConfigControllerExt.addViews(mConfigUi, mAccessPoint.getSecurityString(false));
 
             boolean showAdvancedFields = false;
             if (mAccessPoint.isSaved()) {
@@ -296,8 +305,9 @@ public class WifiConfigController implements TextWatcher,
                             addRow(group, R.string.wifi_frequency, band);
                         }
                     }
-
+                    /** M: Google original code witch conflicts with MTK code , phased out now
                     addRow(group, R.string.wifi_security, mAccessPoint.getSecurityString(false));
+                     */
                     mView.findViewById(R.id.ip_fields).setVisibility(View.GONE);
                 }
                 if (mAccessPoint.isSaved() || mAccessPoint.isActive()) {
@@ -484,6 +494,10 @@ public class WifiConfigController implements TextWatcher,
             default:
                 return null;
         }
+
+        ///M: Wi-Fi EAP SIM/AKA
+        mWifiConfigControllerExt.setConfig(config,
+                mAccessPointSecurity, mPasswordView, mEapMethodSpinner);
 
         config.setIpConfiguration(
                 new IpConfiguration(mIpAssignment, mProxySettings,
@@ -701,6 +715,9 @@ public class WifiConfigController implements TextWatcher,
         } else {
             showEapFieldsByMethod(mEapMethodSpinner.getSelectedItemPosition());
         }
+
+        ///M: Wi-Fi EAP SIM/AKA
+        mWifiConfigControllerExt.setGEMINI(mEapMethodSpinner.getSelectedItemPosition());
     }
 
     /**
@@ -1033,4 +1050,18 @@ public class WifiConfigController implements TextWatcher,
                 InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD :
                 InputType.TYPE_TEXT_VARIATION_PASSWORD));
     }
+
+
+    /// M: Wi-Fi EAP SIM/AKA @{
+    public AccessPoint getAccessPoint() {
+        return mAccessPoint;
+    }
+
+    public WifiConfiguration getAccessPointConfig() {
+        if (mAccessPoint != null) {
+            return mAccessPoint.getConfig();
+        }
+        return null;
+    }
+    ///@}
 }

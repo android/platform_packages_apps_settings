@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string-array name="sim_slot">
+    <item>"(δεν έχει καθοριστεί)"</item>
+    <item>Υποδοχή κάρτας SIM 1</item>
+    <item>Υποδοχή κάρτας SIM 2</item>
+  </string-array>
+</resources>

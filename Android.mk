@@ -11,6 +11,7 @@ LOCAL_SRC_FILES := \
         src/com/android/settings/EventLogTags.logtags
 
 LOCAL_RESOURCE_DIR := $(LOCAL_PATH)/res
+LOCAL_RESOURCE_DIR += $(LOCAL_PATH)/res_ext
 
 LOCAL_PACKAGE_NAME := Settings
 LOCAL_CERTIFICATE := platform

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string-array name="sim_slot">
+    <item>"(nav norādīts)"</item>
+    <item>1. SIM atvere</item>
+    <item>2. SIM atvere</item>
+  </string-array>
+</resources>

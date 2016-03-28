@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string-array name="sim_slot">
+    <item>"(no especificado)"</item>
+    <item>Ranura para tarjetas SIM 1</item>
+    <item>Ranura para tarjetas SIM 2</item>
+  </string-array>
+</resources>
