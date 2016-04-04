@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0efc1c7c_ac1ea346",
+        "filename": "res/layout/radio_with_summary.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1042886
+      },
+      "writtenOn": "2016-04-04T13:14:42Z",
+      "side": 1,
+      "message": "Should this just be applied to the whole LinearLayout instead?",
+      "revId": "7a40e134bcdabf9e29cd4bac9dda549ac14fdc00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
