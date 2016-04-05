@@ -16,6 +16,24 @@
       "revId": "7a40e134bcdabf9e29cd4bac9dda549ac14fdc00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce2764f3_8a1bcb56",
+        "filename": "res/layout/radio_with_summary.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1077031
+      },
+      "writtenOn": "2016-04-05T03:03:51Z",
+      "side": 1,
+      "message": "Yes, it is better to apply it to the whole LinearLayout.",
+      "parentUuid": "0efc1c7c_ac1ea346",
+      "revId": "7a40e134bcdabf9e29cd4bac9dda549ac14fdc00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
