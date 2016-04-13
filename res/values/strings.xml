@@ -7044,6 +7044,7 @@
         <item>Colors optimized for digital content</item>
     </string-array>
 
+
     <!-- Name of feature to change color setting for the display [CHAR LIMIT=60] -->
     <string name="picture_color_mode">Picture color mode</string>
 
@@ -7055,4 +7056,7 @@
 
     <!-- Description of the setting to change the display's color temperature -->
     <string name="color_temperature_desc">Enable cool temperature</string>
+
+    <!-- Title of EAP SIM/AKA sim slot selection spinner -->
+    <string name="sim_slot">SIM slot</string>
 </resources>

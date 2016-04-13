@@ -2941,4 +2941,5 @@
     <string name="picture_color_mode_desc" msgid="1141891467675548590">"Використовувати sRGB"</string>
     <string name="color_temperature" msgid="2501579996151717270">"Температура кольорів дисплея"</string>
     <string name="color_temperature_desc" msgid="3603319696846982249">"Увімкнути холодну температуру"</string>
+    <string name="sim_slot">Отвір SIM</string>
 </resources>

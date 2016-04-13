@@ -37,6 +37,7 @@ import android.net.wifi.WifiInfo;
 import android.os.Handler;
 import android.security.Credentials;
 import android.security.KeyStore;
+import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
@@ -98,6 +99,13 @@ public class WifiConfigController implements TextWatcher,
     public static final int WIFI_PEAP_PHASE2_MSCHAPV2 	= 1;
     public static final int WIFI_PEAP_PHASE2_GTC        = 2;
 
+    /* EAP SIM/AKA sim slot selection */
+    public static final int WIFI_EAP_METHOD_AKA_PLUS = 6;
+    public static final int WIFI_EAP_METHOD_DUAL_SIM = 2;
+    private static final String SIM_STRING = "SIM";
+    private static final String AKA_STRING = "AKA";
+    private static final String AKA_PLUS_STRING = "AKA\'";
+
     /* Phase2 methods supported by PEAP are limited */
     private final ArrayAdapter<String> PHASE2_PEAP_ADAPTER;
     /* Full list of phase2 methods */
@@ -134,6 +142,9 @@ public class WifiConfigController implements TextWatcher,
     private TextView mProxyPortView;
     private TextView mProxyExclusionListView;
     private TextView mProxyPacView;
+
+    // EAP SIM/AKA sim slot selection
+    private Spinner mSimSlot;
 
     private IpAssignment mIpAssignment = IpAssignment.UNASSIGNED;
     private ProxySettings mProxySettings = ProxySettings.UNASSIGNED;
@@ -480,6 +491,23 @@ public class WifiConfigController implements TextWatcher,
                     // clear password
                     config.enterpriseConfig.setPassword(mPasswordView.getText().toString());
                 }
+                // EAP SIM/AKA sim slot config
+                config.simSlot = addQuote(-1);
+                String eapMethodStr = (String) mEapMethodSpinner.getSelectedItem();
+                Log.d(TAG, "selected eap method:" + eapMethodStr);
+                if (AKA_STRING.equals(eapMethodStr) || SIM_STRING.equals(eapMethodStr)
+                        || AKA_PLUS_STRING.equals(eapMethodStr)) {
+                    if (mSimSlot == null) {
+                        mSimSlot = (Spinner) mView.findViewById(R.id.sim_slot);
+                    }
+                    if (TelephonyManager.getDefault().getPhoneCount() == WIFI_EAP_METHOD_DUAL_SIM) {
+                        int simSlot = mSimSlot.getSelectedItemPosition() - 1;
+                        if (simSlot > -1) {
+                            config.simSlot = addQuote(simSlot);
+                        }
+                    }
+                    Log.d(TAG, "EAP SIM/AKA config: " + config.toString());
+                }
                 break;
             default:
                 return null;
@@ -490,6 +518,10 @@ public class WifiConfigController implements TextWatcher,
                                     mStaticIpConfiguration, mHttpProxy));
 
         return config;
+    }
+
+    private String addQuote(int s) {
+        return "\"" + s + "\"";
     }
 
     private boolean ipAndProxyFieldsAreValid() {
@@ -701,6 +733,8 @@ public class WifiConfigController implements TextWatcher,
         } else {
             showEapFieldsByMethod(mEapMethodSpinner.getSelectedItemPosition());
         }
+
+        showEapSimSlotByMethod(mEapMethodSpinner.getSelectedItemPosition());
     }
 
     /**
@@ -952,6 +986,52 @@ public class WifiConfigController implements TextWatcher,
                     break;
                 }
             }
+        }
+    }
+
+    /**
+     * Show EAP SIM/AKA sim slot by method.
+     *
+     * @param eapMethod The EAP method of AP.
+     */
+    private void showEapSimSlotByMethod(int eapMethod) {
+        if (eapMethod == WIFI_EAP_METHOD_SIM || eapMethod == WIFI_EAP_METHOD_AKA
+                || eapMethod == WIFI_EAP_METHOD_AKA_PLUS) {
+            if (TelephonyManager.getDefault().getPhoneCount() == WIFI_EAP_METHOD_DUAL_SIM) {
+                mView.findViewById(R.id.sim_slot_fields).setVisibility(View.VISIBLE);
+                mSimSlot = (Spinner) mView.findViewById(R.id.sim_slot);
+                Context context = mConfigUi.getContext();
+                String[] tempSimAkaMethods = context.getResources()
+                        .getStringArray(R.array.sim_slot);
+                TelephonyManager telephonyManager =
+                        (TelephonyManager) mContext.getSystemService(Context.TELEPHONY_SERVICE);
+                int sum = telephonyManager.getSimCount();
+                Log.d(TAG, "the num of sim slot is :" + sum);
+                String[] simAkaMethods = new String[sum + 1];
+                for (int i = 0; i < (sum + 1); i++) {
+                    if (i < tempSimAkaMethods.length) {
+                        simAkaMethods[i] = tempSimAkaMethods[i];
+                    } else {
+                        simAkaMethods[i] = tempSimAkaMethods[1].replaceAll("1", "" + i);
+                    }
+                }
+                final ArrayAdapter<String> adapter = new ArrayAdapter<String>(context,
+                        android.R.layout.simple_spinner_item, simAkaMethods);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                mSimSlot.setAdapter(adapter);
+
+                if (mAccessPoint != null && mAccessPoint.isSaved()) {
+                    WifiConfiguration config = mAccessPoint.getConfig();
+                    if (config != null && config.simSlot != null) {
+                        String simSlot = config.simSlot.replace("\"", "");
+                        if (!simSlot.isEmpty()) {
+                            mSimSlot.setSelection(Integer.parseInt(simSlot) + 1);
+                        }
+                    }
+                }
+            }
+        } else {
+            mView.findViewById(R.id.sim_slot_fields).setVisibility(View.GONE);
         }
     }
 

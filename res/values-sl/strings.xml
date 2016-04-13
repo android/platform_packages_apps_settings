@@ -2941,4 +2941,5 @@
     <string name="picture_color_mode_desc" msgid="1141891467675548590">"Uporaba sRGB-ja"</string>
     <string name="color_temperature" msgid="2501579996151717270">"Barvna temperatura zaslona"</string>
     <string name="color_temperature_desc" msgid="3603319696846982249">"Omogočanje hladne temperature"</string>
+    <string name="sim_slot">Reža SIM</string>
 </resources>

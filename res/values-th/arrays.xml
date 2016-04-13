@@ -569,5 +569,10 @@
     <item msgid="4608643045752965568">"ชมพู"</item>
     <item msgid="6131821495505931173">"แดง"</item>
   </string-array>
+  <string-array name="sim_slot">
+    <item>"(ไม่ได้ระบุ)"</item>
+    <item>ช่องเสียบซิม 1</item>
+    <item>ช่องเสียบซิม 2</item>
+  </string-array>
     <!-- no translation found for usb_configuration_titles:0 (292902998500371970) -->
 </resources>

@@ -569,5 +569,10 @@
     <item msgid="4608643045752965568">"Merah Muda"</item>
     <item msgid="6131821495505931173">"Merah"</item>
   </string-array>
+  <string-array name="sim_slot">
+    <item>"(tidak ditentukan)"</item>
+    <item>Slot SIM 1</item>
+    <item>Slot SIM 2</item>
+  </string-array>
     <!-- no translation found for usb_configuration_titles:0 (292902998500371970) -->
 </resources>

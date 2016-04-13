@@ -569,5 +569,10 @@
     <item msgid="4608643045752965568">"Rózsaszín"</item>
     <item msgid="6131821495505931173">"Piros"</item>
   </string-array>
+  <string-array name="sim_slot">
+    <item>"(nincs megadva)"</item>
+    <item>1. SIM-nyílás</item>
+    <item>2. SIM-nyílás</item>
+  </string-array>
     <!-- no translation found for usb_configuration_titles:0 (292902998500371970) -->
 </resources>

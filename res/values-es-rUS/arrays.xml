@@ -569,5 +569,10 @@
     <item msgid="4608643045752965568">"Rosado"</item>
     <item msgid="6131821495505931173">"Rojo"</item>
   </string-array>
+  <string-array name="sim_slot">
+    <item>"(sin especificar)"</item>
+    <item>Ranura Sim 1</item>
+    <item>Ranura Sim 2</item>
+  </string-array>
     <!-- no translation found for usb_configuration_titles:0 (292902998500371970) -->
 </resources>

@@ -2943,4 +2943,5 @@
     <string name="picture_color_mode_desc" msgid="1141891467675548590">"Naudoti sRGB"</string>
     <string name="color_temperature" msgid="2501579996151717270">"Ekrano spalvų temperatūra"</string>
     <string name="color_temperature_desc" msgid="3603319696846982249">"Įgalinti šaltų spalvų temperatūrą"</string>
+    <string name="sim_slot">SIM kortelės lizdas</string>
 </resources>

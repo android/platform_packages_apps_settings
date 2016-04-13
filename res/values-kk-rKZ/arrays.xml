@@ -569,5 +569,10 @@
     <item msgid="4608643045752965568">"Қызғылт"</item>
     <item msgid="6131821495505931173">"Қызыл"</item>
   </string-array>
+  <string-array name="sim_slot">
+    <item>(көрсетілмеген)</item>
+    <item>1-SIM карта ұяшығы</item>
+    <item>2-SIM карта ұяшығы</item>
+  </string-array>
     <!-- no translation found for usb_configuration_titles:0 (292902998500371970) -->
 </resources>

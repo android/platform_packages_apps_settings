@@ -107,7 +107,26 @@
                             android:prompt="@string/wifi_eap_method"
                             android:entries="@array/wifi_eap_method" />
                 </LinearLayout>
-                
+
+                <LinearLayout android:id="@+id/sim_slot_fields"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/wifi_item"
+                        android:visibility="gone" >
+
+                    <TextView style="@style/wifi_item_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sim_slot" />
+
+                    <Spinner android:id="@+id/sim_slot"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/wifi_item_content"
+                        android:prompt="@string/sim_slot"
+                        android:entries="@array/sim_slot" />
+                </LinearLayout>
+
                 <LinearLayout android:id="@+id/l_phase2"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

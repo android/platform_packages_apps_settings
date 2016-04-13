@@ -2905,4 +2905,5 @@
     <string name="picture_color_mode_desc" msgid="1141891467675548590">"Ota sRGB käyttöön"</string>
     <string name="color_temperature" msgid="2501579996151717270">"Näytä värilämpötila"</string>
     <string name="color_temperature_desc" msgid="3603319696846982249">"Ota viileä värilämpötila käyttöön."</string>
+    <string name="sim_slot">SIM-korttipaikka</string>
 </resources>

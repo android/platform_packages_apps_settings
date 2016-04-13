@@ -569,5 +569,10 @@
     <item msgid="4608643045752965568">"Рожевий"</item>
     <item msgid="6131821495505931173">"Червоний"</item>
   </string-array>
+  <string-array name="sim_slot">
+    <item>"(не вказано)"</item>
+    <item>Отвір 1 SIM</item>
+    <item>Отвір 2 SIM</item>
+  </string-array>
     <!-- no translation found for usb_configuration_titles:0 (292902998500371970) -->
 </resources>

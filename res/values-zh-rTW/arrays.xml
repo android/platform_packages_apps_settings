@@ -569,5 +569,10 @@
     <item msgid="4608643045752965568">"粉紅色"</item>
     <item msgid="6131821495505931173">"紅色"</item>
   </string-array>
+  <string-array name="sim_slot">
+    <item>(未指定)</item>
+    <item>SIM 卡槽 1</item>
+    <item>SIM 卡槽 2</item>
+  </string-array>
     <!-- no translation found for usb_configuration_titles:0 (292902998500371970) -->
 </resources>

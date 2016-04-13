@@ -2905,4 +2905,5 @@
     <string name="picture_color_mode_desc" msgid="1141891467675548590">"Utilizar sRGB"</string>
     <string name="color_temperature" msgid="2501579996151717270">"Temperatura da cor do ecrã"</string>
     <string name="color_temperature_desc" msgid="3603319696846982249">"Ativar temperatura fria"</string>
+    <string name="sim_slot">Ranhura do SIM</string>
 </resources>

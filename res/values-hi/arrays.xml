@@ -569,5 +569,10 @@
     <item msgid="4608643045752965568">"गुलाबी"</item>
     <item msgid="6131821495505931173">"लाल"</item>
   </string-array>
+  <string-array name="sim_slot">
+    <item>"(अनिर्दिष्ट)"</item>
+    <item>सिम स्लॉट 1</item>
+    <item>सिम स्लॉट 2</item>
+  </string-array>
     <!-- no translation found for usb_configuration_titles:0 (292902998500371970) -->
 </resources>

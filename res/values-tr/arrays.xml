@@ -569,5 +569,10 @@
     <item msgid="4608643045752965568">"Pembe"</item>
     <item msgid="6131821495505931173">"Kırmızı"</item>
   </string-array>
+  <string-array name="sim_slot">
+    <item>"(belirtilmemiş)"</item>
+    <item>Sim Yuvası 1</item>
+    <item>Sim Yuvası 2</item>
+  </string-array>
     <!-- no translation found for usb_configuration_titles:0 (292902998500371970) -->
 </resources>

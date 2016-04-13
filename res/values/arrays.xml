@@ -1392,5 +1392,11 @@
         <!-- Do not translate. -->
         <item>0</item>
     </string-array>
+    <!-- Entry of EAP SIM/AKA sim slot selection spinner -->
+    <string-array name="sim_slot">
+        <item>(unspecified)</item>
+        <item>SIM slot 1</item>
+        <item>SIM slot 2</item>
+    </string-array>
 
 </resources>
