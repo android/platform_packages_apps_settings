@@ -833,6 +833,10 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     private void updatePasswordSummary() {
         try {
+            if (mBackupManager == null) {
+               Log.e(TAG, "Backup Manager is unavailable!");
+               return;
+            }
             if (mBackupManager.hasBackupPassword()) {
                 mPassword.setSummary(R.string.local_backup_password_summary_change);
             } else {
