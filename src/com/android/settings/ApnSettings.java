@@ -343,6 +343,19 @@ public class ApnSettings extends SettingsPreferenceFragment implements
     }
 
     @Override
+    public void onPrepareOptionsMenu(Menu menu) {
+        MenuItem item = null;
+        item = menu.findItem(MENU_NEW);
+        if (item != null) {
+            item.setEnabled(!mRestoreDefaultApnMode);
+        }
+        item = menu.findItem(MENU_RESTORE);
+        if (item != null) {
+            item.setEnabled(!mRestoreDefaultApnMode);
+        }
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
         case MENU_NEW:
@@ -412,6 +425,7 @@ public class ApnSettings extends SettingsPreferenceFragment implements
     private boolean restoreDefaultApn() {
         showDialog(DIALOG_RESTORE_DEFAULTAPN);
         mRestoreDefaultApnMode = true;
+        getPreferenceScreen().setEnabled(false);
 
         if (mRestoreApnUiHandler == null) {
             mRestoreApnUiHandler = new RestoreApnUiHandler();
@@ -450,6 +464,7 @@ public class ApnSettings extends SettingsPreferenceFragment implements
                         getResources().getString(
                                 R.string.restore_default_apn_completed),
                         Toast.LENGTH_LONG).show();
+                    getActivity().invalidateOptionsMenu();
                     break;
             }
         }
