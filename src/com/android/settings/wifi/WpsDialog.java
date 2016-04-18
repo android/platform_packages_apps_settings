@@ -150,6 +150,11 @@ public class WpsDialog extends AlertDialog {
             DialogState dialogState = mDialogState.valueOf(savedInstanceState.getString(DIALOG_STATE));
             String msg = savedInstanceState.getString(DIALOG_MSG_STRING);
             updateDialog(dialogState, msg);
+            if (dialogState == DialogState.WPS_START) {
+                WpsInfo wpsConfig = new WpsInfo();
+                wpsConfig.setup = mWpsSetup;
+                mWifiManager.startWps(wpsConfig, mWpsListener);
+            }
         }
     }
 
