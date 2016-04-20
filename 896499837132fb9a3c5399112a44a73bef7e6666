@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c86bdc68_933086e2",
+        "filename": "src/com/android/settings/ApnSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1054648
+      },
+      "writtenOn": "2016-04-20T18:14:46Z",
+      "side": 1,
+      "message": "Please get rid of this change as well.",
+      "revId": "896499837132fb9a3c5399112a44a73bef7e6666",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
