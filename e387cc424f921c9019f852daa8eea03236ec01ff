@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d26d50b5_dc37bceb",
+        "filename": "src/com/android/settings/ApnSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1054648
+      },
+      "writtenOn": "2016-05-12T18:39:35Z",
+      "side": 1,
+      "message": "Rename this to getUriWithSubId or getUriForCurrSubId",
+      "range": {
+        "startLine": 435,
+        "startChar": 16,
+        "endLine": 435,
+        "endChar": 25
+      },
+      "revId": "e387cc424f921c9019f852daa8eea03236ec01ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
