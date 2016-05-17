@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f7cfa645_6ff24d80",
+        "filename": "src/com/android/settings/bluetooth/BluetoothDevicePreference.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1073753
+      },
+      "writtenOn": "2016-05-17T17:50:09Z",
+      "side": 1,
+      "message": "likely don\u0027t need this, see note on mBluetoothReceiver",
+      "range": {
+        "startLine": 65,
+        "startChar": 7,
+        "endLine": 65,
+        "endChar": 29
+      },
+      "revId": "9807b111b4cf9ee2c2c2697ff8f52b5913419270",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7cfa645_0f84e9e5",
+        "filename": "src/com/android/settings/bluetooth/BluetoothDevicePreference.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1073753
+      },
+      "writtenOn": "2016-05-17T17:50:09Z",
+      "side": 1,
+      "message": "unneeded, remove",
+      "range": {
+        "startLine": 67,
+        "startChar": 3,
+        "endLine": 67,
+        "endChar": 44
+      },
+      "revId": "9807b111b4cf9ee2c2c2697ff8f52b5913419270",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7cfa645_2f10c596",
+        "filename": "src/com/android/settings/bluetooth/BluetoothDevicePreference.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1073753
+      },
+      "writtenOn": "2016-05-17T17:50:09Z",
+      "side": 1,
+      "message": "Use DialogInterface.BUTTON_POSITIVE",
+      "range": {
+        "startLine": 218,
+        "startChar": 29,
+        "endLine": 218,
+        "endChar": 38
+      },
+      "revId": "9807b111b4cf9ee2c2c2697ff8f52b5913419270",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7cfa645_4fed119f",
+        "filename": "src/com/android/settings/bluetooth/BluetoothDevicePreference.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1073753
+      },
+      "writtenOn": "2016-05-17T17:50:09Z",
+      "side": 1,
+      "message": "you can use |context| here and not have to store the context in mContext.  unregistering this receiver in the mDisconnectDialog dismissal should also always work and not require a member variable for context.",
+      "range": {
+        "startLine": 300,
+        "startChar": 24,
+        "endLine": 300,
+        "endChar": 32
+      },
+      "revId": "9807b111b4cf9ee2c2c2697ff8f52b5913419270",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7cfa645_8ffa194f",
+        "filename": "src/com/android/settings/bluetooth/DeviceProfilesSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1073753
+      },
+      "writtenOn": "2016-05-17T17:50:09Z",
+      "side": 1,
+      "message": "use DialogInterface.BUTTON_POSITIVE instead here.",
+      "range": {
+        "startLine": 294,
+        "startChar": 29,
+        "endLine": 294,
+        "endChar": 38
+      },
+      "revId": "9807b111b4cf9ee2c2c2697ff8f52b5913419270",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f7cfa645_6f9b2d26",
+        "filename": "src/com/android/settings/bluetooth/DeviceProfilesSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1073753
+      },
+      "writtenOn": "2016-05-17T17:50:09Z",
+      "side": 1,
+      "message": "nit: whitespace",
+      "range": {
+        "startLine": 294,
+        "startChar": 41,
+        "endLine": 294,
+        "endChar": 57
+      },
+      "revId": "9807b111b4cf9ee2c2c2697ff8f52b5913419270",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
