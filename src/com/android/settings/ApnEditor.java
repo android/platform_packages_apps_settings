@@ -774,7 +774,7 @@ public class ApnEditor extends InstrumentedPreferenceActivity
         if (pref != null) {
             if (pref.equals(mPassword)){
                 pref.setSummary(starify(sharedPreferences.getString(key, "")));
-            } else if (pref.equals(mCarrierEnabled) || pref.equals(mBearerMulti)) {
+            } else if (pref.equals(mCarrierEnabled) || pref.equals(mBearerMulti) || pref.equals(mProtocol) || pref.equals(mRoamingProtocol)) {
                 // do nothing
             } else {
                 pref.setSummary(checkNull(sharedPreferences.getString(key, "")));
