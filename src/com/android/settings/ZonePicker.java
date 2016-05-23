@@ -187,7 +187,7 @@ public class ZonePicker extends ListFragment {
                 return true;
 
             default:
-                return false;
+                return super.onOptionsItemSelected(item);
         }
     }
 
