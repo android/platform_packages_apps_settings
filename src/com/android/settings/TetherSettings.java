@@ -182,6 +182,17 @@ public class TetherSettings extends SettingsPreferenceFragment
                 com.android.internal.R.array.config_mobile_hotspot_provision_app);
     }
 
+    // this will fix the memory leak issue
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
+        BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
+        if (adapter != null) {
+            adapter.closeProfileProxy(BluetoothProfile.PAN, mBluetoothPan.get());
+        }
+    }
+
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         savedInstanceState.putInt(TETHER_CHOICE, mTetherChoice);
