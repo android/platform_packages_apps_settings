@@ -500,15 +500,15 @@ public class ApnEditor extends InstrumentedPreferenceActivity
             if (protocol == null) {
                 return false;
             }
-            mProtocol.setSummary(protocol);
             mProtocol.setValue((String) newValue);
+            mProtocol.setSummary(protocol);
         } else if (KEY_ROAMING_PROTOCOL.equals(key)) {
             String protocol = protocolDescription((String) newValue, mRoamingProtocol);
             if (protocol == null) {
                 return false;
             }
-            mRoamingProtocol.setSummary(protocol);
             mRoamingProtocol.setValue((String) newValue);
+            mRoamingProtocol.setSummary(protocol);
         } else if (KEY_BEARER_MULTI.equals(key)) {
             String bearer = bearerMultiDescription((Set<String>) newValue);
             if (bearer == null) {
