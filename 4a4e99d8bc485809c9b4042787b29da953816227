@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc47d366_a2582b4a",
+        "filename": "src/com/android/settings/ApnEditor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2016-05-24T16:19:23Z",
+      "side": 1,
+      "message": "line is too long - please split this and indent the wrapped line 8 extra spaces..",
+      "range": {
+        "startLine": 777,
+        "startChar": 0,
+        "endLine": 777,
+        "endChar": 142
+      },
+      "revId": "4a4e99d8bc485809c9b4042787b29da953816227",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
