@@ -22,6 +22,30 @@
       "revId": "4a4e99d8bc485809c9b4042787b29da953816227",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1cda9f64_2ec0273f",
+        "filename": "src/com/android/settings/ApnEditor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1106638
+      },
+      "writtenOn": "2016-05-25T02:03:35Z",
+      "side": 1,
+      "message": "Thanks Robert, I\u0027ve changed it.  And here is my new change list:https://android-review.googlesource.com/#/c/232900/",
+      "parentUuid": "bc47d366_a2582b4a",
+      "range": {
+        "startLine": 777,
+        "startChar": 0,
+        "endLine": 777,
+        "endChar": 142
+      },
+      "revId": "4a4e99d8bc485809c9b4042787b29da953816227",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
