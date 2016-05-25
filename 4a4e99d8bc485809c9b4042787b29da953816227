@@ -70,6 +70,30 @@
       "revId": "4a4e99d8bc485809c9b4042787b29da953816227",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1cda9f64_4eca535c",
+        "filename": "src/com/android/settings/ApnEditor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 777,
+      "author": {
+        "id": 1106638
+      },
+      "writtenOn": "2016-05-25T02:10:42Z",
+      "side": 1,
+      "message": "Hi Robert, as I can edit the code here, so I\u0027ve changed it here finally. Thanks",
+      "parentUuid": "bc47d366_a2582b4a",
+      "range": {
+        "startLine": 777,
+        "startChar": 0,
+        "endLine": 777,
+        "endChar": 142
+      },
+      "revId": "4a4e99d8bc485809c9b4042787b29da953816227",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
