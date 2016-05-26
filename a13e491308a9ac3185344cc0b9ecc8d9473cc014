@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c0f6fb1_87d7f9d3",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2016-05-26T02:41:00Z",
+      "side": 1,
+      "message": "should we only call this if mBluetoothPan.get() is non-null?",
+      "range": {
+        "startLine": 189,
+        "startChar": 60,
+        "endLine": 189,
+        "endChar": 73
+      },
+      "revId": "a13e491308a9ac3185344cc0b9ecc8d9473cc014",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
