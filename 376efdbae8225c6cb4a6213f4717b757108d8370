@@ -22,6 +22,30 @@
       "revId": "376efdbae8225c6cb4a6213f4717b757108d8370",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc422bdd_e04d7c8f",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1106638
+      },
+      "writtenOn": "2016-05-26T02:00:24Z",
+      "side": 1,
+      "message": "OK, thanks Robert.\n\nI\u0027ve changed it.",
+      "parentUuid": "9c0f6fb1_13447639",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 26
+      },
+      "revId": "376efdbae8225c6cb4a6213f4717b757108d8370",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
