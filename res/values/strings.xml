@@ -3593,6 +3593,10 @@
     <string name="enable_adb_summary">Debug mode when USB is connected</string>
     <!-- Setting title to revoke secure USB debugging authorizations -->
     <string name="clear_adb_keys">Revoke USB debugging authorizations</string>
+    <!-- Setting checkbox title to enable kernel profiling support -->
+    <string name="enable_perf">Enable profiling support</string>
+    <!-- Setting checkbox summary for enabling kernel profiling support -->
+    <string name="enable_perf_summary">Enable support for profiling via perf</string>
     <!-- [CHAR LIMIT=NONE] Setting checkbox title for Whether to include bug report item in power menu. -->
     <string name="bugreport_in_power">Bug report shortcut</string>
     <!-- [CHAR LIMIT=NONE] Setting checkbox summary for Whether to include bug report item in power -->
