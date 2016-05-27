@@ -84,6 +84,11 @@
                 android:title="@string/clear_adb_keys" />
 
         <SwitchPreference
+            android:key="enable_perf"
+            android:title="@string/enable_perf"
+            android:summary="@string/enable_perf_summary"/>
+
+        <SwitchPreference
             android:key="enable_terminal"
             android:title="@string/enable_terminal_title"
             android:summary="@string/enable_terminal_summary" />
