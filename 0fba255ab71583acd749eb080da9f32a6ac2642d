@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c0f6fb1_a729d28c",
+        "filename": "src/com/android/settings/widget/SettingsAppWidgetProvider.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 812,
+      "author": {
+        "id": 1043718
+      },
+      "writtenOn": "2016-05-27T16:40:02Z",
+      "side": 1,
+      "message": "calling an intent \"ACTION\" seems a bit terrible, maybe we should just fix the definition of this constant?",
+      "range": {
+        "startLine": 812,
+        "startChar": 35,
+        "endLine": 812,
+        "endChar": 66
+      },
+      "revId": "0fba255ab71583acd749eb080da9f32a6ac2642d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
