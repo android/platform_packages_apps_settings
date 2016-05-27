@@ -809,7 +809,7 @@ public class SettingsAppWidgetProvider extends AppWidgetProvider {
             sBluetoothState.onActualStateChange(context, intent);
         } else if (LocationManager.MODE_CHANGED_ACTION.equals(action)) {
             sLocationState.onActualStateChange(context, intent);
-        } else if (ContentResolver.ACTION_SYNC_CONN_STATUS_CHANGED.equals(action)) {
+        } else if (ContentResolver.ACTION_SYNC_CONN_STATUS_CHANGED.getAction().equals(action)) {
             sSyncState.onActualStateChange(context, intent);
         } else if (intent.hasCategory(Intent.CATEGORY_ALTERNATIVE)) {
             Uri data = intent.getData();
