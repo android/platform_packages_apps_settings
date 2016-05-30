@@ -40,4 +40,9 @@
 
     <!-- Whether none security option is hide or not  (country specific). -->
     <bool name="config_hide_none_security_option">false</bool>
+
+    <!-- Whether to allow user to edit APN protocol in APN editor -->
+    <bool name="enable_apn_protocol">true</bool>
+    <!-- Whether to allow user to edit APN roaming protocol in APN editor -->
+    <bool name="enable_apn_roaming_protocol">true</bool>
 </resources>

@@ -120,6 +120,7 @@
         android:key="apn_protocol"
         android:entries="@array/apn_protocol_entries"
         android:entryValues="@array/apn_protocol_values"
+        android:enabled="@bool/enable_apn_protocol"
         />
     <ListPreference
         android:title="@string/apn_roaming_protocol"
@@ -127,6 +128,7 @@
         android:key="apn_roaming_protocol"
         android:entries="@array/apn_protocol_entries"
         android:entryValues="@array/apn_protocol_values"
+        android:enabled="@bool/enable_apn_roaming_protocol"
         />
     <SwitchPreference
         android:title="@string/carrier_enabled"
