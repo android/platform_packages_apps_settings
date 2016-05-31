@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19c63131_51713697",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1002609
+      },
+      "writtenOn": "2016-05-31T23:54:51Z",
+      "side": 1,
+      "message": "sorry - I was out of the office the last few days.\n\nWhat I meant was should this be:\n\u003cwhatever class this is\u003e pan \u003d mBluetoothPan.getAndSet(null);\nif (pan !\u003d null \u0026\u0026 adapter !\u003d null) {\n    adapter.closeProfileProxy(...);\n}",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 36
+      },
+      "revId": "3a4899b4404455a824b392482598984adb480c99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
