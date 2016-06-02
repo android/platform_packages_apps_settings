@@ -1515,6 +1515,11 @@
     <!-- Dialog title for NFC disclaimr [CHAR_LIMIT=NONE]-->
     <string name="nfc_disclaimer_content">NFC exchanges data between this device and other nearby devices or targets, such as payment terminals, access readers, and interactive ads or tags.</string>
 
+    <!-- Used in the 1st-level settings screen to enable NDEF message verification -->
+    <string name="ndef_verify_quick_toggle_title">NDEF Verification</string>
+    <!-- Description of NDEF message signature verification in the 1st level settings screen. [CHAR LIMIT=NONE] -->
+    <string name="ndef_verify_quick_toggle_summary">When this feature is turned on, all NDEF messages will be verified when discovered.</string>
+
     <!-- Used to enter the Android Beam sharing preferences screen. This phrase is a trademark. [CHAR LIMIT=32] -->
     <string name="android_beam_settings_title">Android Beam</string>
     <!-- Used to describe the on state of the Android Beam feature [CHAR LIMIT=NONE] -->
