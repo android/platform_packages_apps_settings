@@ -65,6 +65,7 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
 
     private static final String KEY_TOGGLE_AIRPLANE = "toggle_airplane";
     private static final String KEY_TOGGLE_NFC = "toggle_nfc";
+    private static final String KEY_TOGGLE_NDEF_VERIFY = "toggle_ndef_verify";
     private static final String KEY_WIMAX_SETTINGS = "wimax_settings";
     private static final String KEY_ANDROID_BEAM_SETTINGS = "android_beam_settings";
     private static final String KEY_VPN_SETTINGS = "vpn_settings";
@@ -233,11 +234,12 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
         mAirplaneModePreference = (SwitchPreference) findPreference(KEY_TOGGLE_AIRPLANE);
         mVpnPreference = (RestrictedPreference) findPreference(KEY_VPN_SETTINGS);
         SwitchPreference nfc = (SwitchPreference) findPreference(KEY_TOGGLE_NFC);
+        SwitchPreference ndefVerify = (SwitchPreference) findPreference(KEY_TOGGLE_NDEF_VERIFY);
         RestrictedPreference androidBeam = (RestrictedPreference) findPreference(
                 KEY_ANDROID_BEAM_SETTINGS);
 
         mAirplaneModeEnabler = new AirplaneModeEnabler(activity, mAirplaneModePreference);
-        mNfcEnabler = new NfcEnabler(activity, nfc, androidBeam);
+        mNfcEnabler = new NfcEnabler(activity, nfc, ndefVerify, androidBeam);
 
         mButtonWfc = (PreferenceScreen) findPreference(KEY_WFC_SETTINGS);
 
@@ -279,6 +281,7 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
         // Manually set dependencies for NFC when not toggleable.
         if (toggleable == null || !toggleable.contains(Settings.Global.RADIO_NFC)) {
             findPreference(KEY_TOGGLE_NFC).setDependency(KEY_TOGGLE_AIRPLANE);
+            findPreference(KEY_TOGGLE_NDEF_VERIFY).setDependency(KEY_TOGGLE_AIRPLANE);
             findPreference(KEY_ANDROID_BEAM_SETTINGS).setDependency(KEY_TOGGLE_AIRPLANE);
         }
 
@@ -286,6 +289,7 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
         mNfcAdapter = NfcAdapter.getDefaultAdapter(activity);
         if (mNfcAdapter == null) {
             getPreferenceScreen().removePreference(nfc);
+            getPreferenceScreen().removePreference(ndefVerify);
             getPreferenceScreen().removePreference(androidBeam);
             mNfcEnabler = null;
         }
@@ -453,6 +457,7 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
                     NfcAdapter adapter = manager.getDefaultAdapter();
                     if (adapter == null) {
                         result.add(KEY_TOGGLE_NFC);
+                        result.add(KEY_TOGGLE_NDEF_VERIFY);
                         result.add(KEY_ANDROID_BEAM_SETTINGS);
                     }
                 }
