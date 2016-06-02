@@ -94,6 +94,7 @@ public class ConnectedDeviceDashboardFragment extends DashboardFragment {
 
                     if (!pm.hasSystemFeature(PackageManager.FEATURE_NFC)) {
                         keys.add(NfcPreferenceController.KEY_TOGGLE_NFC);
+                        keys.add(NfcPreferenceController.KEY_TOGGLE_NDEF_VERIFY);
                         keys.add(NfcPreferenceController.KEY_ANDROID_BEAM_SETTINGS);
                     }
                     keys.add(BluetoothMasterSwitchPreferenceController.KEY_TOGGLE_BLUETOOTH);

@@ -30,7 +30,14 @@
         android:title="@string/nfc_quick_toggle_title"
         android:icon="@drawable/ic_nfc"
         android:summary="@string/nfc_quick_toggle_summary"
-        android:order="-5"/>
+        android:order="-6"/>
+
+    <SwitchPreference
+        android:key="toggle_ndef_verify"
+        android:title="@string/ndef_verify_quick_toggle_title"
+        android:icon="@drawable/ic_nfc"
+        android:summary="@string/ndef_verify_quick_toggle_summary"
+        android:order="-5" />
 
     <com.android.settingslib.RestrictedPreference
         android:fragment="com.android.settings.nfc.AndroidBeam"

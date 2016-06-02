@@ -78,6 +78,7 @@ public class ConnectedDeviceDashboardFragmentTest {
 
         assertThat(keys).isNotNull();
         assertThat(keys).contains(NfcPreferenceController.KEY_TOGGLE_NFC);
+        assertThat(keys).contains(NfcPreferenceController.KEY_TOGGLE_NDEF_VERIFY);
         assertThat(keys).contains(NfcPreferenceController.KEY_ANDROID_BEAM_SETTINGS);
     }
 
@@ -88,6 +89,7 @@ public class ConnectedDeviceDashboardFragmentTest {
 
         assertThat(keys).isNotNull();
         assertThat(keys).doesNotContain(NfcPreferenceController.KEY_TOGGLE_NFC);
+        assertThat(keys).doesNotContain(NfcPreferenceController.KEY_TOGGLE_NDEF_VERIFY);
         assertThat(keys).doesNotContain(NfcPreferenceController.KEY_ANDROID_BEAM_SETTINGS);
     }
 

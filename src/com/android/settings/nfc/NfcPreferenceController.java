@@ -40,6 +40,7 @@ public class NfcPreferenceController extends PreferenceController
         implements LifecycleObserver, OnResume, OnPause {
 
     public static final String KEY_TOGGLE_NFC = "toggle_nfc";
+    public static final String KEY_TOGGLE_NDEF_VERIFY = "toggle_ndef_verify";
     public static final String KEY_ANDROID_BEAM_SETTINGS = "android_beam_settings";
 
     private NfcEnabler mNfcEnabler;
@@ -47,6 +48,7 @@ public class NfcPreferenceController extends PreferenceController
     private int mAirplaneMode;
     private AirplaneModeObserver mAirplaneModeObserver;
     private SwitchPreference mNfcPreference;
+    private SwitchPreference mNdefVerifyPreference;
     private RestrictedPreference mBeamPreference;
 
     public NfcPreferenceController(Context context) {
@@ -58,14 +60,17 @@ public class NfcPreferenceController extends PreferenceController
     public void displayPreference(PreferenceScreen screen) {
         if (!isAvailable()) {
             removePreference(screen, KEY_TOGGLE_NFC);
+            removePreference(screen, KEY_TOGGLE_NDEF_VERIFY);
             removePreference(screen, KEY_ANDROID_BEAM_SETTINGS);
             mNfcEnabler = null;
             return;
         }
         mNfcPreference = (SwitchPreference) screen.findPreference(KEY_TOGGLE_NFC);
+        mNdefVerifyPreference = (SwitchPreference) screen.findPreference(KEY_TOGGLE_NDEF_VERIFY);
         mBeamPreference = (RestrictedPreference) screen.findPreference(
                 KEY_ANDROID_BEAM_SETTINGS);
-        mNfcEnabler = new NfcEnabler(mContext, mNfcPreference, mBeamPreference);
+        mNfcEnabler = new NfcEnabler(mContext, mNfcPreference, mNdefVerifyPreference,
+                mBeamPreference);
         String toggleable = Settings.Global.getString(mContext.getContentResolver(),
                 Settings.Global.AIRPLANE_MODE_TOGGLEABLE_RADIOS);
         // Manually set dependencies for NFC when not toggleable.
@@ -82,6 +87,7 @@ public class NfcPreferenceController extends PreferenceController
             NfcAdapter adapter = manager.getDefaultAdapter();
             if (adapter == null) {
                 keys.add(KEY_TOGGLE_NFC);
+                keys.add(KEY_TOGGLE_NDEF_VERIFY);
                 keys.add(KEY_ANDROID_BEAM_SETTINGS);
             }
         }
@@ -130,6 +136,7 @@ public class NfcPreferenceController extends PreferenceController
             mNfcAdapter.disable();
         }
         mNfcPreference.setEnabled(toggleable);
+        mNdefVerifyPreference.setEnabled(toggleable);
         mBeamPreference.setEnabled(toggleable);
     }
 
