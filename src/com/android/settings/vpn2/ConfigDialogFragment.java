@@ -162,7 +162,7 @@ public class ConfigDialogFragment extends DialogFragment implements
                 mService.prepareVpn(VpnConfig.LEGACY_VPN, VpnConfig.LEGACY_VPN,
                         UserHandle.myUserId());
             }
-        } catch (RemoteException e) {
+        } catch (Exception e) {
             Log.e(TAG, "Failed to disconnect", e);
         }
     }

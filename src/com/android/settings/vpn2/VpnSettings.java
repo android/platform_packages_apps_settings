@@ -261,7 +261,7 @@ public class VpnSettings extends SettingsPreferenceFragment implements
                     }
                 }
             }
-        } catch (RemoteException e) {
+        } catch (Exception e) {
             // ignore
         }
 
