@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83dab0a7_0f6489d2",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-06-08T20:33:16Z",
+      "side": 1,
+      "message": "This is not enough to _remove_ the developer option from view when a \"user\" build, only make it stop working.",
+      "range": {
+        "startLine": 406,
+        "startChar": 0,
+        "endLine": 408,
+        "endChar": 9
+      },
+      "revId": "e859a96f5201ad7491a75f455060a2799ba8edaf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
