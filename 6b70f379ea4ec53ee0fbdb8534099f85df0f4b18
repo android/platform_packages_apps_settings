@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "833630c6_1c113cf8",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1466,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2016-06-10T17:01:58Z",
+      "side": 1,
+      "message": "I\u0027d like to be able to set the foreground colour to system_warning_color (deep orange) for index !\u003d 0; but there appears to be no API for that. The color may be an attribute in the strings xml file?",
+      "range": {
+        "startLine": 1466,
+        "startChar": 0,
+        "endLine": 1466,
+        "endChar": 106
+      },
+      "revId": "6b70f379ea4ec53ee0fbdb8534099f85df0f4b18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
