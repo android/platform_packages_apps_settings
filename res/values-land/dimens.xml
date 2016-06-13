@@ -38,4 +38,7 @@
     <!-- Gestures -->
     <dimen name="gesture_animation_padding">35dp</dimen>
 
+    <!-- Privacy policy disclaimer UI in Wi-Fi Calling settings -->
+    <dimen name="wifi_calling_disclaimer_text_margin_bottom">40dp</dimen>
+    <dimen name="wifi_calling_privacy_policy_button_margin_bottom">20dp</dimen>
 </resources>

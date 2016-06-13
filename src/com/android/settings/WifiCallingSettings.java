@@ -49,7 +49,8 @@ import com.android.settings.widget.SwitchBar;
  */
 public class WifiCallingSettings extends SettingsPreferenceFragment
         implements SwitchBar.OnSwitchChangeListener,
-        Preference.OnPreferenceChangeListener {
+        Preference.OnPreferenceChangeListener,
+        WifiCallingPrivacyPolicyPreference.Listener {
 
     private static final String TAG = "WifiCallingSettings";
 
@@ -148,13 +149,32 @@ public class WifiCallingSettings extends SettingsPreferenceFragment
 
         mSwitchBar = activity.getSwitchBar();
         mSwitch = mSwitchBar.getSwitch();
-        mSwitchBar.show();
+        if (WifiCallingPrivacyPolicyPreference.shouldShow(getActivity())) {
+            WifiCallingPrivacyPolicyPreference privacyPolicyPref
+                    = new WifiCallingPrivacyPolicyPreference(getActivity());
+            privacyPolicyPref.setListener(this);
+            getPreferenceScreen().addPreference(privacyPolicyPref);
+            Log.d(TAG, "WifiCallingPrivacyPolicyPreference is created");
+        } else {
+            mSwitchBar.show();
+        }
 
         mEmptyView = (TextView) getView().findViewById(android.R.id.empty);
         setEmptyView(mEmptyView);
         String emptyViewText = activity.getString(R.string.wifi_calling_off_explanation)
                 + activity.getString(R.string.wifi_calling_off_explanation_2);
         mEmptyView.setText(emptyViewText);
+    }
+
+    @Override
+    public void onAgreed(Preference preference) {
+        getPreferenceScreen().removePreference(preference);
+        mSwitchBar.show();
+    }
+
+    @Override
+    public void onDisagreed(Preference preference) {
+        getActivity().finish();
     }
 
     @Override

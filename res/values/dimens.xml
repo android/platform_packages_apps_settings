@@ -333,4 +333,9 @@
     <dimen name="suggestion_condition_header_padding_collapsed">10dp</dimen>
     <dimen name="suggestion_condition_header_padding_expanded">5dp</dimen>
 
+    <!-- Privacy policy disclaimer UI in Wi-Fi Calling settings -->
+    <dimen name="wifi_calling_disclaimer_text_margin_sides">20dp</dimen>
+    <dimen name="wifi_calling_disclaimer_text_margin_bottom">80dp</dimen>
+    <dimen name="wifi_calling_privacy_policy_button_width">180dp</dimen>
+    <dimen name="wifi_calling_privacy_policy_button_margin_bottom">30dp</dimen>
 </resources>

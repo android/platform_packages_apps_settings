@@ -2214,7 +2214,12 @@
     <string name="emergency_address_title">Update Emergency Address</string>
     <!-- Summary of Update Emergency Address preference, explaining usage of emergency address [CHAR LIMIT=NONE] -->
     <string name="emergency_address_summary">Address used by emergency services as your location if you make a 911 call using WiFi</string>
-
+    <!-- Warn the user that the phone may share its location information  with the service provider. "I agree" and "No thanks" buttons are provided on the same screen. -->
+    <string name="wifi_calling_privacy_policy_disclaimer_text">Your service provider may collect your location in order to provide the service.\n\nPlease review your service provider\'s privacy policy.</string>
+    <!-- Label for button text: "I agree" to terms of disclaimer. -->
+    <string name="wifi_calling_disclaimer_agree_button_text">I agree</string>
+    <!-- Label for button text: "No thanks" I do not agree to terms of disclaimer. -->
+    <string name="wifi_calling_disclaimer_disagree_button_text">No thanks</string>
 
     <!-- Sound and alerts settings -->
     <skip/>
