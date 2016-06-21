@@ -421,12 +421,19 @@ public class SimStatus extends InstrumentedPreferenceActivity {
             final int slotId = Integer.parseInt(tabId);
             mSir = mSelectableSubInfos.get(slotId);
 
+            if (mPhoneStateListener != null) {
+                mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_NONE);
+                mPhoneStateListener = null;
+            }
+
             // The User has changed tab; update the SIM information.
             updatePhoneInfos();
-            mTelephonyManager.listen(mPhoneStateListener,
-                    PhoneStateListener.LISTEN_DATA_CONNECTION_STATE
-                    | PhoneStateListener.LISTEN_SIGNAL_STRENGTHS
-                    | PhoneStateListener.LISTEN_SERVICE_STATE);
+            if (mPhoneStateListener != null ) {
+                mTelephonyManager.listen(mPhoneStateListener,
+                        PhoneStateListener.LISTEN_DATA_CONNECTION_STATE
+                        | PhoneStateListener.LISTEN_SIGNAL_STRENGTHS
+                        | PhoneStateListener.LISTEN_SERVICE_STATE);
+            }
             updateDataState();
             updateNetworkType();
             updatePreference();
