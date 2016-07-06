@@ -143,6 +143,7 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
         mSharedVolume = mStorageManager.findEmulatedForPrivate(mVolume);
 
         mMeasure = new StorageMeasurement(context, mVolume, mSharedVolume);
+		mMeasure.onCreate();
         mMeasure.setReceiver(mReceiver);
 
         if (!isVolumeValid()) {
