@@ -67,7 +67,7 @@ public class StorageVolumePreference extends Preference {
         if (volume.isMountedReadable()) {
             // TODO: move statfs() to background thread
             final File path = volume.getPath();
-            final long freeBytes = path.getFreeSpace();
+            final long freeBytes = path.getUsableSpace();
             final long totalBytes = path.getTotalSpace();
             final long usedBytes = totalBytes - freeBytes;
 
