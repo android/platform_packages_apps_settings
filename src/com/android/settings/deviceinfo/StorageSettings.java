@@ -152,7 +152,7 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
                         new StorageVolumePreference(context, vol, color));
                 if (vol.isMountedReadable()) {
                     final File path = vol.getPath();
-                    privateUsedBytes += path.getTotalSpace() - path.getFreeSpace();
+                    privateUsedBytes += path.getTotalSpace() - path.getUsableSpace();
                     privateTotalBytes += path.getTotalSpace();
                 }
             } else if (vol.getType() == VolumeInfo.TYPE_PUBLIC) {

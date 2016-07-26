@@ -219,7 +219,7 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
 
         final File file = mVolume.getPath();
         final long totalBytes = file.getTotalSpace();
-        final long freeBytes = file.getFreeSpace();
+        final long freeBytes = file.getUsableSpace();
         final long usedBytes = totalBytes - freeBytes;
 
         final BytesResult result = Formatter.formatBytes(getResources(), usedBytes, 0);
