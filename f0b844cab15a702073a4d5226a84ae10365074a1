@@ -1,0 +1,10 @@
+Presubmit-Ready+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Alexey Polyudov <apolyudov@google.com>
+Autosubmit+1: Mark Salyzyn <salyzyn@google.com>
+Presubmit-Ready+1: Mark Salyzyn <salyzyn@google.com>
+Verified+1: Mark Salyzyn <salyzyn@google.com>
+Submitted-by: Mark Salyzyn <salyzyn@google.com>
+Submitted-at: Fri, 05 Aug 2016 17:03:05 +0000
+Reviewed-on: https://android-review.googlesource.com/254211
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
