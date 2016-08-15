@@ -81,6 +81,12 @@
                 android:dialogTitle="@string/pointer_speed"
                 />
 
+        <com.android.settings.PointerAccelerationPreference
+                android:key="pointer_acceleration"
+                android:title="@string/pointer_acceleration"
+                android:dialogTitle="@string/pointer_acceleration"
+                />
+
     </PreferenceCategory>
 
     <PreferenceCategory

@@ -1465,6 +1465,7 @@
     <string name="failed_to_open_app_settings_toast" msgid="1251067459298072462">"Failed to open settings for <xliff:g id="SPELL_APPLICATION_NAME">%1$s</xliff:g>"</string>
     <string name="pointer_settings_category" msgid="8183819795164034286">"Mouse/track pad"</string>
     <string name="pointer_speed" msgid="1221342330217861616">"Pointer speed"</string>
+    <string name="pointer_acceleration" msgid="3085433776671868078">"Pointer acceleration"</string>
     <string name="game_controller_settings_category" msgid="8794508575329923718">"Game Controller"</string>
     <string name="vibrate_input_devices" msgid="2599591466928793082">"Use vibrator"</string>
     <string name="vibrate_input_devices_summary" msgid="4595570516865299153">"Redirect vibrator to game controller when connected."</string>

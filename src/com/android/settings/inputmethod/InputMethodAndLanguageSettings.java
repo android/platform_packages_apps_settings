@@ -815,6 +815,12 @@ public class InputMethodAndLanguageSettings extends SettingsPreferenceFragment
             indexable.screenTitle = screenTitle;
             indexables.add(indexable);
 
+            indexable = new SearchIndexableRaw(context);
+            indexable.key = "pointer_acceleration";
+            indexable.title = context.getString(R.string.pointer_acceleration);
+            indexable.screenTitle = screenTitle;
+            indexables.add(indexable);
+
             // Game controllers.
             if (haveInputDeviceWithVibrator()) {
                 indexable = new SearchIndexableRaw(context);
