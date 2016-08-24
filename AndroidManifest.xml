@@ -2509,8 +2509,8 @@
 
         <activity android:name=".nfc.HowItWorks"
                   android:label="@string/nfc_payment_settings_title"
+                  android:excludeFromRecents="true"
                   android:parentActivityName="Settings$PaymentSettingsActivity">
-                  android:excludeFromRecents="true">
         </activity>
 
         <activity android:name=".SmsDefaultDialog"
