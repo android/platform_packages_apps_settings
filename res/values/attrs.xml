@@ -148,6 +148,11 @@
         <attr name="aspectRatio" format="float" />
     </declare-styleable>
 
+    <declare-styleable name="ListWithEntrySummaryPreference">
+        <!-- Summaries of entry -->
+        <attr name="entrySummaries" format="reference" />
+    </declare-styleable>
+
     <declare-styleable name="TintablePreference">
         <attr name="android:tint" format="color|reference" />
     </declare-styleable>
