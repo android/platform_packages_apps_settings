@@ -7867,4 +7867,12 @@
 
     <!-- Warning when activating the automatic storage manager on legacy devices. [CHAR LIMIT=NONE] -->
     <string name="automatic_storage_manager_activation_warning">Your storage is now being managed by the storage manager</string>
+    <!-- Subtext of radio button options in the dialog box of Wi-Fi Calling mode. Options are 1)Wi-Fi preferred, 2)Cellular preferred, 3)Wi-Fi only. This master text is for option (1). Reference in Android_N: wifi_calling_mode_choices for the translation of "Cellular network". -->
+    <string name="wifi_calling_mode_wifi_preferred_summary" xliff:restype="x-UNLIMITED">Call over Wi-Fi. If Wi-Fi is not available, use cellular network.</string>
+
+    <!-- Subtext of radio button options in the dialog box of Wi-Fi Calling mode. Options are 1)Wi-Fi preferred, 2)Cellular preferred, 3)Wi-Fi only. This master text is for option (2). Reference in Android_N: wifi_calling_mode_choices for the translation of "Cellular network". -->
+    <string name="wifi_calling_mode_cellular_preferred_summary" xliff:restype="x-UNLIMITED">Call over the cellular network. If cellular network is not available, use Wi-Fi.</string>
+    <!-- Subtext of radio button options in the dialog box of Wi-Fi Calling mode. Options are 1)Wi-Fi preferred, 2)Cellular preferred, 3)Wi-Fi only. This master text is for option (3).  -->
+    <string name="wifi_calling_mode_wifi_only_summary" xliff:restype="x-UNLIMITED">Call over Wi-Fi. If Wi-Fi is lost, call ended.</string>
+
 </resources>
