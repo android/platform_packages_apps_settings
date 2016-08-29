@@ -18,7 +18,7 @@
                   android:key="wifi_calling_settings"
                   android:title="@string/wifi_calling_settings_title">
 
-    <ListPreference
+    <com.android.settings.ListWithEntrySummaryPreference
             android:key="wifi_calling_mode"
             android:title="@string/wifi_calling_mode_title"
             android:summary="@string/wifi_calling_mode_title"
@@ -26,7 +26,7 @@
             android:entryValues="@array/wifi_calling_mode_values"
             android:dialogTitle="@string/wifi_calling_mode_dialog_title" />
 
-    <ListPreference
+    <com.android.settings.ListWithEntrySummaryPreference
             android:key="wifi_calling_roaming_mode"
             android:title="@string/wifi_calling_roaming_mode_title"
             android:summary="@string/wifi_calling_roaming_mode_summary"
