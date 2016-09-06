@@ -250,7 +250,7 @@ public class UnrestrictedDataAccess extends SettingsPreferenceFragment
 
         @Override
         protected void onClick() {
-            if (mState.isDataSaverBlacklisted) {
+            if (mState != null && mState.isDataSaverBlacklisted) {
                 // app is blacklisted, launch App Data Usage screen
                 InstalledAppDetails.startAppInfoFragment(AppDataUsage.class,
                         getContext().getString(R.string.app_data_usage),
