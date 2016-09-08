@@ -88,6 +88,7 @@ public class StorageWizardFormatProgress extends StorageWizardBase {
 
         private volatile long mInternalBench;
         private volatile long mPrivateBench;
+	    private volatile boolean apCardCompliant;
 
         @Override
         protected Exception doInBackground(Void... params) {
@@ -96,13 +97,24 @@ public class StorageWizardFormatProgress extends StorageWizardBase {
             try {
                 if (activity.mFormatPrivate) {
                     storage.partitionPrivate(activity.mDisk.getId());
+                    final VolumeInfo privateVol = activity.findFirstVolume(VolumeInfo.TYPE_PRIVATE);
                     publishProgress(40);
 
-                    mInternalBench = storage.benchmark(null);
+					apCardCompliant = storage.isAPCardCompliant(privateVol.getId());
                     publishProgress(60);
 
-                    final VolumeInfo privateVol = activity.findFirstVolume(VolumeInfo.TYPE_PRIVATE);
-                    mPrivateBench = storage.benchmark(privateVol.getId());
+					if (!apCardCompliant) {
+                        // In nanoseconds
+                        mPrivateBench = storage.benchmark(privateVol.getId());
+                        if ( mPrivateBench > 2000000000) {
+                            // Benchmark took more than 2sec
+                            Log.d(TAG, "New volume benchmark took " +
+                                    mPrivateBench / 1000000 + "ms (expected 2000ms)");
+                            mInternalBench = storage.benchmark(null);
+                            publishProgress(80);
+                        } else
+                            apMCardCompliant = true;
+                    }
 
                     // If we just adopted the device that had been providing
                     // physical storage, then automatically move storage to the
@@ -150,17 +162,20 @@ public class StorageWizardFormatProgress extends StorageWizardBase {
             }
 
             if (activity.mFormatPrivate) {
-                final float pct = (float) mInternalBench / (float) mPrivateBench;
-                Log.d(TAG, "New volume is " + pct + "x the speed of internal");
-
-                // To help set user expectations around device performance, we
-                // warn if the adopted media is 0.25x the speed of internal
-                // storage or slower.
-                if (Float.isNaN(pct) || pct < 0.25) {
-                    final SlowWarningFragment dialog = new SlowWarningFragment();
-                    dialog.showAllowingStateLoss(activity.getFragmentManager(), TAG_SLOW_WARNING);
-                } else {
+                if (apCardCompliant) {
+                    Log.d(TAG, "New volume(" + activity.getDiskDescription() + ") supports Application Performance Class");
                     activity.onFormatFinished();
+                } else {
+                    final float pct = (float) mInternalBench / (float) mPrivateBench;
+                    Log.d(TAG, "New volume is " + pct + "x the speed of internal");
+
+                    // To help set user expectations around device performance, we
+                    // warn if the adopted media is 0.25x the speed of internal
+                    // storage or slower.
+                    if (Float.isNaN(pct) || pct < 0.25) {
+                        final SlowWarningFragment dialog = new SlowWarningFragment();
+                        dialog.showAllowingStateLoss(activity.getFragmentManager(), TAG_SLOW_WARNING);
+                    }
                 }
             } else {
                 activity.onFormatFinished();
