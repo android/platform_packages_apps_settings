@@ -38,6 +38,8 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.os.Handler;
+import android.os.Message;
 
 import com.android.internal.app.AlertActivity;
 import com.android.internal.app.AlertController;
@@ -58,6 +60,8 @@ public final class BluetoothPairingDialog extends AlertActivity implements
 
     private static final int BLUETOOTH_PIN_MAX_LENGTH = 16;
     private static final int BLUETOOTH_PASSKEY_MAX_LENGTH = 6;
+    private static final int PAIRING_POPUP_TIMEOUT = 35000;
+    private static final int MESSAGE_DELAYED_DISMISS = 1;
 
     private LocalBluetoothManager mBluetoothManager;
     private CachedBluetoothDeviceManager mCachedDeviceManager;
@@ -123,6 +127,7 @@ public final class BluetoothPairingDialog extends AlertActivity implements
             case BluetoothDevice.PAIRING_VARIANT_PIN_16_DIGITS:
             case BluetoothDevice.PAIRING_VARIANT_PASSKEY:
                 createUserEntryDialog();
+                popTimedout();
                 break;
 
             case BluetoothDevice.PAIRING_VARIANT_PASSKEY_CONFIRMATION:
@@ -136,11 +141,13 @@ public final class BluetoothPairingDialog extends AlertActivity implements
                 }
                 mPairingKey = String.format(Locale.US, "%06d", passkey);
                 createConfirmationDialog();
+                popTimedout();
                 break;
 
             case BluetoothDevice.PAIRING_VARIANT_CONSENT:
             case BluetoothDevice.PAIRING_VARIANT_OOB_CONSENT:
                 createConsentDialog();
+                popTimedout();
                 break;
 
             case BluetoothDevice.PAIRING_VARIANT_DISPLAY_PASSKEY:
@@ -158,6 +165,7 @@ public final class BluetoothPairingDialog extends AlertActivity implements
                     mPairingKey = String.format("%04d", pairingKey);
                 }
                 createDisplayPasskeyOrPinDialog();
+                popTimedout();
                 break;
 
             default:
@@ -476,4 +484,25 @@ public final class BluetoothPairingDialog extends AlertActivity implements
             mPairingView.setInputType(InputType.TYPE_CLASS_NUMBER);
         }
     }
+
+    private void popTimedout() {
+
+        Message message = mHandler.obtainMessage(MESSAGE_DELAYED_DISMISS);
+        mHandler.sendMessageDelayed(message, PAIRING_POPUP_TIMEOUT);
+
+    }
+
+    private final Handler mHandler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case MESSAGE_DELAYED_DISMISS:
+                    Log.v(TAG, "Delayed pairing pop up handler");
+                    dismiss();
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
 }
