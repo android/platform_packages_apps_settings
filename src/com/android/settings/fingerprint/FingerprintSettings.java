@@ -191,8 +191,12 @@ public class FingerprintSettings extends SubSettings {
 
             @Override
             public void onRemovalSucceeded(Fingerprint fingerprint) {
-                mHandler.obtainMessage(MSG_REFRESH_FINGERPRINT_TEMPLATES,
-                        fingerprint.getFingerId(), 0).sendToTarget();
+                if (isAdded()) {
+                    mHandler.obtainMessage(MSG_REFRESH_FINGERPRINT_TEMPLATES,
+                            fingerprint.getFingerId(), 0).sendToTarget();
+                } else {
+                    Log.v(TAG, "Ignoring onRemoval callback to detached fragment");
+                }
             }
 
             @Override
