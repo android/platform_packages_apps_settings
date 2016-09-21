@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d06d6344_242f52b1",
+        "filename": "res/values/config.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1043929
+      },
+      "writtenOn": "2016-09-21T17:42:25Z",
+      "side": 1,
+      "message": "use carrier config please",
+      "range": {
+        "startLine": 45,
+        "startChar": 24,
+        "endLine": 45,
+        "endChar": 47
+      },
+      "revId": "296c5e826b88dc4f17085ac688bb1e5550472d37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
