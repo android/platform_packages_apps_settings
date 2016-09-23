@@ -16,6 +16,7 @@
 
 package com.android.settings.bluetooth;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -24,6 +25,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -34,14 +36,19 @@ import android.support.v7.preference.PreferenceScreen;
 import android.text.BidiFormatter;
 import android.text.Spannable;
 import android.text.style.TextAppearanceSpan;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 import com.android.internal.logging.MetricsLogger;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
+import android.widget.Toolbar;
 import com.android.settings.LinkifyUtils;
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
@@ -148,6 +155,59 @@ public final class BluetoothSettings extends DeviceListPreferenceFragment implem
 
         mBluetoothEnabler = new BluetoothEnabler(activity, mSwitchBar);
         mBluetoothEnabler.setupSwitchBar();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        Activity activity = getActivity();
+        float titleTextSize;
+        int actionBarHeight;
+        int switchBarHeight;
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            titleTextSize = activity.getResources().getDimensionPixelSize(
+                    R.dimen.bluetooth_landscape_title_textsize);
+            switchBarHeight = activity.getResources().getDimensionPixelSize(
+                    R.dimen.bluetooth_landscape_switchbar_height);
+            actionBarHeight = activity.getResources().getDimensionPixelSize(
+                    R.dimen.bluetooth_landscape_actionbar_height);
+        } else {
+            titleTextSize = activity.getResources().getDimensionPixelSize(
+                    R.dimen.bluetooth_portrait_title_textsize);
+            switchBarHeight = activity.getResources().getDimensionPixelSize(
+                    R.dimen.bluetooth_portrait_switchbar_height);
+            actionBarHeight = activity.getResources().getDimensionPixelSize(
+                    R.dimen.bluetooth_portrait_switchbar_height);
+        }
+        resetBarSize(titleTextSize, actionBarHeight, switchBarHeight);
+    }
+
+    private void resetBarSize(float titleTextSize, int actionBarHeight, int switchBarHeight) {
+        Activity activity = getActivity();
+        DisplayMetrics displayMetrics = Resources.getSystem().getDisplayMetrics();
+        int titleId = Resources.getSystem().getIdentifier("action_bar", "id", "android");
+        Toolbar toolbar = (Toolbar) activity.getWindow().findViewById(titleId);
+        TextView title = null;
+        if (toolbar != null) {
+            LayoutParams layoutParams = toolbar.getLayoutParams();
+            layoutParams.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                    actionBarHeight, displayMetrics);
+            for (int i = 0; i < toolbar.getChildCount(); ++i) {
+                if (toolbar.getChildAt(i) instanceof TextView) {
+                    title = (TextView) toolbar.getChildAt(i);
+                }
+                Toolbar.LayoutParams childLayoutParams = (Toolbar.LayoutParams) toolbar.getChildAt(
+                        i).getLayoutParams();
+                childLayoutParams.gravity = Gravity.CENTER_VERTICAL;
+            }
+        }
+        if (title != null)
+            title.setTextSize(TypedValue.COMPLEX_UNIT_DIP, titleTextSize);
+        if (mSwitchBar != null) {
+            LayoutParams layoutParams = mSwitchBar.getLayoutParams();
+            layoutParams.height = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
+                    switchBarHeight, displayMetrics);
+        }
     }
 
     @Override
