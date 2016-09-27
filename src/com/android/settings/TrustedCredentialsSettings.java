@@ -740,6 +740,9 @@ public class TrustedCredentialsSettings extends OptionsMenuFragment
                 } catch (InterruptedException e) {
                     Log.e(TAG, "InterruptedException while loading aliases.", e);
                     return new SparseArray<List<CertHolder>>();
+                } catch (AssertionError e){
+                    Log.e(TAG, "AssertionError while loading aliases.", e);
+                    return new SparseArray<List<CertHolder>>();
                 }
             }
             @Override protected void onProgressUpdate(Integer... progressAndMax) {
