@@ -129,6 +129,10 @@ public class PublicVolumeSettings extends SettingsPreferenceFragment {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        if (!isVolumeValid()) {
+            getActivity().finish();
+            return;
+        }
         final Resources resources = getResources();
         final int padding = resources.getDimensionPixelSize(
                 R.dimen.unmount_button_padding);
