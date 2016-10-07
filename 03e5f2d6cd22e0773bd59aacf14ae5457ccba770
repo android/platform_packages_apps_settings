@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fb8a4f5_5eb0a5f4",
+        "filename": "src/com/android/settings/wifi/AdvancedWifiSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2016-10-07T16:24:32Z",
+      "side": 1,
+      "message": "Do you need to reinitialize the entire preference set? Can you limit the pref refresh just to wifiDirectPref and wifiPushPref?",
+      "revId": "03e5f2d6cd22e0773bd59aacf14ae5457ccba770",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
