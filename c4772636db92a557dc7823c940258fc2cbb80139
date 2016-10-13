@@ -1,0 +1,10 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+1: Matthew Fritze <mfritze@google.com>
+Code-Review+2: Fan Zhang <zhfan@google.com>
+Verified+1: Matthew Fritze <mfritze@google.com>
+Autosubmit+1: Fan Zhang <zhfan@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Thu, 13 Oct 2016 01:13:41 +0000
+Reviewed-on: https://android-review.googlesource.com/284781
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
