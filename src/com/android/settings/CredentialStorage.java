@@ -111,6 +111,7 @@ public final class CredentialStorage extends Activity {
      * When non-null, the bundle containing credentials to install.
      */
     private Bundle mInstallBundle;
+    private int mInstallUid;
 
     /**
      * After unsuccessful KeyStore.unlock, the number of unlock
@@ -133,6 +134,9 @@ public final class CredentialStorage extends Activity {
             } else {
                 if (ACTION_INSTALL.equals(action) && checkCallerIsCertInstallerOrSelfInProfile()) {
                     mInstallBundle = intent.getExtras();
+                    mInstallUid = mInstallBundle.getInt(Credentials.EXTRA_INSTALL_AS_UID,
+                            KeyStore.UID_SELF);
+                    mInstallBundle.remove(Credentials.EXTRA_INSTALL_AS_UID);
                 }
                 // ACTION_UNLOCK also handled here in addition to ACTION_INSTALL
                 handleUnlockOrInstall();
@@ -159,7 +163,12 @@ public final class CredentialStorage extends Activity {
         }
         switch (mKeyStore.state()) {
             case UNINITIALIZED: {
-                ensureKeyGuard();
+                if (isKeyGuardRequired()) {
+                    ensureKeyGuard();
+                } else {
+                    installIfAvailable();
+                    finish();
+                }
                 return;
             }
             case LOCKED: {
@@ -167,7 +176,7 @@ public final class CredentialStorage extends Activity {
                 return;
             }
             case UNLOCKED: {
-                if (!checkKeyGuardQuality()) {
+                if (isKeyGuardRequired() && !checkKeyGuardQuality()) {
                     new ConfigureKeyGuardDialog();
                     return;
                 }
@@ -200,13 +209,32 @@ public final class CredentialStorage extends Activity {
     }
 
     /**
-     * Returns true if the currently set key guard matches our minimum quality requirements.
+     * Returns true if the currently set key guard matches our minimum quality requirements to
+     * secure the keystore.
      */
     private boolean checkKeyGuardQuality() {
         int credentialOwner =
                 UserManager.get(this).getCredentialOwnerProfile(UserHandle.myUserId());
         int quality = new LockPatternUtils(this).getActivePasswordQuality(credentialOwner);
         return (quality >= MIN_PASSWORD_QUALITY);
+    }
+
+    private boolean isKeyGuardRequired() {
+        if (mInstallBundle == null || mInstallBundle.isEmpty()) {
+            return false;
+        }
+        if (mKeyStore.isHardwareBacked()) {
+            if (!mInstallBundle.containsKey(Credentials.EXTRA_USER_PRIVATE_KEY_NAME)) {
+                return false;
+            }
+            if (mInstallUid == Process.WIFI_UID) {
+                byte[] value = mInstallBundle.getByteArray(Credentials.EXTRA_USER_PRIVATE_KEY_DATA);
+                if (isHardwareBackedKey(value)) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     private boolean isHardwareBackedKey(byte[] keyData) {
@@ -234,18 +262,10 @@ public final class CredentialStorage extends Activity {
         Bundle bundle = mInstallBundle;
         mInstallBundle = null;
 
-        final int uid = bundle.getInt(Credentials.EXTRA_INSTALL_AS_UID, KeyStore.UID_SELF);
-
-        if (uid != KeyStore.UID_SELF && !UserHandle.isSameUser(uid, Process.myUid())) {
-            int dstUserId = UserHandle.getUserId(uid);
+        if (mInstallUid == Process.WIFI_UID
+                && !UserHandle.isSameUser(mInstallUid, Process.myUid())) {
+            int dstUserId = UserHandle.getUserId(mInstallUid);
             int myUserId = UserHandle.myUserId();
-
-            // Restrict install target to the wifi uid.
-            if (uid != Process.WIFI_UID) {
-                Log.e(TAG, "Failed to install credentials as uid " + uid + ": cross-user installs"
-                        + " may only target wifi uids");
-                return;
-            }
 
             Intent installIntent = new Intent(ACTION_INSTALL)
                     .setFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT)
@@ -259,27 +279,27 @@ public final class CredentialStorage extends Activity {
             byte[] value = bundle.getByteArray(Credentials.EXTRA_USER_PRIVATE_KEY_DATA);
 
             int flags = KeyStore.FLAG_ENCRYPTED;
-            if (uid == Process.WIFI_UID && isHardwareBackedKey(value)) {
+            if (mInstallUid == Process.WIFI_UID && isHardwareBackedKey(value)) {
                 // Hardware backed keystore is secure enough to allow for WIFI stack
                 // to enable access to secure networks without user intervention
                 Log.d(TAG, "Saving private key with FLAG_NONE for WIFI_UID");
                 flags = KeyStore.FLAG_NONE;
             }
 
-            if (!mKeyStore.importKey(key, value, uid, flags)) {
-                Log.e(TAG, "Failed to install " + key + " as uid " + uid);
+            if (!mKeyStore.importKey(key, value, mInstallUid, flags)) {
+                Log.e(TAG, "Failed to install " + key + " as uid " + mInstallUid);
                 return;
             }
         }
 
-        int flags = (uid == Process.WIFI_UID) ? KeyStore.FLAG_NONE : KeyStore.FLAG_ENCRYPTED;
+        int flags = KeyStore.FLAG_NONE;
 
         if (bundle.containsKey(Credentials.EXTRA_USER_CERTIFICATE_NAME)) {
             String certName = bundle.getString(Credentials.EXTRA_USER_CERTIFICATE_NAME);
             byte[] certData = bundle.getByteArray(Credentials.EXTRA_USER_CERTIFICATE_DATA);
 
-            if (!mKeyStore.put(certName, certData, uid, flags)) {
-                Log.e(TAG, "Failed to install " + certName + " as uid " + uid);
+            if (!mKeyStore.put(certName, certData, mInstallUid, flags)) {
+                Log.e(TAG, "Failed to install " + certName + " as uid " + mInstallUid);
                 return;
             }
         }
@@ -288,8 +308,8 @@ public final class CredentialStorage extends Activity {
             String caListName = bundle.getString(Credentials.EXTRA_CA_CERTIFICATES_NAME);
             byte[] caListData = bundle.getByteArray(Credentials.EXTRA_CA_CERTIFICATES_DATA);
 
-            if (!mKeyStore.put(caListName, caListData, uid, flags)) {
-                Log.e(TAG, "Failed to install " + caListName + " as uid " + uid);
+            if (!mKeyStore.put(caListName, caListData, mInstallUid, flags)) {
+                Log.e(TAG, "Failed to install " + caListName + " as uid " + mInstallUid);
                 return;
             }
         }
