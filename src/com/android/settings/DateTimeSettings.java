@@ -41,14 +41,18 @@ import com.android.settings.dashboard.SummaryLoader;
 import com.android.settingslib.RestrictedLockUtils;
 import com.android.settingslib.RestrictedSwitchPreference;
 import com.android.settingslib.datetime.ZoneGetter;
+import com.android.timezonepicker.TimeZoneInfo;
+import com.android.timezonepicker.TimeZonePickerDemoDialog;
+import com.android.timezonepicker.TimeZonePickerDemoDialog.OnTimeZoneSetListener;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 import static com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 
 public class DateTimeSettings extends SettingsPreferenceFragment
-        implements OnTimeSetListener, OnDateSetListener, OnPreferenceChangeListener {
+        implements OnTimeSetListener, OnDateSetListener, OnTimeZoneSetListener, OnPreferenceChangeListener {
 
     private static final String HOURS_12 = "12";
     private static final String HOURS_24 = "24";
@@ -62,6 +66,7 @@ public class DateTimeSettings extends SettingsPreferenceFragment
 
     private static final int DIALOG_DATEPICKER = 0;
     private static final int DIALOG_TIMEPICKER = 1;
+    private static final int DIALOG_TIMEZONEPICKER = 2;
 
     // have we been launched from the setup wizard?
     protected static final String EXTRA_IS_FIRST_RUN = "firstRun";
@@ -187,6 +192,16 @@ public class DateTimeSettings extends SettingsPreferenceFragment
         // SystemClock time.
     }
 
+
+    @Override
+    public void onTimeZoneSet(TimeZoneInfo tzi) {
+        final Activity activity = getActivity();
+        if (activity != null) {
+            setTimeZone(activity, tzi.mTzId);
+            updateTimeAndDateDisplay(activity);
+        }
+    }
+
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         if (preference.getKey().equals(KEY_AUTO_TIME)) {
@@ -224,6 +239,11 @@ public class DateTimeSettings extends SettingsPreferenceFragment
                     calendar.get(Calendar.HOUR_OF_DAY),
                     calendar.get(Calendar.MINUTE),
                     DateFormat.is24HourFormat(getActivity()));
+        case DIALOG_TIMEZONEPICKER:
+            return new TimeZonePickerDemoDialog(
+                    getActivity(),
+                    this,
+                    TimeZone.getDefault());
         default:
             throw new IllegalArgumentException();
         }
@@ -240,32 +260,6 @@ public class DateTimeSettings extends SettingsPreferenceFragment
         datePicker.setMaxDate(t.getTimeInMillis());
     }
 
-    /*
-    @Override
-    public void onPrepareDialog(int id, Dialog d) {
-        switch (id) {
-        case DIALOG_DATEPICKER: {
-            DatePickerDialog datePicker = (DatePickerDialog)d;
-            final Calendar calendar = Calendar.getInstance();
-            datePicker.updateDate(
-                    calendar.get(Calendar.YEAR),
-                    calendar.get(Calendar.MONTH),
-                    calendar.get(Calendar.DAY_OF_MONTH));
-            break;
-        }
-        case DIALOG_TIMEPICKER: {
-            TimePickerDialog timePicker = (TimePickerDialog)d;
-            final Calendar calendar = Calendar.getInstance();
-            timePicker.updateTime(
-                    calendar.get(Calendar.HOUR_OF_DAY),
-                    calendar.get(Calendar.MINUTE));
-            break;
-        }
-        default:
-            break;
-        }
-    }
-    */
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
         if (preference == mDatePref) {
@@ -279,6 +273,10 @@ public class DateTimeSettings extends SettingsPreferenceFragment
             set24Hour(is24Hour);
             updateTimeAndDateDisplay(getActivity());
             timeUpdated(is24Hour);
+        } else if (preference == mTimeZone) {
+            // The 24-hour mode may have changed, so recreate the dialog
+            removeDialog(DIALOG_TIMEZONEPICKER);
+            showDialog(DIALOG_TIMEZONEPICKER);
         }
         return super.onPreferenceTreeClick(preference);
     }
@@ -340,6 +338,10 @@ public class DateTimeSettings extends SettingsPreferenceFragment
         if (when / 1000 < Integer.MAX_VALUE) {
             ((AlarmManager) context.getSystemService(Context.ALARM_SERVICE)).setTime(when);
         }
+    }
+
+    /* package */ static void setTimeZone(Context context, String tzId) {
+        ((AlarmManager) context.getSystemService(Context.ALARM_SERVICE)).setTimeZone(tzId);
     }
 
     private BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
