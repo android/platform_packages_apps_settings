@@ -148,7 +148,7 @@ public class ConfirmLockPattern extends ConfirmDeviceCredentialBaseActivity {
                 // success (don't want user to get stuck confirming something that
                 // doesn't exist).
                 if (!mLockPatternUtils.isLockPatternEnabled(mEffectiveUserId)) {
-                    getActivity().setResult(Activity.RESULT_OK);
+                    getActivity().setResult(Activity.RESULT_OK, new Intent());
                     getActivity().finish();
                 }
             }
