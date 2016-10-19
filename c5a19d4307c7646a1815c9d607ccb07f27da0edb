@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fce08714_0ccfb73d",
+        "filename": "src/com/android/settings/CredentialStorage.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1060841
+      },
+      "writtenOn": "2016-10-19T09:55:55Z",
+      "side": 1,
+      "message": "It seems that we did not remove the uid from the bundle previously, any reason we do it now?",
+      "revId": "c5a19d4307c7646a1815c9d607ccb07f27da0edb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fce08714_ac1423b6",
+        "filename": "src/com/android/settings/CredentialStorage.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1060841
+      },
+      "writtenOn": "2016-10-19T09:55:55Z",
+      "side": 1,
+      "message": "Unlike previously, now software backed encryption still requires keystore, is it WAI?",
+      "revId": "c5a19d4307c7646a1815c9d607ccb07f27da0edb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
