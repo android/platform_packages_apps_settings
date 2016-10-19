@@ -87,6 +87,24 @@
       "revId": "c5a19d4307c7646a1815c9d607ccb07f27da0edb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dcf663e5_c30f36a1",
+        "filename": "src/com/android/settings/CredentialStorage.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1045544
+      },
+      "writtenOn": "2016-10-19T10:08:38Z",
+      "side": 1,
+      "message": "I  see. Let me check, my assumption had been isHardwareBacked would be necessary for keystore to be able to store certificates while uninitialized.\n\nI could be completely wrong there, will report back.",
+      "parentUuid": "fce08714_aceb0389",
+      "revId": "c5a19d4307c7646a1815c9d607ccb07f27da0edb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
