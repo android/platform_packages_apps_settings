@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "fce08714_ecf10b7d",
+        "filename": "src/com/android/settings/CredentialStorage.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1045544
+      },
+      "writtenOn": "2016-10-19T10:00:53Z",
+      "side": 1,
+      "message": "Just for the small chance that someone sends an empty bundle apart from this extra, we can short circuit.\n\nYou\u0027re right, it\u0027s probably not worth doing.",
+      "parentUuid": "fce08714_0ccfb73d",
+      "revId": "c5a19d4307c7646a1815c9d607ccb07f27da0edb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fce08714_ac1423b6",
         "filename": "src/com/android/settings/CredentialStorage.java",
         "patchSetId": 7
@@ -30,6 +48,24 @@
       "writtenOn": "2016-10-19T09:55:55Z",
       "side": 1,
       "message": "Unlike previously, now software backed encryption still requires keystore, is it WAI?",
+      "revId": "c5a19d4307c7646a1815c9d607ccb07f27da0edb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3cdbff69_eea69f61",
+        "filename": "src/com/android/settings/CredentialStorage.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1045544
+      },
+      "writtenOn": "2016-10-19T10:00:53Z",
+      "side": 1,
+      "message": "Sorry, I don\u0027t understand what you\u0027re asking here.",
+      "parentUuid": "fce08714_ac1423b6",
       "revId": "c5a19d4307c7646a1815c9d607ccb07f27da0edb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
