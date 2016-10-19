@@ -69,6 +69,24 @@
       "revId": "c5a19d4307c7646a1815c9d607ccb07f27da0edb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fce08714_aceb0389",
+        "filename": "src/com/android/settings/CredentialStorage.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1060841
+      },
+      "writtenOn": "2016-10-19T10:06:00Z",
+      "side": 1,
+      "message": "Hmm, I meant we didn\u0027t check Keystore.isHardwardBacked before, is it a expected behavior change?\n\nhttps://cs.corp.google.com/android/packages/apps/Settings/src/com/android/settings/CredentialStorage.java?q\u003dEXTRA_USER_PRIVATE_KEY_NAME+package:%5Eandroid$\u0026dr\u003dC\u0026l\u003d257",
+      "parentUuid": "3cdbff69_eea69f61",
+      "revId": "c5a19d4307c7646a1815c9d607ccb07f27da0edb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
