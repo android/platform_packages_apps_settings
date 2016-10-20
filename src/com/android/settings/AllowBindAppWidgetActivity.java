@@ -51,9 +51,8 @@ public class AllowBindAppWidgetActivity extends AlertActivity implements
     private boolean mClicked;
 
     public void onClick(DialogInterface dialog, int which) {
+        mClicked = true;
         if (which == AlertDialog.BUTTON_POSITIVE) {
-            // By default, set the result to cancelled
-            setResult(RESULT_CANCELED);
             if (mAppWidgetId != -1 && mComponentName != null && mCallingPackage != null) {
                 try {
                     final boolean bound = mAppWidgetManager.bindAppWidgetIdIfAllowed(mAppWidgetId,
@@ -80,14 +79,15 @@ public class AllowBindAppWidgetActivity extends AlertActivity implements
     }
 
     protected void onPause() {
-        if (isDestroyed() && !mClicked) {
-            setResult(RESULT_CANCELED);
+        if (!mClicked) { // RESULT_CANCELED
+            finish();
         }
-        super.onDestroy();
+        super.onPause();
     }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setResult(RESULT_CANCELED); // By default, set the result to cancelled
         Intent intent = getIntent();
         CharSequence label = "";
         if (intent != null) {
@@ -109,7 +109,6 @@ public class AllowBindAppWidgetActivity extends AlertActivity implements
                 mComponentName = null;
                 mCallingPackage = null;
                 Log.v("BIND_APPWIDGET", "Error getting parameters");
-                setResult(RESULT_CANCELED);
                 finish();
                 return;
             }
