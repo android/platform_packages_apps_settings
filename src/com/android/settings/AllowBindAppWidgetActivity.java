@@ -83,7 +83,7 @@ public class AllowBindAppWidgetActivity extends AlertActivity implements
         if (isDestroyed() && !mClicked) {
             setResult(RESULT_CANCELED);
         }
-        super.onDestroy();
+        super.onPause();
     }
 
     protected void onCreate(Bundle savedInstanceState) {
