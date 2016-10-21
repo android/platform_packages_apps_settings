@@ -172,7 +172,11 @@ public class VpnSettings extends RestrictedSettingsFragment implements
             getPreferenceScreen().removeAll();
             return;
         } else {
-            getEmptyTextView().setText(R.string.vpn_no_vpns_added);
+            if (getPreferenceScreen().getPreferenceCount() == 0) {
+                // Recover original preferences if disallow configuring VPN policy has canceled
+                addPreferencesFromResource(R.xml.vpn_settings2);
+            }
+            getEmptyTextView().setText(R.string.vpn_no_vpns_added);          
         }
 
         // Start monitoring
