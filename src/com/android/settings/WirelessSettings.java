@@ -357,6 +357,10 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
         } else {
             removePreference(KEY_WFC_SETTINGS);
         }
+
+        // update VPN setting
+        ((RestrictedPreference)findPreference(KEY_VPN_SETTINGS))
+            .checkRestrictionAndSetDisabled(UserManager.DISALLOW_CONFIG_VPN);
     }
 
     @Override
