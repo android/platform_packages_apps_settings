@@ -164,6 +164,7 @@ public class VpnSettings extends RestrictedSettingsFragment implements
     public void onResume() {
         super.onResume();
 
+        mUnavailable = mUserManager.hasUserRestriction(UserManager.DISALLOW_CONFIG_VPN);
         if (mUnavailable) {
             // Show a message to explain that VPN settings have been disabled
             if (!isUiRestrictedByOnlyAdmin()) {
@@ -172,6 +173,10 @@ public class VpnSettings extends RestrictedSettingsFragment implements
             getPreferenceScreen().removeAll();
             return;
         } else {
+            if (getPreferenceScreen().getPreferenceCount() == 0) {
+                // Recover original preferences if disallow configuring VPN policy has canceled
+                addPreferencesFromResource(R.xml.vpn_settings2);
+            }
             getEmptyTextView().setText(R.string.vpn_no_vpns_added);
         }
 
