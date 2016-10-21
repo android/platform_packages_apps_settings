@@ -78,6 +78,7 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
 
     private AirplaneModeEnabler mAirplaneModeEnabler;
     private SwitchPreference mAirplaneModePreference;
+    private RestrictedPreference mVpnPreference;
     private NfcEnabler mNfcEnabler;
     private NfcAdapter mNfcAdapter;
 
@@ -228,6 +229,7 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
 
         final Activity activity = getActivity();
         mAirplaneModePreference = (SwitchPreference) findPreference(KEY_TOGGLE_AIRPLANE);
+        mVpnPreference = (RestrictedPreference) findPreference(KEY_VPN_SETTINGS);
         SwitchPreference nfc = (SwitchPreference) findPreference(KEY_TOGGLE_NFC);
         RestrictedPreference androidBeam = (RestrictedPreference) findPreference(
                 KEY_ANDROID_BEAM_SETTINGS);
@@ -357,6 +359,11 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
         } else {
             removePreference(KEY_WFC_SETTINGS);
         }
+
+        // update VPN setting
+        if (mVpnPreference != null) {
+            mVpnPreference.checkRestrictionAndSetDisabled(UserManager.DISALLOW_CONFIG_VPN);
+        }
     }
 
     @Override
@@ -416,11 +423,12 @@ public class WirelessSettings extends SettingsPreferenceFragment implements Inde
                 final boolean isWimaxEnabled = !isSecondaryUser
                         && context.getResources().getBoolean(
                         com.android.internal.R.bool.config_wimaxEnabled);
+                final boolean isVpnDisallowed = um.hasUserRestriction(UserManager.DISALLOW_CONFIG_VPN);
                 if (!isWimaxEnabled) {
                     result.add(KEY_WIMAX_SETTINGS);
                 }
 
-                if (isSecondaryUser) { // Disable VPN
+                if (isSecondaryUser || isVpnDisallowed) { // Disable VPN
                     result.add(KEY_VPN_SETTINGS);
                 }
 
