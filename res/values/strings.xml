@@ -81,7 +81,32 @@
     <!-- Phone Info screen. Menu item label.  Used for diagnostic info screens, precise translation isn't needed -->
     <string name="radioInfo_menu_viewSDN">View Service Dialing Numbers</string>
     <!-- Phone Info screen. Menu item label.  Used for diagnostic info screens, precise translation isn't needed -->
-    <string name="radioInfo_menu_getPDP">Get PDP List</string>
+    <string name="radioInfo_menu_getIMS">IMS Service Status</string>
+
+    <!-- Phone Info screen. IMS Registration Title.  Used for diagnostic info screens, precise translation isn't needed -->
+    <string name="radio_info_ims_reg_status_title">IMS Status</string>
+
+    <!-- Phone Info screen. IMS Registration.  Used for diagnostic info screens, precise translation isn't needed -->
+    <string name="radio_info_ims_reg_status">IMS Registration: <xliff:g id="status" example="registered">%1$s\u000A</xliff:g></string>
+
+    <!-- Phone Info screen. IMS Status - Registered.  Used for diagnostic info screens, precise translation isn't needed -->
+    <string name="radio_info_ims_reg_status_registered">Registered</string>
+    <!-- Phone Info screen. Ims Status - Unregistered.  Used for diagnostic info screens, precise translation isn't needed -->
+    <string name="radio_info_ims_reg_status_not_registered">Not Registered</string>
+
+    <!-- Phone Info screen. VoLTE Feature Label.  Used for diagnostic info screens, precise translation isn't needed -->
+    <string name="radio_info_ims_feature_volte">Voice over LTE: <xliff:g id="availability" example="available">%1$s</xliff:g>\u000A</string>
+    <!-- Phone Info screen. ViLTE Feature Label.  Used for diagnostic info screens, precise translation isn't needed -->
+    <string name="radio_info_ims_feature_wfc">Voice over WiFi: <xliff:g id="availability" example="available">%1$s</xliff:g>\u000A</string>
+    <!-- Phone Info screen. UT Interface Label.  Used for diagnostic info screens, precise translation isn't needed -->
+    <string name="radio_info_ims_feature_video">Video Calling: <xliff:g id="availability" example="available">%1$s</xliff:g>\u000A</string>
+    <!-- Phone Info screen. Wifi Calling Feature Label.  Used for diagnostic info screens, precise translation isn't needed -->
+    <string name="radio_info_ims_feature_ut">UT Interface: <xliff:g id="availability" example="available">%1$s</xliff:g></string>
+
+    <!-- Phone Info screen. Ims Feature Status label.  Used for diagnostic info screens, precise translation isn't needed -->
+    <string name="radio_info_ims_feature_status_available">Available</string>
+    <!-- Phone Info screen. Ims Feature status label.  Used for diagnostic info screens, precise translation isn't needed -->
+    <string name="radio_info_ims_feature_status_unavailable">Unavailable</string>
 
     <!-- Phone Info screen. Status label.  Used for diagnostic info screens, precise translation isn't needed -->
     <string name="radioInfo_service_in">In Service</string>
