@@ -17,6 +17,8 @@
 package com.android.settings;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.QueuedWork;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -151,7 +153,7 @@ public class RadioInfo extends Activity {
     private static final int MENU_ITEM_VIEW_ADN     = 1;
     private static final int MENU_ITEM_VIEW_FDN     = 2;
     private static final int MENU_ITEM_VIEW_SDN     = 3;
-    private static final int MENU_ITEM_GET_PDP_LIST = 4;
+    private static final int MENU_ITEM_GET_IMS_STATUS = 4;
     private static final int MENU_ITEM_TOGGLE_DATA  = 5;
 
     private TextView mDeviceId; //DeviceId is the IMEI in GSM and the MEID in CDMA
@@ -517,8 +519,8 @@ public class RadioInfo extends Activity {
                 R.string.radioInfo_menu_viewFDN).setOnMenuItemClickListener(mViewFDNCallback);
         menu.add(1, MENU_ITEM_VIEW_SDN, 0,
                 R.string.radioInfo_menu_viewSDN).setOnMenuItemClickListener(mViewSDNCallback);
-        menu.add(1, MENU_ITEM_GET_PDP_LIST,
-                0, R.string.radioInfo_menu_getPDP).setOnMenuItemClickListener(mGetPdpList);
+        menu.add(1, MENU_ITEM_GET_IMS_STATUS,
+                0, R.string.radioInfo_menu_getIMS).setOnMenuItemClickListener(mGetImsStatus);
         menu.add(1, MENU_ITEM_TOGGLE_DATA,
                 0, R.string.radio_info_data_connection_disable).setOnMenuItemClickListener(mToggleData);
         return true;
@@ -1049,10 +1051,37 @@ public class RadioInfo extends Activity {
         }
     };
 
-    private MenuItem.OnMenuItemClickListener mGetPdpList = new MenuItem.OnMenuItemClickListener() {
+    private MenuItem.OnMenuItemClickListener mGetImsStatus = new MenuItem.OnMenuItemClickListener() {
         public boolean onMenuItemClick(MenuItem item) {
-            //FIXME: Replace with a TelephonyManager call
-            phone.getDataCallList(null);
+            boolean isImsRegistered = phone.isImsRegistered();
+            boolean availableVolte = phone.isVolteEnabled();
+            boolean availableWfc = phone.isWifiCallingEnabled();
+            boolean availableVt = phone.isVideoEnabled();
+
+            StringBuilder imsSb = new StringBuilder();
+
+            final String available = getString(R.string.radio_info_ims_feature_status_available);
+            final String unavailable = getString(
+                    R.string.radio_info_ims_feature_status_unavailable);
+            imsSb.append(getString(R.string.radio_info_ims_reg_status))
+                .append(isImsRegistered?getString(R.string.radio_info_ims_reg_status_registered):
+                        getString(R.string.radio_info_ims_reg_status_not_registered)).append("\n");
+            imsSb.append(getString(R.string.radio_info_ims_feature_volte))
+                .append(availableVolte?available:unavailable).append("\n");
+            imsSb.append(getString(R.string.radio_info_ims_feature_vilte))
+                .append(availableVt?available:unavailable).append("\n");
+            imsSb.append(getString(R.string.radio_info_ims_feature_wfc))
+                .append(availableWfc?available:unavailable).append("\n");
+
+            String imsStatus = imsSb.toString();
+
+            AlertDialog imsDialog = new AlertDialog.Builder(RadioInfo.this)
+                .setMessage(imsStatus)
+                .setTitle("Ims Status")
+                .create();
+
+            imsDialog.show();
+
             return true;
         }
     };
