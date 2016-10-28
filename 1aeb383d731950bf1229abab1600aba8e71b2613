@@ -1,0 +1,10 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+1: Kumar Anand <kumaranand@google.com>
+Code-Review+2: Fan Zhang <zhfan@google.com>
+Verified+1: Paul Stewart <pstew@google.com>
+Autosubmit+1: Paul Stewart <pstew@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Fri, 28 Oct 2016 20:56:35 +0000
+Reviewed-on: https://android-review.googlesource.com/296444
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
