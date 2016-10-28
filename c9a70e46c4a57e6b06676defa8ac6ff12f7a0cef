@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86373a0c_34ddc82a",
+        "filename": "src/com/android/settings/RadioInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1118,
+      "author": {
+        "id": 1061212
+      },
+      "writtenOn": "2016-10-28T22:33:16Z",
+      "side": 1,
+      "message": "extra space here \u0026 other similar places",
+      "range": {
+        "startLine": 1118,
+        "startChar": 36,
+        "endLine": 1118,
+        "endChar": 38
+      },
+      "revId": "c9a70e46c4a57e6b06676defa8ac6ff12f7a0cef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
