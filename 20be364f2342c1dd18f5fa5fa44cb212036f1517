@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86373a0c_b46558cd",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1061212
+      },
+      "writtenOn": "2016-10-28T22:32:14Z",
+      "side": 1,
+      "message": "you should have xliff for all strings with parameters. (Used by translation team).",
+      "range": {
+        "startLine": 90,
+        "startChar": 63,
+        "endLine": 90,
+        "endChar": 64
+      },
+      "revId": "20be364f2342c1dd18f5fa5fa44cb212036f1517",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86373a0c_d4b61cde",
+        "filename": "src/com/android/settings/RadioInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1092,
+      "author": {
+        "id": 1061212
+      },
+      "writtenOn": "2016-10-28T22:32:14Z",
+      "side": 1,
+      "message": "why not have getString() with multiple string parameters rather than using append ?\nappend is bad from string localization(translation team) perspective. They can\u0027t translate appended string, they can only translate format strings.",
+      "range": {
+        "startLine": 1092,
+        "startChar": 18,
+        "endLine": 1092,
+        "endChar": 24
+      },
+      "revId": "20be364f2342c1dd18f5fa5fa44cb212036f1517",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
