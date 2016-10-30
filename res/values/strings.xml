@@ -2327,6 +2327,8 @@
     <string name="status_roaming">Roaming</string>
     <!-- About phone, status item title. The cell carrier that the user is connected to.  -->
     <string name="status_operator">Network</string>
+    <!-- About phone, status item title. The status of net.hostname. -->
+    <string name="status_hostname">Hostname</string>
     <!-- About phone, status item title.  The MAC address of the Wi-Fi network adapter. -->
     <string name="status_wifi_mac_address">Wi\u2011Fi MAC address</string>
     <!-- About phone, status item title.  The bluetooth adapter's hardware address-->
