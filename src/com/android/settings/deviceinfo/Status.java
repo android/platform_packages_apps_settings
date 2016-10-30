@@ -60,6 +60,7 @@ public class Status extends SettingsPreferenceFragment {
     private static final String KEY_BATTERY_LEVEL = "battery_level";
     private static final String KEY_IP_ADDRESS = "wifi_ip_address";
     private static final String KEY_WIFI_MAC_ADDRESS = "wifi_mac_address";
+    private static final String KEY_HOSTNAME = "hostname";
     private static final String KEY_BT_ADDRESS = "bt_address";
     private static final String KEY_SERIAL_NUMBER = "serial_number";
     private static final String KEY_WIMAX_MAC_ADDRESS = "wimax_mac_address";
@@ -90,6 +91,7 @@ public class Status extends SettingsPreferenceFragment {
     private Preference mBatteryStatus;
     private Preference mBatteryLevel;
     private Preference mBtAddress;
+    private Preference mHostName;
     private Preference mIpAddress;
     private Preference mWifiMacAddress;
     private Preference mWimaxMacAddress;
@@ -170,6 +172,7 @@ public class Status extends SettingsPreferenceFragment {
         mWifiMacAddress = findPreference(KEY_WIFI_MAC_ADDRESS);
         mWimaxMacAddress = findPreference(KEY_WIMAX_MAC_ADDRESS);
         mIpAddress = findPreference(KEY_IP_ADDRESS);
+        mHostName = findPreference(KEY_HOSTNAME);
 
         mRes = getResources();
         mUnknown = mRes.getString(R.string.device_info_default);
@@ -271,6 +274,15 @@ public class Status extends SettingsPreferenceFragment {
              }
     }
 
+    private void setHostNameStatus() {
+        String hostName = SystemProperties.get("net.hostname");
+        if (mHostName != null) {
+            mHostName.setSummary(hostName);
+        } else {
+            mHostName.setSummary(mUnavailable);
+        }
+    }
+
     private void setWimaxStatus() {
         if (mWimaxMacAddress != null) {
             String macAddress = SystemProperties.get("net.wimax.mac.address", mUnavailable);
@@ -308,6 +320,7 @@ public class Status extends SettingsPreferenceFragment {
     }
 
     void updateConnectivity() {
+        setHostNameStatus();
         setWimaxStatus();
         setWifiStatus();
         setBtStatus();
