@@ -45,6 +45,30 @@
       "revId": "20be364f2342c1dd18f5fa5fa44cb212036f1517",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86373a0c_3d180899",
+        "filename": "src/com/android/settings/RadioInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 1092,
+      "author": {
+        "id": 1060151
+      },
+      "writtenOn": "2016-10-31T18:20:19Z",
+      "side": 1,
+      "message": "Each of these lines is distinct from the perspective of someone doing translation. They can be translated independently without any loss of meaning, and at some point the XML becomes ridiculously long and difficult to read, which will get worse when I add the xliff tags.\n\nI\u0027ll make the change, but I think you\u0027ll see it looks distinctly worse given that the final text is something like:\n\nfeature: on/off\nfeature: on/off\nfeature: on/off\n...",
+      "parentUuid": "86373a0c_d4b61cde",
+      "range": {
+        "startLine": 1092,
+        "startChar": 18,
+        "endLine": 1092,
+        "endChar": 24
+      },
+      "revId": "20be364f2342c1dd18f5fa5fa44cb212036f1517",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
