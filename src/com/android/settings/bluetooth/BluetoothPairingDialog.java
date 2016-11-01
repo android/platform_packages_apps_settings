@@ -130,7 +130,7 @@ public final class BluetoothPairingDialog extends AlertActivity implements
                     intent.getIntExtra(BluetoothDevice.EXTRA_PAIRING_KEY, BluetoothDevice.ERROR);
                 if (passkey == BluetoothDevice.ERROR) {
                     Log.e(TAG, "Invalid Confirmation Passkey received, not showing any dialog");
-                    return;
+                    break;
                 }
                 mPairingKey = String.format(Locale.US, "%06d", passkey);
                 createConfirmationDialog();
@@ -147,7 +147,7 @@ public final class BluetoothPairingDialog extends AlertActivity implements
                     intent.getIntExtra(BluetoothDevice.EXTRA_PAIRING_KEY, BluetoothDevice.ERROR);
                 if (pairingKey == BluetoothDevice.ERROR) {
                     Log.e(TAG, "Invalid Confirmation Passkey or PIN received, not showing any dialog");
-                    return;
+                    break;
                 }
                 if (mType == BluetoothDevice.PAIRING_VARIANT_DISPLAY_PASSKEY) {
                     mPairingKey = String.format("%06d", pairingKey);
