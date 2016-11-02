@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66ba4639_b895bd8b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1073753
+      },
+      "writtenOn": "2016-11-02T14:51:31Z",
+      "side": 1,
+      "message": "the description of this should be better - why does the BroadcastReceiver need to be registered?  How does that prevent the crash?",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "b8355cb2933722ef88d52259bd505e7cc616f113",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66ba4639_d8424159",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1073753
+      },
+      "writtenOn": "2016-11-02T14:51:31Z",
+      "side": 1,
+      "message": "can you be more specific in how you tested this please?",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "b8355cb2933722ef88d52259bd505e7cc616f113",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66ba4639_d894018d",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPairingDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1073753
+      },
+      "writtenOn": "2016-11-02T14:51:31Z",
+      "side": 1,
+      "message": "why can\u0027t you just finish() and return here?",
+      "range": {
+        "startLine": 133,
+        "startChar": 20,
+        "endLine": 133,
+        "endChar": 26
+      },
+      "revId": "b8355cb2933722ef88d52259bd505e7cc616f113",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
