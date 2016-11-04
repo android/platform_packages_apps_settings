@@ -140,6 +140,30 @@
       "revId": "b8355cb2933722ef88d52259bd505e7cc616f113",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b50234a_58d19d0a",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPairingDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1073753
+      },
+      "writtenOn": "2016-11-04T15:08:19Z",
+      "side": 1,
+      "message": "Will it really? I guess the two lines on lines 105 and 112 are an issue too. Will those cases cause a crash as well?  This other solution seems more reasonable.",
+      "parentUuid": "66ba4639_90c080e6",
+      "range": {
+        "startLine": 133,
+        "startChar": 20,
+        "endLine": 133,
+        "endChar": 26
+      },
+      "revId": "b8355cb2933722ef88d52259bd505e7cc616f113",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
