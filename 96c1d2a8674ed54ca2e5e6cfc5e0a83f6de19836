@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "8b50234a_a1d7e4d5",
+        "filename": "src/com/android/settings/WirelessSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1101746
+      },
+      "writtenOn": "2016-11-04T18:30:13Z",
+      "side": 1,
+      "message": "Replace this with mVpnPreference.",
+      "range": {
+        "startLine": 263,
+        "startChar": 12,
+        "endLine": 263,
+        "endChar": 44
+      },
+      "revId": "96c1d2a8674ed54ca2e5e6cfc5e0a83f6de19836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b50234a_db7007fa",
         "filename": "src/com/android/settings/WirelessSettings.java",
         "patchSetId": 3
@@ -18,6 +41,29 @@
         "startChar": 92,
         "endLine": 426,
         "endChar": 103
+      },
+      "revId": "96c1d2a8674ed54ca2e5e6cfc5e0a83f6de19836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b50234a_21ec74b2",
+        "filename": "src/com/android/settings/vpn2/VpnSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1101746
+      },
+      "writtenOn": "2016-11-04T18:30:13Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this. Vpns will be added when the RESCAN_MESSAGE is sent below.",
+      "range": {
+        "startLine": 176,
+        "startChar": 12,
+        "endLine": 179,
+        "endChar": 13
       },
       "revId": "96c1d2a8674ed54ca2e5e6cfc5e0a83f6de19836",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
