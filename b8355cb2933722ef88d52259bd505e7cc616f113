@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "66ba4639_f0f90c14",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2016-11-04T01:53:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66ba4639_b895bd8b",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "b8355cb2933722ef88d52259bd505e7cc616f113",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66ba4639_d8424159",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "66ba4639_d0fe88f9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2016-11-04T01:53:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "66ba4639_d8424159",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "b8355cb2933722ef88d52259bd505e7cc616f113",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "66ba4639_d894018d",
         "filename": "src/com/android/settings/bluetooth/BluetoothPairingDialog.java",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2016-11-02T14:51:31Z",
       "side": 1,
       "message": "why can\u0027t you just finish() and return here?",
+      "range": {
+        "startLine": 133,
+        "startChar": 20,
+        "endLine": 133,
+        "endChar": 26
+      },
+      "revId": "b8355cb2933722ef88d52259bd505e7cc616f113",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66ba4639_90c080e6",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPairingDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2016-11-04T01:53:15Z",
+      "side": 1,
+      "message": "finish(); return; will still trigger the crash as onDestroy() tries to unregisterReceiver(mReceiver) which is not registered yet. In the next patch, I will a new flag that tracks whether mReceiver is registered. I could use a try-catch statement, but unregisterReceiver throws multiple IllegalArgument exception and I want to avoid string comparison.",
+      "parentUuid": "66ba4639_d894018d",
       "range": {
         "startLine": 133,
         "startChar": 20,
