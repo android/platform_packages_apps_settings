@@ -164,6 +164,30 @@
       "revId": "b8355cb2933722ef88d52259bd505e7cc616f113",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b50234a_81e100bd",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPairingDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2016-11-04T18:29:27Z",
+      "side": 1,
+      "message": "Yes, line 105 and 112 would also cause the crash. The flag should solve this problem.",
+      "parentUuid": "8b50234a_58d19d0a",
+      "range": {
+        "startLine": 133,
+        "startChar": 20,
+        "endLine": 133,
+        "endChar": 26
+      },
+      "revId": "b8355cb2933722ef88d52259bd505e7cc616f113",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
