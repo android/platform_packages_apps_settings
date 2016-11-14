@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "8bd90310_f0d700d5",
+        "filename": "src/com/android/settings/WirelessSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1076898
+      },
+      "writtenOn": "2016-11-14T07:04:46Z",
+      "side": 1,
+      "message": "Thanks. I will fix it.",
+      "parentUuid": "86373a0c_35c82263",
+      "range": {
+        "startLine": 362,
+        "startChar": 31,
+        "endLine": 362,
+        "endChar": 64
+      },
+      "revId": "73d72e02a1501b6ebcabc351bae3f883bbb95e46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bd90310_90d474d2",
+        "filename": "src/com/android/settings/WirelessSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1076898
+      },
+      "writtenOn": "2016-11-14T07:04:46Z",
+      "side": 1,
+      "message": "Thanks I will fix it",
+      "parentUuid": "86373a0c_f5e23ae8",
+      "range": {
+        "startLine": 362,
+        "startChar": 30,
+        "endLine": 362,
+        "endChar": 31
+      },
+      "revId": "73d72e02a1501b6ebcabc351bae3f883bbb95e46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86373a0c_55c32648",
         "filename": "src/com/android/settings/WirelessSettings.java",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2016-10-31T17:25:04Z",
       "side": 1,
       "message": "Here indentation should be 8 spaces.",
+      "range": {
+        "startLine": 363,
+        "startChar": 9,
+        "endLine": 363,
+        "endChar": 12
+      },
+      "revId": "73d72e02a1501b6ebcabc351bae3f883bbb95e46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bd90310_b0d178e1",
+        "filename": "src/com/android/settings/WirelessSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1076898
+      },
+      "writtenOn": "2016-11-14T07:04:46Z",
+      "side": 1,
+      "message": "Thanks I will fix it too.",
+      "parentUuid": "86373a0c_55c32648",
       "range": {
         "startLine": 363,
         "startChar": 9,
@@ -88,6 +160,24 @@
     },
     {
       "key": {
+        "uuid": "8bd90310_7045508b",
+        "filename": "src/com/android/settings/WirelessSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1076898
+      },
+      "writtenOn": "2016-11-14T07:04:46Z",
+      "side": 1,
+      "message": "Thanks I will add code.",
+      "parentUuid": "86373a0c_aa15f021",
+      "revId": "73d72e02a1501b6ebcabc351bae3f883bbb95e46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86373a0c_eafed8be",
         "filename": "src/com/android/settings/vpn2/VpnSettings.java",
         "patchSetId": 2
@@ -99,6 +189,30 @@
       "writtenOn": "2016-10-31T17:25:04Z",
       "side": 1,
       "message": "Has this been tested? Looks like if the original preferences needs to be restored, then mUnavailable has to be updated.",
+      "range": {
+        "startLine": 175,
+        "startChar": 12,
+        "endLine": 178,
+        "endChar": 13
+      },
+      "revId": "73d72e02a1501b6ebcabc351bae3f883bbb95e46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bd90310_104ac49a",
+        "filename": "src/com/android/settings/vpn2/VpnSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1076898
+      },
+      "writtenOn": "2016-11-14T07:04:46Z",
+      "side": 1,
+      "message": "Thanks. You are right. I will add code to update mUnavailble at onResume.",
+      "parentUuid": "86373a0c_eafed8be",
       "range": {
         "startLine": 175,
         "startChar": 12,
