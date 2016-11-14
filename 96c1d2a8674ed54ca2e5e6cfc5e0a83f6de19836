@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8bd90310_30c7c8a4",
+        "filename": "src/com/android/settings/WirelessSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1076898
+      },
+      "writtenOn": "2016-11-14T07:04:46Z",
+      "side": 1,
+      "message": "Thanks. I will do it.",
+      "parentUuid": "8b50234a_a1d7e4d5",
+      "range": {
+        "startLine": 263,
+        "startChar": 12,
+        "endLine": 263,
+        "endChar": 44
+      },
+      "revId": "96c1d2a8674ed54ca2e5e6cfc5e0a83f6de19836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b50234a_db7007fa",
         "filename": "src/com/android/settings/WirelessSettings.java",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8bd90310_d0cbdcaa",
+        "filename": "src/com/android/settings/WirelessSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1076898
+      },
+      "writtenOn": "2016-11-14T07:04:46Z",
+      "side": 1,
+      "message": "Thanks. I will do it.",
+      "parentUuid": "8b50234a_db7007fa",
+      "range": {
+        "startLine": 426,
+        "startChar": 92,
+        "endLine": 426,
+        "endChar": 103
+      },
+      "revId": "96c1d2a8674ed54ca2e5e6cfc5e0a83f6de19836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b50234a_21ec74b2",
         "filename": "src/com/android/settings/vpn2/VpnSettings.java",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2016-11-04T18:30:13Z",
       "side": 1,
       "message": "I don\u0027t think we need this. Vpns will be added when the RESCAN_MESSAGE is sent below.",
+      "range": {
+        "startLine": 176,
+        "startChar": 12,
+        "endLine": 179,
+        "endChar": 13
+      },
+      "revId": "96c1d2a8674ed54ca2e5e6cfc5e0a83f6de19836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8bd90310_9084745c",
+        "filename": "src/com/android/settings/vpn2/VpnSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1076898
+      },
+      "writtenOn": "2016-11-14T07:04:46Z",
+      "side": 1,
+      "message": "Right. but when you try to connect added VPN, you will face \"Settings has stopped\" dialog. This \u0027else\u0027 will fix the bug.",
+      "parentUuid": "8b50234a_21ec74b2",
       "range": {
         "startLine": 176,
         "startChar": 12,
