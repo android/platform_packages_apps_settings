@@ -17,8 +17,10 @@
 package com.android.settings.network.telephony;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.UserHandle;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
@@ -30,6 +32,8 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
 
+import com.android.internal.telephony.PhoneConstants;
+import com.android.internal.telephony.TelephonyIntents;
 import com.android.settings.R;
 import com.android.settings.network.MobileDataContentObserver;
 import com.android.settingslib.core.lifecycle.LifecycleObserver;
@@ -51,8 +55,6 @@ public class MobileDataPreferenceController extends TelephonyTogglePreferenceCon
     private FragmentManager mFragmentManager;
     @VisibleForTesting
     int mDialogType;
-    @VisibleForTesting
-    boolean mNeedDialog;
 
     public MobileDataPreferenceController(Context context, String key) {
         super(context, key);
@@ -91,9 +93,6 @@ public class MobileDataPreferenceController extends TelephonyTogglePreferenceCon
     @Override
     public boolean handlePreferenceTreeClick(Preference preference) {
         if (TextUtils.equals(preference.getKey(), getPreferenceKey())) {
-            if (mNeedDialog) {
-                showDialog(mDialogType);
-            }
             return true;
         }
 
@@ -102,14 +101,10 @@ public class MobileDataPreferenceController extends TelephonyTogglePreferenceCon
 
     @Override
     public boolean setChecked(boolean isChecked) {
-        mNeedDialog = isDialogNeeded();
-
-        if (!mNeedDialog) {
-            // Update data directly if we don't need dialog
-            MobileNetworkUtils.setMobileDataEnabled(mContext, mSubId, isChecked, false);
-            return true;
-        }
-
+        // Broadcast intent ACTION_MOBILE_DATA_TOGGLE to show warning dialog and toggle mobile data.
+        Intent intent = new Intent(TelephonyIntents.ACTION_MOBILE_DATA_TOGGLE);
+        intent.putExtra(PhoneConstants.SUBSCRIPTION_KEY, mSubId);
+        mContext.sendBroadcastAsUser(intent, new UserHandle(UserHandle.USER_CURRENT));
         return false;
     }
 
@@ -140,25 +135,5 @@ public class MobileDataPreferenceController extends TelephonyTogglePreferenceCon
         mSubId = subId;
         mTelephonyManager = mContext.getSystemService(TelephonyManager.class)
                 .createForSubscriptionId(mSubId);
-    }
-
-    @VisibleForTesting
-    boolean isDialogNeeded() {
-        final boolean enableData = !isChecked();
-        final boolean isMultiSim = (mTelephonyManager.getActiveModemCount() > 1);
-        final int defaultSubId = mSubscriptionManager.getDefaultDataSubscriptionId();
-        final boolean needToDisableOthers = mSubscriptionManager
-                .isActiveSubscriptionId(defaultSubId) && defaultSubId != mSubId;
-        if (enableData && isMultiSim && needToDisableOthers) {
-            mDialogType = MobileDataDialogFragment.TYPE_MULTI_SIM_DIALOG;
-            return true;
-        }
-        return false;
-    }
-
-    private void showDialog(int type) {
-        final MobileDataDialogFragment dialogFragment = MobileDataDialogFragment.newInstance(type,
-                mSubId);
-        dialogFragment.show(mFragmentManager, DIALOG_TAG);
     }
 }

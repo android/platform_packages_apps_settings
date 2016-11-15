@@ -14,9 +14,10 @@
 
 package com.android.settings.datausage;
 
+import android.app.ActivityManager;
 import android.app.settings.SettingsEnums;
 import android.content.Context;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.ContentObserver;
 import android.net.NetworkTemplate;
 import android.net.Uri;
@@ -24,8 +25,8 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.os.UserHandle;
 import android.provider.Settings.Global;
-import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.util.AttributeSet;
@@ -34,16 +35,13 @@ import android.view.View;
 import android.widget.Checkable;
 
 import androidx.annotation.VisibleForTesting;
-import androidx.appcompat.app.AlertDialog.Builder;
 import androidx.core.content.res.TypedArrayUtils;
 import androidx.preference.PreferenceViewHolder;
 
-import com.android.settings.R;
-import com.android.settings.Utils;
+import com.android.internal.telephony.PhoneConstants;
+import com.android.internal.telephony.TelephonyIntents;
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settingslib.CustomDialogPreferenceCompat;
-
-import java.util.List;
 
 public class CellDataPreference extends CustomDialogPreferenceCompat implements TemplatePreference {
 
@@ -51,7 +49,6 @@ public class CellDataPreference extends CustomDialogPreferenceCompat implements 
 
     public int mSubId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
     public boolean mChecked;
-    public boolean mMultiSimDialog;
     private TelephonyManager mTelephonyManager;
     @VisibleForTesting
     SubscriptionManager mSubscriptionManager;
@@ -68,7 +65,6 @@ public class CellDataPreference extends CustomDialogPreferenceCompat implements 
         super.onRestoreInstanceState(state.getSuperState());
         mTelephonyManager = TelephonyManager.from(getContext());
         mChecked = state.mChecked;
-        mMultiSimDialog = state.mMultiSimDialog;
         if (mSubId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
             mSubId = state.mSubId;
             setKey(getKey() + mSubId);
@@ -80,7 +76,6 @@ public class CellDataPreference extends CustomDialogPreferenceCompat implements 
     protected Parcelable onSaveInstanceState() {
         CellDataState state = new CellDataState(super.onSaveInstanceState());
         state.mChecked = mChecked;
-        state.mMultiSimDialog = mMultiSimDialog;
         state.mSubId = mSubId;
         return state;
     }
@@ -127,9 +122,10 @@ public class CellDataPreference extends CustomDialogPreferenceCompat implements 
     }
 
     private void updateEnabled() {
-        // If this subscription is not active, for example, SIM card is taken out, we disable
-        // the button.
-        setEnabled(mSubscriptionManager.getActiveSubscriptionInfo(mSubId) != null);
+        // Disable the button if the user is not the system user of the device or if the
+        // subscription is not active, for example, SIM card is taken out.
+        setEnabled(mSubscriptionManager.getActiveSubscriptionInfo(mSubId) != null
+                && ActivityManager.getCurrentUser() == UserHandle.USER_SYSTEM);
     }
 
     @Override
@@ -137,48 +133,11 @@ public class CellDataPreference extends CustomDialogPreferenceCompat implements 
         final Context context = getContext();
         FeatureFactory.getFactory(context).getMetricsFeatureProvider()
                 .action(context, SettingsEnums.ACTION_CELL_DATA_TOGGLE, !mChecked);
-        final SubscriptionInfo currentSir = mSubscriptionManager.getActiveSubscriptionInfo(
-                mSubId);
-        final SubscriptionInfo nextSir = mSubscriptionManager.getDefaultDataSubscriptionInfo();
-        if (mChecked) {
-            // If the device is single SIM or is enabling data on the active data SIM then forgo
-            // the pop-up.
-            if (!Utils.showSimCardTile(getContext()) ||
-                    (nextSir != null && currentSir != null &&
-                            currentSir.getSubscriptionId() == nextSir.getSubscriptionId())) {
-                setMobileDataEnabled(false);
-                if (nextSir != null && currentSir != null &&
-                        currentSir.getSubscriptionId() == nextSir.getSubscriptionId()) {
-                    disableDataForOtherSubscriptions(mSubId);
-                }
-                return;
-            }
-            // disabling data; show confirmation dialog which eventually
-            // calls setMobileDataEnabled() once user confirms.
-            mMultiSimDialog = false;
-            super.performClick(view);
-        } else {
-            // If we are showing the Sim Card tile then we are a Multi-Sim device.
-            if (Utils.showSimCardTile(getContext())) {
-                mMultiSimDialog = true;
-                if (nextSir != null && currentSir != null &&
-                        currentSir.getSubscriptionId() == nextSir.getSubscriptionId()) {
-                    setMobileDataEnabled(true);
-                    disableDataForOtherSubscriptions(mSubId);
-                    return;
-                }
-                super.performClick(view);
-            } else {
-                setMobileDataEnabled(true);
-            }
-        }
-    }
 
-    private void setMobileDataEnabled(boolean enabled) {
-        if (DataUsageSummary.LOGD) Log.d(TAG, "setMobileDataEnabled(" + enabled + ","
-                + mSubId + ")");
-        mTelephonyManager.setDataEnabled(mSubId, enabled);
-        setChecked(enabled);
+        Intent intent = new Intent(TelephonyIntents.ACTION_MOBILE_DATA_TOGGLE);
+        intent.putExtra(PhoneConstants.SUBSCRIPTION_KEY, mSubId);
+        context.sendBroadcastAsUser(intent, new UserHandle(UserHandle.USER_CURRENT));
+        return;
     }
 
     private void setChecked(boolean checked) {
@@ -193,69 +152,6 @@ public class CellDataPreference extends CustomDialogPreferenceCompat implements 
         View switchView = holder.findViewById(android.R.id.switch_widget);
         switchView.setClickable(false);
         ((Checkable) switchView).setChecked(mChecked);
-    }
-
-    @Override
-    protected void onPrepareDialogBuilder(Builder builder,
-            DialogInterface.OnClickListener listener) {
-        if (mMultiSimDialog) {
-            showMultiSimDialog(builder, listener);
-        } else {
-            showDisableDialog(builder, listener);
-        }
-    }
-
-    private void showDisableDialog(Builder builder,
-            DialogInterface.OnClickListener listener) {
-        builder.setTitle(null)
-                .setMessage(R.string.data_usage_disable_mobile)
-                .setPositiveButton(android.R.string.ok, listener)
-                .setNegativeButton(android.R.string.cancel, null);
-    }
-
-    private void showMultiSimDialog(Builder builder,
-            DialogInterface.OnClickListener listener) {
-        final SubscriptionInfo currentSir = mSubscriptionManager.getActiveSubscriptionInfo(mSubId);
-        final SubscriptionInfo nextSir = mSubscriptionManager.getDefaultDataSubscriptionInfo();
-
-        final String previousName = (nextSir == null)
-            ? getContext().getResources().getString(R.string.sim_selection_required_pref)
-            : nextSir.getDisplayName().toString();
-
-        builder.setTitle(R.string.sim_change_data_title);
-        builder.setMessage(getContext().getString(R.string.sim_change_data_message,
-                String.valueOf(currentSir != null ? currentSir.getDisplayName() : null),
-                previousName));
-
-        builder.setPositiveButton(R.string.okay, listener);
-        builder.setNegativeButton(R.string.cancel, null);
-    }
-
-    private void disableDataForOtherSubscriptions(int subId) {
-        List<SubscriptionInfo> subInfoList = mSubscriptionManager
-                .getActiveSubscriptionInfoList(true);
-        if (subInfoList != null) {
-            for (SubscriptionInfo subInfo : subInfoList) {
-                if (subInfo.getSubscriptionId() != subId) {
-                    mTelephonyManager.setDataEnabled(subInfo.getSubscriptionId(), false);
-                }
-            }
-        }
-    }
-
-    @Override
-    protected void onClick(DialogInterface dialog, int which) {
-        if (which != DialogInterface.BUTTON_POSITIVE) {
-            return;
-        }
-        if (mMultiSimDialog) {
-            mSubscriptionManager.setDefaultDataSubId(mSubId);
-            setMobileDataEnabled(true);
-            disableDataForOtherSubscriptions(mSubId);
-        } else {
-            // TODO: extend to modify policy enabled flag.
-            setMobileDataEnabled(false);
-        }
     }
 
     @VisibleForTesting
@@ -298,7 +194,6 @@ public class CellDataPreference extends CustomDialogPreferenceCompat implements 
     public static class CellDataState extends BaseSavedState {
         public int mSubId;
         public boolean mChecked;
-        public boolean mMultiSimDialog;
 
         public CellDataState(Parcelable base) {
             super(base);
@@ -307,7 +202,6 @@ public class CellDataPreference extends CustomDialogPreferenceCompat implements 
         public CellDataState(Parcel source) {
             super(source);
             mChecked = source.readByte() != 0;
-            mMultiSimDialog = source.readByte() != 0;
             mSubId = source.readInt();
         }
 
@@ -315,7 +209,6 @@ public class CellDataPreference extends CustomDialogPreferenceCompat implements 
         public void writeToParcel(Parcel dest, int flags) {
             super.writeToParcel(dest, flags);
             dest.writeByte((byte) (mChecked ? 1 : 0));
-            dest.writeByte((byte) (mMultiSimDialog ? 1 : 0));
             dest.writeInt(mSubId);
         }
 
