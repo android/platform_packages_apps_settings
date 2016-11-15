@@ -10,12 +10,14 @@
 
 package com.android.settings.dashboard.conditional;
 
+import android.app.ActivityManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
+import android.os.UserHandle;
 import android.telephony.TelephonyManager;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
@@ -46,6 +48,15 @@ public class CellularDataCondition extends Condition {
             return;
         }
         setActive(!telephony.isDataEnabled());
+    }
+
+    @Override
+    public boolean shouldShow() {
+        // Only show for system user.
+        if (ActivityManager.getCurrentUser() != UserHandle.USER_SYSTEM) {
+            return false;
+        }
+        return super.shouldShow();
     }
 
     @Override
@@ -87,13 +98,16 @@ public class CellularDataCondition extends Condition {
     @Override
     public void onActionClick(int index) {
         if (index == 0) {
-            TelephonyManager telephony = mManager.getContext().getSystemService(
-                    TelephonyManager.class);
-            telephony.setDataEnabled(true);
-            setActive(false);
+            mManager.getContext().sendBroadcast(
+                    new Intent(TelephonyIntents.ACTION_MOBILE_DATA_TOGGLE));
         } else {
             throw new IllegalArgumentException("Unexpected index " + index);
         }
+    }
+
+    @Override
+    public void onResume() {
+        refreshState();
     }
 
     @Override
