@@ -20,11 +20,14 @@ import static com.android.settings.core.BasePreferenceController.DISABLED_DEPEND
 
 import static com.google.common.truth.Truth.assertThat;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
 import android.content.Context;
+import android.content.Intent;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
@@ -33,11 +36,14 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.preference.SwitchPreference;
 
+import com.android.internal.telephony.PhoneConstants;
+import com.android.internal.telephony.TelephonyIntents;
 import com.android.settings.R;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
@@ -95,59 +101,16 @@ public class MobileDataPreferenceControllerTest {
     }
 
     @Test
-    public void isDialogNeeded_disableSingleSim_returnFalse() {
-        doReturn(true).when(mTelephonyManager).isDataEnabled();
-        doReturn(mSubscriptionInfo).when(mSubscriptionManager).getActiveSubscriptionInfo(SUB_ID);
-        doReturn(mSubscriptionInfo).when(mSubscriptionManager).getDefaultDataSubscriptionInfo();
-        doReturn(1).when(mTelephonyManager).getSimCount();
-
-        assertThat(mController.isDialogNeeded()).isFalse();
-    }
-
-    @Test
-    public void isDialogNeeded_enableNonDefaultSimInMultiSimMode_returnTrue() {
-        doReturn(false).when(mTelephonyManager).isDataEnabled();
-        doReturn(mSubscriptionInfo).when(mSubscriptionManager).getActiveSubscriptionInfo(SUB_ID);
-        doReturn(true).when(mSubscriptionManager).isActiveSubscriptionId(SUB_ID_OTHER);
-        ShadowSubscriptionManager.setDefaultDataSubscriptionId(SUB_ID_OTHER);
-        doReturn(2).when(mTelephonyManager).getSimCount();
-
-        assertThat(mController.isDialogNeeded()).isTrue();
-        assertThat(mController.mDialogType).isEqualTo(
-                MobileDataDialogFragment.TYPE_MULTI_SIM_DIALOG);
-    }
-
-    @Test
-    public void handlePreferenceTreeClick_needDialog_showDialog() {
-        mController.mNeedDialog = true;
-
-        mController.handlePreferenceTreeClick(mPreference);
-
-        verify(mFragmentManager).beginTransaction();
-    }
-
-    @Test
-    public void onPreferenceChange_singleSim_On_shouldEnableData() {
-        doReturn(true).when(mTelephonyManager).isDataEnabled();
-        doReturn(mSubscriptionInfo).when(mSubscriptionManager).getActiveSubscriptionInfo(SUB_ID);
-        doReturn(mSubscriptionInfo).when(mSubscriptionManager).getDefaultDataSubscriptionInfo();
-        doReturn(1).when(mTelephonyManager).getSimCount();
-
+    public void onPreferenceChange_sendIntent() {
         mController.onPreferenceChange(mPreference, true);
 
-        verify(mTelephonyManager).setDataEnabled(true);
-    }
-
-    @Test
-    public void onPreferenceChange_multiSim_On_shouldEnableData() {
-        doReturn(true).when(mTelephonyManager).isDataEnabled();
-        doReturn(mSubscriptionInfo).when(mSubscriptionManager).getActiveSubscriptionInfo(SUB_ID);
-        doReturn(mSubscriptionInfo).when(mSubscriptionManager).getDefaultDataSubscriptionInfo();
-        doReturn(2).when(mTelephonyManager).getSimCount();
-
-        mController.onPreferenceChange(mPreference, true);
-
-        verify(mTelephonyManager).setDataEnabled(true);
+        // Verify intent ACTION_MOBILE_DATA_TOGGLE is broadcasted after the user toggle mobile
+        // data on/off.
+        ArgumentCaptor<Intent> argument = ArgumentCaptor.forClass(Intent.class);
+        verify(mContext, times(1)).sendBroadcast(argument.capture());
+        assertEquals(TelephonyIntents.ACTION_MOBILE_DATA_TOGGLE, argument.getValue().getAction());
+        assertEquals(SUB_ID, argument.getValue().getIntExtra(
+                PhoneConstants.SUBSCRIPTION_KEY, SubscriptionManager.INVALID_SUBSCRIPTION_ID));
     }
 
     @Test

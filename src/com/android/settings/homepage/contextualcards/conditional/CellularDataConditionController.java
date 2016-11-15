@@ -16,12 +16,14 @@
 
 package com.android.settings.homepage.contextualcards.conditional;
 
+import android.app.ActivityManager;
 import android.app.settings.SettingsEnums;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
+import android.os.UserHandle;
 import android.telephony.TelephonyManager;
 
 import com.android.internal.telephony.TelephonyIntents;
@@ -61,7 +63,8 @@ public class CellularDataConditionController implements ConditionalCardControlle
     @Override
     public boolean isDisplayable() {
         if (!mConnectivityManager.isNetworkSupported(ConnectivityManager.TYPE_MOBILE)
-                || mTelephonyManager.getSimState() != TelephonyManager.SIM_STATE_READY) {
+                || mTelephonyManager.getSimState() != TelephonyManager.SIM_STATE_READY
+                || ActivityManager.getCurrentUser() != UserHandle.USER_SYSTEM) {
             return false;
         }
         return !mTelephonyManager.isDataEnabled();
@@ -75,7 +78,7 @@ public class CellularDataConditionController implements ConditionalCardControlle
 
     @Override
     public void onActionClick() {
-        mTelephonyManager.setDataEnabled(true);
+        mAppContext.sendBroadcast(new Intent(TelephonyIntents.ACTION_MOBILE_DATA_TOGGLE));
     }
 
     @Override
