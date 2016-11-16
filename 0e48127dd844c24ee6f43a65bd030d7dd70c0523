@@ -16,6 +16,24 @@
       "revId": "0e48127dd844c24ee6f43a65bd030d7dd70c0523",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d0600c1e_f6035e72",
+        "filename": "src/com/android/settings/deviceinfo/PublicVolumeSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1002951
+      },
+      "writtenOn": "2016-11-16T08:14:50Z",
+      "side": 1,
+      "message": "This class, PublicVolumeSettings, is a Fragment and its lifecycle is just vaguely related to the Activity. The Fragment/FragmentManager will still call into onActivityCreated regardless of if we called finish in onCreate. Calling finish at this point partly to follow the same pattern and partly to handle the case if volume turned invalid in the meantime.",
+      "parentUuid": "30b088be_32eee506",
+      "revId": "0e48127dd844c24ee6f43a65bd030d7dd70c0523",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
