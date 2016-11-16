@@ -1,0 +1,8 @@
+Code-Review+2: Jerry Zhang <zhangjerry@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Jerry Zhang <zhangjerry@google.com>
+Submitted-by: Jerry Zhang <zhangjerry@google.com>
+Submitted-at: Wed, 16 Nov 2016 23:59:32 +0000
+Reviewed-on: https://android-review.googlesource.com/294588
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
