@@ -38,7 +38,6 @@ import com.android.settings.AppListSwitchPreference;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
-
 import java.util.Collection;
 import java.util.List;
 
@@ -105,7 +104,7 @@ public class ConfigureWifiSettings extends SettingsPreferenceFragment
         final Context context = getActivity();
         mWifiAssistantPreference = (AppListSwitchPreference) findPreference(KEY_WIFI_ASSISTANT);
         Collection<NetworkScorerAppManager.NetworkScorerAppData> scorers =
-                NetworkScorerAppManager.getAllValidScorers(context);
+                new NetworkScorerAppManager(context).getAllValidScorers();
         if (UserManager.get(context).isAdminUser() && !scorers.isEmpty()) {
             mWifiAssistantPreference.setOnPreferenceChangeListener(this);
             initWifiAssistantPreference(scorers);
@@ -169,7 +168,7 @@ public class ConfigureWifiSettings extends SettingsPreferenceFragment
 
         if (KEY_WIFI_ASSISTANT.equals(key)) {
             NetworkScorerAppManager.NetworkScorerAppData wifiAssistant =
-                    NetworkScorerAppManager.getScorer(context, (String) newValue);
+                    new NetworkScorerAppManager(context).getScorer((String) newValue);
             if (wifiAssistant == null) {
                 mNetworkScoreManager.setActiveScorer(null);
                 return true;
