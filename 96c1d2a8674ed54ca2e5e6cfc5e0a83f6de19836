@@ -140,6 +140,30 @@
       "revId": "96c1d2a8674ed54ca2e5e6cfc5e0a83f6de19836",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4df48341_c5134e0e",
+        "filename": "src/com/android/settings/vpn2/VpnSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1101746
+      },
+      "writtenOn": "2016-11-23T20:11:17Z",
+      "side": 1,
+      "message": "I tried this patch without this code block and didn\u0027t encounter any crash dialog. would you mind pasting the crash log here?",
+      "parentUuid": "8bd90310_9084745c",
+      "range": {
+        "startLine": 176,
+        "startChar": 12,
+        "endLine": 179,
+        "endChar": 13
+      },
+      "revId": "96c1d2a8674ed54ca2e5e6cfc5e0a83f6de19836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
