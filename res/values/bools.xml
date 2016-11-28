@@ -45,4 +45,7 @@
 
     <!--Whether help links are defined. -->
     <bool name="config_has_help">false</bool>
+
+    <!--Whether the device supports 2GHz AP only (even if it has dual band support.) -->
+    <bool name="config_wifi_ap_band_config_2G_only">false</bool>
 </resources>
