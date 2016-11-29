@@ -188,6 +188,30 @@
       "revId": "96c1d2a8674ed54ca2e5e6cfc5e0a83f6de19836",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "702a0062_0241de56",
+        "filename": "src/com/android/settings/vpn2/VpnSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1101746
+      },
+      "writtenOn": "2016-11-29T00:49:51Z",
+      "side": 1,
+      "message": "I don\u0027t think this block will prevent that crash. The only way I can think of how that crash can occur is the connect dialog is shown to the user and then the admin sets the policy. Ideally we should start showAdminSupportDetailsDialog activity in this scenario when the user clicks the connect option.",
+      "parentUuid": "ed1b7768_944d8489",
+      "range": {
+        "startLine": 176,
+        "startChar": 12,
+        "endLine": 179,
+        "endChar": 13
+      },
+      "revId": "96c1d2a8674ed54ca2e5e6cfc5e0a83f6de19836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
