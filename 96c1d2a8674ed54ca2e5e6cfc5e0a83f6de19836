@@ -212,6 +212,30 @@
       "revId": "96c1d2a8674ed54ca2e5e6cfc5e0a83f6de19836",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed1b7768_5496cc9d",
+        "filename": "src/com/android/settings/vpn2/VpnSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1076898
+      },
+      "writtenOn": "2016-11-30T11:33:25Z",
+      "side": 1,
+      "message": "First of all I shared the crash log I saw. And I think I understand what you said. This \u0027else\u0027 is not related with the crash I shared. I\u0027m sorry.\n\nThis \u0027else\u0027 will recover VpnSettings from \u0027VPN disallowed message\u0027 when the user has canceled \u0027disallow configuring VPN policy\u0027. When you \u0027enter VPNSettings \u003e set disallow configuring VPN \u003e enter the VPN settings via onResume\u0027 with this commit, you will see that VPN is disallowed message. After that, if you \u0027cancel disallow configuring VPN policy \u003e enter the VPNSettings via onResume\u0027 you will not see VPN disallowed message no more because this \u0027else\u0027 adds removed preference.",
+      "parentUuid": "ed1b7768_944d8489",
+      "range": {
+        "startLine": 176,
+        "startChar": 12,
+        "endLine": 179,
+        "endChar": 13
+      },
+      "revId": "96c1d2a8674ed54ca2e5e6cfc5e0a83f6de19836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
