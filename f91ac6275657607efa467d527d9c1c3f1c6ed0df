@@ -1,0 +1,10 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Jeremy Joslin <jjoslin@google.com>
+Code-Review+2: Amin Shaikh <ashaikh@google.com>
+Verified+1: Amin Shaikh <ashaikh@google.com>
+Autosubmit+1: Amin Shaikh <ashaikh@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Thu, 01 Dec 2016 01:59:13 +0000
+Reviewed-on: https://android-review.googlesource.com/307901
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
