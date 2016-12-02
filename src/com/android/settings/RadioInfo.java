@@ -77,12 +77,14 @@ import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneFactory;
 import com.android.internal.telephony.RILConstants;
 import com.android.internal.telephony.TelephonyProperties;
+import com.android.internal.telephony.uicc.SIMRecords;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class RadioInfo extends Activity {
@@ -146,6 +148,7 @@ public class RadioInfo extends Activity {
     private static final int EVENT_SET_PREFERRED_TYPE_DONE = 1001;
     private static final int EVENT_QUERY_SMSC_DONE = 1005;
     private static final int EVENT_UPDATE_SMSC_DONE = 1006;
+    private static final int EVENT_UPDATE_FPLMNS_DONE = 1007;
 
     private static final int MENU_ITEM_SELECT_BAND  = 0;
     private static final int MENU_ITEM_VIEW_ADN     = 1;
@@ -320,6 +323,18 @@ public class RadioInfo extends Activity {
                         smsc.setText("update error");
                     }
                     break;
+                case EVENT_UPDATE_FPLMNS_DONE:
+                    ar= (AsyncResult) msg.obj;
+                    if (ar.exception != null) {
+                        log("Exception in Updating FPLMNs: " + ar.exception);
+                    }
+                    String[] fplmns = (String[])ar.result;
+                    if (fplmns == null ) {
+                        log("Received null fplmns");
+                    } else {
+                        log("Forbidden PLMNs: " + Arrays.toString(fplmns));
+                    }
+                    break;
                 default:
                     super.handleMessage(msg);
                     break;
@@ -462,6 +477,11 @@ public class RadioInfo extends Activity {
                 | PhoneStateListener.LISTEN_SERVICE_STATE
                 | PhoneStateListener.LISTEN_SIGNAL_STRENGTHS
                 | PhoneStateListener.LISTEN_DATA_CONNECTION_REAL_TIME_INFO);
+
+        ((SIMRecords)phone.getUiccCard()
+            .getApplicationByType(TelephonyManager.APPTYPE_USIM)
+            .getIccRecords()).getForbiddenPlmns(
+            mHandler.obtainMessage(EVENT_UPDATE_FPLMNS_DONE));
 
         smsc.clearFocus();
     }
