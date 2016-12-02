@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d6e6f0e_c4d93c43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1101746
+      },
+      "writtenOn": "2016-12-02T02:43:09Z",
+      "side": 1,
+      "message": "Could you remove \"Android for Work\" from commit message, just saying disallow configuring VPN policy is enough.",
+      "range": {
+        "startLine": 7,
+        "startChar": 58,
+        "endLine": 7,
+        "endChar": 75
+      },
+      "revId": "1afcd443b351c704474522596990ce14404c6220",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
