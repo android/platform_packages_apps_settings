@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d9e7b7b_01e1aab6",
+        "filename": "src/com/android/settings/vpn2/VpnSettings.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1076898
+      },
+      "writtenOn": "2016-12-05T06:32:40Z",
+      "side": 1,
+      "message": "Dear Sudheer Shanka,\nThanks again for your guide. I uploaded patchset#5 as your guide. By the way, if you don\u0027t mind, would you please let me how your guide restores removed preference by VpnSettings.java line 173 once after disallow configuring VPN policy has canceled kindly?",
+      "revId": "03c44d0d5689ff10a1b7827bbb9eae88767b463c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
