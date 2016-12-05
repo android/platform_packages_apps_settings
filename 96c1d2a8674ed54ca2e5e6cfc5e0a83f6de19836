@@ -260,6 +260,30 @@
       "revId": "96c1d2a8674ed54ca2e5e6cfc5e0a83f6de19836",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d9e7b7b_61a99658",
+        "filename": "src/com/android/settings/vpn2/VpnSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1076898
+      },
+      "writtenOn": "2016-12-05T06:32:40Z",
+      "side": 1,
+      "message": "Thanks for your guide. I will modify it.",
+      "parentUuid": "2d6e6f0e_8420e463",
+      "range": {
+        "startLine": 176,
+        "startChar": 12,
+        "endLine": 179,
+        "endChar": 13
+      },
+      "revId": "96c1d2a8674ed54ca2e5e6cfc5e0a83f6de19836",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
