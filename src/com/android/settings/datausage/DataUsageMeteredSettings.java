@@ -17,6 +17,8 @@ package com.android.settings.datausage;
 import android.app.backup.BackupManager;
 import android.content.Context;
 import android.content.res.Resources;
+import android.net.ConnectivityManager;
+import android.net.NetworkCapabilities;
 import android.net.NetworkPolicy;
 import android.net.NetworkPolicyManager;
 import android.net.NetworkTemplate;
@@ -108,7 +110,8 @@ public class DataUsageMeteredSettings extends SettingsPreferenceFragment impleme
         final TelephonyManager tele = TelephonyManager.from(context);
         final NetworkTemplate template = NetworkTemplate.buildTemplateMobileAll(
                 tele.getSubscriberId());
-        final MeteredPreference pref = new MeteredPreference(getPrefContext(), template);
+        final MeteredPreference pref =
+                new MeteredPreference(getPrefContext(), template, ConnectivityManager.TYPE_MOBILE);
         pref.setTitle(tele.getNetworkOperatorName());
         return pref;
     }
@@ -116,18 +119,21 @@ public class DataUsageMeteredSettings extends SettingsPreferenceFragment impleme
     private Preference buildWifiPref(Context context, WifiConfiguration config) {
         final String networkId = config.SSID;
         final NetworkTemplate template = NetworkTemplate.buildTemplateWifi(networkId);
-        final MeteredPreference pref = new MeteredPreference(context, template);
+        final MeteredPreference pref =
+                new MeteredPreference(context, template, ConnectivityManager.TYPE_WIFI);
         pref.setTitle(removeDoubleQuotes(networkId));
         return pref;
     }
 
     private class MeteredPreference extends SwitchPreference {
         private final NetworkTemplate mTemplate;
+        private final int mNetworkType;
         private boolean mBinding;
 
-        public MeteredPreference(Context context, NetworkTemplate template) {
+        public MeteredPreference(Context context, NetworkTemplate template, int networkType) {
             super(context);
             mTemplate = template;
+            mNetworkType = networkType;
 
             setPersistent(false);
 
@@ -150,7 +156,28 @@ public class DataUsageMeteredSettings extends SettingsPreferenceFragment impleme
         protected void notifyChanged() {
             super.notifyChanged();
             if (!mBinding) {
-                mPolicyEditor.setPolicyMetered(mTemplate, isChecked());
+                if (mNetworkType == ConnectivityManager.TYPE_MOBILE) {
+                    mPolicyEditor.setPolicyMetered(mTemplate, isChecked());
+                } else if (mNetworkType == ConnectivityManager.TYPE_WIFI) {
+                    String networkId = mTemplate.getNetworkId();
+                    List<WifiConfiguration> wifiConfigurations =
+                            mWifiManager.getConfiguredNetworks();
+                    if (wifiConfigurations == null || wifiConfigurations.size() == 0) {
+                        return;
+                    }
+                    int size = wifiConfigurations.size();
+                    for (int i = 0; i < size; i++) {
+                        WifiConfiguration config = wifiConfigurations.get(i);
+                        if (config.SSID != null && config.SSID.equals(networkId)) {
+                            if (config.meteredOverride != isChecked()) {
+                                config.meteredOverride = isChecked();
+                                mWifiManager.updateNetwork(config);
+                            }
+                        }
+                    }
+                } else {
+                    return;
+                }
                 // Stage the backup of the SettingsProvider package which backs this up
                 BackupManager.dataChanged("com.android.providers.settings");
             }
