@@ -14,9 +14,9 @@
 
 package com.android.settings.datausage;
 
-import android.app.backup.BackupManager;
 import android.content.Context;
 import android.content.res.Resources;
+import android.net.ConnectivityManager;
 import android.net.NetworkPolicy;
 import android.net.NetworkPolicyManager;
 import android.net.NetworkTemplate;
@@ -27,6 +27,7 @@ import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
 import android.telephony.TelephonyManager;
+import android.util.Log;
 
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.R;
@@ -48,6 +49,8 @@ import static com.android.settings.datausage.DataUsageSummary.hasWifiRadio;
  * Panel to configure {@link NetworkPolicy#metered} for networks.
  */
 public class DataUsageMeteredSettings extends SettingsPreferenceFragment implements Indexable {
+
+    private static final String TAG = "MeteredSettings";
 
     private static final boolean SHOW_MOBILE_CATEGORY = false;
 
@@ -108,7 +111,8 @@ public class DataUsageMeteredSettings extends SettingsPreferenceFragment impleme
         final TelephonyManager tele = TelephonyManager.from(context);
         final NetworkTemplate template = NetworkTemplate.buildTemplateMobileAll(
                 tele.getSubscriberId());
-        final MeteredPreference pref = new MeteredPreference(getPrefContext(), template);
+        final MeteredPreference pref =
+                new MeteredPreference(getPrefContext(), template, ConnectivityManager.TYPE_MOBILE);
         pref.setTitle(tele.getNetworkOperatorName());
         return pref;
     }
@@ -116,18 +120,21 @@ public class DataUsageMeteredSettings extends SettingsPreferenceFragment impleme
     private Preference buildWifiPref(Context context, WifiConfiguration config) {
         final String networkId = config.SSID;
         final NetworkTemplate template = NetworkTemplate.buildTemplateWifi(networkId);
-        final MeteredPreference pref = new MeteredPreference(context, template);
+        final MeteredPreference pref =
+                new MeteredPreference(context, template, ConnectivityManager.TYPE_WIFI);
         pref.setTitle(removeDoubleQuotes(networkId));
         return pref;
     }
 
     private class MeteredPreference extends SwitchPreference {
         private final NetworkTemplate mTemplate;
+        private final int mNetworkType;
         private boolean mBinding;
 
-        public MeteredPreference(Context context, NetworkTemplate template) {
+        public MeteredPreference(Context context, NetworkTemplate template, int networkType) {
             super(context);
             mTemplate = template;
+            mNetworkType = networkType;
 
             setPersistent(false);
 
@@ -150,9 +157,34 @@ public class DataUsageMeteredSettings extends SettingsPreferenceFragment impleme
         protected void notifyChanged() {
             super.notifyChanged();
             if (!mBinding) {
-                mPolicyEditor.setPolicyMetered(mTemplate, isChecked());
-                // Stage the backup of the SettingsProvider package which backs this up
-                BackupManager.dataChanged("com.android.providers.settings");
+                if (mNetworkType == ConnectivityManager.TYPE_MOBILE) {
+                    mPolicyEditor.setPolicyMetered(mTemplate, isChecked());
+                } else if (mNetworkType == ConnectivityManager.TYPE_WIFI) {
+                    String networkId = mTemplate.getNetworkId();
+                    List<WifiConfiguration> wifiConfigurations =
+                            mWifiManager.getConfiguredNetworks();
+                    if (wifiConfigurations == null) {
+                        Log.wtf(TAG, "Null configured networks from WifiManager");
+                        return;
+                    }
+                    boolean foundNetwork = false;
+                    for (int i = wifiConfigurations.size() - 1; i >= 0; i--) {
+                        WifiConfiguration config = wifiConfigurations.get(i);
+                        if (networkId.equals(config.SSID)) {
+                            if (config.meteredOverride != isChecked()) {
+                                config.meteredOverride = isChecked();
+                                mWifiManager.updateNetwork(config);
+                            }
+                            foundNetwork = true;
+                            break;
+                        }
+                    }
+                    if (!foundNetwork) {
+                        Log.wtf(TAG, "Did not find matching network: " + networkId);
+                    }
+                } else {
+                    throw new IllegalStateException("Invalid network type");
+                }
             }
         }
     }
