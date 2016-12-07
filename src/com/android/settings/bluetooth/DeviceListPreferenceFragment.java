@@ -182,13 +182,12 @@ public abstract class DeviceListPreferenceFragment extends
         if (preference == null) {
             preference = new BluetoothDevicePreference(getPrefContext(), cachedDevice);
             preference.setKey(key);
-            mDeviceListGroup.addPreference(preference);
         } else {
             // Tell the preference it is being re-used in case there is new info in the
             // cached device.
             preference.rebind();
         }
-
+        mDeviceListGroup.addPreference(preference);
         initDevicePreference(preference);
         mDevicePreferenceMap.put(cachedDevice, preference);
     }
