@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd6cf3ba_f3c67037",
+        "filename": "src/com/android/settings/datausage/DataUsageMeteredSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2016-12-08T23:57:08Z",
+      "side": 1,
+      "message": "Can this ever happen? I thought this UI only showed wifi networks.",
+      "range": {
+        "startLine": 159,
+        "startChar": 20,
+        "endLine": 159,
+        "endChar": 67
+      },
+      "revId": "6b418f61282e1ca3ac0ca6c77c7b3e9d5e0ff3fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd6cf3ba_33a9c859",
+        "filename": "src/com/android/settings/datausage/DataUsageMeteredSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2016-12-08T23:57:08Z",
+      "side": 1,
+      "message": "You don\u0027t need this.",
+      "range": {
+        "startLine": 165,
+        "startChar": 54,
+        "endLine": 165,
+        "endChar": 82
+      },
+      "revId": "6b418f61282e1ca3ac0ca6c77c7b3e9d5e0ff3fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd6cf3ba_53b644bc",
+        "filename": "src/com/android/settings/datausage/DataUsageMeteredSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2016-12-08T23:57:08Z",
+      "side": 1,
+      "message": "Suggest replacing this check by doing:\n\n    Stiring networkId \u003d mTemplate.getNetworkId();\n    if (networkId \u003d\u003d null) {\n        return;\n    }\n    List\u003cWifiConfiguration\u003e wifiConfigurations \u003d ...",
+      "range": {
+        "startLine": 166,
+        "startChar": 28,
+        "endLine": 166,
+        "endChar": 46
+      },
+      "revId": "6b418f61282e1ca3ac0ca6c77c7b3e9d5e0ff3fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd6cf3ba_13accc68",
+        "filename": "src/com/android/settings/datausage/DataUsageMeteredSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2016-12-08T23:57:08Z",
+      "side": 1,
+      "message": "Suggest:\n\n    for (WifiConfiguration config : wifiConfigurations) {",
+      "range": {
+        "startLine": 169,
+        "startChar": 20,
+        "endLine": 169,
+        "endChar": 78
+      },
+      "revId": "6b418f61282e1ca3ac0ca6c77c7b3e9d5e0ff3fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
