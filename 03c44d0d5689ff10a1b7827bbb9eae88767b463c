@@ -16,6 +16,24 @@
       "revId": "03c44d0d5689ff10a1b7827bbb9eae88767b463c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd4b13fc_82d90a87",
+        "filename": "src/com/android/settings/vpn2/VpnSettings.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1101746
+      },
+      "writtenOn": "2016-12-08T07:45:50Z",
+      "side": 1,
+      "message": "This won\u0027t restore preferences, it will only update the \"disabled by admin\" message to \"no vpns added\" message in case there are no vpns. If there any vpns, they will be added when RESCAN_MESSAGE is handled.",
+      "parentUuid": "8d9e7b7b_01e1aab6",
+      "revId": "03c44d0d5689ff10a1b7827bbb9eae88767b463c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
