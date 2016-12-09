@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1a23a39f_78909d2d",
+        "filename": "src/com/android/settings/datausage/DataUsageMeteredSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1124150
+      },
+      "writtenOn": "2016-12-09T00:23:09Z",
+      "side": 1,
+      "message": "Technically this UI doesn\u0027t but there is a SHOW_MOBILE_CATEGORY flag in this class that when enabled shows cellular.",
+      "parentUuid": "cd6cf3ba_f3c67037",
+      "range": {
+        "startLine": 159,
+        "startChar": 20,
+        "endLine": 159,
+        "endChar": 67
+      },
+      "revId": "6b418f61282e1ca3ac0ca6c77c7b3e9d5e0ff3fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd6cf3ba_33a9c859",
         "filename": "src/com/android/settings/datausage/DataUsageMeteredSettings.java",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2016-12-08T23:57:08Z",
       "side": 1,
       "message": "You don\u0027t need this.",
+      "range": {
+        "startLine": 165,
+        "startChar": 54,
+        "endLine": 165,
+        "endChar": 82
+      },
+      "revId": "6b418f61282e1ca3ac0ca6c77c7b3e9d5e0ff3fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a23a39f_f8aeed64",
+        "filename": "src/com/android/settings/datausage/DataUsageMeteredSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1124150
+      },
+      "writtenOn": "2016-12-09T00:23:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd6cf3ba_33a9c859",
       "range": {
         "startLine": 165,
         "startChar": 54,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1a23a39f_989a5947",
+        "filename": "src/com/android/settings/datausage/DataUsageMeteredSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1124150
+      },
+      "writtenOn": "2016-12-09T00:23:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd6cf3ba_53b644bc",
+      "range": {
+        "startLine": 166,
+        "startChar": 28,
+        "endLine": 166,
+        "endChar": 46
+      },
+      "revId": "6b418f61282e1ca3ac0ca6c77c7b3e9d5e0ff3fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd6cf3ba_13accc68",
         "filename": "src/com/android/settings/datausage/DataUsageMeteredSettings.java",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2016-12-08T23:57:08Z",
       "side": 1,
       "message": "Suggest:\n\n    for (WifiConfiguration config : wifiConfigurations) {",
+      "range": {
+        "startLine": 169,
+        "startChar": 20,
+        "endLine": 169,
+        "endChar": 78
+      },
+      "revId": "6b418f61282e1ca3ac0ca6c77c7b3e9d5e0ff3fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a23a39f_38c5852e",
+        "filename": "src/com/android/settings/datausage/DataUsageMeteredSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1124150
+      },
+      "writtenOn": "2016-12-09T00:23:09Z",
+      "side": 1,
+      "message": "Was following android best practices to not allocate list iterators (not that it matters much)",
+      "parentUuid": "cd6cf3ba_13accc68",
       "range": {
         "startLine": 169,
         "startChar": 20,
