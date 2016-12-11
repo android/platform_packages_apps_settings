@@ -34,6 +34,24 @@
       "revId": "03c44d0d5689ff10a1b7827bbb9eae88767b463c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8db4bb48_f1d80840",
+        "filename": "src/com/android/settings/vpn2/VpnSettings.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1076898
+      },
+      "writtenOn": "2016-12-11T06:30:46Z",
+      "side": 1,
+      "message": "Ok. Thanks. I understood.",
+      "parentUuid": "cd4b13fc_82d90a87",
+      "revId": "03c44d0d5689ff10a1b7827bbb9eae88767b463c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
