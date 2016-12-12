@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bafff76a_528fd40e",
+        "filename": "src/com/android/settings/datausage/DataUsageMeteredSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1124150
+      },
+      "writtenOn": "2016-12-12T20:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a23a39f_ccdc8135",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 164,
+        "endChar": 21
+      },
+      "revId": "89cae2b7649f02a59eed3d053e5538d563d7786f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a23a39f_4cf071ad",
         "filename": "src/com/android/settings/datausage/DataUsageMeteredSettings.java",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2016-12-12T19:50:38Z",
       "side": 1,
       "message": "we should complain more loudly if this happens. The UI will just silently succeed but nothing actually changes which is bad.\n\nSince this code is an external dependency (on mWifiManager), crashing isn\u0027t wise, but we should Log.wtf, at least.",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 169,
+        "endChar": 21
+      },
+      "revId": "89cae2b7649f02a59eed3d053e5538d563d7786f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bafff76a_b2ae0064",
+        "filename": "src/com/android/settings/datausage/DataUsageMeteredSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1124150
+      },
+      "writtenOn": "2016-12-12T20:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a23a39f_4cf071ad",
       "range": {
         "startLine": 167,
         "startChar": 0,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "bafff76a_32e210bd",
+        "filename": "src/com/android/settings/datausage/DataUsageMeteredSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1124150
+      },
+      "writtenOn": "2016-12-12T20:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a23a39f_2ced35d8",
+      "revId": "89cae2b7649f02a59eed3d053e5538d563d7786f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a23a39f_ccf5a1ab",
         "filename": "src/com/android/settings/datausage/DataUsageMeteredSettings.java",
         "patchSetId": 3
@@ -76,6 +142,24 @@
       "writtenOn": "2016-12-12T19:50:38Z",
       "side": 1,
       "message": "complain more loudly. Since this would be a failure internal to this class (as we\u0027re responsible for setting mNetworkType internally), I think an IllegalStateException is reasonable.",
+      "revId": "89cae2b7649f02a59eed3d053e5538d563d7786f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bafff76a_52e194b3",
+        "filename": "src/com/android/settings/datausage/DataUsageMeteredSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1124150
+      },
+      "writtenOn": "2016-12-12T20:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a23a39f_ccf5a1ab",
       "revId": "89cae2b7649f02a59eed3d053e5538d563d7786f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
