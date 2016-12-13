@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bafff76a_0f719af7",
+        "filename": "src/com/android/settings/datausage/DataUsageMeteredSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1006780
+      },
+      "writtenOn": "2016-12-13T18:42:21Z",
+      "side": 1,
+      "message": "tags have to be \u003c\u003d 23 characters. https://developer.android.com/reference/android/util/Log.html#isLoggable(java.lang.String, int)",
+      "range": {
+        "startLine": 54,
+        "startChar": 39,
+        "endLine": 54,
+        "endChar": 63
+      },
+      "revId": "733556730d20486bfdb73d0314252709d52f293b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bafff76a_af8a0eaa",
+        "filename": "src/com/android/settings/datausage/DataUsageMeteredSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1006780
+      },
+      "writtenOn": "2016-12-13T18:42:21Z",
+      "side": 1,
+      "message": "foundNetwork should be set to true outside the if statement; we found it regardless of whether the meteredOverride bit is in sync. (Arguably it\u0027s still strange that they\u0027d be out of sync, but probably not wtf worthy).\n\nalso, we should call \"break\" here to short-circuit the loop once we\u0027ve matched on SSID.",
+      "range": {
+        "startLine": 178,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 52
+      },
+      "revId": "733556730d20486bfdb73d0314252709d52f293b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bafff76a_0f887ab1",
+        "filename": "src/com/android/settings/datausage/DataUsageMeteredSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1006780
+      },
+      "writtenOn": "2016-12-13T18:42:21Z",
+      "side": 1,
+      "message": "nit: \"Invalid network type\"",
+      "range": {
+        "startLine": 186,
+        "startChar": 53,
+        "endLine": 186,
+        "endChar": 73
+      },
+      "revId": "733556730d20486bfdb73d0314252709d52f293b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bafff76a_2f9f3ef0",
+        "filename": "src/com/android/settings/datausage/DataUsageMeteredSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1006780
+      },
+      "writtenOn": "2016-12-13T18:42:21Z",
+      "side": 1,
+      "message": "not sure if any changes might be needed here as well? Do we need to stage a backup of wi-fi settings (e.g. is there a different package that handles that)? Might be worth checking with the wi-fi team.",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 87
+      },
+      "revId": "733556730d20486bfdb73d0314252709d52f293b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
