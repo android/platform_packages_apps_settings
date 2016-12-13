@@ -91,6 +91,30 @@
       "revId": "733556730d20486bfdb73d0314252709d52f293b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bafff76a_b213951c",
+        "filename": "src/com/android/settings/datausage/DataUsageMeteredSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1077073
+      },
+      "writtenOn": "2016-12-13T20:02:31Z",
+      "side": 1,
+      "message": "WifiService should take care of backup / restore of settings as a result of the updateNetwork() call.",
+      "parentUuid": "bafff76a_2f9f3ef0",
+      "range": {
+        "startLine": 188,
+        "startChar": 0,
+        "endLine": 188,
+        "endChar": 87
+      },
+      "revId": "733556730d20486bfdb73d0314252709d52f293b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
