@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a895341_3d7047b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2016-12-14T02:09:44Z",
+      "side": 1,
+      "message": "this bug is duplicated against 29737261. Can you check they are the same bug? I think there is a bit more discussion in bug 29737261.\n\nIf the bug is accurate, please add Bug: 29737261 to commit message as well",
+      "range": {
+        "startLine": 14,
+        "startChar": 1,
+        "endLine": 14,
+        "endChar": 13
+      },
+      "revId": "ecf3fe2f58b2ee214710f1b8ca5d0d828e671698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
