@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9a895341_72f029e0",
+        "filename": "src/com/android/settings/datausage/DataUsageMeteredSettings.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1006780
+      },
+      "writtenOn": "2016-12-14T19:12:18Z",
+      "side": 0,
+      "message": "I think you still need this, but only in the TYPE_MOBILE case. Paul\u0027s comment was that Wi-FI handles the backup but that only applies to the TYPE_WIFI case.",
+      "range": {
+        "startLine": 154,
+        "startChar": 1,
+        "endLine": 155,
+        "endChar": 76
+      },
+      "revId": "8c11340b0c0cd40ea1b5ef83299830ae6d8c665b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
