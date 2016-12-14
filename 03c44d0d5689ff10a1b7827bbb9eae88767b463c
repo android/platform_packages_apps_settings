@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "cd6cf3ba_d665e259",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1076898
+      },
+      "writtenOn": "2016-12-14T01:36:34Z",
+      "side": 1,
+      "message": "Dear Fan Zhang,\nThanks for your comment. I\u0027m willing to change commit message but I don\u0027t know about bug ID. Could you do me a favor and let me know what is bug ID? How I can get bug ID?",
+      "parentUuid": "1a23a39f_cc23616f",
+      "revId": "03c44d0d5689ff10a1b7827bbb9eae88767b463c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d9e7b7b_01e1aab6",
         "filename": "src/com/android/settings/vpn2/VpnSettings.java",
         "patchSetId": 6
