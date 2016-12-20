@@ -36,6 +36,7 @@ import android.util.Log;
 
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.settingslib.Utils;
+import com.andriod.settingslib.VendorConfig;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,10 +73,14 @@ public class NotificationBackend {
     }
 
     void recordCanBeBlocked(Context context, PackageManager pm, PackageInfo app, AppRow row) {
-        row.systemApp = Utils.isSystemPackage(context.getResources(), pm, app);
+        row.systemApp = Utils.isSystemPackage(context.getResources(), pm, app) && !VendorConfig
+                .isBlockableNotificationPackages(context.getResources(), app.packageName);
         final String[] nonBlockablePkgs = context.getResources().getStringArray(
                 com.android.internal.R.array.config_nonBlockableNotificationPackages);
+        final String[] operatorNonBlockablePkgs = context.getResources().getStringArray(
+                com.android.internal.R.array.config_operatorNonBlockableNotificationPackages);
         markAppRowWithBlockables(nonBlockablePkgs, row, app.packageName);
+        markAppRowWithBlockables(operatorNonBlockablePkgs, row, app.packageName);
     }
 
     @VisibleForTesting static void markAppRowWithBlockables(String[] nonBlockablePkgs, AppRow row,
