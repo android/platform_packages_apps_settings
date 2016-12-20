@@ -18,6 +18,7 @@ import android.widget.ListView;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 
+import java.util.Arrays;
 
 /**
  * Radio Band Mode Selection Class
@@ -132,8 +133,6 @@ public class BandMode extends Activity {
 
         if (DBG) log(str);
 
-
-        //ProgressDialog.show(this, null, str, true, true, null);
         mProgressPanel = new AlertDialog.Builder(this)
             .setMessage(str)
             .show();
@@ -143,48 +142,61 @@ public class BandMode extends Activity {
 
     }
 
+    private int[] getDefaultBandList() {
+        int[] defaults = new int[Phone.BM_NUM_BAND_MODES];
+        for(int i=0; i< Phone.BM_NUM_BAND_MODES; i++) {
+            defaults[i] = i;
+        }
+        return defaults;
+    }
+
+    private int[] getDecodedBandList(int[] encodedBandList) {
+        if(encodedBandList == null) {
+            return null;
+        }
+
+        if (DBG) log("encodedBandList: " + Arrays.toString(encodedBandList));
+
+        if (encodedBandList.length == 0) {
+            loge("No Supported Band Modes");
+            return null;
+        }
+
+        int size = encodedBandList[0]; //first array element is size of array
+
+        if (size + 1 > encodedBandList.length || size <= 0) {
+            loge("Invalid Num Bands " + size);
+            return null;
+        }
+
+        return Arrays.copyOfRange(encodedBandList, 1, size+1);
+    }
+
     private void bandListLoaded(AsyncResult result) {
-        if (DBG) log("network list loaded");
+        if (DBG) log("Band List: Loaded");
 
         if (mProgressPanel != null) mProgressPanel.dismiss();
 
         clearList();
 
-        boolean addBandSuccess = false;
-        BandListItem item;
+        int[] bands = getDecodedBandList((int[])result.result);
 
-        if (result.result != null) {
-            int bands[] = (int[])result.result;
-
-            if(bands.length == 0) {
-                Log.wtf(LOG_TAG, "No Supported Band Modes");
-                return;
-            }
-
-            int size = bands[0];
-
-            if (size > 0) {
-                mBandListAdapter.add(
-                        new BandListItem(Phone.BM_UNSPECIFIED)); //Always include AUTOMATIC
-                for (int i=1; i<=size; i++) {
-                    if (bands[i] == Phone.BM_UNSPECIFIED) {
-                        continue;
-                    }
-                    item = new BandListItem(bands[i]);
-                    mBandListAdapter.add(item);
-                    if (DBG) log("Add " + item.toString());
-                }
-                addBandSuccess = true;
-            }
+        if (bands == null) {
+            log("Band List decoding failed, using default list.");
+            bands = getDefaultBandList();
         }
 
-        if (addBandSuccess == false) {
-            if (DBG) log("Error in query, add default list");
-            for (int i=0; i<Phone.BM_NUM_BAND_MODES; i++) {
-                item = new BandListItem(i);
-                mBandListAdapter.add(item);
-                if (DBG) log("Add default " + item.toString());
+        BandListItem item;
+
+        mBandListAdapter.add(
+                new BandListItem(Phone.BM_UNSPECIFIED)); //Always include AUTOMATIC
+        for (int i = 0; i < bands.length; i++) {
+            if (bands[i] == Phone.BM_UNSPECIFIED) {
+                continue;
             }
+            item = new BandListItem(bands[i]);
+            mBandListAdapter.add(item);
+            if (DBG) log("Add " + item.toString());
         }
         mBandList.requestFocus();
     }
@@ -213,6 +225,10 @@ public class BandMode extends Activity {
 
     private void log(String msg) {
         Log.d(LOG_TAG, "[BandsList] " + msg);
+    }
+
+    private void loge(String msg) {
+        Log.e(LOG_TAG, "[BandsList] " + msg);
     }
 
     private Handler mHandler = new Handler() {
