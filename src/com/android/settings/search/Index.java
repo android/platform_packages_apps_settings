@@ -217,18 +217,18 @@ public class Index {
      */
     public static Index getInstance(Context context) {
         if (sInstance == null) {
-            sInstance = new Index(context.getApplicationContext(), BASE_AUTHORITY);
+            sInstance = new Index(context, BASE_AUTHORITY);
         }
         return sInstance;
     }
 
     public Index(Context context, String baseAuthority) {
-        mContext = context;
+        mContext = context.getApplicationContext();
         mBaseAuthority = baseAuthority;
     }
 
     public void setContext(Context context) {
-        mContext = context;
+        mContext = context.getApplicationContext();
     }
 
     public boolean isAvailable() {
