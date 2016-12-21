@@ -85,6 +85,12 @@ public class UsbModeChooserActivity extends Activity {
 
         mLayoutInflater = LayoutInflater.from(this);
 
+        //Since the Settings App may be killed during the boot process,
+        //the memory of UsbModeChooserReceiver will be released.
+        //While reboot MUT with connecting USB cable, we need make sure
+        //the value of mSoftSwitch is true before the USB Mode Dialog show.
+        UsbModeChooserReceiver.mSoftSwitch = true;
+
         mDialog = new AlertDialog.Builder(this)
                 .setTitle(R.string.usb_use)
                 .setView(R.layout.usb_dialog_container)
