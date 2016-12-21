@@ -37,6 +37,7 @@ import android.os.AsyncTask;
 import android.provider.SearchIndexableData;
 import android.provider.SearchIndexableResource;
 import android.provider.SearchIndexablesContract;
+import android.support.annotation.VisibleForTesting;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -164,7 +165,7 @@ public class Index {
 
     private static final List<String> EMPTY_LIST = Collections.<String>emptyList();
 
-    private static Index sInstance;
+    private static volatile Index sInstance;
 
     private static final Pattern REMOVE_DIACRITICALS_PATTERN
             = Pattern.compile("\\p{InCombiningDiacriticalMarks}+");
@@ -217,18 +218,19 @@ public class Index {
      */
     public static Index getInstance(Context context) {
         if (sInstance == null) {
-            sInstance = new Index(context.getApplicationContext(), BASE_AUTHORITY);
+            synchronized (Index.class) {
+                if (sInstance == null) {
+                    sInstance = new Index(context.getApplicationContext(), BASE_AUTHORITY);
+                }
+            }
         }
         return sInstance;
     }
 
-    public Index(Context context, String baseAuthority) {
+    @VisibleForTesting
+    private Index(Context context, String baseAuthority) {
         mContext = context;
         mBaseAuthority = baseAuthority;
-    }
-
-    public void setContext(Context context) {
-        mContext = context;
     }
 
     public boolean isAvailable() {
