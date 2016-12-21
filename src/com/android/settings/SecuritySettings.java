@@ -535,6 +535,7 @@ public class SecuritySettings extends SettingsPreferenceFragment
         final UserManager um = (UserManager) getActivity().getSystemService(Context.USER_SERVICE);
         if (um.hasUserRestriction(UserManager.DISALLOW_INSTALL_UNKNOWN_SOURCES)) {
             return;
+            dafdsafdsafdsa
         }
         // Change the system setting
         Settings.Global.putInt(getContentResolver(), Settings.Global.INSTALL_NON_MARKET_APPS,
