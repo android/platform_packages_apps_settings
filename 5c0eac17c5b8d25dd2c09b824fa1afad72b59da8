@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d79ba631_9e6fb916",
+        "filename": "src/com/android/settings/search/Index.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1133629
+      },
+      "writtenOn": "2016-12-23T08:39:21Z",
+      "side": 1,
+      "message": "I delete setContext() in patch set 4 because mContext field is initialized to application contexnt.\nAnd add \u0027synchronized\u0027 before getInstance() to ensure  thread safe.",
+      "parentUuid": "975f6e58_6d781d67",
+      "revId": "5c0eac17c5b8d25dd2c09b824fa1afad72b59da8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "975f6e58_286d7373",
         "filename": "src/com/android/settings/search/Index.java",
         "patchSetId": 3
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "d79ba631_1ec3a9f4",
+        "filename": "src/com/android/settings/search/Index.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1133629
+      },
+      "writtenOn": "2016-12-23T08:39:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "975f6e58_286d7373",
+      "range": {
+        "startLine": 219,
+        "startChar": 8,
+        "endLine": 222,
+        "endChar": 25
+      },
+      "revId": "5c0eac17c5b8d25dd2c09b824fa1afad72b59da8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "975f6e58_6dae5d7f",
         "filename": "src/com/android/settings/search/Index.java",
         "patchSetId": 3
@@ -53,6 +95,54 @@
       "writtenOn": "2016-12-22T17:23:10Z",
       "side": 1,
       "message": "Seems like this method can be deleted. The mContext field is initialized to the application context in the ctor so setting it to the application context again doesn\u0027t make sense.",
+      "range": {
+        "startLine": 230,
+        "startChar": 4,
+        "endLine": 232,
+        "endChar": 5
+      },
+      "revId": "5c0eac17c5b8d25dd2c09b824fa1afad72b59da8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d79ba631_fe4efdde",
+        "filename": "src/com/android/settings/search/Index.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1133629
+      },
+      "writtenOn": "2016-12-23T08:39:21Z",
+      "side": 1,
+      "message": "yes,I don\u0027t find anywhere use this method",
+      "parentUuid": "975f6e58_6dae5d7f",
+      "range": {
+        "startLine": 230,
+        "startChar": 4,
+        "endLine": 232,
+        "endChar": 5
+      },
+      "revId": "5c0eac17c5b8d25dd2c09b824fa1afad72b59da8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d79ba631_de08e195",
+        "filename": "src/com/android/settings/search/Index.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1133629
+      },
+      "writtenOn": "2016-12-23T08:39:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "975f6e58_6dae5d7f",
       "range": {
         "startLine": 230,
         "startChar": 4,
