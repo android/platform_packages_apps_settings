@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "975f6e58_6d781d67",
+        "filename": "src/com/android/settings/search/Index.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1000691
+      },
+      "writtenOn": "2016-12-23T03:04:13Z",
+      "side": 1,
+      "message": "Do you want to .getApplicationContext() here to ensure that whether using the constructor or the getter you always upgrade to the app context?",
+      "revId": "5c0eac17c5b8d25dd2c09b824fa1afad72b59da8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "975f6e58_286d7373",
         "filename": "src/com/android/settings/search/Index.java",
         "patchSetId": 3
