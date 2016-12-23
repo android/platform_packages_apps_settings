@@ -1,0 +1,9 @@
+Presubmit-Verified-1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Robin Lee <rgl@google.com>
+Autosubmit+1: Robin Lee <rgl@google.com>
+Verified+1: Robin Lee <rgl@google.com>
+Submitted-by: Robin Lee <rgl@google.com>
+Submitted-at: Fri, 23 Dec 2016 10:29:02 +0000
+Reviewed-on: https://android-review.googlesource.com/317343
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
