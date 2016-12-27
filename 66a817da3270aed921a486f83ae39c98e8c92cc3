@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "975f6e58_7050e8d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2016-12-27T17:02:56Z",
+      "side": 1,
+      "message": "wrap to next line.",
+      "range": {
+        "startLine": 10,
+        "startChar": 70,
+        "endLine": 10,
+        "endChar": 78
+      },
+      "revId": "66a817da3270aed921a486f83ae39c98e8c92cc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "975f6e58_d0457418",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2016-12-27T17:02:56Z",
+      "side": 1,
+      "message": "Bug: https://code.google.com/p/android/issues/detail?id\u003d223322",
+      "revId": "66a817da3270aed921a486f83ae39c98e8c92cc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "975f6e58_b04a8023",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2016-12-27T17:02:56Z",
+      "side": 1,
+      "message": "wrap to next line",
+      "range": {
+        "startLine": 14,
+        "startChar": 69,
+        "endLine": 14,
+        "endChar": 74
+      },
+      "revId": "66a817da3270aed921a486f83ae39c98e8c92cc3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
