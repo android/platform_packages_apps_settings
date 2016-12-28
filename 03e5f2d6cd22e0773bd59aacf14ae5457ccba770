@@ -52,6 +52,29 @@
       "revId": "03e5f2d6cd22e0773bd59aacf14ae5457ccba770",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "975f6e58_709f4339",
+        "filename": "src/com/android/settings/wifi/AdvancedWifiSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2016-12-28T17:08:56Z",
+      "side": 1,
+      "message": "this can be moved into onStart to share the same if check.",
+      "range": {
+        "startLine": 98,
+        "startChar": 12,
+        "endLine": 98,
+        "endChar": 30
+      },
+      "revId": "03e5f2d6cd22e0773bd59aacf14ae5457ccba770",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
