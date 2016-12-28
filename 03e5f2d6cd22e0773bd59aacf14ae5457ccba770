@@ -16,6 +16,24 @@
       "revId": "03e5f2d6cd22e0773bd59aacf14ae5457ccba770",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "77059a49_d96c8723",
+        "filename": "src/com/android/settings/wifi/AdvancedWifiSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1106048
+      },
+      "writtenOn": "2016-12-28T07:12:14Z",
+      "side": 1,
+      "message": "We would like to refresh wifiDirectPref and wifiPushPref.\nWe just use initPreferences() because the functions are included.\nDo we need to upload the change that refreshes only wifiDirectPref and wifiPushPref?",
+      "parentUuid": "5fb8a4f5_5eb0a5f4",
+      "revId": "03e5f2d6cd22e0773bd59aacf14ae5457ccba770",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
