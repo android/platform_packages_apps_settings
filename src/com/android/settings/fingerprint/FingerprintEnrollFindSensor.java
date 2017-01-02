@@ -16,6 +16,7 @@
 
 package com.android.settings.fingerprint;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Bundle;
@@ -128,7 +129,11 @@ public class FingerprintEnrollFindSensor extends FingerprintEnrollBase {
     }
 
     private void proceedToEnrolling() {
-        getFragmentManager().beginTransaction().remove(mSidecar).commit();
+        final FragmentManager f = getFragmentManager();
+        if (f.isDestroyed()) {
+            return;
+        }
+        f.beginTransaction().remove(mSidecar).commit();
         mSidecar = null;
         startActivityForResult(getEnrollingIntent(), ENROLLING);
     }
