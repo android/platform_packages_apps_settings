@@ -748,6 +748,10 @@ public class ChooseLockGeneric extends SettingsActivity {
         }
 
         private void removeManagedProfileFingerprintsAndFinishIfNecessary(final int parentUserId) {
+            if (getActivity() == null) { // Activity has been detached, so just finish it
+                finish();
+                return;
+            }
             mFingerprintManager.setActiveUser(UserHandle.myUserId());
             final UserManager um = UserManager.get(getActivity());
             boolean hasChildProfile = false;
