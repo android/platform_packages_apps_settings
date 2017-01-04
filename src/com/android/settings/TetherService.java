@@ -35,7 +35,9 @@ import android.content.pm.ResolveInfo;
 import android.net.ConnectivityManager;
 import android.os.IBinder;
 import android.os.ResultReceiver;
+import android.os.PersistableBundle;
 import android.os.SystemClock;
+import android.telephony.CarrierConfigManager;
 import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.Log;
@@ -79,8 +81,16 @@ public class TetherService extends Service {
     public void onCreate() {
         super.onCreate();
         if (DEBUG) Log.d(TAG, "Creating TetherService");
-        String provisionResponse = getResources().getString(
-                com.android.internal.R.string.config_mobile_hotspot_provision_response);
+        String provisionResponse = null;
+        CarrierConfigManager configManager = (CarrierConfigManager)
+                getSystemService(Context.CARRIER_CONFIG_SERVICE);
+        if (configManager != null) {
+            PersistableBundle b = configManager.getConfig();
+            if (b != null) {
+                provisionResponse = b.getString(
+                        CarrierConfigManager.KEY_MOBILE_HOTSPOT_PROVISION_RESPONSE_STRING);
+            }
+        }
         registerReceiver(mReceiver, new IntentFilter(provisionResponse),
                 android.Manifest.permission.CONNECTIVITY_INTERNAL, null);
         SharedPreferences prefs = getSharedPreferences(PREFS, MODE_PRIVATE);
@@ -247,8 +257,21 @@ public class TetherService extends Service {
     }
 
     private Intent getProvisionBroadcastIntent(int index) {
-        String provisionAction = getResources().getString(
-                com.android.internal.R.string.config_mobile_hotspot_provision_app_no_ui);
+        String provisionAction = null;
+        CarrierConfigManager configManager = (CarrierConfigManager)
+                getSystemService(Context.CARRIER_CONFIG_SERVICE);
+        if (configManager != null) {
+            PersistableBundle b = configManager.getConfig();
+            if (b != null) {
+                provisionAction = b.getString(
+                        CarrierConfigManager.KEY_MOBILE_HOTSPOT_PROVISION_APP_NO_UI_STRING);
+            }
+        }
+        if (provisionAction != null)
+            Log.d(TAG, "getProvisionBroadcastIntent: provisionAction=" + provisionAction);
+        else
+            Log.d(TAG, "getProvisionBroadcastIntent: provisionAction is null");
+
         Intent intent = new Intent(provisionAction);
         int type = mCurrentTethers.get(index);
         intent.putExtra(TETHER_CHOICE, type);
@@ -281,8 +304,17 @@ public class TetherService extends Service {
 
         PendingIntent pendingIntent = PendingIntent.getService(this, 0, intent, 0);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        int period = getResources().getInteger(
-                com.android.internal.R.integer.config_mobile_hotspot_provision_check_period);
+        // 24 is the default number of hours between each background provisioning call
+        int period = 24;
+        CarrierConfigManager configManager = (CarrierConfigManager)
+                getSystemService(Context.CARRIER_CONFIG_SERVICE);
+        if (configManager != null) {
+            PersistableBundle b = configManager.getConfig();
+            if (b != null) {
+                period = b.getInt(
+                        CarrierConfigManager.KEY_MOBILE_HOTSPOT_PROVISION_CHECK_PERIOD_INT);
+            }
+        }
         long periodMs = period * MS_PER_HOUR;
         long firstTime = SystemClock.elapsedRealtime() + periodMs;
         if (DEBUG) Log.d(TAG, "Scheduling alarm at interval " + periodMs);
@@ -331,8 +363,17 @@ public class TetherService extends Service {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (DEBUG) Log.d(TAG, "Got provision result " + intent);
-            String provisionResponse = getResources().getString(
-                    com.android.internal.R.string.config_mobile_hotspot_provision_response);
+            String provisionResponse = "";
+            CarrierConfigManager configManager = (CarrierConfigManager)
+                    getSystemService(Context.CARRIER_CONFIG_SERVICE);
+            if (configManager != null) {
+                PersistableBundle b = configManager.getConfig();
+                if (b != null) {
+                    provisionResponse = b.getString(
+                            CarrierConfigManager.KEY_MOBILE_HOTSPOT_PROVISION_RESPONSE_STRING);
+                }
+            }
+            if (DEBUG) Log.d(TAG, "onReceive: provisionResponse=" + provisionResponse);
 
             if (provisionResponse.equals(intent.getAction())) {
                 if (!mInProvisionCheck) {

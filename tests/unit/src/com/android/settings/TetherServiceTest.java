@@ -52,8 +52,10 @@ import android.net.ConnectivityManager;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.os.ResultReceiver;
 import android.os.SystemClock;
+import android.telephony.CarrierConfigManager;
 import android.test.ServiceTestCase;
 import android.test.mock.MockResources;
 import android.util.Log;
@@ -85,13 +87,15 @@ public class TetherServiceTest extends ServiceTestCase<TetherService> {
     private static final int PROVISION_TIMEOUT = 1000;
 
     private TetherService mService;
-    private MockResources mResources;
     private FakeUsageStatsManagerWrapper mUsageStatsManagerWrapper;
     int mLastReceiverResultCode = BOGUS_RECEIVER_RESULT;
     private int mLastTetherRequestType = TETHERING_INVALID;
     private int mProvisionResponse = BOGUS_RECEIVER_RESULT;
     private ProvisionReceiver mProvisionReceiver;
     private Receiver mResultReceiver;
+    // This class cannot be mocked because it is marked final
+    private PersistableBundle mCarrierConfig;
+
 
     @Mock private AlarmManager mAlarmManager;
     @Mock private ConnectivityManager mConnectivityManager;
@@ -99,6 +103,7 @@ public class TetherServiceTest extends ServiceTestCase<TetherService> {
     @Mock private WifiManager mWifiManager;
     @Mock private SharedPreferences mPrefs;
     @Mock private Editor mPrefEditor;
+    @Mock private CarrierConfigManager mCarrierConfigManager;
     @Captor private ArgumentCaptor<PendingIntent> mPiCaptor;
     @Captor private ArgumentCaptor<String> mStoredTypes;
 
@@ -111,7 +116,6 @@ public class TetherServiceTest extends ServiceTestCase<TetherService> {
         super.setUp();
         MockitoAnnotations.initMocks(this);
 
-        mResources = new MockResources();
         mContext = new TestContextWrapper(getContext());
         setContext(mContext);
 
@@ -122,6 +126,16 @@ public class TetherServiceTest extends ServiceTestCase<TetherService> {
         IntentFilter filter = new IntentFilter(TEST_NO_UI_ACTION);
         filter.addCategory(Intent.CATEGORY_DEFAULT);
         mContext.registerReceiver(mProvisionReceiver, filter);
+
+        mCarrierConfig = new PersistableBundle();
+        mCarrierConfig.putString(CarrierConfigManager.KEY_MOBILE_HOTSPOT_PROVISION_APP_NO_UI_STRING,
+                TEST_NO_UI_ACTION);
+        mCarrierConfig.putString(CarrierConfigManager.KEY_MOBILE_HOTSPOT_PROVISION_RESPONSE_STRING,
+                TEST_RESPONSE_ACTION);
+        mCarrierConfig.putInt(CarrierConfigManager.KEY_MOBILE_HOTSPOT_PROVISION_CHECK_PERIOD_INT,
+                TEST_CHECK_PERIOD);
+        when(mCarrierConfigManager.getConfig()).thenReturn(mCarrierConfig);
+
 
         final String CURRENT_TYPES = "currentTethers";
         when(mPrefs.getString(CURRENT_TYPES, "")).thenReturn("");
@@ -323,39 +337,10 @@ public class TetherServiceTest extends ServiceTestCase<TetherService> {
         }
     }
 
-    private static class MockResources extends android.test.mock.MockResources {
-        @Override
-        public int getInteger(int id) {
-            switch(id) {
-                case com.android.internal.R.integer.config_mobile_hotspot_provision_check_period:
-                    return TEST_CHECK_PERIOD;
-                default:
-                    return 0;
-            }
-        }
-
-        @Override
-        public String getString(int id) {
-            switch(id) {
-                case com.android.internal.R.string.config_mobile_hotspot_provision_response:
-                    return TEST_RESPONSE_ACTION;
-                case com.android.internal.R.string.config_mobile_hotspot_provision_app_no_ui:
-                    return TEST_NO_UI_ACTION;
-                default:
-                    return null;
-            }
-        }
-    }
-
     private class TestContextWrapper extends ContextWrapper {
 
         public TestContextWrapper(Context base) {
             super(base);
-        }
-
-        @Override
-        public Resources getResources() {
-            return mResources;
         }
 
         @Override
@@ -380,6 +365,9 @@ public class TetherServiceTest extends ServiceTestCase<TetherService> {
                 return mConnectivityManager;
             } else if (WIFI_SERVICE.equals(name)) {
                 return mWifiManager;
+            } else if (CARRIER_CONFIG_SERVICE.equals(name)) {
+                Log.d(TAG, "getSystemService returning mCarrierConfigManager");
+                return mCarrierConfigManager;
             }
 
             return super.getSystemService(name);

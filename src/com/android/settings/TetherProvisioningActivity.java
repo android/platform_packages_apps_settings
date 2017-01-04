@@ -18,11 +18,14 @@ package com.android.settings;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.os.ResultReceiver;
+import android.os.PersistableBundle;
 import android.os.UserHandle;
+import android.telephony.CarrierConfigManager;
 import android.util.Log;
 
 /**
@@ -47,8 +50,20 @@ public class TetherProvisioningActivity extends Activity {
 
         int tetherType = getIntent().getIntExtra(ConnectivityManager.EXTRA_ADD_TETHER_TYPE,
                 ConnectivityManager.TETHERING_INVALID);
-        String[] provisionApp = getResources().getStringArray(
-                com.android.internal.R.array.config_mobile_hotspot_provision_app);
+        String[] provisionApp = null;
+        CarrierConfigManager configManager = (CarrierConfigManager)
+                getSystemService(Context.CARRIER_CONFIG_SERVICE);
+        if (configManager != null) {
+            PersistableBundle b = configManager.getConfig();
+            if (b != null) {
+                provisionApp = b.getStringArray(
+                        CarrierConfigManager.KEY_MOBILE_HOTSPOT_PROVISION_APP_STRING_ARRAY);
+            }
+        }
+        if (provisionApp == null) {
+            Log.d(TAG, "provisionApp[] is null");
+            return;
+        }
 
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.setClassName(provisionApp[0], provisionApp[1]);
