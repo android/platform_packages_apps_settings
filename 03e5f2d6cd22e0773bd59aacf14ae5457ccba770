@@ -75,6 +75,30 @@
       "revId": "03e5f2d6cd22e0773bd59aacf14ae5457ccba770",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7be4636_c38ff60b",
+        "filename": "src/com/android/settings/wifi/AdvancedWifiSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1106048
+      },
+      "writtenOn": "2017-01-10T00:04:53Z",
+      "side": 1,
+      "message": "This commit has been gotten code review +1.\nIn this case, should I modify this or create an another commit?",
+      "parentUuid": "975f6e58_709f4339",
+      "range": {
+        "startLine": 98,
+        "startChar": 12,
+        "endLine": 98,
+        "endChar": 30
+      },
+      "revId": "03e5f2d6cd22e0773bd59aacf14ae5457ccba770",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
