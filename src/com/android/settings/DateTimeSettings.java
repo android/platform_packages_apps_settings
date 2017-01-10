@@ -72,7 +72,7 @@ public class DateTimeSettings extends SettingsPreferenceFragment
     // have we been launched from the setup wizard?
     protected static final String EXTRA_IS_FIRST_RUN = "firstRun";
 
-    // Minimum time is Nov 5, 2007, 0:00.
+    // Minimum time is Jan 1, 2007, 0:00.
     private static final long MIN_DATE = 1194220800000L;
 
     private RestrictedSwitchPreference mAutoTimePref;
@@ -239,7 +239,7 @@ public class DateTimeSettings extends SettingsPreferenceFragment
         // The system clock can't represent dates outside this range.
         Calendar t = Calendar.getInstance();
         t.clear();
-        t.set(1970, Calendar.JANUARY, 1);
+        t.set(2007, Calendar.JANUARY, 1);
         datePicker.setMinDate(t.getTimeInMillis());
         t.clear();
         t.set(2037, Calendar.DECEMBER, 31);
