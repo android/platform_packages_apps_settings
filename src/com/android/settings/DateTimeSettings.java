@@ -239,7 +239,7 @@ public class DateTimeSettings extends SettingsPreferenceFragment
         // The system clock can't represent dates outside this range.
         Calendar t = Calendar.getInstance();
         t.clear();
-        t.set(1970, Calendar.JANUARY, 1);
+        t.set(2007, Calendar.JANUARY, 5);
         datePicker.setMinDate(t.getTimeInMillis());
         t.clear();
         t.set(2037, Calendar.DECEMBER, 31);
