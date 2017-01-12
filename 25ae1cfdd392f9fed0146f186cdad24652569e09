@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8369f1e6_722c4cd1",
+        "filename": "src/com/android/settings/DateTimeSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-01-12T19:11:24Z",
+      "side": 1,
+      "message": "why is this necessary?",
+      "range": {
+        "startLine": 75,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 56
+      },
+      "revId": "25ae1cfdd392f9fed0146f186cdad24652569e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
