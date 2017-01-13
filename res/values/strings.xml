@@ -7368,6 +7368,9 @@
     <!-- Name of the setting to disable the automatic update -->
     <string name="ota_disable_automatic_update">Automatic system updates</string>
 
+    <!-- Name of the setting to enable treble binderization -->
+    <string name="enable_treble_binderization">Binderized HALs (requires reboot)</string>
+
     <!-- Label for category for data usage [CHAR LIMIT=30] -->
     <string name="usage">Usage</string>
 
