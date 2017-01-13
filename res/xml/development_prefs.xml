@@ -94,6 +94,10 @@
         android:key="ota_disable_automatic_update"
         android:title="@string/ota_disable_automatic_update" />
 
+    <SwitchPreference
+        android:key="enable_hal_binderization"
+        android:title="@string/enable_hal_binderization" />
+
     <PreferenceScreen
         android:key="demo_mode"
         android:title="@string/demo_mode">
