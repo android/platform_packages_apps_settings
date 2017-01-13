@@ -22,6 +22,30 @@
       "revId": "25ae1cfdd392f9fed0146f186cdad24652569e09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7be4636_c9aef534",
+        "filename": "src/com/android/settings/DateTimeSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1129710
+      },
+      "writtenOn": "2017-01-13T02:15:15Z",
+      "side": 1,
+      "message": "You might not modify here, but need to modify the Dialog to display the minimum value is displayed on November 5, 2007, I changed to January 1, 2007 just only to show the full date.",
+      "parentUuid": "8369f1e6_722c4cd1",
+      "range": {
+        "startLine": 75,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 56
+      },
+      "revId": "25ae1cfdd392f9fed0146f186cdad24652569e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
