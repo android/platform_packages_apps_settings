@@ -25,10 +25,12 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.UserInfo;
 import android.content.res.Resources;
+import android.net.IConnectivityManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Process;
 import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.security.Credentials;
@@ -44,9 +46,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.internal.net.LegacyVpnInfo;
+import com.android.internal.net.VpnConfig;
 import com.android.internal.widget.LockPatternUtils;
 import com.android.org.bouncycastle.asn1.ASN1InputStream;
 import com.android.org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
+import com.android.settings.vpn2.VpnUtils;
 
 import sun.security.util.ObjectIdentifier;
 import sun.security.x509.AlgorithmId;
@@ -106,6 +111,8 @@ public final class CredentialStorage extends Activity {
     private static final int CONFIRM_CLEAR_SYSTEM_CREDENTIAL_REQUEST = 2;
 
     private final KeyStore mKeyStore = KeyStore.getInstance();
+    private final IConnectivityManager mConnectivityService = IConnectivityManager.Stub
+            .asInterface(ServiceManager.getService(Context.CONNECTIVITY_SERVICE));
 
     /**
      * When non-null, the bundle containing credentials to install.
@@ -361,11 +368,28 @@ public final class CredentialStorage extends Activity {
             if (success) {
                 Toast.makeText(CredentialStorage.this,
                                R.string.credentials_erased, Toast.LENGTH_SHORT).show();
+                clearVpnIfEstablished();
             } else {
                 Toast.makeText(CredentialStorage.this,
                                R.string.credentials_not_erased, Toast.LENGTH_SHORT).show();
             }
             finish();
+        }
+    }
+
+    private void clearVpnIfEstablished() {
+        try {
+            LegacyVpnInfo currentVpn = mConnectivityService.
+                    getLegacyVpnInfo(UserHandle.myUserId());
+            if (currentVpn != null) {
+                VpnUtils.clearLockdownVpn(getApplicationContext());
+                mConnectivityService.prepareVpn(VpnConfig.LEGACY_VPN,
+                        VpnConfig.LEGACY_VPN, UserHandle.myUserId());
+                Toast.makeText(CredentialStorage.this, R.string.vpn_disconnected,
+                        Toast.LENGTH_SHORT).show();
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
         }
     }
 
