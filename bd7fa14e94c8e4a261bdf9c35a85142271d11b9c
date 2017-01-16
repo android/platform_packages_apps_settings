@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43753906_4838dfee",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-01-16T09:22:16Z",
+      "side": 1,
+      "message": "nice to have: prompt to reboot",
+      "range": {
+        "startLine": 1057,
+        "startChar": 7,
+        "endLine": 1057,
+        "endChar": 31
+      },
+      "revId": "bd7fa14e94c8e4a261bdf9c35a85142271d11b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
