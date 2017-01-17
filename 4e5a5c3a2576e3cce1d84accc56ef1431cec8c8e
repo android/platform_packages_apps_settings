@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "438c594a_6d53f5d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1074763
+      },
+      "writtenOn": "2017-01-17T06:44:09Z",
+      "side": 1,
+      "message": "Thanks for your comment. I will add it.",
+      "parentUuid": "032ee190_df7c2b8a",
+      "revId": "4e5a5c3a2576e3cce1d84accc56ef1431cec8c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "032ee190_7f8c178f",
         "filename": "src/com/android/settings/CredentialStorage.java",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2017-01-17T00:09:00Z",
       "side": 1,
       "message": "This should not be needed very often. I\u0027d prefer to just create it inside the function when it\u0027s used.",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 82
+      },
+      "revId": "4e5a5c3a2576e3cce1d84accc56ef1431cec8c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "438c594a_ad44fd09",
+        "filename": "src/com/android/settings/CredentialStorage.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1074763
+      },
+      "writtenOn": "2017-01-17T06:44:09Z",
+      "side": 1,
+      "message": "Thanks for your comment. I will move it.",
+      "parentUuid": "032ee190_7f8c178f",
       "range": {
         "startLine": 114,
         "startChar": 0,
@@ -65,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "438c594a_cd4149f9",
+        "filename": "src/com/android/settings/CredentialStorage.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1074763
+      },
+      "writtenOn": "2017-01-17T06:44:09Z",
+      "side": 1,
+      "message": "Thanks for your comment, I will change it.",
+      "parentUuid": "032ee190_9f5fc31e",
+      "range": {
+        "startLine": 380,
+        "startChar": 17,
+        "endLine": 380,
+        "endChar": 38
+      },
+      "revId": "4e5a5c3a2576e3cce1d84accc56ef1431cec8c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "032ee190_5f915ba5",
         "filename": "src/com/android/settings/CredentialStorage.java",
         "patchSetId": 1
@@ -76,6 +142,30 @@
       "writtenOn": "2017-01-17T00:09:00Z",
       "side": 1,
       "message": "Ditto, currentLegacyVpn to make it clear it will be null for VpnService vpns",
+      "range": {
+        "startLine": 382,
+        "startChar": 26,
+        "endLine": 382,
+        "endChar": 36
+      },
+      "revId": "4e5a5c3a2576e3cce1d84accc56ef1431cec8c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "438c594a_0dfb519e",
+        "filename": "src/com/android/settings/CredentialStorage.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1074763
+      },
+      "writtenOn": "2017-01-17T06:44:09Z",
+      "side": 1,
+      "message": "Thanks for your comment. I will change it too.",
+      "parentUuid": "032ee190_5f915ba5",
       "range": {
         "startLine": 382,
         "startChar": 26,
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "438c594a_2d000db8",
+        "filename": "src/com/android/settings/CredentialStorage.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1074763
+      },
+      "writtenOn": "2017-01-17T06:44:09Z",
+      "side": 1,
+      "message": "I will try it and share the result with you soon as next patchset.",
+      "parentUuid": "032ee190_ff7fe77b",
+      "range": {
+        "startLine": 385,
+        "startChar": 0,
+        "endLine": 387,
+        "endChar": 69
+      },
+      "revId": "4e5a5c3a2576e3cce1d84accc56ef1431cec8c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "032ee190_3f868f6d",
         "filename": "src/com/android/settings/CredentialStorage.java",
         "patchSetId": 1
@@ -122,6 +236,30 @@
       "writtenOn": "2017-01-17T00:09:00Z",
       "side": 1,
       "message": "You\u0027ll get a nicer message in logcat by changing this line to:\n\n  Log.e(TAG, \"Legacy VPN could not be cleared\", e);",
+      "range": {
+        "startLine": 392,
+        "startChar": 12,
+        "endLine": 392,
+        "endChar": 32
+      },
+      "revId": "4e5a5c3a2576e3cce1d84accc56ef1431cec8c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "438c594a_4d0559c7",
+        "filename": "src/com/android/settings/CredentialStorage.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1074763
+      },
+      "writtenOn": "2017-01-17T06:44:09Z",
+      "side": 1,
+      "message": "Thanks for your comment. I will add it.",
+      "parentUuid": "032ee190_3f868f6d",
       "range": {
         "startLine": 392,
         "startChar": 12,
