@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "032ee190_3f69efa0",
+        "filename": "src/com/android/settings/vpn2/VpnUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1045544
+      },
+      "writtenOn": "2017-01-17T10:18:57Z",
+      "side": 1,
+      "message": "Technically this should be context.getUserId(), same on line 70, because we might want to call this with a context for a restricted / managed profile sometimes.",
+      "range": {
+        "startLine": 67,
+        "startChar": 20,
+        "endLine": 67,
+        "endChar": 41
+      },
+      "revId": "d7e08d71cc7e460bf260afcd8da9ad35acc83afb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
