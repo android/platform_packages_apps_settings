@@ -22,6 +22,29 @@
       "revId": "d7e08d71cc7e460bf260afcd8da9ad35acc83afb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03dee15a_6ba98166",
+        "filename": "src/com/android/settings/vpn2/VpnUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1074763
+      },
+      "writtenOn": "2017-01-18T01:49:53Z",
+      "side": 1,
+      "message": "Thanks for your comment. I will modify it.",
+      "range": {
+        "startLine": 67,
+        "startChar": 20,
+        "endLine": 67,
+        "endChar": 41
+      },
+      "revId": "d7e08d71cc7e460bf260afcd8da9ad35acc83afb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
