@@ -97,7 +97,19 @@ public class StorageWizardFormatProgress extends StorageWizardBase {
                     storage.partitionPrivate(activity.mDisk.getId());
                     publishProgress(40);
 
-                    final VolumeInfo privateVol = activity.findFirstVolume(VolumeInfo.TYPE_PRIVATE);
+                    VolumeInfo privateVol = null;
+                    try {
+                        // The volume will be destroyed and created during format process,
+                        // retry several times to avoid return null when getting volume
+                        int retryCount = 5;
+                        do {
+                            Thread.sleep(50);
+                            privateVol = activity.findFirstVolume(VolumeInfo.TYPE_PRIVATE);
+                        } while (privateVol == null && --retryCount > 0);
+                    } catch (InterruptedException e) {
+                        Log.e(TAG, "excpetion: " + e);
+                    }
+
                     mPrivateBench = storage.benchmark(privateVol.getId());
                     mPrivateBench /= 1000000;
 
