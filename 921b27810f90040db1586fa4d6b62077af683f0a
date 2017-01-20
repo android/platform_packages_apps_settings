@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e860cae6_f3fa69c0",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1966,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2017-01-20T14:49:36Z",
+      "side": 1,
+      "message": "Not really part of this patch, but this is confusing to me.  It looks like the priority isn\u0027t changed in this case, but it is set to HIGHEST in the other cases.\n\nLooking deeper, I see that the priority is initialized to DEFAULT, and we\u0027re just not setting it here.",
+      "range": {
+        "startLine": 1966,
+        "startChar": 15,
+        "endLine": 1966,
+        "endChar": 65
+      },
+      "revId": "921b27810f90040db1586fa4d6b62077af683f0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
