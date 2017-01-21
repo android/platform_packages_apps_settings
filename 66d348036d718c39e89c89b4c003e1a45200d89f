@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e860cae6_e6161769",
+        "filename": "src/com/android/settings/fingerprint/FingerprintEnrollFindSensor.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-01-21T19:06:27Z",
+      "side": 1,
+      "message": "Wouldn\u0027t it be better to put the result of getFragmentManager() into a variable?\n\n  final FragmentManager f \u003d getFragmentManager();\n  if (f.isDestroyed()) {\n    return;\n  }\n  f.beginTransaction().remove(....)",
+      "revId": "66d348036d718c39e89c89b4c003e1a45200d89f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
