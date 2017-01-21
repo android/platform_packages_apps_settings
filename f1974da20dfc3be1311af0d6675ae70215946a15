@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e860cae6_e6017727",
+        "filename": "src/com/android/settings/ChooseLockGeneric.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 756,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-01-21T18:32:18Z",
+      "side": 1,
+      "message": "It would probably make sense to put the result of getActivity() into a variable, and use the variable on line 751 and here.\n\n  Activity a \u003d getActivity();\n  if (a \u003d\u003d null) {\n    ...\n  }\n  final UserManager um \u003d UserManager.get(a);",
+      "range": {
+        "startLine": 756,
+        "startChar": 51,
+        "endLine": 756,
+        "endChar": 64
+      },
+      "revId": "f1974da20dfc3be1311af0d6675ae70215946a15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e860cae6_c606733e",
+        "filename": "src/com/android/settings/fingerprint/FingerprintEnrollFindSensor.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-01-21T18:32:18Z",
+      "side": 1,
+      "message": "put the result of getFragmentManager() into a local variable.",
+      "range": {
+        "startLine": 131,
+        "startChar": 12,
+        "endLine": 131,
+        "endChar": 32
+      },
+      "revId": "f1974da20dfc3be1311af0d6675ae70215946a15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
