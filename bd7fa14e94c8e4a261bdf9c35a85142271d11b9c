@@ -70,6 +70,30 @@
       "revId": "bd7fa14e94c8e4a261bdf9c35a85142271d11b9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e86e0ae9_0096eadc",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-01-23T20:35:03Z",
+      "side": 1,
+      "message": "But then instead of the extra click you need to long press and click reboot, which is even more work :) I think it\u0027s a safe assumption that if you click \"Binderize\", you want it, and we should make it as easy as possible from that point on. \n\nNot the end of the world, but it might lead to people thinking they\u0027ve enabled it whereas they haven\u0027t really. (People in general don\u0027t read, but a prompt might make them pay attention at least some of the time..).",
+      "parentUuid": "e860cae6_7ac99705",
+      "range": {
+        "startLine": 1057,
+        "startChar": 7,
+        "endLine": 1057,
+        "endChar": 31
+      },
+      "revId": "bd7fa14e94c8e4a261bdf9c35a85142271d11b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
