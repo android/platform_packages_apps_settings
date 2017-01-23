@@ -46,6 +46,30 @@
       "revId": "bd7fa14e94c8e4a261bdf9c35a85142271d11b9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e860cae6_7ac99705",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-01-23T20:18:19Z",
+      "side": 1,
+      "message": "The text next to the button says \"Requires Reboot\". I think the prompt is overkill with that. Removing \"Requires Reboot\" and adding the prompt adds an extra click to the user experience (which I don\u0027t want).",
+      "parentUuid": "c36be999_2846b382",
+      "range": {
+        "startLine": 1057,
+        "startChar": 7,
+        "endLine": 1057,
+        "endChar": 31
+      },
+      "revId": "bd7fa14e94c8e4a261bdf9c35a85142271d11b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
