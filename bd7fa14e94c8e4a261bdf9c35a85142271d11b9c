@@ -118,6 +118,30 @@
       "revId": "bd7fa14e94c8e4a261bdf9c35a85142271d11b9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "88902e0b_687c77d4",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-01-24T10:38:36Z",
+      "side": 1,
+      "message": "Understood this is not top prio right now; between the current implementation and rebooting immediately, I would prefer the current.\n\nLet\u0027s make it extra clear that a \u0027manual\u0027 reboot is required if we send instructions on how to disable/enable binderization.",
+      "parentUuid": "08619e1f_96ab0ac5",
+      "range": {
+        "startLine": 1057,
+        "startChar": 7,
+        "endLine": 1057,
+        "endChar": 31
+      },
+      "revId": "bd7fa14e94c8e4a261bdf9c35a85142271d11b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
