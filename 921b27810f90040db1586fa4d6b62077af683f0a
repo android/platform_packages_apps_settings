@@ -22,6 +22,29 @@
       "revId": "921b27810f90040db1586fa4d6b62077af683f0a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec8abd34_c5f563e1",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1966,
+      "author": {
+        "id": 1071489
+      },
+      "writtenOn": "2017-01-24T23:07:10Z",
+      "side": 1,
+      "message": "Yes, this is the whole idea - use the default priority value\nthat was assigned set several lines above:\n\n        int codecPriorityValue \u003d BluetoothCodecConfig.CODEC_PRIORITY_DEFAULT;",
+      "range": {
+        "startLine": 1966,
+        "startChar": 15,
+        "endLine": 1966,
+        "endChar": 65
+      },
+      "revId": "921b27810f90040db1586fa4d6b62077af683f0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
