@@ -94,6 +94,30 @@
       "revId": "bd7fa14e94c8e4a261bdf9c35a85142271d11b9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08619e1f_96ab0ac5",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1057,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2017-01-24T00:35:29Z",
+      "side": 1,
+      "message": "I am more concerned on making sure that the hals start up properly and boot order conditions are ensured at this point. I can update this later with a prompt, but I don\u0027t think it\u0027s necessary at this stage.\n\nWhat if it just reboots the phone w/o a prompt?",
+      "parentUuid": "e86e0ae9_0096eadc",
+      "range": {
+        "startLine": 1057,
+        "startChar": 7,
+        "endLine": 1057,
+        "endChar": 31
+      },
+      "revId": "bd7fa14e94c8e4a261bdf9c35a85142271d11b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
