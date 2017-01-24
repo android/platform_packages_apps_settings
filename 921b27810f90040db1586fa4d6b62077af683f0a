@@ -45,6 +45,29 @@
       "revId": "921b27810f90040db1586fa4d6b62077af683f0a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "127a1191_451a0e5f",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 1966,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2017-01-24T23:24:29Z",
+      "side": 1,
+      "message": "Done",
+      "range": {
+        "startLine": 1966,
+        "startChar": 15,
+        "endLine": 1966,
+        "endChar": 65
+      },
+      "revId": "921b27810f90040db1586fa4d6b62077af683f0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
