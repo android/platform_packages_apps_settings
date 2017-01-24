@@ -40,8 +40,6 @@ final class LocalBluetoothPreferences {
     // of raising notifications
     private static final int GRACE_PERIOD_TO_SHOW_DIALOGS_IN_FOREGROUND = 60 * 1000;
 
-    private static final String KEY_DISCOVERING_TIMESTAMP = "last_discovering_time";
-
     private static final String KEY_LAST_SELECTED_DEVICE = "last_selected_device";
 
     private static final String KEY_LAST_SELECTED_DEVICE_TIME = "last_selected_device_time";
@@ -97,7 +95,7 @@ final class LocalBluetoothPreferences {
         LocalBluetoothAdapter adapter = manager.getBluetoothAdapter();
         if (adapter != null && adapter.isDiscovering()) {
             return true;
-        } else if ((sharedPreferences.getLong(KEY_DISCOVERING_TIMESTAMP, 0) +
+        } else if ((adapter.getLastDiscovering() +
                 GRACE_PERIOD_TO_SHOW_DIALOGS_IN_FOREGROUND) > currentTimeMillis) {
             return true;
         }
@@ -145,20 +143,6 @@ final class LocalBluetoothPreferences {
         SharedPreferences.Editor editor = getSharedPreferences(context).edit();
         editor.putLong(KEY_DISCOVERABLE_END_TIMESTAMP, endTimestamp);
         editor.apply();
-    }
-
-    static void persistDiscoveringTimestamp(final Context context) {
-        // Load the shared preferences and edit it on a background
-        // thread (but serialized!).
-        QueuedWork.singleThreadExecutor().submit(new Runnable() {
-                public void run() {
-                    SharedPreferences.Editor editor = getSharedPreferences(context).edit();
-                    editor.putLong(
-                            KEY_DISCOVERING_TIMESTAMP,
-                        System.currentTimeMillis());
-                    editor.apply();
-                }
-            });
     }
 
     static boolean hasDockAutoConnectSetting(Context context, String addr) {
