@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "199ec431_86d6175b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1071489
+      },
+      "writtenOn": "2017-01-26T20:13:01Z",
+      "side": 1,
+      "message": "Typo. Also, please see my comment in the corresponding CL about\nthe name:\nhttps://android-review.googlesource.com/#/c/328218/3/src/com/android/bluetooth/btservice/AdapterProperties.java@356",
+      "range": {
+        "startLine": 9,
+        "startChar": 24,
+        "endLine": 9,
+        "endChar": 41
+      },
+      "revId": "7f9cf352fd442d845eb701eae0f308270de395d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
