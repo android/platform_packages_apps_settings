@@ -106,6 +106,9 @@ public class WifiConfigController implements TextWatcher,
     public static final int WIFI_PEAP_PHASE2_NONE       = 0;
     public static final int WIFI_PEAP_PHASE2_MSCHAPV2   = 1;
     public static final int WIFI_PEAP_PHASE2_GTC        = 2;
+    public static final int WIFI_PEAP_PHASE2_SIM        = 3;
+    public static final int WIFI_PEAP_PHASE2_AKA        = 4;
+    public static final int WIFI_PEAP_PHASE2_AKA_PRIME  = 5;
 
     /* Phase2 methods supported by PEAP are limited */
     private final ArrayAdapter<String> mPhase2PeapAdapter;
@@ -176,9 +179,16 @@ public class WifiConfigController implements TextWatcher,
         final Resources res = mContext.getResources();
 
         mLevels = res.getStringArray(R.array.wifi_signal);
-        mPhase2PeapAdapter = new ArrayAdapter<String>(
-            mContext, android.R.layout.simple_spinner_item,
-            res.getStringArray(R.array.wifi_peap_phase2_entries));
+        if (Utils.isWifiOnly(mContext) || !mContext.getResources().getBoolean(
+                com.android.internal.R.bool.config_eap_sim_based_auth_supported)) {
+            mPhase2PeapAdapter = new ArrayAdapter<String>(
+                mContext, android.R.layout.simple_spinner_item,
+                res.getStringArray(R.array.wifi_peap_phase2_entries));
+        } else {
+            mPhase2PeapAdapter = new ArrayAdapter<String>(
+                mContext, android.R.layout.simple_spinner_item,
+                res.getStringArray(R.array.wifi_peap_phase2_entries_with_sim_auth));
+        }
         mPhase2PeapAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         mPhase2FullAdapter = new ArrayAdapter<String>(
@@ -526,6 +536,15 @@ public class WifiConfigController implements TextWatcher,
                             case WIFI_PEAP_PHASE2_GTC:
                                 config.enterpriseConfig.setPhase2Method(Phase2.GTC);
                                 break;
+                            case WIFI_PEAP_PHASE2_SIM:
+                                config.enterpriseConfig.setPhase2Method(Phase2.SIM);
+                                break;
+                            case WIFI_PEAP_PHASE2_AKA:
+                                config.enterpriseConfig.setPhase2Method(Phase2.AKA);
+                                break;
+                            case WIFI_PEAP_PHASE2_AKA_PRIME:
+                                config.enterpriseConfig.setPhase2Method(Phase2.AKA_PRIME);
+                                break;
                             default:
                                 Log.e(TAG, "Unknown phase2 method" + phase2Method);
                                 break;
@@ -789,6 +808,7 @@ public class WifiConfigController implements TextWatcher,
                 mEapMethodSpinner.setAdapter(spinnerAdapter);
             }
             mPhase2Spinner = (Spinner) mView.findViewById(R.id.phase2);
+            mPhase2Spinner.setOnItemSelectedListener(this);
             mEapCaCertSpinner = (Spinner) mView.findViewById(R.id.ca_cert);
             mEapCaCertSpinner.setOnItemSelectedListener(this);
             mEapDomainView = (TextView) mView.findViewById(R.id.domain);
@@ -817,7 +837,7 @@ public class WifiConfigController implements TextWatcher,
                 int eapMethod = enterpriseConfig.getEapMethod();
                 int phase2Method = enterpriseConfig.getPhase2Method();
                 mEapMethodSpinner.setSelection(eapMethod);
-                showEapFieldsByMethod(eapMethod);
+                showEapFieldsByMethod(eapMethod, phase2Method);
                 switch (eapMethod) {
                     case Eap.PEAP:
                         switch (phase2Method) {
@@ -829,6 +849,15 @@ public class WifiConfigController implements TextWatcher,
                                 break;
                             case Phase2.GTC:
                                 mPhase2Spinner.setSelection(WIFI_PEAP_PHASE2_GTC);
+                                break;
+                            case Phase2.SIM:
+                                mPhase2Spinner.setSelection(WIFI_PEAP_PHASE2_SIM);
+                                break;
+                            case Phase2.AKA:
+                                mPhase2Spinner.setSelection(WIFI_PEAP_PHASE2_AKA);
+                                break;
+                            case Phase2.AKA_PRIME:
+                                mPhase2Spinner.setSelection(WIFI_PEAP_PHASE2_AKA_PRIME);
                                 break;
                             default:
                                 Log.e(TAG, "Invalid phase 2 method " + phase2Method);
@@ -868,10 +897,13 @@ public class WifiConfigController implements TextWatcher,
                 mEapIdentityView.setText(enterpriseConfig.getIdentity());
                 mEapAnonymousView.setText(enterpriseConfig.getAnonymousIdentity());
             } else {
-                showEapFieldsByMethod(mEapMethodSpinner.getSelectedItemPosition());
+              mPhase2Spinner = (Spinner) mView.findViewById(R.id.phase2);
+                showEapFieldsByMethod(mEapMethodSpinner.getSelectedItemPosition(),
+                        mPhase2Spinner.getSelectedItemPosition());
             }
         } else {
-            showEapFieldsByMethod(mEapMethodSpinner.getSelectedItemPosition());
+            showEapFieldsByMethod(mEapMethodSpinner.getSelectedItemPosition(),
+                    mPhase2Spinner.getSelectedItemPosition());
         }
     }
 
@@ -880,11 +912,11 @@ public class WifiConfigController implements TextWatcher,
      *   identity
      *   password
      * EAP-PEAP valid fields include
-     *   phase2: MSCHAPV2, GTC
+     *   phase2: MSCHAPV2, GTC, SIM, AKA, AKA'
      *   ca_cert
      *   identity
      *   anonymous_identity
-     *   password
+     *   password (not required for SIM, AKA, AKA')
      * EAP-TLS valid fields include
      *   user_cert
      *   ca_cert
@@ -897,7 +929,7 @@ public class WifiConfigController implements TextWatcher,
      *   anonymous_identity
      *   password
      */
-    private void showEapFieldsByMethod(int eapMethod) {
+    private void showEapFieldsByMethod(int eapMethod, int phase2Method) {
         // Common defaults
         mView.findViewById(R.id.l_method).setVisibility(View.VISIBLE);
         mView.findViewById(R.id.l_identity).setVisibility(View.VISIBLE);
@@ -932,6 +964,12 @@ public class WifiConfigController implements TextWatcher,
                 }
                 mView.findViewById(R.id.l_phase2).setVisibility(View.VISIBLE);
                 mView.findViewById(R.id.l_anonymous).setVisibility(View.VISIBLE);
+                if (phase2Method == WIFI_PEAP_PHASE2_SIM || phase2Method == WIFI_PEAP_PHASE2_AKA
+                         || phase2Method == WIFI_PEAP_PHASE2_AKA_PRIME) {
+                    setAnonymousIdentInvisible();
+                    setIdentityInvisible();
+                    setPasswordInvisible();
+                }
                 setUserCertInvisible();
                 break;
             case WIFI_EAP_METHOD_TTLS:
@@ -1231,7 +1269,9 @@ public class WifiConfigController implements TextWatcher,
         if (parent == mSecuritySpinner) {
             mAccessPointSecurity = position;
             showSecurityFields();
-        } else if (parent == mEapMethodSpinner || parent == mEapCaCertSpinner) {
+        } else if (parent == mEapMethodSpinner || parent == mEapCaCertSpinner
+                   || (parent == mPhase2Spinner &&
+                       mEapMethodSpinner.getSelectedItemPosition() == WIFI_EAP_METHOD_PEAP)) {
             showSecurityFields();
         } else if (parent == mProxySettingsSpinner) {
             showProxyFields();
