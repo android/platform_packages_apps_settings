@@ -1,0 +1,8 @@
+Code-Review+2: Pavlin Radoslavov <pavlin@google.com>
+Presubmit-Verified-1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Marie Janssen <jamuraa@google.com>
+Submitted-by: Marie Janssen <jamuraa@google.com>
+Submitted-at: Mon, 30 Jan 2017 17:46:17 +0000
+Reviewed-on: https://android-review.googlesource.com/328238
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
