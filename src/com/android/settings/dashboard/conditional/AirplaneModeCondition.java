@@ -15,17 +15,27 @@
  */
 package com.android.settings.dashboard.conditional;
 
+import android.app.job.JobInfo;
+import android.app.job.JobScheduler;
 import android.content.BroadcastReceiver;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Icon;
 import android.net.ConnectivityManager;
+import android.provider.Settings;
+import android.util.Log;
 import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.settings.R;
-import com.android.settings.Settings;
+import com.android.settings.Settings.WirelessSettingsActivity;
 import com.android.settingslib.WirelessUtils;
+import com.android.settings.dashboard.conditional.HandleAirplaneModeChangedService;
+
+import static android.app.job.JobInfo.TriggerContentUri.FLAG_NOTIFY_FOR_DESCENDANTS;
+import static android.os.UserHandle.SYSTEM;
 
 public class AirplaneModeCondition extends Condition {
+    private static final String TAG = "AirplaneModeCondition";
 
     public AirplaneModeCondition(ConditionManager conditionManager) {
         super(conditionManager);
@@ -64,7 +74,7 @@ public class AirplaneModeCondition extends Condition {
     @Override
     public void onPrimaryClick() {
         mManager.getContext().startActivity(new Intent(mManager.getContext(),
-                Settings.WirelessSettingsActivity.class));
+                WirelessSettingsActivity.class));
     }
 
     @Override
@@ -85,10 +95,35 @@ public class AirplaneModeCondition extends Condition {
     public static class Receiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            if (Intent.ACTION_AIRPLANE_MODE_CHANGED.equals(intent.getAction())) {
-                ConditionManager.get(context).getCondition(AirplaneModeCondition.class)
-                        .refreshState();
+            if (Intent.ACTION_BOOT_COMPLETED.equals(intent.getAction())) {
+                Intent startServiceIntent =
+                        new Intent(context, HandleAirplaneModeChangedService.class);
+                if (context.startServiceAsUser(startServiceIntent, SYSTEM) == null) {
+                    Log.e(TAG, "Unable to start service");
+                }
+                scheduleHandleAirplaneModeJob(context);
             }
+        }
+    }
+
+    /*
+     * Queue up the HandleAirplaneModeChangedService job
+     */
+    public static void scheduleHandleAirplaneModeJob(Context context) {
+        try {
+            Log.d(TAG, "Setting up JobScheduler");
+            JobInfo.TriggerContentUri trigger = new JobInfo.TriggerContentUri(
+                    Settings.Global.getUriFor(Settings.Global.AIRPLANE_MODE_ON),
+                    FLAG_NOTIFY_FOR_DESCENDANTS);
+            final int HANDLE_AIRPLANE_MODE_CHANGE_JOB_ID = 0;
+            JobInfo.Builder builder = new JobInfo.Builder(HANDLE_AIRPLANE_MODE_CHANGE_JOB_ID,
+                    new ComponentName(context, HandleAirplaneModeChangedService.class));
+            builder.addTriggerContentUri(trigger);
+            JobScheduler tm =
+                    (JobScheduler) context.getSystemService(Context.JOB_SCHEDULER_SERVICE);
+            tm.schedule(builder.build());
+        } catch (RuntimeException e) {
+            Log.e(TAG, "RuntimeException caught while trying to set up JobScheduler: " + e);
         }
     }
 }
