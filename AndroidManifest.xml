@@ -3029,12 +3029,14 @@
        </receiver>
 
         <receiver
-            android:name=".dashboard.conditional.AirplaneModeCondition$Receiver"
-            android:enabled="false">
+            android:name=".dashboard.conditional.AirplaneModeCondition$Receiver" >
             <intent-filter>
-                 <action android:name="android.intent.action.AIRPLANE_MODE" />
+                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
        </receiver>
+
+       <service android:name=".dashboard.conditional.HandleAirplaneModeChangedService"
+           android:permission="android.permission.BIND_JOB_SERVICE" />
 
         <receiver
             android:name=".dashboard.conditional.DndCondition$Receiver"
