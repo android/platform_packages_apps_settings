@@ -20,6 +20,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothHeadset;
 import android.bluetooth.BluetoothProfile;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -40,6 +41,7 @@ import android.widget.TextView;
 import com.android.settings.R;
 import com.android.settingslib.bluetooth.CachedBluetoothDevice;
 import com.android.settingslib.bluetooth.CachedBluetoothDeviceManager;
+import com.android.settingslib.bluetooth.HeadsetProfile;
 import com.android.settingslib.bluetooth.LocalBluetoothManager;
 import com.android.settingslib.bluetooth.LocalBluetoothProfile;
 import com.android.settingslib.bluetooth.LocalBluetoothProfileManager;
@@ -175,6 +177,12 @@ public final class DeviceProfilesSettings extends DialogFragment implements
         for (LocalBluetoothProfile profile : mCachedDevice.getConnectableProfiles()) {
             CheckBox pref = createProfilePreference(profile);
             mProfileContainer.addView(pref);
+            if (profile instanceof HeadsetProfile) {
+                if (BluetoothHeadset.isInbandRingingSupported(this.getContext())) {
+                    CheckBox box = createInbandRingingCheckbox((HeadsetProfile) profile);
+                    mProfileContainer.addView(box);
+                }
+            }
         }
 
         final int pbapPermission = mCachedDevice.getPhonebookPermissionChoice();
@@ -227,6 +235,21 @@ public final class DeviceProfilesSettings extends DialogFragment implements
         return pref;
     }
 
+    private final String INBAND_RINGING_TAG = "inband_ringing";
+    private final String INBAND_RINGING_DISPLAY = "Inband Ringing";
+
+    private CheckBox createInbandRingingCheckbox(HeadsetProfile headset_profile) {
+        CheckBox pref = new CheckBox(getActivity());
+        pref.setTag(INBAND_RINGING_TAG);
+        pref.setText(INBAND_RINGING_DISPLAY);
+        pref.setOnClickListener(this);
+        BluetoothDevice device = mCachedDevice.getDevice();
+        // Gray out checkbox while connecting and disconnecting.
+        pref.setEnabled(!mCachedDevice.isBusy());
+        pref.setChecked(headset_profile.isInbandRingingEnable(mCachedDevice.getDevice()));
+        return pref;
+    }
+
     @Override
     public void onClick(View v) {
         if (v instanceof CheckBox) {
@@ -237,6 +260,19 @@ public final class DeviceProfilesSettings extends DialogFragment implements
 
     private void onProfileClicked(LocalBluetoothProfile profile, CheckBox profilePref) {
         BluetoothDevice device = mCachedDevice.getDevice();
+
+        if (profilePref.getTag().equals(INBAND_RINGING_TAG)) {
+            if (!(profile instanceof HeadsetProfile)) {
+                Log.e(TAG, "Inband Ringing got non Headset Profile");
+                return;
+            }
+            HeadsetProfile headset_profile = (HeadsetProfile) profile;
+            if (!headset_profile.isPreferred(device)) {
+                Log.e(TAG, "Inband Ringing Headset Profile is not preferred");
+                return;
+            }
+            headset_profile.setInbandRingingEnable(device, profilePref.isChecked());
+        }
 
         if (KEY_PBAP_SERVER.equals(profilePref.getTag())) {
             final int newPermission = mCachedDevice.getPhonebookPermissionChoice()
@@ -324,12 +360,27 @@ public final class DeviceProfilesSettings extends DialogFragment implements
             } else {
                 refreshProfilePreference(profilePref, profile);
             }
+            if (profile instanceof HeadsetProfile) {
+                if (BluetoothHeadset.isInbandRingingSupported(this.getContext())) {
+                    CheckBox pref = findProfile(INBAND_RINGING_TAG);
+                    if (pref == null) {
+                        pref = createInbandRingingCheckbox((HeadsetProfile) profile);
+                        mProfileContainer.addView(pref);
+                    }
+                }
+            }
         }
         for (LocalBluetoothProfile profile : mCachedDevice.getRemovedProfiles()) {
             CheckBox profilePref = findProfile(profile.toString());
             if (profilePref != null) {
                 Log.d(TAG, "Removing " + profile.toString() + " from profile list");
                 mProfileContainer.removeView(profilePref);
+            }
+            if (profile instanceof HeadsetProfile) {
+                CheckBox pref = findProfile(INBAND_RINGING_TAG);
+                if (pref != null) {
+                    mProfileContainer.removeView(pref);
+                }
             }
         }
 
@@ -371,6 +422,9 @@ public final class DeviceProfilesSettings extends DialogFragment implements
         String key = (String) v.getTag();
         if (TextUtils.isEmpty(key)) return null;
 
+        if (key.equals(INBAND_RINGING_TAG)) {
+            return mProfileManager.getHeadsetProfile();
+        }
         try {
             return mProfileManager.getProfileByName(key);
         } catch (IllegalArgumentException ignored) {
