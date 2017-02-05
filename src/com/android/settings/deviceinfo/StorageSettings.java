@@ -180,8 +180,12 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
                     privateTotalBytes += volumeTotalBytes;
                 }
             } else if (vol.getType() == VolumeInfo.TYPE_PUBLIC) {
-                mExternalCategory.addPreference(
-                        new StorageVolumePreference(context, vol, COLOR_PUBLIC, 0));
+                StorageVolumePreference exStorageVolumePreference =
+                        new StorageVolumePreference(context, vol, COLOR_PUBLIC, 0);
+
+                // Disable preference when the current user isn't the user who mounted the volume
+                exStorageVolumePreference.setEnabled(vol.getMountUserId() == UserHandle.myUserId());
+                mExternalCategory.addPreference(exStorageVolumePreference);
             }
         }
 
