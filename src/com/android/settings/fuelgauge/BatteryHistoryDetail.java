@@ -50,6 +50,8 @@ public class BatteryHistoryDetail extends SettingsPreferenceFragment {
     private BatteryFlagParser mCpuParser;
     private BatteryCellParser mPhoneParser;
 
+    private boolean mShowCellSignal;
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -60,6 +62,12 @@ public class BatteryHistoryDetail extends SettingsPreferenceFragment {
         TypedValue value = new TypedValue();
         getContext().getTheme().resolveAttribute(android.R.attr.colorAccent, value, true);
         int accentColor = getContext().getColor(value.resourceId);
+
+        if (!Utils.isWifiOnly(getContext())) {
+            mShowCellSignal = true;
+        } else {
+            mShowCellSignal = false;
+        }
 
         mChargingParser = new BatteryFlagParser(accentColor, false,
                 HistoryItem.STATE_BATTERY_PLUGGED_FLAG);
@@ -74,10 +82,12 @@ public class BatteryHistoryDetail extends SettingsPreferenceFragment {
         mWifiParser = new BatteryWifiParser(accentColor);
         mCpuParser = new BatteryFlagParser(accentColor, false,
                 HistoryItem.STATE_CPU_RUNNING_FLAG);
-        mPhoneParser = new BatteryCellParser();
+        if (mShowCellSignal) {
+            mPhoneParser = new BatteryCellParser();
+        }
         setHasOptionsMenu(true);
     }
-    
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -94,9 +104,14 @@ public class BatteryHistoryDetail extends SettingsPreferenceFragment {
         BatteryInfo info = BatteryInfo.getBatteryInfo(getContext(), mBatteryBroadcast, mStats,
                 SystemClock.elapsedRealtime() * 1000);
         final View view = getView();
-        info.bindHistory((UsageView) view.findViewById(R.id.battery_usage), mChargingParser,
-                mScreenOn, mGpsParser, mFlashlightParser, mCameraParser, mWifiParser, mCpuParser,
-                mPhoneParser);
+        if (mShowCellSignal) {
+            info.bindHistory((UsageView) view.findViewById(R.id.battery_usage), mChargingParser,
+                    mScreenOn, mGpsParser, mFlashlightParser, mCameraParser, mWifiParser, mCpuParser,
+                    mPhoneParser);
+        } else {
+            info.bindHistory((UsageView) view.findViewById(R.id.battery_usage), mChargingParser,
+                    mScreenOn, mGpsParser, mFlashlightParser, mCameraParser, mWifiParser, mCpuParser);
+        }
         ((TextView) view.findViewById(R.id.charge)).setText(info.batteryPercentString);
         ((TextView) view.findViewById(R.id.estimation)).setText(info.remainingLabel);
 
@@ -108,7 +123,11 @@ public class BatteryHistoryDetail extends SettingsPreferenceFragment {
         bindData(mCameraParser, R.string.battery_stats_camera_on_label, R.id.camera_group);
         bindData(mWifiParser, R.string.battery_stats_wifi_running_label, R.id.wifi_group);
         bindData(mCpuParser, R.string.battery_stats_wake_lock_label, R.id.cpu_group);
-        bindData(mPhoneParser, R.string.battery_stats_phone_signal_label, R.id.cell_network_group);
+        if (mShowCellSignal) {
+            bindData(mPhoneParser, R.string.battery_stats_phone_signal_label, R.id.cell_network_group);
+        } else {
+            view.findViewById(R.id.cell_network_group).setVisibility(View.GONE);
+        }
     }
 
     private void bindData(BatteryActiveProvider provider, int label, int groupId) {
