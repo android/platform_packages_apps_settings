@@ -148,14 +148,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".SystemSettings"
-            android:label="@string/header_category_system">
-            <intent-filter android:priority="1">
-                <action android:name="com.android.settings.category.system" />
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
-        </activity>
-
         <receiver android:name="SettingsInitialize">
             <intent-filter>
                 <action android:name="android.intent.action.USER_INITIALIZE"/>
