@@ -148,7 +148,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".SystemSettings"
+        <activity android:name=".Settings$SystemSettings"
             android:label="@string/header_category_system">
             <intent-filter android:priority="1">
                 <action android:name="com.android.settings.category.system" />
