@@ -1,0 +1,9 @@
+Code-Review+2: Andre Eisenbach <eisenbach@google.com>
+Verified+1: Pavlin Radoslavov <pavlin@google.com>
+Autosubmit+1: Pavlin Radoslavov <pavlin@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Sat, 11 Feb 2017 01:21:25 +0000
+Reviewed-on: https://android-review.googlesource.com/337324
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
