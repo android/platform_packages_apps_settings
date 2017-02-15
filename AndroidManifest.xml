@@ -419,6 +419,7 @@
         <activity android:name="Settings$BluetoothSettingsActivity"
                 android:label="@string/bluetooth_settings_title"
                 android:icon="@drawable/ic_settings_bluetooth"
+                android:configChanges="orientation|keyboardHidden|screenSize"
                 android:taskAffinity="">
             <intent-filter android:priority="1">
                 <action android:name="android.settings.BLUETOOTH_SETTINGS" />
