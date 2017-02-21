@@ -134,6 +134,10 @@ public class WriteSettingsDetails extends AppInfoWithHeader implements OnPrefere
 
     @Override
     protected boolean refreshUi() {
+        if (mPackageInfo.applicationInfo == null) {
+            return false;
+        }
+
         mWriteSettingsState = mAppBridge.getWriteSettingsInfo(mPackageName,
                 mPackageInfo.applicationInfo.uid);
 
