@@ -276,10 +276,12 @@ public class SimStatus extends SettingsPreferenceFragment {
 
         boolean show4GForLTE = false;
         try {
-            Context con = getActivity().createPackageContext("com.android.systemui", 0);
-            int id = con.getResources().getIdentifier("config_show4GForLTE",
-                    "bool", "com.android.systemui");
-            show4GForLTE = con.getResources().getBoolean(id);
+            if (getActivity() != null) {
+                Context con = getActivity().createPackageContext("com.android.systemui", 0);
+                int id = con.getResources().getIdentifier("config_show4GForLTE",
+                        "bool", "com.android.systemui");
+                show4GForLTE = con.getResources().getBoolean(id);
+            }
         } catch (NameNotFoundException e) {
             Log.e(TAG, "NameNotFoundException for show4GFotLTE");
         }
