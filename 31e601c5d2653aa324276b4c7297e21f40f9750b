@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00e20e3e_a1698fa5",
+        "filename": "src/com/android/settings/bluetooth/DevicePickerFragment.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2017-02-21T20:14:16Z",
+      "side": 1,
+      "message": "Is there a way to do this without adding the extra state variable?  When else is onPause() called?",
+      "range": {
+        "startLine": 51,
+        "startChar": 20,
+        "endLine": 51,
+        "endChar": 35
+      },
+      "revId": "31e601c5d2653aa324276b4c7297e21f40f9750b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19087f38_70c1c515",
+        "filename": "src/com/android/settings/bluetooth/DevicePickerFragment.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2017-02-21T20:14:16Z",
+      "side": 1,
+      "message": "nit: \u0027",
+      "range": {
+        "startLine": 119,
+        "startChar": 14,
+        "endLine": 119,
+        "endChar": 15
+      },
+      "revId": "31e601c5d2653aa324276b4c7297e21f40f9750b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
