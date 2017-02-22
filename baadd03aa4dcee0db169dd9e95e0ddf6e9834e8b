@@ -22,6 +22,30 @@
       "revId": "baadd03aa4dcee0db169dd9e95e0ddf6e9834e8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f24c8944_5ebb6dd8",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPairingRequest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1073753
+      },
+      "writtenOn": "2017-02-22T21:51:27Z",
+      "side": 1,
+      "message": "Done in PS2",
+      "parentUuid": "211e9d31_176cfcea",
+      "range": {
+        "startLine": 29,
+        "startChar": 83,
+        "endLine": 29,
+        "endChar": 84
+      },
+      "revId": "baadd03aa4dcee0db169dd9e95e0ddf6e9834e8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
