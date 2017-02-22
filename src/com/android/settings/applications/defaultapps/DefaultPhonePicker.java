@@ -16,11 +16,14 @@
 
 package com.android.settings.applications.defaultapps;
 
+import android.app.ActivityManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.telecom.DefaultDialerManager;
 import android.telecom.TelecomManager;
 import android.text.TextUtils;
+import android.os.UserHandle;
 
 import com.android.internal.logging.nano.MetricsProto;
 
@@ -72,7 +75,16 @@ public class DefaultPhonePicker extends DefaultAppPickerFragment {
     @Override
     protected boolean setDefaultKey(String key) {
         if (!TextUtils.isEmpty(key) && !TextUtils.equals(key, getDefaultKey())) {
-            return mDefaultKeyUpdater.setDefaultDialerApplication(getContext(), key, mUserId);
+            final boolean result = mDefaultKeyUpdater.setDefaultDialerApplication(getContext(), key, mUserId);
+            if (result) {
+                final Intent intent =
+                        new Intent(TelecomManager.ACTION_DEFAULT_DIALER_CHANGED);
+                intent.putExtra(TelecomManager.EXTRA_CHANGE_DEFAULT_DIALER_PACKAGE_NAME,
+                        key);
+                getContext().sendBroadcastAsUser(intent,
+                        new UserHandle(ActivityManager.getCurrentUser()));
+            }
+            return result;
         }
         return false;
     }
