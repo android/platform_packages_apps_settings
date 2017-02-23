@@ -77,6 +77,8 @@ public class WifiCallingSettings extends SettingsPreferenceFragment
     private boolean mValidListener = false;
     private boolean mEditableWfcMode = true;
     private boolean mEditableWfcRoamingMode = true;
+    // Whether code is running in onResume
+    private boolean mOnResume = false;
 
     private final PhoneStateListener mPhoneStateListener = new PhoneStateListener() {
         /*
@@ -249,6 +251,7 @@ public class WifiCallingSettings extends SettingsPreferenceFragment
 
     @Override
     public void onResume() {
+        mOnResume = true;
         super.onResume();
 
         final Context context = getActivity();
@@ -278,6 +281,7 @@ public class WifiCallingSettings extends SettingsPreferenceFragment
         if (intent.getBooleanExtra(Phone.EXTRA_KEY_ALERT_SHOW, false)) {
             showAlert(intent);
         }
+        mOnResume = false;
     }
 
     @Override
@@ -308,6 +312,12 @@ public class WifiCallingSettings extends SettingsPreferenceFragment
 
         if (!isChecked) {
             updateWfcMode(context, false);
+            return;
+        }
+
+        if (mOnResume) {
+            // if we're in onResume, just update UI w/o launching carrier app.
+            updateWfcMode(context, isChecked);
             return;
         }
 
