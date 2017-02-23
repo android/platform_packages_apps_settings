@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfbbc8d7_d266d8b3",
+        "filename": "src/com/android/settings/WifiCallingSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-02-23T23:04:02Z",
+      "side": 1,
+      "message": "Would moving the listener to after the setChecked command work as well?",
+      "range": {
+        "startLine": 263,
+        "startChar": 12,
+        "endLine": 263,
+        "endChar": 55
+      },
+      "revId": "492db0e6e756be2c2df1b1198599717fd83afef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
