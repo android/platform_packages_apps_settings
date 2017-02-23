@@ -22,6 +22,30 @@
       "revId": "492db0e6e756be2c2df1b1198599717fd83afef1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b1372b1_8a122ed0",
+        "filename": "src/com/android/settings/WifiCallingSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1138358
+      },
+      "writtenOn": "2017-02-23T23:07:39Z",
+      "side": 1,
+      "message": "That might not be equivalent. onSwitchChanged() does both UI update and carrier app invocation. If moving this after setChecked(), we lost both.",
+      "parentUuid": "dfbbc8d7_d266d8b3",
+      "range": {
+        "startLine": 263,
+        "startChar": 12,
+        "endLine": 263,
+        "endChar": 55
+      },
+      "revId": "492db0e6e756be2c2df1b1198599717fd83afef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
