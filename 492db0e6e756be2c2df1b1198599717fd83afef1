@@ -70,6 +70,40 @@
       "revId": "492db0e6e756be2c2df1b1198599717fd83afef1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "40e9df0c_d7d9bae9",
+        "filename": "src/com/android/settings/WifiCallingSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1112039
+      },
+      "writtenOn": "2017-02-25T00:02:06Z",
+      "side": 1,
+      "message": "it seems a bit hacky that we are assuming onSwitchChanged will be called while in the context of this function/thread",
+      "revId": "492db0e6e756be2c2df1b1198599717fd83afef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "510262f0_1fb5e3f9",
+        "filename": "src/com/android/settings/WifiCallingSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1112039
+      },
+      "writtenOn": "2017-02-25T00:02:06Z",
+      "side": 1,
+      "message": "If the logic is like previously wfc is disabled, and now it is enabled, then trigger activation, would have been a generic logic than lookin at origin of the trigger and deciding what to do.",
+      "revId": "492db0e6e756be2c2df1b1198599717fd83afef1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
