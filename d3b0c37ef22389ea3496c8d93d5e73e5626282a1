@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e2a91a1_2d7e1143",
+        "filename": "src/com/android/settings/WifiCallingSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1138358
+      },
+      "writtenOn": "2017-02-25T18:41:49Z",
+      "side": 1,
+      "message": "UI update is done here (and line 259 above). No need to rely on OnSwitchChangeListener to initialize UI in onResume.",
+      "range": {
+        "startLine": 264,
+        "startChar": 8,
+        "endLine": 264,
+        "endChar": 27
+      },
+      "revId": "d3b0c37ef22389ea3496c8d93d5e73e5626282a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
