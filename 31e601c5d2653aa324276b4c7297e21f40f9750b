@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "603c2261_b5e2ba2d",
+        "filename": "src/com/android/settings/bluetooth/DevicePickerFragment.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1043980
+      },
+      "writtenOn": "2017-02-28T17:16:37Z",
+      "side": 1,
+      "message": "I don\u0027t think it\u0027s possible. If yes please suggest. onPause will be called when user selects a file to share, and presses home button, then activity is paused.",
+      "parentUuid": "00e20e3e_a1698fa5",
+      "range": {
+        "startLine": 51,
+        "startChar": 20,
+        "endLine": 51,
+        "endChar": 35
+      },
+      "revId": "31e601c5d2653aa324276b4c7297e21f40f9750b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "19087f38_70c1c515",
         "filename": "src/com/android/settings/bluetooth/DevicePickerFragment.java",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-02-21T20:14:16Z",
       "side": 1,
       "message": "nit: \u0027",
+      "range": {
+        "startLine": 119,
+        "startChar": 14,
+        "endLine": 119,
+        "endChar": 15
+      },
+      "revId": "31e601c5d2653aa324276b4c7297e21f40f9750b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6234df95_b3eaa5a8",
+        "filename": "src/com/android/settings/bluetooth/DevicePickerFragment.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1043980
+      },
+      "writtenOn": "2017-02-28T17:16:37Z",
+      "side": 1,
+      "message": "will fix",
+      "parentUuid": "19087f38_70c1c515",
       "range": {
         "startLine": 119,
         "startChar": 14,
