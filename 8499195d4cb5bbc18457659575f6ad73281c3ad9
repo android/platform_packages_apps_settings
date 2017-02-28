@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b7db310_f9d45d3c",
+        "filename": "src/com/android/settings/bluetooth/DevicePickerFragment.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1073753
+      },
+      "writtenOn": "2017-02-28T19:38:39Z",
+      "side": 1,
+      "message": "you should be able to set mSelectedDevice to null here and use mSelectedDevice !\u003d null instead of adding a boolean flag.",
+      "range": {
+        "startLine": 107,
+        "startChar": 7,
+        "endLine": 107,
+        "endChar": 32
+      },
+      "revId": "8499195d4cb5bbc18457659575f6ad73281c3ad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5662c148_f244b061",
+        "filename": "src/com/android/settings/bluetooth/DevicePickerFragment.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1073753
+      },
+      "writtenOn": "2017-02-28T19:38:39Z",
+      "side": 1,
+      "message": "if you use ACTION_DEVICE_SELECTED with a null device to signal \"no device picked\" then this simplifies to:\nif (mSelectedDevice \u003d\u003d null) {\n sendDevicePickedIntent(null);\n}",
+      "range": {
+        "startLine": 120,
+        "startChar": 11,
+        "endLine": 125,
+        "endChar": 48
+      },
+      "revId": "8499195d4cb5bbc18457659575f6ad73281c3ad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
