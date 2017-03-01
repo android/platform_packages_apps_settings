@@ -45,6 +45,30 @@
       "revId": "8499195d4cb5bbc18457659575f6ad73281c3ad9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "931b08d9_80390059",
+        "filename": "src/com/android/settings/bluetooth/DevicePickerFragment.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1043980
+      },
+      "writtenOn": "2017-03-01T10:07:16Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "5662c148_f244b061",
+      "range": {
+        "startLine": 120,
+        "startChar": 11,
+        "endLine": 125,
+        "endChar": 48
+      },
+      "revId": "8499195d4cb5bbc18457659575f6ad73281c3ad9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
