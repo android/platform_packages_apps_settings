@@ -103,9 +103,21 @@ public final class DevicePickerFragment extends DeviceListPreferenceFragment {
     public void onResume() {
         super.onResume();
         addCachedDevices();
+        mSelectedDevice = null;
         if (mStartScanOnResume) {
             mLocalAdapter.startScanning(true);
             mStartScanOnResume = false;
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        /* Check if any device was selected, if no device selected
+         * send  ACTION_DEVICE_SELECTED with a null device, otherwise
+         * don't do anything */
+        if (mSelectedDevice == null) {
+            sendDevicePickedIntent(null);
         }
     }
 
