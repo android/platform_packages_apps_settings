@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d22ecc60_38f223b5",
+        "filename": "src/com/android/settings/search/Index.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 710,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-03-01T05:37:03Z",
+      "side": 0,
+      "message": "Can this ever be null? \n\nIf it\u0027s null, the old code safe, it just won\u0027t return any result, but new code has a risk of NullPointerException.",
+      "range": {
+        "startLine": 710,
+        "startChar": 29,
+        "endLine": 710,
+        "endChar": 34
+      },
+      "revId": "6f7437580c79befffaa4ae2fd8b7a4013d766363",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
