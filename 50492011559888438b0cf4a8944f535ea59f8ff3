@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec0635c8_21e51c51",
+        "filename": "src/com/android/settings/fuelgauge/BatteryCellParser.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-03-01T05:48:29Z",
+      "side": 1,
+      "message": "So if you skip the color for a mData entry, what will the UI show in this case?",
+      "revId": "50492011559888438b0cf4a8944f535ea59f8ff3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
