@@ -46,6 +46,30 @@
       "revId": "25ae1cfdd392f9fed0146f186cdad24652569e09",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e97acac0_3d012a3e",
+        "filename": "src/com/android/settings/DateTimeSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-03-01T05:42:26Z",
+      "side": 1,
+      "message": "Nov 5 is a easter egg. It\u0027s Android\u0027s birthday. So let\u0027s not change this.\n\nhttp://googlesystem.blogspot.com/2007/11/google-launches-android-open-mobile.html",
+      "parentUuid": "d7be4636_c9aef534",
+      "range": {
+        "startLine": 75,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 56
+      },
+      "revId": "25ae1cfdd392f9fed0146f186cdad24652569e09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
