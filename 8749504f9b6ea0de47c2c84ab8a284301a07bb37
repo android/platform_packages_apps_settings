@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "34807101_508ae9a1",
+        "filename": "src/com/android/settings/ApnPreference.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1054648
+      },
+      "writtenOn": "2017-03-03T19:36:38Z",
+      "side": 1,
+      "message": "nit: add space between , and url",
+      "range": {
+        "startLine": 122,
+        "startChar": 65,
+        "endLine": 122,
+        "endChar": 69
+      },
+      "revId": "8749504f9b6ea0de47c2c84ab8a284301a07bb37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
