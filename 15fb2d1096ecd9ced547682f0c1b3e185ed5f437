@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e751aae0_e99efbf3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-03-03T10:07:46Z",
+      "side": 1,
+      "message": "re-what?",
+      "range": {
+        "startLine": 19,
+        "startChar": 9,
+        "endLine": 19,
+        "endChar": 17
+      },
+      "revId": "15fb2d1096ecd9ced547682f0c1b3e185ed5f437",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e3c318be_8805d2f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-03-03T10:07:46Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the setting be on if the stored value has been deleted?",
+      "range": {
+        "startLine": 23,
+        "startChar": 17,
+        "endLine": 23,
+        "endChar": 20
+      },
+      "revId": "15fb2d1096ecd9ced547682f0c1b3e185ed5f437",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
