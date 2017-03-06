@@ -54,6 +54,7 @@ import com.android.settingslib.net.ChartDataLoader;
 import com.android.settingslib.net.SummaryForAllUidLoader;
 import com.android.settingslib.net.UidDetailProvider;
 
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -385,6 +386,8 @@ public class DataUsageList extends DataUsageBase {
 
         Collections.sort(items);
         mApps.removeAll();
+        ((ThreadPoolExecutor) AsyncTask.THREAD_POOL_EXECUTOR).setRejectedExecutionHandler(
+                new ThreadPoolExecutor.CallerRunsPolicy());
         for (int i = 0; i < items.size(); i++) {
             final int percentTotal = largest != 0 ? (int) (items.get(i).total * 100 / largest) : 0;
             AppDataUsagePreference preference = new AppDataUsagePreference(getContext(),
