@@ -1,0 +1,9 @@
+Presubmit-Verified-1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Jeff Sharkey <jsharkey@google.com>
+Code-Review+2: Jeff Sharkey <jsharkey@google.com>
+Autosubmit+1: Jeff Sharkey <jsharkey@google.com>
+Submitted-by: Jeff Sharkey <jsharkey@android.com>
+Submitted-at: Sun, 12 Mar 2017 23:03:20 +0000
+Reviewed-on: https://android-review.googlesource.com/212026
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
