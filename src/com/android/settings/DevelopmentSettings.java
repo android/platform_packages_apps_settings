@@ -1809,10 +1809,10 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mBluetoothSelectA2dpChannelMode.setValue(values[index]);
         mBluetoothSelectA2dpChannelMode.setSummary(summaries[index]);
 
-        // Init the LDAC Playback Quality - High
+        // Init the LDAC Playback Quality - ABR
         values = getResources().getStringArray(R.array.bluetooth_a2dp_codec_ldac_playback_quality_values);
         summaries = getResources().getStringArray(R.array.bluetooth_a2dp_codec_ldac_playback_quality_summaries);
-        index = 0;
+        index = 3;
         mBluetoothSelectA2dpLdacPlaybackQuality.setValue(values[index]);
         mBluetoothSelectA2dpLdacPlaybackQuality.setSummary(summaries[index]);
     }
@@ -1960,6 +1960,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         case 0:
         case 1:
         case 2:
+        case 3:
             break;
         default:
             index = -1;
@@ -2146,6 +2147,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         case 0:
         case 1:
         case 2:
+        case 3:
             codecSpecific1Value = 1000 + index;
             break;
         default:
