@@ -101,6 +101,11 @@ public class CellDataPreference extends CustomDialogPreference implements Templa
             mSubId = subId;
             setKey(getKey() + subId);
         }
+        boolean enabled = mTelephonyManager.getDataEnabled(mSubId);
+        int dds = DataUsageSummary.getDefaultSubscriptionId(getContext());
+        if (dds != mSubId && enabled) {
+            mTelephonyManager.setDataEnabled(mSubId, false);
+        }
         updateChecked();
     }
 
