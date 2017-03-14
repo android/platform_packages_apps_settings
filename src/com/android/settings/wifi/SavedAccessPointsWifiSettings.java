@@ -19,7 +19,9 @@ package com.android.settings.wifi;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
+import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
+import android.net.wifi.hotspot2.PasspointConfiguration;
 import android.os.Bundle;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
@@ -93,8 +95,7 @@ public class SavedAccessPointsWifiSettings extends SettingsPreferenceFragment
         PreferenceScreen preferenceScreen = getPreferenceScreen();
         final Context context = getPrefContext();
 
-        final List<AccessPoint> accessPoints = WifiTracker.getCurrentAccessPoints(context, true,
-                false, true);
+        final List<AccessPoint> accessPoints = getSavedConfigs(context);
         Collections.sort(accessPoints, new Comparator<AccessPoint>() {
             public int compare(AccessPoint ap1, AccessPoint ap2) {
                 if (ap1.getConfigName() != null) {
@@ -118,6 +119,30 @@ public class SavedAccessPointsWifiSettings extends SettingsPreferenceFragment
         if(getPreferenceScreen().getPreferenceCount() < 1) {
             Log.w(TAG, "Saved networks activity loaded, but there are no saved networks!");
         }
+    }
+
+    /**
+     * Retrieved the list of saved network configurations from {@link WifiManager}.
+     * Each configuration is represented by {@link AccessPoint}.
+     *
+     * @param context The application context
+     * @return List of {@link AccessPoint}
+     */
+    private List<AccessPoint> getSavedConfigs(Context context) {
+        List<AccessPoint> savedConfigs = new ArrayList<>();
+        List<WifiConfiguration> savedNetworks = mWifiManager.getConfiguredNetworks();
+        for (WifiConfiguration network : savedNetworks) {
+            if (network.isPasspoint()) {
+                continue;
+            }
+            savedConfigs.add(new AccessPoint(context, network));
+        }
+        List<PasspointConfiguration> savedPasspointConfigs =
+                mWifiManager.getPasspointConfigurations();
+        for (PasspointConfiguration config : savedPasspointConfigs) {
+            savedConfigs.add(new AccessPoint(context, config));
+        }
+        return savedConfigs;
     }
 
     private void showDialog(LongPressAccessPointPreference accessPoint, boolean edit) {
@@ -168,7 +193,17 @@ public class SavedAccessPointsWifiSettings extends SettingsPreferenceFragment
     @Override
     public void onForget(WifiDialog dialog) {
         if (mSelectedAccessPoint != null) {
-            mWifiManager.forget(mSelectedAccessPoint.getConfig().networkId, null);
+            if (mSelectedAccessPoint.isPasspointConfig()) {
+                try {
+                    mWifiManager.removePasspointConfiguration(
+                            mSelectedAccessPoint.getPasspointFqdn());
+                } catch (RuntimeException e) {
+                    Log.e(TAG, "Failed to remove Passpoint configuration for "
+                            + mSelectedAccessPoint.getConfigName());
+                }
+            } else {
+                mWifiManager.forget(mSelectedAccessPoint.getConfig().networkId, null);
+            }
             getPreferenceScreen().removePreference((Preference) mSelectedAccessPoint.getTag());
             mSelectedAccessPoint = null;
         }
@@ -188,39 +223,4 @@ public class SavedAccessPointsWifiSettings extends SettingsPreferenceFragment
             return super.onPreferenceTreeClick(preference);
         }
     }
-
-    /**
-     * For search.
-     */
-    public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
-        new BaseSearchIndexProvider() {
-            @Override
-            public List<SearchIndexableRaw> getRawDataToIndex(Context context, boolean enabled) {
-                final List<SearchIndexableRaw> result = new ArrayList<SearchIndexableRaw>();
-                final Resources res = context.getResources();
-                final String title = res.getString(R.string.wifi_saved_access_points_titlebar);
-
-                // Add fragment title
-                SearchIndexableRaw data = new SearchIndexableRaw(context);
-                data.title = title;
-                data.screenTitle = title;
-                data.enabled = enabled;
-                result.add(data);
-
-                // Add available Wi-Fi access points
-                final List<AccessPoint> accessPoints = WifiTracker.getCurrentAccessPoints(context,
-                        true, false, true);
-
-                final int accessPointsSize = accessPoints.size();
-                for (int i = 0; i < accessPointsSize; ++i){
-                    data = new SearchIndexableRaw(context);
-                    data.title = accessPoints.get(i).getSsidStr();
-                    data.screenTitle = title;
-                    data.enabled = enabled;
-                    result.add(data);
-                }
-
-                return result;
-            }
-        };
 }
