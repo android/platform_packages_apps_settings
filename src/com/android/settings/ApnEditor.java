@@ -296,7 +296,7 @@ public class ApnEditor extends SettingsPreferenceFragment
             getPreferenceScreen().getPreference(i).setOnPreferenceChangeListener(this);
         }
 
-        fillUi();
+        //fillUi();
     }
 
     /**
@@ -449,6 +449,12 @@ public class ApnEditor extends SettingsPreferenceFragment
     @Override
     protected int getMetricsCategory() {
         return MetricsEvent.APN_EDITOR;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        fillUi();
     }
 
     @Override
