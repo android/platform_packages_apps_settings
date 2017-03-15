@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f45d684_8e92ae2a",
+        "filename": "src/com/android/settings/wifi/SavedAccessPointsWifiSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1079868
+      },
+      "writtenOn": "2017-03-15T22:12:36Z",
+      "side": 0,
+      "message": "Removed it since it doesn\u0027t seem to be used.",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 10
+      },
+      "revId": "742bd03f1268bbb6c386ec9bf6b0010547300673",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
