@@ -60,7 +60,7 @@ public class SimDialogActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final Bundle extras = getIntent().getExtras();
-        final int dialogType = extras.getInt(DIALOG_TYPE_KEY, INVALID_PICK);
+        final int dialogType = (extras == null ? INVALID_PICK : extras.getInt(DIALOG_TYPE_KEY, INVALID_PICK));
 
         switch (dialogType) {
             case DATA_PICK:
