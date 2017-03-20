@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7d39a88_caa90dd4",
+        "filename": "src/com/android/settings/fuelgauge/BatteryHistoryDetail.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2017-03-20T17:00:56Z",
+      "side": 1,
+      "message": "Please wrap this line.",
+      "range": {
+        "startLine": 109,
+        "startChar": 90,
+        "endLine": 109,
+        "endChar": 101
+      },
+      "revId": "74a5e70944b40bf008bbda6809d0b761086dfc59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17c04970_f9b5b63a",
+        "filename": "src/com/android/settings/fuelgauge/BatteryHistoryDetail.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2017-03-20T17:00:56Z",
+      "side": 1,
+      "message": "Also this line.",
+      "range": {
+        "startLine": 113,
+        "startChar": 90,
+        "endLine": 113,
+        "endChar": 102
+      },
+      "revId": "74a5e70944b40bf008bbda6809d0b761086dfc59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bde25fdc_5a1443ee",
+        "filename": "src/com/android/settings/fuelgauge/BatteryHistoryDetail.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2017-03-20T17:00:56Z",
+      "side": 1,
+      "message": "And this :)",
+      "range": {
+        "startLine": 127,
+        "startChar": 94,
+        "endLine": 127,
+        "endChar": 103
+      },
+      "revId": "74a5e70944b40bf008bbda6809d0b761086dfc59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
