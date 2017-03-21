@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f805d14_b073c181",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-03-21T00:43:31Z",
+      "side": 1,
+      "message": "can we do any automated test? Instrumentaion/robolectric both are OK",
+      "revId": "5aa7e6df60eeefc50b728440c94ace18ef146446",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8cf8f1a3_38aa331e",
+        "filename": "src/com/android/settings/wifi/WifiConfigController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-03-21T00:43:31Z",
+      "side": 1,
+      "message": "indentation is off",
+      "revId": "5aa7e6df60eeefc50b728440c94ace18ef146446",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
