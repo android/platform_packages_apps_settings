@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "252742f8_ce656894",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1077073
+      },
+      "writtenOn": "2017-03-21T20:05:06Z",
+      "side": 1,
+      "message": "This requires a visible enterprise network in order for this UI to appear.",
+      "parentUuid": "8f805d14_b073c181",
+      "revId": "5aa7e6df60eeefc50b728440c94ace18ef146446",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8cf8f1a3_38aa331e",
         "filename": "src/com/android/settings/wifi/WifiConfigController.java",
         "patchSetId": 5
@@ -30,6 +48,24 @@
       "writtenOn": "2017-03-21T00:43:31Z",
       "side": 1,
       "message": "indentation is off",
+      "revId": "5aa7e6df60eeefc50b728440c94ace18ef146446",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49d49314_1948644c",
+        "filename": "src/com/android/settings/wifi/WifiConfigController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 900,
+      "author": {
+        "id": 1077073
+      },
+      "writtenOn": "2017-03-21T20:05:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cf8f1a3_38aa331e",
       "revId": "5aa7e6df60eeefc50b728440c94ace18ef146446",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
