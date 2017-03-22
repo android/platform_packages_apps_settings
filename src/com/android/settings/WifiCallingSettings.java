@@ -23,6 +23,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.preference.ListPreference;
@@ -311,14 +312,15 @@ public class WifiCallingSettings extends SettingsPreferenceFragment
             return;
         }
 
-        // Call address management activity before turning on WFC
+        // Call carrier WFC entitlement activity before turning on WFC
         Intent carrierAppIntent = getCarrierActivityIntent(context);
-        if (carrierAppIntent != null) {
-            carrierAppIntent.putExtra(EXTRA_LAUNCH_CARRIER_APP, LAUCH_APP_ACTIVATE);
-            startActivityForResult(carrierAppIntent, REQUEST_CHECK_WFC_EMERGENCY_ADDRESS);
-        } else {
+        if (carrierAppIntent == null) {
             updateWfcMode(context, true);
+            return;
         }
+
+        carrierAppIntent.putExtra(EXTRA_LAUNCH_CARRIER_APP, LAUCH_APP_ACTIVATE);
+        startActivityForResult(carrierAppIntent, REQUEST_CHECK_WFC_EMERGENCY_ADDRESS);
     }
 
     /*
@@ -326,7 +328,7 @@ public class WifiCallingSettings extends SettingsPreferenceFragment
      * Return null when no activity found.
      */
     private static Intent getCarrierActivityIntent(Context context) {
-        // Retrive component name from carrirt config
+        // Retrive component name from carrier config
         CarrierConfigManager configManager = context.getSystemService(CarrierConfigManager.class);
         if (configManager == null) return null;
 
@@ -340,10 +342,21 @@ public class WifiCallingSettings extends SettingsPreferenceFragment
         ComponentName componentName = ComponentName.unflattenFromString(carrierApp);
         if (componentName == null) return null;
 
-        // Build and return intent
+        // Build intent
         Intent intent = new Intent();
         intent.setComponent(componentName);
+
+        // Verify the app exists
+        if (!verifyCarrierAppIntent(context, intent)) {
+            return null;
+        }
+
         return intent;
+    }
+
+    private boolean verifyCarrierAppIntent(Context context, Intent intent) {
+        final PackageManager pm = context.getPackageManager();
+        return (pm.resolveActivity(intent, PackageManager.MATCH_ALL) != null);
     }
 
     /*
