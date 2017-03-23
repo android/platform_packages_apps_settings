@@ -22,6 +22,30 @@
       "revId": "590114739290761417404cbfd3579ca22f1952b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb8aa463_3c7b5c94",
+        "filename": "src/com/android/settings/wifi/SavedAccessPointsWifiSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1079868
+      },
+      "writtenOn": "2017-03-23T23:20:05Z",
+      "side": 1,
+      "message": "Yes, agreed this is not ideal.  But due to the fact that everything in the Settings is centered around AccessPoint objects, together with the fact that I am not really familiar with the Settings code, makes it difficult for me to come up other simple approaches.  So basically I am trying to make the simplest code change to achieve the goal :)\n\nI am open to other approaches if you have any suggestions.",
+      "parentUuid": "cc108204_2d18cd3a",
+      "range": {
+        "startLine": 198,
+        "startChar": 33,
+        "endLine": 198,
+        "endChar": 61
+      },
+      "revId": "590114739290761417404cbfd3579ca22f1952b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
