@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc108204_2d18cd3a",
+        "filename": "src/com/android/settings/wifi/SavedAccessPointsWifiSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000691
+      },
+      "writtenOn": "2017-03-23T22:59:55Z",
+      "side": 1,
+      "message": "not related to this CL, just FYI, but the api design here where there are two methods to remove wifi configs where the same object type is passed to both seems sub-optimal, as does the variety of if/else statements for passpoint vs wifi configs.",
+      "range": {
+        "startLine": 198,
+        "startChar": 33,
+        "endLine": 198,
+        "endChar": 61
+      },
+      "revId": "590114739290761417404cbfd3579ca22f1952b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

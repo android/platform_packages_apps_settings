@@ -22,6 +22,30 @@
       "revId": "742bd03f1268bbb6c386ec9bf6b0010547300673",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f0ca4e6_b1d7bce4",
+        "filename": "src/com/android/settings/wifi/SavedAccessPointsWifiSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1000691
+      },
+      "writtenOn": "2017-03-23T22:59:55Z",
+      "side": 0,
+      "message": "I believe this is used by settings (looking for static members on fragments/preferences) to provide a search index.",
+      "parentUuid": "6f45d684_8e92ae2a",
+      "range": {
+        "startLine": 192,
+        "startChar": 0,
+        "endLine": 225,
+        "endChar": 10
+      },
+      "revId": "742bd03f1268bbb6c386ec9bf6b0010547300673",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
