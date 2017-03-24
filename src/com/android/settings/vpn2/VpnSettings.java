@@ -208,6 +208,9 @@ public class VpnSettings extends RestrictedSettingsFragment implements
     public boolean handleMessage(Message message) {
         mUpdater.removeMessages(RESCAN_MESSAGE);
 
+        //Return if activity has been recycled
+        if(getActivity() == null) return true;
+
         // Run heavy RPCs before switching to UI thread
         final List<VpnProfile> vpnProfiles = loadVpnProfiles(mKeyStore);
         final List<AppVpnInfo> vpnApps = getVpnApps(getActivity(), /* includeProfiles */ true);
