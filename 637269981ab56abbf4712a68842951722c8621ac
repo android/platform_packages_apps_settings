@@ -16,6 +16,24 @@
       "revId": "637269981ab56abbf4712a68842951722c8621ac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "78bed088_9f4b75ff",
+        "filename": "src/com/android/settings/vpn2/VpnSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1045544
+      },
+      "writtenOn": "2017-03-24T15:23:07Z",
+      "side": 1,
+      "message": "I see. It should be OK to use the original activity for this without checking again, as it\u0027s just posting to a handler.\n\nTook the liberty of updating the patch for it.",
+      "parentUuid": "0b50f7f6_b3dccedf",
+      "revId": "637269981ab56abbf4712a68842951722c8621ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
