@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b50f7f6_b3dccedf",
+        "filename": "src/com/android/settings/vpn2/VpnSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1143572
+      },
+      "writtenOn": "2017-03-24T15:12:44Z",
+      "side": 1,
+      "message": "Here we need the activity to refresh the UI.",
+      "revId": "637269981ab56abbf4712a68842951722c8621ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
