@@ -19,6 +19,7 @@ package com.android.settings.vpn2;
 import android.annotation.UiThread;
 import android.annotation.WorkerThread;
 import android.app.AppOpsManager;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -208,9 +209,16 @@ public class VpnSettings extends RestrictedSettingsFragment implements
     public boolean handleMessage(Message message) {
         mUpdater.removeMessages(RESCAN_MESSAGE);
 
+        //Return if activity has been recycled
+        final Activity activity = getActivity();
+        if (activity == null) {
+            return true;
+        }
+        final Context context = activity.getApplicationContext();
+
         // Run heavy RPCs before switching to UI thread
         final List<VpnProfile> vpnProfiles = loadVpnProfiles(mKeyStore);
-        final List<AppVpnInfo> vpnApps = getVpnApps(getActivity(), /* includeProfiles */ true);
+        final List<AppVpnInfo> vpnApps = getVpnApps(context, /* includeProfiles */ true);
 
         final Map<String, LegacyVpnInfo> connectedLegacyVpns = getConnectedLegacyVpns();
         final Set<AppVpnInfo> connectedAppVpns = getConnectedAppVpns();
@@ -219,60 +227,61 @@ public class VpnSettings extends RestrictedSettingsFragment implements
         final String lockdownVpnKey = VpnUtils.getLockdownVpn();
 
         // Refresh list of VPNs
-        getActivity().runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                // Can't do anything useful if the context has gone away
-                if (!isAdded()) {
-                    return;
-                }
-
-                // Find new VPNs by subtracting existing ones from the full set
-                final Set<Preference> updates = new ArraySet<>();
-
-                for (VpnProfile profile : vpnProfiles) {
-                    LegacyVpnPreference p = findOrCreatePreference(profile);
-                    if (connectedLegacyVpns.containsKey(profile.key)) {
-                        p.setState(connectedLegacyVpns.get(profile.key).state);
-                    } else {
-                        p.setState(LegacyVpnPreference.STATE_NONE);
+        if ( getActivity() != null ) {
+            getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    // Can't do anything useful if the context has gone away
+                    if (!isAdded()) {
+                        return;
                     }
-                    p.setAlwaysOn(lockdownVpnKey != null && lockdownVpnKey.equals(profile.key));
-                    updates.add(p);
-                }
-                for (AppVpnInfo app : vpnApps) {
-                    AppPreference p = findOrCreatePreference(app);
-                    if (connectedAppVpns.contains(app)) {
-                        p.setState(AppPreference.STATE_CONNECTED);
-                    } else {
-                        p.setState(AppPreference.STATE_DISCONNECTED);
+
+                    // Find new VPNs by subtracting existing ones from the full set
+                    final Set<Preference> updates = new ArraySet<>();
+
+                    for (VpnProfile profile : vpnProfiles) {
+                        LegacyVpnPreference p = findOrCreatePreference(profile);
+                        if (connectedLegacyVpns.containsKey(profile.key)) {
+                            p.setState(connectedLegacyVpns.get(profile.key).state);
+                        } else {
+                            p.setState(LegacyVpnPreference.STATE_NONE);
+                        }
+                        p.setAlwaysOn(lockdownVpnKey != null && lockdownVpnKey.equals(profile.key));
+                        updates.add(p);
                     }
-                    p.setAlwaysOn(alwaysOnAppVpnInfos.contains(app));
-                    updates.add(p);
-                }
+                    for (AppVpnInfo app : vpnApps) {
+                        AppPreference p = findOrCreatePreference(app);
+                        if (connectedAppVpns.contains(app)) {
+                            p.setState(AppPreference.STATE_CONNECTED);
+                        } else {
+                            p.setState(AppPreference.STATE_DISCONNECTED);
+                        }
+                        p.setAlwaysOn(alwaysOnAppVpnInfos.contains(app));
+                        updates.add(p);
+                    }
 
-                // Trim out deleted VPN preferences
-                mLegacyVpnPreferences.values().retainAll(updates);
-                mAppPreferences.values().retainAll(updates);
+                    // Trim out deleted VPN preferences
+                    mLegacyVpnPreferences.values().retainAll(updates);
+                    mAppPreferences.values().retainAll(updates);
 
-                final PreferenceGroup vpnGroup = getPreferenceScreen();
-                for (int i = vpnGroup.getPreferenceCount() - 1; i >= 0; i--) {
-                    Preference p = vpnGroup.getPreference(i);
-                    if (updates.contains(p)) {
-                        updates.remove(p);
-                    } else {
-                        vpnGroup.removePreference(p);
+                    final PreferenceGroup vpnGroup = getPreferenceScreen();
+                    for (int i = vpnGroup.getPreferenceCount() - 1; i >= 0; i--) {
+                        Preference p = vpnGroup.getPreference(i);
+                        if (updates.contains(p)) {
+                            updates.remove(p);
+                        } else {
+                            vpnGroup.removePreference(p);
+                        }
+                    }
+
+                    // Show any new preferences on the screen
+                    for (Preference pref : updates) {
+                        vpnGroup.addPreference(pref);
                     }
                 }
-
-                // Show any new preferences on the screen
-                for (Preference pref : updates) {
-                    vpnGroup.addPreference(pref);
-                }
-            }
-        });
-
-        mUpdater.sendEmptyMessageDelayed(RESCAN_MESSAGE, RESCAN_INTERVAL_MS);
+            });
+            mUpdater.sendEmptyMessageDelayed(RESCAN_MESSAGE, RESCAN_INTERVAL_MS);
+        }
         return true;
     }
 
