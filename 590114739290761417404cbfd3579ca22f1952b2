@@ -46,6 +46,30 @@
       "revId": "590114739290761417404cbfd3579ca22f1952b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "58bf97c6_e83588f3",
+        "filename": "src/com/android/settings/wifi/SavedAccessPointsWifiSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1000691
+      },
+      "writtenOn": "2017-03-25T02:06:46Z",
+      "side": 1,
+      "message": "I don\u0027t have any great opinions on this particular aspect of the change; which is why I was noting as an FYI (I\u0027m also not the most familiar with this code, myself);\n\nhowever I do think it is a requirement to ensure that WifiTracker remains the sole source of truth for information presented to settings and system ui (both apps use WifiTracker to get this information)",
+      "parentUuid": "fb8aa463_3c7b5c94",
+      "range": {
+        "startLine": 198,
+        "startChar": 33,
+        "endLine": 198,
+        "endChar": 61
+      },
+      "revId": "590114739290761417404cbfd3579ca22f1952b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
