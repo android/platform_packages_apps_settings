@@ -70,6 +70,30 @@
       "revId": "590114739290761417404cbfd3579ca22f1952b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49933ff4_5b2bc763",
+        "filename": "src/com/android/settings/wifi/SavedAccessPointsWifiSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1079868
+      },
+      "writtenOn": "2017-03-27T16:44:29Z",
+      "side": 1,
+      "message": "The source of truth is always going to be from WifiManager.  My thinking is that, for the purpose of Save Networks, it is more cleaner and easier to understand by retrieving all saved configurations from WifiManager directly, instead of going through WifiTracker.\n\nWifiTracker is more for tracking the currently active access points.  I think the long term goal for WifiTracker would be to make it simpler rather than introduce more complexities.",
+      "parentUuid": "58bf97c6_e83588f3",
+      "range": {
+        "startLine": 198,
+        "startChar": 33,
+        "endLine": 198,
+        "endChar": 61
+      },
+      "revId": "590114739290761417404cbfd3579ca22f1952b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
