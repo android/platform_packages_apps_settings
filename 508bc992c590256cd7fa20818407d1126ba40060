@@ -22,6 +22,52 @@
       "revId": "508bc992c590256cd7fa20818407d1126ba40060",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5517f56c_be5052d6",
+        "filename": "src/com/android/settings/datausage/AppDataUsage.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1045544
+      },
+      "writtenOn": "2017-03-28T12:54:56Z",
+      "side": 1,
+      "message": "just uidDetail, it\u0027s not a member variable so calling it mUidDetail would be strange.",
+      "range": {
+        "startLine": 211,
+        "startChar": 22,
+        "endLine": 211,
+        "endChar": 32
+      },
+      "revId": "508bc992c590256cd7fa20818407d1126ba40060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "931b90a8_a74544f7",
+        "filename": "src/com/android/settings/datausage/AppDataUsage.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1045544
+      },
+      "writtenOn": "2017-03-28T12:54:56Z",
+      "side": 1,
+      "message": "This doesn\u0027t compile, UidDetail isn\u0027t imported.",
+      "range": {
+        "startLine": 211,
+        "startChar": 12,
+        "endLine": 211,
+        "endChar": 21
+      },
+      "revId": "508bc992c590256cd7fa20818407d1126ba40060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
