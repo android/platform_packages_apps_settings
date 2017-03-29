@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1d78ce3b_5cdc5cd6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1071489
+      },
+      "writtenOn": "2017-03-29T16:22:28Z",
+      "side": 1,
+      "message": "It would be good to have at least a manual test it didn\u0027t break anything.",
+      "range": {
+        "startLine": 11,
+        "startChar": 6,
+        "endLine": 11,
+        "endChar": 10
+      },
+      "revId": "af34ed06f1b4b3734d883c7398b713b20585e1bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5095ab80_0062312f",
         "filename": "src/com/android/settings/bluetooth/BluetoothPairingService.java",
         "patchSetId": 1
@@ -42,6 +65,29 @@
         "startChar": 18,
         "endLine": 68,
         "endChar": 38
+      },
+      "revId": "af34ed06f1b4b3734d883c7398b713b20585e1bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0961307c_e46bf8b4",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPairingService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1071489
+      },
+      "writtenOn": "2017-03-29T16:22:28Z",
+      "side": 1,
+      "message": "Are there any \"synchronized\" concerns here?",
+      "range": {
+        "startLine": 142,
+        "startChar": 1,
+        "endLine": 142,
+        "endChar": 22
       },
       "revId": "af34ed06f1b4b3734d883c7398b713b20585e1bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
