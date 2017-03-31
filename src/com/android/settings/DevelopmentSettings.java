@@ -201,7 +201,10 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                                     "persist.bluetooth.disableabsvol";
     private static final String BLUETOOTH_AVRCP_VERSION_PROPERTY =
                                     "persist.bluetooth.avrcpversion";
+    private static final String BLUETOOTH_ENABLE_INBAND_RINGING_PROPERTY =
+                                    "persist.bluetooth.enableinbandringing";
 
+    private static final String BLUETOOTH_ENABLE_INBAND_RINGING_KEY = "bluetooth_enable_inband_ringing";
     private static final String BLUETOOTH_SELECT_AVRCP_VERSION_KEY = "bluetooth_select_avrcp_version";
     private static final String BLUETOOTH_SELECT_A2DP_CODEC_KEY = "bluetooth_select_a2dp_codec";
     private static final String BLUETOOTH_SELECT_A2DP_SAMPLE_RATE_KEY = "bluetooth_select_a2dp_sample_rate";
@@ -278,6 +281,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private SwitchPreference mWifiAggressiveHandover;
     private SwitchPreference mMobileDataAlwaysOn;
     private SwitchPreference mBluetoothDisableAbsVolume;
+    private SwitchPreference mBluetoothEnableInbandRinging;
 
     private BluetoothA2dp mBluetoothA2dp;
     private final Object mBluetoothA2dpLock = new Object();
@@ -474,6 +478,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mWebViewProvider = addListPreference(WEBVIEW_PROVIDER_KEY);
         mWebViewMultiprocess = findAndInitSwitchPref(WEBVIEW_MULTIPROCESS_KEY);
         mBluetoothDisableAbsVolume = findAndInitSwitchPref(BLUETOOTH_DISABLE_ABSOLUTE_VOLUME_KEY);
+        mBluetoothEnableInbandRinging = findAndInitSwitchPref(BLUETOOTH_ENABLE_INBAND_RINGING_KEY);
 
         mBluetoothSelectAvrcpVersion = addListPreference(BLUETOOTH_SELECT_AVRCP_VERSION_KEY);
         mBluetoothSelectA2dpCodec = addListPreference(BLUETOOTH_SELECT_A2DP_CODEC_KEY);
@@ -776,6 +781,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             updateColorTemperature();
         }
         updateBluetoothDisableAbsVolumeOptions();
+        updateBluetoothEnableInbandRingingOptions();
         updateBluetoothA2dpConfigurationValues();
     }
 
@@ -1498,6 +1504,16 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private void writeBluetoothDisableAbsVolumeOptions() {
         SystemProperties.set(BLUETOOTH_DISABLE_ABSOLUTE_VOLUME_PROPERTY,
                 mBluetoothDisableAbsVolume.isChecked() ? "true" : "false");
+    }
+
+    private void updateBluetoothEnableInbandRingingOptions() {
+        updateSwitchPreference(mBluetoothEnableInbandRinging,
+                SystemProperties.getBoolean(BLUETOOTH_ENABLE_INBAND_RINGING_PROPERTY, false));
+    }
+
+    private void writeBluetoothEnableInbandRingingOptions() {
+        SystemProperties.set(BLUETOOTH_ENABLE_INBAND_RINGING_PROPERTY,
+                mBluetoothEnableInbandRinging.isChecked() ? "true" : "false");
     }
 
     private void updateMobileDataAlwaysOnOptions() {
@@ -2513,6 +2529,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             startBackgroundCheckFragment();
         } else if (preference == mBluetoothDisableAbsVolume) {
             writeBluetoothDisableAbsVolumeOptions();
+        } else if (preference == mBluetoothEnableInbandRinging) {
+            writeBluetoothEnableInbandRingingOptions();
         } else if (preference == mWebViewMultiprocess) {
             writeWebViewMultiprocessOptions();
         } else if (SHORTCUT_MANAGER_RESET_KEY.equals(preference.getKey())) {
