@@ -43,6 +43,7 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
+import android.hardware.display.DisplayManager;
 import android.hardware.usb.IUsbManager;
 import android.hardware.usb.UsbManager;
 import android.net.wifi.WifiManager;
@@ -71,6 +72,7 @@ import android.support.v7.preference.PreferenceScreen;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Display;
 import android.view.IWindowManager;
 import android.view.LayoutInflater;
 import android.view.ThreadedRenderer;
@@ -247,6 +249,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private WifiManager mWifiManager;
     private PersistentDataBlockManager mOemUnlockManager;
     private TelephonyManager mTelephonyManager;
+    private DisplayManager mDisplayManager;
+    private Display mDisplay;
 
     private SwitchBar mSwitchBar;
     private boolean mLastEnabledState;
@@ -368,6 +372,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mOemUnlockManager = (PersistentDataBlockManager)getActivity()
                 .getSystemService(Context.PERSISTENT_DATA_BLOCK_SERVICE);
         mTelephonyManager = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+        mDisplayManager = getContext().getSystemService(DisplayManager.class);
 
         mDpm = (DevicePolicyManager)getActivity().getSystemService(Context.DEVICE_POLICY_SERVICE);
         mUm = (UserManager) getSystemService(Context.USER_SERVICE);
@@ -530,7 +535,9 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
         mColorModePreference = (ColorModePreference) findPreference(KEY_COLOR_MODE);
         mColorModePreference.updateCurrentAndSupported();
-        if (mColorModePreference.getColorModeCount() < 2) {
+        mDisplay = mDisplayManager.getDisplay(Display.DEFAULT_DISPLAY);
+        if (mDisplay.getSupportedColorModes() == null || mDisplay.getSupportedColorModes().length < 2 
+                || mColorModePreference.getColorModeCount() < 2) {
             removePreference(KEY_COLOR_MODE);
             mColorModePreference = null;
         }
