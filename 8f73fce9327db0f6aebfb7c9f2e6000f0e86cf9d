@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c35fd9ec_f1093795",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1045544
+      },
+      "writtenOn": "2017-04-05T07:26:05Z",
+      "side": 1,
+      "message": "How do you know this change fixes the issue if you didn\u0027t test it?",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 9
+      },
+      "revId": "8f73fce9327db0f6aebfb7c9f2e6000f0e86cf9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7d263a75_c9ea3d2e",
+        "filename": "src/com/android/settings/deviceinfo/SimStatus.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1045544
+      },
+      "writtenOn": "2017-04-05T07:26:05Z",
+      "side": 1,
+      "message": "Don\u0027t you want \"\u0026\u0026 isAdded()\" here instead?",
+      "range": {
+        "startLine": 357,
+        "startChar": 36,
+        "endLine": 357,
+        "endChar": 60
+      },
+      "revId": "8f73fce9327db0f6aebfb7c9f2e6000f0e86cf9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
