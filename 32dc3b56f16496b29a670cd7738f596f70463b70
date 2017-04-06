@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7b2b2d5_23cd83e7",
+        "filename": "src/com/android/settings/wifi/WifiConfigController.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1060892
+      },
+      "writtenOn": "2017-04-06T23:45:02Z",
+      "side": 1,
+      "message": "line wrap +8",
+      "range": {
+        "startLine": 185,
+        "startChar": 16,
+        "endLine": 185,
+        "endChar": 24
+      },
+      "revId": "32dc3b56f16496b29a670cd7738f596f70463b70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "884599f5_32b83ee8",
+        "filename": "src/com/android/settings/wifi/WifiConfigController.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1060892
+      },
+      "writtenOn": "2017-04-06T23:45:02Z",
+      "side": 1,
+      "message": "line wrap +8",
+      "range": {
+        "startLine": 189,
+        "startChar": 16,
+        "endLine": 189,
+        "endChar": 24
+      },
+      "revId": "32dc3b56f16496b29a670cd7738f596f70463b70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
