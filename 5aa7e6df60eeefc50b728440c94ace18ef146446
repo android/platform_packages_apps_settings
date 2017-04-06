@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "9b7f3fe2_40c09a3c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1079868
+      },
+      "writtenOn": "2017-04-06T21:46:52Z",
+      "side": 1,
+      "message": "Since this CL is targeted for oc, I will cherry-pick it to oc-dev, add a test, then continue the review on oc-dev.",
+      "parentUuid": "a1808d40_476fab43",
+      "revId": "5aa7e6df60eeefc50b728440c94ace18ef146446",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8cf8f1a3_38aa331e",
         "filename": "src/com/android/settings/wifi/WifiConfigController.java",
         "patchSetId": 5
