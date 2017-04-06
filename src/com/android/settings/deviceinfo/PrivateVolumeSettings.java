@@ -905,7 +905,10 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
                     mTarget.getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            mTarget.update();
+                            // target fragment might have been removed
+                            if (mTarget.getFragmentManager() != null) {
+                                mTarget.update();
+                            }
                         }
                     });
                 }
