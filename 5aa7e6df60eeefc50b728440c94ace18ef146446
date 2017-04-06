@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "7ee1eeae_22f435ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1060892
+      },
+      "writtenOn": "2017-04-06T23:41:12Z",
+      "side": 1,
+      "message": "SGTM",
+      "parentUuid": "9b7f3fe2_40c09a3c",
+      "revId": "5aa7e6df60eeefc50b728440c94ace18ef146446",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8cf8f1a3_38aa331e",
         "filename": "src/com/android/settings/wifi/WifiConfigController.java",
         "patchSetId": 5
