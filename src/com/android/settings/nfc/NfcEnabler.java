@@ -81,7 +81,12 @@ public class NfcEnabler implements Preference.OnPreferenceChangeListener {
         if (mNfcAdapter == null) {
             return;
         }
-        handleNfcStateChanged(mNfcAdapter.getAdapterState());
+        int state = mNfcAdapter.getAdapterState();
+        if (state == NfcAdapter.STATE_OFF) {
+            // Get state again to make sure because NfcAdapter might be stale
+            state = mNfcAdapter.getAdapterState();
+        }
+        handleNfcStateChanged(state);
         mContext.registerReceiver(mReceiver, mIntentFilter);
         mSwitch.setOnPreferenceChangeListener(this);
     }
@@ -98,12 +103,29 @@ public class NfcEnabler implements Preference.OnPreferenceChangeListener {
         // Turn NFC on/off
 
         final boolean desiredState = (Boolean) value;
+
+        int currentState = mNfcAdapter.getAdapterState();
+        boolean result = false;
+
         mSwitch.setEnabled(false);
 
         if (desiredState) {
-            mNfcAdapter.enable();
+            if (currentState == NfcAdapter.STATE_OFF) {
+                result = mNfcAdapter.enable();
+            } else if (currentState == NfcAdapter.STATE_ON) {
+                mSwitch.setChecked(true);
+            }
         } else {
-            mNfcAdapter.disable();
+            if (currentState == NfcAdapter.STATE_ON) {
+                result = mNfcAdapter.disable();
+            } else if (currentState == NfcAdapter.STATE_OFF) {
+                mSwitch.setChecked(false);
+            }
+        }
+
+        if (!result) {
+            // Enable switch because Nfc state change broadcast will not be sent
+            mSwitch.setEnabled(true);
         }
 
         return false;
