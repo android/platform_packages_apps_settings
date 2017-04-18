@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "72c70f60_fef1dbd2",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2017-04-18T22:20:50Z",
+      "side": 1,
+      "message": "long lines",
+      "range": {
+        "startLine": 743,
+        "startChar": 100,
+        "endLine": 743,
+        "endChar": 118
+      },
+      "revId": "cf9442cc01fbd57baf40031df55e5bc17dbcaf66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
