@@ -46,6 +46,30 @@
       "revId": "cf9442cc01fbd57baf40031df55e5bc17dbcaf66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8388c6cd_7f291f76",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 743,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2017-04-19T13:28:23Z",
+      "side": 1,
+      "message": "It\u0027s baaaack :)",
+      "parentUuid": "d3599d1f_ae7ec123",
+      "range": {
+        "startLine": 743,
+        "startChar": 100,
+        "endLine": 743,
+        "endChar": 118
+      },
+      "revId": "cf9442cc01fbd57baf40031df55e5bc17dbcaf66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
