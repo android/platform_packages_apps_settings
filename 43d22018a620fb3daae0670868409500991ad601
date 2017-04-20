@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "322c77fd_1c416d86",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPairingService.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1077498
+      },
+      "writtenOn": "2017-04-20T21:32:06Z",
+      "side": 1,
+      "message": "The tabbing here looks a little strange.",
+      "range": {
+        "startLine": 90,
+        "startChar": 9,
+        "endLine": 94,
+        "endChar": 13
+      },
+      "revId": "43d22018a620fb3daae0670868409500991ad601",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
