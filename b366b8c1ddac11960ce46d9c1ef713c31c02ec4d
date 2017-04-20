@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a3c3041c_bb6870e1",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPairingService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1073753
+      },
+      "writtenOn": "2017-04-20T01:33:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "454c0467_d40c093e",
+      "range": {
+        "startLine": 82,
+        "startChar": 28,
+        "endLine": 82,
+        "endChar": 47
+      },
+      "revId": "b366b8c1ddac11960ce46d9c1ef713c31c02ec4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cafc6fd3_bb632601",
         "filename": "src/com/android/settings/bluetooth/BluetoothPairingService.java",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2017-04-19T23:22:11Z",
       "side": 1,
       "message": "I didn\u0027t see this in the commit message.  Why is it needed now?",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 47
+      },
+      "revId": "b366b8c1ddac11960ce46d9c1ef713c31c02ec4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4c80dd7_af8ca3f4",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPairingService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1073753
+      },
+      "writtenOn": "2017-04-20T01:33:17Z",
+      "side": 1,
+      "message": "It\u0027s used to add to the log message below for slightly more info when the pairing fails :)",
+      "parentUuid": "cafc6fd3_bb632601",
       "range": {
         "startLine": 85,
         "startChar": 0,
