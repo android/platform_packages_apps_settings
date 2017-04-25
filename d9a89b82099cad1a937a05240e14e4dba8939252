@@ -22,6 +22,30 @@
       "revId": "d9a89b82099cad1a937a05240e14e4dba8939252",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f409689_204219fe",
+        "filename": "src/com/android/settings/wifi/WpsDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1102318
+      },
+      "writtenOn": "2017-04-25T04:39:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47b69ced_a3e33d05",
+      "range": {
+        "startLine": 153,
+        "startChar": 12,
+        "endLine": 157,
+        "endChar": 13
+      },
+      "revId": "d9a89b82099cad1a937a05240e14e4dba8939252",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
