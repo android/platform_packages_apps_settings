@@ -21,12 +21,10 @@ import android.content.ActivityNotFoundException;
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.Settings.SettingNotFoundException;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.TextToSpeech.EngineInfo;
 import android.speech.tts.TtsEngines;
 import android.speech.tts.UtteranceProgressListener;
-import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceCategory;
 import android.text.TextUtils;
@@ -60,7 +58,7 @@ public class TextToSpeechSettings extends SettingsPreferenceFragment implements
     private static final boolean DBG = false;
 
     /** Preference key for the "play TTS example" preference. */
-    private static final String KEY_PLAY_EXAMPLE = "tts_play_example";;
+    private static final String KEY_PLAY_EXAMPLE = "tts_play_example";
 
     /** Preference key for the TTS pitch selection slider. */
     private static final String KEY_DEFAULT_PITCH = "tts_default_pitch";
