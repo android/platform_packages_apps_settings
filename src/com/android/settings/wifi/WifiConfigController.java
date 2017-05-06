@@ -352,6 +352,9 @@ public class WifiConfigController implements TextWatcher,
     }
 
     private String getSignalString() {
+        if (!mAccessPoint.isReachable()) {
+            return null;
+        }
         final int level = mAccessPoint.getLevel();
 
         return (level > -1 && level < mLevels.length) ? mLevels[level] : null;
