@@ -243,7 +243,9 @@ public class IccLockSettings extends SettingsPreferenceFragment
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        updatePreferences();
+        if (!Utils.isMonkeyRunning()) {
+            updatePreferences();
+        }
     }
 
     private void updatePreferences() {
