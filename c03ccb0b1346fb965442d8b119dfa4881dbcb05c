@@ -16,6 +16,24 @@
       "revId": "c03ccb0b1346fb965442d8b119dfa4881dbcb05c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e6f637a7_62811d7c",
+        "filename": "src/com/android/settings/IccLockSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1167303
+      },
+      "writtenOn": "2017-05-10T01:42:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f77c81ea_b1f969c1",
+      "revId": "c03ccb0b1346fb965442d8b119dfa4881dbcb05c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
