@@ -510,7 +510,11 @@ public class DisplaySettings extends SettingsPreferenceFragment implements
         @Override
         public SummaryLoader.SummaryProvider createSummaryProvider(Activity activity,
                                                                    SummaryLoader summaryLoader) {
-            return new SummaryProvider(activity, summaryLoader);
+            if(activity.getResources()
+                    .getBoolean(com.android.internal.R.bool.config_automatic_brightness_available))
+                return new SummaryProvider(activity, summaryLoader);
+            else
+                return null;
         }
     };
 
