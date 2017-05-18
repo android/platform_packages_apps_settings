@@ -25,6 +25,53 @@
     },
     {
       "key": {
+        "uuid": "cb2a23b2_40ee10c6",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1058798
+      },
+      "writtenOn": "2017-05-18T00:21:01Z",
+      "side": 1,
+      "message": "+1 no string changes. Also note \"bluetooth_sap_request\" above.",
+      "parentUuid": "d443c6fc_cc7e6c6d",
+      "range": {
+        "startLine": 354,
+        "startChar": 3,
+        "endLine": 355,
+        "endChar": 80
+      },
+      "revId": "a657e74e11dfca3e289ca5fab7fa12e82d88ae82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01c207e4_81515a89",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPermissionRequest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1058798
+      },
+      "writtenOn": "2017-05-18T00:21:01Z",
+      "side": 1,
+      "message": "This should use same channel ID as other Bluetooth notifications.",
+      "range": {
+        "startLine": 49,
+        "startChar": 59,
+        "endLine": 49,
+        "endChar": 82
+      },
+      "revId": "a657e74e11dfca3e289ca5fab7fa12e82d88ae82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e12908e_a6d576eb",
         "filename": "src/com/android/settings/bluetooth/BluetoothPermissionRequest.java",
         "patchSetId": 4
@@ -36,6 +83,30 @@
       "writtenOn": "2017-05-18T00:14:13Z",
       "side": 1,
       "message": "Since we cannot add new string but must use existing string for the O release, I suggest using the existing R.string.bluetooth string.",
+      "range": {
+        "startLine": 162,
+        "startChar": 46,
+        "endLine": 162,
+        "endChar": 83
+      },
+      "revId": "a657e74e11dfca3e289ca5fab7fa12e82d88ae82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f23682a2_d7d51f73",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPermissionRequest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1058798
+      },
+      "writtenOn": "2017-05-18T00:21:01Z",
+      "side": 1,
+      "message": "bluetooth_sap_request  please....",
+      "parentUuid": "3e12908e_a6d576eb",
       "range": {
         "startLine": 162,
         "startChar": 46,
