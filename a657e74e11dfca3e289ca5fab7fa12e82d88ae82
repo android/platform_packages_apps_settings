@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d443c6fc_cc7e6c6d",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1152864
+      },
+      "writtenOn": "2017-05-18T00:14:13Z",
+      "side": 1,
+      "message": "Unfortunately, the deadline to add new string for O release is over. We cannot add new strings in time for O release. Please remove this addition.",
+      "range": {
+        "startLine": 354,
+        "startChar": 3,
+        "endLine": 355,
+        "endChar": 80
+      },
+      "revId": "a657e74e11dfca3e289ca5fab7fa12e82d88ae82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3e12908e_a6d576eb",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPermissionRequest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1152864
+      },
+      "writtenOn": "2017-05-18T00:14:13Z",
+      "side": 1,
+      "message": "Since we cannot add new string but must use existing string for the O release, I suggest using the existing R.string.bluetooth string.",
+      "range": {
+        "startLine": 162,
+        "startChar": 46,
+        "endLine": 162,
+        "endChar": 83
+      },
+      "revId": "a657e74e11dfca3e289ca5fab7fa12e82d88ae82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
