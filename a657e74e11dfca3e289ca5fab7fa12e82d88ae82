@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "19009e15_5f52638b",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPermissionRequest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1152864
+      },
+      "writtenOn": "2017-05-19T01:09:05Z",
+      "side": 1,
+      "message": "We are going to group related notifications to use the same channel ID but this is a much bigger change since this change involves changing other file and git project. So, leave this change as-it-is for now. After we merge your change in, then I will have another change to use the same Channel ID.",
+      "parentUuid": "20b1577a_f97ba3cd",
+      "range": {
+        "startLine": 49,
+        "startChar": 59,
+        "endLine": 49,
+        "endChar": 82
+      },
+      "revId": "a657e74e11dfca3e289ca5fab7fa12e82d88ae82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3e12908e_a6d576eb",
         "filename": "src/com/android/settings/bluetooth/BluetoothPermissionRequest.java",
         "patchSetId": 4
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "changed to bluetooth_notif_ticker as this is not specific for just sap, but used by pbap/map as well",
       "parentUuid": "f23682a2_d7d51f73",
+      "range": {
+        "startLine": 162,
+        "startChar": 46,
+        "endLine": 162,
+        "endChar": 83
+      },
+      "revId": "a657e74e11dfca3e289ca5fab7fa12e82d88ae82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c534b9ae_b4816c09",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPermissionRequest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1152864
+      },
+      "writtenOn": "2017-05-19T01:09:05Z",
+      "side": 1,
+      "message": "Andre and I discussed offline and decided to use \"R.string.bluetooth\" since it is the most appropriate. Please note that this string is used by the OS as the category name to group these related notifications.",
+      "parentUuid": "fedfbab3_a5f95ac5",
       "range": {
         "startLine": 162,
         "startChar": 46,
