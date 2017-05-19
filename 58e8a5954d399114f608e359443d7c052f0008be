@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1b1dd2e8_6e980322",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPermissionRequest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1043980
+      },
+      "writtenOn": "2017-05-19T17:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc726c74_f326056b",
+      "range": {
+        "startLine": 49,
+        "startChar": 32,
+        "endLine": 49,
+        "endChar": 83
+      },
+      "revId": "58e8a5954d399114f608e359443d7c052f0008be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49e342ef_30970d0d",
         "filename": "src/com/android/settings/bluetooth/BluetoothPermissionRequest.java",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2017-05-19T17:01:30Z",
       "side": 1,
       "message": "Please change this to BLUETOOTH_NOTIFICATION_CHANNEL.",
+      "range": {
+        "startLine": 161,
+        "startChar": 67,
+        "endLine": 161,
+        "endChar": 90
+      },
+      "revId": "58e8a5954d399114f608e359443d7c052f0008be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f809ca1_5505aa6a",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPermissionRequest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1043980
+      },
+      "writtenOn": "2017-05-19T17:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49e342ef_30970d0d",
       "range": {
         "startLine": 161,
         "startChar": 67,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "fef6ce5d_fdac7c00",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPermissionRequest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1043980
+      },
+      "writtenOn": "2017-05-19T17:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e92eaf18_c718d239",
+      "range": {
+        "startLine": 162,
+        "startChar": 46,
+        "endLine": 162,
+        "endChar": 77
+      },
+      "revId": "58e8a5954d399114f608e359443d7c052f0008be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c79b52a0_d3f200e2",
         "filename": "src/com/android/settings/bluetooth/BluetoothPermissionRequest.java",
         "patchSetId": 6
@@ -82,6 +154,30 @@
       "writtenOn": "2017-05-19T17:01:30Z",
       "side": 1,
       "message": "Please change this to BLUETOOTH_NOTIFICATION_CHANNEL.",
+      "range": {
+        "startLine": 167,
+        "startChar": 24,
+        "endLine": 167,
+        "endChar": 47
+      },
+      "revId": "58e8a5954d399114f608e359443d7c052f0008be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6947f1e7_a9c7b305",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPermissionRequest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1043980
+      },
+      "writtenOn": "2017-05-19T17:08:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c79b52a0_d3f200e2",
       "range": {
         "startLine": 167,
         "startChar": 24,
