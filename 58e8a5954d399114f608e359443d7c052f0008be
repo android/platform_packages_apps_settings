@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cc726c74_f326056b",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPermissionRequest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1152864
+      },
+      "writtenOn": "2017-05-19T17:01:30Z",
+      "side": 1,
+      "message": "Please change this definition to BLUETOOTH_NOTIFICATION_CHANNEL \u003d \"bluetooth_notification_channel\". Please also add a TODO comment before this line that says \"TODO: consolidate this multiple defined but common channel ID with other handlers that declare and use the same channel ID\".\nI will have another change in the future to do this consolidation.",
+      "range": {
+        "startLine": 49,
+        "startChar": 32,
+        "endLine": 49,
+        "endChar": 83
+      },
+      "revId": "58e8a5954d399114f608e359443d7c052f0008be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "49e342ef_30970d0d",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPermissionRequest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1152864
+      },
+      "writtenOn": "2017-05-19T17:01:30Z",
+      "side": 1,
+      "message": "Please change this to BLUETOOTH_NOTIFICATION_CHANNEL.",
+      "range": {
+        "startLine": 161,
+        "startChar": 67,
+        "endLine": 161,
+        "endChar": 90
+      },
+      "revId": "58e8a5954d399114f608e359443d7c052f0008be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e92eaf18_c718d239",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPermissionRequest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1152864
+      },
+      "writtenOn": "2017-05-19T17:01:30Z",
+      "side": 1,
+      "message": "Please change this to R.string.bluetooth",
+      "range": {
+        "startLine": 162,
+        "startChar": 46,
+        "endLine": 162,
+        "endChar": 77
+      },
+      "revId": "58e8a5954d399114f608e359443d7c052f0008be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c79b52a0_d3f200e2",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPermissionRequest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1152864
+      },
+      "writtenOn": "2017-05-19T17:01:30Z",
+      "side": 1,
+      "message": "Please change this to BLUETOOTH_NOTIFICATION_CHANNEL.",
+      "range": {
+        "startLine": 167,
+        "startChar": 24,
+        "endLine": 167,
+        "endChar": 47
+      },
+      "revId": "58e8a5954d399114f608e359443d7c052f0008be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
