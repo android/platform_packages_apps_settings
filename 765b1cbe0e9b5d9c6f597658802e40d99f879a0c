@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37498816_814b0adf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1094298
+      },
+      "writtenOn": "2017-05-24T21:36:34Z",
+      "side": 1,
+      "message": "What is this?",
+      "range": {
+        "startLine": 10,
+        "startChar": 9,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "765b1cbe0e9b5d9c6f597658802e40d99f879a0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
