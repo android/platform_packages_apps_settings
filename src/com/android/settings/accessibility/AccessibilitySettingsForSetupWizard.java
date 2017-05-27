@@ -118,6 +118,7 @@ public class AccessibilitySettingsForSetupWizard extends SettingsPreferenceFragm
         AccessibilityServiceInfo info = findFirstServiceWithSpokenFeedback();
         if (info == null) {
             mScreenReaderPreference.setEnabled(false);
+            return;
         } else {
             mScreenReaderPreference.setEnabled(true);
         }
