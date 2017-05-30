@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bb6bc49c_d09e1072",
+        "filename": "src/com/android/settings/AllowBindAppWidgetActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1074723
+      },
+      "writtenOn": "2017-05-30T20:01:54Z",
+      "side": 1,
+      "message": "Yes, sure. I did not added this because I did not override this methods in this change.",
+      "parentUuid": "3d2d528c_e5afa28a",
+      "revId": "5b1b1aa878aaf56eddbeae1ebd486cff63a37598",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "522dd8d9_f2d5ae82",
         "filename": "src/com/android/settings/AllowBindAppWidgetActivity.java",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2017-05-30T18:59:55Z",
       "side": 1,
       "message": "This change does not seem to be related to the crash fix.",
+      "revId": "5b1b1aa878aaf56eddbeae1ebd486cff63a37598",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7206e268_d409e969",
+        "filename": "src/com/android/settings/AllowBindAppWidgetActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1074723
+      },
+      "writtenOn": "2017-05-30T20:01:54Z",
+      "side": 1,
+      "message": "Right, this is default value for Activity, but since I remove it from onClick and onPause (and move it from catch construction), I keep it just for better understanding. What do you think about it?",
+      "parentUuid": "522dd8d9_f2d5ae82",
       "revId": "5b1b1aa878aaf56eddbeae1ebd486cff63a37598",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
