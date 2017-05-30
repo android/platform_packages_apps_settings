@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d2d528c_e5afa28a",
+        "filename": "src/com/android/settings/AllowBindAppWidgetActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-05-30T18:59:55Z",
+      "side": 1,
+      "message": "for code style, can you add @Override to onPause and onCreate?",
+      "revId": "5b1b1aa878aaf56eddbeae1ebd486cff63a37598",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "522dd8d9_f2d5ae82",
+        "filename": "src/com/android/settings/AllowBindAppWidgetActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-05-30T18:59:55Z",
+      "side": 1,
+      "message": "This change does not seem to be related to the crash fix.",
+      "revId": "5b1b1aa878aaf56eddbeae1ebd486cff63a37598",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
