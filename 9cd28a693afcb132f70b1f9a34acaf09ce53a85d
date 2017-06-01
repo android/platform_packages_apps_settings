@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f63440ee_b4c0a1a0",
+        "filename": "src/com/android/settings/notification/ZenModeRuleSettingsBase.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-06-01T18:58:40Z",
+      "side": 1,
+      "message": "P",
+      "revId": "9cd28a693afcb132f70b1f9a34acaf09ce53a85d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
