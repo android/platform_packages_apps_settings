@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbf99148_fa9019a3",
+        "filename": "src/com/android/settings/dashboard/conditional/ConditionManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-06-01T19:03:03Z",
+      "side": 1,
+      "message": "else {\nlog something so we know some condition is dropped\n}",
+      "revId": "e17e717cd5c81d2d66925eed1b9af15231962459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "298d0a86_ea4ca2bd",
+        "filename": "src/com/android/settings/dashboard/conditional/ConditionManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-06-01T19:03:03Z",
+      "side": 1,
+      "message": "store the result to a variable and don\u0027t create it twice",
+      "range": {
+        "startLine": 155,
+        "startChar": 16,
+        "endLine": 155,
+        "endChar": 36
+      },
+      "revId": "e17e717cd5c81d2d66925eed1b9af15231962459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da3b194a_2e564090",
+        "filename": "src/com/android/settings/dashboard/conditional/ConditionManager.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-06-01T19:03:03Z",
+      "side": 1,
+      "message": "log something before returning null so we know why condition is null",
+      "revId": "e17e717cd5c81d2d66925eed1b9af15231962459",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
