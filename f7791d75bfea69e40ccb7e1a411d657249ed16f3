@@ -1,0 +1,11 @@
+Code-Review+2: Fan Zhang <zhfan@google.com>
+Code-Review+1: Alex Naidis <alex.naidis@linux.com>
+Code-Review+1: Anas Karbila <anaskarbila@aospa.co>
+Autosubmit+1: Fan Zhang <zhfan@google.com>
+Verified+1: Fan Zhang <zhfan@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Sat, 03 Jun 2017 23:49:37 +0000
+Reviewed-on: https://android-review.googlesource.com/347070
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
