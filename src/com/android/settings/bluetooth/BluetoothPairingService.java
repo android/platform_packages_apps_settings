@@ -112,8 +112,12 @@ public final class BluetoothPairingService extends Service {
         PendingIntent pairIntent = PendingIntent.getActivity(this, 0,
                 getPairingDialogIntent(this, intent), PendingIntent.FLAG_ONE_SHOT);
 
-        PendingIntent dismissIntent = PendingIntent.getBroadcast(this, 0,
-                new Intent(ACTION_DISMISS_PAIRING), PendingIntent.FLAG_ONE_SHOT);
+
+        Intent dismissIntent = new Intent(ACTION_DISMISS_PAIRING);
+        dismissIntent.setClass(this, BluetoothPairingService.class);
+
+        PendingIntent dismissPending = PendingIntent.getBroadcast(this, 0, dismissIntent,
+            PendingIntent.FLAG_ONE_SHOT);
 
         mDevice = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
 
@@ -134,7 +138,7 @@ public final class BluetoothPairingService extends Service {
         Notification.Action pairAction = new Notification.Action.Builder(0,
                 res.getString(R.string.bluetooth_device_context_pair_connect), pairIntent).build();
         Notification.Action dismissAction = new Notification.Action.Builder(0,
-                res.getString(android.R.string.cancel), dismissIntent).build();
+                res.getString(android.R.string.cancel), dismissPending).build();
 
         builder.setContentTitle(res.getString(R.string.bluetooth_notif_title))
                 .setContentText(res.getString(R.string.bluetooth_notif_message, name))
