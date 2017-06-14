@@ -23,6 +23,8 @@ import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.format.DateUtils;
 import android.text.style.TtsSpan;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -165,5 +167,16 @@ public class UtilsTest {
         info.enabled = false;
 
         assertThat(Utils.getInstallationStatus(info)).isEqualTo(R.string.disabled);
+    }
+
+    @Test
+    public void testSetEditTextCursorPosition_shouldGetExpectedEditTextLenght() {
+        final EditText editText = new EditText(mContext);
+        final CharSequence text = "test";
+        editText.setText(text, TextView.BufferType.EDITABLE);
+        final int length = editText.getText().length();
+        Utils.setEditTextCursorPosition(editText);
+
+        assertThat(editText.getSelectionEnd()).isEqualTo(length);
     }
 }
