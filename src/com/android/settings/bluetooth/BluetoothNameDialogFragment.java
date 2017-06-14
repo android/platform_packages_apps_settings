@@ -133,6 +133,8 @@ public final class BluetoothNameDialogFragment extends DialogFragment implements
         });
         mDeviceNameView.setText(deviceName);    // set initial value before adding listener
         mDeviceNameView.addTextChangedListener(this);
+        int textLength = mDeviceNameView.getText().length();
+        mDeviceNameView.setSelection(textLength, textLength);
         mDeviceNameView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
