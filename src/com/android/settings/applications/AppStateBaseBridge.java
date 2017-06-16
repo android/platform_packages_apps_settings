@@ -50,15 +50,21 @@ public abstract class AppStateBaseBridge implements ApplicationsState.Callbacks 
 
     public void resume() {
         mHandler.sendEmptyMessage(BackgroundHandler.MSG_LOAD_ALL);
-        mAppSession.resume();
+        if (mAppSession != null) {
+            mAppSession.resume();
+        }
     }
 
     public void pause() {
-        mAppSession.pause();
+        if (mAppSession != null) {
+            mAppSession.pause();
+        }
     }
 
     public void release() {
-        mAppSession.release();
+        if (mAppSession != null) {
+            mAppSession.release();
+        }
     }
 
     public void forceUpdate(String pkg, int uid) {
@@ -137,7 +143,7 @@ public abstract class AppStateBaseBridge implements ApplicationsState.Callbacks 
                     mMainHandler.sendEmptyMessage(MainHandler.MSG_INFO_UPDATED);
                     break;
                 case MSG_FORCE_LOAD_PKG:
-                    ArrayList<AppEntry> apps = mAppSession.getAllApps();
+                    ArrayList<AppEntry> apps = mAppSession != null ? mAppSession.getAllApps() : new ArrayList<AppEntry>();
                     final int N = apps.size();
                     String pkg = (String) msg.obj;
                     int uid = msg.arg1;
