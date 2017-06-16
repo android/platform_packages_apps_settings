@@ -89,6 +89,12 @@ public class WriteSettingsDetails extends AppInfoWithHeader implements OnPrefere
     }
 
     @Override
+    public void onDestroy() {
+        mAppBridge.release();
+        super.onDestroy();
+    }
+
+    @Override
     public boolean onPreferenceClick(Preference preference) {
         if (preference == mWriteSettingsPrefs) {
             if (mSettingsIntent != null) {
