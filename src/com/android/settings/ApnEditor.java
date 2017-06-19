@@ -55,6 +55,7 @@ import com.android.internal.logging.MetricsProto.MetricsEvent;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.util.ArrayUtils;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
@@ -115,6 +116,7 @@ public class ApnEditor extends SettingsPreferenceFragment
     private String[] mReadOnlyApnTypes;
     private String[] mReadOnlyApnFields;
     private boolean mReadOnlyApn;
+    private String mUserEnteredApnType;
 
     /**
      * Standard projection for the interesting columns of a normal note.
@@ -221,6 +223,7 @@ public class ApnEditor extends SettingsPreferenceFragment
         mReadOnlyApn = false;
         mReadOnlyApnTypes = null;
         mReadOnlyApnFields = null;
+        mUserEnteredApnType = null;
 
         CarrierConfigManager configManager = (CarrierConfigManager)
                 getSystemService(Context.CARRIER_CONFIG_SERVICE);
@@ -229,6 +232,11 @@ public class ApnEditor extends SettingsPreferenceFragment
             if (b != null) {
                 mReadOnlyApnTypes = b.getStringArray(
                         CarrierConfigManager.KEY_READ_ONLY_APN_TYPES_STRING_ARRAY);
+                if (!ArrayUtils.isEmpty(mReadOnlyApnTypes)) {
+                    for (String apnType : mReadOnlyApnTypes) {
+                        Log.d(TAG, "onCreate: read only APN type: " + apnType);
+                    }
+                }
                 mReadOnlyApnFields = b.getStringArray(
                         CarrierConfigManager.KEY_READ_ONLY_APN_FIELDS_STRING_ARRAY);
             }
@@ -853,8 +861,23 @@ public class ApnEditor extends SettingsPreferenceFragment
 
         values.put(Telephony.Carriers.TYPE, checkNotSet(mApnType.getText()));
 
-        values.put(Telephony.Carriers.MCC, mcc);
-        values.put(Telephony.Carriers.MNC, mnc);
+        callUpdate = setStringValueAndCheckIfDiff(values,
+                Telephony.Carriers.TYPE,
+                checkNotSet(getUserEnteredApnType()),
+                callUpdate,
+                TYPE_INDEX);
+
+        callUpdate = setStringValueAndCheckIfDiff(values,
+                Telephony.Carriers.MCC,
+                mcc,
+                callUpdate,
+                MCC_INDEX);
+
+        callUpdate = setStringValueAndCheckIfDiff(values,
+                Telephony.Carriers.MNC,
+                mnc,
+                callUpdate,
+                MNC_INDEX);
 
         values.put(Telephony.Carriers.NUMERIC, mcc + mnc);
 
@@ -920,10 +943,11 @@ public class ApnEditor extends SettingsPreferenceFragment
             // if carrier does not allow editing certain apn types, make sure type does not include
             // those
             if (!ArrayUtils.isEmpty(mReadOnlyApnTypes)
-                    && apnTypesMatch(mReadOnlyApnTypes, mApnType.getText())) {
+                    && apnTypesMatch(mReadOnlyApnTypes, getUserEnteredApnType())) {
                 StringBuilder stringBuilder = new StringBuilder();
                 for (String type : mReadOnlyApnTypes) {
                     stringBuilder.append(type).append(", ");
+                    Log.d(TAG, "getErrorMsg: appending type: " + type);
                 }
                 // remove last ", "
                 if (stringBuilder.length() >= 2) {
@@ -968,6 +992,41 @@ public class ApnEditor extends SettingsPreferenceFragment
         } else {
             return value;
         }
+    }
+
+    private String getUserEnteredApnType() {
+        if (mUserEnteredApnType != null) {
+            return mUserEnteredApnType;
+        }
+
+        // if user has not specified a type, map it to "ALL APN TYPES THAT ARE NOT READ-ONLY"
+        mUserEnteredApnType = mApnType.getText();
+        if (mUserEnteredApnType != null) mUserEnteredApnType = mUserEnteredApnType.trim();
+        if ((TextUtils.isEmpty(mUserEnteredApnType)
+                || PhoneConstants.APN_TYPE_ALL.equals(mUserEnteredApnType))
+                && !ArrayUtils.isEmpty(mReadOnlyApnTypes)) {
+            StringBuilder editableApnTypes = new StringBuilder();
+            List<String> readOnlyApnTypes = Arrays.asList(mReadOnlyApnTypes);
+            boolean first = true;
+            for (String apnType : PhoneConstants.APN_TYPES) {
+                // add APN type if it is not read-only and is not wild-cardable
+                if (!readOnlyApnTypes.contains(apnType)
+                        && !apnType.equals(PhoneConstants.APN_TYPE_IA)
+                        && !apnType.equals(PhoneConstants.APN_TYPE_EMERGENCY)) {
+                    if (first) {
+                        first = false;
+                    } else {
+                        editableApnTypes.append(",");
+                    }
+                    editableApnTypes.append(apnType);
+                }
+            }
+            mUserEnteredApnType = editableApnTypes.toString();
+            Log.d(TAG, "getUserEnteredApnType: changed apn type to editable apn types: "
+                    + mUserEnteredApnType);
+        }
+
+        return mUserEnteredApnType;
     }
 
     public static class ErrorDialog extends DialogFragment {
