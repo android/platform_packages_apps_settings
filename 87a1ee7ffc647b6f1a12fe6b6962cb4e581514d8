@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "757c530b_2169f57a",
+        "filename": "res/values/config.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2017-06-19T23:24:53Z",
+      "side": 1,
+      "message": "Why isn\u0027t this exposed as a carrier config option, if it is on a per carrier basis?",
+      "range": {
+        "startLine": 61,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 61
+      },
+      "revId": "87a1ee7ffc647b6f1a12fe6b6962cb4e581514d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
