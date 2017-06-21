@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac115a87_e3907fea",
+        "filename": "src/com/android/settings/applications/PremiumSmsAccess.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1109108
+      },
+      "writtenOn": "2017-06-21T21:00:34Z",
+      "side": 1,
+      "message": "Are both of these necessary?\n\nAppStateSmsPremBridge\u0027s release() calls AppStateBaseBridge.release() which calls ApplicationsState.Session.release().\n\nAssuming it\u0027s the same Session, that might try to release the same session twice.\n\nAre these different ApplicationsState sessions or is it just releasing twice?",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 27
+      },
+      "revId": "6c01debe5cbd7fbd6d22e75b8e634784b8c1a7c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
