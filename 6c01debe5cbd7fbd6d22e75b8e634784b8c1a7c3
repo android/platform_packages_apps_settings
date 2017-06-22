@@ -22,6 +22,30 @@
       "revId": "6c01debe5cbd7fbd6d22e75b8e634784b8c1a7c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7806b66f_cfbcc3ca",
+        "filename": "src/com/android/settings/applications/PremiumSmsAccess.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1153427
+      },
+      "writtenOn": "2017-06-22T01:41:11Z",
+      "side": 1,
+      "message": "Yes, they both are necessary.\nAppStateBaseBridge creates a new session in its constructor. So the session in the AppStateSmsPremBridge is different with PremiumSmsAccess#mSession.",
+      "parentUuid": "ac115a87_e3907fea",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 27
+      },
+      "revId": "6c01debe5cbd7fbd6d22e75b8e634784b8c1a7c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
