@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "374d4345_f88fd853",
+        "filename": "src/com/android/settings/ChooseLockGeneric.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1060127
+      },
+      "writtenOn": "2017-06-30T15:46:48Z",
+      "side": 0,
+      "message": "Both KEY_UNLOCK_SET_NONE \u0026 KEY_UNLOCK_SET_OFF are mapped to PASSWORD_QUALITY_UNSPECIFIED. However, as described in the CL description, this is a behavioral difference. \n\nThe default screen lock on a Pixel device is KEY_UNLOCK_SET_NONE (Swipe to unlock) instead of KEY_UNLOCK_SET_OFF. If the intention of this CL is to restore the previous lock screen before the CTS test is run, I am unsure this is the right approach. Jeff, what do you think?",
+      "revId": "31a2f413f86c9ad2b7150e5b379d408cac5e7645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
