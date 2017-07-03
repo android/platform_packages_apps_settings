@@ -16,6 +16,24 @@
       "revId": "31a2f413f86c9ad2b7150e5b379d408cac5e7645",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f448da73_0cad1f8b",
+        "filename": "src/com/android/settings/ChooseLockGeneric.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1182749
+      },
+      "writtenOn": "2017-07-03T07:59:12Z",
+      "side": 0,
+      "message": "No, the intention of this CL is to set lock screen into `none` mode, as is was intended. You can find some useful comments inside the test:\nhttp://androidxref.com/7.1.1_r6/xref/cts/hostsidetests/appsecurity/test-apps/EncryptionApp/src/com/android/cts/encryptionapp/EncryptionAppTest.java#178",
+      "parentUuid": "374d4345_f88fd853",
+      "revId": "31a2f413f86c9ad2b7150e5b379d408cac5e7645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
