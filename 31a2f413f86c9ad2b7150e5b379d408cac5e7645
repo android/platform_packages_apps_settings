@@ -34,6 +34,24 @@
       "revId": "31a2f413f86c9ad2b7150e5b379d408cac5e7645",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f482400e_0d278daa",
+        "filename": "src/com/android/settings/ChooseLockGeneric.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2017-07-03T15:24:49Z",
+      "side": 0,
+      "message": "I think Jeff Sharkey is the right reviewer here. Jeff, can you weigh in whether this change is correct?",
+      "parentUuid": "f448da73_0cad1f8b",
+      "revId": "31a2f413f86c9ad2b7150e5b379d408cac5e7645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
