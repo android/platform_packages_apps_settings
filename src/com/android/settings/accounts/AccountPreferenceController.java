@@ -484,6 +484,9 @@ public class AccountPreferenceController extends PreferenceController
 
         for (int i = 0; i < accountTypes.length; i++) {
             final String accountType = accountTypes[i];
+            if (AccountRestrictionHelper.hideAccount(mContext, accountType)) {
+                continue;
+            }
             // Skip showing any account that does not have any of the requested authorities
             if (!accountTypeHasAnyRequestedAuthorities(helper, accountType)) {
                 continue;

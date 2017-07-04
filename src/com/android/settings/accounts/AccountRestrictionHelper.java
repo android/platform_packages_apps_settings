@@ -18,9 +18,12 @@ package com.android.settings.accounts;
 import android.annotation.UserIdInt;
 import android.content.Context;
 import com.android.settings.AccessiblePreferenceCategory;
+import com.android.settings.R.array;
 import com.android.settingslib.RestrictedLockUtils;
 import com.android.settingslib.RestrictedPreference;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class AccountRestrictionHelper {
 
@@ -73,5 +76,18 @@ public class AccountRestrictionHelper {
             }
         }
         return showAccount;
+    }
+
+    /**
+     * Checks if the account should be hidden based on the account type
+     * @param context given context
+     * @param accountType given account type
+     * @return true if the account type is in hidden list
+     */
+    public static boolean hideAccount(Context context, String accountType) {
+        String[] hideAccounts = context.getResources().getStringArray(array.hide_account_list);
+        if (hideAccounts == null || hideAccounts.length == 0) return false;
+        List<String> list = Arrays.asList(hideAccounts);
+        return list.contains(accountType);
     }
 }

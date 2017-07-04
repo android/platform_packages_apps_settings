@@ -168,7 +168,8 @@ public class ChooseAccountActivity extends SettingsPreferenceFragment {
                     && !mAccountTypesFilter.contains(accountType)) {
                 addAccountPref = false;
             }
-            if (addAccountPref) {
+            if (addAccountPref && !AccountRestrictionHelper.hideAccount(
+                    getActivity(), accountType)) {
                 mProviderList.add(new ProviderEntry(providerName, accountType));
             } else {
                 if (Log.isLoggable(TAG, Log.VERBOSE)) {

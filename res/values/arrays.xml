@@ -1056,4 +1056,9 @@
         <item>90</item>
     </string-array>
 
+    <!-- Defined the type for hidden accounts -->
+    <string-array name="hide_account_list">
+        <item>com.android.localphone</item>
+        <item>com.android.sim</item>
+    </string-array>
 </resources>
