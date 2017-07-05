@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "437fdb4f_3ef8c2aa",
+        "filename": "src/com/android/settings/applications/ManageApplications.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-07-05T16:36:29Z",
+      "side": 1,
+      "message": "cache this into a local variable, use it here and line 529.",
+      "range": {
+        "startLine": 528,
+        "startChar": 12,
+        "endLine": 528,
+        "endChar": 25
+      },
+      "revId": "f415a2b6e4e085cdaaae2ea992bcf45173112b65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
