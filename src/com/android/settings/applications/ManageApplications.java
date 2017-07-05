@@ -525,6 +525,7 @@ public class ManageApplications extends InstrumentedFragment
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        if (getActivity() == null) return;
         HelpUtils.prepareHelpMenuItem(getActivity(), menu, mListType == LIST_TYPE_MAIN
                 ? R.string.help_uri_apps : R.string.help_uri_notifications, getClass().getName());
         mOptionsMenu = menu;
