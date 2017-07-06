@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "848b3f78_1f0e8199",
+        "filename": "src/com/android/settings/applications/ManageApplications.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-07-06T16:20:52Z",
+      "side": 1,
+      "message": "wrap this with { } block for readability.",
+      "revId": "64f50ec16597ca5dd392d0a4bc5853ddab7d5431",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
