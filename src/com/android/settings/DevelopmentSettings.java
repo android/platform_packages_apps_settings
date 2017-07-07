@@ -215,6 +215,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private static final String BLUETOOTH_SELECT_A2DP_CHANNEL_MODE_KEY = "bluetooth_select_a2dp_channel_mode";
     private static final String BLUETOOTH_SELECT_A2DP_LDAC_PLAYBACK_QUALITY_KEY = "bluetooth_select_a2dp_ldac_playback_quality";
 
+    private static final String DNS_TLS_KEY = "dns_tls";
+
     private static final String INACTIVE_APPS_KEY = "inactive_apps";
 
     private static final String IMMEDIATELY_DESTROY_ACTIVITIES_KEY
@@ -294,6 +296,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private ListPreference mBluetoothSelectA2dpBitsPerSample;
     private ListPreference mBluetoothSelectA2dpChannelMode;
     private ListPreference mBluetoothSelectA2dpLdacPlaybackQuality;
+
+    private ListPreference mDnsTls;
 
     private SwitchPreference mOtaDisableAutomaticUpdate;
     private SwitchPreference mWifiAllowScansWithTraffic;
@@ -494,6 +498,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mBluetoothSelectA2dpChannelMode = addListPreference(BLUETOOTH_SELECT_A2DP_CHANNEL_MODE_KEY);
         mBluetoothSelectA2dpLdacPlaybackQuality = addListPreference(BLUETOOTH_SELECT_A2DP_LDAC_PLAYBACK_QUALITY_KEY);
         initBluetoothConfigurationValues();
+
+        mDnsTls = addListPreference(DNS_TLS_KEY);
 
         mWindowAnimationScale = addListPreference(WINDOW_ANIMATION_SCALE_KEY);
         mTransitionAnimationScale = addListPreference(TRANSITION_ANIMATION_SCALE_KEY);
@@ -790,6 +796,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         updateBluetoothDisableAbsVolumeOptions();
         updateBluetoothEnableInbandRingingOptions();
         updateBluetoothA2dpConfigurationValues();
+        updateDnsTlsOptions();
     }
 
     private void resetDangerousOptions() {
@@ -2600,6 +2607,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                    (preference == mBluetoothSelectA2dpLdacPlaybackQuality)) {
             writeBluetoothConfigurationOption(preference, newValue);
             return true;
+        } else if (preference == mDnsTls) {
+            writeDnsTlsOptions(newValue);
         } else if (preference == mLogdSize) {
             writeLogdSizeOption(newValue);
             return true;
@@ -2855,6 +2864,20 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
                 Log.e(TAG, "Failed to reset rate limiting", e);
             }
         }
+    }
+
+    private void updateDnsTlsOptions() {
+        int value = Settings.Global.getInt(getActivity().getContentResolver(),
+                Settings.Global.DNS_TLS_ENABLED, 0);
+        mDnsTls.setValue(Integer.toString(value));
+    }
+
+    private void writeDnsTlsOptions(Object newValue) {
+        int setting = newValue == null ? 0 : Integer.parseInt(newValue.toString());
+        Settings.Global.putInt(getActivity().getContentResolver(),
+                Settings.Global.DNS_TLS_ENABLED,
+                setting);
+        updateDnsTlsOptions();
     }
 
     private void updateOemUnlockSettingDescription() {
