@@ -39,6 +39,8 @@ import android.telephony.SignalStrength;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
+import android.text.BidiFormatter;
+import android.text.TextDirectionHeuristics;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -390,8 +392,9 @@ public class SimStatus extends SettingsPreferenceFragment {
 
 
         // If formattedNumber is null or empty, it'll display as "Unknown".
-        setSummaryText(KEY_PHONE_NUMBER,
-                DeviceInfoUtils.getFormattedPhoneNumber(getContext(), mSir));
+        setSummaryText(KEY_PHONE_NUMBER, BidiFormatter.getInstance().unicodeWrap(
+                DeviceInfoUtils.getFormattedPhoneNumber(getContext(), mSir),
+                TextDirectionHeuristics.LTR));
         setSummaryText(KEY_IMEI, mPhone.getImei());
         setSummaryText(KEY_IMEI_SV, mPhone.getDeviceSvn());
 
