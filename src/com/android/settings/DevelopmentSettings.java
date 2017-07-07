@@ -239,6 +239,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private static final String PERSISTENT_DATA_BLOCK_PROP = "ro.frp.pst";
     private static final String FLASH_LOCKED_PROP = "ro.boot.flash.locked";
 
+    private static final String PRIVATE_DNS = "private_dns";
+
     private static final String SHORTCUT_MANAGER_RESET_KEY = "reset_shortcut_manager_throttling";
 
     private static final int REQUEST_CODE_ENABLE_OEM_UNLOCK = 0;
@@ -336,6 +338,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
     private SwitchPreference mForceResizable;
 
     private SwitchPreference mColorTemperaturePreference;
+
+    private SwitchPreference mPrivateDns;
 
     private final ArrayList<Preference> mAllPrefs = new ArrayList<Preference>();
 
@@ -464,6 +468,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mWifiAggressiveHandover = findAndInitSwitchPref(WIFI_AGGRESSIVE_HANDOVER_KEY);
         mWifiAllowScansWithTraffic = findAndInitSwitchPref(WIFI_ALLOW_SCAN_WITH_TRAFFIC_KEY);
         mMobileDataAlwaysOn = findAndInitSwitchPref(MOBILE_DATA_ALWAYS_ON);
+        mPrivateDns = findAndInitSwitchPref(PRIVATE_DNS);
         mLogdSize = addListPreference(SELECT_LOGD_SIZE_KEY);
         if ("1".equals(SystemProperties.get("ro.debuggable", "0"))) {
             mLogpersist = addListPreference(SELECT_LOGPERSIST_KEY);
@@ -790,6 +795,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         updateBluetoothDisableAbsVolumeOptions();
         updateBluetoothEnableInbandRingingOptions();
         updateBluetoothA2dpConfigurationValues();
+        updatePrivateDnsOption();
     }
 
     private void resetDangerousOptions() {
@@ -2542,6 +2548,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             writeBluetoothEnableInbandRingingOptions();
         } else if (preference == mWebViewMultiprocess) {
             writeWebViewMultiprocessOptions();
+        } else if (preference == mPrivateDns) {
+            writePrivateDnsOption();
         } else if (SHORTCUT_MANAGER_RESET_KEY.equals(preference.getKey())) {
             resetShortcutManagerThrottling();
         } else {
@@ -2854,6 +2862,61 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             } catch (RemoteException e) {
                 Log.e(TAG, "Failed to reset rate limiting", e);
             }
+        }
+    }
+
+    private static String ALL_IPV4 = "0.0.0.0/0";
+    private static String ALL_IPV6 = "::/0";
+
+    private List<String> getPrivateDnsRanges() {
+        String setting = Settings.Global.getString(getActivity().getContentResolver(),
+                Settings.Global.DNS_TLS_ENABLED);
+        if (setting == null) {
+            setting = "";
+        }
+        return new ArrayList<String>(Arrays.asList(setting.split(",")));
+
+    }
+
+    private void setPrivateDnsRanges(List<String> ranges) {
+        Settings.Global.putString(getActivity().getContentResolver(),
+                Settings.Global.DNS_TLS_ENABLED, String.join(",", ranges));
+    }
+
+    private boolean isEnabledPrivateDns() {
+        List<String> ranges = getPrivateDnsRanges();
+        return ranges.contains(ALL_IPV4) && ranges.contains(ALL_IPV6);
+    }
+
+    private void enablePrivateDns() {
+        if (isEnabledPrivateDns()) {
+            return;
+        }
+        List<String> ranges = getPrivateDnsRanges();
+        ranges.add(ALL_IPV4);
+        ranges.add(ALL_IPV6);
+        setPrivateDnsRanges(ranges);
+    }
+
+    private void disablePrivateDns() {
+        if (!isEnabledPrivateDns()) {
+            return;
+        }
+        List<String> ranges = getPrivateDnsRanges();
+        ranges.remove(ALL_IPV4);
+        ranges.remove(ALL_IPV6);
+        setPrivateDnsRanges(ranges);
+    }
+
+    private void updatePrivateDnsOption() {
+        updateSwitchPreference(mPrivateDns, isEnabledPrivateDns());
+    }
+
+    private void writePrivateDnsOption() {
+        if (mPrivateDns.isChecked()) {
+            enablePrivateDns();
+        } else {
+            disablePrivateDns();
         }
     }
 
