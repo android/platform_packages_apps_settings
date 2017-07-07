@@ -46,6 +46,7 @@ import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.hardware.usb.IUsbManager;
 import android.hardware.usb.UsbManager;
+import android.net.ConnectivityManager;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.os.BatteryManager;
@@ -238,6 +239,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     private static final String PERSISTENT_DATA_BLOCK_PROP = "ro.frp.pst";
     private static final String FLASH_LOCKED_PROP = "ro.boot.flash.locked";
+
+    private static final String PRIVATE_DNS_KEY = "enable_private_dns";
 
     private static final String SHORTCUT_MANAGER_RESET_KEY = "reset_shortcut_manager_throttling";
 
@@ -2542,6 +2545,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             writeBluetoothEnableInbandRingingOptions();
         } else if (preference == mWebViewMultiprocess) {
             writeWebViewMultiprocessOptions();
+        } else if (PRIVATE_DNS_KEY.equals(preference.getKey())) {
+            markCurrentDnsServersAsPrivate();
         } else if (SHORTCUT_MANAGER_RESET_KEY.equals(preference.getKey())) {
             resetShortcutManagerThrottling();
         } else {
@@ -2854,6 +2859,17 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             } catch (RemoteException e) {
                 Log.e(TAG, "Failed to reset rate limiting", e);
             }
+        }
+    }
+
+    private void markCurrentDnsServersAsPrivate() {
+        final ConnectivityManager connectivityManager = (ConnectivityManager) ServiceManager.getService(Context.CONNECTIVITY_SERVICE);
+        if (connectivityManager == null) {
+            return;
+        }
+        if (connectivityManager.markCurrentDnsServersAsPrivate()) {
+            Toast.makeText(getActivity(), R.string.enable_private_dns_complete,
+                    Toast.LENGTH_SHORT).show();
         }
     }
 

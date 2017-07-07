@@ -426,6 +426,10 @@
         <Preference
             android:key="reset_shortcut_manager_throttling"
             android:title="@string/reset_shortcut_manager_throttling" />
+
+        <Preference
+            android:key="enable_private_dns"
+            android:title="@string/enable_private_dns" />
      </PreferenceCategory>
 
 </PreferenceScreen>
