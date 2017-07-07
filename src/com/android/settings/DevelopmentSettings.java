@@ -46,6 +46,7 @@ import android.content.pm.ResolveInfo;
 import android.content.res.Resources;
 import android.hardware.usb.IUsbManager;
 import android.hardware.usb.UsbManager;
+import android.net.IConnectivityManager;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
 import android.os.BatteryManager;
@@ -238,6 +239,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     private static final String PERSISTENT_DATA_BLOCK_PROP = "ro.frp.pst";
     private static final String FLASH_LOCKED_PROP = "ro.boot.flash.locked";
+
+    private static final String PRIVATE_DNS_KEY = "allow_private_dns";
 
     private static final String SHORTCUT_MANAGER_RESET_KEY = "reset_shortcut_manager_throttling";
 
@@ -2542,6 +2545,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             writeBluetoothEnableInbandRingingOptions();
         } else if (preference == mWebViewMultiprocess) {
             writeWebViewMultiprocessOptions();
+        } else if (PRIVATE_DNS_KEY.equals(preference.getKey())) {
+            allowTlsOnCurrentDnsServers();
         } else if (SHORTCUT_MANAGER_RESET_KEY.equals(preference.getKey())) {
             resetShortcutManagerThrottling();
         } else {
@@ -2854,6 +2859,25 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             } catch (RemoteException e) {
                 Log.e(TAG, "Failed to reset rate limiting", e);
             }
+        }
+    }
+
+    private void allowTlsOnCurrentDnsServers() {
+        final IConnectivityManager connectivityService = IConnectivityManager.Stub
+            .asInterface(ServiceManager.getService(Context.CONNECTIVITY_SERVICE));
+        if (connectivityService == null) {
+            Log.e(TAG, "connectivity manager is null");
+            return;
+        }
+        try {
+            if (connectivityService.allowTlsOnCurrentDnsServers()) {
+                Toast.makeText(getActivity(), R.string.allow_private_dns_complete,
+                        Toast.LENGTH_SHORT).show();
+            } else {
+                Log.e(TAG, "Failed to mark DNS servers as private");
+            }
+        } catch (RemoteException e) {
+            Log.e(TAG, "RemoteException while setting private DNS", e);
         }
     }
 
