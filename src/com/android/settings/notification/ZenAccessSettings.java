@@ -29,6 +29,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageItemInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ParceledListSlice;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.database.ContentObserver;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -132,6 +133,8 @@ public class ZenAccessSettings extends EmptyTextSettings {
         ArraySet<String> autoApproved = new ArraySet<>();
         autoApproved.addAll(mNoMan.getEnabledNotificationListenerPackages());
         requesting.addAll(autoApproved);
+
+        removeFixedNotificationPolicyAccess(apps);
         Collections.sort(apps, new PackageItemInfo.DisplayNameComparator(mPkgMan));
         for (ApplicationInfo app : apps) {
             final String pkg = app.packageName;
@@ -185,6 +188,33 @@ public class ZenAccessSettings extends EmptyTextSettings {
             Log.e(TAG, "Cannot reach packagemanager", e);
         }
         return requestingPackages;
+    }
+
+    /**
+     * If the package has granted to the MANAGE_NOTIFICATIONS permission,
+     * the access of the package can't change, just remove them to avoid
+     * confusing the end user.
+     */
+    void removeFixedNotificationPolicyAccess(List<ApplicationInfo> apps) {
+        for (int i = apps.size() - 1; i >= 0; i--) {
+            if (isManageNotificationsPermissionGranted(apps.get(i).packageName)) {
+                apps.remove(i);
+            }
+        }
+    }
+
+    boolean isManageNotificationsPermissionGranted(String pkg) {
+        try {
+            int uid = mContext.getPackageManager().getPackageUid(pkg, 0);
+            if (PackageManager.PERMISSION_GRANTED == ActivityManager.checkComponentPermission(
+                    android.Manifest.permission.MANAGE_NOTIFICATIONS, uid,
+                    -1, true)) {
+                return true;
+            }
+        } catch (NameNotFoundException e) {
+            return false;
+        }
+        return false;
     }
 
     private boolean hasAccess(String pkg) {
