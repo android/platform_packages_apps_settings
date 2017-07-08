@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b960e04_4719d724",
+        "filename": "src/com/android/settings/deviceinfo/SimStatus.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-07-08T04:05:27Z",
+      "side": 0,
+      "message": "The stack trace\u0027s error is about fragment no longer attached. Shouldn\u0027t we just check that and exit early?\n\nUsing a cached Resources object is not a common practice - we probably shouldn\u0027t cache it in the first place.",
+      "revId": "31a2f413f86c9ad2b7150e5b379d408cac5e7645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
