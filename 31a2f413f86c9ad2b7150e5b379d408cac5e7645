@@ -16,6 +16,24 @@
       "revId": "31a2f413f86c9ad2b7150e5b379d408cac5e7645",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a9e788a_a8bda4d2",
+        "filename": "src/com/android/settings/deviceinfo/SimStatus.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1171399
+      },
+      "writtenOn": "2017-07-08T06:30:50Z",
+      "side": 0,
+      "message": "Hi Fan Zhang,\n\nThanks for your review. But the step is not exit the UI, just rorate screen.\n\nYou can also check google aosp code updateServiceState in SimStatus.java. updateServiceState use mRes instead of getResources.",
+      "parentUuid": "6b960e04_4719d724",
+      "revId": "31a2f413f86c9ad2b7150e5b379d408cac5e7645",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
