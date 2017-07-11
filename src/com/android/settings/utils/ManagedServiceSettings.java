@@ -121,23 +121,23 @@ public abstract class ManagedServiceSettings extends EmptyTextSettings {
                 return true; // already enabled
             }
             // show a scary dialog
-            new ScaryWarningDialogFragment()
-                    .setServiceInfo(service, title)
-                    .show(getFragmentManager(), "dialog");
+            ScaryWarningDialogFragment.build(service, title)
+                    .show(getChildFragmentManager(), "dialog");
             return false;
         }
     }
 
-    public class ScaryWarningDialogFragment extends DialogFragment {
+    public static class ScaryWarningDialogFragment extends DialogFragment {
         static final String KEY_COMPONENT = "c";
         static final String KEY_LABEL = "l";
 
-        public ScaryWarningDialogFragment setServiceInfo(ComponentName cn, String label) {
+        public static ScaryWarningDialogFragment build(ComponentName cn, String label) {
             Bundle args = new Bundle();
             args.putString(KEY_COMPONENT, cn.flattenToString());
             args.putString(KEY_LABEL, label);
-            setArguments(args);
-            return this;
+            ScaryWarningDialogFragment fragment = new ScaryWarningDialogFragment();
+            fragment.setArguments(args);
+            return fragment;
         }
 
         @Override
@@ -148,16 +148,18 @@ public abstract class ManagedServiceSettings extends EmptyTextSettings {
             final ComponentName cn = ComponentName.unflattenFromString(args
                     .getString(KEY_COMPONENT));
 
-            final String title = getResources().getString(mConfig.warningDialogTitle, label);
-            final String summary = getResources().getString(mConfig.warningDialogSummary, label);
-            return new AlertDialog.Builder(mContext)
+            final ManagedServiceSettings parentFragment = (ManagedServiceSettings) getParentFragment();
+            Config config = parentFragment.mConfig;
+            final String title = getResources().getString(config.warningDialogTitle, label);
+            final String summary = getResources().getString(config.warningDialogSummary, label);
+            return new AlertDialog.Builder(getActivity())
                     .setMessage(summary)
                     .setTitle(title)
                     .setCancelable(true)
                     .setPositiveButton(R.string.allow,
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                    mServiceListing.setEnabled(cn, true);
+                                    parentFragment.mServiceListing.setEnabled(cn, true);
                                 }
                             })
                     .setNegativeButton(R.string.deny,

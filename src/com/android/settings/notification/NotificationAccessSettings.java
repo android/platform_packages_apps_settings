@@ -83,9 +83,8 @@ public class NotificationAccessSettings extends ManagedServiceSettings {
                 return true; // already disabled
             }
             // show a friendly dialog
-            new FriendlyWarningDialogFragment()
-                    .setServiceInfo(service, title)
-                    .show(getFragmentManager(), "friendlydialog");
+            FriendlyWarningDialogFragment.build(service, title)
+                    .show(getChildFragmentManager(), "friendlydialog");
             return false;
         } else {
             return super.setEnabled(service, title, enable);
@@ -102,16 +101,17 @@ public class NotificationAccessSettings extends ManagedServiceSettings {
         });
     }
 
-    public class FriendlyWarningDialogFragment extends DialogFragment {
+    public static class FriendlyWarningDialogFragment extends DialogFragment {
         static final String KEY_COMPONENT = "c";
         static final String KEY_LABEL = "l";
 
-        public FriendlyWarningDialogFragment setServiceInfo(ComponentName cn, String label) {
+        public static FriendlyWarningDialogFragment build(ComponentName cn, String label) {
             Bundle args = new Bundle();
             args.putString(KEY_COMPONENT, cn.flattenToString());
             args.putString(KEY_LABEL, label);
-            setArguments(args);
-            return this;
+            FriendlyWarningDialogFragment fragment = new FriendlyWarningDialogFragment();
+            fragment.setArguments(args);
+            return fragment;
         }
 
         @Override
@@ -124,16 +124,17 @@ public class NotificationAccessSettings extends ManagedServiceSettings {
 
             final String summary = getResources().getString(
                     R.string.notification_listener_disable_warning_summary, label);
-            return new AlertDialog.Builder(mContext)
+            return new AlertDialog.Builder(getActivity())
                     .setMessage(summary)
                     .setCancelable(true)
                     .setPositiveButton(R.string.notification_listener_disable_warning_confirm,
                             new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                    mServiceListing.setEnabled(cn, false);
-                                    if (!mNm.isNotificationPolicyAccessGrantedForPackage(
+                                    NotificationAccessSettings parentFragment = (NotificationAccessSettings) getParentFragment();
+                                    parentFragment.mServiceListing.setEnabled(cn, false);
+                                    if (!parentFragment.mNm.isNotificationPolicyAccessGrantedForPackage(
                                             cn.getPackageName())) {
-                                        deleteRules(mContext, cn.getPackageName());
+                                        deleteRules(getActivity(), cn.getPackageName());
                                     }
                                 }
                             })
