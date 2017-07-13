@@ -33,25 +33,51 @@ public class DeviceInfoSettingsTest extends AndroidTestCase {
     @SmallTest
     public void testFormatKernelVersion() throws Exception {
         assertEquals("Unavailable", DeviceInfoUtils.formatKernelVersion(""));
-        assertEquals("2.6.38.8-gg784\n" +
+        assertEquals("2.6.38.8-gg784 (gcc version 4.4.3 (Ubuntu 4.4.3-4ubuntu5) )\n" +
                         "root@hpao4.eem.corp.google.com #2\n" +
                         "Fri Feb 24 03:31:23 PST 2012",
                 DeviceInfoUtils.formatKernelVersion("Linux version 2.6.38.8-gg784 " +
                         "(root@hpao4.eem.corp.google.com) " +
                         "(gcc version 4.4.3 (Ubuntu 4.4.3-4ubuntu5) ) #2 SMP " +
                         "Fri Feb 24 03:31:23 PST 2012"));
-        assertEquals("3.0.31-g6fb96c9\n" +
+        assertEquals("3.0.31-g6fb96c9 (gcc version 4.6.x-google 20120106 (prerelease) (GCC) )\n" +
                         "android-build@vpbs1.mtv.corp.google.com #1\n" +
                         "Thu Jun 28 11:02:39 PDT 2012",
                 DeviceInfoUtils.formatKernelVersion("Linux version 3.0.31-g6fb96c9 " +
                         "(android-build@vpbs1.mtv.corp.google.com) " +
                         "(gcc version 4.6.x-google 20120106 (prerelease) (GCC) ) #1 " +
                         "SMP PREEMPT Thu Jun 28 11:02:39 PDT 2012"));
-        assertEquals("2.6.38.8-a-b-jellybean+\n" +
+        assertEquals("2.6.38.8-a-b-jellybean+ (gcc version 4.4.3 (GCC) )\n" +
                         "x@y #1\n" +
                         "Tue Aug 28 22:10:46 CDT 2012",
                 DeviceInfoUtils.formatKernelVersion("Linux version " +
                         "2.6.38.8-a-b-jellybean+ (x@y) " +
                         "(gcc version 4.4.3 (GCC) ) #1 PREEMPT Tue Aug 28 22:10:46 CDT 2012"));
+
+        assertEquals("4.9.34-g6817df3 (clang version 5.0.0 )\n" +
+                        "x@y #15\n" +
+                        "Thu Jul 13 09:47:26 CST 2017",
+                DeviceInfoUtils.formatKernelVersion("Linux version " +
+                        "4.9.34-g6817df3 (x@y) " +
+                        "(clang version 5.0.0 ) #15 SMP PREEMPT Thu Jul 13 09:47:26 CST 2017"));
+
+        assertEquals("4.9.34-g6817df3 (Android clang version 5.0.300080 (based on LLVM 5.0.300080))\n" +
+                        "x@y #16\n" +
+                        "Thu Jul 13 11:37:03 CST 2017",
+                DeviceInfoUtils.formatKernelVersion("Linux version " +
+                        "4.9.34-g6817df3 (x@y) " +
+                        "(Android clang version 5.0.300080 (based on LLVM 5.0.300080)) " +
+                        "#16 SMP PREEMPT Thu Jul 13 11:37:03 CST 2017"));
+
+        assertEquals("4.9.34-g6817df3 (clang version 5.0.0 " +
+                        "(https://git.llvm.org/git/clang.git 48dec96ecc02497042ad46c7371383db981b1482) " +
+                        "(https://git.llvm.org/git/llvm.git cc6cfc778f99aa110435666c181896e665fd7551))\n" +
+                        "x@y #17\n" +
+                        "Thu Jul 13 14:09:38 CST 2017",
+                DeviceInfoUtils.formatKernelVersion("Linux version " +
+                        "4.9.34-g6817df3 (x@y) (clang version 5.0.0 " +
+                        "(https://git.llvm.org/git/clang.git 48dec96ecc02497042ad46c7371383db981b1482) " +
+                        "(https://git.llvm.org/git/llvm.git cc6cfc778f99aa110435666c181896e665fd7551)) " +
+                        "#17 SMP PREEMPT Thu Jul 13 14:09:38 CST 2017"));
     }
 }
