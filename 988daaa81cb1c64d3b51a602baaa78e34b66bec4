@@ -68,6 +68,75 @@
       "revId": "988daaa81cb1c64d3b51a602baaa78e34b66bec4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "72ee1056_b5f550d7",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-07-16T09:41:49Z",
+      "side": 1,
+      "message": "Put this next to the other networking options, as commented elsewhere.",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 60
+      },
+      "revId": "988daaa81cb1c64d3b51a602baaa78e34b66bec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e7f96dd7_3fff3391",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-07-16T09:41:49Z",
+      "side": 1,
+      "message": "Group this with the other networking options.",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 41
+      },
+      "revId": "988daaa81cb1c64d3b51a602baaa78e34b66bec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0018fb97_bde4909c",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2869,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-07-16T09:41:49Z",
+      "side": 1,
+      "message": "Why do we need this code? \"0.0.0.0/0\" and \"::/0\" are basically \"everything we can ever possibly talk to\". If that\u0027s the intent, then can we just make a boolean for now?",
+      "range": {
+        "startLine": 2868,
+        "startChar": 0,
+        "endLine": 2869,
+        "endChar": 44
+      },
+      "revId": "988daaa81cb1c64d3b51a602baaa78e34b66bec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
