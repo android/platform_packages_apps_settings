@@ -137,6 +137,29 @@
       "revId": "988daaa81cb1c64d3b51a602baaa78e34b66bec4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43e6a85d_ff58ba2b",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2888,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-07-16T09:46:32Z",
+      "side": 1,
+      "message": "This doesn\u0027t fit with the fact that we present this setting to the user as a boolean switch.\n\nIf the user sees this option as being disabled, but the system could do DNS over TLS anyway depending on the destination IP address, the user might find this confusing/surprising/undesired.",
+      "range": {
+        "startLine": 2888,
+        "startChar": 8,
+        "endLine": 2888,
+        "endChar": 70
+      },
+      "revId": "988daaa81cb1c64d3b51a602baaa78e34b66bec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
