@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "57ec1325_304ace4d",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7613,
+      "author": {
+        "id": 1161323
+      },
+      "writtenOn": "2017-07-16T21:45:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31ceeef3_4ea21951",
+      "range": {
+        "startLine": 7613,
+        "startChar": 38,
+        "endLine": 7613,
+        "endChar": 49
+      },
+      "revId": "988daaa81cb1c64d3b51a602baaa78e34b66bec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2789a6f_e0434aaf",
         "filename": "res/values/strings.xml",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-07-16T09:37:07Z",
       "side": 1,
       "message": "Make these consistent with the other networking options:\n\n- Place them in the same place in the file.\n- Use some CHAR_LIMIT that\u0027s consistent with the others.\n- Make the names consistent (make them start with network_?)",
+      "range": {
+        "startLine": 7610,
+        "startChar": 0,
+        "endLine": 7614,
+        "endChar": 131
+      },
+      "revId": "988daaa81cb1c64d3b51a602baaa78e34b66bec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c98d2aa8_f5c8bee7",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7614,
+      "author": {
+        "id": 1161323
+      },
+      "writtenOn": "2017-07-16T21:45:08Z",
+      "side": 1,
+      "message": "Done.  (They\u0027re in the other CL now.)",
+      "parentUuid": "f2789a6f_e0434aaf",
       "range": {
         "startLine": 7610,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "02359533_4edbe6af",
+        "filename": "res/xml/development_prefs.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1161323
+      },
+      "writtenOn": "2017-07-16T21:45:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92d363d1_ae12cec6",
+      "range": {
+        "startLine": 430,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 60
+      },
+      "revId": "988daaa81cb1c64d3b51a602baaa78e34b66bec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "72ee1056_b5f550d7",
         "filename": "src/com/android/settings/DevelopmentSettings.java",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2017-07-16T09:41:49Z",
       "side": 1,
       "message": "Put this next to the other networking options, as commented elsewhere.",
+      "range": {
+        "startLine": 242,
+        "startChar": 0,
+        "endLine": 242,
+        "endChar": 60
+      },
+      "revId": "988daaa81cb1c64d3b51a602baaa78e34b66bec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59b0bc69_bb331bf1",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1161323
+      },
+      "writtenOn": "2017-07-16T21:45:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72ee1056_b5f550d7",
       "range": {
         "startLine": 242,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "98a87ef6_d7d759ea",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1161323
+      },
+      "writtenOn": "2017-07-16T21:45:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7f96dd7_3fff3391",
+      "range": {
+        "startLine": 342,
+        "startChar": 0,
+        "endLine": 342,
+        "endChar": 41
+      },
+      "revId": "988daaa81cb1c64d3b51a602baaa78e34b66bec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0018fb97_bde4909c",
         "filename": "src/com/android/settings/DevelopmentSettings.java",
         "patchSetId": 1
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "0ec134a6_ad48fb3f",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2869,
+      "author": {
+        "id": 1161323
+      },
+      "writtenOn": "2017-07-16T21:45:08Z",
+      "side": 1,
+      "message": "OK, I made it a tristate: \"Always attempt\", \"Never attempt\", and \"Default\".",
+      "parentUuid": "0018fb97_bde4909c",
+      "range": {
+        "startLine": 2868,
+        "startChar": 0,
+        "endLine": 2869,
+        "endChar": 44
+      },
+      "revId": "988daaa81cb1c64d3b51a602baaa78e34b66bec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43e6a85d_ff58ba2b",
         "filename": "src/com/android/settings/DevelopmentSettings.java",
         "patchSetId": 1
@@ -151,6 +295,30 @@
       "writtenOn": "2017-07-16T09:46:32Z",
       "side": 1,
       "message": "This doesn\u0027t fit with the fact that we present this setting to the user as a boolean switch.\n\nIf the user sees this option as being disabled, but the system could do DNS over TLS anyway depending on the destination IP address, the user might find this confusing/surprising/undesired.",
+      "range": {
+        "startLine": 2888,
+        "startChar": 8,
+        "endLine": 2888,
+        "endChar": 70
+      },
+      "revId": "988daaa81cb1c64d3b51a602baaa78e34b66bec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f6eb7b6_5d0d004c",
+        "filename": "src/com/android/settings/DevelopmentSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 2888,
+      "author": {
+        "id": 1161323
+      },
+      "writtenOn": "2017-07-16T21:45:08Z",
+      "side": 1,
+      "message": "OK.  I\u0027ve changed this to ensure that \"Never attempt\" is implemented strictly.",
+      "parentUuid": "43e6a85d_ff58ba2b",
       "range": {
         "startLine": 2888,
         "startChar": 8,
