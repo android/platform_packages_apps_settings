@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "31ceeef3_4ea21951",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7613,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-07-16T09:37:07Z",
+      "side": 1,
+      "message": "What does \"Private DNS\" mean? Should we be more specific, and call this \"DNS over TLS\"?",
+      "range": {
+        "startLine": 7613,
+        "startChar": 38,
+        "endLine": 7613,
+        "endChar": 49
+      },
+      "revId": "988daaa81cb1c64d3b51a602baaa78e34b66bec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2789a6f_e0434aaf",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7614,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-07-16T09:37:07Z",
+      "side": 1,
+      "message": "Make these consistent with the other networking options:\n\n- Place them in the same place in the file.\n- Use some CHAR_LIMIT that\u0027s consistent with the others.\n- Make the names consistent (make them start with network_?)",
+      "range": {
+        "startLine": 7610,
+        "startChar": 0,
+        "endLine": 7614,
+        "endChar": 131
+      },
+      "revId": "988daaa81cb1c64d3b51a602baaa78e34b66bec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92d363d1_ae12cec6",
+        "filename": "res/xml/development_prefs.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2017-07-16T09:37:07Z",
+      "side": 1,
+      "message": "Put this with the other networking options.",
+      "range": {
+        "startLine": 430,
+        "startChar": 0,
+        "endLine": 433,
+        "endChar": 60
+      },
+      "revId": "988daaa81cb1c64d3b51a602baaa78e34b66bec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
