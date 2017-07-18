@@ -87,6 +87,9 @@ public class WifiCallingSettings extends SettingsPreferenceFragment
         @Override
         public void onCallStateChanged(int state, String incomingNumber) {
             final SettingsActivity activity = (SettingsActivity) getActivity();
+            if (activity == null) {
+                return;
+            }
             boolean isNonTtyOrTtyOnVolteEnabled = ImsManager
                     .isNonTtyOrTtyOnVolteEnabled(activity);
             final SwitchBar switchBar = activity.getSwitchBar();
