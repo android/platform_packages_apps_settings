@@ -22,6 +22,29 @@
       "revId": "a519f223f96c6ca407db4eafcccade06d92ce0cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e7472073_7c149535",
+        "filename": "src/com/android/settings/bluetooth/BluetoothNameDialogFragment.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1030662
+      },
+      "writtenOn": "2017-07-30T06:34:43Z",
+      "side": 1,
+      "message": "You can use the single argument version of this method to set cursor position.",
+      "range": {
+        "startLine": 137,
+        "startChar": 24,
+        "endLine": 137,
+        "endChar": 36
+      },
+      "revId": "a519f223f96c6ca407db4eafcccade06d92ce0cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
