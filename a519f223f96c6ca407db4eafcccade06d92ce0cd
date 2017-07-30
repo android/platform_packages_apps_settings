@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60e46a1d_abc0299b",
+        "filename": "src/com/android/settings/bluetooth/BluetoothNameDialogFragment.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1200003
+      },
+      "writtenOn": "2017-07-30T04:40:19Z",
+      "side": 1,
+      "message": "deviceName",
+      "range": {
+        "startLine": 136,
+        "startChar": 25,
+        "endLine": 136,
+        "endChar": 50
+      },
+      "revId": "a519f223f96c6ca407db4eafcccade06d92ce0cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
