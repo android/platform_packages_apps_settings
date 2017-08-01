@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a74b911_6c04e597",
+        "filename": "src/com/android/settings/bluetooth/BluetoothNameDialogFragment.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2017-08-01T13:00:21Z",
+      "side": 1,
+      "message": "mDeviceNameView.setSelection(textLength);\nsetSelection allows to specify the index of the cursor\nditto for the other changes",
+      "revId": "602299048b29bf2614a8e1603a47df4101ab2b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
