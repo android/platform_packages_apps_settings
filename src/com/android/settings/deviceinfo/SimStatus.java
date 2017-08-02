@@ -27,6 +27,7 @@ import android.os.PersistableBundle;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceScreen;
 import android.telephony.CarrierConfigManager;
 import android.telephony.CellBroadcastMessage;
 import android.telephony.PhoneStateListener;
@@ -87,6 +88,8 @@ public class SimStatus extends SettingsPreferenceFragment {
     private static final String KEY_IMEI = "imei";
     private static final String KEY_IMEI_SV = "imei_sv";
     private static final String KEY_ICCID = "iccid";
+    private static final String KEY_IMS_REGISTRATION_STATE = "ims_reg_state";
+
     private static final String COUNTRY_ABBREVIATION_BRAZIL = "br";
 
     static final String CB_AREA_INFO_RECEIVED_ACTION =
@@ -104,10 +107,10 @@ public class SimStatus extends SettingsPreferenceFragment {
     private CarrierConfigManager mCarrierConfigManager;
     private Phone mPhone = null;
     private Resources mRes;
-    private Preference mSignalStrength;
     private SubscriptionInfo mSir;
     private boolean mShowLatestAreaInfo;
     private boolean mShowICCID;
+    private boolean mShowImsRegState;
 
     // Default summary for items
     private String mDefaultText;
@@ -150,8 +153,6 @@ public class SimStatus extends SettingsPreferenceFragment {
 
         mRes = getResources();
         mDefaultText = mRes.getString(R.string.device_info_default);
-        // Note - missing in zaku build, be careful later...
-        mSignalStrength = findPreference(KEY_SIGNAL_STRENGTH);
     }
 
     @Override
@@ -204,10 +205,11 @@ public class SimStatus extends SettingsPreferenceFragment {
     public void onResume() {
         super.onResume();
         if (mPhone != null) {
-            updatePreference();
+            updatePreference(false /* isTabChanged */);
 
             updateSignalStrength(mPhone.getSignalStrength());
             updateServiceState(mPhone.getServiceState());
+            updateImsRegistrationState();
             updateDataState();
             mTelephonyManager.listen(mPhoneStateListener,
                     PhoneStateListener.LISTEN_DATA_CONNECTION_STATE
@@ -324,7 +326,7 @@ public class SimStatus extends SettingsPreferenceFragment {
                 break;
             case ServiceState.STATE_OUT_OF_SERVICE:
                 // Set signal strength to 0 when service state is STATE_OUT_OF_SERVICE
-                mSignalStrength.setSummary("0");
+                setSummaryText(KEY_SIGNAL_STRENGTH, "0");
             case ServiceState.STATE_EMERGENCY_ONLY:
                 // Set summary string of service state to radioInfo_service_out when
                 // service state is both STATE_OUT_OF_SERVICE & STATE_EMERGENCY_ONLY
@@ -333,7 +335,7 @@ public class SimStatus extends SettingsPreferenceFragment {
             case ServiceState.STATE_POWER_OFF:
                 display = mRes.getString(R.string.radioInfo_service_off);
                 // Also set signal strength to 0
-                mSignalStrength.setSummary("0");
+                setSummaryText(KEY_SIGNAL_STRENGTH, "0");
                 break;
         }
 
@@ -354,32 +356,44 @@ public class SimStatus extends SettingsPreferenceFragment {
     }
 
     void updateSignalStrength(SignalStrength signalStrength) {
-        if (mSignalStrength != null) {
-            final int state = mPhone.getServiceState().getState();
+        final int state = mPhone.getServiceState().getState();
 
-            if ((ServiceState.STATE_OUT_OF_SERVICE == state) ||
-                    (ServiceState.STATE_POWER_OFF == state)) {
-                mSignalStrength.setSummary("0");
-                return;
-            }
-
-            int signalDbm = signalStrength.getDbm();
-            int signalAsu = signalStrength.getAsuLevel();
-
-            if (-1 == signalDbm) {
-                signalDbm = 0;
-            }
-
-            if (-1 == signalAsu) {
-                signalAsu = 0;
-            }
-
-            mSignalStrength.setSummary(mRes.getString(R.string.sim_signal_strength,
-                        signalDbm, signalAsu));
+        if ((ServiceState.STATE_OUT_OF_SERVICE == state) ||
+                (ServiceState.STATE_POWER_OFF == state)) {
+            setSummaryText(KEY_SIGNAL_STRENGTH, "0");
+            return;
         }
+
+        int signalDbm = signalStrength.getDbm();
+        int signalAsu = signalStrength.getAsuLevel();
+
+        if (-1 == signalDbm) {
+            signalDbm = 0;
+        }
+
+        if (-1 == signalAsu) {
+            signalAsu = 0;
+        }
+
+        setSummaryText(KEY_SIGNAL_STRENGTH, mRes.getString(R.string.sim_signal_strength, signalDbm,
+                signalAsu));
     }
 
-    private void updatePreference() {
+    private void updateImsRegistrationState() {
+        boolean isImsRegistered = mTelephonyManager.isImsRegistered(mSir.getSubscriptionId());
+        setSummaryText(KEY_IMS_REGISTRATION_STATE, mRes.getString(isImsRegistered ?
+                R.string.ims_reg_status_registered : R.string.ims_reg_status_not_registered));
+    }
+
+    private void updatePreference(boolean isTabChanged) {
+        if (isTabChanged) {
+            PreferenceScreen preferenceScreen = getPreferenceScreen();
+            if (preferenceScreen != null) {
+                preferenceScreen.removeAll();
+                addPreferencesFromResource(R.xml.device_info_sim_status);
+            }
+        }
+
         if (mPhone.getPhoneType() != TelephonyManager.PHONE_TYPE_CDMA) {
             // only show area info when SIM country is Brazil
             if (COUNTRY_ABBREVIATION_BRAZIL.equals(mTelephonyManager.getSimCountryIso(
@@ -391,6 +405,8 @@ public class SimStatus extends SettingsPreferenceFragment {
                 mSir.getSubscriptionId());
         mShowICCID = carrierConfig.getBoolean(
                 CarrierConfigManager.KEY_SHOW_ICCID_IN_SIM_STATUS_BOOL);
+        mShowImsRegState = carrierConfig.getBoolean(
+                CarrierConfigManager.KEY_SHOW_IMS_REGISTRATION_STATUS_BOOL);
 
 
         // If formattedNumber is null or empty, it'll display as "Unknown".
@@ -409,6 +425,10 @@ public class SimStatus extends SettingsPreferenceFragment {
 
         if (!mShowLatestAreaInfo) {
             removePreferenceFromScreen(KEY_LATEST_AREA_INFO);
+        }
+
+        if (!mShowImsRegState) {
+            removePreferenceFromScreen(KEY_IMS_REGISTRATION_STATE);
         }
     }
 
@@ -446,6 +466,7 @@ public class SimStatus extends SettingsPreferenceFragment {
                     @Override
                     public void onServiceStateChanged(ServiceState serviceState) {
                         updateServiceState(serviceState);
+                        updateImsRegistrationState();
                     }
                 };
             }
@@ -465,7 +486,7 @@ public class SimStatus extends SettingsPreferenceFragment {
                     | PhoneStateListener.LISTEN_SERVICE_STATE);
             updateDataState();
             updateNetworkType();
-            updatePreference();
+            updatePreference(true /* isTabChanged */);
         }
     };
 
