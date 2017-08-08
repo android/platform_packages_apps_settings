@@ -35,6 +35,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TabHost;
@@ -452,21 +453,28 @@ public class IccLockSettings extends SettingsPreferenceFragment
     }
 
     private void iccLockChanged(boolean success, int attemptsRemaining) {
+        if(DBG) Log.d(TAG, "iccLockChanged success: "+success);
         if (success) {
             mPinToggle.setChecked(mToState);
         } else {
-            Toast.makeText(getContext(), getPinPasswordErrorMessage(attemptsRemaining),
-                    Toast.LENGTH_LONG).show();
+            setRemainingAttempts(true, attemptsRemaining);
+            createCustomTextToast(getPinPasswordErrorMessage(attemptsRemaining)).show();
         }
         mPinToggle.setEnabled(true);
         resetDialogState();
     }
 
+    private Toast createCustomTextToast(String errorMessage) {
+        Toast toast = Toast.makeText(getActivity().getApplicationContext(), errorMessage, Toast.LENGTH_LONG);
+        toast.getWindowParams().type = WindowManager.LayoutParams.TYPE_STATUS_BAR_PANEL;
+        return toast;
+    }
+
     private void iccPinChanged(boolean success, int attemptsRemaining) {
+        if(DBG) Log.d(TAG, "iccPinChanged success: "+success);
         if (!success) {
-            Toast.makeText(getContext(), getPinPasswordErrorMessage(attemptsRemaining),
-                    Toast.LENGTH_LONG)
-                    .show();
+            setRemainingAttempts(true, attemptsRemaining);
+            createCustomTextToast(getPinPasswordErrorMessage(attemptsRemaining)).show();
         } else {
             Toast.makeText(getContext(), mRes.getString(R.string.sim_change_succeeded),
                     Toast.LENGTH_SHORT)
