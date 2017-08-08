@@ -35,6 +35,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TabHost;
@@ -455,23 +456,29 @@ public class IccLockSettings extends SettingsPreferenceFragment
         if (success) {
             mPinToggle.setChecked(mToState);
         } else {
-            Toast.makeText(getContext(), getPinPasswordErrorMessage(attemptsRemaining),
-                    Toast.LENGTH_LONG).show();
+            showCustomTextToast(getPinPasswordErrorMessage(attemptsRemaining));
         }
         mPinToggle.setEnabled(true);
         resetDialogState();
     }
 
+    private void showCustomTextToast(CharSequence errorMessage) {
+        if (getActivity() == null) {
+           return;
+        }
+        Toast toast = Toast.makeText(getActivity().getApplicationContext(), errorMessage,
+                Toast.LENGTH_LONG);
+        toast.getWindowParams().type = WindowManager.LayoutParams.TYPE_STATUS_BAR_PANEL;
+        toast.show();
+    }
+
     private void iccPinChanged(boolean success, int attemptsRemaining) {
         if (!success) {
-            Toast.makeText(getContext(), getPinPasswordErrorMessage(attemptsRemaining),
-                    Toast.LENGTH_LONG)
-                    .show();
+            showCustomTextToast(getPinPasswordErrorMessage(attemptsRemaining));
         } else {
             Toast.makeText(getContext(), mRes.getString(R.string.sim_change_succeeded),
                     Toast.LENGTH_SHORT)
                     .show();
-
         }
         resetDialogState();
     }
