@@ -2377,7 +2377,7 @@
                   android:launchMode="singleTop"
                   android:excludeFromRecents="true"
                   android:theme="@style/Theme.CryptKeeper"
-                  android:configChanges="mnc|mcc|keyboard|keyboardHidden|uiMode"
+                  android:configChanges="mnc|mcc|keyboard|keyboardHidden|uiMode|touchscreen"
                   android:windowSoftInputMode="adjustResize"
                   android:screenOrientation="nosensor"
                   android:process=":CryptKeeper">

@@ -563,6 +563,10 @@ public class CryptKeeper extends Activity implements TextView.OnEditorActionList
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if(mStatusBar != null){
+            Log.d(TAG, "CryptKeeper destroyed, need release StatusBar locks");
+            mStatusBar.disable(StatusBarManager.DISABLE_NONE);
+        }
 
         if (mWakeLock != null) {
             Log.d(TAG, "Releasing and destroying wakelock");
