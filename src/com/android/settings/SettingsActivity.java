@@ -1276,7 +1276,8 @@ public class SettingsActivity extends SettingsDrawerActivity
     }
 
     public void startSuggestion(Intent intent) {
-        if (intent == null || ActivityManager.isUserAMonkey()) {
+        if (intent == null || ActivityManager.isUserAMonkey()
+                || getPackageManager().queryIntentActivities(intent, 0).isEmpty()) {
             return;
         }
         mCurrentSuggestion = intent.getComponent();
