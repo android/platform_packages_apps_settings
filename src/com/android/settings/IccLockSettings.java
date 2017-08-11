@@ -160,7 +160,6 @@ public class IccLockSettings extends SettingsPreferenceFragment
 
         if (Utils.isMonkeyRunning()) {
             finish();
-            return;
         }
 
         addPreferencesFromResource(R.xml.sim_lock_settings);
