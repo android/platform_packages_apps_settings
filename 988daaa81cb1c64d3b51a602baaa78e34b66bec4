@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "63a4ebd1_d9db9eac",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7613,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-08-11T22:31:44Z",
+      "side": 1,
+      "message": "\"Private DNS\" was, IIRC, dkg\u0027s term since it might be used in a protocol-agnostic way (if DNS-over-{HTTPS,QUIC,SecureCarrierPigeon} ever becomes something we support).\n\nI\u0027ll write up a quick doc to summarize.",
+      "parentUuid": "31ceeef3_4ea21951",
+      "range": {
+        "startLine": 7613,
+        "startChar": 38,
+        "endLine": 7613,
+        "endChar": 49
+      },
+      "revId": "988daaa81cb1c64d3b51a602baaa78e34b66bec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2789a6f_e0434aaf",
         "filename": "res/values/strings.xml",
         "patchSetId": 1
