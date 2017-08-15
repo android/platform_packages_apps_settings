@@ -28,6 +28,7 @@ import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
 import android.text.format.Formatter;
 import android.text.format.Time;
+import android.text.InputFilter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -254,6 +255,8 @@ public class BillingCycleSettings extends DataUsageBase implements
 
                 type.setSelection(0);
             }
+            // Limit input length
+            bytesPicker.setFilters(new InputFilter[] { new InputFilter.LengthFilter(7) });
         }
 
         private String formatText(float v) {
