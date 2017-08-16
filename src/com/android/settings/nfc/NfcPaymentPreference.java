@@ -19,6 +19,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.preference.PreferenceViewHolder;
@@ -211,7 +212,9 @@ public class NfcPaymentPreference extends CustomDialogPreference implements
             if (!appInfo.isDefault) {
                 mPaymentBackend.setDefaultPaymentApp(appInfo.componentName);
             }
-            getDialog().dismiss();
+            Dialog dialog = getDialog();
+            if (dialog != null)
+                dialog.dismiss();
         }
     }
 }
