@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4abf8f9c_2db831cc",
+        "filename": "src/com/android/settings/datausage/BillingCycleSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1200003
+      },
+      "writtenOn": "2017-08-19T02:45:12Z",
+      "side": 1,
+      "message": "when will the dialog dismiss and when the new instance of InputFilter and LengthFilter will be destoryed？\nif I show the dialog for many times,then there is many instance of Inputfilter and LengthFilter....",
+      "revId": "2ed8f4dd5ec559e84e00472ff706216a60e667af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
