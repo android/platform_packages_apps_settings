@@ -16,6 +16,24 @@
       "revId": "2ed8f4dd5ec559e84e00472ff706216a60e667af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fc349463_8b279e69",
+        "filename": "src/com/android/settings/datausage/BillingCycleSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1092708
+      },
+      "writtenOn": "2017-08-19T13:05:47Z",
+      "side": 1,
+      "message": "I don\u0027t see any reason why that would be necessary (in Java).",
+      "parentUuid": "4abf8f9c_2db831cc",
+      "revId": "2ed8f4dd5ec559e84e00472ff706216a60e667af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
