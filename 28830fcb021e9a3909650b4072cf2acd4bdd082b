@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ad51922_a27bafd6",
+        "filename": "src/com/android/settings/fingerprint/FingerprintSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1200003
+      },
+      "writtenOn": "2017-08-19T02:19:49Z",
+      "side": 1,
+      "message": "could u show this Activity to user,not return?\nthe build config vulue will be set to be 1 after setupwizard in Provision,but here the value is 0. so I am just wonder why not show this activity to user.",
+      "revId": "28830fcb021e9a3909650b4072cf2acd4bdd082b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
