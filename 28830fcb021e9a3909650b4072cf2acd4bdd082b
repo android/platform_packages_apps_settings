@@ -16,6 +16,24 @@
       "revId": "28830fcb021e9a3909650b4072cf2acd4bdd082b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d26fa924_d9f9a731",
+        "filename": "src/com/android/settings/fingerprint/FingerprintSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1077031
+      },
+      "writtenOn": "2017-08-22T08:57:14Z",
+      "side": 1,
+      "message": "This activity is used after setupwizard is completed, so it will be shown to user if \"help_url_fingerprint\" config is set.",
+      "parentUuid": "4ad51922_a27bafd6",
+      "revId": "28830fcb021e9a3909650b4072cf2acd4bdd082b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
