@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cf1ec6d_a0424af1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2017-08-24T19:55:43Z",
+      "side": 1,
+      "message": "Could you please add the corresponding bug number to the commit message? Thanks!",
+      "revId": "3adad14d39dad3c527261124db7d98b46dda0030",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
