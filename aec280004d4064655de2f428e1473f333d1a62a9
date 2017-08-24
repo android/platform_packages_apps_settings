@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4fffa6ae_96fa098e",
+        "filename": "src/com/android/settings/search2/DatabaseIndexingUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-08-24T20:02:49Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 206,
+        "startChar": 61,
+        "endLine": 206,
+        "endChar": 63
+      },
+      "revId": "aec280004d4064655de2f428e1473f333d1a62a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27c6d5a1_3fd2da89",
+        "filename": "src/com/android/settings/search2/DatabaseIndexingUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-08-24T20:02:49Z",
+      "side": 1,
+      "message": "Please add test for this method in test/robotests/\n\nTo run the entire test suite: make -j40 RunSettingsRoboTests\n\nTo run individual test file: make -j40 RunSettingsRoboTests ROBOTEST_FILTER\u003d\u003cTest file name\u003e",
+      "range": {
+        "startLine": 206,
+        "startChar": 3,
+        "endLine": 206,
+        "endChar": 43
+      },
+      "revId": "aec280004d4064655de2f428e1473f333d1a62a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ac477a8a_63d941c2",
+        "filename": "src/com/android/settings/search2/DatabaseIndexingUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-08-24T20:02:49Z",
+      "side": 1,
+      "message": "final",
+      "revId": "aec280004d4064655de2f428e1473f333d1a62a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ebee624e_22e9b09e",
+        "filename": "src/com/android/settings/search2/DatabaseIndexingUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-08-24T20:02:49Z",
+      "side": 1,
+      "message": "cache this",
+      "range": {
+        "startLine": 210,
+        "startChar": 28,
+        "endLine": 210,
+        "endChar": 48
+      },
+      "revId": "aec280004d4064655de2f428e1473f333d1a62a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
