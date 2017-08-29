@@ -93,7 +93,13 @@ public class WifiCallingSettings extends SettingsPreferenceFragment
             boolean isWfcEnabled = switchBar.getSwitch().isChecked()
                     && isNonTtyOrTtyOnVolteEnabled;
 
-            switchBar.setEnabled((state == TelephonyManager.CALL_STATE_IDLE)
+            // Use TelephonyManager#getCallStete instead of 'state' parameter because it needs to
+            // check the current state of all phone calls.
+            TelephonyManager telephonyManager =
+                    (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+            int callState = telephonyManager.getCallState();
+
+            switchBar.setEnabled((callState == TelephonyManager.CALL_STATE_IDLE)
                     && isNonTtyOrTtyOnVolteEnabled);
 
             boolean isWfcModeEditable = true;
@@ -113,12 +119,12 @@ public class WifiCallingSettings extends SettingsPreferenceFragment
             Preference pref = getPreferenceScreen().findPreference(BUTTON_WFC_MODE);
             if (pref != null) {
                 pref.setEnabled(isWfcEnabled && isWfcModeEditable
-                        && (state == TelephonyManager.CALL_STATE_IDLE));
+                        && (callState == TelephonyManager.CALL_STATE_IDLE));
             }
             Preference pref_roam = getPreferenceScreen().findPreference(BUTTON_WFC_ROAMING_MODE);
             if (pref_roam != null) {
                 pref_roam.setEnabled(isWfcEnabled && isWfcRoamingModeEditable
-                        && (state == TelephonyManager.CALL_STATE_IDLE));
+                        && (callState == TelephonyManager.CALL_STATE_IDLE));
             }
         }
     };
