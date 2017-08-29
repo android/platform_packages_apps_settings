@@ -16,6 +16,29 @@
       "revId": "3adad14d39dad3c527261124db7d98b46dda0030",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b686bd78_b23d9681",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2017-08-29T17:11:04Z",
+      "side": 1,
+      "message": "We are now enforcing automated test with code check into the Settings app. Could you please add the corresponding test cases in the test folder (tests/robotests/)?\n\nCommand to run the test suite:\n\nmake RunSettingsRoboTests",
+      "range": {
+        "startLine": 24,
+        "startChar": 6,
+        "endLine": 24,
+        "endChar": 17
+      },
+      "revId": "3adad14d39dad3c527261124db7d98b46dda0030",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
