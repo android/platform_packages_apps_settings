@@ -16,6 +16,24 @@
       "revId": "1ef4caaf3f80498f8c682bb8f8791a960ac32ba0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa740739_cafef2e2",
+        "filename": "tests/robotests/src/com/android/settings/search/IntentSearchViewHolderTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-08-31T20:56:36Z",
+      "side": 1,
+      "message": "Apparently, it is enabled in internal master but was disabled in O by commenting out @Test, which errorprone doesn\u0027t like.",
+      "parentUuid": "60484500_75e4c5aa",
+      "revId": "1ef4caaf3f80498f8c682bb8f8791a960ac32ba0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
