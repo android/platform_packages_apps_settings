@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fce1481a_fb367792",
+        "filename": "src/com/android/settings/datausage/BillingCycleSettings.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-09-01T18:19:54Z",
+      "side": 1,
+      "message": "Instead of setting a limit to input, we should make the display not show scientific notation.",
+      "revId": "6967cc2685d1ecf8b18834155ef514e7648b4242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
