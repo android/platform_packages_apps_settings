@@ -56,7 +56,10 @@
         <item name="android:layout">@layout/preference_dropdown_material_settings</item>
     </style>
 
-    <style name="SettingsDialogPreference" parent="SettingsPreference" />
+    <style name="SettingsDialogPreference" parent="SettingsPreference">
+        <item name="android:positiveButtonText">@android:string/ok</item>
+        <item name="android:negativeButtonText">@android:string/cancel</item>
+    </style>
 
     <style name="SettingsPreferenceCategory" parent="@style/Preference.Category.Material">
         <item name="allowDividerAbove">true</item>
