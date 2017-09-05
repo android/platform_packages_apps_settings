@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2950a24_2c890f31",
+        "filename": "src/com/android/settings/fingerprint/FingerprintSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1004017
+      },
+      "writtenOn": "2017-09-05T22:35:46Z",
+      "side": 1,
+      "message": "This will fix the crash, but if this preference isn\u0027t present, it probably indicates a problem somewhere else.",
+      "range": {
+        "startLine": 561,
+        "startChar": 37,
+        "endLine": 561,
+        "endChar": 42
+      },
+      "revId": "ab6f11f47f8842c8c0baccf9a171ffee5a09e490",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
