@@ -1,0 +1,10 @@
+Verified+1: Maurice Lam <yukl@google.com>
+Code-Review+1: Maurice Lam <yukl@google.com>
+Code-Review+2: Jim Miller <jaggies@google.com>
+Autosubmit+1: Jim Miller <jaggies@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Wed, 06 Sep 2017 00:12:43 +0000
+Reviewed-on: https://android-review.googlesource.com/475979
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
