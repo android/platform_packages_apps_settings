@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f17d9c98_90bffbbb",
+        "filename": "src/com/android/settings/TrustedCredentialsSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1045544
+      },
+      "writtenOn": "2017-09-06T12:00:05Z",
+      "side": 1,
+      "message": "Can\u0027t you just synchronize on mKeychainConnectionByProfileId?",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 46
+      },
+      "revId": "b76438e417677258f9315116405823578cdb5630",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
