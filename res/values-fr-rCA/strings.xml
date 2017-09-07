@@ -29,7 +29,7 @@
       <item quantity="other">Plus que <xliff:g id="STEP_COUNT_1">%1$d</xliff:g> étapes pour devenir un développeur.</item>
     </plurals>
     <string name="show_dev_on" msgid="1110711554982716293">"Vous êtes désormais un développeur!"</string>
-    <string name="show_dev_already" msgid="2151632240145446227">"Inuti, vous êtes déjà un développeur."</string>
+    <string name="show_dev_already" msgid="2151632240145446227">"Inutile, vous êtes déjà un développeur."</string>
     <string name="header_category_wireless_networks" msgid="5110914332313954940">"Sans fil et réseaux"</string>
     <string name="header_category_connections" msgid="6471513040815680662">"Connexions"</string>
     <string name="header_category_device" msgid="4544026001618307754">"Appareil"</string>
