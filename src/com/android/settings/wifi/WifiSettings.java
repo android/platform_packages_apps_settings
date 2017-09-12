@@ -97,6 +97,7 @@ public class WifiSettings extends RestrictedSettingsFragment
     private static final int MENU_ID_FORGET = Menu.FIRST + 7;
     private static final int MENU_ID_MODIFY = Menu.FIRST + 8;
     private static final int MENU_ID_WRITE_NFC = Menu.FIRST + 9;
+    private static final int MENU_ID_AUTO_CONNECT = Menu.FIRST + 10;
 
     public static final int WIFI_DIALOG_ID = 1;
     /* package */ static final int WPS_PBC_DIALOG_ID = 2;
@@ -489,6 +490,12 @@ public class WifiSettings extends RestrictedSettingsFragment
                         menu.add(Menu.NONE, MENU_ID_WRITE_NFC, 0, R.string.wifi_menu_write_to_nfc);
                     }
                 }
+                if (mSelectedAccessPoint.isSaved() && !mSelectedAccessPoint.isPasspoint()) {
+                    MenuItem item = menu.add(
+                        Menu.NONE, MENU_ID_AUTO_CONNECT, 0, R.string.wifi_menu_auto_connect);
+                    item.setCheckable(true);
+                    item.setChecked(config.autoConnect != WifiConfiguration.AUTOCONNECT_DISABLED);
+                }
             }
     }
 
@@ -522,6 +529,14 @@ public class WifiSettings extends RestrictedSettingsFragment
             case MENU_ID_WRITE_NFC:
                 showDialog(WRITE_NFC_DIALOG_ID);
                 return true;
+            case MENU_ID_AUTO_CONNECT: {
+                WifiConfiguration newConfig = new WifiConfiguration();
+                newConfig.networkId = mSelectedAccessPoint.getConfig().networkId;
+                newConfig.autoConnect = item.isChecked() ? 0 : 1;
+                mWifiManager.save(newConfig, mSaveListener);
+                mWifiTracker.resumeScanning();
+                return true;
+            }
 
         }
         return super.onContextItemSelected(item);

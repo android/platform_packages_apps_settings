@@ -16,6 +16,7 @@
 
 package com.android.settings.wifi;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Resources;
@@ -28,6 +29,12 @@ import android.provider.SearchIndexableResource;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
@@ -52,6 +59,9 @@ import java.util.List;
 public class SavedAccessPointsWifiSettings extends SettingsPreferenceFragment
         implements Indexable, WifiDialog.WifiDialogListener {
     private static final String TAG = "SavedAccessPointsWifiSettings";
+    private static final int MENU_ID_AUTO_CONNECT = Menu.FIRST;
+    private WifiManager.ActionListener mSaveListener;
+
     private static final Comparator<AccessPoint> SAVED_NETWORK_COMPARATOR =
             new Comparator<AccessPoint>() {
         final Collator mCollator = Collator.getInstance();
@@ -118,6 +128,61 @@ public class SavedAccessPointsWifiSettings extends SettingsPreferenceFragment
                     savedInstanceState.getBundle(SAVE_DIALOG_ACCESS_POINT_STATE);
             }
         }
+        mSaveListener = new WifiManager.ActionListener() {
+            @Override
+            public void onSuccess() {
+            }
+            @Override
+            public void onFailure(int reason) {
+                Activity activity = getActivity();
+                if (activity != null) {
+                    Toast.makeText(activity,
+                            R.string.wifi_failed_save_message,
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+        };
+
+        registerForContextMenu(getListView());
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View view, ContextMenuInfo info) {
+        Preference preference = (Preference) view.getTag();
+        if (preference instanceof AccessPointPreference) {
+            mSelectedAccessPoint = ((AccessPointPreference) preference).getAccessPoint();
+            if (mSelectedAccessPoint.isSaved() && !mSelectedAccessPoint.isPasspoint()) {
+                menu.setHeaderTitle(mSelectedAccessPoint.getSsid());
+                MenuItem item = menu.add(
+                        Menu.NONE, MENU_ID_AUTO_CONNECT, 0, R.string.wifi_menu_auto_connect);
+                item.setCheckable(true);
+                final List<WifiConfiguration> configs = mWifiManager.getConfiguredNetworks();
+                for (WifiConfiguration config : configs) {
+                    if (mSelectedAccessPoint.getConfig().networkId == config.networkId) {
+                        item.setChecked(config.autoConnect
+                                != WifiConfiguration.AUTOCONNECT_DISABLED);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        if (mSelectedAccessPoint == null) {
+            return super.onContextItemSelected(item);
+        }
+        switch (item.getItemId()) {
+            case MENU_ID_AUTO_CONNECT: {
+                WifiConfiguration newConfig = new WifiConfiguration();
+                newConfig.networkId = mSelectedAccessPoint.getConfig().networkId;
+                newConfig.autoConnect = item.isChecked() ? 0 : 1;
+                mWifiManager.save(newConfig, mSaveListener);
+                return true;
+            }
+        }
+        return super.onContextItemSelected(item);
     }
 
     private void initPreferences() {
