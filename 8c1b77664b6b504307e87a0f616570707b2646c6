@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76383277_c526dc21",
+        "filename": "src/com/android/settings/search2/DatabaseIndexingUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-09-14T20:14:43Z",
+      "side": 1,
+      "message": "Looking at this again I wonder it solves 100% of the problem for JP.\n\nThe code here is run at indexing time, so if I read this correctly you are converting all hiragana characters to katakana and store into db.\n\nAt query time if user types katakana the string will happily match, but what if the user still types hiragana? \n \n\nalso, I guess kanji is entirely out of scope?",
+      "revId": "8c1b77664b6b504307e87a0f616570707b2646c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
