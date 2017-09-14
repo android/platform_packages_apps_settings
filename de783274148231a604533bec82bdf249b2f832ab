@@ -22,6 +22,30 @@
       "revId": "de783274148231a604533bec82bdf249b2f832ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "186377da_c67d6119",
+        "filename": "src/com/android/settings/dashboard/DashboardSummary.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-09-14T17:38:18Z",
+      "side": 1,
+      "message": "This is not safe. condition manager can have multiple listeners, but it doesn\u0027t necessarily mean they are all DashboardSummary fragment.",
+      "parentUuid": "fbdefa11_7a78adf8",
+      "range": {
+        "startLine": 145,
+        "startChar": 48,
+        "endLine": 145,
+        "endChar": 50
+      },
+      "revId": "de783274148231a604533bec82bdf249b2f832ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
