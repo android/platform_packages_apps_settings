@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a128406a_3b4903a3",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPairingController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1071489
+      },
+      "writtenOn": "2017-09-14T20:07:03Z",
+      "side": 1,
+      "message": "Semantically, this seems the wrong place to set / update the internal state - a getter method getFoo() should just get current state without\nany set/update operations.",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 89
+      },
+      "revId": "203ea37b65f54d90547b2d022b489390debdf8ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
