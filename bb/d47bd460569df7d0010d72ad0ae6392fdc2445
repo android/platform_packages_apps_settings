@@ -1,0 +1,10 @@
+Code-Review+1: edgar huang <edgar.huang@spreadtrum.com>
+Code-Review+2: Kevin Chyn <kchyn@google.com>
+Verified+1: Maurice Lam <yukl@google.com>
+Autosubmit+1: Maurice Lam <yukl@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Thu, 14 Sep 2017 20:28:54 +0000
+Reviewed-on: https://android-review.googlesource.com/483437
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
