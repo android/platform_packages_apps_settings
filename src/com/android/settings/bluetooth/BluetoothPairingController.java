@@ -165,8 +165,10 @@ public class BluetoothPairingController implements OnCheckedChangeListener,
             default:
                 if (mDevice.getBluetoothClass().getDeviceClass()
                         == BluetoothClass.Device.AUDIO_VIDEO_HANDSFREE) {
+                    mDevice.setPhonebookAccessPermission(BluetoothDevice.ACCESS_ALLOWED);
                     return true;
                 }
+                mDevice.setPhonebookAccessPermission(BluetoothDevice.ACCESS_REJECTED);
                 return false;
         }
     }
