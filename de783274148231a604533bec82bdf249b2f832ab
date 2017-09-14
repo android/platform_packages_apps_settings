@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fbdefa11_7a78adf8",
+        "filename": "src/com/android/settings/dashboard/DashboardSummary.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1223414
+      },
+      "writtenOn": "2017-09-14T07:53:04Z",
+      "side": 1,
+      "message": "I think that \"\u003e0\" is more better \"\u003e\u003d1\" .",
+      "range": {
+        "startLine": 145,
+        "startChar": 48,
+        "endLine": 145,
+        "endChar": 50
+      },
+      "revId": "de783274148231a604533bec82bdf249b2f832ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
