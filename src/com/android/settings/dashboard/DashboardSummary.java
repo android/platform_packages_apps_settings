@@ -141,6 +141,10 @@ public class DashboardSummary extends InstrumentedFragment
         if (!getActivity().isChangingConfigurations()) {
             mAdapter.onPause();
         }
+
+        if (mConditionManager.getListenerSize() >= 1) {
+            mConditionManager.remListener(this);
+        }
     }
 
     @Override

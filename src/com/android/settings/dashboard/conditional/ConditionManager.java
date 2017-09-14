@@ -239,6 +239,10 @@ public class ConditionManager implements LifecycleObserver, OnResume, OnPause {
         mListeners.remove(listener);
     }
 
+    public int getListenerSize() {
+        return mListeners.size();
+    }
+
     @Override
     public void onResume() {
         for (int i = 0, size = mConditions.size(); i < size; i++) {
