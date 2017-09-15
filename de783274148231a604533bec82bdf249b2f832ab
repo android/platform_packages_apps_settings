@@ -46,6 +46,30 @@
       "revId": "de783274148231a604533bec82bdf249b2f832ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0d9657d_436a352c",
+        "filename": "src/com/android/settings/dashboard/DashboardSummary.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1228883
+      },
+      "writtenOn": "2017-09-15T01:33:20Z",
+      "side": 1,
+      "message": "Hi,fan\nthank you for your review.\nAt this case ,there is none side effect of other multiple listeners, because we just remove the dashboardsummary\u0027s condition listener.\nhere paramater \"this\" of the method \"remListener()\" just equal itself, so it will not remove others listeners.",
+      "parentUuid": "186377da_c67d6119",
+      "range": {
+        "startLine": 145,
+        "startChar": 48,
+        "endLine": 145,
+        "endChar": 50
+      },
+      "revId": "de783274148231a604533bec82bdf249b2f832ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
