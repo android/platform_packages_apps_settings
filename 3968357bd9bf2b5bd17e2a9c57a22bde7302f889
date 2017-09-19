@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d32b0cf7_0f76cd27",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2017-09-19T17:36:08Z",
+      "side": 1,
+      "message": "Thank you for the fix!\n\nWe are now enforcing auto test run for code check-in. So, could you please add a testcase in tests/robotests/src/com/android/settings/applications/UsageAccessDetailsTest.java to verify that if the app is uninstalled, it will not crash?\n\nTo run full robotest:\nmake RunSettingsRoboTests\n\nTo run individual test:\nmake ROBOTEST_FILTER\u003d\"(UsageAccessDetailsTest)\" RunSettingsRoboTests",
+      "range": {
+        "startLine": 12,
+        "startChar": 5,
+        "endLine": 12,
+        "endChar": 35
+      },
+      "revId": "3968357bd9bf2b5bd17e2a9c57a22bde7302f889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
