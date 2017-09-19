@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3413503_165211eb",
+        "filename": "src/com/android/settings/applications/UsageAccessDetails.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1045544
+      },
+      "writtenOn": "2017-09-19T10:51:22Z",
+      "side": 1,
+      "message": "I would check this in onCreate() once, after the super call, and assume it\u0027s valid until something reports an error while trying to read information about the app.\n\nExplicitly checking getPackageInfo() in advance every time you want to use AppStateAppOpsBridge is kind of messy too, if you were doing something like this I\u0027d rather have something like onPackageUninstalled() {finish();}\n\nAlso, Doris added an \"if (requestedPermissions !\u003d null) {\" around the code segment from your bug as of O release -- is you sure the getPackageInfo() line still actually necessary to stop crashing?",
+      "range": {
+        "startLine": 142,
+        "startChar": 16,
+        "endLine": 142,
+        "endChar": 36
+      },
+      "revId": "ff74faf6b4afdb702388b18cce5a9f2f53cb17c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
