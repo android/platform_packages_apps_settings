@@ -23,6 +23,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.os.UserHandle;
@@ -137,6 +138,13 @@ public class UsageAccessDetails extends AppInfoWithHeader implements OnPreferenc
 
     @Override
     protected boolean refreshUi() {
+        try {
+            if (mPackageInfo == null || mPm.getPackageInfo(mPackageName, 0) == null) {
+                return false;
+            }
+        } catch (NameNotFoundException e) {
+            return false;
+        }
         mUsageState = mUsageBridge.getUsageInfo(mPackageName,
                 mPackageInfo.applicationInfo.uid);
 
