@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4469d405_31bc41b0",
+        "filename": "src/com/android/settings/search2/DatabaseIndexingUtils.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1200003
+      },
+      "writtenOn": "2017-09-20T15:14:41Z",
+      "side": 1,
+      "message": "what this mean?if the input is null,the the sb is \"\",then,what is the result of this statement?",
+      "range": {
+        "startLine": 221,
+        "startChar": 66,
+        "endLine": 221,
+        "endChar": 80
+      },
+      "revId": "d0998f2a03e86c1381a946c5178fdf6a1f12cd30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
