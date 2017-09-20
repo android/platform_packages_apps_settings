@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d938c6fe_bc592a6d",
+        "filename": "src/com/android/settings/deviceinfo/SimStatus.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1200003
+      },
+      "writtenOn": "2017-09-20T14:36:58Z",
+      "side": 1,
+      "message": "final int voiceState \u003d serviceState.getVoiceRegState();\nfinal int dataState \u003d serviceState.getDataRegState();",
+      "range": {
+        "startLine": 318,
+        "startChar": 8,
+        "endLine": 319,
+        "endChar": 73
+      },
+      "revId": "aa0332f7a6eeac9cbe7471e2f1584575cca4da3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
