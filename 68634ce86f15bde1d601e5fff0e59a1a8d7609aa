@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3586f5b8_d8854fc7",
+        "filename": "src/com/android/settings/deviceinfo/SimStatus.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1200003
+      },
+      "writtenOn": "2017-09-20T14:56:22Z",
+      "side": 1,
+      "message": "updateDataState();    \nupdateNetworkType();\nupdatePreference(true /* isTabChanged */);\n\nif u remove all preference,then,the method of updateDataState and updateNetworkType was still working?",
+      "range": {
+        "startLine": 392,
+        "startChar": 15,
+        "endLine": 393,
+        "endChar": 73
+      },
+      "revId": "68634ce86f15bde1d601e5fff0e59a1a8d7609aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
