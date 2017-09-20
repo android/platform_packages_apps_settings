@@ -22,6 +22,29 @@
       "revId": "3968357bd9bf2b5bd17e2a9c57a22bde7302f889",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4c0a1a5_6158fa89",
+        "filename": "src/com/android/settings/applications/AppInfoBase.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1200003
+      },
+      "writtenOn": "2017-09-20T15:25:25Z",
+      "side": 1,
+      "message": "er,why there is a false judgement in this place?",
+      "range": {
+        "startLine": 113,
+        "startChar": 11,
+        "endLine": 113,
+        "endChar": 25
+      },
+      "revId": "3968357bd9bf2b5bd17e2a9c57a22bde7302f889",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
