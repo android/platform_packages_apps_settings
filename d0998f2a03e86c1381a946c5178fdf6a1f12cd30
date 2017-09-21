@@ -22,6 +22,30 @@
       "revId": "d0998f2a03e86c1381a946c5178fdf6a1f12cd30",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff8e5c83_47ac48bc",
+        "filename": "src/com/android/settings/search2/DatabaseIndexingUtils.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1077031
+      },
+      "writtenOn": "2017-09-21T01:55:53Z",
+      "side": 1,
+      "message": "It means removing Combining Diacritical Marks. if the sb is \"\", the result is \"\".",
+      "parentUuid": "4469d405_31bc41b0",
+      "range": {
+        "startLine": 221,
+        "startChar": 66,
+        "endLine": 221,
+        "endChar": 80
+      },
+      "revId": "d0998f2a03e86c1381a946c5178fdf6a1f12cd30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
