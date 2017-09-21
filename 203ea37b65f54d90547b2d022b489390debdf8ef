@@ -22,6 +22,30 @@
       "revId": "203ea37b65f54d90547b2d022b489390debdf8ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "19f93036_e2ac192a",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPairingController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1140634
+      },
+      "writtenOn": "2017-09-21T05:12:09Z",
+      "side": 1,
+      "message": "Please suggest where we should update this flag otherwise ?\n\nShould we move this to packages/apps/Settings/src/com/android/settings/bluetooth/BluetoothPairingDialogFragment.java where this is used as contactSharing.setChecked(mPairingController.getContactSharingState()); at 2 places, so we would need to add same change at 2 places.",
+      "parentUuid": "a128406a_3b4903a3",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 89
+      },
+      "revId": "203ea37b65f54d90547b2d022b489390debdf8ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
