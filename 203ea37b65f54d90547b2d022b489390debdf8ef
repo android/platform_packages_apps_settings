@@ -46,6 +46,30 @@
       "revId": "203ea37b65f54d90547b2d022b489390debdf8ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cf75caaa_7e35c24b",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPairingController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1071489
+      },
+      "writtenOn": "2017-09-21T18:02:05Z",
+      "side": 1,
+      "message": "Yes please - move to BluetoothPairingDialogFragment.java .\nOtherwise, having a set operation inside a get method can create\nvery unpleasant surprises in the future.\n\nIndeed, even though we have to update the flag in two places:\ncreatePinEntryView() and createView(), it seems those two methods\nalready have some code duplication. In the future both methods\nshould be refactored and then we won\u0027t have the call in two places.",
+      "parentUuid": "19f93036_e2ac192a",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 89
+      },
+      "revId": "203ea37b65f54d90547b2d022b489390debdf8ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
