@@ -22,6 +22,30 @@
       "revId": "68634ce86f15bde1d601e5fff0e59a1a8d7609aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b4cbf29_8c485b41",
+        "filename": "src/com/android/settings/deviceinfo/SimStatus.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1124113
+      },
+      "writtenOn": "2017-09-22T07:17:40Z",
+      "side": 1,
+      "message": "Thank you for your comments. They were not run after all preferences are removed.\n\nWe didn\u0027t see the problem since onDataConnectionSatateChanged() is called by chance when I tested. So, updateDataState() and updateNetworkType() were called from onDataConnectionSatateChanged().\n\nAnyway, you\u0027re correct. We fixed this bug in patch set 3.",
+      "parentUuid": "3586f5b8_d8854fc7",
+      "range": {
+        "startLine": 392,
+        "startChar": 15,
+        "endLine": 393,
+        "endChar": 73
+      },
+      "revId": "68634ce86f15bde1d601e5fff0e59a1a8d7609aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
