@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad06a57b_93619ce1",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPairingController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1071489
+      },
+      "writtenOn": "2017-09-22T08:54:40Z",
+      "side": 1,
+      "message": "Not needed - this method could be used by other components in the future.",
+      "range": {
+        "startLine": 175,
+        "startChar": 7,
+        "endLine": 175,
+        "endChar": 46
+      },
+      "revId": "002c998a4e487911304474bbd6e5223970e1cec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa016027_8fd357a1",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPairingController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1071489
+      },
+      "writtenOn": "2017-09-22T08:54:40Z",
+      "side": 1,
+      "message": "Nit: space after \"if\".",
+      "range": {
+        "startLine": 179,
+        "startChar": 8,
+        "endLine": 179,
+        "endChar": 11
+      },
+      "revId": "002c998a4e487911304474bbd6e5223970e1cec4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
