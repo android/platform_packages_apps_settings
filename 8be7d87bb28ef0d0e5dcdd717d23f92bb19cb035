@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "001d2110_0cb514be",
+        "filename": "res/layout-land/fingerprint_enroll_find_sensor.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1004017
+      },
+      "writtenOn": "2017-09-25T22:47:35Z",
+      "side": 1,
+      "message": "Why are these necessary?",
+      "range": {
+        "startLine": 53,
+        "startChar": 20,
+        "endLine": 54,
+        "endChar": 49
+      },
+      "revId": "8be7d87bb28ef0d0e5dcdd717d23f92bb19cb035",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
