@@ -22,6 +22,30 @@
       "revId": "8be7d87bb28ef0d0e5dcdd717d23f92bb19cb035",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eafd9fca_d9ab6b82",
+        "filename": "res/layout-land/fingerprint_enroll_find_sensor.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1053528
+      },
+      "writtenOn": "2017-09-25T22:53:19Z",
+      "side": 1,
+      "message": "The material buttons drop a shadow outside their own bounds, which is projected on the parent view. But if there is a grandparent (or ancestor above it) that clips in the view hierarchy, the shadow may be cropped.",
+      "parentUuid": "001d2110_0cb514be",
+      "range": {
+        "startLine": 53,
+        "startChar": 20,
+        "endLine": 54,
+        "endChar": 49
+      },
+      "revId": "8be7d87bb28ef0d0e5dcdd717d23f92bb19cb035",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
