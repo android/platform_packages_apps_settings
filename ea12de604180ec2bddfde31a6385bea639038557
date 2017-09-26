@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dac83bdd_e96e5f2a",
+        "filename": "res/values/styles_preference.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-09-26T22:12:15Z",
+      "side": 1,
+      "message": "Wait so this add ok/cancel on all dialog preferences? I worry that some dialogs do not actually need these buttons.\n\nCan you create a custom style and only apply to the APN editor dialog only?",
+      "revId": "ea12de604180ec2bddfde31a6385bea639038557",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
