@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a2c63c5f_260ce9b6",
+        "filename": "tests/robotests/src/com/android/settings/UtilsTest.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2017-09-26T18:27:06Z",
+      "side": 1,
+      "message": "sorry, one minor thing, could you please declare all the vars as final? Thanks a lot!",
+      "revId": "180a1d724c01862a98f84f373d3296bb8e0d060f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
