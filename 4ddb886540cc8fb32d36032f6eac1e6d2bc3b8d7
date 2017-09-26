@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbcdfbb7_dcee96d6",
+        "filename": "src/com/android/settings/bluetooth/BluetoothNameDialogFragment.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2017-09-26T17:24:22Z",
+      "side": 1,
+      "message": "can you add an import instead?",
+      "range": {
+        "startLine": 144,
+        "startChar": 8,
+        "endLine": 144,
+        "endChar": 29
+      },
+      "revId": "4ddb886540cc8fb32d36032f6eac1e6d2bc3b8d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a388d88e_070326e8",
+        "filename": "src/com/android/settings/bluetooth/DeviceProfilesSettings.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2017-09-26T17:24:22Z",
+      "side": 1,
+      "message": "can you add an import instead?",
+      "range": {
+        "startLine": 326,
+        "startChar": 12,
+        "endLine": 326,
+        "endChar": 33
+      },
+      "revId": "4ddb886540cc8fb32d36032f6eac1e6d2bc3b8d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "341b2124_4ab6086d",
+        "filename": "tests/robotests/src/com/android/settings/UtilsTest.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2017-09-26T17:24:22Z",
+      "side": 1,
+      "message": "I think by default this will always be 0. Can you create a real EditText, set some text, and assert with the actual text len?",
+      "range": {
+        "startLine": 174,
+        "startChar": 12,
+        "endLine": 174,
+        "endChar": 18
+      },
+      "revId": "4ddb886540cc8fb32d36032f6eac1e6d2bc3b8d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
