@@ -16,6 +16,24 @@
       "revId": "ea12de604180ec2bddfde31a6385bea639038557",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "922198b7_ea7396f1",
+        "filename": "res/values/styles_preference.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1077031
+      },
+      "writtenOn": "2017-09-27T02:11:22Z",
+      "side": 1,
+      "message": "\"Sleep\" dialog has OK button in Android N but it doesn\u0027t have in Android O. I think this is a degrade.\nAnd standard dialog preference has OK/CANCEL button as below.\nhttps://android.googlesource.com/platform/frameworks/support/+/master/v7/preference/res/values/styles.xml#61\n\nSo I think we should modify SettingsDialogPreference style.\nWhat do you think?",
+      "parentUuid": "dac83bdd_e96e5f2a",
+      "revId": "ea12de604180ec2bddfde31a6385bea639038557",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
