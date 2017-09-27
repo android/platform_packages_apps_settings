@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0f8866ca_07361de9",
+        "filename": "res/layout-land/fingerprint_enroll_find_sensor.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1223414
+      },
+      "writtenOn": "2017-09-27T12:21:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4c69cd3_7a3d6aba",
+      "revId": "8cd0dc88e76f30118dc73211f5fd86f119129080",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a9d282f4_153f9cf8",
         "filename": "res/layout-land/fingerprint_enroll_find_sensor.xml",
         "patchSetId": 1
@@ -30,6 +48,30 @@
       "writtenOn": "2017-09-22T17:52:28Z",
       "side": 1,
       "message": "Please fix indentation",
+      "range": {
+        "startLine": 47,
+        "startChar": 12,
+        "endLine": 85,
+        "endChar": 27
+      },
+      "revId": "8cd0dc88e76f30118dc73211f5fd86f119129080",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98b6bf7e_1375cb6e",
+        "filename": "res/layout-land/fingerprint_enroll_find_sensor.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1223414
+      },
+      "writtenOn": "2017-09-27T12:21:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9d282f4_153f9cf8",
       "range": {
         "startLine": 47,
         "startChar": 12,
