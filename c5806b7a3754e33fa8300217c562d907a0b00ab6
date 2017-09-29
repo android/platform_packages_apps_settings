@@ -1,0 +1,268 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d58e5c5b_cda2a354",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2017-09-29T17:30:33Z",
+      "side": 1,
+      "message": "please add \"3. make RunSettingsRoboTests\" to indicate that auto test has been run",
+      "revId": "c5806b7a3754e33fa8300217c562d907a0b00ab6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "891b3639_3b028618",
+        "filename": "tests/robotests/src/com/android/settings/notification/ZenModeScheduleRuleSettingsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2017-09-29T17:30:33Z",
+      "side": 1,
+      "message": "please rename to mIntent",
+      "range": {
+        "startLine": 68,
+        "startChar": 19,
+        "endLine": 68,
+        "endChar": 25
+      },
+      "revId": "c5806b7a3754e33fa8300217c562d907a0b00ab6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21c4bad1_1da4665d",
+        "filename": "tests/robotests/src/com/android/settings/notification/ZenModeScheduleRuleSettingsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2017-09-29T17:30:33Z",
+      "side": 1,
+      "message": "please rename to mToast",
+      "range": {
+        "startLine": 71,
+        "startChar": 18,
+        "endLine": 71,
+        "endChar": 23
+      },
+      "revId": "c5806b7a3754e33fa8300217c562d907a0b00ab6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "228a7664_5f3451f3",
+        "filename": "tests/robotests/src/com/android/settings/notification/ZenModeScheduleRuleSettingsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2017-09-29T17:30:33Z",
+      "side": 1,
+      "message": "is this really needed?",
+      "range": {
+        "startLine": 76,
+        "startChar": 31,
+        "endLine": 76,
+        "endChar": 46
+      },
+      "revId": "c5806b7a3754e33fa8300217c562d907a0b00ab6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54ee528b_162f7eae",
+        "filename": "tests/robotests/src/com/android/settings/notification/ZenModeScheduleRuleSettingsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2017-09-29T17:30:33Z",
+      "side": 1,
+      "message": "can use application instead. You are using 3 different context (mock mContext, context from ShadowApplication, and context from RuntimeEnvironment. Please try to consolidate.",
+      "range": {
+        "startLine": 88,
+        "startChar": 27,
+        "endLine": 88,
+        "endChar": 58
+      },
+      "revId": "c5806b7a3754e33fa8300217c562d907a0b00ab6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1901b23c_a02b1cc9",
+        "filename": "tests/robotests/src/com/android/settings/notification/ZenModeScheduleRuleSettingsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2017-09-29T17:30:33Z",
+      "side": 1,
+      "message": "can replace with application.getResources()",
+      "range": {
+        "startLine": 95,
+        "startChar": 17,
+        "endLine": 95,
+        "endChar": 20
+      },
+      "revId": "c5806b7a3754e33fa8300217c562d907a0b00ab6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b09c819_68127766",
+        "filename": "tests/robotests/src/com/android/settings/notification/ZenModeScheduleRuleSettingsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2017-09-29T17:30:33Z",
+      "side": 1,
+      "message": "I think this can be replaced by mActivity",
+      "range": {
+        "startLine": 96,
+        "startChar": 13,
+        "endLine": 96,
+        "endChar": 36
+      },
+      "revId": "c5806b7a3754e33fa8300217c562d907a0b00ab6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "059e70af_d5302e4e",
+        "filename": "tests/robotests/src/com/android/settings/notification/ZenModeScheduleRuleSettingsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2017-09-29T17:30:33Z",
+      "side": 1,
+      "message": "if replace by res.newTheme(), then you don\u0027t really need the var theme.",
+      "range": {
+        "startLine": 96,
+        "startChar": 60,
+        "endLine": 96,
+        "endChar": 65
+      },
+      "revId": "c5806b7a3754e33fa8300217c562d907a0b00ab6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57e1080e_f2068ea0",
+        "filename": "tests/robotests/src/com/android/settings/notification/ZenModeScheduleRuleSettingsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2017-09-29T17:30:33Z",
+      "side": 1,
+      "message": "the test naming convention is usually methodToTest_condition_expectedResult(). So, maybe rename this to something like onCreate_noRuleId_shouldToastAndFinishAndNoCrash()",
+      "range": {
+        "startLine": 103,
+        "startChar": 16,
+        "endLine": 103,
+        "endChar": 54
+      },
+      "revId": "c5806b7a3754e33fa8300217c562d907a0b00ab6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed15cc76_181c2fa5",
+        "filename": "tests/robotests/src/com/android/settings/notification/ZenModeScheduleRuleSettingsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2017-09-29T17:30:33Z",
+      "side": 1,
+      "message": "not necessary, already did static import",
+      "range": {
+        "startLine": 104,
+        "startChar": 22,
+        "endLine": 104,
+        "endChar": 41
+      },
+      "revId": "c5806b7a3754e33fa8300217c562d907a0b00ab6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd7dfaf0_a4365e71",
+        "filename": "tests/robotests/src/com/android/settings/notification/ZenModeScheduleRuleSettingsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2017-09-29T17:30:33Z",
+      "side": 1,
+      "message": "please mark this final. Also for \"expected\" in next line",
+      "range": {
+        "startLine": 104,
+        "startChar": 8,
+        "endLine": 104,
+        "endChar": 15
+      },
+      "revId": "c5806b7a3754e33fa8300217c562d907a0b00ab6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a00fdead_7be07f59",
+        "filename": "tests/robotests/src/com/android/settings/notification/ZenModeScheduleRuleSettingsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2017-09-29T17:30:33Z",
+      "side": 1,
+      "message": "could you please also add verify that the activity\u0027s finish() method is called?\n\nalso add a comment saying that there should be no crash at the end of the method.",
+      "revId": "c5806b7a3754e33fa8300217c562d907a0b00ab6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
