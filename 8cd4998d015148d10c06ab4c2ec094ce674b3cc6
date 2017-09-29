@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c6f1a32_0bc1d9ba",
+        "filename": "src/com/android/settings/accounts/AccountTypePreferenceLoader.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-09-29T17:13:48Z",
+      "side": 1,
+      "message": "Use TextUtils.equals() instead.",
+      "revId": "8cd4998d015148d10c06ab4c2ec094ce674b3cc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
