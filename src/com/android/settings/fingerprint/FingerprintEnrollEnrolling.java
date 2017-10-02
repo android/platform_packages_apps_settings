@@ -171,7 +171,7 @@ public class FingerprintEnrollEnrolling extends FingerprintEnrollBase
     @Override
     protected void onPause() {
         super.onPause();
-        if (mSidecar != null) {
+        if (mSidecar != null && !isInMultiWindowMode()) {
             mSidecar.setListener(null);
         }
     }
