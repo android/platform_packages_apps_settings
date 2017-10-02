@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91e64852_873c558e",
+        "filename": "src/com/android/settings/fingerprint/FingerprintEnrollEnrolling.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1004017
+      },
+      "writtenOn": "2017-10-02T20:24:54Z",
+      "side": 1,
+      "message": "Sorry, but this isn\u0027t the right approach. You must always clear the listener in onPause() because we need to forward the async results from fingerprint to the activity when it resumes. Otherwise, the events will be dropped.\n\nMore than likely what happened is the enroll activity was paused because it lost focus (the user isn\u0027t interacting with the UI).",
+      "range": {
+        "startLine": 174,
+        "startChar": 33,
+        "endLine": 174,
+        "endChar": 52
+      },
+      "revId": "8f9ec2566c32d22e72e8502009ddda59a01d7eb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
