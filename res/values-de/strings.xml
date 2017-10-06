@@ -347,7 +347,7 @@
     <string name="fingerprint_enable_keyguard_toggle_title" msgid="5078060939636911795">"Displaysperre"</string>
     <plurals name="security_settings_fingerprint_preference_summary" formatted="false" msgid="624961700033979880">
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> Fingerabdrücke eingerichtet</item>
-      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> Fingerabdrücke eingerichtet</item>
+      <item quantity="one"><xliff:g id="COUNT_0">%1$d</xliff:g> Fingerabdruck eingerichtet</item>
     </plurals>
     <string name="security_settings_fingerprint_preference_summary_none" msgid="1507739327565151923"></string>
     <string name="security_settings_fingerprint_enroll_introduction_title" msgid="3201556857492526098">"Mit Fingerabdruck entsperren"</string>
