@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f13bf062_d170b3e6",
+        "filename": "tests/robotests/src/com/android/settings/notification/ZenModeScheduleRuleSettingsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1143572
+      },
+      "writtenOn": "2017-10-09T07:26:05Z",
+      "side": 1,
+      "message": "I couldn\u0027t find the class under com.android.settings.testutils, I have pulled the latest code.",
+      "parentUuid": "6566f800_8968a91a",
+      "range": {
+        "startLine": 26,
+        "startChar": 28,
+        "endLine": 26,
+        "endChar": 57
+      },
+      "revId": "737bf6f512659dcc0a36135836440de6bc21af0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f39cad0c_b55580b5",
         "filename": "tests/robotests/src/com/android/settings/notification/ZenModeScheduleRuleSettingsTest.java",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2017-10-05T21:31:08Z",
       "side": 1,
       "message": "I don\u0027t think that this is really needed. Please remove this and the import above.",
+      "range": {
+        "startLine": 55,
+        "startChar": 16,
+        "endLine": 55,
+        "endChar": 52
+      },
+      "revId": "737bf6f512659dcc0a36135836440de6bc21af0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9aadc07f_09cb7d4d",
+        "filename": "tests/robotests/src/com/android/settings/notification/ZenModeScheduleRuleSettingsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1143572
+      },
+      "writtenOn": "2017-10-09T07:26:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f39cad0c_b55580b5",
       "range": {
         "startLine": 55,
         "startChar": 16,
