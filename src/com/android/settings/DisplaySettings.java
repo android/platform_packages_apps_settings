@@ -34,6 +34,7 @@ import com.android.settings.display.LiftToWakePreferenceController;
 import com.android.settings.display.NightDisplayPreferenceController;
 import com.android.settings.display.NightModePreferenceController;
 import com.android.settings.display.ScreenSaverPreferenceController;
+import com.android.settings.display.ShowOperatorNamePreferenceController;
 import com.android.settings.display.TapToWakePreferenceController;
 import com.android.settings.display.ThemePreferenceController;
 import com.android.settings.display.TimeoutPreferenceController;
@@ -100,6 +101,7 @@ public class DisplaySettings extends DashboardFragment {
         controllers.add(new NightDisplayPreferenceController(context));
         controllers.add(new NightModePreferenceController(context));
         controllers.add(new ScreenSaverPreferenceController(context));
+        controllers.add(new ShowOperatorNamePreferenceController(context));
         AmbientDisplayConfiguration ambientDisplayConfig = new AmbientDisplayConfiguration(context);
         controllers.add(new PickupGesturePreferenceController(
                 context, lifecycle, ambientDisplayConfig, UserHandle.myUserId(), KEY_PICK_UP));
