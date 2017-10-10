@@ -8693,4 +8693,9 @@
     <string name="ims_reg_status_registered">"Registered"</string>
     <!--Used when IMS registration state is not registered -->
     <string name="ims_reg_status_not_registered">"Not registered"</string>
+
+    <!-- Switch label to show operator name in the status bar [CHAR LIMIT=60] -->
+    <string name="show_operator_name_title">Network name</string>
+    <!-- Switch summary to show operator name in the status bar [CHAR LIMIT=NONE] -->
+    <string name="show_operator_name_summary">Display network name in status bar</string>
 </resources>
