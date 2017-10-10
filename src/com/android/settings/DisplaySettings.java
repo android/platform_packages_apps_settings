@@ -34,6 +34,7 @@ import com.android.settings.display.LiftToWakePreferenceController;
 import com.android.settings.display.NightDisplayPreferenceController;
 import com.android.settings.display.NightModePreferenceController;
 import com.android.settings.display.ScreenSaverPreferenceController;
+import com.android.settings.display.ShowOperatorNamePreferenceController;
 import com.android.settings.display.TapToWakePreferenceController;
 import com.android.settings.display.ThemePreferenceController;
 import com.android.settings.display.TimeoutPreferenceController;
@@ -109,6 +110,7 @@ public class DisplaySettings extends DashboardFragment {
         controllers.add(new TapToWakePreferenceController(context));
         controllers.add(new TimeoutPreferenceController(context, KEY_SCREEN_TIMEOUT));
         controllers.add(new VrDisplayPreferenceController(context));
+        controllers.add(new ShowOperatorNamePreferenceController(context));
         controllers.add(new WallpaperPreferenceController(context));
         controllers.add(new ThemePreferenceController(context));
         return controllers;
