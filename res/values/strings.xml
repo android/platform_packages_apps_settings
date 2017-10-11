@@ -6242,6 +6242,8 @@
     <string name="connected_devices_dashboard_title">Connected devices</string>
     <!-- Summary for Connected devices settings, explaning a few important settings under it [CHAR LIMIT=NONE]-->
     <string name="connected_devices_dashboard_summary">Bluetooth, Cast, NFC</string>
+    <!-- Summary for Connected devices settings when nfc is not supported [CHAR LIMIT=NONE]-->
+    <string name="connected_devices_dashboard_summary_no_nfc">Bluetooth, Cast</string>
     <!-- Title for setting tile leading to Apps & Notification settings [CHAR LIMIT=40]-->
     <string name="app_and_notification_dashboard_title">Apps &amp; notifications</string>
     <!-- Summary for Apps & Notification settings, explaining a few important settings under it [CHAR LIMIT=NONE]-->
