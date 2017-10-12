@@ -694,6 +694,10 @@ public class WifiSettings extends RestrictedSettingsFragment
     private void updateAccessPointsDelayed() {
         // Safeguard from some delayed event handling
         if (getActivity() != null && !mIsRestricted && mWifiManager.isWifiEnabled()) {
+            // The function onAccessPointsChanged will be called many times and access points
+            // will be updated many times in 300ms.
+            // Remove the old runnable to keep access points updating only once in 300ms.
+            getView().removeCallbacks(mUpdateAccessPointsRunnable);
             setProgressBarVisible(true);
             getView().postDelayed(mUpdateAccessPointsRunnable, 300 /* delay milliseconds */);
         }
