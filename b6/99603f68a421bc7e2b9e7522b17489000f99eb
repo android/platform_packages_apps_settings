@@ -1,0 +1,8 @@
+Code-Review+2: Daniel Nishi <dhnishi@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Daniel Nishi <dhnishi@google.com>
+Submitted-by: Daniel Nishi <dhnishi@google.com>
+Submitted-at: Fri, 13 Oct 2017 17:52:57 +0000
+Reviewed-on: https://android-review.googlesource.com/505756
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
