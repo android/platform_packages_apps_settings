@@ -34,6 +34,24 @@
       "revId": "ea12de604180ec2bddfde31a6385bea639038557",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a7c63dd_5eba6074",
+        "filename": "res/values/styles_preference.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1234082
+      },
+      "writtenOn": "2017-10-13T10:24:07Z",
+      "side": 1,
+      "message": "Do you think \"Sleep\" dialog (Settings \u003e Display \u003e Sleep) don\u0027t need OK button?",
+      "parentUuid": "922198b7_ea7396f1",
+      "revId": "ea12de604180ec2bddfde31a6385bea639038557",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
