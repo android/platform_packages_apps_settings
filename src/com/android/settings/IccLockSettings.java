@@ -328,6 +328,9 @@ public class IccLockSettings extends SettingsPreferenceFragment
         setDialogValues();
 
         mPinDialog.showPinDialog();
+        if (mPin != null) {
+            mPinDialog.getEditText().setSelection(mPin.length());
+        }
     }
 
     private void setDialogValues() {
