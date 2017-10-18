@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62cfb847_38765c97",
+        "filename": "res/values/config.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-10-18T16:54:27Z",
+      "side": 1,
+      "message": "move to after line 68",
+      "revId": "357175e5b9ff013e217fe5f49d0e1f033b4247f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5f5ed23_b930868a",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 8697,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-10-18T16:54:27Z",
+      "side": 1,
+      "message": "move to somewhere *not* the end of file",
+      "revId": "357175e5b9ff013e217fe5f49d0e1f033b4247f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "406c45bc_5a510417",
+        "filename": "src/com/android/settings/DisplaySettings.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-10-18T16:54:27Z",
+      "side": 1,
+      "message": "move to after ThemePreferenceController",
+      "revId": "357175e5b9ff013e217fe5f49d0e1f033b4247f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
