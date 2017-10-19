@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f2abd3b_884712cb",
+        "filename": "src/com/android/settings/IccLockSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-10-19T16:49:43Z",
+      "side": 1,
+      "message": "use TextUtils.isEmpty",
+      "range": {
+        "startLine": 331,
+        "startChar": 12,
+        "endLine": 331,
+        "endChar": 24
+      },
+      "revId": "a14fb36ccb6bca5f9840f2ed139c7e2cb7578baa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5172b771_f6eda57e",
+        "filename": "src/com/android/settings/IccLockSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-10-19T16:49:43Z",
+      "side": 1,
+      "message": "getEditText() could be null",
+      "range": {
+        "startLine": 332,
+        "startChar": 13,
+        "endLine": 332,
+        "endChar": 36
+      },
+      "revId": "a14fb36ccb6bca5f9840f2ed139c7e2cb7578baa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
