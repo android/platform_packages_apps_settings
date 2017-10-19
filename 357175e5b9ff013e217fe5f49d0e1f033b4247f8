@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "add71eac_2bb270fa",
+        "filename": "res/values/config.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1234082
+      },
+      "writtenOn": "2017-10-19T02:08:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62cfb847_38765c97",
+      "revId": "357175e5b9ff013e217fe5f49d0e1f033b4247f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5f5ed23_b930868a",
         "filename": "res/values/strings.xml",
         "patchSetId": 5
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "a2c81222_9d082cf3",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 8697,
+      "author": {
+        "id": 1234082
+      },
+      "writtenOn": "2017-10-19T02:08:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5f5ed23_b930868a",
+      "revId": "357175e5b9ff013e217fe5f49d0e1f033b4247f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "406c45bc_5a510417",
         "filename": "src/com/android/settings/DisplaySettings.java",
         "patchSetId": 5
@@ -47,6 +83,24 @@
       "writtenOn": "2017-10-18T16:54:27Z",
       "side": 1,
       "message": "move to after ThemePreferenceController",
+      "revId": "357175e5b9ff013e217fe5f49d0e1f033b4247f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3c5327b4_1925dabe",
+        "filename": "src/com/android/settings/DisplaySettings.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1234082
+      },
+      "writtenOn": "2017-10-19T02:08:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "406c45bc_5a510417",
       "revId": "357175e5b9ff013e217fe5f49d0e1f033b4247f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
