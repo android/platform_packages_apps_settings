@@ -79,6 +79,7 @@ public class DataSaverBackend {
     }
 
     public void refreshWhitelist() {
+        mWhitelistInitialized = false;
         loadWhitelist();
     }
 
@@ -111,6 +112,11 @@ public class DataSaverBackend {
     private void loadWhitelist() {
         if (mWhitelistInitialized) return;
 
+        for (int i = mUidPolicies.size() - 1; i >= 0; i--) {
+            if (mUidPolicies.valueAt(i) == POLICY_ALLOW_METERED_BACKGROUND) {
+                mUidPolicies.removeAt(i);
+            }
+        }
         for (int uid : mPolicyManager.getUidsWithPolicy(POLICY_ALLOW_METERED_BACKGROUND)) {
             mUidPolicies.put(uid, POLICY_ALLOW_METERED_BACKGROUND);
         }
