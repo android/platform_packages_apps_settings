@@ -448,6 +448,10 @@ public class UserSettings extends SettingsPreferenceFragment
     }
 
     private void onUserCreated(int userId) {
+        if (!isResumed()) {
+            Log.w(TAG, "Cannot show dialog after onPause");
+            return;
+        }
         mAddedUserId = userId;
         mAddingUser = false;
         if (mUserManager.getUserInfo(userId).isRestricted()) {
