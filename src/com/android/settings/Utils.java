@@ -47,6 +47,7 @@ import android.content.pm.ResolveInfo;
 import android.content.pm.UserInfo;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
+import android.content.res.Resources.NotFoundException;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -74,11 +75,14 @@ import android.provider.ContactsContract.Data;
 import android.provider.ContactsContract.Profile;
 import android.provider.ContactsContract.RawContacts;
 import android.provider.Settings;
+import android.provider.Telephony;
+import android.service.persistentdata.PersistentDataBlockManager;
 import android.support.annotation.StringRes;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceGroup;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.preference.PreferenceScreen;
+import android.telephony.ServiceState;
 import android.telephony.TelephonyManager;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -147,6 +151,9 @@ public final class Utils extends com.android.settingslib.Utils {
     public static final String OS_PKG = "os";
 
     private static SparseArray<Bitmap> sDarkDefaultUserBitmapCache = new SparseArray<Bitmap>();
+
+    public static final String READ_ONLY = "read_only";
+    public static final String PERSISTENT = "persistent";
 
     /**
      * Finds a matching activity for a preference's intent. If a matching
@@ -1316,6 +1323,46 @@ public final class Utils extends com.android.settingslib.Utils {
     private static boolean isVolumeValid(VolumeInfo volume) {
         return (volume != null) && (volume.getType() == VolumeInfo.TYPE_PRIVATE)
                 && volume.isMountedReadable();
+    }
+
+    public static String getLocalizedName(Context context, Cursor cursor, int index) {
+        if(context == null || cursor == null || index < 0){
+           return null;
+        }
+        // If can find a localized name, replace the APN name with it
+        String resName = cursor.getString(index);
+        String localizedName = null;
+        if (resName != null && !resName.isEmpty()) {
+            int resId = context.getResources().getIdentifier(resName, "string",
+                    context.getPackageName());
+            if(resId > 0){
+                try {
+                    localizedName = context.getResources().getString(resId);
+                    Log.d(TAG, "Replaced apn name with localized name");
+                } catch (NotFoundException e) {
+                    Log.e(TAG, "Got execption while getting the localized apn name.", e);
+                }
+            }
+        }
+        return localizedName;
+    }
+
+    public static boolean carrierTableFieldValidate(String field){
+        if(field == null)
+            return false;
+        if(READ_ONLY.equalsIgnoreCase(field) || PERSISTENT.equalsIgnoreCase(field)
+                || Telephony.Carriers.AUTH_TYPE.equalsIgnoreCase(field)
+                || Telephony.Carriers.SUBSCRIPTION_ID.equalsIgnoreCase(field))
+            return true;
+        field = field.toUpperCase();
+        Class clazz = Telephony.Carriers.class;
+        try{
+            clazz.getDeclaredField(field);
+        }catch(NoSuchFieldException e){
+            Log.w(TAG, field + "is not a valid field in class Telephony.Carriers");
+            return false;
+        }
+        return true;
     }
 
 }

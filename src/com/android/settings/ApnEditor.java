@@ -118,6 +118,10 @@ public class ApnEditor extends SettingsPreferenceFragment
     private String[] mReadOnlyApnTypes;
     private String[] mReadOnlyApnFields;
     private boolean mReadOnlyApn;
+    private boolean mDeletableApn;
+
+
+    private static final String APN_DEFALUT_VALUES_STRING_ARRAY = "apn_default_values_strings_array";
 
     /**
      * Standard projection for the interesting columns of a normal note.
@@ -146,7 +150,29 @@ public class ApnEditor extends SettingsPreferenceFragment
             Telephony.Carriers.ROAMING_PROTOCOL, // 20
             Telephony.Carriers.MVNO_TYPE,   // 21
             Telephony.Carriers.MVNO_MATCH_DATA,  // 22
-            Telephony.Carriers.EDITED   // 23
+            Telephony.Carriers.EDITED,   // 23
+            Utils.PERSISTENT,   //24
+            Utils.READ_ONLY   //25
+    };
+
+    private static final String[] sUIConfigurableItems = new String[] {
+        Telephony.Carriers.NAME,
+        Telephony.Carriers.APN,
+        Telephony.Carriers.PROXY,
+        Telephony.Carriers.PORT,
+        Telephony.Carriers.USER,
+        Telephony.Carriers.SERVER,
+        Telephony.Carriers.PASSWORD,
+        Telephony.Carriers.MMSC,
+        Telephony.Carriers.MMSPROXY,
+        Telephony.Carriers.MMSPORT,
+        Telephony.Carriers.AUTH_TYPE,
+        Telephony.Carriers.TYPE,
+        Telephony.Carriers.PROTOCOL,
+        Telephony.Carriers.CARRIER_ENABLED,
+        Telephony.Carriers.BEARER,
+        Telephony.Carriers.BEARER_BITMASK,
+        Telephony.Carriers.ROAMING_PROTOCOL,
     };
 
     private static final int ID_INDEX = 0;
@@ -172,7 +198,8 @@ public class ApnEditor extends SettingsPreferenceFragment
     private static final int MVNO_TYPE_INDEX = 21;
     private static final int MVNO_MATCH_DATA_INDEX = 22;
     private static final int EDITED_INDEX = 23;
-
+    private static final int PERSISTENT_INDEX = 24;
+    private static final int READONLY_INDEX = 25;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -217,7 +244,7 @@ public class ApnEditor extends SettingsPreferenceFragment
         CarrierConfigManager configManager = (CarrierConfigManager)
                 getSystemService(Context.CARRIER_CONFIG_SERVICE);
         if (configManager != null) {
-            PersistableBundle b = configManager.getConfig();
+            PersistableBundle b = configManager.getConfigForSubId(mSubId);
             if (b != null) {
                 mReadOnlyApnTypes = b.getStringArray(
                         CarrierConfigManager.KEY_READ_ONLY_APN_TYPES_STRING_ARRAY);
@@ -247,7 +274,7 @@ public class ApnEditor extends SettingsPreferenceFragment
                     finish();
                     return;
                 }
-                mUri = getContentResolver().insert(uri, new ContentValues());
+                mUri = getContentResolver().insert(uri, getDefaultValue());
             } else {
                 mUri = ContentUris.withAppendedId(Telephony.Carriers.CONTENT_URI,
                         icicle.getInt(SAVED_POS));
@@ -282,13 +309,16 @@ public class ApnEditor extends SettingsPreferenceFragment
         Log.d(TAG, "onCreate: EDITED " + mCursor.getInt(EDITED_INDEX));
         // if it's not a USER_EDITED apn, check if it's read-only
         if (mCursor.getInt(EDITED_INDEX) != Telephony.Carriers.USER_EDITED &&
-                apnTypesMatch(mReadOnlyApnTypes, mCursor.getString(TYPE_INDEX))) {
+                apnTypesMatch(mReadOnlyApnTypes, mCursor.getString(TYPE_INDEX)) ||
+                mCursor.getInt(READONLY_INDEX) == 1) {
             Log.d(TAG, "onCreate: apnTypesMatch; read-only APN");
             mReadOnlyApn = true;
             disableAllFields();
         } else if (!ArrayUtils.isEmpty(mReadOnlyApnFields)) {
             disableFields(mReadOnlyApnFields);
         }
+
+        mDeletableApn = mCursor.getInt(PERSISTENT_INDEX) != 1;
 
         for (int i = 0; i < getPreferenceScreen().getPreferenceCount(); i++) {
             getPreferenceScreen().getPreference(i).setOnPreferenceChangeListener(this);
@@ -456,7 +486,7 @@ public class ApnEditor extends SettingsPreferenceFragment
         if (mUri == null && mNewApn) {
             // The URI could have been deleted when activity is paused,
             // therefore, it needs to be restored.
-            mUri = getContentResolver().insert(getIntent().getData(), new ContentValues());
+            mUri = getContentResolver().insert(getIntent().getData(), getDefaultValue());
             if (mUri == null) {
                 Log.w(TAG, "Failed to insert new telephony provider into "
                         + getIntent().getData());
@@ -547,6 +577,10 @@ public class ApnEditor extends SettingsPreferenceFragment
             if (mNewApn && mMvnoTypeStr != null && mMvnoMatchDataStr != null) {
                 mMvnoType.setValue(mMvnoTypeStr);
                 mMvnoMatchData.setText(mMvnoMatchDataStr);
+            }
+            String localizedName = Utils.getLocalizedName(getActivity(), mCursor,NAME_INDEX);
+            if (!TextUtils.isEmpty(localizedName)) {
+                mName.setText(localizedName);
             }
         }
 
@@ -736,7 +770,7 @@ public class ApnEditor extends SettingsPreferenceFragment
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         super.onCreateOptionsMenu(menu, inflater);
         // If it's a new APN, then cancel will delete the new entry in onPause
-        if (!mNewApn && !mReadOnlyApn) {
+        if (!mNewApn && !mReadOnlyApn && mDeletableApn) {
             menu.add(0, MENU_DELETE, 0, R.string.menu_delete)
                 .setIcon(R.drawable.ic_menu_delete);
         }
@@ -1147,6 +1181,36 @@ public class ApnEditor extends SettingsPreferenceFragment
         }
 
         return userEnteredApnType;
+    }
+
+    private ContentValues getDefaultValue(){
+        ContentValues contentValues = new ContentValues();
+        CarrierConfigManager configManager = (CarrierConfigManager)
+                getSystemService(Context.CARRIER_CONFIG_SERVICE);
+        if (configManager != null) {
+            PersistableBundle b = configManager.getConfigForSubId(mSubId);
+            if (b != null) {
+                PersistableBundle defaultValues = b.getPersistableBundle(APN_DEFALUT_VALUES_STRING_ARRAY);
+                if(defaultValues != null && !defaultValues.isEmpty()){
+                    Set<String> keys = defaultValues.keySet();
+                    for(String key : keys){
+                        if(fieldValidate(key)){
+                            contentValues.put(key, defaultValues.getString(key));
+                        }
+                    }
+                }
+            }
+        }
+        return contentValues;
+    }
+
+    private boolean fieldValidate(String field){
+        for(String tableField : sUIConfigurableItems){
+            if(tableField.equalsIgnoreCase(field))
+                return true;
+        }
+        Log.w(TAG, field + " is not configurable");
+        return false;
     }
 
     public static class ErrorDialog extends InstrumentedDialogFragment {
