@@ -32,6 +32,8 @@ import android.support.v7.preference.PreferenceScreen;
 import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
+import android.telephony.SubscriptionInfo;
+import android.telephony.SubscriptionManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Switch;
@@ -73,55 +75,11 @@ public class WifiCallingSettings extends SettingsPreferenceFragment
     private Preference mUpdateAddress;
     private TextView mEmptyView;
 
+    private int[] mCallState = null;
+    private PhoneStateListener[] mPhoneStateListener = null;
     private boolean mValidListener = false;
     private boolean mEditableWfcMode = true;
     private boolean mEditableWfcRoamingMode = true;
-
-    private final PhoneStateListener mPhoneStateListener = new PhoneStateListener() {
-        /*
-         * Enable/disable controls when in/out of a call and depending on
-         * TTY mode and TTY support over VoLTE.
-         * @see android.telephony.PhoneStateListener#onCallStateChanged(int,
-         * java.lang.String)
-         */
-        @Override
-        public void onCallStateChanged(int state, String incomingNumber) {
-            final SettingsActivity activity = (SettingsActivity) getActivity();
-            boolean isNonTtyOrTtyOnVolteEnabled = ImsManager
-                    .isNonTtyOrTtyOnVolteEnabled(activity);
-            final SwitchBar switchBar = activity.getSwitchBar();
-            boolean isWfcEnabled = switchBar.getSwitch().isChecked()
-                    && isNonTtyOrTtyOnVolteEnabled;
-
-            switchBar.setEnabled((state == TelephonyManager.CALL_STATE_IDLE)
-                    && isNonTtyOrTtyOnVolteEnabled);
-
-            boolean isWfcModeEditable = true;
-            boolean isWfcRoamingModeEditable = false;
-            final CarrierConfigManager configManager = (CarrierConfigManager)
-                    activity.getSystemService(Context.CARRIER_CONFIG_SERVICE);
-            if (configManager != null) {
-                PersistableBundle b = configManager.getConfig();
-                if (b != null) {
-                    isWfcModeEditable = b.getBoolean(
-                            CarrierConfigManager.KEY_EDITABLE_WFC_MODE_BOOL);
-                    isWfcRoamingModeEditable = b.getBoolean(
-                            CarrierConfigManager.KEY_EDITABLE_WFC_ROAMING_MODE_BOOL);
-                }
-            }
-
-            Preference pref = getPreferenceScreen().findPreference(BUTTON_WFC_MODE);
-            if (pref != null) {
-                pref.setEnabled(isWfcEnabled && isWfcModeEditable
-                        && (state == TelephonyManager.CALL_STATE_IDLE));
-            }
-            Preference pref_roam = getPreferenceScreen().findPreference(BUTTON_WFC_ROAMING_MODE);
-            if (pref_roam != null) {
-                pref_roam.setEnabled(isWfcEnabled && isWfcRoamingModeEditable
-                        && (state == TelephonyManager.CALL_STATE_IDLE));
-            }
-        }
-    };
 
     private final OnPreferenceClickListener mUpdateAddressListener =
             new OnPreferenceClickListener() {
@@ -246,6 +204,9 @@ public class WifiCallingSettings extends SettingsPreferenceFragment
             mButtonWfcRoamingMode.setEntryValues(
                     R.array.wifi_calling_mode_values_without_wifi_only);
         }
+
+        mPhoneStateListener = new PhoneStateListener[TelephonyManager.getDefault().getPhoneCount()];
+        mCallState = new int[mPhoneStateListener.length];
     }
 
     @Override
@@ -265,8 +226,7 @@ public class WifiCallingSettings extends SettingsPreferenceFragment
         updateButtonWfcMode(context, wfcEnabled, wfcMode, wfcRoamingMode);
 
         if (ImsManager.isWfcEnabledByPlatform(context)) {
-            TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-            tm.listen(mPhoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
+            registerPhoneStateListeners(context);
 
             mSwitchBar.addOnSwitchChangeListener(this);
 
@@ -290,13 +250,98 @@ public class WifiCallingSettings extends SettingsPreferenceFragment
         if (mValidListener) {
             mValidListener = false;
 
-            TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
-            tm.listen(mPhoneStateListener, PhoneStateListener.LISTEN_NONE);
+            unRegisterPhoneStateListeners(context);
 
             mSwitchBar.removeOnSwitchChangeListener(this);
         }
 
         context.unregisterReceiver(mIntentReceiver);
+    }
+
+    private void registerPhoneStateListeners(Context context) {
+        TelephonyManager tm =
+                (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        SubscriptionManager subMgr = SubscriptionManager.from(getActivity());
+        if (tm == null || subMgr == null) {
+            Log.e(TAG, "TelephonyManager or SubscriptionManager is null");
+            return;
+        }
+
+        for (int i = 0; i < mPhoneStateListener.length; i++) {
+            final SubscriptionInfo subInfo =
+                    subMgr.getActiveSubscriptionInfoForSimSlotIndex(i);
+            if (subInfo == null) {
+                Log.e(TAG, "registerPhoneStateListener subInfo : " + subInfo +
+                        " for phone Id: " + i);
+                continue;
+            }
+
+            final int phoneId = i;
+            /*
+            * Enable/disable controls when in/out of a call and depending on
+            * TTY mode and TTY support over VoLTE.
+            * @see android.telephony.PhoneStateListener#onCallStateChanged(int,
+            * java.lang.String)
+            */
+            mPhoneStateListener[i]  = new PhoneStateListener(subInfo.getSubscriptionId()) {
+                @Override
+                public void onCallStateChanged(int state, String incomingNumber) {
+                    Log.d(TAG, "PhoneStateListener onCallStateChanged: state is " + state +
+                            " SubId: " + mSubId);
+                    final SettingsActivity activity = (SettingsActivity) getActivity();
+                    if (activity == null) {
+                        return;
+                    }
+                    boolean isNonTtyOrTtyOnVolteEnabled = ImsManager
+                            .isNonTtyOrTtyOnVolteEnabled(activity);
+                    final SwitchBar switchBar = activity.getSwitchBar();
+                    boolean isWfcEnabled = switchBar.getSwitch().isChecked()
+                            && isNonTtyOrTtyOnVolteEnabled;
+
+                    mCallState[phoneId] = state;
+                    switchBar.setEnabled(isCallStateIdle() && isNonTtyOrTtyOnVolteEnabled);
+
+                    boolean isWfcModeEditable = true;
+                    boolean isWfcRoamingModeEditable = false;
+                    final CarrierConfigManager configManager = (CarrierConfigManager)
+                            activity.getSystemService(Context.CARRIER_CONFIG_SERVICE);
+                    if (configManager != null) {
+                        PersistableBundle b = configManager.getConfig();
+                        if (b != null) {
+                            isWfcModeEditable = b.getBoolean(
+                                    CarrierConfigManager.KEY_EDITABLE_WFC_MODE_BOOL);
+                            isWfcRoamingModeEditable = b.getBoolean(
+                                    CarrierConfigManager.KEY_EDITABLE_WFC_ROAMING_MODE_BOOL);
+                        }
+                    }
+
+                    Preference pref = getPreferenceScreen().findPreference(BUTTON_WFC_MODE);
+                    if (pref != null) {
+                        pref.setEnabled(isWfcEnabled && isWfcModeEditable && isCallStateIdle());
+                    }
+                    Preference pref_roam = getPreferenceScreen().
+                            findPreference(BUTTON_WFC_ROAMING_MODE);
+                    if (pref_roam != null) {
+                        pref_roam.setEnabled(isWfcEnabled && isWfcRoamingModeEditable &&
+                                isCallStateIdle());
+                    }
+                }
+            };
+            Log.d(TAG, "Register for call state change for phone Id: " + i);
+            tm.listen(mPhoneStateListener[i], PhoneStateListener.LISTEN_CALL_STATE);
+        }
+    }
+
+    private void unRegisterPhoneStateListeners(Context context) {
+        TelephonyManager tm =
+               (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        for (int i = 0; i < mPhoneStateListener.length; i++) {
+            if (mPhoneStateListener[i] != null) {
+                Log.d(TAG, "unRegister for call state change for phone Id: " + i);
+                tm.listen(mPhoneStateListener[i], PhoneStateListener.LISTEN_NONE);
+                mPhoneStateListener[i] = null;
+            }
+        }
     }
 
     /**
@@ -463,5 +508,14 @@ public class WifiCallingSettings extends SettingsPreferenceFragment
             }
         }
         return resId;
+    }
+
+    private boolean isCallStateIdle() {
+        for (int i = 0; i < mCallState.length; i++) {
+            if (TelephonyManager.CALL_STATE_IDLE != mCallState[i]) {
+                return false;
+            }
+        }
+        return true;
     }
 }
