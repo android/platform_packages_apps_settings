@@ -1,0 +1,10 @@
+Code-Review+2: Fan Zhang <zhfan@google.com>
+Code-Review+1: Fabrice Di Meglio <fdimeglio@google.com>
+Autosubmit+1: Fan Zhang <zhfan@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Fan Zhang <zhfan@google.com>
+Submitted-by: Fan Zhang <zhfan@google.com>
+Submitted-at: Tue, 24 Oct 2017 18:13:25 +0000
+Reviewed-on: https://android-review.googlesource.com/519255
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
