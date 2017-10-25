@@ -695,8 +695,8 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             // to debug settings being enabled, so the user knows there is
             // stuff enabled and can turn it all off if they want.
             mSettingsEnabler.enableDevelopmentSettings();
-            mSwitchBar.setChecked(lastEnabledState);
-            setPrefsEnabledState(lastEnabledState);
+            mSwitchBar.setChecked(true);
+            setPrefsEnabledState(true);
         }
         mSwitchBar.show();
 
