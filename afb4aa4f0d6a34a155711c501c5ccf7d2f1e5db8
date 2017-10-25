@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04a148ce_884e625a",
+        "filename": "src/com/android/settings/development/DevelopmentSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1242539
+      },
+      "writtenOn": "2017-10-25T17:14:52Z",
+      "side": 1,
+      "message": "I\u0027m unsure how this change will fix a bug. Since lastEnabledState will never be false here, the code is syntactically the same as before.",
+      "revId": "afb4aa4f0d6a34a155711c501c5ccf7d2f1e5db8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
