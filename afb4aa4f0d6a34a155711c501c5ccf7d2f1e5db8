@@ -16,6 +16,24 @@
       "revId": "afb4aa4f0d6a34a155711c501c5ccf7d2f1e5db8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "87207ff9_1d2659eb",
+        "filename": "src/com/android/settings/development/DevelopmentSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1242539
+      },
+      "writtenOn": "2017-10-25T20:14:36Z",
+      "side": 1,
+      "message": "Nevermind, I misread the code. Disregard the previous comment.",
+      "parentUuid": "04a148ce_884e625a",
+      "revId": "afb4aa4f0d6a34a155711c501c5ccf7d2f1e5db8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
