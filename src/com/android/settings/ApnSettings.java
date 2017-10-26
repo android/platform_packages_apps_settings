@@ -62,6 +62,7 @@ import com.android.internal.telephony.uicc.UiccController;
 import com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ApnSettings extends RestrictedSettingsFragment implements
         Preference.OnPreferenceChangeListener {
@@ -458,6 +459,46 @@ public class ApnSettings extends RestrictedSettingsFragment implements
         }
     }
 
+    private String getWhereClauseForRestoreDefaultApn() {
+        TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+        int subId = mSubscriptionInfo != null ? mSubscriptionInfo.getSubscriptionId()
+            : SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+        String simOperator = mSubscriptionInfo == null ? "" : tm.getSimOperator(subId);
+        String selectionArgs =
+                "numeric='" + simOperator + "' AND edited=" + Telephony.Carriers.USER_EDITED;
+        Cursor cursor = getContentResolver().query(Telephony.Carriers.CONTENT_URI,
+                new String[] {"_id", "mvno_type", "mvno_match_data"}, selectionArgs, null,
+                Telephony.Carriers.DEFAULT_SORT_ORDER);
+
+        StringBuilder where = null;
+        if (cursor != null) {
+            List<String> deleteRows = new ArrayList<>();
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                String id = cursor.getString(0 /* _id index */);
+                String mvnoType = TextUtils.nullIfEmpty(cursor.getString(1 /* mvno_type index */));
+                String mvnoMatchData =
+                        TextUtils.nullIfEmpty(cursor.getString(2 /* mvno_match_data index */));
+                if (TextUtils.equals(mMvnoType, mvnoType)
+                        && TextUtils.equals(mMvnoMatchData, mvnoMatchData)) {
+                    deleteRows.add("_id='" + id + "'");
+                }
+                cursor.moveToNext();
+            }
+            cursor.close();
+
+            if (deleteRows.size() != 0) {
+                where = new StringBuilder("(");
+                where.append(TextUtils.join(" OR ", deleteRows));
+                where.append(")");
+            }
+        }
+        Log.d(TAG, "getWhereClauseForRestoreDefaultApn(): where: "
+                + (where != null ? where.toString() : null));
+
+        return where != null ? where.toString() : null;
+    }
+
     private class RestoreApnUiHandler extends Handler {
         @Override
         public void handleMessage(Message msg) {
@@ -494,8 +535,12 @@ public class ApnSettings extends RestrictedSettingsFragment implements
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case EVENT_RESTORE_DEFAULTAPN_START:
-                    ContentResolver resolver = getContentResolver();
-                    resolver.delete(getUriForCurrSubId(DEFAULTAPN_URI), null, null);
+                    // Delete only the edited apns except other sub
+                    String where = getWhereClauseForRestoreDefaultApn();
+                    if (!TextUtils.isEmpty(where)) {
+                        ContentResolver resolver = getContentResolver();
+                        resolver.delete(getUriForCurrSubId(DEFAULTAPN_URI), where, null);
+                    }
                     mRestoreApnUiHandler
                         .sendEmptyMessage(EVENT_RESTORE_DEFAULTAPN_COMPLETE);
                     break;
