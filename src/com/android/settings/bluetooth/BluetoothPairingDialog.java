@@ -99,7 +99,7 @@ public final class BluetoothPairingDialog extends AlertActivity implements
         mReceiverRegistered = false;
 
         Intent intent = getIntent();
-        if (!intent.getAction().equals(BluetoothDevice.ACTION_PAIRING_REQUEST)) {
+        if (!BluetoothDevice.ACTION_PAIRING_REQUEST.equals(intent.getAction())) {
             Log.e(TAG, "Error: this activity may be started only with intent " +
                   BluetoothDevice.ACTION_PAIRING_REQUEST);
             finish();
