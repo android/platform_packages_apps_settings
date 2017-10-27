@@ -829,8 +829,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         updateBluetoothDisableAbsVolumeOptions();
         updateBluetoothEnableInbandRingingOptions();
         updateBluetoothA2dpConfigurationValues();
-        updateSwitchPreference(mDnsTls, Settings.Global.getInt(cr,
-                Settings.Global.DNS_TLS_DISABLED, 0) == 0);
+        updateDnsTlsOption();
     }
 
     private void resetDangerousOptions() {
@@ -1483,26 +1482,38 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     private void updateMobileDataAlwaysOnOptions() {
         updateSwitchPreference(mMobileDataAlwaysOn, Settings.Global.getInt(
-                getActivity().getContentResolver(),
+                getContentResolver(),
                 Settings.Global.MOBILE_DATA_ALWAYS_ON, 1) != 0);
     }
 
     private void writeMobileDataAlwaysOnOptions() {
-        Settings.Global.putInt(getActivity().getContentResolver(),
+        Settings.Global.putInt(getContentResolver(),
                 Settings.Global.MOBILE_DATA_ALWAYS_ON,
                 mMobileDataAlwaysOn.isChecked() ? 1 : 0);
     }
 
     private void updateTetheringHardwareOffloadOptions() {
         updateSwitchPreference(mTetheringHardwareOffload, Settings.Global.getInt(
-                getActivity().getContentResolver(),
+                getContentResolver(),
                 Settings.Global.TETHER_OFFLOAD_DISABLED, 0) != 1);
     }
 
     private void writeTetheringHardwareOffloadOptions() {
-        Settings.Global.putInt(getActivity().getContentResolver(),
+        Settings.Global.putInt(getContentResolver(),
                 Settings.Global.TETHER_OFFLOAD_DISABLED,
                 mTetheringHardwareOffload.isChecked() ? 0 : 1);
+    }
+
+    private void updateDnsTlsOption() {
+        updateSwitchPreference(mDnsTls, Settings.Global.getInt(
+                getContentResolver(),
+                Settings.Global.DNS_TLS_ENABLED, 1) != 0);
+    }
+
+    private void writeDnsTlsOption() {
+        Settings.Global.putInt(getContentResolver(),
+                Settings.Global.DNS_TLS_ENABLED,
+                mDnsTls.isChecked() ? 1 : 0);
     }
 
     private String defaultLogdSizeValue() {
@@ -2535,9 +2546,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         } else if (preference == mBluetoothEnableInbandRinging) {
             writeBluetoothEnableInbandRingingOptions();
         } else if (preference == mDnsTls) {
-            Settings.Global.putInt(getActivity().getContentResolver(),
-                    Settings.Global.DNS_TLS_DISABLED,
-                    mDnsTls.isChecked() ? 0 : 1);
+            writeDnsTlsOption();
         } else if (SHORTCUT_MANAGER_RESET_KEY.equals(preference.getKey())) {
             resetShortcutManagerThrottling();
         } else {
