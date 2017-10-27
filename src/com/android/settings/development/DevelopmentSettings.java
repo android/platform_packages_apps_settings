@@ -829,8 +829,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         updateBluetoothDisableAbsVolumeOptions();
         updateBluetoothEnableInbandRingingOptions();
         updateBluetoothA2dpConfigurationValues();
-        updateSwitchPreference(mDnsTls, Settings.Global.getInt(cr,
-                Settings.Global.DNS_TLS_DISABLED, 0) == 0);
+        updateDnsTlsOption();
     }
 
     private void resetDangerousOptions() {
@@ -1503,6 +1502,18 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         Settings.Global.putInt(getActivity().getContentResolver(),
                 Settings.Global.TETHER_OFFLOAD_DISABLED,
                 mTetheringHardwareOffload.isChecked() ? 0 : 1);
+    }
+
+    private void updateDnsTlsOption() {
+        updateSwitchPreference(mDnsTls, Settings.Global.getInt(
+                getActivity().getContentResolver(),
+                Settings.Global.DNS_TLS_ENABLED, 1) != 0);
+    }
+
+    private void writeDnsTlsOption() {
+        Settings.Global.putInt(getActivity().getContentResolver(),
+                Settings.Global.DNS_TLS_ENABLED,
+                mDnsTls.isChecked() ? 0 : 1);
     }
 
     private String defaultLogdSizeValue() {
@@ -2535,9 +2546,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         } else if (preference == mBluetoothEnableInbandRinging) {
             writeBluetoothEnableInbandRingingOptions();
         } else if (preference == mDnsTls) {
-            Settings.Global.putInt(getActivity().getContentResolver(),
-                    Settings.Global.DNS_TLS_DISABLED,
-                    mDnsTls.isChecked() ? 0 : 1);
+            writeDnsTlsOption();
         } else if (SHORTCUT_MANAGER_RESET_KEY.equals(preference.getKey())) {
             resetShortcutManagerThrottling();
         } else {
