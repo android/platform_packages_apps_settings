@@ -70,6 +70,24 @@
       "revId": "ea12de604180ec2bddfde31a6385bea639038557",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "72b9c6c7_69f2f912",
+        "filename": "res/values/styles_preference.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1234082
+      },
+      "writtenOn": "2017-10-30T07:42:35Z",
+      "side": 1,
+      "message": "I understand. \nI\u0027ve added a custom style. Could you review again?",
+      "parentUuid": "f292df83_f534ae31",
+      "revId": "ea12de604180ec2bddfde31a6385bea639038557",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
