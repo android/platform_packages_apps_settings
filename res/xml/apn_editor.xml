@@ -139,6 +139,7 @@
         android:key="bearer_multi"
         android:entries="@array/bearer_entries"
         android:entryValues="@array/bearer_values"
+        style="@style/SettingsMultiSelectListPreference"
         />
     <ListPreference
         android:title="@string/mvno_type"
