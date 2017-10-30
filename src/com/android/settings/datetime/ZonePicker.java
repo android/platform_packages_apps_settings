@@ -38,6 +38,7 @@ import com.android.settings.core.instrumentation.Instrumentable;
 import com.android.settings.core.instrumentation.VisibilityLoggerMixin;
 import com.android.settingslib.datetime.ZoneGetter;
 
+import java.text.Collator;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -258,10 +259,14 @@ public class ZonePicker extends ListFragment implements Instrumentable {
     }
 
     private static class MyComparator implements Comparator<Map<?, ?>> {
+        private Collator mCollator;
         private String mSortingKey;
+        private boolean mSortedByName;
 
         public MyComparator(String sortingKey) {
+            mCollator = Collator.getInstance();
             mSortingKey = sortingKey;
+            mSortedByName = ZoneGetter.KEY_DISPLAY_LABEL.equals(sortingKey);
         }
 
         public void setSortingKey(String sortingKey) {
@@ -282,7 +287,11 @@ public class ZonePicker extends ListFragment implements Instrumentable {
                 return -1;
             }
 
-            return ((Comparable) value1).compareTo(value2);
+            if (mSortedByName) {
+                return mCollator.compare(value1, value2);
+            } else {
+                return ((Comparable) value1).compareTo(value2);
+            }
         }
 
         private boolean isComparable(Object value) {
