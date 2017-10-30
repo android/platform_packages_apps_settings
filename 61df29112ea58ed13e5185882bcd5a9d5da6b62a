@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6512c95d_3cc09635",
+        "filename": "src/com/android/settings/datetime/ZonePicker.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-10-30T16:16:45Z",
+      "side": 1,
+      "message": "Make this @VisibleForTesting and add a test in robotests/\n\nTo run test: make RunSettingsRoboTests -j40\n\nTo run a single test:  make RunSettingsRoboTests -j40 ROBOTEST_FILTER\u003d\u003cClass name\u003e\n\ne.g. make RunSettingsRoboTests -j40 ROBOTEST_FILTER\u003dZonPickerComparatorTest",
+      "range": {
+        "startLine": 261,
+        "startChar": 25,
+        "endLine": 261,
+        "endChar": 37
+      },
+      "revId": "61df29112ea58ed13e5185882bcd5a9d5da6b62a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80e09ee8_25725249",
         "filename": "src/com/android/settings/datetime/ZonePicker.java",
         "patchSetId": 1
