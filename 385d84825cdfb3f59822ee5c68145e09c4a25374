@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "22476b49_b522111b",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1139348
+      },
+      "writtenOn": "2017-10-30T16:27:19Z",
+      "side": 1,
+      "message": "I understand that it can be the same but I think most users identify decrypted with not encrypted. Where should I submit a bug?",
+      "parentUuid": "43a2999b_d14e6d3c",
+      "range": {
+        "startLine": 754,
+        "startChar": 71,
+        "endLine": 754,
+        "endChar": 80
+      },
+      "revId": "385d84825cdfb3f59822ee5c68145e09c4a25374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0695ca0a_f29ca674",
         "filename": "res/xml/security_settings_misc.xml",
         "patchSetId": 5
