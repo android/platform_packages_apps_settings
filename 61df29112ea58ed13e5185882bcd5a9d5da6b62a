@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "80e09ee8_25725249",
+        "filename": "src/com/android/settings/datetime/ZonePicker.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2017-10-30T14:40:31Z",
+      "side": 1,
+      "message": "Probably final.",
+      "range": {
+        "startLine": 262,
+        "startChar": 16,
+        "endLine": 262,
+        "endChar": 24
+      },
+      "revId": "61df29112ea58ed13e5185882bcd5a9d5da6b62a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1d8add9_93e40d0c",
+        "filename": "src/com/android/settings/datetime/ZonePicker.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2017-10-30T14:40:31Z",
+      "side": 1,
+      "message": "This is more settings code than my area, but it looks like mSortedByName is derived from mSortingKey, so you\u0027d want to update mSortedByName here too.",
+      "range": {
+        "startLine": 273,
+        "startChar": 26,
+        "endLine": 273,
+        "endChar": 36
+      },
+      "revId": "61df29112ea58ed13e5185882bcd5a9d5da6b62a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
