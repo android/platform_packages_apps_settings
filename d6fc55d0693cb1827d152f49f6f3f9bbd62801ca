@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19d252c9_347ed5f8",
+        "filename": "src/com/android/settings/wifi/WifiSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1244217
+      },
+      "writtenOn": "2017-10-30T17:53:22Z",
+      "side": 1,
+      "message": "This has the effect of debouncing the update. Can we change this to throttle instead?\n\ne.g. `if (getView().getHandler().hasCallbacks(mUpdateAccessPointsRunnable)) { return; }`",
+      "range": {
+        "startLine": 700,
+        "startChar": 0,
+        "endLine": 700,
+        "endChar": 67
+      },
+      "revId": "d6fc55d0693cb1827d152f49f6f3f9bbd62801ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
