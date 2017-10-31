@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "d51decfc_c22c0495",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-10-31T16:18:37Z",
+      "side": 1,
+      "message": "add Test: make RunSettingsRoboTests",
+      "revId": "89beffcea3a130479a1a1b974a58a6f451a66333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e440b56_125918d1",
         "filename": "tests/robotests/src/com/android/settings/datetime/ZonePickerComparatorTest.java",
         "patchSetId": 3
