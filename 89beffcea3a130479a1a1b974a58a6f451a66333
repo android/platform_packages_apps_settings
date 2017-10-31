@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "77f69460_da71837c",
+        "filename": "tests/robotests/src/com/android/settings/datetime/ZonePickerComparatorTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1143183
+      },
+      "writtenOn": "2017-10-31T17:24:19Z",
+      "side": 1,
+      "message": "Sorry Fan, i\u0027m not very clear with this comment. Do you mean these three types (static final, final and non-final) List variables are all needed to be declared for test?",
+      "parentUuid": "2e440b56_125918d1",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 21
+      },
+      "revId": "89beffcea3a130479a1a1b974a58a6f451a66333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a9dba2b_aa198f6a",
         "filename": "tests/robotests/src/com/android/settings/datetime/ZonePickerComparatorTest.java",
         "patchSetId": 3
@@ -76,6 +100,30 @@
       "writtenOn": "2017-10-31T16:18:12Z",
       "side": 1,
       "message": "It\u0027s not clear to folks who don\u0027t understand zh-cn how the order is determined by looking at the test data.\n\nI would recommend adding one more set of test data in English to demonstrate the comparator in multiple locales.",
+      "range": {
+        "startLine": 29,
+        "startChar": 10,
+        "endLine": 31,
+        "endChar": 60
+      },
+      "revId": "89beffcea3a130479a1a1b974a58a6f451a66333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "caf836d9_80208702",
+        "filename": "tests/robotests/src/com/android/settings/datetime/ZonePickerComparatorTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1143183
+      },
+      "writtenOn": "2017-10-31T17:24:19Z",
+      "side": 1,
+      "message": "Yes, it\u0027s necessary and i will do it in the daytime.",
+      "parentUuid": "1dc682ce_282c9d45",
       "range": {
         "startLine": 29,
         "startChar": 10,
