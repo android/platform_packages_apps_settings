@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "d03b63a7_d772bd59",
+        "filename": "tests/robotests/src/com/android/settings/datetime/ZonePickerComparatorTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-10-31T17:31:04Z",
+      "side": 1,
+      "message": "Sorry for the confusion, to improve readability please reorder the variable declarations:\n\nprivate static final int NUM \u003d 5;\nprivate static final String[] TEST_DISPLAY_NAME ...\nprivate static final String[] ORDER_DISPLAY_NAME ...\n\nprivate final object foo..\n\nprivate Object bar..",
+      "parentUuid": "77f69460_da71837c",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 21
+      },
+      "revId": "89beffcea3a130479a1a1b974a58a6f451a66333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a9dba2b_aa198f6a",
         "filename": "tests/robotests/src/com/android/settings/datetime/ZonePickerComparatorTest.java",
         "patchSetId": 3
