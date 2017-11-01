@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d4b681ad_65590160",
+        "filename": "tests/robotests/src/com/android/settings/datetime/ZonePickerComparatorTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1143183
+      },
+      "writtenOn": "2017-11-01T05:27:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8684dd99_a3b9a915",
+      "range": {
+        "startLine": 44,
+        "startChar": 55,
+        "endLine": 44,
+        "endChar": 69
+      },
+      "revId": "6727c13bdede9fbbb90c0e8c032d50b42981699c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0de512b3_6d245458",
         "filename": "tests/robotests/src/com/android/settings/datetime/ZonePickerComparatorTest.java",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2017-11-01T04:08:33Z",
       "side": 1,
       "message": "put private methods at the end.",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 5
+      },
+      "revId": "6727c13bdede9fbbb90c0e8c032d50b42981699c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "035741d6_f4369fb6",
+        "filename": "tests/robotests/src/com/android/settings/datetime/ZonePickerComparatorTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1143183
+      },
+      "writtenOn": "2017-11-01T05:27:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0de512b3_6d245458",
       "range": {
         "startLine": 44,
         "startChar": 4,
