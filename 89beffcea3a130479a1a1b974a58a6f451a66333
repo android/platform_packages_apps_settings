@@ -90,6 +90,30 @@
     },
     {
       "key": {
+        "uuid": "26ebdc6c_53958764",
+        "filename": "tests/robotests/src/com/android/settings/datetime/ZonePickerComparatorTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1143183
+      },
+      "writtenOn": "2017-11-01T03:36:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d03b63a7_d772bd59",
+      "range": {
+        "startLine": 27,
+        "startChar": 4,
+        "endLine": 27,
+        "endChar": 21
+      },
+      "revId": "89beffcea3a130479a1a1b974a58a6f451a66333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a9dba2b_aa198f6a",
         "filename": "tests/robotests/src/com/android/settings/datetime/ZonePickerComparatorTest.java",
         "patchSetId": 3
@@ -101,6 +125,30 @@
       "writtenOn": "2017-10-31T16:18:12Z",
       "side": 1,
       "message": "the test data can be static.",
+      "range": {
+        "startLine": 28,
+        "startChar": 12,
+        "endLine": 28,
+        "endChar": 17
+      },
+      "revId": "89beffcea3a130479a1a1b974a58a6f451a66333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dde437cc_eff28321",
+        "filename": "tests/robotests/src/com/android/settings/datetime/ZonePickerComparatorTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1143183
+      },
+      "writtenOn": "2017-11-01T03:36:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a9dba2b_aa198f6a",
       "range": {
         "startLine": 28,
         "startChar": 12,
@@ -160,6 +208,30 @@
     },
     {
       "key": {
+        "uuid": "3412a445_d3a2bc84",
+        "filename": "tests/robotests/src/com/android/settings/datetime/ZonePickerComparatorTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1143183
+      },
+      "writtenOn": "2017-11-01T03:36:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1dc682ce_282c9d45",
+      "range": {
+        "startLine": 29,
+        "startChar": 10,
+        "endLine": 31,
+        "endChar": 60
+      },
+      "revId": "89beffcea3a130479a1a1b974a58a6f451a66333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc99d18c_9da2601f",
         "filename": "tests/robotests/src/com/android/settings/datetime/ZonePickerComparatorTest.java",
         "patchSetId": 3
@@ -171,6 +243,30 @@
       "writtenOn": "2017-10-31T16:18:12Z",
       "side": 1,
       "message": "call this setUp() to match the convention in settings test suite.",
+      "range": {
+        "startLine": 55,
+        "startChar": 16,
+        "endLine": 55,
+        "endChar": 27
+      },
+      "revId": "89beffcea3a130479a1a1b974a58a6f451a66333",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "af8f39e6_90e8c2ec",
+        "filename": "tests/robotests/src/com/android/settings/datetime/ZonePickerComparatorTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1143183
+      },
+      "writtenOn": "2017-11-01T03:36:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc99d18c_9da2601f",
       "range": {
         "startLine": 55,
         "startChar": 16,
