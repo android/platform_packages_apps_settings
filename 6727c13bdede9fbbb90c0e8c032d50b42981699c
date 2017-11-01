@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8684dd99_a3b9a915",
+        "filename": "tests/robotests/src/com/android/settings/datetime/ZonePickerComparatorTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-11-01T04:08:33Z",
+      "side": 1,
+      "message": "the boolean flag here is not scalable. you won\u0027t be able to extend the method if a third locale should be tested.\n\nLet\u0027s change the test data structure to a map, keyed by locale.",
+      "range": {
+        "startLine": 44,
+        "startChar": 55,
+        "endLine": 44,
+        "endChar": 69
+      },
+      "revId": "6727c13bdede9fbbb90c0e8c032d50b42981699c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0de512b3_6d245458",
+        "filename": "tests/robotests/src/com/android/settings/datetime/ZonePickerComparatorTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-11-01T04:08:33Z",
+      "side": 1,
+      "message": "put private methods at the end.",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 5
+      },
+      "revId": "6727c13bdede9fbbb90c0e8c032d50b42981699c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
