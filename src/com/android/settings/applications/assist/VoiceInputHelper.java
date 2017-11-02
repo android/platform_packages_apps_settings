@@ -29,6 +29,7 @@ import android.provider.Settings;
 import android.service.voice.VoiceInteractionService;
 import android.service.voice.VoiceInteractionServiceInfo;
 import android.speech.RecognitionService;
+import android.text.TextUtils;
 import android.util.ArraySet;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -48,6 +49,7 @@ public final class VoiceInputHelper {
 
     final List<ResolveInfo> mAvailableVoiceInteractions;
     final List<ResolveInfo> mAvailableRecognition;
+    final ArraySet<String> mPackageSet;
 
     static public class BaseInfo implements Comparable {
         public final ServiceInfo service;
@@ -105,6 +107,7 @@ public final class VoiceInputHelper {
         mAvailableRecognition = mContext.getPackageManager().queryIntentServices(
                 new Intent(RecognitionService.SERVICE_INTERFACE),
                 PackageManager.GET_META_DATA);
+        mPackageSet = new ArraySet<>();
     }
 
     public void buildUi() {
@@ -152,7 +155,12 @@ public final class VoiceInputHelper {
         size = mAvailableRecognition.size();
         for (int i = 0; i < size; i++) {
             ResolveInfo resolveInfo = mAvailableRecognition.get(i);
-            ComponentName comp = new ComponentName(resolveInfo.serviceInfo.packageName,
+            String packageName = resolveInfo.serviceInfo.packageName;
+            if (TextUtils.isEmpty(packageName) || mPackageSet.contains(packageName)) {
+                continue;
+            }
+            mPackageSet.add(packageName);
+            ComponentName comp = new ComponentName(packageName,
                     resolveInfo.serviceInfo.name);
             if (interactorRecognizers.contains(comp)) {
                 //continue;
