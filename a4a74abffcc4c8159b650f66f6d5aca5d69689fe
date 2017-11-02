@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a3ffb4af_405472e5",
+        "filename": "src/com/android/settings/development/PrivateDnsModeDialogPreference.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2017-11-02T08:00:27Z",
+      "side": 1,
+      "message": "I believe we need to do better here. As a user, if I enter an invalid hostname without noticing and tap save, the result here is that I find my setting in an unexpected mode (and can\u0027t even realize unless I open the dialog again to check).\n\nThere are multiple ways to deal with this ; e.g. there can be a hidden error message that gets revealed when the user tries to save, but I think we need to prevent the user to close the dialog with Save until the setting is correct, either by choosing another option or by entering a valid host name.",
+      "range": {
+        "startLine": 180,
+        "startChar": 31,
+        "endLine": 180,
+        "endChar": 61
+      },
+      "revId": "a4a74abffcc4c8159b650f66f6d5aca5d69689fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c05aad5c_3be9e202",
+        "filename": "src/com/android/settings/development/PrivateDnsModeDialogPreference.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2017-11-02T08:00:27Z",
+      "side": 1,
+      "message": "Remove this log ?",
+      "range": {
+        "startLine": 184,
+        "startChar": 8,
+        "endLine": 184,
+        "endChar": 11
+      },
+      "revId": "a4a74abffcc4c8159b650f66f6d5aca5d69689fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
