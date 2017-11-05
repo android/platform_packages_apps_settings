@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "28f0bd44_5fe6a618",
+        "filename": "res/layout/private_dns_mode_dialog.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-11-05T10:10:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7eb9ebb1_f78bb260",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 4
+      },
+      "revId": "a4a74abffcc4c8159b650f66f6d5aca5d69689fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3ffb4af_405472e5",
         "filename": "src/com/android/settings/development/PrivateDnsModeDialogPreference.java",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ca2eec2a_3f10a85e",
+        "filename": "src/com/android/settings/development/PrivateDnsModeDialogPreference.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-11-05T10:10:40Z",
+      "side": 1,
+      "message": "I added a todo to disable the positive button (\"save\") when the entry appears invalid.  The mock actually calls for something like this.\n\nRicher signaling I haven\u0027t yet figure out. Perhaps we can do that in a follow-up CL, given that this is still a developer option.",
+      "parentUuid": "a3ffb4af_405472e5",
+      "range": {
+        "startLine": 180,
+        "startChar": 31,
+        "endLine": 180,
+        "endChar": 61
+      },
+      "revId": "a4a74abffcc4c8159b650f66f6d5aca5d69689fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c05aad5c_3be9e202",
         "filename": "src/com/android/settings/development/PrivateDnsModeDialogPreference.java",
         "patchSetId": 5
@@ -59,6 +107,30 @@
       "writtenOn": "2017-11-02T08:00:27Z",
       "side": 1,
       "message": "Remove this log ?",
+      "range": {
+        "startLine": 184,
+        "startChar": 8,
+        "endLine": 184,
+        "endChar": 11
+      },
+      "revId": "a4a74abffcc4c8159b650f66f6d5aca5d69689fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d22ebce1_898c175f",
+        "filename": "src/com/android/settings/development/PrivateDnsModeDialogPreference.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-11-05T10:10:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c05aad5c_3be9e202",
       "range": {
         "startLine": 184,
         "startChar": 8,

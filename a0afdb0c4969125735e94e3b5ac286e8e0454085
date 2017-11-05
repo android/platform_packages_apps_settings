@@ -22,6 +22,30 @@
       "revId": "a0afdb0c4969125735e94e3b5ac286e8e0454085",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03e8167e_acb19e38",
+        "filename": "src/com/android/settings/development/DevelopmentSettings.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 832,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-11-05T10:10:40Z",
+      "side": 0,
+      "message": "Done.  Took some wrangling, but it works now.",
+      "parentUuid": "6ae0b2a4_06b0c750",
+      "range": {
+        "startLine": 832,
+        "startChar": 8,
+        "endLine": 832,
+        "endChar": 30
+      },
+      "revId": "a0afdb0c4969125735e94e3b5ac286e8e0454085",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
