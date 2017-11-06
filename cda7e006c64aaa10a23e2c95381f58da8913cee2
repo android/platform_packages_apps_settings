@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "43b26c41_65128c49",
+        "filename": "src/com/android/settings/development/PrivateDnsModeDialogPreference.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-11-06T03:49:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "058f03a8_19a055f3",
+      "revId": "cda7e006c64aaa10a23e2c95381f58da8913cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "50c71059_b2e4e817",
         "filename": "src/com/android/settings/development/PrivateDnsModeDialogPreference.java",
         "patchSetId": 7
@@ -30,6 +48,30 @@
       "writtenOn": "2017-11-06T01:49:45Z",
       "side": 1,
       "message": "I don\u0027t think underscores are actually allowed in hostnames?  Although wikipedia says lots of clients support it anyway so ... up to you.",
+      "range": {
+        "startLine": 235,
+        "startChar": 55,
+        "endLine": 235,
+        "endChar": 56
+      },
+      "revId": "cda7e006c64aaa10a23e2c95381f58da8913cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26ce8b9b_aa811c4c",
+        "filename": "src/com/android/settings/development/PrivateDnsModeDialogPreference.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1000451
+      },
+      "writtenOn": "2017-11-06T03:49:41Z",
+      "side": 1,
+      "message": "We had a check that discarded _ in DNS names in some other code, and an external party filed some bugs on us to relax it.  I didn\u0027t want to relive that.\n\nClarifying the TODO that we should find a better validation function.",
+      "parentUuid": "50c71059_b2e4e817",
       "range": {
         "startLine": 235,
         "startChar": 55,
