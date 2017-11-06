@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "058f03a8_19a055f3",
+        "filename": "src/com/android/settings/development/PrivateDnsModeDialogPreference.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1161323
+      },
+      "writtenOn": "2017-11-06T01:49:45Z",
+      "side": 1,
+      "message": "I know this is nitpicky, but let\u0027s add a matching TODO here, so we don\u0027t forget to remove this case.",
+      "revId": "cda7e006c64aaa10a23e2c95381f58da8913cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50c71059_b2e4e817",
+        "filename": "src/com/android/settings/development/PrivateDnsModeDialogPreference.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1161323
+      },
+      "writtenOn": "2017-11-06T01:49:45Z",
+      "side": 1,
+      "message": "I don\u0027t think underscores are actually allowed in hostnames?  Although wikipedia says lots of clients support it anyway so ... up to you.",
+      "range": {
+        "startLine": 235,
+        "startChar": 55,
+        "endLine": 235,
+        "endChar": 56
+      },
+      "revId": "cda7e006c64aaa10a23e2c95381f58da8913cee2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
