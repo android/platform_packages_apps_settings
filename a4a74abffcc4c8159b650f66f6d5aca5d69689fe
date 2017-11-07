@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "f1874b1a_b78e3fdf",
+        "filename": "src/com/android/settings/development/PrivateDnsModeDialogPreference.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2017-11-07T03:12:51Z",
+      "side": 1,
+      "message": "Ack.",
+      "parentUuid": "ca2eec2a_3f10a85e",
+      "range": {
+        "startLine": 180,
+        "startChar": 31,
+        "endLine": 180,
+        "endChar": 61
+      },
+      "revId": "a4a74abffcc4c8159b650f66f6d5aca5d69689fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c05aad5c_3be9e202",
         "filename": "src/com/android/settings/development/PrivateDnsModeDialogPreference.java",
         "patchSetId": 5

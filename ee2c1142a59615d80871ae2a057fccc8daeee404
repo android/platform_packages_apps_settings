@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a801e6a_3bb5a15e",
+        "filename": "src/com/android/settings/development/PrivateDnsModeDialogPreference.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2017-11-07T03:12:51Z",
+      "side": 1,
+      "message": "This might difficult to do to the point of undesirability, but in your other change platform/frameworks/base/services/core/java/com/android/server/NetworkManagementService.java is hardcoding which value is the default one, and it would be better if there was only one authoritative source for this. It could be a resource, or a single constant in a java file accessible from both places.\n\nNot essential though.",
+      "range": {
+        "startLine": 57,
+        "startChar": 32,
+        "endLine": 57,
+        "endChar": 44
+      },
+      "revId": "ee2c1142a59615d80871ae2a057fccc8daeee404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4a1db81_fabcd207",
+        "filename": "src/com/android/settings/development/PrivateDnsModeDialogPreference.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2017-11-07T03:12:51Z",
+      "side": 1,
+      "message": "Maybe HOSTNAME_KEY is a little clearer in this context ? I understand you don\u0027t want to commit to necessarily having this setting be a hostname forever and in that respect I think Settings.Global.PRIVATE_DNS_SPECIFIER is a fine naming. But in this context, I can\u0027t imagine the setting stopping to be a hostname without this class being rehauled pretty much completely, so maybe HOSTNAME is clearer just in this file.",
+      "range": {
+        "startLine": 59,
+        "startChar": 32,
+        "endLine": 59,
+        "endChar": 45
+      },
+      "revId": "ee2c1142a59615d80871ae2a057fccc8daeee404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f66c3884_b7ed338d",
+        "filename": "src/com/android/settings/development/PrivateDnsModeDialogPreference.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2017-11-07T03:12:51Z",
+      "side": 1,
+      "message": "https://docs.oracle.com/javase/8/docs/technotes/guides/language/strings-switch.html",
+      "range": {
+        "startLine": 65,
+        "startChar": 12,
+        "endLine": 65,
+        "endChar": 16
+      },
+      "revId": "ee2c1142a59615d80871ae2a057fccc8daeee404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
