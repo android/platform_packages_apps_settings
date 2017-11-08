@@ -473,4 +473,16 @@
         <item name="android:textSize">@dimen/search_bar_text_size</item>
     </style>
 
+    <style name="DescrimerPositiveButton" parent="@style/SuwGlifButton.Primary">
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+    </style>
+
+    <style name="DescrimerNegativeButton" parent="@style/SuwGlifButton.Secondary">
+        <item name="android:layout_margin">16dp</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+    </style>
+
 </resources>
