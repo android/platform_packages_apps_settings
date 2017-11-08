@@ -3327,6 +3327,11 @@
         <service android:name=".fuelgauge.batterytip.AnomalyDetectionJobService"
                  android:permission="android.permission.BIND_JOB_SERVICE" />
 
+        <activity android:name=".wifi.calling.DisclaimerActivity"
+                  android:label="@string/wifi_calling_settings_title"
+                  android:parentActivityName="Settings$WifiCallingSettingsActivity"
+                  android:enabled="true">
+        </activity>
         <!-- This is the longest AndroidManifest.xml ever. -->
     </application>
 </manifest>

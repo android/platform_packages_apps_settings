@@ -10076,4 +10076,13 @@
 
     <!-- Title for Connected device shortcut [CHAR LIMIT=30] -->
     <string name="devices_title">Devices</string>
+
+    <!-- Label for the title on wfc disclaimer activity. [CHAR LIMIT=30] -->
+    <string name="wfc_disclaimer_title_text">Important information</string>
+
+    <!-- Label for the agree button on wfc disclaimer activity. [CHAR LIMIT=30] -->
+    <string name="wfc_disclaimer_agree_button_text">I Agree</string>
+
+    <!-- Label for the disagree button on wfc disclaimer activity. [CHAR LIMIT=30] -->
+    <string name="wfc_disclaimer_disagree_text">No thanks</string>
 </resources>

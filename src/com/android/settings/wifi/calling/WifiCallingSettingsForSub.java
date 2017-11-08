@@ -43,6 +43,7 @@ import android.widget.TextView;
 
 import com.android.ims.ImsConfig;
 import com.android.ims.ImsManager;
+import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.telephony.Phone;
 import com.android.settings.R;
@@ -64,10 +65,17 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
     private static final String BUTTON_WFC_MODE = "wifi_calling_mode";
     private static final String BUTTON_WFC_ROAMING_MODE = "wifi_calling_roaming_mode";
     private static final String PREFERENCE_EMERGENCY_ADDRESS = "emergency_address_key";
+    @VisibleForTesting
+    static final String DISCLAIMER_ACTIVITY_STRING
+            = "com.android.settings/.wifi.calling.DisclaimerActivity";
 
-    private static final int REQUEST_CHECK_WFC_EMERGENCY_ADDRESS = 1;
+    @VisibleForTesting
+    static final int REQUEST_CHECK_WFC_EMERGENCY_ADDRESS = 1;
+    @VisibleForTesting
+    static final int REQUEST_CHECK_WFC_DISCLAIMER = 2;
 
     public static final String EXTRA_LAUNCH_CARRIER_APP = "EXTRA_LAUNCH_CARRIER_APP";
+    public static final String EXTRA_SUB_ID = "EXTRA_SUB_ID";
 
     protected static final String FRAGMENT_BUNDLE_SUBID = "subId";
 
@@ -365,14 +373,10 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
             return;
         }
 
-        // Call address management activity before turning on WFC
-        Intent carrierAppIntent = getCarrierActivityIntent();
-        if (carrierAppIntent != null) {
-            carrierAppIntent.putExtra(EXTRA_LAUNCH_CARRIER_APP, LAUCH_APP_ACTIVATE);
-            startActivityForResult(carrierAppIntent, REQUEST_CHECK_WFC_EMERGENCY_ADDRESS);
-        } else {
-            updateWfcMode(true);
-        }
+        // Launch disclaimer activity before turning on WFC
+        Intent intent = getDisclaimerActivityIntent();
+        intent.putExtra(EXTRA_SUB_ID, mSubId);
+        startActivityForResult(intent, REQUEST_CHECK_WFC_DISCLAIMER);
     }
 
     /*
@@ -402,6 +406,16 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
     }
 
     /*
+     * Get the Intent to launch disclaimer activity.
+     */
+    private static Intent getDisclaimerActivityIntent() {
+        // Build and return intent
+        Intent intent = new Intent();
+        intent.setComponent(ComponentName.unflattenFromString(DISCLAIMER_ACTIVITY_STRING));
+        return intent;
+    }
+
+    /*
      * Turn on/off WFC mode with ImsManager and update UI accordingly
      */
     private void updateWfcMode(boolean wfcEnabled) {
@@ -424,12 +438,30 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
 
         final Context context = getActivity();
 
-        if (requestCode == REQUEST_CHECK_WFC_EMERGENCY_ADDRESS) {
-            Log.d(TAG, "WFC emergency address activity result = " + resultCode);
+        Log.d(TAG, "WFC activity request = " + requestCode + " result = " + resultCode);
 
-            if (resultCode == Activity.RESULT_OK) {
-                updateWfcMode(true);
-            }
+        switch (requestCode) {
+            case REQUEST_CHECK_WFC_EMERGENCY_ADDRESS:
+                if (resultCode == Activity.RESULT_OK) {
+                    updateWfcMode(true);
+                }
+                break;
+            case REQUEST_CHECK_WFC_DISCLAIMER:
+                if (resultCode == Activity.RESULT_OK) {
+                    // Call address management activity before turning on WFC
+                    Intent carrierAppIntent = getCarrierActivityIntent();
+                    if (carrierAppIntent != null) {
+                        carrierAppIntent.putExtra(EXTRA_LAUNCH_CARRIER_APP, LAUCH_APP_ACTIVATE);
+                        startActivityForResult(carrierAppIntent,
+                                REQUEST_CHECK_WFC_EMERGENCY_ADDRESS);
+                    } else {
+                        updateWfcMode(true);
+                    }
+                }
+                break;
+            default:
+                Log.e(TAG, "Unexpected request: " + requestCode);
+                break;
         }
     }
 
