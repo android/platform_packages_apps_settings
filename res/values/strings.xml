@@ -9084,4 +9084,13 @@ The variable will be replaced with a number. -->
     <string name="ims_reg_status_registered">"Registered"</string>
     <!--Used when IMS registration state is not registered -->
     <string name="ims_reg_status_not_registered">"Not registered"</string>
+
+    <!-- Label for the title on wfc disclaimer activity. -->
+    <string name="wfc_disclaimer_title_text">Important information</string>
+
+    <!-- Label for the agree button on wfc disclaimer activity. -->
+    <string name="wfc_disclaimer_agree_button_text">I Agree</string>
+
+    <!-- Label for the disagree button on wfc disclaimer activity. -->
+    <string name="wfc_disclaimer_disagree_text">No thanks</string>
 </resources>

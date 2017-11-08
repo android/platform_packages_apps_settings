@@ -3295,6 +3295,11 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".wfc.DisclaimerActivity"
+                  android:label="@string/wifi_calling_settings_title"
+                  android:parentActivityName="Settings$WifiCallingSettingsActivity"
+                  android:enabled="true">
+        </activity>
         <!-- This is the longest AndroidManifest.xml ever. -->
     </application>
 </manifest>
