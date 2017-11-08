@@ -31,6 +31,7 @@ import android.support.v7.preference.Preference.OnPreferenceClickListener;
 import android.support.v7.preference.PreferenceScreen;
 import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneStateListener;
+import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -39,6 +40,7 @@ import android.widget.TextView;
 
 import com.android.ims.ImsConfig;
 import com.android.ims.ImsManager;
+import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.telephony.Phone;
 import com.android.settings.widget.SwitchBar;
@@ -57,10 +59,17 @@ public class WifiCallingSettings extends SettingsPreferenceFragment
     private static final String BUTTON_WFC_MODE = "wifi_calling_mode";
     private static final String BUTTON_WFC_ROAMING_MODE = "wifi_calling_roaming_mode";
     private static final String PREFERENCE_EMERGENCY_ADDRESS = "emergency_address_key";
+    @VisibleForTesting
+    static final String DISCLAIMER_ACTIVITY_STRING
+            = "com.android.settings/.wfc.DisclaimerActivity";
 
-    private static final int REQUEST_CHECK_WFC_EMERGENCY_ADDRESS = 1;
+    @VisibleForTesting
+    static final int REQUEST_CHECK_WFC_EMERGENCY_ADDRESS = 1;
+    @VisibleForTesting
+    static final int REQUEST_CHECK_WFC_DISCLAIMER = 2;
 
     public static final String EXTRA_LAUNCH_CARRIER_APP = "EXTRA_LAUNCH_CARRIER_APP";
+    public static final String EXTRA_PHONE_ID = "EXTRA_PHONE_ID";
 
     public static final int LAUCH_APP_ACTIVATE = 0;
     public static final int LAUCH_APP_UPDATE = 1;
@@ -309,14 +318,10 @@ public class WifiCallingSettings extends SettingsPreferenceFragment
             return;
         }
 
-        // Call address management activity before turning on WFC
-        Intent carrierAppIntent = getCarrierActivityIntent(context);
-        if (carrierAppIntent != null) {
-            carrierAppIntent.putExtra(EXTRA_LAUNCH_CARRIER_APP, LAUCH_APP_ACTIVATE);
-            startActivityForResult(carrierAppIntent, REQUEST_CHECK_WFC_EMERGENCY_ADDRESS);
-        } else {
-            updateWfcMode(context, true);
-        }
+        // Launch disclaimer activity before turning on WFC
+        Intent intent = getDisclaimerActivityIntent();
+        intent.putExtra(EXTRA_PHONE_ID, SubscriptionManager.getDefaultVoicePhoneId());
+        startActivityForResult(intent, REQUEST_CHECK_WFC_DISCLAIMER);
     }
 
     /*
@@ -345,6 +350,16 @@ public class WifiCallingSettings extends SettingsPreferenceFragment
     }
 
     /*
+     * Get the Intent to launch disclaimer activity.
+     */
+    private static Intent getDisclaimerActivityIntent() {
+        // Build and return intent
+        Intent intent = new Intent();
+        intent.setComponent(ComponentName.unflattenFromString(DISCLAIMER_ACTIVITY_STRING));
+        return intent;
+    }
+
+    /*
      * Turn on/off WFC mode with ImsManager and update UI accordingly
      */
     private void updateWfcMode(Context context, boolean wfcEnabled) {
@@ -367,12 +382,30 @@ public class WifiCallingSettings extends SettingsPreferenceFragment
 
         final Context context = getActivity();
 
-        if (requestCode == REQUEST_CHECK_WFC_EMERGENCY_ADDRESS) {
-            Log.d(TAG, "WFC emergency address activity result = " + resultCode);
+        Log.d(TAG, "WFC activity request = " + requestCode + " result = " + resultCode);
 
-            if (resultCode == Activity.RESULT_OK) {
-                updateWfcMode(context, true);
-            }
+        switch (requestCode) {
+            case REQUEST_CHECK_WFC_EMERGENCY_ADDRESS:
+                if (resultCode == Activity.RESULT_OK) {
+                    updateWfcMode(context, true);
+                }
+                break;
+            case REQUEST_CHECK_WFC_DISCLAIMER:
+                if (resultCode == Activity.RESULT_OK) {
+                    // Call address management activity before turning on WFC
+                    Intent carrierAppIntent = getCarrierActivityIntent(context);
+                    if (carrierAppIntent != null) {
+                        carrierAppIntent.putExtra(EXTRA_LAUNCH_CARRIER_APP, LAUCH_APP_ACTIVATE);
+                        startActivityForResult(carrierAppIntent,
+                                REQUEST_CHECK_WFC_EMERGENCY_ADDRESS);
+                    } else {
+                        updateWfcMode(context, true);
+                    }
+                }
+                break;
+            default:
+                Log.e(TAG, "Unexpected request: " + requestCode);
+                break;
         }
     }
 
