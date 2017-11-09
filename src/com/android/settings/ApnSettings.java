@@ -72,6 +72,8 @@ public class ApnSettings extends RestrictedSettingsFragment implements
         "content://telephony/carriers/restore";
     public static final String PREFERRED_APN_URI =
         "content://telephony/carriers/preferapn";
+    public static final String QUERY_ALL_URI =
+            "content://telephony/carriers/all";
 
     public static final String APN_ID = "apn_id";
     public static final String SUB_ID = "sub_id";
@@ -95,6 +97,7 @@ public class ApnSettings extends RestrictedSettingsFragment implements
 
     private static final Uri DEFAULTAPN_URI = Uri.parse(RESTORE_CARRIERS_URI);
     private static final Uri PREFERAPN_URI = Uri.parse(PREFERRED_APN_URI);
+    private static final Uri ALL_URI = Uri.parse(QUERY_ALL_URI);
 
     private static boolean mRestoreDefaultApnMode;
 
@@ -259,7 +262,8 @@ public class ApnSettings extends RestrictedSettingsFragment implements
             where.append(" AND NOT (type='ims')");
         }
 
-        Cursor cursor = getContentResolver().query(Telephony.Carriers.CONTENT_URI, new String[] {
+        // Settings app should user URL_ALL to query all APN records including DPC records.
+        Cursor cursor = getContentResolver().query(ALL_URI, new String[] {
                 "_id", "name", "apn", "type", "mvno_type", "mvno_match_data"}, where.toString(),
                 null, Telephony.Carriers.DEFAULT_SORT_ORDER);
 
