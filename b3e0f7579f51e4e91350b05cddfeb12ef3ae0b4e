@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "622cdbb5_c1858827",
+        "filename": "src/com/android/settings/applications/assist/VoiceInputHelper.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-11-09T23:31:21Z",
+      "side": 1,
+      "message": "But if the same package provides multiple voiceinput service, your change here will drop everything except the first one.",
+      "range": {
+        "startLine": 158,
+        "startChar": 12,
+        "endLine": 162,
+        "endChar": 41
+      },
+      "revId": "b3e0f7579f51e4e91350b05cddfeb12ef3ae0b4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
