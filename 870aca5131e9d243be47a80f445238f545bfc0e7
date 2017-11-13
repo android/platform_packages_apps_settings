@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e5e2c78e_86f62947",
+        "filename": "src/com/android/settings/sim/SimSelectNotification.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1059880
+      },
+      "writtenOn": "2017-11-13T18:19:47Z",
+      "side": 1,
+      "message": "I don\u0027t think this channel needs high importance, as it didn\u0027t make noise before. We should use default / low instead.",
+      "revId": "870aca5131e9d243be47a80f445238f545bfc0e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
