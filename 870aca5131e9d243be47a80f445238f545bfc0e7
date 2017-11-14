@@ -16,6 +16,24 @@
       "revId": "870aca5131e9d243be47a80f445238f545bfc0e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bddfc900_259ea486",
+        "filename": "src/com/android/settings/sim/SimSelectNotification.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1156808
+      },
+      "writtenOn": "2017-11-14T22:29:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5e2c78e_86f62947",
+      "revId": "870aca5131e9d243be47a80f445238f545bfc0e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
