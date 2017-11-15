@@ -139,7 +139,7 @@ public class RemoveAccountPreferenceController extends PreferenceController
         @Override
         public void onClick(DialogInterface dialog, int which) {
             Activity activity = getTargetFragment().getActivity();
-            AccountManager.get(activity).removeAccountAsUser(mAccount, activity,
+            AccountManager.get(activity).removeAccountAsUser(mAccount, null,
                     new AccountManagerCallback<Bundle>() {
                         @Override
                         public void run(AccountManagerFuture<Bundle> future) {
