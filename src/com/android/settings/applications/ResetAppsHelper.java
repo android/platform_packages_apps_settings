@@ -22,6 +22,8 @@ import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.app.AppOpsManager;
 import android.app.INotificationManager;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.ApplicationInfo;
@@ -116,6 +118,15 @@ public class ResetAppsHelper implements DialogInterface.OnClickListener,
                 for (int i = 0; i < apps.size(); i++) {
                     ApplicationInfo app = apps.get(i);
                     try {
+                        if (mNm.onlyHasDefaultChannel(app.packageName, app.uid)) {
+                            NotificationChannel channel = mNm.getNotificationChannelForPackage(app.packageName,
+                                    app.uid, NotificationChannel.DEFAULT_CHANNEL_ID, true);
+                            if(channel != null) {
+                                channel.setImportance(NotificationManager.IMPORTANCE_DEFAULT);
+                                channel.lockFields(NotificationChannel.USER_LOCKED_IMPORTANCE);
+                                mNm.updateNotificationChannelForPackage(app.packageName, app.uid, channel);
+                            }
+                        }
                         mNm.setNotificationsEnabledForPackage(app.packageName, app.uid, true);
                     } catch (android.os.RemoteException ex) {
                     }
