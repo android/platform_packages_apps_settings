@@ -22,6 +22,30 @@
       "revId": "d6a00cfa3f6b37a7c787f4854670ae34fc1d5421",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "11a0ba96_c87f56fe",
+        "filename": "tests/unit/src/com/android/settings/notification/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-11-21T01:10:02Z",
+      "side": 1,
+      "message": "No this is added by someone else.",
+      "parentUuid": "7a06900f_371797e8",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 48
+      },
+      "revId": "d6a00cfa3f6b37a7c787f4854670ae34fc1d5421",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
