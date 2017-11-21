@@ -23,10 +23,11 @@ import android.text.Editable;
 import android.util.Log;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
+
 import com.android.settings.R;
 import com.android.settings.bluetooth.BluetoothPairingDialogFragment.BluetoothPairingDialogListener;
 import com.android.settingslib.bluetooth.LocalBluetoothManager;
-import com.android.settingslib.bluetooth.LocalBluetoothProfile;
+
 import java.util.Locale;
 
 /**
@@ -51,12 +52,12 @@ public class BluetoothPairingController implements OnCheckedChangeListener,
     // Bluetooth dependencies for the connection we are trying to establish
     private LocalBluetoothManager mBluetoothManager;
     private BluetoothDevice mDevice;
+    private int mDeviceClass;
     private int mType;
     private String mUserInput;
     private String mPasskeyFormatted;
     private int mPasskey;
     private String mDeviceName;
-    private LocalBluetoothProfile mPbapClientProfile;
 
     /**
      * Creates an instance of a BluetoothPairingController.
@@ -79,9 +80,10 @@ public class BluetoothPairingController implements OnCheckedChangeListener,
         mType = intent.getIntExtra(BluetoothDevice.EXTRA_PAIRING_VARIANT, BluetoothDevice.ERROR);
         mPasskey = intent.getIntExtra(BluetoothDevice.EXTRA_PAIRING_KEY, BluetoothDevice.ERROR);
         mDeviceName = mBluetoothManager.getCachedDeviceManager().getName(mDevice);
-        mPbapClientProfile = mBluetoothManager.getProfileManager().getPbapClientProfile();
         mPasskeyFormatted = formatKey(mPasskey);
-
+        BluetoothClass bluetoothClass = mDevice.getBluetoothClass();
+        mDeviceClass = bluetoothClass == null ? BluetoothClass.Device.COMPUTER_UNCATEGORIZED :
+                bluetoothClass.getDeviceClass();
     }
 
     @Override
@@ -141,13 +143,21 @@ public class BluetoothPairingController implements OnCheckedChangeListener,
     }
 
     /**
-     * A method for querying if the bluetooth device has a profile already set up on this device.
+     * A method for querying if the PBAP checkbox should be shown during pairing.
      *
-     * @return - A boolean indicating if the device has previous knowledge of a profile for this
-     * device.
+     * @return - A boolean indicating if the PBAP checkbox should be shown
      */
-    public boolean isProfileReady() {
-        return mPbapClientProfile != null && mPbapClientProfile.isProfileReady();
+    public boolean shouldShowPbapCheckbox() {
+        switch (mDeviceClass) {
+            case BluetoothClass.Device.AUDIO_VIDEO_CAR_AUDIO:
+                return true;
+            case BluetoothClass.Device.AUDIO_VIDEO_HANDSFREE:
+                return true;
+            case BluetoothClass.Device.AUDIO_VIDEO_WEARABLE_HEADSET:
+                return true;
+            default:
+                return false;
+        }
     }
 
     /**
@@ -163,11 +173,7 @@ public class BluetoothPairingController implements OnCheckedChangeListener,
             case BluetoothDevice.ACCESS_REJECTED:
                 return false;
             default:
-                if (mDevice.getBluetoothClass().getDeviceClass()
-                        == BluetoothClass.Device.AUDIO_VIDEO_HANDSFREE) {
-                    return true;
-                }
-                return false;
+                return (mDeviceClass == BluetoothClass.Device.AUDIO_VIDEO_HANDSFREE);
         }
     }
 
