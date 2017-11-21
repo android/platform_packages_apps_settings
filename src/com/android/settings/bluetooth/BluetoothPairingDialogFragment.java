@@ -222,8 +222,11 @@ public class BluetoothPairingDialogFragment extends InstrumentedDialogFragment i
                 mPairingController.getDeviceName()));
         EditText pairingView = (EditText) view.findViewById(R.id.text);
 
-        contactSharing.setVisibility(mPairingController.isProfileReady()
-                ? View.GONE : View.VISIBLE);
+        if (mPairingController.shouldShowPbapCheckbox()) {
+            contactSharing.setVisibility(View.VISIBLE);
+        } else {
+            contactSharing.setVisibility(View.GONE);
+        }
         contactSharing.setOnCheckedChangeListener(mPairingController);
         contactSharing.setChecked(mPairingController.getContactSharingState());
 
@@ -312,10 +315,13 @@ public class BluetoothPairingDialogFragment extends InstrumentedDialogFragment i
         contactSharing.setText(getString(R.string.bluetooth_pairing_shares_phonebook,
                 mPairingController.getDeviceName()));
 
-        contactSharing.setVisibility(
-                mPairingController.isProfileReady() ? View.GONE : View.VISIBLE);
-        contactSharing.setChecked(mPairingController.getContactSharingState());
+        if (mPairingController.shouldShowPbapCheckbox()) {
+            contactSharing.setVisibility(View.VISIBLE);
+        } else {
+            contactSharing.setVisibility(View.GONE);
+        }
         contactSharing.setOnCheckedChangeListener(mPairingController);
+        contactSharing.setChecked(mPairingController.getContactSharingState());
 
         messagePairing.setVisibility(mPairingController.isDisplayPairingKeyVariant()
                 ? View.VISIBLE : View.GONE);
