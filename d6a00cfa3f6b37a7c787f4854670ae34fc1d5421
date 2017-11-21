@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a06900f_371797e8",
+        "filename": "tests/unit/src/com/android/settings/notification/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2017-11-21T00:54:09Z",
+      "side": 1,
+      "message": "Is this added by me?\n\nI don\u0027t remember I added the OWNER for test folder..",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 48
+      },
+      "revId": "d6a00cfa3f6b37a7c787f4854670ae34fc1d5421",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
