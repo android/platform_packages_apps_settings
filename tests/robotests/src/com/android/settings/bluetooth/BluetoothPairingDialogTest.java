@@ -273,13 +273,13 @@ public class BluetoothPairingDialogTest {
     }
 
     @Test
-    public void dialogShowsContactSharingCheckboxWhenBluetoothProfileNotReady() {
+    public void dialogShowsContactSharingCheckbox() {
         // set the dialog variant to confirmation/consent
         when(controller.getDialogType()).thenReturn(BluetoothPairingController.CONFIRMATION_DIALOG);
 
-        // set a fake device name and pretend the profile has not been set up for it
+        // set a fake device name and pretend the checkbox should not be shown
         when(controller.getDeviceName()).thenReturn(FAKE_DEVICE_NAME);
-        when(controller.isProfileReady()).thenReturn(false);
+        when(controller.shouldShowPbapCheckbox()).thenReturn(false);
 
         // build the fragment
         BluetoothPairingDialogFragment frag = makeFragment();
@@ -292,13 +292,13 @@ public class BluetoothPairingDialogTest {
     }
 
     @Test
-    public void dialogHidesContactSharingCheckboxWhenBluetoothProfileIsReady() {
+    public void dialogHidesContactSharingCheckbox() {
         // set the dialog variant to confirmation/consent
         when(controller.getDialogType()).thenReturn(BluetoothPairingController.CONFIRMATION_DIALOG);
 
-        // set a fake device name and pretend the profile has been set up for it
+        // set a fake device name and pretend the checkbox should be shown
         when(controller.getDeviceName()).thenReturn(FAKE_DEVICE_NAME);
-        when(controller.isProfileReady()).thenReturn(true);
+        when(controller.shouldShowPbapCheckbox()).thenReturn(true);
 
         // build the fragment
         BluetoothPairingDialogFragment frag = makeFragment();
