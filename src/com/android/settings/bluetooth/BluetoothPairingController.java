@@ -50,13 +50,11 @@ public class BluetoothPairingController implements OnCheckedChangeListener,
     private static final int BLUETOOTH_PASSKEY_MAX_LENGTH = 6;
 
     // Bluetooth dependencies for the connection we are trying to establish
-    private LocalBluetoothManager mBluetoothManager;
     private BluetoothDevice mDevice;
     private int mDeviceClass;
     private int mType;
     private String mUserInput;
     private String mPasskeyFormatted;
-    private int mPasskey;
     private String mDeviceName;
 
     /**
@@ -67,23 +65,22 @@ public class BluetoothPairingController implements OnCheckedChangeListener,
      * will lead to undefined behavior.
      */
     public BluetoothPairingController(Intent intent, Context context) {
-        mBluetoothManager = Utils.getLocalBtManager(context);
+        LocalBluetoothManager localBluetoothManager = Utils.getLocalBtManager(context);
         mDevice = intent.getParcelableExtra(BluetoothDevice.EXTRA_DEVICE);
 
-        String message = "";
-        if (mBluetoothManager == null) {
+        if (localBluetoothManager == null) {
             throw new IllegalStateException("Could not obtain LocalBluetoothManager");
         } else if (mDevice == null) {
             throw new IllegalStateException("Could not find BluetoothDevice");
         }
 
         mType = intent.getIntExtra(BluetoothDevice.EXTRA_PAIRING_VARIANT, BluetoothDevice.ERROR);
-        mPasskey = intent.getIntExtra(BluetoothDevice.EXTRA_PAIRING_KEY, BluetoothDevice.ERROR);
-        mDeviceName = mBluetoothManager.getCachedDeviceManager().getName(mDevice);
-        mPasskeyFormatted = formatKey(mPasskey);
+        mDeviceName = localBluetoothManager.getCachedDeviceManager().getName(mDevice);
         BluetoothClass bluetoothClass = mDevice.getBluetoothClass();
         mDeviceClass = bluetoothClass == null ? BluetoothClass.Device.COMPUTER_UNCATEGORIZED :
                 bluetoothClass.getDeviceClass();
+        mPasskeyFormatted = formatKey(intent.getIntExtra(BluetoothDevice.EXTRA_PAIRING_KEY,
+                    BluetoothDevice.ERROR));
     }
 
     @Override
@@ -348,10 +345,10 @@ public class BluetoothPairingController implements OnCheckedChangeListener,
         switch (mType) {
             case BluetoothDevice.PAIRING_VARIANT_PASSKEY_CONFIRMATION:
             case BluetoothDevice.PAIRING_VARIANT_DISPLAY_PASSKEY:
-                return String.format(Locale.US, "%06d", passkey);
+                return String.format(Locale.getDefault(), "%06d", passkey);
 
             case BluetoothDevice.PAIRING_VARIANT_DISPLAY_PIN:
-                return String.format("%04d", passkey);
+                return String.format(Locale.getDefault(), "%04d", passkey);
 
             default:
                 return null;
