@@ -45,6 +45,30 @@
       "revId": "aa615c64fbd026d71f605dd4f4b66644e088c4d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "67ed3968_83f40ea5",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPairingDialogFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2017-11-21T22:00:56Z",
+      "side": 1,
+      "message": "I agree that this looks wrong.  It works with a carkit, a keyboard, and a headset, so I\u0027m not sure where the error is.",
+      "parentUuid": "1161cceb_18f2f204",
+      "range": {
+        "startLine": 316,
+        "startChar": 35,
+        "endLine": 316,
+        "endChar": 86
+      },
+      "revId": "aa615c64fbd026d71f605dd4f4b66644e088c4d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
