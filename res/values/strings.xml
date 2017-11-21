@@ -9002,4 +9002,6 @@
 
     <!-- Warn the user that the phone may share its location with the service provider. -->
     <string name="wfc_disclaimer_location_desc_txt" xliff:restype="x-UNLIMITED">Your service provider may collect your location in order to provide the service.\n\nPlease review your service provider\'s privacy policy.</string>
+    <!-- Warn the user that the phone have emergency call limitation. -->
+    <string name="wfc_disclaimer_emergency_limitation_desc_txt" xliff:restype="x-UNLIMITED">Emergency calls are not possible via Wi-Fi Calling.\nThe device switches automatically to a cellular network to place an emergency call.\nEmergency calls are only possible in areas with cellular coverage.</string>
 </resources>
