@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76fc6429_e747948f",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPairingDialogFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1071489
+      },
+      "writtenOn": "2017-11-21T19:51:08Z",
+      "side": 1,
+      "message": "Same comment as below.",
+      "range": {
+        "startLine": 225,
+        "startChar": 56,
+        "endLine": 225,
+        "endChar": 78
+      },
+      "revId": "aa615c64fbd026d71f605dd4f4b66644e088c4d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1161cceb_18f2f204",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPairingDialogFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1071489
+      },
+      "writtenOn": "2017-11-21T19:51:08Z",
+      "side": 1,
+      "message": "Either the logic is reversed unintentionally, or the naming is confusing. With the current logic, if \"shouldShow\" is true, then visibility is set to GONE instead of VISIBLE.",
+      "range": {
+        "startLine": 316,
+        "startChar": 35,
+        "endLine": 316,
+        "endChar": 86
+      },
+      "revId": "aa615c64fbd026d71f605dd4f4b66644e088c4d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
