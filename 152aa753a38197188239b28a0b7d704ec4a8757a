@@ -22,6 +22,30 @@
       "revId": "152aa753a38197188239b28a0b7d704ec4a8757a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5bd344b_3b7f626e",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPairingController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2017-11-22T18:39:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "821a985a_2c3ae5aa",
+      "range": {
+        "startLine": 85,
+        "startChar": 23,
+        "endLine": 85,
+        "endChar": 45
+      },
+      "revId": "152aa753a38197188239b28a0b7d704ec4a8757a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
