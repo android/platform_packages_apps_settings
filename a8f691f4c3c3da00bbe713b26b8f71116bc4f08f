@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5bb4b77d_832f2269",
+        "filename": "src/com/android/settings/accounts/RemoveAccountPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-11-22T18:16:04Z",
+      "side": 1,
+      "message": "What AccountManager does with the activity is a implementation detail. Removing acitivity could break in next release. this should not be removed.",
+      "revId": "a8f691f4c3c3da00bbe713b26b8f71116bc4f08f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
