@@ -8828,10 +8828,15 @@
     <string name="enterprise_privacy_global_http_proxy">Global HTTP proxy set</string>
     <!-- Label explaining that the admin installed trusted CA certificates. [CHAR LIMIT=NONE] -->
     <string name="enterprise_privacy_ca_certs">Trusted credentials</string>
-    <!-- Summary indicating the number of trusted CA certificates installed by the admin. The number shown is a minimum as there may be additional CA certificates we do not know about. [CHAR LIMIT=NONE] -->
+    <!-- Summary indicating the number of trusted CA certificates installed by the device owner. The number shown is a minimum as there may be additional CA certificates we do not know about. [CHAR LIMIT=NONE] -->
     <plurals name="enterprise_privacy_number_ca_certs">
         <item quantity="one">Minimum <xliff:g id="count">%d</xliff:g> CA certificate</item>
         <item quantity="other">Minimum <xliff:g id="count">%d</xliff:g> CA certificates</item>
+    </plurals>
+    <!-- Summary indicating the number of trusted CA certificates installed by the profile owner. The number shown is a minimum as there may be additional CA certificates we do not know about. [CHAR LIMIT=NONE] -->
+    <plurals name="enterprise_privacy_number_ca_certs_work">
+        <item quantity="one">Minimum <xliff:g id="count">%d</xliff:g> CA certificate in your work profile</item>
+        <item quantity="other">Minimum <xliff:g id="count">%d</xliff:g> CA certificates in your work profile</item>
     </plurals>
     <!-- Label explaining that the admin can lock the device and change the user's password. [CHAR LIMIT=NONE] -->
     <string name="enterprise_privacy_lock_device">Admin can lock the device and reset password</string>

@@ -36,17 +36,24 @@ public class CaCertsPreferenceController extends DynamicAvailabilityPreferenceCo
 
     @Override
     public void updateState(Preference preference) {
-        final int certs =
-                mFeatureProvider.getNumberOfOwnerInstalledCaCertsForCurrentUserAndManagedProfile();
-        preference.setSummary(mContext.getResources().getQuantityString(
-                R.plurals.enterprise_privacy_number_ca_certs, certs, certs));
+        final int deviceCerts =
+                mFeatureProvider.getNumberOfOwnerInstalledCaCertsForCurrentUser();
+        final int profileCerts =
+                mFeatureProvider.getNumberOfOwnerInstalledCaCertsForManagedProfile();
+        if (profileCerts > 0) {
+            preference.setSummary(mContext.getResources().getQuantityString(
+                    R.plurals.enterprise_privacy_number_ca_certs_work, profileCerts, profileCerts));
+        } else if (deviceCerts > 0) {
+            preference.setSummary(mContext.getResources().getQuantityString(
+                    R.plurals.enterprise_privacy_number_ca_certs, deviceCerts, deviceCerts));
+        }
     }
 
     @Override
     public boolean isAvailable() {
         final boolean available =
-                mFeatureProvider.getNumberOfOwnerInstalledCaCertsForCurrentUserAndManagedProfile()
-                        > 0;
+                mFeatureProvider.getNumberOfOwnerInstalledCaCertsForCurrentUser() > 0 ||
+                mFeatureProvider.getNumberOfOwnerInstalledCaCertsForManagedProfile() > 0;
         notifyOnAvailabilityUpdate(available);
         return available;
     }
