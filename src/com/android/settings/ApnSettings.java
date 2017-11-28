@@ -40,6 +40,7 @@ import android.provider.Telephony;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceGroup;
 import android.support.v7.preference.PreferenceScreen;
+import android.telephony.ApnSetting;
 import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
@@ -54,9 +55,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
+import com.android.internal.telephony.dataconnection.ApnSettingUtils;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.TelephonyIntents;
-import com.android.internal.telephony.dataconnection.ApnSetting;
 import com.android.internal.telephony.uicc.IccRecords;
 import com.android.internal.telephony.uicc.UiccController;
 import com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
@@ -330,7 +331,7 @@ public class ApnSettings extends RestrictedSettingsFragment implements
                               ArrayList<ApnPreference> mvnoList, IccRecords r, String mvnoType,
                               String mvnoMatchData) {
         if (r != null && !TextUtils.isEmpty(mvnoType) && !TextUtils.isEmpty(mvnoMatchData)) {
-            if (ApnSetting.mvnoMatches(r, mvnoType, mvnoMatchData)) {
+            if (ApnSettingUtils.mvnoMatches(r, mvnoType, mvnoMatchData)) {
                 mvnoList.add(pref);
                 // Since adding to mvno list, save mvno info
                 mMvnoType = mvnoType;
