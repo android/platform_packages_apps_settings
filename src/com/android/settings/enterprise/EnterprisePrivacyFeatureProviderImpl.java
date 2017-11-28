@@ -200,20 +200,19 @@ public class EnterprisePrivacyFeatureProviderImpl implements EnterprisePrivacyFe
     }
 
     @Override
-    public int getNumberOfOwnerInstalledCaCertsForCurrentUserAndManagedProfile() {
-        int num = 0;
+    public int getNumberOfOwnerInstalledCaCertsForCurrentUser() {
         List<String> certs = mDpm.getOwnerInstalledCaCerts(new UserHandle(MY_USER_ID));
-        if (certs != null) {
-            num += certs.size();
-        }
+        return certs != null ? certs.size() : 0;
+    }
+
+    @Override
+    public int getNumberOfOwnerInstalledCaCertsForManagedProfile() {
         final int userId = getManagedProfileUserId();
-        if (userId != UserHandle.USER_NULL) {
-            certs = mDpm.getOwnerInstalledCaCerts(new UserHandle(userId));
-            if (certs != null) {
-                num += certs.size();
-            }
+        if (userId == UserHandle.USER_NULL) {
+            return 0;
         }
-        return num;
+        List<String> certs = mDpm.getOwnerInstalledCaCerts(new UserHandle(userId));
+        return certs != null ? certs.size() : 0;
     }
 
     @Override

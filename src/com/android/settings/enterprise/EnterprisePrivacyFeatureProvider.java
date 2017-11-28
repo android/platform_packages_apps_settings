@@ -108,10 +108,15 @@ public interface EnterprisePrivacyFeatureProvider {
     String getImeLabelIfOwnerSet();
 
     /**
-     * Returns the number of CA certificates that the Device Owner or Profile Owner installed in
-     * the current user and the user's managed profile (if any).
+     * Returns the number of CA certificates that the device owner installed in the current user.
      */
-    int getNumberOfOwnerInstalledCaCertsForCurrentUserAndManagedProfile();
+    int getNumberOfOwnerInstalledCaCertsForCurrentUser();
+
+    /**
+     * Returns the number of CA certificates that the profile owner installed in the user's
+     * managed profile (if any).
+     */
+    int getNumberOfOwnerInstalledCaCertsForManagedProfile();
 
     /**
      * Returns the number of Device Admin apps active in the current user and the user's managed
