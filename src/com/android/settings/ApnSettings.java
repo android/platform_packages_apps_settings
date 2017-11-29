@@ -37,6 +37,8 @@ import android.os.PersistableBundle;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.Telephony;
+import android.support.v14.preference.SwitchPreference;
+import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceGroup;
 import android.support.v7.preference.PreferenceScreen;
@@ -61,6 +63,10 @@ import com.android.internal.telephony.uicc.IccRecords;
 import com.android.internal.telephony.uicc.UiccController;
 import com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 
+import android.content.ComponentName;
+import android.content.pm.PackageManager;
+
+
 import java.util.ArrayList;
 
 public class ApnSettings extends RestrictedSettingsFragment implements
@@ -77,6 +83,9 @@ public class ApnSettings extends RestrictedSettingsFragment implements
     public static final String SUB_ID = "sub_id";
     public static final String MVNO_TYPE = "mvno_type";
     public static final String MVNO_MATCH_DATA = "mvno_match_data";
+    private static final String KEY_MIMSI_MODE = "mimsi_mode";
+    private static final String KEY_APN = "apn_mimsi_category";
+
 
     private static final int ID_INDEX = 0;
     private static final int NAME_INDEX = 1;
@@ -115,6 +124,10 @@ public class ApnSettings extends RestrictedSettingsFragment implements
 
     private boolean mHideImsApn;
     private boolean mAllowAddingApns;
+
+    private static boolean mMimsiSelected = false;
+    private SwitchPreference mMimsiMode;
+
 
     public ApnSettings() {
         super(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS);
@@ -198,10 +211,19 @@ public class ApnSettings extends RestrictedSettingsFragment implements
         }
 
         addPreferencesFromResource(R.xml.apn_settings);
+	PreferenceCategory apnPrefs = (PreferenceCategory) findPreference(KEY_APN);
+	if (apnPrefs != null) {
+	  mMimsiMode = (SwitchPreference) findPreference(KEY_MIMSI_MODE);
+	  if (mMimsiMode != null) {
+	      mMimsiMode.setOnPreferenceChangeListener(this);
+	  }
+	}
+
     }
 
     @Override
     public void onResume() {
+
         super.onResume();
 
         if (mUnavailable) {
@@ -373,7 +395,20 @@ public class ApnSettings extends RestrictedSettingsFragment implements
     }
 
     private void addNewApn() {
-        Intent intent = new Intent(Intent.ACTION_INSERT, Telephony.Carriers.CONTENT_URI);
+      Intent intent;
+      if (mMimsiSelected == true) {
+	intent = new Intent("com.android.settings.apn.mimsi.action.INSERT");
+	int subId = mSubscriptionInfo != null ? mSubscriptionInfo.getSubscriptionId()
+		    : SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+	intent.putExtra(SUB_ID, subId);
+	if (!TextUtils.isEmpty(mMvnoType) && !TextUtils.isEmpty(mMvnoMatchData)) {
+	    intent.putExtra(MVNO_TYPE, mMvnoType);
+	    intent.putExtra(MVNO_MATCH_DATA, mMvnoMatchData);
+	}
+
+      }else {
+
+	intent = new Intent(Intent.ACTION_INSERT, Telephony.Carriers.CONTENT_URI);
         int subId = mSubscriptionInfo != null ? mSubscriptionInfo.getSubscriptionId()
                 : SubscriptionManager.INVALID_SUBSCRIPTION_ID;
         intent.putExtra(SUB_ID, subId);
@@ -381,23 +416,54 @@ public class ApnSettings extends RestrictedSettingsFragment implements
             intent.putExtra(MVNO_TYPE, mMvnoType);
             intent.putExtra(MVNO_MATCH_DATA, mMvnoMatchData);
         }
-        startActivity(intent);
+      }
+      startActivity(intent);
     }
+
+    static boolean isMimsiSelected() {
+	return mMimsiSelected;
+    }
+
 
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
+      Intent intent;
+      if (preference == mMimsiMode) {
+	  return true;
+      }
+      if (mMimsiSelected == true) {
         int pos = Integer.parseInt(preference.getKey());
         Uri url = ContentUris.withAppendedId(Telephony.Carriers.CONTENT_URI, pos);
-        startActivity(new Intent(Intent.ACTION_EDIT, url));
-        return true;
+	// retrieve Apn information in URI
+	Cursor cursor = getActivity().managedQuery(url,  new String[] {
+		"apn"}, null, null);
+	cursor.moveToFirst();
+	String apn = cursor.getString(0);
+
+	intent = new Intent("com.android.settings.apn.mimsi.action.EDIT");
+	intent.putExtra("APN", apn);
+      }else{
+
+	int pos = Integer.parseInt(preference.getKey());
+	Uri url = ContentUris.withAppendedId(Telephony.Carriers.CONTENT_URI, pos);
+	intent = new Intent(Intent.ACTION_EDIT, url);
+      }
+      startActivity(intent);
+      return true;
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         Log.d(TAG, "onPreferenceChange(): Preference - " + preference
                 + ", newValue - " + newValue + ", newValue type - "
                 + newValue.getClass());
-        if (newValue instanceof String) {
+	if (preference == mMimsiMode) {
+	    mMimsiSelected = (boolean) newValue;
+	   android.util.Log.d(TAG, "onPreferenceChange: Change Mode mew value " + mMimsiSelected);
+	}else {
+
+	  if (newValue instanceof String) {
             setSelectedApnKey((String) newValue);
+	  }
         }
 
         return true;
