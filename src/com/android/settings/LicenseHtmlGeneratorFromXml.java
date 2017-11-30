@@ -200,7 +200,7 @@ class LicenseHtmlGeneratorFromXml {
             if (state == XmlPullParser.START_TAG) {
                 if (TAG_FILE_NAME.equals(parser.getName())) {
                     String contentId = parser.getAttributeValue("", ATTR_CONTENT_ID);
-                        if (!TextUtils.isEmpty(contentId)) {
+                    if (!TextUtils.isEmpty(contentId)) {
                         String fileName = readText(parser).trim();
                         if (!TextUtils.isEmpty(fileName)) {
                             fileNameToContentIdMap.put(fileName, contentId);
