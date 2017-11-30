@@ -20,6 +20,11 @@ import static com.google.common.truth.Truth.assertThat;
 
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.robolectric.annotation.Config;
+import org.xmlpull.v1.XmlPullParserException;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.io.ByteArrayInputStream;
@@ -27,11 +32,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.robolectric.annotation.Config;
-import org.xmlpull.v1.XmlPullParserException;
 
 @RunWith(SettingsRobolectricTestRunner.class)
 @Config(manifest = TestConfig.MANIFEST_PATH, sdk = TestConfig.SDK_VERSION)

@@ -63,7 +63,7 @@ class LicenseHtmlLoader extends AsyncLoader<File> {
         }
 
         File cachedHtmlFile = getCachedHtmlFile();
-        if(!isCachedHtmlFileOutdated(xmlFiles, cachedHtmlFile) ||
+        if (!isCachedHtmlFileOutdated(xmlFiles, cachedHtmlFile) ||
                 generateHtmlFile(xmlFiles, cachedHtmlFile)) {
             return cachedHtmlFile;
         }
