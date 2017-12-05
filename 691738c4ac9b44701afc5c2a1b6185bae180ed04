@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38699241_2636e37a",
+        "filename": "src/com/android/settings/ApnSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1054648
+      },
+      "writtenOn": "2017-12-05T07:32:09Z",
+      "side": 1,
+      "message": "I don\u0027t think this is the right place for this logic. I would rather pass in the subId with the URI and have the logic implemented in TelephonyProvider itself.",
+      "range": {
+        "startLine": 462,
+        "startChar": 19,
+        "endLine": 462,
+        "endChar": 53
+      },
+      "revId": "691738c4ac9b44701afc5c2a1b6185bae180ed04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
