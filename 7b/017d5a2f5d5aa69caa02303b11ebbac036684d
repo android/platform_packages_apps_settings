@@ -1,0 +1,9 @@
+Code-Review+2: Xin Li <delphij@google.com>
+Code-Review+1: Fan Zhang <zhfan@google.com>
+Verified+1: Xin Li <delphij@google.com>
+Presubmit-Verified-1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Xin Li <delphij@google.com>
+Submitted-at: Wed, 06 Dec 2017 23:18:12 +0000
+Reviewed-on: https://android-review.googlesource.com/558483
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
