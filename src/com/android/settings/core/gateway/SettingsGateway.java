@@ -93,6 +93,7 @@ import com.android.settings.localepicker.LocaleListEditor;
 import com.android.settings.location.LocationSettings;
 import com.android.settings.location.ScanningSettings;
 import com.android.settings.network.ApnEditor;
+import com.android.settings.network.ApnMimsiEditor;
 import com.android.settings.network.ApnSettings;
 import com.android.settings.network.NetworkDashboardFragment;
 import com.android.settings.nfc.AndroidBeam;
@@ -218,6 +219,7 @@ public class SettingsGateway {
             ChannelGroupNotificationSettings.class.getName(),
             ApnSettings.class.getName(),
             ApnEditor.class.getName(),
+	    ApnMimsiEditor.class.getName(),
             WifiCallingSettings.class.getName(),
             ZenModeScheduleRuleSettings.class.getName(),
             ZenModeEventRuleSettings.class.getName(),

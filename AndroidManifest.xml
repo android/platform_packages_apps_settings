@@ -1906,6 +1906,23 @@
                 android:exported="true"
                 android:permission="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
 
+	<activity android:name="Settings$ApnMimsiEditorActivity"
+		android:configChanges="orientation|keyboardHidden|screenSize"
+		android:label="@string/apn_mimsi_edit">
+	    <intent-filter>
+		<action android:name="com.android.settings.network.apn.action.VIEW" />
+		<action android:name="com.android.settings.network.apn.action.EDIT" />
+		<category android:name="android.intent.category.DEFAULT" />
+	    </intent-filter>
+
+	    <intent-filter>
+		<action android:name="com.android.settings.network.apn.action.INSERT" />
+		<category android:name="android.intent.category.DEFAULT" />
+	    </intent-filter>
+	    <meta-data android:name="com.android.settings.FRAGMENT_CLASS"
+		android:value="com.android.settings.network.ApnMimsiEditor" />
+	</activity>
+
         <activity android:name="Settings$ApnEditorActivity"
                 android:configChanges="orientation|keyboardHidden|screenSize"
                 android:label="@string/apn_edit">

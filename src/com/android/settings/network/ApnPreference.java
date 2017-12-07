@@ -29,6 +29,13 @@ import android.view.View.OnClickListener;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
+import android.database.Cursor;
+import android.app.Activity;
+import android.content.ContextWrapper;
+import android.content.pm.PackageManager;
+
+import static com.android.settings.network.ApnSettings.mimsi_edit_action;
+
 
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
@@ -38,12 +45,27 @@ import com.android.settings.R;
 public class ApnPreference extends Preference implements
         CompoundButton.OnCheckedChangeListener, OnClickListener {
     final static String TAG = "ApnPreference";
+    static Context mContext;
+
 
     private int mSubId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
 
     public ApnPreference(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+	mContext = context;
     }
+
+    private static Activity scanForActivity(Context cont) {
+	if (cont == null)
+	    return null;
+	else if (cont instanceof Activity)
+	    return (Activity) cont;
+	else if (cont instanceof ContextWrapper)
+	    return scanForActivity(((ContextWrapper) cont).getBaseContext());
+
+	return null;
+    }
+
 
     public ApnPreference(Context context, AttributeSet attrs) {
         this(context, attrs, R.attr.apnPreferenceStyle);
@@ -120,10 +142,28 @@ public class ApnPreference extends Preference implements
         if ((v != null) && (R.id.text_layout == v.getId())) {
             Context context = getContext();
             if (context != null) {
-                int pos = Integer.parseInt(getKey());
-                Uri url = ContentUris.withAppendedId(Telephony.Carriers.CONTENT_URI, pos);
-                Intent editIntent = new Intent(Intent.ACTION_EDIT, url);
-                editIntent.putExtra(ApnSettings.SUB_ID, mSubId);
+		// check if we are in mimsi mode
+		Intent editIntent;
+		if (ApnSettings.isMimsiSelected()) {
+		    int pos = Integer.parseInt(getKey());
+		    Uri url = ContentUris.withAppendedId(Telephony.Carriers.CONTENT_URI, pos);
+
+		    // retrieve Apn information in URI
+		    Activity activity = scanForActivity(mContext);
+		    Cursor cursor = activity.managedQuery(url, new String[]{
+			    "apn"}, null, null);
+		    cursor.moveToFirst();
+		    String apn = cursor.getString(0);
+
+		    editIntent = new Intent(mimsi_edit_action);
+		    editIntent.putExtra("APN", apn);
+
+		} else {
+		    int pos = Integer.parseInt(getKey());
+		    Uri url = ContentUris.withAppendedId(Telephony.Carriers.CONTENT_URI, pos);
+		    editIntent = new Intent(Intent.ACTION_EDIT, url);
+		    editIntent.putExtra(ApnSettings.SUB_ID, mSubId);
+		}
                 context.startActivity(editIntent);
             }
         }

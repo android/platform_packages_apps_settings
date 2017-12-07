@@ -3283,6 +3283,17 @@
     <string name="battery_level_title">Battery level</string>
 
     <!-- APN Settings -->
+    <!-- Sound & display settings screen, setting option name to enable adaptive brightness [CHAR LIMIT=30] -->
+    <string name="apn_mimsi_title">multiple MCC+MNC mode</string>
+    <!-- Sound & display settings screen, setting option summary to enable adaptive brightness [CHAR LIMIT=100] -->
+    <string name="apn_mimsi_summary">Allow to enter apn for multiple MCC+MNC</string>
+    <!-- Screen title after user selects APNs multiple imsi setting option -->
+    <string name="apn_mimsi_edit">Edit multiple MCC+MNC access point</string>
+    <!-- Edit access point labels: -->
+    <string name="apn_mccmnc">MCC+MNC comma separator</string>
+    <!-- APN error dialog messages: -->
+    <string name="error_mcc_not5">MCC+MNC elem must be 5 digits.</string>
+
     <!-- APN settings screen title -->
     <string name="apn_settings">APNs</string>
     <!-- Screen title after user selects APNs setting option -->
