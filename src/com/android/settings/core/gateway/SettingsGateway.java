@@ -18,6 +18,7 @@ package com.android.settings.core.gateway;
 
 import com.android.settings.ApnEditor;
 import com.android.settings.ApnSettings;
+import com.android.settings.ApnMimsiEditor;
 import com.android.settings.CryptKeeperSettings;
 import com.android.settings.DateTimeSettings;
 import com.android.settings.DeviceAdminSettings;
@@ -207,6 +208,7 @@ public class SettingsGateway {
             ChannelNotificationSettings.class.getName(),
             ApnSettings.class.getName(),
             ApnEditor.class.getName(),
+            ApnMimsiEditor.class.getName(),
             WifiCallingSettings.class.getName(),
             ZenModePrioritySettings.class.getName(),
             ZenModeScheduleRuleSettings.class.getName(),
