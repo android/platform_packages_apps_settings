@@ -67,7 +67,9 @@ com.android.settings.security.trustagent.TrustAgentSettings
 com.android.settings.password.ChooseLockGeneric$ChooseLockGenericFragment
 com.android.settings.IccLockSettings
 com.android.settings.TetherSettings
+com.android.settings.ApplicationSettings
 com.android.settings.network.ApnEditor
+com.android.settings.network.ApnMimsiEditor
 com.android.settings.UserCredentialsSettings
 com.android.settings.TestingSettings
 com.android.settings.applications.DirectoryAccessDetails
