@@ -88,5 +88,6 @@ com.android.settings.IccLockSettings
 com.android.settings.TetherSettings
 com.android.settings.ApplicationSettings
 com.android.settings.ApnEditor
+com.android.settings.ApnMimsiEditor
 com.android.settings.UserCredentialsSettings
 com.android.settings.TestingSettings
