@@ -37,6 +37,8 @@ import android.os.PersistableBundle;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.Telephony;
+import android.support.v14.preference.SwitchPreference;
+import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceGroup;
 import android.support.v7.preference.PreferenceScreen;
@@ -61,6 +63,10 @@ import com.android.internal.telephony.uicc.IccRecords;
 import com.android.internal.telephony.uicc.UiccController;
 import com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 
+import android.content.ComponentName;
+import android.content.pm.PackageManager;
+
+
 import java.util.ArrayList;
 
 public class ApnSettings extends RestrictedSettingsFragment implements
@@ -69,14 +75,20 @@ public class ApnSettings extends RestrictedSettingsFragment implements
 
     public static final String EXTRA_POSITION = "position";
     public static final String RESTORE_CARRIERS_URI =
-        "content://telephony/carriers/restore";
+            "content://telephony/carriers/restore";
     public static final String PREFERRED_APN_URI =
-        "content://telephony/carriers/preferapn";
+            "content://telephony/carriers/preferapn";
+
+    public static final String mimsi_edit_action = "com.android.settings.apn.action.EDIT";
+    public static final String mimsi_insert_action = "com.android.settings.apn.action.INSERT";
 
     public static final String APN_ID = "apn_id";
     public static final String SUB_ID = "sub_id";
     public static final String MVNO_TYPE = "mvno_type";
     public static final String MVNO_MATCH_DATA = "mvno_match_data";
+    private static final String KEY_MIMSI_MODE = "mimsi_mode";
+    private static final String KEY_APN = "apn_mimsi_category";
+
 
     private static final int ID_INDEX = 0;
     private static final int NAME_INDEX = 1;
@@ -116,6 +128,10 @@ public class ApnSettings extends RestrictedSettingsFragment implements
     private boolean mHideImsApn;
     private boolean mAllowAddingApns;
 
+    private static boolean mMimsiSelected = false;
+    private SwitchPreference mMimsiMode;
+
+
     public ApnSettings() {
         super(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS);
     }
@@ -127,13 +143,13 @@ public class ApnSettings extends RestrictedSettingsFragment implements
                     TelephonyIntents.ACTION_ANY_DATA_CONNECTION_STATE_CHANGED)) {
                 PhoneConstants.DataState state = getMobileDataState(intent);
                 switch (state) {
-                case CONNECTED:
-                    if (!mRestoreDefaultApnMode) {
-                        fillList();
-                    } else {
-                        showDialog(DIALOG_RESTORE_DEFAULTAPN);
-                    }
-                    break;
+                    case CONNECTED:
+                        if (!mRestoreDefaultApnMode) {
+                            fillList();
+                        } else {
+                            showDialog(DIALOG_RESTORE_DEFAULTAPN);
+                        }
+                        break;
                 }
             }
         }
@@ -198,10 +214,19 @@ public class ApnSettings extends RestrictedSettingsFragment implements
         }
 
         addPreferencesFromResource(R.xml.apn_settings);
+        PreferenceCategory apnPrefs = (PreferenceCategory) findPreference(KEY_APN);
+        if (apnPrefs != null) {
+            mMimsiMode = (SwitchPreference) findPreference(KEY_MIMSI_MODE);
+            if (mMimsiMode != null) {
+                mMimsiMode.setOnPreferenceChangeListener(this);
+            }
+        }
+
     }
 
     @Override
     public void onResume() {
+
         super.onResume();
 
         if (mUnavailable) {
@@ -240,7 +265,7 @@ public class ApnSettings extends RestrictedSettingsFragment implements
         final UserHandle user = UserHandle.of(mUserManager.getUserHandle());
         if (mUserManager.hasUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS, user)
                 && !mUserManager.hasBaseUserRestriction(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS,
-                        user)) {
+                user)) {
             return EnforcedAdmin.MULTIPLE_ENFORCED_ADMIN;
         }
         return null;
@@ -259,8 +284,8 @@ public class ApnSettings extends RestrictedSettingsFragment implements
             where.append(" AND NOT (type='ims')");
         }
 
-        Cursor cursor = getContentResolver().query(Telephony.Carriers.CONTENT_URI, new String[] {
-                "_id", "name", "apn", "type", "mvno_type", "mvno_match_data"}, where.toString(),
+        Cursor cursor = getContentResolver().query(Telephony.Carriers.CONTENT_URI, new String[]{
+                        "_id", "name", "apn", "type", "mvno_type", "mvno_match_data"}, where.toString(),
                 null, Telephony.Carriers.DEFAULT_SORT_ORDER);
 
         if (cursor != null) {
@@ -361,34 +386,72 @@ public class ApnSettings extends RestrictedSettingsFragment implements
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-        case MENU_NEW:
-            addNewApn();
-            return true;
+            case MENU_NEW:
+                addNewApn();
+                return true;
 
-        case MENU_RESTORE:
-            restoreDefaultApn();
-            return true;
+            case MENU_RESTORE:
+                restoreDefaultApn();
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
     private void addNewApn() {
-        Intent intent = new Intent(Intent.ACTION_INSERT, Telephony.Carriers.CONTENT_URI);
-        int subId = mSubscriptionInfo != null ? mSubscriptionInfo.getSubscriptionId()
-                : SubscriptionManager.INVALID_SUBSCRIPTION_ID;
-        intent.putExtra(SUB_ID, subId);
-        if (!TextUtils.isEmpty(mMvnoType) && !TextUtils.isEmpty(mMvnoMatchData)) {
-            intent.putExtra(MVNO_TYPE, mMvnoType);
-            intent.putExtra(MVNO_MATCH_DATA, mMvnoMatchData);
+        Intent intent;
+        if (mMimsiSelected == true) {
+            intent = new Intent(mimsi_insert_action);
+            int subId = mSubscriptionInfo != null ? mSubscriptionInfo.getSubscriptionId()
+                    : SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+            intent.putExtra(SUB_ID, subId);
+            if (!TextUtils.isEmpty(mMvnoType) && !TextUtils.isEmpty(mMvnoMatchData)) {
+                intent.putExtra(MVNO_TYPE, mMvnoType);
+                intent.putExtra(MVNO_MATCH_DATA, mMvnoMatchData);
+            }
+
+        } else {
+
+            intent = new Intent(Intent.ACTION_INSERT, Telephony.Carriers.CONTENT_URI);
+            int subId = mSubscriptionInfo != null ? mSubscriptionInfo.getSubscriptionId()
+                    : SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+            intent.putExtra(SUB_ID, subId);
+            if (!TextUtils.isEmpty(mMvnoType) && !TextUtils.isEmpty(mMvnoMatchData)) {
+                intent.putExtra(MVNO_TYPE, mMvnoType);
+                intent.putExtra(MVNO_MATCH_DATA, mMvnoMatchData);
+            }
         }
         startActivity(intent);
     }
 
+    static boolean isMimsiSelected() {
+        return mMimsiSelected;
+    }
+
+
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
-        int pos = Integer.parseInt(preference.getKey());
-        Uri url = ContentUris.withAppendedId(Telephony.Carriers.CONTENT_URI, pos);
-        startActivity(new Intent(Intent.ACTION_EDIT, url));
+        Intent intent;
+        if (preference == mMimsiMode) {
+            return true;
+        }
+        if (mMimsiSelected == true) {
+            int pos = Integer.parseInt(preference.getKey());
+            Uri url = ContentUris.withAppendedId(Telephony.Carriers.CONTENT_URI, pos);
+            // retrieve Apn information in URI
+            Cursor cursor = getActivity().managedQuery(url, new String[]{
+                    "apn"}, null, null);
+            cursor.moveToFirst();
+            String apn = cursor.getString(0);
+
+            intent = new Intent(mimsi_edit_action);
+            intent.putExtra("APN", apn);
+        } else {
+
+            int pos = Integer.parseInt(preference.getKey());
+            Uri url = ContentUris.withAppendedId(Telephony.Carriers.CONTENT_URI, pos);
+            intent = new Intent(Intent.ACTION_EDIT, url);
+        }
+        startActivity(intent);
         return true;
     }
 
@@ -396,8 +459,14 @@ public class ApnSettings extends RestrictedSettingsFragment implements
         Log.d(TAG, "onPreferenceChange(): Preference - " + preference
                 + ", newValue - " + newValue + ", newValue type - "
                 + newValue.getClass());
-        if (newValue instanceof String) {
-            setSelectedApnKey((String) newValue);
+        if (preference == mMimsiMode) {
+            mMimsiSelected = (boolean) newValue;
+            android.util.Log.d(TAG, "onPreferenceChange: Change Mode mew value " + mMimsiSelected);
+        } else {
+
+            if (newValue instanceof String) {
+                setSelectedApnKey((String) newValue);
+            }
         }
 
         return true;
@@ -416,7 +485,7 @@ public class ApnSettings extends RestrictedSettingsFragment implements
         String key = null;
 
         Cursor cursor = getContentResolver().query(getUriForCurrSubId(PREFERAPN_URI),
-                new String[] {"_id"}, null, null, Telephony.Carriers.DEFAULT_SORT_ORDER);
+                new String[]{"_id"}, null, null, Telephony.Carriers.DEFAULT_SORT_ORDER);
         if (cursor.getCount() > 0) {
             cursor.moveToFirst();
             key = cursor.getString(ID_INDEX);
@@ -434,7 +503,7 @@ public class ApnSettings extends RestrictedSettingsFragment implements
         }
 
         if (mRestoreApnProcessHandler == null ||
-            mRestoreDefaultApnThread == null) {
+                mRestoreDefaultApnThread == null) {
             mRestoreDefaultApnThread = new HandlerThread(
                     "Restore default APN Handler: Process Thread");
             mRestoreDefaultApnThread.start();
@@ -473,10 +542,10 @@ public class ApnSettings extends RestrictedSettingsFragment implements
                     mRestoreDefaultApnMode = false;
                     removeDialog(DIALOG_RESTORE_DEFAULTAPN);
                     Toast.makeText(
-                        activity,
-                        getResources().getString(
-                                R.string.restore_default_apn_completed),
-                        Toast.LENGTH_LONG).show();
+                            activity,
+                            getResources().getString(
+                                    R.string.restore_default_apn_completed),
+                            Toast.LENGTH_LONG).show();
                     break;
             }
         }
@@ -497,7 +566,7 @@ public class ApnSettings extends RestrictedSettingsFragment implements
                     ContentResolver resolver = getContentResolver();
                     resolver.delete(getUriForCurrSubId(DEFAULTAPN_URI), null, null);
                     mRestoreApnUiHandler
-                        .sendEmptyMessage(EVENT_RESTORE_DEFAULTAPN_COMPLETE);
+                            .sendEmptyMessage(EVENT_RESTORE_DEFAULTAPN_COMPLETE);
                     break;
             }
         }
