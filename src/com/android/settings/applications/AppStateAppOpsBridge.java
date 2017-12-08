@@ -143,7 +143,7 @@ public abstract class AppStateAppOpsBridge extends AppStateBaseBridge {
         for (int i = 0; i < N; i++) {
             AppEntry app = apps.get(i);
             int userId = UserHandle.getUserId(app.info.uid);
-            ArrayMap<String, PermissionState> userMap = entries.get(userId);
+            ArrayMap<String, PermissionState> userMap = entries != null ? entries.get(userId) : null;
             app.extraInfo = userMap != null ? userMap.get(app.info.packageName) : null;
         }
     }
