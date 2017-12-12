@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0841e6f0_e36beb8b",
+        "filename": "src/com/android/settings/network/MobileNetworkPreferenceController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1098848
+      },
+      "writtenOn": "2017-12-12T19:41:44Z",
+      "side": 1,
+      "message": "The default visible is private, you don\u0027t need any change. \n\nAs you change the mPhoneStateListener, did you run the unit test MobileNetworkPreferenceControllerTest? I suppose the test can\u0027t be compiled.\n\nAlso, can you add a test to MobileNetworkPreferenceControllerTest for this feature?",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 61
+      },
+      "revId": "1a16d89a5b978381dfec8920b546717d4cfa1de6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8ebc99e_843c2abd",
         "filename": "src/com/android/settings/network/MobileNetworkPreferenceController.java",
         "patchSetId": 4
