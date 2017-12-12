@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5261dcb6_187164e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-12-12T18:06:09Z",
+      "side": 1,
+      "message": "Can you make this into a automated instrumentation test?",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 10,
+        "endChar": 3
+      },
+      "revId": "1aeca095d380c3cef633d7f97588bc04000f3496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88dac181_abc53b58",
         "filename": "src/com/android/settings/DeviceAdminAdd.java",
         "patchSetId": 1
@@ -49,6 +72,24 @@
       "side": 1,
       "message": "got it, thanks.",
       "parentUuid": "bfb81994_422b1e1d",
+      "revId": "1aeca095d380c3cef633d7f97588bc04000f3496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f958584b_e5890fc0",
+        "filename": "src/com/android/settings/DeviceAdminAdd.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2017-12-12T18:06:09Z",
+      "side": 1,
+      "message": "I",
+      "parentUuid": "4601ea28_caa8ca86",
       "revId": "1aeca095d380c3cef633d7f97588bc04000f3496",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
