@@ -34,6 +34,24 @@
       "revId": "1aeca095d380c3cef633d7f97588bc04000f3496",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4601ea28_caa8ca86",
+        "filename": "src/com/android/settings/DeviceAdminAdd.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1060841
+      },
+      "writtenOn": "2017-12-12T14:30:04Z",
+      "side": 1,
+      "message": "got it, thanks.",
+      "parentUuid": "bfb81994_422b1e1d",
+      "revId": "1aeca095d380c3cef633d7f97588bc04000f3496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
