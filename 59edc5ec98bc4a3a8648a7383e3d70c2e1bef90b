@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e12c545_625e6591",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 9004,
+      "author": {
+        "id": 1121198
+      },
+      "writtenOn": "2017-12-12T22:09:21Z",
+      "side": 1,
+      "message": "this",
+      "range": {
+        "startLine": 9004,
+        "startChar": 148,
+        "endLine": 9004,
+        "endChar": 151
+      },
+      "revId": "59edc5ec98bc4a3a8648a7383e3d70c2e1bef90b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cfe222b6_ecda8417",
+        "filename": "src/com/android/settings/wfc/LocationPolicyDisclaimer.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1121198
+      },
+      "writtenOn": "2017-12-12T22:09:21Z",
+      "side": 1,
+      "message": "may be null",
+      "range": {
+        "startLine": 42,
+        "startChar": 26,
+        "endLine": 42,
+        "endChar": 32
+      },
+      "revId": "59edc5ec98bc4a3a8648a7383e3d70c2e1bef90b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
