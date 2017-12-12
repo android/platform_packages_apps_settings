@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88dac181_abc53b58",
+        "filename": "src/com/android/settings/DeviceAdminAdd.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1060841
+      },
+      "writtenOn": "2017-12-12T14:18:24Z",
+      "side": 1,
+      "message": "Can i.getPackageName be null here?\n\nMaybe putting @NonNull in packageName and swap the order to be packageName.equals(i.getPackageName)? And the caller of this function to make sure packageName is not null?\n\nI was told to avoid using the fancy java8 stream in platform code due to the expensive cost. But I *guess* it is okay here given that it is neither in system server nor in a critical code path.\n\nThanks.",
+      "revId": "1aeca095d380c3cef633d7f97588bc04000f3496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
