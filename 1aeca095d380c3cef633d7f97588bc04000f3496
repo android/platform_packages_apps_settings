@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fa4a6318_fb2d9655",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1045544
+      },
+      "writtenOn": "2017-12-13T12:01:24Z",
+      "side": 1,
+      "message": "Not easily, as it turns out. The code is quite old and I don\u0027t think it\u0027s a good idea to start refactoring the whole structure of this class in this tiny CL to work with functional tests.\n\nThe legacy instrumentation test framework doesn\u0027t have a lot of options for avoiding setting FLAG_NEW_TASK (which DeviceAdminAdd cancels itself if it sees, for whatever reason).",
+      "parentUuid": "5261dcb6_187164e8",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 10,
+        "endChar": 3
+      },
+      "revId": "1aeca095d380c3cef633d7f97588bc04000f3496",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88dac181_abc53b58",
         "filename": "src/com/android/settings/DeviceAdminAdd.java",
         "patchSetId": 1
