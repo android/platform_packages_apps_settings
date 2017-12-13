@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fbea0ff2_304c76a3",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 9004,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2017-12-13T02:28:42Z",
+      "side": 1,
+      "message": "Okay. I updated it in the latest patchset.",
+      "parentUuid": "8e12c545_625e6591",
+      "range": {
+        "startLine": 9004,
+        "startChar": 148,
+        "endLine": 9004,
+        "endChar": 151
+      },
+      "revId": "59edc5ec98bc4a3a8648a7383e3d70c2e1bef90b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cfe222b6_ecda8417",
         "filename": "src/com/android/settings/wfc/LocationPolicyDisclaimer.java",
         "patchSetId": 2
