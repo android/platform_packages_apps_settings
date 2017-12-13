@@ -37,6 +37,7 @@ import android.content.IntentFilter;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.IPackageManager;
 import android.content.pm.IntentFilterVerificationInfo;
+import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.pm.ResolveInfo;
@@ -96,9 +97,11 @@ import com.android.internal.widget.LockPatternUtils;
 import com.android.settings.password.ChooseLockSettingsHelper;
 
 import java.net.InetAddress;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 public final class Utils extends com.android.settingslib.Utils {
 
@@ -121,6 +124,11 @@ public final class Utils extends com.android.settingslib.Utils {
     private static final String SETTINGS_PACKAGE_NAME = "com.android.settings";
 
     public static final String OS_PKG = "os";
+
+    private static final Set<String> sDisableablePackages = new HashSet<String>();
+    private static final Set<String> sNonDisableablePackages = new HashSet<String>();
+    private static boolean sDisableablePackagesInitialized = false;
+    private static boolean sNonDisableablePackagesInitialized = false;
 
     /**
      * Finds a matching activity for a preference's intent. If a matching
@@ -966,4 +974,61 @@ public final class Utils extends com.android.settingslib.Utils {
             return packageManager.getDefaultActivityIcon();
         }
     }
+
+    private static void initDisableablePackages(PackageManager pm) {
+        if (!sDisableablePackagesInitialized) {
+            try {
+                Resources r = pm.getResourcesForApplication(SETTINGS_PACKAGE_NAME);
+                for (String s : r.getStringArray(R.array.config_manufacturerDisableablePackages)) {
+                    sDisableablePackages.add(s);
+                }
+                for (String s : r.getStringArray(R.array.config_operatorDisableablePackages)) {
+                    sDisableablePackages.add(s);
+                }
+            } catch (NullPointerException e) {
+                // If called from test app,pm.getResourcesForApplication may return null,
+                // so just leave the lists empty.
+            } catch (NameNotFoundException e) {
+                // Unable to find app resources (should not happen), so just leave the lists empty
+            }
+            sDisableablePackagesInitialized = true;
+        }
+    }
+
+    private static void initNonDisableablePackages(PackageManager pm) {
+        if (!sNonDisableablePackagesInitialized) {
+            try {
+                Resources r = pm.getResourcesForApplication(SETTINGS_PACKAGE_NAME);
+                for (String s : r.getStringArray(R.array.config_manufacturerNonDisableablePackages)) {
+                    sNonDisableablePackages.add(s);
+                }
+                for (String s : r.getStringArray(R.array.config_operatorNonDisableablePackages)) {
+                    sNonDisableablePackages.add(s);
+                }
+            } catch (NullPointerException e) {
+                // If called from test app,pm.getResourcesForApplication may return null,
+                // so just leave the lists empty.
+            } catch (NameNotFoundException e) {
+                // Unable to find app resources (should not happen), so just leave the lists empty
+            }
+            sNonDisableablePackagesInitialized = true;
+        }
+    }
+
+    /**
+     * Determine whether disabling the given package should be allowed or not.
+     */
+    public static boolean isDisableablePackage(PackageManager pm, PackageInfo pkg) {
+        initDisableablePackages(pm);
+        return (pkg != null) && sDisableablePackages.contains(pkg.packageName);
+    }
+
+    /**
+     * Determine whether disabling the given package should be disallowed or not.
+     */
+    public static boolean isNonDisableablePackage(PackageManager pm, PackageInfo pkg) {
+        initNonDisableablePackages(pm);
+        return (pkg != null) && sNonDisableablePackages.contains(pkg.packageName);
+    }
+
 }

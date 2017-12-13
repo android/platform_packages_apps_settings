@@ -106,6 +106,19 @@
         -->
     </string-array>
 
+    <!-- Disableable/NonDisableable applications for Manufacturers/Operators -->
+    <!-- Enable uninstall despite system signature application -->
+    <string-array name="config_manufacturerDisableablePackages" translatable="false"></string-array>
+
+    <!-- Disable uninstall despite not system signature application -->
+    <string-array name="config_manufacturerNonDisableablePackages" translatable="false"></string-array>
+
+    <!-- Enable uninstall despite system signature application -->
+    <string-array name="config_operatorDisableablePackages" translatable="false"></string-array>
+
+    <!-- Disable uninstall despite not system signature application -->
+    <string-array name="config_operatorNonDisableablePackages" translatable="false"></string-array>
+
     <!-- Whether or not we should tint the icon color on setting pages. -->
     <bool name="config_tintSettingIcon">true</bool>
 

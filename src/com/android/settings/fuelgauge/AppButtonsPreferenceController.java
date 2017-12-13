@@ -536,8 +536,10 @@ public class AppButtonsPreferenceController extends AbstractPreferenceController
         // Try to prevent the user from bricking their phone
         // by not allowing disabling of apps signed with the
         // system cert and any launcher app in the system.
-        if (mHomePackages.contains(mAppEntry.info.packageName)
-                || isSystemPackage(mActivity.getResources(), mPm, mPackageInfo)) {
+        if (!Utils.isDisableablePackage(mPm, mPackageInfo) &&
+                (mHomePackages.contains(mAppEntry.info.packageName) ||
+                        isSystemPackage(mActivity.getResources(), mPm, mPackageInfo) ||
+                        Utils.isNonDisableablePackage(mPm, mPackageInfo))) {
             // Disable button for core system applications.
             mButtonsPref.setButton1Text(R.string.disable_text)
                     .setButton1Positive(false);

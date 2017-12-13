@@ -244,8 +244,10 @@ public class AppActionButtonPreferenceController extends BasePreferenceControlle
         // Try to prevent the user from bricking their phone
         // by not allowing disabling of apps signed with the
         // system cert and any launcher app in the system.
-        if (mHomePackages.contains(appEntry.info.packageName)
-                || Utils.isSystemPackage(mContext.getResources(), mPm, packageInfo)) {
+        if (!Utils.isDisableablePackage(mPm, packageInfo) &&
+                (mHomePackages.contains(appEntry.info.packageName) ||
+                        Utils.isSystemPackage(mContext.getResources(), mPm, packageInfo) ||
+                        Utils.isNonDisableablePackage(mPm, packageInfo))) {
             // Disable button for core system applications.
             mActionButtons
                     .setButton1Text(R.string.disable_text)
