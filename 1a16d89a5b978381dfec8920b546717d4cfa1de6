@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5dd57b3c_36b46b7f",
+        "filename": "src/com/android/settings/network/MobileNetworkPreferenceController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1140927
+      },
+      "writtenOn": "2017-12-14T14:29:28Z",
+      "side": 1,
+      "message": "Done.\n\nWe\u0027ll add a test for multi-sim case in MobileNetworkPreferenceControllerTest class",
+      "parentUuid": "0841e6f0_e36beb8b",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 61
+      },
+      "revId": "1a16d89a5b978381dfec8920b546717d4cfa1de6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a8ebc99e_843c2abd",
         "filename": "src/com/android/settings/network/MobileNetworkPreferenceController.java",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2017-12-12T19:41:12Z",
       "side": 1,
       "message": "line to long.",
+      "range": {
+        "startLine": 119,
+        "startChar": 23,
+        "endLine": 119,
+        "endChar": 110
+      },
+      "revId": "1a16d89a5b978381dfec8920b546717d4cfa1de6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "924f55f9_ec71af64",
+        "filename": "src/com/android/settings/network/MobileNetworkPreferenceController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1140927
+      },
+      "writtenOn": "2017-12-14T14:29:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8ebc99e_843c2abd",
       "range": {
         "startLine": 119,
         "startChar": 23,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "dc609b73_a69f339b",
+        "filename": "src/com/android/settings/network/MobileNetworkPreferenceController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1140927
+      },
+      "writtenOn": "2017-12-14T14:29:28Z",
+      "side": 1,
+      "message": "getNetworkOperatorName() will use default voice subid from SubscriptionManager",
+      "parentUuid": "8e935aed_7ea2c210",
+      "range": {
+        "startLine": 124,
+        "startChar": 14,
+        "endLine": 124,
+        "endChar": 20
+      },
+      "revId": "1a16d89a5b978381dfec8920b546717d4cfa1de6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21d0b482_9f7749db",
         "filename": "src/com/android/settings/network/MobileNetworkPreferenceController.java",
         "patchSetId": 4
@@ -82,6 +154,30 @@
       "writtenOn": "2017-12-12T19:41:12Z",
       "side": 1,
       "message": "return mTelephonyManager.getServiceStateForSubscriber(subId).getState()\n                \u003d\u003d ServiceState.STATE_IN_SERVICE \n\nmaybe better?",
+      "range": {
+        "startLine": 131,
+        "startChar": 8,
+        "endLine": 135,
+        "endChar": 21
+      },
+      "revId": "1a16d89a5b978381dfec8920b546717d4cfa1de6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3ea0f20a_9999148c",
+        "filename": "src/com/android/settings/network/MobileNetworkPreferenceController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1140927
+      },
+      "writtenOn": "2017-12-14T14:29:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21d0b482_9f7749db",
       "range": {
         "startLine": 131,
         "startChar": 8,
