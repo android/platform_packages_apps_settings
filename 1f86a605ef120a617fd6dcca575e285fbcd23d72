@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e45a1997_8ba8c255",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1125084
+      },
+      "writtenOn": "2017-12-14T16:03:10Z",
+      "side": 1,
+      "message": "Please add an automated test to the CL",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 52
+      },
+      "revId": "1f86a605ef120a617fd6dcca575e285fbcd23d72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6a6cb79_248053f8",
+        "filename": "src/com/android/settings/datausage/DataSaverBackend.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1125084
+      },
+      "writtenOn": "2017-12-14T16:03:10Z",
+      "side": 1,
+      "message": "change to an AtomicBoolean",
+      "range": {
+        "startLine": 113,
+        "startChar": 12,
+        "endLine": 113,
+        "endChar": 33
+      },
+      "revId": "1f86a605ef120a617fd6dcca575e285fbcd23d72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
