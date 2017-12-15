@@ -22,6 +22,30 @@
       "revId": "d6fc55d0693cb1827d152f49f6f3f9bbd62801ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4fc7d1d_17a50a5a",
+        "filename": "src/com/android/settings/wifi/WifiSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1247308
+      },
+      "writtenOn": "2017-12-15T10:48:23Z",
+      "side": 1,
+      "message": "You are correct. New patchset is ready.",
+      "parentUuid": "19d252c9_347ed5f8",
+      "range": {
+        "startLine": 700,
+        "startChar": 0,
+        "endLine": 700,
+        "endChar": 67
+      },
+      "revId": "d6fc55d0693cb1827d152f49f6f3f9bbd62801ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
