@@ -16,6 +16,24 @@
       "revId": "88f4516b89478a1d7e5100bce835bdb2ebe70248",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2304f34_65bd1e0a",
+        "filename": "src/com/android/settings/applications/defaultapps/DefaultHomePicker.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1233205
+      },
+      "writtenOn": "2017-12-16T03:54:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "750f0c7d_496b3f5e",
+      "revId": "88f4516b89478a1d7e5100bce835bdb2ebe70248",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
