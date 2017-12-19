@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3925aea5_fa13ecd9",
+        "filename": "src/com/android/settings/wfc/DisclaimerItem.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1121198
+      },
+      "writtenOn": "2017-12-19T18:37:53Z",
+      "side": 1,
+      "message": "should this maybe be true by default? If the shared pref doesn\u0027t exist doesn\u0027t that mean the user has never agreed?",
+      "range": {
+        "startLine": 71,
+        "startChar": 48,
+        "endLine": 71,
+        "endChar": 53
+      },
+      "revId": "57f6a114589b081cc42700dc2acf33af40ba07b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
