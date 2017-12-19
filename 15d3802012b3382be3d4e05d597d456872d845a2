@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a68c147_45fe91e3",
+        "filename": "src/com/android/settings/WifiCallingSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1121198
+      },
+      "writtenOn": "2017-12-19T18:02:53Z",
+      "side": 1,
+      "message": "Is it possible that this will ask for location information consent a second time?",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 69
+      },
+      "revId": "15d3802012b3382be3d4e05d597d456872d845a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
