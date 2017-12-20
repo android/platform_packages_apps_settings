@@ -22,6 +22,30 @@
       "revId": "57f6a114589b081cc42700dc2acf33af40ba07b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "57f1b36c_11f082cb",
+        "filename": "src/com/android/settings/wfc/DisclaimerItem.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2017-12-20T12:14:30Z",
+      "side": 1,
+      "message": "\"If the shared pref doesn\u0027t exist doesn\u0027t that mean the user has never agreed?\"\n-\u003e Yes, your understanding is correct.\n\n\nSo, the default value should be \"false\".\n\ngetBooleanSharedPrefs should return \"false\" if user has never agreed the disclaimer.\n\nIf return value of getBooleanSharedPrefs is \"false\", shouldShow method returns \"true\" because user has never agreed  it.\n\n\n\nThis may be better to understand this code.\nboolean hasAgreed \u003dgetBooleanSharedPrefs(getPrefKey(), false);\nif (hasAgreed) {\n    return false;\n}",
+      "parentUuid": "3925aea5_fa13ecd9",
+      "range": {
+        "startLine": 71,
+        "startChar": 48,
+        "endLine": 71,
+        "endChar": 53
+      },
+      "revId": "57f6a114589b081cc42700dc2acf33af40ba07b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

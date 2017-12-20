@@ -22,6 +22,30 @@
       "revId": "15d3802012b3382be3d4e05d597d456872d845a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c0eba70_7b97bdfb",
+        "filename": "src/com/android/settings/WifiCallingSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2017-12-20T12:14:30Z",
+      "side": 1,
+      "message": "Yes, DisclaimerActivity immediately returns Activity.RESULT_OK if user had already agreed the consent.",
+      "parentUuid": "0a68c147_45fe91e3",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 399,
+        "endChar": 69
+      },
+      "revId": "15d3802012b3382be3d4e05d597d456872d845a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
