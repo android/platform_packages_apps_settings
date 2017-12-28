@@ -785,7 +785,6 @@
     <string name="wifi_wps_failed_tkip" msgid="4282401586860713349">"The wireless router security setting (TKIP) is not supported"</string>
     <string name="wifi_wps_failed_auth" msgid="1174614355181181958">"Authentication failure. Please try again."</string>
     <string name="wifi_wps_failed_overlap" msgid="5159533685596844778">"Another WPS session was detected. Please try again in a few minutes."</string>
-    <string name="wifi_wps_failed_wifi_disconnected" msgid="3829472117754104164">"Wi‑Fi disconnected. WPS setup cancelled."</string>
     <string name="wifi_ssid" msgid="5519636102673067319">"Network name"</string>
     <string name="wifi_ssid_hint" msgid="897593601067321355">"Enter the SSID"</string>
     <string name="wifi_security" msgid="6603611185592956936">"Security"</string>
@@ -1004,7 +1003,10 @@
     <string name="search_clear_history" msgid="4196658962573162457">"Clear history"</string>
     <string name="display_settings" msgid="7965901687241669598">"Display"</string>
     <string name="accelerometer_title" msgid="7854608399547349157">"Auto-rotate screen"</string>
-    <string name="color_mode_title" msgid="3159275920408338215">"Vivid colours"</string>
+    <string name="color_mode_title" msgid="9186249332902370471">"Colours"</string>
+    <string name="color_mode_option_natural" msgid="5013837483986772758">"Natural"</string>
+    <string name="color_mode_option_boosted" msgid="8588223970257287524">"Boosted"</string>
+    <string name="color_mode_option_saturated" msgid="4569683960058798843">"Saturated"</string>
     <string name="accelerometer_summary_on" product="tablet" msgid="429982132339828942">"Switch orientation automatically when rotating tablet"</string>
     <string name="accelerometer_summary_on" product="default" msgid="1133737282813048021">"Switch orientation automatically when rotating phone"</string>
     <string name="accelerometer_summary_off" product="tablet" msgid="4781734213242521682">"Switch orientation automatically when rotating tablet"</string>
@@ -1987,7 +1989,7 @@
     <string name="battery_stats_screen_on_label" msgid="7150221809877509708">"Screen ON"</string>
     <string name="battery_stats_gps_on_label" msgid="1193657533641951256">"GPS on"</string>
     <string name="battery_stats_camera_on_label" msgid="4935637383628414968">"Camera on"</string>
-    <string name="battery_stats_flashlight_on_label" msgid="4319637669889411307">"Torch on"</string>
+    <string name="battery_stats_flashlight_on_label" msgid="4319637669889411307">"Flashlight on"</string>
     <string name="battery_stats_wifi_running_label" msgid="1845839195549226252">"Wi‑Fi"</string>
     <string name="battery_stats_wake_lock_label" msgid="1908942681902324095">"Awake"</string>
     <string name="battery_stats_phone_signal_label" msgid="4137799310329041341">"Mobile network signal"</string>
@@ -2739,7 +2741,6 @@
     <string name="sim_pref_divider" msgid="6778907671867621874">"Preferred SIM for"</string>
     <string name="sim_calls_ask_first_prefs_title" msgid="7941299533514115976">"Ask every time"</string>
     <string name="sim_selection_required_pref" msgid="3446721423206414652">"Selection required"</string>
-    <string name="sim_selection_channel_title" msgid="2760909074892782589">"SIM selection"</string>
     <string name="dashboard_title" msgid="5453710313046681820">"Settings"</string>
     <plurals name="settings_suggestion_header_summary_hidden_items" formatted="false" msgid="5597356221942118048">
       <item quantity="other">Show %d hidden items</item>
@@ -3723,7 +3724,4 @@
     <string name="new_device_suggestion_summary" product="tablet" msgid="393751455688210956">"Take a tour of your new tablet"</string>
     <string name="new_device_suggestion_summary" product="device" msgid="2939870049868336652">"Take a tour of your new device"</string>
     <string name="disabled_low_ram_device" msgid="3751578499721173344">"This feature is not available on this device"</string>
-    <string name="ims_reg_title" msgid="7609782759207241443">"IMS registration state"</string>
-    <string name="ims_reg_status_registered" msgid="933003316932739188">"Registered"</string>
-    <string name="ims_reg_status_not_registered" msgid="6529783773485229486">"Not registered"</string>
 </resources>

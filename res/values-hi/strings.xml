@@ -1117,6 +1117,11 @@
       <item quantity="one">गलत सिम पिन कोड, आप <xliff:g id="NUMBER_1">%d</xliff:g> बार और कोशिश कर सकते हैं.</item>
       <item quantity="other">गलत सिम पिन कोड, आप <xliff:g id="NUMBER_1">%d</xliff:g> बार और कोशिश कर सकते हैं.</item>
     </plurals>
+<<<<<<< HEAD
+    <string name="wrong_pin_code_one">गलत सिम PIN कोड। अपने डिवाइस को अनलॉक करने के लिए PUK कोड (PIN अनलॉक कोड) दर्ज करने या अपने सेवा प्रदाता से संपर्क करने से पहले आपके पास <xliff:g id="number">%d</xliff:g> प्रयत्न शेष हैं।</string>
+=======
+    <string name="wrong_pin_code_one">गलत सिम पिन कोड, आप <xliff:g id="number">%d</xliff:g> बार और कोशिश कर सकते हैं.</string>
+>>>>>>> 6800d7a... The toast display incorrect when remains 1 time of SIM lock input
     <string name="pin_failed" msgid="1848423634948587645">"सिम PIN की कार्यवाही विफल रही!"</string>
     <string name="device_info_settings" product="tablet" msgid="1119755927536987178">"टैबलेट स्‍थिति"</string>
     <string name="device_info_settings" product="default" msgid="475872867864762157">"फ़ोन स्‍थिति"</string>
