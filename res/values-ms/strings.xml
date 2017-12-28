@@ -1117,6 +1117,11 @@
       <item quantity="other">Kod PIN SIM salah, anda ada <xliff:g id="NUMBER_1">%d</xliff:g> cubaan lagi.</item>
       <item quantity="one">Kod PIN SIM tidak betul. Anda ada <xliff:g id="NUMBER_0">%d</xliff:g> cubaan lagi sebelum anda harus menghubungi pembawa anda untuk membuka kunci peranti.</item>
     </plurals>
+<<<<<<< HEAD
+    <string name="wrong_pin_code_one">Kod PIN SIM salah. Anda mempunyai <xliff:g id="number">%d</xliff:g> baki percubaan sebelum anda perlu memasukkan kod PUK (Kod buka kunci PIN) atau menghubungi pembekal perkhidmatan anda untuk membuka kunci peranti anda.</string>
+=======
+    <string name="wrong_pin_code_one">Kod PIN SIM tidak betul. Anda ada <xliff:g id="number">%d</xliff:g> cubaan lagi sebelum anda harus menghubungi pembawa anda untuk membuka kunci peranti.</string>
+>>>>>>> 6800d7a... The toast display incorrect when remains 1 time of SIM lock input
     <string name="pin_failed" msgid="1848423634948587645">"Operasi PIN SIM gagal!"</string>
     <string name="device_info_settings" product="tablet" msgid="1119755927536987178">"Status tablet"</string>
     <string name="device_info_settings" product="default" msgid="475872867864762157">"Status telefon"</string>

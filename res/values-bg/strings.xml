@@ -1117,6 +1117,11 @@
       <item quantity="other">Неправилен ПИН код за SIM картата – остават ви <xliff:g id="NUMBER_1">%d</xliff:g> опита.</item>
       <item quantity="one">Неправилен ПИН код за SIM картата – остава ви <xliff:g id="NUMBER_0">%d</xliff:g> опит, преди да трябва да се свържете с оператора си, за да отключите устройството.</item>
     </plurals>
+<<<<<<< HEAD
+    <string name="wrong_pin_code_one">Неправилен ПИН код за SIM картата. Остават ви <xliff:g id="number">%d</xliff:g> опита, преди да се наложи да въведете PUK кода (код за отключване на ПИН кода) или да трябва да се свържете с доставчика на услуги, за да отключите устройството.</string>
+=======
+    <string name="wrong_pin_code_one">Неправилен ПИН код за SIM картата – остава ви <xliff:g id="number">%d</xliff:g> опит, преди да трябва да се свържете с оператора си, за да отключите устройството.</string>
+>>>>>>> 6800d7a... The toast display incorrect when remains 1 time of SIM lock input
     <string name="pin_failed" msgid="1848423634948587645">"Операцията с ПИН кода за SIM картата не бе успешна!"</string>
     <string name="device_info_settings" product="tablet" msgid="1119755927536987178">"Състояние на таблета"</string>
     <string name="device_info_settings" product="default" msgid="475872867864762157">"Състояние на телефона"</string>

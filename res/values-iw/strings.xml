@@ -1143,6 +1143,11 @@
       <item quantity="other">‏קוד גישה שגוי של כרטיס SIM. נותרו לך <xliff:g id="NUMBER_1">%d</xliff:g> ניסיונות.</item>
       <item quantity="one">‏קוד גישה שגוי של כרטיס SIM. נותר לך ניסיון <xliff:g id="NUMBER_0">%d</xliff:g> לפני שיהיה עליך ליצור קשר עם הספק כדי לבטל את נעילת המכשיר.</item>
     </plurals>
+<<<<<<< HEAD
+    <string name="wrong_pin_code_one">‏קוד PIN שגוי של כרטיס ה-SIM. נותרו לך <xliff:g id="number">%d</xliff:g> ניסיונות נוספים לפני שיהיה עליך להזין קוד PUK (קוד לביטול הנעילה של קוד PIN) או ליצור קשר עם ספק השירות כדי לבטל את נעילת ההתקן.</string>
+=======
+    <string name="wrong_pin_code_one">‏קוד גישה שגוי של כרטיס SIM. נותר לך ניסיון <xliff:g id="number">%d</xliff:g> לפני שיהיה עליך ליצור קשר עם הספק כדי לבטל את נעילת המכשיר.</string>
+>>>>>>> 6800d7a... The toast display incorrect when remains 1 time of SIM lock input
     <string name="pin_failed" msgid="1848423634948587645">"‏פעולת קוד הגישה של כרטיס ה-SIM נכשלה!"</string>
     <string name="device_info_settings" product="tablet" msgid="1119755927536987178">"סטטוס טאבלט"</string>
     <string name="device_info_settings" product="default" msgid="475872867864762157">"סטטוס הטלפון"</string>

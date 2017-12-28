@@ -1143,6 +1143,11 @@
       <item quantity="other">Zadali jste nesprávný kód PIN SIM karty. Máte ještě <xliff:g id="NUMBER_1">%d</xliff:g> pokusů.</item>
       <item quantity="one">Zadali jste nesprávný PIN SIM karty. Zbývá <xliff:g id="NUMBER_0">%d</xliff:g> pokus, poté bude muset zařízení odemknout operátor.</item>
     </plurals>
+<<<<<<< HEAD
+    <string name="wrong_pin_code_one">Zadali jste nesprávný kód PIN karty SIM. Máte ještě <xliff:g id="number">%d</xliff:g> pokusy, poté budete muset zadat kód PUK (kód k odemčení kódu PIN) nebo o odemknutí zařízení požádat svého poskytovatele služeb.</string>
+=======
+    <string name="wrong_pin_code_one">Zadali jste nesprávný PIN SIM karty. Zbývá <xliff:g id="number">%d</xliff:g> pokus, poté bude muset zařízení odemknout operátor.</string>
+>>>>>>> 6800d7a... The toast display incorrect when remains 1 time of SIM lock input
     <string name="pin_failed" msgid="1848423634948587645">"Operace pomocí kódu PIN SIM karty se nezdařila!"</string>
     <string name="device_info_settings" product="tablet" msgid="1119755927536987178">"Stav tabletu"</string>
     <string name="device_info_settings" product="default" msgid="475872867864762157">"Stav telefonu"</string>
