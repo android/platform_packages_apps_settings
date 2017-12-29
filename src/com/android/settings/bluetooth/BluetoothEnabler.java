@@ -49,6 +49,7 @@ public final class BluetoothEnabler implements SwitchBar.OnSwitchChangeListener 
     private boolean mValidListener;
     private final LocalBluetoothAdapter mLocalAdapter;
     private final IntentFilter mIntentFilter;
+    private int mLastState;
 
     private static final String EVENT_DATA_IS_BT_ON = "is_bluetooth_on";
     private static final int EVENT_UPDATE_INDEX = 0;
@@ -130,6 +131,9 @@ public final class BluetoothEnabler implements SwitchBar.OnSwitchChangeListener 
     }
 
     void handleStateChanged(int state) {
+        if (mLastState == state)
+           return;
+        mLastState = state;
         switch (state) {
             case BluetoothAdapter.STATE_TURNING_ON:
                 mSwitch.setEnabled(false);
@@ -187,6 +191,11 @@ public final class BluetoothEnabler implements SwitchBar.OnSwitchChangeListener 
             switchView.setChecked(false);
         }
 
+        if (mLocalAdapter != null) {
+            // disable switch, enable it again after BT state is changed
+            mSwitch.setEnabled(false);
+        }
+
         MetricsLogger.action(mContext, MetricsEvent.ACTION_BLUETOOTH_TOGGLE, isChecked);
 
         if (mLocalAdapter != null) {
@@ -201,6 +210,5 @@ public final class BluetoothEnabler implements SwitchBar.OnSwitchChangeListener 
                 return;
             }
         }
-        mSwitch.setEnabled(false);
     }
 }
