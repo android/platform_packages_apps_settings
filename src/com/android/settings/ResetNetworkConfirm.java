@@ -25,8 +25,11 @@ import android.net.NetworkPolicyManager;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.os.UserHandle;
 import android.os.UserManager;
+import android.se.omapi.ISecureElementService;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.view.LayoutInflater;
@@ -103,6 +106,14 @@ public class ResetNetworkConfirm extends OptionsMenuFragment {
                 if (btAdapter != null) {
                     btAdapter.factoryReset();
                 }
+            }
+
+            ISecureElementService seService = ISecureElementService.Stub.asInterface(
+                    ServiceManager.getService(Context.SE_SERVICE));
+            if (seService != null) {
+                try {
+                    seService.factoryReset();
+                } catch (RemoteException ignore) { }
             }
 
             ImsManager.factoryReset(context);
