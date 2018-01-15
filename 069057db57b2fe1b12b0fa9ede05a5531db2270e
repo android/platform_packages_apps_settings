@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67f850d9_3c9e573c",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 2606,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-01-15T19:06:00Z",
+      "side": 1,
+      "message": "This string is only used when attempt is 1. so the wording here should not be plural.",
+      "range": {
+        "startLine": 2606,
+        "startChar": 105,
+        "endLine": 2606,
+        "endChar": 114
+      },
+      "revId": "069057db57b2fe1b12b0fa9ede05a5531db2270e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
