@@ -22,6 +22,7 @@ import android.provider.Settings;
 import android.support.annotation.VisibleForTesting;
 import android.support.v14.preference.SwitchPreference;
 import android.support.v7.preference.Preference;
+import android.support.v7.preference.PreferenceCategory;
 import android.support.v7.preference.PreferenceScreen;
 import android.text.TextUtils;
 import android.view.InputDevice;
@@ -104,7 +105,9 @@ public class GameControllerPreferenceController extends AbstractPreferenceContro
         if (preference == null) {
             return;
         }
-        ((SwitchPreference) preference).setChecked(Settings.System.getInt(
+		SwitchPreference vibratePreference = (SwitchPreference)(((PreferenceCategory)
+                preference).getPreference(0));
+        vibratePreference.setChecked(Settings.System.getInt(
                 mContext.getContentResolver(),
                 Settings.System.VIBRATE_INPUT_DEVICES, 1) > 0);
     }
