@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d26dcbb_44a0edda",
+        "filename": "src/com/android/settings/applications/AppInfoBase.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-01-17T01:12:05Z",
+      "side": 1,
+      "message": "besides constructing a bad intent via adb, when will this happen on a real user\u0027s device?",
+      "range": {
+        "startLine": 141,
+        "startChar": 31,
+        "endLine": 141,
+        "endChar": 56
+      },
+      "revId": "a6e90022560fdd7f7cba35377e5aaba48123742e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
