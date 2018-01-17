@@ -70,6 +70,30 @@
       "revId": "a6e90022560fdd7f7cba35377e5aaba48123742e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37a3fa69_53fac338",
+        "filename": "src/com/android/settings/applications/AppInfoBase.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1143183
+      },
+      "writtenOn": "2018-01-17T18:14:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01fcd0ea_b0112986",
+      "range": {
+        "startLine": 141,
+        "startChar": 31,
+        "endLine": 141,
+        "endChar": 56
+      },
+      "revId": "a6e90022560fdd7f7cba35377e5aaba48123742e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
