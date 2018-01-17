@@ -46,6 +46,30 @@
       "revId": "a6e90022560fdd7f7cba35377e5aaba48123742e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01fcd0ea_b0112986",
+        "filename": "src/com/android/settings/applications/AppInfoBase.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-01-17T17:05:46Z",
+      "side": 1,
+      "message": "Thanks for the explanation. Can you please add this detail somewhere in commit message to indicate this is something that can happen with monkey test?",
+      "parentUuid": "10ebb81d_b33f645d",
+      "range": {
+        "startLine": 141,
+        "startChar": 31,
+        "endLine": 141,
+        "endChar": 56
+      },
+      "revId": "a6e90022560fdd7f7cba35377e5aaba48123742e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
