@@ -22,6 +22,30 @@
       "revId": "a6e90022560fdd7f7cba35377e5aaba48123742e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "10ebb81d_b33f645d",
+        "filename": "src/com/android/settings/applications/AppInfoBase.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1143183
+      },
+      "writtenOn": "2018-01-17T17:03:17Z",
+      "side": 1,
+      "message": "Hi Fan, thanks for review.\nActually, this can hardly happen under the normal operation of the user because mPackageName can hardly be null. We found this crash in monkey test, and this change just to enhance the robustness of the program.",
+      "parentUuid": "9d26dcbb_44a0edda",
+      "range": {
+        "startLine": 141,
+        "startChar": 31,
+        "endLine": 141,
+        "endChar": 56
+      },
+      "revId": "a6e90022560fdd7f7cba35377e5aaba48123742e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
