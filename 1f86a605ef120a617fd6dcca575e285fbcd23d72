@@ -45,6 +45,30 @@
       "revId": "1f86a605ef120a617fd6dcca575e285fbcd23d72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "699d9f14_06cdb031",
+        "filename": "src/com/android/settings/datausage/DataSaverBackend.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1235718
+      },
+      "writtenOn": "2018-01-18T06:00:50Z",
+      "side": 1,
+      "message": "The purpose of change to an AtomicBoolean is to keep thread synchronization, not impact other place call loadWhitelist().\nWe think this change is not necessary.\n\n1.Only DataSaverSummary screen call refreshWhitelist(), set mWhitelistInitialized to false.\nUnrestrictedDataAccess.java and DataSaverSummary.java use different DataSaverBackend object. Change mWhitelistInitialized of DataSaverSummary not set mWhitelistInitialized of UnrestrictedDataAccess.\nAnd UnrestrictedDataAccess onDestroy() return DataSaverSummary, don\u0027t call loadWhitelist() at the same time.\n\n2.DataSaverSummary.java onResume, refreshWhitelist() of mDataSaverBackend run first, set mWhitelistInitialized to true after loadWhitelist().\nThe mWhitelistInitialized is true when other palace of DataSaverSummary call loadWhitelist().\n\n\nOr how about to have synchronized for loadWhitelist like this:\n    private synchronized void loadWhitelist(final boolean forceupdate) {\n        if (!forceupdate \u0026\u0026 mWhitelistInitialized) return;\n\n        for (int i \u003d mUidPolicies.size() - 1; i \u003e\u003d 0; i--) {\n            if (mUidPolicies.valueAt(i) \u003d\u003d POLICY_ALLOW_METERED_BACKGROUND) {\n                mUidPolicies.removeAt(i);\n            }\n        }\n        for (int uid : mPolicyManager.getUidsWithPolicy(POLICY_ALLOW_METERED_BACKGROUND)) {\n            mUidPolicies.put(uid, POLICY_ALLOW_METERED_BACKGROUND);\n        }\n        mWhitelistInitialized \u003d true;\n    }\n\nbut,, in this case, we should implement synchronization something for mUidPolicies..",
+      "parentUuid": "f6a6cb79_248053f8",
+      "range": {
+        "startLine": 113,
+        "startChar": 12,
+        "endLine": 113,
+        "endChar": 33
+      },
+      "revId": "1f86a605ef120a617fd6dcca575e285fbcd23d72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
