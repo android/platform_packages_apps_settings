@@ -22,6 +22,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.database.ContentObserver;
 import android.hardware.display.DisplayManager;
 import android.hardware.display.WifiDisplay;
@@ -213,7 +214,7 @@ public final class WifiDisplaySettings extends SettingsPreferenceFragment {
 
     public static boolean isAvailable(Context context) {
         return context.getSystemService(Context.DISPLAY_SERVICE) != null
-                && context.getSystemService(Context.WIFI_P2P_SERVICE) != null;
+                && context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_WIFI_DIRECT);
     }
 
     private void scheduleUpdate(int changes) {
