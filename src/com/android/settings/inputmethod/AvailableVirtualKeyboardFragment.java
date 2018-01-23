@@ -50,7 +50,11 @@ import java.util.List;
 public final class AvailableVirtualKeyboardFragment extends SettingsPreferenceFragment
         implements InputMethodPreference.OnSavePreferenceListener, Indexable {
 
+    private static final String IME_WARN_DIALOG_TYPE = "ime_warn_dialog_type";
+    private static final String SELECETED_IME_ID = "selected_ime_id";
     private final ArrayList<InputMethodPreference> mInputMethodPreferenceList = new ArrayList<>();
+    private int mWarnDialogType;
+    private String mSelectedImeId;
     private InputMethodSettingValuesWrapper mInputMethodSettingValues;
     private InputMethodManager mImm;
     private DevicePolicyManager mDpm;
@@ -63,6 +67,11 @@ public final class AvailableVirtualKeyboardFragment extends SettingsPreferenceFr
         mInputMethodSettingValues = InputMethodSettingValuesWrapper.getInstance(activity);
         mImm = activity.getSystemService(InputMethodManager.class);
         mDpm = activity.getSystemService(DevicePolicyManager.class);
+
+        if (bundle != null) {
+            mSelectedImeId = bundle.getString(SELECETED_IME_ID);
+            mWarnDialogType = bundle.getInt(IME_WARN_DIALOG_TYPE);
+        }
     }
 
     @Override
@@ -72,6 +81,34 @@ public final class AvailableVirtualKeyboardFragment extends SettingsPreferenceFr
         // "InputMethodInfo"s and "InputMethodSubtype"s
         mInputMethodSettingValues.refreshAllInputMethodAndSubtypes();
         updateInputMethodPreferenceViews();
+
+        if (mSelectedImeId != null) {
+            for (final InputMethodPreference imp : mInputMethodPreferenceList) {
+                InputMethodInfo curImi = imp.getInputMethodInfo();
+                if (mSelectedImeId.equals(curImi.getId())) {
+                    if (mWarnDialogType == InputMethodPreference.SECURITY_WARN_DIALOG) {
+                        imp.showSecurityWarnDialog();
+                    } else {
+                        imp.showDirectBootWarnDialog();
+                    }
+                    break;
+                }
+            }
+            mSelectedImeId = null;
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle bundle) {
+        super.onSaveInstanceState(bundle);
+        for (final InputMethodPreference imp : mInputMethodPreferenceList) {
+            int warnDialogType = imp.getShowingWarnDialogType();
+            if (warnDialogType != InputMethodPreference.NO_WARN_DIALOG) {
+                bundle.putString(SELECETED_IME_ID, imp.getInputMethodInfo().getId());
+                bundle.putInt(IME_WARN_DIALOG_TYPE, warnDialogType);
+                break;
+            }
+        }
     }
 
     @Override
