@@ -42,6 +42,8 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.hardware.usb.IUsbManager;
+import android.hardware.usb.UsbFunction;
+import android.hardware.usb.UsbFunctions;
 import android.hardware.usb.UsbManager;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
@@ -1796,8 +1798,9 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
             String[] values = getResources().getStringArray(R.array.usb_configuration_values);
             String[] titles = getResources().getStringArray(R.array.usb_configuration_titles);
             int index = 0;
+            UsbFunctions functions = manager.getCurrentFunctions();
             for (int i = 0; i < titles.length; i++) {
-                if (manager.isFunctionEnabled(values[i])) {
+                if (functions.contains(UsbFunction.get(values[i]))) {
                     index = i;
                     break;
                 }
@@ -1810,12 +1813,7 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
 
     private void writeUsbConfigurationOption(Object newValue) {
         UsbManager manager = (UsbManager) getActivity().getSystemService(Context.USB_SERVICE);
-        String function = newValue.toString();
-        if (function.equals("none")) {
-            manager.setCurrentFunction(function, false);
-        } else {
-            manager.setCurrentFunction(function, true);
-        }
+        manager.setCurrentFunctions(new UsbFunctions(newValue.toString()));
     }
 
     private void initBluetoothConfigurationValues() {
