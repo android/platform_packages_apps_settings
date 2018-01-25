@@ -232,14 +232,19 @@ public class IccLockSettings extends SettingsPreferenceFragment
                             ? getContext().getString(R.string.sim_editor_title, i + 1)
                             : subInfo.getDisplayName())));
             }
-            final SubscriptionInfo sir = sm.getActiveSubscriptionInfoForSimSlotIndex(0);
+            String currentTab = "0";
+            if (savedInstanceState != null && savedInstanceState.containsKey(CURRENT_TAB)) {
+                currentTab = savedInstanceState.getString(CURRENT_TAB);
+                mTabHost.setCurrentTabByTag(currentTab);
+            }
+
+            final SubscriptionInfo sir = sm.getActiveSubscriptionInfoForSimSlotIndex(
+                    Integer.parseInt(currentTab));
 
             mPhone = (sir == null) ? null
                 : PhoneFactory.getPhone(SubscriptionManager.getPhoneId(sir.getSubscriptionId()));
 
-            if (savedInstanceState != null && savedInstanceState.containsKey(CURRENT_TAB)) {
-                mTabHost.setCurrentTabByTag(savedInstanceState.getString(CURRENT_TAB));
-            }
+
             return view;
         } else {
             mPhone = PhoneFactory.getDefaultPhone();
