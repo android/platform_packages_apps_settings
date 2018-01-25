@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4533c839_67eec737",
+        "filename": "src/com/android/settings/inputmethod/GameControllerPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1239581
+      },
+      "writtenOn": "2018-01-25T10:27:04Z",
+      "side": 1,
+      "message": "I will fix it in next patch.",
+      "parentUuid": "65ce2f0d_7112b15f",
+      "range": {
+        "startLine": 108,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 2
+      },
+      "revId": "815bbd2861cf25e7d777356976c0ec57daf48e68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "132444a4_934e3dc9",
         "filename": "src/com/android/settings/inputmethod/GameControllerPreferenceController.java",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "815bbd2861cf25e7d777356976c0ec57daf48e68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "411f08ff_aee43f91",
+        "filename": "src/com/android/settings/inputmethod/GameControllerPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1239581
+      },
+      "writtenOn": "2018-01-25T10:27:04Z",
+      "side": 1,
+      "message": "thanks fan, you\u0027re right.\nI get 2 ideas to fix it. \na. ((SwitchPreference)mPreference).setChecked(Settings.System.getInt(....).  mPreference initiate in displayPreference() and it is a reference of this SwitchPreference.\nb. return PREF_KEY in the function getPreferenceKey() to make sure that \u0027perference\u0027 is a instance of SwitchPreference.\nwhich way do you think is better?\nthanks.",
+      "parentUuid": "132444a4_934e3dc9",
+      "range": {
+        "startLine": 109,
+        "startChar": 26,
+        "endLine": 109,
+        "endChar": 44
+      },
+      "revId": "815bbd2861cf25e7d777356976c0ec57daf48e68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
