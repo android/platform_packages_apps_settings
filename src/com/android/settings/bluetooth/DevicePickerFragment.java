@@ -51,6 +51,7 @@ public final class DevicePickerFragment extends DeviceListPreferenceFragment {
     private String mLaunchPackage;
     private String mLaunchClass;
     private boolean mScanAllowed;
+    private boolean isScreenRotated = false;
 
     public DevicePickerFragment() {
         super(null /* Not tied to any user restrictions. */);
@@ -91,10 +92,17 @@ public final class DevicePickerFragment extends DeviceListPreferenceFragment {
         super.onStart();
         addCachedDevices();
         mSelectedDevice = null;
+        isScreenRotated = false;
         if (mScanAllowed) {
             enableScanning();
             mAvailableDevicesCategory.setProgress(mLocalAdapter.isDiscovering());
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        isScreenRotated = true;
+        super.onSaveInstanceState(outState);
     }
 
     @Override
@@ -110,7 +118,7 @@ public final class DevicePickerFragment extends DeviceListPreferenceFragment {
         /* Check if any device was selected, if no device selected
          * send  ACTION_DEVICE_SELECTED with a null device, otherwise
          * don't do anything */
-        if (mSelectedDevice == null) {
+        if (mSelectedDevice == null && !isScreenRotated) {
             sendDevicePickedIntent(null);
         }
     }
