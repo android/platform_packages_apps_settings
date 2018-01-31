@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66a17ae0_6e42765e",
+        "filename": "res/values-zh-rCN/strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 3602,
+      "author": {
+        "id": 1121198
+      },
+      "writtenOn": "2018-01-31T21:13:12Z",
+      "side": 1,
+      "message": "what are these for?",
+      "range": {
+        "startLine": 3589,
+        "startChar": 0,
+        "endLine": 3602,
+        "endChar": 82
+      },
+      "revId": "080495f43ab0af2fc1ec13a8fd69a59694f70636",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d99d874_3ead0f0e",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 8697,
+      "author": {
+        "id": 1121198
+      },
+      "writtenOn": "2018-01-31T21:13:12Z",
+      "side": 1,
+      "message": "What are these for?",
+      "range": {
+        "startLine": 8686,
+        "startChar": 1,
+        "endLine": 8697,
+        "endChar": 48
+      },
+      "revId": "080495f43ab0af2fc1ec13a8fd69a59694f70636",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
