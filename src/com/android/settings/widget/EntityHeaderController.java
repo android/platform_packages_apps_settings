@@ -21,6 +21,7 @@ import android.annotation.UserIdInt;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -38,6 +39,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.settings.R;
 import com.android.settings.Utils;
@@ -346,7 +348,13 @@ public class EntityHeaderController {
                         FeatureFactory.getFactory(mAppContext).getMetricsFeatureProvider()
                                 .actionWithSource(mAppContext, mMetricsCategory,
                                         ACTION_OPEN_APP_SETTING);
-                        mFragment.startActivity(intent);
+                        try {
+                            mFragment.startActivity(intent);
+                        } catch (ActivityNotFoundException e) {
+                            Log.w(TAG, "App settings activity not found.");
+                            Toast.makeText(mActivity, R.string.activity_not_found,
+                                    Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
                 button.setImageResource(R.drawable.ic_settings_24dp);
