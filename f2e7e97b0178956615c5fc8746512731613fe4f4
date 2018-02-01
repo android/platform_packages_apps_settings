@@ -25,6 +25,52 @@
     },
     {
       "key": {
+        "uuid": "00181097_8717850d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-02-01T18:12:40Z",
+      "side": 1,
+      "message": "please add Bug: stanza and point to a link for reported bug",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 52
+      },
+      "revId": "f2e7e97b0178956615c5fc8746512731613fe4f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ace2bc4f_2961fa2b",
+        "filename": "src/com/android/settings/widget/EntityHeaderController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-02-01T18:12:40Z",
+      "side": 1,
+      "message": "don\u0027t wait for it to fail, please query package manager to resolve intent first.",
+      "range": {
+        "startLine": 351,
+        "startChar": 24,
+        "endLine": 353,
+        "endChar": 30
+      },
+      "revId": "f2e7e97b0178956615c5fc8746512731613fe4f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3aac4c64_a9c43f7b",
         "filename": "src/com/android/settings/widget/EntityHeaderController.java",
         "patchSetId": 1
@@ -59,6 +105,30 @@
       "writtenOn": "2018-02-01T16:22:22Z",
       "side": 1,
       "message": "Fan to confirm. But I believe that we don\u0027t usually toast messages in settings.",
+      "range": {
+        "startLine": 355,
+        "startChar": 28,
+        "endLine": 356,
+        "endChar": 63
+      },
+      "revId": "f2e7e97b0178956615c5fc8746512731613fe4f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69de9b3d_0e458cb8",
+        "filename": "src/com/android/settings/widget/EntityHeaderController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-02-01T18:12:40Z",
+      "side": 1,
+      "message": "Yeah we shouldn\u0027t throw toast",
+      "parentUuid": "1cba60d0_b16f9302",
       "range": {
         "startLine": 355,
         "startChar": 28,
