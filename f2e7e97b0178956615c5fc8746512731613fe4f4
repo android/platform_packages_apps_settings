@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de3b1961_8220a92c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1125084
+      },
+      "writtenOn": "2018-02-01T16:22:22Z",
+      "side": 1,
+      "message": "Please add a robolectric test for this case.",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 13,
+        "endChar": 12
+      },
+      "revId": "f2e7e97b0178956615c5fc8746512731613fe4f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3aac4c64_a9c43f7b",
+        "filename": "src/com/android/settings/widget/EntityHeaderController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1125084
+      },
+      "writtenOn": "2018-02-01T16:22:22Z",
+      "side": 1,
+      "message": "Is the intent null here? If not please add the intent to the log statement",
+      "range": {
+        "startLine": 354,
+        "startChar": 72,
+        "endLine": 354,
+        "endChar": 74
+      },
+      "revId": "f2e7e97b0178956615c5fc8746512731613fe4f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cba60d0_b16f9302",
+        "filename": "src/com/android/settings/widget/EntityHeaderController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1125084
+      },
+      "writtenOn": "2018-02-01T16:22:22Z",
+      "side": 1,
+      "message": "Fan to confirm. But I believe that we don\u0027t usually toast messages in settings.",
+      "range": {
+        "startLine": 355,
+        "startChar": 28,
+        "endLine": 356,
+        "endChar": 63
+      },
+      "revId": "f2e7e97b0178956615c5fc8746512731613fe4f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
