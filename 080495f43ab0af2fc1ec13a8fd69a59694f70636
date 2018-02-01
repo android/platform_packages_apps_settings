@@ -45,6 +45,75 @@
       "revId": "080495f43ab0af2fc1ec13a8fd69a59694f70636",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "982fe676_90b3f888",
+        "filename": "src/com/android/settings/ApnEditor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1121198
+      },
+      "writtenOn": "2018-02-01T00:01:01Z",
+      "side": 1,
+      "message": "would be best to make a list of unconfigurable items instead, so that adding a field doesn\u0027t require modifying this list",
+      "range": {
+        "startLine": 158,
+        "startChar": 34,
+        "endLine": 158,
+        "endChar": 54
+      },
+      "revId": "080495f43ab0af2fc1ec13a8fd69a59694f70636",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c563d4f2_8fc92e70",
+        "filename": "src/com/android/settings/ApnEditor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1193,
+      "author": {
+        "id": 1121198
+      },
+      "writtenOn": "2018-02-01T00:01:01Z",
+      "side": 1,
+      "message": "is there a missing CL that adds this?",
+      "range": {
+        "startLine": 1193,
+        "startChar": 73,
+        "endLine": 1193,
+        "endChar": 104
+      },
+      "revId": "080495f43ab0af2fc1ec13a8fd69a59694f70636",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "00d76edb_2fd931c9",
+        "filename": "src/com/android/settings/ApnSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1121198
+      },
+      "writtenOn": "2018-02-01T00:01:01Z",
+      "side": 1,
+      "message": "max width",
+      "range": {
+        "startLine": 132,
+        "startChar": 100,
+        "endLine": 132,
+        "endChar": 116
+      },
+      "revId": "080495f43ab0af2fc1ec13a8fd69a59694f70636",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
