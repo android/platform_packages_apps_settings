@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c49abdd2_183aeebb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2018-02-02T18:07:12Z",
+      "side": 1,
+      "message": "nit: No period",
+      "range": {
+        "startLine": 7,
+        "startChar": 52,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "93cf623228a103c2202095fb1c17630e184e3acb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20f77b2e_f1a1de1d",
+        "filename": "AndroidManifest.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2018-02-02T18:07:12Z",
+      "side": 1,
+      "message": "missing \" at the end of the line?",
+      "revId": "93cf623228a103c2202095fb1c17630e184e3acb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
