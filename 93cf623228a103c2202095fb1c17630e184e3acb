@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cf788a2b_617fd33c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1140634
+      },
+      "writtenOn": "2018-02-03T04:29:03Z",
+      "side": 1,
+      "message": "will rmeove",
+      "parentUuid": "c49abdd2_183aeebb",
+      "range": {
+        "startLine": 7,
+        "startChar": 52,
+        "endLine": 7,
+        "endChar": 53
+      },
+      "revId": "93cf623228a103c2202095fb1c17630e184e3acb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20f77b2e_f1a1de1d",
         "filename": "AndroidManifest.xml",
         "patchSetId": 4
@@ -36,6 +60,24 @@
       "writtenOn": "2018-02-02T18:07:12Z",
       "side": 1,
       "message": "missing \" at the end of the line?",
+      "revId": "93cf623228a103c2202095fb1c17630e184e3acb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2ed5be52_fb1fba02",
+        "filename": "AndroidManifest.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1140634
+      },
+      "writtenOn": "2018-02-03T04:29:03Z",
+      "side": 1,
+      "message": "sorry, don\u0027t know how i missed it",
+      "parentUuid": "20f77b2e_f1a1de1d",
       "revId": "93cf623228a103c2202095fb1c17630e184e3acb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
