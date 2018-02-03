@@ -119,7 +119,6 @@ public class DashboardSummary extends InstrumentedFragment
         super.onResume();
 
         ((SettingsDrawerActivity) getActivity()).addCategoryListener(this);
-        mSummaryLoader.setListening(true);
         final int metricsCategory = getMetricsCategory();
         for (Condition c : mConditionManager.getConditions()) {
             if (c.shouldShow()) {
@@ -137,7 +136,6 @@ public class DashboardSummary extends InstrumentedFragment
         super.onPause();
 
         ((SettingsDrawerActivity) getActivity()).remCategoryListener(this);
-        mSummaryLoader.setListening(false);
         for (Condition c : mConditionManager.getConditions()) {
             if (c.shouldShow()) {
                 mMetricsFeatureProvider.hidden(getContext(), c.getMetricsConstant());
@@ -146,6 +144,18 @@ public class DashboardSummary extends InstrumentedFragment
         if (!getActivity().isChangingConfigurations()) {
             mAdapter.onPause();
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        mSummaryLoader.setListening(true);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        mSummaryLoader.setListening(false);
     }
 
     @Override
