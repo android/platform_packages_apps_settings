@@ -30,6 +30,7 @@ import android.graphics.Typeface;
 import android.net.TrafficStats;
 import android.net.Uri;
 import android.os.AsyncResult;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -170,6 +171,8 @@ public class RadioInfo extends Activity {
     private static final int MENU_ITEM_VIEW_SDN     = 3;
     private static final int MENU_ITEM_GET_IMS_STATUS = 4;
     private static final int MENU_ITEM_TOGGLE_DATA  = 5;
+
+    private static final boolean IS_USER_BUILD = "user".equals(Build.TYPE);
 
     private TextView mDeviceId; //DeviceId is the IMEI in GSM and the MEID in CDMA
     private TextView number;
@@ -1300,7 +1303,27 @@ public class RadioInfo extends Activity {
         return false;
     }
 
+    private int getImsProvisioningSwitchesVisibility() {
+        int visibility = View.VISIBLE;
+        CarrierConfigManager configManager =
+                (CarrierConfigManager) getSystemService(CARRIER_CONFIG_SERVICE);
+        if (configManager != null) {
+            boolean allowUserChangeImsProvisioningUserBuild =
+                    configManager.getConfig().getBoolean(CarrierConfigManager
+                    .KEY_CARRIER_ALLOW_USER_CHANGE_IMS_PROVISIONING_USER_BUILD_BOOL);
+            // Hide provisioning switches if user build and current carrier config settings does not
+            // allow end user to change provisioning status in user build.
+            if (IS_USER_BUILD && !allowUserChangeImsProvisioningUserBuild) {
+                visibility = View.GONE;
+                log("getProvisioningSwitchesVisibility: Hide ims provisioning switches");
+            }
+        }
+        return visibility;
+    }
+
     private void updateImsProvisionedState() {
+        int visibility = getImsProvisioningSwitchesVisibility();
+
         log("updateImsProvisionedState isImsVolteProvisioned()=" + isImsVolteProvisioned());
         //delightful hack to prevent on-checked-changed calls from
         //actually forcing the ims provisioning to its transient/current value.
@@ -1309,23 +1332,27 @@ public class RadioInfo extends Activity {
         imsVolteProvisionedSwitch.setOnCheckedChangeListener(mImsVolteCheckedChangeListener);
         imsVolteProvisionedSwitch.setEnabled(
                 mImsManager.isVolteEnabledByPlatform(phone.getContext()));
+        imsVolteProvisionedSwitch.setVisibility(visibility);
 
         imsVtProvisionedSwitch.setOnCheckedChangeListener(null);
         imsVtProvisionedSwitch.setChecked(isImsVtProvisioned());
         imsVtProvisionedSwitch.setOnCheckedChangeListener(mImsVtCheckedChangeListener);
         imsVtProvisionedSwitch.setEnabled(
             mImsManager.isVtEnabledByPlatform(phone.getContext()));
+        imsVtProvisionedSwitch.setVisibility(visibility);
 
         imsWfcProvisionedSwitch.setOnCheckedChangeListener(null);
         imsWfcProvisionedSwitch.setChecked(isImsWfcProvisioned());
         imsWfcProvisionedSwitch.setOnCheckedChangeListener(mImsWfcCheckedChangeListener);
         imsWfcProvisionedSwitch.setEnabled(
             mImsManager.isWfcEnabledByPlatform(phone.getContext()));
+        imsWfcProvisionedSwitch.setVisibility(visibility);
 
         eabProvisionedSwitch.setOnCheckedChangeListener(null);
         eabProvisionedSwitch.setChecked(isEabProvisioned());
         eabProvisionedSwitch.setOnCheckedChangeListener(mEabCheckedChangeListener);
         eabProvisionedSwitch.setEnabled(isEabEnabledByPlatform(phone.getContext()));
+        eabProvisionedSwitch.setVisibility(visibility);
     }
 
     OnClickListener mDnsCheckButtonHandler = new OnClickListener() {
