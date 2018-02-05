@@ -30,6 +30,7 @@ import android.graphics.Typeface;
 import android.net.TrafficStats;
 import android.net.Uri;
 import android.os.AsyncResult;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -170,6 +171,8 @@ public class RadioInfo extends Activity {
     private static final int MENU_ITEM_VIEW_SDN     = 3;
     private static final int MENU_ITEM_GET_IMS_STATUS = 4;
     private static final int MENU_ITEM_TOGGLE_DATA  = 5;
+
+    private static final boolean IS_USER_BUILD = "user".equals(Build.TYPE);
 
     private TextView mDeviceId; //DeviceId is the IMEI in GSM and the MEID in CDMA
     private TextView number;
@@ -1307,25 +1310,26 @@ public class RadioInfo extends Activity {
         imsVolteProvisionedSwitch.setOnCheckedChangeListener(null);
         imsVolteProvisionedSwitch.setChecked(isImsVolteProvisioned());
         imsVolteProvisionedSwitch.setOnCheckedChangeListener(mImsVolteCheckedChangeListener);
-        imsVolteProvisionedSwitch.setEnabled(
-                mImsManager.isVolteEnabledByPlatform(phone.getContext()));
+        imsVolteProvisionedSwitch.setEnabled(!IS_USER_BUILD
+                && mImsManager.isVolteEnabledByPlatform(phone.getContext()));
 
         imsVtProvisionedSwitch.setOnCheckedChangeListener(null);
         imsVtProvisionedSwitch.setChecked(isImsVtProvisioned());
         imsVtProvisionedSwitch.setOnCheckedChangeListener(mImsVtCheckedChangeListener);
-        imsVtProvisionedSwitch.setEnabled(
-            mImsManager.isVtEnabledByPlatform(phone.getContext()));
+        imsVtProvisionedSwitch.setEnabled(!IS_USER_BUILD
+                && mImsManager.isVtEnabledByPlatform(phone.getContext()));
 
         imsWfcProvisionedSwitch.setOnCheckedChangeListener(null);
         imsWfcProvisionedSwitch.setChecked(isImsWfcProvisioned());
         imsWfcProvisionedSwitch.setOnCheckedChangeListener(mImsWfcCheckedChangeListener);
-        imsWfcProvisionedSwitch.setEnabled(
-            mImsManager.isWfcEnabledByPlatform(phone.getContext()));
+        imsWfcProvisionedSwitch.setEnabled(!IS_USER_BUILD
+                && mImsManager.isWfcEnabledByPlatform(phone.getContext()));
 
         eabProvisionedSwitch.setOnCheckedChangeListener(null);
         eabProvisionedSwitch.setChecked(isEabProvisioned());
         eabProvisionedSwitch.setOnCheckedChangeListener(mEabCheckedChangeListener);
-        eabProvisionedSwitch.setEnabled(isEabEnabledByPlatform(phone.getContext()));
+        eabProvisionedSwitch.setEnabled(!IS_USER_BUILD
+                && isEabEnabledByPlatform(phone.getContext()));
     }
 
     OnClickListener mDnsCheckButtonHandler = new OnClickListener() {
