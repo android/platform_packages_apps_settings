@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cadcb28_e78b6e42",
+        "filename": "src/com/android/settings/accounts/AutoSyncWorkDataPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-02-06T16:28:53Z",
+      "side": 1,
+      "message": "check null first",
+      "range": {
+        "startLine": 43,
+        "startChar": 18,
+        "endLine": 43,
+        "endChar": 29
+      },
+      "revId": "3410ededde1c2ae86bf54338b947ae8c39a7da23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
