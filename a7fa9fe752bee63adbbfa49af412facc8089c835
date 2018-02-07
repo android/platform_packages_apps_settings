@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "91a3b72b_12f899f0",
+        "filename": "src/com/android/settings/deviceinfo/SimStatus.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2018-02-07T23:19:13Z",
+      "side": 1,
+      "message": "please add test to verify correct summary is set with different value from isImsRegistered().",
+      "range": {
+        "startLine": 380,
+        "startChar": 17,
+        "endLine": 380,
+        "endChar": 43
+      },
+      "revId": "a7fa9fe752bee63adbbfa49af412facc8089c835",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "588fe437_7e17ad01",
+        "filename": "src/com/android/settings/deviceinfo/SimStatus.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2018-02-07T23:19:13Z",
+      "side": 1,
+      "message": "please add test to verify preference is removed when KEY_SHOW_IMS_REGISTRATION_STATUS_BOOL is false.",
+      "range": {
+        "startLine": 432,
+        "startChar": 12,
+        "endLine": 432,
+        "endChar": 38
+      },
+      "revId": "a7fa9fe752bee63adbbfa49af412facc8089c835",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4836d938_d555925b",
+        "filename": "src/com/android/settings/deviceinfo/SimStatus.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2018-02-07T23:19:13Z",
+      "side": 1,
+      "message": "can you add test to check the preferences are all re-added?",
+      "range": {
+        "startLine": 478,
+        "startChar": 20,
+        "endLine": 478,
+        "endChar": 32
+      },
+      "revId": "a7fa9fe752bee63adbbfa49af412facc8089c835",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
