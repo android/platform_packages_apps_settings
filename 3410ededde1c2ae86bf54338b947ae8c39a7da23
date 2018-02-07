@@ -22,6 +22,30 @@
       "revId": "3410ededde1c2ae86bf54338b947ae8c39a7da23",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f6cf437_d97d59f5",
+        "filename": "src/com/android/settings/accounts/AutoSyncWorkDataPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1143183
+      },
+      "writtenOn": "2018-02-07T01:02:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cadcb28_e78b6e42",
+      "range": {
+        "startLine": 43,
+        "startChar": 18,
+        "endLine": 43,
+        "endChar": 29
+      },
+      "revId": "3410ededde1c2ae86bf54338b947ae8c39a7da23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
