@@ -82,6 +82,8 @@ public class EntityHeaderController {
     private String mIconContentDescription;
     private CharSequence mLabel;
     private CharSequence mSummary;
+    // Required for hearing aid devices.
+    private CharSequence mSecondSummary;
     private String mPackageName;
     private Intent mAppNotifPrefIntent;
     @UserIdInt
@@ -176,6 +178,18 @@ public class EntityHeaderController {
         return this;
     }
 
+    public EntityHeaderController setSecondSummary(CharSequence summary) {
+        mSecondSummary = summary;
+        return this;
+    }
+
+    public EntityHeaderController setSecondSummary(PackageInfo packageInfo) {
+        if (packageInfo != null) {
+            mSummary = packageInfo.versionName;
+        }
+        return this;
+    }
+
     public EntityHeaderController setHasAppInfoLink(boolean hasAppInfoLink) {
         mHasAppInfoLink = hasAppInfoLink;
         return this;
@@ -232,6 +246,7 @@ public class EntityHeaderController {
         }
         setText(R.id.entity_header_title, mLabel);
         setText(R.id.entity_header_summary, mSummary);
+        setText(R.id.entity_header_second_summary, mSecondSummary);
         if (mIsInstantApp) {
             setText(R.id.install_type,
                     mHeader.getResources().getString(R.string.install_type_instant));

@@ -16,6 +16,7 @@
 
 package com.android.settings.bluetooth;
 
+//import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v14.preference.PreferenceFragment;
@@ -27,6 +28,8 @@ import com.android.settings.applications.LayoutPreference;
 import com.android.settings.widget.EntityHeaderController;
 import com.android.settingslib.bluetooth.CachedBluetoothDevice;
 import com.android.settingslib.core.lifecycle.Lifecycle;
+import com.android.settingslib.bluetooth.CachedBluetoothDeviceManager;
+import com.android.settingslib.bluetooth.LocalBluetoothManager;
 
 /**
  * This class adds a header with device name and status (connected/disconnected, etc.).
@@ -35,10 +38,17 @@ public class BluetoothDetailsHeaderController extends BluetoothDetailsController
     private static final String KEY_DEVICE_HEADER = "bluetooth_device_header";
 
     private EntityHeaderController mHeaderController;
+    private LocalBluetoothManager localManager;
+    private CachedBluetoothDeviceManager deviceManager;
 
     public BluetoothDetailsHeaderController(Context context, PreferenceFragment fragment,
             CachedBluetoothDevice device, Lifecycle lifecycle) {
         super(context, fragment, device, lifecycle);
+        localManager = LocalBluetoothManager.getInstance(context, null /* listener */);
+        if (localManager != null) {
+            deviceManager = localManager.getCachedDeviceManager();
+
+        }
     }
 
     @Override
@@ -54,7 +64,16 @@ public class BluetoothDetailsHeaderController extends BluetoothDetailsController
         final Pair<Drawable, String> pair = Utils.getBtClassDrawableWithDescription(
                 mContext, mCachedDevice,
                 mContext.getResources().getFraction(R.fraction.bt_battery_scale_fraction, 1, 1));
-        String summaryText = mCachedDevice.getConnectionSummary();
+        //String summaryText = mCachedDevice.getConnectionSummary();
+        String summaryText = mCachedDevice.getName();
+        if (mCachedDevice.getCustomerId() != null) {
+            String pairDeviceSummary = deviceManager
+                .getHearingAidPairDeviceSummary(mCachedDevice.getCustomerId());
+            if ( pairDeviceSummary != null) {
+                //mHeaderController.setSecondSummary(pairDevice.getConnectionSummary());
+                mHeaderController.setSecondSummary(pairDeviceSummary);
+            }
+        }
         mHeaderController.setLabel(mCachedDevice.getName());
         mHeaderController.setIcon(pair.first);
         mHeaderController.setIconContentDescription(pair.second);
