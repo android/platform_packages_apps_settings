@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e71a66b4_457a4e47",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-02-13T06:05:20Z",
+      "side": 1,
+      "message": "first line too long. need to be \u003c 60 chars.",
+      "range": {
+        "startLine": 7,
+        "startChar": 53,
+        "endLine": 7,
+        "endChar": 70
+      },
+      "revId": "47d585b038250d58a3bbee0e34e5b6107b7c08b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5c08f9a3_71d40ae9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-02-13T06:05:20Z",
+      "side": 1,
+      "message": "line too long",
+      "range": {
+        "startLine": 9,
+        "startChar": 60,
+        "endLine": 9,
+        "endChar": 74
+      },
+      "revId": "47d585b038250d58a3bbee0e34e5b6107b7c08b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b84648d6_24212b6f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-02-13T06:05:20Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand the problem. So it always calls onPause but only sometimes doesn\u0027t call onResume?",
+      "range": {
+        "startLine": 9,
+        "startChar": 143,
+        "endLine": 11,
+        "endChar": 65
+      },
+      "revId": "47d585b038250d58a3bbee0e34e5b6107b7c08b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8d92b05_a81bc6f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-02-13T06:05:20Z",
+      "side": 1,
+      "message": "Need robolectric tests",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 37
+      },
+      "revId": "47d585b038250d58a3bbee0e34e5b6107b7c08b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b6f2e150_3849fc28",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-02-13T06:05:20Z",
+      "side": 1,
+      "message": "can you create a public bug and add bug number in \"Bug: \u003cbug number\u003e\" line?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 52
+      },
+      "revId": "47d585b038250d58a3bbee0e34e5b6107b7c08b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b13473c_28b5eb28",
+        "filename": "src/com/android/settings/dashboard/DashboardSummary.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-02-13T06:05:20Z",
+      "side": 1,
+      "message": "just remove this",
+      "range": {
+        "startLine": 143,
+        "startChar": 9,
+        "endLine": 146,
+        "endChar": 9
+      },
+      "revId": "47d585b038250d58a3bbee0e34e5b6107b7c08b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e2e9da37_600f78c7",
+        "filename": "src/com/android/settings/dashboard/DashboardSummary.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-02-13T06:05:20Z",
+      "side": 1,
+      "message": "remove all comments like this",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 73
+      },
+      "revId": "47d585b038250d58a3bbee0e34e5b6107b7c08b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
