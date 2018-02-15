@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "788cca2c_2651b8a8",
+        "filename": "src/com/android/settings/deviceinfo/SimStatus.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-02-15T01:38:57Z",
+      "side": 1,
+      "message": "Thank you for your comment. I will consider that.",
+      "parentUuid": "91a3b72b_12f899f0",
+      "range": {
+        "startLine": 380,
+        "startChar": 17,
+        "endLine": 380,
+        "endChar": 43
+      },
+      "revId": "a7fa9fe752bee63adbbfa49af412facc8089c835",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "588fe437_7e17ad01",
         "filename": "src/com/android/settings/deviceinfo/SimStatus.java",
         "patchSetId": 1
