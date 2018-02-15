@@ -17,6 +17,7 @@
 package com.android.settings.bluetooth;
 
 //import android.bluetooth.BluetoothDevice;
+import android.bluetooth.BluetoothHearingAid;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.support.v14.preference.PreferenceFragment;
@@ -66,9 +67,9 @@ public class BluetoothDetailsHeaderController extends BluetoothDetailsController
                 mContext.getResources().getFraction(R.fraction.bt_battery_scale_fraction, 1, 1));
         //String summaryText = mCachedDevice.getConnectionSummary();
         String summaryText = mCachedDevice.getName();
-        if (mCachedDevice.getCustomerId() != null) {
+        if (mCachedDevice.getHiSyncId() != BluetoothHearingAid.HI_SYNC_ID_INVALID) {
             String pairDeviceSummary = deviceManager
-                .getHearingAidPairDeviceSummary(mCachedDevice.getCustomerId());
+                .getHearingAidPairDeviceSummary(mCachedDevice.getHiSyncId());
             if ( pairDeviceSummary != null) {
                 //mHeaderController.setSecondSummary(pairDevice.getConnectionSummary());
                 mHeaderController.setSecondSummary(pairDeviceSummary);
