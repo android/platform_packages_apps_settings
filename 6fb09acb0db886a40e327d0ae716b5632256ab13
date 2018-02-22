@@ -22,6 +22,30 @@
       "revId": "6fb09acb0db886a40e327d0ae716b5632256ab13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b035709f_c8e34f7d",
+        "filename": "src/com/android/settings/network/MobileNetworkPreferenceController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1140927
+      },
+      "writtenOn": "2018-02-22T07:31:09Z",
+      "side": 1,
+      "message": "Updated a test case for the new operator name append logic",
+      "parentUuid": "6a67f2b8_3e577de8",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 56
+      },
+      "revId": "6fb09acb0db886a40e327d0ae716b5632256ab13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
