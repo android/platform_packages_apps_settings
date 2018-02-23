@@ -46,6 +46,29 @@
       "revId": "6fb09acb0db886a40e327d0ae716b5632256ab13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59d7bed9_220b0ecd",
+        "filename": "src/com/android/settings/network/MobileNetworkPreferenceController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1098848
+      },
+      "writtenOn": "2018-02-23T01:18:57Z",
+      "side": 1,
+      "message": "getActiveSubscriptionInfoList will return the currently inserted sim, so it\u0027s useless to set the summary text here if there is no inserted sim.",
+      "range": {
+        "startLine": 126,
+        "startChar": 16,
+        "endLine": 126,
+        "endChar": 83
+      },
+      "revId": "6fb09acb0db886a40e327d0ae716b5632256ab13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
