@@ -189,6 +189,7 @@ public class ConfigDialogFragment extends InstrumentedDialogFragment implements
     }
 
     private void updateLockdownVpn(boolean isVpnAlwaysOn, VpnProfile profile) {
+
         // Save lockdown vpn
         if (isVpnAlwaysOn) {
             // Show toast if vpn profile is not valid
@@ -223,6 +224,16 @@ public class ConfigDialogFragment extends InstrumentedDialogFragment implements
 
     private void connect(VpnProfile profile, boolean lockdown) {
         save(profile, lockdown);
+
+        // check current always-on VPN configuration
+        final ConnectivityManager conn = ConnectivityManager.from(mContext);
+        ConnectivityManagerWrapperImpl cm = new ConnectivityManagerWrapperImpl(conn);
+        String currentAlwaysOnVpn = cm.getAlwaysOnVpnPackageForUser(UserHandle.myUserId());
+        if (currentAlwaysOnVpn != null) {
+            // remove an existing always-on VPN configuration
+            conn.setAlwaysOnVpnPackageForUser(UserHandle.myUserId(), null,
+                    /* lockdownEnabled */ false);
+        }
 
         // Now try to start the VPN - this is not necessary if the profile is set as lockdown,
         // because just saving the profile in this mode will start a connection.
