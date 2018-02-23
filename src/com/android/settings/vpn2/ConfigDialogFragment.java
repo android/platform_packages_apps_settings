@@ -189,6 +189,8 @@ public class ConfigDialogFragment extends InstrumentedDialogFragment implements
     }
 
     private void updateLockdownVpn(boolean isVpnAlwaysOn, VpnProfile profile) {
+        final ConnectivityManager conn = ConnectivityManager.from(mContext);
+
         // Save lockdown vpn
         if (isVpnAlwaysOn) {
             // Show toast if vpn profile is not valid
@@ -198,11 +200,19 @@ public class ConfigDialogFragment extends InstrumentedDialogFragment implements
                 return;
             }
 
-            final ConnectivityManager conn = ConnectivityManager.from(mContext);
             conn.setAlwaysOnVpnPackageForUser(UserHandle.myUserId(), null,
                     /* lockdownEnabled */ false);
             VpnUtils.setLockdownVpn(mContext, profile.key);
         } else {
+            // check if some always-on VPN configuration exist
+            ConnectivityManagerWrapperImpl cm = new ConnectivityManagerWrapperImpl(conn);
+            String currentAlwaysOnVpn = cm.getAlwaysOnVpnPackageForUser(UserHandle.myUserId());
+            if (currentAlwaysOnVpn != null) {
+                // remove an existing always-on VPN configuration
+                conn.setAlwaysOnVpnPackageForUser(UserHandle.myUserId(), null,
+                        /* lockdownEnabled */ false);
+            }
+
             // update only if lockdown vpn has been changed
             if (VpnUtils.isVpnLockdown(profile.key)) {
                 VpnUtils.clearLockdownVpn(mContext);
