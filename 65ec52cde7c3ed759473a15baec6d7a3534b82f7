@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac1d7c55_243559ef",
+        "filename": "src/com/android/settings/dashboard/DashboardSummary.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1200003
+      },
+      "writtenOn": "2018-02-25T12:18:20Z",
+      "side": 1,
+      "message": "is it ok to place the code here?",
+      "revId": "65ec52cde7c3ed759473a15baec6d7a3534b82f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
