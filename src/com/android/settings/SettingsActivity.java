@@ -64,6 +64,7 @@ import com.android.settings.wfd.WifiDisplaySettings;
 import com.android.settings.widget.SwitchBar;
 import com.android.settingslib.drawer.DashboardCategory;
 import com.android.settingslib.drawer.SettingsDrawerActivity;
+import com.android.settingslib.bluetooth.LocalBluetoothManager;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -153,6 +154,7 @@ public class SettingsActivity extends SettingsDrawerActivity
     private static final int REQUEST_SUGGESTION = 42;
 
     private String mFragmentClass;
+    private LocalBluetoothManager mLocalManager;
 
     private CharSequence mInitialTitle;
     private int mInitialTitleResId;
@@ -255,6 +257,11 @@ public class SettingsActivity extends SettingsDrawerActivity
     protected void onCreate(Bundle savedState) {
         super.onCreate(savedState);
         long startTime = System.currentTimeMillis();
+
+        // Get the Local Manager object here even though is it not used until the next fragment.
+        // A workaround so that the various Bluetooth Profiles (especially Hearing Aid) have enough
+        // time to be constructed and initialized.
+        mLocalManager = com.android.settings.bluetooth.Utils.getLocalBtManager(getApplicationContext());
 
         final FeatureFactory factory = FeatureFactory.getFactory(this);
 
