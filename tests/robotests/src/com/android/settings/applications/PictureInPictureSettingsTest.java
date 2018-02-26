@@ -84,6 +84,7 @@ public class PictureInPictureSettingsTest {
         when(mUserManager.getProfiles(anyInt())).thenReturn(mUsers);
     }
 
+    @Ignore("b/73892555")
     @Test
     public void testCollectPipApps() {
         PackageInfo primaryP1 = createPackage("Calculator", true);
