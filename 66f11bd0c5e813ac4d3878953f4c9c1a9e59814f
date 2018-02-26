@@ -22,6 +22,30 @@
       "revId": "66f11bd0c5e813ac4d3878953f4c9c1a9e59814f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "990c9f3c_3c351bd6",
+        "filename": "tests/robotests/src/com/android/settings/bluetooth/BluetoothPairingDialogTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2018-02-26T20:35:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "525db781_8a2fa587",
+      "range": {
+        "startLine": 158,
+        "startChar": 8,
+        "endLine": 158,
+        "endChar": 21
+      },
+      "revId": "66f11bd0c5e813ac4d3878953f4c9c1a9e59814f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
