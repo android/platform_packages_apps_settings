@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "525db781_8a2fa587",
+        "filename": "tests/robotests/src/com/android/settings/bluetooth/BluetoothPairingDialogTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-02-26T20:26:58Z",
+      "side": 1,
+      "message": "nit: change it to TODO format, for example:\n\n//TODO(b/73892004): \"Add comment here\"",
+      "range": {
+        "startLine": 158,
+        "startChar": 8,
+        "endLine": 158,
+        "endChar": 21
+      },
+      "revId": "66f11bd0c5e813ac4d3878953f4c9c1a9e59814f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
