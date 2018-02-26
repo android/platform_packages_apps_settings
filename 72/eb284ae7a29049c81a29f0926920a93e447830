@@ -1,0 +1,9 @@
+Code-Review+2: Winson Chung <winsonc@google.com>
+Code-Review+2: Tobias Thierer <tobiast@google.com>
+Verified+1: Fan Zhang <zhfan@google.com>
+Presubmit-Ready+1: Fan Zhang <zhfan@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Mon, 26 Feb 2018 22:00:17 +0000
+Reviewed-on: https://android-review.googlesource.com/627588
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
