@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a5fdd84_084b7096",
+        "filename": "src/com/android/settings/vpn2/ConfigDialogFragment.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1059499
+      },
+      "writtenOn": "2018-02-27T15:17:22Z",
+      "side": 1,
+      "message": "I think you should clear always-on VPN in connect() instead of here: this method is also called when a legacy VPN config is saved. You don\u0027t want to disturb existing always-on VPN settings if the user is merely editing another legacy VPN config.",
+      "range": {
+        "startLine": 212,
+        "startChar": 16,
+        "endLine": 212,
+        "endChar": 49
+      },
+      "revId": "011e6d7f361c9f5de232eccbda49835d744d1262",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
