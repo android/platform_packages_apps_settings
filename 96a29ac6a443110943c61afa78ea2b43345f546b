@@ -22,6 +22,30 @@
       "revId": "96a29ac6a443110943c61afa78ea2b43345f546b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21871a50_dbaf6bc5",
+        "filename": "src/com/android/settings/ApnEditor.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1150,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-02-27T02:08:43Z",
+      "side": 1,
+      "message": "Thank you. I added the comment.",
+      "parentUuid": "0a94621a_d2522536",
+      "range": {
+        "startLine": 1150,
+        "startChar": 0,
+        "endLine": 1150,
+        "endChar": 73
+      },
+      "revId": "96a29ac6a443110943c61afa78ea2b43345f546b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
