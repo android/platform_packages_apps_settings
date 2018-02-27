@@ -318,11 +318,20 @@
 
     <!-- Bluetooth developer settings: Titles for maximum number of connected audio devices -->
     <string-array name="bluetooth_max_connected_audio_devices">
-        <item>1 (Default)</item>
+        <item>1</item>
         <item>2</item>
         <item>3</item>
         <item>4</item>
         <item>5</item>
+    </string-array>
+
+    <!-- Bluetooth developer settings: Titles for maximum number of connected audio devices with default -->
+    <string-array name="bluetooth_max_connected_audio_devices_with_default">
+        <item>1 (Default)</item>
+        <item>2 (Default)</item>
+        <item>3 (Default)</item>
+        <item>4 (Default)</item>
+        <item>5 (Default)</item>
     </string-array>
 
     <!-- Bluetooth developer settings: Values for maximum number of connected audio devices -->
