@@ -901,6 +901,9 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         }
         writeOverlayDisplayDevicesOptions(null);
         writeAppProcessLimitOptions(null);
+        String defaultBluetoothMaxConnectedAudioDevices = String.valueOf(getResources().getInteger(
+                com.android.internal.R.integer.config_bluetooth_max_connected_audio_devices));
+        writeBluetoothMaxConnectedAudioDevices(defaultBluetoothMaxConnectedAudioDevices);
         mHaveDebugSettings = false;
         updateAllOptions();
         mDontPokeProperties = false;
@@ -1884,12 +1887,26 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mBluetoothSelectA2dpLdacPlaybackQuality.setValue(values[index]);
         mBluetoothSelectA2dpLdacPlaybackQuality.setSummary(summaries[index]);
 
-        // Init the maximum connected devices - Default
-        values = getResources().getStringArray(R.array.bluetooth_max_connected_audio_devices_values);
-        summaries = getResources().getStringArray(R.array.bluetooth_max_connected_audio_devices);
-        index = 0;
-        mBluetoothSelectMaxConnectedAudioDevices.setValue(values[index]);
-        mBluetoothSelectMaxConnectedAudioDevices.setSummary(summaries[index]);
+        // Init the maximum connected devices
+        initBluetoothMaxConnectedAudioDevicesPreference();
+    }
+
+    private void initBluetoothMaxConnectedAudioDevicesPreference() {
+        // Set entry that matches default value with "(Default)" annotated entry
+        final CharSequence[] entries = mBluetoothSelectMaxConnectedAudioDevices.getEntries();
+        final String[] entriesWithDefault = getResources().getStringArray(
+                R.array.bluetooth_max_connected_audio_devices_with_default);
+        final String defaultValue = String.valueOf(getResources().getInteger(
+                com.android.internal.R.integer.config_bluetooth_max_connected_audio_devices));
+        int defaultIndex = mBluetoothSelectMaxConnectedAudioDevices.findIndexOfValue(defaultValue);
+        entries[defaultIndex] = entriesWithDefault[defaultIndex];
+        mBluetoothSelectMaxConnectedAudioDevices.setEntries(entries);
+        final String overlayedValue =
+                SystemProperties.get(BLUETOOTH_MAX_CONNECTED_AUDIO_DEVICES_PROPERTY, defaultValue);
+        int overlayedIndex =
+                mBluetoothSelectMaxConnectedAudioDevices.findIndexOfValue(overlayedValue);
+        mBluetoothSelectMaxConnectedAudioDevices.setValueIndex(overlayedIndex);
+        mBluetoothSelectMaxConnectedAudioDevices.setSummary(entries[overlayedIndex]);
     }
 
     private void writeBluetoothAvrcpVersion(Object newValue) {
@@ -2058,13 +2075,13 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         }
     }
 
-    private void writeBluetoothMaxConnectedAudioDevices(Object newValue) {
-        SystemProperties.set(BLUETOOTH_MAX_CONNECTED_AUDIO_DEVICES_PROPERTY, newValue.toString());
-        int index = mBluetoothSelectMaxConnectedAudioDevices.findIndexOfValue(newValue.toString());
-        if (index >= 0) {
-            String[] titles = getResources().getStringArray(R.array.bluetooth_max_connected_audio_devices);
-            mBluetoothSelectMaxConnectedAudioDevices.setSummary(titles[index]);
-        }
+    private void writeBluetoothMaxConnectedAudioDevices(Object newValueObj) {
+        final String newValue = newValueObj.toString();
+        int index = mBluetoothSelectMaxConnectedAudioDevices.findIndexOfValue(newValue);
+        SystemProperties.set(BLUETOOTH_MAX_CONNECTED_AUDIO_DEVICES_PROPERTY, newValue);
+        mBluetoothSelectMaxConnectedAudioDevices.setValueIndex(index);
+        final CharSequence[] entries = mBluetoothSelectMaxConnectedAudioDevices.getEntries();
+        mBluetoothSelectMaxConnectedAudioDevices.setSummary(entries[index]);
     }
 
     private void writeBluetoothConfigurationOption(Preference preference,
