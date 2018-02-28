@@ -211,8 +211,8 @@ public class SearchFragment extends InstrumentedFragment implements SearchView.O
         View searchText = mSearchView.findViewById(com.android.internal.R.id.search_src_text);
         if (searchText instanceof TextView) {
             TextView searchTextView = (TextView) searchText;
-            searchTextView.setTextColor(getContext().getColorStateList(
-                    com.android.internal.R.color.text_color_primary));
+            searchTextView.setTextColor(getActivity().getActionBar().getThemedContext()
+                    .getColorStateList(com.android.internal.R.color.text_color_primary));
             searchTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX,
                     getResources().getDimension(R.dimen.search_bar_text_size));
 
