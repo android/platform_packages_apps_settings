@@ -69,6 +69,30 @@
       "revId": "6fb09acb0db886a40e327d0ae716b5632256ab13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7080b0ba_77de0163",
+        "filename": "src/com/android/settings/network/MobileNetworkPreferenceController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1140927
+      },
+      "writtenOn": "2018-02-28T12:15:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59d7bed9_220b0ecd",
+      "range": {
+        "startLine": 126,
+        "startChar": 16,
+        "endLine": 126,
+        "endChar": 83
+      },
+      "revId": "6fb09acb0db886a40e327d0ae716b5632256ab13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
