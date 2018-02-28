@@ -1,0 +1,9 @@
+Code-Review+2: Brad Ebinger <breadley@google.com>
+Code-Review+2: Lei Yu <jackqdyulei@google.com>
+Verified+1: Chen Xu <fionaxu@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Chen Xu <fionaxu@google.com>
+Submitted-at: Wed, 28 Feb 2018 02:17:25 +0000
+Reviewed-on: https://android-review.googlesource.com/628925
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
