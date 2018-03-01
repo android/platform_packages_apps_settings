@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02de27c2_9d42c578",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 754,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-03-01T21:37:50Z",
+      "side": 1,
+      "message": "As discussed on bug, please update text to \"Not encrypted\"",
+      "range": {
+        "startLine": 751,
+        "startChar": 56,
+        "endLine": 754,
+        "endChar": 89
+      },
+      "revId": "c0518d03e0fd84e5e88268473f4a1aee9796ba53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
