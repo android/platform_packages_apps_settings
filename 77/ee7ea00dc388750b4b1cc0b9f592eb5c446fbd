@@ -1,0 +1,10 @@
+Code-Review+2: Pavlin Radoslavov <pavlin@google.com>
+Code-Review+2: Fan Zhang <zhfan@google.com>
+Autosubmit+1: Jack He <siyuanh@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Jack He <siyuanh@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Thu, 01 Mar 2018 19:34:18 +0000
+Reviewed-on: https://android-review.googlesource.com/628348
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
