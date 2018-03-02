@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed3bc7be_787f60af",
+        "filename": "tests/robotests/src/com/android/settings/deviceinfo/SimStatusTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2018-03-02T18:38:56Z",
+      "side": 1,
+      "message": "we usually name the test case as method_condition_expected. So, this should be something like updateImsRegistrationState_shouldSetSummary.\n\nConsider breaking the test into 2 separate tests for different conditions. So, this will be updateImsRegistrationState_imsRegistered_shouldSetSummaryToRegisterd() and updateImsRegistrationState_imsNotRegistered_shouldSetSummaryToNotRegisterd",
+      "range": {
+        "startLine": 101,
+        "startChar": 16,
+        "endLine": 101,
+        "endChar": 52
+      },
+      "revId": "d5ffbf9df798d36d9fc4f146cda7cdb27971b03e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2a57bf2_ea038946",
+        "filename": "tests/robotests/src/com/android/settings/deviceinfo/SimStatusTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2018-03-02T18:38:56Z",
+      "side": 1,
+      "message": "please add line break between setup and calling target method. Also add line break between calling target method and test verifications.",
+      "revId": "d5ffbf9df798d36d9fc4f146cda7cdb27971b03e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "700438c0_aff54a71",
+        "filename": "tests/robotests/src/com/android/settings/deviceinfo/SimStatusTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2018-03-02T18:38:56Z",
+      "side": 1,
+      "message": "how many times will the setSummary() be called? I think it should be called only once. So, we should skip the number of times here to verify it is called once (default).",
+      "range": {
+        "startLine": 105,
+        "startChar": 52,
+        "endLine": 105,
+        "endChar": 63
+      },
+      "revId": "d5ffbf9df798d36d9fc4f146cda7cdb27971b03e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6059b7ce_29ec174d",
+        "filename": "tests/robotests/src/com/android/settings/deviceinfo/SimStatusTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2018-03-02T18:38:56Z",
+      "side": 1,
+      "message": "same as above: please rename test method, remove atLeastOnce(), add line breaks, and separate into 2 tests.",
+      "range": {
+        "startLine": 116,
+        "startChar": 16,
+        "endLine": 116,
+        "endChar": 56
+      },
+      "revId": "d5ffbf9df798d36d9fc4f146cda7cdb27971b03e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e284370e_7aaaea71",
+        "filename": "tests/robotests/src/com/android/settings/deviceinfo/SimStatusTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2018-03-02T18:38:56Z",
+      "side": 1,
+      "message": "same as above: please rename test method to something like updatePreference_tabChanged_shouldRemoveAndAddPreferences(), remove atLeastOnce(), add line breaks, and separate into 2 tests.",
+      "range": {
+        "startLine": 129,
+        "startChar": 16,
+        "endLine": 129,
+        "endChar": 36
+      },
+      "revId": "d5ffbf9df798d36d9fc4f146cda7cdb27971b03e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20c2f6bb_48d3fd7f",
+        "filename": "tests/robotests/src/com/android/settings/deviceinfo/SimStatusTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2018-03-02T18:38:56Z",
+      "side": 1,
+      "message": "is is possible to also add test for changes made in onTabChanged()?",
+      "revId": "d5ffbf9df798d36d9fc4f146cda7cdb27971b03e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
