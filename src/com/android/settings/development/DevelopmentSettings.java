@@ -551,6 +551,10 @@ public class DevelopmentSettings extends RestrictedSettingsFragment
         mUSBAudio = findAndInitSwitchPref(USB_AUDIO_KEY);
         mForceResizable = findAndInitSwitchPref(FORCE_RESIZABLE_KEY);
 
+        if (SystemProperties.getBoolean("ro.config.low_ram", false)) {
+            disableForUser(mForceResizable);
+        }
+
         mImmediatelyDestroyActivities = (SwitchPreference) findPreference(
                 IMMEDIATELY_DESTROY_ACTIVITIES_KEY);
         mAllPrefs.add(mImmediatelyDestroyActivities);
