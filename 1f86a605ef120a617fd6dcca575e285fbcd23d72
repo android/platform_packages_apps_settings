@@ -69,6 +69,30 @@
       "revId": "1f86a605ef120a617fd6dcca575e285fbcd23d72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bdd33507_d6ba1ddc",
+        "filename": "src/com/android/settings/datausage/DataSaverBackend.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1125084
+      },
+      "writtenOn": "2018-03-05T17:12:44Z",
+      "side": 1,
+      "message": "I think you are right that the change is not necessary. We can leave as is.",
+      "parentUuid": "699d9f14_06cdb031",
+      "range": {
+        "startLine": 113,
+        "startChar": 12,
+        "endLine": 113,
+        "endChar": 33
+      },
+      "revId": "1f86a605ef120a617fd6dcca575e285fbcd23d72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
