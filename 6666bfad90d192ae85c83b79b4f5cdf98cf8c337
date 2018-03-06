@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a977e2e3_f6ed54ee",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2018-03-06T21:46:20Z",
+      "side": 1,
+      "message": "Please prefix this line with \"DO NOT MERGE \" to bypass the merge conflicts.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "6666bfad90d192ae85c83b79b4f5cdf98cf8c337",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
