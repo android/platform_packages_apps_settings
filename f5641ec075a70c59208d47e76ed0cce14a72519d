@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a23ba264_f2aff12f",
+        "filename": "src/com/android/settings/IccLockSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1221440
+      },
+      "writtenOn": "2018-03-06T06:04:42Z",
+      "side": 1,
+      "message": "Yes, we remove this line",
+      "parentUuid": "c1ecdb94_21174f40",
+      "range": {
+        "startLine": 456,
+        "startChar": 8,
+        "endLine": 456,
+        "endChar": 63
+      },
+      "revId": "f5641ec075a70c59208d47e76ed0cce14a72519d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98b53b03_33f3c2f0",
         "filename": "src/com/android/settings/IccLockSettings.java",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-03-01T17:27:06Z",
       "side": 1,
       "message": "why do we need to call this here and line 476?\n\nThe bug seems to be related to layout, and your change in 469 should fix it, right?",
+      "range": {
+        "startLine": 460,
+        "startChar": 11,
+        "endLine": 460,
+        "endChar": 58
+      },
+      "revId": "f5641ec075a70c59208d47e76ed0cce14a72519d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c9c5d407_8a59eebd",
+        "filename": "src/com/android/settings/IccLockSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1221440
+      },
+      "writtenOn": "2018-03-06T06:04:42Z",
+      "side": 1,
+      "message": "Sorry, this line should not have been here, we remove it",
+      "parentUuid": "98b53b03_33f3c2f0",
       "range": {
         "startLine": 460,
         "startChar": 11,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1293e265_402ba2e1",
+        "filename": "src/com/android/settings/IccLockSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1221440
+      },
+      "writtenOn": "2018-03-06T06:04:42Z",
+      "side": 1,
+      "message": "Thanks, we agree with that show() is executed in the method",
+      "parentUuid": "f15533d0_b9b72f8f",
+      "range": {
+        "startLine": 461,
+        "startChar": 12,
+        "endLine": 461,
+        "endChar": 33
+      },
+      "revId": "f5641ec075a70c59208d47e76ed0cce14a72519d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6ce3cc0_3b787dee",
         "filename": "src/com/android/settings/IccLockSettings.java",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2018-03-01T17:27:06Z",
       "side": 1,
       "message": "should be CharSequence. generally all user visible strings should use CharSequence",
+      "range": {
+        "startLine": 467,
+        "startChar": 40,
+        "endLine": 467,
+        "endChar": 46
+      },
+      "revId": "f5641ec075a70c59208d47e76ed0cce14a72519d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "838a0d4e_447a8731",
+        "filename": "src/com/android/settings/IccLockSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1221440
+      },
+      "writtenOn": "2018-03-06T06:04:42Z",
+      "side": 1,
+      "message": "Thanks, we change String to CharSequence here",
+      "parentUuid": "b6ce3cc0_3b787dee",
       "range": {
         "startLine": 467,
         "startChar": 40,
@@ -133,6 +229,76 @@
         "startChar": 36,
         "endLine": 468,
         "endChar": 51
+      },
+      "revId": "f5641ec075a70c59208d47e76ed0cce14a72519d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a0f8851_8a21cd15",
+        "filename": "src/com/android/settings/IccLockSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1221440
+      },
+      "writtenOn": "2018-03-06T06:04:42Z",
+      "side": 1,
+      "message": "We add null check for getActivity() before this line.",
+      "parentUuid": "87ccddb0_ffa6e35a",
+      "range": {
+        "startLine": 468,
+        "startChar": 89,
+        "endLine": 468,
+        "endChar": 104
+      },
+      "revId": "f5641ec075a70c59208d47e76ed0cce14a72519d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "357533ec_e1cc541a",
+        "filename": "src/com/android/settings/IccLockSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1221440
+      },
+      "writtenOn": "2018-03-06T06:04:42Z",
+      "side": 1,
+      "message": "Yes, we remove this line",
+      "range": {
+        "startLine": 474,
+        "startChar": 60,
+        "endLine": 474,
+        "endChar": 62
+      },
+      "revId": "f5641ec075a70c59208d47e76ed0cce14a72519d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f43a3da4_edcc5831",
+        "filename": "src/com/android/settings/IccLockSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1221440
+      },
+      "writtenOn": "2018-03-06T06:04:42Z",
+      "side": 1,
+      "message": "Sorry, this line should not have been here, we remove it",
+      "range": {
+        "startLine": 476,
+        "startChar": 56,
+        "endLine": 476,
+        "endChar": 58
       },
       "revId": "f5641ec075a70c59208d47e76ed0cce14a72519d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
