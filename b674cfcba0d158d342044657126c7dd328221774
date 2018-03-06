@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c9ab17e_73f964ee",
+        "filename": "src/com/android/settings/IccLockSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-03-06T17:34:52Z",
+      "side": 1,
+      "message": "Can you add a one line comment here to explain why this param is needed and/or what effect you want to achieve here?",
+      "range": {
+        "startLine": 471,
+        "startChar": 8,
+        "endLine": 471,
+        "endChar": 88
+      },
+      "revId": "b674cfcba0d158d342044657126c7dd328221774",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
