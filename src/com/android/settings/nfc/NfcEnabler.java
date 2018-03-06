@@ -101,11 +101,16 @@ public class NfcEnabler implements Preference.OnPreferenceChangeListener {
         mSwitch.setChecked(desiredState);
         mSwitch.setEnabled(false);
 
-        if (desiredState) {
-            mNfcAdapter.enable();
-        } else {
-            mNfcAdapter.disable();
-        }
+        new Thread() {
+            @Override
+            public void run() {
+                if (desiredState) {
+                    mNfcAdapter.enable();
+                } else {
+                    mNfcAdapter.disable();
+                }
+            }
+        }.start();
 
         return false;
     }
