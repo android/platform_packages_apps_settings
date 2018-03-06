@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3424f392_4c5fd386",
+        "filename": "tests/robotests/src/com/android/settings/deviceinfo/SimStatusTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-03-06T04:58:05Z",
+      "side": 1,
+      "message": "Thank you for your advice. I updated the method names following the policy.",
+      "parentUuid": "ed3bc7be_787f60af",
+      "range": {
+        "startLine": 101,
+        "startChar": 16,
+        "endLine": 101,
+        "endChar": 52
+      },
+      "revId": "d5ffbf9df798d36d9fc4f146cda7cdb27971b03e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c2a57bf2_ea038946",
         "filename": "tests/robotests/src/com/android/settings/deviceinfo/SimStatusTest.java",
         "patchSetId": 2
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "21eaa9cc_056fc13f",
+        "filename": "tests/robotests/src/com/android/settings/deviceinfo/SimStatusTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-03-06T04:58:05Z",
+      "side": 1,
+      "message": "I updated.",
+      "parentUuid": "c2a57bf2_ea038946",
+      "revId": "d5ffbf9df798d36d9fc4f146cda7cdb27971b03e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "700438c0_aff54a71",
         "filename": "tests/robotests/src/com/android/settings/deviceinfo/SimStatusTest.java",
         "patchSetId": 2
@@ -53,6 +95,30 @@
       "writtenOn": "2018-03-02T18:38:56Z",
       "side": 1,
       "message": "how many times will the setSummary() be called? I think it should be called only once. So, we should skip the number of times here to verify it is called once (default).",
+      "range": {
+        "startLine": 105,
+        "startChar": 52,
+        "endLine": 105,
+        "endChar": 63
+      },
+      "revId": "d5ffbf9df798d36d9fc4f146cda7cdb27971b03e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d1f3338_1125247d",
+        "filename": "tests/robotests/src/com/android/settings/deviceinfo/SimStatusTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-03-06T04:58:05Z",
+      "side": 1,
+      "message": "You\u0027re right. I updated.",
+      "parentUuid": "700438c0_aff54a71",
       "range": {
         "startLine": 105,
         "startChar": 52,
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "d95e4e9e_850b7409",
+        "filename": "tests/robotests/src/com/android/settings/deviceinfo/SimStatusTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-03-06T04:58:05Z",
+      "side": 1,
+      "message": "I updated.",
+      "parentUuid": "6059b7ce_29ec174d",
+      "range": {
+        "startLine": 116,
+        "startChar": 16,
+        "endLine": 116,
+        "endChar": 56
+      },
+      "revId": "d5ffbf9df798d36d9fc4f146cda7cdb27971b03e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e284370e_7aaaea71",
         "filename": "tests/robotests/src/com/android/settings/deviceinfo/SimStatusTest.java",
         "patchSetId": 2
@@ -111,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "0d40d27a_58a14320",
+        "filename": "tests/robotests/src/com/android/settings/deviceinfo/SimStatusTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-03-06T04:58:05Z",
+      "side": 1,
+      "message": "I updated.",
+      "parentUuid": "e284370e_7aaaea71",
+      "range": {
+        "startLine": 129,
+        "startChar": 16,
+        "endLine": 129,
+        "endChar": 36
+      },
+      "revId": "d5ffbf9df798d36d9fc4f146cda7cdb27971b03e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "20c2f6bb_48d3fd7f",
         "filename": "tests/robotests/src/com/android/settings/deviceinfo/SimStatusTest.java",
         "patchSetId": 2
@@ -122,6 +236,24 @@
       "writtenOn": "2018-03-02T18:38:56Z",
       "side": 1,
       "message": "is is possible to also add test for changes made in onTabChanged()?",
+      "revId": "d5ffbf9df798d36d9fc4f146cda7cdb27971b03e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4fcfbc08_781692b7",
+        "filename": "tests/robotests/src/com/android/settings/deviceinfo/SimStatusTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-03-06T04:58:05Z",
+      "side": 1,
+      "message": "Yes, I added the test.",
+      "parentUuid": "20c2f6bb_48d3fd7f",
       "revId": "d5ffbf9df798d36d9fc4f146cda7cdb27971b03e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
