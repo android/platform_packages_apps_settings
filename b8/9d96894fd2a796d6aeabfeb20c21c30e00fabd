@@ -1,0 +1,9 @@
+Code-Review+2: Doris Ling <dling@google.com>
+Code-Review+2: Narayan Kamath <narayan@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Anton Hansson <hansson@google.com>
+Submitted-by: Anton Hansson <hansson@google.com>
+Submitted-at: Wed, 07 Mar 2018 11:27:17 +0000
+Reviewed-on: https://android-review.googlesource.com/629531
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
