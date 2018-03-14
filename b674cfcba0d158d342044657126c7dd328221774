@@ -22,6 +22,30 @@
       "revId": "b674cfcba0d158d342044657126c7dd328221774",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fcb4c950_95596e22",
+        "filename": "src/com/android/settings/IccLockSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1221462
+      },
+      "writtenOn": "2018-03-14T07:18:13Z",
+      "side": 1,
+      "message": "Thanks for this comment, I will confirm this, please wait for a couple of days",
+      "parentUuid": "2c9ab17e_73f964ee",
+      "range": {
+        "startLine": 471,
+        "startChar": 8,
+        "endLine": 471,
+        "endChar": 88
+      },
+      "revId": "b674cfcba0d158d342044657126c7dd328221774",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
