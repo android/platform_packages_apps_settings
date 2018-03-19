@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fcd4666b_bd88f89a",
+        "filename": "src/com/android/settings/development/DevelopmentSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-03-19T19:34:53Z",
+      "side": 1,
+      "message": "Use ActivityManager.isLowRamDeviceStatic() instead.",
+      "revId": "2f08c29507842e75380dfb8f6d23f287c5550fba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
