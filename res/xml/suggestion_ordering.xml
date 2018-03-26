@@ -17,6 +17,9 @@
 <optional-steps>
     <step category="com.android.settings.suggested.category.DEFERRED_SETUP"
           exclusive="true" />
+    <step category="com.android.settings.suggested.category.HIGH_PRIORITY"
+          exclusiveExpireDays="3"
+          exclusive="true" />
     <step category="com.android.settings.suggested.category.FIRST_IMPRESSION"
           exclusiveExpireDays="14"
           exclusive="true"
