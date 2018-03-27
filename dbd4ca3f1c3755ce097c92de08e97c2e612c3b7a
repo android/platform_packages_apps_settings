@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "efa07c5c_1c776b5c",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 9076,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-03-27T11:30:29Z",
+      "side": 1,
+      "message": "I\u0027m sorry, this is not needed.\nThis is for our internal implementation.",
+      "parentUuid": "8a607ed7_8edc6d4c",
+      "range": {
+        "startLine": 9076,
+        "startChar": 51,
+        "endLine": 9076,
+        "endChar": 80
+      },
+      "revId": "dbd4ca3f1c3755ce097c92de08e97c2e612c3b7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68ddcc63_cd0f65c4",
         "filename": "src/com/android/settings/wfc/LocationPolicyDisclaimer.java",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2018-03-05T20:58:19Z",
       "side": 1,
       "message": "need tests",
+      "range": {
+        "startLine": 28,
+        "startChar": 6,
+        "endLine": 28,
+        "endChar": 30
+      },
+      "revId": "dbd4ca3f1c3755ce097c92de08e97c2e612c3b7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b11604e_2e74143f",
+        "filename": "src/com/android/settings/wfc/LocationPolicyDisclaimer.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-03-27T11:30:29Z",
+      "side": 1,
+      "message": "I added the test code.",
+      "parentUuid": "68ddcc63_cd0f65c4",
       "range": {
         "startLine": 28,
         "startChar": 6,
