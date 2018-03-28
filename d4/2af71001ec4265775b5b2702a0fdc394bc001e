@@ -1,0 +1,9 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Autosubmit+1: Doris Ling <dling@google.com>
+Verified+1: Doris Ling <dling@google.com>
+Code-Review+2: Doris Ling <dling@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Wed, 28 Mar 2018 19:51:27 +0000
+Reviewed-on: https://android-review.googlesource.com/573442
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
