@@ -56,4 +56,14 @@
         android:layout_marginEnd="8dip"
         />
 
+    <TextView
+        android:id="@+id/private_dns_mode_provider_error"
+        android:textAppearance="@android:style/TextAppearance.Material.Small"
+        android:minLines="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dip"
+        android:layout_marginEnd="8dip"
+        android:visibility="invisible"
+        />
 </RadioGroup>
