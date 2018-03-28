@@ -26,6 +26,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.res.Resources;
+import android.net.SSLCertificateSocketFactory;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v14.preference.PreferenceDialogFragment;
@@ -40,6 +41,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
@@ -50,6 +52,8 @@ import android.widget.TextView.OnEditorActionListener;
 import com.android.settings.R;
 import com.android.settingslib.CustomDialogPreference;
 
+import java.io.IOException;
+import java.net.Socket;
 
 public class PrivateDnsModeDialogPreference extends CustomDialogPreference
         implements OnCheckedChangeListener, TextWatcher, OnEditorActionListener {
@@ -59,6 +63,7 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreference
     private static final String HOSTNAME_KEY = Settings.Global.PRIVATE_DNS_SPECIFIER;
     private String mMode;
     private EditText mEditText;
+    private TextView mFailureWarning;
 
     public static String getSummaryStringForModeFromSettings(ContentResolver cr, Resources res) {
         final String mode = getModeFromSettings(cr);
@@ -112,7 +117,9 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreference
         mEditText.setOnEditorActionListener(this);
         mEditText.addTextChangedListener(this);
 
-        // (Mostly) Fix the EditText field's indentation to align underneath the
+        mFailureWarning = (TextView) view.findViewById(R.id.private_dns_mode_provider_error);
+
+        // (Mostly) Fix the text fields' indentation to align underneath the
         // displayed radio button text, and not under the radio button itself.
         final int padding = rb.isLayoutRtl()
                 ? rb.getCompoundPaddingRight()
@@ -120,9 +127,16 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreference
         final MarginLayoutParams marginParams = (MarginLayoutParams) mEditText.getLayoutParams();
         marginParams.setMarginStart(marginParams.getMarginStart() + padding);
         mEditText.setLayoutParams(marginParams);
-        mEditText.setText(getHostnameFromSettings());
+        mFailureWarning.setLayoutParams(marginParams);
+
+        String hostname = getHostnameFromSettings();
+        mEditText.setText(hostname);
 
         setDialogValue(mode);
+
+        if (mode.equals(PRIVATE_DNS_MODE_PROVIDER_HOSTNAME) && !hostname.isEmpty()) {
+            maybeShowFailureWarning(hostname);
+        }
     }
 
     @Override
@@ -137,6 +151,10 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreference
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         if (!isChecked) return;
+
+        // Clear failure warning on a mode change.
+        mFailureWarning.setVisibility(View.INVISIBLE);
+        setSaveAllowed(true);
 
         switch (buttonView.getId()) {
             case R.id.private_dns_mode_off:
@@ -172,15 +190,32 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreference
 
     @Override
     public void afterTextChanged(Editable s) {
-        final String hostname = s.toString();
+        warnIfBadHostname(s.toString());
+    }
+
+    private void warnIfBadHostname(String hostname) {
         final boolean appearsValid = isWeaklyValidatedHostname(hostname);
-        // TODO: Disable the "positive button" ("Save") when appearsValid is false.
+        final boolean showWarning = !appearsValid && !hostname.isEmpty();
+        mFailureWarning.setText(R.string.private_dns_mode_provider_bad_hostname);
+        mFailureWarning.setVisibility(showWarning ? View.VISIBLE : View.INVISIBLE);
+        setSaveAllowed(appearsValid);
     }
 
     private void setDialogValue(String mode) {
         mMode = mode;
         final boolean txtEnabled = mMode.equals(PRIVATE_DNS_MODE_PROVIDER_HOSTNAME);
         mEditText.setEnabled(txtEnabled);
+        if (txtEnabled) {
+            warnIfBadHostname(mEditText.getText().toString());
+        }
+    }
+
+    private void setSaveAllowed(boolean allowed) {
+        Dialog dialog = getDialog();
+        if (dialog instanceof AlertDialog) {
+            Button positiveButton = ((AlertDialog)dialog).getButton(AlertDialog.BUTTON_POSITIVE);
+            positiveButton.setEnabled(allowed);
+        }
     }
 
     private void saveDialogValue() {
@@ -190,14 +225,7 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreference
 
         if (mMode.equals(PRIVATE_DNS_MODE_PROVIDER_HOSTNAME)) {
             final String hostname = mEditText.getText().toString();
-            if (isWeaklyValidatedHostname(hostname)) {
-                saveHostnameToSettings(hostname);
-            } else {
-                // TODO: Once quasi-validation of hostnames works and acceptable
-                // user signaling is working, this can be deleted.
-                mMode = PRIVATE_DNS_MODE_OPPORTUNISTIC;
-                if (TextUtils.isEmpty(hostname)) saveHostnameToSettings("");
-            }
+            saveHostnameToSettings(hostname);
         }
 
         saveModeToSettings(mMode);
@@ -217,6 +245,24 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreference
 
     private void saveHostnameToSettings(String hostname) {
         Settings.Global.putString(getContext().getContentResolver(), HOSTNAME_KEY, hostname);
+    }
+
+    private void maybeShowFailureWarning(String hostname) {
+        new Thread(
+            new Runnable() {
+                public void run() {
+                    try {
+                        // TODO: Enable SNI.
+                        Socket socket = SSLCertificateSocketFactory.getDefault()
+                                .createSocket(hostname, 853);
+                        socket.close();
+                    } catch (IOException e) {
+                        mFailureWarning.setText(R.string.private_dns_mode_provider_failure);
+                        mFailureWarning.setVisibility(View.VISIBLE);
+                    }
+                }
+            }, "checking-private-dns-server")
+            .start();
     }
 
     private static String getModeFromSettings(ContentResolver cr) {
