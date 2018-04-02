@@ -165,7 +165,9 @@ public class DndCondition extends Condition {
 
     @Override
     public void onPause() {
-        mManager.getContext().unregisterReceiver(mReceiver);
-        mRegistered = false;
+        if (mRegistered) {
+           mManager.getContext().unregisterReceiver(mReceiver);
+           mRegistered = false;
+        }
     }
 }
