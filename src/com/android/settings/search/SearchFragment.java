@@ -429,10 +429,9 @@ public class SearchFragment extends InstrumentedFragment implements SearchView.O
     private void hideKeyboard() {
         final Activity activity = getActivity();
         if (activity != null) {
-            View view = activity.getCurrentFocus();
             InputMethodManager imm = (InputMethodManager)
                     activity.getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            imm.hideSoftInputFromWindow(mSearchView.getWindowToken(), 0);
         }
 
         if (mResultsRecyclerView != null) {
