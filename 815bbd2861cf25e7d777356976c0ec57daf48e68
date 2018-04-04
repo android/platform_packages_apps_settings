@@ -93,6 +93,30 @@
       "revId": "815bbd2861cf25e7d777356976c0ec57daf48e68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cbfb1b3_d30d1d3a",
+        "filename": "src/com/android/settings/inputmethod/GameControllerPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-04-04T00:19:23Z",
+      "side": 1,
+      "message": "I think you can simply loop all children under the PreferenceCategory, and check if it\u0027s the preference you want.",
+      "parentUuid": "411f08ff_aee43f91",
+      "range": {
+        "startLine": 109,
+        "startChar": 26,
+        "endLine": 109,
+        "endChar": 44
+      },
+      "revId": "815bbd2861cf25e7d777356976c0ec57daf48e68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
