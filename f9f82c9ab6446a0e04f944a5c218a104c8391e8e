@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26cd8a1d_6afa708d",
+        "filename": "src/com/android/settings/datausage/DataSaverBackend.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1014288
+      },
+      "writtenOn": "2018-04-07T22:29:08Z",
+      "side": 1,
+      "message": "Am I correct that the intention here is to remove the old values that were set to POLICY_ALLOW_METERED_BACKGROUND before adding the current list?\n\nPlease add a comment above this section explaining what this does because it was not clear to me why this section was done.",
+      "range": {
+        "startLine": 115,
+        "startChar": 7,
+        "endLine": 119,
+        "endChar": 9
+      },
+      "revId": "f9f82c9ab6446a0e04f944a5c218a104c8391e8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ce86b94_09ca3946",
+        "filename": "tests/robotests/src/com/android/settings/datausage/DataSaverBackendTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1014288
+      },
+      "writtenOn": "2018-04-07T22:29:08Z",
+      "side": 1,
+      "message": "instead of using reflection, just create methods that are tagged with the @VisibleForTesting annotation to set or get these values.",
+      "range": {
+        "startLine": 62,
+        "startChar": 8,
+        "endLine": 63,
+        "endChar": 74
+      },
+      "revId": "f9f82c9ab6446a0e04f944a5c218a104c8391e8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69b9c14e_5d69b9e9",
+        "filename": "tests/robotests/src/com/android/settings/datausage/DataSaverBackendTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1014288
+      },
+      "writtenOn": "2018-04-07T22:29:08Z",
+      "side": 1,
+      "message": "I believe each of these should be separate tests. It looks like each one is independent of the others but please correct me if I\u0027m wrong.\n\nAlso, instead of using asserThat(uidPolicies.size()).isEqualTo(someValue), use assertThat(uidPolicies).hasSize(someValue) or assertThat(uidPolicies).isEmpty();\n\nIf posssible, prefer one of the variants of contains*() if you know which elements should be there. https://google.github.io/truth/api/0.32/com/google/common/truth/IterableSubject.html",
+      "range": {
+        "startLine": 65,
+        "startChar": 8,
+        "endLine": 78,
+        "endChar": 71
+      },
+      "revId": "f9f82c9ab6446a0e04f944a5c218a104c8391e8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
