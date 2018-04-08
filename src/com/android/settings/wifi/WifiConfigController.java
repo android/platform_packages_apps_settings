@@ -239,7 +239,7 @@ public class WifiConfigController implements TextWatcher,
             boolean showAdvancedFields = false;
             if (mAccessPoint.isSaved()) {
                 WifiConfiguration config = mAccessPoint.getConfig();
-                if (config.getIpAssignment() == IpAssignment.STATIC) {
+                if (config != null && config.getIpAssignment() == IpAssignment.STATIC) {
                     mIpSettingsSpinner.setSelection(STATIC_IP);
                     showAdvancedFields = true;
                     // Display IP address.
