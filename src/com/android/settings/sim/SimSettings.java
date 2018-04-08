@@ -74,6 +74,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     private int mPhoneCount = TelephonyManager.getDefault().getPhoneCount();
     private int[] mCallState = new int[mPhoneCount];
     private PhoneStateListener[] mPhoneStateListener = new PhoneStateListener[mPhoneCount];
+    private SubscriptionManager.OnSubscriptionsChangedListener mOnSubscriptionsChangeListener;
 
     public SimSettings() {
         super(DISALLOW_CONFIG_SIM);
@@ -101,14 +102,17 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
         SimSelectNotification.cancelNotification(getActivity());
     }
 
-    private final SubscriptionManager.OnSubscriptionsChangedListener mOnSubscriptionsChangeListener
-            = new SubscriptionManager.OnSubscriptionsChangedListener() {
-        @Override
-        public void onSubscriptionsChanged() {
-            if (DBG) log("onSubscriptionsChanged:");
-            updateSubscriptions();
-        }
-    };
+    private SubscriptionManager.OnSubscriptionsChangedListener getSubscriptionsChangedListener() {
+        mOnSubscriptionsChangeListener
+                = new SubscriptionManager.OnSubscriptionsChangedListener() {
+            @Override
+            public void onSubscriptionsChanged() {
+                if (DBG) log("onSubscriptionsChanged:");
+                updateSubscriptions();
+            }
+        };
+        return mOnSubscriptionsChangeListener;
+    }
 
     private void updateSubscriptions() {
         mSubInfoList = mSubscriptionManager.getActiveSubscriptionInfoList();
@@ -209,7 +213,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     @Override
     public void onResume() {
         super.onResume();
-        mSubscriptionManager.addOnSubscriptionsChangedListener(mOnSubscriptionsChangeListener);
+        mSubscriptionManager.addOnSubscriptionsChangedListener(getSubscriptionsChangedListener());
         updateSubscriptions();
         final TelephonyManager tm =
                 (TelephonyManager) getActivity().getSystemService(Context.TELEPHONY_SERVICE);
@@ -227,6 +231,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     public void onPause() {
         super.onPause();
         mSubscriptionManager.removeOnSubscriptionsChangedListener(mOnSubscriptionsChangeListener);
+        mOnSubscriptionsChangeListener = null;
         final TelephonyManager tm = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
         for (int i = 0; i < mPhoneCount; i++) {
             if (mPhoneStateListener[i] != null) {
