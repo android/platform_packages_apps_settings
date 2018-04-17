@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "398ddaa2_decdc8a0",
+        "filename": "src/com/android/settings/dashboard/conditional/DndCondition.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2018-04-17T17:52:06Z",
+      "side": 1,
+      "message": "I think this change has already been done in master. Could you please double check?",
+      "revId": "4ce3095a02eeb81899442417d793bd9c5c255020",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
