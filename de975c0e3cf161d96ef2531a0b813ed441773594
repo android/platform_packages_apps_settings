@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "0171aa59_6561477a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2018-04-17T18:01:23Z",
+      "side": 1,
+      "message": "Please add the Bug: tag to reference the bug that you are fixing. If none exists yet, please file a public bug describing the issue. Thanks.",
+      "revId": "de975c0e3cf161d96ef2531a0b813ed441773594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2a6e872d_8478985c",
         "filename": "src/com/android/settings/wifi/WifiConfigController.java",
         "patchSetId": 1
