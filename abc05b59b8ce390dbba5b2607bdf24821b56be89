@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3d32e82_8fe7d311",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-04-17T19:26:31Z",
+      "side": 1,
+      "message": "Please add Bug: \u003cnumber\u003e here",
+      "revId": "abc05b59b8ce390dbba5b2607bdf24821b56be89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
