@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a6e872d_8478985c",
+        "filename": "src/com/android/settings/wifi/WifiConfigController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2018-04-17T17:48:59Z",
+      "side": 1,
+      "message": "Please add test in WifiConfigControllerTest to verify the constructor works properly when config is null.",
+      "range": {
+        "startLine": 242,
+        "startChar": 20,
+        "endLine": 242,
+        "endChar": 34
+      },
+      "revId": "de975c0e3cf161d96ef2531a0b813ed441773594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d8c6de9_7f33557f",
+        "filename": "src/com/android/settings/wifi/WifiConfigController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 273,
+      "author": {
+        "id": 1132178
+      },
+      "writtenOn": "2018-04-17T17:48:59Z",
+      "side": 1,
+      "message": "There are multiple location that config is used without checking null within this block. You need to handle the initialization of these when config is null.",
+      "range": {
+        "startLine": 255,
+        "startChar": 15,
+        "endLine": 273,
+        "endChar": 17
+      },
+      "revId": "de975c0e3cf161d96ef2531a0b813ed441773594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
