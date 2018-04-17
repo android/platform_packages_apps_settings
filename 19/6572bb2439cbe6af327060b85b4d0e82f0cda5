@@ -1,0 +1,6 @@
+Code-Review+2: android-build-prod (mdb) <android-build-team-robot@google.com>
+Submitted-by: android-build-prod (mdb) <android-build-team-robot@google.com>
+Submitted-at: Tue, 17 Apr 2018 18:33:22 +0000
+Reviewed-on: https://android-review.googlesource.com/666228
+Project: platform/packages/apps/Settings
+Branch: refs/heads/oreo-mr1-cts-release
