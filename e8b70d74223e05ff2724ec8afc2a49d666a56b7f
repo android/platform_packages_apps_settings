@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05a41417_a1a797e8",
+        "filename": "src/com/android/settings/sim/SimSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-04-18T18:29:09Z",
+      "side": 0,
+      "message": "Can you clarify why this would hold activity reference? It\u0027s not stored anything in here and when this object is created activity isn\u0027t attached yet either.",
+      "range": {
+        "startLine": 104,
+        "startChar": 17,
+        "endLine": 104,
+        "endChar": 18
+      },
+      "revId": "e8b70d74223e05ff2724ec8afc2a49d666a56b7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
