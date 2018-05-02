@@ -114,7 +114,7 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
         mStorageManager = context.getSystemService(StorageManager.class);
 
         if (sTotalInternalStorage <= 0) {
-            sTotalInternalStorage = mStorageManager.getPrimaryStorageSize();
+            sTotalInternalStorage = com.android.settingslib.Utils.getTotalRomSize();
         }
 
         addPreferencesFromResource(R.xml.device_info_storage);
@@ -169,8 +169,7 @@ public class StorageSettings extends SettingsPreferenceFragment implements Index
 
         for (VolumeInfo vol : volumes) {
             if (vol.getType() == VolumeInfo.TYPE_PRIVATE) {
-                final long volumeTotalBytes = PrivateStorageInfo.getTotalSize(vol,
-                        sTotalInternalStorage);
+                final long volumeTotalBytes = sTotalInternalStorage;
                 final int color = COLOR_PRIVATE[privateCount++ % COLOR_PRIVATE.length];
                 mInternalCategory.addPreference(
                         new StorageVolumePreference(context, vol, color, volumeTotalBytes));
