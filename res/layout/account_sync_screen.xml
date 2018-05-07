@@ -44,6 +44,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dip"
+        android:gravity="center_vertical"
         android:text="@string/sync_is_failing"
         android:drawablePadding="8dip"
         android:drawableLeft="@drawable/ic_sync_error_holo" />
@@ -53,7 +54,7 @@
         android:layout_width="match_parent"
         android:background="@android:drawable/bottom_bar"
         android:visibility="gone">
-        
+
         <Button android:id="@+id/finish_button"
             android:layout_width="150dip"
             android:layout_height="wrap_content"
@@ -63,7 +64,7 @@
             android:drawablePadding="3dip"
             android:text="@string/finish_button_label"
         />
-        
+
     </RelativeLayout>
 
 </LinearLayout>
