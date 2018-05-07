@@ -22,11 +22,13 @@ import android.os.Bundle;
 import androidx.legacy.app.FragmentPagerAdapter;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
+import android.telephony.ims.feature.ImsFeature;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.ims.ImsException;
 import com.android.ims.ImsManager;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
@@ -155,10 +157,18 @@ public class WifiCallingSettings extends InstrumentedFragment implements HelpRes
         for (int i = 0; i < mSil.size(); ) {
             ImsManager imsManager = ImsManager.getInstance(getActivity(),
                     mSil.get(i).getSimSlotIndex());
-            if (!imsManager.isWfcEnabledByPlatform()) {
+            try {
+                if (imsManager == null
+                        || !imsManager.isWfcEnabledByPlatform()
+                        || !imsManager.isWfcProvisionedOnDevice()
+                        || imsManager.getImsServiceState() != ImsFeature.STATE_READY) {
+                    mSil.remove(i);
+                } else {
+                    i++;
+                }
+            } catch (ImsException ex) {
+                Log.d(TAG, "Exception when trying to get ImsServiceStatus: " + ex);
                 mSil.remove(i);
-            } else {
-                i++;
             }
         }
     }
