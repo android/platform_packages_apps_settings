@@ -203,7 +203,7 @@ public class WifiCallingSettings extends InstrumentedFragment implements HelpRes
         }
         for (int i = 0; i < mSil.size(); ) {
             final SubscriptionInfo info = mSil.get(i);
-            if (!queryImsState(info.getSubscriptionId()).isWifiCallingProvisioned()) {
+            if (!queryImsState(info.getSubscriptionId()).isReadyToWifiCalling()) {
                 mSil.remove(i);
             } else {
                 i++;
