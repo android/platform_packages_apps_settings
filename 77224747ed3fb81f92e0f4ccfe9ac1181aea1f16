@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6bb2cb1e_d0c9b22f",
+        "filename": "res/layout/account_sync_screen.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-05-08T20:23:19Z",
+      "side": 1,
+      "message": "please help remove the empty spaces",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 7
+      },
+      "revId": "77224747ed3fb81f92e0f4ccfe9ac1181aea1f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76a43e7d_c0b58c78",
+        "filename": "res/layout/account_sync_screen.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-05-08T20:23:19Z",
+      "side": 1,
+      "message": "please help remove the empty spaces",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 6
+      },
+      "revId": "77224747ed3fb81f92e0f4ccfe9ac1181aea1f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
