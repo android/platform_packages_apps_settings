@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "07ec7d37_0b106fd1",
+        "filename": "res/layout/account_sync_screen.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1143183
+      },
+      "writtenOn": "2018-05-09T02:14:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bb2cb1e_d0c9b22f",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 7
+      },
+      "revId": "77224747ed3fb81f92e0f4ccfe9ac1181aea1f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "76a43e7d_c0b58c78",
         "filename": "res/layout/account_sync_screen.xml",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-08T20:23:19Z",
       "side": 1,
       "message": "please help remove the empty spaces",
+      "range": {
+        "startLine": 67,
+        "startChar": 5,
+        "endLine": 67,
+        "endChar": 6
+      },
+      "revId": "77224747ed3fb81f92e0f4ccfe9ac1181aea1f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be4fca89_002a8e00",
+        "filename": "res/layout/account_sync_screen.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1143183
+      },
+      "writtenOn": "2018-05-09T02:14:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76a43e7d_c0b58c78",
       "range": {
         "startLine": 67,
         "startChar": 5,
