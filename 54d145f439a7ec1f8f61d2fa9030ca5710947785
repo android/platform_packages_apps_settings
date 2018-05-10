@@ -22,6 +22,30 @@
       "revId": "54d145f439a7ec1f8f61d2fa9030ca5710947785",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3e7bbcd_56d3be95",
+        "filename": "src/com/android/settings/applications/defaultapps/DefaultPhonePicker.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2018-05-10T21:49:12Z",
+      "side": 1,
+      "message": "Agreed, the Default Dialer Manager is where this should be broadcast.\nIt should also be a directed intent which is sent to only the previous and the new default dialer.",
+      "parentUuid": "54deba1c_20db74ad",
+      "range": {
+        "startLine": 78,
+        "startChar": 12,
+        "endLine": 86,
+        "endChar": 13
+      },
+      "revId": "54d145f439a7ec1f8f61d2fa9030ca5710947785",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
