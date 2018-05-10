@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eaea168d_90c9b74f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1080809
+      },
+      "writtenOn": "2018-05-10T13:50:47Z",
+      "side": 1,
+      "message": "missing line break for git subject",
+      "revId": "386a227d3e92a1546378c27013be76b682b2d2e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ac92353_ae8f4949",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1080809
+      },
+      "writtenOn": "2018-05-10T13:50:47Z",
+      "side": 1,
+      "message": "missing change-id\n\nPlease add line\nBug:78789469",
+      "revId": "386a227d3e92a1546378c27013be76b682b2d2e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
