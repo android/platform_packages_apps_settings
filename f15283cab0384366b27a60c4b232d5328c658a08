@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bcf3db7f_9c45dad7",
+        "filename": "src/com/android/settings/RadioInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2018-05-16T17:12:36Z",
+      "side": 1,
+      "message": "Build defines a IS_USER constant that you can use that performs this check directly.",
+      "range": {
+        "startLine": 175,
+        "startChar": 4,
+        "endLine": 175,
+        "endChar": 75
+      },
+      "revId": "f15283cab0384366b27a60c4b232d5328c658a08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
