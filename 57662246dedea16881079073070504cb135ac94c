@@ -22,6 +22,30 @@
       "revId": "57662246dedea16881079073070504cb135ac94c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed941145_0ee852d1",
+        "filename": "src/com/android/settings/network/TetherPreferenceController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1076123
+      },
+      "writtenOn": "2018-05-16T20:51:44Z",
+      "side": 1,
+      "message": "My understanding was that if it was created when Bluetooth was off and then resumed, we would need to bind.",
+      "parentUuid": "ac99c034_cfdd3d35",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 9
+      },
+      "revId": "57662246dedea16881079073070504cb135ac94c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
