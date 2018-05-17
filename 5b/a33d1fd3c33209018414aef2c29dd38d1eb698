@@ -1,0 +1,9 @@
+Code-Review+2: Lei Yu <jackqdyulei@google.com>
+Verified+1: Myles Watson <mylesgw@google.com>
+Autosubmit+1: Myles Watson <mylesgw@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Thu, 17 May 2018 01:28:01 +0000
+Reviewed-on: https://android-review.googlesource.com/683761
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
