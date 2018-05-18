@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86001461_05e8f58f",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 9099,
+      "author": {
+        "id": 1087703
+      },
+      "writtenOn": "2018-05-18T01:16:44Z",
+      "side": 1,
+      "message": "Change to \"Emergency calls over Wi-Fi Calling are not supported by your carrier\". Some carriers do support e911 over wifi.",
+      "range": {
+        "startLine": 9099,
+        "startChar": 64,
+        "endLine": 9099,
+        "endChar": 115
+      },
+      "revId": "6ffc939d4322adbf4851bbb3830cd571143d6ca2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a88fd70_a723b1ae",
+        "filename": "src/com/android/settings/wfc/EmergencyCallLimitationDisclaimer.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1087703
+      },
+      "writtenOn": "2018-05-18T01:16:44Z",
+      "side": 1,
+      "message": "move equals sign to end of previous line (code style)",
+      "range": {
+        "startLine": 32,
+        "startChar": 12,
+        "endLine": 32,
+        "endChar": 13
+      },
+      "revId": "6ffc939d4322adbf4851bbb3830cd571143d6ca2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
