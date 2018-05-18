@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0bbe6013_948038c8",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 9099,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-05-18T02:10:29Z",
+      "side": 1,
+      "message": "Thank you. Your suggestion is better to avoid misunderstanding. I will update it.",
+      "parentUuid": "86001461_05e8f58f",
+      "range": {
+        "startLine": 9099,
+        "startChar": 64,
+        "endLine": 9099,
+        "endChar": 115
+      },
+      "revId": "6ffc939d4322adbf4851bbb3830cd571143d6ca2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5a88fd70_a723b1ae",
         "filename": "src/com/android/settings/wfc/EmergencyCallLimitationDisclaimer.java",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-05-18T01:16:44Z",
       "side": 1,
       "message": "move equals sign to end of previous line (code style)",
+      "range": {
+        "startLine": 32,
+        "startChar": 12,
+        "endLine": 32,
+        "endChar": 13
+      },
+      "revId": "6ffc939d4322adbf4851bbb3830cd571143d6ca2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4981fd9_df1a6393",
+        "filename": "src/com/android/settings/wfc/EmergencyCallLimitationDisclaimer.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-05-18T02:10:29Z",
+      "side": 1,
+      "message": "Okay.",
+      "parentUuid": "5a88fd70_a723b1ae",
       "range": {
         "startLine": 32,
         "startChar": 12,
