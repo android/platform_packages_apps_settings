@@ -90,6 +90,12 @@ public class ApnPreference extends Preference implements CompoundButton.OnChecke
         mSelectedKey = getKey();
     }
 
+    public void unsetChecked() {
+        if (mCurrentChecked != null) {
+            mCurrentChecked.setChecked(false);
+        }
+    }
+
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
         Log.i(TAG, "ID: " + getKey() + " :" + isChecked);
         if (mProtectFromCheckedChange) {
