@@ -1211,7 +1211,7 @@
     <string name="status_operator" msgid="2274875196954742087">"الشبكة"</string>
     <string name="status_wifi_mac_address" msgid="2202206684020765378">"‏عنوان Mac لشبكة Wi-Fi"</string>
     <string name="status_bt_address" msgid="4195174192087439720">"عنوان البلوتوث"</string>
-    <string name="status_serial_number" msgid="2257111183374628137">"الرقم المسلسل"</string>
+    <string name="status_serial_number" msgid="2257111183374628137">"الرقم المتسلسل"</string>
     <string name="status_unavailable" msgid="7862009036663793314">"غير متاح"</string>
     <string name="status_up_time" msgid="7294859476816760399">"وقت التشغيل"</string>
     <string name="status_awake_time" msgid="2393949909051183652">"وقت الوضع النشط"</string>
@@ -1626,7 +1626,7 @@
       <item quantity="other">‏%d عنصر</item>
       <item quantity="one">عنصر واحد</item>
     </plurals>
-    <string name="clear_uri_btn_text" msgid="8575655132961012158">"محو إمكانية الدخول"</string>
+    <string name="clear_uri_btn_text" msgid="8575655132961012158">"مسح إمكانية الوصول"</string>
     <string name="controls_label" msgid="7611113077086853799">"عناصر التحكم"</string>
     <string name="force_stop" msgid="7435006169872876756">"فرض الإيقاف"</string>
     <string name="total_size_label" msgid="1048676419552557254">"المجموع"</string>
@@ -1867,8 +1867,8 @@
     <string name="app_name_label" msgid="5440362857006046193">"التطبيق"</string>
     <string name="last_time_used_label" msgid="8459441968795479307">"آخر مرة تم استخدامه"</string>
     <string name="usage_time_label" msgid="295954901452833058">"وقت الاستخدام"</string>
-    <string name="accessibility_settings" msgid="3975902491934816215">"إمكانية الدخول"</string>
-    <string name="accessibility_settings_title" msgid="2130492524656204459">"إعدادات إمكانية الدخول"</string>
+    <string name="accessibility_settings" msgid="3975902491934816215">"إمكانية الوصول"</string>
+    <string name="accessibility_settings_title" msgid="2130492524656204459">"إعدادات إمكانية الوصول"</string>
     <string name="accessibility_settings_summary" msgid="981260486011624939">"أجهزة قارئ الشاشة، والعرض، وعناصر التحكم التفاعلية"</string>
     <string name="vision_settings_title" msgid="4204111425716868288">"إعدادات الرؤية"</string>
     <string name="vision_settings_description" msgid="5679491180156408260">"يمكنك تخصيص هذا الجهاز للتوافق مع احتياجاتك. ويمكن تغيير ميزات إمكانية الوصول هذه لاحقًا من خلال الإعدادات."</string>
@@ -1893,14 +1893,14 @@
     <string name="accessibility_screen_magnification_summary" msgid="5258868553337478505"><b>"للتكبير/التصغير"</b>"، انقر على الشاشة 3 مرات بسرعة.\n"<ul><li>"اسحب بإصبعين أو أكثر للتمرير"</li>\n<li>"اضغط بإصبعين أو أكثر على الشاشة لضبط التكبير/التصغير"</li></ul>\n\n<b>"للتكبير/التصغير مؤقتًا"</b>"، انقر على الشاشة 3 مرات بسرعة واستمر بالضغط بإصبعك بعد النقرة الثالثة.\n"<ul><li>"اسحب للتنقل على الشاشة"</li>\n<li>"ارفع إصبعك للتصغير"</li></ul>\n\n"لا يمكنك استخدام التكبير عند استخدام لوحة المفاتيح وشريط التنقل."</string>
     <string name="accessibility_screen_magnification_navbar_summary" msgid="1996584694050087161">"عند تشغيل ميزة التكبير، استخدم زر إمكانية الوصول في أسفل الشاشة للتكبير بسرعة.\n\n"<b>"للتكبير/التصغير"</b>"، انقر على زر إمكانية الوصول، ثم انقر في أي مكان على الشاشة.\n"<ul><li>"اسحب بإصبعين أو أكثر للتمرير"</li>\n<li>"اضغط بإصبعين أو أكثر على الشاشة لضبط التكبير/التصغير"</li></ul>\n\n<b>"للتكبير/التصغير مؤقتًا"</b>"، انقر على زر إمكانية الوصول، ثم المس أي موضع على الشاشة مع الاستمرار.\n"<ul><li>"اسحب للتنقل على الشاشة"</li>\n<li>"ارفع إصبعك للتصغير"</li></ul>\n\n"لا يمكنك استخدام التكبير عند استخدام لوحة المفاتيح وشريط التنقل."</string>
     <string name="accessibility_screen_magnification_navbar_configuration_warning" msgid="70533120652758190">"تم تعيين زر إمكانية الوصول لخدمة <xliff:g id="SERVICE">%1$s</xliff:g>. لاستخدام التكبير، المس زر إمكانية الوصول مع الاستمرار ثم اختر التكبير."</string>
-    <string name="accessibility_global_gesture_preference_title" msgid="2048884356166982714">"مفتاح الاختصار لمستوى الصوت"</string>
+    <string name="accessibility_global_gesture_preference_title" msgid="2048884356166982714">"اختصار تسهيل الوصول"</string>
     <string name="accessibility_shortcut_service_title" msgid="4779360749706905640">"خدمة الاختصار"</string>
     <string name="accessibility_shortcut_service_on_lock_screen_title" msgid="5490636079625489534">"السماح من شاشة التأمين"</string>
     <string name="accessibility_shortcut_description" msgid="1765853731190717372">"عندما يكون مفتاح الاختصار قيد التفعيل، يمكنك الضغط على مفتاحي مستوى الصوت لمدة 3 ثوانٍ لبدء تشغيل إحدى ميزات إمكانية الوصول."</string>
     <string name="accessibility_toggle_high_text_contrast_preference_title" msgid="2567402942683463779">"نص ذو درجة تباين عالية"</string>
     <string name="accessibility_toggle_screen_magnification_auto_update_preference_title" msgid="7218498768415430963">"التحديث التلقائي لتكبير الشاشة"</string>
     <string name="accessibility_toggle_screen_magnification_auto_update_preference_summary" msgid="4392059334816220155">"تحديث تكبير الشاشة أثناء تنقلات التطبيق"</string>
-    <string name="accessibility_power_button_ends_call_prerefence_title" msgid="6673851944175874235">"زر الطاقة ينهي الاتصال"</string>
+    <string name="accessibility_power_button_ends_call_prerefence_title" msgid="6673851944175874235">"إنهاء الاتصال بزر التشغيل"</string>
     <string name="accessibility_toggle_large_pointer_icon_title" msgid="535173100516295580">"مؤشر الماوس الكبير"</string>
     <string name="accessibility_toggle_master_mono_title" msgid="4363806997971905302">"صوت أحادي"</string>
     <string name="accessibility_toggle_master_mono_summary" msgid="5634277025251530927">"الجمع بين القنوات عند تشغيل الصوت"</string>
@@ -2778,7 +2778,7 @@
     <string name="preferred_network_type_title" msgid="3431041717309776341">"نوع الشبكة المفضل"</string>
     <string name="preferred_network_type_summary" msgid="6564884693884755019">"‏LTE (مستحسن)"</string>
     <string name="work_sim_title" msgid="4843322164662606891">"‏شريحة SIM للعمل"</string>
-    <string name="user_restrictions_title" msgid="5794473784343434273">"إمكانية الدخول إلى التطبيقات والمحتوى"</string>
+    <string name="user_restrictions_title" msgid="5794473784343434273">"إمكانية الوصول إلى التطبيقات والمحتوى"</string>
     <string name="user_rename" msgid="8523499513614655279">"إعادة تسمية"</string>
     <string name="app_restrictions_custom_label" msgid="6160672982086584261">"تعيين قيود التطبيق"</string>
     <string name="user_restrictions_controlled_by" msgid="3164078767438313899">"يتم التحكم فيه بواسطة <xliff:g id="APP">%1$s</xliff:g>"</string>
