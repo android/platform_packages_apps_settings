@@ -136,6 +136,8 @@ public class DashboardSummary extends InstrumentedFragment
     public void onPause() {
         super.onPause();
 
+        Log.d(TAG, "onPause(), Stopped listening for condition changes");
+        mConditionManager.remListener(this);
         ((SettingsDrawerActivity) getActivity()).remCategoryListener(this);
         mSummaryLoader.setListening(false);
         for (Condition c : mConditionManager.getConditions()) {
