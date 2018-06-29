@@ -86,6 +86,7 @@ public class ApnSettings extends RestrictedSettingsFragment implements
     private static final int TYPES_INDEX = 3;
     private static final int MVNO_TYPE_INDEX = 4;
     private static final int MVNO_MATCH_DATA_INDEX = 5;
+    private static final int EDITED_INDEX = 6;
 
     private static final int MENU_NEW = Menu.FIRST;
     private static final int MENU_RESTORE = Menu.FIRST + 1;
@@ -118,6 +119,7 @@ public class ApnSettings extends RestrictedSettingsFragment implements
 
     private boolean mHideImsApn;
     private boolean mAllowAddingApns;
+    private boolean mHidePresetApnDetail;
 
     public ApnSettings() {
         super(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS);
@@ -198,6 +200,7 @@ public class ApnSettings extends RestrictedSettingsFragment implements
                 mAllowAddingApns = false;
             }
         }
+        mHidePresetApnDetail = b.getBoolean(CarrierConfigManager.KEY_HIDE_PRESET_APN_DETAIL_BOOL);
         mUserManager = UserManager.get(activity);
     }
 
@@ -280,8 +283,8 @@ public class ApnSettings extends RestrictedSettingsFragment implements
         }
 
         Cursor cursor = getContentResolver().query(Telephony.Carriers.CONTENT_URI, new String[] {
-                "_id", "name", "apn", "type", "mvno_type", "mvno_match_data"}, where.toString(),
-                null, Telephony.Carriers.DEFAULT_SORT_ORDER);
+                "_id", "name", "apn", "type", "mvno_type", "mvno_match_data", "edited"},
+                where.toString(), null, Telephony.Carriers.DEFAULT_SORT_ORDER);
 
         if (cursor != null) {
             IccRecords r = null;
@@ -306,6 +309,7 @@ public class ApnSettings extends RestrictedSettingsFragment implements
                 String type = cursor.getString(TYPES_INDEX);
                 String mvnoType = cursor.getString(MVNO_TYPE_INDEX);
                 String mvnoMatchData = cursor.getString(MVNO_MATCH_DATA_INDEX);
+                int edited = cursor.getInt(EDITED_INDEX);
 
                 ApnPreference pref = new ApnPreference(getPrefContext());
 
@@ -315,6 +319,9 @@ public class ApnSettings extends RestrictedSettingsFragment implements
                 pref.setPersistent(false);
                 pref.setOnPreferenceChangeListener(this);
                 pref.setSubId(subId);
+                if (mHidePresetApnDetail && edited == Telephony.Carriers.UNEDITED) {
+                    pref.setNonEditable();
+                }
 
                 boolean selectable = ((type == null) || !type.equals("mms"));
                 pref.setSelectable(selectable);
@@ -407,6 +414,11 @@ public class ApnSettings extends RestrictedSettingsFragment implements
 
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
+        if (!((ApnPreference) preference).getEditable()) {
+            Toast.makeText(getActivity(), getResources().getString(
+                    R.string.cannot_change_apn_toast), Toast.LENGTH_LONG).show();
+            return true;
+        }
         int pos = Integer.parseInt(preference.getKey());
         Uri url = ContentUris.withAppendedId(Telephony.Carriers.CONTENT_URI, pos);
         startActivity(new Intent(Intent.ACTION_EDIT, url));
