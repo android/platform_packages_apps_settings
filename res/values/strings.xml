@@ -10080,4 +10080,7 @@
 
     <!-- Title for Connected device shortcut [CHAR LIMIT=30] -->
     <string name="devices_title">Devices</string>
+
+    <!-- Toast that appears when users tap an APN for which parameters cannot be viewed. [CHAR LIMIT=NONE] -->
+    <string name="cannot_change_apn_toast">This APN cannot be changed.</string>
 </resources>
