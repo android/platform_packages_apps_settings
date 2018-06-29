@@ -16,9 +16,11 @@
 
 package com.android.settings.network;
 
+import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.provider.Telephony;
 import android.telephony.SubscriptionManager;
@@ -29,6 +31,7 @@ import android.view.View.OnClickListener;
 import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
@@ -57,6 +60,7 @@ public class ApnPreference extends Preference implements
     private static CompoundButton mCurrentChecked = null;
     private boolean mProtectFromCheckedChange = false;
     private boolean mSelectable = true;
+    private boolean mEditable = true;
 
     @Override
     public void onBindViewHolder(PreferenceViewHolder view) {
@@ -120,6 +124,11 @@ public class ApnPreference extends Preference implements
         if ((v != null) && (R.id.text_layout == v.getId())) {
             Context context = getContext();
             if (context != null) {
+                if (!mEditable) {
+                    Toast.makeText(context, context.getString(
+                            R.string.cannot_change_apn_toast), Toast.LENGTH_LONG).show();
+                    return;
+                }
                 int pos = Integer.parseInt(getKey());
                 Uri url = ContentUris.withAppendedId(Telephony.Carriers.CONTENT_URI, pos);
                 Intent editIntent = new Intent(Intent.ACTION_EDIT, url);
@@ -139,5 +148,47 @@ public class ApnPreference extends Preference implements
 
     public void setSubId(int subId) {
         mSubId = subId;
+    }
+
+    public void setEditable(boolean editable) {
+        mEditable = editable;
+    }
+
+    public boolean getEditable() {
+        return mEditable;
+    }
+
+    public void setNonEditableByKey(String key) {
+        if(isPresetApn(getContext().getContentResolver(), key)){
+            setSummary("********");
+            setEditable(false);
+        }
+    }
+
+    /**
+     * Judge whether the APN is preset or not. This judgment uses
+     * android.provider.Telephony.Carriers.EDITED. If EDITED==0(UNEDITED), the APN is preset APN,
+     * and not added and edited record.
+     *
+     * @param resolver the content resolver
+     * @param key the carriers id of APN
+     * @return {@literal true} if the APN is preset.  {@literal false} if not.
+     */
+    private static boolean isPresetApn(ContentResolver resolver, String key) {
+        Cursor cursor = resolver.query(Telephony.Carriers.CONTENT_URI,
+                new String[] {Telephony.Carriers.EDITED}, "_id=?", new String[] {key}, null);
+        if (cursor != null) {
+            try {
+                if ((cursor.getCount() > 0)) {
+                    cursor.moveToFirst();
+                    if (cursor.getInt(0) == Telephony.Carriers.UNEDITED) {
+                        return true;
+                    }
+                }
+            } finally {
+                cursor.close();
+            }
+        }
+        return false;
     }
 }

@@ -118,6 +118,7 @@ public class ApnSettings extends RestrictedSettingsFragment implements
 
     private boolean mHideImsApn;
     private boolean mAllowAddingApns;
+    private boolean mHidePresetApnDetail;
 
     public ApnSettings() {
         super(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS);
@@ -198,6 +199,7 @@ public class ApnSettings extends RestrictedSettingsFragment implements
                 mAllowAddingApns = false;
             }
         }
+        mHidePresetApnDetail = b.getBoolean(CarrierConfigManager.KEY_HIDE_PRESET_APN_DETAIL_BOOL);
         mUserManager = UserManager.get(activity);
     }
 
@@ -315,6 +317,9 @@ public class ApnSettings extends RestrictedSettingsFragment implements
                 pref.setPersistent(false);
                 pref.setOnPreferenceChangeListener(this);
                 pref.setSubId(subId);
+                if (mHidePresetApnDetail) {
+                    pref.setNonEditableByKey(key);
+                }
 
                 boolean selectable = ((type == null) || !type.equals("mms"));
                 pref.setSelectable(selectable);
@@ -407,6 +412,11 @@ public class ApnSettings extends RestrictedSettingsFragment implements
 
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
+        if (!((ApnPreference) preference).getEditable()) {
+            Toast.makeText(getActivity(), getResources().getString(
+                    R.string.cannot_change_apn_toast), Toast.LENGTH_LONG).show();
+            return true;
+        }
         int pos = Integer.parseInt(preference.getKey());
         Uri url = ContentUris.withAppendedId(Telephony.Carriers.CONTENT_URI, pos);
         startActivity(new Intent(Intent.ACTION_EDIT, url));
