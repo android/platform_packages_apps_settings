@@ -61,6 +61,7 @@ import com.android.internal.telephony.uicc.IccRecords;
 import com.android.internal.telephony.uicc.UiccController;
 import com.android.settings.R;
 import com.android.settings.RestrictedSettingsFragment;
+import com.android.settings.utils.PresetApnUtil;
 import com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 
 import java.util.ArrayList;
@@ -118,6 +119,7 @@ public class ApnSettings extends RestrictedSettingsFragment implements
 
     private boolean mHideImsApn;
     private boolean mAllowAddingApns;
+    private boolean mHidePresetApnDetail;
 
     public ApnSettings() {
         super(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS);
@@ -198,6 +200,7 @@ public class ApnSettings extends RestrictedSettingsFragment implements
                 mAllowAddingApns = false;
             }
         }
+        mHidePresetApnDetail = b.getBoolean(CarrierConfigManager.KEY_HIDE_PRESET_APN_DETAIL_BOOL);
         mUserManager = UserManager.get(activity);
     }
 
@@ -315,6 +318,9 @@ public class ApnSettings extends RestrictedSettingsFragment implements
                 pref.setPersistent(false);
                 pref.setOnPreferenceChangeListener(this);
                 pref.setSubId(subId);
+                if (mHidePresetApnDetail) {
+                    pref.setNonEditableByKey(key);
+                }
 
                 boolean selectable = ((type == null) || !type.equals("mms"));
                 pref.setSelectable(selectable);
@@ -407,6 +413,10 @@ public class ApnSettings extends RestrictedSettingsFragment implements
 
     @Override
     public boolean onPreferenceTreeClick(Preference preference) {
+        if (!((ApnPreference) preference).mEditable) {
+            PresetApnUtil.showMessage(getActivity());
+            return true;
+        }
         int pos = Integer.parseInt(preference.getKey());
         Uri url = ContentUris.withAppendedId(Telephony.Carriers.CONTENT_URI, pos);
         startActivity(new Intent(Intent.ACTION_EDIT, url));

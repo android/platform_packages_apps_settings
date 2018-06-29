@@ -34,6 +34,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 
 import com.android.settings.R;
+import com.android.settings.utils.PresetApnUtil;
 
 public class ApnPreference extends Preference implements
         CompoundButton.OnCheckedChangeListener, OnClickListener {
@@ -57,6 +58,7 @@ public class ApnPreference extends Preference implements
     private static CompoundButton mCurrentChecked = null;
     private boolean mProtectFromCheckedChange = false;
     private boolean mSelectable = true;
+    public boolean mEditable = true;
 
     @Override
     public void onBindViewHolder(PreferenceViewHolder view) {
@@ -120,6 +122,10 @@ public class ApnPreference extends Preference implements
         if ((v != null) && (R.id.text_layout == v.getId())) {
             Context context = getContext();
             if (context != null) {
+                if (!mEditable) {
+                    PresetApnUtil.showMessage(context);
+                    return;
+                }
                 int pos = Integer.parseInt(getKey());
                 Uri url = ContentUris.withAppendedId(Telephony.Carriers.CONTENT_URI, pos);
                 Intent editIntent = new Intent(Intent.ACTION_EDIT, url);
@@ -139,5 +145,12 @@ public class ApnPreference extends Preference implements
 
     public void setSubId(int subId) {
         mSubId = subId;
+    }
+
+    public void setNonEditableByKey(String key) {
+        if(PresetApnUtil.isPresetApn(getContext().getContentResolver(), key)){
+            setSummary("********");
+            mEditable = false;
+        }
     }
 }
