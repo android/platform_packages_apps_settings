@@ -15,9 +15,11 @@
 package com.android.settings.datausage;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.net.NetworkTemplate;
 import android.os.Bundle;
 import android.provider.SearchIndexableResource;
@@ -27,6 +29,7 @@ import androidx.preference.PreferenceScreen;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.SubscriptionPlan;
+import android.telephony.TelephonyManager;
 import android.text.BidiFormatter;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -42,6 +45,7 @@ import com.android.settings.dashboard.SummaryLoader;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settingslib.NetworkPolicyEditor;
+import com.android.settingslib.WirelessUtils;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.net.DataUsageController;
 
@@ -81,6 +85,29 @@ public class DataUsageSummary extends DataUsageBaseFragment implements Indexable
         return R.string.help_url_data_usage;
     }
 
+    private CellDataPreference mCellDataPreference;
+
+    private BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if((Intent.ACTION_AIRPLANE_MODE_CHANGED).equals(action)) {
+                if (mCellDataPreference != null) {
+                    boolean isAirplaneModeOn = WirelessUtils.isAirplaneModeOn(context);
+                    mCellDataPreference.updateAirplaneMode(isAirplaneModeOn);
+                }
+            }
+        }
+    };
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Context context = getContext();
+        if (context != null) {
+            context.unregisterReceiver(mReceiver);
+        }
+    }
+
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
@@ -116,6 +143,11 @@ public class DataUsageSummary extends DataUsageBaseFragment implements Indexable
             addEthernetSection();
         }
         setHasOptionsMenu(true);
+        /* UNISOC: bug 708331 @{ */
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+        context.registerReceiver(mReceiver, intentFilter);
+        /* @} */
     }
 
     @Override
@@ -170,6 +202,7 @@ public class DataUsageSummary extends DataUsageBaseFragment implements Indexable
     private void addMobileSection(int subId, SubscriptionInfo subInfo) {
         TemplatePreferenceCategory category = (TemplatePreferenceCategory)
                 inflatePreferences(R.xml.data_usage_cellular);
+        mCellDataPreference = (CellDataPreference)category.findPreference(KEY_MOBILE_DATA_USAGE_TOGGLE);
         category.setTemplate(getNetworkTemplate(subId), subId, services);
         category.pushTemplates(services);
         if (subInfo != null && !TextUtils.isEmpty(subInfo.getDisplayName())) {
