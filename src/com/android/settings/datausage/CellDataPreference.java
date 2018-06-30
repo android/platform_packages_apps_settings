@@ -41,6 +41,7 @@ import com.android.settings.R;
 import com.android.settings.Utils;
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settingslib.CustomDialogPreference;
+import com.android.settingslib.WirelessUtils;
 
 import java.util.List;
 
@@ -54,6 +55,7 @@ public class CellDataPreference extends CustomDialogPreference implements Templa
     private TelephonyManager mTelephonyManager;
     @VisibleForTesting
     SubscriptionManager mSubscriptionManager;
+    private boolean mIsAirplaneModeOn = false;
 
     public CellDataPreference(Context context, AttributeSet attrs) {
         super(context, attrs, TypedArrayUtils.getAttr(context,
@@ -112,6 +114,7 @@ public class CellDataPreference extends CustomDialogPreference implements Templa
         mTelephonyManager = TelephonyManager.from(getContext());
 
         mSubscriptionManager.addOnSubscriptionsChangedListener(mOnSubscriptionsChangeListener);
+        mIsAirplaneModeOn = WirelessUtils.isAirplaneModeOn(getContext());
 
         if (mSubId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
             mSubId = subId;
@@ -128,7 +131,16 @@ public class CellDataPreference extends CustomDialogPreference implements Templa
     private void updateEnabled() {
         // If this subscription is not active, for example, SIM card is taken out, we disable
         // the button.
-        setEnabled(mSubscriptionManager.getActiveSubscriptionInfo(mSubId) != null);
+        Log.d(TAG, "updateEnabled() mIsAirplaneModeOn = " + mIsAirplaneModeOn);
+        setEnabled(mSubscriptionManager.getActiveSubscriptionInfo(mSubId) != null && 
+               !mIsAirplaneModeOn &&
+               (mTelephonyManager.getSimState(phoneId) == TelephonyManager.SIM_STATE_READY));
+    }
+
+    public void updateAirplaneMode(boolean airplaneModeOn) {
+        Log.d(TAG, "updateAirPlanMode() airPlaneModeOn = " + airplaneModeOn);
+        mIsAirplaneModeOn = airplaneModeOn;
+        updateEnabled();
     }
 
     @Override
