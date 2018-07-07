@@ -181,7 +181,12 @@ public class BatteryUtils {
             }
         }
 
-        smearScreenBatterySipper(sippers, screenSipper);
+        // When the app is used in the foreground for more than 10 minutes,
+        // and there is no screen usage, it will crash
+        // smearScreenBatterySipper(sippers, screenSipper);
+        if (screenSipper != null) {
+            smearScreenBatterySipper(sippers, screenSipper);
+        }
 
         return proportionalSmearPowerMah;
     }
