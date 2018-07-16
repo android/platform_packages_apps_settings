@@ -1,0 +1,10 @@
+Code-Review+1: Tyler Gunn <tgunn@google.com>
+Code-Review+2: Brad Ebinger <breadley@google.com>
+Code-Review+1: Fan Zhang <zhfan@google.com>
+Verified+1: Brad Ebinger <breadley@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Brad Ebinger <breadley@google.com>
+Submitted-at: Mon, 16 Jul 2018 19:57:28 +0000
+Reviewed-on: https://android-review.googlesource.com/637320
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
