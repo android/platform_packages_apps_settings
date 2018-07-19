@@ -25,8 +25,6 @@ public class SpecialAppAccessPreferenceController extends AbstractPreferenceCont
 
     private static final String KEY_SPECIAL_ACCESS = "special_access";
 
-    private DataSaverBackend mDataSaverBackend;
-
     public SpecialAppAccessPreferenceController(Context context) {
         super(context);
     }
@@ -43,10 +41,8 @@ public class SpecialAppAccessPreferenceController extends AbstractPreferenceCont
 
     @Override
     public void updateState(Preference preference) {
-        if (mDataSaverBackend == null) {
-            mDataSaverBackend = new DataSaverBackend(mContext);
-        }
-        final int count = mDataSaverBackend.getWhitelistedCount();
+        DataSaverBackend dataSaverBackend = new DataSaverBackend(mContext);
+        final int count = dataSaverBackend.getWhitelistedCount();
         preference.setSummary(mContext.getResources().getQuantityString(
             R.plurals.special_access_summary, count, count));
     }
