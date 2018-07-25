@@ -144,6 +144,7 @@ public class ConfigDialogFragment extends InstrumentedDialogFragment implements
     public void onClick(DialogInterface dialogInterface, int button) {
         ConfigDialog dialog = (ConfigDialog) getDialog();
         VpnProfile profile = dialog.getProfile();
+        boolean toDismiss = true;
 
         if (button == DialogInterface.BUTTON_POSITIVE) {
             // Possibly throw up a dialog to explain lockdown VPN.
@@ -158,6 +159,7 @@ public class ConfigDialogFragment extends InstrumentedDialogFragment implements
                     opts.putParcelable(ARG_PROFILE, profile);
                     ConfirmLockdownFragment.show(this, replace, /* alwaysOn */ shouldLockdown,
                            /* from */  wasLockdown, /* to */ shouldLockdown, opts);
+                    toDismiss = false;
                 } else if (shouldConnect) {
                     connect(profile, shouldLockdown);
                 } else {
@@ -179,7 +181,10 @@ public class ConfigDialogFragment extends InstrumentedDialogFragment implements
 
             updateLockdownVpn(false, profile);
         }
-        dismiss();
+
+        if (toDismiss) {
+            dismiss();
+        }
     }
 
     @Override
