@@ -1047,7 +1047,7 @@
     <item msgid="2339246858001475047">"٢"</item>
     <item msgid="6200207341126893791">"١"</item>
   </string-array>
-    <string name="wifi_calling_off_explanation" msgid="2597566001655908391">"‏عند تشغيل الاتصال عبر Wi-Fi، يمكن للهاتف توجيه المكالمات عبر شبكات Wi-Fi أو عبر شبكة مشغّل شبكة الجوّال، حسب تفضيلك وحسب الإشارة الأقوى. وقبل تشغيل هذه الميزة، راجع رسوم مشغل شبكة الجوّال والتفاصيل الأخرى حول شبكة الجوّال."</string>
+    <string name="wifi_calling_off_explanation" msgid="2597566001655908391">"‏عند تشغيل الاتصال عبر Wi-Fi، يمكن للهاتف توجيه المكالمات عبر شبكات Wi-Fi أو عبر شبكة مشغّل شبكة الجوّال، حسب تفضيلك وحسب الإشارة الأقوى. وقبل تشغيل هذه الميزة، راجع رسوم مشغل شبكة الجوّال والتفاصيل الأخرى حول شبكة الجوّال."<xliff:g id="ADDITIONAL_TEXT">%1$s</xliff:g></string>
     <string name="wifi_calling_off_explanation_2" msgid="2329334487851497223"></string>
     <string name="emergency_address_title" msgid="932729250447887545">"عنوان الطوارئ"</string>
     <string name="emergency_address_summary" msgid="7751971156196115129">"‏يتم اعتباره موقعك الجغرافي عند إجراء مكالمة طوارئ عبر Wi‑Fi"</string>

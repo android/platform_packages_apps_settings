@@ -1011,7 +1011,7 @@
     <item msgid="2339246858001475047">"2."</item>
     <item msgid="6200207341126893791">"1."</item>
   </string-array>
-    <string name="wifi_calling_off_explanation" msgid="2597566001655908391">"Kada je Pozivanje preko Wi-Fi-ja uključeno, telefon može da preusmerava pozive preko Wi-Fi mreža ili mreže mobilnog operatera u zavisnosti od toga koje ste podešavanje izabrali i koji signal je jači. Pre nego što uključite ovu funkciju, informišite se kod mobilnog operatera o naknadama i drugim detaljima."</string>
+    <string name="wifi_calling_off_explanation" msgid="2597566001655908391">"Kada je Pozivanje preko Wi-Fi-ja uključeno, telefon može da preusmerava pozive preko Wi-Fi mreža ili mreže mobilnog operatera u zavisnosti od toga koje ste podešavanje izabrali i koji signal je jači. Pre nego što uključite ovu funkciju, informišite se kod mobilnog operatera o naknadama i drugim detaljima."<xliff:g id="ADDITIONAL_TEXT">%1$s</xliff:g></string>
     <string name="wifi_calling_off_explanation_2" msgid="2329334487851497223"></string>
     <string name="emergency_address_title" msgid="932729250447887545">"Adresa za hitne slučajeve"</string>
     <string name="emergency_address_summary" msgid="7751971156196115129">"Koristi se kao vaša lokacija kada uputite hitni poziv pomoću Wi-Fi-ja"</string>
