@@ -22,6 +22,30 @@
       "revId": "99c10201ca50cc04edf51eb10cfca0dfc0c3c59f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37372b69_d6aef5df",
+        "filename": "src/com/android/settings/dashboard/DashboardSummary.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1269628
+      },
+      "writtenOn": "2018-08-07T14:50:14Z",
+      "side": 1,
+      "message": "We found that \u0027DashboardSummary\u0027 would be recreated when we changed the orientation of phone, but \u0027onWindowFocusChanged(false)\u0027 still not be invoked.",
+      "parentUuid": "405854ce_9d5634e5",
+      "range": {
+        "startLine": 140,
+        "startChar": 8,
+        "endLine": 140,
+        "endChar": 25
+      },
+      "revId": "99c10201ca50cc04edf51eb10cfca0dfc0c3c59f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
