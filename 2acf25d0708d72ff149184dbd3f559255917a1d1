@@ -22,6 +22,30 @@
       "revId": "2acf25d0708d72ff149184dbd3f559255917a1d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4bb78c78_a00c8983",
+        "filename": "src/com/android/settings/applications/SpecialAppAccessPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1269628
+      },
+      "writtenOn": "2018-08-07T14:54:13Z",
+      "side": 1,
+      "message": "We found that there are no real method to reload data in DataSaverBackend, and \u0027refreshWhitelist would not reload data after initialized, so it is the simplest way to fix this bug.",
+      "parentUuid": "b59762d0_4db21ec5",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 75
+      },
+      "revId": "2acf25d0708d72ff149184dbd3f559255917a1d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
