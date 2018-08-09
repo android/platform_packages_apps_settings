@@ -46,6 +46,30 @@
       "revId": "2acf25d0708d72ff149184dbd3f559255917a1d1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "076f4a66_8f170169",
+        "filename": "src/com/android/settings/applications/SpecialAppAccessPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-08-09T01:15:13Z",
+      "side": 1,
+      "message": "I think refreshWhitelist not doing anything is the problem. We need to change that class so it can be refreshed manually.",
+      "parentUuid": "4bb78c78_a00c8983",
+      "range": {
+        "startLine": 44,
+        "startChar": 8,
+        "endLine": 44,
+        "endChar": 75
+      },
+      "revId": "2acf25d0708d72ff149184dbd3f559255917a1d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
