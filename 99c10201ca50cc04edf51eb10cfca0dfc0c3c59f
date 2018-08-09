@@ -46,6 +46,30 @@
       "revId": "99c10201ca50cc04edf51eb10cfca0dfc0c3c59f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d8a6025_a9acc6cf",
+        "filename": "src/com/android/settings/dashboard/DashboardSummary.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-08-09T01:13:35Z",
+      "side": 1,
+      "message": "So if you remove the listener during onPause (orientation change), will the listener be re-registered after the orientation change?\n\nonPause is usually paired with onResume(). The lack of register in onResume worries me. But if you put a register in onResume, I worry we\u0027d double register the listener (onResume and windowFocusChange)",
+      "parentUuid": "37372b69_d6aef5df",
+      "range": {
+        "startLine": 140,
+        "startChar": 8,
+        "endLine": 140,
+        "endChar": 25
+      },
+      "revId": "99c10201ca50cc04edf51eb10cfca0dfc0c3c59f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
