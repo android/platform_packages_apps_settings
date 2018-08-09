@@ -42,6 +42,7 @@ import com.android.settings.dashboard.conditional.Condition;
 import com.android.settings.dashboard.conditional.ConditionAdapter;
 import com.android.settings.dashboard.suggestions.SuggestionAdapter;
 import com.android.settings.overlay.FeatureFactory;
+import com.android.settings.utils.Utils;
 import com.android.settingslib.core.instrumentation.MetricsFeatureProvider;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.core.lifecycle.LifecycleObserver;
@@ -332,6 +333,14 @@ public class DashboardAdapter extends RecyclerView.Adapter<DashboardAdapter.Dash
             } catch (PackageManager.NameNotFoundException e) {
                 Log.e(TAG, "Failed to set background color for " + tile.intent.getPackage());
             }
+
+            final int imageSize = mContext.getResources()
+                  .getDimensionPixelSize(R.dimen.dashboard_zoom_drawable_image_size);
+            if (imageSize > 0) {
+                icon = Utils.zoomDrawable(mContext, icon, imageSize, imageSize);
+                icon = new RoundedHomepageIcon(icon);
+            }
+
             mCache.updateIcon(tile.icon, icon);
         }
         holder.icon.setImageDrawable(icon);

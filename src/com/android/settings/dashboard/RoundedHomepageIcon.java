@@ -31,6 +31,12 @@ public class RoundedHomepageIcon extends LayerDrawable {
     @VisibleForTesting(otherwise = NONE)
     int mBackgroundColor = -1;
 
+    public RoundedHomepageIcon(Drawable foreground) {
+        super(new Drawable[] {
+                foreground
+        });
+    }
+
     public RoundedHomepageIcon(Context context, Drawable foreground) {
         super(new Drawable[] {
                 context.getDrawable(R.drawable.ic_homepage_generic_background),
