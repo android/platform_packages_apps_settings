@@ -1,0 +1,9 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Pengquan Meng <mpq@google.com>
+Code-Review+2: Fan Zhang <zhfan@google.com>
+Verified+1: Jordan Liu <jminjie@google.com>
+Submitted-by: Jordan Liu <jminjie@google.com>
+Submitted-at: Wed, 15 Aug 2018 21:48:00 +0000
+Reviewed-on: https://android-review.googlesource.com/732633
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
