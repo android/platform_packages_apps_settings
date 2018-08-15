@@ -19,6 +19,7 @@ package com.android.settings.dream;
 import android.app.settings.SettingsEnums;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 
 import com.android.settings.R;
 import com.android.settings.widget.RadioButtonPickerFragment;
@@ -61,7 +62,16 @@ public class WhenToDreamPicker extends RadioButtonPickerFragment {
             throw new IllegalArgumentException("Entries and values must be of the same length.");
         }
 
+        boolean isDockingSupported = getResources().getBoolean(R.bool.config_isDockDreamSupported);
+
         for (int i = 0; i < entries.length; i++) {
+            if (!isDockingSupported) {
+                if (TextUtils.equals(DreamSettings.WHILE_DOCKED_ONLY, values[i])
+                        || TextUtils.equals(DreamSettings.EITHER_CHARGING_OR_DOCKED, values[i])) {
+                    continue;
+                }
+            }
+
             candidates.add(new WhenToDreamCandidateInfo(entries[i], values[i]));
         }
 
@@ -78,7 +88,10 @@ public class WhenToDreamPicker extends RadioButtonPickerFragment {
 
     @Override
     protected String getDefaultKey() {
-        return DreamSettings.getKeyFromSetting(mBackend.getWhenToDreamSetting());
+        boolean isDockingSupported = getResources().getBoolean(R.bool.config_isDockDreamSupported);
+        int whenToDream = DreamSettings.getWhenToDreamSetting(mBackend, isDockingSupported);
+
+        return DreamSettings.getKeyFromSetting(whenToDream);
     }
 
     @Override
