@@ -409,7 +409,9 @@ public class ApnSettings extends RestrictedSettingsFragment implements
     public boolean onPreferenceTreeClick(Preference preference) {
         int pos = Integer.parseInt(preference.getKey());
         Uri url = ContentUris.withAppendedId(Telephony.Carriers.CONTENT_URI, pos);
-        startActivity(new Intent(Intent.ACTION_EDIT, url));
+        Intent intent = new Intent(Intent.ACTION_EDIT, url);
+        intent.putExtra(SUB_ID, mSubId);
+        startActivity(intent);
         return true;
     }
 
