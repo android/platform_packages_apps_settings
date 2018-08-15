@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00bb52f9_b78bc6aa",
+        "filename": "src/com/android/settings/network/ApnSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1098848
+      },
+      "writtenOn": "2018-08-15T18:34:29Z",
+      "side": 1,
+      "message": "should be \"SubscriptionInfo\".",
+      "range": {
+        "startLine": 264,
+        "startChar": 12,
+        "endLine": 264,
+        "endChar": 31
+      },
+      "revId": "6052772c9f3ba47747523a1da2cf9f4dbba2c2bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
