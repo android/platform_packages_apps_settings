@@ -136,4 +136,8 @@
          devices will be able to vary their amplitude but do not possess enough dynamic range to
          have distinct intensity levels -->
     <bool name="config_vibration_supports_multiple_intensities">false</bool>
+
+    <!-- If true this device supports Dock -->
+    <bool name="config_isSupportDock" translatable="false">true</bool>
+
 </resources>
