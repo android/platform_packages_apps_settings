@@ -91,6 +91,24 @@ public class DreamSettings extends DashboardFragment {
         }
     }
 
+    @WhenToDream
+    static int getWhenToDreamSetting(DreamBackend backend,
+             boolean isDockingSupported) {
+        int whenToDream = backend.getWhenToDreamSetting();
+
+        if (!isDockingSupported) {
+            if (DreamBackend.WHILE_DOCKED == whenToDream
+                    || DreamBackend.EITHER == whenToDream) {
+                if (backend.isActivatedOnSleep()) {
+                    whenToDream = DreamBackend.WHILE_CHARGING;
+                } else {
+                    whenToDream = DreamBackend.NEVER;
+                }
+            }
+        }
+        return whenToDream;
+    }
+
     @Override
     public int getMetricsCategory() {
         return SettingsEnums.DREAM;

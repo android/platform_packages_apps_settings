@@ -20,6 +20,7 @@ import android.content.Context;
 
 import androidx.preference.Preference;
 
+import com.android.settings.R;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.dream.DreamBackend;
@@ -40,7 +41,11 @@ public class WhenToDreamPreferenceController extends AbstractPreferenceControlle
     public void updateState(Preference preference) {
         super.updateState(preference);
 
-        int resId = DreamSettings.getDreamSettingDescriptionResId(mBackend.getWhenToDreamSetting());
+        boolean isDockingSupported = mContext.getResources()
+                .getBoolean(R.bool.config_isDockDreamSupported);
+        int whenToDream = DreamSettings.getWhenToDreamSetting(mBackend, isDockingSupported);
+
+        int resId = DreamSettings.getDreamSettingDescriptionResId(whenToDream);
         preference.setSummary(preference.getContext().getString(resId));
     }
 
