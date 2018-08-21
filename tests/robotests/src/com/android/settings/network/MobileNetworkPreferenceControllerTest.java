@@ -18,6 +18,8 @@ package com.android.settings.network;
 import static android.arch.lifecycle.Lifecycle.Event.ON_START;
 import static android.arch.lifecycle.Lifecycle.Event.ON_STOP;
 import static com.google.common.truth.Truth.assertThat;
+import static org.mockito.Matchers.anyInt;
+import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
@@ -34,6 +36,8 @@ import android.provider.Settings.Global;
 import android.support.v7.preference.Preference;
 import android.support.v7.preference.PreferenceScreen;
 import android.telephony.PhoneStateListener;
+import android.telephony.SubscriptionInfo;
+import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
@@ -42,6 +46,9 @@ import com.android.settings.testutils.shadow.ShadowUserManager;
 import com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 import com.android.settingslib.RestrictedPreference;
 import com.android.settingslib.core.lifecycle.Lifecycle;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -62,6 +69,8 @@ public class MobileNetworkPreferenceControllerTest {
     @Mock
     private TelephonyManager mTelephonyManager;
     @Mock
+    private SubscriptionManager mSubscriptionManager;
+    @Mock
     private PreferenceScreen mScreen;
 
     private Lifecycle mLifecycle;
@@ -75,6 +84,8 @@ public class MobileNetworkPreferenceControllerTest {
         mLifecycleOwner = () -> mLifecycle;
         mLifecycle = new Lifecycle(mLifecycleOwner);
         when(mContext.getSystemService(Context.TELEPHONY_SERVICE)).thenReturn(mTelephonyManager);
+        when(mContext.getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE))
+                .thenReturn(mSubscriptionManager);
     }
 
     @Test
@@ -120,6 +131,7 @@ public class MobileNetworkPreferenceControllerTest {
     public void serviceStateChange_shouldUpdatePrefSummary() {
         final String testCarrierName = "test";
         final Preference mPreference = mock(Preference.class);
+        final int subid_1 = 1;
         mController = spy(new MobileNetworkPreferenceController(mContext));
         mLifecycle.addObserver(mController);
 
@@ -132,13 +144,62 @@ public class MobileNetworkPreferenceControllerTest {
         verify(mController).onStart();
         verify(mTelephonyManager).listen(mController.mPhoneStateListener,
                 PhoneStateListener.LISTEN_SERVICE_STATE);
+        verify(mSubscriptionManager).addOnSubscriptionsChangedListener(
+                mController.mOnSubscriptionsChangeListener);
+        doReturn(true).when(mController).isSubscriptionInService(anyInt());
+
+        // No. of subscriptions: 1
+        List<SubscriptionInfo> list = new ArrayList<SubscriptionInfo>();
+        list.add(new SubscriptionInfo(subid_1, null, 0, null, null,
+                0, 0, null, 0, null, 0, 0, null));
+        when(mSubscriptionManager.getActiveSubscriptionInfoList()).thenReturn(list);
 
         // Trigger listener update
-        when(mTelephonyManager.getNetworkOperatorName()).thenReturn(testCarrierName);
+        when(mTelephonyManager.getNetworkOperatorName(eq(subid_1))).thenReturn(testCarrierName);
         mController.mPhoneStateListener.onServiceStateChanged(null);
 
         // Carrier name should be set.
         verify(mPreference).setSummary(testCarrierName);
+    }
+
+    @Test
+    public void serviceStateChange_shouldUpdatePrefSummaryForMultiSim() {
+        final String testCarrierName1 = "test1";
+        final String testCarrierName2 = "test2";
+        final Preference mPreference = mock(Preference.class);
+        final int subid_1 = 1;
+        final int subid_2 = 2;
+        mController = spy(new MobileNetworkPreferenceController(mContext));
+        mLifecycle.addObserver(mController);
+
+        when(mScreen.findPreference(mController.getPreferenceKey())).thenReturn(mPreference);
+        doReturn(true).when(mController).isAvailable();
+
+        // Display pref and go through lifecycle to set up listener.
+        mController.displayPreference(mScreen);
+        mLifecycle.handleLifecycleEvent(ON_START);
+        verify(mController).onStart();
+        verify(mTelephonyManager).listen(mController.mPhoneStateListener,
+                PhoneStateListener.LISTEN_SERVICE_STATE);
+        verify(mSubscriptionManager).addOnSubscriptionsChangedListener(
+                mController.mOnSubscriptionsChangeListener);
+        doReturn(true).when(mController).isSubscriptionInService(anyInt());
+
+        // No. of subscriptions: 2
+        List<SubscriptionInfo> list = new ArrayList<SubscriptionInfo>();
+        list.add(new SubscriptionInfo(subid_1, null, 0, null, null,
+                0, 0, null, 0, null, 0, 0, null));
+        list.add(new SubscriptionInfo(subid_2, null, 1, null, null,
+                0, 0, null, 0, null, 0, 0, null));
+        when(mSubscriptionManager.getActiveSubscriptionInfoList()).thenReturn(list);
+
+        // Trigger listener update
+        when(mTelephonyManager.getNetworkOperatorName(eq(subid_1))).thenReturn(testCarrierName1);
+        when(mTelephonyManager.getNetworkOperatorName(eq(subid_2))).thenReturn(testCarrierName2);
+        mController.mPhoneStateListener.onServiceStateChanged(null);
+
+        // Carrier name should be set.
+        verify(mPreference).setSummary(testCarrierName1 + ", " + testCarrierName2);
     }
 
     @Test
