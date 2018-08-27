@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1060f69d_31ba91f6",
+        "filename": "src/com/android/settings/dashboard/DashboardAdapter.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-08-27T22:24:21Z",
+      "side": 1,
+      "message": "I\u0027m planning to remove DashboardAapter entirely and just use DashboardFragment to render the homepage in next release. \n\nIn that case, do you still need to customize icon size at all? If you still need to customize it, can you make the change on DashboardFragment related classes?",
+      "range": {
+        "startLine": 337,
+        "startChar": 11,
+        "endLine": 343,
+        "endChar": 0
+      },
+      "revId": "803ab436d97f2866624b7f7dbe031d1ed5965313",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfd00665_30fb63ea",
+        "filename": "src/com/android/settings/dashboard/RoundedHomepageIcon.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-08-27T22:24:21Z",
+      "side": 1,
+      "message": "In internal branch we have made change to allow OEMs disable RoundedHomepageIcon. When enabled, we will just use regular icons, this class won\u0027t be used at all.\n\nDo you have access to internal or partner repo?",
+      "range": {
+        "startLine": 34,
+        "startChar": 3,
+        "endLine": 38,
+        "endChar": 5
+      },
+      "revId": "803ab436d97f2866624b7f7dbe031d1ed5965313",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
