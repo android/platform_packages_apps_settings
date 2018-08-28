@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a93ad958_01b61e6c",
+        "filename": "src/com/android/settings/nfc/NfcEnabler.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-08-28T19:56:50Z",
+      "side": 1,
+      "message": "Use ThreadUtils.postOnBackground instead.",
+      "range": {
+        "startLine": 104,
+        "startChar": 7,
+        "endLine": 113,
+        "endChar": 18
+      },
+      "revId": "09cf34dcb561ae265af484a684b710518aa5e243",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
