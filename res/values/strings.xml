@@ -10085,4 +10085,7 @@
 
     <!-- Label for the disagree button on wfc disclaimer activity. [CHAR LIMIT=30] -->
     <string name="wfc_disclaimer_disagree_text">No thanks</string>
+
+    <!-- Warn the user that the phone may share its location with the service provider. [CHAR LIMIT=32] -->
+    <string name="wfc_disclaimer_location_desc_txt">Your service provider may collect your location in order to provide this service.\n\nPlease review your service provider\u2019s privacy policy.</string>
 </resources>
