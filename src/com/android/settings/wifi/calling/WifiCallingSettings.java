@@ -21,6 +21,7 @@ import android.app.FragmentManager;
 import android.os.Bundle;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -68,6 +69,20 @@ public class WifiCallingSettings extends InstrumentedFragment implements HelpRes
 
         mPagerAdapter = new WifiCallingViewPagerAdapter(getChildFragmentManager(), mViewPager);
         mViewPager.setAdapter(mPagerAdapter);
+
+        if (mSil != null) {
+            int subId =
+                    getActivity().getIntent().getIntExtra(TelephonyManager.EXTRA_SUBSCRIPTION_ID,
+                            SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+            if (SubscriptionManager.isValidSubscriptionId(subId)) {
+                for (SubscriptionInfo subInfo : mSil) {
+                    if (subId == subInfo.getSubscriptionId()) {
+                        mViewPager.setCurrentItem(mSil.indexOf(subInfo));
+                        break;
+                    }
+                }
+            }
+        }
 
         return view;
     }
