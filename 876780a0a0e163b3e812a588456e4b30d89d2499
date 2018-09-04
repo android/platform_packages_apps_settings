@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "911dc931_8d0b76a6",
+        "filename": "src/com/android/settings/applications/appinfo/WriteSettingsDetails.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-09-04T17:08:38Z",
+      "side": 1,
+      "message": "log is unnecessary",
+      "range": {
+        "startLine": 83,
+        "startChar": 7,
+        "endLine": 83,
+        "endChar": 56
+      },
+      "revId": "876780a0a0e163b3e812a588456e4b30d89d2499",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
