@@ -51,6 +51,8 @@ public class WifiTetherPreferenceController extends AbstractPreferenceController
     private final String[] mWifiRegexs;
     private final WifiManager mWifiManager;
     private final Lifecycle mLifecycle;
+    private boolean mIsAirplaneMode;
+    private boolean mIsDataSaverEnabled;
     private int mSoftApState;
     @VisibleForTesting
     Preference mPreference;
@@ -104,6 +106,8 @@ public class WifiTetherPreferenceController extends AbstractPreferenceController
     public void onStart() {
         if (mPreference != null) {
             mContext.registerReceiver(mReceiver, AIRPLANE_INTENT_FILTER);
+            mIsAirplaneMode = Settings.Global.getInt(mContext.getContentResolver(),
+                    Settings.Global.AIRPLANE_MODE_ON, 0) != 0;
             clearSummaryForAirplaneMode();
             if (mWifiTetherSoftApManager != null) {
                 mWifiTetherSoftApManager.registerSoftApCallback();
@@ -118,6 +122,13 @@ public class WifiTetherPreferenceController extends AbstractPreferenceController
             if (mWifiTetherSoftApManager != null) {
                 mWifiTetherSoftApManager.unRegisterSoftApCallback();
             }
+        }
+    }
+
+    public void updateDataSaverState(boolean isDataSaverEnabled) {
+        mIsDataSaverEnabled = isDataSaverEnabled;
+        if (mPreference != null) {
+            mPreference.setEnabled(!mIsAirplaneMode && !mIsDataSaverEnabled);
         }
     }
 
@@ -154,6 +165,8 @@ public class WifiTetherPreferenceController extends AbstractPreferenceController
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
             if (Intent.ACTION_AIRPLANE_MODE_CHANGED.equals(action)) {
+                mIsAirplaneMode = Settings.Global.getInt(mContext.getContentResolver(),
+                        Settings.Global.AIRPLANE_MODE_ON, 0) != 0;
                 clearSummaryForAirplaneMode(R.string.wifi_hotspot_off_subtext);
             }
         }
@@ -200,13 +213,12 @@ public class WifiTetherPreferenceController extends AbstractPreferenceController
     }
 
     private void clearSummaryForAirplaneMode(int defaultId) {
-        boolean isAirplaneMode = Settings.Global.getInt(mContext.getContentResolver(),
-                Settings.Global.AIRPLANE_MODE_ON, 0) != 0;
-        if (isAirplaneMode) {
+        if (mIsAirplaneMode) {
             mPreference.setSummary(R.string.wifi_tether_disabled_by_airplane);
         } else if (defaultId != ID_NULL){
             mPreference.setSummary(defaultId);
         }
+        mPreference.setEnabled(!mIsAirplaneMode && !mIsDataSaverEnabled);
     }
     //
     // Everything above is copied from WifiApEnabler

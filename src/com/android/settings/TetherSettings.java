@@ -178,6 +178,7 @@ public class TetherSettings extends RestrictedSettingsFragment
         mDataSaverEnabled = isDataSaving;
         mUsbTether.setEnabled(!mDataSaverEnabled);
         mBluetoothTether.setEnabled(!mDataSaverEnabled);
+        mWifiTetherPreferenceController.updateDataSaverState(mDataSaverEnabled);
         mDataSaverFooter.setVisible(mDataSaverEnabled);
     }
 
