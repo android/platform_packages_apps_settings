@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4fc5181_047817c2",
+        "filename": "res/layout/master_clear.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-09-07T23:11:27Z",
+      "side": 1,
+      "message": "Other OEMs still want to keep the old layout.\n\nPlease create a new dimen values, and override it what you need in Sony\u0027s RRO.",
+      "revId": "82e2bbd3a985103bc3a4c17a8a261aea5abdf444",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
