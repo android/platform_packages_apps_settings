@@ -64,15 +64,19 @@ public class PreviouslyConnectedDevicePreferenceController extends BasePreferenc
 
     @Override
     public void onStart() {
-        mBluetoothDeviceUpdater.registerCallback();
-        mSavedDockUpdater.registerCallback();
-        updatePreferenceOnSizeChanged();
+        if (isAvailable()) {
+            mBluetoothDeviceUpdater.registerCallback();
+            mSavedDockUpdater.registerCallback();
+            updatePreferenceOnSizeChanged();
+        }
     }
 
     @Override
     public void onStop() {
-        mBluetoothDeviceUpdater.unregisterCallback();
-        mSavedDockUpdater.unregisterCallback();
+        if (isAvailable()) {
+            mBluetoothDeviceUpdater.unregisterCallback();
+            mSavedDockUpdater.unregisterCallback();
+        }
     }
 
     public void init(DashboardFragment fragment) {

@@ -57,7 +57,9 @@ public class ConnectedDeviceGroupController extends BasePreferenceController
 
     @Override
     public void onStart() {
-        mBluetoothDeviceUpdater.registerCallback();
+        if (isAvailable()) {
+            mBluetoothDeviceUpdater.registerCallback();
+        }
         mConnectedUsbDeviceUpdater.registerCallback();
         mConnectedDockUpdater.registerCallback();
     }
@@ -65,22 +67,23 @@ public class ConnectedDeviceGroupController extends BasePreferenceController
     @Override
     public void onStop() {
         mConnectedUsbDeviceUpdater.unregisterCallback();
-        mBluetoothDeviceUpdater.unregisterCallback();
+        if (isAvailable()) {
+            mBluetoothDeviceUpdater.unregisterCallback();
+        }
         mConnectedDockUpdater.unregisterCallback();
     }
 
     @Override
     public void displayPreference(PreferenceScreen screen) {
         super.displayPreference(screen);
-        if (isAvailable()) {
             mPreferenceGroup = (PreferenceGroup) screen.findPreference(KEY);
             mPreferenceGroup.setVisible(false);
-
-            mBluetoothDeviceUpdater.setPrefContext(screen.getContext());
-            mBluetoothDeviceUpdater.forceUpdate();
+            if (isAvailable()) {
+                mBluetoothDeviceUpdater.setPrefContext(screen.getContext());
+                mBluetoothDeviceUpdater.forceUpdate();
+            }
             mConnectedUsbDeviceUpdater.initUsbPreference(screen.getContext());
             mConnectedDockUpdater.forceUpdate();
-        }
     }
 
     @Override

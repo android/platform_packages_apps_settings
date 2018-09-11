@@ -112,16 +112,20 @@ public class DiscoverableFooterPreferenceController extends BasePreferenceContro
 
     @Override
     public void onResume() {
-        mContext.registerReceiver(mBluetoothChangedReceiver,
-                new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED));
-        mAlwaysDiscoverable.start();
-        updateFooterPreferenceTitle(mLocalAdapter.getState());
+        if (isAvailable()) {
+            mContext.registerReceiver(mBluetoothChangedReceiver,
+                    new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED));
+            mAlwaysDiscoverable.start();
+            updateFooterPreferenceTitle(mLocalAdapter.getState());
+        }
     }
 
     @Override
     public void onPause() {
-        mContext.unregisterReceiver(mBluetoothChangedReceiver);
-        mAlwaysDiscoverable.stop();
+        if (isAvailable()) {
+            mContext.unregisterReceiver(mBluetoothChangedReceiver);
+            mAlwaysDiscoverable.stop();
+        }
     }
 
     private void updateFooterPreferenceTitle (int bluetoothState) {

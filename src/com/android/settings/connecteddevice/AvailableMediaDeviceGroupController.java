@@ -58,15 +58,20 @@ public class AvailableMediaDeviceGroupController extends BasePreferenceControlle
 
     @Override
     public void onStart() {
-        mBluetoothDeviceUpdater.registerCallback();
-        mLocalBluetoothManager.getEventManager().registerCallback(this);
+        if (isAvailable()) {
+            mBluetoothDeviceUpdater.registerCallback();
+            mLocalBluetoothManager.getEventManager().registerCallback(this);
+        }
     }
 
     @Override
     public void onStop() {
-        mBluetoothDeviceUpdater.unregisterCallback();
-        mLocalBluetoothManager.getEventManager().unregisterCallback(this);
+        if (isAvailable()) {
+            mBluetoothDeviceUpdater.unregisterCallback();
+            mLocalBluetoothManager.getEventManager().unregisterCallback(this);
+        }
     }
+
 
     @Override
     public void displayPreference(PreferenceScreen screen) {
