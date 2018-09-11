@@ -170,7 +170,7 @@ public final class AppInfoDashboardFragmentTest {
     }
 
     @Test
-    public void launchFragment_hasNoPackageInfo_shouldFinish() {
+    public void ensurePackageInfoAvailable_hasNoPackageInfo_shouldFinish() {
         ReflectionHelpers.setField(mFragment, "mPackageInfo", null);
 
         assertThat(mFragment.ensurePackageInfoAvailable(mActivity)).isFalse();
@@ -178,7 +178,7 @@ public final class AppInfoDashboardFragmentTest {
     }
 
     @Test
-    public void launchFragment_hasPackageInfo_shouldReturnTrue() {
+    public void ensurePackageInfoAvailable_hasPackageInfo_shouldReturnTrue() {
         final PackageInfo packageInfo = mock(PackageInfo.class);
         ReflectionHelpers.setField(mFragment, "mPackageInfo", packageInfo);
 
