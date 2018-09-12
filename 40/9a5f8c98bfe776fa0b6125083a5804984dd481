@@ -1,0 +1,9 @@
+Autosubmit+1: Fan Zhang <zhfan@google.com>
+Code-Review+2: Doris Ling <dling@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Fan Zhang <zhfan@google.com>
+Submitted-by: Fan Zhang <zhfan@google.com>
+Submitted-at: Wed, 12 Sep 2018 23:46:29 +0000
+Reviewed-on: https://android-review.googlesource.com/755528
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
