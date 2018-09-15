@@ -47,12 +47,6 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
 
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
-ifneq ($(INCREMENTAL_BUILDS),)
-    LOCAL_PROGUARD_ENABLED := disabled
-    LOCAL_JACK_ENABLED := incremental
-    LOCAL_JACK_FLAGS := --multi-dex native
-endif
-
 include frameworks/opt/setupwizard/library/common-gingerbread.mk
 include frameworks/base/packages/SettingsLib/common.mk
 
