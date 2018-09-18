@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "255bdd02_e4ecfb3b",
+        "filename": "src/com/android/settings/network/ApnPreference.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1351305
+      },
+      "writtenOn": "2018-09-18T00:33:59Z",
+      "side": 1,
+      "message": "Can you change it to private and access using getters?",
+      "revId": "62349904a7709a255f9bff1cdafae34db4ee930d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b7f1797_7c0887ad",
+        "filename": "src/com/android/settings/network/ApnPreference.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1351305
+      },
+      "writtenOn": "2018-09-18T00:33:59Z",
+      "side": 1,
+      "message": "Creating a separate class for showMessage() seems to be an overkill. It has a great readability. But it\u0027s short, and only being called in two places.",
+      "revId": "62349904a7709a255f9bff1cdafae34db4ee930d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ee61ccb_4dbbc52b",
+        "filename": "src/com/android/settings/network/ApnPreference.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1351305
+      },
+      "writtenOn": "2018-09-18T00:33:59Z",
+      "side": 1,
+      "message": "Wondering if this is the only place using method isPresetApn(..) and running queries. If so, can you move the method in here and change it to private? Probably don\u0027t need to make it a public static methods if unnecessary.",
+      "revId": "62349904a7709a255f9bff1cdafae34db4ee930d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
