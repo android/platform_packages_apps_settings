@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ea6867fa_c3772061",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1097108
+      },
+      "writtenOn": "2018-09-19T22:01:03Z",
+      "side": 1,
+      "message": "http://angleproject.org\nBasically library that converts OpenGL into other graphics APIs. For Android we are using the Vulkan back-end of ANGLE.\nFYI - This was reviewed internally here: ag/4374834\nThis setting allows a developer to select an application to use ANGLE.",
+      "parentUuid": "f4b49e34_117b0771",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 9
+      },
+      "revId": "5d7e5ebe6e3c6ed32184ea0a3b4575ad2b5d54a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a18bfad9_f25a4a81",
         "filename": "src/com/android/settings/development/AngleEnabledAppPreferenceController.java",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "5d7e5ebe6e3c6ed32184ea0a3b4575ad2b5d54a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "430996f8_7c932791",
+        "filename": "src/com/android/settings/development/AngleEnabledAppPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1097108
+      },
+      "writtenOn": "2018-09-19T22:01:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a18bfad9_f25a4a81",
+      "range": {
+        "startLine": 104,
+        "startChar": 10,
+        "endLine": 104,
+        "endChar": 106
+      },
+      "revId": "5d7e5ebe6e3c6ed32184ea0a3b4575ad2b5d54a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
