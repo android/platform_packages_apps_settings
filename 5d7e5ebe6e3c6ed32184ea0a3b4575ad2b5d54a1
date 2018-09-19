@@ -95,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "0777e338_4d97d6ef",
+        "filename": "tests/robotests/src/com/android/settings/development/AngleEnabledAppPreferenceControllerTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-09-19T21:54:33Z",
+      "side": 1,
+      "message": "Yep, once this is turned into a real object, you need to use assertThat() instead of verify.\n\neg, \n\nverify(mPreference).setSummary(text) becomes assertThat(mPreference.getSummary()).isEqualsTo(text)",
+      "parentUuid": "03f6a5a0_3b60c05f",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 35
+      },
+      "revId": "5d7e5ebe6e3c6ed32184ea0a3b4575ad2b5d54a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "29ab07fb_48cb2f24",
         "filename": "tests/robotests/src/com/android/settings/development/AngleEnabledAppPreferenceControllerTest.java",
         "patchSetId": 1
