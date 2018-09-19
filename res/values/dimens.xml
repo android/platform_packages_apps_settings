@@ -340,4 +340,6 @@
     <dimen name="reset_checkbox_title_text_size">18sp</dimen>
     <dimen name="reset_checkbox_summary_text_size">14sp</dimen>
 
+    <!-- Signal icon in NetworkSelectSetting -->
+    <dimen name="signal_strength_icon_size">24dp</dimen>
 </resources>
