@@ -22,6 +22,30 @@
       "revId": "ef80db9ce75c653606261ff180eac89f8d54c2a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05c7bf18_e139bbe7",
+        "filename": "tests/robotests/src/com/android/settings/development/AngleEnabledAppPreferenceControllerTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1097108
+      },
+      "writtenOn": "2018-09-19T22:56:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba996c88_bc8dfb05",
+      "range": {
+        "startLine": 128,
+        "startChar": 30,
+        "endLine": 128,
+        "endChar": 43
+      },
+      "revId": "ef80db9ce75c653606261ff180eac89f8d54c2a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
