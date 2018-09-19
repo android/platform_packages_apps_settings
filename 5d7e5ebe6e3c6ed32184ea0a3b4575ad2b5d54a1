@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "03f6a5a0_3b60c05f",
+        "filename": "tests/robotests/src/com/android/settings/development/AngleEnabledAppPreferenceControllerTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1097542
+      },
+      "writtenOn": "2018-09-19T21:52:25Z",
+      "side": 1,
+      "message": "In earlier TreeHugger results, it had to be a mock:\n\nhttps://sponge.corp.google.com/target?id\u003df7401410-68ce-47b8-9699-f3cc8eb363c4\u0026target\u003dRunSettingsRoboTests\u0026searchFor\u003d\u0026show\u003dFAILED\u0026sortBy\u003dSTATUS\n\nMaybe if I switch away from verify()?",
+      "parentUuid": "aaef3a25_1cda0ca6",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 35
+      },
+      "revId": "5d7e5ebe6e3c6ed32184ea0a3b4575ad2b5d54a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "29ab07fb_48cb2f24",
         "filename": "tests/robotests/src/com/android/settings/development/AngleEnabledAppPreferenceControllerTest.java",
         "patchSetId": 1
@@ -82,6 +106,30 @@
       "writtenOn": "2018-09-19T21:11:10Z",
       "side": 1,
       "message": "Do you really need this? It\u0027s not used in test code.",
+      "range": {
+        "startLine": 56,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 43
+      },
+      "revId": "5d7e5ebe6e3c6ed32184ea0a3b4575ad2b5d54a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ebc42d02_4a7cccf1",
+        "filename": "tests/robotests/src/com/android/settings/development/AngleEnabledAppPreferenceControllerTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1097542
+      },
+      "writtenOn": "2018-09-19T21:52:25Z",
+      "side": 1,
+      "message": "This was modeled after SelectDebugAppPreferenceControllerTest.java, but I can try removing.",
+      "parentUuid": "29ab07fb_48cb2f24",
       "range": {
         "startLine": 56,
         "startChar": 3,
