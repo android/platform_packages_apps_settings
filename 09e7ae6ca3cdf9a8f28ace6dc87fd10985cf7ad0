@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cecd2457_4256e4e9",
+        "filename": "src/com/android/settings/development/AppPicker.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-09-19T21:11:32Z",
+      "side": 1,
+      "message": "for simplicity: if (mNonSystemOnly \u0026\u0026 ai.isSystemApp()) {\n  Log.d(...);\n  continue;\n}",
+      "range": {
+        "startLine": 120,
+        "startChar": 18,
+        "endLine": 121,
+        "endChar": 32
+      },
+      "revId": "09e7ae6ca3cdf9a8f28ace6dc87fd10985cf7ad0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
