@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "5c763812_7992a7d0",
+        "filename": "tests/robotests/src/com/android/settings/development/AngleEnabledAppPreferenceControllerTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1097108
+      },
+      "writtenOn": "2018-09-19T22:44:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0777e338_4d97d6ef",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 35
+      },
+      "revId": "5d7e5ebe6e3c6ed32184ea0a3b4575ad2b5d54a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "29ab07fb_48cb2f24",
         "filename": "tests/robotests/src/com/android/settings/development/AngleEnabledAppPreferenceControllerTest.java",
         "patchSetId": 1
@@ -211,6 +235,30 @@
       "revId": "5d7e5ebe6e3c6ed32184ea0a3b4575ad2b5d54a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b132f11_ab524329",
+        "filename": "tests/robotests/src/com/android/settings/development/AngleEnabledAppPreferenceControllerTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1097108
+      },
+      "writtenOn": "2018-09-19T22:44:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebc42d02_4a7cccf1",
+      "range": {
+        "startLine": 56,
+        "startChar": 3,
+        "endLine": 57,
+        "endChar": 43
+      },
+      "revId": "5d7e5ebe6e3c6ed32184ea0a3b4575ad2b5d54a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
