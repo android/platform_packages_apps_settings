@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7035e77d_2d7a0e5b",
+        "filename": "src/com/android/settings/network/ApnPreference.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1236374
+      },
+      "writtenOn": "2018-09-20T06:47:10Z",
+      "side": 1,
+      "message": "Thank you, I\u0027ve changed the mEditable to private and added getter/setter.",
+      "parentUuid": "255bdd02_e4ecfb3b",
+      "revId": "62349904a7709a255f9bff1cdafae34db4ee930d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b7f1797_7c0887ad",
         "filename": "src/com/android/settings/network/ApnPreference.java",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "ab264f85_4289a809",
+        "filename": "src/com/android/settings/network/ApnPreference.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1236374
+      },
+      "writtenOn": "2018-09-20T06:47:10Z",
+      "side": 1,
+      "message": "As your suggestion, I\u0027ve removed both PresetApnUtil and showMessage(), and changed these parts to just do Toast.makeText().",
+      "parentUuid": "7b7f1797_7c0887ad",
+      "revId": "62349904a7709a255f9bff1cdafae34db4ee930d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ee61ccb_4dbbc52b",
         "filename": "src/com/android/settings/network/ApnPreference.java",
         "patchSetId": 2
@@ -50,6 +86,24 @@
       "revId": "62349904a7709a255f9bff1cdafae34db4ee930d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "113a9ed5_50951ab9",
+        "filename": "src/com/android/settings/network/ApnPreference.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1236374
+      },
+      "writtenOn": "2018-09-20T06:47:10Z",
+      "side": 1,
+      "message": "As your suggestion, I\u0027ve removed new PresetApnUtil class and moved isPresetApn() into ApnPreference as private.",
+      "parentUuid": "5ee61ccb_4dbbc52b",
+      "revId": "62349904a7709a255f9bff1cdafae34db4ee930d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
