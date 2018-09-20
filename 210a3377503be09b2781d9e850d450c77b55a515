@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e7c6652_f655e244",
+        "filename": "src/com/android/settings/network/ApnSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1351305
+      },
+      "writtenOn": "2018-09-20T17:46:31Z",
+      "side": 1,
+      "message": "The carrier table also contains \"edited\" field for each apn record. Could you directly use that instead of query it again from ApnPreference?",
+      "revId": "210a3377503be09b2781d9e850d450c77b55a515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
