@@ -1,0 +1,717 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18e13a85_f7775c7a",
+        "filename": "AndroidManifest.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 3330,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "Let\u0027s chagne it to .Settings$WifiDisclaimerActivity\n\nAlso use a fragment to store all your UI components.",
+      "range": {
+        "startLine": 3330,
+        "startChar": 32,
+        "endLine": 3330,
+        "endChar": 64
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a830de7_8a29ed32",
+        "filename": "res/layout/wfc_disclaimer_activity.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "Sorry however please change it to 2018. Please update all other copyright.",
+      "range": {
+        "startLine": 2,
+        "startChar": 19,
+        "endLine": 2,
+        "endChar": 23
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "413098b6_73eba174",
+        "filename": "res/layout/wfc_disclaimer_activity.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "We may have more than 1 disclamer item? Could you provide screenshot about it?",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 39,
+        "endChar": 36
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3278c1a5_da6a1fb9",
+        "filename": "res/layout/wfc_disclaimer_activity.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "disclaimer?",
+      "range": {
+        "startLine": 48,
+        "startChar": 26,
+        "endLine": 48,
+        "endChar": 35
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d074bcea_537fe5d6",
+        "filename": "res/layout/wfc_disclaimer_activity.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "disclaimer?",
+      "range": {
+        "startLine": 61,
+        "startChar": 26,
+        "endLine": 61,
+        "endChar": 35
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d338bdb_cdc713a1",
+        "filename": "res/layout/wfc_disclaimer_item_container.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "2018",
+      "range": {
+        "startLine": 2,
+        "startChar": 19,
+        "endLine": 2,
+        "endChar": 23
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e425274_7de74e21",
+        "filename": "res/layout/wfc_disclaimer_item_container.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "nit: move it just below \"android:id\"",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 40
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20639738_cd10297a",
+        "filename": "res/layout/wfc_simple_disclaimer_item.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "2018",
+      "range": {
+        "startLine": 2,
+        "startChar": 19,
+        "endLine": 2,
+        "endChar": 23
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "235778fe_a6f9953e",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 10080,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "Let\u0027s change it to 40 for safe.",
+      "range": {
+        "startLine": 10080,
+        "startChar": 69,
+        "endLine": 10080,
+        "endChar": 71
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "398a2e73_628e41c0",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 10084,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "This should be CONTINUE",
+      "range": {
+        "startLine": 10084,
+        "startChar": 52,
+        "endLine": 10084,
+        "endChar": 59
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75d770d6_b70bb387",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 10087,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "NO THANKS. Update your strings based on comment#18 in bug",
+      "range": {
+        "startLine": 10087,
+        "startChar": 48,
+        "endLine": 10087,
+        "endChar": 57
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06da9080_3d62ac57",
+        "filename": "res/values/styles.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "wrong spell",
+      "range": {
+        "startLine": 509,
+        "startChar": 17,
+        "endLine": 509,
+        "endChar": 26
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23ffbfe6_e91728c1",
+        "filename": "res/values/styles.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "wrong spell",
+      "range": {
+        "startLine": 515,
+        "startChar": 17,
+        "endLine": 515,
+        "endChar": 26
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ba6e939_2b798362",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "Please use a fragment(androidx version) instead of Activity",
+      "range": {
+        "startLine": 42,
+        "startChar": 12,
+        "endLine": 42,
+        "endChar": 49
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdf8f43e_4fcb5934",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "Should we save it in savedInstanceState? What if user rotate the screen?",
+      "range": {
+        "startLine": 45,
+        "startChar": 20,
+        "endLine": 45,
+        "endChar": 35
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bde2cc1_a2dd9559",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "nit: add final",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 11
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "219c2236_c3f01aa4",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "Collections.isEmpty()",
+      "range": {
+        "startLine": 54,
+        "startChar": 12,
+        "endLine": 54,
+        "endChar": 43
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78ad45b4_939ab4ab",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "Let\u0027s use recyclerview instead.",
+      "range": {
+        "startLine": 64,
+        "startChar": 14,
+        "endLine": 64,
+        "endChar": 22
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4114f537_b02805d0",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "Remove, findViewById() already return \u003cT extends View\u003e",
+      "range": {
+        "startLine": 82,
+        "startChar": 23,
+        "endLine": 82,
+        "endChar": 31
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31d6e9e2_9a48aee7",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "Make this activity/fragment implement this interface, then for each button, use:\n\nbutton.setOnClickListener(this);",
+      "range": {
+        "startLine": 85,
+        "startChar": 12,
+        "endLine": 91,
+        "endChar": 13
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32f9dfd5_88df4f98",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "Put it in a separate file.",
+      "range": {
+        "startLine": 114,
+        "startChar": 17,
+        "endLine": 114,
+        "endChar": 42
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3120426_ce95aecf",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerItem.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "TBH I think this data structure should only contain data. It shouldn\u0027t have the View.\n\nIn Adapter, you need to build the view with the correct data from recyclerview",
+      "range": {
+        "startLine": 35,
+        "startChar": 22,
+        "endLine": 35,
+        "endChar": 36
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2553b53e_eda6b599",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerItem.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "IMO this should be a private field.",
+      "range": {
+        "startLine": 86,
+        "startChar": 29,
+        "endLine": 86,
+        "endChar": 42
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd4e54cf_50f4e584",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerItem.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "use CarrierConfigManager.class, then you don\u0027t need to cast it.",
+      "range": {
+        "startLine": 87,
+        "startChar": 16,
+        "endLine": 87,
+        "endChar": 46
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a935294_ac744879",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerItem.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "Could it be null?",
+      "range": {
+        "startLine": 88,
+        "startChar": 8,
+        "endLine": 88,
+        "endChar": 36
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3646288_0a040c8b",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerItemFactory.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "remove it",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 5
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d25d41a1_cc176320",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerItemFactory.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "Am I misunderstanding something? This always return empty right?",
+      "range": {
+        "startLine": 44,
+        "startChar": 40,
+        "endLine": 44,
+        "endChar": 61
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a23ef476_b20381f5",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerItemFactory.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "Always empty?\n\nAdd TODO here if it has been done in another CL.\n\n//TODO(b/\u003cbug_number\u003e): \u003cwhat need to be done.\u003e",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 5
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2630f1c7_41783f43",
+        "filename": "src/com/android/settings/wifi/calling/WifiCallingSettingsForSub.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "Use SubSettingsLauncher to launch page directly, instead of hardcoding path here.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 70
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03f617e5_168f8bb7",
+        "filename": "src/com/android/settings/wifi/calling/WifiCallingSettingsForSub.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "Why need to do this?",
+      "range": {
+        "startLine": 451,
+        "startChar": 0,
+        "endLine": 457,
+        "endChar": 27
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb0aee77_7ec5b0e1",
+        "filename": "tests/robotests/src/com/android/settings/testutils/shadow/ShadowDisclaimerItemFactory.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-09-21T22:32:33Z",
+      "side": 1,
+      "message": "nit: remove extra line below",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 35,
+        "endChar": 5
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
