@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29f590b7_914f602b",
+        "filename": "src/com/android/settings/network/ApnSettings.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1014288
+      },
+      "writtenOn": "2018-09-24T18:31:07Z",
+      "side": 0,
+      "message": "Should getConfig be deprecated?",
+      "revId": "84bb2293ae4799a3586bca340850e96c911408cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
