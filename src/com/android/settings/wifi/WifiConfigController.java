@@ -465,7 +465,7 @@ public class WifiConfigController implements TextWatcher,
         } else {
             enabled = ipAndProxyFieldsAreValid();
         }
-        if (mEapCaCertSpinner != null
+        if (mAccessPointSecurity == AccessPoint.SECURITY_EAP && mEapCaCertSpinner != null
                 && mView.findViewById(R.id.l_ca_cert).getVisibility() != View.GONE) {
             String caCertSelection = (String) mEapCaCertSpinner.getSelectedItem();
             if (caCertSelection.equals(mUnspecifiedCertString)) {
@@ -482,7 +482,7 @@ public class WifiConfigController implements TextWatcher,
                 enabled = false;
             }
         }
-        if (mEapUserCertSpinner != null
+        if (mAccessPointSecurity == AccessPoint.SECURITY_EAP && mEapUserCertSpinner != null
                 && mView.findViewById(R.id.l_user_cert).getVisibility() != View.GONE
                 && ((String) mEapUserCertSpinner.getSelectedItem())
                        .equals(mUnspecifiedCertString)) {
@@ -855,6 +855,11 @@ public class WifiConfigController implements TextWatcher,
             if (mAccessPoint != null && mAccessPoint.isSaved()) {
                 mPasswordView.setHint(R.string.wifi_unchanged);
             }
+        }
+
+        if (mAccessPointSecurity == AccessPoint.SECURITY_PSK || mAccessPointSecurity == AccessPoint.SECURITY_WEP) {
+            mView.findViewById(R.id.password_layout).setVisibility(View.VISIBLE);
+            mView.findViewById(R.id.show_password_layout).setVisibility(View.VISIBLE);
         }
 
         if (mAccessPointSecurity != AccessPoint.SECURITY_EAP) {
