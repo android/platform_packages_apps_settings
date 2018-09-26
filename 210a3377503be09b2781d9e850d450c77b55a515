@@ -16,6 +16,24 @@
       "revId": "210a3377503be09b2781d9e850d450c77b55a515",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27c1dd0e_4f712c44",
+        "filename": "src/com/android/settings/network/ApnSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1236374
+      },
+      "writtenOn": "2018-09-26T11:10:59Z",
+      "side": 1,
+      "message": "Thank you. I\u0027ve improved the code in next patch set, and it becomes simple and looks better for me too.",
+      "parentUuid": "0e7c6652_f655e244",
+      "revId": "210a3377503be09b2781d9e850d450c77b55a515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
