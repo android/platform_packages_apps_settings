@@ -311,8 +311,15 @@ public class BillingCycleSettings extends DataUsageBase implements
             if (bytesString.isEmpty() || bytesString.equals(".")) {
                 bytesString = "0";
             }
-            final long bytes = (long) (Float.valueOf(bytesString)
-                    * (spinner.getSelectedItemPosition() == 0 ? MIB_IN_BYTES : GIB_IN_BYTES));
+
+            long bytes = 0L;
+            try {
+                bytes = (long) (Float.valueOf(bytesString)
+                         * (spinner.getSelectedItemPosition() == 0 ? MB_IN_BYTES : GB_IN_BYTES));
+            } catch (NumberFormatException e) {
+                bytes = 0L;
+                e.printStackTrace();
+            }
 
             // to fix the overflow problem
             final long correctedBytes = Math.min(MAX_DATA_LIMIT_BYTES, bytes);
