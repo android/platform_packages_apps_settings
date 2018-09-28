@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fdb62f4e_3724291a",
+        "filename": "src/com/android/settings/datausage/BillingCycleSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-09-28T19:56:35Z",
+      "side": 1,
+      "message": "This is more like a error catch than a real fix. \n\nA better fix would be disabling the set button when you detect error on input.",
+      "range": {
+        "startLine": 313,
+        "startChar": 9,
+        "endLine": 317,
+        "endChar": 42
+      },
+      "revId": "f0dc458de836f0cd2333f34e3cbf710851b45de2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acd43963_0340ab8b",
+        "filename": "src/com/android/settings/datausage/BillingCycleSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-09-28T19:56:35Z",
+      "side": 1,
+      "message": "Where are these defined? I\u0027m not seeing any import changes.",
+      "range": {
+        "startLine": 318,
+        "startChar": 69,
+        "endLine": 318,
+        "endChar": 94
+      },
+      "revId": "f0dc458de836f0cd2333f34e3cbf710851b45de2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0f70229_da1650b5",
+        "filename": "src/com/android/settings/datausage/BillingCycleSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-09-28T19:56:35Z",
+      "side": 1,
+      "message": "Use Log.e instead of e.print.",
+      "range": {
+        "startLine": 321,
+        "startChar": 14,
+        "endLine": 321,
+        "endChar": 36
+      },
+      "revId": "f0dc458de836f0cd2333f34e3cbf710851b45de2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
