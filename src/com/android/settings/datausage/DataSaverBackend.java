@@ -208,6 +208,10 @@ public class DataSaverBackend {
         @Override
         public void onSubscriptionOverride(int subId, int overrideMask, int overrideValue) {
         }
+
+        @Override
+        public void onCarrierRestrictBackgroundChanged(boolean restrictBackground) {
+        }
     };
 
     public interface Listener {
