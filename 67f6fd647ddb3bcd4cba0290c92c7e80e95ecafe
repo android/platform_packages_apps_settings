@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "467f2eea_e116e461",
+        "filename": "res/values-iw/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 3000,
+      "author": {
+        "id": 1367088
+      },
+      "writtenOn": "2018-10-01T09:23:59Z",
+      "side": 1,
+      "message": "\\u200f is invisible. \nPlease check by git diff.\n\n$ git diff\ndiff --git a/res/values-iw/strings.xml b/res/values-iw/strings.xml\n\n-    \u003cstring name\u003d\"sim_signal_strength\" msgid\u003d\"9144010043784767984\"\u003e\"\u003cU+200F\u003e\u003cxliff:g id\u003d\"DBM\"\u003e%1$d\u003c/xliff:g\u003e dBm \u003cU+200F\u003e\u003cxliff:g id\u003d\"ASU\"\u003e%2$d\u003c/xliff:g\u003e asu\"\u003c/string\u003e\n+    \u003cstring name\u003d\"sim_signal_strength\" msgid\u003d\"9144010043784767984\"\u003e\"\u003cxliff:g id\u003d\"DBM\"\u003e%1$d\u003c/xliff:g\u003e dBm \u003cxliff:g id\u003d\"ASU\"\u003e%2$d\u003c/xliff:g\u003e asu\"\u003c/string\u003e",
+      "revId": "67f6fd647ddb3bcd4cba0290c92c7e80e95ecafe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
