@@ -22,6 +22,8 @@ import static org.mockito.Mockito.when;
 
 import android.content.Context;
 import android.provider.Settings;
+import android.telephony.CarrierConfigManager;
+import android.telephony.SubscriptionManager;
 
 import androidx.preference.SwitchPreference;
 
@@ -47,24 +49,29 @@ public class ShowOperatorNamePreferenceControllerTest {
 
     private ShowOperatorNamePreferenceController mController;
 
+    private int mDefaultDataSubId;
+
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
 
         mController = new ShowOperatorNamePreferenceController(mContext);
+        mDefaultDataSubId = SubscriptionManager.getDefaultDataSubscriptionId();
     }
 
     @Test
     public void testIsAvailable_configIsTrue_ReturnTrue() {
-        when(mContext.getResources()
-            .getBoolean(R.bool.config_showOperatorNameInStatusBar)).thenReturn(true);
+        when((((CarrierConfigManager) mContext.getSystemService(Context.CARRIER_CONFIG_SERVICE))
+                .getConfigForSubId(mDefaultDataSubId)).getBoolean(CarrierConfigManager
+                .KEY_SHOW_OPERATOR_NAME_IN_STATUSBAR_BOOL)).thenReturn(true);
         assertThat(mController.isAvailable()).isTrue();
     }
 
     @Test
     public void testIsAvailable_configIsFalse_ReturnFalse() {
-        when(mContext.getResources()
-            .getBoolean(R.bool.config_showOperatorNameInStatusBar)).thenReturn(false);
+        when((((CarrierConfigManager) mContext.getSystemService(Context.CARRIER_CONFIG_SERVICE))
+                .getConfigForSubId(mDefaultDataSubId)).getBoolean(CarrierConfigManager
+                .KEY_SHOW_OPERATOR_NAME_IN_STATUSBAR_BOOL)).thenReturn(false);
         assertThat(mController.isAvailable()).isFalse();
     }
 
