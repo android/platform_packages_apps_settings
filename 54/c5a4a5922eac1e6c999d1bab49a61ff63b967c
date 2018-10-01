@@ -1,0 +1,6 @@
+Code-Review+2: android-build-prod (mdb) <android-build-team-robot@google.com>
+Submitted-by: android-build-prod (mdb) <android-build-team-robot@google.com>
+Submitted-at: Mon, 01 Oct 2018 23:11:30 +0000
+Reviewed-on: https://android-review.googlesource.com/774716
+Project: platform/packages/apps/Settings
+Branch: refs/heads/pie-vts-release
