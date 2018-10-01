@@ -14,7 +14,10 @@
 package com.android.settings.display;
 
 import android.content.Context;
+import android.os.PersistableBundle;
 import android.provider.Settings;
+import android.telephony.CarrierConfigManager;
+import android.telephony.SubscriptionManager;
 
 import androidx.preference.Preference;
 import androidx.preference.SwitchPreference;
@@ -34,7 +37,15 @@ public class ShowOperatorNamePreferenceController extends AbstractPreferenceCont
 
     @Override
     public boolean isAvailable() {
-        return mContext.getResources().getBoolean(R.bool.config_showOperatorNameInStatusBar);
+        final CarrierConfigManager configMgr = mContext
+                .getSystemService(CarrierConfigManager.class);
+        if (configMgr == null) {
+            return false;
+        }
+        final PersistableBundle b = configMgr.getConfigForSubId(SubscriptionManager
+                .getDefaultDataSubscriptionId());
+        return b != null && b.getBoolean(CarrierConfigManager
+                .KEY_SHOW_OPERATOR_NAME_IN_STATUSBAR_BOOL, false);
     }
 
     @Override
