@@ -2997,7 +2997,7 @@
     <string name="preferred_network_offload_header" msgid="2321173571529106767">"Disable Network Name"</string>
     <string name="preferred_network_offload_footer" msgid="5857279426054744020">"‏Disable Network Name Broadcast מגן מפני גישה של גורמי צד שלישי אל פרטי הרשת שלך."</string>
     <string name="preferred_network_offload_popup" msgid="2252915199889604600">"‏Disabling Network Name Broadcast ימנע חיבור אוטומטי אל רשתות מוסתרות."</string>
-    <string name="sim_signal_strength" msgid="9144010043784767984">"‏<xliff:g id="DBM">%1$d</xliff:g> dBm ‏<xliff:g id="ASU">%2$d</xliff:g> asu"</string>
+    <string name="sim_signal_strength" msgid="9144010043784767984">"<xliff:g id="DBM">%1$d</xliff:g> dBm <xliff:g id="ASU">%2$d</xliff:g> asu"</string>
     <string name="sim_notification_title" msgid="6272913297433198340">"‏כרטיסי SIM הוחלפו."</string>
     <string name="sim_notification_summary" msgid="8858043655706669772">"הקש כדי להגדיר"</string>
     <string name="sim_pref_divider" msgid="6778907671867621874">"‏SIM מועדף עבור"</string>
