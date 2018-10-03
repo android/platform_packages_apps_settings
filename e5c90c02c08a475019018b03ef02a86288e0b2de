@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86ebfcd6_e39c260a",
+        "filename": "src/com/android/settings/network/ApnPreference.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1054648
+      },
+      "writtenOn": "2018-10-03T04:29:44Z",
+      "side": 1,
+      "message": "Let\u0027s not use the word \u0027editable\u0027 for this please. We already have the concept of a read-only APN, which basically makes the APN not-editable, but shows the details. I think the right word for this is hide-details. Check that across the entire change, not just for this variable name.",
+      "range": {
+        "startLine": 61,
+        "startChar": 20,
+        "endLine": 61,
+        "endChar": 29
+      },
+      "revId": "e5c90c02c08a475019018b03ef02a86288e0b2de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30d13bb3_1495682b",
+        "filename": "src/com/android/settings/network/ApnPreference.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1054648
+      },
+      "writtenOn": "2018-10-03T04:29:44Z",
+      "side": 1,
+      "message": "Do we need this check in both files? Why do we need it in both onClick() as well as onPreferenceTreeClick()?",
+      "range": {
+        "startLine": 125,
+        "startChar": 16,
+        "endLine": 129,
+        "endChar": 17
+      },
+      "revId": "e5c90c02c08a475019018b03ef02a86288e0b2de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
