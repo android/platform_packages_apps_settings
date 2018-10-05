@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e9ab1d21_ffc5e65d",
+        "filename": "src/com/android/settings/network/ApnPreference.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1236374
+      },
+      "writtenOn": "2018-10-05T08:52:16Z",
+      "side": 1,
+      "message": "Thank you, I\u0027ve update the word to like \"HideDetails\" across the entire change.",
+      "parentUuid": "86ebfcd6_e39c260a",
+      "range": {
+        "startLine": 61,
+        "startChar": 20,
+        "endLine": 61,
+        "endChar": 29
+      },
+      "revId": "e5c90c02c08a475019018b03ef02a86288e0b2de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "30d13bb3_1495682b",
         "filename": "src/com/android/settings/network/ApnPreference.java",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2018-10-03T04:29:44Z",
       "side": 1,
       "message": "Do we need this check in both files? Why do we need it in both onClick() as well as onPreferenceTreeClick()?",
+      "range": {
+        "startLine": 125,
+        "startChar": 16,
+        "endLine": 129,
+        "endChar": 17
+      },
+      "revId": "e5c90c02c08a475019018b03ef02a86288e0b2de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dda34af9_aa32688e",
+        "filename": "src/com/android/settings/network/ApnPreference.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1236374
+      },
+      "writtenOn": "2018-10-05T08:52:16Z",
+      "side": 1,
+      "message": "Yes, both onClick() and onPreferenceTreeClick() are necessary.\nBecause Preference consists of two parts, textview and the other part on Preference.\nWhen user taps textview, event is onClick(). And when user taps other part(around radio button on Preference), event is onPreferenceTreeClick() respectively.",
+      "parentUuid": "30d13bb3_1495682b",
       "range": {
         "startLine": 125,
         "startChar": 16,
