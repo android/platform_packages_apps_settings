@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0e2f8d2_95f0e66a",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 10080,
+      "author": {
+        "id": 1054648
+      },
+      "writtenOn": "2018-10-05T17:51:29Z",
+      "side": 1,
+      "message": "nit: APN for which",
+      "range": {
+        "startLine": 10080,
+        "startChar": 46,
+        "endLine": 10080,
+        "endChar": 55
+      },
+      "revId": "fc717b13574411c981f8887b8506128d3211ac2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "905702af_0ce3eb9a",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 10081,
+      "author": {
+        "id": 1054648
+      },
+      "writtenOn": "2018-10-05T17:51:29Z",
+      "side": 1,
+      "message": "nit: \"changed.\" (add a period at the end)",
+      "range": {
+        "startLine": 10081,
+        "startChar": 62,
+        "endLine": 10081,
+        "endChar": 69
+      },
+      "revId": "fc717b13574411c981f8887b8506128d3211ac2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
