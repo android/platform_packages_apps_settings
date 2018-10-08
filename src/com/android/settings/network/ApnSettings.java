@@ -343,7 +343,7 @@ public class ApnSettings extends RestrictedSettingsFragment {
             }
             cursor.close();
 
-            if (!mvnoApnList.isEmpty()) {
+            if (!mvnoApnList.isEmpty() || !mvnoMmsApnList.isEmpty()) {
                 mnoApnList = mvnoApnList;
                 mnoMmsApnList = mvnoMmsApnList;
 
