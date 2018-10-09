@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "d6665733_58695abb",
+        "filename": "src/com/android/settings/network/ApnSettings.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1351305
+      },
+      "writtenOn": "2018-10-09T22:22:35Z",
+      "side": 1,
+      "message": "The constant is defined in Telephony.Carriers. I think we can use them directly then.",
+      "parentUuid": "3a337306_ef974418",
+      "range": {
+        "startLine": 286,
+        "startChar": 77,
+        "endLine": 286,
+        "endChar": 86
+      },
+      "revId": "ff64e20c6942d2e46d6c7005a7a61c52b75c0186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d84560fd_cdf8624b",
         "filename": "src/com/android/settings/network/ApnSettings.java",
         "patchSetId": 6
