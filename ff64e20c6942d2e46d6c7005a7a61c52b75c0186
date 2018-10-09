@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ffd6b6e_16f55c05",
+        "filename": "src/com/android/settings/network/ApnPreference.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-10-09T16:59:49Z",
+      "side": 1,
+      "message": "This won\u0027t be translated and will look different from standard android password text\n\nTake a look at ValidatedEditTextPreference. You need to get the TextView, and call\n\ntextView.setInputType(\n                    InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD)\n\nThen framework will treat your text as password and do the right thing.",
+      "range": {
+        "startLine": 156,
+        "startChar": 7,
+        "endLine": 156,
+        "endChar": 31
+      },
+      "revId": "ff64e20c6942d2e46d6c7005a7a61c52b75c0186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a337306_ef974418",
+        "filename": "src/com/android/settings/network/ApnSettings.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-10-09T16:59:49Z",
+      "side": 1,
+      "message": "Extending the projection here seems a bit brittle. \n\nWhere are the columns defined? Is it possible to use some constant instead of manually writing the column names like this? Or better yet, define the projection somewhere as a constant.",
+      "range": {
+        "startLine": 286,
+        "startChar": 77,
+        "endLine": 286,
+        "endChar": 86
+      },
+      "revId": "ff64e20c6942d2e46d6c7005a7a61c52b75c0186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d84560fd_cdf8624b",
+        "filename": "src/com/android/settings/network/ApnSettings.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-10-09T16:59:49Z",
+      "side": 1,
+      "message": "You already have a toast in ApnPreference#onClick, why do you need another one here?",
+      "range": {
+        "startLine": 417,
+        "startChar": 8,
+        "endLine": 421,
+        "endChar": 9
+      },
+      "revId": "ff64e20c6942d2e46d6c7005a7a61c52b75c0186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
