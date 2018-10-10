@@ -19,6 +19,7 @@ package com.android.settings.deviceinfo.simstatus;
 import static android.content.Context.CARRIER_CONFIG_SERVICE;
 import static android.content.Context.EUICC_SERVICE;
 import static android.content.Context.TELEPHONY_SERVICE;
+import static android.content.Context.TELEPHONY_SUBSCRIPTION_SERVICE;
 
 import android.Manifest;
 import android.content.BroadcastReceiver;
@@ -99,6 +100,7 @@ public class SimStatusDialogController implements LifecycleObserver, OnResume, O
     private final static String CELL_BROADCAST_RECEIVER_APP = "com.android.cellbroadcastreceiver";
 
     private final SimStatusDialogFragment mDialog;
+    private final SubscriptionManager mSubscriptionManager;
     private final SubscriptionInfo mSubscriptionInfo;
     private final TelephonyManager mTelephonyManager;
     private final CarrierConfigManager mCarrierConfigManager;
@@ -133,6 +135,8 @@ public class SimStatusDialogController implements LifecycleObserver, OnResume, O
             int slotId) {
         mDialog = dialog;
         mContext = dialog.getContext();
+        mSubscriptionManager = (SubscriptionManager) mContext.getSystemService(
+            TELEPHONY_SUBSCRIPTION_SERVICE);
         mSubscriptionInfo = getPhoneSubscriptionInfo(slotId);
         mTelephonyManager = (TelephonyManager) mContext.getSystemService(
                 TELEPHONY_SERVICE);
@@ -403,13 +407,7 @@ public class SimStatusDialogController implements LifecycleObserver, OnResume, O
     }
 
     private SubscriptionInfo getPhoneSubscriptionInfo(int slotId) {
-        final List<SubscriptionInfo> subscriptionInfoList = SubscriptionManager.from(
-                mContext).getActiveSubscriptionInfoList();
-        if (subscriptionInfoList != null && subscriptionInfoList.size() > slotId) {
-            return subscriptionInfoList.get(slotId);
-        } else {
-            return null;
-        }
+        return mSubscriptionManager.getActiveSubscriptionInfoForSimSlotIndex(slotId);
     }
 
     @VisibleForTesting
