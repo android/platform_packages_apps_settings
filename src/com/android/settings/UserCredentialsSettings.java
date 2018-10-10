@@ -278,30 +278,31 @@ public class UserCredentialsSettings extends SettingsPreferenceFragment
             for (final Credential.Type type : Credential.Type.values()) {
                 for (final String prefix : type.prefix) {
                     for (final String alias : keyStore.list(prefix, uid)) {
+                        String trimmed_alias = alias.substring(prefix.length());
                         if (UserHandle.getAppId(uid) == Process.SYSTEM_UID) {
                             // Do not show work profile keys in user credentials
-                            if (alias.startsWith(LockPatternUtils.PROFILE_KEY_NAME_ENCRYPT) ||
-                                    alias.startsWith(LockPatternUtils.PROFILE_KEY_NAME_DECRYPT)) {
+                            if (trimmed_alias.startsWith(LockPatternUtils.PROFILE_KEY_NAME_ENCRYPT) ||
+                                    trimmed_alias.startsWith(LockPatternUtils.PROFILE_KEY_NAME_DECRYPT)) {
                                 continue;
                             }
                             // Do not show synthetic password keys in user credential
-                            if (alias.startsWith(LockPatternUtils.SYNTHETIC_PASSWORD_KEY_PREFIX)) {
+                            if (trimmed_alias.startsWith(LockPatternUtils.SYNTHETIC_PASSWORD_KEY_PREFIX)) {
                                 continue;
                             }
                         }
                         try {
                             if (type == Credential.Type.USER_KEY &&
-                                    !isAsymmetric(keyStore, prefix + alias, uid)) {
+                                    !isAsymmetric(keyStore, alias, uid)) {
                                 continue;
                             }
                         } catch (UnrecoverableKeyException e) {
-                            Log.e(TAG, "Unable to determine algorithm of key: " + prefix + alias, e);
+                            Log.e(TAG, "Unable to determine algorithm of key: " + alias, e);
                             continue;
                         }
-                        Credential c = aliasMap.get(alias);
+                        Credential c = aliasMap.get(trimmed_alias);
                         if (c == null) {
-                            c = new Credential(alias, uid);
-                            aliasMap.put(alias, c);
+                            c = new Credential(trimmed_alias, uid);
+                            aliasMap.put(trimmed_alias, c);
                         }
                         c.storedTypes.add(type);
                     }

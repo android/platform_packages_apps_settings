@@ -554,7 +554,8 @@ public class VpnSettings extends RestrictedSettingsFragment implements
         final ArrayList<VpnProfile> result = Lists.newArrayList();
 
         for (String key : keyStore.list(Credentials.VPN)) {
-            final VpnProfile profile = VpnProfile.decode(key, keyStore.get(Credentials.VPN + key));
+            final VpnProfile profile = VpnProfile.decode(key.substring(Credentials.VPN.length()),
+                    keyStore.get(key));
             if (profile != null && !ArrayUtils.contains(excludeTypes, profile.type)) {
                 result.add(profile);
             }
