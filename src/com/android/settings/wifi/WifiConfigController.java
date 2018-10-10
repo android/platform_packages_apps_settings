@@ -1262,8 +1262,10 @@ public class WifiConfigController implements TextWatcher,
             certs.add(mUseSystemCertsString);
         }
         try {
-            certs.addAll(
-                Arrays.asList(getKeyStore().list(prefix, android.os.Process.WIFI_UID)));
+            String[] aliases = getKeyStore().list(prefix, android.os.Process.WIFI_UID);
+            for (int i = 0; i < aliases.length; ++i) {
+                certs.add(aliases[i].substring(prefix.length()));
+            }
         } catch (Exception e) {
             Log.e(TAG, "can't get the certificate list from KeyStore");
         }
