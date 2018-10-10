@@ -22,6 +22,30 @@
       "revId": "f15283cab0384366b27a60c4b232d5328c658a08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d755a07d_259995fb",
+        "filename": "src/com/android/settings/RadioInfo.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1233564
+      },
+      "writtenOn": "2018-10-10T15:38:20Z",
+      "side": 1,
+      "message": "I have started to use Build.IS_USER in patchset 5.",
+      "parentUuid": "bcf3db7f_9c45dad7",
+      "range": {
+        "startLine": 175,
+        "startChar": 4,
+        "endLine": 175,
+        "endChar": 75
+      },
+      "revId": "f15283cab0384366b27a60c4b232d5328c658a08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
