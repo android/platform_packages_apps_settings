@@ -22,6 +22,30 @@
       "revId": "910457e37a45c4c717466aadfdf9d3fcd62135d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a757081_4289ddcd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1233205
+      },
+      "writtenOn": "2018-10-10T07:38:12Z",
+      "side": 1,
+      "message": "Fan-san, thanks for the review.\n\n\u003e I am not seeing any comment in common.mk. \n\nThat\u0027s described here:\nhttps://android.googlesource.com/platform/frameworks/base/+/master/packages/SettingsLib/common.mk#5\n\n\u003e Also, in the other CL, your commit message mentioned static resource overlay. Do you mean the same mechanism for overriding things like system colorAccent?\n\nWe\u0027d like to enable static resource overlay of SettingsLib to replace some of resources in SettingsLib as a configuration for the specific operators/markets. For instance, we have changed some strings and icon resources in SettingsLib for the specific operators as per the operator requirements.\n(e.g.)\n- \"zen_mode_settings_turn_on_dialog_title\" in SettingsLib/res/values/strings.xml\n- SettingsLib/res/drawable/ic_qs_night_display_on.xml\n\nIn the other CL, it enables SettingsLib to apply the static resource overlay. With the change, all the client apps of SettingsLib are required to declare LOCAL_RESOURCE_DIR. Currently only Settings app doesn\u0027t declare LOCAL_RESOURCE_DIR, therefore this CL is also needed along with change in SettingsLib.",
+      "parentUuid": "8c84a35e_c4b13c9f",
+      "range": {
+        "startLine": 10,
+        "startChar": 51,
+        "endLine": 12,
+        "endChar": 47
+      },
+      "revId": "910457e37a45c4c717466aadfdf9d3fcd62135d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
