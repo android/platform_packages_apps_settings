@@ -407,6 +407,9 @@ class ConfigDialog extends AlertDialog implements TextWatcher,
         Context context = getContext();
         String first = (firstId == 0) ? "" : context.getString(firstId);
         String[] certificates = mKeyStore.list(prefix);
+        for (int i = 0; i < certificates.length; ++i) {
+            certificates[i] = certificates[i].substring(prefix.length());
+        }
 
         if (certificates == null || certificates.length == 0) {
             certificates = new String[] {first};
