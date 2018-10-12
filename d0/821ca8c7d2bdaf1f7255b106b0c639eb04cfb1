@@ -1,0 +1,9 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Neil Fuller <nfuller@google.com>
+Code-Review+2: Tobias Thierer <tobiast@google.com>
+Code-Review+2: Fan Zhang <zhfan@google.com>
+Submitted-by: Neil Fuller <nfuller@google.com>
+Submitted-at: Fri, 12 Oct 2018 10:18:21 +0000
+Reviewed-on: https://android-review.googlesource.com/776085
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
