@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "15a2b4c0_76556a3a",
+        "filename": "src/com/android/settings/network/ApnPreference.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1236374
+      },
+      "writtenOn": "2018-10-17T06:14:28Z",
+      "side": 1,
+      "message": "Thank you for your comment. After re-checking carrier requirements, the \"*****\" is not needed and we can hide the summary itself in this case.\nSo I\u0027ve updated the code with below line.\nhttps://android-review.googlesource.com/c/platform/packages/apps/Settings/+/754329/6..7/src/com/android/settings/network/ApnSettings.java#332",
+      "parentUuid": "9ffd6b6e_16f55c05",
+      "range": {
+        "startLine": 156,
+        "startChar": 7,
+        "endLine": 156,
+        "endChar": 31
+      },
+      "revId": "ff64e20c6942d2e46d6c7005a7a61c52b75c0186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a337306_ef974418",
         "filename": "src/com/android/settings/network/ApnSettings.java",
         "patchSetId": 6
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "193fc912_03f9adab",
+        "filename": "src/com/android/settings/network/ApnSettings.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1236374
+      },
+      "writtenOn": "2018-10-17T06:14:28Z",
+      "side": 1,
+      "message": "Thank for your suggestion. I\u0027ve replaced these column strings to new constant array using Telephony.Carriers.~.",
+      "parentUuid": "d6665733_58695abb",
+      "range": {
+        "startLine": 286,
+        "startChar": 77,
+        "endLine": 286,
+        "endChar": 86
+      },
+      "revId": "ff64e20c6942d2e46d6c7005a7a61c52b75c0186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d84560fd_cdf8624b",
         "filename": "src/com/android/settings/network/ApnSettings.java",
         "patchSetId": 6
@@ -92,6 +140,30 @@
       "revId": "ff64e20c6942d2e46d6c7005a7a61c52b75c0186",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77c43e21_e04ca907",
+        "filename": "src/com/android/settings/network/ApnSettings.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1236374
+      },
+      "writtenOn": "2018-10-17T06:14:28Z",
+      "side": 1,
+      "message": "Both onClick() and onPreferenceTreeClick() are necessary.\nBecause Preference consists of two parts, textview and the other part on Preference.\nWhen user taps textview, event is onClick(). And when user taps other part(around radio button on Preference), event is onPreferenceTreeClick() respectively.\n\nIf you need to check actual view, please refer to images which are attached on b/115453290(my comment#14).",
+      "parentUuid": "d84560fd_cdf8624b",
+      "range": {
+        "startLine": 417,
+        "startChar": 8,
+        "endLine": 421,
+        "endChar": 9
+      },
+      "revId": "ff64e20c6942d2e46d6c7005a7a61c52b75c0186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
