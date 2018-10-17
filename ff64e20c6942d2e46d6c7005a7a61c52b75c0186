@@ -164,6 +164,30 @@
       "revId": "ff64e20c6942d2e46d6c7005a7a61c52b75c0186",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a913ade_a1710c5b",
+        "filename": "src/com/android/settings/network/ApnSettings.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-10-17T18:31:14Z",
+      "side": 1,
+      "message": "That\u0027s very strange. Why isn\u0027t the Preference (TextView and RadioButton together) a single tap target?",
+      "parentUuid": "77c43e21_e04ca907",
+      "range": {
+        "startLine": 417,
+        "startChar": 8,
+        "endLine": 421,
+        "endChar": 9
+      },
+      "revId": "ff64e20c6942d2e46d6c7005a7a61c52b75c0186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
