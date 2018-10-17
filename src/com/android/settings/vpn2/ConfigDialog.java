@@ -35,6 +35,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.android.internal.net.VpnProfile;
+import com.android.settings.ProxySelector;
 import com.android.settings.R;
 
 import java.net.InetAddress;
@@ -53,6 +54,9 @@ class ConfigDialog extends AlertDialog implements TextWatcher,
     private final DialogInterface.OnClickListener mListener;
     private final VpnProfile mProfile;
 
+    /* This value comes from "proxy_settings" resource array */
+    private static final int PROXY_MANUAL = 1;
+
     private boolean mEditing;
     private boolean mExists;
 
@@ -66,6 +70,9 @@ class ConfigDialog extends AlertDialog implements TextWatcher,
     private TextView mSearchDomains;
     private TextView mDnsServers;
     private TextView mRoutes;
+    private Spinner mProxySettings;
+    private TextView mProxyHost;
+    private TextView mProxyPort;
     private CheckBox mMppe;
     private TextView mL2tpSecret;
     private TextView mIpsecIdentifier;
@@ -104,6 +111,9 @@ class ConfigDialog extends AlertDialog implements TextWatcher,
         mSearchDomains = (TextView) mView.findViewById(R.id.search_domains);
         mDnsServers = (TextView) mView.findViewById(R.id.dns_servers);
         mRoutes = (TextView) mView.findViewById(R.id.routes);
+        mProxySettings = (Spinner) mView.findViewById(R.id.vpn_proxy_settings);
+        mProxyHost = (TextView) mView.findViewById(R.id.vpn_proxy_host);
+        mProxyPort = (TextView) mView.findViewById(R.id.vpn_proxy_port);
         mMppe = (CheckBox) mView.findViewById(R.id.mppe);
         mL2tpSecret = (TextView) mView.findViewById(R.id.l2tp_secret);
         mIpsecIdentifier = (TextView) mView.findViewById(R.id.ipsec_identifier);
@@ -127,6 +137,8 @@ class ConfigDialog extends AlertDialog implements TextWatcher,
         mSearchDomains.setText(mProfile.searchDomains);
         mDnsServers.setText(mProfile.dnsServers);
         mRoutes.setText(mProfile.routes);
+        mProxyHost.setText(mProfile.proxyHost);
+        mProxyPort.setText(mProfile.proxyPort);
         mMppe.setChecked(mProfile.mppe);
         mL2tpSecret.setText(mProfile.l2tpSecret);
         mIpsecIdentifier.setText(mProfile.ipsecIdentifier);
@@ -152,6 +164,9 @@ class ConfigDialog extends AlertDialog implements TextWatcher,
         mPassword.addTextChangedListener(this);
         mDnsServers.addTextChangedListener(this);
         mRoutes.addTextChangedListener(this);
+        mProxySettings.setOnItemSelectedListener(this);
+        mProxyHost.addTextChangedListener(this);
+        mProxyPort.addTextChangedListener(this);
         mIpsecSecret.addTextChangedListener(this);
         mIpsecUserCert.setOnItemSelectedListener(this);
         mShowOptions.setOnClickListener(this);
@@ -174,7 +189,8 @@ class ConfigDialog extends AlertDialog implements TextWatcher,
 
             // Switch to advanced view immediately if any advanced options are on
             if (!mProfile.searchDomains.isEmpty() || !mProfile.dnsServers.isEmpty() ||
-                    !mProfile.routes.isEmpty()) {
+                    !mProfile.routes.isEmpty() || !mProfile.proxyHost.isEmpty() ||
+                    !mProfile.proxyPort.isEmpty()) {
                 showAdvancedOptions();
             }
 
@@ -182,6 +198,12 @@ class ConfigDialog extends AlertDialog implements TextWatcher,
             if (mExists) {
                 setButton(DialogInterface.BUTTON_NEUTRAL,
                         context.getString(R.string.vpn_forget), mListener);
+            }
+
+            // Show proxy fields if any proxy fields are
+            if (!mProfile.proxyHost.isEmpty() || !mProfile.proxyPort.isEmpty()) {
+                mProxySettings.setSelection(PROXY_MANUAL);
+                showProxyFields(PROXY_MANUAL);
             }
 
             // Create a button to save the profile.
@@ -245,6 +267,8 @@ class ConfigDialog extends AlertDialog implements TextWatcher,
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         if (parent == mType) {
             changeType(position);
+        } else if (parent == mProxySettings) {
+            showProxyFields(position);
         }
         updateUiControls();
     }
@@ -310,6 +334,11 @@ class ConfigDialog extends AlertDialog implements TextWatcher,
         getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(validate(mEditing));
     }
 
+    private void showProxyFields(int position) {
+        final int visible = position == PROXY_MANUAL ? View.VISIBLE : View.GONE;
+        mView.findViewById(R.id.vpn_proxy_fields).setVisibility(visible);
+    }
+
     private void showAdvancedOptions() {
         mView.findViewById(R.id.options).setVisibility(View.VISIBLE);
         mShowOptions.setVisibility(View.GONE);
@@ -360,6 +389,11 @@ class ConfigDialog extends AlertDialog implements TextWatcher,
                 !validateAddresses(mRoutes.getText().toString(), true)) {
             return false;
         }
+
+        if (!validateProxy()) {
+            return false;
+        }
+
         switch (mType.getSelectedItemPosition()) {
             case VpnProfile.TYPE_PPTP:
             case VpnProfile.TYPE_IPSEC_HYBRID_RSA:
@@ -434,6 +468,10 @@ class ConfigDialog extends AlertDialog implements TextWatcher,
         return mEditing;
     }
 
+    boolean isProxyFieldsShowing() {
+        return mProxySettings.getSelectedItemPosition() == PROXY_MANUAL;
+    }
+
     VpnProfile getProfile() {
         // First, save common fields.
         VpnProfile profile = new VpnProfile(mProfile.key);
@@ -445,7 +483,13 @@ class ConfigDialog extends AlertDialog implements TextWatcher,
         profile.searchDomains = mSearchDomains.getText().toString().trim();
         profile.dnsServers = mDnsServers.getText().toString().trim();
         profile.routes = mRoutes.getText().toString().trim();
-
+        if (!mEditing || isProxyFieldsShowing()) {
+            profile.proxyHost = mProxyHost.getText().toString().trim();
+            profile.proxyPort = mProxyPort.getText().toString().trim();
+        } else {
+            profile.proxyHost = "";
+            profile.proxyPort = "";
+        }
         // Then, save type-specific fields.
         switch (profile.type) {
             case VpnProfile.TYPE_PPTP:
@@ -482,4 +526,15 @@ class ConfigDialog extends AlertDialog implements TextWatcher,
         profile.saveLogin = mSaveLogin.isChecked() || (mEditing && hasLogin);
         return profile;
     }
+
+    private boolean validateProxy() {
+        if (!isProxyFieldsShowing()) {
+            return true;
+        }
+
+        final String host = mProxyHost.getText().toString().trim();
+        final String port = mProxyPort.getText().toString().trim();
+        return ProxySelector.validate(host, port, "") == 0;
+    }
+
 }
