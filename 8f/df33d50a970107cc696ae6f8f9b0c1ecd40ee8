@@ -1,0 +1,9 @@
+Code-Review+2: Fan Zhang <zhfan@google.com>
+Code-Review+2: Hall Liu <hallliu@google.com>
+Presubmit-Verified-1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Mattias Nilsson <mattias.nilsson@sony.com>
+Submitted-by: Hall Liu <hallliu@google.com>
+Submitted-at: Thu, 18 Oct 2018 20:36:04 +0000
+Reviewed-on: https://android-review.googlesource.com/770364
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
