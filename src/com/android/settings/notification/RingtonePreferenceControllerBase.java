@@ -22,6 +22,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import androidx.preference.Preference;
 
+import com.android.settings.RingtonePreference;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
 
@@ -44,7 +45,8 @@ public abstract class RingtonePreferenceControllerBase extends AbstractPreferenc
 
     @Override
     public void updateState(Preference preference) {
-        Uri ringtoneUri = RingtoneManager.getActualDefaultRingtoneUri(mContext, getRingtoneType());
+        Uri ringtoneUri = RingtoneManager.getActualDefaultRingtoneUriBySlot(mContext,
+                getRingtoneType(), ((RingtonePreference)preference).getSlotId());
         final CharSequence summary = Ringtone.getTitle(
             mContext, ringtoneUri, false /* followSettingsUri */, true /* allowRemote */);
         if (summary != null) {
