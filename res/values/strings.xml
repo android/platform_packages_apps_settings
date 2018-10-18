@@ -7128,6 +7128,12 @@
     <!-- Sound: Title for the option defining the phone ringtone. [CHAR LIMIT=30] -->
     <string name="ringtone_title">Phone ringtone</string>
 
+    <!-- Sound: Title for the option defining the phone ringtone for slot1 on Muilti SIM device. [CHAR LIMIT=50] -->
+    <string name="ringtone1_title">Phone ringtone - SIM 1</string>
+
+    <!-- Sound: Title for the option defining the phone ringtone for slot2 on Muilti SIM device. [CHAR LIMIT=50] -->
+    <string name="ringtone2_title">Phone ringtone - SIM 2</string>
+
     <!-- Sound: Title for the option defining the default notification sound. [CHAR LIMIT=30] -->
     <string name="notification_ringtone_title">Default notification sound</string>
 

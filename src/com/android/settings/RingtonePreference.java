@@ -35,6 +35,7 @@ import android.util.AttributeSet;
  * <p>
  * If the user chooses the "Default" item, the saved string will be one of
  * {@link System#DEFAULT_RINGTONE_URI},
+ * {@link System#DEFAULT_RINGTONE2_URI},
  * {@link System#DEFAULT_NOTIFICATION_URI}, or
  * {@link System#DEFAULT_ALARM_ALERT_URI}. If the user chooses the "Silent"
  * item, the saved string will be an empty string.
@@ -49,6 +50,9 @@ import android.util.AttributeSet;
 public class RingtonePreference extends Preference {
 
     private static final String TAG = "RingtonePreference";
+
+    // Default is slot0
+    private int mSlotId = 0;
 
     private int mRingtoneType;
     private boolean mShowDefault;
@@ -81,6 +85,25 @@ public class RingtonePreference extends Preference {
 
     public int getUserId() {
         return mUserId;
+    }
+
+    /**
+     * Sets the slot id that this preference belongs to.
+     *
+     * @param slotId The slot id that this preference belongs to.
+     */
+    public void setSlotId(int slotId) {
+        mSlotId = slotId;
+    }
+
+    /**
+     * Returns the slot id that this preference belongs to.
+     *
+     * @return The slot id that this preference belongs to.
+     * @see #setSlotId(int)
+     */
+    public int getSlotId() {
+        return mSlotId;
     }
 
     /**
@@ -161,7 +184,7 @@ public class RingtonePreference extends Preference {
         ringtonePickerIntent.putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_DEFAULT, mShowDefault);
         if (mShowDefault) {
             ringtonePickerIntent.putExtra(RingtoneManager.EXTRA_RINGTONE_DEFAULT_URI,
-                    RingtoneManager.getDefaultUri(getRingtoneType()));
+                    RingtoneManager.getDefaultUriBySlot(getRingtoneType(), getSlotId()));
         }
 
         ringtonePickerIntent.putExtra(RingtoneManager.EXTRA_RINGTONE_SHOW_SILENT, mShowSilent);
