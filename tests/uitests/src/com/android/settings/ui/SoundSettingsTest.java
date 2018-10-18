@@ -17,6 +17,7 @@
 package com.android.settings.ui;
 
 import android.content.ContentResolver;
+import android.content.Context;
 import android.os.SystemClock;
 import android.provider.Settings;
 import android.support.test.uiautomator.By;
@@ -25,11 +26,19 @@ import android.support.test.uiautomator.UiObject2;
 import android.support.test.uiautomator.Until;
 import android.system.helpers.SettingsHelper;
 import android.system.helpers.SettingsHelper.SettingsType;
+import android.telecom.PhoneAccount;
+import android.telecom.PhoneAccountHandle;
+import android.telecom.TelecomManager;
+import android.telephony.SubscriptionInfo;
+import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyManager;
 import android.test.InstrumentationTestCase;
 import android.test.suitebuilder.annotation.MediumTest;
 import android.test.suitebuilder.annotation.Suppress;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class SoundSettingsTest extends InstrumentationTestCase {
     private static final String PAGE = Settings.ACTION_SOUND_SETTINGS;
@@ -38,7 +47,11 @@ public class SoundSettingsTest extends InstrumentationTestCase {
     private UiDevice mDevice;
     private ContentResolver mResolver;
     private SettingsHelper mHelper;
-
+    private TelecomManager mTelecomManager;
+    private String mRingtoneSettingForPhoneAccountHandle1 = Settings.System.RINGTONE;
+    private String mRingtoneSettingForPhoneAccountHandle2 = Settings.System.RINGTONE;
+    private String mRingtoneSettingTitleForPhoneAccountHandle1 = "Phone ringtone";
+    private String mRingtoneSettingTitleForPhoneAccountHandle2 = "Phone ringtone";
 
     private HashMap ringtoneSounds = new HashMap<String, String>() {{
         put("angler","Dione");
@@ -102,6 +115,9 @@ public class SoundSettingsTest extends InstrumentationTestCase {
         mDevice.setOrientationNatural();
         mResolver = getInstrumentation().getContext().getContentResolver();
         mHelper = new SettingsHelper();
+        mTelecomManager = (TelecomManager) getInstrumentation().getContext()
+                .getSystemService(Context.TELECOM_SERVICE);
+        initRingtoneSetting();
     }
 
     @Override
@@ -183,27 +199,55 @@ public class SoundSettingsTest extends InstrumentationTestCase {
     @MediumTest
     public void testPhoneRingtoneNone() throws Exception {
         launchSoundSettings();
-        mHelper.clickSetting("Phone ringtone");
-        verifyRingtone(new RingtoneSetting("None", "null"),
-                Settings.System.RINGTONE);
+        if (hasMultiPhoneAccountHandle()) {
+            mHelper.clickSetting(mRingtoneSettingTitleForPhoneAccountHandle1);
+            verifyRingtone(new RingtoneSetting("None", "null"),
+                    mRingtoneSettingForPhoneAccountHandle1);
+            mHelper.clickSetting(mRingtoneSettingTitleForPhoneAccountHandle2);
+            verifyRingtone(new RingtoneSetting("None", "null"),
+                    mRingtoneSettingForPhoneAccountHandle2);
+        } else {
+            mHelper.clickSetting(mRingtoneSettingTitleForPhoneAccountHandle1);
+            verifyRingtone(new RingtoneSetting("None", "null"),
+                    mRingtoneSettingForPhoneAccountHandle1);
+        }
     }
 
     @MediumTest
     @Suppress
     public void testPhoneRingtoneHangouts() throws Exception {
         launchSoundSettings();
-        mHelper.clickSetting("Phone ringtone");
-        verifyRingtone(new RingtoneSetting("Hangouts Call", "31"), Settings.System.RINGTONE);
+        if (hasMultiPhoneAccountHandle()) {
+            mHelper.clickSetting(mRingtoneSettingTitleForPhoneAccountHandle1);
+            verifyRingtone(new RingtoneSetting("Hangouts Call", "31"),
+                    mRingtoneSettingForPhoneAccountHandle1);
+            mHelper.clickSetting(mRingtoneSettingTitleForPhoneAccountHandle2);
+            verifyRingtone(new RingtoneSetting("Hangouts Call", "31"),
+                    mRingtoneSettingForPhoneAccountHandle2);
+        } else {
+            mHelper.clickSetting(mRingtoneSettingTitleForPhoneAccountHandle1);
+            verifyRingtone(new RingtoneSetting("Hangouts Call", "31"),
+                    mRingtoneSettingForPhoneAccountHandle1);
+        }
     }
 
     @MediumTest
     public void testPhoneRingtone() throws Exception {
         launchSoundSettings();
-        mHelper.clickSetting("Phone ringtone");
         String ringtone = ringtoneSounds.get(mDevice.getProductName()).toString();
         String ringtoneSettingValue = ringtoneCodes.get(mDevice.getProductName()).toString();
-        verifyRingtone(new RingtoneSetting(ringtone, ringtoneSettingValue),
-                Settings.System.RINGTONE);
+        if (hasMultiPhoneAccountHandle()) {
+            mHelper.clickSetting(mRingtoneSettingTitleForPhoneAccountHandle1);
+            verifyRingtone(new RingtoneSetting(ringtone, ringtoneSettingValue),
+                    mRingtoneSettingForPhoneAccountHandle1);
+            mHelper.clickSetting(mRingtoneSettingTitleForPhoneAccountHandle2);
+            verifyRingtone(new RingtoneSetting(ringtone, ringtoneSettingValue),
+                    mRingtoneSettingForPhoneAccountHandle2);
+        } else {
+            mHelper.clickSetting(mRingtoneSettingTitleForPhoneAccountHandle1);
+            verifyRingtone(new RingtoneSetting(ringtone, ringtoneSettingValue),
+                    mRingtoneSettingForPhoneAccountHandle1);
+        }
     }
 
     @MediumTest
@@ -283,6 +327,63 @@ public class SoundSettingsTest extends InstrumentationTestCase {
             assertEquals("content://media/internal/audio/media/" + r.getVal(),
                     Settings.System.getString(mResolver, settingName));
         }
+    }
+
+    private void initRingtoneSetting() {
+        List<PhoneAccountHandle> accountHandles = getPhoneAccountHandles();
+        if (accountHandles == null || accountHandles.size() == 0) {
+            return;
+        }
+        PhoneAccountHandle phoneAccountHandle1 = accountHandles.get(0);
+        mRingtoneSettingForPhoneAccountHandle1 += "_" + phoneAccountHandle1.getId();
+        if (accountHandles.size() > 1) {
+            PhoneAccountHandle phoneAccountHandle2 = accountHandles.get(1);
+            mRingtoneSettingForPhoneAccountHandle2 += "_" + phoneAccountHandle2.getId();
+
+            CharSequence nameForRingtonePreference1 = getDisplayNameForRingtonePreference(
+                    phoneAccountHandle1);
+            if (nameForRingtonePreference1 != null) {
+                mRingtoneSettingTitleForPhoneAccountHandle1 += " - " + nameForRingtonePreference1;
+            }
+            CharSequence nameForRingtonePreference2 = getDisplayNameForRingtonePreference(
+                    phoneAccountHandle2);
+            if (nameForRingtonePreference2 != null) {
+                mRingtoneSettingTitleForPhoneAccountHandle2 += " - " + nameForRingtonePreference2;
+            }
+        }
+    }
+
+    private List<PhoneAccountHandle> getPhoneAccountHandles() {
+        List<PhoneAccountHandle> subscriptionAccountHandles = new ArrayList<>();
+        List<PhoneAccountHandle> accountHandles = mTelecomManager.getCallCapablePhoneAccounts(true);
+        for (PhoneAccountHandle accountHandle : accountHandles) {
+            PhoneAccount phoneAccount = mTelecomManager.getPhoneAccount(accountHandle);
+            // Emergency phone account also has CAPABILITY_SIM_SUBSCRIPTION, so should exclude it.
+            if (phoneAccount.hasCapabilities(PhoneAccount.CAPABILITY_SIM_SUBSCRIPTION)
+                    && !"E".equals(accountHandle.getId())) {
+                subscriptionAccountHandles.add(accountHandle);
+            }
+        }
+        return subscriptionAccountHandles;
+    }
+
+    private boolean hasMultiPhoneAccountHandle() {
+        return getPhoneAccountHandles().size() > 1;
+    }
+
+    private CharSequence getDisplayNameForRingtonePreference(
+            PhoneAccountHandle phoneAccountHandle) {
+        SubscriptionManager subscriptionManager = (SubscriptionManager) getInstrumentation()
+                .getContext().getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
+        TelephonyManager telephonyManager = (TelephonyManager) getInstrumentation()
+                .getContext().getSystemService(Context.TELEPHONY_SERVICE);
+        PhoneAccount phoneAccount = mTelecomManager.getPhoneAccount(phoneAccountHandle);
+        int subId = telephonyManager.getSubIdForPhoneAccount(phoneAccount);
+        SubscriptionInfo subInfo = subscriptionManager.getActiveSubscriptionInfo(subId);
+        if (subInfo != null) {
+            return subInfo.getDisplayName();
+        }
+        return null;
     }
 
     private enum ScrollDir {

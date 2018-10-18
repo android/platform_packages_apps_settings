@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 The Android Open Source Project
+ * Copyright (C) 2019 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -51,7 +51,7 @@ import org.robolectric.shadows.ShadowApplication;
 import static org.mockito.ArgumentMatchers.anyInt;
 
 @RunWith(RobolectricTestRunner.class)
-public class PhoneRingtonePreferenceControllerTest {
+public class PhoneRingtone2PreferenceControllerTest {
 
     @Mock
     private TelephonyManager mTelephonyManager;
@@ -67,7 +67,7 @@ public class PhoneRingtonePreferenceControllerTest {
     private DefaultRingtonePreference mPreference;
 
     private Context mContext;
-    private PhoneRingtonePreferenceController mController;
+    private PhoneRingtone2PreferenceController mController;
 
     private static final PhoneAccountHandle PHONE_ACCOUNT_HANDLE_1 = new PhoneAccountHandle(
             new ComponentName("pkg", "cls"), "id_1", UserHandle.of(0));
@@ -94,7 +94,7 @@ public class PhoneRingtonePreferenceControllerTest {
         shadowContext.setSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE,
                 mSubscriptionManager);
         mContext = RuntimeEnvironment.application;
-        mController = new PhoneRingtonePreferenceController(mContext);
+        mController = new PhoneRingtone2PreferenceController(mContext);
     }
 
     @Test
@@ -102,12 +102,14 @@ public class PhoneRingtonePreferenceControllerTest {
         when(mPreferenceScreen.findPreference(mController.getPreferenceKey()))
                 .thenReturn(mPreference);
         when(mTelecomManager.getCallCapablePhoneAccounts(true))
-                .thenReturn(Arrays.asList(PHONE_ACCOUNT_HANDLE_1));
+                .thenReturn(Arrays.asList(PHONE_ACCOUNT_HANDLE_1, PHONE_ACCOUNT_HANDLE_2));
         when(mTelecomManager.getPhoneAccount(PHONE_ACCOUNT_HANDLE_1))
                 .thenReturn(PHONE_ACCOUNT_1);
+        when(mTelecomManager.getPhoneAccount(PHONE_ACCOUNT_HANDLE_2))
+                .thenReturn(PHONE_ACCOUNT_2);
         mController.displayPreference(mPreferenceScreen);
 
-        verify(mPreference).setPhoneAccountHandle(PHONE_ACCOUNT_HANDLE_1);
+        verify(mPreference).setPhoneAccountHandle(PHONE_ACCOUNT_HANDLE_2);
     }
 
     @Test
@@ -137,8 +139,25 @@ public class PhoneRingtonePreferenceControllerTest {
     }
 
     @Test
-    public void isAvailable_VoiceCapable_shouldReturnTrue() {
+    public void isAvailable_notMultiPhoneAccountHandle_shouldReturnFalse() {
         when(mTelephonyManager.isVoiceCapable()).thenReturn(true);
+        when(mTelecomManager.getCallCapablePhoneAccounts(true))
+                .thenReturn(Arrays.asList(PHONE_ACCOUNT_HANDLE_1));
+        when(mTelecomManager.getPhoneAccount(PHONE_ACCOUNT_HANDLE_1))
+                .thenReturn(PHONE_ACCOUNT_1);
+
+        assertThat(mController.isAvailable()).isFalse();
+    }
+
+    @Test
+    public void isAvailable_VoiceCapable_and_MultiPhoneAccountHandle_shouldReturnTrue() {
+        when(mTelephonyManager.isVoiceCapable()).thenReturn(true);
+        when(mTelecomManager.getCallCapablePhoneAccounts(true))
+                .thenReturn(Arrays.asList(PHONE_ACCOUNT_HANDLE_1, PHONE_ACCOUNT_HANDLE_2));
+        when(mTelecomManager.getPhoneAccount(PHONE_ACCOUNT_HANDLE_1))
+                .thenReturn(PHONE_ACCOUNT_1);
+        when(mTelecomManager.getPhoneAccount(PHONE_ACCOUNT_HANDLE_2))
+                .thenReturn(PHONE_ACCOUNT_2);
 
         assertThat(mController.isAvailable()).isTrue();
     }

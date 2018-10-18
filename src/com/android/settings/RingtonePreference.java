@@ -24,6 +24,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.UserHandle;
 import android.provider.Settings.System;
+import android.telecom.PhoneAccountHandle;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 
@@ -54,6 +55,7 @@ public class RingtonePreference extends Preference {
     private int mRingtoneType;
     private boolean mShowDefault;
     private boolean mShowSilent;
+    private PhoneAccountHandle mPhoneAccountHandle;
 
     private int mRequestCode;
     protected int mUserId;
@@ -82,6 +84,25 @@ public class RingtonePreference extends Preference {
 
     public int getUserId() {
         return mUserId;
+    }
+
+    /**
+     * Sets the {@link PhoneAccountHandle} that this preference belongs to.
+     *
+     * @param phoneAccountHandle The {@link PhoneAccountHandle} that this preference belongs to.
+     */
+    public void setPhoneAccountHandle(PhoneAccountHandle phoneAccountHandle) {
+        mPhoneAccountHandle = phoneAccountHandle;
+    }
+
+    /**
+     * Returns the {@link PhoneAccountHandle} that this preference belongs to.
+     *
+     * @return The {@link PhoneAccountHandle} that this preference belongs to.
+     * @see #setPhoneAccountHandle(PhoneAccountHandle)
+     */
+    public PhoneAccountHandle getPhoneAccountHandle() {
+        return mPhoneAccountHandle;
     }
 
     /**
