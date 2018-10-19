@@ -10080,4 +10080,8 @@
 
     <!-- Title for Connected device shortcut [CHAR LIMIT=30] -->
     <string name="devices_title">Devices</string>
+
+    <!-- Switch to cellular data string -->
+    <string name="wifi_switch_cellular_data_title" description="preference title for switch to cellular data">"Switch to cellular data"</string>
+    <string name="wifi_switch_cellular_data_summary" description="preference summary, let user know when connection will switch from Wi-Fi to cellular data">"Switch to cellular data whenever your Wi-Fi connection is slow or unstable"</string>
 </resources>
