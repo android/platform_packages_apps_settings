@@ -212,6 +212,30 @@
       "revId": "ff64e20c6942d2e46d6c7005a7a61c52b75c0186",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8c162d47_ff89cd58",
+        "filename": "src/com/android/settings/network/ApnSettings.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1236374
+      },
+      "writtenOn": "2018-10-19T07:51:18Z",
+      "side": 1,
+      "message": "I\u0027m sorry for late and thank you for your support Paul. Your understanding is correct.\n\nIn detail, it\u0027s due to legacy AOSP layout design in apn_preference_layout.xml\nhttps://android.googlesource.com/platform/packages/apps/Settings/+/master/res/layout/apn_preference_layout.xml\nThere are three areas on the apn_preference_layout, please refer to below.\n\u003d\u003d\u003d\u003d\u003d\u003d\n(A) onPreferenceTreeClick area is LinearLayout as base. (It\u0027s overlayed by next B and C)\n(B) onClick area is for \"text_layout\" with RelativeLayout (Left side on (A))\n(C) and RadioButton, (Right side on (A), but it is \"wrap_content\" and does not cover the right side of (A) completely)\n\u003d\u003d\u003d\u003d\u003d\u003d\nAs above, onPreferenceTreeClick(A) has still click-able area around the RadioButton, and both onClicks are needed.",
+      "parentUuid": "7174f803_9a210680",
+      "range": {
+        "startLine": 417,
+        "startChar": 8,
+        "endLine": 421,
+        "endChar": 9
+      },
+      "revId": "ff64e20c6942d2e46d6c7005a7a61c52b75c0186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
