@@ -43,6 +43,11 @@
         android:title="@string/wifi_cellular_data_fallback_title"
         android:summary="@string/wifi_cellular_data_fallback_summary" />
 
+    <SwitchPreference
+        android:key="wifi_switch_cellular_data"
+        android:title="@string/wifi_switch_cellular_data_title"
+        android:summary="@string/wifi_switch_cellular_data_summary" />
+
     <Preference
         android:key="install_credentials"
         android:title="@string/wifi_install_credentials">
