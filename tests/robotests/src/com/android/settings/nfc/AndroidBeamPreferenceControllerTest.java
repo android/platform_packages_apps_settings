@@ -22,6 +22,7 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.nfc.NfcAdapter;
 import android.nfc.NfcManager;
 import android.os.UserHandle;
@@ -56,6 +57,8 @@ public class AndroidBeamPreferenceControllerTest {
     private UserManager mUserManager;
     @Mock
     private PreferenceScreen mScreen;
+    @Mock
+    private PackageManager mPackageManager;
 
     private RestrictedPreference mAndroidBeamPreference;
     private AndroidBeamPreferenceController mAndroidBeamController;
@@ -77,6 +80,8 @@ public class AndroidBeamPreferenceControllerTest {
         mAndroidBeamPreference = new RestrictedPreference(RuntimeEnvironment.application);
         when(mScreen.findPreference(mAndroidBeamController.getPreferenceKey())).thenReturn(
                 mAndroidBeamPreference);
+        when(mPackageManager.hasSystemFeature(PackageManager.FEATURE_NFC_BEAM)).thenReturn(true);
+        when(mContext.getPackageManager()).thenReturn(mPackageManager);
 
         Settings.Global.putString(mContext.getContentResolver(),
                 Settings.Global.AIRPLANE_MODE_TOGGLEABLE_RADIOS,
