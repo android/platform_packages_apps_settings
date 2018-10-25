@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b776653_0fa84c0c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-10-25T16:31:52Z",
+      "side": 1,
+      "message": "Can you add a Bug number to commit?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 0
+      },
+      "revId": "bc6ad5703ccd808cf95538e0401601f8a7fdde45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b59bdb91_5f13987a",
+        "filename": "src/com/android/settings/applications/AppStorageSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2018-10-25T16:31:52Z",
+      "side": 1,
+      "message": "hmm I am not sure I understand the fix.\n\nSo by *not* setting text, the button shows up? What\u0027s causing it to be hidden in the first place?",
+      "revId": "bc6ad5703ccd808cf95538e0401601f8a7fdde45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
