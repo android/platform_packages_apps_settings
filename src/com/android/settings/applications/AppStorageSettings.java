@@ -319,9 +319,7 @@ public class AppStorageSettings extends AppInfoWithHeader
             } else {
                 mButtonsPref.setButton1Text(R.string.clear_user_data_text);
             }
-            mButtonsPref
-                    .setButton1Text(R.string.clear_user_data_text)
-                    .setButton1OnClickListener(v -> handleClearDataClick());
+            mButtonsPref.setButton1OnClickListener(v -> handleClearDataClick());
         }
 
         if (mAppsControlDisallowedBySystem) {
