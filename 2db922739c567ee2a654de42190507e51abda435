@@ -259,6 +259,30 @@
     },
     {
       "key": {
+        "uuid": "3a88a5e6_b7fd3d95",
+        "filename": "res/layout/wfc_disclaimer_item_container.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-10-26T19:40:22Z",
+      "side": 1,
+      "message": "Let\u0027s change it.",
+      "parentUuid": "a50ccc48_480279dd",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 40
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "20639738_cd10297a",
         "filename": "res/layout/wfc_simple_disclaimer_item.xml",
         "patchSetId": 8
@@ -1219,6 +1243,30 @@
       "revId": "2db922739c567ee2a654de42190507e51abda435",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "042ab25c_f3f50b52",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerItemFactory.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-10-26T19:40:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4695fdeb_eeedda17",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 5
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
