@@ -49,6 +49,29 @@
     },
     {
       "key": {
+        "uuid": "29d93ab8_66d4aa07",
+        "filename": "src/com/android/settings/applications/AppStorageSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1069829
+      },
+      "writtenOn": "2018-10-26T00:40:33Z",
+      "side": 1,
+      "message": "\"Manage storage\" will not shown.",
+      "range": {
+        "startLine": 318,
+        "startChar": 16,
+        "endLine": 318,
+        "endChar": 72
+      },
+      "revId": "bc6ad5703ccd808cf95538e0401601f8a7fdde45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b59bdb91_5f13987a",
         "filename": "src/com/android/settings/applications/AppStorageSettings.java",
         "patchSetId": 3
