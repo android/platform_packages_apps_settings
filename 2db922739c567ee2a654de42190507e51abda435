@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6e763bc1_9983c9ca",
+        "filename": "AndroidManifest.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 3330,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-10-26T06:22:50Z",
+      "side": 1,
+      "message": "I will change the name to WifiDisclaimerActivity and use a fragment.",
+      "parentUuid": "18e13a85_f7775c7a",
+      "range": {
+        "startLine": 3330,
+        "startChar": 32,
+        "endLine": 3330,
+        "endChar": 64
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a830de7_8a29ed32",
         "filename": "res/layout/wfc_disclaimer_activity.xml",
         "patchSetId": 8
@@ -36,6 +60,30 @@
       "writtenOn": "2018-09-21T22:32:33Z",
       "side": 1,
       "message": "Sorry however please change it to 2018. Please update all other copyright.",
+      "range": {
+        "startLine": 2,
+        "startChar": 19,
+        "endLine": 2,
+        "endChar": 23
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a29ac521_d6a1b316",
+        "filename": "res/layout/wfc_disclaimer_activity.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-10-26T06:22:50Z",
+      "side": 1,
+      "message": "We uploaded the file to review this in 2017. So, the copyright is 2017.\nBut I see, I will change it.",
+      "parentUuid": "7a830de7_8a29ed32",
       "range": {
         "startLine": 2,
         "startChar": 19,
@@ -140,6 +188,30 @@
     },
     {
       "key": {
+        "uuid": "a87c95f2_6d826a30",
+        "filename": "res/layout/wfc_disclaimer_item_container.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-10-26T06:22:50Z",
+      "side": 1,
+      "message": "I uploaded the file to review this in 2017. So, the copyright is 2017.\nBut I see, I will change it.",
+      "parentUuid": "6d338bdb_cdc713a1",
+      "range": {
+        "startLine": 2,
+        "startChar": 19,
+        "endLine": 2,
+        "endChar": 23
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2e425274_7de74e21",
         "filename": "res/layout/wfc_disclaimer_item_container.xml",
         "patchSetId": 8
@@ -151,6 +223,30 @@
       "writtenOn": "2018-09-21T22:32:33Z",
       "side": 1,
       "message": "nit: move it just below \"android:id\"",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 40
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a50ccc48_480279dd",
+        "filename": "res/layout/wfc_disclaimer_item_container.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-10-26T06:22:50Z",
+      "side": 1,
+      "message": "It\u0027s okay.",
+      "parentUuid": "2e425274_7de74e21",
       "range": {
         "startLine": 23,
         "startChar": 0,
@@ -186,6 +282,30 @@
     },
     {
       "key": {
+        "uuid": "f2129443_1456ff17",
+        "filename": "res/layout/wfc_simple_disclaimer_item.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-10-26T06:22:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "20639738_cd10297a",
+      "range": {
+        "startLine": 2,
+        "startChar": 19,
+        "endLine": 2,
+        "endChar": 23
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "235778fe_a6f9953e",
         "filename": "res/values/strings.xml",
         "patchSetId": 8
@@ -206,6 +326,30 @@
       "revId": "2db922739c567ee2a654de42190507e51abda435",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3f9813d_32f36870",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 10080,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-10-26T06:22:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "235778fe_a6f9953e",
+      "range": {
+        "startLine": 10080,
+        "startChar": 69,
+        "endLine": 10080,
+        "endChar": 71
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -232,6 +376,30 @@
     },
     {
       "key": {
+        "uuid": "83c0242a_3dad2cb6",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 10084,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-10-26T06:22:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "398a2e73_628e41c0",
+      "range": {
+        "startLine": 10084,
+        "startChar": 52,
+        "endLine": 10084,
+        "endChar": 59
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75d770d6_b70bb387",
         "filename": "res/values/strings.xml",
         "patchSetId": 8
@@ -252,6 +420,30 @@
       "revId": "2db922739c567ee2a654de42190507e51abda435",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5719660a_bfa59c1a",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 10087,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-10-26T06:22:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75d770d6_b70bb387",
+      "range": {
+        "startLine": 10087,
+        "startChar": 48,
+        "endLine": 10087,
+        "endChar": 57
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -278,6 +470,30 @@
     },
     {
       "key": {
+        "uuid": "18cf51b7_0a2247b8",
+        "filename": "res/values/styles.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 509,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-10-26T06:22:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06da9080_3d62ac57",
+      "range": {
+        "startLine": 509,
+        "startChar": 17,
+        "endLine": 509,
+        "endChar": 26
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23ffbfe6_e91728c1",
         "filename": "res/values/styles.xml",
         "patchSetId": 8
@@ -298,6 +514,30 @@
       "revId": "2db922739c567ee2a654de42190507e51abda435",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc32bbf5_d1632433",
+        "filename": "res/values/styles.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-10-26T06:22:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23ffbfe6_e91728c1",
+      "range": {
+        "startLine": 515,
+        "startChar": 17,
+        "endLine": 515,
+        "endChar": 26
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -324,6 +564,30 @@
     },
     {
       "key": {
+        "uuid": "4ca04cfd_48a04e2c",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-10-26T06:22:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ba6e939_2b798362",
+      "range": {
+        "startLine": 42,
+        "startChar": 12,
+        "endLine": 42,
+        "endChar": 49
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cdf8f43e_4fcb5934",
         "filename": "src/com/android/settings/wifi/calling/DisclaimerActivity.java",
         "patchSetId": 8
@@ -335,6 +599,30 @@
       "writtenOn": "2018-09-21T22:32:33Z",
       "side": 1,
       "message": "Should we save it in savedInstanceState? What if user rotate the screen?",
+      "range": {
+        "startLine": 45,
+        "startChar": 20,
+        "endLine": 45,
+        "endChar": 35
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21aaaf7f_7c614f58",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-10-26T06:22:50Z",
+      "side": 1,
+      "message": "Thank you. We should save it to savedInstanceState. I will update.",
+      "parentUuid": "cdf8f43e_4fcb5934",
       "range": {
         "startLine": 45,
         "startChar": 20,
@@ -370,6 +658,30 @@
     },
     {
       "key": {
+        "uuid": "f78af2c3_cf7c7361",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-10-26T06:22:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bde2cc1_a2dd9559",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 11
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "219c2236_c3f01aa4",
         "filename": "src/com/android/settings/wifi/calling/DisclaimerActivity.java",
         "patchSetId": 8
@@ -390,6 +702,30 @@
       "revId": "2db922739c567ee2a654de42190507e51abda435",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ad3623e_4de207c2",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-10-26T06:22:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "219c2236_c3f01aa4",
+      "range": {
+        "startLine": 54,
+        "startChar": 12,
+        "endLine": 54,
+        "endChar": 43
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -439,6 +775,30 @@
     },
     {
       "key": {
+        "uuid": "feab60c2_9b0b10ba",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-10-26T06:22:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4114f537_b02805d0",
+      "range": {
+        "startLine": 82,
+        "startChar": 23,
+        "endLine": 82,
+        "endChar": 31
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "31d6e9e2_9a48aee7",
         "filename": "src/com/android/settings/wifi/calling/DisclaimerActivity.java",
         "patchSetId": 8
@@ -459,6 +819,30 @@
       "revId": "2db922739c567ee2a654de42190507e51abda435",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d058beda_592259f5",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-10-26T06:22:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "31d6e9e2_9a48aee7",
+      "range": {
+        "startLine": 85,
+        "startChar": 12,
+        "endLine": 91,
+        "endChar": 13
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -485,6 +869,30 @@
     },
     {
       "key": {
+        "uuid": "45d591c6_f02ec994",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerActivity.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-10-26T06:22:50Z",
+      "side": 1,
+      "message": "Done. Please see DisclaimerItemListAdapter.java.",
+      "parentUuid": "32f9dfd5_88df4f98",
+      "range": {
+        "startLine": 114,
+        "startChar": 17,
+        "endLine": 114,
+        "endChar": 42
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3120426_ce95aecf",
         "filename": "src/com/android/settings/wifi/calling/DisclaimerItem.java",
         "patchSetId": 8
@@ -496,6 +904,30 @@
       "writtenOn": "2018-09-21T22:32:33Z",
       "side": 1,
       "message": "TBH I think this data structure should only contain data. It shouldn\u0027t have the View.\n\nIn Adapter, you need to build the view with the correct data from recyclerview",
+      "range": {
+        "startLine": 35,
+        "startChar": 22,
+        "endLine": 35,
+        "endChar": 36
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3e50c8e_4e5b6b33",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerItem.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-10-26T06:22:50Z",
+      "side": 1,
+      "message": "I agree with you. I will update.",
+      "parentUuid": "c3120426_ce95aecf",
       "range": {
         "startLine": 35,
         "startChar": 22,
@@ -531,6 +963,30 @@
     },
     {
       "key": {
+        "uuid": "8e790d36_ca157163",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerItem.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-10-26T06:22:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2553b53e_eda6b599",
+      "range": {
+        "startLine": 86,
+        "startChar": 29,
+        "endLine": 86,
+        "endChar": 42
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bd4e54cf_50f4e584",
         "filename": "src/com/android/settings/wifi/calling/DisclaimerItem.java",
         "patchSetId": 8
@@ -554,6 +1010,30 @@
     },
     {
       "key": {
+        "uuid": "5ed400c9_34e38727",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerItem.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-10-26T06:22:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd4e54cf_50f4e584",
+      "range": {
+        "startLine": 87,
+        "startChar": 16,
+        "endLine": 87,
+        "endChar": 46
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5a935294_ac744879",
         "filename": "src/com/android/settings/wifi/calling/DisclaimerItem.java",
         "patchSetId": 8
@@ -565,6 +1045,30 @@
       "writtenOn": "2018-09-21T22:32:33Z",
       "side": 1,
       "message": "Could it be null?",
+      "range": {
+        "startLine": 88,
+        "startChar": 8,
+        "endLine": 88,
+        "endChar": 36
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec11f739_ab065f15",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerItem.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-10-26T06:22:50Z",
+      "side": 1,
+      "message": "If we use CarrierConfigManager.class to get the object, we don\u0027t need null check anymore.\nI will remove this condition.",
+      "parentUuid": "5a935294_ac744879",
       "range": {
         "startLine": 88,
         "startChar": 8,
@@ -600,6 +1104,30 @@
     },
     {
       "key": {
+        "uuid": "8512c56a_cbb0c37c",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerItemFactory.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-10-26T06:22:50Z",
+      "side": 1,
+      "message": "I implemented this to avoid instantiating the object since this class has only static method.\nBut it is okay. I will remove this.",
+      "parentUuid": "a3646288_0a040c8b",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 5
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d25d41a1_cc176320",
         "filename": "src/com/android/settings/wifi/calling/DisclaimerItemFactory.java",
         "patchSetId": 8
@@ -611,6 +1139,30 @@
       "writtenOn": "2018-09-21T22:32:33Z",
       "side": 1,
       "message": "Am I misunderstanding something? This always return empty right?",
+      "range": {
+        "startLine": 44,
+        "startChar": 40,
+        "endLine": 44,
+        "endChar": 61
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2c0d17c_21f25ae5",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerItemFactory.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-10-26T06:22:50Z",
+      "side": 1,
+      "message": "Yes, you\u0027re right. But this commit is base implementation. So, getDisclaimerItemList always returns empty. I am going to add item in the following commit that is for LocationPolicyDisclaimer.\n\nhttps://android-review.googlesource.com/c/platform/packages/apps/Settings/+/531105/9/src/com/android/settings/wifi/calling/DisclaimerItemFactory.java",
+      "parentUuid": "d25d41a1_cc176320",
       "range": {
         "startLine": 44,
         "startChar": 40,
@@ -646,6 +1198,30 @@
     },
     {
       "key": {
+        "uuid": "4695fdeb_eeedda17",
+        "filename": "src/com/android/settings/wifi/calling/DisclaimerItemFactory.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-10-26T06:22:50Z",
+      "side": 1,
+      "message": "It is implemented by another commit but these has the same topic.\nSo, I don\u0027t think we need //TODO here. Is that okay?\n\nhttps://android-review.googlesource.com/q/topic:%22wfc_disclaimer_ui%22+(status:open%20OR%20status:merged)",
+      "parentUuid": "a23ef476_b20381f5",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 59,
+        "endChar": 5
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2630f1c7_41783f43",
         "filename": "src/com/android/settings/wifi/calling/WifiCallingSettingsForSub.java",
         "patchSetId": 8
@@ -657,6 +1233,30 @@
       "writtenOn": "2018-09-21T22:32:33Z",
       "side": 1,
       "message": "Use SubSettingsLauncher to launch page directly, instead of hardcoding path here.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 70
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c11b3244_71b81a04",
+        "filename": "src/com/android/settings/wifi/calling/WifiCallingSettingsForSub.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-10-26T06:22:50Z",
+      "side": 1,
+      "message": "Thank you. I will do that.",
+      "parentUuid": "2630f1c7_41783f43",
       "range": {
         "startLine": 69,
         "startChar": 0,
@@ -692,6 +1292,30 @@
     },
     {
       "key": {
+        "uuid": "82417a02_92f33a1e",
+        "filename": "src/com/android/settings/wifi/calling/WifiCallingSettingsForSub.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-10-26T06:22:50Z",
+      "side": 1,
+      "message": "Originally, CarrierActivity is launched in #onSwitchChanged when user enables Wi-Fi calling setting. This time we added showing disclaimer view before launching the activity. So, we need to launch it after closing disclaimer view.\n\nBefore:\n1. User enables Wi-Fi calling setting\n2. Launch Carrier Activity\n\nAfter:\n1. User enables Wi-Fi calling setting\n2. Show disclaimer view\n3. Launch Carrier Activity",
+      "parentUuid": "03f617e5_168f8bb7",
+      "range": {
+        "startLine": 451,
+        "startChar": 0,
+        "endLine": 457,
+        "endChar": 27
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eb0aee77_7ec5b0e1",
         "filename": "tests/robotests/src/com/android/settings/testutils/shadow/ShadowDisclaimerItemFactory.java",
         "patchSetId": 8
@@ -712,6 +1336,30 @@
       "revId": "2db922739c567ee2a654de42190507e51abda435",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c3a45e3_5a9eca38",
+        "filename": "tests/robotests/src/com/android/settings/testutils/shadow/ShadowDisclaimerItemFactory.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-10-26T06:22:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb0aee77_7ec5b0e1",
+      "range": {
+        "startLine": 35,
+        "startChar": 3,
+        "endLine": 35,
+        "endChar": 5
+      },
+      "revId": "2db922739c567ee2a654de42190507e51abda435",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
