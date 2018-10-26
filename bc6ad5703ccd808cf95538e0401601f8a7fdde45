@@ -104,6 +104,24 @@
       "revId": "bc6ad5703ccd808cf95538e0401601f8a7fdde45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ff0e588_ea1948e3",
+        "filename": "src/com/android/settings/applications/AppStorageSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1109108
+      },
+      "writtenOn": "2018-10-26T20:47:23Z",
+      "side": 1,
+      "message": "Ah, I see. And because the else-block sets the text, the behavior shouldn\u0027t change otherwise?",
+      "parentUuid": "f2ba43f4_9dff2ddb",
+      "revId": "bc6ad5703ccd808cf95538e0401601f8a7fdde45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
