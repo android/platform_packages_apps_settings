@@ -122,6 +122,24 @@
       "revId": "bc6ad5703ccd808cf95538e0401601f8a7fdde45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "700ffee4_3b046d3c",
+        "filename": "src/com/android/settings/applications/AppStorageSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1069829
+      },
+      "writtenOn": "2018-10-27T01:25:04Z",
+      "side": 1,
+      "message": "This fix doesn\u0027t affect change other actions.",
+      "parentUuid": "2ff0e588_ea1948e3",
+      "revId": "bc6ad5703ccd808cf95538e0401601f8a7fdde45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
