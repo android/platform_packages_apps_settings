@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "265b81bb_56b279e3",
+        "filename": "src/com/android/settings/network/ApnSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-10-29T21:26:50Z",
+      "side": 1,
+      "message": "Can we just remove it?",
+      "range": {
+        "startLine": 408,
+        "startChar": 0,
+        "endLine": 416,
+        "endChar": 5
+      },
+      "revId": "fc92e322f0126417b5b3e722de1c7b4d7f6c852f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
