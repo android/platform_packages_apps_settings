@@ -22,6 +22,30 @@
       "revId": "fc92e322f0126417b5b3e722de1c7b4d7f6c852f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbd243ae_950d64e1",
+        "filename": "src/com/android/settings/network/ApnSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1351305
+      },
+      "writtenOn": "2018-10-29T22:13:56Z",
+      "side": 1,
+      "message": "hmmm, why? It seems to be starting an activity here.",
+      "parentUuid": "265b81bb_56b279e3",
+      "range": {
+        "startLine": 408,
+        "startChar": 0,
+        "endLine": 416,
+        "endChar": 5
+      },
+      "revId": "fc92e322f0126417b5b3e722de1c7b4d7f6c852f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
