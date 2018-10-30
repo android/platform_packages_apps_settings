@@ -16,10 +16,12 @@
 package com.android.settings.wifi;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import androidx.preference.PreferenceScreen;
 
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settings.R;
+import com.android.settings.Utils;
 import com.android.settings.widget.SummaryUpdater;
 import com.android.settings.widget.MasterSwitchPreference;
 import com.android.settings.widget.MasterSwitchController;
@@ -57,7 +59,8 @@ public class WifiMasterSwitchPreferenceController extends AbstractPreferenceCont
 
     @Override
     public boolean isAvailable() {
-        return mContext.getResources().getBoolean(R.bool.config_show_wifi_settings);
+        return mContext.getResources().getBoolean(R.bool.config_show_wifi_settings)
+                && Utils.isWifiHarewareSupported(mContext);
     }
 
     @Override
@@ -83,8 +86,10 @@ public class WifiMasterSwitchPreferenceController extends AbstractPreferenceCont
 
     @Override
     public void onStart() {
-        mWifiEnabler = new WifiEnabler(mContext, new MasterSwitchController(mWifiPreference),
-            mMetricsFeatureProvider);
+        if (Utils.isWifiHarewareSupported(mContext)) {
+            mWifiEnabler = new WifiEnabler(mContext, new MasterSwitchController(mWifiPreference),
+                    mMetricsFeatureProvider);
+        }
     }
 
     @Override

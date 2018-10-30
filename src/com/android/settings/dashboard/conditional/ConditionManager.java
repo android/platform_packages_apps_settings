@@ -24,6 +24,7 @@ import android.util.Xml;
 import com.android.settingslib.core.lifecycle.LifecycleObserver;
 import com.android.settingslib.core.lifecycle.events.OnPause;
 import com.android.settingslib.core.lifecycle.events.OnResume;
+import com.android.settings.Utils;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
@@ -147,7 +148,9 @@ public class ConditionManager implements LifecycleObserver, OnResume, OnPause {
 
     private void addMissingConditions(ArrayList<Condition> conditions) {
         addIfMissing(AirplaneModeCondition.class, conditions);
-        addIfMissing(HotspotCondition.class, conditions);
+        if (Utils.isWifiHarewareSupported(mContext)) {
+            addIfMissing(HotspotCondition.class, conditions);
+        }
         addIfMissing(DndCondition.class, conditions);
         addIfMissing(BatterySaverCondition.class, conditions);
         addIfMissing(CellularDataCondition.class, conditions);

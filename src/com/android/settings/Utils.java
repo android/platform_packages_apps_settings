@@ -223,6 +223,10 @@ public final class Utils extends com.android.settingslib.Utils {
         return null;
     }
 
+    public static boolean isWifiHarewareSupported(Context context) {
+        return context.getPackageManager().hasSystemFeature(PackageManager.FEATURE_WIFI);
+    }
+
     private static String formatIpAddresses(LinkProperties prop) {
         if (prop == null) return null;
         Iterator<InetAddress> iter = prop.getAllAddresses().iterator();

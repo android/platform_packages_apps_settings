@@ -20,6 +20,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
@@ -72,7 +73,7 @@ public class WifiTetherPreferenceController extends AbstractPreferenceController
         if (lifecycle != null) {
             lifecycle.addObserver(this);
         }
-        if (initSoftApManager) {
+        if (initSoftApManager && Utils.isWifiHarewareSupported(context)) {
             initWifiTetherSoftApManager();
         }
     }
@@ -81,7 +82,8 @@ public class WifiTetherPreferenceController extends AbstractPreferenceController
     public boolean isAvailable() {
         return mWifiRegexs != null
                 && mWifiRegexs.length != 0
-                && !Utils.isMonkeyRunning();
+                && !Utils.isMonkeyRunning()
+                && Utils.isWifiHarewareSupported(mContext);
     }
 
     @Override

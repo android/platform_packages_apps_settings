@@ -41,6 +41,7 @@ import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.datausage.DataSaverBackend;
 import com.android.settings.wifi.tether.WifiTetherPreferenceController;
 import com.android.settingslib.TetherUtil;
+import com.android.settings.widget.FixedLineSummaryPreference;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -52,11 +53,14 @@ import java.util.concurrent.atomic.AtomicReference;
 public class TetherSettings extends RestrictedSettingsFragment
         implements DataSaverBackend.Listener {
 
+    private static final String WIFI_TETHER_SETTINGS = "wifi_tether";
     private static final String USB_TETHER_SETTINGS = "usb_tether_settings";
     private static final String ENABLE_BLUETOOTH_TETHERING = "enable_bluetooth_tethering";
     private static final String DATA_SAVER_FOOTER = "disabled_on_data_saver";
 
     private static final String TAG = "TetheringSettings";
+
+    private FixedLineSummaryPreference mWifiTether;
 
     private SwitchPreference mUsbTether;
 
@@ -126,6 +130,7 @@ public class TetherSettings extends RestrictedSettingsFragment
                     BluetoothProfile.PAN);
         }
 
+        mWifiTether = (FixedLineSummaryPreference) findPreference(WIFI_TETHER_SETTINGS);
         mUsbTether = (SwitchPreference) findPreference(USB_TETHER_SETTINGS);
         mBluetoothTether = (SwitchPreference) findPreference(ENABLE_BLUETOOTH_TETHERING);
 
@@ -143,7 +148,11 @@ public class TetherSettings extends RestrictedSettingsFragment
             getPreferenceScreen().removePreference(mUsbTether);
         }
 
-        mWifiTetherPreferenceController.displayPreference(getPreferenceScreen());
+        if (Utils.isWifiHarewareSupported(activity)) {
+            mWifiTetherPreferenceController.displayPreference(getPreferenceScreen());
+        } else {
+            getPreferenceScreen().removePreference(mWifiTether);
+        }
 
         if (!bluetoothAvailable) {
             getPreferenceScreen().removePreference(mBluetoothTether);
