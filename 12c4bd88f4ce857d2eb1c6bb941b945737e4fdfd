@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c613010_e2df8745",
+        "filename": "src/com/android/settings/wifi/calling/WifiCallingSettingsForSub.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1351305
+      },
+      "writtenOn": "2018-11-02T23:28:19Z",
+      "side": 1,
+      "message": "why would we need the 2nd additional string here?",
+      "range": {
+        "startLine": 165,
+        "startChar": 17,
+        "endLine": 165,
+        "endChar": 73
+      },
+      "revId": "12c4bd88f4ce857d2eb1c6bb941b945737e4fdfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
