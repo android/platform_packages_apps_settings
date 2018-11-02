@@ -70,6 +70,30 @@
       "revId": "fc92e322f0126417b5b3e722de1c7b4d7f6c852f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "706a511f_f3e4a1fe",
+        "filename": "src/com/android/settings/network/ApnSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-11-02T10:58:20Z",
+      "side": 1,
+      "message": "Thank you for your suggestion. I could remove this method. Could you please review the latest patchset?",
+      "parentUuid": "21fbd3e0_a20878fd",
+      "range": {
+        "startLine": 408,
+        "startChar": 0,
+        "endLine": 416,
+        "endChar": 5
+      },
+      "revId": "fc92e322f0126417b5b3e722de1c7b4d7f6c852f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
