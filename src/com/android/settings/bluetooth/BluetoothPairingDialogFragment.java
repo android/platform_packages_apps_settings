@@ -333,8 +333,8 @@ public class BluetoothPairingDialogFragment extends InstrumentedDialogFragment i
         contactSharing.setVisibility(
                 mPairingController.isProfileReady() ? View.GONE : View.VISIBLE);
         mPairingController.setContactSharingState();
-        contactSharing.setChecked(mPairingController.getContactSharingState());
         contactSharing.setOnCheckedChangeListener(mPairingController);
+        contactSharing.setChecked(mPairingController.getContactSharingState());
 
         messagePairing.setVisibility(mPairingController.isDisplayPairingKeyVariant()
                 ? View.VISIBLE : View.GONE);
