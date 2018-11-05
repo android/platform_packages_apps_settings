@@ -22,6 +22,30 @@
       "revId": "95f8c6e96a8be9dfb0ae933abb4263455a941b80",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f7b230b_a2ee03e1",
+        "filename": "src/com/android/settings/wifi/calling/WifiCallingSettingsForSub.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1138358
+      },
+      "writtenOn": "2018-11-05T21:11:47Z",
+      "side": 1,
+      "message": "The consumer is defined by CarrierConfigManager.KEY_WFC_EMERGENCY_ADDRESS_CARRIER_APP_STRING - see 6 lines above.",
+      "parentUuid": "8a1cdef2_ec637a5f",
+      "range": {
+        "startLine": 401,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 78
+      },
+      "revId": "95f8c6e96a8be9dfb0ae933abb4263455a941b80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
