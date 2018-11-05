@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a1cdef2_ec637a5f",
+        "filename": "src/com/android/settings/wifi/calling/WifiCallingSettingsForSub.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1121198
+      },
+      "writtenOn": "2018-11-05T20:36:23Z",
+      "side": 1,
+      "message": "who is the consumer of this extra?",
+      "range": {
+        "startLine": 401,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 78
+      },
+      "revId": "95f8c6e96a8be9dfb0ae933abb4263455a941b80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
