@@ -46,6 +46,30 @@
       "revId": "95f8c6e96a8be9dfb0ae933abb4263455a941b80",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "011f52af_705ce6cf",
+        "filename": "src/com/android/settings/wifi/calling/WifiCallingSettingsForSub.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1371846
+      },
+      "writtenOn": "2018-11-06T06:17:41Z",
+      "side": 1,
+      "message": "For now, the consumer should be WfcActivation",
+      "parentUuid": "8f7b230b_a2ee03e1",
+      "range": {
+        "startLine": 401,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 78
+      },
+      "revId": "95f8c6e96a8be9dfb0ae933abb4263455a941b80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
