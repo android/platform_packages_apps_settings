@@ -22,6 +22,30 @@
       "revId": "12c4bd88f4ce857d2eb1c6bb941b945737e4fdfd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbab53db_912523e7",
+        "filename": "src/com/android/settings/wifi/calling/WifiCallingSettingsForSub.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-11-07T02:38:40Z",
+      "side": 1,
+      "message": "That is Google\u0027s implementation not my fix.\n\nIt seems Google added it in the following commit.\n\n----\nShow aditional WiFi calling message.\n\nBug: 37624313\nTest: manual - locally apply this setting and verify that the\nadditional text is shown.\nChange-Id: I8a15a9aeb71a0daab1ae4533f2c3b7d05c57bc5f",
+      "parentUuid": "2c613010_e2df8745",
+      "range": {
+        "startLine": 165,
+        "startChar": 17,
+        "endLine": 165,
+        "endChar": 73
+      },
+      "revId": "12c4bd88f4ce857d2eb1c6bb941b945737e4fdfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
