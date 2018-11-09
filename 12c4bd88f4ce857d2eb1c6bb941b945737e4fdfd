@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "38c556bd_cf7d600a",
+        "filename": "src/com/android/settings/wifi/calling/WifiCallingSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-11-09T19:11:17Z",
+      "side": 1,
+      "message": "nit: CollectionUtils.size(mSil) \u003e 1",
+      "range": {
+        "startLine": 189,
+        "startChar": 12,
+        "endLine": 189,
+        "endChar": 43
+      },
+      "revId": "12c4bd88f4ce857d2eb1c6bb941b945737e4fdfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de530065_6e125d59",
+        "filename": "src/com/android/settings/wifi/calling/WifiCallingSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-11-09T19:11:17Z",
+      "side": 1,
+      "message": "nit: final",
+      "range": {
+        "startLine": 190,
+        "startChar": 12,
+        "endLine": 190,
+        "endChar": 21
+      },
+      "revId": "12c4bd88f4ce857d2eb1c6bb941b945737e4fdfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb78d70a_0c6a40db",
+        "filename": "src/com/android/settings/wifi/calling/WifiCallingSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-11-09T19:11:17Z",
+      "side": 1,
+      "message": "nit: final",
+      "range": {
+        "startLine": 191,
+        "startChar": 11,
+        "endLine": 191,
+        "endChar": 24
+      },
+      "revId": "12c4bd88f4ce857d2eb1c6bb941b945737e4fdfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c613010_e2df8745",
         "filename": "src/com/android/settings/wifi/calling/WifiCallingSettingsForSub.java",
         "patchSetId": 2
@@ -40,6 +109,29 @@
       "range": {
         "startLine": 165,
         "startChar": 17,
+        "endLine": 165,
+        "endChar": 73
+      },
+      "revId": "12c4bd88f4ce857d2eb1c6bb941b945737e4fdfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "deaaa995_b12d3ba8",
+        "filename": "src/com/android/settings/wifi/calling/WifiCallingSettingsForSub.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-11-09T19:11:17Z",
+      "side": 1,
+      "message": "This is definitely not a correct way to build string. Could you please fix it in this CL?\n\nWe shouldn\u0027t concat strings in code. What we should do is create a holder in strings.xml, then translation team can do better job on other language. For example(in settingslib):\n\n \u003cstring name\u003d\"power_remaining_settings_home_page\"\u003e\u003cxliff:g id\u003d\"percentage\" example\u003d\"10%\"\u003e%1$s\u003c/xliff:g\u003e - \u003cxliff:g id\u003d\"time_string\" example\u003d\"1 hour left based on your usage\"\u003e%2$s\u003c/xliff:g\u003e\u003c/string\u003e",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
         "endLine": 165,
         "endChar": 73
       },
