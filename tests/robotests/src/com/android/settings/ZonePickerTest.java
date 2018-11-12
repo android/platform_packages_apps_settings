@@ -27,7 +27,6 @@ import android.widget.TextView;
 
 import com.android.settings.datetime.ZonePicker;
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
-import com.android.settings.testutils.shadow.ShadowLibcoreTimeZoneNames;
 import com.android.settings.testutils.shadow.ShadowTimeZoneNames;
 import com.android.settings.testutils.shadow.ShadowZoneGetterData;
 
@@ -38,8 +37,6 @@ import org.robolectric.annotation.Config;
 
 @RunWith(SettingsRobolectricTestRunner.class)
 @Config(shadows = {
-    ShadowLibcoreTimeZoneNames.class,
-    ShadowLibcoreTimeZoneNames.ShadowZoneStringsCache.class,
     ShadowTimeZoneNames.class,
     ShadowZoneGetterData.class,
 }
