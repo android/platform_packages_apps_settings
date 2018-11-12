@@ -38,18 +38,21 @@ import com.android.settings.widget.SwitchBar;
 import com.android.settings.widget.SwitchBarController;
 import com.android.settingslib.search.SearchIndexable;
 
+// TODO(joshuaduong): remove once AdbWirelessManager is in.
+import com.android.settings.development.tests.AdbWirelessManager;
+
 @SearchIndexable
 public class WirelessDebugging extends DashboardFragment
         implements Indexable {
 
     private static final String TAG = "WirelessDebugging";
 
+    private WirelessDebuggingEnabler mWifiDebuggingEnabler;
+
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         final SettingsActivity activity = (SettingsActivity) getActivity();
-        final SwitchBar switchBar = activity.getSwitchBar();
-        switchBar.show();
     }
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
@@ -70,21 +73,37 @@ public class WirelessDebugging extends DashboardFragment
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+
+        if (mWifiDebuggingEnabler != null) {
+            mWifiDebuggingEnabler.teardownSwitchController();
+        }
     }
 
     @Override
     public void onStart() {
         super.onStart();
+
+        mWifiDebuggingEnabler = createWirelessDebuggingEnabler();
+        onAdbWirelessStateChanged(AdbWirelessManager.getAdbWirelessState());
     }
 
     @Override
     public void onResume() {
+        final Activity activity = getActivity();
         super.onResume();
+
+        if (mWifiDebuggingEnabler != null) {
+            mWifiDebuggingEnabler.resume(activity);
+        }
     }
 
     @Override
     public void onPause() {
         super.onPause();
+
+        if (mWifiDebuggingEnabler != null) {
+            mWifiDebuggingEnabler.pause();
+        }
     }
 
     @Override
@@ -139,5 +158,30 @@ public class WirelessDebugging extends DashboardFragment
     @Override
     protected String getLogTag() {
         return TAG;
+    }
+
+    //@Override
+    public void onAdbWirelessStateChanged(int state) {
+        switch (state) {
+            case AdbWirelessManager.ADB_WIRELESS_STATE_DISABLED:
+                break;
+            case AdbWirelessManager.ADB_WIRELESS_STATE_DISABLING:
+                break;
+            case AdbWirelessManager.ADB_WIRELESS_STATE_ENABLED:
+                break;
+            case AdbWirelessManager.ADB_WIRELESS_STATE_ENABLING:
+                break;
+            default:
+                break;
+        }
+    }
+
+    /**
+     * @return new WirelessDebuggingEnabler or null
+     */
+    private WirelessDebuggingEnabler createWirelessDebuggingEnabler() {
+        final SettingsActivity activity = (SettingsActivity) getActivity();
+        return new WirelessDebuggingEnabler(activity,
+                        new SwitchBarController(activity.getSwitchBar()));
     }
 }
