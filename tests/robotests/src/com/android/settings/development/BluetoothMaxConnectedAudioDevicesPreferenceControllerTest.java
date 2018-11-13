@@ -16,14 +16,13 @@
 
 package com.android.settings.development;
 
-import static com.android.settings.development.BluetoothMaxConnectedAudioDevicesPreferenceController.MAX_CONNECTED_AUDIO_DEVICES_PROPERTY;
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.os.SystemProperties;
+import android.sysprop.BluetoothProperties;
 import androidx.preference.ListPreference;
 import androidx.preference.PreferenceScreen;
 
@@ -55,6 +54,14 @@ public class BluetoothMaxConnectedAudioDevicesPreferenceControllerTest {
 
   private CharSequence[] mListValues;
   private CharSequence[] mListEntries;
+
+  private static Integer tryParseInteger(String str) {
+    try {
+      return Integer.valueOf(str);
+    } catch (Exception e) {
+      return null;
+    }
+  }
 
   @Before
   public void setup() {
@@ -93,9 +100,10 @@ public class BluetoothMaxConnectedAudioDevicesPreferenceControllerTest {
     assertThat(mPreference.getEntry()).isEqualTo(mListEntries[0]);
     assertThat(mPreference.getSummary()).isEqualTo(mListEntries[0]);
     // Verify that default system property is empty
-    assertThat(SystemProperties.get(MAX_CONNECTED_AUDIO_DEVICES_PROPERTY)).isEmpty();
+    assertThat(BluetoothProperties.max_connected_audio_devices().isPresent())
+        .isEqualTo(false);
     // Verify default property integer value
-    assertThat(SystemProperties.getInt(MAX_CONNECTED_AUDIO_DEVICES_PROPERTY,
+    assertThat(BluetoothProperties.max_connected_audio_devices().orElse(
         TEST_MAX_CONNECTED_AUDIO_DEVICES)).isEqualTo(TEST_MAX_CONNECTED_AUDIO_DEVICES);
   }
 
@@ -109,8 +117,10 @@ public class BluetoothMaxConnectedAudioDevicesPreferenceControllerTest {
       int index = mPreference.findIndexOfValue(newValue.toString());
       assertThat(mPreference.getEntry()).isEqualTo(mListEntries[index]);
       // Verify that system property is set correctly after the change
-      final String currentValue = SystemProperties.get(MAX_CONNECTED_AUDIO_DEVICES_PROPERTY);
-      assertThat(currentValue).isEqualTo(mListValues[index]);
+      final Integer currentValue = BluetoothProperties.max_connected_audio_devices()
+          .orElse(null);
+      final Integer listValue = tryParseInteger(mListValues[index].toString());
+      assertThat(currentValue).isEqualTo(listValue);
     }
   }
 
@@ -118,28 +128,30 @@ public class BluetoothMaxConnectedAudioDevicesPreferenceControllerTest {
   public void updateState_NumberOfDevicesUpdated_shouldSetPreference() {
     for (int i = 0; i < mListValues.length; ++i) {
       final String propertyValue = mListValues[i].toString();
-      SystemProperties.set(MAX_CONNECTED_AUDIO_DEVICES_PROPERTY, propertyValue);
+
+      BluetoothProperties.max_connected_audio_devices(tryParseInteger(propertyValue));
       // Verify that value is set on the preference
       mController.updateState(mPreference);
       assertThat(mPreference.getValue()).isEqualTo(mListValues[i]);
       assertThat(mPreference.getEntry()).isEqualTo(mListEntries[i]);
       assertThat(mPreference.getSummary()).isEqualTo(mListEntries[i]);
       // Verify that property value remain unchanged
-      assertThat(SystemProperties.get(MAX_CONNECTED_AUDIO_DEVICES_PROPERTY))
-          .isEqualTo(propertyValue);
+      assertThat(BluetoothProperties.max_connected_audio_devices().orElse(null))
+          .isEqualTo(tryParseInteger(propertyValue));
     }
   }
 
   @Test
   public void updateState_noValueSet_shouldSetDefaultTo1device() {
-    SystemProperties.set(MAX_CONNECTED_AUDIO_DEVICES_PROPERTY, "garbage");
+    BluetoothProperties.max_connected_audio_devices(null);
     mController.updateState(mPreference);
 
     // Verify that preference is reset back to default and property is reset to default
     assertThat(mPreference.getValue()).isEqualTo(mListValues[0]);
     assertThat(mPreference.getEntry()).isEqualTo(mListEntries[0]);
     assertThat(mPreference.getSummary()).isEqualTo(mListEntries[0]);
-    assertThat(SystemProperties.get(MAX_CONNECTED_AUDIO_DEVICES_PROPERTY)).isEmpty();
+    assertThat(BluetoothProperties.max_connected_audio_devices().isPresent())
+        .isEqualTo(false);
   }
 
   @Test
@@ -151,7 +163,8 @@ public class BluetoothMaxConnectedAudioDevicesPreferenceControllerTest {
     assertThat(mPreference.getValue()).isEqualTo(mListValues[0]);
     assertThat(mPreference.getEntry()).isEqualTo(mListEntries[0]);
     assertThat(mPreference.getSummary()).isEqualTo(mListEntries[0]);
-    assertThat(SystemProperties.get(MAX_CONNECTED_AUDIO_DEVICES_PROPERTY)).isEmpty();
+    assertThat(BluetoothProperties.max_connected_audio_devices().isPresent())
+        .isEqualTo(false);
   }
 
   @Test
@@ -161,7 +174,7 @@ public class BluetoothMaxConnectedAudioDevicesPreferenceControllerTest {
       mController.onDeveloperOptionsSwitchDisabled();
       assertThat(mPreference.isEnabled()).isFalse();
 
-      SystemProperties.set(MAX_CONNECTED_AUDIO_DEVICES_PROPERTY, initialValue);
+      BluetoothProperties.max_connected_audio_devices(tryParseInteger(initialValue));
       mController.onDeveloperOptionsSwitchEnabled();
 
       assertThat(mPreference.isEnabled()).isTrue();
@@ -169,8 +182,8 @@ public class BluetoothMaxConnectedAudioDevicesPreferenceControllerTest {
       assertThat(mPreference.getEntry()).isEqualTo(mListEntries[i]);
       assertThat(mPreference.getSummary()).isEqualTo(mListEntries[i]);
       // Verify that property value remain unchanged
-      assertThat(SystemProperties.get(MAX_CONNECTED_AUDIO_DEVICES_PROPERTY))
-          .isEqualTo(initialValue);
+      assertThat(BluetoothProperties.max_connected_audio_devices().orElse(null))
+          .isEqualTo(tryParseInteger(initialValue));
     }
   }
 }

@@ -23,7 +23,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Handler;
-import android.os.SystemProperties;
+import android.sysprop.BluetoothProperties;
 import androidx.preference.Preference;
 import android.util.Log;
 
@@ -210,7 +210,7 @@ final class BluetoothDiscoverableEnabler implements Preference.OnPreferenceClick
             return mTimeoutSecs;
         }
 
-        int timeout = SystemProperties.getInt(SYSTEM_PROPERTY_DISCOVERABLE_TIMEOUT, -1);
+        int timeout = BluetoothProperties.discoverable_timeout().orElse(-1);
         if (timeout < 0) {
             String timeoutValue = mSharedPreferences.getString(KEY_DISCOVERABLE_TIMEOUT,
                     VALUE_DISCOVERABLE_TIMEOUT_TWO_MINUTES);

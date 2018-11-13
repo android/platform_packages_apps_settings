@@ -17,7 +17,7 @@
 package com.android.settings.development;
 
 import android.content.Context;
-import android.os.SystemProperties;
+import android.sysprop.BluetoothProperties;
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.SwitchPreference;
 import androidx.preference.Preference;
@@ -30,8 +30,6 @@ public class BluetoothSnoopLogPreferenceController extends DeveloperOptionsPrefe
 
     private static final String PREFERENCE_KEY = "bt_hci_snoop_log";
     @VisibleForTesting
-    static final String BLUETOOTH_BTSNOOP_ENABLE_PROPERTY =
-            "persist.bluetooth.btsnoopenable";
 
     public BluetoothSnoopLogPreferenceController(Context context) {
         super(context);
@@ -44,23 +42,22 @@ public class BluetoothSnoopLogPreferenceController extends DeveloperOptionsPrefe
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        final boolean enableBtSnoopLog = (Boolean) newValue;
-        SystemProperties.set(BLUETOOTH_BTSNOOP_ENABLE_PROPERTY, Boolean.toString(enableBtSnoopLog));
+        BluetoothProperties.btsnoop_enable((Boolean)newValue);
         return true;
     }
 
     @Override
     public void updateState(Preference preference) {
         super.updateState(preference);
-        final boolean enableBtSnoopLog = SystemProperties.getBoolean(
-                BLUETOOTH_BTSNOOP_ENABLE_PROPERTY, false /* def */);
+        final boolean enableBtSnoopLog =
+                BluetoothProperties.btsnoop_enable().orElse(false);
         ((SwitchPreference) mPreference).setChecked(enableBtSnoopLog);
     }
 
     @Override
     protected void onDeveloperOptionsSwitchDisabled() {
         super.onDeveloperOptionsSwitchDisabled();
-        SystemProperties.set(BLUETOOTH_BTSNOOP_ENABLE_PROPERTY, Boolean.toString(false));
+        BluetoothProperties.btsnoop_enable(false);
         ((SwitchPreference) mPreference).setChecked(false);
     }
 }
