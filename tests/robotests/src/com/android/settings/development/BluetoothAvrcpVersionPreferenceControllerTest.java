@@ -16,14 +16,13 @@
 
 package com.android.settings.development;
 
-import static com.android.settings.development.BluetoothAvrcpVersionPreferenceController.BLUETOOTH_AVRCP_VERSION_PROPERTY;
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.os.SystemProperties;
+import android.sysprop.BluetoothProperties;
 import androidx.preference.ListPreference;
 import androidx.preference.PreferenceScreen;
 
@@ -74,7 +73,7 @@ public class BluetoothAvrcpVersionPreferenceControllerTest {
     public void onPreferenceChange_setAvrcp13_shouldEnableAvrcp13() {
         mController.onPreferenceChange(mPreference, mListValues[1]);
 
-        final String currentValue = SystemProperties.get(BLUETOOTH_AVRCP_VERSION_PROPERTY);
+        final String currentValue = BluetoothProperties.avrcp_version().orElse("");
 
         assertThat(currentValue).isEqualTo(mListValues[1]);
     }
@@ -83,14 +82,14 @@ public class BluetoothAvrcpVersionPreferenceControllerTest {
     public void onPreferenceChange_setAvrcp15_shouldEnableAvrcp15() {
         mController.onPreferenceChange(mPreference, mListValues[2]);
 
-        final String currentValue = SystemProperties.get(BLUETOOTH_AVRCP_VERSION_PROPERTY);
+        final String currentValue = BluetoothProperties.avrcp_version().orElse("");
 
         assertThat(currentValue).isEqualTo(mListValues[2]);
     }
 
     @Test
     public void updateState_setAvrcp13_shouldSetPreferenceToAvrcp13() {
-        SystemProperties.set(BLUETOOTH_AVRCP_VERSION_PROPERTY, mListValues[1]);
+        BluetoothProperties.avrcp_version(mListValues[1]);
 
         mController.updateState(mPreference);
 
@@ -100,7 +99,7 @@ public class BluetoothAvrcpVersionPreferenceControllerTest {
 
     @Test
     public void updateState_setAvrcp15_shouldSetPreferenceToAvrcp15() {
-        SystemProperties.set(BLUETOOTH_AVRCP_VERSION_PROPERTY, mListValues[2]);
+        BluetoothProperties.avrcp_version(mListValues[2]);
 
         mController.updateState(mPreference);
 

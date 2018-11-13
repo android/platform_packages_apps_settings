@@ -18,7 +18,7 @@ package com.android.settings.bluetooth;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.os.Bundle;
-import android.os.SystemProperties;
+import android.sysprop.BluetoothProperties;
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
 import android.util.Log;
@@ -49,8 +49,6 @@ import java.util.Map;
 public abstract class BluetoothDeviceUpdater implements BluetoothCallback,
         LocalBluetoothProfileManager.ServiceListener {
     private static final String TAG = "BluetoothDeviceUpdater";
-    private static final String BLUETOOTH_SHOW_DEVICES_WITHOUT_NAMES_PROPERTY =
-            "persist.bluetooth.showdeviceswithoutnames";
 
     protected final LocalBluetoothManager mLocalManager;
     protected final DevicePreferenceCallback mDevicePreferenceCallback;
@@ -58,8 +56,8 @@ public abstract class BluetoothDeviceUpdater implements BluetoothCallback,
     protected Context mPrefContext;
     protected DashboardFragment mFragment;
 
-    private final boolean mShowDeviceWithoutNames;
-    
+    private final boolean mShowDevicesWithoutNames;
+
     @VisibleForTesting
     final GearPreference.OnGearClickListener mDeviceProfilesListener = pref -> {
         launchDeviceDetails(pref);
@@ -75,8 +73,7 @@ public abstract class BluetoothDeviceUpdater implements BluetoothCallback,
             DevicePreferenceCallback devicePreferenceCallback, LocalBluetoothManager localManager) {
         mFragment = fragment;
         mDevicePreferenceCallback = devicePreferenceCallback;
-        mShowDeviceWithoutNames = SystemProperties.getBoolean(
-                BLUETOOTH_SHOW_DEVICES_WITHOUT_NAMES_PROPERTY, false);
+        mShowDevicesWithoutNames = BluetoothProperties.show_devices_without_names().orElse(false);
         mPreferenceMap = new HashMap<>();
         mLocalManager = localManager;
     }
@@ -197,7 +194,7 @@ public abstract class BluetoothDeviceUpdater implements BluetoothCallback,
         if (!mPreferenceMap.containsKey(device)) {
             BluetoothDevicePreference btPreference =
                     new BluetoothDevicePreference(mPrefContext, cachedDevice,
-                            mShowDeviceWithoutNames);
+                            mShowDevicesWithoutNames);
             btPreference.setOnGearClickListener(mDeviceProfilesListener);
             if (this instanceof Preference.OnPreferenceClickListener) {
                 btPreference.setOnPreferenceClickListener(

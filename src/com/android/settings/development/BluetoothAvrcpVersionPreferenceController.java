@@ -17,7 +17,7 @@
 package com.android.settings.development;
 
 import android.content.Context;
-import android.os.SystemProperties;
+import android.sysprop.BluetoothProperties;
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -32,9 +32,6 @@ public class BluetoothAvrcpVersionPreferenceController extends DeveloperOptionsP
 
     private static final String BLUETOOTH_SELECT_AVRCP_VERSION_KEY =
             "bluetooth_select_avrcp_version";
-
-    @VisibleForTesting
-    static final String BLUETOOTH_AVRCP_VERSION_PROPERTY = "persist.bluetooth.avrcpversion";
 
     private final String[] mListValues;
     private final String[] mListSummaries;
@@ -53,7 +50,7 @@ public class BluetoothAvrcpVersionPreferenceController extends DeveloperOptionsP
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        SystemProperties.set(BLUETOOTH_AVRCP_VERSION_PROPERTY, newValue.toString());
+        BluetoothProperties.avrcp_version(newValue.toString());
         updateState(mPreference);
         return true;
     }
@@ -61,7 +58,7 @@ public class BluetoothAvrcpVersionPreferenceController extends DeveloperOptionsP
     @Override
     public void updateState(Preference preference) {
         final ListPreference listPreference = (ListPreference) preference;
-        final String currentValue = SystemProperties.get(BLUETOOTH_AVRCP_VERSION_PROPERTY);
+        final String currentValue = BluetoothProperties.avrcp_version().orElse("");
         int index = 0; // Defaults to AVRCP 1.4
         for (int i = 0; i < mListValues.length; i++) {
             if (TextUtils.equals(currentValue, mListValues[i])) {

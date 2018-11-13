@@ -17,7 +17,7 @@
 package com.android.settings.development;
 
 import android.content.Context;
-import android.os.SystemProperties;
+import android.sysprop.BluetoothProperties;
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.SwitchPreference;
 import androidx.preference.Preference;
@@ -30,9 +30,6 @@ public class BluetoothA2dpHwOffloadPreferenceController extends DeveloperOptions
 
     private static final String PREFERENCE_KEY = "bluetooth_disable_a2dp_hw_offload";
     private final DevelopmentSettingsDashboardFragment mFragment;
-
-    static final String A2DP_OFFLOAD_DISABLED_PROPERTY = "persist.bluetooth.a2dp_offload.disabled";
-    static final String A2DP_OFFLOAD_SUPPORTED_PROPERTY = "ro.bluetooth.a2dp_offload.supported";
 
     public BluetoothA2dpHwOffloadPreferenceController(Context context,
             DevelopmentSettingsDashboardFragment fragment) {
@@ -55,10 +52,10 @@ public class BluetoothA2dpHwOffloadPreferenceController extends DeveloperOptions
     public void updateState(Preference preference) {
         super.updateState(preference);
         final boolean offloadSupported =
-                SystemProperties.getBoolean(A2DP_OFFLOAD_SUPPORTED_PROPERTY, false);
+                BluetoothProperties.a2dp_offload_supported().orElse(false);
         if (offloadSupported) {
             final boolean offloadDisabled =
-                    SystemProperties.getBoolean(A2DP_OFFLOAD_DISABLED_PROPERTY, false);
+                    BluetoothProperties.a2dp_offload_disabled().orElse(false);
             ((SwitchPreference) mPreference).setChecked(offloadDisabled);
         } else {
             mPreference.setEnabled(false);
@@ -68,8 +65,8 @@ public class BluetoothA2dpHwOffloadPreferenceController extends DeveloperOptions
 
     public void onA2dpHwDialogConfirmed() {
         final boolean offloadDisabled =
-                SystemProperties.getBoolean(A2DP_OFFLOAD_DISABLED_PROPERTY, false);
-        SystemProperties.set(A2DP_OFFLOAD_DISABLED_PROPERTY, Boolean.toString(!offloadDisabled));
+                BluetoothProperties.a2dp_offload_disabled().orElse(false);
+        BluetoothProperties.a2dp_offload_disabled(!offloadDisabled);
     }
 
 }

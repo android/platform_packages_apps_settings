@@ -16,13 +16,12 @@
 
 package com.android.settings.development;
 
-import static com.android.settings.development.BluetoothSnoopLogPreferenceController.BLUETOOTH_BTSNOOP_ENABLE_PROPERTY;
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
-import android.os.SystemProperties;
+import android.sysprop.BluetoothProperties;
 import androidx.preference.SwitchPreference;
 import androidx.preference.PreferenceScreen;
 
@@ -58,7 +57,7 @@ public class BluetoothSnoopLogPreferenceControllerTest {
     public void onPreferenceChanged_turnOnBluetoothSnoopLog() {
         mController.onPreferenceChange(null, true);
 
-        final boolean mode = SystemProperties.getBoolean(BLUETOOTH_BTSNOOP_ENABLE_PROPERTY, false);
+        final boolean mode = BluetoothProperties.btsnoop_enable().orElse(false);
 
         assertThat(mode).isTrue();
     }
@@ -67,14 +66,14 @@ public class BluetoothSnoopLogPreferenceControllerTest {
     public void onPreferenceChanged_turnOffBluetoothSnoopLog() {
         mController.onPreferenceChange(null, false);
 
-        final boolean mode = SystemProperties.getBoolean(BLUETOOTH_BTSNOOP_ENABLE_PROPERTY, false);
+        final boolean mode = BluetoothProperties.btsnoop_enable().orElse(false);
 
         assertThat(mode).isFalse();
     }
 
     @Test
     public void updateState_preferenceShouldBeChecked() {
-        SystemProperties.set(BLUETOOTH_BTSNOOP_ENABLE_PROPERTY, Boolean.toString(true));
+        BluetoothProperties.btsnoop_enable(true);
         mController.updateState(mPreference);
 
         verify(mPreference).setChecked(true);
@@ -82,7 +81,7 @@ public class BluetoothSnoopLogPreferenceControllerTest {
 
     @Test
     public void updateState_preferenceShouldNotBeChecked() {
-        SystemProperties.set(BLUETOOTH_BTSNOOP_ENABLE_PROPERTY, Boolean.toString(false));
+        BluetoothProperties.btsnoop_enable(false);
         mController.updateState(mPreference);
 
         verify(mPreference).setChecked(false);

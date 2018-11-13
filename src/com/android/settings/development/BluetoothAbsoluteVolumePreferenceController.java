@@ -17,7 +17,7 @@
 package com.android.settings.development;
 
 import android.content.Context;
-import android.os.SystemProperties;
+import android.sysprop.BluetoothProperties;
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.SwitchPreference;
 import androidx.preference.Preference;
@@ -31,9 +31,6 @@ public class BluetoothAbsoluteVolumePreferenceController extends
 
     private static final String BLUETOOTH_DISABLE_ABSOLUTE_VOLUME_KEY =
             "bluetooth_disable_absolute_volume";
-    @VisibleForTesting
-    static final String BLUETOOTH_DISABLE_ABSOLUTE_VOLUME_PROPERTY =
-            "persist.bluetooth.disableabsvol";
 
     public BluetoothAbsoluteVolumePreferenceController(Context context) {
         super(context);
@@ -47,22 +44,21 @@ public class BluetoothAbsoluteVolumePreferenceController extends
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         final boolean isEnabled = (Boolean) newValue;
-        SystemProperties.set(BLUETOOTH_DISABLE_ABSOLUTE_VOLUME_PROPERTY,
-                isEnabled ? "true" : "false");
+        BluetoothProperties.disable_absolute_volume(isEnabled);
         return true;
     }
 
     @Override
     public void updateState(Preference preference) {
-        final boolean isEnabled = SystemProperties.getBoolean(
-                BLUETOOTH_DISABLE_ABSOLUTE_VOLUME_PROPERTY, false /* default */);
+        final boolean isEnabled =
+                BluetoothProperties.disable_absolute_volume().orElse(false);
         ((SwitchPreference) mPreference).setChecked(isEnabled);
     }
 
     @Override
     protected void onDeveloperOptionsSwitchDisabled() {
         super.onDeveloperOptionsSwitchDisabled();
-        SystemProperties.set(BLUETOOTH_DISABLE_ABSOLUTE_VOLUME_PROPERTY, "false");
+        BluetoothProperties.disable_absolute_volume(false);
         ((SwitchPreference) mPreference).setChecked(false);
     }
 }
