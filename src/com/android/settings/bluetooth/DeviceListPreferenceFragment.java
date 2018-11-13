@@ -19,7 +19,7 @@ package com.android.settings.bluetooth;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.os.Bundle;
-import android.os.SystemProperties;
+import android.sysprop.BluetoothProperties;
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
@@ -51,10 +51,6 @@ public abstract class DeviceListPreferenceFragment extends
     private static final String TAG = "DeviceListPreferenceFragment";
 
     private static final String KEY_BT_SCAN = "bt_scan";
-
-    // Copied from BluetoothDeviceNoNamePreferenceController.java
-    private static final String BLUETOOTH_SHOW_DEVICES_WITHOUT_NAMES_PROPERTY =
-            "persist.bluetooth.showdeviceswithoutnames";
 
     private BluetoothDeviceFilter.Filter mFilter;
 
@@ -97,8 +93,7 @@ public abstract class DeviceListPreferenceFragment extends
             return;
         }
         mLocalAdapter = mLocalManager.getBluetoothAdapter();
-        mShowDevicesWithoutNames = SystemProperties.getBoolean(
-                BLUETOOTH_SHOW_DEVICES_WITHOUT_NAMES_PROPERTY, false);
+        mShowDevicesWithoutNames = BluetoothProperties.show_devices_without_names().orElse(false);
 
         initPreferencesFromPreferenceScreen();
 

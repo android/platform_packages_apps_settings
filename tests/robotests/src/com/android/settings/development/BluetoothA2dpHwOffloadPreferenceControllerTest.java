@@ -16,14 +16,13 @@
 
 package com.android.settings.development;
 
-import static com.android.settings.development.BluetoothA2dpHwOffloadPreferenceController.A2DP_OFFLOAD_DISABLED_PROPERTY;
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
-import android.os.SystemProperties;
+import android.sysprop.BluetoothProperties;
 import androidx.preference.SwitchPreference;
 import androidx.preference.PreferenceScreen;
 
@@ -61,14 +60,14 @@ public class BluetoothA2dpHwOffloadPreferenceControllerTest {
 
     @Test
     public void onA2dpHwDialogConfirmed_shouldChangeProperty() {
-        SystemProperties.set(A2DP_OFFLOAD_DISABLED_PROPERTY, Boolean.toString(false));
+        BluetoothProperties.a2dp_offload_disabled(false);
 
         mController.onA2dpHwDialogConfirmed();
-        final boolean mode = SystemProperties.getBoolean(A2DP_OFFLOAD_DISABLED_PROPERTY, false);
+        final boolean mode = BluetoothProperties.a2dp_offload_disabled().orElse(false);
         assertThat(mode).isTrue();
 
         mController.onA2dpHwDialogConfirmed();
-        final boolean mode2 = SystemProperties.getBoolean(A2DP_OFFLOAD_DISABLED_PROPERTY, false);
+        final boolean mode2 = BluetoothProperties.a2dp_offload_disabled().orElse(false);
         assertThat(mode2).isFalse();
     }
 }
