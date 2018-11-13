@@ -17,7 +17,7 @@
 package com.android.settings.development;
 
 import android.content.Context;
-import android.os.SystemProperties;
+import android.sysprop.BluetoothProperties;
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.SwitchPreference;
 import androidx.preference.Preference;
@@ -31,9 +31,6 @@ public class BluetoothDeviceNoNamePreferenceController extends
 
     private static final String BLUETOOTH_SHOW_DEVICES_WITHOUT_NAMES_KEY =
             "bluetooth_show_devices_without_names";
-    @VisibleForTesting
-    static final String BLUETOOTH_SHOW_DEVICES_WITHOUT_NAMES_PROPERTY =
-            "persist.bluetooth.showdeviceswithoutnames";
 
     public BluetoothDeviceNoNamePreferenceController(Context context) {
         super(context);
@@ -47,22 +44,21 @@ public class BluetoothDeviceNoNamePreferenceController extends
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         final boolean isEnabled = (Boolean) newValue;
-        SystemProperties.set(BLUETOOTH_SHOW_DEVICES_WITHOUT_NAMES_PROPERTY,
-                isEnabled ? "true" : "false");
+        BluetoothProperties.show_devices_without_names(isEnabled);
         return true;
     }
 
     @Override
     public void updateState(Preference preference) {
-        final boolean isEnabled = SystemProperties.getBoolean(
-                BLUETOOTH_SHOW_DEVICES_WITHOUT_NAMES_PROPERTY, false /* default */);
+        final boolean isEnabled =
+                BluetoothProperties.show_devices_without_names().orElse(false);
         ((SwitchPreference) mPreference).setChecked(isEnabled);
     }
 
     @Override
     protected void onDeveloperOptionsSwitchDisabled() {
         super.onDeveloperOptionsSwitchDisabled();
-        SystemProperties.set(BLUETOOTH_SHOW_DEVICES_WITHOUT_NAMES_PROPERTY, "false");
+        BluetoothProperties.show_devices_without_names(false);
         ((SwitchPreference) mPreference).setChecked(false);
     }
 }

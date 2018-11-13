@@ -17,7 +17,7 @@
 package com.android.settings.development;
 
 import android.content.Context;
-import android.os.SystemProperties;
+import android.sysprop.BluetoothProperties;
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -26,16 +26,14 @@ import androidx.preference.PreferenceScreen;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.development.DeveloperOptionsPreferenceController;
 
+import java.util.Optional;
+
 public class BluetoothMaxConnectedAudioDevicesPreferenceController extends
         DeveloperOptionsPreferenceController implements Preference.OnPreferenceChangeListener,
         PreferenceControllerMixin {
 
     private static final String MAX_CONNECTED_AUDIO_DEVICES_PREFERENCE_KEY =
             "bluetooth_max_connected_audio_devices";
-
-    @VisibleForTesting
-    static final String MAX_CONNECTED_AUDIO_DEVICES_PROPERTY =
-            "persist.bluetooth.maxconnectedaudiodevices";
 
     private final int mDefaultMaxConnectedAudioDevices;
 
@@ -67,7 +65,13 @@ public class BluetoothMaxConnectedAudioDevicesPreferenceController extends
             // Reset property value when default is chosen or when value is illegal
             newValueString = "";
         }
-        SystemProperties.set(MAX_CONNECTED_AUDIO_DEVICES_PROPERTY, newValueString);
+        Integer intValue;
+        try {
+            intValue = Integer.valueOf(newValueString);
+        } catch (NumberFormatException e) {
+            intValue = null;
+        }
+        BluetoothProperties.max_connected_audio_devices(intValue);
         updateState(preference);
         return true;
     }
@@ -76,13 +80,13 @@ public class BluetoothMaxConnectedAudioDevicesPreferenceController extends
     public void updateState(Preference preference) {
         final ListPreference listPreference = (ListPreference) preference;
         final CharSequence[] entries = listPreference.getEntries();
-        final String currentValue = SystemProperties.get(MAX_CONNECTED_AUDIO_DEVICES_PROPERTY);
+        final Optional<Integer> currentValue = BluetoothProperties.max_connected_audio_devices();
         int index = 0;
-        if (!currentValue.isEmpty()) {
-            index = listPreference.findIndexOfValue(currentValue);
+        if (currentValue.isPresent()) {
+            index = listPreference.findIndexOfValue(currentValue.get().toString());
             if (index < 0) {
                 // Reset property value when value is illegal
-                SystemProperties.set(MAX_CONNECTED_AUDIO_DEVICES_PROPERTY, "");
+                BluetoothProperties.max_connected_audio_devices(null);
                 index = 0;
             }
         }
@@ -99,7 +103,7 @@ public class BluetoothMaxConnectedAudioDevicesPreferenceController extends
     @Override
     protected void onDeveloperOptionsSwitchDisabled() {
         super.onDeveloperOptionsSwitchDisabled();
-        SystemProperties.set(MAX_CONNECTED_AUDIO_DEVICES_PROPERTY, "");
+        BluetoothProperties.max_connected_audio_devices(null);
         updateState(mPreference);
     }
 }

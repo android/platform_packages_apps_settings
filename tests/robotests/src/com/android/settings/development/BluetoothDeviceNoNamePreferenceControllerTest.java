@@ -16,12 +16,12 @@
 
 package com.android.settings.development;
 
-import static com.android.settings.development.BluetoothDeviceNoNamePreferenceController.BLUETOOTH_SHOW_DEVICES_WITHOUT_NAMES_PROPERTY;
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
+import android.sysprop.BluetoothProperties;
 import androidx.preference.SwitchPreference;
 import androidx.preference.PreferenceScreen;
 
@@ -33,7 +33,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.RuntimeEnvironment;
-import org.robolectric.shadows.ShadowSystemProperties;
 
 @RunWith(SettingsRobolectricTestRunner.class)
 public class BluetoothDeviceNoNamePreferenceControllerTest {
@@ -60,8 +59,7 @@ public class BluetoothDeviceNoNamePreferenceControllerTest {
     public void onPreferenceChanged_settingEnabled_shouldTurnOnBluetoothDeviceNoName() {
         mController.onPreferenceChange(mPreference, true /* new value */);
 
-        final boolean mode = ShadowSystemProperties
-            .native_get_boolean(BLUETOOTH_SHOW_DEVICES_WITHOUT_NAMES_PROPERTY, false /* default */);
+        final boolean mode = BluetoothProperties.show_devices_without_names().orElse(false);
 
         assertThat(mode).isTrue();
     }
@@ -70,16 +68,14 @@ public class BluetoothDeviceNoNamePreferenceControllerTest {
     public void onPreferenceChanged_settingDisabled_shouldTurnOffBluetoothDeviceNoName() {
         mController.onPreferenceChange(mPreference, false /* new value */);
 
-        final boolean mode = ShadowSystemProperties
-            .native_get_boolean(BLUETOOTH_SHOW_DEVICES_WITHOUT_NAMES_PROPERTY, true /* default */);
+        final boolean mode = BluetoothProperties.show_devices_without_names().orElse(true);
 
         assertThat(mode).isFalse();
     }
 
     @Test
     public void updateState_settingEnabled_preferenceShouldBeChecked() {
-        ShadowSystemProperties
-            .native_set(BLUETOOTH_SHOW_DEVICES_WITHOUT_NAMES_PROPERTY, Boolean.toString(true));
+        BluetoothProperties.show_devices_without_names(true);
         mController.updateState(mPreference);
 
         verify(mPreference).setChecked(true);
@@ -87,8 +83,7 @@ public class BluetoothDeviceNoNamePreferenceControllerTest {
 
     @Test
     public void updateState_settingDisabled_preferenceShouldNotBeChecked() {
-        ShadowSystemProperties
-            .native_set(BLUETOOTH_SHOW_DEVICES_WITHOUT_NAMES_PROPERTY, Boolean.toString(false));
+        BluetoothProperties.show_devices_without_names(false);
         mController.updateState(mPreference);
 
         verify(mPreference).setChecked(false);
@@ -98,8 +93,7 @@ public class BluetoothDeviceNoNamePreferenceControllerTest {
     public void onDeveloperOptionsDisabled_shouldDisablePreference() {
         mController.onDeveloperOptionsDisabled();
 
-        final boolean mode = ShadowSystemProperties
-            .native_get_boolean(BLUETOOTH_SHOW_DEVICES_WITHOUT_NAMES_PROPERTY, true /* default */);
+        final boolean mode = BluetoothProperties.show_devices_without_names().orElse(true);
 
         assertThat(mode).isFalse();
         verify(mPreference).setEnabled(false);
