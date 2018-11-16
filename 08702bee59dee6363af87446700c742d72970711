@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3e8978d_28a7c04d",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2018-11-16T03:56:23Z",
+      "side": 1,
+      "message": "Is this the only way to to do this?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 46
+      },
+      "revId": "08702bee59dee6363af87446700c742d72970711",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cf48d42_5a750a71",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2018-11-16T03:56:23Z",
+      "side": 1,
+      "message": "incomplete sentence.",
+      "range": {
+        "startLine": 203,
+        "startChar": 53,
+        "endLine": 203,
+        "endChar": 56
+      },
+      "revId": "08702bee59dee6363af87446700c742d72970711",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9c8631a_e5904f38",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2018-11-16T03:56:23Z",
+      "side": 1,
+      "message": "Suggest isProxyActive() or hasProxy()",
+      "range": {
+        "startLine": 471,
+        "startChar": 12,
+        "endLine": 471,
+        "endChar": 32
+      },
+      "revId": "08702bee59dee6363af87446700c742d72970711",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
