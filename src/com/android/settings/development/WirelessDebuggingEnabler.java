@@ -26,43 +26,31 @@ import android.widget.Toast;
 import com.android.settings.R;
 import com.android.settings.widget.SwitchWidgetController;
 
-// TODO(joshuaduong): remove this once AdbWirelessManager is in.
-import com.android.settings.development.tests.AdbWirelessManager;
+// TODO(joshuaduong): remove this once WirelessDebuggingManager is in.
+import com.android.settings.development.tests.WirelessDebuggingManager;
 
 public class WirelessDebuggingEnabler implements SwitchWidgetController.OnSwitchChangeListener  {
-    String TAG = "AdbWirelessEnabler";
+    private final String TAG = this.getClass().getSimpleName();
 
     private final SwitchWidgetController mSwitchWidget;
     private Context mContext;
+    private Context mAppContext;
     private boolean mListeningToOnSwitchChange = false;
+    private OnEnabledListener mListener;
 
-    private final IntentFilter mIntentFilter;
-    private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if (AdbWirelessManager.ADB_WIRELESS_STATE_CHANGED_ACTION.equals(action)) {
-                handleAdbWirelessStateChanged(AdbWirelessManager.getAdbWirelessState());
-            }
-        }
-    };
-
-    public WirelessDebuggingEnabler(Context context, SwitchWidgetController switchWidget) {
+    public WirelessDebuggingEnabler(Context context, SwitchWidgetController switchWidget, OnEnabledListener listener) {
         mContext = context;
+        mAppContext = mContext.getApplicationContext();
         mSwitchWidget = switchWidget;
         mSwitchWidget.setListener(this);
-
-        // TODO(joshuaduong): Remove this once adb wireless manager is in.
-        AdbWirelessManager.enableSimulationMode(mContext);
-
-        mIntentFilter = new IntentFilter(AdbWirelessManager.ADB_WIRELESS_STATE_CHANGED_ACTION);
+        mListener = listener;
 
         setupSwitchController();
     }
 
     public void setupSwitchController() {
-        final int state = AdbWirelessManager.getAdbWirelessState();
-        handleAdbWirelessStateChanged(state);
+        final boolean enabled = WirelessDebuggingManager.getInstance(mAppContext).isEnabled();
+        onWirelessDebuggingEnabled(enabled);
         if (!mListeningToOnSwitchChange) {
             mSwitchWidget.startListening();
             mListeningToOnSwitchChange = true;
@@ -80,7 +68,6 @@ public class WirelessDebuggingEnabler implements SwitchWidgetController.OnSwitch
 
     public void resume(Context context) {
         mContext = context;
-        mContext.registerReceiver(mReceiver, mIntentFilter);
         if (!mListeningToOnSwitchChange) {
             mSwitchWidget.startListening();
             mListeningToOnSwitchChange = true;
@@ -94,24 +81,11 @@ public class WirelessDebuggingEnabler implements SwitchWidgetController.OnSwitch
         }
     }
 
-    private void handleAdbWirelessStateChanged(int state) {
-        switch (state) {
-            case AdbWirelessManager.ADB_WIRELESS_STATE_DISABLED:
-                setSwitchBarChecked(false);
-                mSwitchWidget.setEnabled(true);
-                break;
-            case AdbWirelessManager.ADB_WIRELESS_STATE_DISABLING:
-                break;
-            case AdbWirelessManager.ADB_WIRELESS_STATE_ENABLED:
-                setSwitchBarChecked(true);
-                mSwitchWidget.setEnabled(true);
-                break;
-            case AdbWirelessManager.ADB_WIRELESS_STATE_ENABLING:
-                break;
-            default:
-                setSwitchBarChecked(false);
-                mSwitchWidget.setEnabled(true);
-                break;
+    private void onWirelessDebuggingEnabled(boolean enabled) {
+        setSwitchBarChecked(enabled);
+        mSwitchWidget.setEnabled(true);
+        if (mListener != null) {
+            mListener.onEnabled(enabled);
         }
     }
 
@@ -121,12 +95,13 @@ public class WirelessDebuggingEnabler implements SwitchWidgetController.OnSwitch
 
     @Override
     public boolean onSwitchToggled(boolean isChecked) {
-        if (!AdbWirelessManager.setAdbWirelessEnabled(isChecked)) {
-            // Error
-            mSwitchWidget.setEnabled(true);
-            Toast.makeText(mContext, R.string.adb_wireless_error, Toast.LENGTH_SHORT).show();
-        }
+        WirelessDebuggingManager.getInstance(mAppContext).setEnabled(isChecked);
+        onWirelessDebuggingEnabled(isChecked);
         return true;
+    }
+
+    public interface OnEnabledListener {
+        public void onEnabled(boolean enabled);
     }
 }
 
