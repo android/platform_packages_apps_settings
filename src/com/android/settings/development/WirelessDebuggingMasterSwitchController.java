@@ -35,7 +35,7 @@ import android.util.Log;
 public class WirelessDebuggingMasterSwitchController  extends AbstractPreferenceController
         implements PreferenceControllerMixin, SummaryUpdater.OnSummaryChangeListener,
         LifecycleObserver, OnResume, OnPause, OnStart, OnStop {
-    final static String TAG = "AdbWirelessController";
+    private final String TAG = this.getClass().getSimpleName();
 
     public static final String KEY_TOGGLE_ADB_WIRELESS = "toggle_adb_wireless";
 
@@ -82,7 +82,7 @@ public class WirelessDebuggingMasterSwitchController  extends AbstractPreference
     public void onStart() {
         mWirelessDebuggingEnabler = new WirelessDebuggingEnabler(
                 mContext,
-                new MasterSwitchController(mWirelessDebuggingPreference));
+                new MasterSwitchController(mWirelessDebuggingPreference), null);
     }
 
     @Override
