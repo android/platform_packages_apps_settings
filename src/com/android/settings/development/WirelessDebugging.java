@@ -43,8 +43,13 @@ import com.android.settings.search.SearchIndexableRaw;
 import com.android.settings.widget.SwitchBar;
 import com.android.settings.widget.SwitchBarController;
 import com.android.settings.widget.ValidatedEditTextPreference;
+import com.android.settingslib.core.AbstractPreferenceController;
+import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.search.SearchIndexable;
 import com.android.settingslib.widget.FooterPreference;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @SearchIndexable
 public class WirelessDebugging extends DashboardFragment
@@ -65,7 +70,7 @@ public class WirelessDebugging extends DashboardFragment
     private String mPendingDeviceName;
 
     private ValidatedEditTextPreference mDeviceNamePreference;
-//    private AdbDeviceNameTextValidator mDeviceNameValidator;
+    private AdbDeviceNameTextValidator mDeviceNameValidator;
 
     private PreferenceCategory mPairingMethodsCategory;
     private Preference mCodePairingPreference;
@@ -204,7 +209,27 @@ public class WirelessDebugging extends DashboardFragment
 
     @Override
     protected int getPreferenceScreenResId() {
-       return R.xml.adb_wireless_settings;
+        return R.xml.adb_wireless_settings;
+    }
+
+    @Override
+    protected List<AbstractPreferenceController> createPreferenceControllers(Context context) {
+        return buildPreferenceControllers(context,getActivity(), this /* fragment */,
+                getSettingsLifecycle());
+    }
+
+    private static List<AbstractPreferenceController> buildPreferenceControllers(
+            Context context, Activity activity, WirelessDebugging fragment,
+            Lifecycle lifecycle) {
+        final List<AbstractPreferenceController> controllers = new ArrayList<>();
+
+        AdbDeviceNamePreferenceController adbDeviceNamePreferenceController =
+                new AdbDeviceNamePreferenceController(context);
+        if (lifecycle != null) {
+            lifecycle.addObserver(adbDeviceNamePreferenceController);
+        }
+        controllers.add(adbDeviceNamePreferenceController);
+        return controllers;
     }
 
     @Override
