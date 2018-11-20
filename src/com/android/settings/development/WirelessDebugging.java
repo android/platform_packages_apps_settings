@@ -55,7 +55,9 @@ import com.android.settingslib.search.SearchIndexable;
 import com.android.settingslib.widget.FooterPreference;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @SearchIndexable
 public class WirelessDebugging extends DashboardFragment
@@ -83,13 +85,21 @@ public class WirelessDebugging extends DashboardFragment
     private PreferenceCategory mFooterCategory;
     private FooterPreference mOffMessagePreference;
 
+    // Map of paired devices, with the device GUID is the key
+    private Map<String, AdbPairedDevicePreference> mPairedDevicePreferences;
+
+    private IAdbManager mAdbManager;
+
     private IntentFilter mIntentFilter;
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-            if (WirelessDebuggingManager.WIRELESS_DEBUG_PAIRED_LIST_ACTION.equals(action)) {
-                Log.i(TAG, "Got the paired list, TODO need to show it");
+            if (AdbManager.WIRELESS_DEBUG_PAIRED_DEVICES_ACTION.equals(action)) {
+                Map<String, PairDevice> newPairedDevicesList =
+                        (HashMap<String, PairDevice>) intent.getSerializableExtra(
+                            AdbManager.WIRELESS_DEVICES_EXTRA);
+                updatePairedDevicePreferences(newPairedDevicesList);
             }
         }
     };
@@ -108,7 +118,7 @@ public class WirelessDebugging extends DashboardFragment
         super.onCreate(icicle);
 
         addPreferences();
-        mIntentFilter = new IntentFilter(WirelessDebuggingManager.WIRELESS_DEBUG_PAIRED_LIST_ACTION);
+        mIntentFilter = new IntentFilter(AdbManager.WIRELESS_DEBUG_PAIRED_DEVICES_ACTION);
     }
 
     private void addPreferences() {
@@ -132,9 +142,6 @@ public class WirelessDebugging extends DashboardFragment
         final CharSequence deviceNameTitle =
                 getText(R.string.my_device_info_device_name_preference_title);
         mDeviceNamePreference.setTitle(deviceNameTitle);
-        mDeviceNamePreference.setSummary(
-                WirelessDebuggingManager.getInstance(
-                    getActivity().getApplicationContext()).getName());
     }
 
     @Override
@@ -154,8 +161,22 @@ public class WirelessDebugging extends DashboardFragment
         final Activity activity = getActivity();
         super.onResume();
 
+        mAdbManager = IAdbManager.Stub.asInterface(ServiceManager.getService(Context.ADB_SERVICE));
+
+        try {
+            mDeviceNamePreference.setSummary(mAdbManager.getName());
+        } catch (RemoteException e) {
+            Log.e(TAG, "Unable to get the device name for ADB wireless");
+        }
+
         getActivity().registerReceiver(mReceiver, mIntentFilter);
-        mWifiDebuggingEnabler.resume(activity);
+        try {
+            mAdbManager.queryAdbWirelessPairedDevices();
+        } catch (RemoteException e) {
+            Log.e(TAG, "Unable to request the paired list for Adb wireless");
+        } finally {
+            mWifiDebuggingEnabler.resume(activity);
+        }
     }
 
     @Override
@@ -261,5 +282,70 @@ public class WirelessDebugging extends DashboardFragment
         mPairingMethodsCategory.setVisible(true);
         mPairedDevicesCategory.setVisible(true);
         mFooterCategory.setVisible(false);
+    }
+
+    private void updatePairedDevicePreferences(Map<String, PairDevice> newList) {
+        // TODO(joshuaduong): Move the non-UI stuff into another thread
+        // as the processing could take some time.
+        if (newList == null) {
+            mPairedDevicesCategory.removeAll();
+            return;
+        }
+        if (mPairedDevicePreferences == null) {
+            mPairedDevicePreferences = new HashMap<String, AdbPairedDevicePreference>();
+        }
+        if (mPairedDevicePreferences.isEmpty()) {
+            for (Map.Entry<String, PairDevice> entry : newList.entrySet()) {
+                AdbPairedDevicePreference p =
+                        new AdbPairedDevicePreference(entry.getValue(),
+                            mPairedDevicesCategory.getContext());
+                mPairedDevicePreferences.put(
+                        entry.getKey(),
+                        p);
+                p.setOnPreferenceClickListener(preference -> {
+                    AdbPairedDevicePreference pref =
+                        (AdbPairedDevicePreference) preference;
+                    PairedDevice pairedDevice = pref.getPairedDevice();
+                    Log.i(TAG, "OnClick for " + pairedDevice.getDeviceName());
+                    return true;
+                });
+                mPairedDevicesCategory.addPreference(p);
+            }
+        } else {
+            // Remove any devices no longer on the newList
+            mPairedDevicePreferences.entrySet().removeIf(entry -> {
+                if (newList.get(entry.getKey()) == null) {
+                    mPairedDevicesCategory.removePreference(entry.getValue());
+                    return true;
+                } else {
+                    // It is in the newList. Just update the PairDevice value
+                    AdbPairedDevicePreference p =
+                            entry.getValue();
+                    p.setPairedDevice(newList.get(entry.getKey()));
+                    p.refresh();
+                    return false;
+                }
+            });
+            // Add new devices if any.
+            for (Map.Entry<String, PairDevice> entry :
+                    newList.entrySet()) {
+                if (mPairedDevicePreferences.get(entry.getKey()) == null) {
+                    AdbPairedDevicePreference p =
+                            new AdbPairedDevicePreference(entry.getValue(),
+                                mPairedDevicesCategory.getContext());
+                    mPairedDevicePreferences.put(
+                            entry.getKey(),
+                            p);
+                    p.setOnPreferenceClickListener(preference -> {
+                        AdbPairedDevicePreference pref =
+                            (AdbPairedDevicePreference) preference;
+                        PairDevice pairedDevice = pref.getPairedDevice();
+                        Log.i(TAG, "OnClick for " + pairedDevice.getDeviceName());
+                        return true;
+                    });
+                    mPairedDevicesCategory.addPreference(p);
+                }
+            }
+        }
     }
 }
