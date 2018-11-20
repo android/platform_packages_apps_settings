@@ -20,10 +20,36 @@
         android:title="@string/adb_wireless_settings"
         settings:keywords="@string/keywords_adb_wireless">
 
-    <!-- In off position, will contain a message to turn wireless debugging on,
-         In on position, will contain the device name preference. -->
-    <PreferenceCategory
-      android:key="adb_wireless_status_category"
-      settings:allowDividerAbove="false" />
-</PreferenceScreen>
+    <!-- ADB device name -->
+    <com.android.settings.widget.ValidatedEditTextPreference
+        android:key="adb_device_name_pref"
+        android:order="0"
+        android:title="@string/my_device_info_device_name_preference_title"
+        android:summary="@string/summary_placeholder"/>
 
+    <!-- Pairing methods category -->
+    <PreferenceCategory
+        android:key="adb_pairing_methods_category"
+        android:layout="@layout/preference_category_no_label"
+        android:order="1">
+        <!-- qrcode scanner goes here later -->
+        <Preference
+            android:key="adb_pair_method_code_pref"
+            android:title="@string/adb_pair_method_code_title"
+            android:summary="@string/adb_pair_method_code_summary"/>
+    </PreferenceCategory>
+
+    <!-- Paired devices list -->
+    <PreferenceCategory
+        android:key="adb_paired_devices_category"
+        android:title="@string/adb_paired_devices_title"
+        android:order="2"/>
+
+    <!-- Off message: Shown only in the off state -->
+    <PreferenceCategory
+        android:key="adb_wireless_footer_category"
+        android:layout="@layout/preference_category_no_label"
+        settings:allowDividerAbove="false"
+        android:order="3"/>
+
+</PreferenceScreen>

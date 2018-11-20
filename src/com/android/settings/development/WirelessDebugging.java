@@ -48,6 +48,7 @@ import com.android.settings.search.Indexable;
 import com.android.settings.search.SearchIndexableRaw;
 import com.android.settings.widget.SwitchBar;
 import com.android.settings.widget.SwitchBarController;
+import com.android.settings.widget.ValidatedEditTextPreference;
 import com.android.settingslib.search.SearchIndexable;
 import com.android.settingslib.widget.FooterPreference;
 
@@ -60,9 +61,21 @@ public class WirelessDebugging extends DashboardFragment
     private WirelessDebuggingEnabler mWifiDebuggingEnabler;
 
     // UI components
-    private static final String PREF_KEY_STATUS_CATEGORY = "adb_wireless_status_category";
+    private static final String PREF_KEY_ADB_DEVICE_NAME = "adb_device_name_pref";
+    private static final String PREF_KEY_PAIRING_METHODS_CATEGORY = "adb_pairing_methods_category";
+    private static final String PREF_KEY_ADB_CODE_PAIRING = "adb_pair_method_code_pref";
+    private static final String PREF_KEY_PAIRED_DEVICES_CATEGORY = "adb_paired_devices_category";
+    private static final String PREF_KEY_FOOTER_CATEGORY = "adb_wireless_footer_category";
 
-    private PreferenceCategory mStatusCategory;
+    private ValidatedEditTextPreference mDeviceNamePreference;
+
+    private PreferenceCategory mPairingMethodsCategory;
+    private Preference mCodePairingPreference;
+
+    private PreferenceCategory mPairedDevicesCategory;
+
+    private PreferenceCategory mFooterCategory;
+    private FooterPreference mOffMessagePreference;
 
     private IntentFilter mIntentFilter;
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
@@ -93,10 +106,29 @@ public class WirelessDebugging extends DashboardFragment
     }
 
     private void addPreferences() {
-        addPreferencesFromResource(R.xml.adb_wireless_settings);
+        mDeviceNamePreference =
+            (ValidatedEditTextPreference) findPreference(PREF_KEY_ADB_DEVICE_NAME);
+        mPairingMethodsCategory =
+                (PreferenceCategory) findPreference(PREF_KEY_PAIRING_METHODS_CATEGORY);
+        mCodePairingPreference =
+                (Preference) findPreference(PREF_KEY_ADB_CODE_PAIRING);
+        mPairedDevicesCategory =
+                (PreferenceCategory) findPreference(PREF_KEY_PAIRED_DEVICES_CATEGORY);
+        mFooterCategory =
+                (PreferenceCategory) findPreference(PREF_KEY_FOOTER_CATEGORY);
 
-        mStatusCategory =
-                (PreferenceCategory) findPreference(PREF_KEY_STATUS_CATEGORY);
+        mOffMessagePreference =
+                new FooterPreference(mFooterCategory.getContext());
+        final CharSequence title = getText(R.string.adb_wireless_list_empty_off);
+        mOffMessagePreference.setTitle(title);
+        mFooterCategory.addPreference(mOffMessagePreference);
+
+        final CharSequence deviceNameTitle =
+                getText(R.string.my_device_info_device_name_preference_title);
+        mDeviceNamePreference.setTitle(deviceNameTitle);
+        mDeviceNamePreference.setSummary(
+                WirelessDebuggingManager.getInstance(
+                    getActivity().getApplicationContext()).getName());
     }
 
     @Override
@@ -185,22 +217,23 @@ public class WirelessDebugging extends DashboardFragment
     @Override
     public void onEnabled(boolean enabled) {
         if (enabled) {
-            updateDeviceName();
+            showDebuggingPreferences();
         } else {
-            setOffMessage();
+            showOffMessage();
         }
     }
 
-    private void setOffMessage() {
-        mStatusCategory.removeAll();
-        FooterPreference footerPreference =
-                new FooterPreference(mStatusCategory.getContext());
-        final CharSequence title = getText(R.string.adb_wireless_list_empty_off);
-        footerPreference.setTitle(title);
-        mStatusCategory.addPreference(footerPreference);
+    private void showOffMessage() {
+        mDeviceNamePreference.setVisible(false);
+        mPairingMethodsCategory.setVisible(false);
+        mPairedDevicesCategory.setVisible(false);
+        mFooterCategory.setVisible(true);
     }
 
-    private void updateDeviceName() {
-        mStatusCategory.removeAll();
+    private void showDebuggingPreferences() {
+        mDeviceNamePreference.setVisible(true);
+        mPairingMethodsCategory.setVisible(true);
+        mPairedDevicesCategory.setVisible(true);
+        mFooterCategory.setVisible(false);
     }
 }
