@@ -94,7 +94,7 @@ public class PairedDeviceGenerator implements Runnable {
 
         Log.i(TAG, "Starting PairedDeviceGenerator");
         // This schedules a task to run every 5 seconds
-        mScheduledTaskExecutor.scheduleAtFixedRate(this, 0, 5, TimeUnit.SECONDS);
+        mScheduledTaskExecutor.scheduleAtFixedRate(this, 0, 10, TimeUnit.SECONDS);
         mStarted = true;
     }
 
@@ -128,13 +128,16 @@ public class PairedDeviceGenerator implements Runnable {
         // Grab randomly numDevices from mTestDevices
 
         // Generates a shuffled list of numbers from 0..numDevices
-        List<Integer> integers = IntStream.range(0, numDevices)
+        List<Integer> integers = IntStream.range(0, mTestDevices.size())
                 .boxed()
                 .collect(Collectors.toList());
         Collections.shuffle(integers);
 
         for (int i = 0; i < numDevices; ++i) {
             mDeviceMap.put(integers.get(i), mTestDevices.get(integers.get(i)));
+            // Randomly choose whether the device is connected or not
+            mDeviceMap.get(integers.get(i)).setConnected(
+                rand.nextBoolean());
         }
     }
 
@@ -143,7 +146,6 @@ public class PairedDeviceGenerator implements Runnable {
         randomizeDeviceMap();
         Intent intent = new Intent(WirelessDebuggingManager.WIRELESS_DEBUG_PAIRED_LIST_ACTION);
         intent.putExtra(WirelessDebuggingManager.DEVICE_LIST_EXTRA, mDeviceMap);
-        Log.i(TAG, "Broadcasting paired list");
         mAppContext.sendBroadcastAsUser(intent, UserHandle.ALL);
         } catch (Exception e) {
             Log.w(TAG, "Something failed running the paired generator");

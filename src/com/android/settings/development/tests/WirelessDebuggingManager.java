@@ -47,6 +47,14 @@ public class WirelessDebuggingManager {
         public String getMacAddress() { return mMacAddress; }
         public String getDeviceName() { return mDeviceName; }
         public boolean isConnected() { return mConnected; }
+        public void setConnected(boolean connected) { mConnected = connected; }
+        @Override
+        public String toString() {
+            return "{deviceid=" + mDeviceId +
+                   ", name=" + mDeviceName +
+                   ", macaddr=" + mMacAddress +
+                   ", connected=" + mConnected + "}";
+        }
     }
 
     /**
