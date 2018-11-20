@@ -108,12 +108,21 @@ public class WirelessDebuggingManager {
         mPairedDeviceGenerator.requestPairingList();
     }
 
+    public void setName(String name) {
+        mName = name;
+    }
+
+    public String getName() {
+        return mName;
+    }
+
     protected WirelessDebuggingManager(Context appContext) {
         mAppContext = appContext;
         mPairedDeviceGenerator = new PairedDeviceGenerator(mAppContext);
     }
 
     //////// Test code /////////////
+    private String mName = "Josh's Pixel 2";
     private boolean mEnabled = false;
     private Context mAppContext;
     private PairedDeviceGenerator mPairedDeviceGenerator;
