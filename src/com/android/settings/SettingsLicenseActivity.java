@@ -24,7 +24,7 @@ import android.content.Intent;
 import android.content.Loader;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.SystemProperties;
+import android.sysprop.ConfigProperties;
 import androidx.annotation.VisibleForTesting;
 import androidx.core.content.FileProvider;
 import android.text.TextUtils;
@@ -44,7 +44,6 @@ public class SettingsLicenseActivity extends Activity implements
     private static final String TAG = "SettingsLicenseActivity";
 
     private static final String DEFAULT_LICENSE_PATH = "/system/etc/NOTICE.html.gz";
-    private static final String PROPERTY_LICENSE_PATH = "ro.config.license_path";
 
     private static final int LOADER_ID_LICENSE_HTML_LOADER = 0;
 
@@ -52,8 +51,8 @@ public class SettingsLicenseActivity extends Activity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final String licenseHtmlPath =
-                SystemProperties.get(PROPERTY_LICENSE_PATH, DEFAULT_LICENSE_PATH);
+        final String licenseHtmlPath = ConfigProperties.license_path().orElse(
+                DEFAULT_LICENSE_PATH);
         if (isFilePathValid(licenseHtmlPath)) {
             showSelectedFile(licenseHtmlPath);
         } else {

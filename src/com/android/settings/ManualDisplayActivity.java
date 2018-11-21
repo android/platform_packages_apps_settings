@@ -22,7 +22,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.SystemProperties;
+import android.sysprop.ConfigProperties;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
@@ -36,7 +36,6 @@ public class ManualDisplayActivity extends Activity {
     private static final String TAG = "SettingsManualActivity";
 
     private static final String DEFAULT_MANUAL_PATH = "/system/etc/MANUAL.html.gz";
-    private static final String PROPERTY_MANUAL_PATH = "ro.config.manual_path";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +46,7 @@ public class ManualDisplayActivity extends Activity {
             finish();   // No manual to display for this device
         }
 
-        final String path = SystemProperties.get(PROPERTY_MANUAL_PATH, DEFAULT_MANUAL_PATH);
+        final String path = ConfigProperties.manual_path().orElse(DEFAULT_MANUAL_PATH);
         if (TextUtils.isEmpty(path)) {
             Log.e(TAG, "The system property for the manual is empty");
             showErrorAndFinish();
