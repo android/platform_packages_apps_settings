@@ -17,7 +17,7 @@
 package com.android.settings.development;
 
 import android.content.Context;
-import android.os.SystemProperties;
+import android.sysprop.HwuiProperties;
 import android.text.TextUtils;
 import android.view.ThreadedRenderer;
 
@@ -63,14 +63,12 @@ public class DebugGpuOverdrawPreferenceController extends
     }
 
     private void writeDebugHwOverdrawOptions(Object newValue) {
-        SystemProperties.set(ThreadedRenderer.DEBUG_OVERDRAW_PROPERTY,
-                newValue == null ? "" : newValue.toString());
+        HwuiProperties.debug_overdraw(newValue == null ? "" : newValue.toString());
         SystemPropPoker.getInstance().poke();
     }
 
     private void updateDebugHwOverdrawOptions() {
-        final String value = SystemProperties.get(
-                ThreadedRenderer.DEBUG_OVERDRAW_PROPERTY, "" /* default */);
+        final String value = HwuiProperties.debug_overdraw().orElse("");
 
         int index = 0; // default
         for (int i = 0; i < mListValues.length; i++) {

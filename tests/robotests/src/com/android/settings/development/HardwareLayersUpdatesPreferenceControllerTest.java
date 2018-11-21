@@ -20,7 +20,7 @@ import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import android.os.SystemProperties;
+import android.sysprop.HwuiProperties;
 import android.view.ThreadedRenderer;
 
 import androidx.preference.PreferenceScreen;
@@ -58,8 +58,7 @@ public class HardwareLayersUpdatesPreferenceControllerTest {
     public void onPreferenceChanged_settingEnabled_turnOnHardwareLayersUpdates() {
         mController.onPreferenceChange(mPreference, true /* new value */);
 
-        final boolean mode = SystemProperties
-            .getBoolean(ThreadedRenderer.DEBUG_SHOW_LAYERS_UPDATES_PROPERTY, false /* default */);
+        final boolean mode = HwuiProperties.debug_show_layers_updates().orElse(false);
 
         assertThat(mode).isTrue();
     }
@@ -68,16 +67,14 @@ public class HardwareLayersUpdatesPreferenceControllerTest {
     public void onPreferenceChanged_settingDisabled_turnOffHardwareLayersUpdates() {
         mController.onPreferenceChange(mPreference, false /* new value */);
 
-        final boolean mode = SystemProperties
-            .getBoolean(ThreadedRenderer.DEBUG_SHOW_LAYERS_UPDATES_PROPERTY, false /* default */);
+        final boolean mode = HwuiProperties.debug_show_layers_updates().orElse(false);
 
         assertThat(mode).isFalse();
     }
 
     @Test
     public void updateState_settingEnabled_preferenceShouldBeChecked() {
-        SystemProperties
-            .set(ThreadedRenderer.DEBUG_SHOW_LAYERS_UPDATES_PROPERTY, Boolean.toString(true));
+        HwuiProperties.debug_show_layers_updates(true);
         mController.updateState(mPreference);
 
         verify(mPreference).setChecked(true);
@@ -85,8 +82,7 @@ public class HardwareLayersUpdatesPreferenceControllerTest {
 
     @Test
     public void updateState_settingDisabled_preferenceShouldNotBeChecked() {
-        SystemProperties
-            .set(ThreadedRenderer.DEBUG_SHOW_LAYERS_UPDATES_PROPERTY, Boolean.toString(false));
+        HwuiProperties.debug_show_layers_updates(false);
         mController.updateState(mPreference);
 
         verify(mPreference).setChecked(false);

@@ -17,7 +17,7 @@
 package com.android.settings.development;
 
 import android.content.Context;
-import android.os.SystemProperties;
+import android.sysprop.HwuiProperties;
 import android.view.ThreadedRenderer;
 
 import androidx.preference.Preference;
@@ -44,23 +44,21 @@ public class GpuViewUpdatesPreferenceController extends DeveloperOptionsPreferen
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         final boolean isEnabled = (Boolean) newValue;
-        SystemProperties.set(ThreadedRenderer.DEBUG_DIRTY_REGIONS_PROPERTY,
-                isEnabled ? "true" : null);
+        HwuiProperties.debug_dirty_regions(isEnabled);
         SystemPropPoker.getInstance().poke();
         return true;
     }
 
     @Override
     public void updateState(Preference preference) {
-        final boolean isEnabled = SystemProperties.getBoolean(
-                ThreadedRenderer.DEBUG_DIRTY_REGIONS_PROPERTY, false /* default */);
+        final boolean isEnabled = HwuiProperties.debug_dirty_regions().orElse(false);
         ((SwitchPreference) mPreference).setChecked(isEnabled);
     }
 
     @Override
     protected void onDeveloperOptionsSwitchDisabled() {
         super.onDeveloperOptionsSwitchDisabled();
-        SystemProperties.set(ThreadedRenderer.DEBUG_DIRTY_REGIONS_PROPERTY, null);
+        HwuiProperties.debug_dirty_regions(false);
         ((SwitchPreference) mPreference).setChecked(false);
     }
 }

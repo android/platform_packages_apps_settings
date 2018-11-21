@@ -22,6 +22,7 @@ import static org.mockito.Mockito.when;
 
 import android.content.Context;
 import android.os.SystemProperties;
+import android.sysprop.HwuiProperties;
 import android.view.ThreadedRenderer;
 
 import androidx.preference.ListPreference;
@@ -70,21 +71,20 @@ public class ProfileGpuRenderingPreferenceControllerTest {
     public void onPreferenceChange_noValueSet_shouldSetEmptyString() {
         mController.onPreferenceChange(mPreference, null /* new value */);
 
-        String mode = SystemProperties.get(ThreadedRenderer.PROFILE_PROPERTY);
-        assertThat(mode).isEqualTo("");
+        assertThat(HwuiProperties.debug_profile().isPresent()).isEqualTo(false);
     }
 
     @Test
     public void onPreferenceChange_option1Selected_shouldSetOption1() {
         mController.onPreferenceChange(mPreference, mListValues[1]);
 
-        String mode = SystemProperties.get(ThreadedRenderer.PROFILE_PROPERTY);
+        String mode = HwuiProperties.debug_profile().orElse("");
         assertThat(mode).isEqualTo(mListValues[1]);
     }
 
     @Test
     public void updateState_option1Set_shouldUpdatePreferenceToOption1() {
-        SystemProperties.set(ThreadedRenderer.PROFILE_PROPERTY, mListValues[1]);
+        HwuiProperties.debug_profile(mListValues[1]);
 
         mController.updateState(mPreference);
 
@@ -94,7 +94,7 @@ public class ProfileGpuRenderingPreferenceControllerTest {
 
     @Test
     public void updateState_option2Set_shouldUpdatePreferenceToOption2() {
-        SystemProperties.set(ThreadedRenderer.PROFILE_PROPERTY, mListValues[2]);
+        HwuiProperties.debug_profile(mListValues[2]);
 
         mController.updateState(mPreference);
 
@@ -104,7 +104,7 @@ public class ProfileGpuRenderingPreferenceControllerTest {
 
     @Test
     public void updateState_noOptionSet_shouldDefaultToOption0() {
-        SystemProperties.set(ThreadedRenderer.PROFILE_PROPERTY, null);
+        HwuiProperties.debug_profile(null);
 
         mController.updateState(mPreference);
 

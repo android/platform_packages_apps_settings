@@ -21,7 +21,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
-import android.os.SystemProperties;
+import android.sysprop.HwuiProperties;
 import android.view.ThreadedRenderer;
 
 import androidx.preference.ListPreference;
@@ -71,21 +71,21 @@ public class DebugGpuOverdrawPreferenceControllerTest {
     public void onPreferenceChange_noValueSet_shouldSetEmptyString() {
         mController.onPreferenceChange(mPreference, null /* new value */);
 
-        String mode = SystemProperties.get(ThreadedRenderer.DEBUG_OVERDRAW_PROPERTY);
-        assertThat(mode).isEqualTo("");
+        assertThat(HwuiProperties.debug_overdraw().isPresent()).isEqualTo(false);
     }
 
     @Test
     public void onPreferenceChange_option1Selected_shouldSetOption1() {
         mController.onPreferenceChange(mPreference, mListValues[1]);
 
-        String mode = SystemProperties.get(ThreadedRenderer.DEBUG_OVERDRAW_PROPERTY);
+        String mode = HwuiProperties.debug_overdraw().orElse("");
+
         assertThat(mode).isEqualTo(mListValues[1]);
     }
 
     @Test
     public void updateState_option1Set_shouldUpdatePreferenceToOption1() {
-        SystemProperties.set(ThreadedRenderer.DEBUG_OVERDRAW_PROPERTY, mListValues[1]);
+        HwuiProperties.debug_overdraw(mListValues[1].toString());
 
         mController.updateState(mPreference);
 
@@ -95,7 +95,7 @@ public class DebugGpuOverdrawPreferenceControllerTest {
 
     @Test
     public void updateState_option2Set_shouldUpdatePreferenceToOption2() {
-        SystemProperties.set(ThreadedRenderer.DEBUG_OVERDRAW_PROPERTY, mListValues[2]);
+        HwuiProperties.debug_overdraw(mListValues[2].toString());
 
         mController.updateState(mPreference);
 
@@ -105,7 +105,7 @@ public class DebugGpuOverdrawPreferenceControllerTest {
 
     @Test
     public void updateState_noOptionSet_shouldDefaultToOption0() {
-        SystemProperties.set(ThreadedRenderer.DEBUG_OVERDRAW_PROPERTY, null);
+        HwuiProperties.debug_overdraw(null);
 
         mController.updateState(mPreference);
 
