@@ -21,7 +21,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
-import android.os.SystemProperties;
+import android.sysprop.DebugHwuiProperties;
 import androidx.preference.ListPreference;
 import androidx.preference.PreferenceScreen;
 import android.view.ThreadedRenderer;
@@ -69,21 +69,20 @@ public class ProfileGpuRenderingPreferenceControllerTest {
     public void onPreferenceChange_noValueSet_shouldSetEmptyString() {
         mController.onPreferenceChange(mPreference, null /* new value */);
 
-        String mode = SystemProperties.get(ThreadedRenderer.PROFILE_PROPERTY);
-        assertThat(mode).isEqualTo("");
+        assertThat(DebugHwuiProperties.profile().isPresent()).isEqualTo(false);
     }
 
     @Test
     public void onPreferenceChange_option1Selected_shouldSetOption1() {
         mController.onPreferenceChange(mPreference, mListValues[1]);
 
-        String mode = SystemProperties.get(ThreadedRenderer.PROFILE_PROPERTY);
+        String mode = DebugHwuiProperties.profile().orElse("");
         assertThat(mode).isEqualTo(mListValues[1]);
     }
 
     @Test
     public void updateState_option1Set_shouldUpdatePreferenceToOption1() {
-        SystemProperties.set(ThreadedRenderer.PROFILE_PROPERTY, mListValues[1]);
+        DebugHwuiProperties.profile(mListValues[1]);
 
         mController.updateState(mPreference);
 
@@ -93,7 +92,7 @@ public class ProfileGpuRenderingPreferenceControllerTest {
 
     @Test
     public void updateState_option2Set_shouldUpdatePreferenceToOption2() {
-        SystemProperties.set(ThreadedRenderer.PROFILE_PROPERTY, mListValues[2]);
+        DebugHwuiProperties.profile(mListValues[2]);
 
         mController.updateState(mPreference);
 
@@ -103,7 +102,7 @@ public class ProfileGpuRenderingPreferenceControllerTest {
 
     @Test
     public void updateState_noOptionSet_shouldDefaultToOption0() {
-        SystemProperties.set(ThreadedRenderer.PROFILE_PROPERTY, null);
+        DebugHwuiProperties.profile(null);
 
         mController.updateState(mPreference);
 
