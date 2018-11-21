@@ -17,7 +17,7 @@
 package com.android.settings.development;
 
 import android.content.Context;
-import android.os.SystemProperties;
+import android.sysprop.DebugHwuiProperties;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import android.text.TextUtils;
@@ -62,14 +62,12 @@ public class DebugNonRectClipOperationsPreferenceController extends
     }
 
     private void writeShowNonRectClipOptions(Object newValue) {
-        SystemProperties.set(ThreadedRenderer.DEBUG_SHOW_NON_RECTANGULAR_CLIP_PROPERTY,
-                newValue == null ? "" : newValue.toString());
+        DebugHwuiProperties.show_non_rectangular_clip(newValue == null ? "" : newValue.toString());
         SystemPropPoker.getInstance().poke();
     }
 
     private void updateShowNonRectClipOptions() {
-        final String value = SystemProperties.get(
-                ThreadedRenderer.DEBUG_SHOW_NON_RECTANGULAR_CLIP_PROPERTY, "hide" /* default */);
+        final String value = DebugHwuiProperties.show_non_rectangular_clip().orElse("hide");
 
         int index = 0; // default
         for (int i = 0; i < mListValues.length; i++) {

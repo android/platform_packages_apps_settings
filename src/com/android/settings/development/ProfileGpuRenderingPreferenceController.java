@@ -17,7 +17,7 @@
 package com.android.settings.development;
 
 import android.content.Context;
-import android.os.SystemProperties;
+import android.sysprop.DebugHwuiProperties;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import android.text.TextUtils;
@@ -61,14 +61,12 @@ public class ProfileGpuRenderingPreferenceController extends DeveloperOptionsPre
     }
 
     private void writeTrackFrameTimeOptions(Object newValue) {
-        SystemProperties.set(ThreadedRenderer.PROFILE_PROPERTY,
-                newValue == null ? "" : newValue.toString());
+        DebugHwuiProperties.profile(newValue == null ? "" : newValue.toString());
         SystemPropPoker.getInstance().poke();
     }
 
     private void updateTrackFrameTimeOptions() {
-        final String value = SystemProperties.get(
-                ThreadedRenderer.PROFILE_PROPERTY, "" /* default */);
+        final String value = DebugHwuiProperties.profile().orElse("");
         int index = 0; // default
         for (int i = 0; i < mListValues.length; i++) {
             if (TextUtils.equals(value, mListValues[i])) {
