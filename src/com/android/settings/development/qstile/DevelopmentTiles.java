@@ -22,6 +22,7 @@ import android.os.Parcel;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.SystemProperties;
+import android.sysprop.DebugHwuiProperties;
 import android.provider.Settings;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
@@ -84,13 +85,12 @@ public abstract class DevelopmentTiles extends TileService {
 
         @Override
         protected boolean isEnabled() {
-            final String value = SystemProperties.get(ThreadedRenderer.PROFILE_PROPERTY);
-            return value.equals("visual_bars");
+            return DebugHwuiProperties.profile().orElse("").equals("visual_bars");
         }
 
         @Override
         protected void setIsEnabled(boolean isEnabled) {
-            SystemProperties.set(ThreadedRenderer.PROFILE_PROPERTY, isEnabled ? "visual_bars" : "");
+            DebugHwuiProperties.profile(isEnabled ? "visual_bars" : "");
         }
     }
 

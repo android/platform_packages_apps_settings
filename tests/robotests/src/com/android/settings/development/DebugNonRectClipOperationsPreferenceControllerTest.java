@@ -21,7 +21,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
-import android.os.SystemProperties;
+import android.sysprop.DebugHwuiProperties;
 import androidx.preference.ListPreference;
 import androidx.preference.PreferenceScreen;
 import android.view.ThreadedRenderer;
@@ -69,24 +69,20 @@ public class DebugNonRectClipOperationsPreferenceControllerTest {
     public void onPreferenceChange_noValueSet_shouldSetEmptyString() {
         mController.onPreferenceChange(mPreference, null /* new value */);
 
-        String mode = SystemProperties.get(
-                ThreadedRenderer.DEBUG_SHOW_NON_RECTANGULAR_CLIP_PROPERTY);
-        assertThat(mode).isEqualTo("");
+        assertThat(DebugHwuiProperties.show_non_rectangular_clip().isPresent()).isEqualTo(false);
     }
 
     @Test
     public void onPreferenceChange_option1Selected_shouldSetOption1() {
         mController.onPreferenceChange(mPreference, mListValues[1]);
 
-        String mode = SystemProperties.get(
-                ThreadedRenderer.DEBUG_SHOW_NON_RECTANGULAR_CLIP_PROPERTY);
+        String mode = DebugHwuiProperties.show_non_rectangular_clip().orElse("");
         assertThat(mode).isEqualTo(mListValues[1]);
     }
 
     @Test
     public void updateState_option1Set_shouldUpdatePreferenceToOption1() {
-        SystemProperties.set(ThreadedRenderer.DEBUG_SHOW_NON_RECTANGULAR_CLIP_PROPERTY,
-                mListValues[1]);
+        DebugHwuiProperties.show_non_rectangular_clip(mListValues[1]);
 
         mController.updateState(mPreference);
 
@@ -96,8 +92,7 @@ public class DebugNonRectClipOperationsPreferenceControllerTest {
 
     @Test
     public void updateState_option2Set_shouldUpdatePreferenceToOption2() {
-        SystemProperties.set(ThreadedRenderer.DEBUG_SHOW_NON_RECTANGULAR_CLIP_PROPERTY,
-                mListValues[2]);
+        DebugHwuiProperties.show_non_rectangular_clip(mListValues[2]);
 
         mController.updateState(mPreference);
 
@@ -107,7 +102,7 @@ public class DebugNonRectClipOperationsPreferenceControllerTest {
 
     @Test
     public void updateState_noOptionSet_shouldDefaultToOption0() {
-        SystemProperties.set(ThreadedRenderer.DEBUG_SHOW_NON_RECTANGULAR_CLIP_PROPERTY, null);
+        DebugHwuiProperties.show_non_rectangular_clip(null);
 
         mController.updateState(mPreference);
 

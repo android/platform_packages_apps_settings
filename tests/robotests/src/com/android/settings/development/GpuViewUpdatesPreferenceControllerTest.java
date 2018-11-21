@@ -21,7 +21,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
-import android.os.SystemProperties;
+import android.sysprop.DebugHwuiProperties;
 import androidx.preference.SwitchPreference;
 import androidx.preference.PreferenceScreen;
 import android.view.ThreadedRenderer;
@@ -60,8 +60,7 @@ public class GpuViewUpdatesPreferenceControllerTest {
     public void onPreferenceChanged_settingEnabled_turnOnGpuViewUpdates() {
         mController.onPreferenceChange(mPreference, true /* new value */);
 
-        final boolean mode = SystemProperties
-            .getBoolean(ThreadedRenderer.DEBUG_DIRTY_REGIONS_PROPERTY, false /* default */);
+        final boolean mode = DebugHwuiProperties.dirty_regions().orElse(false);
 
         assertThat(mode).isTrue();
     }
@@ -70,15 +69,14 @@ public class GpuViewUpdatesPreferenceControllerTest {
     public void onPreferenceChanged_settingDisabled_turnOffGpuViewUpdates() {
         mController.onPreferenceChange(mPreference, false /* new value */);
 
-        final boolean mode = SystemProperties
-            .getBoolean(ThreadedRenderer.DEBUG_DIRTY_REGIONS_PROPERTY, false /* default */);
+        final boolean mode = DebugHwuiProperties.dirty_regions().orElse(false);
 
         assertThat(mode).isFalse();
     }
 
     @Test
     public void updateState_settingEnabled_preferenceShouldBeChecked() {
-        SystemProperties.set(ThreadedRenderer.DEBUG_DIRTY_REGIONS_PROPERTY, Boolean.toString(true));
+        DebugHwuiProperties.dirty_regions(true);
         mController.updateState(mPreference);
 
         verify(mPreference).setChecked(true);
@@ -86,8 +84,7 @@ public class GpuViewUpdatesPreferenceControllerTest {
 
     @Test
     public void updateState_settingDisabled_preferenceShouldNotBeChecked() {
-        SystemProperties
-            .set(ThreadedRenderer.DEBUG_DIRTY_REGIONS_PROPERTY, Boolean.toString(false));
+        DebugHwuiProperties.dirty_regions(false);
         mController.updateState(mPreference);
 
         verify(mPreference).setChecked(false);
