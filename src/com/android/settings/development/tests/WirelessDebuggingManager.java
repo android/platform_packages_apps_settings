@@ -78,7 +78,16 @@ public class WirelessDebuggingManager {
     public static final String DEVICE_LIST_EXTRA = "map";
     public static final String PAIR_STATUS_EXTRA = "pair_status_type";
     public static final String PAIR_ID_EXTRA = "pair_id";
+    public static final String PAIRED_DEVICE_EXTRA = "paired_device";
     public static final String AUTH_CODE_EXTRA = "auth_code";
+    public static final String RESULT_CODE_EXTRA = "result_code";
+
+    /**
+     * Status codes for connecting/disconnecting, pairing/unpairing
+     * @see #RESULT_CODE_EXTRA
+     */
+    public static final int RESULT_OK = 0;
+    public static final int RESULT_FAILED = 1;
 
     public boolean isEnabled() {
         return mEnabled;
@@ -105,7 +114,7 @@ public class WirelessDebuggingManager {
     }
 
     public void unpair(Integer id) {
-      // not implemented
+        mPairedDeviceGenerator.unpair(id);
     }
 
     public void requestPairedList() {

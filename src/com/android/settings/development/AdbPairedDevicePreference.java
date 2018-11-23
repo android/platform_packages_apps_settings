@@ -17,6 +17,7 @@
 package com.android.settings.development;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
@@ -35,6 +36,9 @@ public class AdbPairedDevicePreference extends Preference {
     private final String TAG = this.getClass().getSimpleName();
 
     private PairedDevice mPairedDevice;
+
+    // Extract using getSerializable(PAIRED_DEVICE_EXTRA)
+    public static final String PAIRED_DEVICE_EXTRA = "paired_device";
 
     public AdbPairedDevicePreference(PairedDevice pairedDevice, Context context) {
         super(context);
@@ -77,6 +81,10 @@ public class AdbPairedDevicePreference extends Preference {
         preference.setSummary(pairedDevice.isConnected() ?
                 preference.getContext().getText(R.string.adb_wireless_device_connected_summary) :
                 "");
+    }
+
+    public void savePairedDeviceToExtras(Bundle bundle) {
+        bundle.putSerializable(PAIRED_DEVICE_EXTRA, mPairedDevice);
     }
 }
 
