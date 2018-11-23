@@ -29,6 +29,7 @@ import com.android.settings.development.tests.WirelessDebuggingManager.PairedDev
 
 import java.lang.Runnable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
 import java.util.concurrent.Executors;
@@ -48,7 +49,8 @@ public class PairedDeviceGenerator implements Runnable {
     private ScheduledExecutorService mScheduledTaskExecutor;
     private boolean mStarted = false;
 
-    private static final HashMap<Integer, PairedDevice> mTestDevices = createPairedDevices();
+    // the initial list of devices currently paired with.
+    private static HashMap<Integer, PairedDevice> mPairedDevices = createPairedDevices();
 
     private static HashMap<Integer, PairedDevice> createPairedDevices() {
         HashMap<Integer, PairedDevice> map = new HashMap<Integer, PairedDevice>();
@@ -84,7 +86,7 @@ public class PairedDeviceGenerator implements Runnable {
     }
 
     public void unpair(Integer id) {
-      // not implemented
+        mPairedDevices.remove(id);
     }
 
     public void start() {
@@ -113,40 +115,38 @@ public class PairedDeviceGenerator implements Runnable {
         mStarted = false;
     }
 
-    // Filled mDeviceMap with a random subset of mTestDevices
+    // Filled mDeviceMap with a random subset of mPairedDevices to
+    // simulate devices coming in and out of the network.
     private void randomizeDeviceMap() {
         mDeviceMap.clear();
 
+        Log.i(TAG, "randomizeDeviceMap() device list: " + mPairedDevices);
         Random rand = new Random();
-        // Get a random subset of mTestDevices
-        int numDevices = rand.nextInt(mTestDevices.size() + 1);
+        // Get a random subset of mPairedDevices
+        int numDevices = rand.nextInt(mPairedDevices.size() + 1);
 
         if (numDevices == 0) {
             return;
         }
 
-        // Grab randomly numDevices from mTestDevices
-
-        // Generates a shuffled list of numbers from 0..numDevices
-        List<Integer> integers = IntStream.range(0, mTestDevices.size())
-                .boxed()
-                .collect(Collectors.toList());
-        Collections.shuffle(integers);
+        // Grab randomly numDevices from mPairedDevices
+        List<Integer> deviceIds = new ArrayList<Integer>(mPairedDevices.keySet());
+        Collections.shuffle(deviceIds);
 
         for (int i = 0; i < numDevices; ++i) {
-            mDeviceMap.put(integers.get(i), mTestDevices.get(integers.get(i)));
+            mDeviceMap.put(deviceIds.get(i), mPairedDevices.get(deviceIds.get(i)));
             // Randomly choose whether the device is connected or not
-            mDeviceMap.get(integers.get(i)).setConnected(
+            mDeviceMap.get(deviceIds.get(i)).setConnected(
                 rand.nextBoolean());
         }
     }
 
     public void run() {
         try {
-        randomizeDeviceMap();
-        Intent intent = new Intent(WirelessDebuggingManager.WIRELESS_DEBUG_PAIRED_LIST_ACTION);
-        intent.putExtra(WirelessDebuggingManager.DEVICE_LIST_EXTRA, mDeviceMap);
-        mAppContext.sendBroadcastAsUser(intent, UserHandle.ALL);
+            randomizeDeviceMap();
+            Intent intent = new Intent(WirelessDebuggingManager.WIRELESS_DEBUG_PAIRED_LIST_ACTION);
+            intent.putExtra(WirelessDebuggingManager.DEVICE_LIST_EXTRA, mDeviceMap);
+            mAppContext.sendBroadcastAsUser(intent, UserHandle.ALL);
         } catch (Exception e) {
             Log.w(TAG, "Something failed running the paired generator");
             e.printStackTrace();
