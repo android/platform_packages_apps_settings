@@ -88,6 +88,7 @@ public class WirelessDebuggingManager {
      */
     public static final int RESULT_OK = 0;
     public static final int RESULT_FAILED = 1;
+    public static final int RESULT_AUTH_CODE = 2;
 
     public boolean isEnabled() {
         return mEnabled;
@@ -102,7 +103,6 @@ public class WirelessDebuggingManager {
     public void setEnabled(boolean enabled) {
         mEnabled = enabled;
         if (enabled) {
-            //TODO: turn on the paired device generator
             mPairedDeviceGenerator.start();
         } else {
             mPairedDeviceGenerator.stop();
@@ -110,7 +110,7 @@ public class WirelessDebuggingManager {
     }
 
     public void pair(Integer id, String qrcode) {
-      // not implemented
+        mPairedDeviceGenerator.pair(id, qrcode);
     }
 
     public void unpair(Integer id) {
@@ -123,6 +123,10 @@ public class WirelessDebuggingManager {
 
     public void requestPairingList() {
         mPairedDeviceGenerator.requestPairingList();
+    }
+
+    public void cancelPairing(Integer id) {
+        mPairedDeviceGenerator.cancelPairing(id);
     }
 
     public void setName(String name) {
