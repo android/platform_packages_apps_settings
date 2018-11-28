@@ -71,7 +71,16 @@ public class WirelessDebugging extends DashboardFragment
     private static final int PAIRED_DEVICE_REQUEST = 0;
     public static final String PAIRED_DEVICE_REQUEST_TYPE = "request_type";
     public static final int FORGET_ACTION = 0;
+
+    // Activity result from pairing a device.
+    private static final int PAIRING_DEVICE_REQUEST = 1;
+    public static final String PAIRING_DEVICE_REQUEST_TYPE = "request_type_pairing";
+    public static final int SUCCESS_ACTION = 0;
+    public static final int FAIL_ACTION = 1;
+    public static final int DISCOVERY_FAIL_ACTION = 2;
+
     public static final String PAIRED_DEVICE_EXTRA = "paired_device";
+    public static final String DEVICE_NAME_EXTRA = "device_name";
 
     private WirelessDebuggingEnabler mWifiDebuggingEnabler;
 
@@ -136,6 +145,11 @@ public class WirelessDebugging extends DashboardFragment
                 (PreferenceCategory) findPreference(PREF_KEY_PAIRING_METHODS_CATEGORY);
         mCodePairingPreference =
                 (Preference) findPreference(PREF_KEY_ADB_CODE_PAIRING);
+        mCodePairingPreference.setOnPreferenceClickListener(preference -> {
+            launchDevicePairingFragment();
+            return true;
+        });
+
         mPairedDevicesCategory =
                 (PreferenceCategory) findPreference(PREF_KEY_PAIRED_DEVICES_CATEGORY);
         mFooterCategory =
@@ -196,6 +210,8 @@ public class WirelessDebugging extends DashboardFragment
 
         if (requestCode == PAIRED_DEVICE_REQUEST) {
             handlePairedDeviceRequest(resultCode, data);
+        } else if (requestCode == PAIRING_DEVICE_REQUEST) {
+            handlePairingDeviceRequest(resultCode, data);
         }
     }
 
@@ -205,8 +221,20 @@ public class WirelessDebugging extends DashboardFragment
     }
 
     @Override
+    public Dialog onCreateDialog(int dialogId) {
+        Dialog d = AdbWirelessDialog.createModal(
+                getActivity(),
+                null,
+                dialogId);
+        if (d != null) {
+            return d;
+        }
+        return super.onCreateDialog(dialogId);
+    }
+
+    @Override
     public int getDialogMetricsCategory(int dialogId) {
-        return 0;
+        return MetricsEvent.ADB_WIRELESS_DEVICE_PAIRING_DIALOG;
     }
 
     @Override
@@ -363,4 +391,41 @@ public class WirelessDebugging extends DashboardFragment
                 break;
         }
     }
+
+    void handlePairingDeviceRequest(int result, Intent data) {
+        if (result != Activity.RESULT_OK) {
+            return;
+        }
+
+        int requestType = data.getIntExtra(PAIRING_DEVICE_REQUEST_TYPE, -1);
+        switch (requestType) {
+            case FAIL_ACTION:
+                showDialog(AdbWirelessDialogUiBase.MODE_PAIRING_FAILED);
+                break;
+            case DISCOVERY_FAIL_ACTION:
+                showDialog(AdbWirelessDialogUiBase.MODE_DISCOVERY_FAILED);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void launchDevicePairingFragment() {
+        // For sending to the pairing device fragment.
+        try {
+            Bundle bundle = new Bundle();
+            bundle.putCharSequence(DEVICE_NAME_EXTRA,
+                    mAdbManager.getName());
+            new SubSettingLauncher(getContext())
+                    .setTitleRes(R.string.adb_pair_new_devices_title)
+                    .setDestination(AdbPairingDeviceFragment.class.getName())
+                    .setArguments(bundle)
+                    .setSourceMetricsCategory(getMetricsCategory())
+                    .setResultListener(this, PAIRING_DEVICE_REQUEST)
+                    .launch();
+        } catch (RemoteException e) {
+            Log.e(TAG, "Unable to get the device name");
+        }
+    }
+
 }
