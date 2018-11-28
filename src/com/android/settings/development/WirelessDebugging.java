@@ -66,6 +66,7 @@ public class WirelessDebugging extends DashboardFragment
     public static final String PAIRED_DEVICE_REQUEST_TYPE = "request_type";
     public static final int FORGET_ACTION = 0;
     public static final String PAIRED_DEVICE_EXTRA = "paired_device";
+    public static final String DEVICE_NAME_EXTRA = "device_name";
 
     private WirelessDebuggingEnabler mWifiDebuggingEnabler;
 
@@ -75,9 +76,6 @@ public class WirelessDebugging extends DashboardFragment
     private static final String PREF_KEY_ADB_CODE_PAIRING = "adb_pair_method_code_pref";
     private static final String PREF_KEY_PAIRED_DEVICES_CATEGORY = "adb_paired_devices_category";
     private static final String PREF_KEY_FOOTER_CATEGORY = "adb_wireless_footer_category";
-
-    private String mDeviceName;
-    private String mPendingDeviceName;
 
     private ValidatedEditTextPreference mDeviceNamePreference;
     private AdbDeviceNameTextValidator mDeviceNameValidator;
@@ -131,6 +129,11 @@ public class WirelessDebugging extends DashboardFragment
                 (PreferenceCategory) findPreference(PREF_KEY_PAIRING_METHODS_CATEGORY);
         mCodePairingPreference =
                 (Preference) findPreference(PREF_KEY_ADB_CODE_PAIRING);
+        mCodePairingPreference.setOnPreferenceClickListener(preference -> {
+            launchDevicePairingFragment();
+            return true;
+        });
+
         mPairedDevicesCategory =
                 (PreferenceCategory) findPreference(PREF_KEY_PAIRED_DEVICES_CATEGORY);
         mFooterCategory =
@@ -168,6 +171,9 @@ public class WirelessDebugging extends DashboardFragment
         super.onResume();
 
         getActivity().registerReceiver(mReceiver, mIntentFilter);
+        WirelessDebuggingManager.getInstance(
+            getActivity().getApplicationContext())
+              .requestPairedList();
         mWifiDebuggingEnabler.resume(activity);
     }
 
@@ -286,6 +292,10 @@ public class WirelessDebugging extends DashboardFragment
         Log.i(TAG, "New paired device list: " + newList);
         // TODO(joshuaduong): Move the non-UI stuff into another thread
         // as the processing could take some time.
+        if (newList == null) {
+            mPairedDevicesCategory.removeAll();
+            return;
+        }
         if (mPairedDevicePreferences == null) {
             mPairedDevicePreferences = new HashMap<Integer, AdbPairedDevicePreference>();
         }
@@ -378,4 +388,19 @@ public class WirelessDebugging extends DashboardFragment
                 break;
         }
     }
+
+    private void launchDevicePairingFragment() {
+        // For sending to the pairing device fragment.
+        Bundle bundle = new Bundle();
+        bundle.putCharSequence(DEVICE_NAME_EXTRA,
+                WirelessDebuggingManager.getInstance(
+                    getActivity().getApplicationContext()).getName());
+        new SubSettingLauncher(getContext())
+                .setTitleRes(R.string.adb_pair_new_devices_title)
+                .setDestination(AdbPairingDeviceFragment.class.getName())
+                .setArguments(bundle)
+                .setSourceMetricsCategory(getMetricsCategory())
+                .launch();
+    }
+
 }
