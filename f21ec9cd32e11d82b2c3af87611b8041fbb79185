@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae9bd859_d78addc3",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 2336,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-11-28T21:16:35Z",
+      "side": 1,
+      "message": "Can we reuse the one you changed in framework?",
+      "range": {
+        "startLine": 2336,
+        "startChar": 14,
+        "endLine": 2336,
+        "endChar": 30
+      },
+      "revId": "f21ec9cd32e11d82b2c3af87611b8041fbb79185",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "984fb8d0_14609508",
+        "filename": "src/com/android/settings/wifi/calling/ListWithEntrySummaryPreference.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-11-28T21:16:35Z",
+      "side": 1,
+      "message": "Please add robo test for this file",
+      "range": {
+        "startLine": 41,
+        "startChar": 13,
+        "endLine": 41,
+        "endChar": 43
+      },
+      "revId": "f21ec9cd32e11d82b2c3af87611b8041fbb79185",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d935ca93_c86b0dca",
+        "filename": "src/com/android/settings/wifi/calling/ListWithEntrySummaryPreference.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-11-28T21:16:35Z",
+      "side": 1,
+      "message": "Can you tell more about it? I wonder when it will crash(how to repro it)\n\nIn my understanding Entries and EntryValues should already been handled by ListPreference and we don\u0027t need to store it manually here.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 7
+      },
+      "revId": "f21ec9cd32e11d82b2c3af87611b8041fbb79185",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
