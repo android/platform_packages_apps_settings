@@ -299,14 +299,11 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
 
 
         // NOTE: Buttons will be enabled/disabled in mPhoneStateListener
-        boolean wfcEnabled = mImsManager.isWfcEnabledByUser()
-                && mImsManager.isNonTtyOrTtyOnVolteEnabled();
-        mSwitch.setChecked(wfcEnabled);
         int wfcMode = mImsManager.getWfcMode(false);
         int wfcRoamingMode = mImsManager.getWfcMode(true);
         mButtonWfcMode.setValue(Integer.toString(wfcMode));
         mButtonWfcRoamingMode.setValue(Integer.toString(wfcRoamingMode));
-        updateButtonWfcMode(wfcEnabled, wfcMode, wfcRoamingMode);
+        updateButtonWfcMode(wfcMode, wfcRoamingMode);
     }
 
     @Override
@@ -411,7 +408,7 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
 
         int wfcMode = mImsManager.getWfcMode(false);
         int wfcRoamingMode = mImsManager.getWfcMode(true);
-        updateButtonWfcMode(wfcEnabled, wfcMode, wfcRoamingMode);
+        updateButtonWfcMode(wfcMode, wfcRoamingMode);
         if (wfcEnabled) {
             mMetricsFeatureProvider.action(getActivity(), getMetricsCategory(), wfcMode);
         } else {
@@ -434,8 +431,11 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
         }
     }
 
-    private void updateButtonWfcMode(boolean wfcEnabled,
-            int wfcMode, int wfcRoamingMode) {
+    private void updateButtonWfcMode(int wfcMode, int wfcRoamingMode) {
+        boolean wfcEnabled = mImsManager.isWfcEnabledByUser()
+                && mImsManager.isNonTtyOrTtyOnVolteEnabled();
+        mSwitch.setChecked(wfcEnabled);
+
         mButtonWfcMode.setSummary(getWfcModeSummary(wfcMode));
         mButtonWfcMode.setEnabled(wfcEnabled && mEditableWfcMode);
         // mButtonWfcRoamingMode.setSummary is not needed; summary is just selected value.
