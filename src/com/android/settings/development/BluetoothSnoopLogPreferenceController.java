@@ -18,10 +18,13 @@ package com.android.settings.development;
 
 import android.content.Context;
 import android.os.SystemProperties;
+import android.text.TextUtils;
+
 import androidx.annotation.VisibleForTesting;
-import androidx.preference.SwitchPreference;
+import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 
+import com.android.settings.R;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.development.DeveloperOptionsPreferenceController;
 
@@ -33,8 +36,14 @@ public class BluetoothSnoopLogPreferenceController extends DeveloperOptionsPrefe
     static final String BLUETOOTH_BTSNOOP_ENABLE_PROPERTY =
             "persist.bluetooth.btsnoopenable";
 
+    private final String[] mListValues;
+    private final String[] mListSummaries;
+
     public BluetoothSnoopLogPreferenceController(Context context) {
         super(context);
+
+        mListValues = context.getResources().getStringArray(R.array.bt_hci_snoop_log_values);
+        mListSummaries = context.getResources().getStringArray(R.array.bt_hci_snoop_log_entries);
     }
 
     @Override
@@ -44,23 +53,31 @@ public class BluetoothSnoopLogPreferenceController extends DeveloperOptionsPrefe
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        final boolean enableBtSnoopLog = (Boolean) newValue;
-        SystemProperties.set(BLUETOOTH_BTSNOOP_ENABLE_PROPERTY, Boolean.toString(enableBtSnoopLog));
+        SystemProperties.set(BLUETOOTH_BTSNOOP_ENABLE_PROPERTY, newValue.toString());
+        updateState(mPreference);
         return true;
     }
 
     @Override
     public void updateState(Preference preference) {
-        super.updateState(preference);
-        final boolean enableBtSnoopLog = SystemProperties.getBoolean(
-                BLUETOOTH_BTSNOOP_ENABLE_PROPERTY, false /* def */);
-        ((SwitchPreference) mPreference).setChecked(enableBtSnoopLog);
+        final ListPreference listPreference = (ListPreference) preference;
+        final String currentValue = SystemProperties.get(BLUETOOTH_BTSNOOP_ENABLE_PROPERTY);
+        int index = 1; // Defaults to Filtered Snoop Logs
+        for (int i = 0; i < mListValues.length; i++) {
+            if (TextUtils.equals(currentValue, mListValues[i])) {
+                index = i;
+                break;
+            }
+        }
+        listPreference.setValue(mListValues[index]);
+        listPreference.setSummary(mListSummaries[index]);
     }
 
     @Override
     protected void onDeveloperOptionsSwitchDisabled() {
         super.onDeveloperOptionsSwitchDisabled();
-        SystemProperties.set(BLUETOOTH_BTSNOOP_ENABLE_PROPERTY, Boolean.toString(false));
-        ((SwitchPreference) mPreference).setChecked(false);
+        SystemProperties.set(BLUETOOTH_BTSNOOP_ENABLE_PROPERTY, mListValues[0]);
+        ((ListPreference) mPreference).setValue(mListValues[0]);
+        ((ListPreference) mPreference).setSummary(mListSummaries[0]);
     }
 }
