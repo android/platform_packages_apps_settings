@@ -17,11 +17,15 @@
 package com.android.settings.development;
 
 import android.content.Context;
+import android.os.Build;
 import android.os.SystemProperties;
+import android.text.TextUtils;
+
 import androidx.annotation.VisibleForTesting;
-import androidx.preference.SwitchPreference;
+import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 
+import com.android.settings.R;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.development.DeveloperOptionsPreferenceController;
 
@@ -30,11 +34,38 @@ public class BluetoothSnoopLogPreferenceController extends DeveloperOptionsPrefe
 
     private static final String PREFERENCE_KEY = "bt_hci_snoop_log";
     @VisibleForTesting
-    static final String BLUETOOTH_BTSNOOP_ENABLE_PROPERTY =
+    static final int BTSNOOP_LOG_MODE_DISABLED_INDEX = 0;
+    @VisibleForTesting
+    static final int BTSNOOP_LOG_MODE_FILTERED_INDEX = 1;
+    @VisibleForTesting
+    static final int BTSNOOP_LOG_MODE_FULL_INDEX = 2;
+    // Default mode is FILTERED on userdebug/eng build, DISABLED on user build
+    @VisibleForTesting
+    static final int DEFAULT_BTSNOOP_LOG_MODE_INDEX =
+            Build.IS_DEBUGGABLE ? BTSNOOP_LOG_MODE_FILTERED_INDEX : BTSNOOP_LOG_MODE_DISABLED_INDEX;
+    @VisibleForTesting
+    static final String BLUETOOTH_BTSNOOP_LEGACY_ENABLE_PROPERTY =
             "persist.bluetooth.btsnoopenable";
+    @VisibleForTesting
+    static final String BLUETOOTH_BTSNOOP_LOG_MODE_PROPERTY = "persist.bluetooth.btsnooplogmode";
+
+    private final String[] mListValues;
+    private final String[] mListEntries;
 
     public BluetoothSnoopLogPreferenceController(Context context) {
         super(context);
+        mListValues = context.getResources().getStringArray(R.array.bt_hci_snoop_log_values);
+        mListEntries = context.getResources().getStringArray(R.array.bt_hci_snoop_log_entries);
+        String legacyValue = SystemProperties.get(BLUETOOTH_BTSNOOP_LEGACY_ENABLE_PROPERTY);
+        // If legacy property is enabled, set the mode as "full"
+        if (TextUtils.equals(legacyValue, "true")) {
+            SystemProperties.set(BLUETOOTH_BTSNOOP_LOG_MODE_PROPERTY,
+                    mListValues[BTSNOOP_LOG_MODE_FULL_INDEX]);
+        }
+        // Reset legacy property to empty if it exists
+        if (legacyValue != null) {
+            SystemProperties.set(BLUETOOTH_BTSNOOP_LEGACY_ENABLE_PROPERTY, "");
+        }
     }
 
     @Override
@@ -44,23 +75,32 @@ public class BluetoothSnoopLogPreferenceController extends DeveloperOptionsPrefe
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        final boolean enableBtSnoopLog = (Boolean) newValue;
-        SystemProperties.set(BLUETOOTH_BTSNOOP_ENABLE_PROPERTY, Boolean.toString(enableBtSnoopLog));
+        SystemProperties.set(BLUETOOTH_BTSNOOP_LOG_MODE_PROPERTY, newValue.toString());
+        updateState(mPreference);
         return true;
     }
 
     @Override
     public void updateState(Preference preference) {
-        super.updateState(preference);
-        final boolean enableBtSnoopLog = SystemProperties.getBoolean(
-                BLUETOOTH_BTSNOOP_ENABLE_PROPERTY, false /* def */);
-        ((SwitchPreference) mPreference).setChecked(enableBtSnoopLog);
+        final ListPreference listPreference = (ListPreference) preference;
+        String currentValue = SystemProperties.get(BLUETOOTH_BTSNOOP_LOG_MODE_PROPERTY);
+        // Verify that currentValue actually matches an item in mListValues in normal case
+        int index = DEFAULT_BTSNOOP_LOG_MODE_INDEX;
+        for (int i = 0; i < mListValues.length; i++) {
+            if (TextUtils.equals(currentValue, mListValues[i])) {
+                index = i;
+                break;
+            }
+        }
+        listPreference.setValue(mListValues[index]);
+        listPreference.setSummary(mListEntries[index]);
     }
 
     @Override
     protected void onDeveloperOptionsSwitchDisabled() {
         super.onDeveloperOptionsSwitchDisabled();
-        SystemProperties.set(BLUETOOTH_BTSNOOP_ENABLE_PROPERTY, Boolean.toString(false));
-        ((SwitchPreference) mPreference).setChecked(false);
+        SystemProperties.set(BLUETOOTH_BTSNOOP_LOG_MODE_PROPERTY, null);
+        ((ListPreference) mPreference).setValue(mListValues[DEFAULT_BTSNOOP_LOG_MODE_INDEX]);
+        ((ListPreference) mPreference).setSummary(mListEntries[DEFAULT_BTSNOOP_LOG_MODE_INDEX]);
     }
 }
