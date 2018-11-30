@@ -18,14 +18,18 @@ package com.android.settings.development;
 
 import static com.android.settings.development.BluetoothSnoopLogPreferenceController.BLUETOOTH_BTSNOOP_ENABLE_PROPERTY;
 import static com.google.common.truth.Truth.assertThat;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.os.SystemProperties;
-import androidx.preference.SwitchPreference;
+
+import androidx.preference.ListPreference;
 import androidx.preference.PreferenceScreen;
 
+import com.android.settings.R;
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
 
 import org.junit.Before;
@@ -33,66 +37,105 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.Spy;
+import org.robolectric.RuntimeEnvironment;
 
 @RunWith(SettingsRobolectricTestRunner.class)
 public class BluetoothSnoopLogPreferenceControllerTest {
 
-    @Mock
-    private Context mContext;
-    @Mock
-    private SwitchPreference mPreference;
+    @Spy
+    private Context mSpyContext = RuntimeEnvironment.application;
+    @Spy
+    private Resources mSpyResources = RuntimeEnvironment.application.getResources();
+    private ListPreference mPreference;
     @Mock
     private PreferenceScreen mPreferenceScreen;
     private BluetoothSnoopLogPreferenceController mController;
 
+    private CharSequence[] mListValues;
+    private CharSequence[] mListEntries;
+
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        mController = new BluetoothSnoopLogPreferenceController(mContext);
+        doReturn(mSpyResources).when(mSpyContext).getResources();
+        // Get XML values without mock
+        // Setup test list preference using XML values
+        mPreference = new ListPreference(mSpyContext);
+        mPreference.setEntries(R.array.bt_hci_snoop_log_entries);
+        mPreference.setEntryValues(R.array.bt_hci_snoop_log_values);
+        // Init the actual controller
+        mController = new BluetoothSnoopLogPreferenceController(mSpyContext);
+        // Construct preference in the controller via a mocked preference screen object
         when(mPreferenceScreen.findPreference(mController.getPreferenceKey()))
             .thenReturn(mPreference);
         mController.displayPreference(mPreferenceScreen);
+        mListValues = mPreference.getEntryValues();
+        mListEntries = mPreference.getEntries();
     }
 
     @Test
-    public void onPreferenceChanged_turnOnBluetoothSnoopLog() {
-        mController.onPreferenceChange(null, true);
+    public void verifyResourceSizeAndRange() {
+        // Verify normal list entries and default preference entries have the same size
+        assertThat(mListEntries.length).isEqualTo(mListValues.length);
+        // Update the preference
+        mController.updateState(mPreference);
+        // Verify default preference value, entry and summary
+        int defaultIndex = BluetoothSnoopLogPreferenceController.DEFAULT_BTSNOOP_LOG_MODE_INDEX;
+        assertThat(mPreference.getValue()).isEqualTo(mListValues[defaultIndex]);
+        assertThat(mPreference.getEntry()).isEqualTo(mListEntries[defaultIndex]);
+        assertThat(mPreference.getSummary()).isEqualTo(mListEntries[defaultIndex]);
+        // Verify that default system property is empty
+        assertThat(SystemProperties.get(
+                BluetoothSnoopLogPreferenceController.BLUETOOTH_BTSNOOP_ENABLE_PROPERTY)).isEmpty();
+    }
 
-        final boolean mode = SystemProperties.getBoolean(BLUETOOTH_BTSNOOP_ENABLE_PROPERTY, false);
+    @Test
+    public void onPreferenceChanged_turnOnFullBluetoothSnoopLog() {
+        mController.onPreferenceChange(null,
+                mListValues[BluetoothSnoopLogPreferenceController.BTSNOOP_LOG_MODE_FULL_INDEX]);
+        final String mode = SystemProperties.get(BLUETOOTH_BTSNOOP_ENABLE_PROPERTY);
+        // "full" is hard-coded between Settings and system/bt
+        assertThat(mode).isEqualTo("full");
+    }
 
-        assertThat(mode).isTrue();
+    @Test
+    public void onPreferenceChanged_turnOnFilteredBluetoothSnoopLog() {
+        mController.onPreferenceChange(null,
+                mListValues[BluetoothSnoopLogPreferenceController.BTSNOOP_LOG_MODE_FILTERED_INDEX]);
+        final String mode = SystemProperties.get(BLUETOOTH_BTSNOOP_ENABLE_PROPERTY);
+        // "filtered" is hard-coded between Settings and system/bt
+        assertThat(mode).isEqualTo("filtered");
     }
 
     @Test
     public void onPreferenceChanged_turnOffBluetoothSnoopLog() {
-        mController.onPreferenceChange(null, false);
-
-        final boolean mode = SystemProperties.getBoolean(BLUETOOTH_BTSNOOP_ENABLE_PROPERTY, false);
-
-        assertThat(mode).isFalse();
+        mController.onPreferenceChange(null,
+                mListValues[BluetoothSnoopLogPreferenceController.BTSNOOP_LOG_MODE_DISABLED_INDEX]);
+        final String mode = SystemProperties.get(BLUETOOTH_BTSNOOP_ENABLE_PROPERTY);
+        // "disabled" is hard-coded between Settings and system/bt
+        assertThat(mode).isEqualTo("disabled");
     }
 
     @Test
-    public void updateState_preferenceShouldBeChecked() {
-        SystemProperties.set(BLUETOOTH_BTSNOOP_ENABLE_PROPERTY, Boolean.toString(true));
-        mController.updateState(mPreference);
-
-        verify(mPreference).setChecked(true);
-    }
-
-    @Test
-    public void updateState_preferenceShouldNotBeChecked() {
-        SystemProperties.set(BLUETOOTH_BTSNOOP_ENABLE_PROPERTY, Boolean.toString(false));
-        mController.updateState(mPreference);
-
-        verify(mPreference).setChecked(false);
+    public void updateState_preferenceShouldBeSetToRightValue() {
+        for (int i = 0; i < mListValues.length; ++i) {
+            SystemProperties.set(BLUETOOTH_BTSNOOP_ENABLE_PROPERTY, mListValues[i].toString());
+            mController.updateState(mPreference);
+            assertThat(mPreference.getValue()).isEqualTo(mListValues[i].toString());
+            assertThat(mPreference.getSummary()).isEqualTo(mListEntries[i].toString());
+        }
     }
 
     @Test
     public void onDeveloperOptionsDisabled_shouldDisablePreference() {
         mController.onDeveloperOptionsDisabled();
-
-        verify(mPreference).setEnabled(false);
-        verify(mPreference).setChecked(false);
+        assertThat(mPreference.isEnabled()).isFalse();
+        assertThat(mPreference.getValue()).isEqualTo(
+                mListValues[BluetoothSnoopLogPreferenceController.DEFAULT_BTSNOOP_LOG_MODE_INDEX]
+                        .toString());
+        assertThat(mPreference.getSummary()).isEqualTo(
+                mListEntries[BluetoothSnoopLogPreferenceController.DEFAULT_BTSNOOP_LOG_MODE_INDEX]
+                        .toString());
     }
 }
