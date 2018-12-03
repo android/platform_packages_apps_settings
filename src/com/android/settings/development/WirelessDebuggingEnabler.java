@@ -20,14 +20,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.debug.IAdbManager;
+import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.android.settings.R;
 import com.android.settings.widget.SwitchWidgetController;
-
-// TODO(joshuaduong): remove this once WirelessDebuggingManager is in.
-import com.android.settings.development.tests.WirelessDebuggingManager;
 
 public class WirelessDebuggingEnabler implements SwitchWidgetController.OnSwitchChangeListener  {
     private final String TAG = this.getClass().getSimpleName();
@@ -37,6 +37,7 @@ public class WirelessDebuggingEnabler implements SwitchWidgetController.OnSwitch
     private Context mAppContext;
     private boolean mListeningToOnSwitchChange = false;
     private OnEnabledListener mListener;
+    private final IAdbManager mAdbManager;
 
     public WirelessDebuggingEnabler(Context context, SwitchWidgetController switchWidget, OnEnabledListener listener) {
         mContext = context;
@@ -44,18 +45,23 @@ public class WirelessDebuggingEnabler implements SwitchWidgetController.OnSwitch
         mSwitchWidget = switchWidget;
         mSwitchWidget.setListener(this);
         mListener = listener;
+        mAdbManager = IAdbManager.Stub.asInterface(ServiceManager.getService(Context.ADB_SERVICE));
 
         setupSwitchController();
     }
 
     public void setupSwitchController() {
-        final boolean enabled = WirelessDebuggingManager.getInstance(mAppContext).isEnabled();
-        onWirelessDebuggingEnabled(enabled);
-        if (!mListeningToOnSwitchChange) {
-            mSwitchWidget.startListening();
-            mListeningToOnSwitchChange = true;
+        try {
+            final boolean enabled = mAdbManager.isEnabled();
+            onWirelessDebuggingEnabled(enabled);
+            if (!mListeningToOnSwitchChange) {
+                mSwitchWidget.startListening();
+                mListeningToOnSwitchChange = true;
+            }
+            mSwitchWidget.setupView();
+        } catch (RemoteException e) {
+            Log.e(TAG, "Unable to check if ADB wireless is enabled");
         }
-        mSwitchWidget.setupView();
     }
 
     public void teardownSwitchController() {
@@ -95,9 +101,15 @@ public class WirelessDebuggingEnabler implements SwitchWidgetController.OnSwitch
 
     @Override
     public boolean onSwitchToggled(boolean isChecked) {
-        WirelessDebuggingManager.getInstance(mAppContext).setEnabled(isChecked);
-        onWirelessDebuggingEnabled(isChecked);
-        return true;
+        try {
+            mAdbManager.enableAdbWireless(isChecked);
+            onWirelessDebuggingEnabled(isChecked);
+            return true;
+        } catch (RemoteException e) {
+            Log.e(TAG, "Unable to enable ADB wireless");
+        } finally {
+            return false;
+        }
     }
 
     public interface OnEnabledListener {

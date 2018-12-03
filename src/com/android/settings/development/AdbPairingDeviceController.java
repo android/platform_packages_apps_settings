@@ -22,8 +22,13 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.debug.AdbManager;
+import android.debug.IAdbManager;
+import android.debug.PairDevice;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ImageView;
@@ -36,10 +41,8 @@ import androidx.preference.PreferenceScreen;
 
 import com.android.settings.R;
 import com.android.settings.Utils;
-import com.android.settings.applications.LayoutPreference;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.widget.ActionButtonPreference;
 import com.android.settings.widget.EntityHeaderController;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
@@ -47,9 +50,6 @@ import com.android.settingslib.core.lifecycle.LifecycleObserver;
 import com.android.settingslib.core.lifecycle.events.OnPause;
 import com.android.settingslib.core.lifecycle.events.OnResume;
 import com.android.settingslib.widget.FooterPreference;
-
-import com.android.settings.development.tests.WirelessDebuggingManager;
-import com.android.settings.development.tests.WirelessDebuggingManager.PairedDevice;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -72,18 +72,20 @@ public class AdbPairingDeviceController extends AbstractPreferenceController
     static final String KEY_PAIRING_PROGRESS_CATEGORY = "pairing_progress_category";
 
     private String mDeviceName;
-    private PairedDevice mSelectedPairingDevice;
+    private PairDevice mSelectedPairingDevice;
 
     private final Fragment mFragment;
+    private final IAdbManager mAdbManager;
 
     // UI elements - in order of appearance
     private Preference mDeviceNamePref;
     private AdbPairingDevicesProgressCategory mPairingProgressCategory;
 
     private final IconInjector mIconInjector;
+    private AdbWirelessDialog mDialog;
 
     // A copy of the pairing devices delivered by the broadcast
-    private HashMap<Integer, PairedDevice> mPairingDevices;
+    private HashMap<Integer, PairDevice> mPairingDevices;
     // map of the device id to preference
     private HashMap<Integer, Preference> mPreferenceMap;
 
@@ -92,11 +94,45 @@ public class AdbPairingDeviceController extends AbstractPreferenceController
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-            if (WirelessDebuggingManager.WIRELESS_DEBUG_PAIRING_LIST_ACTION.equals(action)) {
-                HashMap<Integer, PairedDevice> newPairingDevicesList =
-                        (HashMap<Integer, PairedDevice>) intent.getSerializableExtra(
-                            WirelessDebuggingManager.DEVICE_LIST_EXTRA);
+            if (AdbManager.WIRELESS_DEBUG_PAIRING_DEVICES_ACTION.equals(action)) {
+                HashMap<Integer, PairDevice> newPairingDevicesList =
+                        (HashMap<Integer, PairDevice>) intent.getSerializableExtra(
+                            AdbManager.WIRELESS_DEVICES_EXTRA);
                 updatePairingDevicePreferences(newPairingDevicesList);
+            } else if (mDialog != null && AdbManager.WIRELESS_DEBUG_PAIRING_RESULT_ACTION.equals(action)) {
+                Log.i(TAG, "Got pairing result action");
+                Integer res = intent.getIntExtra(
+                        AdbManager.WIRELESS_STATUS_EXTRA,
+                        AdbManager.WIRELESS_STATUS_FAIL);
+
+                if (res.equals(AdbManager.WIRELESS_STATUS_PAIRING_CODE)) {
+                    Log.i(TAG, "Got pairing code extra");
+                }
+
+                PairDevice pd = (PairDevice) intent.getSerializableExtra(
+                        AdbManager.WIRELESS_PAIR_DEVICE_EXTRA);
+                if (pd == null || pd.getDeviceId() != mSelectedPairingDevice.getDeviceId()) {
+                    // Ignore messages about other devices.
+                    if (pd == null) {
+                    Log.i(TAG, "Pair device is null");
+                    } else {
+                      Log.i(TAG, "pd={" + pd + "} selected=" + mSelectedPairingDevice + "}");
+                    }
+                    return;
+                }
+
+                if (res.equals(AdbManager.WIRELESS_STATUS_PAIRING_CODE)) {
+                    Log.i(TAG, "Got pairing code: " + intent.getStringExtra(AdbManager.WIRELESS_PAIRING_CODE_EXTRA));
+                    mDialog.getController().setPairingCode(
+                            intent.getStringExtra(
+                                AdbManager.WIRELESS_PAIRING_CODE_EXTRA));
+                } else if (res.equals(AdbManager.WIRELESS_STATUS_SUCCESS)) {
+                    Log.i(TAG, "success");
+                    mDialog.dismiss(res);
+                } else if (res.equals(AdbManager.WIRELESS_STATUS_FAIL)) {
+                    mDialog.dismiss(res);
+                    Log.i(TAG, "fail");
+                }
             }
         }
     };
@@ -123,7 +159,9 @@ public class AdbPairingDeviceController extends AbstractPreferenceController
         mDeviceName = deviceName;
         mFragment = fragment;
         mIconInjector = injector;
-        mIntentFilter = new IntentFilter(WirelessDebuggingManager.WIRELESS_DEBUG_PAIRING_LIST_ACTION);
+        mIntentFilter = new IntentFilter(AdbManager.WIRELESS_DEBUG_PAIRING_DEVICES_ACTION);
+        mIntentFilter.addAction(AdbManager.WIRELESS_DEBUG_PAIRING_RESULT_ACTION);
+        mAdbManager = IAdbManager.Stub.asInterface(ServiceManager.getService(Context.ADB_SERVICE));
 
         lifecycle.addObserver(this);
     }
@@ -150,7 +188,7 @@ public class AdbPairingDeviceController extends AbstractPreferenceController
         mPairingProgressCategory.setProgress(true);
     }
 
-    private void updatePairingDevicePreferences(HashMap<Integer, PairedDevice> pairingDevices) {
+    private void updatePairingDevicePreferences(HashMap<Integer, PairDevice> pairingDevices) {
         mPairingDevices = pairingDevices;
 
         if (mPairingDevices == null) {
@@ -162,7 +200,7 @@ public class AdbPairingDeviceController extends AbstractPreferenceController
         }
 
         if (mPreferenceMap.isEmpty()) {
-            for (Map.Entry<Integer, PairedDevice> entry : mPairingDevices.entrySet()) {
+            for (Map.Entry<Integer, PairDevice> entry : mPairingDevices.entrySet()) {
                 Preference p =
                         new Preference(mPairingProgressCategory.getContext());
                 p.setTitle(entry.getValue().getDeviceName());
@@ -191,7 +229,7 @@ public class AdbPairingDeviceController extends AbstractPreferenceController
                 return false;
             });
             // Add new devices if any.
-            for (Map.Entry<Integer, PairedDevice> entry :
+            for (Map.Entry<Integer, PairDevice> entry :
                     mPairingDevices.entrySet()) {
                 if (mPreferenceMap.get(entry.getKey()) == null) {
                     Preference p =
@@ -216,37 +254,35 @@ public class AdbPairingDeviceController extends AbstractPreferenceController
         }
     }
 
-    private void showDevicePairingDialog(PairedDevice pairingDevice) {
+    private void showDevicePairingDialog(PairDevice pairingDevice) {
         mSelectedPairingDevice = pairingDevice;
         AdbPairingDeviceFragment f = (AdbPairingDeviceFragment) mFragment;
         f.showDevicePairingDialog();
     }
 
     public Dialog createDialog(int dialogId) {
-        Dialog dialog = null;
-
         switch (dialogId) {
             case AdbPairingDeviceFragment.PAIRING_DEVICE_DIALOG_ID:
-                dialog = AdbWirelessDialog.createModal(
+                mDialog = AdbWirelessDialog.createModal(
                         mFragment.getActivity(),
                         this,
                         mSelectedPairingDevice,
                         AdbWirelessDialogUiBase.MODE_PAIRING);
                 break;
             case AdbPairingDeviceFragment.PAIRING_DEVICE_FAILED_DIALOG_ID:
-                dialog = AdbWirelessDialog.createModal(
+                mDialog = AdbWirelessDialog.createModal(
                         mFragment.getActivity(),
                         this,
                         mSelectedPairingDevice,
                         AdbWirelessDialogUiBase.MODE_PAIRING_FAILED);
                 break;
         }
-        return dialog;
+        return mDialog;
     }
 
     @Override
-    public void onDismiss(PairedDevice pairDevice, Integer result) {
-        if (result.equals(WirelessDebuggingManager.RESULT_OK)) {
+    public void onDismiss(PairDevice pairDevice, Integer result) {
+        if (result.equals(AdbManager.WIRELESS_STATUS_SUCCESS)) {
             // Go back to the WirelessDebugging page
             mFragment.getActivity().finish();
         } else {
@@ -254,21 +290,28 @@ public class AdbPairingDeviceController extends AbstractPreferenceController
             AdbPairingDeviceFragment f = (AdbPairingDeviceFragment) mFragment;
             f.showDevicePairingFailedDialog();
         }
+        mDialog = null;
     }
 
     @Override
-    public void onCancel(PairedDevice pairDevice) {
-        WirelessDebuggingManager.getInstance(
-            mContext.getApplicationContext())
-              .cancelPairing(pairDevice.getDeviceId());
+    public void onCancel(PairDevice pairDevice) {
+        try {
+            mAdbManager.cancelPairing(pairDevice.getDeviceId());
+        } catch (RemoteException e) {
+            Log.e(TAG, "Unable to cancel pairing");
+        }
+
+        mDialog = null;
     }
 
     @Override
     public void onResume() {
         mFragment.getActivity().registerReceiver(mReceiver, mIntentFilter);
-        WirelessDebuggingManager.getInstance(
-            mContext.getApplicationContext())
-              .requestPairingList();
+        try {
+            mAdbManager.queryAdbWirelessPairingDevices();
+        } catch (RemoteException e) {
+            Log.e(TAG, "Unable to request pairing list");
+        }
     }
 
     @Override
