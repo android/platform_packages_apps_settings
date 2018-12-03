@@ -23,7 +23,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.debug.AdbManager;
+import android.debug.IAdbManager;
+import android.debug.PairDevice;
 import android.os.Bundle;
+import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
@@ -54,10 +59,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-// TODO(joshuaduong): remove once AdbWirelessManager is in.
-import com.android.settings.development.tests.WirelessDebuggingManager;
-import com.android.settings.development.tests.WirelessDebuggingManager.PairedDevice;
 
 @SearchIndexable
 public class WirelessDebugging extends DashboardFragment
@@ -95,19 +96,25 @@ public class WirelessDebugging extends DashboardFragment
     // map of paired devices, with the device id as the key
     private HashMap<Integer, AdbPairedDevicePreference> mPairedDevicePreferences;
 
+    private final IAdbManager mAdbManager;
+
     private IntentFilter mIntentFilter;
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-            if (WirelessDebuggingManager.WIRELESS_DEBUG_PAIRED_LIST_ACTION.equals(action)) {
-                HashMap<Integer, PairedDevice> newPairedDevicesList =
-                        (HashMap<Integer, PairedDevice>) intent.getSerializableExtra(
-                            WirelessDebuggingManager.DEVICE_LIST_EXTRA);
+            if (AdbManager.WIRELESS_DEBUG_PAIRED_DEVICES_ACTION.equals(action)) {
+                HashMap<Integer, PairDevice> newPairedDevicesList =
+                        (HashMap<Integer, PairDevice>) intent.getSerializableExtra(
+                            AdbManager.WIRELESS_DEVICES_EXTRA);
                 updatePairedDevicePreferences(newPairedDevicesList);
             }
         }
     };
+
+    public WirelessDebugging() {
+        mAdbManager = IAdbManager.Stub.asInterface(ServiceManager.getService(Context.ADB_SERVICE));
+    }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -124,7 +131,7 @@ public class WirelessDebugging extends DashboardFragment
         super.onCreate(icicle);
 
         addPreferences();
-        mIntentFilter = new IntentFilter(WirelessDebuggingManager.WIRELESS_DEBUG_PAIRED_LIST_ACTION);
+        mIntentFilter = new IntentFilter(AdbManager.WIRELESS_DEBUG_PAIRED_DEVICES_ACTION);
     }
 
     private void addPreferences() {
@@ -153,9 +160,11 @@ public class WirelessDebugging extends DashboardFragment
         final CharSequence deviceNameTitle =
                 getText(R.string.my_device_info_device_name_preference_title);
         mDeviceNamePreference.setTitle(deviceNameTitle);
-        mDeviceNamePreference.setSummary(
-                WirelessDebuggingManager.getInstance(
-                    getActivity().getApplicationContext()).getName());
+        try {
+            mDeviceNamePreference.setSummary(mAdbManager.getName());
+        } catch (RemoteException e) {
+            Log.e(TAG, "Unable to get the device name for ADB wireless");
+        }
     }
 
     @Override
@@ -180,11 +189,14 @@ public class WirelessDebugging extends DashboardFragment
         super.onResume();
 
         getActivity().registerReceiver(mReceiver, mIntentFilter);
-        WirelessDebuggingManager.getInstance(
-            getActivity().getApplicationContext())
-              .requestPairedList();
-        if (mWifiDebuggingEnabler != null) {
-            mWifiDebuggingEnabler.resume(activity);
+        try {
+            mAdbManager.queryAdbWirelessPairedDevices();
+        } catch (RemoteException e) {
+            Log.e(TAG, "Unable to request the paired list for Adb wireless");
+        } finally {
+            if (mWifiDebuggingEnabler != null) {
+                mWifiDebuggingEnabler.resume(activity);
+            }
         }
     }
 
@@ -310,7 +322,7 @@ public class WirelessDebugging extends DashboardFragment
         mFooterCategory.setVisible(false);
     }
 
-    private void updatePairedDevicePreferences(HashMap<Integer, PairedDevice> newList) {
+    private void updatePairedDevicePreferences(HashMap<Integer, PairDevice> newList) {
         Log.i(TAG, "New paired device list: " + newList);
         // TODO(joshuaduong): Move the non-UI stuff into another thread
         // as the processing could take some time.
@@ -322,7 +334,7 @@ public class WirelessDebugging extends DashboardFragment
             mPairedDevicePreferences = new HashMap<Integer, AdbPairedDevicePreference>();
         }
         if (mPairedDevicePreferences.isEmpty()) {
-            for (Map.Entry<Integer, PairedDevice> entry : newList.entrySet()) {
+            for (Map.Entry<Integer, PairDevice> entry : newList.entrySet()) {
                 AdbPairedDevicePreference p =
                         new AdbPairedDevicePreference(entry.getValue(),
                             mPairedDevicesCategory.getContext());
@@ -344,7 +356,7 @@ public class WirelessDebugging extends DashboardFragment
                     mPairedDevicesCategory.removePreference(entry.getValue());
                     return true;
                 } else {
-                    // It is in the newList. Just update the PairedDevice value
+                    // It is in the newList. Just update the PairDevice value
                     AdbPairedDevicePreference p =
                             entry.getValue();
                     p.setPairedDevice(newList.get(entry.getKey()));
@@ -353,7 +365,7 @@ public class WirelessDebugging extends DashboardFragment
                 }
             });
             // Add new devices if any.
-            for (Map.Entry<Integer, PairedDevice> entry :
+            for (Map.Entry<Integer, PairDevice> entry :
                     newList.entrySet()) {
                 if (mPairedDevicePreferences.get(entry.getKey()) == null) {
                     AdbPairedDevicePreference p =
@@ -394,17 +406,19 @@ public class WirelessDebugging extends DashboardFragment
         Log.i(TAG, "Processing paired device request");
         int requestType = data.getIntExtra(PAIRED_DEVICE_REQUEST_TYPE, -1);
 
-        PairedDevice p;
+        PairDevice p;
 
         switch (requestType) {
             case FORGET_ACTION:
-                p = (PairedDevice) data.getSerializableExtra(PAIRED_DEVICE_EXTRA);
-                WirelessDebuggingManager.getInstance(
-                    getActivity().getApplicationContext())
-                      .unpair(p.getDeviceId());
-                mPairedDevicesCategory.removePreference(
-                    mPairedDevicePreferences.get(p.getDeviceId()));
-                mPairedDevicePreferences.remove(p.getDeviceId());
+                try {
+                    p = (PairDevice) data.getSerializableExtra(PAIRED_DEVICE_EXTRA);
+                          mAdbManager.unpairDevice(p.getGuid());
+                    mPairedDevicesCategory.removePreference(
+                        mPairedDevicePreferences.get(p.getGuid()));
+                    mPairedDevicePreferences.remove(p.getGuid());
+                } catch (RemoteException e) {
+                    Log.e(TAG, "Unable to forget the device");
+                }
                 break;
             default:
                 break;
@@ -413,16 +427,19 @@ public class WirelessDebugging extends DashboardFragment
 
     private void launchDevicePairingFragment() {
         // For sending to the pairing device fragment.
-        Bundle bundle = new Bundle();
-        bundle.putCharSequence(DEVICE_NAME_EXTRA,
-                WirelessDebuggingManager.getInstance(
-                    getActivity().getApplicationContext()).getName());
-        new SubSettingLauncher(getContext())
-                .setTitleRes(R.string.adb_pair_new_devices_title)
-                .setDestination(AdbPairingDeviceFragment.class.getName())
-                .setArguments(bundle)
-                .setSourceMetricsCategory(getMetricsCategory())
-                .launch();
+        try {
+            Bundle bundle = new Bundle();
+            bundle.putCharSequence(DEVICE_NAME_EXTRA,
+                    mAdbManager.getName());
+            new SubSettingLauncher(getContext())
+                    .setTitleRes(R.string.adb_pair_new_devices_title)
+                    .setDestination(AdbPairingDeviceFragment.class.getName())
+                    .setArguments(bundle)
+                    .setSourceMetricsCategory(getMetricsCategory())
+                    .launch();
+        } catch (RemoteException e) {
+            Log.e(TAG, "Unable to get the device name");
+        }
     }
 
 }

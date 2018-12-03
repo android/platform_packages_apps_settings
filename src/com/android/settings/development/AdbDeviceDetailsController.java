@@ -20,6 +20,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.debug.IAdbManager;
+import android.debug.PairDevice;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.util.Log;
@@ -34,19 +36,16 @@ import androidx.preference.PreferenceScreen;
 
 import com.android.settings.R;
 import com.android.settings.Utils;
-import com.android.settings.applications.LayoutPreference;
 import com.android.settings.core.PreferenceControllerMixin;
-import com.android.settings.widget.ActionButtonPreference;
 import com.android.settings.widget.EntityHeaderController;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.core.lifecycle.LifecycleObserver;
 import com.android.settingslib.core.lifecycle.events.OnPause;
 import com.android.settingslib.core.lifecycle.events.OnResume;
+import com.android.settingslib.widget.ActionButtonsPreference;
 import com.android.settingslib.widget.FooterPreference;
-
-import com.android.settings.development.tests.WirelessDebuggingManager;
-import com.android.settings.development.tests.WirelessDebuggingManager.PairedDevice;
+import com.android.settingslib.widget.LayoutPreference;
 
 /**
  * Controller for logic pertaining to displaying adb device information for the
@@ -65,11 +64,11 @@ public class AdbDeviceDetailsController extends AbstractPreferenceController
     @VisibleForTesting
     static final String KEY_MAC_ADDR_CATEGORY = "mac_addr_category";
 
-    private PairedDevice mPairedDevice;
+    private PairDevice mPairedDevice;
     private final Fragment mFragment;
 
     // UI elements - in order of appearance
-    private ActionButtonPreference mButtonsPref;
+    private ActionButtonsPreference mButtonsPref;
     private EntityHeaderController mEntityHeaderController;
     private PreferenceCategory mMacAddrCategory;
     private FooterPreference mMacAddrPref;
@@ -77,7 +76,7 @@ public class AdbDeviceDetailsController extends AbstractPreferenceController
     private final IconInjector mIconInjector;
 
     public static  AdbDeviceDetailsController newInstance(
-            PairedDevice pairedDevice,
+            PairDevice pairedDevice,
             Context context,
             Fragment fragment,
             Lifecycle lifecycle) {
@@ -88,7 +87,7 @@ public class AdbDeviceDetailsController extends AbstractPreferenceController
 
     @VisibleForTesting
         /* package */ AdbDeviceDetailsController(
-            PairedDevice pairedDevice,
+            PairDevice pairedDevice,
             Context context,
             Fragment fragment,
             Lifecycle lifecycle,
@@ -119,10 +118,10 @@ public class AdbDeviceDetailsController extends AbstractPreferenceController
 
         setupEntityHeader(screen);
 
-        mButtonsPref = ((ActionButtonPreference) screen.findPreference(KEY_BUTTONS_PREF))
+        mButtonsPref = ((ActionButtonsPreference) screen.findPreference(KEY_BUTTONS_PREF))
                 .setButton1Visible(false)
+                .setButton2Icon(R.drawable.ic_settings_delete)
                 .setButton2Text(R.string.adb_device_forget)
-                .setButton2Positive(false)
                 .setButton2OnClickListener(view -> forgetDevice());
 
         mMacAddrCategory = (PreferenceCategory) screen.findPreference(KEY_MAC_ADDR_CATEGORY);
