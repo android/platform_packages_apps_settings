@@ -17,12 +17,12 @@
 package com.android.settings.development;
 
 import android.content.Context;
+import android.debug.PairDevice;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.android.settings.R;
 import com.android.settings.dashboard.DashboardFragment;
-import com.android.settings.development.tests.WirelessDebuggingManager.PairedDevice;
 import com.android.settingslib.core.AbstractPreferenceController;
 
 import java.util.ArrayList;
@@ -30,7 +30,7 @@ import java.util.List;
 
 public class AdbDeviceDetailsFragment extends DashboardFragment {
     private final String TAG = this.getClass().getSimpleName();
-    private PairedDevice mPairedDevice;
+    private PairDevice mPairedDevice;
     private AdbDeviceDetailsController mAdbDeviceDetailsController;
 
     public AdbDeviceDetailsFragment() {
@@ -42,7 +42,7 @@ public class AdbDeviceDetailsFragment extends DashboardFragment {
         // Get the paired device stored in the extras
         Bundle bundle = getArguments();
         if (bundle.containsKey(AdbPairedDevicePreference.PAIRED_DEVICE_EXTRA)) {
-            mPairedDevice = (PairedDevice) bundle.getSerializable(
+            mPairedDevice = (PairDevice) bundle.getSerializable(
                     AdbPairedDevicePreference.PAIRED_DEVICE_EXTRA);
         }
         super.onAttach(context);

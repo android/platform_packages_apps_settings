@@ -23,72 +23,8 @@ package com.android.settings.development.tests;
 import android.content.Context;
 import android.util.Log;
 
-import java.io.Serializable;
-import java.util.HashMap;
-
 public class WirelessDebuggingManager {
     private final String TAG = this.getClass().getSimpleName();
-
-    // remove once we get updated wirelessdebuggingmanager
-    public static class PairedDevice implements Serializable {
-        Integer mDeviceId;
-        String mMacAddress;
-        String mDeviceName;
-        boolean mConnected;
-
-        public PairedDevice(Integer id, String macAddr, String deviceName, boolean connected) {
-            mDeviceId = id;
-            mMacAddress = macAddr;
-            mDeviceName = deviceName;
-            mConnected = connected;
-        }
-
-        public Integer getDeviceId() { return mDeviceId; }
-        public String getMacAddress() { return mMacAddress; }
-        public String getDeviceName() { return mDeviceName; }
-        public boolean isConnected() { return mConnected; }
-        public void setConnected(boolean connected) { mConnected = connected; }
-        @Override
-        public String toString() {
-            return "{deviceid=" + mDeviceId +
-                   ", name=" + mDeviceName +
-                   ", macaddr=" + mMacAddress +
-                   ", connected=" + mConnected + "}";
-        }
-    }
-
-    /**
-     * Broadcast intent action indicating a new list of paired devices is available.
-     * Get the data by calling (HashMap<Integer,PairedDevice>)
-     * intent.getSerializableExtra(WirelessDebuggingManager.PAIRED_DEVICES_EXTRA)
-     */
-    public static final String WIRELESS_DEBUG_PAIRED_LIST_ACTION =
-            "com.android.settings.development.tests.action.WIRELESS_DEBUG_PAIRED_LIST";
-    public static final String WIRELESS_DEBUG_PAIRING_LIST_ACTION =
-            "com.android.settings.development.tests.action.WIRELESS_DEBUG_PAIRING_LIST";
-    public static final String WIRELESS_DEBUG_PAIR_STATUS_ACTION =
-            "com.android.settings.development.tests.action.WIRELESS_DEBUG_PAIR_STATUS_ACTION";
-    public static final String WIRELESS_DEBUG_UNPAIR_STATUS_ACTION =
-            "com.android.settings.development.tests.action.WIRELESS_DEBUG_UNPAIR_STATUS_ACTION";
-
-    /**
-     * The extra key to get the paired devices list.
-     * @see #WIRELESS_DEBUG_PAIRED_DEVICES_ACTION
-     */
-    public static final String DEVICE_LIST_EXTRA = "map";
-    public static final String PAIR_STATUS_EXTRA = "pair_status_type";
-    public static final String PAIR_ID_EXTRA = "pair_id";
-    public static final String PAIRED_DEVICE_EXTRA = "paired_device";
-    public static final String AUTH_CODE_EXTRA = "auth_code";
-    public static final String RESULT_CODE_EXTRA = "result_code";
-
-    /**
-     * Status codes for connecting/disconnecting, pairing/unpairing
-     * @see #RESULT_CODE_EXTRA
-     */
-    public static final int RESULT_OK = 0;
-    public static final int RESULT_FAILED = 1;
-    public static final int RESULT_AUTH_CODE = 2;
 
     public boolean isEnabled() {
         return mEnabled;
@@ -100,7 +36,7 @@ public class WirelessDebuggingManager {
      * will start to get any updates for the paired devices list. Any updates will be notified via
      * @see WIRELESS_DEBUG_PAIRED_DEVICES_ACTION.
      */
-    public void setEnabled(boolean enabled) {
+    public void enableAdbWireless(boolean enabled) {
         mEnabled = enabled;
         if (enabled) {
             mPairedDeviceGenerator.start();
@@ -109,20 +45,20 @@ public class WirelessDebuggingManager {
         }
     }
 
-    public void pair(Integer id, String qrcode) {
-        mPairedDeviceGenerator.pair(id, qrcode);
+    public void pairDevice(Integer id, String qrcode) {
+        mPairedDeviceGenerator.pairDevice(id, qrcode);
     }
 
-    public void unpair(Integer id) {
-        mPairedDeviceGenerator.unpair(id);
+    public void unPairDevice(Integer id) {
+        mPairedDeviceGenerator.unPairDevice(id);
     }
 
-    public void requestPairedList() {
-        mPairedDeviceGenerator.requestPairedList();
+    public void queryAdbWirelessPairedDevices() {
+        mPairedDeviceGenerator.queryAdbWirelessPairedDevices();
     }
 
-    public void requestPairingList() {
-        mPairedDeviceGenerator.requestPairingList();
+    public void queryAdbWirelessPairingDevices() {
+        mPairedDeviceGenerator.queryAdbWirelessPairingDevices();
     }
 
     public void cancelPairing(Integer id) {

@@ -17,14 +17,17 @@
 package com.android.settings.development;
 
 import android.content.Context;
+import android.debug.IAdbManager;
+import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 
 import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
-import com.android.settings.development.tests.WirelessDebuggingManager;
 import com.android.settings.widget.ValidatedEditTextPreference;
 import com.android.settingslib.core.lifecycle.LifecycleObserver;
 import com.android.settingslib.core.lifecycle.events.OnCreate;
@@ -36,15 +39,19 @@ public class AdbDeviceNamePreferenceController extends BasePreferenceController
         LifecycleObserver,
         OnSaveInstanceState,
         OnCreate {
+    private static final String TAG = "AdbDeviceNamePreferenceController";
+
     private static final String PREF_KEY = "adb_device_name_pref";
     public static final int DEVICE_NAME_SET_WARNING_ID = 1;
     private static final String KEY_PENDING_DEVICE_NAME = "key_pending_device_name";
     private String mDeviceName;
     private ValidatedEditTextPreference mPreference;
+    private final IAdbManager mAdbManager;
 
     public AdbDeviceNamePreferenceController(Context context) {
         super(context, PREF_KEY);
 
+        mAdbManager = IAdbManager.Stub.asInterface(ServiceManager.getService(Context.ADB_SERVICE));
         initializeDeviceName();
     }
 
@@ -53,14 +60,19 @@ public class AdbDeviceNamePreferenceController extends BasePreferenceController
         super.displayPreference(screen);
         mPreference = (ValidatedEditTextPreference) screen.findPreference(PREF_KEY);
         final CharSequence deviceName = getSummary();
-        mPreference.setSummary(deviceName);
-        mPreference.setText(deviceName.toString());
+        if (deviceName != null) {
+            mPreference.setSummary(deviceName);
+            mPreference.setText(deviceName.toString());
+        }
         mPreference.setValidator(this);
     }
 
     private void initializeDeviceName() {
-        mDeviceName = WirelessDebuggingManager.getInstance(
-                mContext.getApplicationContext()).getName();
+        try {
+            mDeviceName = mAdbManager.getName();
+        } catch (RemoteException e) {
+            Log.e(TAG, "Unable to get the device name");
+        }
     }
 
     @Override
@@ -100,8 +112,11 @@ public class AdbDeviceNamePreferenceController extends BasePreferenceController
     private void setDeviceName(String deviceName) {
         mDeviceName = deviceName;
         mPreference.setSummary(getSummary());
-        WirelessDebuggingManager.getInstance(
-                mContext.getApplicationContext()).setName(deviceName);
+        try {
+            mAdbManager.setName(deviceName);
+        } catch (RemoteException e) {
+            Log.e(TAG, "Unable to set the device name");
+        }
     }
 
     @Override
