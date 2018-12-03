@@ -20,14 +20,14 @@
     android:title="@string/device_details_title"
     settings:initialExpandedChildrenCount="3">
 
-    <com.android.settings.applications.LayoutPreference
+    <com.android.settingslib.widget.LayoutPreference
         android:key="adb_device_header"
         android:layout="@layout/settings_entity_header"
         android:selectable="false"
         android:order="-10000"/>
 
     <!-- Buttons -->
-    <com.android.settings.widget.ActionButtonPreference
+    <com.android.settingslib.widget.ActionButtonsPreference
         android:key="buttons"
         android:selectable="false" />
 

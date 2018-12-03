@@ -18,6 +18,10 @@ package com.android.settings.development;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.debug.PairDevice;
+import android.debug.IAdbManager;
+import android.os.RemoteException;
+import android.os.ServiceManager;
 import android.os.UserManager;
 import android.text.Editable;
 import android.text.InputType;
@@ -42,8 +46,6 @@ import android.widget.TextView;
 
 import androidx.annotation.VisibleForTesting;
 
-import com.android.settings.development.tests.WirelessDebuggingManager;
-import com.android.settings.development.tests.WirelessDebuggingManager.PairedDevice;
 import com.android.settings.ProxySelector;
 import com.android.settings.R;
 import com.android.settingslib.Utils;
@@ -65,7 +67,7 @@ public class AdbWirelessDialogController {
 
     private final AdbWirelessDialogUiBase mUi;
     private final View mView;
-    private final PairedDevice mPairDevice;
+    private final PairDevice mPairDevice;
 
     private int mMode;
 
@@ -76,9 +78,11 @@ public class AdbWirelessDialogController {
     // The dialog for showing pairing failed message
     private TextView mFailedMsg;
 
+    private IAdbManager mAdbManager;
+
     private Context mContext;
 
-    public AdbWirelessDialogController(AdbWirelessDialogUiBase parent, View view, PairedDevice pairDevice,
+    public AdbWirelessDialogController(AdbWirelessDialogUiBase parent, View view, PairDevice pairDevice,
             int mode) {
         mUi = parent;
         mView = view;
@@ -88,19 +92,26 @@ public class AdbWirelessDialogController {
         mContext = mUi.getContext();
         final Resources res = mContext.getResources();
 
+        mAdbManager = IAdbManager.Stub.asInterface(ServiceManager.getService(Context.ADB_SERVICE));
+
         mSixDigitCode = mView.findViewById(R.id.pairing_code);
 
         switch (mMode) {
             case AdbWirelessDialogUiBase.MODE_PAIRING:
-                WirelessDebuggingManager.getInstance(
-                    mContext.getApplicationContext()).pair(mPairDevice.getDeviceId(), null);
-                String title = String.format(
-                        res.getString(R.string.adb_pairing_device_dialog_title),
-                        mPairDevice.getDeviceName());
-                mUi.setTitle(title);
-                mView.findViewById(R.id.l_pairing_six_digit).setVisibility(View.VISIBLE);
-                mUi.setCancelButton(res.getString(R.string.cancel));
-                mUi.setCanceledOnTouchOutside(false);
+                try {
+                    mAdbManager.pairDevice(mPairDevice.getDeviceId(), null);
+                    String title = String.format(
+                            res.getString(R.string.adb_pairing_device_dialog_title),
+                            mPairDevice.getDeviceName());
+                    mUi.setTitle(title);
+                    mView.findViewById(R.id.l_pairing_six_digit).setVisibility(View.VISIBLE);
+                    mUi.setCancelButton(res.getString(R.string.cancel));
+                    mUi.setCanceledOnTouchOutside(false);
+                } catch (RemoteException e) {
+                    mUi.dismiss();
+                    Log.e(TAG, "Unable to pair the device");
+                    return;
+                }
                 break;
             case AdbWirelessDialogUiBase.MODE_PAIRING_FAILED:
                 String msg = String.format(
@@ -116,6 +127,10 @@ public class AdbWirelessDialogController {
 
         // After done view show and hide, request focus from parent view
         mView.findViewById(R.id.l_adbwirelessdialog).requestFocus();
+    }
+
+    public PairDevice getPairingDevice() {
+        return mPairDevice;
     }
 
     public void setPairingCode(String code) {

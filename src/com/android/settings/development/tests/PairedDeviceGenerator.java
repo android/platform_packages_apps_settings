@@ -22,10 +22,10 @@ package com.android.settings.development.tests;
 
 import android.content.Context;
 import android.content.Intent;
+import android.debug.AdbManager;
+import android.debug.PairDevice;
 import android.os.UserHandle;
 import android.util.Log;
-
-import com.android.settings.development.tests.WirelessDebuggingManager.PairedDevice;
 
 import java.lang.InterruptedException;
 import java.lang.Runnable;
@@ -52,36 +52,36 @@ public class PairedDeviceGenerator implements Runnable {
     private boolean mStarted = false;
 
     // the initial list of devices currently paired with.
-    private static HashMap<Integer, PairedDevice> mPairedDevices = createPairedDevices();
+    private static HashMap<Integer, PairDevice> mPairedDevices = createPairedDevices();
 
     // the initial list of devices ready to be paired with.
-    private static HashMap<Integer, PairedDevice> mPairingDevices = createPairingDevices();
+    private static HashMap<Integer, PairDevice> mPairingDevices = createPairingDevices();
 
-    private static HashMap<Integer, PairedDevice> createPairedDevices() {
-        HashMap<Integer, PairedDevice> map = new HashMap<Integer, PairedDevice>();
-        map.put(0, new PairedDevice(0, "32:07:43:05:2B:05", "Josh's Macbook", false));
-        map.put(1, new PairedDevice(1, "89:D2:77:50:76:E7", "John's Chromebook", false));
-        map.put(2, new PairedDevice(2, "04:6C:19:9C:E0:F1", "Bob's Windows", false));
-        map.put(3, new PairedDevice(3, "0E:3F:78:53:00:96", "Mary's mainframe", false));
-        map.put(4, new PairedDevice(4, "F5:C8:96:50:8D:99", "Sam's Ubuntu", false));
+    private static HashMap<Integer, PairDevice> createPairedDevices() {
+        HashMap<Integer, PairDevice> map = new HashMap<Integer, PairDevice>();
+        map.put(0, new PairDevice(0, "32:07:43:05:2B:05", "Josh's Macbook", false));
+        map.put(1, new PairDevice(1, "89:D2:77:50:76:E7", "John's Chromebook", false));
+        map.put(2, new PairDevice(2, "04:6C:19:9C:E0:F1", "Bob's Windows", false));
+        map.put(3, new PairDevice(3, "0E:3F:78:53:00:96", "Mary's mainframe", false));
+        map.put(4, new PairDevice(4, "F5:C8:96:50:8D:99", "Sam's Ubuntu", false));
         return map;
     }
 
-    private static HashMap<Integer, PairedDevice> createPairingDevices() {
-        HashMap<Integer, PairedDevice> map = new HashMap<Integer, PairedDevice>();
-        map.put(5, new PairedDevice(5, "32:07:55:05:2B:05", "Jane's Macbook Pro", false));
-        map.put(6, new PairedDevice(6, "89:D2:89:50:76:E7", "Jim's iMac", false));
-        map.put(7, new PairedDevice(7, "04:6C:6A:9C:E0:F1", "Suzie's Windows", false));
-        map.put(8, new PairedDevice(8, "0E:3F:12:53:00:96", "Al's Ubuntu", false));
-        map.put(9, new PairedDevice(9, "F5:C8:9F:50:8D:99", "Jill's unknown", false));
+    private static HashMap<Integer, PairDevice> createPairingDevices() {
+        HashMap<Integer, PairDevice> map = new HashMap<Integer, PairDevice>();
+        map.put(5, new PairDevice(5, "32:07:55:05:2B:05", "Jane's Macbook Pro", false));
+        map.put(6, new PairDevice(6, "89:D2:89:50:76:E7", "Jim's iMac", false));
+        map.put(7, new PairDevice(7, "04:6C:6A:9C:E0:F1", "Suzie's Windows", false));
+        map.put(8, new PairDevice(8, "0E:3F:12:53:00:96", "Al's Ubuntu", false));
+        map.put(9, new PairDevice(9, "F5:C8:9F:50:8D:99", "Jill's unknown", false));
         return map;
     }
 
     // Pairing simulation threads that are currently running.
     private HashMap<Integer, ScheduledFuture> mPairingThreads;
 
-    private HashMap<Integer, PairedDevice> mPairedDeviceMap;
-    private HashMap<Integer, PairedDevice> mPairingDeviceMap;
+    private HashMap<Integer, PairDevice> mPairedDeviceMap;
+    private HashMap<Integer, PairDevice> mPairingDeviceMap;
 
     public PairedDeviceGenerator(Context appContext) {
         mAppContext = appContext;
@@ -90,20 +90,20 @@ public class PairedDeviceGenerator implements Runnable {
     }
 
     // force grab the paired device list. Will send the action event.
-    public void requestPairedList() {
-        Intent intent = new Intent(WirelessDebuggingManager.WIRELESS_DEBUG_PAIRED_LIST_ACTION);
-        intent.putExtra(WirelessDebuggingManager.DEVICE_LIST_EXTRA, mPairedDeviceMap);
+    public void queryAdbWirelessPairedDevices() {
+        Intent intent = new Intent(AdbManager.WIRELESS_DEBUG_PAIRED_DEVICES_ACTION);
+        intent.putExtra(AdbManager.WIRELESS_DEVICES_EXTRA, mPairedDeviceMap);
         mAppContext.sendBroadcastAsUser(intent, UserHandle.ALL);
     }
 
     // force grab the pairing device list. Will send the action event.
-    public void requestPairingList() {
-        Intent intent = new Intent(WirelessDebuggingManager.WIRELESS_DEBUG_PAIRING_LIST_ACTION);
-        intent.putExtra(WirelessDebuggingManager.DEVICE_LIST_EXTRA, mPairingDeviceMap);
+    public void queryAdbWirelessPairingDevices() {
+        Intent intent = new Intent(AdbManager.WIRELESS_DEBUG_PAIRING_DEVICES_ACTION);
+        intent.putExtra(AdbManager.WIRELESS_DEVICES_EXTRA, mPairingDeviceMap);
         mAppContext.sendBroadcastAsUser(intent, UserHandle.ALL);
     }
 
-    public void pair(Integer id, String qrcode) {
+    public void pairDevice(Integer id, String qrcode) {
         if (qrcode == null || qrcode.isEmpty()) {
             ScheduledFuture future = mScheduledTaskExecutor.schedule(
                     new DevicePairingThread(mAppContext,
@@ -114,7 +114,7 @@ public class PairedDeviceGenerator implements Runnable {
         }
     }
 
-    public void unpair(Integer id) {
+    public void unPairDevice(Integer id) {
         // Move it into the pairing devices hash map.
         mPairingDevices.put(id, mPairedDevices.get(id));
         mPairedDevices.remove(id);
@@ -156,8 +156,8 @@ public class PairedDeviceGenerator implements Runnable {
     // Generates and returns a random subset of |map|. Set |randomizeConnected| to true to
     // also randomize whether the device is connected or not. Otherwise, all the devices will
     // be set to false.
-    private HashMap<Integer, PairedDevice> randomizeDeviceMap(HashMap<Integer, PairedDevice> map, boolean randomizeConnected) {
-        HashMap<Integer, PairedDevice> newMap = new HashMap<Integer, PairedDevice>();
+    private HashMap<Integer, PairDevice> randomizeDeviceMap(HashMap<Integer, PairDevice> map, boolean randomizeConnected) {
+        HashMap<Integer, PairDevice> newMap = new HashMap<Integer, PairDevice>();
 
         Log.i(TAG, "randomizeDeviceMap() device list: " + map);
         Random rand = new Random();
@@ -188,17 +188,17 @@ public class PairedDeviceGenerator implements Runnable {
     public void run() {
         try {
             // Send a random list of paired devices
-            HashMap<Integer, PairedDevice> pairedDevices =
+            HashMap<Integer, PairDevice> pairedDevices =
                     randomizeDeviceMap(mPairedDevices, true);
-            Intent intent = new Intent(WirelessDebuggingManager.WIRELESS_DEBUG_PAIRED_LIST_ACTION);
-            intent.putExtra(WirelessDebuggingManager.DEVICE_LIST_EXTRA, pairedDevices);
+            Intent intent = new Intent(AdbManager.WIRELESS_DEBUG_PAIRED_DEVICES_ACTION);
+            intent.putExtra(AdbManager.WIRELESS_DEVICES_EXTRA, pairedDevices);
             mAppContext.sendBroadcastAsUser(intent, UserHandle.ALL);
 
             // Send a random list of pairing devices
-            HashMap<Integer, PairedDevice> pairingDevices =
+            HashMap<Integer, PairDevice> pairingDevices =
                     randomizeDeviceMap(mPairingDevices, false);
-            intent = new Intent(WirelessDebuggingManager.WIRELESS_DEBUG_PAIRING_LIST_ACTION);
-            intent.putExtra(WirelessDebuggingManager.DEVICE_LIST_EXTRA, pairingDevices);
+            intent = new Intent(AdbManager.WIRELESS_DEBUG_PAIRING_DEVICES_ACTION);
+            intent.putExtra(AdbManager.WIRELESS_DEVICES_EXTRA, pairingDevices);
             mAppContext.sendBroadcastAsUser(intent, UserHandle.ALL);
         } catch (Exception e) {
             Log.w(TAG, "Something failed running the paired generator");
@@ -208,10 +208,10 @@ public class PairedDeviceGenerator implements Runnable {
 
     class DevicePairingThread implements Runnable {
         Context mAppContext;
-        PairedDevice mPairingDevice;
+        PairDevice mPairingDevice;
         final String TAG = "DevicePairingThread";
 
-        public DevicePairingThread(Context appContext, PairedDevice pairingDevice) {
+        public DevicePairingThread(Context appContext, PairDevice pairingDevice) {
             mAppContext = appContext;
             mPairingDevice = pairingDevice;
         }
@@ -223,23 +223,23 @@ public class PairedDeviceGenerator implements Runnable {
                 String code = generateSixDigitCode();
                 Log.i(TAG, "deviceName=" + mPairingDevice.getDeviceName() +
                         " code=" + code);
-                Intent intent = new Intent(WirelessDebuggingManager.WIRELESS_DEBUG_PAIR_STATUS_ACTION);
-                intent.putExtra(WirelessDebuggingManager.PAIR_STATUS_EXTRA,
-                        WirelessDebuggingManager.RESULT_AUTH_CODE);
-                intent.putExtra(WirelessDebuggingManager.PAIRED_DEVICE_EXTRA, mPairingDevice);
-                intent.putExtra(WirelessDebuggingManager.AUTH_CODE_EXTRA, code);
+                Intent intent = new Intent(AdbManager.WIRELESS_DEBUG_PAIRING_RESULT_ACTION);
+                intent.putExtra(AdbManager.WIRELESS_STATUS_EXTRA,
+                        AdbManager.WIRELESS_STATUS_PAIRING_CODE);
+                intent.putExtra(AdbManager.WIRELESS_DEVICES_EXTRA, mPairingDevice);
+                intent.putExtra(AdbManager.WIRELESS_PAIRING_CODE_EXTRA, code);
                 mAppContext.sendBroadcastAsUser(intent, UserHandle.ALL);
 
                 Thread.sleep(5000);
 
                 Random rand = new Random();
                 boolean success = rand.nextBoolean();
-                intent = new Intent(WirelessDebuggingManager.WIRELESS_DEBUG_PAIR_STATUS_ACTION);
-                intent.putExtra(WirelessDebuggingManager.PAIR_STATUS_EXTRA,
+                intent = new Intent(AdbManager.WIRELESS_DEBUG_PAIRING_RESULT_ACTION);
+                intent.putExtra(AdbManager.WIRELESS_STATUS_EXTRA,
                         success ?
-                            WirelessDebuggingManager.RESULT_OK :
-                            WirelessDebuggingManager.RESULT_FAILED);
-                intent.putExtra(WirelessDebuggingManager.PAIRED_DEVICE_EXTRA, mPairingDevice);
+                            AdbManager.WIRELESS_STATUS_SUCCESS :
+                            AdbManager.WIRELESS_STATUS_FAIL);
+                intent.putExtra(AdbManager.WIRELESS_DEVICES_EXTRA, mPairingDevice);
                 if (success) {
                     mPairedDevices.put(mPairingDevice.getDeviceId(),
                             mPairingDevice);

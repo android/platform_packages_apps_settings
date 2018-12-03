@@ -27,8 +27,6 @@ import android.util.Log;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
 import com.android.settings.dashboard.DashboardFragment;
-import com.android.settings.development.tests.WirelessDebuggingManager;
-import com.android.settings.development.tests.WirelessDebuggingManager.PairedDevice;
 import com.android.settingslib.core.AbstractPreferenceController;
 
 import java.util.ArrayList;
@@ -49,8 +47,9 @@ public class AdbPairingDeviceFragment extends DashboardFragment {
     @Override
     public void onAttach(Context context) {
         Bundle bundle = getArguments();
-        if (bundle.containsKey(WirelessDebugging.DEVICE_NAME_EXTRA)) {
-            mDeviceName = bundle.getCharSequence(WirelessDebugging.DEVICE_NAME_EXTRA).toString();
+        CharSequence res = bundle.getCharSequence(WirelessDebugging.DEVICE_NAME_EXTRA);
+        if (res != null) {
+            mDeviceName = res.toString();
         }
         super.onAttach(context);
     }
