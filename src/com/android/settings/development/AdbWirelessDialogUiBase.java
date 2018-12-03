@@ -42,6 +42,7 @@ public interface AdbWirelessDialogUiBase {
     public LayoutInflater getLayoutInflater();
     public int getMode();
 
+    public void dismiss();
     public void dispatchSubmit();
 
     public void setCanceledOnTouchOutside(boolean cancel);

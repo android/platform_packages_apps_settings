@@ -16,11 +16,10 @@
 
 package com.android.settings.development;
 
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.IntentFilter;
+import android.debug.AdbManager;
+import android.debug.PairDevice;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -28,8 +27,6 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AlertDialog;
 
-import com.android.settings.development.tests.WirelessDebuggingManager;
-import com.android.settings.development.tests.WirelessDebuggingManager.PairedDevice;
 import com.android.settings.R;
 
 public class AdbWirelessDialog extends AlertDialog implements
@@ -37,11 +34,11 @@ public class AdbWirelessDialog extends AlertDialog implements
         DialogInterface.OnClickListener {
 
     public interface AdbWirelessDialogListener {
-        default void onCancel(PairedDevice pairDevice) {
+        default void onCancel(PairDevice pairDevice) {
         }
         default void onSubmit(AdbWirelessDialog dialog) {
         }
-        default void onDismiss(PairedDevice pairDevice, Integer result) {
+        default void onDismiss(PairDevice pairDevice, Integer result) {
         }
     }
 
@@ -51,43 +48,13 @@ public class AdbWirelessDialog extends AlertDialog implements
     private static final int BUTTON_SUBMIT = DialogInterface.BUTTON_POSITIVE;
 
     private final AdbWirelessDialogListener mListener;
-    private final PairedDevice mPairingDevice;
+    private final PairDevice mPairingDevice;
     private final int mMode;
     // Indicator of whether the user has succuessfully paired with the device yet.
     private boolean mIsPaired;
 
     private View mView;
     private AdbWirelessDialogController mController;
-
-    private IntentFilter mIntentFilter;
-    private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            String action = intent.getAction();
-            if (WirelessDebuggingManager.WIRELESS_DEBUG_PAIR_STATUS_ACTION.equals(action)) {
-                Integer res = intent.getIntExtra(
-                        WirelessDebuggingManager.PAIR_STATUS_EXTRA,
-                        WirelessDebuggingManager.RESULT_FAILED);
-                PairedDevice pd = (PairedDevice) intent.getSerializableExtra(
-                        WirelessDebuggingManager.PAIRED_DEVICE_EXTRA);
-                if (!pd.getDeviceId().equals(mPairingDevice.getDeviceId())) {
-                    // Ignore messages about other devices.
-                    return;
-                }
-
-                if (res.equals(WirelessDebuggingManager.RESULT_AUTH_CODE)) {
-                    mController.setPairingCode(
-                            intent.getStringExtra(
-                                WirelessDebuggingManager.AUTH_CODE_EXTRA));
-                } else if (res.equals(WirelessDebuggingManager.RESULT_OK)) {
-                    mIsPaired = true;
-                    dismiss(res);
-                } else if (res.equals(WirelessDebuggingManager.RESULT_FAILED)) {
-                    dismiss(res);
-                }
-            }
-        }
-    };
 
     /**
      * Creates a AdbWirelessDialog with no additional style. It displays as a dialog above the current
@@ -96,12 +63,12 @@ public class AdbWirelessDialog extends AlertDialog implements
     public static AdbWirelessDialog createModal(
             Context context,
             AdbWirelessDialogListener listener,
-            PairedDevice pairingDevice,
+            PairDevice pairingDevice,
             int mode) {
         return new AdbWirelessDialog(context, listener, pairingDevice, mode);
     }
 
-    /* package */ AdbWirelessDialog(Context context, AdbWirelessDialogListener listener, PairedDevice pairingDevice, int mode) {
+    /* package */ AdbWirelessDialog(Context context, AdbWirelessDialogListener listener, PairDevice pairingDevice, int mode) {
         super(context);
         mListener = listener;
         mPairingDevice = pairingDevice;
@@ -114,22 +81,17 @@ public class AdbWirelessDialog extends AlertDialog implements
         mView = getLayoutInflater().inflate(R.layout.adb_wireless_dialog, null);
         setView(mView);
         mController = new AdbWirelessDialogController(this, mView, mPairingDevice, mMode);
-        mIntentFilter = new IntentFilter(WirelessDebuggingManager.WIRELESS_DEBUG_PAIR_STATUS_ACTION);
         super.onCreate(savedInstanceState);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-
-        getContext().registerReceiver(mReceiver, mIntentFilter);
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-
-        getContext().unregisterReceiver(mReceiver);
     }
 
     public Bundle onSaveInstanceState() {
