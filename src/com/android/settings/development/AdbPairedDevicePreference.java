@@ -17,6 +17,7 @@
 package com.android.settings.development;
 
 import android.content.Context;
+import android.debug.PairDevice;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,20 +28,18 @@ import androidx.preference.PreferenceViewHolder;
 
 import com.android.settings.R;
 
-import com.android.settings.development.tests.WirelessDebuggingManager.PairedDevice;
-
 /**
  * An AP preference for the currently connected AP
  */
 public class AdbPairedDevicePreference extends Preference {
     private final String TAG = this.getClass().getSimpleName();
 
-    private PairedDevice mPairedDevice;
+    private PairDevice mPairedDevice;
 
     // Extract using getSerializable(PAIRED_DEVICE_EXTRA)
     public static final String PAIRED_DEVICE_EXTRA = "paired_device";
 
-    public AdbPairedDevicePreference(PairedDevice pairedDevice, Context context) {
+    public AdbPairedDevicePreference(PairDevice pairedDevice, Context context) {
         super(context);
 
         mPairedDevice = pairedDevice;
@@ -56,11 +55,11 @@ public class AdbPairedDevicePreference extends Preference {
         setTitle(this, mPairedDevice);
     }
 
-    public void setPairedDevice(PairedDevice pairedDevice) {
+    public void setPairedDevice(PairDevice pairedDevice) {
         mPairedDevice = pairedDevice;
     }
 
-    public PairedDevice getPairedDevice() {
+    public PairDevice getPairedDevice() {
         return mPairedDevice;
     }
 
@@ -76,7 +75,7 @@ public class AdbPairedDevicePreference extends Preference {
     }
 
     static void setTitle(AdbPairedDevicePreference preference,
-                         PairedDevice pairedDevice) {
+                         PairDevice pairedDevice) {
         preference.setTitle(pairedDevice.getDeviceName());
         preference.setSummary(pairedDevice.isConnected() ?
                 preference.getContext().getText(R.string.adb_wireless_device_connected_summary) :
