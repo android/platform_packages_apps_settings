@@ -49,6 +49,7 @@ import com.android.settings.core.instrumentation.InstrumentedDialogFragment;
 import com.android.settingslib.RestrictedPreference;
 import com.android.settingslib.RestrictedSwitchPreference;
 
+import java.util.Collections;
 import java.util.List;
 
 public class AppManagementFragment extends SettingsPreferenceFragment
@@ -224,7 +225,7 @@ public class AppManagementFragment extends SettingsPreferenceFragment
 
     private boolean setAlwaysOnVpn(boolean isEnabled, boolean isLockdown) {
         return mConnectivityManager.setAlwaysOnVpnPackageForUser(mUserId,
-                isEnabled ? mPackageName : null, isLockdown);
+                isEnabled ? mPackageName : null, isLockdown, Collections.emptyList());
     }
 
     private void updateUI() {

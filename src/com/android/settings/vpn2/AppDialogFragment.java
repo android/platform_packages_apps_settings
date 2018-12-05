@@ -35,6 +35,8 @@ import com.android.internal.net.VpnConfig;
 import com.android.settings.R;
 import com.android.settings.core.instrumentation.InstrumentedDialogFragment;
 
+import java.util.Collections;
+
 /**
  * Fragment wrapper around an {@link AppDialog}.
  */
@@ -163,7 +165,8 @@ public class AppDialogFragment extends InstrumentedDialogFragment implements App
         final int userId = getUserId();
         try {
             if (mPackageInfo.packageName.equals(VpnUtils.getConnectedPackage(mService, userId))) {
-                mService.setAlwaysOnVpnPackage(userId, null, /* lockdownEnabled */ false);
+                mService.setAlwaysOnVpnPackage(userId, null, /* lockdownEnabled */ false,
+                        Collections.emptyList());
                 mService.prepareVpn(mPackageInfo.packageName, VpnConfig.LEGACY_VPN, userId);
             }
         } catch (RemoteException e) {

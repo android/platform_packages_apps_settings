@@ -40,6 +40,8 @@ import com.android.internal.net.VpnProfile;
 import com.android.settings.R;
 import com.android.settings.core.instrumentation.InstrumentedDialogFragment;
 
+import java.util.Collections;
+
 /**
  * Fragment wrapper around a {@link ConfigDialog}.
  */
@@ -200,7 +202,7 @@ public class ConfigDialogFragment extends InstrumentedDialogFragment implements
 
             final ConnectivityManager conn = ConnectivityManager.from(mContext);
             conn.setAlwaysOnVpnPackageForUser(UserHandle.myUserId(), null,
-                    /* lockdownEnabled */ false);
+                    /* lockdownEnabled */ false, Collections.emptyList());
             VpnUtils.setLockdownVpn(mContext, profile.key);
         } else {
             // update only if lockdown vpn has been changed
