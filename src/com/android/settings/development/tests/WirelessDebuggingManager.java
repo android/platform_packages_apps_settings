@@ -21,10 +21,17 @@
 package com.android.settings.development.tests;
 
 import android.content.Context;
+import android.debug.IAdbManager;
+import android.os.IBinder;
 import android.util.Log;
 
-public class WirelessDebuggingManager {
+public class WirelessDebuggingManager implements IAdbManager {
     private final String TAG = this.getClass().getSimpleName();
+
+    public IBinder asBinder() { return null; }
+    public void allowDebugging(boolean alwaysAllow, String pubkey) {}
+    public void denyDebugging() {}
+    public void clearDebuggingKeys() {}
 
     public boolean isEnabled() {
         return mEnabled;
@@ -45,11 +52,11 @@ public class WirelessDebuggingManager {
         }
     }
 
-    public void pairDevice(Integer id, String qrcode) {
+    public void pairDevice(int id, String qrcode) {
         mPairedDeviceGenerator.pairDevice(id, qrcode);
     }
 
-    public void unPairDevice(Integer id) {
+    public void unPairDevice(int id) {
         mPairedDeviceGenerator.unPairDevice(id);
     }
 
@@ -61,7 +68,7 @@ public class WirelessDebuggingManager {
         mPairedDeviceGenerator.queryAdbWirelessPairingDevices();
     }
 
-    public void cancelPairing(Integer id) {
+    public void cancelPairing(int id) {
         mPairedDeviceGenerator.cancelPairing(id);
     }
 
@@ -73,8 +80,8 @@ public class WirelessDebuggingManager {
         return mName;
     }
 
-    protected WirelessDebuggingManager(Context appContext) {
-        mAppContext = appContext;
+    protected WirelessDebuggingManager(Context context) {
+        mAppContext = context.getApplicationContext();
         mPairedDeviceGenerator = new PairedDeviceGenerator(mAppContext);
     }
 
@@ -85,9 +92,9 @@ public class WirelessDebuggingManager {
     private PairedDeviceGenerator mPairedDeviceGenerator;
     static WirelessDebuggingManager sWirelessDebuggingManager;
     // This will later be equivalent to getSystemService(ADB_WIRELESS)
-    public static WirelessDebuggingManager getInstance(Context appContext) {
+    public static WirelessDebuggingManager getInstance(Context context) {
         if (sWirelessDebuggingManager == null) {
-            sWirelessDebuggingManager = new WirelessDebuggingManager(appContext);
+            sWirelessDebuggingManager = new WirelessDebuggingManager(context);
         }
         return sWirelessDebuggingManager;
     }

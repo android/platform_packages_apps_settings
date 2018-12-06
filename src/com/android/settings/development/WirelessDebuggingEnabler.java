@@ -29,6 +29,10 @@ import android.widget.Toast;
 import com.android.settings.R;
 import com.android.settings.widget.SwitchWidgetController;
 
+// test code
+import com.android.settings.development.tests.WirelessDebuggingManager;
+import com.android.settings.development.tests.Constants;
+
 public class WirelessDebuggingEnabler implements SwitchWidgetController.OnSwitchChangeListener  {
     private final String TAG = this.getClass().getSimpleName();
 
@@ -45,7 +49,11 @@ public class WirelessDebuggingEnabler implements SwitchWidgetController.OnSwitch
         mSwitchWidget = switchWidget;
         mSwitchWidget.setListener(this);
         mListener = listener;
-        mAdbManager = IAdbManager.Stub.asInterface(ServiceManager.getService(Context.ADB_SERVICE));
+        if (Constants.USE_SIMULATION) {
+            mAdbManager = WirelessDebuggingManager.getInstance(mContext);
+        } else {
+            mAdbManager = IAdbManager.Stub.asInterface(ServiceManager.getService(Context.ADB_SERVICE));
+        }
 
         setupSwitchController();
     }
@@ -88,6 +96,7 @@ public class WirelessDebuggingEnabler implements SwitchWidgetController.OnSwitch
     }
 
     private void onWirelessDebuggingEnabled(boolean enabled) {
+        Log.i(TAG, "onWirelessDebuggingEnabled=" + enabled);
         setSwitchBarChecked(enabled);
         mSwitchWidget.setEnabled(true);
         if (mListener != null) {
