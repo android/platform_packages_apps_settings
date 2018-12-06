@@ -33,6 +33,10 @@ import com.android.settingslib.core.lifecycle.LifecycleObserver;
 import com.android.settingslib.core.lifecycle.events.OnCreate;
 import com.android.settingslib.core.lifecycle.events.OnSaveInstanceState;
 
+// test code
+import com.android.settings.development.tests.WirelessDebuggingManager;
+import com.android.settings.development.tests.Constants;
+
 public class AdbDeviceNamePreferenceController extends BasePreferenceController
         implements ValidatedEditTextPreference.Validator,
         Preference.OnPreferenceChangeListener,
@@ -51,7 +55,11 @@ public class AdbDeviceNamePreferenceController extends BasePreferenceController
     public AdbDeviceNamePreferenceController(Context context) {
         super(context, PREF_KEY);
 
-        mAdbManager = IAdbManager.Stub.asInterface(ServiceManager.getService(Context.ADB_SERVICE));
+        if (Constants.USE_SIMULATION) {
+            mAdbManager = WirelessDebuggingManager.getInstance(mContext);
+        } else {
+            mAdbManager = IAdbManager.Stub.asInterface(ServiceManager.getService(Context.ADB_SERVICE));
+        }
         initializeDeviceName();
     }
 
