@@ -60,6 +60,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// test code
+import com.android.settings.development.tests.WirelessDebuggingManager;
+import com.android.settings.development.tests.Constants;
+
 @SearchIndexable
 public class WirelessDebugging extends DashboardFragment
         implements Indexable, WirelessDebuggingEnabler.OnEnabledListener {
@@ -113,7 +117,11 @@ public class WirelessDebugging extends DashboardFragment
     };
 
     public WirelessDebugging() {
-        mAdbManager = IAdbManager.Stub.asInterface(ServiceManager.getService(Context.ADB_SERVICE));
+        if (Constants.USE_SIMULATION) {
+            mAdbManager = WirelessDebuggingManager.getInstance(getContext());
+        } else {
+            mAdbManager = IAdbManager.Stub.asInterface(ServiceManager.getService(Context.ADB_SERVICE));
+        }
     }
 
     @Override

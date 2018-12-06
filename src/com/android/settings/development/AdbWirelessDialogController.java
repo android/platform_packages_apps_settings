@@ -58,6 +58,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 
+// test code
+import com.android.settings.development.tests.WirelessDebuggingManager;
+import com.android.settings.development.tests.Constants;
+
 /**
  * The class for allowing UIs like {@link WifiDialog} and {@link WifiConfigUiBase} to
  * share the logic for controlling buttons, text fields, etc.
@@ -92,7 +96,11 @@ public class AdbWirelessDialogController {
         mContext = mUi.getContext();
         final Resources res = mContext.getResources();
 
-        mAdbManager = IAdbManager.Stub.asInterface(ServiceManager.getService(Context.ADB_SERVICE));
+        if (Constants.USE_SIMULATION) {
+            mAdbManager = WirelessDebuggingManager.getInstance(mContext);
+        } else {
+            mAdbManager = IAdbManager.Stub.asInterface(ServiceManager.getService(Context.ADB_SERVICE));
+        }
 
         mSixDigitCode = mView.findViewById(R.id.pairing_code);
 
