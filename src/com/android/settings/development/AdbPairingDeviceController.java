@@ -54,6 +54,11 @@ import com.android.settingslib.widget.FooterPreference;
 import java.util.HashMap;
 import java.util.Map;
 
+// test code
+import com.android.settings.development.tests.WirelessDebuggingManager;
+import com.android.settings.development.tests.Constants;
+
+
 /**
  * Controller for logic pertaining to displaying adb device information for the
  * {@link AdbPairingDeviceFragment}.
@@ -161,7 +166,11 @@ public class AdbPairingDeviceController extends AbstractPreferenceController
         mIconInjector = injector;
         mIntentFilter = new IntentFilter(AdbManager.WIRELESS_DEBUG_PAIRING_DEVICES_ACTION);
         mIntentFilter.addAction(AdbManager.WIRELESS_DEBUG_PAIRING_RESULT_ACTION);
-        mAdbManager = IAdbManager.Stub.asInterface(ServiceManager.getService(Context.ADB_SERVICE));
+        if (Constants.USE_SIMULATION) {
+            mAdbManager = WirelessDebuggingManager.getInstance(mContext);
+        } else {
+            mAdbManager = IAdbManager.Stub.asInterface(ServiceManager.getService(Context.ADB_SERVICE));
+        }
 
         lifecycle.addObserver(this);
     }
