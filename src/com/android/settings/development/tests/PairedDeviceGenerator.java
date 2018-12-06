@@ -59,21 +59,21 @@ public class PairedDeviceGenerator implements Runnable {
 
     private static HashMap<Integer, PairDevice> createPairedDevices() {
         HashMap<Integer, PairDevice> map = new HashMap<Integer, PairDevice>();
-        map.put(0, new PairDevice(0, "32:07:43:05:2B:05", "Josh's Macbook", false));
-        map.put(1, new PairDevice(1, "89:D2:77:50:76:E7", "John's Chromebook", false));
-        map.put(2, new PairDevice(2, "04:6C:19:9C:E0:F1", "Bob's Windows", false));
-        map.put(3, new PairDevice(3, "0E:3F:78:53:00:96", "Mary's mainframe", false));
-        map.put(4, new PairDevice(4, "F5:C8:96:50:8D:99", "Sam's Ubuntu", false));
+        map.put(0, new PairDevice(0, "Josh's Macbook", "32:07:43:05:2B:05", false));
+        map.put(1, new PairDevice(1, "John's Chromebook", "89:D2:77:50:76:E7", false));
+        map.put(2, new PairDevice(2, "Bob's Windows", "04:6C:19:9C:E0:F1", false));
+        map.put(3, new PairDevice(3, "Mary's mainframe", "0E:3F:78:53:00:96", false));
+        map.put(4, new PairDevice(4, "Sam's Ubuntu", "F5:C8:96:50:8D:99", false));
         return map;
     }
 
     private static HashMap<Integer, PairDevice> createPairingDevices() {
         HashMap<Integer, PairDevice> map = new HashMap<Integer, PairDevice>();
-        map.put(5, new PairDevice(5, "32:07:55:05:2B:05", "Jane's Macbook Pro", false));
-        map.put(6, new PairDevice(6, "89:D2:89:50:76:E7", "Jim's iMac", false));
-        map.put(7, new PairDevice(7, "04:6C:6A:9C:E0:F1", "Suzie's Windows", false));
-        map.put(8, new PairDevice(8, "0E:3F:12:53:00:96", "Al's Ubuntu", false));
-        map.put(9, new PairDevice(9, "F5:C8:9F:50:8D:99", "Jill's unknown", false));
+        map.put(5, new PairDevice(5, "Jane's Macbook Pro", "32:07:55:05:2B:05", false));
+        map.put(6, new PairDevice(6, "Jim's iMac", "89:D2:89:50:76:E7", false));
+        map.put(7, new PairDevice(7, "Suzie's Windows", "04:6C:6A:9C:E0:F1", false));
+        map.put(8, new PairDevice(8, "Al's Ubuntu", "0E:3F:12:53:00:96", false));
+        map.put(9, new PairDevice(9, "Jill's unknown", "F5:C8:9F:50:8D:99", false));
         return map;
     }
 
@@ -226,7 +226,7 @@ public class PairedDeviceGenerator implements Runnable {
                 Intent intent = new Intent(AdbManager.WIRELESS_DEBUG_PAIRING_RESULT_ACTION);
                 intent.putExtra(AdbManager.WIRELESS_STATUS_EXTRA,
                         AdbManager.WIRELESS_STATUS_PAIRING_CODE);
-                intent.putExtra(AdbManager.WIRELESS_DEVICES_EXTRA, mPairingDevice);
+                intent.putExtra(AdbManager.WIRELESS_PAIR_DEVICE_EXTRA, mPairingDevice);
                 intent.putExtra(AdbManager.WIRELESS_PAIRING_CODE_EXTRA, code);
                 mAppContext.sendBroadcastAsUser(intent, UserHandle.ALL);
 
@@ -239,7 +239,7 @@ public class PairedDeviceGenerator implements Runnable {
                         success ?
                             AdbManager.WIRELESS_STATUS_SUCCESS :
                             AdbManager.WIRELESS_STATUS_FAIL);
-                intent.putExtra(AdbManager.WIRELESS_DEVICES_EXTRA, mPairingDevice);
+                intent.putExtra(AdbManager.WIRELESS_PAIR_DEVICE_EXTRA, mPairingDevice);
                 if (success) {
                     mPairedDevices.put(mPairingDevice.getDeviceId(),
                             mPairingDevice);
