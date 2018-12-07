@@ -37,6 +37,11 @@ public interface AdbWirelessDialogUiBase {
      */
     int MODE_PAIRING_FAILED = 2;
 
+    /**
+     * Dialog shown when QR code pairing failed.
+     */
+    int MODE_QRCODE_FAILED = 3;
+
     public Context getContext();
     public AdbWirelessDialogController getController();
     public LayoutInflater getLayoutInflater();

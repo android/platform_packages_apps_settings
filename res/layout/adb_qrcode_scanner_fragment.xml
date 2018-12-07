@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2018 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- the qrcode scanner -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/camera_layout">
+        <TextureView
+            android:id="@+id/preview_view"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center"/>
+        <com.android.settings.wifi.qrcode.QrDecorateView
+            android:id="@+id/decorate_view"
+            android:layout_width="320dp"
+            android:layout_height="320dp"
+            android:layout_gravity="center"/>
+    </FrameLayout>
+
+    <!-- the spinner indicating that the qrcode is being validated -->
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/verifying_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+    <ProgressBar
+        android:id="@+id/verifying_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/adb_wireless_item_progress_text"
+        android:text="@string/adb_wireless_verifying_qrcode_text"/>
+    </LinearLayout>
+</LinearLayout>
+

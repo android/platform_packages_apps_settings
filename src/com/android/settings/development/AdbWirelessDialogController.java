@@ -131,6 +131,11 @@ public class AdbWirelessDialogController {
                 mFailedMsg.setText(msg);
                 mUi.setSubmitButton(res.getString(R.string.okay));
                 break;
+            case AdbWirelessDialogUiBase.MODE_QRCODE_FAILED:
+                mUi.setTitle(R.string.adb_pairing_device_dialog_failed_title);
+                mView.findViewById(R.id.l_qrcode_pairing_failed).setVisibility(View.VISIBLE);
+                mUi.setSubmitButton(res.getString(R.string.okay));
+                break;
         }
 
         // After done view show and hide, request focus from parent view
