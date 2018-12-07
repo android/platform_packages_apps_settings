@@ -87,6 +87,7 @@ public class WirelessDebugging extends DashboardFragment
     // UI components
     private static final String PREF_KEY_ADB_DEVICE_NAME = "adb_device_name_pref";
     private static final String PREF_KEY_PAIRING_METHODS_CATEGORY = "adb_pairing_methods_category";
+    private static final String PREF_KEY_ADB_QRCODE_PAIRING = "adb_pair_method_qrcode_pref";
     private static final String PREF_KEY_ADB_CODE_PAIRING = "adb_pair_method_code_pref";
     private static final String PREF_KEY_PAIRED_DEVICES_CATEGORY = "adb_paired_devices_category";
     private static final String PREF_KEY_FOOTER_CATEGORY = "adb_wireless_footer_category";
@@ -95,6 +96,7 @@ public class WirelessDebugging extends DashboardFragment
     private AdbDeviceNameTextValidator mDeviceNameValidator;
 
     private PreferenceCategory mPairingMethodsCategory;
+    private Preference mQrcodePairingPreference;
     private Preference mCodePairingPreference;
 
     private PreferenceCategory mPairedDevicesCategory;
@@ -147,6 +149,12 @@ public class WirelessDebugging extends DashboardFragment
                 (Preference) findPreference(PREF_KEY_ADB_CODE_PAIRING);
         mCodePairingPreference.setOnPreferenceClickListener(preference -> {
             launchDevicePairingFragment();
+            return true;
+        });
+        mQrcodePairingPreference =
+                (Preference) findPreference(PREF_KEY_ADB_QRCODE_PAIRING);
+        mQrcodePairingPreference.setOnPreferenceClickListener(preference -> {
+            launchQrcodeScannerFragment();
             return true;
         });
 
@@ -457,4 +465,12 @@ public class WirelessDebugging extends DashboardFragment
         }
     }
 
+    private void launchQrcodeScannerFragment() {
+        new SubSettingLauncher(getContext())
+                .setTitleRes(R.string.adb_pair_new_devices_title)
+                .setDestination(AdbQrcodeScannerFragment.class.getName())
+                .setSourceMetricsCategory(getMetricsCategory())
+                .setResultListener(this, PAIRING_DEVICE_REQUEST)
+                .launch();
+    }
 }
