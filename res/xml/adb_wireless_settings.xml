@@ -34,6 +34,10 @@
         android:order="1">
         <!-- qrcode scanner goes here later -->
         <Preference
+            android:key="adb_pair_method_qrcode_pref"
+            android:title="@string/adb_pair_method_qrcode_title"
+            android:summary="@string/adb_pair_method_qrcode_summary"/>
+        <Preference
             android:key="adb_pair_method_code_pref"
             android:title="@string/adb_pair_method_code_title"
             android:summary="@string/adb_pair_method_code_summary"/>
