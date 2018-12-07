@@ -20,10 +20,13 @@
 
 package com.android.settings.development.tests;
 
+import android.app.Activity;
 import android.content.Context;
 import android.debug.IAdbManager;
 import android.os.IBinder;
 import android.util.Log;
+
+import com.android.settings.wifi.qrcode.QrCamera;
 
 public class WirelessDebuggingManager implements IAdbManager {
     private final String TAG = this.getClass().getSimpleName();
@@ -97,5 +100,9 @@ public class WirelessDebuggingManager implements IAdbManager {
             sWirelessDebuggingManager = new WirelessDebuggingManager(context);
         }
         return sWirelessDebuggingManager;
+    }
+
+    public void requestFakeQrcodeResult(Activity activity, QrCamera.ScannerCallback cb) {
+        mPairedDeviceGenerator.requestFakeQrcodeResult(activity, cb);
     }
 }
