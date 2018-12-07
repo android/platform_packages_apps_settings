@@ -52,7 +52,12 @@ public class PrivateVolumeForget extends SettingsPreferenceFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         final StorageManager storage = getActivity().getSystemService(StorageManager.class);
-        final String fsUuid = getArguments().getString(VolumeRecord.EXTRA_FS_UUID);
+        String fsUuid = getArguments().getString(VolumeRecord.EXTRA_FS_UUID);
+        if (fsUuid == null && getActivity().getIntent().hasExtra(VolumeRecord.EXTRA_FS_UUID)) {
+            // Get extra info from intent when this screen is launched
+            // through PrivateVolumeForgetActivity.
+            fsUuid = getActivity().getIntent().getStringExtra(VolumeRecord.EXTRA_FS_UUID);
+        }
         // Passing null will crash the StorageManager, so let's early exit.
         if (fsUuid == null) {
             getActivity().finish();
