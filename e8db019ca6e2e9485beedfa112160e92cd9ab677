@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a49bf2c8_c82bc01d",
+        "filename": "src/com/android/settings/network/ApnPreference.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1351305
+      },
+      "writtenOn": "2018-12-07T22:18:33Z",
+      "side": 1,
+      "message": "Seems uncheck also sets mCurrentChecked and mSelectedKey to null. Don\u0027t we need to do the same for unsetChecked() method?",
+      "range": {
+        "startLine": 113,
+        "startChar": 12,
+        "endLine": 113,
+        "endChar": 35
+      },
+      "revId": "e8db019ca6e2e9485beedfa112160e92cd9ab677",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
