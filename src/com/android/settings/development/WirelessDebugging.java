@@ -41,6 +41,7 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 
 import com.android.internal.logging.nano.MetricsProto;
+import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
 import com.android.settings.core.SubSettingLauncher;
 import com.android.settings.dashboard.DashboardFragment;
@@ -70,6 +71,13 @@ public class WirelessDebugging extends DashboardFragment
     private static final int PAIRED_DEVICE_REQUEST = 0;
     public static final String PAIRED_DEVICE_REQUEST_TYPE = "request_type";
     public static final int FORGET_ACTION = 0;
+
+    // Activity result from pairing a device.
+    private static final int PAIRING_DEVICE_REQUEST = 1;
+    public static final String PAIRING_DEVICE_REQUEST_TYPE = "request_type_pairing";
+    public static final int SUCCESS_ACTION = 0;
+    public static final int FAIL_ACTION = 1;
+
     public static final String PAIRED_DEVICE_EXTRA = "paired_device";
     public static final String DEVICE_NAME_EXTRA = "device_name";
 
@@ -78,6 +86,7 @@ public class WirelessDebugging extends DashboardFragment
     // UI components
     private static final String PREF_KEY_ADB_DEVICE_NAME = "adb_device_name_pref";
     private static final String PREF_KEY_PAIRING_METHODS_CATEGORY = "adb_pairing_methods_category";
+    private static final String PREF_KEY_ADB_QRCODE_PAIRING = "adb_pair_method_qrcode_pref";
     private static final String PREF_KEY_ADB_CODE_PAIRING = "adb_pair_method_code_pref";
     private static final String PREF_KEY_PAIRED_DEVICES_CATEGORY = "adb_paired_devices_category";
     private static final String PREF_KEY_FOOTER_CATEGORY = "adb_wireless_footer_category";
@@ -86,6 +95,7 @@ public class WirelessDebugging extends DashboardFragment
     private AdbDeviceNameTextValidator mDeviceNameValidator;
 
     private PreferenceCategory mPairingMethodsCategory;
+    private Preference mQrcodePairingPreference;
     private Preference mCodePairingPreference;
 
     private PreferenceCategory mPairedDevicesCategory;
@@ -142,6 +152,12 @@ public class WirelessDebugging extends DashboardFragment
                 (Preference) findPreference(PREF_KEY_ADB_CODE_PAIRING);
         mCodePairingPreference.setOnPreferenceClickListener(preference -> {
             launchDevicePairingFragment();
+            return true;
+        });
+        mQrcodePairingPreference =
+                (Preference) findPreference(PREF_KEY_ADB_QRCODE_PAIRING);
+        mQrcodePairingPreference.setOnPreferenceClickListener(preference -> {
+            launchQrcodeScannerFragment();
             return true;
         });
 
@@ -212,6 +228,8 @@ public class WirelessDebugging extends DashboardFragment
 
         if (requestCode == PAIRED_DEVICE_REQUEST) {
             handlePairedDeviceRequest(resultCode, data);
+        } else if (requestCode == PAIRING_DEVICE_REQUEST) {
+            handlePairingDeviceRequest(resultCode, data);
         }
     }
 
@@ -236,6 +254,14 @@ public class WirelessDebugging extends DashboardFragment
 
     @Override
     public Dialog onCreateDialog(int dialogId) {
+        Dialog d = AdbWirelessDialog.createModal(
+                getActivity(),
+                null,
+                null,
+                dialogId);
+        if (d != null) {
+            return d;
+        }
         return super.onCreateDialog(dialogId);
     }
 
@@ -246,7 +272,7 @@ public class WirelessDebugging extends DashboardFragment
 
     @Override
     public int getDialogMetricsCategory(int dialogId) {
-        return 0;
+        return MetricsEvent.ADB_WIRELESS_DEVICE_PAIRING_DIALOG;
     }
 
     @Override
@@ -289,7 +315,6 @@ public class WirelessDebugging extends DashboardFragment
     }
 
     private void showOffMessage() {
-        Log.i(TAG, "setOffMassage()");
         mDeviceNamePreference.setVisible(false);
         mPairingMethodsCategory.setVisible(false);
         mPairedDevicesCategory.setVisible(false);
@@ -297,7 +322,6 @@ public class WirelessDebugging extends DashboardFragment
     }
 
     private void showDebuggingPreferences() {
-        Log.i(TAG, "updateDeviceName()");
         mDeviceNamePreference.setVisible(true);
         mPairingMethodsCategory.setVisible(true);
         mPairedDevicesCategory.setVisible(true);
@@ -406,6 +430,21 @@ public class WirelessDebugging extends DashboardFragment
         }
     }
 
+    void handlePairingDeviceRequest(int result, Intent data) {
+        if (result != Activity.RESULT_OK) {
+            return;
+        }
+
+        int requestType = data.getIntExtra(PAIRING_DEVICE_REQUEST_TYPE, -1);
+        switch (requestType) {
+            case FAIL_ACTION:
+                showDialog(AdbWirelessDialogUiBase.MODE_QRCODE_FAILED);
+                break;
+            default:
+                break;
+        }
+    }
+
     private void launchDevicePairingFragment() {
         // For sending to the pairing device fragment.
         try {
@@ -423,4 +462,12 @@ public class WirelessDebugging extends DashboardFragment
         }
     }
 
+    private void launchQrcodeScannerFragment() {
+        new SubSettingLauncher(getContext())
+                .setTitleRes(R.string.adb_pair_new_devices_title)
+                .setDestination(AdbQrcodeScannerFragment.class.getName())
+                .setSourceMetricsCategory(getMetricsCategory())
+                .setResultListener(this, PAIRING_DEVICE_REQUEST)
+                .launch();
+    }
 }
