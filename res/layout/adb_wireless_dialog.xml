@@ -72,6 +72,25 @@
             </LinearLayout>
         </LinearLayout>
 
+        <LinearLayout android:id="@+id/l_qrcode_pairing_failed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/adb_wireless_section"
+                android:visibility="gone">
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/adb_wireless_item" >
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/adb_wireless_item_label"
+                        android:textDirection="locale"
+                        android:text="@string/adb_qrcode_pairing_device_failed_msg"/>
+            </LinearLayout>
+        </LinearLayout>
+
         <LinearLayout android:id="@+id/l_discovery_failed"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -179,6 +179,14 @@
         <item name="android:textColor">?android:attr/textColorPrimary</item>
     </style>
 
+    <style name="adb_wireless_item_progress_text">
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:textAppearance">@android:style/TextAppearance.Material.Body1</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
     <style name="adb_wireless_section">
         <item name="android:orientation">vertical</item>
     </style>
