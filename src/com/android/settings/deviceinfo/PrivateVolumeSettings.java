@@ -152,6 +152,16 @@ public class PrivateVolumeSettings extends SettingsPreferenceFragment {
         mStorageManager = context.getSystemService(StorageManager.class);
 
         mVolumeId = getArguments().getString(VolumeInfo.EXTRA_VOLUME_ID);
+        if (mVolumeId == null && getActivity().getIntent().hasExtra(VolumeInfo.EXTRA_VOLUME_ID)) {
+            // Get extra info from intent when this screen is launched
+            // through PrivateVolumeSettingsActivity.
+            mVolumeId = getActivity().getIntent().getStringExtra(VolumeInfo.EXTRA_VOLUME_ID);
+        }
+        // Passing null will crash the StorageManager, so let's early exit.
+        if (mVolumeId == null) {
+            getActivity().finish();
+            return;
+        }
         mVolume = mStorageManager.findVolumeById(mVolumeId);
 
         final long sharedDataSize = mVolume.getPath().getTotalSpace();
