@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41249e31_169497c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2018-12-10T13:34:20Z",
+      "side": 1,
+      "message": "message?",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 21
+      },
+      "revId": "9b0caedd25e0d19e48dce5f19f400e2a48aec8c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66d2a4a6_f2d69fea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2018-12-10T13:34:20Z",
+      "side": 1,
+      "message": "similar comments with the other commit",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 63
+      },
+      "revId": "9b0caedd25e0d19e48dce5f19f400e2a48aec8c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
