@@ -3861,6 +3861,7 @@
     <string name="my_device_info_device_name_preference_title" msgid="7104085224684165324">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‏‏‏‏‎‎‎‏‎‏‎‎‏‎‏‏‎‏‏‎‎‎‏‏‏‏‏‎‏‏‏‏‏‎‏‏‎‏‏‏‏‎‏‏‎‎‏‏‎‏‎‎‏‏‎‎‎‏‏‎‎‏‏‎‎‎Device name‎‏‎‎‏‎"</string>
     <string name="bluetooth_on_while_driving_pref" msgid="2460847604498343330">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‏‎‏‎‎‎‏‎‎‎‏‎‎‏‏‎‏‎‏‎‏‏‏‏‏‏‎‏‏‎‏‏‏‎‏‏‎‎‎‎‎‏‏‏‏‏‏‎‏‎‏‎‎‏‎‏‏‎‏‎‎‎‏‎‎Use Bluetooth when driving‎‏‎‎‏‎"</string>
     <string name="bluetooth_on_while_driving_summary" msgid="3196190732516898541">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‏‎‏‎‏‏‎‎‎‏‎‏‏‎‏‏‎‎‏‎‎‏‏‎‏‎‎‎‏‎‎‏‎‏‏‏‏‏‏‎‎‎‎‏‎‎‎‎‏‎‏‏‎‏‏‎‏‏‏‎‏‏‎‏‎Turn on Bluetooth automatically when driving‎‏‎‎‏‎"</string>
+<<<<<<< HEAD   (cc24a2 Merge "Revert "Revert "Schematize vold system properties""")
     <string name="dev_android_o_battery_settings_title" msgid="2926578228655006762">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‏‎‏‎‏‎‎‎‏‎‎‏‏‏‎‏‎‏‎‎‏‎‏‏‎‏‏‎‎‏‎‎‏‎‏‎‏‏‏‎‎‏‎‏‏‏‏‏‏‎‏‎‎‏‎‎‎‎‏‎‏‎‏‎‎See Android 8.0 battery settings‎‏‎‎‏‎"</string>
     <!-- no translation found for change_wifi_state_title (2640523995824431999) -->
     <skip />
@@ -3872,4 +3873,34 @@
     <skip />
     <!-- no translation found for change_wifi_state_app_detail_summary (2511212187129042304) -->
     <skip />
+=======
+    <string name="change_wifi_state_title" msgid="3261945855372885427">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‏‎‏‎‏‏‎‏‎‏‎‎‎‏‎‎‏‏‎‎‎‎‏‎‎‏‏‏‏‎‎‏‎‎‎‏‎‎‏‎‎‎‎‎‏‏‏‎‏‏‏‏‏‏‎‏‏‎‏‏‎‎‏‏‎Wi-Fi control‎‏‎‎‏‎"</string>
+    <string name="change_wifi_state_app_detail_switch" msgid="7942268646980694224">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‏‏‏‏‎‏‏‏‎‎‎‏‏‏‎‎‎‏‎‎‏‏‎‏‏‎‏‎‎‎‎‎‏‎‎‏‎‎‏‏‎‎‎‎‎‎‎‎‏‏‎‏‏‎‎‎‎‏‏‎‏‎‎‎‎‎Allow app to control Wi-Fi‎‏‎‎‏‎"</string>
+    <string name="change_wifi_state_app_detail_summary" msgid="8434262633905502679">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‏‏‏‏‏‎‏‎‏‎‎‎‎‏‏‎‎‏‎‎‎‎‏‎‏‎‎‏‎‏‏‎‏‏‏‎‎‏‏‎‎‎‏‎‎‏‎‎‏‏‎‏‏‏‎‎‏‏‏‎‏‎‏‏‏‎Allow this app to turn Wi-Fi on or off, scan and connect to Wi-Fi networks, add or remove networks, or start a local-only hotspot‎‏‎‎‏‎"</string>
+    <string name="media_output_title" msgid="115223550977351699">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‎‎‏‏‏‎‎‏‏‎‎‏‎‏‎‏‏‎‏‏‎‎‏‏‎‏‎‏‏‎‎‎‏‎‎‏‏‏‎‎‎‎‏‏‏‎‏‎‎‎‎‎‎‎‎‏‎‎‏‏‎Play media to‎‏‎‎‏‎"</string>
+    <string name="media_output_default_summary" msgid="8115153381240348279">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‏‏‏‏‏‎‎‎‎‏‎‎‏‏‏‏‎‏‏‎‏‎‎‎‏‎‎‎‎‎‎‎‏‎‎‎‏‏‎‏‎‏‎‏‎‎‏‎‎‎‎‎‏‏‏‏‎‎‏‏‏‎‏‏‏‎This device‎‏‎‎‏‎"</string>
+    <string name="media_output_summary" product="default" msgid="6839458453831567167">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‏‏‏‎‏‏‏‏‎‏‏‏‎‏‎‏‎‏‎‏‎‎‎‏‏‎‎‏‏‏‎‏‎‎‎‎‎‏‏‎‎‏‎‏‎‏‏‎‎‎‏‎‎‎‏‏‏‎‎‏‏‏‏‏‏‎Phone‎‏‎‎‏‎"</string>
+    <string name="media_output_summary" product="tablet" msgid="7217221078578554515">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‏‏‏‏‎‎‏‎‎‎‎‏‎‏‎‎‎‏‎‏‏‏‎‎‎‎‏‎‏‎‏‎‏‎‎‎‏‏‏‏‎‎‎‏‎‎‎‏‎‏‏‏‎‎‏‏‎‏‎‎‏‎‎‏‏‎Tablet‎‏‎‎‏‎"</string>
+    <string name="media_output_summary" product="device" msgid="5677420090811068649">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‏‏‏‎‎‏‏‏‎‏‏‎‎‏‎‏‎‎‎‏‏‏‏‏‏‎‏‏‏‏‏‏‎‎‎‎‎‏‎‎‏‎‏‏‏‎‏‎‏‏‎‏‏‎‎‎‎‏‏‏‎‏‎‎‏‎Device‎‏‎‎‏‎"</string>
+    <string name="media_out_summary_ongoing_call_state" msgid="3533731701018680693">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‏‎‏‏‎‎‎‏‎‎‎‎‏‎‏‎‎‏‎‏‎‏‏‎‎‏‎‎‎‎‏‎‎‏‏‏‎‎‏‎‏‏‎‎‎‎‎‏‎‏‎‏‏‏‎‏‎‏‏‏‎‏‎‏‎Unavailable during calls‎‏‎‎‏‎"</string>
+    <string name="media_output_summary_unavailable" msgid="7970304720507697019">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‏‏‏‏‎‏‏‏‎‏‎‎‏‏‏‎‎‎‎‏‏‎‏‎‏‏‏‏‎‏‎‏‎‎‎‏‏‎‎‎‏‎‏‏‏‏‎‏‎‏‏‏‏‎‏‏‏‎‏‏‏‏‎‏‏‎Unavailable‎‏‎‎‏‎"</string>
+    <string name="take_call_on_title" msgid="6066362463436122655">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‏‏‏‎‏‎‏‎‎‎‎‏‏‎‎‎‎‎‎‎‎‏‏‎‎‏‎‎‎‎‏‎‎‏‏‏‏‏‏‏‏‏‏‎‏‏‏‏‏‏‎‏‎‏‎‏‎‎‎‎‏‏‏‏‏‎Take call on‎‏‎‎‏‎"</string>
+    <string name="battery_suggestion_title" product="tablet" msgid="752439050748267917">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‎‎‏‎‏‎‎‏‏‏‎‎‎‏‎‎‏‏‎‎‏‏‎‏‎‏‎‏‎‎‎‏‏‏‏‏‏‎‏‏‏‏‏‎‏‏‏‎‎‎‏‏‎‏‏‎‎‎‏‏‎‏‎Improve tablet\'s battery life‎‏‎‎‏‎"</string>
+    <string name="battery_suggestion_title" product="device" msgid="1507272328369733005">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‎‏‏‎‏‎‎‏‏‏‎‏‎‏‎‏‏‏‎‏‎‎‎‎‎‏‏‎‎‏‎‎‏‏‎‎‎‎‎‎‏‎‎‎‎‎‎‏‏‏‏‏‏‎‏‏‎‎‎‏‏‎‏‎Improve device\'s battery life‎‏‎‎‏‎"</string>
+    <string name="battery_suggestion_title" product="default" msgid="4038053023336285165">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‏‎‏‏‏‎‎‎‎‎‎‎‏‎‏‎‎‎‎‎‏‎‏‏‏‏‎‏‎‏‎‎‏‎‎‎‏‎‎‎‎‎‏‎‎‏‏‎‏‏‎‎‎‎‏‏‏‏‏‎‏‏‎‏‎Improve phone\'s battery life‎‏‎‎‏‎"</string>
+    <string name="battery_suggestion_summary" msgid="4585677159811722359"></string>
+    <string name="gesture_prevent_ringing_screen_title" msgid="7840226017975251549">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‏‏‏‏‎‏‏‎‎‏‏‎‎‏‏‏‎‎‎‎‏‎‏‎‎‎‎‎‎‎‏‏‎‎‎‏‎‏‎‎‎‎‎‏‏‎‎‎‎‏‎‏‏‎‎‏‎‎‏‎‏‏‏‎‏‎Prevent ringing‎‏‎‎‏‎"</string>
+    <string name="gesture_prevent_ringing_title" msgid="2483159069038138740">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‏‎‏‎‎‎‏‎‎‏‏‏‎‏‎‏‏‏‏‏‎‏‎‎‎‎‎‎‎‏‎‎‎‏‎‏‎‏‏‎‏‏‎‎‏‏‏‎‏‏‎‏‎‏‎‏‎‏‏‏‎‏‎‎‎Press Power &amp; Volume Up together‎‏‎‎‏‎"</string>
+    <string name="gesture_prevent_ringing_sound_title" msgid="5724512060316688779">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‏‏‏‎‎‏‏‏‏‎‏‏‏‎‎‎‏‏‎‎‎‏‏‎‏‎‏‏‎‎‎‏‏‏‎‎‏‏‎‏‏‏‎‎‏‏‏‎‏‏‎‏‎‎‎‎‏‏‎‎‎‏‎‏‏‎Shortcut to prevent ringing‎‏‎‎‏‎"</string>
+    <string name="prevent_ringing_option_vibrate" msgid="7286821846542822661">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‏‏‏‏‎‎‏‎‏‎‎‎‏‏‏‏‏‏‏‏‏‏‏‎‏‏‏‎‏‏‏‎‎‏‎‏‏‏‎‎‎‏‎‏‏‏‏‎‏‏‎‏‎‏‏‎‏‎‎‎‎‎‏‎‏‎Vibrate‎‏‎‎‏‎"</string>
+    <string name="prevent_ringing_option_mute" msgid="7551545579059879853">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‏‏‏‏‎‏‎‎‎‏‏‎‎‏‏‎‎‎‏‏‏‏‎‏‎‏‎‏‏‎‎‎‏‏‏‎‎‎‎‎‏‎‎‎‎‏‎‎‏‎‎‎‏‏‏‏‏‏‎‏‎‏‏‎‏‎Mute‎‏‎‎‏‎"</string>
+    <string name="prevent_ringing_option_none" msgid="4656046650769569175">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‏‏‏‎‎‎‎‎‎‏‎‎‏‏‏‎‏‏‎‎‏‏‎‎‏‏‏‎‎‎‎‏‎‏‎‎‏‎‏‎‎‏‏‎‎‎‏‎‎‎‏‏‏‎‏‎‏‏‎‎‏‎‏‏‏‎Do nothing‎‏‎‎‏‎"</string>
+    <string name="prevent_ringing_option_vibrate_summary" msgid="1157524435626890116">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‎‏‏‎‎‎‎‎‎‎‏‎‎‎‎‎‏‎‏‏‎‏‎‎‏‎‏‎‏‏‏‎‏‏‎‎‏‎‎‎‏‏‎‎‎‎‎‎‎‎‏‎‎‏‏‏‎‎‎‎‏‎‎‎On (vibrate)‎‏‎‎‏‎"</string>
+    <string name="prevent_ringing_option_mute_summary" msgid="4472465110708640980">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‏‎‏‏‏‏‏‎‎‎‎‏‎‎‎‏‎‏‏‎‎‎‏‏‎‏‎‏‎‎‏‎‎‏‏‏‎‎‏‎‎‎‎‏‏‏‎‏‏‏‎‏‏‏‎‎‏‏‎‏‎‏‎‎‎On (mute)‎‏‎‎‏‎"</string>
+    <string name="prevent_ringing_option_none_summary" msgid="5013718946609276137">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‏‏‏‎‎‎‏‎‏‏‎‎‏‎‏‎‎‎‏‎‎‏‏‏‎‏‏‎‏‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‏‎‏‎‏‎‎‏‎‎‏‏‏‎‏‎‎‏‎Off‎‏‎‎‏‎"</string>
+    <string name="pref_title_network_details" msgid="7186418845727358964">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‏‏‏‏‎‎‎‏‏‏‎‏‏‏‎‏‏‎‏‎‎‏‎‎‏‏‏‎‏‏‏‎‏‎‏‏‎‏‎‏‎‏‏‎‎‎‎‎‎‎‏‏‏‏‏‏‏‏‏‏‏‎‏‎‎‎Network details‎‏‎‎‏‎"</string>
+    <string name="about_phone_device_name_warning" msgid="8885670415541365348">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‏‏‏‏‏‏‎‏‏‎‏‎‏‎‎‎‎‎‎‏‏‏‏‏‎‎‎‏‎‏‎‏‎‎‎‏‎‎‏‎‏‏‎‎‎‏‎‏‎‎‏‏‎‏‎‏‎‎‏‏‎‎‏‎‎‎Your device name is visible to apps on your phone. It may also be seen by other people when you connect to Bluetooth devices or set up a Wi-Fi hotspot.‎‏‎‎‏‎"</string>
+    <string name="devices_title" msgid="7701726109334110391">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‏‏‏‏‎‏‎‏‎‏‏‏‎‎‎‏‎‎‎‎‎‎‏‏‏‎‎‎‏‎‏‏‏‎‏‎‎‏‎‎‎‎‎‏‏‎‏‏‎‎‎‎‎‎‎‎‎‏‎‏‏‎‏‏‏‎Devices‎‏‎‎‏‎"</string>
+    <string name="display_cutout_emulation_device_default" msgid="7957250558326167503">"‎‏‎‎‎‎‎‏‎‏‏‏‎‎‎‎‎‏‎‎‏‎‎‎‏‎‏‏‏‏‏‏‏‏‎‎‎‏‎‎‏‎‏‎‏‎‏‎‏‎‎‎‏‎‎‏‎‎‏‎‏‎‎‎‎‏‏‎‏‎‏‎‏‎‏‏‏‏‎‏‎‎‎‎‏‎‏‏‎‎‎‎‏‎‎‎Default‎‏‎‎‏‎"</string>
+>>>>>>> BRANCH (03812c Merge pi-qpr1-release PQ1A.181105.017.A1 to pi-platform-rele)
 </resources>
