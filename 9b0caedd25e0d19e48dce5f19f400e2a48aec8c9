@@ -45,6 +45,98 @@
       "revId": "9b0caedd25e0d19e48dce5f19f400e2a48aec8c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c706efd_cd90c646",
+        "filename": "src/com/android/settings/wifi/WifiNoInternetDialog.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2018-12-11T02:39:26Z",
+      "side": 1,
+      "message": "Style: break the line before ||",
+      "range": {
+        "startLine": 58,
+        "startChar": 73,
+        "endLine": 58,
+        "endChar": 75
+      },
+      "revId": "9b0caedd25e0d19e48dce5f19f400e2a48aec8c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f779893_bc74ab1e",
+        "filename": "src/com/android/settings/wifi/WifiNoInternetDialog.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2018-12-11T02:39:26Z",
+      "side": 1,
+      "message": "Style: break the line before ||",
+      "range": {
+        "startLine": 156,
+        "startChar": 54,
+        "endLine": 156,
+        "endChar": 56
+      },
+      "revId": "9b0caedd25e0d19e48dce5f19f400e2a48aec8c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a7e6ad3_cfb03e9c",
+        "filename": "src/com/android/settings/wifi/WifiNoInternetDialog.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2018-12-11T02:39:26Z",
+      "side": 1,
+      "message": "Style: break the line before ||",
+      "range": {
+        "startLine": 180,
+        "startChar": 54,
+        "endLine": 180,
+        "endChar": 56
+      },
+      "revId": "9b0caedd25e0d19e48dce5f19f400e2a48aec8c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a77bd81_8fb34e7d",
+        "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2018-12-11T02:39:26Z",
+      "side": 1,
+      "message": "Style: break the line before ||",
+      "range": {
+        "startLine": 202,
+        "startChar": 80,
+        "endLine": 202,
+        "endChar": 82
+      },
+      "revId": "9b0caedd25e0d19e48dce5f19f400e2a48aec8c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
