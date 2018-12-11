@@ -1208,7 +1208,7 @@ public class WifiConfigController implements TextWatcher,
                 if (proxyProperties != null) {
                     mProxyHostView.setText(proxyProperties.getHost());
                     mProxyPortView.setText(Integer.toString(proxyProperties.getPort()));
-                    mProxyExclusionListView.setText(proxyProperties.getExclusionListAsString());
+                    mProxyExclusionListView.setText(proxyProperties.getExclusionList());
                 }
             }
         } else if (mProxySettingsSpinner.getSelectedItemPosition() == PROXY_PAC) {

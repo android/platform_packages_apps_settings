@@ -150,7 +150,7 @@ public class ProxySelector extends InstrumentedFragment implements DialogCreatab
         if (proxy != null) {
             hostname = proxy.getHost();
             port = proxy.getPort();
-            exclList = proxy.getExclusionListAsString();
+            exclList = proxy.getExclusionList();
         }
 
         if (hostname == null) {
