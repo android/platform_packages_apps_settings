@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1c877c8_8ae44b16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-12-12T11:20:21Z",
+      "side": 1,
+      "message": "Should we have some CDD or otherwise compliance tests to make sure all OEMs need to keep this working ?",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 12
+      },
+      "revId": "6bf629784b821ab7486c48587716be4066bbb70f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5f969d1_acfcc89d",
+        "filename": "res/layout/vpn_dialog.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-12-12T11:20:21Z",
+      "side": 1,
+      "message": "I don\u0027t see the definition for this, did this already exist ? Or did you omit to upload the strings.xml file ? Likewise for the labels and hints below.",
+      "range": {
+        "startLine": 151,
+        "startChar": 45,
+        "endLine": 151,
+        "endChar": 65
+      },
+      "revId": "6bf629784b821ab7486c48587716be4066bbb70f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a10c871_494b8714",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-12-12T11:20:21Z",
+      "side": 1,
+      "message": "Seeing as this may show or hide them let\u0027s call this updateProxyFieldsVisibility or something similar",
+      "range": {
+        "startLine": 339,
+        "startChar": 17,
+        "endLine": 339,
+        "endChar": 32
+      },
+      "revId": "6bf629784b821ab7486c48587716be4066bbb70f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2ef83a2_bf920239",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-12-12T11:20:21Z",
+      "side": 1,
+      "message": "Let\u0027s add a comment saying 0 is a last resort default, but the interface validates that the proxy port is present and non-zero",
+      "range": {
+        "startLine": 491,
+        "startChar": 45,
+        "endLine": 491,
+        "endChar": 46
+      },
+      "revId": "6bf629784b821ab7486c48587716be4066bbb70f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
