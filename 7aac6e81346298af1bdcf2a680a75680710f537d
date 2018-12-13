@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ff772da_03aa50b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-12-13T18:31:36Z",
+      "side": 1,
+      "message": "nit: network.",
+      "range": {
+        "startLine": 13,
+        "startChar": 11,
+        "endLine": 13,
+        "endChar": 17
+      },
+      "revId": "7aac6e81346298af1bdcf2a680a75680710f537d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
