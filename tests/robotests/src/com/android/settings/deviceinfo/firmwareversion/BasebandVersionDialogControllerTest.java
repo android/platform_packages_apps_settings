@@ -16,7 +16,6 @@
 
 package com.android.settings.deviceinfo.firmwareversion;
 
-import static com.android.settings.deviceinfo.firmwareversion.BasebandVersionDialogController.BASEBAND_PROPERTY;
 import static com.android.settings.deviceinfo.firmwareversion.BasebandVersionDialogController.BASEBAND_VERSION_LABEL_ID;
 import static com.android.settings.deviceinfo.firmwareversion.BasebandVersionDialogController.BASEBAND_VERSION_VALUE_ID;
 import static org.mockito.Mockito.verify;
@@ -26,6 +25,7 @@ import static org.robolectric.shadow.api.Shadow.extract;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.os.SystemProperties;
+import android.sysprop.TelephonyProperties;
 
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
 import com.android.settings.testutils.shadow.ShadowConnectivityManager;
@@ -37,6 +37,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
+
+import java.util.Arrays;
 
 @RunWith(SettingsRobolectricTestRunner.class)
 @Config(shadows = ShadowConnectivityManager.class)
@@ -71,7 +73,7 @@ public class BasebandVersionDialogControllerTest {
     @Test
     public void initialize_hasMobile_shouldSetDialogTextToBasebandVersion() {
         final String text = "test";
-        SystemProperties.set(BASEBAND_PROPERTY, text);
+        TelephonyProperties.baseband_version(Arrays.asList(new String[]{text}));
         ShadowConnectivityManager connectivityManager =
                 extract(mContext.getSystemService(ConnectivityManager.class));
         connectivityManager.setNetworkSupported(ConnectivityManager.TYPE_MOBILE, true);

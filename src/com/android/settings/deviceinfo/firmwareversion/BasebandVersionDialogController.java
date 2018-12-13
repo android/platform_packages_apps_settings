@@ -17,11 +17,13 @@
 package com.android.settings.deviceinfo.firmwareversion;
 
 import android.content.Context;
-import android.os.SystemProperties;
+import android.sysprop.TelephonyProperties;
 import androidx.annotation.VisibleForTesting;
 
 import com.android.settings.R;
 import com.android.settings.Utils;
+
+import java.util.stream.Collectors;
 
 public class BasebandVersionDialogController {
 
@@ -29,8 +31,6 @@ public class BasebandVersionDialogController {
     static final int BASEBAND_VERSION_LABEL_ID = R.id.baseband_version_label;
     @VisibleForTesting
     static final int BASEBAND_VERSION_VALUE_ID = R.id.baseband_version_value;
-    @VisibleForTesting
-    static final String BASEBAND_PROPERTY = "gsm.version.baseband";
 
     private final FirmwareVersionDialogFragment mDialog;
 
@@ -49,7 +49,9 @@ public class BasebandVersionDialogController {
             return;
         }
 
-        mDialog.setText(BASEBAND_VERSION_VALUE_ID, SystemProperties.get(BASEBAND_PROPERTY,
-                context.getString(R.string.device_info_default)));
+        mDialog.setText(BASEBAND_VERSION_VALUE_ID,
+                TelephonyProperties.baseband_version().stream()
+                .map(x -> x == null ? "" : x)
+                .collect(Collectors.joining(",")));
     }
 }
