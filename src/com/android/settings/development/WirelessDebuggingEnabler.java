@@ -50,7 +50,7 @@ public class WirelessDebuggingEnabler implements SwitchWidgetController.OnSwitch
         mSwitchWidget.setListener(this);
         mListener = listener;
         if (Constants.USE_SIMULATION) {
-            mAdbManager = WirelessDebuggingManager.getInstance(mContext);
+            mAdbManager = WirelessDebuggingManager.getInstance(mContext.getApplicationContext());
         } else {
             mAdbManager = IAdbManager.Stub.asInterface(ServiceManager.getService(Context.ADB_SERVICE));
         }

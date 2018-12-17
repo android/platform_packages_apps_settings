@@ -68,7 +68,7 @@ public class AdbQrcodeScannerFragment extends InstrumentedFragment implements
     private View mQrCameraView;
     private View mVerifyingView;
 
-    private final IAdbManager mAdbManager;
+    private IAdbManager mAdbManager;
 
     private IntentFilter mIntentFilter;
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
@@ -95,6 +95,19 @@ public class AdbQrcodeScannerFragment extends InstrumentedFragment implements
                     getActivity().finish();
 
                 }
+            } else if (AdbManager.WIRELESS_DEBUG_ENABLE_DISCOVER_ACTION.equals(action)) {
+                Integer res = intent.getIntExtra(
+                        AdbManager.WIRELESS_STATUS_EXTRA,
+                        AdbManager.WIRELESS_STATUS_FAIL);
+                if (res.equals(AdbManager.WIRELESS_STATUS_FAIL)) {
+                    Log.e(TAG, "Unable to turn on adb wireless discovery");
+                    Intent i = new Intent();
+                    i.putExtra(
+                            WirelessDebugging.PAIRING_DEVICE_REQUEST_TYPE,
+                            WirelessDebugging.DISCOVERY_FAIL_ACTION);
+                    getActivity().setResult(Activity.RESULT_OK, i);
+                    getActivity().finish();
+                }
             }
         }
     };
@@ -103,11 +116,7 @@ public class AdbQrcodeScannerFragment extends InstrumentedFragment implements
         super();
 
         mIntentFilter = new IntentFilter(AdbManager.WIRELESS_DEBUG_PAIRING_RESULT_ACTION);
-        if (Constants.USE_SIMULATION) {
-            mAdbManager = WirelessDebuggingManager.getInstance(getContext());
-        } else {
-            mAdbManager = IAdbManager.Stub.asInterface(ServiceManager.getService(Context.ADB_SERVICE));
-        }
+        mIntentFilter.addAction(AdbManager.WIRELESS_DEBUG_ENABLE_DISCOVER_ACTION);
     }
 
     @Override
@@ -138,7 +147,18 @@ public class AdbQrcodeScannerFragment extends InstrumentedFragment implements
     public void onResume() {
         super.onResume();
 
+        if (Constants.USE_SIMULATION) {
+            mAdbManager = WirelessDebuggingManager.getInstance(getContext().getApplicationContext());
+        } else {
+            mAdbManager = IAdbManager.Stub.asInterface(ServiceManager.getService(Context.ADB_SERVICE));
+        }
         getActivity().registerReceiver(mReceiver, mIntentFilter);
+        try {
+            mAdbManager.setDiscoverable(AdbManager.WIRELESS_DEBUG_PAIR_MODE_QR, true);
+        } catch (RemoteException e) {
+            Log.e(TAG, "Unable to turn on discovery");
+            getActivity().finish();
+        }
     }
 
     @Override
@@ -146,6 +166,11 @@ public class AdbQrcodeScannerFragment extends InstrumentedFragment implements
         super.onPause();
 
         getActivity().unregisterReceiver(mReceiver);
+        try {
+            mAdbManager.setDiscoverable(AdbManager.WIRELESS_DEBUG_PAIR_MODE_QR, false);
+        } catch (RemoteException e) {
+            Log.e(TAG, "Unable to turn off discovery");
+        }
     }
 
     private void initView(View view) {
@@ -235,7 +260,7 @@ public class AdbQrcodeScannerFragment extends InstrumentedFragment implements
         mQrCameraView.setVisibility(View.GONE);
         mVerifyingView.setVisibility(View.VISIBLE);
         try {
-            mAdbManager.pairDevice(-1, qrCode);
+            mAdbManager.pairDevice(AdbManager.WIRELESS_DEBUG_PAIR_MODE_QR, AdbManager.WIRELESS_DEBUG_DEVICE_ID_NONE, qrCode);
         } catch (RemoteException e) {
             Log.e(TAG, "Unable to request AdbManager to pair by QR code.");
             getActivity().finish();
