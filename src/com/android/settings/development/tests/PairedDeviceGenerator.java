@@ -84,8 +84,9 @@ public class PairedDeviceGenerator implements Runnable {
         return map;
     }
 
-    // Pairing simulation threads that are currently running.
-    private HashMap<Integer, ScheduledFuture> mPairingThreads;
+    // Thread running the qrcode/six-digit discoverable thread
+    private ScheduledFuture mDiscoverableThread;
+    private ScheduledFuture mQrcodePairingThread;
 
     private HashMap<Integer, PairDevice> mPairedDeviceMap;
     private HashMap<Integer, PairDevice> mPairingDeviceMap;
@@ -93,7 +94,6 @@ public class PairedDeviceGenerator implements Runnable {
     public PairedDeviceGenerator(Context appContext) {
         mAppContext = appContext;
         mScheduledTaskExecutor = Executors.newScheduledThreadPool(3);
-        mPairingThreads = new HashMap<Integer, ScheduledFuture>();
     }
 
     // force grab the paired device list. Will send the action event.
@@ -110,15 +110,11 @@ public class PairedDeviceGenerator implements Runnable {
         mAppContext.sendBroadcastAsUser(intent, UserHandle.ALL);
     }
 
-    public void pairDevice(Integer id, String qrcode) {
-        ScheduledFuture future = mScheduledTaskExecutor.schedule(
-                new DevicePairingThread(mAppContext,
-                    qrcode == null ?
-                        mPairingDevices.get(id) : mQrCodeDevice,
-                    qrcode),
+    public void pairDevice(Integer mode, Integer id, String qrcode) {
+        mQrcodePairingThread = mScheduledTaskExecutor.schedule(
+                new QrcodePairingThread(mAppContext, qrcode),
                     1,
                     TimeUnit.SECONDS);
-        mPairingThreads.put(id, future);
     }
 
     public void unPairDevice(Integer id) {
@@ -127,11 +123,25 @@ public class PairedDeviceGenerator implements Runnable {
         mPairedDevices.remove(id);
     }
 
-    public void cancelPairing(Integer id) {
-        ScheduledFuture future = mPairingThreads.get(id);
-        if (future != null) {
-            future.cancel(true);
+    public void cancelPairing(Integer mode, Integer id) {
+        if (mDiscoverableThread != null && !mDiscoverableThread.isDone()) {
+            mDiscoverableThread.cancel(true);
         }
+        if (mQrcodePairingThread != null && !mDiscoverableThread.isDone()) {
+            mQrcodePairingThread.cancel(true);
+        }
+    }
+
+    public void setDiscoverable(int mode, boolean enable) {
+        if (!enable) {
+            cancelPairing(-1, -1);
+            return;
+        }
+
+        mDiscoverableThread = mScheduledTaskExecutor.schedule(
+                new DiscoverableSimulator(mAppContext, mode),
+                    1,
+                    TimeUnit.SECONDS);
     }
 
     public void start() {
@@ -254,74 +264,82 @@ public class PairedDeviceGenerator implements Runnable {
         }
     }
 
-    class DevicePairingThread implements Runnable {
+    class DiscoverableSimulator implements Runnable {
+        // Represents the user flow from when one opens either the "pairing by qr code" or
+        // "pairing by six-digit code".
         Context mAppContext;
-        PairDevice mPairingDevice;
-        final String TAG = "DevicePairingThread";
-        String mQrCode;
+        final String TAG = "DiscoverableSimulator";
+        // Pairing via QR code or six-digit code.
+        int mMode;
 
-        public DevicePairingThread(Context appContext, PairDevice pairingDevice, String qrCode) {
+        public DiscoverableSimulator(Context appContext, int mode) {
             mAppContext = appContext;
-            mPairingDevice = pairingDevice;
-            mQrCode = qrCode;
+            mMode = mode;
         }
 
         public void run() {
             try {
-                if (mQrCode == null || mQrCode.isEmpty()) {
-                    // Pairing via six-digit code
-                    // Send the six-digit code, waiting a couple seconds, then randomly send
-                    // either a success or failure message.
+                if (mMode == AdbManager.WIRELESS_DEBUG_PAIR_MODE_QR) {
+                    Log.i(TAG, "Starting DiscoverableSimulator for QrCode");
+                    // only need to send discoverable result
+                    Thread.sleep(2000);
+                    Random rand = new Random();
+                    Intent intent = new Intent(AdbManager.WIRELESS_DEBUG_ENABLE_DISCOVER_ACTION);
+                    boolean success = rand.nextBoolean();
+                    intent.putExtra(AdbManager.WIRELESS_STATUS_EXTRA,
+                            success ? AdbManager.WIRELESS_STATUS_SUCCESS :
+                                      AdbManager.WIRELESS_STATUS_FAIL);
+                    mAppContext.sendBroadcastAsUser(intent, UserHandle.ALL);
+                } else if (mMode == AdbManager.WIRELESS_DEBUG_PAIR_MODE_CODE) {
+                    Log.i(TAG, "Starting DiscoverableSimulator for six-digit pairing");
+                    // need to send discoverable result + pairing code + pairing result
+                    Thread.sleep(2000);
+                    Random rand = new Random();
+                    Intent intent = new Intent(AdbManager.WIRELESS_DEBUG_ENABLE_DISCOVER_ACTION);
+                    boolean discoverSuccess = rand.nextBoolean();
+                    // send discoverable result
+                    intent.putExtra(AdbManager.WIRELESS_STATUS_EXTRA,
+                            discoverSuccess ? AdbManager.WIRELESS_STATUS_SUCCESS :
+                                      AdbManager.WIRELESS_STATUS_FAIL);
+                    mAppContext.sendBroadcastAsUser(intent, UserHandle.ALL);
+                    // only proceed if discoverable was enabled
+                    if (!discoverSuccess) {
+                        return;
+                    }
+
+                    // next, send pairing code
+                    Thread.sleep(3000);
                     String code = generateSixDigitCode();
-                    Log.i(TAG, "deviceName=" + mPairingDevice.getDeviceName() +
-                            " code=" + code);
-                    Intent intent = new Intent(AdbManager.WIRELESS_DEBUG_PAIRING_RESULT_ACTION);
+                    intent = new Intent(AdbManager.WIRELESS_DEBUG_PAIRING_RESULT_ACTION);
                     intent.putExtra(AdbManager.WIRELESS_STATUS_EXTRA,
                             AdbManager.WIRELESS_STATUS_PAIRING_CODE);
-                    intent.putExtra(AdbManager.WIRELESS_PAIR_DEVICE_EXTRA, mPairingDevice);
                     intent.putExtra(AdbManager.WIRELESS_PAIRING_CODE_EXTRA, code);
                     mAppContext.sendBroadcastAsUser(intent, UserHandle.ALL);
 
+                    // next, simulate pairing success/failure
                     Thread.sleep(5000);
-
-                    Random rand = new Random();
-                    boolean success = rand.nextBoolean();
+                    boolean pairSuccess = rand.nextBoolean();
                     intent = new Intent(AdbManager.WIRELESS_DEBUG_PAIRING_RESULT_ACTION);
                     intent.putExtra(AdbManager.WIRELESS_STATUS_EXTRA,
-                            success ?
+                            pairSuccess ?
                                 AdbManager.WIRELESS_STATUS_SUCCESS :
                                 AdbManager.WIRELESS_STATUS_FAIL);
-                    intent.putExtra(AdbManager.WIRELESS_PAIR_DEVICE_EXTRA, mPairingDevice);
-                    if (success) {
-                        mPairedDevices.put(mPairingDevice.getDeviceId(),
-                                mPairingDevice);
-                        mPairingDevices.remove(mPairingDevice.getDeviceId());
+                    if (pairSuccess) {
+                        // Randomly select a device and put into the paired pool
+                        List<Integer> deviceIds = new ArrayList<Integer>(mPairingDevices.keySet());
+                        Collections.shuffle(deviceIds);
+                        mPairedDevices.put(deviceIds.get(0),
+                                mPairingDevices.get(deviceIds.get(0)));
+                        mPairingDevices.remove(deviceIds.get(0));
                     }
-                    mAppContext.sendBroadcastAsUser(intent, UserHandle.ALL);
-                } else {
-                    // Pairing via QR code
-                    Thread.sleep(3000);
-                    Intent intent = new Intent(AdbManager.WIRELESS_DEBUG_PAIRING_RESULT_ACTION);
-                    boolean success = mQrCode.equals(mQrCodeString);
-                    intent.putExtra(AdbManager.WIRELESS_STATUS_EXTRA,
-                            success ?
-                                AdbManager.WIRELESS_STATUS_SUCCESS :
-                                AdbManager.WIRELESS_STATUS_FAIL);
-                    intent.putExtra(AdbManager.WIRELESS_PAIR_DEVICE_EXTRA, mPairingDevice);
-                    if (success) {
-                        mPairedDevices.put(mPairingDevice.getDeviceId(),
-                                mPairingDevice);
-                    }
+
                     mAppContext.sendBroadcastAsUser(intent, UserHandle.ALL);
                 }
             } catch (InterruptedException e) {
-                Log.i(TAG, "The pairing was cancelled for " + mPairingDevice.getDeviceName());
-                mPairingThreads.remove(mPairingDevice.getDeviceId());
+                Log.i(TAG, "The pairing was cancelled");
             } catch (Exception e) {
-                Log.w(TAG, "Something failed while simulating device pairing");
-                e.printStackTrace();
+                Log.w(TAG, "Something failed while simulating device discoverability");
             }
-            mPairingThreads.remove(mPairingDevice.getDeviceId());
         }
 
         String generateSixDigitCode() {
@@ -334,6 +352,47 @@ public class PairedDeviceGenerator implements Runnable {
             }
 
             return code;
+        }
+    }
+
+    /**
+     * Thread to just check to see if the qr code matches mQrCodeString.
+     */
+    class QrcodePairingThread implements Runnable {
+        Context mAppContext;
+        final String TAG = "QrcodePairingThread";
+        String mQrCode;
+
+        public QrcodePairingThread(Context appContext, String qrCode) {
+            mAppContext = appContext;
+            mQrCode = qrCode;
+        }
+
+        public void run() {
+            try {
+                // Pairing via QR code
+                Thread.sleep(3000);
+                Intent intent = new Intent(AdbManager.WIRELESS_DEBUG_PAIRING_RESULT_ACTION);
+                boolean success = mQrCode.equals(mQrCodeString);
+                intent.putExtra(AdbManager.WIRELESS_STATUS_EXTRA,
+                        success ?
+                            AdbManager.WIRELESS_STATUS_SUCCESS :
+                            AdbManager.WIRELESS_STATUS_FAIL);
+                if (success) {
+                    // Randomly select a device and put into the paired pool
+                    List<Integer> deviceIds = new ArrayList<Integer>(mPairingDevices.keySet());
+                    Collections.shuffle(deviceIds);
+                    mPairedDevices.put(deviceIds.get(0),
+                            mPairingDevices.get(deviceIds.get(0)));
+                    mPairingDevices.remove(deviceIds.get(0));
+                }
+                mAppContext.sendBroadcastAsUser(intent, UserHandle.ALL);
+            } catch (InterruptedException e) {
+                Log.i(TAG, "The qr pairing was cancelled");
+            } catch (Exception e) {
+                Log.w(TAG, "Something failed while simulating device pairing");
+                e.printStackTrace();
+            }
         }
     }
 }

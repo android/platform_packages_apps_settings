@@ -34,11 +34,11 @@ public class AdbWirelessDialog extends AlertDialog implements
         DialogInterface.OnClickListener {
 
     public interface AdbWirelessDialogListener {
-        default void onCancel(PairDevice pairDevice) {
+        default void onCancel() {
         }
         default void onSubmit(AdbWirelessDialog dialog) {
         }
-        default void onDismiss(PairDevice pairDevice, Integer result) {
+        default void onDismiss(Integer result) {
         }
     }
 
@@ -47,8 +47,8 @@ public class AdbWirelessDialog extends AlertDialog implements
     private static final int BUTTON_CANCEL = DialogInterface.BUTTON_NEGATIVE;
     private static final int BUTTON_SUBMIT = DialogInterface.BUTTON_POSITIVE;
 
+    private String mPairingCode;
     private final AdbWirelessDialogListener mListener;
-    private final PairDevice mPairingDevice;
     private final int mMode;
     // Indicator of whether the user has succuessfully paired with the device yet.
     private boolean mIsPaired;
@@ -63,24 +63,29 @@ public class AdbWirelessDialog extends AlertDialog implements
     public static AdbWirelessDialog createModal(
             Context context,
             AdbWirelessDialogListener listener,
-            PairDevice pairingDevice,
             int mode) {
-        return new AdbWirelessDialog(context, listener, pairingDevice, mode);
+        return new AdbWirelessDialog(context, listener, mode);
     }
 
-    /* package */ AdbWirelessDialog(Context context, AdbWirelessDialogListener listener, PairDevice pairingDevice, int mode) {
+    /* package */ AdbWirelessDialog(Context context, AdbWirelessDialogListener listener, int mode) {
         super(context);
         mListener = listener;
-        mPairingDevice = pairingDevice;
         mMode = mode;
         mIsPaired = false;
+    }
+
+    public void setPairingCode(String code) {
+        mPairingCode = code;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mView = getLayoutInflater().inflate(R.layout.adb_wireless_dialog, null);
         setView(mView);
-        mController = new AdbWirelessDialogController(this, mView, mPairingDevice, mMode);
+        mController = new AdbWirelessDialogController(this, mView, mMode);
+        if (mPairingCode != null) {
+            mController.setPairingCode(mPairingCode);
+        }
         super.onCreate(savedInstanceState);
     }
 
@@ -98,7 +103,7 @@ public class AdbWirelessDialog extends AlertDialog implements
         if (mMode == AdbWirelessDialogUiBase.MODE_PAIRING) {
             if (!mIsPaired && mListener != null) {
                 // Cancel the pairing if user exits the dialog.
-                mListener.onCancel(mPairingDevice);
+                mListener.onCancel();
             }
         }
 
@@ -114,7 +119,7 @@ public class AdbWirelessDialog extends AlertDialog implements
         if (mListener != null) {
             switch (id) {
                 case BUTTON_CANCEL:
-                    mListener.onCancel(mPairingDevice);
+                    mListener.onCancel();
                     break;
             }
         }
@@ -123,7 +128,7 @@ public class AdbWirelessDialog extends AlertDialog implements
     public void dismiss(Integer result) {
         dismiss();
         if (mListener != null) {
-            mListener.onDismiss(mPairingDevice, result);
+            mListener.onDismiss(result);
         }
     }
 

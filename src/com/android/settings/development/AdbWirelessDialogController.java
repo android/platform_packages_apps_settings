@@ -18,7 +18,6 @@ package com.android.settings.development;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.debug.PairDevice;
 import android.debug.IAdbManager;
 import android.os.RemoteException;
 import android.os.ServiceManager;
@@ -71,7 +70,6 @@ public class AdbWirelessDialogController {
 
     private final AdbWirelessDialogUiBase mUi;
     private final View mView;
-    private final PairDevice mPairDevice;
 
     private int mMode;
 
@@ -82,49 +80,29 @@ public class AdbWirelessDialogController {
     // The dialog for showing pairing failed message
     private TextView mFailedMsg;
 
-    private IAdbManager mAdbManager;
-
     private Context mContext;
 
-    public AdbWirelessDialogController(AdbWirelessDialogUiBase parent, View view, PairDevice pairDevice,
+    public AdbWirelessDialogController(AdbWirelessDialogUiBase parent, View view,
             int mode) {
         mUi = parent;
         mView = view;
-        mPairDevice = pairDevice;
         mMode = mode;
 
         mContext = mUi.getContext();
         final Resources res = mContext.getResources();
 
-        if (Constants.USE_SIMULATION) {
-            mAdbManager = WirelessDebuggingManager.getInstance(mContext);
-        } else {
-            mAdbManager = IAdbManager.Stub.asInterface(ServiceManager.getService(Context.ADB_SERVICE));
-        }
-
         mSixDigitCode = mView.findViewById(R.id.pairing_code);
 
         switch (mMode) {
             case AdbWirelessDialogUiBase.MODE_PAIRING:
-                try {
-                    mAdbManager.pairDevice(mPairDevice.getDeviceId(), null);
-                    String title = String.format(
-                            res.getString(R.string.adb_pairing_device_dialog_title),
-                            mPairDevice.getDeviceName());
-                    mUi.setTitle(title);
-                    mView.findViewById(R.id.l_pairing_six_digit).setVisibility(View.VISIBLE);
-                    mUi.setCancelButton(res.getString(R.string.cancel));
-                    mUi.setCanceledOnTouchOutside(false);
-                } catch (RemoteException e) {
-                    mUi.dismiss();
-                    Log.e(TAG, "Unable to pair the device");
-                    return;
-                }
+                String title = res.getString(R.string.adb_pairing_device_dialog_title);
+                mUi.setTitle(title);
+                mView.findViewById(R.id.l_pairing_six_digit).setVisibility(View.VISIBLE);
+                mUi.setCancelButton(res.getString(R.string.cancel));
+                mUi.setCanceledOnTouchOutside(false);
                 break;
             case AdbWirelessDialogUiBase.MODE_PAIRING_FAILED:
-                String msg = String.format(
-                        res.getString(R.string.adb_pairing_device_dialog_failed_msg),
-                        mPairDevice.getDeviceName());
+                String msg = res.getString(R.string.adb_pairing_device_dialog_failed_msg);
                 mUi.setTitle(R.string.adb_pairing_device_dialog_failed_title);
                 mView.findViewById(R.id.l_pairing_failed).setVisibility(View.VISIBLE);
                 mFailedMsg = (TextView) mView.findViewById(R.id.pairing_failed_label);
@@ -136,14 +114,15 @@ public class AdbWirelessDialogController {
                 mView.findViewById(R.id.l_qrcode_pairing_failed).setVisibility(View.VISIBLE);
                 mUi.setSubmitButton(res.getString(R.string.okay));
                 break;
+            case AdbWirelessDialogUiBase.MODE_DISCOVERY_FAILED:
+                mUi.setTitle(R.string.adb_discovery_enable_failed_title);
+                mView.findViewById(R.id.l_discovery_failed).setVisibility(View.VISIBLE);
+                mUi.setSubmitButton(res.getString(R.string.okay));
+                break;
         }
 
         // After done view show and hide, request focus from parent view
         mView.findViewById(R.id.l_adbwirelessdialog).requestFocus();
-    }
-
-    public PairDevice getPairingDevice() {
-        return mPairDevice;
     }
 
     public void setPairingCode(String code) {

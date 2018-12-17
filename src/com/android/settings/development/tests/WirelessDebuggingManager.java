@@ -55,8 +55,8 @@ public class WirelessDebuggingManager implements IAdbManager {
         }
     }
 
-    public void pairDevice(int id, String qrcode) {
-        mPairedDeviceGenerator.pairDevice(id, qrcode);
+    public void pairDevice(int mode, int id, String qrcode) {
+        mPairedDeviceGenerator.pairDevice(mode, id, qrcode);
     }
 
     public void unPairDevice(int id) {
@@ -71,8 +71,8 @@ public class WirelessDebuggingManager implements IAdbManager {
         mPairedDeviceGenerator.queryAdbWirelessPairingDevices();
     }
 
-    public void cancelPairing(int id) {
-        mPairedDeviceGenerator.cancelPairing(id);
+    public void cancelPairing(int mode, int id) {
+        mPairedDeviceGenerator.cancelPairing(mode, id);
     }
 
     public void setName(String name) {
@@ -81,6 +81,10 @@ public class WirelessDebuggingManager implements IAdbManager {
 
     public String getName() {
         return mName;
+    }
+
+    public void setDiscoverable(int mode, boolean enable) {
+        mPairedDeviceGenerator.setDiscoverable(mode, enable);
     }
 
     protected WirelessDebuggingManager(Context context) {
