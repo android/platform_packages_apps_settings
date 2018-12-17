@@ -77,6 +77,7 @@ public class WirelessDebugging extends DashboardFragment
     public static final String PAIRING_DEVICE_REQUEST_TYPE = "request_type_pairing";
     public static final int SUCCESS_ACTION = 0;
     public static final int FAIL_ACTION = 1;
+    public static final int DISCOVERY_FAIL_ACTION = 2;
 
     public static final String PAIRED_DEVICE_EXTRA = "paired_device";
     public static final String DEVICE_NAME_EXTRA = "device_name";
@@ -106,7 +107,7 @@ public class WirelessDebugging extends DashboardFragment
     // map of paired devices, with the device id as the key
     private HashMap<String, AdbPairedDevicePreference> mPairedDevicePreferences;
 
-    private final IAdbManager mAdbManager;
+    private IAdbManager mAdbManager;
 
     private IntentFilter mIntentFilter;
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
@@ -123,7 +124,6 @@ public class WirelessDebugging extends DashboardFragment
     };
 
     public WirelessDebugging() {
-        mAdbManager = IAdbManager.Stub.asInterface(ServiceManager.getService(Context.ADB_SERVICE));
     }
 
     @Override
@@ -175,11 +175,6 @@ public class WirelessDebugging extends DashboardFragment
         final CharSequence deviceNameTitle =
                 getText(R.string.my_device_info_device_name_preference_title);
         mDeviceNamePreference.setTitle(deviceNameTitle);
-        try {
-            mDeviceNamePreference.setSummary(mAdbManager.getName());
-        } catch (RemoteException e) {
-            Log.e(TAG, "Unable to get the device name for ADB wireless");
-        }
     }
 
     @Override
@@ -198,6 +193,14 @@ public class WirelessDebugging extends DashboardFragment
     public void onResume() {
         final Activity activity = getActivity();
         super.onResume();
+
+        mAdbManager = IAdbManager.Stub.asInterface(ServiceManager.getService(Context.ADB_SERVICE));
+
+        try {
+            mDeviceNamePreference.setSummary(mAdbManager.getName());
+        } catch (RemoteException e) {
+            Log.e(TAG, "Unable to get the device name for ADB wireless");
+        }
 
         getActivity().registerReceiver(mReceiver, mIntentFilter);
         try {
@@ -256,7 +259,6 @@ public class WirelessDebugging extends DashboardFragment
     public Dialog onCreateDialog(int dialogId) {
         Dialog d = AdbWirelessDialog.createModal(
                 getActivity(),
-                null,
                 null,
                 dialogId);
         if (d != null) {
@@ -438,8 +440,10 @@ public class WirelessDebugging extends DashboardFragment
         int requestType = data.getIntExtra(PAIRING_DEVICE_REQUEST_TYPE, -1);
         switch (requestType) {
             case FAIL_ACTION:
-                showDialog(AdbWirelessDialogUiBase.MODE_QRCODE_FAILED);
+                showDialog(AdbWirelessDialogUiBase.MODE_PAIRING_FAILED);
                 break;
+            case DISCOVERY_FAIL_ACTION:
+                showDialog(AdbWirelessDialogUiBase.MODE_DISCOVERY_FAILED);
             default:
                 break;
         }
@@ -456,6 +460,7 @@ public class WirelessDebugging extends DashboardFragment
                     .setDestination(AdbPairingDeviceFragment.class.getName())
                     .setArguments(bundle)
                     .setSourceMetricsCategory(getMetricsCategory())
+                    .setResultListener(this, PAIRING_DEVICE_REQUEST)
                     .launch();
         } catch (RemoteException e) {
             Log.e(TAG, "Unable to get the device name");
