@@ -56,7 +56,7 @@ public class AdbDeviceNamePreferenceController extends BasePreferenceController
         super(context, PREF_KEY);
 
         if (Constants.USE_SIMULATION) {
-            mAdbManager = WirelessDebuggingManager.getInstance(mContext);
+            mAdbManager = WirelessDebuggingManager.getInstance(mContext.getApplicationContext());
         } else {
             mAdbManager = IAdbManager.Stub.asInterface(ServiceManager.getService(Context.ADB_SERVICE));
         }
