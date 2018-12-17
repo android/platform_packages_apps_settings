@@ -42,6 +42,11 @@ public interface AdbWirelessDialogUiBase {
      */
     int MODE_QRCODE_FAILED = 3;
 
+    /**
+     * Dialog shown when adb wireless discovery failed to enable.
+     */
+    int MODE_DISCOVERY_FAILED = 4;
+
     public Context getContext();
     public AdbWirelessDialogController getController();
     public LayoutInflater getLayoutInflater();
@@ -60,4 +65,3 @@ public interface AdbWirelessDialogUiBase {
     public Button getSubmitButton();
     public Button getCancelButton();
 }
-

@@ -73,10 +73,6 @@ public class AdbPairingDeviceFragment extends DashboardFragment {
         showDialog(PAIRING_DEVICE_DIALOG_ID);
     }
 
-    public void showDevicePairingFailedDialog() {
-        showDialog(PAIRING_DEVICE_FAILED_DIALOG_ID);
-    }
-
     @Override
     public Dialog onCreateDialog(int dialogId) {
         Dialog d = mAdbPairingDeviceController.createDialog(dialogId);
