@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7b350ac1_540b8eca",
+        "filename": "src/com/android/settings/network/MobileNetworkPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-12-19T22:02:54Z",
+      "side": 1,
+      "message": "use R.string.summary_divider_text here.",
+      "range": {
+        "startLine": 133,
+        "startChar": 42,
+        "endLine": 133,
+        "endChar": 63
+      },
+      "revId": "20c22597cc11533ef995b2d6cd22e7c3ff61f87e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b82a23a_6dd4589f",
+        "filename": "src/com/android/settings/network/MobileNetworkPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-12-19T22:02:54Z",
+      "side": 1,
+      "message": "Is it possible that this method is invoked before any listener.",
+      "range": {
+        "startLine": 192,
+        "startChar": 24,
+        "endLine": 192,
+        "endChar": 34
+      },
+      "revId": "20c22597cc11533ef995b2d6cd22e7c3ff61f87e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd6187fb_956e728c",
+        "filename": "tests/robotests/src/com/android/settings/network/MobileNetworkPreferenceControllerTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-12-19T22:02:54Z",
+      "side": 1,
+      "message": "nit: make it private static final",
+      "range": {
+        "startLine": 134,
+        "startChar": 18,
+        "endLine": 134,
+        "endChar": 25
+      },
+      "revId": "20c22597cc11533ef995b2d6cd22e7c3ff61f87e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c98e203d_efc4aca0",
+        "filename": "tests/robotests/src/com/android/settings/network/MobileNetworkPreferenceControllerTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-12-19T22:02:54Z",
+      "side": 1,
+      "message": "Can we do some common thing in setUp(), then you don\u0027t need to do it for each test.",
+      "range": {
+        "startLine": 190,
+        "startChar": 17,
+        "endLine": 191,
+        "endChar": 48
+      },
+      "revId": "20c22597cc11533ef995b2d6cd22e7c3ff61f87e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "060e13b5_8b002a3e",
+        "filename": "tests/robotests/src/com/android/settings/network/MobileNetworkPreferenceControllerTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-12-19T22:02:54Z",
+      "side": 1,
+      "message": "This can move to setup()",
+      "range": {
+        "startLine": 197,
+        "startChar": 7,
+        "endLine": 197,
+        "endChar": 97
+      },
+      "revId": "20c22597cc11533ef995b2d6cd22e7c3ff61f87e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "518118c9_df4191e6",
+        "filename": "tests/robotests/src/com/android/settings/network/MobileNetworkPreferenceControllerTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2018-12-19T22:02:54Z",
+      "side": 1,
+      "message": "use a constant here: \"name1, name2\"",
+      "range": {
+        "startLine": 202,
+        "startChar": 39,
+        "endLine": 202,
+        "endChar": 81
+      },
+      "revId": "20c22597cc11533ef995b2d6cd22e7c3ff61f87e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
