@@ -20,7 +20,7 @@ import static com.android.settings.testutils.ResIdSubject.assertResId;
 import static com.google.common.truth.Truth.assertThat;
 
 import android.content.Intent;
-import android.os.SystemProperties;
+import android.sysprop.SetupWizardProperties;
 
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
 import com.android.setupwizardlib.util.WizardManagerHelper;
@@ -47,8 +47,7 @@ public class SetupWizardUtilsTest {
 
     @Test
     public void testGetTheme_withIntentExtra_shouldReturnExtraTheme() {
-        SystemProperties.set(SetupWizardUtils.SYSTEM_PROP_SETUPWIZARD_THEME,
-                WizardManagerHelper.THEME_GLIF);
+        SetupWizardProperties.theme(WizardManagerHelper.THEME_GLIF);
         Intent intent = new Intent();
         intent.putExtra(WizardManagerHelper.EXTRA_THEME, WizardManagerHelper.THEME_GLIF_V2);
 
@@ -57,8 +56,7 @@ public class SetupWizardUtilsTest {
 
     @Test
     public void testGetTheme_withEmptyIntent_shouldReturnSystemProperty() {
-        SystemProperties.set(SetupWizardUtils.SYSTEM_PROP_SETUPWIZARD_THEME,
-                WizardManagerHelper.THEME_GLIF_V2_LIGHT);
+        SetupWizardProperties.theme(WizardManagerHelper.THEME_GLIF_V2_LIGHT);
         Intent intent = new Intent();
 
         assertResId(SetupWizardUtils.getTheme(intent)).isEqualTo(R.style.GlifV2Theme_Light);
@@ -66,8 +64,7 @@ public class SetupWizardUtilsTest {
 
     @Test
     public void testGetTheme_glifV3Light_shouldReturnThemeResource() {
-        SystemProperties.set(SetupWizardUtils.SYSTEM_PROP_SETUPWIZARD_THEME,
-                WizardManagerHelper.THEME_GLIF_V3_LIGHT);
+        SetupWizardProperties.theme(WizardManagerHelper.THEME_GLIF_V3_LIGHT);
         Intent intent = new Intent();
 
         assertResId(SetupWizardUtils.getTheme(intent)).isEqualTo(R.style.GlifV3Theme_Light);
