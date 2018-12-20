@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e96996ce_a14a7fed",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 2336,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-12-20T11:50:08Z",
+      "side": 1,
+      "message": "Yes, I updated the patch.",
+      "parentUuid": "ae9bd859_d78addc3",
+      "range": {
+        "startLine": 2336,
+        "startChar": 14,
+        "endLine": 2336,
+        "endChar": 30
+      },
+      "revId": "f21ec9cd32e11d82b2c3af87611b8041fbb79185",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "984fb8d0_14609508",
         "filename": "src/com/android/settings/wifi/calling/ListWithEntrySummaryPreference.java",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "8070f670_1bda8613",
+        "filename": "src/com/android/settings/wifi/calling/ListWithEntrySummaryPreference.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-12-20T11:50:08Z",
+      "side": 1,
+      "message": "Yes, I added ListWithEntrySummaryPreferenceTest.java.",
+      "parentUuid": "984fb8d0_14609508",
+      "range": {
+        "startLine": 41,
+        "startChar": 13,
+        "endLine": 41,
+        "endChar": 43
+      },
+      "revId": "f21ec9cd32e11d82b2c3af87611b8041fbb79185",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d935ca93_c86b0dca",
         "filename": "src/com/android/settings/wifi/calling/ListWithEntrySummaryPreference.java",
         "patchSetId": 5
@@ -59,6 +107,30 @@
       "writtenOn": "2018-11-28T21:16:35Z",
       "side": 1,
       "message": "Can you tell more about it? I wonder when it will crash(how to repro it)\n\nIn my understanding Entries and EntryValues should already been handled by ListPreference and we don\u0027t need to store it manually here.",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 7
+      },
+      "revId": "f21ec9cd32e11d82b2c3af87611b8041fbb79185",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57672b3d_279a2595",
+        "filename": "src/com/android/settings/wifi/calling/ListWithEntrySummaryPreference.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2018-12-20T11:50:08Z",
+      "side": 1,
+      "message": "Crash issue occurred when switching to multi-window on the calling preference dialog.\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n [Pre-condition]\n  CarreirConfig - KEY_CARRIER_WFC_SUPPORTS_WIFI_ONLY_BOOL is false (default value)\n\n [Procedure]\n  1. Move to Settings -\u003e Network \u0026 Internet -\u003e Mobile network -\u003e Wi-Fi calling\n  2. Tap the Calling preference for show the calling preference dialog\n  3. Long press recent button to enter multi window\n  \n  After step 3, settings app crashes.\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n\nEntries and EntryValues are NOT restored by ListPreference. It restored only ListPreference.mValue.\n(On the other hand, they are restored by ListPreferenceDialogFragment)\nSo, it need to be manually restored. Please see attachment of b/34793636 in details.",
+      "parentUuid": "d935ca93_c86b0dca",
       "range": {
         "startLine": 152,
         "startChar": 0,
