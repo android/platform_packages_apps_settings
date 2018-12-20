@@ -19,7 +19,8 @@ import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
-import android.os.SystemProperties;
+import android.sysprop.RadioProperties;
+
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 
@@ -58,7 +59,7 @@ public class FccEquipmentIdPreferenceControllerTest {
 
     @Test
     public void isAvailable_configNonEmpty_shouldReturnTrue() {
-        SystemProperties.set("ro.ril.fccid", "fcc_equipment");
+        RadioProperties.ril_fccid("fcc_equipment");
 
         assertThat(mController.isAvailable()).isTrue();
     }

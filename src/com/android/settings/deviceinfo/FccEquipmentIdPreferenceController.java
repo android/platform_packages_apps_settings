@@ -16,10 +16,11 @@
 package com.android.settings.deviceinfo;
 
 import android.content.Context;
-import android.os.SystemProperties;
+import android.sysprop.RadioProperties;
+import android.text.TextUtils;
+
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
-import android.text.TextUtils;
 
 import com.android.settings.R;
 import com.android.settings.core.PreferenceControllerMixin;
@@ -28,8 +29,6 @@ import com.android.settingslib.core.AbstractPreferenceController;
 public class FccEquipmentIdPreferenceController extends AbstractPreferenceController implements
         PreferenceControllerMixin {
 
-
-    private static final String PROPERTY_EQUIPMENT_ID = "ro.ril.fccid";
     private static final String KEY_EQUIPMENT_ID = "fcc_equipment_id";
 
     public FccEquipmentIdPreferenceController(Context context) {
@@ -38,7 +37,7 @@ public class FccEquipmentIdPreferenceController extends AbstractPreferenceContro
 
     @Override
     public boolean isAvailable() {
-        return !TextUtils.isEmpty(SystemProperties.get(PROPERTY_EQUIPMENT_ID));
+        return RadioProperties.ril_fccid().isPresent();
     }
 
     @Override
@@ -46,7 +45,7 @@ public class FccEquipmentIdPreferenceController extends AbstractPreferenceContro
         super.displayPreference(screen);
         final Preference pref = screen.findPreference(KEY_EQUIPMENT_ID);
         if (pref != null) {
-            final String summary = SystemProperties.get(PROPERTY_EQUIPMENT_ID,
+            final String summary = RadioProperties.ril_fccid().orElse(
                     mContext.getResources().getString(R.string.device_info_default));
             pref.setSummary(summary);
         }

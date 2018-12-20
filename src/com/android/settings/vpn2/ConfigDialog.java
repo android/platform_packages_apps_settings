@@ -20,9 +20,9 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.os.SystemProperties;
 import android.security.Credentials;
 import android.security.KeyStore;
+import android.sysprop.RadioProperties;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
@@ -140,7 +140,7 @@ class ConfigDialog extends AlertDialog implements TextWatcher,
         mAlwaysOnVpn.setChecked(mProfile.key.equals(VpnUtils.getLockdownVpn()));
 
         // Hide lockdown VPN on devices that require IMS authentication
-        if (SystemProperties.getBoolean("persist.radio.imsregrequired", false)) {
+        if (RadioProperties.ims_reg_required().orElse(false)) {
             mAlwaysOnVpn.setVisibility(View.GONE);
         }
 
