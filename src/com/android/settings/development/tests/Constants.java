@@ -18,6 +18,6 @@ package com.android.settings.development.tests;
 public final class Constants {
     // Turn on and off the flags below to switch between using the simulation code located in this
     // package, or using the real AdbManager.
-    public static final boolean USE_SIMULATION = true;
+    public static final boolean USE_SIMULATION = false;
     public static final boolean USE_QRCODE_SIMULATOR = USE_SIMULATION && false;
 }
