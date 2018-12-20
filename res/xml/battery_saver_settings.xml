@@ -24,17 +24,20 @@
     <SwitchPreference
         android:key="auto_battery_saver"
         android:title="@string/battery_saver_auto_title"
+        android:order="10"
         settings:controller="com.android.settings.fuelgauge.batterysaver.AutoBatterySaverPreferenceController" />
 
     <com.android.settings.widget.SeekBarPreference
         android:key="battery_saver_seek_bar"
         android:title="@string/battery_saver_seekbar_title_placeholder"
+        android:order="20"
         android:max="75"
         android:min="5" />
 
     <com.android.settings.widget.TwoStateButtonPreference
         android:key="battery_saver"
         android:title="@string/battery_saver"
+        android:order="30"
         android:selectable="false"
         settings:textOn="@string/battery_saver_button_turn_on"
         settings:textOff="@string/battery_saver_button_turn_off"
@@ -42,7 +45,8 @@
         settings:controller="com.android.settings.fuelgauge.batterysaver.BatterySaverButtonPreferenceController" />
 
     <PreferenceCategory
-        android:key="battery_saver_footer">
+        android:key="battery_saver_footer"
+        android:order="40">
         <com.android.settingslib.widget.FooterPreference
             android:key="battery_saver_footer_preference"
             android:title="@*android:string/battery_saver_description"

@@ -136,4 +136,46 @@
          devices will be able to vary their amplitude but do not possess enough dynamic range to
          have distinct intensity levels -->
     <bool name="config_vibration_supports_multiple_intensities">false</bool>
+
+    <!-- Whether to show empty category in Connection preferences -->
+    <bool name="config_connected_devices_empty_category_a_visible">false</bool>
+    <bool name="config_connected_devices_empty_category_b_visible">false</bool>
+    <bool name="config_connected_devices_empty_category_c_visible">false</bool>
+    <bool name="config_connected_devices_empty_category_d_visible">false</bool>
+    <bool name="config_connected_devices_empty_category_e_visible">false</bool>
+
+    <!-- Whether to show empty category in Sound Settings -->
+    <bool name="config_sound_settings_empty_category_a_visible">false</bool>
+    <bool name="config_sound_settings_empty_category_b_visible">false</bool>
+    <bool name="config_sound_settings_empty_category_c_visible">false</bool>
+    <bool name="config_sound_settings_empty_category_d_visible">false</bool>
+    <bool name="config_sound_settings_empty_category_e_visible">false</bool>
+
+    <!-- Whether to show empty category in Display Settings -->
+    <bool name="config_display_settings_empty_category_a_visible">false</bool>
+    <bool name="config_display_settings_empty_category_b_visible">false</bool>
+    <bool name="config_display_settings_empty_category_c_visible">false</bool>
+    <bool name="config_display_settings_empty_category_d_visible">false</bool>
+    <bool name="config_display_settings_empty_category_e_visible">false</bool>
+
+    <!-- Whether to show empty category in Battery usage Options -->
+    <bool name="config_power_usage_empty_category_a_visible">false</bool>
+    <bool name="config_power_usage_empty_category_b_visible">false</bool>
+    <bool name="config_power_usage_empty_category_c_visible">false</bool>
+    <bool name="config_power_usage_empty_category_d_visible">false</bool>
+    <bool name="config_power_usage_empty_category_e_visible">false</bool>
+
+    <!-- Whether to show empty category in Lockscreen Settings -->
+    <bool name="config_lockscreen_settings_empty_category_a_visible">false</bool>
+    <bool name="config_lockscreen_settings_empty_category_b_visible">false</bool>
+    <bool name="config_lockscreen_settings_empty_category_c_visible">false</bool>
+    <bool name="config_lockscreen_settings_empty_category_d_visible">false</bool>
+    <bool name="config_lockscreen_settings_empty_category_e_visible">false</bool>
+
+    <!-- Whether to show divider above battery saver summary-->
+    <bool name="config_battery_saver_summary_allowDividerAbove">true</bool>
+    <!-- Whether to show divider above last full charge-->
+    <bool name="config_last_full_charge_allowDividerAbove">true</bool>
+    <!-- Whether to show divider above zen mode-->
+    <bool name="config_zen_mode_allowDividerAbove">true</bool>
 </resources>

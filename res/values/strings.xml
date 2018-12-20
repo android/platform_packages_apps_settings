@@ -10080,4 +10080,59 @@
 
     <!-- Title for Connected device shortcut [CHAR LIMIT=30] -->
     <string name="devices_title">Devices</string>
+
+    <!-- Title for the empty category a in Connection preferences-->
+    <string name="connected_devices_advanced_empty_category_a_title" >Category A</string>
+    <!-- Title for the empty category b in Connection preferences-->
+    <string name="connected_devices_advanced_empty_category_b_title" >Category B</string>
+    <!-- Title for the empty category c in Connection preferences-->
+    <string name="connected_devices_advanced_empty_category_c_title" >Category C</string>
+    <!-- Title for the empty category d in Connection preferences-->
+    <string name="connected_devices_advanced_empty_category_d_title" >Category D</string>
+    <!-- Title for the empty category e in Connection preferences-->
+    <string name="connected_devices_advanced_empty_category_e_title" >Category E</string>
+
+    <!-- Title for the empty category a in Sound Settings-->
+    <string name="sound_settings_empty_category_a_title" >Category A</string>
+    <!-- Title for the empty category b in Sound Settings-->
+    <string name="sound_settings_empty_category_b_title" >Category B</string>
+    <!-- Title for the empty category c in Sound Settings-->
+    <string name="sound_settings_empty_category_c_title" >Category C</string>
+    <!-- Title for the empty category d in Sound Settings-->
+    <string name="sound_settings_empty_category_d_title" >Category D</string>
+    <!-- Title for the empty category e in Sound Settings-->
+    <string name="sound_settings_empty_category_e_title" >Category E</string>
+
+    <!-- Title for the empty category a in Display Settings-->
+    <string name="display_settings_empty_category_a_title" >Category A</string>
+    <!-- Title for the empty category b in Display Settings-->
+    <string name="display_settings_empty_category_b_title" >Category B</string>
+    <!-- Title for the empty category c in Display Settings-->
+    <string name="display_settings_empty_category_c_title" >Category C</string>
+    <!-- Title for the empty category d in Display Settings-->
+    <string name="display_settings_empty_category_d_title" >Category D</string>
+    <!-- Title for the empty category e in Display Settings-->
+    <string name="display_settings_empty_category_e_title" >Category E</string>
+
+    <!-- Title for the empty category a in Battery usage Options-->
+    <string name="power_usage_summary_empty_category_a_title" >Category A</string>
+    <!-- Title for the empty category b in Battery usage Options-->
+    <string name="power_usage_summary_empty_category_b_title" >Category B</string>
+    <!-- Title for the empty category c in Battery usage Options-->
+    <string name="power_usage_summary_empty_category_c_title" >Category C</string>
+    <!-- Title for the empty category d in Battery usage Options-->
+    <string name="power_usage_summary_empty_category_d_title" >Category D</string>
+    <!-- Title for the empty category e in Battery usage Options-->
+    <string name="power_usage_summary_empty_category_e_title" >Category E</string>
+
+    <!-- Title for the empty category a in Lockscreen Settings-->
+    <string name="lockscreen_settings_empty_category_a_title" >Category A</string>
+    <!-- Title for the empty category b in Lockscreen Settings-->
+    <string name="lockscreen_settings_empty_category_b_title" >Category B</string>
+    <!-- Title for the empty category c in Lockscreen Settings-->
+    <string name="lockscreen_settings_empty_category_c_title" >Category C</string>
+    <!-- Title for the empty category d in Lockscreen Settings-->
+    <string name="lockscreen_settings_empty_category_d_title" >Category D</string>
+    <!-- Title for the empty category e in Lockscreen Settings-->
+    <string name="lockscreen_settings_empty_category_e_title" >Category E</string>
 </resources>

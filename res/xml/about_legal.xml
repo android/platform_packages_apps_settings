@@ -26,6 +26,7 @@
     <!-- Copyright information -->
     <Preference
         android:key="copyright"
+        android:order="10"
         android:title="@string/copyright_title">
         <intent android:action="android.settings.COPYRIGHT"/>
     </Preference>
@@ -33,6 +34,7 @@
     <!-- License information -->
     <Preference
         android:key="license"
+        android:order="20"
         android:title="@string/license_title">
         <intent android:action="android.settings.LICENSE"/>
     </Preference>
@@ -40,6 +42,7 @@
     <!-- Terms and conditions -->
     <Preference
         android:key="terms"
+        android:order="30"
         android:title="@string/terms_title">
         <intent android:action="android.settings.TERMS"/>
     </Preference>
@@ -47,6 +50,7 @@
     <!-- System WebView License information -->
     <Preference
         android:key="webview_license"
+        android:order="40"
         android:title="@string/webview_license_title">
         <intent android:action="android.settings.WEBVIEW_LICENSE"/>
     </Preference>
@@ -54,6 +58,7 @@
     <Preference
         android:key="wallpaper_attributions"
         android:title="@string/wallpaper_attributions"
+        android:order="50"
         android:summary="@string/wallpaper_attributions_values"/>
 
 </PreferenceScreen>

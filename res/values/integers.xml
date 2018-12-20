@@ -20,4 +20,76 @@
     <integer name="job_anomaly_config_update">101</integer>
     <integer name="job_anomaly_detection">102</integer>
     <integer name="device_index_update">103</integer>
+
+    <!-- Orders for connected_devices_advanced -->
+    <integer name="bluetooth_settings_order">10</integer>
+    <integer name="toggle_nfc_order">20</integer>
+    <integer name="android_beam_settings_order">30</integer>
+    <integer name="bluetooth_on_while_driving_order">40</integer>
+    <integer name="connected_device_printing_order">50</integer>
+    <integer name="bt_received_files_order">60</integer>
+    <integer name="dashboard_tile_placeholder_order">70</integer>
+
+    <!-- Orders for connected_devices_advanced_empty_category -->
+    <integer name="connected_devices_advanced_empty_category_a_order">80</integer>
+    <integer name="connected_devices_advanced_empty_category_b_order">90</integer>
+    <integer name="connected_devices_advanced_empty_category_c_order">100</integer>
+    <integer name="connected_devices_advanced_empty_category_d_order">110</integer>
+    <integer name="connected_devices_advanced_empty_category_e_order">120</integer>
+
+    <!-- Orders for display_settings -->
+    <integer name="display_settings_brightness_order">10</integer>
+    <integer name="display_settings_night_display_order">20</integer>
+    <integer name="display_settings_auto_brightness_entry_order">30</integer>
+    <integer name="display_settings_wallpaper_order">40</integer>
+    <integer name="display_settings_screen_timeout_order">50</integer>
+    <integer name="display_settings_auto_rotate_order">60</integer>
+    <integer name="display_settings_color_mode_order">70</integer>
+    <integer name="display_settings_font_size_order">80</integer>
+    <integer name="display_settings_screen_zoom_order">90</integer>
+    <integer name="display_settings_show_operator_name_order">100</integer>
+    <integer name="display_settings_screensaver_order">110</integer>
+    <integer name="display_settings_ambient_display_order">120</integer>
+    <integer name="display_settings_camera_gesture_order">130</integer>
+    <integer name="display_settings_lift_to_wake_order">140</integer>
+    <integer name="display_settings_tap_to_wake_order">150</integer>
+    <integer name="display_settings_theme_order">160</integer>
+    <integer name="display_settings_systemui_theme_order">170</integer>
+    <integer name="display_settings_vr_display_pref_order">180</integer>
+
+    <!-- Orders for display_settings_empty_category -->
+    <integer name="display_settings_empty_category_a_order">190</integer>
+    <integer name="display_settings_empty_category_b_order">200</integer>
+    <integer name="display_settings_empty_category_c_order">210</integer>
+    <integer name="display_settings_empty_category_d_order">220</integer>
+    <integer name="display_settings_empty_category_e_order">230</integer>
+
+    <!-- Orders for sound_settings_empty_category -->
+    <integer name="sound_settings_empty_category_a_order">110</integer>
+    <integer name="sound_settings_empty_category_b_order">120</integer>
+    <integer name="sound_settings_empty_category_c_order">130</integer>
+    <integer name="sound_settings_empty_category_d_order">140</integer>
+    <integer name="sound_settings_empty_category_e_order">150</integer>
+
+    <!-- Orders for power_usage_summary_empty_category -->
+    <integer name="power_usage_summary_empty_category_a_order">80</integer>
+    <integer name="power_usage_summary_empty_category_b_order">90</integer>
+    <integer name="power_usage_summary_empty_category_c_order">100</integer>
+    <integer name="power_usage_summary_empty_category_d_order">110</integer>
+    <integer name="power_usage_summary_empty_category_e_order">120</integer>
+
+    <!-- Orders for security_lockscreen_settings -->
+    <integer name="lockscreen_settings_notif_order">10</integer>
+    <integer name="lockscreen_settings_add_users_when_locked_order">20</integer>
+    <integer name="lockscreen_settings_owner_info_settings_order">30</integer>
+    <integer name="lockscreen_settings_lockdown_enabled_order">40</integer>
+    <integer name="lockscreen_settings_notif_work_header_order">50</integer>
+
+    <!-- Orders for security_lockscreen_settings_empty_category -->
+    <integer name="lockscreen_settings_empty_category_a_order">60</integer>
+    <integer name="lockscreen_settings_empty_category_b_order">70</integer>
+    <integer name="lockscreen_settings_empty_category_c_order">80</integer>
+    <integer name="lockscreen_settings_empty_category_d_order">90</integer>
+    <integer name="lockscreen_settings_empty_category_e_order">100</integer>
+
 </resources>
