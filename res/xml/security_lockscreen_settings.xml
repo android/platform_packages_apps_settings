@@ -17,25 +17,29 @@
 <PreferenceScreen
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:settings="http://schemas.android.com/apk/res-auto"
-    android:key="security_lockscreen_settings_screen"
-    android:title="@string/lockscreen_settings_title">
+    android:key="security_lockscreen_settingsscreen"
+    android:title="@string/lockscreen_settingstitle">
 
     <com.android.settings.RestrictedListPreference
         android:key="security_setting_lock_screen_notif"
+        android:order="@integer/security_lockscreen_settings_notif_order"
         android:title="@string/lock_screen_notifications_title"
         android:summary="@string/summary_placeholder" />
 
     <com.android.settingslib.RestrictedSwitchPreference
         android:key="security_lockscreen_add_users_when_locked"
+        android:order="@integer/security_lockscreen_settings_add_users_when_locked_order"
         android:title="@string/user_add_on_lockscreen_menu" />
 
     <com.android.settingslib.RestrictedPreference
         android:key="owner_info_settings"
+        android:order="@integer/security_lockscreen_settings_owner_info_settings_order"
         android:title="@string/owner_info_settings_title"
         android:summary="@string/owner_info_settings_summary" />
 
     <SwitchPreference
         android:key="security_setting_lockdown_enabled"
+        android:order="@integer/security_lockscreen_settings_lockdown_enabled_order"
         android:title="@string/lockdown_settings_title"
         android:summary="@string/lockdown_settings_summary"
         settings:controller="com.android.settings.security.LockdownButtonPreferenceController"/>
@@ -45,7 +49,7 @@
     <PreferenceCategory
         android:key="security_setting_lock_screen_notif_work_header"
         android:title="@string/profile_section_header"
-        android:order="1000">
+        android:order="@integer/security_lockscreen_settings_notif_work_header_order">
 
         <com.android.settings.RestrictedListPreference
             android:key="security_setting_lock_screen_notif_work"
@@ -53,5 +57,35 @@
             android:summary="@string/summary_placeholder" />
 
     </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="security_lockscreen_settings_empty_category_a"
+        android:title="@string/security_lockscreen_settings_empty_category_a_title"
+        android:order="@integer/security_lockscreen_settings_empty_category_a_order"
+        settings:controller="com.android.settings.emptycategory.LockScreenSettingsEmptyCategoryAPreferenceController"/>
+
+    <PreferenceCategory
+        android:key="security_lockscreen_settings_empty_category_b"
+        android:title="@string/security_lockscreen_settings_empty_category_b_title"
+        android:order="@integer/security_lockscreen_settings_empty_category_b_order"
+        settings:controller="com.android.settings.emptycategory.LockScreenSettingsEmptyCategoryBPreferenceController"/>
+
+    <PreferenceCategory
+        android:key="security_lockscreen_settings_empty_category_c"
+        android:title="@string/security_lockscreen_settings_empty_category_c_title"
+        android:order="@integer/security_lockscreen_settings_empty_category_c_order"
+        settings:controller="com.android.settings.emptycategory.LockScreenSettingsEmptyCategoryCPreferenceController"/>
+
+    <PreferenceCategory
+        android:key="security_lockscreen_settings_empty_category_d"
+        android:title="@string/security_lockscreen_settings_empty_category_d_title"
+        android:order="@integer/security_lockscreen_settings_empty_category_d_order"
+        settings:controller="com.android.settings.emptycategory.LockScreenSettingsEmptyCategoryDPreferenceController"/>
+
+    <PreferenceCategory
+        android:key="security_lockscreen_settings_empty_category_e"
+        android:title="@string/security_lockscreen_settings_empty_category_e_title"
+        android:order="@integer/security_lockscreen_settings_empty_category_e_order"
+        settings:controller="com.android.settings.emptycategory.LockScreenSettingsEmptyCategoryEPreferenceController"/>
 
 </PreferenceScreen>

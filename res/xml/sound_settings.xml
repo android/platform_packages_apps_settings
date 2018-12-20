@@ -93,7 +93,7 @@
         android:order="-120"
         settings:useAdminDisabledSummary="true"
         settings:keywords="@string/keywords_sounds_and_notifications_interruptions"
-        settings:allowDividerAbove="true"/>
+        settings:allowDividerAbove="@bool/config_zen_mode_allowDividerAbove"/>
 
     <Preference
         android:key="gesture_prevent_ringing_sound"
@@ -223,4 +223,34 @@
                     android:dependency="work_use_personal_sounds" />
 
     </com.android.settings.widget.WorkOnlyCategory>
+
+    <PreferenceCategory
+        android:key="sound_settings_empty_category_a"
+        android:title="@string/sound_settings_empty_category_a_title"
+        android:order="@integer/sound_settings_empty_category_a_order"
+        settings:controller="com.android.settings.emptycategory.SoundSettingsEmptyCategoryAPreferenceController"/>
+
+    <PreferenceCategory
+        android:key="sound_settings_empty_category_b"
+        android:title="@string/sound_settings_empty_category_b_title"
+        android:order="@integer/sound_settings_empty_category_b_order"
+        settings:controller="com.android.settings.emptycategory.SoundSettingsEmptyCategoryBPreferenceController"/>
+
+    <PreferenceCategory
+        android:key="sound_settings_empty_category_c"
+        android:title="@string/sound_settings_empty_category_c_title"
+        android:order="@integer/sound_settings_empty_category_c_order"
+        settings:controller="com.android.settings.emptycategory.SoundSettingsEmptyCategoryCPreferenceController"/>
+
+    <PreferenceCategory
+        android:key="sound_settings_empty_category_d"
+        android:title="@string/sound_settings_empty_category_d_title"
+        android:order="@integer/sound_settings_empty_category_d_order"
+        settings:controller="com.android.settings.emptycategory.SoundSettingsEmptyCategoryDPreferenceController"/>
+
+    <PreferenceCategory
+        android:key="sound_settings_empty_category_e"
+        android:title="@string/sound_settings_empty_category_e_title"
+        android:order="@integer/sound_settings_empty_category_e_order"
+        settings:controller="com.android.settings.emptycategory.SoundSettingsEmptyCategoryEPreferenceController"/>
 </PreferenceScreen>

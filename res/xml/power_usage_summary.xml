@@ -23,29 +23,34 @@
 
     <com.android.settings.applications.LayoutPreference
         android:key="battery_header"
+        android:order="10"
         android:selectable="false"
         android:layout="@layout/battery_header" />
 
     <PreferenceCategory
         android:key="battery_tip"
+        android:order="20"
         android:layout="@layout/preference_category_no_title" />
 
     <Preference
         android:fragment="com.android.settings.fuelgauge.batterysaver.BatterySaverSettings"
         android:key="battery_saver_summary"
         android:title="@string/battery_saver"
+        android:order="30"
         settings:controller="com.android.settings.fuelgauge.BatterySaverController"
         settings:platform_slice="true"
-        settings:allowDividerAbove="true" />
+        settings:allowDividerAbove="@bool/config_battery_saver_summary_allowDividerAbove" />
 
     <Preference
         android:fragment="com.android.settings.fuelgauge.SmartBatterySettings"
         android:key="smart_battery_manager"
         android:title="@string/smart_battery_manager_title"
+        android:order="40"
         settings:controller="com.android.settings.fuelgauge.batterytip.BatteryManagerPreferenceController" />
 
     <SwitchPreference
         android:key="battery_percentage"
+        android:order="50"
         android:title="@string/battery_percentage"
         android:summary="@string/battery_percentage_description" />
 
@@ -53,12 +58,44 @@
     <com.android.settings.fuelgauge.PowerGaugePreference
         android:key="last_full_charge"
         android:title="@string/battery_last_full_charge"
+        android:order="60"
         android:selectable="false"
-        settings:allowDividerAbove="true" />
+        settings:allowDividerAbove="@bool/config_last_full_charge_allowDividerAbove" />
 
     <com.android.settings.fuelgauge.PowerGaugePreference
         android:key="screen_usage"
         android:title="@string/device_screen_usage"
+        android:order="70"
         android:selectable="false" />
+
+    <PreferenceCategory
+        android:key="power_usage_summary_empty_category_a"
+        android:title="@string/power_usage_summary_empty_category_a_title"
+        android:order="@integer/power_usage_summary_empty_category_a_order"
+        settings:controller="com.android.settings.emptycategory.PowerUsageEmptyCategoryAPreferenceController"/>
+
+    <PreferenceCategory
+        android:key="power_usage_summary_empty_category_b"
+        android:title="@string/power_usage_summary_empty_category_b_title"
+        android:order="@integer/power_usage_summary_empty_category_b_order"
+        settings:controller="com.android.settings.emptycategory.PowerUsageEmptyCategoryBPreferenceController"/>
+
+    <PreferenceCategory
+        android:key="power_usage_summary_empty_category_c"
+        android:title="@string/power_usage_summary_empty_category_c_title"
+        android:order="@integer/power_usage_summary_empty_category_c_order"
+        settings:controller="com.android.settings.emptycategory.PowerUsageEmptyCategoryCPreferenceController"/>
+
+    <PreferenceCategory
+        android:key="power_usage_summary_empty_category_d"
+        android:title="@string/power_usage_summary_empty_category_d_title"
+        android:order="@integer/power_usage_summary_empty_category_d_order"
+        settings:controller="com.android.settings.emptycategory.PowerUsageEmptyCategoryDPreferenceController"/>
+
+    <PreferenceCategory
+        android:key="power_usage_summary_empty_category_e"
+        android:title="@string/power_usage_summary_empty_category_e_title"
+        android:order="@integer/power_usage_summary_empty_category_e_order"
+        settings:controller="com.android.settings.emptycategory.PowerUsageEmptyCategoryEPreferenceController"/>
 
 </PreferenceScreen>

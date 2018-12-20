@@ -25,6 +25,7 @@
     <com.android.settingslib.RestrictedPreference
         android:key="brightness"
         android:title="@string/brightness"
+        android:order="@integer/display_settings_brightness_order"
         settings:keywords="@string/keywords_display_brightness_level"
         settings:useAdminDisabledSummary="true"
         settings:userRestriction="no_config_brightness">
@@ -34,6 +35,7 @@
     <com.android.settings.display.NightDisplayPreference
         android:key="night_display"
         android:title="@string/night_display_title"
+        android:order="@integer/display_settings_night_display_order"
         android:fragment="com.android.settings.display.NightDisplaySettings"
         android:widgetLayout="@null"
         settings:widgetLayout="@null"
@@ -42,6 +44,7 @@
     <Preference
         android:key="auto_brightness_entry"
         android:title="@string/auto_brightness_title"
+        android:order="@integer/display_settings_auto_brightness_entry_order"
         android:summary="@string/auto_brightness_summary"
         android:fragment="com.android.settings.display.AutoBrightnessSettings"
         settings:controller="com.android.settings.display.AutoBrightnessPreferenceController" />
@@ -49,6 +52,7 @@
     <com.android.settingslib.RestrictedPreference
         android:key="wallpaper"
         android:title="@string/wallpaper_settings_title"
+        android:order="@integer/display_settings_wallpaper_order"
         settings:keywords="@string/keywords_display_wallpaper"
         settings:useAdminDisabledSummary="true">
         <intent
@@ -60,6 +64,7 @@
     <com.android.settings.TimeoutListPreference
         android:key="screen_timeout"
         android:title="@string/screen_timeout"
+        android:order="@integer/display_settings_screen_timeout_order"
         android:summary="@string/summary_placeholder"
         android:entries="@array/screen_timeout_entries"
         android:entryValues="@array/screen_timeout_values"
@@ -68,18 +73,21 @@
     <SwitchPreference
         android:key="auto_rotate"
         android:title="@string/accelerometer_title"
+        android:order="@integer/display_settings_auto_rotate_order"
         settings:keywords="@string/keywords_auto_rotate"
         settings:controller="com.android.settings.display.AutoRotatePreferenceController"/>
 
     <Preference
         android:key="color_mode"
         android:title="@string/color_mode_title"
+        android:order="@integer/display_settings_color_mode_order"
         android:fragment="com.android.settings.display.ColorModePreferenceFragment"
         settings:keywords="@string/keywords_color_mode" />
 
     <Preference
         android:key="font_size"
         android:title="@string/title_font_size"
+        android:order="@integer/display_settings_font_size_order"
         android:fragment="com.android.settings.accessibility.ToggleFontSizePreferenceFragment"
         settings:controller="com.android.settings.display.FontSizePreferenceController"
         settings:keywords="@string/keywords_display_font_size" />
@@ -87,22 +95,26 @@
     <com.android.settings.display.ScreenZoomPreference
         android:key="display_settings_screen_zoom"
         android:title="@string/screen_zoom_title"
+        android:order="@integer/display_settings_screen_zoom_order"
         android:fragment="com.android.settings.display.ScreenZoomSettings"
         settings:keywords="@string/screen_zoom_keywords" />
 
     <SwitchPreference
         android:key="show_operator_name"
         android:title="@string/show_operator_name_title"
+        android:order="@integer/display_settings_show_operator_name_order"
         android:summary="@string/show_operator_name_summary" />
 
     <Preference
         android:key="screensaver"
         android:title="@string/screensaver_settings_title"
+        android:order="@integer/display_settings_screensaver_order"
         android:fragment="com.android.settings.dream.DreamSettings" />
 
     <com.android.settingslib.RestrictedPreference
         android:key="ambient_display"
         android:title="@string/ambient_display_screen_title"
+        android:order="@integer/display_settings_ambient_display_order"
         android:fragment="com.android.settings.display.AmbientDisplaySettings"
         settings:userRestriction="no_ambient_display" />
 
@@ -118,25 +130,30 @@
     <SwitchPreference
         android:key="camera_gesture"
         android:title="@string/camera_gesture_title"
+        android:order="@integer/display_settings_camera_gesture_order"
         android:summary="@string/camera_gesture_desc" />
 
     <SwitchPreference
         android:key="lift_to_wake"
+        android:order="@integer/display_settings_lift_to_wake_order"
         android:title="@string/lift_to_wake_title" />
 
     <SwitchPreference
         android:key="tap_to_wake"
         android:title="@string/tap_to_wake"
+        android:order="@integer/display_settings_tap_to_wake_order"
         android:summary="@string/tap_to_wake_summary" />
 
     <ListPreference
         android:key="theme"
         android:title="@string/color_theme"
+        android:order="@integer/display_settings_theme_order"
         android:summary="@string/summary_placeholder" />
 
     <ListPreference
         android:key="systemui_theme"
         android:title="@string/device_theme"
+        android:order="@integer/display_settings_systemui_theme_order"
         android:entries="@array/systemui_theme_entries"
         android:entryValues="@array/systemui_theme_values"
         settings:controller="com.android.settings.display.SystemUiThemePreferenceController" />
@@ -144,6 +161,37 @@
     <Preference
         android:key="vr_display_pref"
         android:title="@string/display_vr_pref_title"
+        android:order="@integer/display_settings_vr_display_pref_order"
         android:fragment="com.android.settings.display.VrDisplayPreferencePicker" />
+
+    <PreferenceCategory
+        android:key="display_settings_empty_category_a"
+        android:title="@string/display_settings_empty_category_a_title"
+        android:order="@integer/display_settings_empty_category_a_order"
+        settings:controller="com.android.settings.emptycategory.DisplaySettingsEmptyCategoryAPreferenceController"/>
+
+    <PreferenceCategory
+        android:key="display_settings_empty_category_b"
+        android:title="@string/display_settings_empty_category_b_title"
+        android:order="@integer/display_settings_empty_category_b_order"
+        settings:controller="com.android.settings.emptycategory.DisplaySettingsEmptyCategoryBPreferenceController"/>
+
+    <PreferenceCategory
+        android:key="display_settings_empty_category_c"
+        android:title="@string/display_settings_empty_category_c_title"
+        android:order="@integer/display_settings_empty_category_c_order"
+        settings:controller="com.android.settings.emptycategory.DisplaySettingsEmptyCategoryCPreferenceController"/>
+
+    <PreferenceCategory
+        android:key="display_settings_empty_category_d"
+        android:title="@string/display_settings_empty_category_d_title"
+        android:order="@integer/display_settings_empty_category_d_order"
+        settings:controller="com.android.settings.emptycategory.DisplaySettingsEmptyCategoryDPreferenceController"/>
+
+    <PreferenceCategory
+        android:key="display_settings_empty_category_e"
+        android:title="@string/display_settings_empty_category_e_title"
+        android:order="@integer/display_settings_empty_category_e_order"
+        settings:controller="com.android.settings.emptycategory.DisplaySettingsEmptyCategoryEPreferenceController"/>
 
 </PreferenceScreen>
