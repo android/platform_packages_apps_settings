@@ -16,13 +16,13 @@
 package com.android.settings.fuelgauge.batterytip;
 
 import static com.google.common.truth.Truth.assertThat;
-
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
 import android.app.AppOpsManager;
 import android.content.Context;
 import android.provider.Settings;
+
 import androidx.preference.Preference;
 
 import com.android.settings.testutils.FakeFeatureFactory;

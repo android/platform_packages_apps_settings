@@ -16,6 +16,8 @@
 
 package com.android.settings;
 
+import static com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
+
 import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.app.KeyguardManager;
@@ -25,9 +27,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.UserManager;
-import androidx.annotation.VisibleForTesting;
-import androidx.preference.ListPreferenceDialogFragment;
-import androidx.preference.PreferenceViewHolder;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,14 +37,16 @@ import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import androidx.annotation.VisibleForTesting;
+import androidx.preference.ListPreferenceDialogFragment;
+import androidx.preference.PreferenceViewHolder;
+
 import com.android.settings.Utils;
 import com.android.settingslib.RestrictedLockUtils;
 import com.android.settingslib.RestrictedPreferenceHelper;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 
 public class RestrictedListPreference extends CustomListPreference {
     private final RestrictedPreferenceHelper mHelper;

@@ -21,12 +21,14 @@ import android.content.Context;
 import android.hardware.fingerprint.Fingerprint;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Bundle;
-import com.android.settings.core.InstrumentedFragment;
-import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import android.os.UserHandle;
-import java.util.Queue;
-import java.util.LinkedList;
 import android.util.Log;
+
+import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
+import com.android.settings.core.InstrumentedFragment;
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * Sidecar fragment to handle the state around fingerprint removal.

@@ -18,7 +18,6 @@ import android.widget.ListView;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneFactory;
 
-
 /**
  * Radio Band Mode Selection Class
  *

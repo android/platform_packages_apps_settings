@@ -22,9 +22,10 @@ import static org.mockito.Mockito.when;
 
 import android.content.Context;
 import android.os.SystemProperties;
-import androidx.preference.SwitchPreference;
-import androidx.preference.PreferenceScreen;
 import android.view.ThreadedRenderer;
+
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
 

@@ -17,10 +17,8 @@
 package com.android.settings.password;
 
 import static android.content.pm.PackageManager.FEATURE_FINGERPRINT;
-import static com.android.settings.password.ChooseLockGeneric.ChooseLockGenericFragment
-        .HIDE_DISABLED_PREFS;
-import static com.android.settings.password.ChooseLockGeneric.ChooseLockGenericFragment
-        .MINIMUM_QUALITY_KEY;
+import static com.android.settings.password.ChooseLockGeneric.ChooseLockGenericFragment.HIDE_DISABLED_PREFS;
+import static com.android.settings.password.ChooseLockGeneric.ChooseLockGenericFragment.MINIMUM_QUALITY_KEY;
 import static com.android.settings.password.ChooseLockSettingsHelper.EXTRA_KEY_CHALLENGE;
 import static com.android.settings.password.ChooseLockSettingsHelper.EXTRA_KEY_FOR_FINGERPRINT;
 import static com.android.settings.password.ChooseLockSettingsHelper.EXTRA_KEY_HAS_CHALLENGE;

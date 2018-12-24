@@ -22,7 +22,6 @@ import android.text.TextUtils;
 
 import com.android.settings.R;
 
-
 public class CallVolumePreferenceController extends VolumeSeekBarPreferenceController {
 
     private AudioManager mAudioManager;

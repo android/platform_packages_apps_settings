@@ -27,7 +27,6 @@ import android.system.helpers.SettingsHelper;
 import android.test.InstrumentationTestCase;
 import android.test.suitebuilder.annotation.MediumTest;
 
-
 public class MoreWirelessSettingsTests extends InstrumentationTestCase {
 
     private static final String SETTINGS_PACKAGE = "com.android.settings";

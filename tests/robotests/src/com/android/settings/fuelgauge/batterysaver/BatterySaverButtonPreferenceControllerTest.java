@@ -23,8 +23,9 @@ import static org.mockito.Mockito.spy;
 
 import android.content.Context;
 import android.os.PowerManager;
-import androidx.preference.PreferenceScreen;
 import android.widget.Button;
+
+import androidx.preference.PreferenceScreen;
 
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
 import com.android.settings.widget.TwoStateButtonPreference;

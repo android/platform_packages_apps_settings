@@ -33,6 +33,7 @@ import android.content.pm.PackageManager;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.filters.SmallTest;
 import android.support.test.runner.AndroidJUnit4;
+
 import androidx.preference.ListPreference;
 
 import com.android.settings.wrapper.OverlayManagerWrapper;

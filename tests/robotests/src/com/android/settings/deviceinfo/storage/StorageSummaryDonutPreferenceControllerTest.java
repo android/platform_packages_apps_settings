@@ -28,12 +28,13 @@ import static org.mockito.Mockito.when;
 
 import android.content.Context;
 import android.os.storage.VolumeInfo;
-import androidx.preference.PreferenceViewHolder;
 import android.text.format.Formatter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+
+import androidx.preference.PreferenceViewHolder;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;

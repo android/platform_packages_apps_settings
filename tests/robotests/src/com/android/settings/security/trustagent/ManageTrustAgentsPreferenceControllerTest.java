@@ -21,6 +21,7 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
+
 import androidx.preference.Preference;
 
 import com.android.internal.widget.LockPatternUtils;

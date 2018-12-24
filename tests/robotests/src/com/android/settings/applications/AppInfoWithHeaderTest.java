@@ -31,6 +31,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.UserHandle;
+
 import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceScreen;
 

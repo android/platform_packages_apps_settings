@@ -24,7 +24,6 @@ import android.text.SpannableStringBuilder;
 import java.util.Formatter;
 import java.util.Locale;
 
-
 public class SpannableUtil {
 
     /**

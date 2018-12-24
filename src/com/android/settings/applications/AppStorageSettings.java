@@ -21,7 +21,6 @@ import static android.content.pm.ApplicationInfo.FLAG_SYSTEM;
 import static android.os.storage.StorageVolume.ScopedAccessProviderContract.AUTHORITY;
 import static android.os.storage.StorageVolume.ScopedAccessProviderContract.COL_GRANTED;
 import static android.os.storage.StorageVolume.ScopedAccessProviderContract.TABLE_PERMISSIONS;
-
 import static com.android.settings.applications.AppStateDirectoryAccessBridge.DEBUG;
 
 import android.app.ActivityManager;
@@ -47,14 +46,15 @@ import android.os.RemoteException;
 import android.os.UserHandle;
 import android.os.storage.StorageManager;
 import android.os.storage.VolumeInfo;
-import androidx.annotation.VisibleForTesting;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceCategory;
 import android.util.Log;
 import android.util.MutableInt;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+
+import androidx.annotation.VisibleForTesting;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;

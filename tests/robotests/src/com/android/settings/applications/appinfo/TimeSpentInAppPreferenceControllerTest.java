@@ -25,6 +25,7 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.ResolveInfo;
+
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 

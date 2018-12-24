@@ -16,8 +16,7 @@
 
 package com.android.settings.development;
 
-import static com.android.settings.development.DevelopmentOptionsActivityRequestCodes
-        .REQUEST_CODE_DEBUG_APP;
+import static com.android.settings.development.DevelopmentOptionsActivityRequestCodes.REQUEST_CODE_DEBUG_APP;
 
 import android.app.Activity;
 import android.content.Context;
@@ -25,6 +24,7 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.provider.Settings;
+
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
 

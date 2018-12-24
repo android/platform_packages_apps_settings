@@ -17,7 +17,6 @@
 package com.android.settings.wifi;
 
 import static com.google.common.truth.Truth.assertThat;
-
 import static org.mockito.Matchers.any;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
@@ -31,6 +30,7 @@ import android.net.NetworkRequest;
 import android.net.NetworkScoreManager;
 import android.net.wifi.WifiManager;
 import android.os.Handler;
+
 import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceScreen;
 

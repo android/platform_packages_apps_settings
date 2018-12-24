@@ -18,6 +18,7 @@ package com.android.settings.gestures;
 
 import android.content.Context;
 import android.os.Bundle;
+
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;

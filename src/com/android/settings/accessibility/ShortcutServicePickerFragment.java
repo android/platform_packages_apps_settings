@@ -39,8 +39,8 @@ import android.text.TextUtils;
 import android.view.accessibility.AccessibilityManager;
 
 import com.android.internal.accessibility.AccessibilityShortcutController;
-import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.accessibility.AccessibilityShortcutController.ToggleableFrameworkFeatureInfo;
+import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
 import com.android.settings.core.instrumentation.InstrumentedDialogFragment;
 import com.android.settings.widget.RadioButtonPickerFragment;

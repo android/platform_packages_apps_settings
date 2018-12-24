@@ -30,14 +30,15 @@ import android.os.Process;
 import android.os.SystemClock;
 import android.os.UserHandle;
 import android.os.UserManager;
+import android.text.format.DateUtils;
+import android.util.Log;
+import android.util.SparseLongArray;
+
 import androidx.annotation.IntDef;
 import androidx.annotation.Nullable;
 import androidx.annotation.StringRes;
 import androidx.annotation.VisibleForTesting;
 import androidx.annotation.WorkerThread;
-import android.text.format.DateUtils;
-import android.util.Log;
-import android.util.SparseLongArray;
 
 import com.android.internal.os.BatterySipper;
 import com.android.internal.os.BatteryStatsHelper;

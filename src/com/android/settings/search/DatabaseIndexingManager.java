@@ -19,8 +19,7 @@ package com.android.settings.search;
 
 
 import static com.android.settings.search.DatabaseResultLoader.COLUMN_INDEX_ID;
-import static com.android.settings.search.DatabaseResultLoader
-        .COLUMN_INDEX_INTENT_ACTION_TARGET_PACKAGE;
+import static com.android.settings.search.DatabaseResultLoader.COLUMN_INDEX_INTENT_ACTION_TARGET_PACKAGE;
 import static com.android.settings.search.DatabaseResultLoader.COLUMN_INDEX_KEY;
 import static com.android.settings.search.DatabaseResultLoader.SELECT_COLUMNS;
 import static com.android.settings.search.IndexDatabaseHelper.IndexColumns.CLASS_NAME;
@@ -28,8 +27,7 @@ import static com.android.settings.search.IndexDatabaseHelper.IndexColumns.DATA_
 import static com.android.settings.search.IndexDatabaseHelper.IndexColumns.DATA_KEYWORDS;
 import static com.android.settings.search.IndexDatabaseHelper.IndexColumns.DATA_KEY_REF;
 import static com.android.settings.search.IndexDatabaseHelper.IndexColumns.DATA_SUMMARY_ON;
-import static com.android.settings.search.IndexDatabaseHelper.IndexColumns
-        .DATA_SUMMARY_ON_NORMALIZED;
+import static com.android.settings.search.IndexDatabaseHelper.IndexColumns.DATA_SUMMARY_ON_NORMALIZED;
 import static com.android.settings.search.IndexDatabaseHelper.IndexColumns.DATA_TITLE;
 import static com.android.settings.search.IndexDatabaseHelper.IndexColumns.DATA_TITLE_NORMALIZED;
 import static com.android.settings.search.IndexDatabaseHelper.IndexColumns.DOCID;
@@ -55,9 +53,10 @@ import android.database.sqlite.SQLiteException;
 import android.os.Build;
 import android.provider.SearchIndexablesContract;
 import android.provider.SearchIndexablesContract.SiteMapColumns;
-import androidx.annotation.VisibleForTesting;
 import android.text.TextUtils;
 import android.util.Log;
+
+import androidx.annotation.VisibleForTesting;
 
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settings.search.indexing.IndexData;

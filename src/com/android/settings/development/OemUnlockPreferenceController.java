@@ -16,8 +16,7 @@
 
 package com.android.settings.development;
 
-import static com.android.settings.development.DevelopmentOptionsActivityRequestCodes
-        .REQUEST_CODE_ENABLE_OEM_UNLOCK;
+import static com.android.settings.development.DevelopmentOptionsActivityRequestCodes.REQUEST_CODE_ENABLE_OEM_UNLOCK;
 
 import android.app.Activity;
 import android.content.Context;
@@ -26,10 +25,11 @@ import android.content.res.Resources;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.service.oemlock.OemLockManager;
+import android.telephony.TelephonyManager;
+
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
-import android.telephony.TelephonyManager;
 
 import com.android.settings.R;
 import com.android.settings.core.PreferenceControllerMixin;

@@ -27,9 +27,10 @@ import static org.mockito.Mockito.when;
 
 import android.app.Activity;
 import android.provider.SearchIndexableResource;
-import androidx.recyclerview.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.View;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.settings.deviceinfo.storage.CachedStorageValuesHelper;
 import com.android.settings.deviceinfo.storage.StorageAsyncLoader;

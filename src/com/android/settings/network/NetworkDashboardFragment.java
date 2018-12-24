@@ -15,8 +15,7 @@
  */
 package com.android.settings.network;
 
-import static com.android.settings.network.MobilePlanPreferenceController
-        .MANAGE_MOBILE_PLAN_DIALOG_ID;
+import static com.android.settings.network.MobilePlanPreferenceController.MANAGE_MOBILE_PLAN_DIALOG_ID;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -24,9 +23,10 @@ import android.app.Dialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.provider.SearchIndexableResource;
-import androidx.annotation.VisibleForTesting;
 import android.text.BidiFormatter;
 import android.util.Log;
+
+import androidx.annotation.VisibleForTesting;
 
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;

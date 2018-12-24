@@ -32,8 +32,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.RemoteException;
 import android.provider.Settings;
-import androidx.preference.SwitchPreference;
+
 import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
 

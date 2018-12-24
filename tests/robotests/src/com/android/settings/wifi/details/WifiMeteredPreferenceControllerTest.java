@@ -21,6 +21,7 @@ import static org.mockito.Mockito.spy;
 
 import android.content.Context;
 import android.net.wifi.WifiConfiguration;
+
 import androidx.preference.DropDownPreference;
 
 import com.android.settings.R;

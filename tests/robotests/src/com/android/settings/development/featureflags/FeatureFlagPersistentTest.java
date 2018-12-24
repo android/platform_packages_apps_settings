@@ -17,6 +17,12 @@ package com.android.settings.development.featureflags;
 
 import static com.google.common.truth.Truth.assertThat;
 
+import android.content.Context;
+import android.os.SystemProperties;
+import android.provider.Settings;
+import android.util.FeatureFlagUtils;
+import android.util.Log;
+
 import com.android.settings.development.featureflags.FeatureFlagPersistent;
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
 
@@ -27,12 +33,6 @@ import org.junit.runner.RunWith;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
-
-import android.content.Context;
-import android.os.SystemProperties;
-import android.provider.Settings;
-import android.util.FeatureFlagUtils;
-import android.util.Log;
 
 @RunWith(SettingsRobolectricTestRunner.class)
 public class FeatureFlagPersistentTest {

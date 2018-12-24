@@ -20,7 +20,6 @@ import static android.app.NotificationManager.Policy.SUPPRESSED_EFFECT_BADGE;
 import static android.app.NotificationManager.Policy.SUPPRESSED_EFFECT_LIGHTS;
 import static android.app.NotificationManager.Policy.SUPPRESSED_EFFECT_NOTIFICATION_LIST;
 import static android.app.NotificationManager.Policy.SUPPRESSED_EFFECT_PEEK;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -36,13 +35,14 @@ import static org.mockito.Mockito.when;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.res.Resources;
+
 import androidx.preference.CheckBoxPreference;
 import androidx.preference.PreferenceScreen;
 
 import com.android.settings.testutils.FakeFeatureFactory;
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
-import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settings.widget.DisabledCheckBoxPreference;
+import com.android.settingslib.core.lifecycle.Lifecycle;
 
 import org.junit.Before;
 import org.junit.Test;

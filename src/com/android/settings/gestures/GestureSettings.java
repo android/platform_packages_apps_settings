@@ -19,6 +19,7 @@ package com.android.settings.gestures;
 import android.content.Context;
 import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 

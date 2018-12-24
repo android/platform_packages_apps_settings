@@ -41,6 +41,7 @@ import android.graphics.drawable.Drawable;
 import android.os.BatteryStats;
 import android.os.Bundle;
 import android.os.UserHandle;
+
 import androidx.preference.Preference;
 import androidx.recyclerview.widget.RecyclerView;
 

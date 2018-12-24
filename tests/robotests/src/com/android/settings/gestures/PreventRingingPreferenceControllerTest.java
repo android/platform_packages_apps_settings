@@ -20,11 +20,8 @@ import static android.provider.Settings.Secure.VOLUME_HUSH_GESTURE;
 import static android.provider.Settings.Secure.VOLUME_HUSH_MUTE;
 import static android.provider.Settings.Secure.VOLUME_HUSH_OFF;
 import static android.provider.Settings.Secure.VOLUME_HUSH_VIBRATE;
-
 import static com.google.common.truth.Truth.assertThat;
-
 import static junit.framework.Assert.assertEquals;
-
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
@@ -36,6 +33,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.provider.Settings;
+
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 

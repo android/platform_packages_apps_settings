@@ -34,9 +34,10 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.os.UserManager;
+import android.text.TextUtils;
+
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
-import android.text.TextUtils;
 
 import com.android.settings.RestrictedListPreference;
 import com.android.settings.testutils.SettingsRobolectricTestRunner;

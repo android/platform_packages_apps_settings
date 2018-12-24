@@ -16,14 +16,14 @@
 
 package com.android.settings;
 
-import com.android.settings.Settings;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.test.ActivityInstrumentationTestCase2;
+
+import com.android.settings.Settings;
 
 import java.util.List;
 

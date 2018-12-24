@@ -20,12 +20,13 @@ import static android.os.UserHandle.USER_SYSTEM;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.text.TextUtils;
+import android.view.DisplayCutout;
+
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
-import android.text.TextUtils;
-import android.view.DisplayCutout;
 
 import com.android.settings.R;
 import com.android.settings.core.PreferenceControllerMixin;

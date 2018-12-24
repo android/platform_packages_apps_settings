@@ -16,10 +16,8 @@
 
 package com.android.settings.development.qstile;
 
-import static com.android.settings.development.qstile.DevelopmentTiles.WinscopeTrace
-        .SURFACE_FLINGER_LAYER_TRACE_CONTROL_CODE;
-import static com.android.settings.development.qstile.DevelopmentTiles.WinscopeTrace
-        .SURFACE_FLINGER_LAYER_TRACE_STATUS_CODE;
+import static com.android.settings.development.qstile.DevelopmentTiles.WinscopeTrace.SURFACE_FLINGER_LAYER_TRACE_CONTROL_CODE;
+import static com.android.settings.development.qstile.DevelopmentTiles.WinscopeTrace.SURFACE_FLINGER_LAYER_TRACE_STATUS_CODE;
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.eq;

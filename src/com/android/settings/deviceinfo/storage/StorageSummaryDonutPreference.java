@@ -21,8 +21,6 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.storage.StorageManager;
 import android.provider.Settings;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceViewHolder;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextPaint;
@@ -33,6 +31,9 @@ import android.util.MathUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.preference.Preference;
+import androidx.preference.PreferenceViewHolder;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;

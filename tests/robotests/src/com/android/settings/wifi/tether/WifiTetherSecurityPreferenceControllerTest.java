@@ -1,7 +1,6 @@
 package com.android.settings.wifi.tether;
 
 import static com.google.common.truth.Truth.assertThat;
-
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
@@ -10,6 +9,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
+
 import androidx.preference.ListPreference;
 import androidx.preference.PreferenceScreen;
 

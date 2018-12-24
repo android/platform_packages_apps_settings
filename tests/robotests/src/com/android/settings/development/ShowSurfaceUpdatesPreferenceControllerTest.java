@@ -30,8 +30,9 @@ import static org.mockito.Mockito.when;
 import android.content.Context;
 import android.os.IBinder;
 import android.os.RemoteException;
-import androidx.preference.SwitchPreference;
+
 import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
 import com.android.settings.testutils.shadow.ShadowParcel;

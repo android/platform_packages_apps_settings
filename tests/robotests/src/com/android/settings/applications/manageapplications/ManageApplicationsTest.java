@@ -22,9 +22,7 @@ import static com.android.settings.applications.manageapplications.AppFilterRegi
 import static com.android.settings.applications.manageapplications.ManageApplications.LIST_TYPE_MAIN;
 import static com.android.settings.applications.manageapplications.ManageApplications.LIST_TYPE_NOTIFICATION;
 import static com.google.common.truth.Truth.assertThat;
-
 import static junit.framework.Assert.assertEquals;
-
 import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyInt;
@@ -41,12 +39,13 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Looper;
 import android.os.UserManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.settings.R;
 import com.android.settings.testutils.SettingsRobolectricTestRunner;

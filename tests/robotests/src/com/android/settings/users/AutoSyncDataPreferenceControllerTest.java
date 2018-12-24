@@ -25,9 +25,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.UserInfo;
 import android.os.UserManager;
-import androidx.preference.SwitchPreference;
+
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
 

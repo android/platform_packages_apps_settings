@@ -29,7 +29,6 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.NetworkTemplate;
 import android.os.Bundle;
-import androidx.preference.PreferenceViewHolder;
 import android.telephony.SubscriptionManager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +36,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import androidx.preference.PreferenceViewHolder;
 
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;

@@ -29,6 +29,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.os.PowerManager;
 import android.provider.Settings.System;
+
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 

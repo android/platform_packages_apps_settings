@@ -27,8 +27,6 @@ import android.os.AsyncResult;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import androidx.preference.SwitchPreference;
-import androidx.preference.Preference;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
@@ -48,6 +46,10 @@ import android.widget.TabHost.TabSpec;
 import android.widget.TabWidget;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.preference.Preference;
+import androidx.preference.SwitchPreference;
+
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.telephony.CommandException;
 import com.android.internal.telephony.Phone;

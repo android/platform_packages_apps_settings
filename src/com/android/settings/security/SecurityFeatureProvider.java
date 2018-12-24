@@ -21,7 +21,6 @@ import android.content.Context;
 import com.android.internal.widget.LockPatternUtils;
 import com.android.settings.security.trustagent.TrustAgentManager;
 
-
 /** FeatureProvider for security. */
 public interface SecurityFeatureProvider {
 

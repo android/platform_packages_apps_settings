@@ -17,7 +17,6 @@ package com.android.settings.accessibility;
 
 import static android.os.Vibrator.VibrationIntensity;
 
-import androidx.annotation.VisibleForTesting;
 import android.content.Context;
 import android.database.ContentObserver;
 import android.graphics.drawable.Drawable;
@@ -29,6 +28,8 @@ import android.os.Vibrator;
 import android.provider.Settings;
 import android.util.ArrayMap;
 import android.util.Log;
+
+import androidx.annotation.VisibleForTesting;
 
 import com.android.internal.accessibility.AccessibilityShortcutController;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;

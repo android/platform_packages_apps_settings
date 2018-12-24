@@ -17,6 +17,7 @@
 package com.android.settings.ui;
 
 import android.content.Context;
+import android.metrics.MetricsReader;
 import android.net.wifi.WifiManager;
 import android.os.RemoteException;
 import android.platform.test.annotations.Presubmit;
@@ -32,7 +33,6 @@ import android.test.InstrumentationTestCase;
 import android.test.suitebuilder.annotation.MediumTest;
 import android.test.suitebuilder.annotation.Suppress;
 
-import android.metrics.MetricsReader;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 
 public class AccessibilitySettingsTests extends InstrumentationTestCase {

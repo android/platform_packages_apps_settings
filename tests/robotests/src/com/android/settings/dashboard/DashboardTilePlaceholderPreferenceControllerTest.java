@@ -22,6 +22,7 @@ import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
+
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 

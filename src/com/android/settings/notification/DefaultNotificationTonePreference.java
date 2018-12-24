@@ -17,8 +17,7 @@
 package com.android.settings.notification;
 
 
-import com.android.settings.DefaultRingtonePreference;
-import com.android.settings.Utils;
+import static android.content.ContentProvider.getUriWithoutUserId;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -27,15 +26,16 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.UserHandle;
 import android.os.UserManager;
-import android.net.Uri;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.util.AttributeSet;
 
-import static android.content.ContentProvider.getUriWithoutUserId;
+import com.android.settings.DefaultRingtonePreference;
+import com.android.settings.Utils;
 
 public class DefaultNotificationTonePreference extends DefaultRingtonePreference {
     private Uri mRingtone;

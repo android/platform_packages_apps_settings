@@ -24,10 +24,11 @@ import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import androidx.lifecycle.LifecycleOwner;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.provider.Settings;
+
+import androidx.lifecycle.LifecycleOwner;
 import androidx.preference.PreferenceScreen;
 import androidx.preference.TwoStatePreference;
 

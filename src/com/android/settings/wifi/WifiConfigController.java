@@ -38,7 +38,6 @@ import android.os.Handler;
 import android.os.UserManager;
 import android.security.Credentials;
 import android.security.KeyStore;
-import androidx.annotation.VisibleForTesting;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextUtils;
@@ -58,6 +57,8 @@ import android.widget.EditText;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import androidx.annotation.VisibleForTesting;
 
 import com.android.settings.ProxySelector;
 import com.android.settings.R;

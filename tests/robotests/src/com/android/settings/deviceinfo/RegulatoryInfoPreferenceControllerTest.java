@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 

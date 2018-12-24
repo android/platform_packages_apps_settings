@@ -10,6 +10,7 @@ import static org.robolectric.RuntimeEnvironment.application;
 
 import android.app.Activity;
 import android.content.Intent;
+
 import androidx.preference.Preference;
 
 import com.android.settings.testutils.SettingsRobolectricTestRunner;

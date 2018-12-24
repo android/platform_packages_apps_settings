@@ -29,8 +29,9 @@ import android.content.Context;
 import android.hardware.usb.IUsbManager;
 import android.os.RemoteException;
 import android.os.SystemProperties;
-import androidx.preference.SwitchPreference;
+
 import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
 import com.android.settings.testutils.shadow.ShadowUtils;

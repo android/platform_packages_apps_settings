@@ -21,8 +21,9 @@ import static org.mockito.Mockito.when;
 
 import android.content.Context;
 import android.provider.Settings;
-import androidx.preference.Preference;
 import android.text.format.DateUtils;
+
+import androidx.preference.Preference;
 
 import com.android.settings.R;
 import com.android.settings.testutils.FakeFeatureFactory;

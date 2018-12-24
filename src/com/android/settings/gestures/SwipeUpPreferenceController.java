@@ -22,8 +22,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.UserManager;
 import android.provider.Settings;
-import androidx.annotation.VisibleForTesting;
 import android.text.TextUtils;
+
+import androidx.annotation.VisibleForTesting;
 
 import com.android.internal.R;
 

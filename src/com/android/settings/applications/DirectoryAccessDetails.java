@@ -27,7 +27,6 @@ import static android.os.storage.StorageVolume.ScopedAccessProviderContract.TABL
 import static android.os.storage.StorageVolume.ScopedAccessProviderContract.TABLE_PERMISSIONS_COL_GRANTED;
 import static android.os.storage.StorageVolume.ScopedAccessProviderContract.TABLE_PERMISSIONS_COL_PACKAGE;
 import static android.os.storage.StorageVolume.ScopedAccessProviderContract.TABLE_PERMISSIONS_COL_VOLUME_UUID;
-
 import static com.android.settings.applications.AppStateDirectoryAccessBridge.DEBUG;
 import static com.android.settings.applications.AppStateDirectoryAccessBridge.VERBOSE;
 
@@ -42,20 +41,21 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.storage.StorageManager;
 import android.os.storage.VolumeInfo;
-import androidx.preference.SwitchPreference;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceGroupAdapter;
-import androidx.preference.Preference.OnPreferenceChangeListener;
-import androidx.preference.Preference.OnPreferenceClickListener;
-import androidx.preference.PreferenceCategory;
 import android.text.TextUtils;
-import androidx.preference.PreferenceManager;
-import androidx.preference.PreferenceScreen;
 import android.util.ArrayMap;
 import android.util.ArraySet;
 import android.util.IconDrawableFactory;
 import android.util.Log;
 import android.util.Pair;
+
+import androidx.preference.Preference;
+import androidx.preference.Preference.OnPreferenceChangeListener;
+import androidx.preference.Preference.OnPreferenceClickListener;
+import androidx.preference.PreferenceCategory;
+import androidx.preference.PreferenceGroupAdapter;
+import androidx.preference.PreferenceManager;
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;

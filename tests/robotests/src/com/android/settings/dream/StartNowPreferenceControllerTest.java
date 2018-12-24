@@ -21,9 +21,10 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
-import androidx.preference.PreferenceScreen;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+
+import androidx.preference.PreferenceScreen;
 
 import com.android.settings.R;
 import com.android.settings.applications.LayoutPreference;

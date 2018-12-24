@@ -37,9 +37,10 @@ import android.content.Context;
 import android.provider.Settings;
 import android.service.notification.ZenModeConfig;
 import android.service.notification.ZenModeConfig.ZenRule;
+import android.util.ArrayMap;
+
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
-import android.util.ArrayMap;
 
 import com.android.settings.R;
 import com.android.settings.notification.AbstractZenModePreferenceController.ZenModeConfigWrapper;

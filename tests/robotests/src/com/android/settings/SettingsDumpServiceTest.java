@@ -16,7 +16,6 @@
 package com.android.settings;
 
 import static com.google.common.truth.Truth.assertThat;
-
 import static org.mockito.Matchers.anyInt;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.doReturn;
@@ -28,6 +27,7 @@ import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+
 import androidx.annotation.NonNull;
 
 import com.android.settings.fuelgauge.batterytip.AnomalyConfigJobService;

@@ -29,9 +29,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.preference.PreferenceScreen;
 import android.telephony.TelephonyManager;
 import android.util.ArrayMap;
+
+import androidx.preference.PreferenceScreen;
 
 import com.android.settings.deviceinfo.aboutphone.MyDeviceInfoFragment;
 import com.android.settings.testutils.FakeFeatureFactory;

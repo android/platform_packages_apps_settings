@@ -17,7 +17,6 @@
 package com.android.settings.development;
 
 import static com.google.common.truth.Truth.assertThat;
-
 import static org.mockito.AdditionalMatchers.aryEq;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -29,9 +28,10 @@ import static org.mockito.Mockito.when;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.view.DisplayCutout;
+
 import androidx.preference.ListPreference;
 import androidx.preference.PreferenceScreen;
-import android.view.DisplayCutout;
 
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
 import com.android.settings.wrapper.OverlayManagerWrapper;

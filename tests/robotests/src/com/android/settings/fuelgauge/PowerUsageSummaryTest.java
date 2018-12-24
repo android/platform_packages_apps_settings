@@ -16,7 +16,6 @@
 package com.android.settings.fuelgauge;
 
 import static com.android.settings.fuelgauge.PowerUsageSummary.MENU_ADVANCED_BATTERY;
-
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyInt;

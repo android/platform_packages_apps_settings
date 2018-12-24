@@ -20,7 +20,6 @@ import static org.mockito.AdditionalMatchers.not;
 import static org.mockito.Mockito.*;
 
 import android.content.Context;
-import android.content.Context;
 import android.test.AndroidTestCase;
 import android.test.suitebuilder.annotation.SmallTest;
 import android.text.TextUtils;
@@ -30,15 +29,15 @@ import com.android.internal.net.VpnProfile;
 import com.android.settings.R;
 import com.android.settings.vpn2.VpnSettings;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.mockito.ArgumentCaptor;
 import org.mockito.ArgumentMatcher;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class PreferenceListTest extends AndroidTestCase {
     private static final String TAG = "PreferenceListTest";

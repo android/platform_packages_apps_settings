@@ -36,6 +36,8 @@ import android.os.StrictMode;
 import android.provider.SettingsSlicesContract;
 import android.util.ArraySet;
 
+import androidx.slice.Slice;
+
 import com.android.settings.bluetooth.BluetoothSliceBuilder;
 import com.android.settings.location.LocationSliceBuilder;
 import com.android.settings.notification.ZenModeSliceBuilder;
@@ -62,8 +64,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import androidx.slice.Slice;
 
 /**
  * TODO Investigate using ShadowContentResolver.registerProviderInternal(String, ContentProvider)

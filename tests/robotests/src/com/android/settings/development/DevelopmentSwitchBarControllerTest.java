@@ -22,9 +22,10 @@ import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.when;
 
 import android.app.Application;
-import androidx.lifecycle.LifecycleOwner;
 import android.content.Context;
 import android.os.UserManager;
+
+import androidx.lifecycle.LifecycleOwner;
 
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
 import com.android.settings.testutils.shadow.ShadowUtils;

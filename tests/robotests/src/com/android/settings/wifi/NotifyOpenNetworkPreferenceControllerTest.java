@@ -23,8 +23,9 @@ import static org.mockito.Mockito.verify;
 
 import android.content.Context;
 import android.provider.Settings;
-import androidx.preference.SwitchPreference;
+
 import androidx.preference.Preference;
+import androidx.preference.SwitchPreference;
 
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
 import com.android.settingslib.core.lifecycle.Lifecycle;

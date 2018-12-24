@@ -25,31 +25,28 @@ import static android.media.AudioSystem.DEVICE_OUT_BLUETOOTH_A2DP;
 import static android.media.AudioSystem.DEVICE_OUT_BLUETOOTH_SCO_HEADSET;
 import static android.media.AudioSystem.DEVICE_OUT_HEARING_AID;
 import static android.media.AudioSystem.STREAM_MUSIC;
-
 import static com.android.settings.core.BasePreferenceController.AVAILABLE;
 import static com.android.settings.core.BasePreferenceController.CONDITIONALLY_UNAVAILABLE;
-
 import static com.google.common.truth.Truth.assertThat;
-
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
 import static org.robolectric.Shadows.shadowOf;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
-import android.content.pm.PackageManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.util.FeatureFlagUtils;
+
 import androidx.preference.ListPreference;
 import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceScreen;
-import android.util.FeatureFlagUtils;
 
 import com.android.settings.R;
 import com.android.settings.core.FeatureFlags;

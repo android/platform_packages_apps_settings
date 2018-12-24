@@ -16,35 +16,21 @@
 
 package com.android.settings.deviceinfo.simstatus;
 
-import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController
-        .CELL_DATA_NETWORK_TYPE_VALUE_ID;
-import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController
-        .CELL_VOICE_NETWORK_TYPE_VALUE_ID;
+import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController.CELL_DATA_NETWORK_TYPE_VALUE_ID;
+import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController.CELL_VOICE_NETWORK_TYPE_VALUE_ID;
 import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController.EID_INFO_VALUE_ID;
-import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController
-        .ICCID_INFO_LABEL_ID;
-import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController
-        .ICCID_INFO_VALUE_ID;
-import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController
-        .IMS_REGISTRATION_STATE_LABEL_ID;
-import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController
-        .IMS_REGISTRATION_STATE_VALUE_ID;
-import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController
-        .NETWORK_PROVIDER_VALUE_ID;
-import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController
-        .OPERATOR_INFO_LABEL_ID;
-import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController
-        .OPERATOR_INFO_VALUE_ID;
-import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController
-        .PHONE_NUMBER_VALUE_ID;
-import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController
-        .ROAMING_INFO_VALUE_ID;
-import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController
-        .SERVICE_STATE_VALUE_ID;
-import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController
-        .SIGNAL_STRENGTH_LABEL_ID;
-import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController
-        .SIGNAL_STRENGTH_VALUE_ID;
+import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController.ICCID_INFO_LABEL_ID;
+import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController.ICCID_INFO_VALUE_ID;
+import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController.IMS_REGISTRATION_STATE_LABEL_ID;
+import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController.IMS_REGISTRATION_STATE_VALUE_ID;
+import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController.NETWORK_PROVIDER_VALUE_ID;
+import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController.OPERATOR_INFO_LABEL_ID;
+import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController.OPERATOR_INFO_VALUE_ID;
+import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController.PHONE_NUMBER_VALUE_ID;
+import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController.ROAMING_INFO_VALUE_ID;
+import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController.SERVICE_STATE_VALUE_ID;
+import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController.SIGNAL_STRENGTH_LABEL_ID;
+import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController.SIGNAL_STRENGTH_VALUE_ID;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.eq;
@@ -54,7 +40,6 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import androidx.lifecycle.LifecycleOwner;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.os.PersistableBundle;
@@ -65,6 +50,8 @@ import android.telephony.SignalStrength;
 import android.telephony.SubscriptionInfo;
 import android.telephony.TelephonyManager;
 import android.telephony.euicc.EuiccManager;
+
+import androidx.lifecycle.LifecycleOwner;
 
 import com.android.settings.R;
 import com.android.settings.testutils.SettingsRobolectricTestRunner;

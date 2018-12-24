@@ -18,9 +18,10 @@ package com.android.settings.fuelgauge.batterytip;
 
 import android.content.Context;
 import android.provider.Settings;
-import androidx.annotation.VisibleForTesting;
 import android.util.KeyValueListParser;
 import android.util.Log;
+
+import androidx.annotation.VisibleForTesting;
 
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;

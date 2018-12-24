@@ -26,6 +26,7 @@ import static org.mockito.Mockito.when;
 
 import android.app.PendingIntent;
 import android.service.settings.suggestions.Suggestion;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListUpdateCallback;

@@ -30,6 +30,7 @@ import static org.mockito.Mockito.verify;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.res.Resources;
+
 import androidx.preference.PreferenceGroup;
 
 import com.android.settings.R;

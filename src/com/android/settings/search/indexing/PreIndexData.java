@@ -25,7 +25,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-
 /**
  * Holds Data sources for indexable data.
  * TODO (b/33577327) add getters and setters for data.

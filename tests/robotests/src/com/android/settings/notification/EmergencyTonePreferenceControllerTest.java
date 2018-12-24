@@ -24,9 +24,10 @@ import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.provider.Settings.Global;
+import android.telephony.TelephonyManager;
+
 import androidx.preference.DropDownPreference;
 import androidx.preference.PreferenceScreen;
-import android.telephony.TelephonyManager;
 
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
 

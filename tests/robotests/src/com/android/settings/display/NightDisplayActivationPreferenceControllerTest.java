@@ -15,20 +15,20 @@
 package com.android.settings.display;
 
 import static com.google.common.truth.Truth.assertThat;
-
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
 import android.provider.Settings.Secure;
+import android.view.View;
+
 import androidx.preference.PreferenceScreen;
 
-import android.view.View;
 import com.android.settings.R;
 import com.android.settings.applications.LayoutPreference;
-
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
 import com.android.settings.testutils.shadow.SettingsShadowResources;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

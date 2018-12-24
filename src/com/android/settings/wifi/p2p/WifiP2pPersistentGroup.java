@@ -18,6 +18,7 @@ package com.android.settings.wifi.p2p;
 
 import android.content.Context;
 import android.net.wifi.p2p.WifiP2pGroup;
+
 import androidx.preference.Preference;
 import androidx.preference.PreferenceViewHolder;
 

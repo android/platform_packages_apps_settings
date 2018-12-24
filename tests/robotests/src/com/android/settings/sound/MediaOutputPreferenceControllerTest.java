@@ -21,9 +21,7 @@ import static android.media.AudioSystem.DEVICE_OUT_BLUETOOTH_A2DP;
 import static android.media.AudioSystem.DEVICE_OUT_HEARING_AID;
 import static android.media.AudioSystem.DEVICE_OUT_REMOTE_SUBMIX;
 import static android.media.AudioSystem.DEVICE_OUT_USB_HEADSET;
-
 import static com.google.common.truth.Truth.assertThat;
-
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
@@ -37,6 +35,7 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.media.AudioManager;
+
 import androidx.preference.ListPreference;
 import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceScreen;

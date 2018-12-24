@@ -29,6 +29,7 @@ import android.content.pm.PackageManager;
 import android.hardware.fingerprint.Fingerprint;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.UserManager;
+
 import androidx.preference.Preference;
 
 import com.android.internal.widget.LockPatternUtils;

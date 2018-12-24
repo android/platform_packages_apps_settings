@@ -15,8 +15,7 @@
  */
 package com.android.settings.security;
 
-import static com.android.settings.security.EncryptionStatusPreferenceController
-        .PREF_KEY_ENCRYPTION_SECURITY_PAGE;
+import static com.android.settings.security.EncryptionStatusPreferenceController.PREF_KEY_ENCRYPTION_SECURITY_PAGE;
 
 import android.app.Activity;
 import android.content.Context;

@@ -16,8 +16,8 @@
 package com.android.settings.accessibility;
 
 import android.media.AudioAttributes;
-import android.os.Vibrator;
 import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.provider.Settings;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;

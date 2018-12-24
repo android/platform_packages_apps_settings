@@ -17,7 +17,6 @@
 package com.android.settings.testutils;
 
 import static com.google.common.truth.Truth.assertAbout;
-
 import static org.robolectric.RuntimeEnvironment.application;
 
 import androidx.annotation.Nullable;

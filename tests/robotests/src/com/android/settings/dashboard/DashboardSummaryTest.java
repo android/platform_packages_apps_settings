@@ -29,6 +29,7 @@ import static org.mockito.Mockito.when;
 
 import android.app.Activity;
 import android.content.Context;
+
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.android.settings.dashboard.conditional.ConditionManager;

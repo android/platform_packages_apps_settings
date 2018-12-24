@@ -16,17 +16,17 @@
 
 package com.android.settings;
 
+import static com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
+
 import android.content.Context;
 import android.graphics.PorterDuff;
 import android.util.AttributeSet;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-import java.util.List;
-
 import com.android.settingslib.RestrictedLockUtils;
 
-import static com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
+import java.util.List;
 
 public class RestrictedRadioButton extends RadioButton {
     private Context mContext;

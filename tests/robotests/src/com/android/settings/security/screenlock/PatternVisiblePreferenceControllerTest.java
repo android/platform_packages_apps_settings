@@ -22,6 +22,7 @@ import static org.mockito.Mockito.when;
 
 import android.app.admin.DevicePolicyManager;
 import android.content.Context;
+
 import androidx.preference.SwitchPreference;
 
 import com.android.internal.widget.LockPatternUtils;

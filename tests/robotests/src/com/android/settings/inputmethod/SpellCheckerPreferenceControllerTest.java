@@ -22,9 +22,10 @@ import static org.mockito.Mockito.when;
 
 import android.content.Context;
 import android.content.res.Resources;
-import androidx.preference.Preference;
 import android.view.textservice.SpellCheckerInfo;
 import android.view.textservice.TextServicesManager;
+
+import androidx.preference.Preference;
 
 import com.android.settings.R;
 import com.android.settings.testutils.SettingsRobolectricTestRunner;

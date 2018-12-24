@@ -28,14 +28,15 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.app.Activity;
-import androidx.lifecycle.LifecycleOwner;
 import android.content.Context;
 import android.content.Intent;
 import android.os.BatteryManager;
+import android.widget.TextView;
+
+import androidx.lifecycle.LifecycleOwner;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceScreen;
 import androidx.recyclerview.widget.RecyclerView;
-import android.widget.TextView;
 
 import com.android.settings.R;
 import com.android.settings.applications.LayoutPreference;

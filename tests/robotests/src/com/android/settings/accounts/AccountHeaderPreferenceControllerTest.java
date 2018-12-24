@@ -24,12 +24,13 @@ import static org.mockito.Mockito.when;
 
 import android.accounts.Account;
 import android.app.Activity;
-import androidx.lifecycle.LifecycleOwner;
 import android.os.Bundle;
 import android.os.UserHandle;
+import android.widget.TextView;
+
+import androidx.lifecycle.LifecycleOwner;
 import androidx.preference.PreferenceFragment;
 import androidx.preference.PreferenceScreen;
-import android.widget.TextView;
 
 import com.android.settings.R;
 import com.android.settings.applications.LayoutPreference;

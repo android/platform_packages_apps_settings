@@ -17,13 +17,13 @@
 package com.android.settings.widget;
 
 import static com.google.common.truth.Truth.assertThat;
-
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
 import android.media.MediaPlayer;
-import androidx.preference.PreferenceViewHolder;
 import android.view.LayoutInflater;
+
+import androidx.preference.PreferenceViewHolder;
 
 import com.android.settings.R;
 import com.android.settings.testutils.SettingsRobolectricTestRunner;

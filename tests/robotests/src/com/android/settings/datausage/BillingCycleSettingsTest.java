@@ -31,10 +31,11 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.FeatureFlagUtils;
+
 import androidx.preference.Preference;
 import androidx.preference.PreferenceManager;
 import androidx.preference.SwitchPreference;
-import android.util.FeatureFlagUtils;
 
 import com.android.settings.core.FeatureFlags;
 import com.android.settings.testutils.SettingsRobolectricTestRunner;

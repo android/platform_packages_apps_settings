@@ -29,6 +29,7 @@ import android.content.Intent;
 import android.content.pm.ResolveInfo;
 import android.provider.Settings;
 import android.provider.Settings.Global;
+
 import androidx.preference.PreferenceScreen;
 
 import com.android.settings.testutils.SettingsRobolectricTestRunner;

@@ -25,10 +25,7 @@ import static android.app.NotificationManager.Policy.SUPPRESSED_EFFECT_PEEK;
 import static android.app.NotificationManager.Policy.SUPPRESSED_EFFECT_SCREEN_OFF;
 import static android.app.NotificationManager.Policy.SUPPRESSED_EFFECT_SCREEN_ON;
 import static android.app.NotificationManager.Policy.SUPPRESSED_EFFECT_STATUS_BAR;
-
-import static com.android.internal.logging.nano.MetricsProto.MetricsEvent
-        .ACTION_ZEN_SOUND_AND_VIS_EFFECTS;
-
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.ACTION_ZEN_SOUND_AND_VIS_EFFECTS;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -41,6 +38,7 @@ import static org.mockito.Mockito.when;
 
 import android.app.NotificationManager;
 import android.content.Context;
+
 import androidx.preference.PreferenceScreen;
 
 import com.android.settings.testutils.FakeFeatureFactory;

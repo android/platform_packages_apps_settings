@@ -35,7 +35,6 @@ import com.android.internal.R;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-
 /**
  * A LinearLayout with a twist: if the contents don't fit, it takes space away from the
  * MATCH_PARENT children, instead of taking it from the weighted ones.

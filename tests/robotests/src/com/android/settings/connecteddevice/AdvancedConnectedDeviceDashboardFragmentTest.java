@@ -16,6 +16,7 @@
 package com.android.settings.connecteddevice;
 
 import static com.google.common.truth.Truth.assertThat;
+
 ;
 import android.provider.SearchIndexableResource;
 

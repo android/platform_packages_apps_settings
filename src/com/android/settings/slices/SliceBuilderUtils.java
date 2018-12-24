@@ -36,6 +36,11 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.util.Pair;
 
+import androidx.core.graphics.drawable.IconCompat;
+import androidx.slice.Slice;
+import androidx.slice.builders.ListBuilder;
+import androidx.slice.builders.SliceAction;
+
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
@@ -49,17 +54,10 @@ import com.android.settings.search.DatabaseIndexingUtils;
 import com.android.settingslib.SliceBroadcastRelay;
 import com.android.settingslib.core.AbstractPreferenceController;
 
-import androidx.core.graphics.drawable.IconCompat;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import androidx.slice.Slice;
-import androidx.slice.builders.ListBuilder;
-import androidx.slice.builders.SliceAction;
-
 
 /**
  * Utility class to build Slices objects and Preference Controllers based on the Database managed

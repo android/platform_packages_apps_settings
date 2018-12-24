@@ -26,6 +26,7 @@ import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.provider.Settings.Global;
+
 import androidx.preference.DropDownPreference;
 import androidx.preference.PreferenceScreen;
 

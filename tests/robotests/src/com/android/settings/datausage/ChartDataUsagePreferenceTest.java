@@ -25,8 +25,10 @@ import android.content.Context;
 import android.net.NetworkStatsHistory;
 import android.net.NetworkStatsHistory.Entry;
 import android.util.SparseIntArray;
+
 import com.android.settings.graph.UsageView;
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

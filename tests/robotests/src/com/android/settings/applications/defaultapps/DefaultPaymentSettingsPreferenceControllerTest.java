@@ -26,6 +26,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.nfc.NfcAdapter;
 import android.os.UserManager;
+
 import androidx.preference.Preference;
 
 import com.android.settings.nfc.PaymentBackend;

@@ -23,9 +23,10 @@ import static org.mockito.Mockito.when;
 import android.os.RemoteException;
 import android.os.StrictMode;
 import android.os.SystemProperties;
-import androidx.preference.SwitchPreference;
-import androidx.preference.PreferenceScreen;
 import android.view.IWindowManager;
+
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
 

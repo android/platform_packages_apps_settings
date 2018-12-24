@@ -36,10 +36,11 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.UserHandle;
 import android.os.storage.VolumeInfo;
-import androidx.preference.PreferenceScreen;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
+
+import androidx.preference.PreferenceScreen;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;

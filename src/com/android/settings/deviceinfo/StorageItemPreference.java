@@ -18,11 +18,12 @@ package com.android.settings.deviceinfo;
 
 import android.content.Context;
 import android.content.res.Resources;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceViewHolder;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ProgressBar;
+
+import androidx.preference.Preference;
+import androidx.preference.PreferenceViewHolder;
 
 import com.android.settings.R;
 import com.android.settings.utils.FileSizeFormatter;

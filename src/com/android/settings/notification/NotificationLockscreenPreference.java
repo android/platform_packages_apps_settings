@@ -16,11 +16,6 @@
 
 package com.android.settings.notification;
 
-import com.android.settings.R;
-import com.android.settings.RestrictedListPreference;
-import com.android.settings.Utils;
-import com.android.settingslib.RestrictedLockUtils;
-
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -36,6 +31,11 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
+import com.android.settings.R;
+import com.android.settings.RestrictedListPreference;
+import com.android.settings.Utils;
+import com.android.settingslib.RestrictedLockUtils;
 
 public class NotificationLockscreenPreference extends RestrictedListPreference {
 

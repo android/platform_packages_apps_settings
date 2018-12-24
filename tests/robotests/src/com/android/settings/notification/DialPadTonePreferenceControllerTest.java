@@ -24,9 +24,10 @@ import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.provider.Settings.System;
-import androidx.preference.SwitchPreference;
-import androidx.preference.PreferenceScreen;
 import android.telephony.TelephonyManager;
+
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
 

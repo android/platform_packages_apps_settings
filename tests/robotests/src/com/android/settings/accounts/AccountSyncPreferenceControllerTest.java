@@ -27,6 +27,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SyncAdapterType;
 import android.os.UserHandle;
+
 import androidx.preference.Preference;
 
 import com.android.settings.R;

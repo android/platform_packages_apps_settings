@@ -17,7 +17,6 @@
 package com.android.settings.nfc;
 
 import static com.google.common.truth.Truth.assertThat;
-
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
@@ -27,6 +26,7 @@ import android.nfc.NfcManager;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.Settings;
+
 import androidx.preference.PreferenceScreen;
 
 import com.android.settings.testutils.SettingsRobolectricTestRunner;

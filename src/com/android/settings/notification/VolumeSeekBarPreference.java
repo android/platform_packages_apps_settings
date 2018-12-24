@@ -21,8 +21,6 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.preference.SeekBarVolumizer;
-import androidx.annotation.VisibleForTesting;
-import androidx.preference.PreferenceViewHolder;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -30,6 +28,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import androidx.annotation.VisibleForTesting;
+import androidx.preference.PreferenceViewHolder;
 
 import com.android.settings.R;
 import com.android.settings.widget.SeekBarPreference;

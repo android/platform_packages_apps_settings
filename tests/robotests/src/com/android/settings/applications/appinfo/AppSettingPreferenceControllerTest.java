@@ -28,6 +28,7 @@ import android.app.Application;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.ResolveInfo;
+
 import androidx.preference.Preference;
 
 import com.android.settings.testutils.SettingsRobolectricTestRunner;

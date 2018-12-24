@@ -31,6 +31,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.os.SystemProperties;
 import android.provider.Settings;
+
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 

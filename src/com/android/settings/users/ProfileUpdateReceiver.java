@@ -25,7 +25,6 @@ import android.os.UserManager;
 
 import com.android.settings.Utils;
 
-
 /**
  * Watches for changes to Me Profile in Contacts and writes the photo to the User Manager.
  */

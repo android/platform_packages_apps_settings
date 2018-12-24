@@ -13,6 +13,8 @@
  */
 package com.android.settings.display;
 
+import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.ACTION_THEME;
+
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -20,10 +22,11 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.RemoteException;
 import android.os.ServiceManager;
 import android.os.UserHandle;
+import android.text.TextUtils;
+
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
-import android.text.TextUtils;
 
 import com.android.settings.R;
 import com.android.settings.core.PreferenceControllerMixin;
@@ -36,8 +39,6 @@ import com.android.settingslib.core.instrumentation.MetricsFeatureProvider;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
-import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.ACTION_THEME;
 
 public class ThemePreferenceController extends AbstractPreferenceController implements
         PreferenceControllerMixin, Preference.OnPreferenceChangeListener {

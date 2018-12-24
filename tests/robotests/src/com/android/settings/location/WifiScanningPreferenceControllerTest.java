@@ -22,6 +22,7 @@ import static org.mockito.Mockito.when;
 import android.content.ContentResolver;
 import android.provider.Settings;
 import android.provider.Settings.Global;
+
 import androidx.preference.SwitchPreference;
 
 import com.android.settings.testutils.SettingsRobolectricTestRunner;

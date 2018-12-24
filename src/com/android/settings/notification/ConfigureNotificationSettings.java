@@ -24,9 +24,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.provider.SearchIndexableResource;
+import android.text.TextUtils;
+
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
-import android.text.TextUtils;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;

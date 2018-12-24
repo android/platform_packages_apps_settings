@@ -28,6 +28,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.net.NetworkScoreManager;
 import android.net.NetworkScorerAppData;
+
 import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceScreen;
 

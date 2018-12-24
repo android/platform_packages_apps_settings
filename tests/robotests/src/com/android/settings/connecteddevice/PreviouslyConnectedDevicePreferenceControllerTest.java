@@ -15,6 +15,11 @@
  */
 package com.android.settings.connecteddevice;
 
+import static com.android.settings.core.BasePreferenceController.AVAILABLE;
+import static com.android.settings.core.BasePreferenceController.CONDITIONALLY_UNAVAILABLE;
+import static com.google.common.truth.Truth.assertThat;
+import static org.mockito.Mockito.*;
+
 import android.content.Context;
 import android.content.pm.PackageManager;
 
@@ -31,11 +36,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.RuntimeEnvironment;
-
-import static com.android.settings.core.BasePreferenceController.AVAILABLE;
-import static com.android.settings.core.BasePreferenceController.CONDITIONALLY_UNAVAILABLE;
-import static com.google.common.truth.Truth.assertThat;
-import static org.mockito.Mockito.*;
 
 @RunWith(SettingsRobolectricTestRunner.class)
 public class PreviouslyConnectedDevicePreferenceControllerTest {

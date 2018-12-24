@@ -24,8 +24,9 @@ import static org.mockito.Mockito.when;
 
 import android.content.Context;
 import android.hardware.input.InputManager;
-import androidx.preference.Preference;
 import android.view.InputDevice;
+
+import androidx.preference.Preference;
 
 import com.android.settings.R;
 import com.android.settings.testutils.SettingsRobolectricTestRunner;

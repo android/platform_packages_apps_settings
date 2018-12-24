@@ -19,9 +19,10 @@ package com.android.settings.fuelgauge.anomaly.checker;
 import android.content.Context;
 import android.os.BatteryStats;
 import android.os.SystemClock;
-import androidx.annotation.VisibleForTesting;
 import android.text.format.DateUtils;
 import android.util.ArrayMap;
+
+import androidx.annotation.VisibleForTesting;
 
 import com.android.internal.os.BatterySipper;
 import com.android.internal.os.BatteryStatsHelper;

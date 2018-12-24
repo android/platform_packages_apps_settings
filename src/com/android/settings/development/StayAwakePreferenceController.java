@@ -23,6 +23,7 @@ import android.net.Uri;
 import android.os.BatteryManager;
 import android.os.Handler;
 import android.provider.Settings;
+
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
@@ -35,7 +36,6 @@ import com.android.settingslib.core.lifecycle.LifecycleObserver;
 import com.android.settingslib.core.lifecycle.events.OnPause;
 import com.android.settingslib.core.lifecycle.events.OnResume;
 import com.android.settingslib.development.DeveloperOptionsPreferenceController;
-
 
 public class StayAwakePreferenceController extends DeveloperOptionsPreferenceController
         implements Preference.OnPreferenceChangeListener, LifecycleObserver,  OnResume, OnPause,

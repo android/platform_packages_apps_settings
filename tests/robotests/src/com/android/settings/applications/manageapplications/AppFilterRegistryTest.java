@@ -19,9 +19,7 @@ package com.android.settings.applications.manageapplications;
 import static com.android.settings.applications.manageapplications.AppFilterRegistry.FILTER_APPS_ALL;
 import static com.android.settings.applications.manageapplications.AppFilterRegistry.FILTER_APPS_INSTALL_SOURCES;
 import static com.android.settings.applications.manageapplications.AppFilterRegistry.FILTER_APPS_POWER_WHITELIST;
-
-import static com.android.settings.applications.manageapplications.AppFilterRegistry
-        .FILTER_APPS_RECENT;
+import static com.android.settings.applications.manageapplications.AppFilterRegistry.FILTER_APPS_RECENT;
 import static com.android.settings.applications.manageapplications.AppFilterRegistry.FILTER_APPS_USAGE_ACCESS;
 import static com.android.settings.applications.manageapplications.AppFilterRegistry.FILTER_APPS_WITH_OVERLAY;
 import static com.android.settings.applications.manageapplications.AppFilterRegistry.FILTER_APPS_WRITE_SETTINGS;

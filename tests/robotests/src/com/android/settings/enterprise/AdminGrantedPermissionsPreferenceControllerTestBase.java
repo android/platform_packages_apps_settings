@@ -23,6 +23,7 @@ import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
+
 import androidx.preference.Preference;
 
 import com.android.settings.R;

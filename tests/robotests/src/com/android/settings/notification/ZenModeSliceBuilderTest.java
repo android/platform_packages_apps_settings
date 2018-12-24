@@ -17,9 +17,7 @@
 package com.android.settings.notification;
 
 import static android.app.slice.Slice.EXTRA_TOGGLE_STATE;
-
 import static com.google.common.truth.Truth.assertThat;
-
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.spy;
@@ -29,7 +27,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.provider.Settings;
+
 import androidx.core.graphics.drawable.IconCompat;
+import androidx.slice.Slice;
+import androidx.slice.SliceItem;
+import androidx.slice.SliceMetadata;
+import androidx.slice.SliceProvider;
+import androidx.slice.core.SliceAction;
+import androidx.slice.widget.SliceLiveData;
 
 import com.android.settings.R;
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
@@ -43,13 +48,6 @@ import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 
 import java.util.List;
-
-import androidx.slice.Slice;
-import androidx.slice.SliceItem;
-import androidx.slice.SliceMetadata;
-import androidx.slice.SliceProvider;
-import androidx.slice.core.SliceAction;
-import androidx.slice.widget.SliceLiveData;
 
 @Config(shadows = ShadowNotificationManager.class)
 @RunWith(SettingsRobolectricTestRunner.class)

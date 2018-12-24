@@ -51,11 +51,11 @@ import com.android.settings.password.ChooseLockSettingsHelper;
 import com.android.settings.security.ConfigureKeyGuardDialog;
 import com.android.settings.vpn2.VpnUtils;
 
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-
 import sun.security.util.ObjectIdentifier;
 import sun.security.x509.AlgorithmId;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 
 /**
  * CredentialStorage handles KeyStore reset, unlock, and install.

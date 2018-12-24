@@ -40,9 +40,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.UserManager;
 import android.provider.Settings;
+import android.util.AttributeSet;
+
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
-import android.util.AttributeSet;
 
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.testutils.SettingsRobolectricTestRunner;

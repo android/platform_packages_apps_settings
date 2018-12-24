@@ -31,8 +31,9 @@ import android.app.NotificationChannelGroup;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.os.UserManager;
-import androidx.preference.PreferenceFragment;
 import android.view.View;
+
+import androidx.preference.PreferenceFragment;
 
 import com.android.settings.applications.LayoutPreference;
 import com.android.settings.testutils.SettingsRobolectricTestRunner;

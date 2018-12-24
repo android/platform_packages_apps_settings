@@ -14,16 +14,16 @@
 package com.android.settings.display;
 
 import static android.provider.Settings.Secure.DOZE_ENABLED;
-
 import static com.android.internal.logging.nano.MetricsProto.MetricsEvent.ACTION_AMBIENT_DISPLAY;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.UserHandle;
 import android.provider.Settings;
+import android.text.TextUtils;
+
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
-import android.text.TextUtils;
 
 import com.android.internal.hardware.AmbientDisplayConfiguration;
 import com.android.settings.R;

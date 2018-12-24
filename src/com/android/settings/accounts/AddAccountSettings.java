@@ -40,6 +40,7 @@ import com.android.settings.Utils;
 import com.android.settings.password.ChooseLockSettingsHelper;
 
 import java.io.IOException;
+
 /**
  * Entry point Activity for account setup. Works as follows
  *

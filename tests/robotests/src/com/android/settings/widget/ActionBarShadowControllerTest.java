@@ -26,9 +26,10 @@ import static org.mockito.Mockito.when;
 
 import android.app.ActionBar;
 import android.app.Activity;
+import android.view.View;
+
 import androidx.lifecycle.LifecycleOwner;
 import androidx.recyclerview.widget.RecyclerView;
-import android.view.View;
 
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
 import com.android.settingslib.core.lifecycle.Lifecycle;

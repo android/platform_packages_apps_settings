@@ -30,8 +30,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
-import androidx.preference.PreferenceScreen;
 import android.telephony.TelephonyManager;
+
+import androidx.preference.PreferenceScreen;
 
 import com.android.settings.R;
 import com.android.settings.dashboard.SummaryLoader;

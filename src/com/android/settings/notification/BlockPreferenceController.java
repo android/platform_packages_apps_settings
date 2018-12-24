@@ -23,8 +23,9 @@ import static android.app.NotificationManager.IMPORTANCE_UNSPECIFIED;
 
 import android.app.NotificationManager;
 import android.content.Context;
-import androidx.preference.Preference;
 import android.widget.Switch;
+
+import androidx.preference.Preference;
 
 import com.android.settings.R;
 import com.android.settings.applications.LayoutPreference;

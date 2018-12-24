@@ -28,6 +28,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
+
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 

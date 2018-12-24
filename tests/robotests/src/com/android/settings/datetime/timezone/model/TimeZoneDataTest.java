@@ -22,13 +22,13 @@ import static org.mockito.Mockito.when;
 
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-
 import libcore.timezone.CountryTimeZones;
 import libcore.timezone.CountryTimeZones.TimeZoneMapping;
 import libcore.timezone.CountryZonesFinder;
+
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import java.util.ArrayList;
 import java.util.Arrays;
