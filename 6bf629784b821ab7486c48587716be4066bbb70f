@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "73d3fe6c_95c0ee07",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1159753
+      },
+      "writtenOn": "2018-12-26T08:47:27Z",
+      "side": 1,
+      "message": "I couldn\u0027t find proper place to add in CDD file, we can create some test and adding to ProxyTrackerTest. do you have plan when to merge aosp/703327?",
+      "parentUuid": "d1c877c8_8ae44b16",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 12
+      },
+      "revId": "6bf629784b821ab7486c48587716be4066bbb70f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e5f969d1_acfcc89d",
         "filename": "res/layout/vpn_dialog.xml",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "6bf629784b821ab7486c48587716be4066bbb70f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "041b75fb_32dda244",
+        "filename": "res/layout/vpn_dialog.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1159753
+      },
+      "writtenOn": "2018-12-26T08:47:27Z",
+      "side": 1,
+      "message": "yes, they already exist, e.g. proxy_settings_title in /packages/apps/Settings/res/values/strings.xml",
+      "parentUuid": "e5f969d1_acfcc89d",
+      "range": {
+        "startLine": 151,
+        "startChar": 45,
+        "endLine": 151,
+        "endChar": 65
+      },
+      "revId": "6bf629784b821ab7486c48587716be4066bbb70f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "112bae91_2621b388",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1159753
+      },
+      "writtenOn": "2018-12-26T08:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a10c871_494b8714",
+      "range": {
+        "startLine": 339,
+        "startChar": 17,
+        "endLine": 339,
+        "endChar": 32
+      },
+      "revId": "6bf629784b821ab7486c48587716be4066bbb70f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2ef83a2_bf920239",
         "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "6bf629784b821ab7486c48587716be4066bbb70f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61a6d34d_9110c144",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1159753
+      },
+      "writtenOn": "2018-12-26T08:47:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2ef83a2_bf920239",
+      "range": {
+        "startLine": 491,
+        "startChar": 45,
+        "endLine": 491,
+        "endChar": 46
+      },
+      "revId": "6bf629784b821ab7486c48587716be4066bbb70f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
