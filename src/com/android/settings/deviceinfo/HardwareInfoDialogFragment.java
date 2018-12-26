@@ -20,12 +20,13 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.SystemProperties;
-import androidx.annotation.VisibleForTesting;
+import android.sysprop.BootProperties;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.annotation.VisibleForTesting;
 
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.settings.R;
@@ -61,7 +62,7 @@ public class HardwareInfoDialogFragment extends InstrumentedDialogFragment {
 
         // Hardware rev
         setText(content, R.id.hardware_rev_label, R.id.hardware_rev_value,
-                SystemProperties.get("ro.boot.hardware.revision"));
+                BootProperties.hardware_revision().orElse(""));
 
         return builder.setView(content).create();
     }

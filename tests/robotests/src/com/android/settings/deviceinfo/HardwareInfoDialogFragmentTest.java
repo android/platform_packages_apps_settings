@@ -24,7 +24,7 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 
 import android.app.Activity;
-import android.os.SystemProperties;
+import android.sysprop.BootProperties;
 import android.view.View;
 
 import com.android.settings.R;
@@ -48,7 +48,7 @@ public class HardwareInfoDialogFragmentTest {
     @Test
     public void display_shouldShowHardwareRevision() {
         final String TEST_HARDWARE_REV = "123";
-        SystemProperties.set("ro.boot.hardware.revision", TEST_HARDWARE_REV);
+        BootProperties.hardware_revision(TEST_HARDWARE_REV);
 
         final HardwareInfoDialogFragment fragment = spy(HardwareInfoDialogFragment.newInstance());
         doReturn("").when(fragment).getSerialNumber();
