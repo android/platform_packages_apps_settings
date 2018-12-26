@@ -4112,6 +4112,18 @@
     <string name="show_first_crash_dialog_summary" msgid="703224456285060428">"在每次应用崩溃时显示对话框"</string>
     <string name="directory_access" msgid="4722237210725864244">"目录访问权限"</string>
     <string name="keywords_directory_access" msgid="360557532842445280">"目录访问权限"</string>
+    <!-- apn names for carriers -->
+    <string name="APN_NAME_CMNET">中国移动NET</string>
+    <string name="APN_NAME_CMWAP">中国移动WAP</string>
+    <string name="APN_NAME_CMMMS">中国移动彩信设置</string>
+    <string name="APN_NAME_CUWAP">沃宽带用户手机上网</string>
+    <string name="APN_NAME_CUNET">沃宽带用户连接互联网</string>
+    <string name="APN_NAME_CUMMS">联通彩信</string>
+    <string name="APN_NAME_CUSUPL">联通AGPS</string>
+    <string name="APN_NAME_CTNET">中国电信互联网设置 CTNET</string>
+    <string name="APN_NAME_CTWAP">中国电信WAP设置 CTWAP</string>
+    <string name="APN_NAME_CTLTE">中国电信互联网设置 ctlte</string>
+    <string name="APN_NAME_CTMMS">中国电信彩信设置 CTWAP</string>
     <string name="directory_on_volume" msgid="1246959267814974387">"<xliff:g id="VOLUME">%1$s</xliff:g>（<xliff:g id="DIRECTORY">%2$s</xliff:g>）"</string>
     <string name="unsupported_setting_summary" product="default" msgid="11246953620654225">"此手机不支持这项设置"</string>
     <string name="unsupported_setting_summary" product="tablet" msgid="6328431665635673717">"此平板电脑不支持这项设置"</string>
