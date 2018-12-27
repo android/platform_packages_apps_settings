@@ -17,10 +17,11 @@
 package com.android.settings.development;
 
 import android.content.Context;
-import android.os.SystemProperties;
+import android.sysprop.PlatformProperties;
+
 import androidx.annotation.VisibleForTesting;
-import androidx.preference.SwitchPreference;
 import androidx.preference.Preference;
+import androidx.preference.SwitchPreference;
 
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.development.DeveloperOptionsPreferenceController;
@@ -30,9 +31,6 @@ public class ForceGpuRenderingPreferenceController extends DeveloperOptionsPrefe
         implements Preference.OnPreferenceChangeListener, PreferenceControllerMixin {
 
     private static final String FORCE_HARDWARE_UI_KEY = "force_hw_ui";
-
-    @VisibleForTesting
-    static final String HARDWARE_UI_PROPERTY = "persist.sys.ui.hw";
 
     public ForceGpuRenderingPreferenceController(Context context) {
         super(context);
@@ -46,23 +44,21 @@ public class ForceGpuRenderingPreferenceController extends DeveloperOptionsPrefe
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         final boolean isEnabled = (Boolean) newValue;
-        SystemProperties.set(HARDWARE_UI_PROPERTY,
-                isEnabled ? Boolean.toString(true) : Boolean.toString(false));
+        PlatformProperties.hardware_ui(isEnabled);
         SystemPropPoker.getInstance().poke();
         return true;
     }
 
     @Override
     public void updateState(Preference preference) {
-        final boolean isEnabled = SystemProperties.getBoolean(HARDWARE_UI_PROPERTY,
-                false /* default */);
+        final boolean isEnabled = PlatformProperties.hardware_ui().orElse(false);
         ((SwitchPreference) mPreference).setChecked(isEnabled);
     }
 
     @Override
     protected void onDeveloperOptionsSwitchDisabled() {
         super.onDeveloperOptionsSwitchDisabled();
-        SystemProperties.set(HARDWARE_UI_PROPERTY, Boolean.toString(false));
+        PlatformProperties.hardware_ui(false);
         ((SwitchPreference) mPreference).setChecked(false);
     }
 }

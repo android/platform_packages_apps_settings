@@ -16,7 +16,6 @@
 package com.android.settings.ui;
 
 import android.os.RemoteException;
-import android.os.SystemProperties;
 import android.provider.Settings;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.filters.MediumTest;
@@ -30,6 +29,7 @@ import android.support.test.uiautomator.UiObjectNotFoundException;
 import android.support.test.uiautomator.UiScrollable;
 import android.support.test.uiautomator.UiSelector;
 import android.support.test.uiautomator.Until;
+import android.sysprop.PlatformProperties;
 import android.system.helpers.SettingsHelper;
 import android.system.helpers.SettingsHelper.SettingsType;
 
@@ -143,7 +143,7 @@ public class ZonePickerSettingsTest {
 
         waitAndAssertTimeGetDefault(expectedTimeZoneId);
         assertEquals("Time zone change in Settings should update persist.sys.timezone",
-                expectedTimeZoneId, SystemProperties.get("persist.sys.timezone"));
+                expectedTimeZoneId, PlatformProperties.timezone().orElse(""));
     }
 
     private static final long CHECK_DEFAULT_TIMEZONE_INTERVAL = 200L;

@@ -21,11 +21,11 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.os.RemoteException;
-import android.os.StrictMode;
-import android.os.SystemProperties;
-import androidx.preference.SwitchPreference;
-import androidx.preference.PreferenceScreen;
+import android.sysprop.PlatformProperties;
 import android.view.IWindowManager;
+
+import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
 
@@ -77,7 +77,7 @@ public class StrictModePreferenceControllerTest {
 
     @Test
     public void updateState_settingEnabled_preferenceShouldBeChecked() {
-        SystemProperties.set(StrictMode.VISUAL_PROPERTY, Boolean.toString(false));
+        PlatformProperties.strictmode_visual(false);
         mController.updateState(mPreference);
 
         verify(mPreference).setChecked(false);
@@ -85,7 +85,7 @@ public class StrictModePreferenceControllerTest {
 
     @Test
     public void updateState_settingDisabled_preferenceShouldNotBeChecked() {
-        SystemProperties.set(StrictMode.VISUAL_PROPERTY, Boolean.toString(true));
+        PlatformProperties.strictmode_visual(true);
         mController.updateState(mPreference);
 
         verify(mPreference).setChecked(true);
@@ -94,8 +94,7 @@ public class StrictModePreferenceControllerTest {
     @Test
     public void onDeveloperOptionsSwitchDisabled_shouldTurnOffPreference() {
         mController.onDeveloperOptionsSwitchDisabled();
-        final boolean isEnabled = SystemProperties.getBoolean(StrictMode.VISUAL_PROPERTY,
-                false /* default */);
+        final boolean isEnabled = PlatformProperties.strictmode_visual().orElse(false);
 
         assertThat(isEnabled).isFalse();
         verify(mPreference).setChecked(false);

@@ -19,12 +19,12 @@ package com.android.settings.development;
 import android.content.Context;
 import android.os.RemoteException;
 import android.os.ServiceManager;
-import android.os.StrictMode;
-import android.os.SystemProperties;
-import androidx.annotation.VisibleForTesting;
-import androidx.preference.SwitchPreference;
-import androidx.preference.Preference;
+import android.sysprop.PlatformProperties;
 import android.view.IWindowManager;
+
+import androidx.annotation.VisibleForTesting;
+import androidx.preference.Preference;
+import androidx.preference.SwitchPreference;
 
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.development.DeveloperOptionsPreferenceController;
@@ -74,7 +74,7 @@ public class StrictModePreferenceController extends DeveloperOptionsPreferenceCo
     }
 
     private boolean isStrictModeEnabled() {
-        return SystemProperties.getBoolean(StrictMode.VISUAL_PROPERTY, false /* default */);
+        return PlatformProperties.strictmode_visual().orElse(false);
     }
 
     private void writeStrictModeVisualOptions(boolean isEnabled) {

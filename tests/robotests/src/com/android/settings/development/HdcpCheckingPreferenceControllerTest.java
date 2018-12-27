@@ -16,7 +16,6 @@
 
 package com.android.settings.development;
 
-import static com.android.settings.development.HdcpCheckingPreferenceController.HDCP_CHECKING_PROPERTY;
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.spy;
@@ -24,7 +23,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
-import android.os.SystemProperties;
+import android.sysprop.PlatformProperties;
 import androidx.preference.ListPreference;
 import androidx.preference.PreferenceScreen;
 
@@ -92,19 +91,19 @@ public class HdcpCheckingPreferenceControllerTest {
     public void onPreferenceChange_setNeverCheckHdcp_shouldEnableNeverCheckHdcp() {
         mController.onPreferenceChange(mPreference, mValues[0]);
 
-        assertThat(SystemProperties.get(HDCP_CHECKING_PROPERTY)).isEqualTo(mValues[0]);
+        assertThat(PlatformProperties.hdcp_checking().orElse("")).isEqualTo(mValues[0]);
     }
 
     @Test
     public void onPreferenceChange_setCheckDrm_shouldEnableCheckDrm() {
         mController.onPreferenceChange(mPreference, mValues[1]);
 
-        assertThat(SystemProperties.get(HDCP_CHECKING_PROPERTY)).isEqualTo(mValues[1]);
+        assertThat(PlatformProperties.hdcp_checking().orElse("")).isEqualTo(mValues[1]);
     }
 
     @Test
     public void updateState_neverCheckHdcp_shouldEnableNeverCheckHdcp() {
-        SystemProperties.set(HDCP_CHECKING_PROPERTY, mValues[0]);
+        PlatformProperties.hdcp_checking(mValues[0]);
 
         mController.updateState(mPreference);
 
@@ -114,7 +113,7 @@ public class HdcpCheckingPreferenceControllerTest {
 
     @Test
     public void updateState_checkDrm_shouldEnableCheckDrm() {
-        SystemProperties.set(HDCP_CHECKING_PROPERTY, mValues[1]);
+        PlatformProperties.hdcp_checking(mValues[1]);
 
         mController.updateState(mPreference);
 
@@ -124,7 +123,7 @@ public class HdcpCheckingPreferenceControllerTest {
 
     @Test
     public void updateState_noValueSet_shouldEnableCheckDrmAsDefault() {
-        SystemProperties.set(HDCP_CHECKING_PROPERTY, null);
+        PlatformProperties.hdcp_checking(null);
 
         mController.updateState(mPreference);
 

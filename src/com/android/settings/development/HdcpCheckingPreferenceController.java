@@ -18,11 +18,12 @@ package com.android.settings.development;
 
 import android.content.Context;
 import android.os.Build;
-import android.os.SystemProperties;
+import android.sysprop.PlatformProperties;
+import android.text.TextUtils;
+
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
-import android.text.TextUtils;
 
 import com.android.settings.R;
 import com.android.settings.core.PreferenceControllerMixin;
@@ -34,8 +35,6 @@ public class HdcpCheckingPreferenceController extends DeveloperOptionsPreference
 
     private static final String HDCP_CHECKING_KEY = "hdcp_checking";
 
-    @VisibleForTesting
-    static final String HDCP_CHECKING_PROPERTY = "persist.sys.hdcp_checking";
     @VisibleForTesting
     static final String USER_BUILD_TYPE = "user";
 
@@ -61,7 +60,7 @@ public class HdcpCheckingPreferenceController extends DeveloperOptionsPreference
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
-        SystemProperties.set(HDCP_CHECKING_PROPERTY, newValue.toString());
+        PlatformProperties.hdcp_checking(newValue.toString());
         updateHdcpValues((ListPreference) mPreference);
         SystemPropPoker.getInstance().poke();
         return true;
@@ -73,7 +72,7 @@ public class HdcpCheckingPreferenceController extends DeveloperOptionsPreference
     }
 
     private void updateHdcpValues(ListPreference preference) {
-        final String currentValue = SystemProperties.get(HDCP_CHECKING_PROPERTY);
+        final String currentValue = PlatformProperties.hdcp_checking().orElse("");
         int index = 1; // Defaults to drm-only. Needs to match with R.array.hdcp_checking_values
         for (int i = 0; i < mListValues.length; i++) {
             if (TextUtils.equals(currentValue, mListValues[i])) {

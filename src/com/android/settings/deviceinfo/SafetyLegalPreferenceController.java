@@ -16,7 +16,7 @@
 package com.android.settings.deviceinfo;
 
 import android.content.Context;
-import android.os.SystemProperties;
+import android.sysprop.PlatformProperties;
 import android.text.TextUtils;
 
 import com.android.settings.core.PreferenceControllerMixin;
@@ -26,8 +26,6 @@ public class SafetyLegalPreferenceController extends AbstractPreferenceControlle
         PreferenceControllerMixin {
 
     private static final String KEY_SAFETY_LEGAL = "safetylegal";
-    private static final String PROPERTY_URL_SAFETYLEGAL = "ro.url.safetylegal";
-
 
     public SafetyLegalPreferenceController(Context context) {
         super(context);
@@ -35,7 +33,7 @@ public class SafetyLegalPreferenceController extends AbstractPreferenceControlle
 
     @Override
     public boolean isAvailable() {
-        return !TextUtils.isEmpty(SystemProperties.get(PROPERTY_URL_SAFETYLEGAL));
+        return PlatformProperties.url_safety_legal().isPresent();
     }
 
     @Override

@@ -16,15 +16,15 @@
 
 package com.android.settings.development;
 
-import static com.android.settings.development.CoolColorTemperaturePreferenceController.COLOR_TEMPERATURE_PROPERTY;
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
-import android.os.SystemProperties;
-import androidx.preference.SwitchPreference;
+import android.sysprop.PlatformProperties;
+
 import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
 
@@ -59,7 +59,7 @@ public class CoolColorTemperaturePreferenceControllerTest {
     @Test
     public void onPreferenceChanged_turnOnCoolColorTemperature() {
         mController.onPreferenceChange(null, true);
-        final boolean mode = SystemProperties.getBoolean(COLOR_TEMPERATURE_PROPERTY, false);
+        final boolean mode = PlatformProperties.color_temperature().orElse(false);
 
         assertThat(mode).isTrue();
     }
@@ -67,14 +67,14 @@ public class CoolColorTemperaturePreferenceControllerTest {
     @Test
     public void onPreferenceChanged_turnOffCoolColorTemperature() {
         mController.onPreferenceChange(null, false);
-        final boolean mode = SystemProperties.getBoolean(COLOR_TEMPERATURE_PROPERTY, false);
+        final boolean mode = PlatformProperties.color_temperature().orElse(false);
 
         assertThat(mode).isFalse();
     }
 
     @Test
     public void updateState_preferenceShouldBeChecked() {
-        SystemProperties.set(COLOR_TEMPERATURE_PROPERTY, Boolean.toString(true));
+        PlatformProperties.color_temperature(true);
         mController.updateState(mPreference);
 
         verify(mPreference).setChecked(true);
@@ -82,7 +82,7 @@ public class CoolColorTemperaturePreferenceControllerTest {
 
     @Test
     public void updateState_preferenceShouldNotBeChecked() {
-        SystemProperties.set(COLOR_TEMPERATURE_PROPERTY, Boolean.toString(false));
+        PlatformProperties.color_temperature(false);
         mController.updateState(mPreference);
 
         verify(mPreference).setChecked(false);

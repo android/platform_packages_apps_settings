@@ -17,11 +17,13 @@
 package com.android.settings.notification;
 
 import android.content.Context;
-import android.os.SystemProperties;
+import android.sysprop.PlatformProperties;
+
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.SwitchPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
+
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.core.AbstractPreferenceController;
 
@@ -30,8 +32,6 @@ public class BootSoundPreferenceController extends AbstractPreferenceController
 
     // Boot Sounds needs to be a system property so it can be accessed during boot.
     private static final String KEY_BOOT_SOUNDS = "boot_sounds";
-    @VisibleForTesting
-    static final String PROPERTY_BOOT_SOUNDS = "persist.sys.bootanim.play_sound";
 
     public BootSoundPreferenceController(Context context) {
         super(context);
@@ -42,7 +42,7 @@ public class BootSoundPreferenceController extends AbstractPreferenceController
         super.displayPreference(screen);
         if (isAvailable()) {
             SwitchPreference preference = (SwitchPreference) screen.findPreference(KEY_BOOT_SOUNDS);
-            preference.setChecked(SystemProperties.getBoolean(PROPERTY_BOOT_SOUNDS, true));
+            preference.setChecked(PlatformProperties.boot_sounds().orElse(true));
         }
     }
 
@@ -50,7 +50,7 @@ public class BootSoundPreferenceController extends AbstractPreferenceController
     public boolean handlePreferenceTreeClick(Preference preference) {
         if (KEY_BOOT_SOUNDS.equals(preference.getKey())) {
             SwitchPreference switchPreference = (SwitchPreference) preference;
-            SystemProperties.set(PROPERTY_BOOT_SOUNDS, switchPreference.isChecked() ? "1" : "0");
+            PlatformProperties.boot_sounds(switchPreference.isChecked());
         }
         return false;
     }

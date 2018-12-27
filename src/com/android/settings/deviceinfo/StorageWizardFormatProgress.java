@@ -26,9 +26,9 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.IVoldTaskListener;
 import android.os.PersistableBundle;
-import android.os.SystemProperties;
 import android.os.storage.StorageManager;
 import android.os.storage.VolumeInfo;
+import android.sysprop.PlatformProperties;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -39,8 +39,6 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
 public class StorageWizardFormatProgress extends StorageWizardBase {
-    private static final String PROP_DEBUG_STORAGE_SLOW = "sys.debug.storage_slow";
-
     private boolean mFormatPrivate;
 
     private PartitionTask mTask;
@@ -186,7 +184,7 @@ public class StorageWizardFormatProgress extends StorageWizardBase {
 
                 Log.d(TAG, "New volume took " + mPrivateBench + "ms to run benchmark");
                 if (mPrivateBench > 2000
-                        || SystemProperties.getBoolean(PROP_DEBUG_STORAGE_SLOW, false)) {
+                        || PlatformProperties.debug_storage_slow().orElse(false)) {
                     mActivity.onFormatFinishedSlow();
                 } else {
                     mActivity.onFormatFinished();

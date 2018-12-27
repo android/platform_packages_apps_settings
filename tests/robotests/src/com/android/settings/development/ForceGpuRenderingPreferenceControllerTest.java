@@ -16,15 +16,15 @@
 
 package com.android.settings.development;
 
-import static com.android.settings.development.ForceGpuRenderingPreferenceController.HARDWARE_UI_PROPERTY;
 import static com.google.common.truth.Truth.assertThat;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
-import android.os.SystemProperties;
-import androidx.preference.SwitchPreference;
+import android.sysprop.PlatformProperties;
+
 import androidx.preference.PreferenceScreen;
+import androidx.preference.SwitchPreference;
 
 import com.android.settings.testutils.SettingsRobolectricTestRunner;
 
@@ -60,7 +60,7 @@ public class ForceGpuRenderingPreferenceControllerTest {
     public void onPreferenceChanged_settingEnabled_turnOnForceGpuRendering() {
         mController.onPreferenceChange(mPreference, true /* new value */);
 
-        final boolean mode = SystemProperties.getBoolean(HARDWARE_UI_PROPERTY, false /* default */);
+        final boolean mode = PlatformProperties.hardware_ui().orElse(false);
 
         assertThat(mode).isTrue();
     }
@@ -69,14 +69,14 @@ public class ForceGpuRenderingPreferenceControllerTest {
     public void onPreferenceChanged_settingDisabled_turnOffForceGpuRendering() {
         mController.onPreferenceChange(mPreference, false /* new value */);
 
-        final boolean mode = SystemProperties.getBoolean(HARDWARE_UI_PROPERTY, false /* default */);
+        final boolean mode = PlatformProperties.hardware_ui().orElse(false);
 
         assertThat(mode).isFalse();
     }
 
     @Test
     public void updateState_settingEnabled_preferenceShouldBeChecked() {
-        SystemProperties.set(HARDWARE_UI_PROPERTY, Boolean.toString(true));
+        PlatformProperties.hardware_ui(true);
         mController.updateState(mPreference);
 
         verify(mPreference).setChecked(true);
@@ -84,7 +84,7 @@ public class ForceGpuRenderingPreferenceControllerTest {
 
     @Test
     public void updateState_settingDisabled_preferenceShouldNotBeChecked() {
-        SystemProperties.set(HARDWARE_UI_PROPERTY, Boolean.toString(false));
+        PlatformProperties.hardware_ui(false);
         mController.updateState(mPreference);
 
         verify(mPreference).setChecked(false);
@@ -94,7 +94,7 @@ public class ForceGpuRenderingPreferenceControllerTest {
     public void onDeveloperOptionsDisabled_shouldDisablePreference() {
         mController.onDeveloperOptionsDisabled();
 
-        final boolean mode = SystemProperties.getBoolean(HARDWARE_UI_PROPERTY, false /* default */);
+        final boolean mode = PlatformProperties.hardware_ui().orElse(false);
 
         assertThat(mode).isFalse();
         verify(mPreference).setEnabled(false);

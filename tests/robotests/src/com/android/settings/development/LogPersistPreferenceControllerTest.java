@@ -20,9 +20,10 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-import androidx.lifecycle.LifecycleOwner;
 import android.content.Context;
-import android.os.SystemProperties;
+import android.sysprop.PlatformProperties;
+
+import androidx.lifecycle.LifecycleOwner;
 import androidx.preference.ListPreference;
 import androidx.preference.PreferenceScreen;
 
@@ -59,7 +60,7 @@ public class LogPersistPreferenceControllerTest {
         mLifecycle = new Lifecycle(mLifecycleOwner);
         mController = spy(new LogPersistPreferenceController(mContext, mFragment, mLifecycle));
         when(mScreen.findPreference(mController.getPreferenceKey())).thenReturn(mPreference);
-        SystemProperties.set("ro.debuggable", "1");
+        PlatformProperties.debuggable(1);
         mController.displayPreference(mScreen);
     }
 

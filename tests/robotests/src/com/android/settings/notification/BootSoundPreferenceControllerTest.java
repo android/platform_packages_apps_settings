@@ -21,7 +21,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
-import android.os.SystemProperties;
+import android.sysprop.PlatformProperties;
+
 import androidx.preference.SwitchPreference;
 import androidx.preference.PreferenceScreen;
 
@@ -33,7 +34,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Answers;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.robolectric.shadows.ShadowSystemProperties;
 
 @RunWith(SettingsRobolectricTestRunner.class)
 public class BootSoundPreferenceControllerTest {
@@ -75,7 +75,7 @@ public class BootSoundPreferenceControllerTest {
 
     @Test
     public void displayPreference_bootSoundEnabled_shouldCheckedPreference() {
-        ShadowSystemProperties.native_set(BootSoundPreferenceController.PROPERTY_BOOT_SOUNDS, "1");
+        PlatformProperties.boot_sounds(true);
 
         mController.displayPreference(mScreen);
 
@@ -84,7 +84,7 @@ public class BootSoundPreferenceControllerTest {
 
     @Test
     public void displayPreference_bootSoundDisabled_shouldUncheckedPreference() {
-        ShadowSystemProperties.native_set(BootSoundPreferenceController.PROPERTY_BOOT_SOUNDS, "0");
+        PlatformProperties.boot_sounds(false);
 
         mController.displayPreference(mScreen);
 
@@ -97,8 +97,7 @@ public class BootSoundPreferenceControllerTest {
 
         mController.handlePreferenceTreeClick(mPreference);
 
-        assertThat(SystemProperties.get(
-            BootSoundPreferenceController.PROPERTY_BOOT_SOUNDS, null)).isEqualTo("1");
+        assertThat(PlatformProperties.boot_sounds().orElse(false)).isEqualTo(true);
     }
 
     @Test
@@ -107,7 +106,6 @@ public class BootSoundPreferenceControllerTest {
 
         mController.handlePreferenceTreeClick(mPreference);
 
-        assertThat(SystemProperties.get(
-            BootSoundPreferenceController.PROPERTY_BOOT_SOUNDS, null)).isEqualTo("0");
+        assertThat(PlatformProperties.boot_sounds().orElse(true)).isEqualTo(false);
     }
 }
