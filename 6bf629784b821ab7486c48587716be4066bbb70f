@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a400c0ff_aa67624c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2018-12-27T08:32:02Z",
+      "side": 1,
+      "message": "I\u0027m not sure unit tests serve this adequately. What I would like to ensure is that other OEMs do not remove the UI.\nAs for aosp/703327 I\u0027ll merge it as soon as I manage to motivate someone to review it.",
+      "parentUuid": "73d3fe6c_95c0ee07",
+      "range": {
+        "startLine": 14,
+        "startChar": 6,
+        "endLine": 14,
+        "endChar": 12
+      },
+      "revId": "6bf629784b821ab7486c48587716be4066bbb70f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e5f969d1_acfcc89d",
         "filename": "res/layout/vpn_dialog.xml",
         "patchSetId": 3
