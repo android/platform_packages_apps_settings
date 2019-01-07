@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4dce707b_473b2f60",
+        "filename": "src/com/android/settings/dashboard/DashboardFragmentRegistry.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2019-01-07T20:04:13Z",
+      "side": 1,
+      "message": "extra ;",
+      "range": {
+        "startLine": 37,
+        "startChar": 42,
+        "endLine": 37,
+        "endChar": 43
+      },
+      "revId": "08e35b9d4080302925f033b9345513a05624fe56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da096a73_58e51b01",
+        "filename": "src/com/android/settings/dashboard/DashboardFragmentRegistry.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2019-01-07T20:04:13Z",
+      "side": 1,
+      "message": "not imported.",
+      "range": {
+        "startLine": 108,
+        "startChar": 39,
+        "endLine": 108,
+        "endChar": 63
+      },
+      "revId": "08e35b9d4080302925f033b9345513a05624fe56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddccabfd_668a5f62",
+        "filename": "src/com/android/settings/dashboard/DashboardFragmentRegistry.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2019-01-07T20:04:13Z",
+      "side": 1,
+      "message": "This is not defined in settingslib.",
+      "range": {
+        "startLine": 109,
+        "startChar": 28,
+        "endLine": 109,
+        "endChar": 44
+      },
+      "revId": "08e35b9d4080302925f033b9345513a05624fe56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
