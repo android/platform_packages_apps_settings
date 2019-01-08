@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "518b63be_bc48de52",
+        "filename": "src/com/android/settings/dashboard/DashboardFragmentRegistry.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1221462
+      },
+      "writtenOn": "2019-01-08T00:22:00Z",
+      "side": 1,
+      "message": "This is not necessary line, it should be removed because our local branch isn\u0027t same as AOSP",
+      "range": {
+        "startLine": 32,
+        "startChar": 64,
+        "endLine": 32,
+        "endChar": 65
+      },
+      "revId": "08e35b9d4080302925f033b9345513a05624fe56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4dce707b_473b2f60",
         "filename": "src/com/android/settings/dashboard/DashboardFragmentRegistry.java",
         "patchSetId": 2
@@ -13,6 +36,30 @@
       "writtenOn": "2019-01-07T20:04:13Z",
       "side": 1,
       "message": "extra ;",
+      "range": {
+        "startLine": 37,
+        "startChar": 42,
+        "endLine": 37,
+        "endChar": 43
+      },
+      "revId": "08e35b9d4080302925f033b9345513a05624fe56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bc850ac_46315c0b",
+        "filename": "src/com/android/settings/dashboard/DashboardFragmentRegistry.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1221462
+      },
+      "writtenOn": "2019-01-08T00:22:00Z",
+      "side": 1,
+      "message": "Sorry, it\u0027s removed",
+      "parentUuid": "4dce707b_473b2f60",
       "range": {
         "startLine": 37,
         "startChar": 42,
@@ -48,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "56c39e00_1b5c10e6",
+        "filename": "src/com/android/settings/dashboard/DashboardFragmentRegistry.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1221462
+      },
+      "writtenOn": "2019-01-08T00:22:00Z",
+      "side": 1,
+      "message": "This is not necessary line, it should be removed because our local branch isn\u0027t same as AOSP",
+      "parentUuid": "da096a73_58e51b01",
+      "range": {
+        "startLine": 108,
+        "startChar": 39,
+        "endLine": 108,
+        "endChar": 63
+      },
+      "revId": "08e35b9d4080302925f033b9345513a05624fe56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ddccabfd_668a5f62",
         "filename": "src/com/android/settings/dashboard/DashboardFragmentRegistry.java",
         "patchSetId": 2
@@ -64,6 +135,53 @@
         "startChar": 28,
         "endLine": 109,
         "endChar": 44
+      },
+      "revId": "08e35b9d4080302925f033b9345513a05624fe56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "992ca3cd_e677ac26",
+        "filename": "src/com/android/settings/dashboard/DashboardFragmentRegistry.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1221462
+      },
+      "writtenOn": "2019-01-08T00:22:00Z",
+      "side": 1,
+      "message": "This is not necessary line, it should be removed because our local branch isn\u0027t same as AOSP",
+      "parentUuid": "ddccabfd_668a5f62",
+      "range": {
+        "startLine": 109,
+        "startChar": 28,
+        "endLine": 109,
+        "endChar": 44
+      },
+      "revId": "08e35b9d4080302925f033b9345513a05624fe56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df0bf0a9_375a80c6",
+        "filename": "src/com/android/settings/dashboard/DashboardFragmentRegistry.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1221462
+      },
+      "writtenOn": "2019-01-08T00:22:00Z",
+      "side": 1,
+      "message": "This is not necessary line, it should be removed because our local branch isn\u0027t same as AOSP",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 57
       },
       "revId": "08e35b9d4080302925f033b9345513a05624fe56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
