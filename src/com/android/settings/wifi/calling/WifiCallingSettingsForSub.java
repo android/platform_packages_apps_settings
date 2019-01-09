@@ -33,6 +33,7 @@ import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneStateListener;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
+import android.telephony.ims.ProvisioningManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -42,6 +43,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.android.ims.ImsConfig;
+import com.android.ims.ImsException;
 import com.android.ims.ImsManager;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.internal.telephony.Phone;
@@ -147,6 +149,19 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
                         startActivity(carrierAppIntent);
                     }
                     return true;
+                }
+            };
+
+    private final ProvisioningManager.Callback mProvisioningCallback =
+            new ProvisioningManager.Callback() {
+                @Override
+                public void onProvisioningIntChanged(int item, int value) {
+                    if (item == ImsConfig.ConfigConstants.VOICE_OVER_WIFI_SETTING_ENABLED
+                            || item == ImsConfig.ConfigConstants.VLT_SETTING_ENABLED) {
+                        // The provisioning policy might have changed. Update the body to make sure
+                        // this change takes effect if needed.
+                        updateBody();
+                    }
                 }
             };
 
@@ -272,6 +287,13 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
     }
 
     private void updateBody() {
+        if (!mImsManager.isWfcProvisionedOnDevice()) {
+            // This screen is not allowed to be shown due to provisioning policy and should
+            // therefore be closed.
+            finish();
+            return;
+        }
+
         CarrierConfigManager configManager = (CarrierConfigManager)
                 getSystemService(Context.CARRIER_CONFIG_SERVICE);
         boolean isWifiOnlySupported = true;
@@ -333,6 +355,14 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
         if (intent.getBooleanExtra(Phone.EXTRA_KEY_ALERT_SHOW, false)) {
             showAlert(intent);
         }
+
+        // Register callback for provisioning changes.
+        try {
+            mImsManager.getConfigInterface().addConfigCallback(mProvisioningCallback);
+        } catch (ImsException e) {
+            Log.w(TAG, "onResume: Unable to register callback for provisioning changes.");
+        }
+
     }
 
     @Override
@@ -351,6 +381,15 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
         }
 
         context.unregisterReceiver(mIntentReceiver);
+
+        // Remove callback for provisioning changes.
+        try {
+            mImsManager.getConfigInterface().removeConfigCallback(
+                    mProvisioningCallback.getBinder());
+        } catch (ImsException e) {
+            Log.w(TAG, "onPause: Unable to remove callback for provisioning changes");
+        }
+
     }
 
     /**
