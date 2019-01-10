@@ -283,6 +283,23 @@ public class ApnEditorTest {
     }
 
     @Test
+    public void testValidateApnData_disallowAddingApnString_shouldReturnErrorMessage() {
+        // GIVEN a valid apn data
+        mApnEditorUT.mApnData.mData[ApnEditor.APN_INDEX] = "apn_name.test";
+        mApnEditorUT.fillUI(true /* firstTime */);
+
+        // GIVEN a disallow apn strings.
+        mApnEditorUT.mDisallowAddingApnStrings = new String [] {".mock", ".test"};
+
+        // WHEN validate the apn data
+        final String errMsg = mApnEditorUT.validateApnData();
+
+        // THEN the error message indicated not allow adding the apn is returned.
+        assertThat(errMsg).isEqualTo(mResources.getString(
+                R.string.error_disallow_adding_apn_string));
+    }
+
+    @Test
     public void testValidateApnData_mccInvalid_shouldReturnErrorMessage() {
         // The length of the mcc should be 3
         mApnEditorUT.mApnData.mData[ApnEditor.MCC_INDEX] = "1324";
