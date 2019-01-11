@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65459261_8b450671",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 10089,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2019-01-11T00:32:42Z",
+      "side": 1,
+      "message": "CHAR LIMIT\u003dNONE",
+      "range": {
+        "startLine": 10089,
+        "startChar": 89,
+        "endLine": 10089,
+        "endChar": 102
+      },
+      "revId": "e1343a5ce204958033a7385a5c3af6935d9a1e60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

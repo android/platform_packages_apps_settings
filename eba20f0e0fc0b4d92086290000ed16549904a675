@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "28625583_640e745c",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 10
+      },
+      "lineNbr": 10101,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2019-01-11T00:32:42Z",
+      "side": 1,
+      "message": "NONE",
+      "range": {
+        "startLine": 10101,
+        "startChar": 100,
+        "endLine": 10101,
+        "endChar": 102
+      },
+      "revId": "eba20f0e0fc0b4d92086290000ed16549904a675",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0df518e6_282a7d67",
+        "filename": "tests/robotests/src/com/android/settings/wifi/calling/LocationPolicyDisclaimerTest.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2019-01-11T00:32:42Z",
+      "side": 1,
+      "message": "nit: can you try to use RobolectricTestRunner and check it?\n\nIn internal master we removed SettingsRobolectricTestRunner.class",
+      "range": {
+        "startLine": 45,
+        "startChar": 9,
+        "endLine": 45,
+        "endChar": 38
+      },
+      "revId": "eba20f0e0fc0b4d92086290000ed16549904a675",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e215b11_bc7363c8",
+        "filename": "tests/robotests/src/com/android/settings/wifi/calling/LocationPolicyDisclaimerTest.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2019-01-11T00:32:42Z",
+      "side": 1,
+      "message": "@Mock\nprivate CarrierConfigManager mCarrierConfigManager;\n\nOtherwise you don\u0027t need MockitoAnnotations.initMocks(this);",
+      "range": {
+        "startLine": 58,
+        "startChar": 7,
+        "endLine": 58,
+        "endChar": 82
+      },
+      "revId": "eba20f0e0fc0b4d92086290000ed16549904a675",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80ac9a4e_2b1ec47e",
+        "filename": "tests/robotests/src/com/android/settings/wifi/calling/LocationPolicyDisclaimerTest.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2019-01-11T00:32:42Z",
+      "side": 1,
+      "message": "nit: line length",
+      "range": {
+        "startLine": 84,
+        "startChar": 7,
+        "endLine": 84,
+        "endChar": 102
+      },
+      "revId": "eba20f0e0fc0b4d92086290000ed16549904a675",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
