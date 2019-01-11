@@ -32,10 +32,12 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.content.res.Resources;
 import android.net.ConnectivityManager;
 import android.os.IBinder;
 import android.os.ResultReceiver;
 import android.os.SystemClock;
+import android.telephony.SubscriptionManager;
 import android.text.TextUtils;
 import android.util.ArrayMap;
 import android.util.Log;
@@ -65,7 +67,7 @@ public class TetherService extends Service {
 
     private int mCurrentTypeIndex;
     private boolean mInProvisionCheck;
-    private UsageStatsManagerWrapper mUsageManagerWrapper;
+    private TetherServiceWrapper mWrapper;
     private ArrayList<Integer> mCurrentTethers;
     private ArrayMap<Integer, List<ResultReceiver>> mPendingCallbacks;
     private HotspotOffReceiver mHotspotReceiver;
@@ -79,7 +81,7 @@ public class TetherService extends Service {
     public void onCreate() {
         super.onCreate();
         if (DEBUG) Log.d(TAG, "Creating TetherService");
-        String provisionResponse = getResources().getString(
+        String provisionResponse = getResourcesWrapper().getString(
                 com.android.internal.R.string.config_mobile_hotspot_provision_response);
         registerReceiver(mReceiver, new IntentFilter(provisionResponse),
                 android.Manifest.permission.CONNECTIVITY_INTERNAL, null);
@@ -91,9 +93,6 @@ public class TetherService extends Service {
         mPendingCallbacks.put(ConnectivityManager.TETHERING_USB, new ArrayList<ResultReceiver>());
         mPendingCallbacks.put(
                 ConnectivityManager.TETHERING_BLUETOOTH, new ArrayList<ResultReceiver>());
-        if (mUsageManagerWrapper == null) {
-            mUsageManagerWrapper = new UsageStatsManagerWrapper(this);
-        }
         mHotspotReceiver = new HotspotOffReceiver(this);
     }
 
@@ -258,7 +257,7 @@ public class TetherService extends Service {
     }
 
     private Intent getProvisionBroadcastIntent(int index) {
-        String provisionAction = getResources().getString(
+        String provisionAction = getResourcesWrapper().getString(
                 com.android.internal.R.string.config_mobile_hotspot_provision_app_no_ui);
         Intent intent = new Intent(provisionAction);
         int type = mCurrentTethers.get(index);
@@ -282,7 +281,7 @@ public class TetherService extends Service {
         for (ResolveInfo resolver : resolvers) {
             if (resolver.activityInfo.applicationInfo.isSystemApp()) {
                 String packageName = resolver.activityInfo.packageName;
-                mUsageManagerWrapper.setAppInactive(packageName, false);
+                getTetherServiceWrapper().setAppInactive(packageName, false);
             }
         }
     }
@@ -294,7 +293,7 @@ public class TetherService extends Service {
 
         PendingIntent pendingIntent = PendingIntent.getService(this, 0, intent, 0);
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        int period = getResources().getInteger(
+        int period = getResourcesWrapper().getInteger(
                 com.android.internal.R.integer.config_mobile_hotspot_provision_check_period);
         long periodMs = period * MS_PER_HOUR;
         long firstTime = SystemClock.elapsedRealtime() + periodMs;
@@ -347,7 +346,7 @@ public class TetherService extends Service {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (DEBUG) Log.d(TAG, "Got provision result " + intent);
-            String provisionResponse = getResources().getString(
+            String provisionResponse = getResourcesWrapper().getString(
                     com.android.internal.R.string.config_mobile_hotspot_provision_response);
 
             if (provisionResponse.equals(intent.getAction())) {
@@ -385,25 +384,47 @@ public class TetherService extends Service {
     };
 
     @VisibleForTesting
-    void setUsageStatsManagerWrapper(UsageStatsManagerWrapper wrapper) {
-        mUsageManagerWrapper = wrapper;
+    void setTetherServiceWrapper(TetherServiceWrapper wrapper) {
+        mWrapper = wrapper;
+    }
+
+    private TetherServiceWrapper getTetherServiceWrapper() {
+        if (mWrapper == null) {
+            mWrapper = new TetherServiceWrapper(this);
+        }
+        return mWrapper;
     }
 
     /**
-     * A static helper class used for tests. UsageStatsManager cannot be mocked out becasue
-     * it's marked final. This class can be mocked out instead.
+     * A static helper class used for tests. UsageStatsManager cannot be mocked out because
+     * it's marked final. Static method SubscriptionManager#getResourcesForSubId also cannot
+     * be mocked. This class can be mocked out instead.
      */
     @VisibleForTesting
-    public static class UsageStatsManagerWrapper {
+    public static class TetherServiceWrapper {
         private final UsageStatsManager mUsageStatsManager;
 
-        UsageStatsManagerWrapper(Context context) {
+        TetherServiceWrapper(Context context) {
             mUsageStatsManager = (UsageStatsManager)
                     context.getSystemService(Context.USAGE_STATS_SERVICE);
         }
 
         void setAppInactive(String packageName, boolean isInactive) {
             mUsageStatsManager.setAppInactive(packageName, isInactive);
+        }
+
+        int getDefaultDataSubscriptionId() {
+            return SubscriptionManager.getDefaultDataSubscriptionId();
+        }
+    }
+
+    @VisibleForTesting
+    Resources getResourcesWrapper() {
+        final int subId = getTetherServiceWrapper().getDefaultDataSubscriptionId();
+        if (subId != SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            return SubscriptionManager.getResourcesForSubId(this, subId);
+        } else {
+            return getResources();
         }
     }
 }
