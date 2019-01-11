@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d6dbb16a_8a786134",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 7
+      },
+      "lineNbr": 10107,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2019-01-11T00:40:00Z",
+      "side": 1,
+      "message": "NONE",
+      "range": {
+        "startLine": 10107,
+        "startChar": 82,
+        "endLine": 10107,
+        "endChar": 84
+      },
+      "revId": "912a81c66d988c3f11973ee28a97ba2cf4279106",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0eb8d5dd_4151859d",
+        "filename": "src/com/android/settings/wifi/calling/EmergencyCallLimitationDisclaimer.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2019-01-11T00:40:00Z",
+      "side": 1,
+      "message": "public class",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 5
+      },
+      "revId": "912a81c66d988c3f11973ee28a97ba2cf4279106",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "723f3923_96a17a0d",
+        "filename": "src/com/android/settings/wifi/calling/EmergencyCallLimitationDisclaimer.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2019-01-11T00:40:00Z",
+      "side": 1,
+      "message": "public",
+      "range": {
+        "startLine": 36,
+        "startChar": 4,
+        "endLine": 36,
+        "endChar": 37
+      },
+      "revId": "912a81c66d988c3f11973ee28a97ba2cf4279106",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "916c9d48_91a94fe8",
+        "filename": "src/com/android/settings/wifi/calling/EmergencyCallLimitationDisclaimer.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2019-01-11T00:40:00Z",
+      "side": 1,
+      "message": "final int",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 11
+      },
+      "revId": "912a81c66d988c3f11973ee28a97ba2cf4279106",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88c37079_a13efa21",
+        "filename": "tests/robotests/src/com/android/settings/wifi/calling/EmergencyCallLimitationDisclaimerTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2019-01-11T00:40:00Z",
+      "side": 1,
+      "message": "Same, Can you try RobolectricTestRunner, hope it works.",
+      "range": {
+        "startLine": 43,
+        "startChar": 9,
+        "endLine": 43,
+        "endChar": 38
+      },
+      "revId": "912a81c66d988c3f11973ee28a97ba2cf4279106",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83962c1a_ab485af9",
+        "filename": "tests/robotests/src/com/android/settings/wifi/calling/EmergencyCallLimitationDisclaimerTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2019-01-11T00:40:00Z",
+      "side": 1,
+      "message": "nit: change it to\n\n@Mock\nprivate CarrierConfigManager mCarrierConfigManager;",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 82
+      },
+      "revId": "912a81c66d988c3f11973ee28a97ba2cf4279106",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ce347c2_3df5d8a3",
+        "filename": "tests/robotests/src/com/android/settings/wifi/calling/EmergencyCallLimitationDisclaimerTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2019-01-11T00:40:00Z",
+      "side": 1,
+      "message": "use google truth assertThat() in all robo tests.\n\nassertThat(disclaimerItme.shouldShow()).isTrue();",
+      "range": {
+        "startLine": 76,
+        "startChar": 8,
+        "endLine": 76,
+        "endChar": 27
+      },
+      "revId": "912a81c66d988c3f11973ee28a97ba2cf4279106",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c04a78f_7592072d",
+        "filename": "tests/robotests/src/com/android/settings/wifi/calling/EmergencyCallLimitationDisclaimerTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2019-01-11T00:40:00Z",
+      "side": 1,
+      "message": "assertThat(disclaimerItme.shouldShow()).isFalse();",
+      "range": {
+        "startLine": 89,
+        "startChar": 8,
+        "endLine": 89,
+        "endChar": 28
+      },
+      "revId": "912a81c66d988c3f11973ee28a97ba2cf4279106",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22b0ef38_5b835456",
+        "filename": "tests/robotests/src/com/android/settings/wifi/calling/EmergencyCallLimitationDisclaimerTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2019-01-11T00:40:00Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 104,
+        "startChar": 8,
+        "endLine": 104,
+        "endChar": 28
+      },
+      "revId": "912a81c66d988c3f11973ee28a97ba2cf4279106",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3bd86d1_f1b8f588",
+        "filename": "tests/robotests/src/com/android/settings/wifi/calling/EmergencyCallLimitationDisclaimerTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2019-01-11T00:40:00Z",
+      "side": 1,
+      "message": "and here.",
+      "range": {
+        "startLine": 118,
+        "startChar": 7,
+        "endLine": 118,
+        "endChar": 27
+      },
+      "revId": "912a81c66d988c3f11973ee28a97ba2cf4279106",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
