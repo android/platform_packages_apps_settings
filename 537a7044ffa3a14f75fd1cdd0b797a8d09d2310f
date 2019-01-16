@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "573ce721_49468297",
+        "filename": "tests/robotests/res/values/strings.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2019-01-16T23:21:15Z",
+      "side": 1,
+      "message": "Do you really need this? As long as you use SettingsRoboRunner, it should find correct resrouce for you.",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 12
+      },
+      "revId": "537a7044ffa3a14f75fd1cdd0b797a8d09d2310f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21fb3a5b_fb976f57",
+        "filename": "tests/robotests/src/com/android/settings/wifi/calling/ListWithEntrySummaryPreferenceTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2019-01-16T23:21:15Z",
+      "side": 1,
+      "message": "please remove this, just pass in null to preference and then call\n\nmPreference.setXXX() to update the summary.\n\nMain reason is that I don\u0027t want to have hardcoded \"wifi_callilng_mode\" here. And also it make code smaller.",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 95
+      },
+      "revId": "537a7044ffa3a14f75fd1cdd0b797a8d09d2310f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d6c8543_42e57799",
+        "filename": "tests/robotests/src/com/android/settings/wifi/calling/ListWithEntrySummaryPreferenceTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2019-01-16T23:21:15Z",
+      "side": 1,
+      "message": "name convention is:\n\nfunctionName_condition_expectedResult()\n\nYou can find some example in other tests. Please update all your test.",
+      "range": {
+        "startLine": 65,
+        "startChar": 16,
+        "endLine": 65,
+        "endChar": 60
+      },
+      "revId": "537a7044ffa3a14f75fd1cdd0b797a8d09d2310f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7948ffdb_ae94c103",
+        "filename": "tests/robotests/src/com/android/settings/wifi/calling/ListWithEntrySummaryPreferenceTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2019-01-16T23:21:15Z",
+      "side": 1,
+      "message": "please use assertThat() in google truth.\n\nYou can find some example in other tests.",
+      "range": {
+        "startLine": 71,
+        "startChar": 12,
+        "endLine": 71,
+        "endChar": 24
+      },
+      "revId": "537a7044ffa3a14f75fd1cdd0b797a8d09d2310f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39279bed_795acaea",
+        "filename": "tests/robotests/src/com/android/settings/wifi/calling/ListWithEntrySummaryPreferenceTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2019-01-16T23:21:15Z",
+      "side": 1,
+      "message": "Then we can remove this method",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 142,
+        "endChar": 5
+      },
+      "revId": "537a7044ffa3a14f75fd1cdd0b797a8d09d2310f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
