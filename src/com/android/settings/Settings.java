@@ -20,6 +20,8 @@ import android.os.Bundle;
 
 import com.android.settings.enterprise.EnterprisePrivacySettings;
 
+/*test*/
+
 /**
  * Top-level Settings activity
  */
