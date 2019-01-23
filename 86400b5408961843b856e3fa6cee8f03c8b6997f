@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c31d2013_0a74147e",
+        "filename": "src/com/android/settings/network/ApnEditor.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 1213,
+      "author": {
+        "id": 1434023
+      },
+      "writtenOn": "2019-01-23T16:11:30Z",
+      "side": 1,
+      "message": "Do we need null check here ?",
+      "revId": "86400b5408961843b856e3fa6cee8f03c8b6997f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
