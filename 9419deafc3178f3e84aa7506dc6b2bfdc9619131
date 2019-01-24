@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2079219_6e16e92d",
+        "filename": "src/com/android/settings/wifi/tether/TetherService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-24T08:19:28Z",
+      "side": 1,
+      "message": "Nit: consider doing what other tests in connectivity do.\n- Name the class TetherServiceDependencies and the field mDependencies.\n- Initialize the field in the constructor (or in this case, in onCreate())\n- Have the field initialized with mDependencies \u003d makeDependencies();\n- The default implementation of makeDependencies just returns new TetherServiceDependencies().\n- The test only has to override makeDependencies.\n- The test does not have to call setTetherServiceWrapper.\n- The code can access the member directly (and if initialized in the constructor, the member can be final).\n\nI don\u0027t have as strong opinion though. What you\u0027re doing here is fine already.",
+      "range": {
+        "startLine": 387,
+        "startChar": 9,
+        "endLine": 387,
+        "endChar": 32
+      },
+      "revId": "9419deafc3178f3e84aa7506dc6b2bfdc9619131",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca425703_4cabc71f",
+        "filename": "tests/unit/src/com/android/settings/wifi/tether/TetherServiceTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-24T08:19:28Z",
+      "side": 1,
+      "message": "Do you need this to be static and initialize it with every call of setUp() ? ISTM you could simply make that\n\n@Mock private MockResources mResources.",
+      "range": {
+        "startLine": 85,
+        "startChar": 12,
+        "endLine": 85,
+        "endChar": 18
+      },
+      "revId": "9419deafc3178f3e84aa7506dc6b2bfdc9619131",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
