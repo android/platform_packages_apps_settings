@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d73b8043_ecee3522",
+        "filename": "src/com/android/settings/wifi/tether/TetherService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-01-24T11:29:45Z",
+      "side": 1,
+      "message": "Thanks your good suggestion. But this change is modified in Settings and I can find this wrapper test style in some places ex: WebViewAppPicker.java. So I prefer to use original method.",
+      "parentUuid": "d2079219_6e16e92d",
+      "range": {
+        "startLine": 387,
+        "startChar": 9,
+        "endLine": 387,
+        "endChar": 32
+      },
+      "revId": "9419deafc3178f3e84aa7506dc6b2bfdc9619131",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ca425703_4cabc71f",
         "filename": "tests/unit/src/com/android/settings/wifi/tether/TetherServiceTest.java",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "9419deafc3178f3e84aa7506dc6b2bfdc9619131",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "397a9d79_c9b7b69c",
+        "filename": "tests/unit/src/com/android/settings/wifi/tether/TetherServiceTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-01-24T11:29:45Z",
+      "side": 1,
+      "message": "Ack, you are right. The static is redundant.",
+      "parentUuid": "ca425703_4cabc71f",
+      "range": {
+        "startLine": 85,
+        "startChar": 12,
+        "endLine": 85,
+        "endChar": 18
+      },
+      "revId": "9419deafc3178f3e84aa7506dc6b2bfdc9619131",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
