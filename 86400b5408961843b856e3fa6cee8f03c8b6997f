@@ -34,6 +34,24 @@
       "revId": "86400b5408961843b856e3fa6cee8f03c8b6997f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4ed3109_419cb3da",
+        "filename": "src/com/android/settings/network/ApnEditor.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 1213,
+      "author": {
+        "id": 1434023
+      },
+      "writtenOn": "2019-01-24T02:20:21Z",
+      "side": 1,
+      "message": "Thanks for providing Info. I just needed some inputs on this function calling path.",
+      "parentUuid": "58f9adf4_03cc399f",
+      "revId": "86400b5408961843b856e3fa6cee8f03c8b6997f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
