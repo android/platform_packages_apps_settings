@@ -68,6 +68,12 @@ public class StatsManagerConfig {
             AnomalyType.EXCESSIVE_CRASH_RATE,
             AnomalyType.EXCESSIVE_CRASH_LOOPING,
             AnomalyType.NUMBER_OF_OPEN_FILES,
+            AnomalyType.EXCESSIVE_CPU_USAGE_IN_BACKGROUND,
+            AnomalyType.EXCESSIVE_CAMERA_USAGE_IN_BACKGROUND,
+            AnomalyType.EXCESSIVE_CONTACT_ACCESS,
+            AnomalyType.EXCESSIVE_AUDIO_IN_BACKGROUND,
+            AnomalyType.EXCESSIVE_CRASH_ANR_IN_BACKGROUND,
+            AnomalyType.BATTERY_DRAIN_FROM_UNUSED_APP,
     })
     public @interface AnomalyType {
         /**
@@ -151,7 +157,7 @@ public class StatsManagerConfig {
 
         /**
          * The application exceeded the maximum number of syncs while in the background.
-         */
+         EXCESSIVE_CAMERA_USAGE_IN_BACKGROUND*/
         int EXCESSIVE_BACKGROUND_SYNCS = 13;
 
         /**
@@ -221,6 +227,40 @@ public class StatsManagerConfig {
          * The application crashed because no more file descriptors were available.
          */
         int NUMBER_OF_OPEN_FILES = 26;
+
+        /**
+         * The application used an excessive amount of CPU while in a background
+         * process state.
+         */
+        int EXCESSIVE_CPU_USAGE_IN_BACKGROUND = 27;
+
+        /**
+         * The application used an excessive amount of camera resources while in a
+         * background process state.
+         */
+        int EXCESSIVE_CAMERA_USAGE_IN_BACKGROUND = 28;
+
+        /**
+         * The application made excessive repeated requests to the contacts content provider.
+         */
+        int EXCESSIVE_CONTACT_ACCESS = 29;
+
+        /**
+         * The application played an excessive amount of audio while in background process
+         * states (e.g. with no foreground service running).
+         */
+        int EXCESSIVE_AUDIO_IN_BACKGROUND = 30;
+
+        /**
+         * The application had an excessive number of crashes or ANRs while in background
+         * process states.
+         */
+        int EXCESSIVE_CRASH_ANR_IN_BACKGROUND = 31;
+
+        /**
+         * The app was unused by the user, yet still caused an excessive amount of battery drain.
+         */
+        int BATTERY_DRAIN_FROM_UNUSED_APP = 32;
     }
 
 }
