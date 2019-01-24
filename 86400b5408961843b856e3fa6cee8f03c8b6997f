@@ -52,6 +52,24 @@
       "revId": "86400b5408961843b856e3fa6cee8f03c8b6997f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed01f7ed_36cdb90c",
+        "filename": "src/com/android/settings/network/ApnEditor.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 1213,
+      "author": {
+        "id": 1413437
+      },
+      "writtenOn": "2019-01-24T02:22:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a4ed3109_419cb3da",
+      "revId": "86400b5408961843b856e3fa6cee8f03c8b6997f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
