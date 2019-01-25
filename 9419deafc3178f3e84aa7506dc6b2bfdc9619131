@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "3d23f061_403c9b52",
+        "filename": "src/com/android/settings/wifi/tether/TetherService.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-01-25T01:43:24Z",
+      "side": 1,
+      "message": "Makes sense, thanks. Let\u0027s keep close to the local style.",
+      "parentUuid": "d73b8043_ecee3522",
+      "range": {
+        "startLine": 387,
+        "startChar": 9,
+        "endLine": 387,
+        "endChar": 32
+      },
+      "revId": "9419deafc3178f3e84aa7506dc6b2bfdc9619131",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca425703_4cabc71f",
         "filename": "tests/unit/src/com/android/settings/wifi/tether/TetherServiceTest.java",
         "patchSetId": 2
