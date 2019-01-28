@@ -223,6 +223,13 @@
             android:title="@string/wifi_connected_mac_randomization"
             android:summary="@string/wifi_connected_mac_randomization_summary" />
 
+        <ListPreference
+            android:key="nw_dns_resolver_log"
+            android:title="@string/nw_dns_resolver_log_title"
+            android:dialogTitle="@string/nw_dns_resolver_log_dialog_title"
+            android:entries="@array/nw_dns_resolver_log_titles"
+            android:entryValues="@array/nw_dns_resolver_log_values" />
+
         <SwitchPreference
             android:key="mobile_data_always_on"
             android:title="@string/mobile_data_always_on"
