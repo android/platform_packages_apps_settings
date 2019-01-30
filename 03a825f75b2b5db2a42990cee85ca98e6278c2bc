@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8504551a_d8862592",
+        "filename": "tests/robotests/src/com/android/settings/network/MobileNetworkPreferenceControllerTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2019-01-30T02:13:07Z",
+      "side": 1,
+      "message": "move it to line 67 and make it capital.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 0
+      },
+      "revId": "03a825f75b2b5db2a42990cee85ca98e6278c2bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
