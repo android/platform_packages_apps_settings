@@ -22,6 +22,30 @@
       "revId": "03a825f75b2b5db2a42990cee85ca98e6278c2bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eda53ccc_153f5229",
+        "filename": "tests/robotests/src/com/android/settings/network/MobileNetworkPreferenceControllerTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1403772
+      },
+      "writtenOn": "2019-01-31T19:14:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8504551a_d8862592",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 0
+      },
+      "revId": "03a825f75b2b5db2a42990cee85ca98e6278c2bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
