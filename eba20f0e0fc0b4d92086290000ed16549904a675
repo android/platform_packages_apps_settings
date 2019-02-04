@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "a359e1e5_e12d1ff2",
+        "filename": "tests/robotests/src/com/android/settings/wifi/calling/LocationPolicyDisclaimerTest.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2019-02-04T10:23:30Z",
+      "side": 1,
+      "message": "Yes, we confirmed that all test case are passed.",
+      "parentUuid": "c4705186_65eb84f8",
+      "range": {
+        "startLine": 45,
+        "startChar": 9,
+        "endLine": 45,
+        "endChar": 38
+      },
+      "revId": "eba20f0e0fc0b4d92086290000ed16549904a675",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6e215b11_bc7363c8",
         "filename": "tests/robotests/src/com/android/settings/wifi/calling/LocationPolicyDisclaimerTest.java",
         "patchSetId": 10
