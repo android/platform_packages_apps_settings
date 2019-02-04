@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "db6ab6ed_351a3dcc",
+        "filename": "tests/robotests/res/values/strings.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2019-02-04T10:21:09Z",
+      "side": 1,
+      "message": "Yes, we need this. Without this, NullPointerException occurs even if we use SettingsRoboRunner.\nIt seems that SettingsRoboRunner(ShadowAssetManage) can not find the resource that indirectly refers to FWK resource.\n\nWe changed to use RobolectricTestRunner from SettingsRobolectricTestRunner according to the comment of bug:67872298.",
+      "parentUuid": "573ce721_49468297",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 12
+      },
+      "revId": "537a7044ffa3a14f75fd1cdd0b797a8d09d2310f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21fb3a5b_fb976f57",
         "filename": "tests/robotests/src/com/android/settings/wifi/calling/ListWithEntrySummaryPreferenceTest.java",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "537a7044ffa3a14f75fd1cdd0b797a8d09d2310f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2089e99_e7b35323",
+        "filename": "tests/robotests/src/com/android/settings/wifi/calling/ListWithEntrySummaryPreferenceTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2019-02-04T10:21:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21fb3a5b_fb976f57",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 95
+      },
+      "revId": "537a7044ffa3a14f75fd1cdd0b797a8d09d2310f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bb1a6e8d_644d7908",
+        "filename": "tests/robotests/src/com/android/settings/wifi/calling/ListWithEntrySummaryPreferenceTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2019-02-04T10:21:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d6c8543_42e57799",
+      "range": {
+        "startLine": 65,
+        "startChar": 16,
+        "endLine": 65,
+        "endChar": 60
+      },
+      "revId": "537a7044ffa3a14f75fd1cdd0b797a8d09d2310f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7948ffdb_ae94c103",
         "filename": "tests/robotests/src/com/android/settings/wifi/calling/ListWithEntrySummaryPreferenceTest.java",
         "patchSetId": 6
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "edd4f595_0f5a1744",
+        "filename": "tests/robotests/src/com/android/settings/wifi/calling/ListWithEntrySummaryPreferenceTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2019-02-04T10:21:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7948ffdb_ae94c103",
+      "range": {
+        "startLine": 71,
+        "startChar": 12,
+        "endLine": 71,
+        "endChar": 24
+      },
+      "revId": "537a7044ffa3a14f75fd1cdd0b797a8d09d2310f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39279bed_795acaea",
         "filename": "tests/robotests/src/com/android/settings/wifi/calling/ListWithEntrySummaryPreferenceTest.java",
         "patchSetId": 6
@@ -114,6 +210,30 @@
       "revId": "537a7044ffa3a14f75fd1cdd0b797a8d09d2310f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d66d8690_0248419d",
+        "filename": "tests/robotests/src/com/android/settings/wifi/calling/ListWithEntrySummaryPreferenceTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2019-02-04T10:21:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39279bed_795acaea",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 142,
+        "endChar": 5
+      },
+      "revId": "537a7044ffa3a14f75fd1cdd0b797a8d09d2310f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
