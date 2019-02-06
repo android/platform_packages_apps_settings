@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eefb4d7e_f7ff9201",
+        "filename": "src/com/android/settings/wifi/calling/WifiCallingSettingsForSub.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1214924
+      },
+      "writtenOn": "2019-02-06T18:27:09Z",
+      "side": 1,
+      "message": "Please add the @VisibleForTesting annotation (assuming I\u0027m correct that this would otherwise be private, except that we need access to it for the test)",
+      "range": {
+        "startLine": 237,
+        "startChar": 4,
+        "endLine": 237,
+        "endChar": 14
+      },
+      "revId": "37dcce900742d7ca33a9cb42dbb17832c273695a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b89106d_e4c1351d",
+        "filename": "tests/robotests/src/com/android/settings/wifi/calling/WifiCallingSettingsForSubTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1214924
+      },
+      "writtenOn": "2019-02-06T18:27:09Z",
+      "side": 1,
+      "message": "You can move this @Config to be on the entire class, since it looks like you need it in each test.",
+      "range": {
+        "startLine": 111,
+        "startChar": 12,
+        "endLine": 111,
+        "endChar": 71
+      },
+      "revId": "37dcce900742d7ca33a9cb42dbb17832c273695a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a3991a9_44cad218",
+        "filename": "tests/robotests/src/com/android/settings/wifi/calling/WifiCallingSettingsForSubTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1214924
+      },
+      "writtenOn": "2019-02-06T18:27:09Z",
+      "side": 1,
+      "message": "nit: can use never() instead of times(0)",
+      "range": {
+        "startLine": 123,
+        "startChar": 26,
+        "endLine": 123,
+        "endChar": 34
+      },
+      "revId": "37dcce900742d7ca33a9cb42dbb17832c273695a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3017cdb_b8f613a7",
+        "filename": "tests/robotests/src/com/android/settings/wifi/calling/WifiCallingSettingsForSubTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1214924
+      },
+      "writtenOn": "2019-02-06T18:27:09Z",
+      "side": 1,
+      "message": "times(1) is the default for verify calls unless you specify something different, so you can omit that here",
+      "range": {
+        "startLine": 134,
+        "startChar": 26,
+        "endLine": 134,
+        "endChar": 34
+      },
+      "revId": "37dcce900742d7ca33a9cb42dbb17832c273695a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
