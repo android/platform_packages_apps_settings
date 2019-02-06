@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ca34ede_6d7dee25",
+        "filename": "tests/robotests/src/com/android/settings/network/MobileNetworkPreferenceControllerTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1351305
+      },
+      "writtenOn": "2019-02-06T21:38:12Z",
+      "side": 1,
+      "message": "I believe this is a typo of SUBID_1.",
+      "range": {
+        "startLine": 95,
+        "startChar": 38,
+        "endLine": 95,
+        "endChar": 45
+      },
+      "revId": "7e75b7e35aa008197332f78082c7e72a14aa84e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b36fde2_6fc453db",
+        "filename": "tests/robotests/src/com/android/settings/network/MobileNetworkPreferenceControllerTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1351305
+      },
+      "writtenOn": "2019-02-06T21:38:12Z",
+      "side": 1,
+      "message": "Same as above, should be in cap.",
+      "range": {
+        "startLine": 97,
+        "startChar": 38,
+        "endLine": 97,
+        "endChar": 45
+      },
+      "revId": "7e75b7e35aa008197332f78082c7e72a14aa84e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
