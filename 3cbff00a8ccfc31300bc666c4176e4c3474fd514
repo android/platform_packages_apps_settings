@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "822395ab_e3225ea2",
+        "filename": "src/com/android/settings/display/ShowOperatorNamePreferenceController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2019-02-07T19:07:02Z",
+      "side": 1,
+      "message": "nit: mContext.getSystemService(CarrierConfigManager.class);\n\nthen you can avoid casting.",
+      "range": {
+        "startLine": 40,
+        "startChar": 47,
+        "endLine": 41,
+        "endChar": 66
+      },
+      "revId": "3cbff00a8ccfc31300bc666c4176e4c3474fd514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35de3d2a_9dfeed32",
+        "filename": "src/com/android/settings/display/ShowOperatorNamePreferenceController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2019-02-07T19:07:02Z",
+      "side": 1,
+      "message": "Can this manager be null?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 9
+      },
+      "revId": "3cbff00a8ccfc31300bc666c4176e4c3474fd514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bb84cdc_033fb952",
+        "filename": "tests/robotests/src/com/android/settings/display/ShowOperatorNamePreferenceControllerTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2019-02-07T19:07:02Z",
+      "side": 1,
+      "message": "Add following code here:\n\ncarrierConfigManager \u003d mContext.getSystemService(CarrierConfigManager.class);\nmConfig \u003d carrierConfigManger.getCOnfigForSubId(xx);",
+      "range": {
+        "startLine": 58,
+        "startChar": 7,
+        "endLine": 58,
+        "endChar": 79
+      },
+      "revId": "3cbff00a8ccfc31300bc666c4176e4c3474fd514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d282b97e_7f564b7c",
+        "filename": "tests/robotests/src/com/android/settings/display/ShowOperatorNamePreferenceControllerTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2019-02-07T19:07:02Z",
+      "side": 1,
+      "message": "Then here you only need to set corresponding bool:\n\nwhen(mConfig.getBoolean(xxx, false)).thenReturn(true);",
+      "range": {
+        "startLine": 63,
+        "startChar": 7,
+        "endLine": 65,
+        "endChar": 77
+      },
+      "revId": "3cbff00a8ccfc31300bc666c4176e4c3474fd514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fd55249_380dd161",
+        "filename": "tests/robotests/src/com/android/settings/display/ShowOperatorNamePreferenceControllerTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2019-02-07T19:07:02Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 71,
+        "startChar": 7,
+        "endLine": 73,
+        "endChar": 78
+      },
+      "revId": "3cbff00a8ccfc31300bc666c4176e4c3474fd514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
