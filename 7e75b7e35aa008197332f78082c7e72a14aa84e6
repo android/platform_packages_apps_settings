@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "13fda3a9_1cf77cb7",
+        "filename": "tests/robotests/src/com/android/settings/network/MobileNetworkPreferenceControllerTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1403772
+      },
+      "writtenOn": "2019-02-08T01:02:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9ca34ede_6d7dee25",
+      "range": {
+        "startLine": 95,
+        "startChar": 38,
+        "endLine": 95,
+        "endChar": 45
+      },
+      "revId": "7e75b7e35aa008197332f78082c7e72a14aa84e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b36fde2_6fc453db",
         "filename": "tests/robotests/src/com/android/settings/network/MobileNetworkPreferenceControllerTest.java",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "7e75b7e35aa008197332f78082c7e72a14aa84e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76c2a6ab_454c8247",
+        "filename": "tests/robotests/src/com/android/settings/network/MobileNetworkPreferenceControllerTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1403772
+      },
+      "writtenOn": "2019-02-08T01:02:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b36fde2_6fc453db",
+      "range": {
+        "startLine": 97,
+        "startChar": 38,
+        "endLine": 97,
+        "endChar": 45
+      },
+      "revId": "7e75b7e35aa008197332f78082c7e72a14aa84e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
