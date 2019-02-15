@@ -774,16 +774,8 @@
     <string name="date_time_search_region">Search region</string>
     <!-- Setting option title to select region in time zone setting screen [CHAR LIMIT=30] -->
     <string name="date_time_select_region">Region</string>
-    <!-- Setting option title to select time zone in time zone setting screen [CHAR LIMIT=30]-->
-    <string name="date_time_select_zone">Time Zone</string>
-    <!-- Setting option title to select time zone in a region -->
-    <string name="date_time_set_timezone_in_region">Time zones in <xliff:g id="region" example="United States">%1$s</xliff:g></string>
     <!-- Setting option title in time zone setting screen [CHAR LIMIT=30] -->
     <string name="date_time_select_fixed_offset_time_zones">Select UTC offset</string>
-    <!-- Menu item on Select time zone screen -->
-    <string name="zone_list_menu_sort_alphabetically">Sort alphabetically</string>
-    <!-- Menu item on Select time zone screen -->
-    <string name="zone_list_menu_sort_by_timezone">Sort by time zone</string>
     <!-- Label describing when a given time zone changes to DST or standard time -->
     <string name="zone_change_to_from_dst"><xliff:g id="time_type" example="Pacific Summer Time">%1$s</xliff:g> starts on <xliff:g id="transition_date" example="Mar 11 2018">%2$s</xliff:g>.</string>
     <!-- Label describing a exemplar location and time zone offset[CHAR LIMIT=NONE] -->
@@ -4604,13 +4596,13 @@
     <!-- Summary for the accessibility preference for hearing aid when not connected. [CHAR LIMIT=50] -->
     <string name="accessibility_hearingaid_not_connected_summary">No hearing aids connected</string>
     <!-- Summary for the accessibility preference for hearing aid when adding new devices. [CHAR LIMIT=50] -->
-    <string name="accessibility_hearingaid_adding_summary">Add hearing aid</string>
+    <string name="accessibility_hearingaid_adding_summary">Add hearing aids</string>
     <!-- Message to ask the user that if they want to pair the hearing aid, then they should find and tap the hearing aid device from the list on the next screen. [CHAR LIMIT=NONE] -->
     <string name="accessibility_hearingaid_pair_instructions_first_message">To pair your hearing aids, find and tap your device on the next screen.</string>
     <!-- Message to ask the user to make sure that their hearing aid devices are in pairing mode. [CHAR LIMIT=NONE] -->
     <string name="accessibility_hearingaid_pair_instructions_second_message">Make sure your hearing aids are in pairing mode.</string>
     <!-- Summary for the accessibility preference for hearing aid when there is an active device. [CHAR LIMIT=50] -->
-    <string name="accessibility_hearingaid_active_device_summary"><xliff:g id="device_name">%1$s</xliff:g> currently active</string>
+    <string name="accessibility_hearingaid_active_device_summary"><xliff:g id="device_name">%1$s</xliff:g> active</string>
     <!-- Summary for the accessibility preference for hearing aid when there are saved devices. [CHAR LIMIT=50] -->
     <plurals name="show_number_hearingaid_count">
         <item quantity="one"><xliff:g id="number_device_count">%1$d</xliff:g> saved hearing aid</item>
@@ -9417,13 +9409,13 @@
     <string name="notification_log_details_ranking_none">Ranking object doesn\'t contain this key.</string>
 
     <!-- [CHAR_LIMIT=NONE] Developer Settings: Title of the setting which turns on emulation of a display cutout. -->
-    <string name="display_cutout_emulation">Simulate a display with a cutout</string>
+    <string name="display_cutout_emulation">Display cutout</string>
 
     <!-- [CHAR_LIMIT=NONE] Developer Settings: Search keywords for the setting which turns on emulation of a display cutout. -->
     <string name="display_cutout_emulation_keywords">display cutout, notch</string>
 
-    <!-- [CHAR_LIMIT=NONE] Developer Settings: Label for the option that turns off display cutout emulation. -->
-    <string name="display_cutout_emulation_none">None</string>
+    <!-- [CHAR_LIMIT=NONE] Developer Settings: Label for the option that turns off display cutout emulation, (i.e. on devices whose screen actually has a cutout, selecting this option will show that cutout).-->
+    <string name="display_cutout_emulation_device_default">Device default</string>
 
     <!-- [CHAR_LIMIT=60] Label for special access screen -->
     <string name="special_access">Special app access</string>
@@ -10048,6 +10040,9 @@
 
     <!-- Title for HFP(hands free profile) output switch button in settings. -->
     <string name="take_call_on_title">Take call on</string>
+
+    <!-- Toast that appears when users tap an APN for which parameters cannot be viewed. [CHAR LIMIT=NONE] -->
+    <string name="cannot_change_apn_toast">This APN cannot be changed.</string>
 
     <!--  Title for battery Suggestion. (tablet) [CHAR LIMIT=46] -->
     <string name="battery_suggestion_title" product="tablet" >Improve tablet\'s battery life</string>

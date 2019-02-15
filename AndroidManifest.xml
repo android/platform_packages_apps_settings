@@ -41,7 +41,7 @@
     <uses-permission android:name="android.permission.CLEAR_APP_USER_DATA" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.WRITE_APN_SETTINGS"/>
     <uses-permission android:name="android.permission.ACCESS_CHECKIN_PROPERTIES"/>
     <uses-permission android:name="android.permission.READ_USER_DICTIONARY"/>
@@ -436,7 +436,7 @@
             android:exported="true"
             android:permission="android.permission.TETHER_PRIVILEGED" />
 
-        <activity android:name="TetherProvisioningActivity"
+        <activity android:name=".network.TetherProvisioningActivity"
             android:exported="true"
             android:permission="android.permission.TETHER_PRIVILEGED"
             android:excludeFromRecents="true"
@@ -2172,9 +2172,8 @@
             </intent-filter>
         </activity>
 
-        <!-- TODO: Is this needed? -->
         <activity android:name="BandMode"
-                  android:theme="@android:style/Theme.DeviceDefault.Light.Dialog.Alert"
+                  android:label="@string/band_mode_title"
                   android:process="com.android.phone">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -3313,10 +3312,15 @@
         </provider>
 
         <receiver
-            android:name=".slices.SliceBroadcastReceiver" >
-            <intent-filter>
-                <action android:name="com.android.settings.slice.action.WIFI_CHANGED"/>
-            </intent-filter>
+            android:name=".slices.SliceBroadcastReceiver"
+            android:exported="false">
+        </receiver>
+
+        <receiver
+            android:name=".slices.SliceRelayReceiver"
+            android:permission="android.permission.MANAGE_SLICE_PERMISSIONS"
+            android:exported="true">
+
         </receiver>
 
         <!-- Couldn't be triggered from outside of settings. Statsd can trigger it because we send
