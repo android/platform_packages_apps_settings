@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c108a30a_b4848464",
+        "filename": "src/com/android/settings/wifi/WifiNoInternetDialog.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-20T06:34:50Z",
+      "side": 1,
+      "message": "I question whether it\u0027s fine to use the same string for this and the unvalidated case in all languages. Some languages may require that the language on the checkbox has some grammatical link to the language in the box. For example some languages have masculine/feminine/neutral nouns and pronouns, and may need to use a pronoun on the checkbox but the noun in the message would have a different gender.\n\nYou probably should have a separate string for the checkbox of the partial connectivity case.",
+      "range": {
+        "startLine": 157,
+        "startChar": 15,
+        "endLine": 157,
+        "endChar": 18
+      },
+      "revId": "0d5a40ae600ddfa023ad212cf2082d58d09331c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f620386a_3c8240aa",
+        "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-20T06:34:50Z",
+      "side": 1,
+      "message": "detected",
+      "range": {
+        "startLine": 197,
+        "startChar": 72,
+        "endLine": 197,
+        "endChar": 81
+      },
+      "revId": "0d5a40ae600ddfa023ad212cf2082d58d09331c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
