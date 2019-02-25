@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25275deb_fd3476b2",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-25T08:12:34Z",
+      "side": 1,
+      "message": "I don\u0027t understand why you need to test this. getProfile()\u0027s return value should not depend on whether the user is editing or not I think ?",
+      "range": {
+        "startLine": 488,
+        "startChar": 12,
+        "endLine": 488,
+        "endChar": 22
+      },
+      "revId": "5ccea688db83621a3c93d9d2720c8c16526ffcef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1111860_bcf62157",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-25T08:12:34Z",
+      "side": 1,
+      "message": "Nit : it\u0027s probably better to use\n\n  import android.net.Proxy;\n  Proxy.validate(host, port, \"\") \u003d\u003d Proxy.PROXY_VALID;\n\n...simply because ProxySelector.validate returns a resource ID which is a UI concept.\nBut it\u0027s not very different, really.",
+      "range": {
+        "startLine": 542,
+        "startChar": 15,
+        "endLine": 542,
+        "endChar": 59
+      },
+      "revId": "5ccea688db83621a3c93d9d2720c8c16526ffcef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
