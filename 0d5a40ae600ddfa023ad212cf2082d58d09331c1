@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5f654621_008d4784",
+        "filename": "src/com/android/settings/wifi/WifiNoInternetDialog.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2019-02-25T06:33:26Z",
+      "side": 1,
+      "message": "I agree with your point but both \"no internet\" and \"partial connectivity\" are using the same string - \"Don\u0027t ask again for this network\", there is no any gender problem here.\nI\u0027m thinking is there any case will make the different result of translation for this string.\nHow about rename \"no_internet_access_remember\" to \"network_option_remember\" or any similar to it.\nWhat do you think?",
+      "parentUuid": "c108a30a_b4848464",
+      "range": {
+        "startLine": 157,
+        "startChar": 15,
+        "endLine": 157,
+        "endChar": 18
+      },
+      "revId": "0d5a40ae600ddfa023ad212cf2082d58d09331c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f620386a_3c8240aa",
         "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "0d5a40ae600ddfa023ad212cf2082d58d09331c1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b0426be_6b8ed380",
+        "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2019-02-25T06:33:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f620386a_3c8240aa",
+      "range": {
+        "startLine": 197,
+        "startChar": 72,
+        "endLine": 197,
+        "endChar": 81
+      },
+      "revId": "0d5a40ae600ddfa023ad212cf2082d58d09331c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
