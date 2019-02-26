@@ -16,6 +16,7 @@
 package com.android.settings.wifi.details;
 
 import static android.net.NetworkCapabilities.NET_CAPABILITY_CAPTIVE_PORTAL;
+import static android.net.NetworkCapabilities.NET_CAPABILITY_PARTIAL_CONNECTIVITY;
 import static android.net.NetworkCapabilities.NET_CAPABILITY_VALIDATED;
 import static android.net.NetworkCapabilities.TRANSPORT_WIFI;
 
@@ -40,14 +41,15 @@ import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Handler;
-import androidx.core.text.BidiFormatter;
-import androidx.preference.Preference;
-import androidx.preference.PreferenceCategory;
-import androidx.preference.PreferenceScreen;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.core.text.BidiFormatter;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
+import androidx.preference.PreferenceScreen;
 
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.logging.nano.MetricsProto;
@@ -192,12 +194,14 @@ public class WifiDetailPreferenceController extends AbstractPreferenceController
 
         @Override
         public void onCapabilitiesChanged(Network network, NetworkCapabilities nc) {
-            // If the network just validated or lost Internet access, refresh network state.
-            // Don't do this on every NetworkCapabilities change because refreshNetworkState
-            // sends IPCs to the system server from the UI thread, which can cause jank.
+            // If the network just validated or lost Internet access or detected partial internet
+            // connectivity, refresh network state. Don't do this on every NetworkCapabilities
+            // change because refreshNetworkState sends IPCs to the system server from the UI
+            // thread, which can cause jank.
             if (network.equals(mNetwork) && !nc.equals(mNetworkCapabilities)) {
-                if (hasCapabilityChanged(nc, NET_CAPABILITY_VALIDATED) ||
-                        hasCapabilityChanged(nc, NET_CAPABILITY_CAPTIVE_PORTAL)) {
+                if (hasCapabilityChanged(nc, NET_CAPABILITY_VALIDATED)
+                        || hasCapabilityChanged(nc, NET_CAPABILITY_CAPTIVE_PORTAL)
+                        || hasCapabilityChanged(nc, NET_CAPABILITY_PARTIAL_CONNECTIVITY)) {
                     refreshNetworkState();
                 }
                 mNetworkCapabilities = nc;
