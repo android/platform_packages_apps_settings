@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b229519b_650831b3",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1159753
+      },
+      "writtenOn": "2019-02-26T02:20:01Z",
+      "side": 1,
+      "message": "This condition was added to fix a old issue we met on android M, let me check if the issue still occurs or not without this.",
+      "parentUuid": "25275deb_fd3476b2",
+      "range": {
+        "startLine": 488,
+        "startChar": 12,
+        "endLine": 488,
+        "endChar": 22
+      },
+      "revId": "5ccea688db83621a3c93d9d2720c8c16526ffcef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d1111860_bcf62157",
         "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2019-02-25T08:12:34Z",
       "side": 1,
       "message": "Nit : it\u0027s probably better to use\n\n  import android.net.Proxy;\n  Proxy.validate(host, port, \"\") \u003d\u003d Proxy.PROXY_VALID;\n\n...simply because ProxySelector.validate returns a resource ID which is a UI concept.\nBut it\u0027s not very different, really.",
+      "range": {
+        "startLine": 542,
+        "startChar": 15,
+        "endLine": 542,
+        "endChar": 59
+      },
+      "revId": "5ccea688db83621a3c93d9d2720c8c16526ffcef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afd63349_7f523018",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1159753
+      },
+      "writtenOn": "2019-02-26T02:20:01Z",
+      "side": 1,
+      "message": "Yes, almost same, since resource ID is not used, I agree with you to use Proxy.validate",
+      "parentUuid": "d1111860_bcf62157",
       "range": {
         "startLine": 542,
         "startChar": 15,
