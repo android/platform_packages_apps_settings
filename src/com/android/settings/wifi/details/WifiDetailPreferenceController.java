@@ -16,6 +16,7 @@
 package com.android.settings.wifi.details;
 
 import static android.net.NetworkCapabilities.NET_CAPABILITY_CAPTIVE_PORTAL;
+import static android.net.NetworkCapabilities.NET_CAPABILITY_MANAGEABLE;
 import static android.net.NetworkCapabilities.NET_CAPABILITY_VALIDATED;
 import static android.net.NetworkCapabilities.TRANSPORT_WIFI;
 
@@ -279,9 +280,9 @@ public class WifiDetailPreferenceController extends AbstractPreferenceController
                 .setButton1Text(R.string.forget)
                 .setButton1Positive(false)
                 .setButton1OnClickListener(view -> forgetNetwork())
-                .setButton2Text(R.string.wifi_sign_in_button_text)
                 .setButton2Positive(true)
                 .setButton2OnClickListener(view -> signIntoNetwork());
+        updateButton2Text();
 
         mSignalStrengthPref =
                 (WifiDetailPreference) screen.findPreference(KEY_SIGNAL_STRENGTH_PREF);
@@ -299,6 +300,12 @@ public class WifiDetailPreferenceController extends AbstractPreferenceController
         mIpv6AddressPref = screen.findPreference(KEY_IPV6_ADDRESSES_PREF);
 
         mSecurityPref.setDetailText(mAccessPoint.getSecurityString(false /* concise */));
+    }
+
+    private void updateButton2Text() {
+        mButtonsPref.setButton2Text(canManageNetwork()
+                ? R.string.wifi_manage_button_text
+                : R.string.wifi_sign_in_button_text);
     }
 
     private void setupEntityHeader(PreferenceScreen screen) {
@@ -427,8 +434,9 @@ public class WifiDetailPreferenceController extends AbstractPreferenceController
     }
 
     private void updateIpLayerInfo() {
-        mButtonsPref.setButton2Visible(canSignIntoNetwork());
-        mButtonsPref.setVisible(canSignIntoNetwork() || canForgetNetwork());
+        mButtonsPref.setButton2Visible(canSignIntoNetwork() || canManageNetwork());
+        updateButton2Text();
+        mButtonsPref.setVisible(canSignIntoNetwork() || canForgetNetwork() || canManageNetwork());
 
         if (mNetwork == null || mLinkProperties == null) {
             mIpAddressPref.setVisible(false);
@@ -514,6 +522,14 @@ public class WifiDetailPreferenceController extends AbstractPreferenceController
     }
 
     /**
+     * Returns whether the network has a management page provided by the network operator.
+     */
+    private boolean canManageNetwork() {
+        return mNetworkCapabilities != null
+                && mNetworkCapabilities.hasCapability(NET_CAPABILITY_MANAGEABLE);
+    }
+
+    /**
      * Forgets the wifi network associated with this preference.
      */
     private void forgetNetwork() {
@@ -532,7 +548,8 @@ public class WifiDetailPreferenceController extends AbstractPreferenceController
     }
 
     /**
-     * Sign in to the captive portal found on this wifi network associated with this preference.
+     * Sign in to the captive portal found on this wifi network associated with this preference,
+     * or open the management page if already signed in and the network is manageable.
      */
     private void signIntoNetwork() {
         mMetricsFeatureProvider.action(

@@ -793,18 +793,32 @@ public class WifiDetailPreferenceControllerTest {
         displayAndResume();
 
         inOrder.verify(mockButtonsPref).setButton2Visible(false);
+        inOrder.verify(mockButtonsPref).setButton2Text(R.string.wifi_sign_in_button_text);
 
         NetworkCapabilities nc = makeNetworkCapabilities();
         updateNetworkCapabilities(nc);
         inOrder.verify(mockButtonsPref).setButton2Visible(false);
+        inOrder.verify(mockButtonsPref).setButton2Text(R.string.wifi_sign_in_button_text);
 
         nc.addCapability(NetworkCapabilities.NET_CAPABILITY_CAPTIVE_PORTAL);
         updateNetworkCapabilities(nc);
         inOrder.verify(mockButtonsPref).setButton2Visible(true);
+        inOrder.verify(mockButtonsPref).setButton2Text(R.string.wifi_sign_in_button_text);
 
         nc.removeCapability(NetworkCapabilities.NET_CAPABILITY_CAPTIVE_PORTAL);
         updateNetworkCapabilities(nc);
         inOrder.verify(mockButtonsPref).setButton2Visible(false);
+        inOrder.verify(mockButtonsPref).setButton2Text(R.string.wifi_sign_in_button_text);
+
+        nc.addCapability(NetworkCapabilities.NET_CAPABILITY_MANAGEABLE);
+        updateNetworkCapabilities(nc);
+        inOrder.verify(mockButtonsPref).setButton2Visible(true);
+        inOrder.verify(mockButtonsPref).setButton2Text(R.string.wifi_manage_button_text);
+
+        nc.removeCapability(NetworkCapabilities.NET_CAPABILITY_MANAGEABLE);
+        updateNetworkCapabilities(nc);
+        inOrder.verify(mockButtonsPref).setButton2Visible(false);
+        inOrder.verify(mockButtonsPref).setButton2Text(R.string.wifi_sign_in_button_text);
     }
 
     @Test
