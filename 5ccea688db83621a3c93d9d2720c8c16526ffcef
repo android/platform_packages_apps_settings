@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b09c8e53_cee9c657",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1159753
+      },
+      "writtenOn": "2019-02-27T03:31:54Z",
+      "side": 1,
+      "message": "Verified !mEditing is necessary here, without this VPN connection will not use configured proxy.\nConfigDialog.getprofile() is called in both editing mode and connecting mode.\nIn editing mode, hasProxy() is used to control validation, save/update user configured proxyInfo to vpn profile. hasProxy() is using a local parameter mProxySettings[MANUAL/NONE] which is not saved to vpn profile and this makes hasproxy()to be valid only in editing mode. So in connecting mode, !mEditing is necessary here to get and reuse the previous saved proxyInfo from vpn profile, otherwise previously saved proxyInfo will be flushed by null info.",
+      "parentUuid": "b229519b_650831b3",
+      "range": {
+        "startLine": 488,
+        "startChar": 12,
+        "endLine": 488,
+        "endChar": 22
+      },
+      "revId": "5ccea688db83621a3c93d9d2720c8c16526ffcef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1111860_bcf62157",
         "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
         "patchSetId": 4
@@ -93,6 +117,30 @@
       "revId": "5ccea688db83621a3c93d9d2720c8c16526ffcef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df29817c_1bf24895",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1159753
+      },
+      "writtenOn": "2019-02-27T03:31:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afd63349_7f523018",
+      "range": {
+        "startLine": 542,
+        "startChar": 15,
+        "endLine": 542,
+        "endChar": 59
+      },
+      "revId": "5ccea688db83621a3c93d9d2720c8c16526ffcef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
