@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "7af88e4c_ff9d35bc",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-02-27T06:43:02Z",
+      "side": 1,
+      "message": "I see.\nSo what that means is, when there is no proxy, in connect mode you\u0027ll return an empty ProxyInfo instead of null ? That sounds like a bug.\n\nAlso, it looks to me like you could simply make sure the fields always contain the right value by moving your new code in ll.204~210 to l.325 in updateUiControls. I think that\u0027s what this function is for, and also it looks to me like this problem would happen again and again because no code in here expect a difference between UI and setting.\n\nI believe if you move that code to updateUiControls, then you can simply remove the !mEditing check, get the behavior you want in both cases, and fix the bug where you\u0027ll return an empty proxy instead of a null one when !mEditing.",
+      "parentUuid": "b09c8e53_cee9c657",
+      "range": {
+        "startLine": 488,
+        "startChar": 12,
+        "endLine": 488,
+        "endChar": 22
+      },
+      "revId": "5ccea688db83621a3c93d9d2720c8c16526ffcef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1111860_bcf62157",
         "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
         "patchSetId": 4
