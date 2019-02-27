@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "cefc300d_d0eec5de",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1159753
+      },
+      "writtenOn": "2019-02-27T07:11:01Z",
+      "side": 1,
+      "message": "You are right empty ProxyInfo is created in connecting mode, I will try the suggestion and update soon.",
+      "parentUuid": "7af88e4c_ff9d35bc",
+      "range": {
+        "startLine": 488,
+        "startChar": 12,
+        "endLine": 488,
+        "endChar": 22
+      },
+      "revId": "5ccea688db83621a3c93d9d2720c8c16526ffcef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d1111860_bcf62157",
         "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
         "patchSetId": 4
