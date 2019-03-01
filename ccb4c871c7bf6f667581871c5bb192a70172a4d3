@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0e51f4c7_72c4c731",
+        "filename": "res/values/arrays.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1014288
+      },
+      "writtenOn": "2019-03-01T17:42:48Z",
+      "side": 1,
+      "message": "Why are these strings not translated?",
+      "range": {
+        "startLine": 943,
+        "startChar": 44,
+        "endLine": 943,
+        "endChar": 64
+      },
+      "revId": "ccb4c871c7bf6f667581871c5bb192a70172a4d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
