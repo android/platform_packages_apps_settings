@@ -1,0 +1,9 @@
+Code-Review+2: Andrii Kulian <akulian@google.com>
+Autosubmit+1: Andrii Kulian <akulian@google.com>
+Presubmit-Ready+1: Andrii Kulian <akulian@google.com>
+Build-Cop-Override+1: Andrii Kulian <akulian@google.com>
+Submitted-by: Andrii Kulian <akulian@google.com>
+Submitted-at: Sat, 02 Mar 2019 01:52:03 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/916390
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
