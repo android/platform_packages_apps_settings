@@ -22,6 +22,30 @@
       "revId": "ccb4c871c7bf6f667581871c5bb192a70172a4d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aecf8874_990230b5",
+        "filename": "res/values/arrays.xml",
+        "patchSetId": 8
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1159753
+      },
+      "writtenOn": "2019-03-04T01:56:54Z",
+      "side": 1,
+      "message": "We do have translations, I need to confirm internally first, I have never contributed translations before, as you know Sony\u0027s translation coverage is different as Google\u0027s.\nIf you are OK with design part of this change, I suggest we merge it first to avoid upcoming conflict, and continue discussion\u0026review of translations in another commit. do you agree?",
+      "parentUuid": "0e51f4c7_72c4c731",
+      "range": {
+        "startLine": 943,
+        "startChar": 44,
+        "endLine": 943,
+        "endChar": 64
+      },
+      "revId": "ccb4c871c7bf6f667581871c5bb192a70172a4d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
