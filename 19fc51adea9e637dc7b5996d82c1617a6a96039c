@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "249a65bd_dc5878fe",
+        "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-03-05T05:57:19Z",
+      "side": 1,
+      "message": "This does not exist yet ; should this go on top of some other change ?",
+      "range": {
+        "startLine": 19,
+        "startChar": 46,
+        "endLine": 19,
+        "endChar": 71
+      },
+      "revId": "19fc51adea9e637dc7b5996d82c1617a6a96039c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6c4e4a3_716058db",
+        "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-03-05T05:57:19Z",
+      "side": 1,
+      "message": "I would find it cleaner to have a method returning the resource ID and keep the .setButton2Text style.\nprivate int getButton2StringId() {\n  return canManageNetwork() ? x : y;\n}",
+      "range": {
+        "startLine": 285,
+        "startChar": 8,
+        "endLine": 285,
+        "endChar": 25
+      },
+      "revId": "19fc51adea9e637dc7b5996d82c1617a6a96039c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
