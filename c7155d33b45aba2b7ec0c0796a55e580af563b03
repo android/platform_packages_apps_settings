@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe9dcc3d_0857aaa3",
+        "filename": "src/com/android/settings/development/NetworkDnsResolverLogPreferenceController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1273909
+      },
+      "writtenOn": "2019-03-05T06:11:02Z",
+      "side": 1,
+      "message": "overlong line? Is the limit for Java also 100 characters?",
+      "range": {
+        "startLine": 50,
+        "startChar": 8,
+        "endLine": 50,
+        "endChar": 103
+      },
+      "revId": "c7155d33b45aba2b7ec0c0796a55e580af563b03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
