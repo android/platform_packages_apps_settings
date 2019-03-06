@@ -38,6 +38,7 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.telephony.CarrierConfigManager;
@@ -95,6 +96,7 @@ public class WifiCallingSettingsForSubTest {
     @Mock private ListWithEntrySummaryPreference mButtonWfcMode;
     @Mock private ListWithEntrySummaryPreference mButtonWfcRoamingMode;
     @Mock private Preference mUpdateAddress;
+    @Mock private Resources mResources;
 
     @Before
     public void setUp() throws NoSuchFieldException, ImsException {
@@ -107,7 +109,6 @@ public class WifiCallingSettingsForSubTest {
         mFragment = spy(new TestFragment());
         doReturn(mActivity).when(mFragment).getActivity();
         doReturn(mock(Intent.class)).when(mActivity).getIntent();
-        doReturn(mContext.getResources()).when(mFragment).getResources();
         doReturn(mPreferenceScreen).when(mFragment).getPreferenceScreen();
         final Bundle bundle = new Bundle();
         when(mFragment.getArguments()).thenReturn(bundle);
@@ -137,7 +138,7 @@ public class WifiCallingSettingsForSubTest {
 
         doReturn(sCarrierConfigManager).when(mActivity).getSystemService(
                 CarrierConfigManager.class);
-        doReturn(mContext.getResources()).when(mFragment).getResourcesForSubId();
+        doReturn(mResources).when(mFragment).getResourcesForSubId();
         doNothing().when(mFragment).startActivityForResult(any(Intent.class), anyInt());
 
         mFragment.onAttach(mContext);
