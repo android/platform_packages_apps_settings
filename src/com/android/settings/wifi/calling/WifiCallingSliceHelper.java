@@ -25,6 +25,7 @@ import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.PersistableBundle;
 import android.provider.Settings;
@@ -129,6 +130,7 @@ public class WifiCallingSliceHelper {
      */
     public Slice createWifiCallingSlice(Uri sliceUri) {
         final int subId = getDefaultVoiceSubId();
+        Resources res = getResourcesForSubId(subId);
 
         if (subId <= SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
             Log.d(TAG, "Invalid subscription Id");
@@ -155,12 +157,11 @@ public class WifiCallingSliceHelper {
                 // Activation needed for the next action of the user
                 // Give instructions to go to settings app
                 return getNonActionableWifiCallingSlice(
-                        mContext.getText(R.string.wifi_calling_settings_title),
-                        mContext.getText(
-                                R.string.wifi_calling_settings_activation_instructions),
+                        res.getText(R.string.wifi_calling_settings_title),
+                        res.getText(R.string.wifi_calling_settings_activation_instructions),
                         sliceUri, getActivityIntent(ACTION_WIFI_CALLING_SETTINGS_ACTIVITY));
             }
-            return getWifiCallingSlice(sliceUri, isWifiCallingEnabled);
+            return getWifiCallingSlice(sliceUri, isWifiCallingEnabled, subId);
         } catch (InterruptedException | TimeoutException | ExecutionException e) {
             Log.e(TAG, "Unable to read the current WiFi calling status", e);
             return null;
@@ -186,13 +187,14 @@ public class WifiCallingSliceHelper {
      * Builds a toggle slice where the intent takes you to the wifi calling page and the toggle
      * enables/disables wifi calling.
      */
-    private Slice getWifiCallingSlice(Uri sliceUri, boolean isWifiCallingEnabled) {
+    private Slice getWifiCallingSlice(Uri sliceUri, boolean isWifiCallingEnabled, int subId) {
         final IconCompat icon = IconCompat.createWithResource(mContext, R.drawable.wifi_signal);
+        Resources res = getResourcesForSubId(subId);
 
         return new ListBuilder(mContext, sliceUri, ListBuilder.INFINITY)
                 .setAccentColor(Utils.getColorAccentDefaultColor(mContext))
                 .addRow(new RowBuilder()
-                        .setTitle(mContext.getText(R.string.wifi_calling_settings_title))
+                        .setTitle(res.getText(R.string.wifi_calling_settings_title))
                         .addEndItem(
                                 SliceAction.createToggle(
                                         getBroadcastIntent(ACTION_WIFI_CALLING_CHANGED),
@@ -201,7 +203,7 @@ public class WifiCallingSliceHelper {
                                 getActivityIntent(ACTION_WIFI_CALLING_SETTINGS_ACTIVITY),
                                 icon,
                                 ListBuilder.ICON_IMAGE,
-                                mContext.getText(R.string.wifi_calling_settings_title))))
+                                res.getText(R.string.wifi_calling_settings_title))))
                 .build();
     }
 
@@ -256,14 +258,15 @@ public class WifiCallingSliceHelper {
         }
         if (!isWifiCallingEnabled) {
             // wifi calling is not enabled. Ask user to enable wifi calling
+            Resources res = getResourcesForSubId(subId);
             return getNonActionableWifiCallingSlice(
-                    mContext.getText(R.string.wifi_calling_mode_title),
-                    mContext.getText(R.string.wifi_calling_turn_on),
+                    res.getText(R.string.wifi_calling_mode_title),
+                    res.getText(R.string.wifi_calling_turn_on),
                     sliceUri, getActivityIntent(ACTION_WIFI_CALLING_SETTINGS_ACTIVITY));
         }
         // Return the slice to change wifi calling preference
         return getWifiCallingPreferenceSlice(
-                isWifiOnlySupported, wfcMode, sliceUri);
+                isWifiOnlySupported, wfcMode, sliceUri, subId);
     }
 
     /**
@@ -272,40 +275,46 @@ public class WifiCallingSliceHelper {
      * @param isWifiOnlySupported adds row for wifi only if this is true
      * @param currentWfcPref      current Preference {@link ImsConfig}
      * @param sliceUri            sliceUri
+     * @param subId               subscription id
      * @return Slice for actionable wifi calling preference settings
      */
     private Slice getWifiCallingPreferenceSlice(boolean isWifiOnlySupported,
             int currentWfcPref,
-            Uri sliceUri) {
+            Uri sliceUri,
+            int subId) {
         final IconCompat icon = IconCompat.createWithResource(mContext, R.drawable.wifi_signal);
         // Top row shows information on current preference state
+        Resources res = getResourcesForSubId(subId);
         ListBuilder listBuilder = new ListBuilder(mContext, sliceUri, ListBuilder.INFINITY)
                 .setAccentColor(Utils.getColorAccentDefaultColor(mContext));
         listBuilder.setHeader(new ListBuilder.HeaderBuilder()
-                .setTitle(mContext.getText(R.string.wifi_calling_mode_title))
-                .setSubtitle(getWifiCallingPreferenceSummary(currentWfcPref))
+                .setTitle(res.getText(R.string.wifi_calling_mode_title))
+                .setSubtitle(getWifiCallingPreferenceSummary(currentWfcPref, subId))
                 .setPrimaryAction(SliceAction.createDeeplink(
                         getActivityIntent(ACTION_WIFI_CALLING_SETTINGS_ACTIVITY),
                         icon,
                         ListBuilder.ICON_IMAGE,
-                        mContext.getText(R.string.wifi_calling_mode_title))));
+                        res.getText(R.string.wifi_calling_mode_title))));
 
         if (isWifiOnlySupported) {
             listBuilder.addRow(wifiPreferenceRowBuilder(listBuilder,
                     com.android.internal.R.string.wfc_mode_wifi_only_summary,
                     ACTION_WIFI_CALLING_PREFERENCE_WIFI_ONLY,
-                    currentWfcPref == ImsConfig.WfcModeFeatureValueConstants.WIFI_ONLY));
+                    currentWfcPref == ImsConfig.WfcModeFeatureValueConstants.WIFI_ONLY,
+                    subId));
         }
 
         listBuilder.addRow(wifiPreferenceRowBuilder(listBuilder,
                 com.android.internal.R.string.wfc_mode_wifi_preferred_summary,
                 ACTION_WIFI_CALLING_PREFERENCE_WIFI_PREFERRED,
-                currentWfcPref == ImsConfig.WfcModeFeatureValueConstants.WIFI_PREFERRED));
+                currentWfcPref == ImsConfig.WfcModeFeatureValueConstants.WIFI_PREFERRED,
+                subId));
 
         listBuilder.addRow(wifiPreferenceRowBuilder(listBuilder,
                 com.android.internal.R.string.wfc_mode_cellular_preferred_summary,
                 ACTION_WIFI_CALLING_PREFERENCE_CELLULAR_PREFERRED,
-                currentWfcPref == ImsConfig.WfcModeFeatureValueConstants.CELLULAR_PREFERRED));
+                currentWfcPref == ImsConfig.WfcModeFeatureValueConstants.CELLULAR_PREFERRED,
+                subId));
 
         return listBuilder.build();
     }
@@ -316,18 +325,19 @@ public class WifiCallingSliceHelper {
      * @param listBuilder          ListBuilder that will be the parent for this RowBuilder
      * @param preferenceTitleResId resource Id for the preference row title
      * @param action               action to be added for the row
+     * @param subId                subscription id
      * @return RowBuilder for the row
      */
     private RowBuilder wifiPreferenceRowBuilder(ListBuilder listBuilder,
-            int preferenceTitleResId, String action, boolean checked) {
+            int preferenceTitleResId, String action, boolean checked, int subId) {
         final IconCompat icon =
                 IconCompat.createWithResource(mContext, R.drawable.radio_button_check);
+        Resources res = getResourcesForSubId(subId);
         return new RowBuilder()
-                .setTitle(mContext.getText(preferenceTitleResId))
+                .setTitle(res.getText(preferenceTitleResId))
                 .setTitleItem(SliceAction.createToggle(getBroadcastIntent(action),
-                        icon, mContext.getText(preferenceTitleResId), checked));
+                        icon, res.getText(preferenceTitleResId), checked));
     }
-
 
     /**
      * Returns the String describing wifi calling preference mentioned in wfcMode
@@ -335,16 +345,17 @@ public class WifiCallingSliceHelper {
      * @param wfcMode ImsConfig constant for the preference {@link ImsConfig}
      * @return summary/name of the wifi calling preference
      */
-    private CharSequence getWifiCallingPreferenceSummary(int wfcMode) {
+    private CharSequence getWifiCallingPreferenceSummary(int wfcMode, int subId) {
+        Resources res = getResourcesForSubId(subId);
         switch (wfcMode) {
             case ImsConfig.WfcModeFeatureValueConstants.WIFI_ONLY:
-                return mContext.getText(
+                return res.getText(
                         com.android.internal.R.string.wfc_mode_wifi_only_summary);
             case ImsConfig.WfcModeFeatureValueConstants.WIFI_PREFERRED:
-                return mContext.getText(
+                return res.getText(
                         com.android.internal.R.string.wfc_mode_wifi_preferred_summary);
             case ImsConfig.WfcModeFeatureValueConstants.CELLULAR_PREFERRED:
-                return mContext.getText(
+                return res.getText(
                         com.android.internal.R.string.wfc_mode_cellular_preferred_summary);
             default:
                 return null;
@@ -559,5 +570,9 @@ public class WifiCallingSliceHelper {
         final Intent intent = new Intent(action);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         return PendingIntent.getActivity(mContext, 0 /* requestCode */, intent, 0 /* flags */);
+    }
+
+    private Resources getResourcesForSubId(int subId) {
+        return SubscriptionManager.getResourcesForSubId(mContext, subId);
     }
 }
