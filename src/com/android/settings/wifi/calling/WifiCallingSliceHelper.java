@@ -23,6 +23,7 @@ import android.content.ComponentName;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.PersistableBundle;
 import android.provider.Settings;
@@ -115,13 +116,14 @@ public class WifiCallingSliceHelper {
      */
     public Slice createWifiCallingSlice(Uri sliceUri) {
         final int subId = getDefaultVoiceSubId();
-        final String carrierName = getSimCarrierName();
+        final String carrierName = getSimCarrierName(subId);
+        Resources res = getResourcesForSubId(subId);
 
         if (subId <= SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
             Log.d(TAG, "Invalid subscription Id");
             return getNonActionableWifiCallingSlice(
-                    mContext.getString(R.string.wifi_calling_settings_title),
-                    mContext.getString(R.string.wifi_calling_not_supported, carrierName),
+                    res.getString(R.string.wifi_calling_settings_title),
+                    res.getString(R.string.wifi_calling_not_supported, carrierName),
                     sliceUri, getSettingsIntent(mContext));
         }
 
@@ -131,8 +133,8 @@ public class WifiCallingSliceHelper {
                 || !imsManager.isWfcProvisionedOnDevice()) {
             Log.d(TAG, "Wifi calling is either not provisioned or not enabled by Platform");
             return getNonActionableWifiCallingSlice(
-                    mContext.getString(R.string.wifi_calling_settings_title),
-                    mContext.getString(R.string.wifi_calling_not_supported, carrierName),
+                    res.getString(R.string.wifi_calling_settings_title),
+                    res.getString(R.string.wifi_calling_not_supported, carrierName),
                     sliceUri, getSettingsIntent(mContext));
         }
 
@@ -148,17 +150,16 @@ public class WifiCallingSliceHelper {
                 // Activation needed for the next action of the user
                 // Give instructions to go to settings app
                 return getNonActionableWifiCallingSlice(
-                        mContext.getString(R.string.wifi_calling_settings_title),
-                        mContext.getString(
-                                R.string.wifi_calling_settings_activation_instructions),
+                        res.getString(R.string.wifi_calling_settings_title),
+                        res.getString(R.string.wifi_calling_settings_activation_instructions),
                         sliceUri, getActivityIntent(ACTION_WIFI_CALLING_SETTINGS_ACTIVITY));
             }
-            return getWifiCallingSlice(sliceUri, mContext, isWifiCallingEnabled);
+            return getWifiCallingSlice(sliceUri, mContext, isWifiCallingEnabled, subId);
         } catch (InterruptedException | TimeoutException | ExecutionException e) {
             Log.e(TAG, "Unable to read the current WiFi calling status", e);
             return getNonActionableWifiCallingSlice(
-                    mContext.getString(R.string.wifi_calling_settings_title),
-                    mContext.getString(R.string.wifi_calling_turn_on),
+                    res.getString(R.string.wifi_calling_settings_title),
+                    res.getString(R.string.wifi_calling_turn_on),
                     sliceUri, getActivityIntent(ACTION_WIFI_CALLING_SETTINGS_ACTIVITY));
         }
     }
@@ -185,10 +186,11 @@ public class WifiCallingSliceHelper {
      * enables/disables wifi calling.
      */
     private Slice getWifiCallingSlice(Uri sliceUri, Context mContext,
-            boolean isWifiCallingEnabled) {
+            boolean isWifiCallingEnabled, int subId) {
 
         final IconCompat icon = IconCompat.createWithResource(mContext, R.drawable.wifi_signal);
-        final String title = mContext.getString(R.string.wifi_calling_settings_title);
+        final String title = getResourcesForSubId(subId)
+                .getString(R.string.wifi_calling_settings_title);
         return new ListBuilder(mContext, sliceUri, ListBuilder.INFINITY)
                 .setColor(R.color.material_blue_500)
                 .addRow(b -> b
@@ -366,13 +368,16 @@ public class WifiCallingSliceHelper {
     /**
      * Returns carrier id name of the current Subscription
      */
-    private String getSimCarrierName() {
+    private String getSimCarrierName(int subId) {
         final TelephonyManager telephonyManager = mContext.getSystemService(TelephonyManager.class);
         final CharSequence carrierName = telephonyManager.getSimCarrierIdName();
         if (carrierName == null) {
-            return mContext.getString(R.string.carrier);
+            return getResourcesForSubId(subId).getString(R.string.carrier);
         }
         return carrierName.toString();
     }
 
+    private Resources getResourcesForSubId(int subId) {
+        return SubscriptionManager.getResourcesForSubId(mContext, subId);
+    }
 }
