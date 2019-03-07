@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "167b336f_f653a2be",
+        "filename": "src/com/android/settings/display/ShowOperatorNamePreferenceController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1221112
+      },
+      "writtenOn": "2019-03-07T21:58:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "822395ab_e3225ea2",
+      "range": {
+        "startLine": 40,
+        "startChar": 47,
+        "endLine": 41,
+        "endChar": 66
+      },
+      "revId": "3cbff00a8ccfc31300bc666c4176e4c3474fd514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35de3d2a_9dfeed32",
         "filename": "src/com/android/settings/display/ShowOperatorNamePreferenceController.java",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "3cbff00a8ccfc31300bc666c4176e4c3474fd514",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "839ce642_1442919c",
+        "filename": "src/com/android/settings/display/ShowOperatorNamePreferenceController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1221112
+      },
+      "writtenOn": "2019-03-07T21:58:54Z",
+      "side": 1,
+      "message": "I have not experienced it myself but there are several examples in the frameworks source code where it is being checked for null so I guess it is possible.",
+      "parentUuid": "35de3d2a_9dfeed32",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 44,
+        "endChar": 9
+      },
+      "revId": "3cbff00a8ccfc31300bc666c4176e4c3474fd514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6760ce94_357d3dff",
+        "filename": "tests/robotests/src/com/android/settings/display/ShowOperatorNamePreferenceControllerTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1221112
+      },
+      "writtenOn": "2019-03-07T21:58:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7bb84cdc_033fb952",
+      "range": {
+        "startLine": 58,
+        "startChar": 7,
+        "endLine": 58,
+        "endChar": 79
+      },
+      "revId": "3cbff00a8ccfc31300bc666c4176e4c3474fd514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d282b97e_7f564b7c",
         "filename": "tests/robotests/src/com/android/settings/display/ShowOperatorNamePreferenceControllerTest.java",
         "patchSetId": 5
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "4964c257_e3ad4789",
+        "filename": "tests/robotests/src/com/android/settings/display/ShowOperatorNamePreferenceControllerTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1221112
+      },
+      "writtenOn": "2019-03-07T21:58:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d282b97e_7f564b7c",
+      "range": {
+        "startLine": 63,
+        "startChar": 7,
+        "endLine": 65,
+        "endChar": 77
+      },
+      "revId": "3cbff00a8ccfc31300bc666c4176e4c3474fd514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8fd55249_380dd161",
         "filename": "tests/robotests/src/com/android/settings/display/ShowOperatorNamePreferenceControllerTest.java",
         "patchSetId": 5
@@ -114,6 +210,30 @@
       "revId": "3cbff00a8ccfc31300bc666c4176e4c3474fd514",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08046ec0_12b42419",
+        "filename": "tests/robotests/src/com/android/settings/display/ShowOperatorNamePreferenceControllerTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1221112
+      },
+      "writtenOn": "2019-03-07T21:58:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8fd55249_380dd161",
+      "range": {
+        "startLine": 71,
+        "startChar": 7,
+        "endLine": 73,
+        "endChar": 78
+      },
+      "revId": "3cbff00a8ccfc31300bc666c4176e4c3474fd514",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
