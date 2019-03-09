@@ -471,8 +471,10 @@ public class WifiSettings extends RestrictedSettingsFragment
                 if (mSelectedAccessPoint.isSaved()) {
                     menu.add(Menu.NONE, MENU_ID_MODIFY, 0, R.string.wifi_menu_modify);
                     NfcAdapter nfcAdapter = NfcAdapter.getDefaultAdapter(getActivity());
+                    String wpsNfcConfigurationToken = mWifiManager.getCurrentNetworkWpsNfcConfigurationToken();
                     if (nfcAdapter != null && nfcAdapter.isEnabled() &&
-                            mSelectedAccessPoint.getSecurity() != AccessPoint.SECURITY_NONE) {
+                            mSelectedAccessPoint.getSecurity() != AccessPoint.SECURITY_NONE &&
+                            wpsNfcConfigurationToken != null) {
                         // Only allow writing of NFC tags for password-protected networks.
                         menu.add(Menu.NONE, MENU_ID_WRITE_NFC, 0, R.string.wifi_menu_write_to_nfc);
                     }
