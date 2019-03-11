@@ -465,7 +465,7 @@ public class WifiConfigController implements TextWatcher,
         } else {
             enabled = ipAndProxyFieldsAreValid();
         }
-        if (mEapCaCertSpinner != null
+        if (mAccessPointSecurity == AccessPoint.SECURITY_EAP && mEapCaCertSpinner != null
                 && mView.findViewById(R.id.l_ca_cert).getVisibility() != View.GONE) {
             String caCertSelection = (String) mEapCaCertSpinner.getSelectedItem();
             if (caCertSelection.equals(mUnspecifiedCertString)) {
@@ -482,7 +482,7 @@ public class WifiConfigController implements TextWatcher,
                 enabled = false;
             }
         }
-        if (mEapUserCertSpinner != null
+        if (mAccessPointSecurity == AccessPoint.SECURITY_EAP && mEapUserCertSpinner != null
                 && mView.findViewById(R.id.l_user_cert).getVisibility() != View.GONE
                 && ((String) mEapUserCertSpinner.getSelectedItem())
                        .equals(mUnspecifiedCertString)) {
