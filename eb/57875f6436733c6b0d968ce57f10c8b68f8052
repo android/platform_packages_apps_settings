@@ -1,0 +1,8 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Lei Yu <jackqdyulei@google.com>
+Code-Review+2: Lei Yu <jackqdyulei@google.com>
+Submitted-by: Hall Liu <hallliu@google.com>
+Submitted-at: Tue, 12 Mar 2019 20:49:19 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/818953
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
