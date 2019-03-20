@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bab296d9_7f8e7dfa",
+        "filename": "src/com/android/settings/FallbackHome.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2019-03-20T20:26:05Z",
+      "side": 1,
+      "message": "Can you also add a config in res/configs.xml and default to true? I expect not all OEMs want to enable this feature.",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 16
+      },
+      "revId": "4637b0addf297e432bbb6f2fa4f1208bf135ea40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
