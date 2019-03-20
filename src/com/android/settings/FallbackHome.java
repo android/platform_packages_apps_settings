@@ -125,7 +125,11 @@ public class FallbackHome extends Activity {
                 Log.d(TAG, "User unlocked and real home found; let's go!");
                 getSystemService(PowerManager.class).userActivity(
                         SystemClock.uptimeMillis(), false);
-                finish();
+                if (SystemProperties.getBoolean("ro.config.low_ram",false)) {
+                    Process.killProcess(Process.myPid());
+                } else {
+                    finish();
+                }
             }
         }
     }
