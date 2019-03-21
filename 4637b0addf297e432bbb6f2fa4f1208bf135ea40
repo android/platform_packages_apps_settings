@@ -22,6 +22,30 @@
       "revId": "4637b0addf297e432bbb6f2fa4f1208bf135ea40",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d51ede11_4a45929c",
+        "filename": "src/com/android/settings/FallbackHome.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1418160
+      },
+      "writtenOn": "2019-03-21T04:14:10Z",
+      "side": 1,
+      "message": "So you mean it should be a separate config and not only for low_ram, right?",
+      "parentUuid": "bab296d9_7f8e7dfa",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 16
+      },
+      "revId": "4637b0addf297e432bbb6f2fa4f1208bf135ea40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
