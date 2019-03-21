@@ -70,6 +70,30 @@
       "revId": "4637b0addf297e432bbb6f2fa4f1208bf135ea40",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c76fff5f_9e45e725",
+        "filename": "src/com/android/settings/FallbackHome.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2019-03-21T17:46:32Z",
+      "side": 1,
+      "message": "I\u0027m thinking about something like this:\n\nif (getResource().getBoolean(R.bool.config_eager_leave_memory) \u0026\u0026 SystemProperties.getBoolean(\"ro.config.low_ram\",false)) {\n    Process.killProcess();\nelse {\n    finish();\n}",
+      "parentUuid": "9908dcdf_4e4ea82b",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 16
+      },
+      "revId": "4637b0addf297e432bbb6f2fa4f1208bf135ea40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
