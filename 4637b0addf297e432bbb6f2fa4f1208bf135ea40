@@ -46,6 +46,30 @@
       "revId": "4637b0addf297e432bbb6f2fa4f1208bf135ea40",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9908dcdf_4e4ea82b",
+        "filename": "src/com/android/settings/FallbackHome.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1148397
+      },
+      "writtenOn": "2019-03-21T16:58:27Z",
+      "side": 1,
+      "message": "I think that\u0027s the suggestion. It make sense to offer it for all devices.",
+      "parentUuid": "d51ede11_4a45929c",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 128,
+        "endChar": 16
+      },
+      "revId": "4637b0addf297e432bbb6f2fa4f1208bf135ea40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
