@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54127e68_2553f382",
+        "filename": "res/values/config.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2019-03-25T20:47:36Z",
+      "side": 1,
+      "message": "config_isDockDreamSupported, or config_supportsDockDream",
+      "range": {
+        "startLine": 141,
+        "startChar": 16,
+        "endLine": 141,
+        "endChar": 36
+      },
+      "revId": "944252b167ab5de38a0fe844a6b5e661b5dd4eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a67fe43_a6e66254",
+        "filename": "src/com/android/settings/dream/DreamSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1110928
+      },
+      "writtenOn": "2019-03-25T20:47:36Z",
+      "side": 1,
+      "message": "annotation before static.",
+      "revId": "944252b167ab5de38a0fe844a6b5e661b5dd4eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
