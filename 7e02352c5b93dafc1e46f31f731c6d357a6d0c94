@@ -22,6 +22,30 @@
       "revId": "7e02352c5b93dafc1e46f31f731c6d357a6d0c94",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4147087_bd50e4bc",
+        "filename": "src/com/android/settings/RadioInfo.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 692,
+      "author": {
+        "id": 1121198
+      },
+      "writtenOn": "2019-04-04T21:49:13Z",
+      "side": 1,
+      "message": "sure",
+      "parentUuid": "74dfa7dc_b77251d2",
+      "range": {
+        "startLine": 691,
+        "startChar": 0,
+        "endLine": 692,
+        "endChar": 62
+      },
+      "revId": "7e02352c5b93dafc1e46f31f731c6d357a6d0c94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
