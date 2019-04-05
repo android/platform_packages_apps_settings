@@ -224,7 +224,7 @@ public class RadioInfo extends Activity {
     private ConnectivityManager mConnectivityManager;
     private TelephonyManager mTelephonyManager;
     private ImsManager mImsManager = null;
-    private Phone phone = null;
+    private Phone mPhone = null;
 
     private String mPingHostnameResultV4;
     private String mPingHostnameResultV6;
@@ -251,7 +251,9 @@ public class RadioInfo extends Activity {
         }
     };
 
-    private final PhoneStateListener mPhoneStateListener = new PhoneStateListener() {
+    // not final because we need to recreate this object to register on a new subId (b/117555407)
+    private PhoneStateListener mPhoneStateListener = new RadioInfoPhoneStateListener();
+    private class RadioInfoPhoneStateListener extends PhoneStateListener {
         @Override
         public void onDataConnectionStateChanged(int state) {
             updateDataState();
@@ -319,7 +321,7 @@ public class RadioInfo extends Activity {
             updatePhysicalChannelConfiguration(configs);
         }
 
-    };
+    }
 
     private void updatePhysicalChannelConfiguration(List<PhysicalChannelConfig> configs) {
             StringBuilder sb = new StringBuilder();
@@ -344,6 +346,21 @@ public class RadioInfo extends Activity {
         mPreferredNetworkTypeResult = type;
 
         preferredNetworkType.setSelection(mPreferredNetworkTypeResult, true);
+    }
+
+    private void updatePhoneIndex(int phoneIndex, int subId) {
+        // unregister listeners on the old subId
+        unregisterPhoneStateListener();
+        mTelephonyManager.setCellInfoListRate(CELL_INFO_LIST_RATE_DISABLED);
+
+        // update the subId
+        mTelephonyManager = mTelephonyManager.createForSubscriptionId(subId);
+
+        // update the phoneId
+        mImsManager = ImsManager.getInstance(getApplicationContext(), phoneIndex);
+        mPhone = PhoneFactory.getPhone(phoneIndex);
+
+        updateAllFields();
     }
 
     private Handler mHandler = new Handler() {
@@ -404,7 +421,7 @@ public class RadioInfo extends Activity {
 
         mTelephonyManager = (TelephonyManager)getSystemService(TELEPHONY_SERVICE);
         mConnectivityManager = (ConnectivityManager)getSystemService(CONNECTIVITY_SERVICE);
-        phone = PhoneFactory.getDefaultPhone();
+        mPhone = PhoneFactory.getDefaultPhone();
 
         //TODO: Need to update this if the default phoneId changes?
         //      Better to have an instance per phone?
@@ -455,7 +472,7 @@ public class RadioInfo extends Activity {
         imsWfcProvisionedSwitch = (Switch) findViewById(R.id.wfc_provisioned_switch);
         eabProvisionedSwitch = (Switch) findViewById(R.id.eab_provisioned_switch);
 
-        if (!ImsManager.isImsSupportedOnDevice(phone.getContext())) {
+        if (!ImsManager.isImsSupportedOnDevice(mPhone.getContext())) {
             imsVolteProvisionedSwitch.setVisibility(View.GONE);
             imsVtProvisionedSwitch.setVisibility(View.GONE);
             imsWfcProvisionedSwitch.setVisibility(View.GONE);
@@ -495,7 +512,7 @@ public class RadioInfo extends Activity {
         mPreferredNetworkTypeResult = mPreferredNetworkLabels.length - 1; //Unknown
 
         //FIXME: Replace with TelephonyManager call
-        phone.getPreferredNetworkType(
+        mPhone.getPreferredNetworkType(
                 mHandler.obtainMessage(EVENT_QUERY_PREFERRED_TYPE_DONE));
 
         restoreFromBundle(icicle);
@@ -538,19 +555,8 @@ public class RadioInfo extends Activity {
         imsWfcProvisionedSwitch.setOnCheckedChangeListener(mImsWfcCheckedChangeListener);
         eabProvisionedSwitch.setOnCheckedChangeListener(mEabCheckedChangeListener);
 
-        mTelephonyManager.listen(mPhoneStateListener,
-                  PhoneStateListener.LISTEN_CALL_STATE
-        //b/27803938 - RadioInfo currently cannot read PRECISE_CALL_STATE
-        //      | PhoneStateListener.LISTEN_PRECISE_CALL_STATE
-                | PhoneStateListener.LISTEN_DATA_CONNECTION_STATE
-                | PhoneStateListener.LISTEN_DATA_ACTIVITY
-                | PhoneStateListener.LISTEN_CELL_LOCATION
-                | PhoneStateListener.LISTEN_MESSAGE_WAITING_INDICATOR
-                | PhoneStateListener.LISTEN_CALL_FORWARDING_INDICATOR
-                | PhoneStateListener.LISTEN_CELL_INFO
-                | PhoneStateListener.LISTEN_SERVICE_STATE
-                | PhoneStateListener.LISTEN_SIGNAL_STRENGTHS
-                | PhoneStateListener.LISTEN_PHYSICAL_CHANNEL_CONFIGURATION);
+        unregisterPhoneStateListener();
+        registerPhoneStateListener();
 
         mConnectivityManager.registerNetworkCallback(
                 mDefaultNetworkRequest, mNetworkCallback, mHandler);
@@ -611,7 +617,7 @@ public class RadioInfo extends Activity {
                 R.string.radioInfo_menu_viewFDN).setOnMenuItemClickListener(mViewFDNCallback);
         menu.add(1, MENU_ITEM_VIEW_SDN, 0,
                 R.string.radioInfo_menu_viewSDN).setOnMenuItemClickListener(mViewSDNCallback);
-        if (ImsManager.isImsSupportedOnDevice(phone.getContext())) {
+        if (ImsManager.isImsSupportedOnDevice(mPhone.getContext())) {
             menu.add(1, MENU_ITEM_GET_IMS_STATUS,
                     0, R.string.radioInfo_menu_getIMS).setOnMenuItemClickListener(mGetImsStatus);
         }
@@ -643,9 +649,62 @@ public class RadioInfo extends Activity {
         return true;
     }
 
+    // returns array of string labels for each phone index. The array index is equal to the phone
+    // index.
+    private static String[] getPhoneIndexLabels(TelephonyManager tm) {
+        int phones = tm.getPhoneCount();
+        String[] labels = new String[phones];
+        for (int i = 0; i < phones; i++) {
+            labels[i] = "Phone " + i;
+        }
+        return labels;
+    }
+
+    private void unregisterPhoneStateListener() {
+        mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_NONE);
+
+        // clear all fields so they are blank until the next listener event occurs
+        operatorName.setText("");
+        gprsState.setText("");
+        dataNetwork.setText("");
+        voiceNetwork.setText("");
+        sent.setText("");
+        received.setText("");
+        callState.setText("");
+        mLocation.setText("");
+        mMwiValue = false;
+        mMwi.setText("");
+        mCfiValue = false;
+        mCfi.setText("");
+        mCellInfo.setText("");
+        dBm.setText("");
+        gsmState.setText("");
+        roamingState.setText("");
+        mPhyChanConfig.setText("");
+    }
+
+    // register mPhoneStateListener for relevant fields using the current TelephonyManager
+    private void registerPhoneStateListener() {
+        mPhoneStateListener = new RadioInfoPhoneStateListener();
+        mTelephonyManager.listen(mPhoneStateListener,
+                  PhoneStateListener.LISTEN_CALL_STATE
+        //b/27803938 - RadioInfo currently cannot read PRECISE_CALL_STATE
+        //      | PhoneStateListener.LISTEN_PRECISE_CALL_STATE
+                | PhoneStateListener.LISTEN_DATA_CONNECTION_STATE
+                | PhoneStateListener.LISTEN_DATA_ACTIVITY
+                | PhoneStateListener.LISTEN_CELL_LOCATION
+                | PhoneStateListener.LISTEN_MESSAGE_WAITING_INDICATOR
+                | PhoneStateListener.LISTEN_CALL_FORWARDING_INDICATOR
+                | PhoneStateListener.LISTEN_CELL_INFO
+                | PhoneStateListener.LISTEN_SERVICE_STATE
+                | PhoneStateListener.LISTEN_SIGNAL_STRENGTHS
+                | PhoneStateListener.LISTEN_PHYSICAL_CHANNEL_CONFIGURATION);
+    }
+
+>>>>>>> 9bc2a584f6... Do not reuse phonestatelistener
     private void updateDnsCheckState() {
         //FIXME: Replace with a TelephonyManager call
-        dnsCheckState.setText(phone.isDnsCheckDisabled() ?
+        dnsCheckState.setText(mPhone.isDnsCheckDisabled() ?
                 "0.0.0.0 allowed" :"0.0.0.0 not allowed");
     }
 
@@ -864,6 +923,11 @@ public class RadioInfo extends Activity {
         mCellInfo.setText(buildCellInfoString(arrayCi));
     }
 
+    private final void updateSubscriptionIds() {
+        mSubscriptionId.setText(Integer.toString(mPhone.getSubId()));
+        mDds.setText(Integer.toString(SubscriptionManager.getDefaultDataSubscriptionId()));
+    }
+
     private final void
     updateMessageWaiting() {
         mMwi.setText(String.valueOf(mMwiValue));
@@ -950,12 +1014,12 @@ public class RadioInfo extends Activity {
     }
 
     private final void updateNetworkType() {
-        if(phone != null) {
-            ServiceState ss = phone.getServiceState();
+        if(mPhone != null) {
+            ServiceState ss = mPhone.getServiceState();
             dataNetwork.setText(ServiceState.rilRadioTechnologyToString(
-                    phone.getServiceState().getRilDataRadioTechnology()));
+                    mPhone.getServiceState().getRilDataRadioTechnology()));
             voiceNetwork.setText(ServiceState.rilRadioTechnologyToString(
-                    phone.getServiceState().getRilVoiceRadioTechnology()));
+                    mPhone.getServiceState().getRilVoiceRadioTechnology()));
         }
     }
 
@@ -964,16 +1028,16 @@ public class RadioInfo extends Activity {
         String s;
         Resources r = getResources();
 
-        s = phone.getDeviceId();
+        s = mPhone.getDeviceId();
         if (s == null) s = r.getString(R.string.radioInfo_unknown);
         mDeviceId.setText(s);
 
-        s = phone.getSubscriberId();
+        s = mPhone.getSubscriberId();
         if (s == null) s = r.getString(R.string.radioInfo_unknown);
         mSubscriberId.setText(s);
 
         //FIXME: Replace with a TelephonyManager call
-        s = phone.getLine1Number();
+        s = mPhone.getLine1Number();
         if (s == null) s = r.getString(R.string.radioInfo_unknown);
         number.setText(s);
     }
@@ -1050,7 +1114,7 @@ public class RadioInfo extends Activity {
 
     private void refreshSmsc() {
         //FIXME: Replace with a TelephonyManager call
-        phone.getSmscAddress(mHandler.obtainMessage(EVENT_QUERY_SMSC_DONE));
+        mPhone.getSmscAddress(mHandler.obtainMessage(EVENT_QUERY_SMSC_DONE));
     }
 
     private final void updateAllCellInfo() {
@@ -1122,8 +1186,7 @@ public class RadioInfo extends Activity {
             // the content provider, which causes it to be loaded in a process
             // other than the Dialer process, which causes a lot of stuff to
             // break.
-            intent.setClassName("com.android.phone",
-                    "com.android.phone.SimContacts");
+            intent.setClassName("com.android.phone", "com.android.phone.SimContacts");
             startActivity(intent);
             return true;
         }
@@ -1137,8 +1200,7 @@ public class RadioInfo extends Activity {
             // the content provider, which causes it to be loaded in a process
             // other than the Dialer process, which causes a lot of stuff to
             // break.
-            intent.setClassName("com.android.phone",
-                    "com.android.phone.settings.fdn.FdnList");
+            intent.setClassName("com.android.phone", "com.android.phone.settings.fdn.FdnList");
             startActivity(intent);
             return true;
         }
@@ -1153,8 +1215,7 @@ public class RadioInfo extends Activity {
             // the content provider, which causes it to be loaded in a process
             // other than the Dialer process, which causes a lot of stuff to
             // break.
-            intent.setClassName("com.android.phone",
-                    "com.android.phone.ADNList");
+            intent.setClassName("com.android.phone", "com.android.phone.ADNList");
             startActivity(intent);
             return true;
         }
@@ -1162,11 +1223,11 @@ public class RadioInfo extends Activity {
 
     private MenuItem.OnMenuItemClickListener mGetImsStatus = new MenuItem.OnMenuItemClickListener() {
         public boolean onMenuItemClick(MenuItem item) {
-            boolean isImsRegistered = phone.isImsRegistered();
-            boolean availableVolte = phone.isVolteEnabled();
-            boolean availableWfc = phone.isWifiCallingEnabled();
-            boolean availableVt = phone.isVideoEnabled();
-            boolean availableUt = phone.isUtEnabled();
+            boolean isImsRegistered = mPhone.isImsRegistered();
+            boolean availableVolte = mPhone.isVolteEnabled();
+            boolean availableWfc = mPhone.isWifiCallingEnabled();
+            boolean availableVt = mPhone.isVideoEnabled();
+            boolean availableUt = mPhone.isUtEnabled();
 
             final String imsRegString = isImsRegistered ?
                 getString(R.string.radio_info_ims_reg_status_registered) :
@@ -1223,7 +1284,7 @@ public class RadioInfo extends Activity {
 
     private boolean isRadioOn() {
         //FIXME: Replace with a TelephonyManager call
-        return phone.getServiceState().getState() != ServiceState.STATE_POWER_OFF;
+        return mPhone.getServiceState().getState() != ServiceState.STATE_POWER_OFF;
     }
 
     private void updateRadioPowerState() {
@@ -1255,7 +1316,7 @@ public class RadioInfo extends Activity {
     }
 
     void setImsConfigProvisionedState(int configItem, boolean state) {
-        if (phone != null && mImsManager != null) {
+        if (mPhone != null && mImsManager != null) {
             QueuedWork.queue(new Runnable() {
                 public void run() {
                     try {
@@ -1274,14 +1335,14 @@ public class RadioInfo extends Activity {
         @Override
         public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             log("toggle radio power: currently " + (isRadioOn()?"on":"off"));
-            phone.setRadioPower(isChecked);
+            mPhone.setRadioPower(isChecked);
        }
     };
 
     private boolean isImsVolteProvisioned() {
-        if (phone != null && mImsManager != null) {
-            return mImsManager.isVolteEnabledByPlatform(phone.getContext())
-                && mImsManager.isVolteProvisionedOnDevice(phone.getContext());
+        if (mPhone != null && mImsManager != null) {
+            return mImsManager.isVolteEnabledByPlatform(mPhone.getContext())
+                && mImsManager.isVolteProvisionedOnDevice(mPhone.getContext());
         }
         return false;
     }
@@ -1294,9 +1355,9 @@ public class RadioInfo extends Activity {
     };
 
     private boolean isImsVtProvisioned() {
-        if (phone != null && mImsManager != null) {
-            return mImsManager.isVtEnabledByPlatform(phone.getContext())
-                && mImsManager.isVtProvisionedOnDevice(phone.getContext());
+        if (mPhone != null && mImsManager != null) {
+            return mImsManager.isVtEnabledByPlatform(mPhone.getContext())
+                && mImsManager.isVtProvisionedOnDevice(mPhone.getContext());
         }
         return false;
     }
@@ -1309,9 +1370,9 @@ public class RadioInfo extends Activity {
     };
 
     private boolean isImsWfcProvisioned() {
-        if (phone != null && mImsManager != null) {
-            return mImsManager.isWfcEnabledByPlatform(phone.getContext())
-                && mImsManager.isWfcProvisionedOnDevice(phone.getContext());
+        if (mPhone != null && mImsManager != null) {
+            return mImsManager.isWfcEnabledByPlatform(mPhone.getContext())
+                && mImsManager.isWfcProvisionedOnDevice(mPhone.getContext());
         }
         return false;
     }
@@ -1366,7 +1427,7 @@ public class RadioInfo extends Activity {
     }
 
     private void updateImsProvisionedState() {
-        if (!ImsManager.isImsSupportedOnDevice(phone.getContext())) {
+        if (!ImsManager.isImsSupportedOnDevice(mPhone.getContext())) {
             return;
         }
         log("updateImsProvisionedState isImsVolteProvisioned()=" + isImsVolteProvisioned());
@@ -1376,31 +1437,31 @@ public class RadioInfo extends Activity {
         imsVolteProvisionedSwitch.setChecked(isImsVolteProvisioned());
         imsVolteProvisionedSwitch.setOnCheckedChangeListener(mImsVolteCheckedChangeListener);
         imsVolteProvisionedSwitch.setEnabled(!Build.IS_USER
-                && mImsManager.isVolteEnabledByPlatform(phone.getContext()));
+                && mImsManager.isVolteEnabledByPlatform(mPhone.getContext()));
 
         imsVtProvisionedSwitch.setOnCheckedChangeListener(null);
         imsVtProvisionedSwitch.setChecked(isImsVtProvisioned());
         imsVtProvisionedSwitch.setOnCheckedChangeListener(mImsVtCheckedChangeListener);
         imsVtProvisionedSwitch.setEnabled(!Build.IS_USER
-                && mImsManager.isVtEnabledByPlatform(phone.getContext()));
+                && mImsManager.isVtEnabledByPlatform(mPhone.getContext()));
 
         imsWfcProvisionedSwitch.setOnCheckedChangeListener(null);
         imsWfcProvisionedSwitch.setChecked(isImsWfcProvisioned());
         imsWfcProvisionedSwitch.setOnCheckedChangeListener(mImsWfcCheckedChangeListener);
         imsWfcProvisionedSwitch.setEnabled(!Build.IS_USER
-                && mImsManager.isWfcEnabledByPlatform(phone.getContext()));
+                && mImsManager.isWfcEnabledByPlatform(mPhone.getContext()));
 
         eabProvisionedSwitch.setOnCheckedChangeListener(null);
         eabProvisionedSwitch.setChecked(isEabProvisioned());
         eabProvisionedSwitch.setOnCheckedChangeListener(mEabCheckedChangeListener);
         eabProvisionedSwitch.setEnabled(!Build.IS_USER
-                && isEabEnabledByPlatform(phone.getContext()));
+                && isEabEnabledByPlatform(mPhone.getContext()));
     }
 
     OnClickListener mDnsCheckButtonHandler = new OnClickListener() {
         public void onClick(View v) {
             //FIXME: Replace with a TelephonyManager call
-            phone.disableDnsCheck(!phone.isDnsCheckDisabled());
+            mPhone.disableDnsCheck(!mPhone.isDnsCheckDisabled());
             updateDnsCheckState();
         }
     };
@@ -1427,7 +1488,7 @@ public class RadioInfo extends Activity {
     OnClickListener mUpdateSmscButtonHandler = new OnClickListener() {
         public void onClick(View v) {
             updateSmscButton.setEnabled(false);
-            phone.setSmscAddress(smsc.getText().toString(),
+            mPhone.setSmscAddress(smsc.getText().toString(),
                     mHandler.obtainMessage(EVENT_UPDATE_SMSC_DONE));
         }
     };
@@ -1472,14 +1533,40 @@ public class RadioInfo extends Activity {
                 // want this setting to be set, so that if the radio hiccups and this setting
                 // is for some reason unsuccessful, future calls to the radio will reflect
                 // the users's preference which is set here.
-                final int subId = phone.getSubId();
+                final int subId = mPhone.getSubId();
                 if (SubscriptionManager.isUsableSubIdValue(subId)) {
-                    Settings.Global.putInt(phone.getContext().getContentResolver(),
+                    Settings.Global.putInt(mPhone.getContext().getContentResolver(),
                             PREFERRED_NETWORK_MODE + subId, mPreferredNetworkTypeResult);
                 }
                 log("Calling setPreferredNetworkType(" + mPreferredNetworkTypeResult + ")");
                 Message msg = mHandler.obtainMessage(EVENT_SET_PREFERRED_TYPE_DONE);
-                phone.setPreferredNetworkType(mPreferredNetworkTypeResult, msg);
+                mPhone.setPreferredNetworkType(mPreferredNetworkTypeResult, msg);
+            }
+        }
+
+        public void onNothingSelected(AdapterView parent) {
+        }
+    };
+
+    AdapterView.OnItemSelectedListener mSelectPhoneIndexHandler =
+            new AdapterView.OnItemSelectedListener() {
+
+        public void onItemSelected(AdapterView parent, View v, int pos, long id) {
+            if (pos >= 0 && pos <= mPhoneIndexLabels.length - 1) {
+                // the array position is equal to the phone index
+                int phoneIndex = pos;
+                Phone[] phones = PhoneFactory.getPhones();
+                if (phones == null || phones.length <= phoneIndex) {
+                    return;
+                }
+                // getSubId says it takes a slotIndex, but it actually takes a phone index
+                int[] subIds = SubscriptionManager.getSubId(phoneIndex);
+                if (subIds == null || subIds.length < 1) {
+                    return;
+                }
+                mSelectedPhoneIndex = phoneIndex;
+
+                updatePhoneIndex(phoneIndex, subIds[0]);
             }
         }
 
