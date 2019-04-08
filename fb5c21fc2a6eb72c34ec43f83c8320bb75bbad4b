@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "886fba1b_042cf0d5",
+        "filename": "src/com/android/settings/bluetooth/AvailableMediaBluetoothDeviceUpdater.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1320071
+      },
+      "writtenOn": "2019-04-08T02:57:12Z",
+      "side": 1,
+      "message": "line length is over 100 columns",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 101
+      },
+      "revId": "fb5c21fc2a6eb72c34ec43f83c8320bb75bbad4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d127434e_72629fb4",
+        "filename": "src/com/android/settings/bluetooth/ConnectedBluetoothDeviceUpdater.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1320071
+      },
+      "writtenOn": "2019-04-08T02:57:12Z",
+      "side": 1,
+      "message": "line length is over 100 columns",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 103
+      },
+      "revId": "fb5c21fc2a6eb72c34ec43f83c8320bb75bbad4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
