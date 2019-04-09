@@ -24,6 +24,7 @@ import static org.mockito.Mockito.when;
 
 import android.content.Context;
 import android.telephony.CellInfo;
+import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 
@@ -38,7 +39,9 @@ import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 @RunWith(RobolectricTestRunner.class)
 public class NetworkSelectSettingsTest {
@@ -54,6 +57,8 @@ public class NetworkSelectSettingsTest {
     private CellInfo mCellInfo2;
     @Mock
     private PreferenceManager mPreferenceManager;
+    @Mock
+    private SubscriptionInfo mSubscriptionInfo;
     private Context mContext;
 
     private PreferenceCategory mConnectedPreferenceCategory;
@@ -67,8 +72,10 @@ public class NetworkSelectSettingsTest {
 
         mContext = spy(RuntimeEnvironment.application);
         when(mContext.getSystemService(Context.TELEPHONY_SERVICE)).thenReturn(mTelephonyManager);
-        when(mContext.getSystemService(SubscriptionManager.class)).thenReturn(mSubscriptionManager);
+        when(mContext.getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE))
+                .thenReturn(mSubscriptionManager);
         when(mTelephonyManager.createForSubscriptionId(SUB_ID)).thenReturn(mTelephonyManager);
+        when(mSubscriptionManager.getActiveSubscriptionInfo(SUB_ID)).thenReturn(mSubscriptionInfo);
 
         when(mCellInfo1.isRegistered()).thenReturn(true);
         when(mCellInfo2.isRegistered()).thenReturn(false);
@@ -87,6 +94,7 @@ public class NetworkSelectSettingsTest {
         mNetworkSelectSettings.mConnectedPreferenceCategory = mConnectedPreferenceCategory;
         mNetworkSelectSettings.mPreferenceCategory = mPreferenceCategory;
         mNetworkSelectSettings.mCellInfoList = Arrays.asList(mCellInfo1, mCellInfo2);
+        mNetworkSelectSettings.mSubId = SUB_ID;
     }
 
     @Test
@@ -109,5 +117,30 @@ public class NetworkSelectSettingsTest {
 
         // Should not Crash
         mNetworkSelectSettings.updateForbiddenPlmns();
+    }
+
+    @Test
+    public void updateHomeAndEquivalentHomePlmns_hPlmnsEmpty_ehPlmnsEmpty_containSubMccMnc() {
+        when(mSubscriptionInfo.getHplmns()).thenReturn(Collections.emptyList());
+        when(mSubscriptionInfo.getEhplmns()).thenReturn(Collections.emptyList());
+        when(mSubscriptionInfo.getMccString()).thenReturn("123");
+        when(mSubscriptionInfo.getMncString()).thenReturn("456");
+
+        mNetworkSelectSettings.updateHomeAndEquivalentHomePlmns();
+        assertThat(mNetworkSelectSettings.mHomeAndEquivalentHomePlmns.contains("123456")).isTrue();
+    }
+
+    @Test
+    public void updateHomeAndEquivalentHomePlmns_removeInvalidPlmns() {
+        ArrayList plmns = new ArrayList();
+        plmns.add("46000");
+        plmns.add("");
+        when(mSubscriptionInfo.getHplmns()).thenReturn(plmns);
+        when(mSubscriptionInfo.getEhplmns()).thenReturn(Collections.emptyList());
+        when(mSubscriptionInfo.getMccString()).thenReturn("123");
+        when(mSubscriptionInfo.getMncString()).thenReturn("456");
+
+        mNetworkSelectSettings.updateHomeAndEquivalentHomePlmns();
+        assertThat(mNetworkSelectSettings.mHomeAndEquivalentHomePlmns.size()).isEqualTo(1);
     }
 }

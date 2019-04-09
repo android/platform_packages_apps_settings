@@ -61,7 +61,8 @@ public class NetworkOperatorPreferenceTest {
                 .thenReturn(false);
         final NetworkOperatorPreference preference = spy(
                 new NetworkOperatorPreference(mCellInfo, mContext,
-                        new ArrayList<>() /* forbiddenPlmns */, false /* show4GForLTE */));
+                        new ArrayList<>() /* forbiddenPlmns */, false /* show4GForLTE */,
+                        new ArrayList<>()));
 
         preference.setIcon(LEVEL);
 

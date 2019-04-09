@@ -30,10 +30,13 @@ import android.telephony.CellInfo;
 import android.telephony.NetworkRegistrationInfo;
 import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
+import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
@@ -80,7 +83,8 @@ public class NetworkSelectSettings extends DashboardFragment {
     private Preference mStatusMessagePreference;
     @VisibleForTesting
     List<CellInfo> mCellInfoList;
-    private int mSubId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+    @VisibleForTesting
+    int mSubId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
     @VisibleForTesting
     TelephonyManager mTelephonyManager;
     private List<String> mForbiddenPlmns;
@@ -89,6 +93,12 @@ public class NetworkSelectSettings extends DashboardFragment {
     private final ExecutorService mNetworkScanExecutor = Executors.newFixedThreadPool(1);
     private MetricsFeatureProvider mMetricsFeatureProvider;
     private boolean mUseNewApi;
+    // Indicates whether to show single row.
+    private boolean mShowSingleRowForOperator = false;
+    // Indicates whether to show SPN for home network.
+    private boolean mShowSpnForHomeNetwork = false;
+    // HPLMN and EHPLMN list.
+    List<String> mHomeAndEquivalentHomePlmns;
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -111,6 +121,10 @@ public class NetworkSelectSettings extends DashboardFragment {
         if (bundle != null) {
             mShow4GForLTE = bundle.getBoolean(
                     CarrierConfigManager.KEY_SHOW_4G_FOR_LTE_DATA_ICON_BOOL);
+            mShowSingleRowForOperator = bundle.getBoolean(CarrierConfigManager.
+                    KEY_SHOW_SINGLE_OPERATOR_ROW_IN_CHOOSE_NETWORK_SETTING_BOOL);
+            mShowSpnForHomeNetwork = bundle.getBoolean(CarrierConfigManager.
+                    KEY_SHOW_SPN_FOR_HOME_IN_CHOOSE_NETWORK_SETTING_BOOL);
         }
 
         mMetricsFeatureProvider = FeatureFactory
@@ -127,7 +141,6 @@ public class NetworkSelectSettings extends DashboardFragment {
                     .findViewById(R.id.progress_bar_animation);
             setProgressBarVisible(false);
         }
-        forceUpdateConnectedPreferenceCategory();
     }
 
     @Override
@@ -135,7 +148,12 @@ public class NetworkSelectSettings extends DashboardFragment {
         super.onStart();
 
         updateForbiddenPlmns();
+        updateHomeAndEquivalentHomePlmns();
         setProgressBarVisible(true);
+        // If has not got the scan result, force update connected pref.
+        if (mCellInfoList == null) {
+            forceUpdateConnectedPreferenceCategory();
+        }
 
         mNetworkScanHelper.startNetworkScan(
                 mUseNewApi
@@ -152,6 +170,29 @@ public class NetworkSelectSettings extends DashboardFragment {
         mForbiddenPlmns = forbiddenPlmns != null
                 ? Arrays.asList(forbiddenPlmns)
                 : new ArrayList<>();
+    }
+
+    /**
+     * Update home and equivalent home PLMNs from SubscriptionInfo.
+     */
+    @VisibleForTesting
+    void updateHomeAndEquivalentHomePlmns() {
+        SubscriptionManager manager = (SubscriptionManager)
+                getContext().getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
+        SubscriptionInfo subInfo = manager.getActiveSubscriptionInfo(mSubId);
+        if (subInfo != null) {
+            mHomeAndEquivalentHomePlmns = new ArrayList<>();
+            mHomeAndEquivalentHomePlmns.addAll(subInfo.getHplmns());
+            mHomeAndEquivalentHomePlmns.addAll(subInfo.getEhplmns());
+            // Add SIM PLMN to the list which in turn acts as hplmn if it's not contained
+            // in hplmns and ehplmns.
+            String simPlmn = subInfo.getMccString() + subInfo.getMncString();
+            if (!mHomeAndEquivalentHomePlmns.contains(simPlmn)) {
+                mHomeAndEquivalentHomePlmns.add(simPlmn);
+            }
+            // Remove empty strings and null values if present
+            mHomeAndEquivalentHomePlmns.removeAll(Arrays.asList("", null));
+        }
     }
 
     @Override
@@ -180,8 +221,7 @@ public class NetworkSelectSettings extends DashboardFragment {
             if (mConnectedPreferenceCategory.getPreferenceCount() > 0) {
                 NetworkOperatorPreference connectedNetworkOperator = (NetworkOperatorPreference)
                         (mConnectedPreferenceCategory.getPreference(0));
-                if (!CellInfoUtil.getNetworkTitle(cellInfo).equals(
-                        CellInfoUtil.getNetworkTitle(connectedNetworkOperator.getCellInfo()))) {
+                if (connectedNetworkOperator != mSelectedPreference) {
                     connectedNetworkOperator.setSummary(R.string.network_disconnected);
                 }
             }
@@ -190,7 +230,8 @@ public class NetworkSelectSettings extends DashboardFragment {
             // Disable the screen until network is manually set
             getPreferenceScreen().setEnabled(false);
 
-            final OperatorInfo operatorInfo = CellInfoUtil.getOperatorInfoFromCellInfo(cellInfo);
+            final OperatorInfo operatorInfo = CellInfoUtil.
+                    getOperatorInfoFromCellInfo(cellInfo, mShowSingleRowForOperator);
             ThreadUtils.postOnBackgroundThread(() -> {
                 Message msg = mHandler.obtainMessage(EVENT_SET_NETWORK_SELECTION_MANUALLY_DONE);
                 msg.obj = mTelephonyManager.setNetworkSelectionModeManual(
@@ -229,6 +270,18 @@ public class NetworkSelectSettings extends DashboardFragment {
                     mSelectedPreference.setSummary(isSucceed
                             ? R.string.network_connected
                             : R.string.network_could_not_connect);
+                    // Network selection succeed, back to previous screen, and popup a toast.
+                    // Otherwise, connected network needs moving to the first position of the
+                    // networklist, and may be needed re-scan to follow the order rule of plmn
+                    // displaying.
+                    if (isSucceed) {
+                        Toast.makeText(getPrefContext(), R.string.registration_done,
+                                Toast.LENGTH_LONG).show();
+                        if (getActivity() != null) {
+                            // Exit network selection activity.
+                            getActivity().finish();
+                        }
+                    }
                     break;
                 case EVENT_NETWORK_SCAN_RESULTS:
                     List<CellInfo> results = aggregateCellInfoList((List<CellInfo>) msg.obj);
@@ -295,8 +348,9 @@ public class NetworkSelectSettings extends DashboardFragment {
         for (int index = 0; index < mCellInfoList.size(); index++) {
             if (!mCellInfoList.get(index).isRegistered()) {
                 NetworkOperatorPreference pref = new NetworkOperatorPreference(
-                        mCellInfoList.get(index), getPrefContext(), mForbiddenPlmns, mShow4GForLTE);
-                pref.setKey(CellInfoUtil.getNetworkTitle(mCellInfoList.get(index)));
+                        mCellInfoList.get(index), getPrefContext(), mForbiddenPlmns, mShow4GForLTE,
+                        mHomeAndEquivalentHomePlmns);
+                pref.setTitle(getNetworkDisplayedTitle(mCellInfoList.get(index)));
                 pref.setOrder(index);
                 mPreferenceCategory.addPreference(pref);
             }
@@ -332,12 +386,14 @@ public class NetworkSelectSettings extends DashboardFragment {
             CellInfo cellInfo = CellInfoUtil.wrapCellInfoWithCellIdentity(cellIdentity);
             if (cellInfo != null) {
                 NetworkOperatorPreference pref = new NetworkOperatorPreference(
-                        cellInfo, getPrefContext(), mForbiddenPlmns, mShow4GForLTE);
-                pref.setTitle(mTelephonyManager.getNetworkOperatorName());
+                        cellInfo, getPrefContext(), mForbiddenPlmns, mShow4GForLTE,
+                        mHomeAndEquivalentHomePlmns);
+                pref.setTitle(getNetworkDisplayedTitle(cellInfo));
                 pref.setSummary(R.string.network_connected);
                 // Update the signal strength icon, since the default signalStrength value would be
                 // zero (it would be quite confusing why the connected network has no signal)
                 pref.setIcon(SignalStrength.NUM_SIGNAL_STRENGTH_BINS - 1);
+                mConnectedPreferenceCategory.removeAll();
                 mConnectedPreferenceCategory.addPreference(pref);
             } else {
                 // Remove the connected network operators category
@@ -371,7 +427,9 @@ public class NetworkSelectSettings extends DashboardFragment {
     private void addConnectedNetworkOperatorPreference(CellInfo cellInfo) {
         mConnectedPreferenceCategory.removeAll();
         final NetworkOperatorPreference pref = new NetworkOperatorPreference(
-                cellInfo, getPrefContext(), mForbiddenPlmns, mShow4GForLTE);
+                cellInfo, getPrefContext(), mForbiddenPlmns, mShow4GForLTE,
+                mHomeAndEquivalentHomePlmns);
+        pref.setTitle(getNetworkDisplayedTitle(cellInfo));
         pref.setSummary(R.string.network_connected);
         mConnectedPreferenceCategory.addPreference(pref);
         mConnectedPreferenceCategory.setVisible(true);
@@ -394,9 +452,14 @@ public class NetworkSelectSettings extends DashboardFragment {
     /**
      * The Scan results may contains several cell infos with different radio technologies and signal
      * strength for one network operator. Aggregate the CellInfoList by retaining only the cell info
-     * with the strongest signal strength.
+     * with the strongest signal strength if the operator need to show single row.
      */
     private List<CellInfo> aggregateCellInfoList(List<CellInfo> cellInfoList) {
+        // Old API don't contain celltype info, so show all networks only when using new API.
+        if (!mShowSingleRowForOperator && mUseNewApi) {
+            return cellInfoList;
+        }
+
         Map<String, CellInfo> map = new HashMap<>();
         for (CellInfo cellInfo : cellInfoList) {
             String plmn = CellInfoUtil.getOperatorInfoFromCellInfo(cellInfo).getOperatorNumeric();
@@ -427,5 +490,26 @@ public class NetworkSelectSettings extends DashboardFragment {
     public void onDestroy() {
         mNetworkScanExecutor.shutdown();
         super.onDestroy();
+    }
+
+    /**
+     * Returns displayed title of the network.
+     *
+     * @param info contains the information of the network.
+     *
+     * @return  returns SPN if configured to show spn for home network. Otherwise returns title
+     *          got from info.
+     */
+    private String getNetworkDisplayedTitle(CellInfo info) {
+        if (mShowSpnForHomeNetwork && CellInfoUtil.isHome(info, mHomeAndEquivalentHomePlmns)) {
+            // If it is home NW and should show SPN instead of PLMN
+            String spn = mTelephonyManager.getSimOperatorName(mSubId);
+            Log.d(TAG, "Should show SPN(" + spn + ") for home network");
+            if (!TextUtils.isEmpty(spn)) {
+                return spn;
+            }
+        }
+
+        return CellInfoUtil.getNetworkTitle(info);
     }
 }

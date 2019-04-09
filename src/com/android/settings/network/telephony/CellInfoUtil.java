@@ -129,6 +129,21 @@ public final class CellInfoUtil {
     }
 
     /**
+     * Wrap a cell info into an operator info includes cell type.
+     * If it's single row, set cell type to CellInfo.TYPE_UNKNOWN.
+     */
+    public static OperatorInfo getOperatorInfoFromCellInfo(CellInfo cellInfo, boolean singleRow) {
+        OperatorInfo operatorInfo = getOperatorInfoFromCellInfo(cellInfo);
+        // If configures as single row, set cell type to CellInfo.TYPE_UNKNOWN.
+        operatorInfo = new OperatorInfo(
+                operatorInfo.getOperatorAlphaLong(),
+                operatorInfo.getOperatorAlphaShort(),
+                operatorInfo.getOperatorNumeric(),
+                singleRow ? CellInfo.TYPE_UNKNOWN : cellInfo.getCellIdentity().getType());
+        return operatorInfo;
+    }
+
+    /**
      * Creates a CellInfo object from OperatorInfo. GsmCellInfo is used here only because
      * operatorInfo does not contain technology type while CellInfo is an abstract object that
      * requires to specify technology type. It doesn't matter which CellInfo type to use here, since
@@ -178,5 +193,11 @@ public final class CellInfoUtil {
                 "{CellType = %s, isRegistered = %b, mcc = %s, mnc = %s, alphaL = %s, alphaS = %s}",
                 cellType, cellInfo.isRegistered(), cid.getMccString(), cid.getMncString(),
                 cid.getOperatorAlphaLong(), cid.getOperatorAlphaShort());
+    }
+
+    /** Checks whether the network operator is home. */
+    public static boolean isHome(CellInfo cellInfo, List<String> homePlmns) {
+        String plmn = CellInfoUtil.getOperatorInfoFromCellInfo(cellInfo).getOperatorNumeric();
+        return homePlmns != null && homePlmns.contains(plmn);
     }
 }

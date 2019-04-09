@@ -45,15 +45,18 @@ public class NetworkOperatorPreference extends Preference {
     private int mLevel = LEVEL_NONE;
     private boolean mShow4GForLTE;
     private boolean mUseNewApi;
+    private List<String> mHomePlmns;
 
     public NetworkOperatorPreference(
-            CellInfo cellinfo, Context context, List<String> forbiddenPlmns, boolean show4GForLTE) {
+            CellInfo cellinfo, Context context, List<String> forbiddenPlmns, boolean show4GForLTE,
+            List<String> homePlmns) {
         super(context);
         mCellInfo = cellinfo;
         mForbiddenPlmns = forbiddenPlmns;
         mShow4GForLTE = show4GForLTE;
         mUseNewApi = context.getResources().getBoolean(
                 com.android.internal.R.bool.config_enableNewAutoSelectNetworkUI);
+        mHomePlmns = homePlmns;
         refresh();
     }
 
@@ -65,13 +68,6 @@ public class NetworkOperatorPreference extends Preference {
      * Refresh the NetworkOperatorPreference by updating the title and the icon.
      */
     public void refresh() {
-        if (DBG) Log.d(TAG, "refresh the network: " + CellInfoUtil.getNetworkTitle(mCellInfo));
-        String networkTitle = CellInfoUtil.getNetworkTitle(mCellInfo);
-        if (CellInfoUtil.isForbidden(mCellInfo, mForbiddenPlmns)) {
-            networkTitle += " " + getContext().getResources().getString(R.string.forbidden_network);
-        }
-        setTitle(networkTitle);
-
         final CellSignalStrength signalStrength = mCellInfo.getCellSignalStrength();
         final int level = signalStrength != null ? signalStrength.getLevel() : LEVEL_NONE;
         if (DBG) Log.d(TAG, "refresh level: " + String.valueOf(level));
@@ -113,5 +109,16 @@ public class NetworkOperatorPreference extends Preference {
         Context context = getContext();
         setIcon(MobileNetworkUtils.getSignalStrengthIcon(context, level, NUM_SIGNAL_STRENGTH_BINS,
                 getIconIdForCell(mCellInfo), false));
+    }
+
+    @Override
+    public void setTitle(CharSequence title) {
+        if (DBG) Log.d(TAG, "refresh the network: " + title);
+        if (CellInfoUtil.isForbidden(mCellInfo, mForbiddenPlmns)) {
+            title += " " + getContext().getResources().getString(R.string.forbidden_network);
+        } else if (CellInfoUtil.isHome(mCellInfo, mHomePlmns)) {
+            title += " " + getContext().getResources().getString(R.string.home_network);
+        }
+        super.setTitle(title);
     }
 }
