@@ -16,6 +16,7 @@
 
 package com.android.settings.network.telephony;
 
+import android.telephony.AccessNetworkConstants;
 import android.telephony.CellIdentity;
 import android.telephony.CellIdentityCdma;
 import android.telephony.CellIdentityGsm;
@@ -25,6 +26,8 @@ import android.telephony.CellInfo;
 import android.telephony.CellInfoCdma;
 import android.telephony.CellInfoGsm;
 import android.telephony.CellInfoLte;
+import android.telephony.CellInfoNr;
+import android.telephony.CellInfoTdscdma;
 import android.telephony.CellInfoWcdma;
 import android.text.BidiFormatter;
 import android.text.TextDirectionHeuristics;
@@ -98,30 +101,50 @@ public final class CellInfoUtil {
      */
     public static OperatorInfo getOperatorInfoFromCellInfo(CellInfo cellInfo) {
         OperatorInfo oi;
-        if (cellInfo instanceof CellInfoLte) {
+        if (cellInfo instanceof CellInfoNr) {
+            CellInfoNr nr = (CellInfoNr) cellInfo;
+            String mccStr = nr.getCellIdentity().getMccString();
+            String mncStr = nr.getCellIdentity().getMncString();
+            oi = new OperatorInfo(
+                    (String) nr.getCellIdentity().getOperatorAlphaLong(),
+                    (String) nr.getCellIdentity().getOperatorAlphaShort(),
+                    (mccStr == null || mncStr == null) ? null : mccStr + mncStr,
+                    AccessNetworkConstants.AccessNetworkType.NGRAN);
+        } else if (cellInfo instanceof CellInfoLte) {
             CellInfoLte lte = (CellInfoLte) cellInfo;
             oi = new OperatorInfo(
                     (String) lte.getCellIdentity().getOperatorAlphaLong(),
                     (String) lte.getCellIdentity().getOperatorAlphaShort(),
-                    lte.getCellIdentity().getMobileNetworkOperator());
+                    lte.getCellIdentity().getMobileNetworkOperator(),
+                    AccessNetworkConstants.AccessNetworkType.EUTRAN);
         } else if (cellInfo instanceof CellInfoWcdma) {
             CellInfoWcdma wcdma = (CellInfoWcdma) cellInfo;
             oi = new OperatorInfo(
                     (String) wcdma.getCellIdentity().getOperatorAlphaLong(),
                     (String) wcdma.getCellIdentity().getOperatorAlphaShort(),
-                    wcdma.getCellIdentity().getMobileNetworkOperator());
+                    wcdma.getCellIdentity().getMobileNetworkOperator(),
+                    AccessNetworkConstants.AccessNetworkType.UTRAN);
+        } else if (cellInfo instanceof CellInfoTdscdma) {
+            CellInfoTdscdma tdscdma = (CellInfoTdscdma) cellInfo;
+            oi = new OperatorInfo(
+                    (String) tdscdma.getCellIdentity().getOperatorAlphaLong(),
+                    (String) tdscdma.getCellIdentity().getOperatorAlphaShort(),
+                    tdscdma.getCellIdentity().getMobileNetworkOperator(),
+                    AccessNetworkConstants.AccessNetworkType.UTRAN);
         } else if (cellInfo instanceof CellInfoGsm) {
             CellInfoGsm gsm = (CellInfoGsm) cellInfo;
             oi = new OperatorInfo(
                     (String) gsm.getCellIdentity().getOperatorAlphaLong(),
                     (String) gsm.getCellIdentity().getOperatorAlphaShort(),
-                    gsm.getCellIdentity().getMobileNetworkOperator());
+                    gsm.getCellIdentity().getMobileNetworkOperator(),
+                    AccessNetworkConstants.AccessNetworkType.GERAN);
         } else if (cellInfo instanceof CellInfoCdma) {
             CellInfoCdma cdma = (CellInfoCdma) cellInfo;
             oi = new OperatorInfo(
                     (String) cdma.getCellIdentity().getOperatorAlphaLong(),
                     (String) cdma.getCellIdentity().getOperatorAlphaShort(),
-                    "" /* operator numeric */);
+                    "" /* operator numeric */,
+                    AccessNetworkConstants.AccessNetworkType.CDMA2000);
         } else {
             Log.e(TAG, "Invalid CellInfo type");
             oi = new OperatorInfo("", "", "");
@@ -179,5 +202,11 @@ public final class CellInfoUtil {
                 "{CellType = %s, isRegistered = %b, mcc = %s, mnc = %s, alphaL = %s, alphaS = %s}",
                 cellType, cellInfo.isRegistered(), cid.getMccString(), cid.getMncString(),
                 cid.getOperatorAlphaLong(), cid.getOperatorAlphaShort());
+    }
+
+    /** Checks whether the network operator is home. */
+    public static boolean isHome(CellInfo cellInfo, List<String> homePlmns) {
+        String plmn = CellInfoUtil.getOperatorInfoFromCellInfo(cellInfo).getOperatorNumeric();
+        return homePlmns != null && homePlmns.contains(plmn);
     }
 }
