@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4308deb4_91d24cc3",
+        "filename": "src/com/android/settings/notification/ZenAccessSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1060562
+      },
+      "writtenOn": "2019-04-10T18:20:27Z",
+      "side": 1,
+      "message": "Can you please leave them in but disable the toggle switch?",
+      "revId": "32d669ab94f1da76c9128f15a01251ec62bdc6ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
