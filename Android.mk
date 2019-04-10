@@ -44,7 +44,8 @@ LOCAL_STATIC_JAVA_LIBRARIES := \
     androidx.lifecycle_lifecycle-extensions \
     guava \
     jsr305 \
-    settings-logtags \
+    services.net \
+    settings-logtags
 
 LOCAL_PROGUARD_FLAG_FILES := proguard.flags
 
