@@ -24,6 +24,7 @@ import android.bluetooth.BluetoothManager;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.net.ConnectivityManager;
+import android.net.IpMemoryStore;
 import android.net.NetworkPolicyManager;
 import android.net.Uri;
 import android.net.wifi.WifiManager;
@@ -32,16 +33,16 @@ import android.os.Bundle;
 import android.os.RecoverySystem;
 import android.os.UserHandle;
 import android.os.UserManager;
-import android.provider.Telephony;
-import androidx.annotation.VisibleForTesting;
+import android.provider.Settings;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.annotation.VisibleForTesting;
 
 import com.android.ims.ImsManager;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
@@ -148,6 +149,16 @@ public class ResetNetworkConfirm extends InstrumentedFragment {
                 if (btAdapter != null) {
                     btAdapter.factoryReset();
                 }
+            }
+
+            IpMemoryStore ipMemoryStore = new IpMemoryStore(context);
+            if (ipMemoryStore != null) {
+                // turn on/off airplane mode to avoid race conditions
+                Settings.Global.putInt(context.getContentResolver(),
+                        Settings.Global.AIRPLANE_MODE_ON, 1);
+                ipMemoryStore.factoryReset();
+                Settings.Global.putInt(context.getContentResolver(),
+                        Settings.Global.AIRPLANE_MODE_ON, 0);
             }
 
             ImsManager.getInstance(context,
