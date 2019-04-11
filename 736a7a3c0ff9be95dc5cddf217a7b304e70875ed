@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba16ae53_04bfd7d4",
+        "filename": "src/com/android/settings/network/TetherProvisioningActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-04-11T08:10:05Z",
+      "side": 1,
+      "message": "How will you ensure all entitlement apps vendors add this to the broadcast ?",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 57,
+        "endChar": 61
+      },
+      "revId": "736a7a3c0ff9be95dc5cddf217a7b304e70875ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
