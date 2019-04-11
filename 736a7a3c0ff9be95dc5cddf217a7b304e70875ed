@@ -46,6 +46,30 @@
       "revId": "736a7a3c0ff9be95dc5cddf217a7b304e70875ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a7065b3_b5f0b63b",
+        "filename": "src/com/android/settings/network/TetherProvisioningActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-04-11T08:33:07Z",
+      "side": 1,
+      "message": "This intent is controller by us. it is sent from EntitlementManager instead of entitlement apps. So we don\u0027t need to consider vendor apps in this case.",
+      "parentUuid": "332c4d0d_78d17397",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 57,
+        "endChar": 61
+      },
+      "revId": "736a7a3c0ff9be95dc5cddf217a7b304e70875ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
