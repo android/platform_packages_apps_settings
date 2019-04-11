@@ -22,6 +22,30 @@
       "revId": "736a7a3c0ff9be95dc5cddf217a7b304e70875ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "332c4d0d_78d17397",
+        "filename": "src/com/android/settings/network/TetherProvisioningActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2019-04-11T08:21:24Z",
+      "side": 1,
+      "message": "Should you use default data sub if the intent do not contain this extra? If entitlement app did not take this, it will be always invalid subId. Do we need to consider this case?",
+      "parentUuid": "ba16ae53_04bfd7d4",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 57,
+        "endChar": 61
+      },
+      "revId": "736a7a3c0ff9be95dc5cddf217a7b304e70875ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
