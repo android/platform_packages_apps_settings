@@ -70,6 +70,30 @@
       "revId": "736a7a3c0ff9be95dc5cddf217a7b304e70875ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "381040de_f352232b",
+        "filename": "src/com/android/settings/network/TetherProvisioningActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-04-12T07:37:00Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0a7065b3_b5f0b63b",
+      "range": {
+        "startLine": 56,
+        "startChar": 8,
+        "endLine": 57,
+        "endChar": 61
+      },
+      "revId": "736a7a3c0ff9be95dc5cddf217a7b304e70875ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
