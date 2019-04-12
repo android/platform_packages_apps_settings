@@ -663,6 +663,8 @@ public class ApnEditor extends SettingsPreferenceFragment
                     mMvnoMatchData.setText(numeric + "x");
                 } else if (values[mvnoIndex].equals("GID")) {
                     mMvnoMatchData.setText(mTelephonyManager.getGroupIdLevel1());
+                } else if (values[mvnoIndex].equals("ICCID")) {
+                    mMvnoMatchData.setText(checkNull(mApnData.getString(MVNO_MATCH_DATA_INDEX)));
                 }
             }
 
