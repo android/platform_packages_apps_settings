@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df493e43_9d0a8fae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1121603
+      },
+      "writtenOn": "2019-04-16T02:26:40Z",
+      "side": 1,
+      "message": "Fix Typo",
+      "range": {
+        "startLine": 7,
+        "startChar": 20,
+        "endLine": 7,
+        "endChar": 32
+      },
+      "revId": "b9bf7fb6184cd61b45b307d91848b4ca8e533297",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "115ce179_341e62c2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1121603
+      },
+      "writtenOn": "2019-04-16T02:26:40Z",
+      "side": 1,
+      "message": "Fix typo",
+      "range": {
+        "startLine": 11,
+        "startChar": 50,
+        "endLine": 11,
+        "endChar": 61
+      },
+      "revId": "b9bf7fb6184cd61b45b307d91848b4ca8e533297",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
