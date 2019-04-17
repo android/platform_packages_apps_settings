@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92e84cef_2c5f2bbe",
+        "filename": "src/com/android/settings/development/gup/GupDashboard.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2019-04-17T07:19:31Z",
+      "side": 1,
+      "message": "not available in P either.",
+      "range": {
+        "startLine": 35,
+        "startChar": 1,
+        "endLine": 35,
+        "endChar": 16
+      },
+      "revId": "645cb9253ccf6a1e15b96c6c70ad36c18b241129",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
