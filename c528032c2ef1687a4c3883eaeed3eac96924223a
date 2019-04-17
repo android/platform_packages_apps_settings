@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc630d22_0b8dc862",
+        "filename": "tests/robotests/src/com/android/settings/development/GameUpdatePackageDevOptInPreferenceControllerTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2019-04-17T06:39:58Z",
+      "side": 1,
+      "message": "resolve here to avoid picking general settings\u0027 CLs.",
+      "range": {
+        "startLine": 47,
+        "startChar": 9,
+        "endLine": 47,
+        "endChar": 30
+      },
+      "revId": "c528032c2ef1687a4c3883eaeed3eac96924223a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
