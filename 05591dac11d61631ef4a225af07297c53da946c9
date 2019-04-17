@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23a5fa3c_2f8ac0e1",
+        "filename": "src/com/android/settings/development/gup/GupEnableForAllAppsPreferenceController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2019-04-17T23:56:43Z",
+      "side": 1,
+      "message": "need this cast because certain template function does not exist yet.",
+      "range": {
+        "startLine": 53,
+        "startChar": 16,
+        "endLine": 53,
+        "endChar": 34
+      },
+      "revId": "05591dac11d61631ef4a225af07297c53da946c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
