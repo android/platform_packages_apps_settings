@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a1aedad_c64f106f",
+        "filename": "src/com/android/settings/development/UpdatedGfxDriverDevOptInPreferenceController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2019-04-17T01:58:55Z",
+      "side": 1,
+      "message": "EXTRA_NON_SYSTEM doesn\u0027t exist on P.",
+      "range": {
+        "startLine": 97,
+        "startChar": 34,
+        "endLine": 97,
+        "endChar": 50
+      },
+      "revId": "5a92a74f232380eee78a8535a5522df597405d37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
