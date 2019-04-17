@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9346c606_3503db46",
+        "filename": "res/xml/development_settings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2019-04-17T06:58:07Z",
+      "side": 1,
+      "message": "This is not supported in P.",
+      "range": {
+        "startLine": 205,
+        "startChar": 12,
+        "endLine": 205,
+        "endChar": 39
+      },
+      "revId": "5c6112a1d46526403ecec647f62cd34922fc9a3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
