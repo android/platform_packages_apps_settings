@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d6444d9_7b802a5b",
+        "filename": "src/com/android/settings/development/gup/GupPreferenceController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2019-04-17T20:58:26Z",
+      "side": 1,
+      "message": "here I should use the context from the PreferenceGroup to create the list preference, which ends up with an unaligned layout in this version of the dashboard. This is handled in a later CL.",
+      "range": {
+        "startLine": 96,
+        "startChar": 20,
+        "endLine": 96,
+        "endChar": 40
+      },
+      "revId": "55825db18b1b6c5ce57d66a592b550e5bef5b9ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
