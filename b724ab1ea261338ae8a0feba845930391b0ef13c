@@ -22,6 +22,30 @@
       "revId": "b724ab1ea261338ae8a0feba845930391b0ef13c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8217e0ce_f2ac28f2",
+        "filename": "src/com/android/settings/development/gup/GupDashboard.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2019-04-18T21:47:49Z",
+      "side": 1,
+      "message": "It passed the test, because I add the dashboard back to tests/robotests/assets/grandfather_not_implementing_index_provider\n\nIt\u0027s searchable now, but not working like entering the dashboard directly. The settings page will now scroll down to where the dashboard line is and highlight.",
+      "parentUuid": "464d3137_e6578ea2",
+      "range": {
+        "startLine": 75,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 82
+      },
+      "revId": "b724ab1ea261338ae8a0feba845930391b0ef13c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
