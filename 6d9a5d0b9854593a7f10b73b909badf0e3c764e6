@@ -22,6 +22,30 @@
       "revId": "6d9a5d0b9854593a7f10b73b909badf0e3c764e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e842c936_912fe0df",
+        "filename": "src/com/android/settings/development/gup/GupPreferenceController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1138679
+      },
+      "writtenOn": "2019-04-18T17:41:30Z",
+      "side": 1,
+      "message": "Please add comment here to mention why you can\u0027t just use pref.setVisible() directly.\n(Because AOSP doens\u0027t have new Androidx prebuilts)",
+      "parentUuid": "d535368e_556eb09d",
+      "range": {
+        "startLine": 134,
+        "startChar": 4,
+        "endLine": 142,
+        "endChar": 5
+      },
+      "revId": "6d9a5d0b9854593a7f10b73b909badf0e3c764e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
