@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "56fb1b8b_de3c2a21",
+        "filename": "src/com/android/settings/development/gup/GupDashboard.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2019-04-18T00:43:55Z",
+      "side": 1,
+      "message": "life is hard...getSettingsLifecycle() doesn\u0027t exist yet",
+      "range": {
+        "startLine": 70,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 64
+      },
+      "revId": "09422bcec1accb7e74d5e2e630460c5291f83f18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
