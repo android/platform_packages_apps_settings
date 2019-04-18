@@ -22,6 +22,30 @@
       "revId": "09422bcec1accb7e74d5e2e630460c5291f83f18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37a05c30_2456929c",
+        "filename": "src/com/android/settings/development/gup/GupDashboard.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2019-04-18T01:37:56Z",
+      "side": 1,
+      "message": "phew....just a renaming. This is going to bite a lot of OEM\u0027s or dev\u0027s Settings customization from my pov....but anyway",
+      "parentUuid": "56fb1b8b_de3c2a21",
+      "range": {
+        "startLine": 70,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 64
+      },
+      "revId": "09422bcec1accb7e74d5e2e630460c5291f83f18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bff65a17_998eba01",
+        "filename": "src/com/android/settings/development/gup/GupPreferenceController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2019-04-18T01:37:56Z",
+      "side": 1,
+      "message": "Doing this only because the support library is broken. setVisible() on a PreferenceGroup should apply to all the children automatically just like setEnabled().",
+      "range": {
+        "startLine": 135,
+        "startChar": 8,
+        "endLine": 141,
+        "endChar": 48
+      },
+      "revId": "98bd253f0c4a58299a11f0889eefaf9f91616edd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
