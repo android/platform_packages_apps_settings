@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d535368e_556eb09d",
+        "filename": "src/com/android/settings/development/gup/GupPreferenceController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2019-04-18T17:26:14Z",
+      "side": 1,
+      "message": "This is the workaround here.",
+      "range": {
+        "startLine": 134,
+        "startChar": 4,
+        "endLine": 142,
+        "endChar": 5
+      },
+      "revId": "6d9a5d0b9854593a7f10b73b909badf0e3c764e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
