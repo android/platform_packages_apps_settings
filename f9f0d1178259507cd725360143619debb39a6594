@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "65de6c2b_556e0b57",
+        "filename": "tests/unit/src/com/android/settings/wifi/tether/TetherServiceTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-04-19T09:39:41Z",
+      "side": 1,
+      "message": "This timeout is used to ensure TetherService don\u0027t sent out the entitlement check intent that mLastTetherRequestType should keep be TETHERING_INVALID. I don\u0027t find the proper way to check whether the intent is sent or not.",
+      "parentUuid": "74947326_1727d569",
+      "range": {
+        "startLine": 275,
+        "startChar": 26,
+        "endLine": 275,
+        "endChar": 43
+      },
+      "revId": "f9f0d1178259507cd725360143619debb39a6594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a093d749_32b291ee",
         "filename": "tests/unit/src/com/android/settings/wifi/tether/TetherServiceTest.java",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2019-04-19T08:34:13Z",
       "side": 1,
       "message": "Is this the right thing to do ? I don\u0027t think we should ever find this value in the intent right ?",
+      "range": {
+        "startLine": 286,
+        "startChar": 51,
+        "endLine": 286,
+        "endChar": 74
+      },
+      "revId": "f9f0d1178259507cd725360143619debb39a6594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73034203_6bf02e2e",
+        "filename": "tests/unit/src/com/android/settings/wifi/tether/TetherServiceTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-04-19T09:39:41Z",
+      "side": 1,
+      "message": "I don\u0027t want to assume this would never happen. From TetherService\u0027s point, INVALID_SUBSCRIPTION_ID just means it don\u0027t need to pass resource to Telephony to rebuild the resource base on subId. And this is original single SIM behavior.\nSince we need to use mock resource and rebuild subId base resource is a static method in SubScriptionManager, we don\u0027t run provision with non-INVALID_SUBSCRIPTION_ID. Maybe to upload a separate commit to enhance this test. We can add a wrap function in TetherServiceWrapper to mock SubScriptionManager#getResourcesForSubId. How do you think ?",
+      "parentUuid": "a093d749_32b291ee",
       "range": {
         "startLine": 286,
         "startChar": 51,
