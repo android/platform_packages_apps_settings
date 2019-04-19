@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74947326_1727d569",
+        "filename": "tests/unit/src/com/android/settings/wifi/tether/TetherServiceTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-04-19T08:34:13Z",
+      "side": 1,
+      "message": "Is there a way we can test this without imposing a 1-second delay on every test run ?",
+      "range": {
+        "startLine": 275,
+        "startChar": 26,
+        "endLine": 275,
+        "endChar": 43
+      },
+      "revId": "f9f0d1178259507cd725360143619debb39a6594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a093d749_32b291ee",
+        "filename": "tests/unit/src/com/android/settings/wifi/tether/TetherServiceTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-04-19T08:34:13Z",
+      "side": 1,
+      "message": "Is this the right thing to do ? I don\u0027t think we should ever find this value in the intent right ?",
+      "range": {
+        "startLine": 286,
+        "startChar": 51,
+        "endLine": 286,
+        "endChar": 74
+      },
+      "revId": "f9f0d1178259507cd725360143619debb39a6594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
