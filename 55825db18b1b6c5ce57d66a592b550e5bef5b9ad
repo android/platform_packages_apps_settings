@@ -22,6 +22,30 @@
       "revId": "55825db18b1b6c5ce57d66a592b550e5bef5b9ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f73d928_b371f0f8",
+        "filename": "src/com/android/settings/development/gup/GupPreferenceController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1339259
+      },
+      "writtenOn": "2019-04-19T00:05:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d6444d9_7b802a5b",
+      "range": {
+        "startLine": 96,
+        "startChar": 20,
+        "endLine": 96,
+        "endChar": 40
+      },
+      "revId": "55825db18b1b6c5ce57d66a592b550e5bef5b9ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
