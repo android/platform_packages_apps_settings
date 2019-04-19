@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3708f5a_1f7c3195",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1121603
+      },
+      "writtenOn": "2019-04-19T06:46:01Z",
+      "side": 1,
+      "message": "from() @Deprecated.\n\nPlease use getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE) instead.",
+      "range": {
+        "startLine": 406,
+        "startChar": 35,
+        "endLine": 406,
+        "endChar": 39
+      },
+      "revId": "b8a193982c0ac34a943e69e7c500c1cd875a818d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
