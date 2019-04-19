@@ -1,0 +1,10 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Yiwei Zhang <zzyiwei@google.com>
+Autosubmit+1: Yiwei Zhang <zzyiwei@google.com>
+Code-Review+2: Peiyong Lin <lpy@google.com>
+Code-Review+2: Lei Yu <jackqdyulei@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Fri, 19 Apr 2019 00:06:36 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/947339
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
