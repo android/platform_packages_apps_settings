@@ -141,6 +141,30 @@
       "revId": "f9f0d1178259507cd725360143619debb39a6594",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ecd0528_56bb9119",
+        "filename": "tests/unit/src/com/android/settings/wifi/tether/TetherServiceTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-04-22T13:19:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2472c665_33642dcf",
+      "range": {
+        "startLine": 286,
+        "startChar": 51,
+        "endLine": 286,
+        "endChar": 74
+      },
+      "revId": "f9f0d1178259507cd725360143619debb39a6594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
