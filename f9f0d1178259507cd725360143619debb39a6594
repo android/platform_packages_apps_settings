@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0a172e61_761444ce",
+        "filename": "tests/unit/src/com/android/settings/wifi/tether/TetherServiceTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-04-22T13:12:39Z",
+      "side": 1,
+      "message": "I see. All right.\n\nWe could instrument the code a bit more but that would make the test less realistic.",
+      "parentUuid": "65de6c2b_556e0b57",
+      "range": {
+        "startLine": 275,
+        "startChar": 26,
+        "endLine": 275,
+        "endChar": 43
+      },
+      "revId": "f9f0d1178259507cd725360143619debb39a6594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a093d749_32b291ee",
         "filename": "tests/unit/src/com/android/settings/wifi/tether/TetherServiceTest.java",
         "patchSetId": 4
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "I don\u0027t want to assume this would never happen. From TetherService\u0027s point, INVALID_SUBSCRIPTION_ID just means it don\u0027t need to pass resource to Telephony to rebuild the resource base on subId. And this is original single SIM behavior.\nSince we need to use mock resource and rebuild subId base resource is a static method in SubScriptionManager, we don\u0027t run provision with non-INVALID_SUBSCRIPTION_ID. Maybe to upload a separate commit to enhance this test. We can add a wrap function in TetherServiceWrapper to mock SubScriptionManager#getResourcesForSubId. How do you think ?",
       "parentUuid": "a093d749_32b291ee",
+      "range": {
+        "startLine": 286,
+        "startChar": 51,
+        "endLine": 286,
+        "endChar": 74
+      },
+      "revId": "f9f0d1178259507cd725360143619debb39a6594",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2472c665_33642dcf",
+        "filename": "tests/unit/src/com/android/settings/wifi/tether/TetherServiceTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-04-22T13:12:39Z",
+      "side": 1,
+      "message": "Fair enough. Maybe you want to pass this as an arg to runProvisioningForType then, so that callers have a choice. But for now I think your call is right.",
+      "parentUuid": "73034203_6bf02e2e",
       "range": {
         "startLine": 286,
         "startChar": 51,
