@@ -20,6 +20,7 @@ import static androidx.lifecycle.Lifecycle.Event.ON_START;
 import static androidx.lifecycle.Lifecycle.Event.ON_STOP;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.ContentObserver;
 import android.os.Handler;
 import android.os.Looper;
@@ -173,6 +174,15 @@ public class EnabledNetworkModePreferenceController extends
     }
 
     private void updatePreferenceEntries(ListPreference preference) {
+        int[] carrierVisibleNetworkModes = readCarrierVisibleNetworkModes();
+
+        if (carrierVisibleNetworkModes != null) {
+            // The carrier has configured which network modes that should be visible. Use this list
+            // directly.
+            setCarrierVisibleNetworkModes(preference, carrierVisibleNetworkModes);
+            return;
+        }
+
         final int phoneType = mTelephonyManager.getPhoneType();
         final PersistableBundle carrierConfig = mCarrierConfigManager.getConfigForSubId(mSubId);
         if (phoneType == PhoneConstants.PHONE_TYPE_CDMA) {
@@ -382,6 +392,45 @@ public class EnabledNetworkModePreferenceController extends
     }
 
     /**
+     * Update visible network type dialog based on carrier configuration.
+     */
+    private void setCarrierVisibleNetworkModes(ListPreference preference,
+            int[] visibleOptionValues) {
+        Resources res = SubscriptionManager.getResourcesForSubId(mContext, mSubId);
+        final String[] allEntries = res.getStringArray(R.array.preferred_network_mode_choices);
+        final CharSequence[] allValues = res.getStringArray(R.array.preferred_network_mode_values);
+
+        // Build the list of items in the dialog
+        ArrayList<String> revisedEntries = new ArrayList<String>();
+        ArrayList<CharSequence> revisedValues = new ArrayList<CharSequence>();
+        for (int value : visibleOptionValues) {
+            if ((value >= 0) && (value < allEntries.length) && (value < allValues.length)) {
+                revisedEntries.add(allEntries[value]);
+                revisedValues.add(allValues[value]);
+            }
+        }
+
+        // Add the items to the dialog
+        preference.setEntries(revisedEntries.toArray(new CharSequence[revisedEntries.size()]));
+        preference.setEntryValues(revisedValues.toArray(new CharSequence[revisedValues.size()]));
+    }
+
+    /**
+     * Check if visible network modes are set in carrier configuration.
+     */
+    private int[] readCarrierVisibleNetworkModes() {
+        // Read carrier config to find out which network modes that should be visible.
+        PersistableBundle carrierConfig = mCarrierConfigManager.getConfigForSubId(mSubId);
+        int[] visibleOptionValues = null;
+        if (carrierConfig != null) {
+            visibleOptionValues = carrierConfig.getIntArray(
+                    CarrierConfigManager.KEY_NETWORK_MODE_VISIBLE_OPTIONS_INT_ARRAY);
+
+        }
+        return visibleOptionValues;
+    }
+
+    /**
      * LTE network mode transform to 5G network mode.
      *
      * @param networkMode this is LTE network mode.
@@ -400,6 +449,16 @@ public class EnabledNetworkModePreferenceController extends
 
     private void updatePreferenceValueAndSummary(ListPreference preference, int networkMode) {
         preference.setValue(Integer.toString(networkMode));
+
+        if (readCarrierVisibleNetworkModes() != null) {
+            Resources res = SubscriptionManager.getResourcesForSubId(mContext, mSubId);
+            String[] all_entries = res.getStringArray(R.array.preferred_network_mode_choices);
+            if (networkMode >= 0 && networkMode < all_entries.length) {
+                preference.setSummary(all_entries[networkMode]);
+                return;
+            }
+        }
+
         switch (networkMode) {
             case TelephonyManager.NETWORK_MODE_TDSCDMA_WCDMA:
             case TelephonyManager.NETWORK_MODE_TDSCDMA_GSM_WCDMA:
