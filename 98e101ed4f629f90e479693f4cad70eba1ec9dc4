@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ee3436a_5f9286d2",
+        "filename": "src/com/android/settings/network/ApnEditor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1121198
+      },
+      "writtenOn": "2019-05-02T19:57:15Z",
+      "side": 1,
+      "message": "This is deprecated (https://developer.android.com/reference/android/provider/Telephony.Carriers#MVNO_MATCH_DATA) in favor of CarrierIds.",
+      "range": {
+        "startLine": 667,
+        "startChar": 0,
+        "endLine": 667,
+        "endChar": 97
+      },
+      "revId": "98e101ed4f629f90e479693f4cad70eba1ec9dc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
