@@ -552,6 +552,9 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
 
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
+        // If editable roaming mode is off, it would show non-roaming button even when the device is
+        // roaming. So we also needs to set the roaming settings, in case of other services are
+        // trying to get the latest wfc mode value when roaming.
         if (preference == mButtonWfcMode) {
             Log.d(TAG, "onPreferenceChange mButtonWfcMode " + newValue);
             mButtonWfcMode.setValue((String) newValue);
@@ -561,10 +564,19 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
                 mImsManager.setWfcMode(buttonMode, false);
                 mButtonWfcMode.setSummary(getWfcModeSummary(buttonMode));
                 mMetricsFeatureProvider.action(getActivity(), getMetricsCategory(), buttonMode);
-
+                // check the condition of wfc home mode for roaming itself isn't enough.
+                // E.g. in a case of: !wfcRoamingModeEditable, and !mUseWfcHomeModeForRoaming.
                 if (mUseWfcHomeModeForRoaming) {
                     mImsManager.setWfcMode(buttonMode, true);
                     // mButtonWfcRoamingMode.setSummary is not needed; summary is selected value
+                } else if (!mEditableWfcRoamingMode) {
+                    // Sync the roaming wfc mode if the device is currently roaming.
+                    TelephonyManager telephonyManager =
+                            (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+                    if (telephonyManager.isNetworkRoaming()
+                            && buttonMode != mImsManager.getWfcMode(true)) {
+                        mImsManager.setWfcMode(buttonMode, true);
+                    }
                 }
             }
         } else if (preference == mButtonWfcRoamingMode) {
