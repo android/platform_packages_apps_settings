@@ -125,11 +125,6 @@ public class DataUsageList extends DataUsageBase {
         super.onCreate(savedInstanceState);
         final Context context = getActivity();
 
-        if (!isBandwidthControlEnabled()) {
-            Log.w(TAG, "No bandwidth control; leaving");
-            getActivity().finish();
-        }
-
         try {
             mStatsSession = services.mStatsService.openSession();
         } catch (RemoteException e) {

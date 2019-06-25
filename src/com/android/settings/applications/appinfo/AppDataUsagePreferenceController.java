@@ -56,7 +56,7 @@ public class AppDataUsagePreferenceController extends AppInfoPreferenceControlle
 
     @Override
     public int getAvailabilityStatus() {
-        return isBandwidthControlEnabled() ? AVAILABLE : CONDITIONALLY_UNAVAILABLE;
+        return AVAILABLE;
     }
 
     @Override
@@ -138,11 +138,6 @@ public class AppDataUsagePreferenceController extends AppInfoPreferenceControlle
             return NetworkTemplate.buildTemplateWifiWildcard();
         }
         return NetworkTemplate.buildTemplateEthernet();
-    }
-
-    @VisibleForTesting
-    boolean isBandwidthControlEnabled() {
-        return Utils.isBandwidthControlEnabled();
     }
 
 }

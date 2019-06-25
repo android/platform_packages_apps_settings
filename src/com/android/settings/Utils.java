@@ -606,16 +606,6 @@ public final class Utils extends com.android.settingslib.Utils {
         }
     }
 
-    public static boolean isBandwidthControlEnabled() {
-        final INetworkManagementService netManager = INetworkManagementService.Stub
-                .asInterface(ServiceManager.getService(Context.NETWORKMANAGEMENT_SERVICE));
-        try {
-            return netManager.isBandwidthControlEnabled();
-        } catch (RemoteException e) {
-            return false;
-        }
-    }
-
     /**
      * Returns an accessible SpannableString.
      * @param displayText the text to display
