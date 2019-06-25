@@ -69,6 +69,30 @@
       "revId": "504456de50f6d718e8d969af71513289dd0dad22",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a409ed9_9cf0e61e",
+        "filename": "src/com/android/settings/network/TetherProvisioningActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-06-25T15:26:52Z",
+      "side": 1,
+      "message": "+1 for Jean. Although this string is define for SubscriptionManager, but actually it is also be used for CarrierConfigManager and many apps in different intents.",
+      "parentUuid": "e455ebd8_a6c22fc3",
+      "range": {
+        "startLine": 70,
+        "startChar": 24,
+        "endLine": 70,
+        "endChar": 68
+      },
+      "revId": "504456de50f6d718e8d969af71513289dd0dad22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
