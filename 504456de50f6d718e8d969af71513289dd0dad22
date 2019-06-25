@@ -45,6 +45,30 @@
       "revId": "504456de50f6d718e8d969af71513289dd0dad22",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e455ebd8_a6c22fc3",
+        "filename": "src/com/android/settings/network/TetherProvisioningActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-06-25T12:13:40Z",
+      "side": 1,
+      "message": "I personally don\u0027t have too much of a problem with this. I do understand the concern : in a very strict pure sense, this is a \"different\" string because it\u0027s kind of namespaced differently in spirit, and I think that strictly speaking you\u0027re right. But in practice, it means the exact same thing, so I\u0027m not too concerned. At least, I\u0027d prefer we didn\u0027t add a new string in the maintenance release – if we add a new string for this, let\u0027s do it in a follow-up that will only go in AOSP.",
+      "parentUuid": "cd1ea570_64ae11cc",
+      "range": {
+        "startLine": 70,
+        "startChar": 24,
+        "endLine": 70,
+        "endChar": 68
+      },
+      "revId": "504456de50f6d718e8d969af71513289dd0dad22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
