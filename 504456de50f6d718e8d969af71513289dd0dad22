@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9d9da99_86eb6010",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2019-06-25T08:05:08Z",
+      "side": 1,
+      "message": "Aren\u0027t you able to test with a simuldated CBRS network? Probably update it?",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 15,
+        "endChar": 55
+      },
+      "revId": "504456de50f6d718e8d969af71513289dd0dad22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd1ea570_64ae11cc",
+        "filename": "src/com/android/settings/network/TetherProvisioningActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2019-06-25T08:05:08Z",
+      "side": 1,
+      "message": "Follow up from review in other branch. Though there are many such usage in other app, I do not think it\u0027s a correct usage personally. Either we should update the defintion for the extra or we should have another definition. See if other viewers have concern on this.",
+      "range": {
+        "startLine": 70,
+        "startChar": 24,
+        "endLine": 70,
+        "endChar": 68
+      },
+      "revId": "504456de50f6d718e8d969af71513289dd0dad22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
