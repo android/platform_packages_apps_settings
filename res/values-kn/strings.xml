@@ -323,7 +323,7 @@
     <string name="date_time_24hour_auto" msgid="2117383168985653422">"ಸ್ವಯಂಚಾಲಿತ 24-ಗಂಟೆ ಫಾರ್ಮ್ಯಾಟ್‌‌"</string>
     <string name="date_time_24hour_auto_summary" msgid="6351812925651480277">"ಸ್ಥಳೀಯ ಡೀಫಾಲ್ಟ್ ಬಳಸಿ"</string>
     <string name="date_time_24hour_title" msgid="3203537578602803850">"24‑ಗಂಟೆಯ ಸ್ವರೂಪ"</string>
-    <string name="date_time_24hour" msgid="1193032284921000063">"24-ಗಂಟೆ ಫಾರ್ಮ್ಯಾಟ್‌‌ ಬಳಸು"</string>
+    <string name="date_time_24hour" msgid="1193032284921000063">"24-ಗಂಟೆ ಫಾರ್ಮ್ಯಾಟ್‌‌ ಬಳಸಿ"</string>
     <string name="date_time_set_time_title" msgid="6296795651349047016">"ಸಮಯ"</string>
     <string name="date_time_set_time" msgid="5716856602742530696">"ಸಮಯವನ್ನು ಹೊಂದಿಸಿ"</string>
     <string name="date_time_set_timezone_title" msgid="3047322337368233197">"ಸಮಯ ವಲಯ"</string>
@@ -1052,9 +1052,15 @@
     <string name="night_display_title" msgid="2626451512200357686">"ನೈಟ್ ಲೈಟ್"</string>
     <string name="night_display_text" msgid="1837277457033025056">"ನೈಟ್ ಲೈಟ್ ನಿಮ್ಮ ಪರದೆಯನ್ನು ಆಂಬರ್ ಬಣ್ಣಕ್ಕೆ ಟಿಂಟ್ ಮಾಡುತ್ತದೆ. ಇದರಿಂದಾಗಿ ಮಂದ ಬೆಳಕಿನಲ್ಲಿಯೂ ನಿಮ್ಮ ಪರದೆಯನ್ನು ನೋಡಲು ಅಥವಾ ಓದಲು ಸುಲಭವಾಗುತ್ತದೆ ಮತ್ತು ಸುಲಭವಾಗಿ ನಿದ್ರಿಸಲು ನಿಮಗೆ ಸಹಾಯ ಮಾಡಬಹುದು."</string>
     <string name="night_display_auto_mode_title" msgid="6574111412154833409">"ಅವಧಿ"</string>
+<<<<<<< HEAD   (a93169 Merge "Add tobiast@ to the OWNERS file")
     <string name="night_display_auto_mode_never" msgid="2483761922928753400">"ಯಾವುದೂ ಅಲ್ಲ"</string>
     <string name="night_display_auto_mode_custom" msgid="2379394568898721765">"ಕಸ್ಟಮ್ ಸಮಯದಲ್ಲಿ ಆನ್ ಮಾಡಿ"</string>
     <string name="night_display_auto_mode_twilight" msgid="589042813708244059">"ಸೂರ್ಯಾಸ್ತದಿಂದ ಸೂರ್ಯೋದಯದವರೆಗೂ ಆನ್‌ ಮಾಡಿರುತ್ತದೆ"</string>
+=======
+    <string name="night_display_auto_mode_never" msgid="2483761922928753400">"ಯಾವುದೂ ಇಲ್ಲ"</string>
+    <string name="night_display_auto_mode_custom" msgid="2379394568898721765">"ಕಸ್ಟಮ್ ಸಮಯಕ್ಕೆ ಆನ್ ಆಗುತ್ತದೆ"</string>
+    <string name="night_display_auto_mode_twilight" msgid="589042813708244059">"ಸೂರ್ಯಾಸ್ತದಿಂದ ಸೂರ್ಯೋದಯದವರೆಗೂ ಆನ್‌ ಆಗಿರುತ್ತದೆ"</string>
+>>>>>>> BRANCH (ec5869 Snap for 5622519 from fd365ae91ebe924197c5f443c889928eb07bd0)
     <string name="night_display_start_time_title" msgid="8918016772613689584">"ಪ್ರಾರಂಭದ ಸಮಯ"</string>
     <string name="night_display_end_time_title" msgid="8286061578083519350">"ಮುಕ್ತಾಯದ ಸಮಯ"</string>
     <string name="night_display_status_title" msgid="1784041143360286267">"ಸ್ಥಿತಿ"</string>
@@ -1596,7 +1602,7 @@
     </plurals>
     <string name="clear_uri_btn_text" msgid="8575655132961012158">"ಪ್ರವೇಶ ತೆರವುಗೊಳಿಸು"</string>
     <string name="controls_label" msgid="7611113077086853799">"ನಿಯಂತ್ರಣಗಳು"</string>
-    <string name="force_stop" msgid="7435006169872876756">"ಸ್ಥಗಿತಗೊಳಿಸು"</string>
+    <string name="force_stop" msgid="7435006169872876756">"ಸ್ಥಗಿತಗೊಳಿಸಿ"</string>
     <string name="total_size_label" msgid="1048676419552557254">"ಒಟ್ಟು"</string>
     <string name="application_size_label" msgid="7376689739076506885">"ಅಪ್ಲಿಕೇಶನ್ ಗಾತ್ರ"</string>
     <string name="external_code_size_label" msgid="3459343140355961335">"USB ಸಂಗ್ರಹಣೆ ಅಪ್ಲಿಕೇಶನ್"</string>
@@ -1606,7 +1612,7 @@
     <string name="uninstall_text" msgid="3644892466144802466">"ಅನ್‌ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಿ"</string>
     <string name="uninstall_all_users_text" msgid="851857393177950340">"ಎಲ್ಲ ಬಳಕೆದಾರರಿಗಾಗಿ ಅನ್‌ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಿ"</string>
     <string name="install_text" msgid="884360662922471113">"ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಿ"</string>
-    <string name="disable_text" msgid="6544054052049395202">"ನಿಷ್ಕ್ರಿಯಗೊಳಿಸು"</string>
+    <string name="disable_text" msgid="6544054052049395202">"ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ"</string>
     <string name="enable_text" msgid="9217362512327828987">"ಸಕ್ರಿಯಗೊಳಿಸು"</string>
     <string name="clear_user_data_text" msgid="5597622864770098388">"ಡೇಟಾ ಅಳಿಸಿ"</string>
     <string name="app_factory_reset" msgid="6635744722502563022">"ನವೀಕರಣಗಳನ್ನು ಅನ್‌ಇನ್‌ಸ್ಟಾಲ್ ಮಾಡಿ"</string>
@@ -2048,8 +2054,15 @@
     <string name="battery_abnormal_wakeup_alarm_summary" msgid="644657277875785240">"ಸಾಧನವನ್ನು ಹಿನ್ನೆಲೆಯಲ್ಲಿ ಚಾಲನೆಯಲ್ಲಿಟ್ಟಿದೆ"</string>
     <string name="battery_abnormal_location_summary" msgid="6552797246798806002">"ಆಗಾಗ್ಗೆ ಸ್ಥಳವನ್ನು ವಿನಂತಿಸಲಾಗುತ್ತಿದೆ"</string>
     <string name="battery_abnormal_apps_summary" msgid="792553273248686972">"ಅನುಚಿತವಾಗಿ ವರ್ತಿಸುತ್ತಿರುವ <xliff:g id="NUMBER">%1$d</xliff:g> ಅಪ್ಲಿಕೇಶನ್‌ಗಳು"</string>
+<<<<<<< HEAD   (a93169 Merge "Add tobiast@ to the OWNERS file")
     <string name="battery_tip_summary_title" msgid="7060523369832289878">"ಬ್ಯಾಟರಿ ಉತ್ತಮ ಆಕಾರದಲ್ಲಿದೆ"</string>
     <string name="battery_tip_summary_summary" msgid="7832491466325707487">"ಅಪ್ಲಿಕೇಶನ್‌ಗಳು ಸಾಮಾನ್ಯವಾಗಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತವೆ"</string>
+=======
+    <string name="battery_tip_summary_title" msgid="368729969313047399">"ಅಪ್ಲಿಕೇಶನ್‌ಗಳು ಸಾಮಾನ್ಯವಾಗಿ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತಿವೆ"</string>
+    <string name="battery_tip_summary_summary" product="default" msgid="2198778125778121221">"ಫೋನ್‍ನ ಹಿನ್ನೆಲೆಯಲ್ಲಿ ಬ್ಯಾಟರಿಯು ಸಾಮಾನ್ಯವಾಗಿ ಬಳಕೆಯಾಗುತ್ತಿದೆ"</string>
+    <string name="battery_tip_summary_summary" product="tablet" msgid="1183976728682325345">"ಟ್ಯಾಬ್ಲೆಟ್ ವಿಶಿಷ್ಟ ಹಿನ್ನೆಲೆ ಬ್ಯಾಟರಿ ಬಳಕೆಯನ್ನು ಹೊಂದಿದೆ"</string>
+    <string name="battery_tip_summary_summary" product="device" msgid="363718204492523920">"ಸಾಧನವು ವಿಶಿಷ್ಟ ಹಿನ್ನೆಲೆ ಬ್ಯಾಟರಿ ಬಳಕೆಯನ್ನು ಹೊಂದಿದೆ"</string>
+>>>>>>> BRANCH (ec5869 Snap for 5622519 from fd365ae91ebe924197c5f443c889928eb07bd0)
     <string name="battery_tip_low_battery_title" msgid="5103420355109677385">"ಕಡಿಮೆ ಬ್ಯಾಟರಿ ಸಾಮರ್ಥ್ಯ"</string>
     <string name="battery_tip_low_battery_summary" msgid="4702986182940709150">"ಬ್ಯಾಟರಿ ಉತ್ತಮ ಬ್ಯಾಟರಿ ಬಾಳಿಕೆ ಒದಗಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ"</string>
     <string name="battery_tip_smart_battery_title" msgid="8471762806923764455">"ಸ್ಮಾರ್ಟ್ ಬ್ಯಾಟರಿ ನಿರ್ವಾಹಕವನ್ನು ಆನ್ ಮಾಡಿ"</string>
@@ -2087,10 +2100,23 @@
     <string name="battery_tip_unrestrict_app_dialog_title" msgid="4550106794311784978">"<xliff:g id="APP">%1$s</xliff:g> ಗಾಗಿ ನಿರ್ಬಂಧವನ್ನು ತೆಗೆದುಹಾಕುವುದೇ?"</string>
     <string name="battery_tip_unrestrict_app_dialog_message" msgid="4836135946080501395">"ಹಿನ್ನೆಲೆಯಲ್ಲಿ ಬ್ಯಾಟರಿ ಬಾಳಿಕೆಯನ್ನು ಬಳಸಲು ಈ ಅಪ್ಲಿಕೇಶನ್‌ಗೆ ಸಾಧ್ಯವಾಗುತ್ತದೆ. ನಿಮ್ಮ ಬ್ಯಾಟರಿ ಬಾಳಿಕೆಯನ್ನು ಹೆಚ್ಚು ವೇಗವಾಗಿ ಬಳಸುವಲ್ಲಿ ಇದು ತೊಂದರೆಯನ್ನುಂಟು ಮಾಡಬಹುದು."</string>
     <string name="battery_tip_unrestrict_app_dialog_ok" msgid="6022058431218137646">"ತೆಗೆದುಹಾಕಿ"</string>
+<<<<<<< HEAD   (a93169 Merge "Add tobiast@ to the OWNERS file")
     <string name="battery_tip_unrestrict_app_dialog_cancel" msgid="9062797114255859496">"ಈಗ ಬೇಡ"</string>
     <string name="smart_battery_manager_title" msgid="5677222263071864438">"ಸ್ಮಾರ್ಟ್ ಬ್ಯಾಟರಿ ನಿರ್ವಾಹಕರು"</string>
     <string name="smart_battery_title" msgid="7014692334636228916">"ಸ್ವಯಂ-ನಿರ್ವಾಹಕ ಬ್ಯಾಟರಿ"</string>
     <string name="smart_battery_summary" msgid="6435844879637999044">"ಬಳಕೆಯನ್ನು ಆಧರಿಸಿಕೊಂಡು ಅಪ್ಲಿಕೇಶನ್‌ಗಳ ಮೂಲಕ ಪವರ್ ಬಳಕೆಯನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಸರಿಹೊಂದಿಸಿ"</string>
+=======
+    <string name="battery_tip_unrestrict_app_dialog_cancel" msgid="3058235875830858902">"ರದ್ದು ಮಾಡಿ"</string>
+    <string name="battery_tip_dialog_summary_message" product="default" msgid="4628448253185085796">"ನಿಮ್ಮ ಆ್ಯಪ್‍ಗಳು ಸಾಮಾನ್ಯ ಪ್ರಮಾಣದ ಬ್ಯಾಟರಿಯನ್ನು ಬಳಸುತ್ತಿವೆ. ಆ್ಯಪ್‍ಗಳು ತುಂಬಾ ಹೆಚ್ಚು ಬ್ಯಾಟರಿಯನ್ನು ಬಳಸಿದರೆ, ನೀವು ತೆಗೆದುಕೊಳ್ಳಬಹುದಾದ ಕ್ರಮಗಳನ್ನು ನಿಮ್ಮ ಫೋನ್ ಸೂಚಿಸುತ್ತದೆ.\n\nನಿಮ್ಮ ಬ್ಯಾಟರಿ ಕಡಿಮೆಯಾಗುತ್ತಿದ್ದರೆ, ನೀವು ಬ್ಯಾಟರಿ ಸೇವರ್ ಅನ್ನು ಯಾವಾಗ ಬೇಕಾದರೂ ಆನ್ ಮಾಡಬಹುದು."</string>
+    <string name="battery_tip_dialog_summary_message" product="tablet" msgid="8327950887399420971">"ನಿಮ್ಮ ಆ್ಯಪ್‍ಗಳು ಸಾಮಾನ್ಯ ಪ್ರಮಾಣದ ಬ್ಯಾಟರಿಯನ್ನು ಬಳಸುತ್ತಿವೆ. ಆ್ಯಪ್‍ಗಳು ತುಂಬಾ ಹೆಚ್ಚು ಬ್ಯಾಟರಿಯನ್ನು ಬಳಸಿದರೆ, ನೀವು ತೆಗೆದುಕೊಳ್ಳಬಹುದಾದ ಕ್ರಮಗಳನ್ನು ನಿಮ್ಮ ಟ್ಯಾಬ್ಲೆಟ್‌‌ ಸೂಚಿಸುತ್ತದೆ.\n\nನಿಮ್ಮ ಬ್ಯಾಟರಿ ಕಡಿಮೆಯಾಗುತ್ತಿದ್ದರೆ, ನೀವು ಬ್ಯಾಟರಿ ಸೇವರ್ ಅನ್ನು ಯಾವಾಗ ಬೇಕಾದರೂ ಆನ್ ಮಾಡಬಹುದು."</string>
+    <string name="battery_tip_dialog_summary_message" product="device" msgid="6753742263807939789">"ನಿಮ್ಮ ಆ್ಯಪ್‍ಗಳು ಸಾಮಾನ್ಯ ಪ್ರಮಾಣದ ಬ್ಯಾಟರಿಯನ್ನು ಬಳಸುತ್ತಿವೆ. ಆ್ಯಪ್‍ಗಳು ತುಂಬಾ ಹೆಚ್ಚು ಬ್ಯಾಟರಿಯನ್ನು ಬಳಸಿದರೆ, ನೀವು ತೆಗೆದುಕೊಳ್ಳಬಹುದಾದ ಕ್ರಮಗಳನ್ನು ನಿಮ್ಮ ಸಾಧನವು ಸೂಚಿಸುತ್ತದೆ.\n\nನಿಮ್ಮ ಬ್ಯಾಟರಿ ಕಡಿಮೆಯಾಗುತ್ತಿದ್ದರೆ, ನೀವು ಬ್ಯಾಟರಿ ಸೇವರ್ ಅನ್ನು ಯಾವಾಗ ಬೇಕಾದರೂ ಆನ್ ಮಾಡಬಹುದು."</string>
+    <string name="smart_battery_manager_title" msgid="870632749556793417">"ಬ್ಯಾಟರಿ ನಿರ್ವಾಹಕ"</string>
+    <string name="smart_battery_title" msgid="6218785691872466076">"ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ನಿರ್ವಹಿಸಿ"</string>
+    <string name="smart_battery_summary" msgid="1339184602000004058">"ನೀವು ಪದೇ ಪದೇ ಉಪಯೋಗಿಸದ ಅಪ್ಲಿಕೇಶನ್‌ಗಳ ಬ್ಯಾಟರಿಯನ್ನು ಸೀಮಿತಗೊಳಿಸಿ"</string>
+    <string name="smart_battery_footer" product="default" msgid="5555604955956219544">"ಯಾವಾಗ ಬ್ಯಾಟರಿ ಮ್ಯಾನೇಜರ್ ಅಪ್ಲಿಕೇಶನ್‌ಗಳು ಬ್ಯಾಟರಿಯನ್ನು ಬರಿದಾಗಿಸುತ್ತಿದೆ ಎಂದು ಪತ್ತೆ ಹಚ್ಚುತ್ತದೆಯೊ, ಈ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ನಿರ್ಬಂಧಿಸುವ ಆಯ್ಕೆಯನ್ನು ನೀವು ಹೊಂದಿರುತ್ತೀರಿ. ನಿರ್ಬಂಧಿತ ಅಪ್ಲಿಕೇಶನ್‌ಗಳು ಸರಿಯಾಗಿ ಕೆಲಸ ಮಾಡದಿರಬಹುದು ಮತ್ತು ಅಧಿಸೂಚನೆಗಳು ವಿಳಂಬವಾಗಬಹುದು."</string>
+    <string name="smart_battery_footer" product="tablet" msgid="5555604955956219544">"ಯಾವಾಗ ಬ್ಯಾಟರಿ ಮ್ಯಾನೇಜರ್ ಅಪ್ಲಿಕೇಶನ್‌ಗಳು ಬ್ಯಾಟರಿಯನ್ನು ಬರಿದಾಗಿಸುತ್ತಿದೆ ಎಂದು ಪತ್ತೆ ಹಚ್ಚುತ್ತದೆಯೊ, ಈ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ನಿರ್ಬಂಧಿಸುವ ಆಯ್ಕೆಯನ್ನು ನೀವು ಹೊಂದಿರುತ್ತೀರಿ. ನಿರ್ಬಂಧಿತ ಅಪ್ಲಿಕೇಶನ್‌ಗಳು ಸರಿಯಾಗಿ ಕೆಲಸ ಮಾಡದಿರಬಹುದು ಮತ್ತು ಅಧಿಸೂಚನೆಗಳು ವಿಳಂಬವಾಗಬಹುದು."</string>
+    <string name="smart_battery_footer" product="device" msgid="5555604955956219544">"ಯಾವಾಗ ಬ್ಯಾಟರಿ ಮ್ಯಾನೇಜರ್ ಅಪ್ಲಿಕೇಶನ್‌ಗಳು ಬ್ಯಾಟರಿಯನ್ನು ಬರಿದಾಗಿಸುತ್ತಿದೆ ಎಂದು ಪತ್ತೆ ಹಚ್ಚುತ್ತದೆಯೊ, ಈ ಅಪ್ಲಿಕೇಶನ್‌ಗಳನ್ನು ನಿರ್ಬಂಧಿಸುವ ಆಯ್ಕೆಯನ್ನು ನೀವು ಹೊಂದಿರುತ್ತೀರಿ. ನಿರ್ಬಂಧಿತ ಅಪ್ಲಿಕೇಶನ್‌ಗಳು ಸರಿಯಾಗಿ ಕೆಲಸ ಮಾಡದಿರಬಹುದು ಮತ್ತು ಅಧಿಸೂಚನೆಗಳು ವಿಳಂಬವಾಗಬಹುದು."</string>
+>>>>>>> BRANCH (ec5869 Snap for 5622519 from fd365ae91ebe924197c5f443c889928eb07bd0)
     <string name="restricted_app_title" msgid="8982477293044330653">"ನಿರ್ಬಂಧಿತ ಅಪ್ಲಿಕೇಶನ್‌ಗಳು"</string>
     <plurals name="restricted_app_summary" formatted="false" msgid="2541739220193274244">
       <item quantity="one">%1$d ಅಪ್ಲಿಕೇಶನ್‌ಗಳು</item>
@@ -2150,7 +2176,7 @@
     <string name="usage_type_total_battery_capacity" msgid="3798285287848675346">"ಒಟ್ಟು ಬ್ಯಾಟರಿ ಸಾಮರ್ಥ್ಯ"</string>
     <string name="usage_type_computed_power" msgid="5862792259009981479">"ಗಣನೆ ಮಾಡಲಾದ ಪವರ್‌ ಬಳಕೆ"</string>
     <string name="usage_type_actual_power" msgid="7047814738685578335">"ಗಮನಿಸಲಾದ ಪವರ್ ಬಳಕೆ"</string>
-    <string name="battery_action_stop" msgid="649958863744041872">"ಸ್ಥಗಿತಗೊಳಿಸು"</string>
+    <string name="battery_action_stop" msgid="649958863744041872">"ಸ್ಥಗಿತಗೊಳಿಸಿ"</string>
     <string name="battery_action_app_details" msgid="7861051816778419018">"ಅಪ್ಲಿಕೇಶನ್ ಮಾಹಿತಿ"</string>
     <string name="battery_action_app_settings" msgid="4570481408106287454">"ಅಪ್ಲಿಕೇಶನ್ ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
     <string name="battery_action_display" msgid="7338551244519110831">"ಪರದೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
@@ -2193,7 +2219,7 @@
     <string name="battery_detail_power_percentage" msgid="8064814503316094497">"ಅಪ್ಲಿಕೇಶನ್‌ನ ಒಟ್ಟು ಬಳಕೆಯ <xliff:g id="PERCENT">%1$s</xliff:g> (<xliff:g id="POWER">%2$d</xliff:g>mAh)"</string>
     <string name="battery_detail_info_title" msgid="8227822131405620369">"ಸಂಪೂರ್ಣ ಚಾರ್ಜ್ ಆದ ಬಳಿಕ"</string>
     <string name="battery_detail_manage_title" msgid="9094314252105828014">"ಬ್ಯಾಟರಿ ಬಳಕೆಯನ್ನು ನಿರ್ವಹಿಸಿ"</string>
-    <string name="advanced_battery_graph_subtext" msgid="5621073891377915877">"ನಿಮ್ಮ ಸಾಧನದ ಬಳಕೆಯ ಆಧಾರದ ಮೇಲೆ ಬ್ಯಾಟರಿ ಉಳಿಕೆಯನ್ನು ಅಂದಾಜು ಮಾಡಲಾಗುತ್ತದೆ"</string>
+    <string name="advanced_battery_graph_subtext" msgid="5621073891377915877">"ನಿಮ್ಮ ಸಾಧನವನ್ನು ಎಷ್ಟು ಸಮಯದವರೆಗೆ ಬಳಸಲಾಗಿದೆ ಎಂಬುದನ್ನು ಆಧರಿಸಿ ಉಳಿದಿರುವ ಬ್ಯಾಟರಿಯನ್ನು ಅಂದಾಜು ಮಾಡಲಾಗುತ್ತದೆ"</string>
     <string name="estimated_time_left" msgid="7514194472683370877">"ಅಂದಾಜಿಸಿದ ಸಮಯ ಮುಗಿದಿದೆ"</string>
     <string name="estimated_charging_time_left" msgid="5614442409326164691">"ಸಂಪೂರ್ಣ ಚಾರ್ಜ್ ಆಗಲು"</string>
     <string name="estimated_time_description" msgid="8760210909000037089">"ಬಳಕೆಯನ್ನು ಆಧರಿಸಿ ಅಂದಾಜು ಬದಲಾಗಬಹುದು"</string>
@@ -2609,7 +2635,7 @@
     <string name="vpn_missing_cert" msgid="5357192202207234745">"ಒಂದು ಪ್ರಮಾಣಪತ್ರ ಕಾಣುತ್ತಿಲ್ಲ. ಪ್ರೊಫೈಲ್ ಎಡಿಟ್ ಮಾಡಲು ಪ್ರಯತ್ನಿಸಿ."</string>
     <string name="trusted_credentials_system_tab" msgid="3984284264816924534">"ಸಿಸ್ಟಂ"</string>
     <string name="trusted_credentials_user_tab" msgid="2244732111398939475">"ಬಳಕೆದಾರ"</string>
-    <string name="trusted_credentials_disable_label" msgid="3864493185845818506">"ನಿಷ್ಕ್ರಿಯಗೊಳಿಸು"</string>
+    <string name="trusted_credentials_disable_label" msgid="3864493185845818506">"ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಿ"</string>
     <string name="trusted_credentials_enable_label" msgid="2498444573635146913">"ಸಕ್ರಿಯಗೊಳಿಸು"</string>
     <string name="trusted_credentials_remove_label" msgid="3633691709300260836">"ತೆಗೆದುಹಾಕು"</string>
     <string name="trusted_credentials_trust_label" msgid="8003264222650785429">"ವಿಶ್ವಾಸಾರ್ಹ"</string>
@@ -2915,7 +2941,7 @@
     <string name="notification_ringtone_title" msgid="4468722874617061231">"ಡೀಫಾಲ್ಟ್ ಅಧಿಸೂಚನೆ ಧ್ವನಿ"</string>
     <string name="notification_unknown_sound_title" msgid="2535027767851838335">"ಅಪ್ಲಿಕೇಶನ್ ಒದಗಿಸಿರುವ ಧ್ವನಿ"</string>
     <string name="notification_sound_default" msgid="565135733949733766">"ಡಿಫಾಲ್ಟ್ ಅಧಿಸೂಚನೆ ಧ್ವನಿ"</string>
-    <string name="alarm_ringtone_title" msgid="6344025478514311386">"ಡಿಫಾಲ್ಟ್ ಅಲಾರಮ್ ಧ್ವನಿ"</string>
+    <string name="alarm_ringtone_title" msgid="6344025478514311386">"ಡೀಫಾಲ್ಟ್ ಅಲಾರಾಂ ಧ್ವನಿ"</string>
     <string name="vibrate_when_ringing_title" msgid="3806079144545849032">"ಕರೆಗಳಿಗೂ ಸಹ ವೈಬ್ರೇಟ್‌"</string>
     <string name="other_sound_settings" msgid="3151004537006844718">"ಇತರ ಧ್ವನಿಗಳು"</string>
     <string name="dial_pad_tones_title" msgid="1999293510400911558">"ಡಯಲ್‌ ಪ್ಯಾಡ್‌ ಟೋನ್‌ಗಳು"</string>
@@ -2959,6 +2985,43 @@
     <string name="zen_mode_summary_combination" msgid="8715563402849273459">"<xliff:g id="MODE">%1$s</xliff:g>: <xliff:g id="EXIT_CONDITION">%2$s</xliff:g>"</string>
     <string name="zen_mode_visual_interruptions_settings_title" msgid="6751708745442997940">"ದೃಶ್ಯ ಅಡಚಣೆಗಳನ್ನು ನಿರ್ಬಂಧಿಸಿ"</string>
     <string name="zen_mode_visual_signals_settings_subtitle" msgid="6308824824208120508">"ದೃಶ್ಯ ಸಂಕೇತಗಳನ್ನು ಅನುಮತಿಸಿ"</string>
+<<<<<<< HEAD   (a93169 Merge "Add tobiast@ to the OWNERS file")
+=======
+    <string name="zen_mode_settings_category" msgid="3982039687186952865">"ಅಡಚಣೆ ಮಾಡಬೇಡಿ ಆನ್ ಇದ್ದಾಗ"</string>
+    <string name="zen_mode_restrict_notifications_title" msgid="478040192977063582">"ಅಧಿಸೂಚನೆಗಳು"</string>
+    <string name="zen_mode_restrict_notifications_mute" msgid="3690261619682396872">"ಅಧಿಸೂಚನೆಗಳಿಂದ ಯಾವುದೇ ಧ್ವನಿ ಇಲ್ಲ"</string>
+    <string name="zen_mode_restrict_notifications_mute_summary" msgid="5810076116489877312">"ನಿಮ್ಮ ಪರದೆಯ ಮೇಲೆ ನೀವು ಅಧಿಸೂಚನೆಗಳನ್ನು ನೋಡುತ್ತೀರಿ"</string>
+    <string name="zen_mode_restrict_notifications_mute_footer" msgid="3465600930732602159">"ಹೊಸ ಅಧಿಸೂಚನೆಗಳು ಬಂದಾಗ ನಿಮ್ಮ ಫೋನ್ ಧ್ವನಿ ಮಾಡುವುದಿಲ್ಲ ಅಥವಾ ವೈಬ್ರೇಟ್‌ ಆಗುವುದಿಲ್ಲ."</string>
+    <string name="zen_mode_restrict_notifications_hide" msgid="5305121630186687339">"ಅಧಿಸೂಚನೆಗಳು ಬಂದಾಗ ಯಾವುದೇ ದೃಶ್ಯಗಳು ಕಾಣಿಸುವುದಿಲ್ಲ ಅಥವಾ ಧ್ವನಿಗಳಿರುವುದಿಲ್ಲ"</string>
+    <string name="zen_mode_restrict_notifications_hide_summary" msgid="7555448406901864904">"ನೀವು ಅಧಿಸೂಚನೆಗಳನ್ನು ನೋಡುವುದಿಲ್ಲ ಅಥವಾ ಆಲಿಸುವುದಿಲ್ಲ"</string>
+    <string name="zen_mode_restrict_notifications_hide_footer" msgid="6559283246372102465">"ನಿಮ್ಮ ಫೋನ್ ಹೊಸ ಅಥವಾ ಅಸ್ತಿತ್ವದಲ್ಲಿರುವ ಅಧಿಸೂಚನೆಗಳನ್ನು ತೋರಿಸುವುದಿಲ್ಲ, ಮತ್ತು ಧ್ವನಿ ಅಥವಾ ವೈಬ್ರೇಟ್ ಮಾಡುವುದಿಲ್ಲ. ನೀವು ಸ್ಕ್ರೀನ್‍ನ ಮೇಲಿನಿಂದ ಕೆಳಕ್ಕೆ ಸ್ವೈಪ್ ಮಾಡಿದಾಗ ಅಧಿಸೂಚನೆಗಳು ಗೋಚರಿಸುವುದಿಲ್ಲ.\n\nನೆನಪಿನಲ್ಲಿಡಿ, ಫೋನ್ ನ ಚಟುವಟಿಕೆಯ ಮತ್ತು ಸ್ಥಿತಿಯ ಗಂಭೀರ ಅಧಿಸೂಚನೆಗಳು ಇನ್ನೂ ಕಾಣಿಸಿಕೊಳ್ಳುತ್ತವೆ."</string>
+    <string name="zen_mode_restrict_notifications_custom" msgid="7498689167767941034">"ಕಸ್ಟಮ್"</string>
+    <string name="zen_mode_restrict_notifications_enable_custom" msgid="4250962169561739747">"ಕಸ್ಟಮ್ ಸೆಟ್ಟಿಂಗ್ ಅನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ"</string>
+    <string name="zen_mode_restrict_notifications_disable_custom" msgid="6676997522330453597">"ಕಸ್ಟಮ್ ಸೆಟ್ಟಿಂಗ್ ಅನ್ನು ತೆಗೆದುಹಾಕಿ"</string>
+    <string name="zen_mode_restrict_notifications_summary_muted" msgid="5450158135853888485">"ಅಧಿಸೂಚನೆಗಳಿಂದ ಯಾವುದೇ ಧ್ವನಿ ಇಲ್ಲ"</string>
+    <string name="zen_mode_restrict_notifications_summary_custom" msgid="7416121534987213074">"ಭಾಗಶಃ ಮರೆಮಾಡಲಾಗಿದೆ"</string>
+    <string name="zen_mode_restrict_notifications_summary_hidden" msgid="3618285192806732504">"ಅಧಿಸೂಚನೆಗಳು ಬಂದಾಗ ಯಾವುದೇ ದೃಶ್ಯಗಳು ಕಾಣಿಸುವುದಿಲ್ಲ ಅಥವಾ ಧ್ವನಿಗಳಿರುವುದಿಲ್ಲ"</string>
+    <string name="zen_mode_what_to_block_title" msgid="5480903548365697159">"ಕಸ್ಟಮ್ ನಿರ್ಬಂಧಗಳು"</string>
+    <string name="zen_mode_block_effects_screen_on" msgid="4659484530849212827">"ಪರದೆಯು ಆನ್ ಆಗಿರುವಾಗ"</string>
+    <string name="zen_mode_block_effects_screen_off" msgid="4276414460889400625">"ಪರದೆಯು ಆಫ್ ಆಗಿರುವಾಗ"</string>
+    <string name="zen_mode_block_effect_sound" msgid="7383953383758025895">"ಧ್ವನಿ ಮತ್ತು ವೈಬ್ರೇಷನ್‌ ಅನ್ನು ಮ್ಯೂಟ್ ಮಾಡಿ"</string>
+    <string name="zen_mode_block_effect_intent" msgid="350764335391428447">"ಸ್ಕ್ರೀನ್ ಅನ್ನು ಆನ್ ಮಾಡಬೇಡಿ"</string>
+    <string name="zen_mode_block_effect_light" msgid="8106976110224107316">"ಬೆಳಕನ್ನು ಮಿನುಗಿಸಬೇಡಿ"</string>
+    <string name="zen_mode_block_effect_peek" msgid="6836997464098657115">"ಸ್ಕ್ರೀನ್‌ನಲ್ಲಿ ಅಧಿಸೂಚನೆಗಳನ್ನು ಪಾಪ್ ಮಾಡಬೇಡಿ"</string>
+    <string name="zen_mode_block_effect_status" msgid="6642532634292373081">"ಸ್ಥಿತಿ ಪಟ್ಟಿ ಐಕಾನ್‌ಗಳನ್ನು ಮರೆಮಾಡಿ"</string>
+    <string name="zen_mode_block_effect_badge" msgid="4656911773512844243">"ಅಧಿಸೂಚನೆ ಡಾಟ್‌ಗಳನ್ನು ಮರೆಮಾಡಿ"</string>
+    <string name="zen_mode_block_effect_ambient" msgid="4704755879961212658">"ಅಧಿಸೂಚನೆಗಳಿಗೆ ಎಚ್ಚರಿಸಬೇಡಿ"</string>
+    <string name="zen_mode_block_effect_list" msgid="3882541635576592530">"ಅಧಿಸೂಚನೆ ಪಟ್ಟಿಯಿಂದ ಮರೆಮಾಡಿ"</string>
+    <string name="zen_mode_block_effect_summary_none" msgid="2617875282623486256">"ಎಂದೂ ಇಲ್ಲ"</string>
+    <string name="zen_mode_block_effect_summary_screen_off" msgid="1230265589026355094">"ಪರದೆ ಆಫ್ ಆಗಿರುವಾಗ"</string>
+    <string name="zen_mode_block_effect_summary_screen_on" msgid="6017536991063513394">"ಪರದೆ ಆನ್ ಆಗಿರುವಾಗ"</string>
+    <string name="zen_mode_block_effect_summary_sound" msgid="1065107568053759972">"ಧ್ವನಿ ಮತ್ತು ವೈಬ್ರೇಷನ್‌"</string>
+    <string name="zen_mode_block_effect_summary_some" msgid="3635646031575107456">"ಧ್ವನಿ, ವೈಬ್ರೇಷನ್ ಮತ್ತು ಅಧಿಸೂಚನೆಗಳ ಕೆಲವು ದೃಶ್ಯ ಚಿಹ್ನೆಗಳು"</string>
+    <string name="zen_mode_block_effect_summary_all" msgid="1213328945418248026">"ಧ್ವನಿ, ವೈಬ್ರೇಷನ್ ಮತ್ತು ಅಧಿಸೂಚನೆಗಳ ದೃಶ್ಯ ಚಿಹ್ನೆಗಳು"</string>
+    <string name="zen_mode_blocked_effects_footer" msgid="5710896246703497760">"ಮುಖ್ಯ ಫೋನ್ ಚಟುವಟಿಕೆಗೆ ಅಗತ್ಯವಿರುವ ಅಧಿಸೂಚನೆಗಳು ಮತ್ತು ಸ್ಥಿತಿಯನ್ನು ಮರೆಮಾಡಲಾಗುವುದಿಲ್ಲ"</string>
+    <string name="zen_mode_no_exceptions" msgid="7653433997399582247">"ಯಾವುದೂ ಅಲ್ಲ"</string>
+    <string name="zen_mode_other_options" msgid="520015080445012355">"ಇತರ ಆಯ್ಕೆಗಳು"</string>
+>>>>>>> BRANCH (ec5869 Snap for 5622519 from fd365ae91ebe924197c5f443c889928eb07bd0)
     <string name="zen_mode_add" msgid="90014394953272517">"ಸೇರಿಸಿ"</string>
     <string name="zen_mode_enable_dialog_turn_on" msgid="8287824809739581837">"ಆನ್ ಮಾಡಿ"</string>
     <string name="zen_mode_button_turn_on" msgid="2824380626482175552">"ಇದೀಗ ಆನ್ ಮಾಡಿ"</string>
@@ -2976,6 +3039,29 @@
       <item quantity="one"><xliff:g id="ON_COUNT">%d</xliff:g> ನಿಯಮಗಳು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಆನ್ ಆಗಬಹುದು</item>
       <item quantity="other"><xliff:g id="ON_COUNT">%d</xliff:g> ನಿಯಮಗಳು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಆನ್ ಆಗಬಹುದು</item>
     </plurals>
+<<<<<<< HEAD   (a93169 Merge "Add tobiast@ to the OWNERS file")
+=======
+    <string name="zen_category_behavior" msgid="2989256030084350296">"ವರ್ತನೆ"</string>
+    <string name="zen_category_exceptions" msgid="7601136604273265629">"ವಿನಾಯಿತಿಗಳು"</string>
+    <string name="zen_category_schedule" msgid="9000447592251450453">"ವೇಳಾಪಟ್ಟಿ"</string>
+    <string name="zen_sound_title" msgid="424490228488531372">"ಧ್ವನಿ &amp; ವೈಬ್ರೇಷನ್‌"</string>
+    <string name="zen_sound_footer" msgid="7621745273287208979">"ಅಡಚಣೆ ಮಾಡಬೇಡಿ ಆನ್ ಇದ್ದಾಗ, ನೀವು ಮೇಲ್ಭಾಗದಲ್ಲಿ ಅನುಮತಿಸುವ ಐಟಂಗಳನ್ನು ಹೊರತುಪಡಿಸಿ, ಧ್ವನಿ ಮತ್ತು ವೈಬ್ರೇಷನ್‌ಗಳು ಮ್ಯೂಟ್ ಆಗುತ್ತವೆ."</string>
+    <string name="zen_sound_category_title" msgid="4336596939661729188">"ಹೊರತುಪಡಿಸಿ ಎಲ್ಲವನ್ನೂ ಮ್ಯೂಟ್ ಮಾಡಿ"</string>
+    <string name="zen_sound_all_muted" msgid="4850363350480968114">"ಮ್ಯೂಟ್‌ ಮಾಡಲಾಗಿದೆ"</string>
+    <string name="zen_sound_none_muted" msgid="3938508512103612527">"ಮ್ಯೂಟ್ ಮಾಡಲಾಗಿಲ್ಲ"</string>
+    <string name="zen_sound_one_allowed" msgid="8447313454438932276">"ಮ್ಯೂಟ್ ಮಾಡಲಾಗಿದೆ, ಆದರೆ <xliff:g id="SOUND_TYPE">%1$s</xliff:g> ರನ್ನು ಅನುಮತಿಸಿ"</string>
+    <string name="zen_sound_two_allowed" msgid="980491120444358550">"ಮ್ಯೂಟ್ ಮಾಡಲಾಗಿದೆ, ಆದರೆ <xliff:g id="SOUND_TYPE_0">%1$s</xliff:g> ಮತ್ತು <xliff:g id="SOUND_TYPE_1">%2$s</xliff:g> ರನ್ನು ಅನುಮತಿಸಿ"</string>
+    <string name="zen_sound_three_allowed" msgid="3455767205934547985">"ಮ್ಯೂಟ್ ಮಾಡಲಾಗಿದೆ, ಆದರೆ <xliff:g id="SOUND_TYPE_0">%1$s</xliff:g>, <xliff:g id="SOUND_TYPE_1">%2$s</xliff:g>, ಮತ್ತು <xliff:g id="SOUND_TYPE_2">%3$s</xliff:g> ರನ್ನು ಅನುಮತಿಸಿ"</string>
+    <string name="zen_msg_event_reminder_title" msgid="5137894077488924820">"ಸಂದೇಶಗಳು, ಈವೆಂಟ್‌ಗಳು &amp; ಜ್ಞಾಪನೆಗಳು"</string>
+    <string name="zen_msg_event_reminder_footer" msgid="4376930591019535192">"ಅಡಚಣೆ ಮಾಡಬೇಡಿ ಆನ್ ಇದ್ದಾಗ, ನೀವು ಮೇಲ್ಭಾಗದಲ್ಲಿ ಅನುಮತಿಸುವ ಐಟಂಗಳನ್ನು ಹೊರತುಪಡಿಸಿ, ಸಂದೇಶಗಳು, ಜ್ಞಾಪನೆಗಳು ಮತ್ತು ಈವೆಂಟ್‌ಗಳು ಮ್ಯೂಟ್ ಆಗುತ್ತವೆ. ನಿಮ್ಮ ಸ್ನೇಹಿತರು, ಕುಟುಂಬ, ಅಥವಾ ಇತರ ಸಂಪರ್ಕಗಳು ನಿಮ್ಮನ್ನು ತಲುಪಲು ಅನುಮತಿಸಲು ಸಂದೇಶಗಳ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ನೀವು ಸರಿಹೊಂದಿಸಬಹುದು."</string>
+    <string name="zen_onboarding_ok" msgid="6131211000824433013">"ಮುಗಿದಿದೆ"</string>
+    <string name="zen_onboarding_settings" msgid="9046451821239946868">"ಸೆಟ್ಟಿಂಗ್‌ಗಳು"</string>
+    <string name="zen_onboarding_new_setting_title" msgid="1893095176110470711">"ಅಧಿಸೂಚನೆಗಳು ಬಂದಾಗ ಯಾವುದೇ ದೃಶ್ಯಗಳು ಕಾಣಿಸುವುದಿಲ್ಲ ಅಥವಾ ಧ್ವನಿಗಳಿರುವುದಿಲ್ಲ"</string>
+    <string name="zen_onboarding_current_setting_title" msgid="776426065129609376">"ಅಧಿಸೂಚನೆಗಳಿಂದ ಯಾವುದೇ ಧ್ವನಿ ಇಲ್ಲ"</string>
+    <string name="zen_onboarding_new_setting_summary" msgid="6293026064871880706">"ನೀವು ಅಧಿಸೂಚನೆಗಳನ್ನು ನೋಡುವುದಿಲ್ಲ ಅಥವಾ ಆಲಿಸುವುದಿಲ್ಲ. ನಕ್ಷತ್ರ ಗುರುತು ಮಾಡಿದ ಸಂಪರ್ಕಗಳಿಂದ ಕರೆಗಳು ಮತ್ತು ಪುನರಾವರ್ತಿತ ಕರೆಗಳನ್ನು ಅನುಮತಿಸಲಾಗಿದೆ."</string>
+    <string name="zen_onboarding_current_setting_summary" msgid="1280614488924843713">"(ಪ್ರಸ್ತುತ ಸೆಟ್ಟಿಂಗ್)"</string>
+    <string name="zen_onboarding_dnd_visual_disturbances_header" msgid="1352808651270918932">"ಅಡಚಣೆ ಮಾಡಬೇಡ ಅಧಿಸೂಚನೆ ಸೆಟ್ಟಿಂಗ್‌ಗಳನ್ನು ಬದಲಾಯಿಸುವುದೇ?"</string>
+>>>>>>> BRANCH (ec5869 Snap for 5622519 from fd365ae91ebe924197c5f443c889928eb07bd0)
     <string name="sound_work_settings" msgid="6774324553228566442">"ಕೆಲಸದ ಪ್ರೊಫೈಲ್ ಧ್ವನಿಗಳು"</string>
     <string name="work_use_personal_sounds_title" msgid="1148331221338458874">"ವೈಯಕ್ತಿಕ ಪ್ರೊಫೈಲ್ ಧ್ವನಿಗಳನ್ನು ಬಳಸಿ"</string>
     <string name="work_use_personal_sounds_summary" msgid="6207040454949823153">"ಕೆಲಸ ಮತ್ತು ವೈಯಕ್ತಿಕ ಪ್ರೊಫೈಲ್‌ಗಳಿಗೆ ಧ್ವನಿಗಳು ಒಂದೇ ಆಗಿವೆ"</string>
@@ -3009,7 +3095,7 @@
     <string name="lock_screen_notifications_interstitial_message_profile" msgid="8307705621027472346">"ನಿಮ್ಮ ಸಾಧನವು ಲಾಕ್‌ ಆಗಿರುವಾಗ, ನೀವು ಪ್ರೊಫೈಲ್‌ ಅಧಿಸೂಚನೆಗಳನ್ನು ಹೇಗೆ ತೋರಿಸಲು ಬಯಸುವಿರಿ?"</string>
     <string name="lock_screen_notifications_interstitial_title_profile" msgid="3169806586032521333">"ಪ್ರೊಫೈಲ್‌ ಅಧಿಸೂಚನೆಗಳು"</string>
     <string name="notifications_title" msgid="8086372779371204971">"ಅಧಿಸೂಚನೆಗಳು"</string>
-    <string name="app_notifications_title" msgid="5810577805218003760">"ಅಪ್ಲಿಕೇಶನ್‌ ಅಧಿಸೂಚನೆಗಳು"</string>
+    <string name="app_notifications_title" msgid="5810577805218003760">"ಆ್ಯಪ್ ಅಧಿಸೂಚನೆ"</string>
     <string name="notification_channel_title" msgid="2260666541030178452">"ಅಧಿಸೂಚನೆ ವರ್ಗ"</string>
     <string name="notification_group_title" msgid="7180506440133859601">"ಅಧಿಸೂಚನೆ ವರ್ಗ ಗುಂಪು"</string>
     <string name="notification_importance_title" msgid="4368578960344731828">"ವರ್ತನೆ"</string>
@@ -3822,7 +3908,7 @@
     <string name="storage_percent_full" msgid="6095012055875077036">"ಬಳಕೆಯಾಗಿದೆ"</string>
     <string name="clear_instant_app_data" msgid="2004222610585890909">"ಅಪ್ಲಿಕೇಶನ್ ತೆರವುಗೊಳಿಸಿ"</string>
     <string name="clear_instant_app_confirmation" msgid="7451671214898856857">"ಈ ತತ್‌ಕ್ಷಣ ಅಪ್ಲಿಕೇಶನ್ ತೆಗೆದುಹಾಕಲು ಬಯಸುವಿರಾ?"</string>
-    <string name="launch_instant_app" msgid="391581144859010499">"ತೆರೆ"</string>
+    <string name="launch_instant_app" msgid="391581144859010499">"ತೆರೆಯಿರಿ"</string>
     <string name="game_storage_settings" msgid="3410689937046696557">"ಗೇಮ್‌ಗಳು"</string>
     <string name="audio_files_title" msgid="4777048870657911307">"ಆಡಿಯೋ ಫೈಲ್‌ಗಳು"</string>
     <string name="app_info_storage_title" msgid="5554719444625611987">"ಬಳಸಿರುವ ಸ್ಥಳ"</string>

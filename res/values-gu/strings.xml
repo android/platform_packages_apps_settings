@@ -3089,8 +3089,13 @@
     <string name="notification_content_block_summary" msgid="7746185794438882389">"સૂચનાઓ ક્યારેય શૅડમાં અથવા પેરિફેરલ ઉપકરણો પર બતાવશો નહીં"</string>
     <string name="notification_badge_title" msgid="6370122441168519809">"નોટિફિકેશન માટેના ચિહ્નને મંજૂરી આપો"</string>
     <string name="notification_channel_badge_title" msgid="2240827899882847087">"નોટિફિકેશન માટેનું ચિહ્ન બતાવો"</string>
+<<<<<<< HEAD   (a93169 Merge "Add tobiast@ to the OWNERS file")
     <string name="app_notification_override_dnd_title" msgid="7867458246395884830">"ખલેલ પાડશો નહીં ને ઓવરરાઇડ કરો"</string>
     <string name="app_notification_override_dnd_summary" msgid="3516007157020189746">"જયારે ખલેલ પાડશો નહીં ને માત્ર પ્રાધાન્યતા પર સેટ કરેલું હોય ત્યારે આ સૂચનાઓને દખલગીરી કરવા દો"</string>
+=======
+    <string name="app_notification_override_dnd_title" msgid="7867458246395884830">"\"ખલેલ પાડશો નહીં\"ને ઓવરરાઇડ કરો"</string>
+    <string name="app_notification_override_dnd_summary" msgid="2612502099373472686">"જ્યારે ખલેલ પાડશો નહીં ચાલુ હોય, ત્યારે પણ આ નોટિફિકેશનને ચાલુ રહેવા દો"</string>
+>>>>>>> BRANCH (ec5869 Snap for 5622519 from fd365ae91ebe924197c5f443c889928eb07bd0)
     <string name="app_notification_visibility_override_title" msgid="7821124557634786985">"લૉક સ્ક્રીન પર"</string>
     <string name="app_notification_row_banned" msgid="5983655258784814773">"અવરોધિત"</string>
     <string name="app_notification_row_priority" msgid="7723839972982746568">"પ્રાધાન્યતા"</string>
