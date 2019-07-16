@@ -62,6 +62,7 @@ import android.telephony.PhoneStateListener;
 import android.telephony.PhysicalChannelConfig;
 import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
+import android.telephony.SmsManager;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.cdma.CdmaCellLocation;
@@ -171,8 +172,6 @@ public class RadioInfo extends Activity {
 
     private static final int EVENT_QUERY_PREFERRED_TYPE_DONE = 1000;
     private static final int EVENT_SET_PREFERRED_TYPE_DONE = 1001;
-    private static final int EVENT_QUERY_SMSC_DONE = 1005;
-    private static final int EVENT_UPDATE_SMSC_DONE = 1006;
 
     private static final int MENU_ITEM_SELECT_BAND         = 0;
     private static final int MENU_ITEM_VIEW_ADN            = 1;
@@ -207,7 +206,7 @@ public class RadioInfo extends Activity {
     private TextView dnsCheckState;
     private TextView mDownlinkKbps;
     private TextView mUplinkKbps;
-    private EditText smsc;
+    private EditText mSmscView;
     private Switch radioPowerOnSwitch;
     private Button cellInfoRefreshRateButton;
     private Button dnsCheckToggleButton;
@@ -226,6 +225,7 @@ public class RadioInfo extends Activity {
     private Spinner cellInfoRefreshRateSpinner;
 
     private ConnectivityManager mConnectivityManager;
+    private SmsManager mSmsManager;
     private TelephonyManager mTelephonyManager;
     private ImsManager mImsManager = null;
     private Phone mPhone = null;
@@ -238,6 +238,8 @@ public class RadioInfo extends Activity {
 
     private List<CellInfo> mCellInfoResult = null;
     private CellLocation mCellLocationResult = null;
+
+    private String mSmsc;
 
     private int mPreferredNetworkTypeResult;
     private int mCellInfoRefreshRateIndex;
@@ -359,6 +361,7 @@ public class RadioInfo extends Activity {
         mTelephonyManager.setCellInfoListRate(CELL_INFO_LIST_RATE_DISABLED);
 
         // update the subId
+        mSmsManager = mSmsManager.getSmsManagerForSubscriptionId(subId);
         mTelephonyManager = mTelephonyManager.createForSubscriptionId(subId);
 
         // update the phoneId
@@ -388,21 +391,6 @@ public class RadioInfo extends Activity {
                         log("Set preferred network type failed.");
                     }
                     break;
-                case EVENT_QUERY_SMSC_DONE:
-                    ar= (AsyncResult) msg.obj;
-                    if (ar.exception != null) {
-                        smsc.setText("refresh error");
-                    } else {
-                        smsc.setText((String)ar.result);
-                    }
-                    break;
-                case EVENT_UPDATE_SMSC_DONE:
-                    updateSmscButton.setEnabled(true);
-                    ar= (AsyncResult) msg.obj;
-                    if (ar.exception != null) {
-                        smsc.setText("update error");
-                    }
-                    break;
                 default:
                     super.handleMessage(msg);
                     break;
@@ -424,6 +412,7 @@ public class RadioInfo extends Activity {
 
         log("Started onCreate");
 
+        mSmsManager = SmsManager.getDefault();
         mTelephonyManager = (TelephonyManager)getSystemService(TELEPHONY_SERVICE);
         mConnectivityManager = (ConnectivityManager)getSystemService(CONNECTIVITY_SERVICE);
         mPhone = PhoneFactory.getDefaultPhone();
@@ -454,7 +443,7 @@ public class RadioInfo extends Activity {
 
         sent = (TextView) findViewById(R.id.sent);
         received = (TextView) findViewById(R.id.received);
-        smsc = (EditText) findViewById(R.id.smsc);
+        mSmscView = (EditText) findViewById(R.id.smsc);
         dnsCheckState = (TextView) findViewById(R.id.dnsCheckState);
         mPingHostnameV4 = (TextView) findViewById(R.id.pingHostnameV4);
         mPingHostnameV6 = (TextView) findViewById(R.id.pingHostnameV6);
@@ -585,7 +574,7 @@ public class RadioInfo extends Activity {
         mConnectivityManager.registerNetworkCallback(
                 mDefaultNetworkRequest, mNetworkCallback, mHandler);
 
-        smsc.clearFocus();
+        mSmscView.clearFocus();
     }
 
     @Override
@@ -1139,8 +1128,26 @@ public class RadioInfo extends Activity {
     }
 
     private void refreshSmsc() {
-        //FIXME: Replace with a TelephonyManager call
-        mPhone.getSmscAddress(mHandler.obtainMessage(EVENT_QUERY_SMSC_DONE));
+        final Runnable updateResult =
+                new Runnable() {
+                    public void run() {
+                        if (mSmsc == null) {
+                            mSmscView.setText("refresh error");
+                        } else {
+                            mSmscView.setText(mSmsc);
+                        }
+                    }
+                };
+
+        Thread smscThread =
+                new Thread() {
+                    @Override
+                    public void run() {
+                        mSmsc = mSmsManager.getSmscAddress();
+                        mHandler.post(updateResult);
+                    }
+                };
+        smscThread.start();
     }
 
     private final void updateAllCellInfo() {
@@ -1511,13 +1518,30 @@ public class RadioInfo extends Activity {
         }
     };
 
-    OnClickListener mUpdateSmscButtonHandler = new OnClickListener() {
-        public void onClick(View v) {
-            updateSmscButton.setEnabled(false);
-            mPhone.setSmscAddress(smsc.getText().toString(),
-                    mHandler.obtainMessage(EVENT_UPDATE_SMSC_DONE));
-        }
-    };
+    OnClickListener mUpdateSmscButtonHandler =
+            new OnClickListener() {
+                public void onClick(View v) {
+                    updateSmscButton.setEnabled(false);
+                    final Runnable updateErrorResult =
+                            new Runnable() {
+                                public void run() {
+                                    mSmscView.setText("update error");
+                                }
+                            };
+
+                    Thread smscThread =
+                            new Thread() {
+                                @Override
+                                public void run() {
+                                    if (!mSmsManager.setSmscAddress(
+                                            mSmscView.getText().toString())) {
+                                        mHandler.post(updateErrorResult);
+                                    }
+                                }
+                            };
+                    smscThread.start();
+                }
+            };
 
     OnClickListener mRefreshSmscButtonHandler = new OnClickListener() {
         public void onClick(View v) {
