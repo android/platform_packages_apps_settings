@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "a71ed6e5_de93ccaa",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2367,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-07-19T03:50:50Z",
+      "side": 1,
+      "message": "Chiachang is right here ; SettingsLib is the right place to put this. The reason is that we want to make these strings accessible to OEM setting apps.",
+      "parentUuid": "fb30ef42_18196ca6",
+      "range": {
+        "startLine": 2365,
+        "startChar": 4,
+        "endLine": 2367,
+        "endChar": 0
+      },
+      "revId": "88147177ad90200b060cc09a170136161d34cbc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ab4b4537_dc06728e",
         "filename": "src/com/android/settings/network/PrivateDnsPreferenceController.java",
         "patchSetId": 1
