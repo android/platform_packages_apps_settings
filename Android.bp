@@ -11,7 +11,7 @@ android_app {
     defaults: ["SettingsLibDefaults"],
     platform_apis: true,
     certificate: "platform",
-    product_specific: true,
+    system_ext_specific: true,
     privileged: true,
     required: ["privapp_whitelist_com.android.settings"],
 
