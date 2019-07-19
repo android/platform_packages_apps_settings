@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4081f16e_327bf605",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2019-07-19T01:52:07Z",
+      "side": 1,
+      "message": "I wonder maybe small caps since it\u0027s not a proper noun? or it is?",
+      "range": {
+        "startLine": 9,
+        "startChar": 9,
+        "endLine": 9,
+        "endChar": 10
+      },
+      "revId": "88147177ad90200b060cc09a170136161d34cbc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7221b610_306fecff",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2365,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2019-07-19T01:52:07Z",
+      "side": 1,
+      "message": "Nit: It actually only means \"on\". Could we have clear comment on that like \"Message to display when private dns is on\". It\u0027s fine to leave it if other reviewer is fine with that.",
+      "range": {
+        "startLine": 2365,
+        "startChar": 9,
+        "endLine": 2365,
+        "endChar": 34
+      },
+      "revId": "88147177ad90200b060cc09a170136161d34cbc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e7bc6d7_fc187af7",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2367,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2019-07-19T01:52:07Z",
+      "side": 1,
+      "message": "I see the private_dns_mode_off string is put in \nframeworks/base/packages/SettingsLib/res/values/strings.xml\nIs this a right place to put the resouce? or which place is the right one?",
+      "range": {
+        "startLine": 2365,
+        "startChar": 4,
+        "endLine": 2367,
+        "endChar": 0
+      },
+      "revId": "88147177ad90200b060cc09a170136161d34cbc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ab4b4537_dc06728e",
+        "filename": "src/com/android/settings/network/PrivateDnsPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2019-07-19T01:52:07Z",
+      "side": 1,
+      "message": "You should probably remove this comment.",
+      "range": {
+        "startLine": 122,
+        "startChar": 16,
+        "endLine": 125,
+        "endChar": 42
+      },
+      "revId": "88147177ad90200b060cc09a170136161d34cbc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d0c941d_b2a7969a",
+        "filename": "src/com/android/settings/network/PrivateDnsPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2019-07-19T01:52:07Z",
+      "side": 1,
+      "message": "Nit: Maybe private_dns_mode_on comparing to what we use in PRIVATE_DNS_MODE_OFF in line 120?\nNot strong opinion though. Feel free to ignore.",
+      "range": {
+        "startLine": 126,
+        "startChar": 62,
+        "endLine": 126,
+        "endChar": 81
+      },
+      "revId": "88147177ad90200b060cc09a170136161d34cbc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
