@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd603930_b852323d",
+        "filename": "src/com/android/settings/RadioInfo.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2019-07-19T18:13:51Z",
+      "side": 1,
+      "message": "Not sure what\u0027s the expected design here.\n\n1. mSmsc is a shared instance between threads however without volatile keyword.\n\n2. If this design is intended for supporting some conditional latencies from getSmscAddress() method. Multiple invoke of refreshSmsc() would create multiple threads at the same time, and the ordering of result is not guaranteed. It might be part of the reason volatile might not be a good choice here.",
+      "revId": "692579c751e7bcada4f3352bc8ff698bf9c88546",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
