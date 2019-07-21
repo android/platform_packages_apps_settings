@@ -41,6 +41,7 @@ public class GestureSettings extends DashboardFragment {
     private static final String KEY_ASSIST = "gesture_assist_input_summary";
     private static final String KEY_SWIPE_DOWN = "gesture_swipe_down_fingerprint_input_summary";
     private static final String KEY_DOUBLE_TAP_POWER = "gesture_double_tap_power_input_summary";
+    private static final String KEY_CAMERA_LONG_PRESS = "gesture_camera_button_long_press_input_summary";
     private static final String KEY_DOUBLE_TWIST = "gesture_double_twist_input_summary";
     private static final String KEY_DOUBLE_TAP_SCREEN = "gesture_double_tap_screen_input_summary";
     private static final String KEY_PICK_UP = "gesture_pick_up_input_summary";
@@ -96,6 +97,7 @@ public class GestureSettings extends DashboardFragment {
                     keys.add(KEY_ASSIST);
                     keys.add(KEY_SWIPE_DOWN);
                     keys.add(KEY_DOUBLE_TAP_POWER);
+                    keys.add(KEY_CAMERA_LONG_PRESS);
                     keys.add(KEY_DOUBLE_TWIST);
                     keys.add(KEY_SWIPE_UP);
                     keys.add(KEY_DOUBLE_TAP_SCREEN);
