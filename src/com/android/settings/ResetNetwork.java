@@ -50,6 +50,7 @@ import com.android.settings.password.ChooseLockSettingsHelper;
 import com.android.settings.password.ConfirmLockPattern;
 import com.android.settingslib.RestrictedLockUtils;
 import com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
+import com.android.settingslib.development.DevelopmentSettingsEnabler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -233,7 +234,7 @@ public class ResetNetwork extends InstrumentedFragment {
         }
         ContentResolver resolver = context.getContentResolver();
         return Settings.Global.getInt(resolver, Global.EUICC_PROVISIONED, 0) != 0
-                || Settings.Global.getInt(resolver, Global.DEVELOPMENT_SETTINGS_ENABLED, 0) != 0;
+                || DevelopmentSettingsEnabler.isDevelopmentSettingsEnabled(context);
     }
 
     @Override
