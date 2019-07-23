@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7d00a1d_7d9a8ae1",
+        "filename": "tests/robotests/src/com/android/settings/MasterClearTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2019-07-23T17:23:12Z",
+      "side": 1,
+      "message": "mActivity.getSystemService(UserManager.class);",
+      "range": {
+        "startLine": 107,
+        "startChar": 34,
+        "endLine": 107,
+        "endChar": 97
+      },
+      "revId": "08905b79bd433a945db605b22adb1516f6e4f62c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
