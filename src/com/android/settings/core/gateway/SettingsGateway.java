@@ -77,6 +77,7 @@ import com.android.settings.fuelgauge.PowerUsageSummary;
 import com.android.settings.fuelgauge.batterysaver.BatterySaverSettings;
 import com.android.settings.gestures.AssistGestureSettings;
 import com.android.settings.gestures.DoubleTapPowerSettings;
+import com.android.settings.gestures.CameraLongPressSettings;
 import com.android.settings.gestures.DoubleTapScreenSettings;
 import com.android.settings.gestures.DoubleTwistGestureSettings;
 import com.android.settings.gestures.SwipeUpGestureSettings;
@@ -192,6 +193,7 @@ public class SettingsGateway {
             AssistGestureSettings.class.getName(),
             SwipeToNotificationSettings.class.getName(),
             DoubleTapPowerSettings.class.getName(),
+            CameraLongPressSettings.class.getName(),
             DoubleTapScreenSettings.class.getName(),
             PickupGestureSettings.class.getName(),
             DoubleTwistGestureSettings.class.getName(),
