@@ -8868,6 +8868,12 @@
     <!-- Description of setting that controls gesture to open camera by double tapping the power button [CHAR LIMIT=NONE] -->
     <string name="camera_double_tap_power_gesture_desc">Quickly open camera without unlocking your screen</string>
 
+    <!-- Title of setting that controls gesture to open camera by long-pressing the camera button [CHAR LIMIT=40] -->
+    <string name="camera_button_long_press_gesture_title">Hold down camera button for camera</string>
+
+    <!-- Description of setting that controls gesture to open camera by long-pressing the camera button [CHAR LIMIT=NONE] -->
+    <string name="camera_button_long_press_gesture_desc">Quickly open camera from anywhere without unlocking your screen</string>
+
     <!-- Title of setting that controls screen zoom (e.g. how large interface elements appear). [CHAR LIMIT=40] -->
     <string name="screen_zoom_title">Display size</string>
     <!-- Short summary for Magnification gesture. Lets the user know that this makes items on screen larger or smaller. Appears in the accessibility portion of Setup Wizard. [CHAR LIMIT=NONE] -->
@@ -9567,13 +9573,22 @@
     <string name="gesture_preference_summary" product="device">Quick gestures to control your device</string>
 
     <!-- Title text for double tap power for camera [CHAR LIMIT=60]-->
-    <string name="double_tap_power_for_camera_title">Jump to camera</string>
+    <string name="double_tap_power_for_camera_title">Double-tap power button for camera</string>
 
     <!-- Summary text for double tap power for camera [CHAR LIMIT=160]-->
     <string name="double_tap_power_for_camera_summary">To quickly open camera, press the power button twice. Works from any screen.</string>
 
     <!-- Title for settings suggestion for double tap power for camera [CHAR LIMIT=60] -->
-    <string name="double_tap_power_for_camera_suggestion_title">Open camera quickly</string>
+    <string name="double_tap_power_for_camera_suggestion_title">Open camera quickly with power button</string>
+
+    <!-- Title text for long-press camera button for launching camera [CHAR LIMIT=60]-->
+    <string name="camera_button_long_press_for_camera_title">Hold down camera button</string>
+
+    <!-- Summary text for long-press camera button for launching camera [CHAR LIMIT=160]-->
+    <string name="camera_button_long_press_for_camera_summary">To quickly open camera, hold down the camera button. Works from any screen.</string>
+
+    <!-- Title for settings suggestion for long-press camera button for camera [CHAR LIMIT=60] -->
+    <string name="camera_button_long_press_for__camera_suggestion_title">Open camera quickly with camera button</string>
 
     <!-- Title text for double twist for camera mode [CHAR LIMIT=60]-->
     <string name="double_twist_for_camera_mode_title">Flip camera</string>
