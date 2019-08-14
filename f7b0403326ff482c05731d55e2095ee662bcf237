@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6667f983_98571f03",
+        "filename": "tests/robotests/src/com/android/settings/wifi/details/WifiDetailPreferenceControllerTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2019-08-14T13:52:16Z",
+      "side": 1,
+      "message": "You may want to fix the TH fail first.",
+      "range": {
+        "startLine": 628,
+        "startChar": 8,
+        "endLine": 629,
+        "endChar": 37
+      },
+      "revId": "f7b0403326ff482c05731d55e2095ee662bcf237",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
