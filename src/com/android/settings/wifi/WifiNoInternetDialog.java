@@ -16,6 +16,13 @@
 
 package com.android.settings.wifi;
 
+import static android.net.ConnectivityManager.ACTION_PROMPT_LOST_VALIDATION;
+import static android.net.ConnectivityManager.ACTION_PROMPT_PARTIAL_CONNECTIVITY;
+import static android.net.ConnectivityManager.ACTION_PROMPT_UNVALIDATED;
+import static android.net.NetworkCapabilities.NET_CAPABILITY_VALIDATED;
+
+import static android.net.ConnectivityManager.ACTION_PROMPT_PRIVATE_DNS_BROKEN;
+
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -37,11 +44,6 @@ import com.android.internal.app.AlertActivity;
 import com.android.internal.app.AlertController;
 import com.android.settings.R;
 
-import static android.net.ConnectivityManager.ACTION_PROMPT_LOST_VALIDATION;
-import static android.net.ConnectivityManager.ACTION_PROMPT_PARTIAL_CONNECTIVITY;
-import static android.net.ConnectivityManager.ACTION_PROMPT_UNVALIDATED;
-import static android.net.NetworkCapabilities.NET_CAPABILITY_VALIDATED;
-
 public final class WifiNoInternetDialog extends AlertActivity implements
         DialogInterface.OnClickListener {
     private static final String TAG = "WifiNoInternetDialog";
@@ -56,7 +58,8 @@ public final class WifiNoInternetDialog extends AlertActivity implements
     private boolean isKnownAction(Intent intent) {
         return intent.getAction().equals(ACTION_PROMPT_UNVALIDATED)
                 || intent.getAction().equals(ACTION_PROMPT_LOST_VALIDATION)
-                || intent.getAction().equals(ACTION_PROMPT_PARTIAL_CONNECTIVITY);
+                || intent.getAction().equals(ACTION_PROMPT_PARTIAL_CONNECTIVITY)
+                || intent.getAction().equals(ACTION_PROMPT_PRIVATE_DNS_BROKEN);
     }
 
     @Override
@@ -133,6 +136,11 @@ public final class WifiNoInternetDialog extends AlertActivity implements
             ap.mMessage = getString(R.string.no_internet_access_text);
             ap.mPositiveButtonText = getString(R.string.yes);
             ap.mNegativeButtonText = getString(R.string.no);
+        } else if (ACTION_PROMPT_PRIVATE_DNS_BROKEN.equals(mAction)) {
+            ap.mTitle = mNetworkName;
+            ap.mMessage = getString(R.string.private_dns_broken_text);
+            ap.mPositiveButtonText = getString(R.string.yes);
+            ap.mNegativeButtonText = getString(R.string.no);
         } else if (ACTION_PROMPT_PARTIAL_CONNECTIVITY.equals(mAction)) {
             ap.mTitle = mNetworkName;
             ap.mMessage = getString(R.string.partial_connectivity_text);
@@ -177,7 +185,8 @@ public final class WifiNoInternetDialog extends AlertActivity implements
         final boolean always = mAlwaysAllow.isChecked();
         final String what, action;
 
-        if (ACTION_PROMPT_UNVALIDATED.equals(mAction)) {
+        if (ACTION_PROMPT_UNVALIDATED.equals(mAction)
+            || ACTION_PROMPT_PRIVATE_DNS_BROKEN.equals(mAction)) {
             what = "NO_INTERNET";
             final boolean accept = (which == BUTTON_POSITIVE);
             action = (accept ? "Connect" : "Ignore");
