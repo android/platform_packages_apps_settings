@@ -16,6 +16,8 @@
 
 package com.android.settings.wifi;
 
+import static android.net.ConnectivityManager.ACTION_PROMPT_PRIVATE_DNS_BROKEN;
+
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
