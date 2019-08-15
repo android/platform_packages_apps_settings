@@ -22,6 +22,30 @@
       "revId": "f7b0403326ff482c05731d55e2095ee662bcf237",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "120116e7_7fec78b3",
+        "filename": "tests/robotests/src/com/android/settings/wifi/details/WifiDetailPreferenceControllerTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2019-08-15T01:39:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6667f983_98571f03",
+      "range": {
+        "startLine": 628,
+        "startChar": 8,
+        "endLine": 629,
+        "endChar": 37
+      },
+      "revId": "f7b0403326ff482c05731d55e2095ee662bcf237",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
