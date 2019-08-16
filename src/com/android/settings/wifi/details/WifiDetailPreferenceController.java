@@ -191,14 +191,24 @@ public class WifiDetailPreferenceController extends AbstractPreferenceController
             return mNetworkCapabilities.hasCapability(cap) != nc.hasCapability(cap);
         }
 
+        private boolean prviateDnsStatusChanged(NetworkCapabilities nc) {
+            // If this is the first time we get NetworkCapabilities, report that something changed.
+            if (mNetworkCapabilities == null) {
+                return true;
+            }
+
+            return mNetworkCapabilities.isPrivateDnsBroken() != nc.isPrivateDnsBroken();
+        }
+
         @Override
         public void onCapabilitiesChanged(Network network, NetworkCapabilities nc) {
             // If the network just validated or lost Internet access or detected partial internet
-            // connectivity, refresh network state. Don't do this on every NetworkCapabilities
-            // change because refreshNetworkState sends IPCs to the system server from the UI
-            // thread, which can cause jank.
+            // connectivity or private dns is broken, refresh network state. Don't do this on
+            // every NetworkCapabilities change because refreshNetworkState sends IPCs to the
+            // system server from the UI thread, which can cause jank.
             if (network.equals(mNetwork) && !nc.equals(mNetworkCapabilities)) {
-                if (hasCapabilityChanged(nc, NET_CAPABILITY_VALIDATED)
+                if (prviateDnsStatusChanged(nc)
+                        || hasCapabilityChanged(nc, NET_CAPABILITY_VALIDATED)
                         || hasCapabilityChanged(nc, NET_CAPABILITY_CAPTIVE_PORTAL)
                         || hasCapabilityChanged(nc, NET_CAPABILITY_PARTIAL_CONNECTIVITY)) {
                     refreshNetworkState();
