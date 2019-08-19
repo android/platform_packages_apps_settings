@@ -242,6 +242,47 @@ public class NetworkRequestDialogFragmentTest {
         assertThat(returnList.get(1).getSsid()).isEqualTo(SSID_AP2);
     }
 
+    @Test
+    public void onAccessPointsChanged_shouldUpdatedList() {
+        // Assert.
+        when(networkRequestDialogFragment.getContext()).thenReturn(mContext);
+        Context applicationContext = spy(RuntimeEnvironment.application.getApplicationContext());
+        when(mContext.getApplicationContext()).thenReturn(applicationContext);
+        WifiManager wifiManager = mock(WifiManager.class);
+        when(applicationContext.getSystemService(Context.WIFI_SERVICE)).thenReturn(wifiManager);
+        networkRequestDialogFragment.onResume();
+
+        List<AccessPoint> accessPointList = new ArrayList<>();
+        when(mWifiTracker.getAccessPoints()).thenReturn(accessPointList);
+
+        final String SSID_AP1 = "Test AP 1";
+        List<ScanResult> scanResults = new ArrayList<>();
+        ScanResult scanResult = new ScanResult();
+        scanResult.SSID = SSID_AP1;
+        scanResult.capabilities = "WEP";
+        scanResults.add(scanResult);
+
+        // Act.
+        networkRequestDialogFragment.onMatch(scanResults);
+
+        // Check.
+        List<AccessPoint> returnList = networkRequestDialogFragment.getAccessPointList();
+        assertThat(returnList).isEmpty();
+
+        // Assert.
+        accessPointList = createAccessPointList();
+        when(mWifiTracker.getAccessPoints()).thenReturn(accessPointList);
+
+        // Act.
+        networkRequestDialogFragment.mFilterWifiTracker.mWifiListener.onAccessPointsChanged();
+
+        // Check.
+        returnList = networkRequestDialogFragment.getAccessPointList();
+        assertThat(returnList).isNotEmpty();
+        assertThat(returnList.size()).isEqualTo(1);
+        assertThat(returnList.get(0).getSsid()).isEqualTo(SSID_AP1);
+    }
+
     private List<AccessPoint> createAccessPointList() {
         List<AccessPoint> accessPointList = spy(new ArrayList<>());
         Bundle bundle = new Bundle();
