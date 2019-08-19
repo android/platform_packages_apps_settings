@@ -86,7 +86,8 @@ public class NetworkRequestDialogFragment extends InstrumentedDialogFragment imp
             "com.android.settings.wifi.extra.REQUEST_IS_FOR_SINGLE_NETWORK";
 
     private List<AccessPoint> mAccessPointList;
-    private FilterWifiTracker mFilterWifiTracker;
+    @VisibleForTesting
+    FilterWifiTracker mFilterWifiTracker;
     private AccessPointAdapter mDialogAdapter;
     private NetworkRequestUserSelectionCallback mUserSelectionCallback;
     private boolean mIsSpecifiedSsid;
@@ -472,7 +473,8 @@ public class NetworkRequestDialogFragment extends InstrumentedDialogFragment imp
         updateConnectButton(true);
     }
 
-    private final class FilterWifiTracker {
+    @VisibleForTesting
+    final class FilterWifiTracker {
         private final List<String> mAccessPointKeys;
         private final WifiTracker mWifiTracker;
 
@@ -537,7 +539,8 @@ public class NetworkRequestDialogFragment extends InstrumentedDialogFragment imp
             return result;
         }
 
-        private WifiTracker.WifiListener mWifiListener = new WifiTracker.WifiListener() {
+        @VisibleForTesting
+        WifiTracker.WifiListener mWifiListener = new WifiTracker.WifiListener() {
 
             @Override
             public void onWifiStateChanged(int state) {
@@ -551,6 +554,7 @@ public class NetworkRequestDialogFragment extends InstrumentedDialogFragment imp
 
             @Override
             public void onAccessPointsChanged() {
+                renewAccessPointList(null /* List<ScanResult> */);
                 notifyAdapterRefresh();
             }
         };
