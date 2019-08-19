@@ -551,6 +551,7 @@ public class NetworkRequestDialogFragment extends InstrumentedDialogFragment imp
 
             @Override
             public void onAccessPointsChanged() {
+                renewAccessPointList(null /* List<ScanResult> */);
                 notifyAdapterRefresh();
             }
         };
