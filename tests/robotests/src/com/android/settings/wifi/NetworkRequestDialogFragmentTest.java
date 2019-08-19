@@ -171,7 +171,6 @@ public class NetworkRequestDialogFragmentTest {
 
     @Test
     public void updateAccessPointList_onUserSelectionConnectSuccess_shouldFinishActivity() {
-        // Assert
         final FragmentActivity spyActivity = spy(mActivity);
         when(networkRequestDialogFragment.getActivity()).thenReturn(spyActivity);
         networkRequestDialogFragment.show(spyActivity.getSupportFragmentManager(), "onUserSelectionConnectSuccess");
@@ -187,7 +186,6 @@ public class NetworkRequestDialogFragmentTest {
 
     @Test
     public void onUserSelectionCallbackRegistration_onClick_shouldCallSelect() {
-        // Assert.
         final int indexClickItem = 3;
         List<AccessPoint> accessPointList = createAccessPointList();
         AccessPoint clickedAccessPoint = accessPointList.get(indexClickItem);
@@ -208,7 +206,6 @@ public class NetworkRequestDialogFragmentTest {
 
     @Test
     public void onMatch_shouldUpdatedList() {
-        // Assert.
         when(networkRequestDialogFragment.getContext()).thenReturn(mContext);
         Context applicationContext = spy(RuntimeEnvironment.application.getApplicationContext());
         when(mContext.getApplicationContext()).thenReturn(applicationContext);
@@ -240,6 +237,41 @@ public class NetworkRequestDialogFragmentTest {
         assertThat(returnList.size()).isEqualTo(2);
         assertThat(returnList.get(0).getSsid()).isEqualTo(SSID_AP1);
         assertThat(returnList.get(1).getSsid()).isEqualTo(SSID_AP2);
+    }
+
+    @Test
+    public void onAccessPointsChanged_shouldUpdatedList() {
+        when(networkRequestDialogFragment.getContext()).thenReturn(mContext);
+        Context applicationContext = spy(RuntimeEnvironment.application.getApplicationContext());
+        when(mContext.getApplicationContext()).thenReturn(applicationContext);
+        WifiManager wifiManager = mock(WifiManager.class);
+        when(applicationContext.getSystemService(Context.WIFI_SERVICE)).thenReturn(wifiManager);
+        networkRequestDialogFragment.onResume();
+
+        List<AccessPoint> accessPointList = new ArrayList<>();
+        when(mWifiTracker.getAccessPoints()).thenReturn(accessPointList);
+
+        final String SSID_AP1 = "Test AP 1";
+        List<ScanResult> scanResults = new ArrayList<>();
+        ScanResult scanResult = new ScanResult();
+        scanResult.SSID = SSID_AP1;
+        scanResult.capabilities = "WEP";
+        scanResults.add(scanResult);
+
+        // Act.
+        networkRequestDialogFragment.onMatch(scanResults);
+
+        accessPointList = createAccessPointList();
+        when(mWifiTracker.getAccessPoints()).thenReturn(accessPointList);
+
+        // Act.
+        networkRequestDialogFragment.mFilterWifiTracker.mWifiListener.onAccessPointsChanged();
+
+        // Check.
+        List<AccessPoint> returnList = networkRequestDialogFragment.getAccessPointList();
+        assertThat(returnList).isNotEmpty();
+        assertThat(returnList.size()).isEqualTo(1);
+        assertThat(returnList.get(0).getSsid()).isEqualTo(SSID_AP1);
     }
 
     private List<AccessPoint> createAccessPointList() {
@@ -309,7 +341,6 @@ public class NetworkRequestDialogFragmentTest {
 
     @Test
     public void clickNeutralButton_hideNeutralButton() {
-        // Assert
         networkRequestDialogFragment.show(mActivity.getSupportFragmentManager(), /* tag */ null);
         final AlertDialog alertDialog = ShadowAlertDialogCompat.getLatestAlertDialog();
 
@@ -333,7 +364,6 @@ public class NetworkRequestDialogFragmentTest {
 
     @Test
     public void cancelDialog_callsReject() {
-        // Assert
         networkRequestDialogFragment.show(mActivity.getSupportFragmentManager(), /* tag */ null);
         final AlertDialog alertDialog = ShadowAlertDialogCompat.getLatestAlertDialog();
         final NetworkRequestUserSelectionCallback selectionCallback = mock(
