@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a99f198f_ff164445",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 2050,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2019-08-21T12:45:13Z",
+      "side": 1,
+      "message": "Do you want to align with  \nframeworks/base/packages/SettingsLib/res/values/strings.xml?",
+      "range": {
+        "startLine": 2050,
+        "startChar": 103,
+        "endLine": 2050,
+        "endChar": 113
+      },
+      "revId": "9be5e0bce9ff2e764f43d699178deef5a6944d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a937f59_92378e29",
+        "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2019-08-21T12:45:13Z",
+      "side": 1,
+      "message": "private",
+      "range": {
+        "startLine": 194,
+        "startChar": 24,
+        "endLine": 194,
+        "endChar": 31
+      },
+      "revId": "9be5e0bce9ff2e764f43d699178deef5a6944d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
