@@ -45,6 +45,75 @@
       "revId": "9be5e0bce9ff2e764f43d699178deef5a6944d69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dd8922f_b6d68ee8",
+        "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2019-08-21T16:44:42Z",
+      "side": 1,
+      "message": "hasPrivateDnsStatusChanged? Like above method.",
+      "range": {
+        "startLine": 194,
+        "startChar": 24,
+        "endLine": 194,
+        "endChar": 47
+      },
+      "revId": "9be5e0bce9ff2e764f43d699178deef5a6944d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "755c3146_9518a65f",
+        "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2019-08-21T16:44:42Z",
+      "side": 1,
+      "message": "Question: If it\u0027s not the first time but NetworkCapabilities was still null, what should we do?",
+      "range": {
+        "startLine": 195,
+        "startChar": 15,
+        "endLine": 195,
+        "endChar": 99
+      },
+      "revId": "9be5e0bce9ff2e764f43d699178deef5a6944d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70365531_6069dce0",
+        "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2019-08-21T16:44:42Z",
+      "side": 1,
+      "message": "was?",
+      "range": {
+        "startLine": 206,
+        "startChar": 43,
+        "endLine": 206,
+        "endChar": 45
+      },
+      "revId": "9be5e0bce9ff2e764f43d699178deef5a6944d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
