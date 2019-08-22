@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e106f510_03db5c40",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 2050,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2019-08-22T12:07:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a99f198f_ff164445",
+      "range": {
+        "startLine": 2050,
+        "startChar": 103,
+        "endLine": 2050,
+        "endChar": 113
+      },
+      "revId": "9be5e0bce9ff2e764f43d699178deef5a6944d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a937f59_92378e29",
         "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
         "patchSetId": 5
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "3a1c948e_d1bcee83",
+        "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2019-08-22T12:07:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a937f59_92378e29",
+      "range": {
+        "startLine": 194,
+        "startChar": 24,
+        "endLine": 194,
+        "endChar": 31
+      },
+      "revId": "9be5e0bce9ff2e764f43d699178deef5a6944d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20a044f7_6917ddff",
+        "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2019-08-22T12:07:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dd8922f_b6d68ee8",
+      "range": {
+        "startLine": 194,
+        "startChar": 24,
+        "endLine": 194,
+        "endChar": 47
+      },
+      "revId": "9be5e0bce9ff2e764f43d699178deef5a6944d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "755c3146_9518a65f",
         "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
         "patchSetId": 5
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "f89898ab_310b469e",
+        "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2019-08-22T12:07:34Z",
+      "side": 1,
+      "message": "The NetworkCapabilities will never be null.\nPlease refer to ConnectivityManager.java:\npublic void onCapabilitiesChanged(@NonNull Network network,\n        @NonNull NetworkCapabilities networkCapabilities) {}",
+      "parentUuid": "755c3146_9518a65f",
+      "range": {
+        "startLine": 195,
+        "startChar": 15,
+        "endLine": 195,
+        "endChar": 99
+      },
+      "revId": "9be5e0bce9ff2e764f43d699178deef5a6944d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "70365531_6069dce0",
         "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
         "patchSetId": 5
@@ -114,6 +210,30 @@
       "revId": "9be5e0bce9ff2e764f43d699178deef5a6944d69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36db6c37_0ca967da",
+        "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2019-08-22T12:07:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70365531_6069dce0",
+      "range": {
+        "startLine": 206,
+        "startChar": 43,
+        "endLine": 206,
+        "endChar": 45
+      },
+      "revId": "9be5e0bce9ff2e764f43d699178deef5a6944d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
