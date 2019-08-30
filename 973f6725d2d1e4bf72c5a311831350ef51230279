@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e99ca616_ae879b44",
+        "filename": "src/com/android/settings/gestures/CameraLongPressPreferenceController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2019-08-30T10:44:46Z",
+      "side": 1,
+      "message": "sort?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 30
+      },
+      "revId": "973f6725d2d1e4bf72c5a311831350ef51230279",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e1ddcf5_9c5021b7",
+        "filename": "src/com/android/settings/gestures/CameraLongPressPreferenceController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2019-08-30T10:44:46Z",
+      "side": 1,
+      "message": "I see the bug is only in DoubleTapPowerPreferenceController and not in other controllers, might be dt2w specific\nNeed some background if this TODO is needed",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 92
+      },
+      "revId": "973f6725d2d1e4bf72c5a311831350ef51230279",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
