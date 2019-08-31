@@ -57,6 +57,7 @@ import com.android.settings.fuelgauge.PowerUsageSummary;
 import com.android.settings.fuelgauge.SmartBatterySettings;
 import com.android.settings.gestures.AssistGestureSettings;
 import com.android.settings.gestures.DoubleTapPowerSettings;
+import com.android.settings.gestures.CameraLongPressSettings;
 import com.android.settings.gestures.DoubleTapScreenSettings;
 import com.android.settings.gestures.DoubleTwistGestureSettings;
 import com.android.settings.gestures.SwipeUpGestureSettings;
@@ -137,6 +138,7 @@ public class SearchIndexableResourcesImpl implements SearchIndexableResources {
         addIndex(PickupGestureSettings.class);
         addIndex(DoubleTapScreenSettings.class);
         addIndex(DoubleTapPowerSettings.class);
+        addIndex(CameraLongPressSettings.class);
         addIndex(DoubleTwistGestureSettings.class);
         addIndex(SwipeUpGestureSettings.class);
         addIndex(SwipeToNotificationSettings.class);
