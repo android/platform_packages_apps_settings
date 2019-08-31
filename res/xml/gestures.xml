@@ -40,6 +40,12 @@
         settings:controller="com.android.settings.gestures.DoubleTapPowerPreferenceController" />
 
     <Preference
+        android:key="gesture_camera_button_long_press_input_summary"
+        android:title="@string/camera_button_long_press_for_camera_title"
+        android:fragment="com.android.settings.gestures.CameraLongPressSettings"
+        settings:controller="com.android.settings.gestures.CameraLongPressPreferenceController" />
+
+    <Preference
         android:key="gesture_double_twist_input_summary"
         android:title="@string/double_twist_for_camera_mode_title"
         android:fragment="com.android.settings.gestures.DoubleTwistGestureSettings"
