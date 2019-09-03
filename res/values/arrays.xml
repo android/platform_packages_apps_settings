@@ -498,6 +498,7 @@
         <item>1xRTT</item>
         <item>IS95B</item>
         <item>IS95A</item>
+        <item>IWLAN</item>
     </string-array>
 
     <string-array translatable="false" name="bearer_values">
@@ -533,6 +534,8 @@
         <item>5</item>
         <!-- Do not translate. -->
         <item>4</item>
+        <!-- Do not translate. -->
+        <item>18</item>
     </string-array>
 
     <!-- MVNO Info used in APN editor -->
