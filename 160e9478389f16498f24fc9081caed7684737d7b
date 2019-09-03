@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "144fc894_95cd5b0d",
+        "filename": "src/com/android/settings/wifi/tether/TetherService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2019-09-03T07:44:10Z",
+      "side": 1,
+      "message": "Do we need to consider the android version? Said, the Settings app is updated before next android?",
+      "range": {
+        "startLine": 91,
+        "startChar": 43,
+        "endLine": 91,
+        "endChar": 57
+      },
+      "revId": "160e9478389f16498f24fc9081caed7684737d7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
