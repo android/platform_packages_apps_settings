@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "d12f3766_1ecf6591",
+        "filename": "src/com/android/settings/wifi/tether/TetherService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2019-09-05T08:06:22Z",
+      "side": 1,
+      "message": "1. No, Settings app is updated with every android release.\n2. Of course, we will announce this change.",
+      "parentUuid": "6eabe1e1_393377dd",
+      "range": {
+        "startLine": 91,
+        "startChar": 43,
+        "endLine": 91,
+        "endChar": 57
+      },
+      "revId": "160e9478389f16498f24fc9081caed7684737d7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a5e6e005_ae3703b2",
         "filename": "tests/unit/src/com/android/settings/wifi/tether/TetherServiceTest.java",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2019-09-03T10:17:05Z",
       "side": 1,
       "message": "Be careful that provisioning APP should need to change this permission.",
+      "range": {
+        "startLine": 432,
+        "startChar": 64,
+        "endLine": 432,
+        "endChar": 77
+      },
+      "revId": "160e9478389f16498f24fc9081caed7684737d7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fda18406_093c5648",
+        "filename": "tests/unit/src/com/android/settings/wifi/tether/TetherServiceTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1308473
+      },
+      "writtenOn": "2019-09-05T08:06:22Z",
+      "side": 1,
+      "message": "After discussed with Mark in person, provisioning app may not grant NETWORK_STACK permission due to they are not signed with platform certification. Maybe we should replace this permission by TETHER_PRIVILEGED.",
+      "parentUuid": "a5e6e005_ae3703b2",
       "range": {
         "startLine": 432,
         "startChar": 64,
