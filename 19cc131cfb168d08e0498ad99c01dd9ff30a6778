@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "848be36f_7b081a54",
+        "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2019-09-11T10:43:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "862e995b_e40c6a64",
+      "range": {
+        "startLine": 239,
+        "startChar": 41,
+        "endLine": 239,
+        "endChar": 43
+      },
+      "revId": "19cc131cfb168d08e0498ad99c01dd9ff30a6778",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b0d4992_81bcad8c",
         "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
         "patchSetId": 9
@@ -45,6 +69,30 @@
       "revId": "19cc131cfb168d08e0498ad99c01dd9ff30a6778",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63869872_4c9247a9",
+        "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2019-09-11T10:43:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b0d4992_81bcad8c",
+      "range": {
+        "startLine": 240,
+        "startChar": 19,
+        "endLine": 240,
+        "endChar": 52
+      },
+      "revId": "19cc131cfb168d08e0498ad99c01dd9ff30a6778",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "05dc6a45_817daf56",
+        "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2019-09-11T10:43:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "671cfc47_5c27a8e9",
+      "range": {
+        "startLine": 241,
+        "startChar": 62,
+        "endLine": 241,
+        "endChar": 64
+      },
+      "revId": "19cc131cfb168d08e0498ad99c01dd9ff30a6778",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1d33a56f_32d1e8de",
         "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
         "patchSetId": 9
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "e45c91be_13ac0c55",
+        "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2019-09-11T10:43:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d33a56f_32d1e8de",
+      "range": {
+        "startLine": 254,
+        "startChar": 56,
+        "endLine": 254,
+        "endChar": 75
+      },
+      "revId": "19cc131cfb168d08e0498ad99c01dd9ff30a6778",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad6a7791_691cc363",
         "filename": "tests/robotests/src/com/android/settings/wifi/details/WifiDetailPreferenceControllerTest.java",
         "patchSetId": 9
@@ -114,6 +210,30 @@
       "revId": "19cc131cfb168d08e0498ad99c01dd9ff30a6778",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8494c5a_1811283c",
+        "filename": "tests/robotests/src/com/android/settings/wifi/details/WifiDetailPreferenceControllerTest.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 998,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2019-09-11T10:43:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad6a7791_691cc363",
+      "range": {
+        "startLine": 998,
+        "startChar": 53,
+        "endLine": 998,
+        "endChar": 83
+      },
+      "revId": "19cc131cfb168d08e0498ad99c01dd9ff30a6778",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
