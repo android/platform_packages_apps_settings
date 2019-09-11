@@ -165,7 +165,7 @@ public class AppDialogFragment extends InstrumentedDialogFragment implements App
             if (mPackageInfo.packageName.equals(VpnUtils.getConnectedPackage(mService, userId))) {
                 mService.setAlwaysOnVpnPackage(userId, null, /* lockdownEnabled */ false,
                         /* lockdownWhitelist */ null);
-                mService.prepareVpn(mPackageInfo.packageName, VpnConfig.LEGACY_VPN, userId);
+                mService.prepareVpn(null, VpnConfig.LEGACY_VPN, userId);
             }
         } catch (RemoteException e) {
             Log.e(TAG, "Failed to disconnect package " + mPackageInfo.packageName +
