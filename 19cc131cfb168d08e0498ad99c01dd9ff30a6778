@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "862e995b_e40c6a64",
+        "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-09-11T08:26:39Z",
+      "side": 1,
+      "message": "go/avoidwe",
+      "range": {
+        "startLine": 239,
+        "startChar": 41,
+        "endLine": 239,
+        "endChar": 43
+      },
+      "revId": "19cc131cfb168d08e0498ad99c01dd9ff30a6778",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b0d4992_81bcad8c",
+        "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-09-11T08:26:39Z",
+      "side": 1,
+      "message": "This is not done here, maybe you want to say it\u0027s done in onCapabilitiesChanged just after this is called or simply remove this part of the comment.",
+      "range": {
+        "startLine": 240,
+        "startChar": 19,
+        "endLine": 240,
+        "endChar": 52
+      },
+      "revId": "19cc131cfb168d08e0498ad99c01dd9ff30a6778",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d33a56f_32d1e8de",
+        "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-09-11T08:26:39Z",
+      "side": 1,
+      "message": "By the way this method does not exist. You wrote this comment in March ; can you update this to say what you meant ?",
+      "range": {
+        "startLine": 254,
+        "startChar": 56,
+        "endLine": 254,
+        "endChar": 75
+      },
+      "revId": "19cc131cfb168d08e0498ad99c01dd9ff30a6778",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
