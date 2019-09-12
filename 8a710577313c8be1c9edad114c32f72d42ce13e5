@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37016544_8f994ba3",
+        "filename": "tests/robotests/src/com/android/settings/wifi/NetworkRequestDialogFragmentTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1522132
+      },
+      "writtenOn": "2019-09-12T03:21:32Z",
+      "side": 1,
+      "message": "I would suggest to just check one thing in one test case.",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 41
+      },
+      "revId": "8a710577313c8be1c9edad114c32f72d42ce13e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
