@@ -17,7 +17,6 @@
 package com.android.settings.deviceinfo.simstatus;
 
 import static android.content.Context.CARRIER_CONFIG_SERVICE;
-import static android.content.Context.EUICC_SERVICE;
 import static android.content.Context.TELEPHONY_SERVICE;
 import static android.content.Context.TELEPHONY_SUBSCRIPTION_SERVICE;
 
@@ -39,7 +38,7 @@ import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.SubscriptionManager.OnSubscriptionsChangedListener;
 import android.telephony.TelephonyManager;
-import android.telephony.euicc.EuiccManager;
+import android.telephony.UiccCardInfo;
 import android.text.BidiFormatter;
 import android.text.TextDirectionHeuristics;
 import android.text.TextUtils;
@@ -54,6 +53,8 @@ import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.core.lifecycle.LifecycleObserver;
 import com.android.settingslib.core.lifecycle.events.OnPause;
 import com.android.settingslib.core.lifecycle.events.OnResume;
+
+import java.util.List;
 
 public class SimStatusDialogController implements LifecycleObserver, OnResume, OnPause {
 
@@ -86,6 +87,8 @@ public class SimStatusDialogController implements LifecycleObserver, OnResume, O
     @VisibleForTesting
     final static int ICCID_INFO_VALUE_ID = R.id.icc_id_value;
     @VisibleForTesting
+    final static int EID_INFO_LABEL_ID = R.id.esim_id_label;
+    @VisibleForTesting
     final static int EID_INFO_VALUE_ID = R.id.esim_id_value;
     @VisibleForTesting
     final static int IMS_REGISTRATION_STATE_LABEL_ID = R.id.ims_reg_state_label;
@@ -114,9 +117,9 @@ public class SimStatusDialogController implements LifecycleObserver, OnResume, O
     private final TelephonyManager mTelephonyManager;
     private final SubscriptionManager mSubscriptionManager;
     private final CarrierConfigManager mCarrierConfigManager;
-    private final EuiccManager mEuiccManager;
     private final Resources mRes;
     private final Context mContext;
+    private final int mSlotId;
 
     private boolean mShowLatestAreaInfo;
 
@@ -143,12 +146,12 @@ public class SimStatusDialogController implements LifecycleObserver, OnResume, O
 
     public SimStatusDialogController(@NonNull SimStatusDialogFragment dialog, Lifecycle lifecycle,
             int slotId) {
+        mSlotId = slotId;
         mDialog = dialog;
         mContext = dialog.getContext();
         mSubscriptionInfo = getPhoneSubscriptionInfo(slotId);
         mTelephonyManager =  mContext.getSystemService(TelephonyManager.class);
         mCarrierConfigManager =  mContext.getSystemService(CarrierConfigManager.class);
-        mEuiccManager =  mContext.getSystemService(EuiccManager.class);
         mSubscriptionManager = mContext.getSystemService(SubscriptionManager.class);
 
         mRes = mContext.getResources();
@@ -400,10 +403,23 @@ public class SimStatusDialogController implements LifecycleObserver, OnResume, O
     }
 
     private void updateEid() {
-        if (mEuiccManager.isEnabled()) {
-            mDialog.setText(EID_INFO_VALUE_ID, mEuiccManager.getEid());
-        } else {
-            mDialog.removeSettingFromScreen(EID_INFO_VALUE_ID);
+        List<UiccCardInfo> infos = mTelephonyManager.getUiccCardsInfo();
+
+        if (infos != null) {
+            for (UiccCardInfo info : infos) {
+                if (info.getSlotIndex() == mSlotId) {
+                    if (info.isEuicc()) {
+                        String eid = info.getEid();
+                        if (eid != null) {
+                            mDialog.setText(EID_INFO_VALUE_ID, eid);
+                        }
+                    } else {
+                        mDialog.removeSettingFromScreen(EID_INFO_LABEL_ID);
+                        mDialog.removeSettingFromScreen(EID_INFO_VALUE_ID);
+                    }
+                    break;
+                }
+            }
         }
     }
 
