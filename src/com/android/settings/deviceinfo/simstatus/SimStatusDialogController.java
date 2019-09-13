@@ -17,7 +17,6 @@
 package com.android.settings.deviceinfo.simstatus;
 
 import static android.content.Context.CARRIER_CONFIG_SERVICE;
-import static android.content.Context.EUICC_SERVICE;
 import static android.content.Context.TELEPHONY_SERVICE;
 import static android.content.Context.TELEPHONY_SUBSCRIPTION_SERVICE;
 
@@ -39,6 +38,7 @@ import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.SubscriptionManager.OnSubscriptionsChangedListener;
 import android.telephony.TelephonyManager;
+import android.telephony.UiccCardInfo;
 import android.telephony.euicc.EuiccManager;
 import android.text.BidiFormatter;
 import android.text.TextDirectionHeuristics;
@@ -47,6 +47,7 @@ import android.text.TextUtils;
 import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
 
+import com.android.internal.telephony.PhoneConstants;
 import com.android.settings.R;
 import com.android.settingslib.DeviceInfoUtils;
 import com.android.settingslib.Utils;
@@ -54,6 +55,9 @@ import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.core.lifecycle.LifecycleObserver;
 import com.android.settingslib.core.lifecycle.events.OnPause;
 import com.android.settingslib.core.lifecycle.events.OnResume;
+
+import java.util.List;
+import java.util.Map;
 
 public class SimStatusDialogController implements LifecycleObserver, OnResume, OnPause {
 
@@ -86,6 +90,8 @@ public class SimStatusDialogController implements LifecycleObserver, OnResume, O
     @VisibleForTesting
     final static int ICCID_INFO_VALUE_ID = R.id.icc_id_value;
     @VisibleForTesting
+    final static int EID_INFO_LABEL_ID = R.id.esim_id_label;
+    @VisibleForTesting
     final static int EID_INFO_VALUE_ID = R.id.esim_id_value;
     @VisibleForTesting
     final static int IMS_REGISTRATION_STATE_LABEL_ID = R.id.ims_reg_state_label;
@@ -117,6 +123,7 @@ public class SimStatusDialogController implements LifecycleObserver, OnResume, O
     private final EuiccManager mEuiccManager;
     private final Resources mRes;
     private final Context mContext;
+    private final int mSlotId;
 
     private boolean mShowLatestAreaInfo;
 
@@ -143,12 +150,13 @@ public class SimStatusDialogController implements LifecycleObserver, OnResume, O
 
     public SimStatusDialogController(@NonNull SimStatusDialogFragment dialog, Lifecycle lifecycle,
             int slotId) {
+        mSlotId = slotId;
         mDialog = dialog;
         mContext = dialog.getContext();
         mSubscriptionInfo = getPhoneSubscriptionInfo(slotId);
         mTelephonyManager =  mContext.getSystemService(TelephonyManager.class);
         mCarrierConfigManager =  mContext.getSystemService(CarrierConfigManager.class);
-        mEuiccManager =  mContext.getSystemService(EuiccManager.class);
+        mEuiccManager = mContext.getSystemService(EuiccManager.class);
         mSubscriptionManager = mContext.getSystemService(SubscriptionManager.class);
 
         mRes = mContext.getResources();
@@ -400,10 +408,44 @@ public class SimStatusDialogController implements LifecycleObserver, OnResume, O
     }
 
     private void updateEid() {
-        if (mEuiccManager.isEnabled()) {
-            mDialog.setText(EID_INFO_VALUE_ID, mEuiccManager.getEid());
+        boolean shouldHaveEid = false;
+        String eid = null;
+
+        if (mTelephonyManager.getPhoneCount() > PhoneConstants.MAX_PHONE_COUNT_SINGLE_SIM) {
+            Map<Integer, Integer> slotMapping = mTelephonyManager.getLogicalToPhysicalSlotMapping();
+            Integer physicalSlotId = slotMapping.get(mSlotId);
+
+            if (physicalSlotId != null) {
+                List<UiccCardInfo> infos = mTelephonyManager.getUiccCardsInfo();
+
+                for (UiccCardInfo info : infos) {
+                    if (info.getSlotIndex() == physicalSlotId.intValue()) {
+                        if (info.isEuicc()) {
+                            shouldHaveEid = true;
+                            eid = info.getEid();
+
+                            if (TextUtils.isEmpty(eid)) {
+                                eid = mEuiccManager.createForCardId(info.getCardId()).getEid();
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
         } else {
-            mDialog.removeSettingFromScreen(EID_INFO_VALUE_ID);
+            if (mEuiccManager.isEnabled()) {
+                shouldHaveEid = true;
+                eid = mEuiccManager.getEid();
+            }
+        }
+
+        if (TextUtils.isEmpty(eid)) {
+            if (!shouldHaveEid) {
+                mDialog.removeSettingFromScreen(EID_INFO_LABEL_ID);
+                mDialog.removeSettingFromScreen(EID_INFO_VALUE_ID);
+            }
+        } else {
+            mDialog.setText(EID_INFO_VALUE_ID, eid);
         }
     }
 
