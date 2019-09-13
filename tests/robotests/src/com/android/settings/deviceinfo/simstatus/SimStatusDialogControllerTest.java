@@ -20,6 +20,7 @@ import static com.android.settings.deviceinfo.simstatus.SimStatusDialogControlle
         .CELL_DATA_NETWORK_TYPE_VALUE_ID;
 import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController
         .CELL_VOICE_NETWORK_TYPE_VALUE_ID;
+import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController.EID_INFO_LABEL_ID;
 import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController.EID_INFO_VALUE_ID;
 import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController
         .ICCID_INFO_LABEL_ID;
@@ -65,7 +66,7 @@ import android.telephony.SignalStrength;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
-import android.telephony.euicc.EuiccManager;
+import android.telephony.UiccCardInfo;
 
 import androidx.lifecycle.LifecycleOwner;
 
@@ -82,6 +83,10 @@ import org.robolectric.RuntimeEnvironment;
 import org.robolectric.Shadows;
 import org.robolectric.shadows.ShadowPackageManager;
 import org.robolectric.util.ReflectionHelpers;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 @RunWith(RobolectricTestRunner.class)
 public class SimStatusDialogControllerTest {
@@ -103,14 +108,14 @@ public class SimStatusDialogControllerTest {
     @Mock
     private PersistableBundle mPersistableBundle;
     @Mock
-    private EuiccManager mEuiccManager;
-    @Mock
     private SubscriptionManager mSubscriptionManager;
 
     private SimStatusDialogController mController;
     private Context mContext;
     private LifecycleOwner mLifecycleOwner;
     private Lifecycle mLifecycle;
+
+    private static final String TEST_EID = "01234567890123456789012345678901";
 
     @Before
     public void setup() {
@@ -128,13 +133,32 @@ public class SimStatusDialogControllerTest {
         doReturn(mSignalStrength).when(mController).getSignalStrength();
         doReturn(mSubscriptionInfo).when(mSubscriptionManager).getActiveSubscriptionInfo(anyInt());
 
-        when(mEuiccManager.isEnabled()).thenReturn(true);
-        when(mEuiccManager.getEid()).thenReturn("");
         ReflectionHelpers.setField(mController, "mTelephonyManager", mTelephonyManager);
         ReflectionHelpers.setField(mController, "mCarrierConfigManager", mCarrierConfigManager);
         ReflectionHelpers.setField(mController, "mSubscriptionInfo", mSubscriptionInfo);
-        ReflectionHelpers.setField(mController, "mEuiccManager", mEuiccManager);
         ReflectionHelpers.setField(mController, "mSubscriptionManager", mSubscriptionManager);
+
+        ArrayList<UiccCardInfo> uiccCardInfos = new ArrayList<>();
+        UiccCardInfo uiccCardInfo1 = new UiccCardInfo(
+                false,                                  // isEuicc
+                0,                                      // cardId
+                null,                                   // eid
+                "123451234567890",                      // iccid
+                0,                                      // slotIndex
+                true);                                  // isRemovable
+        uiccCardInfos.add(uiccCardInfo1);
+        UiccCardInfo uiccCardInfo2 = new UiccCardInfo(
+                true,                                   // isEuicc
+                TelephonyManager.UNINITIALIZED_CARD_ID, // cardId
+                TEST_EID,                               // eid
+                null,                                   // iccid
+                1,                                      // slotIndex
+                false);                                 // isRemovable
+        uiccCardInfos.add(uiccCardInfo2);
+        when(mTelephonyManager.getUiccCardsInfo()).thenReturn(uiccCardInfos);
+        when(mTelephonyManager.getLogicalToPhysicalSlotMapping()).thenReturn(
+                new HashMap<Integer, Integer>());
+
         when(mCarrierConfigManager.getConfigForSubId(anyInt())).thenReturn(mPersistableBundle);
         when(mPersistableBundle.getBoolean(
                 CarrierConfigManager.KEY_SHOW_SIGNAL_STRENGTH_IN_SIM_STATUS_BOOL))
@@ -355,22 +379,28 @@ public class SimStatusDialogControllerTest {
 
     @Test
     public void initialize_showEid_shouldSetEidToSetting() {
-        final String eid = "12351351231241";
-        when(mEuiccManager.getEid()).thenReturn(eid);
+        Map<Integer, Integer> slotMapping = new HashMap<>();
+        slotMapping.put(0, 1);
+        slotMapping.put(1, 0);
+        when(mTelephonyManager.getLogicalToPhysicalSlotMapping()).thenReturn(slotMapping);
 
         mController.initialize();
 
-        verify(mDialog).setText(EID_INFO_VALUE_ID, eid);
+        verify(mDialog).setText(EID_INFO_VALUE_ID, TEST_EID);
         verify(mDialog, never()).removeSettingFromScreen(eq(EID_INFO_VALUE_ID));
     }
 
     @Test
-    public void initialize_showEid_euiccManagerIsNotEnabled() {
-        when(mEuiccManager.isEnabled()).thenReturn(false);
+    public void initialize_doNotShowEid_shouldRemoveEidSetting() {
+        Map<Integer, Integer> slotMapping = new HashMap<>();
+        slotMapping.put(0, 0);
+        slotMapping.put(1, 1);
+        when(mTelephonyManager.getLogicalToPhysicalSlotMapping()).thenReturn(slotMapping);
 
         mController.initialize();
 
         verify(mDialog, never()).setText(eq(EID_INFO_VALUE_ID), any());
+        verify(mDialog).removeSettingFromScreen(eq(EID_INFO_LABEL_ID));
         verify(mDialog).removeSettingFromScreen(eq(EID_INFO_VALUE_ID));
     }
 
