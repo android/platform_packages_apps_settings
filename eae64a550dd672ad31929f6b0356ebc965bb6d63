@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6338cfdd_153d25b6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-09-18T12:40:20Z",
+      "side": 1,
+      "message": "...fixes ? Isn\u0027t this a SHA ?",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 19
+      },
+      "revId": "eae64a550dd672ad31929f6b0356ebc965bb6d63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a57c9aa6_1f4f15c9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-09-18T12:40:20Z",
+      "side": 1,
+      "message": "This was marked fixed over 3 years ago, are you sure you want this ?",
+      "range": {
+        "startLine": 13,
+        "startChar": 5,
+        "endLine": 13,
+        "endChar": 13
+      },
+      "revId": "eae64a550dd672ad31929f6b0356ebc965bb6d63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c655f326_298ae1c8",
+        "filename": "src/com/android/settings/vpn2/AppDialogFragment.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-09-18T12:40:20Z",
+      "side": 1,
+      "message": "Please add a reference to the specific documentation. This pair of arguments happens to be treated specially by Vpn#prepare, but there is no way someone reading this code will know that (which is probably why it was wrong in the first place).",
+      "range": {
+        "startLine": 168,
+        "startChar": 25,
+        "endLine": 168,
+        "endChar": 35
+      },
+      "revId": "eae64a550dd672ad31929f6b0356ebc965bb6d63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
