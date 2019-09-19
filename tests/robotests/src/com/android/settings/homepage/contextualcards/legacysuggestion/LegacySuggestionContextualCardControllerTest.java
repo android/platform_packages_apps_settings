@@ -18,11 +18,16 @@ package com.android.settings.homepage.contextualcards.legacysuggestion;
 
 import static com.google.common.truth.Truth.assertThat;
 
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
+import android.service.settings.suggestions.Suggestion;
 
+import com.android.settings.R;
+import com.android.settings.homepage.contextualcards.ContextualCard;
 import com.android.settings.homepage.contextualcards.ContextualCardUpdateListener;
 import com.android.settings.testutils.FakeFeatureFactory;
 import com.android.settings.testutils.shadow.ShadowThreadUtils;
@@ -92,5 +97,38 @@ public class LegacySuggestionContextualCardControllerTest {
         mController.onServiceConnected();
 
         verify(mSuggestionController).getSuggestions();
+    }
+
+    @Test
+    public void onDismiss_shouldCallSuggestionControllerDismiss() {
+        when(mSuggestionController.getSuggestions()).thenReturn(null);
+        mController.mSuggestionController = mSuggestionController;
+        mController.setCardUpdateListener(mCardUpdateListener);
+
+        mController.onDismissed(buildContextualCard());
+
+        verify(mSuggestionController).dismissSuggestions(any(Suggestion.class));
+    }
+
+    @Test
+    public void onDismiss_shouldReloadSuggestion() {
+        when(mSuggestionController.getSuggestions()).thenReturn(null);
+        mController.mSuggestionController = mSuggestionController;
+        mController.setCardUpdateListener(mCardUpdateListener);
+
+        mController.onDismissed(buildContextualCard());
+
+        verify(mSuggestionController).getSuggestions();
+    }
+
+    private ContextualCard buildContextualCard() {
+        return new LegacySuggestionContextualCard.Builder()
+                .setSuggestion(mock(Suggestion.class))
+                .setName("test_name")
+                .setTitleText("test_title")
+                .setSummaryText("test_summary")
+                .setIconDrawable(mContext.getDrawable(R.drawable.ic_do_not_disturb_on_24dp))
+                .setViewType(LegacySuggestionContextualCardRenderer.VIEW_TYPE)
+                .build();
     }
 }

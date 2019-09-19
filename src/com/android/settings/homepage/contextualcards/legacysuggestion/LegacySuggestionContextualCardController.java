@@ -88,7 +88,9 @@ public class LegacySuggestionContextualCardController implements ContextualCardC
 
     @Override
     public void onDismissed(ContextualCard card) {
-
+        mSuggestionController
+                .dismissSuggestions(((LegacySuggestionContextualCard)card).getSuggestion());
+        loadSuggestions();
     }
 
     @Override
@@ -144,6 +146,7 @@ public class LegacySuggestionContextualCardController implements ContextualCardC
                     }
                     cardBuilder
                             .setPendingIntent(suggestion.getPendingIntent())
+                            .setSuggestion(suggestion)
                             .setName(suggestion.getId())
                             .setTitleText(suggestion.getTitle().toString())
                             .setSummaryText(suggestion.getSummary().toString())
