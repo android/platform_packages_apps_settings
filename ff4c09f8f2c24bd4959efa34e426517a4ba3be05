@@ -164,6 +164,29 @@
       "revId": "ff4c09f8f2c24bd4959efa34e426517a4ba3be05",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed5a28dd_44afe046",
+        "filename": "tests/robotests/src/com/android/settings/homepage/contextualcards/legacysuggestion/LegacySuggestionContextualCardRendererTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1403999
+      },
+      "writtenOn": "2019-09-20T07:22:39Z",
+      "side": 1,
+      "message": "Need to consider defersetup card case.\nNow OEM starts to ask about defersetup suggestion in android Q.\n\nAssign https://b.corp.google.com/issues/141211830 for you, it is related to defersetup suggestion in AOSP",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 63
+      },
+      "revId": "ff4c09f8f2c24bd4959efa34e426517a4ba3be05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
