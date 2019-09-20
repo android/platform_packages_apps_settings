@@ -46,6 +46,30 @@
       "revId": "0bf18bd9a9a323b9fe258dcc0e17a59645c749ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccab5d0e_88be58ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1394906
+      },
+      "writtenOn": "2019-09-20T07:49:27Z",
+      "side": 1,
+      "message": "Hi Miao,\n\nI think your format is error.\n\nFormat should be this one\nBug: 141087659\n\nnot this one\nBugId: 141087659\n\nThen, remember there is a space between \"Bug:\" and \"141087659\"",
+      "parentUuid": "8a9bee2f_892ba554",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 16
+      },
+      "revId": "0bf18bd9a9a323b9fe258dcc0e17a59645c749ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
