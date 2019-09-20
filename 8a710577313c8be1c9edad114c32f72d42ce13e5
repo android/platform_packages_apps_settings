@@ -70,6 +70,30 @@
       "revId": "8a710577313c8be1c9edad114c32f72d42ce13e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "107d6d14_a8a356d0",
+        "filename": "tests/robotests/src/com/android/settings/wifi/NetworkRequestDialogFragmentTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2019-09-20T06:35:15Z",
+      "side": 1,
+      "message": "Hi Daichi,\n\nWill you have a patch to remove these lines?",
+      "parentUuid": "85a0726d_db9b138c",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 41
+      },
+      "revId": "8a710577313c8be1c9edad114c32f72d42ce13e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
