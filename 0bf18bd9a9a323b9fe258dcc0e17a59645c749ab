@@ -22,6 +22,30 @@
       "revId": "0bf18bd9a9a323b9fe258dcc0e17a59645c749ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a9bee2f_892ba554",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1138418
+      },
+      "writtenOn": "2019-09-20T07:29:37Z",
+      "side": 1,
+      "message": "Hi Andy\n\nDo you mean this modification could not solve the issue mentioned in bug 141087659?\nWe have done local test, test result shows that issue mentioned in bug 141087659 does not reproduce.",
+      "parentUuid": "65acf903_b8e6a24c",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 16
+      },
+      "revId": "0bf18bd9a9a323b9fe258dcc0e17a59645c749ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
