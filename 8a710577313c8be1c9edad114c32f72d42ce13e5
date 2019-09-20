@@ -118,6 +118,30 @@
       "revId": "8a710577313c8be1c9edad114c32f72d42ce13e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a21634a_2ab56654",
+        "filename": "tests/robotests/src/com/android/settings/wifi/NetworkRequestDialogFragmentTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1247308
+      },
+      "writtenOn": "2019-09-20T09:45:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3b31123_25dd282b",
+      "range": {
+        "startLine": 268,
+        "startChar": 0,
+        "endLine": 270,
+        "endChar": 41
+      },
+      "revId": "8a710577313c8be1c9edad114c32f72d42ce13e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
