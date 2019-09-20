@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a686d4f_61b918c9",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1167034
+      },
+      "writtenOn": "2019-09-20T00:17:33Z",
+      "side": 1,
+      "message": "is that possible this is null?",
+      "range": {
+        "startLine": 410,
+        "startChar": 20,
+        "endLine": 410,
+        "endChar": 24
+      },
+      "revId": "f740aaf42c9c0ec76c3b23da07e0f887a0d69d05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "673433cd_c7c438c7",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1167034
+      },
+      "writtenOn": "2019-09-20T00:17:33Z",
+      "side": 1,
+      "message": "Please use TextUtils.isEmpty",
+      "range": {
+        "startLine": 413,
+        "startChar": 28,
+        "endLine": 413,
+        "endChar": 39
+      },
+      "revId": "f740aaf42c9c0ec76c3b23da07e0f887a0d69d05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
