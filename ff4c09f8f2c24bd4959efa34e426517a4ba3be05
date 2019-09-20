@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "15049da0_4f483f4f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1394985
+      },
+      "writtenOn": "2019-09-20T05:57:57Z",
+      "side": 1,
+      "message": "We had a new layout, and were implementing other styles of dismissal so it wasn\u0027t useful back then. But now we are adding it back just as it was in android p.",
+      "parentUuid": "78ae5952_2c141d77",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 9
+      },
+      "revId": "ff4c09f8f2c24bd4959efa34e426517a4ba3be05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "90b653c7_b40bcb79",
         "filename": "src/com/android/settings/homepage/contextualcards/legacysuggestion/LegacySuggestionContextualCardController.java",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c4a3eeaa_1b0cc456",
+        "filename": "src/com/android/settings/homepage/contextualcards/legacysuggestion/LegacySuggestionContextualCardController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1394985
+      },
+      "writtenOn": "2019-09-20T05:57:57Z",
+      "side": 1,
+      "message": "not really. I may update this part a bit later.",
+      "parentUuid": "90b653c7_b40bcb79",
+      "range": {
+        "startLine": 93,
+        "startChar": 8,
+        "endLine": 93,
+        "endChar": 26
+      },
+      "revId": "ff4c09f8f2c24bd4959efa34e426517a4ba3be05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7eff4ced_bc0b1ec7",
         "filename": "src/com/android/settings/homepage/contextualcards/legacysuggestion/LegacySuggestionContextualCardController.java",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2019-09-20T02:39:41Z",
       "side": 1,
       "message": "If you do that, the design is a bit weird to me.\n\nBecause all information can get from this object.\nie.\nsuggestion.getPendingIntent()\nsuggestion.getId()\nsuggestion.getTitle().toString()",
+      "range": {
+        "startLine": 149,
+        "startChar": 28,
+        "endLine": 149,
+        "endChar": 54
+      },
+      "revId": "ff4c09f8f2c24bd4959efa34e426517a4ba3be05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c63ba134_4202ff1f",
+        "filename": "src/com/android/settings/homepage/contextualcards/legacysuggestion/LegacySuggestionContextualCardController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1394985
+      },
+      "writtenOn": "2019-09-20T05:57:57Z",
+      "side": 1,
+      "message": "this is for the purpose of mSuggestionController.dismissSuggestions(_). I won\u0027t be able to create a new Suggestion object through only three attributes.",
+      "parentUuid": "7eff4ced_bc0b1ec7",
       "range": {
         "startLine": 149,
         "startChar": 28,
