@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7f7b1731_a38c36e4",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1163305
+      },
+      "writtenOn": "2019-09-20T02:08:56Z",
+      "side": 1,
+      "message": "Thanks for your review. I updated this part in a safer way in the next patch set. Actually UiccController.getAllUiccCardInfos() provides an instance of UiccCardInfo for each slot, so it will never be null in normal scenario. However, that is not clearly stated in the API specification and TelephonyManager.getUiccCardsInfo() can return empty array in some abnormal scenarios.\n\n    @NonNull\n    public List\u003cUiccCardInfo\u003e getUiccCardsInfo() {\n        try {\n            ITelephony telephony \u003d getITelephony();\n            if (telephony \u003d\u003d null) {\n                Log.e(TAG, \"Error in getUiccCardsInfo: unable to connect to Telephony service.\");\n                return new ArrayList\u003cUiccCardInfo\u003e();    // LIKE THIS\n    ...\n\nAnd also, I noticed that getUiccCardsInfo() is @NonNull API because of your review comment.",
+      "parentUuid": "8a686d4f_61b918c9",
+      "range": {
+        "startLine": 410,
+        "startChar": 20,
+        "endLine": 410,
+        "endChar": 24
+      },
+      "revId": "f740aaf42c9c0ec76c3b23da07e0f887a0d69d05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "673433cd_c7c438c7",
         "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "f740aaf42c9c0ec76c3b23da07e0f887a0d69d05",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1f90dc4_3ff452f1",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1163305
+      },
+      "writtenOn": "2019-09-20T02:08:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "673433cd_c7c438c7",
+      "range": {
+        "startLine": 413,
+        "startChar": 28,
+        "endLine": 413,
+        "endChar": 39
+      },
+      "revId": "f740aaf42c9c0ec76c3b23da07e0f887a0d69d05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
