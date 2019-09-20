@@ -140,6 +140,30 @@
       "revId": "ff4c09f8f2c24bd4959efa34e426517a4ba3be05",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a6732b9_5d26cb4c",
+        "filename": "src/com/android/settings/homepage/contextualcards/legacysuggestion/LegacySuggestionContextualCardController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2019-09-20T06:24:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c63ba134_4202ff1f",
+      "range": {
+        "startLine": 149,
+        "startChar": 28,
+        "endLine": 149,
+        "endChar": 54
+      },
+      "revId": "ff4c09f8f2c24bd4959efa34e426517a4ba3be05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
