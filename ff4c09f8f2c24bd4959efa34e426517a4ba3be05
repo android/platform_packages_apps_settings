@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "6f1e220d_4e741328",
+        "filename": "src/com/android/settings/homepage/contextualcards/legacysuggestion/LegacySuggestionContextualCardController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1394985
+      },
+      "writtenOn": "2019-09-21T01:09:11Z",
+      "side": 1,
+      "message": "updated.",
+      "parentUuid": "c4a3eeaa_1b0cc456",
+      "range": {
+        "startLine": 93,
+        "startChar": 8,
+        "endLine": 93,
+        "endChar": 26
+      },
+      "revId": "ff4c09f8f2c24bd4959efa34e426517a4ba3be05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7eff4ced_bc0b1ec7",
         "filename": "src/com/android/settings/homepage/contextualcards/legacysuggestion/LegacySuggestionContextualCardController.java",
         "patchSetId": 1
@@ -187,6 +211,30 @@
       "revId": "ff4c09f8f2c24bd4959efa34e426517a4ba3be05",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5fd0eab_246492dc",
+        "filename": "tests/robotests/src/com/android/settings/homepage/contextualcards/legacysuggestion/LegacySuggestionContextualCardRendererTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1394985
+      },
+      "writtenOn": "2019-09-21T01:09:11Z",
+      "side": 1,
+      "message": "let\u0027s handle this separately.",
+      "parentUuid": "ed5a28dd_44afe046",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 63
+      },
+      "revId": "ff4c09f8f2c24bd4959efa34e426517a4ba3be05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
