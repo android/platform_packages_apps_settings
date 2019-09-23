@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "59f100bf_8c90b84b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1394985
+      },
+      "writtenOn": "2019-09-23T02:14:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "15049da0_4f483f4f",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 9
+      },
+      "revId": "ff4c09f8f2c24bd4959efa34e426517a4ba3be05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "90b653c7_b40bcb79",
         "filename": "src/com/android/settings/homepage/contextualcards/legacysuggestion/LegacySuggestionContextualCardController.java",
         "patchSetId": 1
