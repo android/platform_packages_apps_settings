@@ -1160,6 +1160,7 @@ public class WifiSettings extends RestrictedSettingsFragment
     private void onAddNetworkPressed() {
         // No exact access point is selected.
         mSelectedAccessPoint = null;
+        Log.d(TAG, "test for uploading AOSP code, will delete CL");
         launchAddNetworkFragment();
     }
 
