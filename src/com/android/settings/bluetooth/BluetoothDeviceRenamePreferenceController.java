@@ -32,7 +32,7 @@ public class BluetoothDeviceRenamePreferenceController extends
 
     private Fragment mFragment;
     private MetricsFeatureProvider mMetricsFeatureProvider;
-
+    private LocalDeviceNameDialogFragment mLocal;
     /**
      * Constructor exclusively used for Slice.
      */
@@ -63,11 +63,14 @@ public class BluetoothDeviceRenamePreferenceController extends
 
     @Override
     public boolean handlePreferenceTreeClick(Preference preference) {
-        if (TextUtils.equals(getPreferenceKey(), preference.getKey()) && mFragment != null) {
+    boolean dialogShowing = mLocal != null && mLocal.getDialog() != null &&
+            mLocal.getDialog().isShowing();
+        if (TextUtils.equals(getPreferenceKey(), preference.getKey()) && mFragment != null &&
+            (!dialogShowing)) {
             mMetricsFeatureProvider.action(mContext,
                     SettingsEnums.ACTION_BLUETOOTH_RENAME);
-            new LocalDeviceNameDialogFragment()
-                    .show(mFragment.getFragmentManager(), LocalDeviceNameDialogFragment.TAG);
+            mLocal = new LocalDeviceNameDialogFragment();
+            mLocal.show(mFragment.getFragmentManager(), LocalDeviceNameDialogFragment.TAG);
             return true;
         }
 
