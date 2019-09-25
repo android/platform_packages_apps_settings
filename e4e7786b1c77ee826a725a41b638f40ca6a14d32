@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b98ce167_4c1e04a0",
+        "filename": "src/com/android/settings/wifi/NetworkRequestDialogFragment.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2019-09-25T07:29:45Z",
+      "side": 1,
+      "message": "yes, please correct it and line 152. thanks",
+      "parentUuid": "941a58b8_1379effd",
+      "range": {
+        "startLine": 557,
+        "startChar": 44,
+        "endLine": 557,
+        "endChar": 61
+      },
+      "revId": "e4e7786b1c77ee826a725a41b638f40ca6a14d32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33c535c2_5b712d48",
         "filename": "tests/robotests/src/com/android/settings/wifi/NetworkRequestDialogFragmentTest.java",
         "patchSetId": 5
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Referred to the existing code such as \"// Assert.\" at line 211 and added this to be consistent.",
       "parentUuid": "33c535c2_5b712d48",
+      "range": {
+        "startLine": 247,
+        "startChar": 11,
+        "endLine": 247,
+        "endChar": 18
+      },
+      "revId": "e4e7786b1c77ee826a725a41b638f40ca6a14d32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e45de56_5847ac59",
+        "filename": "tests/robotests/src/com/android/settings/wifi/NetworkRequestDialogFragmentTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2019-09-25T07:29:45Z",
+      "side": 1,
+      "message": "Can you help remove those //Assert? Thanks!",
+      "parentUuid": "ec8a86f5_c8ab1eb7",
       "range": {
         "startLine": 247,
         "startChar": 11,
