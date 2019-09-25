@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "941a58b8_1379effd",
+        "filename": "src/com/android/settings/wifi/NetworkRequestDialogFragment.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1247308
+      },
+      "writtenOn": "2019-09-25T05:08:26Z",
+      "side": 1,
+      "message": "This is intentional to align with \"renewAccessPointList(null /* List\u003cScanResult\u003e */);\" at line 152. Should we fix this only?",
+      "parentUuid": "1f973001_aaa341c7",
+      "range": {
+        "startLine": 557,
+        "startChar": 44,
+        "endLine": 557,
+        "endChar": 61
+      },
+      "revId": "e4e7786b1c77ee826a725a41b638f40ca6a14d32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33c535c2_5b712d48",
         "filename": "tests/robotests/src/com/android/settings/wifi/NetworkRequestDialogFragmentTest.java",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2019-09-23T01:54:20Z",
       "side": 1,
       "message": "wrong?",
+      "range": {
+        "startLine": 247,
+        "startChar": 11,
+        "endLine": 247,
+        "endChar": 18
+      },
+      "revId": "e4e7786b1c77ee826a725a41b638f40ca6a14d32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec8a86f5_c8ab1eb7",
+        "filename": "tests/robotests/src/com/android/settings/wifi/NetworkRequestDialogFragmentTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1247308
+      },
+      "writtenOn": "2019-09-25T05:08:26Z",
+      "side": 1,
+      "message": "Referred to the existing code such as \"// Assert.\" at line 211 and added this to be consistent.",
+      "parentUuid": "33c535c2_5b712d48",
       "range": {
         "startLine": 247,
         "startChar": 11,
