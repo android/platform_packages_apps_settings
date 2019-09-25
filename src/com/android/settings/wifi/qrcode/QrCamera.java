@@ -284,36 +284,44 @@ public class QrCamera extends Handler {
         private boolean initCamera(SurfaceTexture surface) {
             final int numberOfCameras = Camera.getNumberOfCameras();
             Camera.CameraInfo cameraInfo = new Camera.CameraInfo();
-            try {
-                for (int i = 0; i < numberOfCameras; ++i) {
-                    Camera.getCameraInfo(i, cameraInfo);
-                    if (cameraInfo.facing == CameraInfo.CAMERA_FACING_BACK) {
+            for (int i = 0; i < numberOfCameras; ++i) {
+                Camera.getCameraInfo(i, cameraInfo);
+                if (cameraInfo.facing == CameraInfo.CAMERA_FACING_BACK) {
+                    try {
+                        releaseCamera();
                         mCamera = Camera.open(i);
                         mCamera.setPreviewTexture(surface);
                         mCameraOrientation = cameraInfo.orientation;
-                        break;
+                    } catch (Exception e) {
+                        Log.e(TAG, e);
+                        mCamera = null;
+                        mScannerCallback.handleCameraFailure();
+                        return false;
                     }
+                    break;
                 }
-                if (mCamera == null) {
-                    Log.e(TAG, "Cannot find available back camera.");
-                    mScannerCallback.handleCameraFailure();
-                    return false;
-                }
-                setCameraParameter();
-                setTransformationMatrix(mScannerCallback.getViewSize());
-                if (!startPreview()) {
-                    Log.e(TAG, "Error to init Camera");
-                    mCamera = null;
-                    mScannerCallback.handleCameraFailure();
-                    return false;
-                }
-                return true;
-            } catch (IOException e) {
+            }
+            if (mCamera == null) {
+                Log.e(TAG, "Cannot find available back camera.");
+                mScannerCallback.handleCameraFailure();
+                return false;
+            }
+            setCameraParameter();
+            setTransformationMatrix(mScannerCallback.getViewSize());
+            if (!startPreview()) {
                 Log.e(TAG, "Error to init Camera");
                 mCamera = null;
                 mScannerCallback.handleCameraFailure();
                 return false;
             }
+            return true;
+        }
+    }
+
+    private void releaseCamera() {
+        if (mCamera != null) {
+            mCamera.release();
+            mCamera = null;
         }
     }
 
