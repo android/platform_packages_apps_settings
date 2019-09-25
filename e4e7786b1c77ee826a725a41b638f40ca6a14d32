@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "4216399e_4f6c94ff",
+        "filename": "src/com/android/settings/wifi/NetworkRequestDialogFragment.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1247308
+      },
+      "writtenOn": "2019-09-25T08:43:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b98ce167_4c1e04a0",
+      "range": {
+        "startLine": 557,
+        "startChar": 44,
+        "endLine": 557,
+        "endChar": 61
+      },
+      "revId": "e4e7786b1c77ee826a725a41b638f40ca6a14d32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33c535c2_5b712d48",
         "filename": "tests/robotests/src/com/android/settings/wifi/NetworkRequestDialogFragmentTest.java",
         "patchSetId": 5
@@ -141,6 +165,30 @@
       "revId": "e4e7786b1c77ee826a725a41b638f40ca6a14d32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02838b87_016ba97e",
+        "filename": "tests/robotests/src/com/android/settings/wifi/NetworkRequestDialogFragmentTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1247308
+      },
+      "writtenOn": "2019-09-25T08:43:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e45de56_5847ac59",
+      "range": {
+        "startLine": 247,
+        "startChar": 11,
+        "endLine": 247,
+        "endChar": 18
+      },
+      "revId": "e4e7786b1c77ee826a725a41b638f40ca6a14d32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
