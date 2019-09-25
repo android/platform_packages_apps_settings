@@ -45,6 +45,29 @@
       "revId": "b6dadb90174ac642bcfcb7b447e10198e621719b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb7ec38e_39ec91dc",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2019-09-25T20:16:38Z",
+      "side": 1,
+      "message": "else call EuiccManager#createForCardId(info.getCardId()).getEid() and check if that\u0027s valid",
+      "range": {
+        "startLine": 414,
+        "startChar": 20,
+        "endLine": 414,
+        "endChar": 21
+      },
+      "revId": "b6dadb90174ac642bcfcb7b447e10198e621719b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
