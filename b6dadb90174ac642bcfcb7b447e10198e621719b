@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a646e6b_f7a97392",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2019-09-25T18:27:30Z",
+      "side": 1,
+      "message": "mSlotId is a logical slot ID \u003d\u003d phoneId, not a physical slot ID\n\nYou need to use UiccSlotInfo to convert logical slot -\u003e physical slot, then UiccCardInfo to convert physical slot -\u003e card ID, then you can get EID",
+      "range": {
+        "startLine": 409,
+        "startChar": 55,
+        "endLine": 409,
+        "endChar": 62
+      },
+      "revId": "b6dadb90174ac642bcfcb7b447e10198e621719b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
