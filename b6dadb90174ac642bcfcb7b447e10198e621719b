@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6f7a319f_423741bd",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1163305
+      },
+      "writtenOn": "2019-09-26T07:25:49Z",
+      "side": 1,
+      "message": "Would you please let me understand what is wrong in that scenario? My understanding is that only one preference for SIM status exists on \"About phone\" screen if getPhoneCount() returns 1.\n\n    @Override\n    public void displayPreference(PreferenceScreen screen) {\n    ...\n        mPreferenceList.add(preference);\n\n        final int simStatusOrder \u003d preference.getOrder();\n        // Add additional preferences for each sim in the device\n        for (int simSlotNumber \u003d 1; simSlotNumber \u003c mTelephonyManager.getPhoneCount();\n                simSlotNumber++) {\n    ...\n            mPreferenceList.add(multiSimPreference);\n        }\n    }\n\nOnly one instance of SimStatusDialogController is created with the available logical slot number, then it should be associated with the available physical slot number.",
+      "parentUuid": "c76c6f5c_75f709f2",
+      "range": {
+        "startLine": 405,
+        "startChar": 17,
+        "endLine": 405,
+        "endChar": 26
+      },
+      "revId": "b6dadb90174ac642bcfcb7b447e10198e621719b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2a646e6b_f7a97392",
         "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "52a6e3ae_fbd314b2",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1163305
+      },
+      "writtenOn": "2019-09-26T07:25:49Z",
+      "side": 1,
+      "message": "Thanks for your review. As you mentioned, I have not considered the slot mapping in the previous patch set. Please check the patch set 5 as I considered it in the test code also.",
+      "parentUuid": "2a646e6b_f7a97392",
+      "range": {
+        "startLine": 409,
+        "startChar": 55,
+        "endLine": 409,
+        "endChar": 62
+      },
+      "revId": "b6dadb90174ac642bcfcb7b447e10198e621719b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fb7ec38e_39ec91dc",
         "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2019-09-25T20:16:38Z",
       "side": 1,
       "message": "else call EuiccManager#createForCardId(info.getCardId()).getEid() and check if that\u0027s valid",
+      "range": {
+        "startLine": 414,
+        "startChar": 20,
+        "endLine": 414,
+        "endChar": 21
+      },
+      "revId": "b6dadb90174ac642bcfcb7b447e10198e621719b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b0306e7_f455b33f",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1163305
+      },
+      "writtenOn": "2019-09-26T07:25:49Z",
+      "side": 1,
+      "message": "Thanks for your comment. I would like to know why it must be added here in more detail.",
+      "parentUuid": "fb7ec38e_39ec91dc",
       "range": {
         "startLine": 414,
         "startChar": 20,
