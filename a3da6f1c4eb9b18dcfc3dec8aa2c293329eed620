@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2cd0a44c_ac8f70dc",
+        "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2019-09-26T07:56:28Z",
+      "side": 1,
+      "message": "Maybe I need to change \"this module\" to \"WifiDetailPreferenceController\"?",
+      "parentUuid": "54d92d04_333f3096",
+      "range": {
+        "startLine": 239,
+        "startChar": 51,
+        "endLine": 239,
+        "endChar": 57
+      },
+      "revId": "a3da6f1c4eb9b18dcfc3dec8aa2c293329eed620",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ea43556d_58563c44",
         "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "87553dec_530d311a",
+        "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2019-09-26T07:56:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea43556d_58563c44",
+      "range": {
+        "startLine": 240,
+        "startChar": 25,
+        "endLine": 240,
+        "endChar": 27
+      },
+      "revId": "a3da6f1c4eb9b18dcfc3dec8aa2c293329eed620",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9946f4b_17c22fed",
         "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
         "patchSetId": 10
@@ -68,6 +116,30 @@
       "revId": "a3da6f1c4eb9b18dcfc3dec8aa2c293329eed620",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afb354ab_e0353a1c",
+        "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2019-09-26T07:56:28Z",
+      "side": 1,
+      "message": "Well, I added the second sentence is because the comment from patchset5: \"Question: If it\u0027s not the first time but NetworkCapabilities was still null, what should we do?\"",
+      "parentUuid": "c9946f4b_17c22fed",
+      "range": {
+        "startLine": 242,
+        "startChar": 18,
+        "endLine": 242,
+        "endChar": 22
+      },
+      "revId": "a3da6f1c4eb9b18dcfc3dec8aa2c293329eed620",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
