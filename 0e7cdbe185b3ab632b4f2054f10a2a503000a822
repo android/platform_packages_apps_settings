@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4073fc6b_382e6ad6",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2019-09-26T16:44:44Z",
+      "side": 1,
+      "message": "No need for this, you\u0027ve already checked that it\u0027s null. Direct \u003d\u003d should be fine.",
+      "range": {
+        "startLine": 414,
+        "startChar": 74,
+        "endLine": 414,
+        "endChar": 82
+      },
+      "revId": "0e7cdbe185b3ab632b4f2054f10a2a503000a822",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9761f7ac_ee9a28c4",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2019-09-26T16:44:44Z",
+      "side": 1,
+      "message": "Ah - I also didn\u0027t catch this. Pixel 2 always has isEuicc \u003d false (due to older HAL, no EuiccCard instances are constructed in UiccController, the LPA has to do all the APDU itself) - can we check for this another way?\n\nEuiccManager#isEnabled will return true on Pixel 2 though.\n\nBasically, I think this should be split into two different branches:\n\n\nupdateEid() {\n  boolean shouldHaveEid \u003d false;\n  String eid;\n  if (telephonyManager.getPhoneCount() \u003d\u003d 1) {\n    // Don\u0027t use #createForCardId on these devices, let the platform + LPA decide how to get EID\n    if (euiccManager.isEnabled()) {\n      shouldHaveEid \u003d true;\n      eid \u003d euiccManager.getEid();\n    } // else nothing to do, no eSIM\n  } else {\n    // Loop for multi-SIM devices, including UiccCardInfo#eid and EuiccManager#createForCardId#getEid\n  }\n  if (!shouldHaveEid) {\n    mDialog.remove(EID_LABEL);\n    mDialog.remove(EID_VALUE);\n  } else if (!TextUtils.isEmpty(eid)) {\n    mDialog.setText(EID_VALUE, eid);\n  } // else we\u0027ll show \"Unknown\" for EID since it\u0027s empty but we expect one\n}",
+      "range": {
+        "startLine": 415,
+        "startChar": 29,
+        "endLine": 415,
+        "endChar": 36
+      },
+      "revId": "0e7cdbe185b3ab632b4f2054f10a2a503000a822",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

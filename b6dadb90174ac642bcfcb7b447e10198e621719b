@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "536ea98a_24e347dd",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 405,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2019-09-26T16:44:44Z",
+      "side": 1,
+      "message": "Correct about just one Controller instance with phoneId 0, but consider example of Pixel 2 or 3, which has 2 slots, but only one can be active.\n\nMany carriers require that EID is visible prior to activation, but some phones cannot return EID in the IccSlotStatus returned from the modem. This change is not accounting for those devices, and so they may start failing carrier TA.\n\nOn Pixel 2, it does not support the IRadio/IRadioConfig HALs new enough to return 2 Uicc{Slot,Card}Info instances from TelephonyManager, and can only return 1 for the active slot. On Pixel 3, it has a HAL new enough to return 2 Uicc{Slot,Card}Info instances from TelMan, but EID is not available from those objects unless the eSIM slot is currently active. In both of these cases, the LPA may have a cached EID value available for the eSIM, which is accessible via EuiccManager#getEid.\n\nIn general, it\u0027s fine to check Uicc{Slot,Card}Info first, but if that doesn\u0027t contain EID, EuiccManager (\u003d\u003d the LPA) should be the next source of truth to check.",
+      "parentUuid": "6f7a319f_423741bd",
+      "range": {
+        "startLine": 405,
+        "startChar": 17,
+        "endLine": 405,
+        "endChar": 26
+      },
+      "revId": "b6dadb90174ac642bcfcb7b447e10198e621719b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2a646e6b_f7a97392",
         "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
         "patchSetId": 4
@@ -131,6 +155,30 @@
       "side": 1,
       "message": "Thanks for your comment. I would like to know why it must be added here in more detail.",
       "parentUuid": "fb7ec38e_39ec91dc",
+      "range": {
+        "startLine": 414,
+        "startChar": 20,
+        "endLine": 414,
+        "endChar": 21
+      },
+      "revId": "b6dadb90174ac642bcfcb7b447e10198e621719b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5860f4d1_02cfcc5a",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2019-09-26T16:44:44Z",
+      "side": 1,
+      "message": "See my other comment, but basically it\u0027s for devices on older HALs. Pixel 2 does not report EID from modem at all, and Pixel 3 can only report EID if the eSIM is active. For these cases, the LPA may be able to get EID from a cache or by some other method, so EuiccManager will call through to the LPA and see if it has a valid value.",
+      "parentUuid": "3b0306e7_f455b33f",
       "range": {
         "startLine": 414,
         "startChar": 20,
