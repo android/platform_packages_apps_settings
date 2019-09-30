@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97400e98_80537f25",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2019-09-30T16:48:02Z",
+      "side": 1,
+      "message": "Just make this an int and use getOrDefault?\n\nint physicalSlotId \u003d slotMapping.getOrDefault(mSlotId, -1);\nif (physicalSlotId !\u003d -1) {\n  // for loop\n}",
+      "range": {
+        "startLine": 416,
+        "startChar": 12,
+        "endLine": 416,
+        "endChar": 19
+      },
+      "revId": "9cad33d1cbe8023b265d95bb058854e340ceb952",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49b4d608_ad95efe5",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2019-09-30T16:48:02Z",
+      "side": 1,
+      "message": "Personally I think these conditions are a bit more complex than it needs to be:\n\nif (!shouldHaveEid) {\n  // remove from screen\n} else if (!TextUtils.isEmpty(eid)) {\n  // set EID\n}",
+      "range": {
+        "startLine": 442,
+        "startChar": 8,
+        "endLine": 443,
+        "endChar": 33
+      },
+      "revId": "9cad33d1cbe8023b265d95bb058854e340ceb952",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
