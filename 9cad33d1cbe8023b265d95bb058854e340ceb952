@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c228d267_bf94c334",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2019-09-30T17:12:46Z",
+      "side": 1,
+      "message": "Add a comment here:\n\n// Get EID per-SIM in multi-SIM mode",
+      "range": {
+        "startLine": 414,
+        "startChar": 91,
+        "endLine": 414,
+        "endChar": 92
+      },
+      "revId": "9cad33d1cbe8023b265d95bb058854e340ceb952",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "97400e98_80537f25",
         "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
         "patchSetId": 6
@@ -18,6 +41,52 @@
         "startChar": 12,
         "endLine": 416,
         "endChar": 19
+      },
+      "revId": "9cad33d1cbe8023b265d95bb058854e340ceb952",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48aeb356_5bd4d676",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2019-09-30T17:12:46Z",
+      "side": 1,
+      "message": "This can be un-nested one level\n\nelse if (mEuiccManager.isEnabled()) {\n  // ...\n}",
+      "range": {
+        "startLine": 435,
+        "startChar": 15,
+        "endLine": 436,
+        "endChar": 14
+      },
+      "revId": "9cad33d1cbe8023b265d95bb058854e340ceb952",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78b0d591_c84dd706",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2019-09-30T17:12:46Z",
+      "side": 1,
+      "message": "Add a comment here:\n\n// Get EID of default eSIM in single-SIM mode",
+      "range": {
+        "startLine": 436,
+        "startChar": 43,
+        "endLine": 436,
+        "endChar": 44
       },
       "revId": "9cad33d1cbe8023b265d95bb058854e340ceb952",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
