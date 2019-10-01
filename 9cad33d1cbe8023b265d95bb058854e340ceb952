@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8bf68d9c_2d1d1839",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1163305
+      },
+      "writtenOn": "2019-10-01T13:36:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c228d267_bf94c334",
+      "range": {
+        "startLine": 414,
+        "startChar": 91,
+        "endLine": 414,
+        "endChar": 92
+      },
+      "revId": "9cad33d1cbe8023b265d95bb058854e340ceb952",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97400e98_80537f25",
         "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "9cad33d1cbe8023b265d95bb058854e340ceb952",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58258fca_15ddbeae",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1163305
+      },
+      "writtenOn": "2019-10-01T13:36:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97400e98_80537f25",
+      "range": {
+        "startLine": 416,
+        "startChar": 12,
+        "endLine": 416,
+        "endChar": 19
+      },
+      "revId": "9cad33d1cbe8023b265d95bb058854e340ceb952",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -94,6 +142,54 @@
     },
     {
       "key": {
+        "uuid": "1950e0e0_1a3ed0e8",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1163305
+      },
+      "writtenOn": "2019-10-01T13:36:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "78b0d591_c84dd706",
+      "range": {
+        "startLine": 436,
+        "startChar": 43,
+        "endLine": 436,
+        "endChar": 44
+      },
+      "revId": "9cad33d1cbe8023b265d95bb058854e340ceb952",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "506e3a5b_3f551227",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1163305
+      },
+      "writtenOn": "2019-10-01T13:36:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48aeb356_5bd4d676",
+      "range": {
+        "startLine": 435,
+        "startChar": 15,
+        "endLine": 436,
+        "endChar": 14
+      },
+      "revId": "9cad33d1cbe8023b265d95bb058854e340ceb952",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "49b4d608_ad95efe5",
         "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
         "patchSetId": 6
@@ -114,6 +210,30 @@
       "revId": "9cad33d1cbe8023b265d95bb058854e340ceb952",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21c6f220_0e53ef33",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1163305
+      },
+      "writtenOn": "2019-10-01T13:36:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49b4d608_ad95efe5",
+      "range": {
+        "startLine": 442,
+        "startChar": 8,
+        "endLine": 443,
+        "endChar": 33
+      },
+      "revId": "9cad33d1cbe8023b265d95bb058854e340ceb952",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
