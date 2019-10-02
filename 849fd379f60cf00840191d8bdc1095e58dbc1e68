@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf889c81_e8d6b600",
+        "filename": "tests/robotests/src/com/android/settings/deviceinfo/simstatus/SimStatusDialogControllerTest.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2019-10-02T18:15:22Z",
+      "side": 1,
+      "message": "Please add a case where we have phoneCount \u003d 1, UiccCardInfo with isEuicc \u003d false, EuiccManager#isEnabled \u003d true and it returns a valid EID.\n\nWe should set the EID value in this case.",
+      "revId": "849fd379f60cf00840191d8bdc1095e58dbc1e68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
