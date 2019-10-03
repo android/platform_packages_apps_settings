@@ -16,6 +16,24 @@
       "revId": "849fd379f60cf00840191d8bdc1095e58dbc1e68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e30b66b_c14f9269",
+        "filename": "tests/robotests/src/com/android/settings/deviceinfo/simstatus/SimStatusDialogControllerTest.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 592,
+      "author": {
+        "id": 1163305
+      },
+      "writtenOn": "2019-10-03T06:36:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf889c81_e8d6b600",
+      "revId": "849fd379f60cf00840191d8bdc1095e58dbc1e68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
