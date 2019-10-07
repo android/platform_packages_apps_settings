@@ -126,8 +126,7 @@ public class WifiTetherSettings extends RestrictedDashboardFragment
         // SettingsActivity as base for all preference fragments.
         final SettingsActivity activity = (SettingsActivity) getActivity();
         final SwitchBar switchBar = activity.getSwitchBar();
-        mSwitchBarController = new WifiTetherSwitchBarController(activity,
-                new SwitchBarController(switchBar));
+        mSwitchBarController = new WifiTetherSwitchBarController(activity, switchBar);
         getSettingsLifecycle().addObserver(mSwitchBarController);
         switchBar.show();
     }
