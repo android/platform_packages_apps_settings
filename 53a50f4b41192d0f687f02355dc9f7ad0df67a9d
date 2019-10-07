@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ce60e8ab_126052a4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1447810
+      },
+      "writtenOn": "2019-10-07T08:09:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21056623_9aa47619",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "53a50f4b41192d0f687f02355dc9f7ad0df67a9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f046814f_b54f2002",
         "filename": "/COMMIT_MSG",
         "patchSetId": 3
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "3f648dbc_c0a2ae56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1447810
+      },
+      "writtenOn": "2019-10-07T08:09:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ce30636f_e222aa53",
+      "range": {
+        "startLine": 17,
+        "startChar": 42,
+        "endLine": 17,
+        "endChar": 47
+      },
+      "revId": "53a50f4b41192d0f687f02355dc9f7ad0df67a9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "746a4815_d1c76576",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1447810
+      },
+      "writtenOn": "2019-10-07T08:09:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f046814f_b54f2002",
+      "range": {
+        "startLine": 17,
+        "startChar": 18,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "53a50f4b41192d0f687f02355dc9f7ad0df67a9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a7321626_c4a35501",
         "filename": "src/com/android/settings/wifi/qrcode/QrCamera.java",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "53a50f4b41192d0f687f02355dc9f7ad0df67a9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "155692db_b91f4ba9",
+        "filename": "src/com/android/settings/wifi/qrcode/QrCamera.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1447810
+      },
+      "writtenOn": "2019-10-07T08:09:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7321626_c4a35501",
+      "range": {
+        "startLine": 296,
+        "startChar": 35,
+        "endLine": 296,
+        "endChar": 57
+      },
+      "revId": "53a50f4b41192d0f687f02355dc9f7ad0df67a9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
