@@ -70,10 +70,9 @@ public class WifiTetherSwitchBarControllerTest {
         when(mContext.getSystemService(Context.NETWORK_POLICY_SERVICE)).thenReturn(
                 mNetworkPolicyManager);
 
-        mController = new WifiTetherSwitchBarController(mContext,
-                new SwitchBarController(mSwitchBar));
+        mController = new WifiTetherSwitchBarController(mContext, mSwitchBar);
     }
-    
+
     @Test
     public void startTether_fail_resetSwitchBar() {
         when(mNetworkPolicyManager.getRestrictBackground()).thenReturn(false);
@@ -103,12 +102,12 @@ public class WifiTetherSwitchBarControllerTest {
     @Test
     public void onSwitchToggled_onlyStartsTetherWhenNeeded() {
         when(mWifiManager.isWifiApEnabled()).thenReturn(true);
-        mController.onSwitchToggled(true);
+        mController.performClick();
 
         verify(mConnectivityManager, never()).startTethering(anyInt(), anyBoolean(), any(), any());
 
         doReturn(false).when(mWifiManager).isWifiApEnabled();
-        mController.onSwitchToggled(true);
+        mController.performClick();
 
         verify(mConnectivityManager, times(1))
                 .startTethering(anyInt(), anyBoolean(), any(), any());
