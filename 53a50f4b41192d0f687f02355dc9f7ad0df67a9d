@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21056623_9aa47619",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2019-10-07T07:44:20Z",
+      "side": 1,
+      "message": "Release the camera before opening",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "53a50f4b41192d0f687f02355dc9f7ad0df67a9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f046814f_b54f2002",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2019-10-07T07:44:20Z",
+      "side": 1,
+      "message": "VoLTE",
+      "range": {
+        "startLine": 17,
+        "startChar": 18,
+        "endLine": 17,
+        "endChar": 23
+      },
+      "revId": "53a50f4b41192d0f687f02355dc9f7ad0df67a9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce30636f_e222aa53",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2019-10-07T07:44:20Z",
+      "side": 1,
+      "message": "VoLTE",
+      "range": {
+        "startLine": 17,
+        "startChar": 42,
+        "endLine": 17,
+        "endChar": 47
+      },
+      "revId": "53a50f4b41192d0f687f02355dc9f7ad0df67a9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7321626_c4a35501",
+        "filename": "src/com/android/settings/wifi/qrcode/QrCamera.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2019-10-07T07:44:20Z",
+      "side": 1,
+      "message": "I think it\u0027s better to show the description of original error.\nWould you help to modify it? Thank you.\n\n    Log.e(TAG, e);",
+      "range": {
+        "startLine": 296,
+        "startChar": 35,
+        "endLine": 296,
+        "endChar": 57
+      },
+      "revId": "53a50f4b41192d0f687f02355dc9f7ad0df67a9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
