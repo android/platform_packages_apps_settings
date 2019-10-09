@@ -80,6 +80,7 @@ public class VideoPreference extends Preference {
         try {
             // if these are already set that means they were set dynamically and don't need
             // to be loaded from xml
+            mAnimationAvailable = false;
             mAnimationId = mAnimationId == 0
                 ? attributes.getResourceId(R.styleable.VideoPreference_animation, 0)
                 : mAnimationId;
@@ -95,12 +96,9 @@ public class VideoPreference extends Preference {
             }
             initMediaPlayer();
             if (mMediaPlayer != null && mMediaPlayer.getDuration() > 0) {
-                setVisible(true);
                 setLayoutResource(R.layout.video_preference);
                 mAnimationAvailable = true;
                 updateAspectRatio();
-            } else {
-                setVisible(false);
             }
         } catch (Exception e) {
             Log.w(TAG, "Animation resource not found. Will not show animation.");
@@ -248,6 +246,10 @@ public class VideoPreference extends Preference {
             mMediaPlayer = null;
             mVideoReady = false;
         }
+    }
+
+    public boolean isAnimationAvailable() {
+        return mAnimationAvailable;
     }
 
     public boolean isVideoPaused() {
