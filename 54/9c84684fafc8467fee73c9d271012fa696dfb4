@@ -1,0 +1,6 @@
+Code-Review+2: android-build-prod (mdb) <android-build-team-robot@google.com>
+Submitted-by: android-build-prod (mdb) <android-build-team-robot@google.com>
+Submitted-at: Fri, 11 Oct 2019 05:37:13 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1140396
+Project: platform/packages/apps/Settings
+Branch: refs/heads/simpleperf-release
