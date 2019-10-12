@@ -469,11 +469,10 @@ public class MobileNetworkUtils {
                 return callback.getAvailabilityStatus(
                         SubscriptionManager.INVALID_SUBSCRIPTION_ID);
             } else {
-                for (final int subId : subIds) {
-                    final int status = callback.getAvailabilityStatus(subId);
-                    if (status == BasePreferenceController.AVAILABLE) {
-                        return status;
-                    }
+                int subId = subIds[0];
+                final int status = callback.getAvailabilityStatus(subId);
+                if (status == BasePreferenceController.AVAILABLE) {
+                    return status;
                 }
                 return callback.getAvailabilityStatus(subIds[0]);
             }
