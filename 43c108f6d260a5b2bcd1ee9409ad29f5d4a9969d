@@ -46,6 +46,30 @@
       "revId": "43c108f6d260a5b2bcd1ee9409ad29f5d4a9969d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dea79041_dadd6667",
+        "filename": "src/com/android/settings/widget/VideoPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1090594
+      },
+      "writtenOn": "2019-10-14T17:19:43Z",
+      "side": 1,
+      "message": "I made following changes https://gist.github.com/luk1337/7a38a0cc7c12946351366b4e4ed2a487\n\nWhile getAvailabilityStatus_isUnsupportedOnDevice() succeeds thanks to early setVisible(false), the getAvailabilityStatus_isAvailableUnsearchable() fails since during tests mMediaPlayer is null. Do you have any idea what I should do about that?",
+      "parentUuid": "5c0b6145_4c24acfe",
+      "range": {
+        "startLine": 40,
+        "startChar": 15,
+        "endLine": 40,
+        "endChar": 93
+      },
+      "revId": "43c108f6d260a5b2bcd1ee9409ad29f5d4a9969d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
