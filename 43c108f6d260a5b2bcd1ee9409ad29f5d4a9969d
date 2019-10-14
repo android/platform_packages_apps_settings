@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63a992e5_f2e1a1b0",
+        "filename": "src/com/android/settings/widget/VideoPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2019-10-14T04:01:23Z",
+      "side": 1,
+      "message": "- Can you add a test case for it?\n\n- BTW, what case does hide this video preference?",
+      "range": {
+        "startLine": 40,
+        "startChar": 15,
+        "endLine": 40,
+        "endChar": 93
+      },
+      "revId": "43c108f6d260a5b2bcd1ee9409ad29f5d4a9969d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
