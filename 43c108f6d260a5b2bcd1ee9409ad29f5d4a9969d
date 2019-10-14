@@ -22,6 +22,30 @@
       "revId": "43c108f6d260a5b2bcd1ee9409ad29f5d4a9969d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c0b6145_4c24acfe",
+        "filename": "src/com/android/settings/widget/VideoPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1090594
+      },
+      "writtenOn": "2019-10-14T08:05:08Z",
+      "side": 1,
+      "message": "\u003eCan you add a test case for it?\nUh yeah, current tests should be failing at the moment cause they expect AVAILABLE_UNSEARCHABLE...\nNot sure what should I do there. There shouldn\u0027t be any proper pref with real animation/preview set available when running tests, right? \n\n\u003eBTW, what case does hide this video preference?\nOn AOSP there are bunch of video preferences that happen to have empty preview/animation resources. This patch makes sure that we hide them. Here are two examples Settings -\u003e Battery -\u003e Battery Manager, Settings -\u003e Display -\u003e Adaptive brightness.",
+      "parentUuid": "63a992e5_f2e1a1b0",
+      "range": {
+        "startLine": 40,
+        "startChar": 15,
+        "endLine": 40,
+        "endChar": 93
+      },
+      "revId": "43c108f6d260a5b2bcd1ee9409ad29f5d4a9969d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
