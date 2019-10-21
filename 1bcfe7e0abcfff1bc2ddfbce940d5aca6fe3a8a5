@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8fce8eae_f7c195b2",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 10681,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2019-10-21T13:43:32Z",
+      "side": 1,
+      "message": "Perhaps this should be clearer? e.g. App-Platform Compatibility Changes Config?",
+      "range": {
+        "startLine": 10681,
+        "startChar": 51,
+        "endLine": 10681,
+        "endChar": 73
+      },
+      "revId": "1bcfe7e0abcfff1bc2ddfbce940d5aca6fe3a8a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d5bd14f_f8401e89",
+        "filename": "res/xml/development_settings.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2019-10-21T13:43:32Z",
+      "side": 1,
+      "message": "didn\u0027t Diana ask to make this searchable?",
+      "range": {
+        "startLine": 234,
+        "startChar": 12,
+        "endLine": 234,
+        "endChar": 40
+      },
+      "revId": "1bcfe7e0abcfff1bc2ddfbce940d5aca6fe3a8a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a895a1d_eae7f2c9",
+        "filename": "src/com/android/settings/development/DevelopmentOptionsActivityRequestCodes.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2019-10-21T13:43:32Z",
+      "side": 1,
+      "message": "REQUEST_COMPAT_CHANGE_APP?",
+      "range": {
+        "startLine": 35,
+        "startChar": 8,
+        "endLine": 35,
+        "endChar": 26
+      },
+      "revId": "1bcfe7e0abcfff1bc2ddfbce940d5aca6fe3a8a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
