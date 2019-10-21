@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3d581fd_d0c537a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2019-10-21T17:22:53Z",
+      "side": 1,
+      "message": "Didn\u0027t you also run the UI? A link to a screenshot would be nice here",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 12
+      },
+      "revId": "9bcd2c3beee091d09253dbee7ec604d45e54f374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f9738c1_5da24101",
+        "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2019-10-21T17:22:53Z",
+      "side": 1,
+      "message": "Wasn\u0027t that 1614? Can\u0027t use the proto here?",
+      "range": {
+        "startLine": 66,
+        "startChar": 20,
+        "endLine": 66,
+        "endChar": 69
+      },
+      "revId": "9bcd2c3beee091d09253dbee7ec604d45e54f374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8feb7fe2_634d2b64",
+        "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2019-10-21T17:22:53Z",
+      "side": 1,
+      "message": "does this app have the right permissions to get the application info?",
+      "range": {
+        "startLine": 118,
+        "startChar": 46,
+        "endLine": 118,
+        "endChar": 97
+      },
+      "revId": "9bcd2c3beee091d09253dbee7ec604d45e54f374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84804b2f_16545b26",
+        "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2019-10-21T17:22:53Z",
+      "side": 1,
+      "message": "Perhaps a short description of what a preference means here would make the code more readable?",
+      "range": {
+        "startLine": 127,
+        "startChar": 12,
+        "endLine": 127,
+        "endChar": 22
+      },
+      "revId": "9bcd2c3beee091d09253dbee7ec604d45e54f374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97cf43c7_a3b705ce",
+        "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2019-10-21T17:22:53Z",
+      "side": 1,
+      "message": "Please create a FR: propagate the javadoc above the change definition into here.",
+      "range": {
+        "startLine": 132,
+        "startChar": 8,
+        "endLine": 132,
+        "endChar": 36
+      },
+      "revId": "9bcd2c3beee091d09253dbee7ec604d45e54f374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca5f68c5_8c4e7532",
+        "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2019-10-21T17:22:53Z",
+      "side": 1,
+      "message": "Those could be one method that receives the title as a parameter - no?",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 5
+      },
+      "revId": "9bcd2c3beee091d09253dbee7ec604d45e54f374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e353be6_638cccd5",
+        "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2019-10-21T17:22:53Z",
+      "side": 1,
+      "message": "Probably better to move up above methods it uses.",
+      "range": {
+        "startLine": 198,
+        "startChar": 17,
+        "endLine": 198,
+        "endChar": 31
+      },
+      "revId": "9bcd2c3beee091d09253dbee7ec604d45e54f374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
