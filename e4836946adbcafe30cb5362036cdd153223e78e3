@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d481376_719b78cd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2019-10-23T06:48:02Z",
+      "side": 1,
+      "message": "Nit: should it be \"Replace getNetworkPrefixLength()\"?",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "e4836946adbcafe30cb5362036cdd153223e78e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
