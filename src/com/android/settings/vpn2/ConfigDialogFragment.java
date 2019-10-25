@@ -22,6 +22,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.IConnectivityManager;
+import android.net.VpnProfile;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.ServiceManager;
@@ -35,7 +36,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 
 import com.android.internal.net.LegacyVpnInfo;
-import com.android.internal.net.VpnProfile;
 import com.android.settings.R;
 import com.android.settings.core.instrumentation.InstrumentedDialogFragment;
 

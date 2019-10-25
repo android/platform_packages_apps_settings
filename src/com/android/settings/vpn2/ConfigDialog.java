@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.net.Proxy;
 import android.net.ProxyInfo;
+import android.net.VpnProfile;
 import android.os.Bundle;
 import android.os.SystemProperties;
 import android.security.Credentials;
@@ -37,7 +38,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 
-import com.android.internal.net.VpnProfile;
 import com.android.settings.R;
 
 import java.net.InetAddress;
