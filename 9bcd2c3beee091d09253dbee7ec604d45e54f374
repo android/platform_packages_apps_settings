@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "46a2cfab_b2be5d00",
+        "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-10-25T17:42:55Z",
+      "side": 1,
+      "message": "Local change that I forgot to revert. Fixed now",
+      "parentUuid": "9f9738c1_5da24101",
+      "range": {
+        "startLine": 66,
+        "startChar": 20,
+        "endLine": 66,
+        "endChar": 69
+      },
+      "revId": "9bcd2c3beee091d09253dbee7ec604d45e54f374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8feb7fe2_634d2b64",
         "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
         "patchSetId": 5
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "d0162dfd_f00e50c7",
+        "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-10-25T17:42:55Z",
+      "side": 1,
+      "message": "Yes, although I don\u0027t know which one it is; other activities in the Settings app already use getApplicationInfo",
+      "parentUuid": "8feb7fe2_634d2b64",
+      "range": {
+        "startLine": 118,
+        "startChar": 46,
+        "endLine": 118,
+        "endChar": 97
+      },
+      "revId": "9bcd2c3beee091d09253dbee7ec604d45e54f374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84804b2f_16545b26",
         "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
         "patchSetId": 5
@@ -91,6 +139,30 @@
       "revId": "9bcd2c3beee091d09253dbee7ec604d45e54f374",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3b24936_83b44a0f",
+        "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-10-25T17:42:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84804b2f_16545b26",
+      "range": {
+        "startLine": 127,
+        "startChar": 12,
+        "endLine": 127,
+        "endChar": 22
+      },
+      "revId": "9bcd2c3beee091d09253dbee7ec604d45e54f374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "127c50ec_7776e0d0",
+        "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-10-25T17:42:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca5f68c5_8c4e7532",
+      "range": {
+        "startLine": 168,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 5
+      },
+      "revId": "9bcd2c3beee091d09253dbee7ec604d45e54f374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7e353be6_638cccd5",
         "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
         "patchSetId": 5
@@ -160,6 +256,30 @@
       "revId": "9bcd2c3beee091d09253dbee7ec604d45e54f374",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16d39b2c_3c1a25c6",
+        "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-10-25T17:42:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7e353be6_638cccd5",
+      "range": {
+        "startLine": 198,
+        "startChar": 17,
+        "endLine": 198,
+        "endChar": 31
+      },
+      "revId": "9bcd2c3beee091d09253dbee7ec604d45e54f374",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
