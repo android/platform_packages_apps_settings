@@ -1,0 +1,7 @@
+Build-Cop-Override+1: Xin Li <delphij@google.com>
+Presubmit-Verified-1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Xin Li <delphij@google.com>
+Submitted-at: Sun, 27 Oct 2019 04:44:28 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1151828
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
