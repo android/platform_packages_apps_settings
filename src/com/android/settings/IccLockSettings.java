@@ -123,9 +123,6 @@ public class IccLockSettings extends SettingsPreferenceFragment
     private static final int MSG_CHANGE_ICC_PIN_COMPLETE = 101;
     private static final int MSG_SIM_STATE_CHANGED = 102;
 
-    // @see android.widget.Toast$TN
-    private static final long LONG_DURATION_TIMEOUT = 7000;
-
     // For replies from IccCard interface
     private Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
@@ -529,7 +526,7 @@ public class IccLockSettings extends SettingsPreferenceFragment
             public void run() {
                 wm.removeViewImmediate(v);
             }
-        }, LONG_DURATION_TIMEOUT);
+        }, Toast.LENGTH_LONG);
     }
 
     private void iccPinChanged(boolean success, int attemptsRemaining) {
