@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6ec7905_500bd832",
+        "filename": "src/com/android/settings/development/DevelopmentSettingsDashboardFragment.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 408,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-10-29T20:06:07Z",
+      "side": 1,
+      "message": "I see \u0027lifecycle\u0027 is passed to some controllers, e.g. StayAwakePreferenceController. Do they addObserver in the ctor? If so, could we do the same to keep the list below consistent?",
+      "range": {
+        "startLine": 408,
+        "startChar": 12,
+        "endLine": 408,
+        "endChar": 21
+      },
+      "revId": "5a965f0ce9f2e4861917da11e2f6e81cc47f4a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bee4151_751783f1",
+        "filename": "src/com/android/settings/development/WirelessDebugging.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-10-29T20:06:07Z",
+      "side": 1,
+      "message": "I think it is better to have an empty implementation than to check for nulls.",
+      "range": {
+        "startLine": 95,
+        "startChar": 34,
+        "endLine": 95,
+        "endChar": 41
+      },
+      "revId": "5a965f0ce9f2e4861917da11e2f6e81cc47f4a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47054c5a_f3c9775f",
+        "filename": "src/com/android/settings/development/WirelessDebuggingEnabler.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-10-29T20:06:07Z",
+      "side": 1,
+      "message": "private static final",
+      "range": {
+        "startLine": 33,
+        "startChar": 4,
+        "endLine": 33,
+        "endChar": 10
+      },
+      "revId": "5a965f0ce9f2e4861917da11e2f6e81cc47f4a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
