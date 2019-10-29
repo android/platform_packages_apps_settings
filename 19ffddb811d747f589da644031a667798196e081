@@ -22,6 +22,30 @@
       "revId": "19ffddb811d747f589da644031a667798196e081",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19f1bb12_4e075133",
+        "filename": "src/com/android/settings/widget/VideoPreference.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1090594
+      },
+      "writtenOn": "2019-10-29T14:40:22Z",
+      "side": 0,
+      "message": "Ok, I added it back. I also added `setVisible(false);` for \u0027mPreviewResource \u003d\u003d 0 \u0026\u0026 mAnimationId \u003d\u003d 0\u0027 case above.",
+      "parentUuid": "8cc14b42_d0692715",
+      "range": {
+        "startLine": 98,
+        "startChar": 16,
+        "endLine": 98,
+        "endChar": 33
+      },
+      "revId": "19ffddb811d747f589da644031a667798196e081",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
