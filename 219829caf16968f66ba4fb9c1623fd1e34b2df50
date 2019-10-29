@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0a31600_e893d066",
+        "filename": "src/com/android/settings/wifi/calling/WifiCallingSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1141163
+      },
+      "writtenOn": "2019-10-29T23:42:14Z",
+      "side": 1,
+      "message": "this issue is already addressed in Q so no more needed",
+      "range": {
+        "startLine": 162,
+        "startChar": 26,
+        "endLine": 170,
+        "endChar": 83
+      },
+      "revId": "219829caf16968f66ba4fb9c1623fd1e34b2df50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
