@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8243e93_8f1e3ce2",
+        "filename": "src/com/android/settings/development/WirelessDebugging.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-10-29T19:58:38Z",
+      "side": 1,
+      "message": "Is there a value in this Override?",
+      "range": {
+        "startLine": 70,
+        "startChar": 5,
+        "endLine": 70,
+        "endChar": 13
+      },
+      "revId": "f8c778252679b373339daa0dd1a29d3946751cdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
