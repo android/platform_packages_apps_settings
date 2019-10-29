@@ -94,6 +94,30 @@
       "revId": "43c108f6d260a5b2bcd1ee9409ad29f5d4a9969d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba0075c2_3c977960",
+        "filename": "src/com/android/settings/widget/VideoPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1403999
+      },
+      "writtenOn": "2019-10-29T06:09:22Z",
+      "side": 1,
+      "message": "Thanks for your CL. I know the root cause is AbstractPreference.displayPreference() call setVisible(true) to make VideoPreference displayed.  So you reverse the logic in displayPreference() and change getAvailabilityStatus.\n\nYou can write this to make the code more readable.\n\npublic int getAvailabilityStatus() {\n        return mVideoPreference.mAnimationAvailable ? AVAILABLE_UNSEARCHABLE : UNSUPPORTED_ON_DEVICE;\n    }\n\nAnd forget about the testcase.",
+      "parentUuid": "dea79041_dadd6667",
+      "range": {
+        "startLine": 40,
+        "startChar": 15,
+        "endLine": 40,
+        "endChar": 93
+      },
+      "revId": "43c108f6d260a5b2bcd1ee9409ad29f5d4a9969d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
