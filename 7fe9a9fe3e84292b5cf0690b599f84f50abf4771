@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a650c535_4184fad9",
+        "filename": "src/com/android/settings/development/tests/WirelessDebuggingManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-10-29T20:17:51Z",
+      "side": 1,
+      "message": "What is I call getInstance with different appContext, should it return different instances? Do we need sWirelessDebuggingManager?",
+      "range": {
+        "startLine": 122,
+        "startChar": 11,
+        "endLine": 122,
+        "endChar": 17
+      },
+      "revId": "7fe9a9fe3e84292b5cf0690b599f84f50abf4771",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
