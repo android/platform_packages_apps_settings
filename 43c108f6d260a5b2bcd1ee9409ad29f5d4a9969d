@@ -70,6 +70,30 @@
       "revId": "43c108f6d260a5b2bcd1ee9409ad29f5d4a9969d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85c24447_97a73c51",
+        "filename": "src/com/android/settings/widget/VideoPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2019-10-29T06:02:35Z",
+      "side": 1,
+      "message": "Test case looks good to me. \n\nTry to modify to below way.\n\n- Set @visibleForTest for mVideoPreference in src code\n\n\n@Test\npublic void getAvailabilityStatus_videoPreferenceInvisiable_shouldReturnUNSUPPORTED_ON_DEVICE(){\n        final VideoPreference videoPreference \u003d mock(VideoPreference.class);\n        // Assign mock object to mVideoPreference in controller\n        ReflectionHelpers.setField(mController, \"mVideoPreference\", videoPreference);\n        doReturn(false).when(videoPreference).isVisible();\n\n        assertThat(mController.getAvailabilityStatus()).isEqualTo(AVAILABLE_UNSEARCHABLE);\n}",
+      "parentUuid": "dea79041_dadd6667",
+      "range": {
+        "startLine": 40,
+        "startChar": 15,
+        "endLine": 40,
+        "endChar": 93
+      },
+      "revId": "43c108f6d260a5b2bcd1ee9409ad29f5d4a9969d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
