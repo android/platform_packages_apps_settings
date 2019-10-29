@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "decb5d23_0b145e2f",
+        "filename": "src/com/android/settings/development/tests/AdbWirelessManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-10-29T19:55:09Z",
+      "side": 1,
+      "message": "Could you please make it an enum instead of int?",
+      "range": {
+        "startLine": 62,
+        "startChar": 24,
+        "endLine": 62,
+        "endChar": 27
+      },
+      "revId": "c9ed809fd773b9345c2ec772137b4440529aa171",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45c82da7_556e4129",
+        "filename": "src/com/android/settings/development/tests/AdbWirelessManager.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-10-29T19:55:09Z",
+      "side": 1,
+      "message": "Instead of checking for null, can we have a dedicated implementation for \"no simulator\"?",
+      "range": {
+        "startLine": 130,
+        "startChar": 23,
+        "endLine": 130,
+        "endChar": 30
+      },
+      "revId": "c9ed809fd773b9345c2ec772137b4440529aa171",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f071ac7_e426756f",
+        "filename": "src/com/android/settings/development/tests/AdbWirelessStateSimulator.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-10-29T19:55:09Z",
+      "side": 1,
+      "message": "Do we have to run it in a separate thread?",
+      "range": {
+        "startLine": 78,
+        "startChar": 19,
+        "endLine": 78,
+        "endChar": 23
+      },
+      "revId": "c9ed809fd773b9345c2ec772137b4440529aa171",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
