@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8cc14b42_d0692715",
+        "filename": "src/com/android/settings/widget/VideoPreference.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1403999
+      },
+      "writtenOn": "2019-10-29T14:37:55Z",
+      "side": 0,
+      "message": "sorry we can not do this.\n\nBecause some VideoPreference don\u0027t have VideoPreferenceController on it.\nex: https://android.googlesource.com/platform/packages/apps/Settings/+/refs/heads/master/res/xml/prevent_ringing_gesture_settings.xml\n\nIt is another bug if we don\u0027t setVisible here.",
+      "range": {
+        "startLine": 98,
+        "startChar": 16,
+        "endLine": 98,
+        "endChar": 33
+      },
+      "revId": "19ffddb811d747f589da644031a667798196e081",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
