@@ -417,4 +417,7 @@
 
     <!-- "Show work policy info" intent action. TODO(b/134391103): Replace with final SystemAPI intent when it's available. -->
     <string name="config_work_policy_info_intent_action" translatable="false"/>
+
+    <!-- Whether the given language capitalizes nouns -->
+    <bool name="language_capitalizes_nouns">false</bool>
 </resources>
