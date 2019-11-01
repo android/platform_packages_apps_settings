@@ -22,6 +22,29 @@
       "revId": "548cf5741bc29722f1b151c6e2422f1ec3306d5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24ab4310_439f7f58",
+        "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2019-11-01T12:15:52Z",
+      "side": 1,
+      "message": "setOverrides should kill the app the same way the adb command does (or perhaps do it here)",
+      "range": {
+        "startLine": 264,
+        "startChar": 36,
+        "endLine": 264,
+        "endChar": 48
+      },
+      "revId": "548cf5741bc29722f1b151c6e2422f1ec3306d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
