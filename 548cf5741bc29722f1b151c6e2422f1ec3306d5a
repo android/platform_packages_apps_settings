@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "98e682a0_33775f1c",
+        "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-11-01T19:23:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a711b0b_72fc9033",
+      "range": {
+        "startLine": 166,
+        "startChar": 12,
+        "endLine": 166,
+        "endChar": 106
+      },
+      "revId": "548cf5741bc29722f1b151c6e2422f1ec3306d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24ab4310_439f7f58",
         "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
         "patchSetId": 6
@@ -45,6 +69,30 @@
       "revId": "548cf5741bc29722f1b151c6e2422f1ec3306d5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c35976b7_99dd0469",
+        "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-11-01T19:23:14Z",
+      "side": 1,
+      "message": "Created a separate bug for this http://b/143758748, as it may be non-trivial.",
+      "parentUuid": "24ab4310_439f7f58",
+      "range": {
+        "startLine": 264,
+        "startChar": 36,
+        "endLine": 264,
+        "endChar": 48
+      },
+      "revId": "548cf5741bc29722f1b151c6e2422f1ec3306d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
