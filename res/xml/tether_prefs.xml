@@ -20,12 +20,11 @@
     android:key="tether_prefs_screen"
     android:title="@string/tether_settings_title_all">
 
-    <com.android.settings.widget.FixedLineSummaryPreference
+    <Preference
         android:key="wifi_tether"
         android:title="@string/wifi_hotspot_checkbox_text"
-        android:summary="@string/summary_two_lines_placeholder"
-        android:fragment="com.android.settings.wifi.tether.WifiTetherSettings"
-        settings:summaryLineCount="2" />
+        android:summary="@string/wifi_hotspot_off_subtext"
+        android:fragment="com.android.settings.wifi.tether.WifiTetherSettings" />
 
     <SwitchPreference
         android:key="usb_tether_settings"
