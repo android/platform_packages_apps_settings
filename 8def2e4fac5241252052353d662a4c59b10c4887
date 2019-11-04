@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bb0a7d8_e95b201e",
+        "filename": "tests/robotests/src/com/android/settings/development/compat/PlatformCompatDashboardTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2019-11-04T12:58:49Z",
+      "side": 1,
+      "message": "What does this check?Shouldn\u0027t you check properties of the preference?",
+      "range": {
+        "startLine": 134,
+        "startChar": 8,
+        "endLine": 134,
+        "endChar": 95
+      },
+      "revId": "8def2e4fac5241252052353d662a4c59b10c4887",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
