@@ -401,6 +401,13 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
     private static List<AbstractPreferenceController> buildPreferenceControllers(Context context,
             Activity activity, Lifecycle lifecycle, DevelopmentSettingsDashboardFragment fragment,
             BluetoothA2dpConfigStore bluetoothA2dpConfigStore) {
+        WirelessDebuggingMasterSwitchController wifiDebuggingController =
+                new WirelessDebuggingMasterSwitchController(context);
+
+        if (lifecycle != null) {
+            lifecycle.addObserver(wifiDebuggingController);
+        }
+
         final List<AbstractPreferenceController> controllers = new ArrayList<>();
         controllers.add(new MemoryUsagePreferenceController(context));
         controllers.add(new BugReportPreferenceController(context));
@@ -417,6 +424,7 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
         controllers.add(new DisableAutomaticUpdatesPreferenceController(context));
         controllers.add(new AdbPreferenceController(context, fragment));
         controllers.add(new ClearAdbKeysPreferenceController(context, fragment));
+        controllers.add(wifiDebuggingController);
         controllers.add(new LocalTerminalPreferenceController(context));
         controllers.add(new BugReportInPowerPreferenceController(context));
         controllers.add(new AutomaticSystemServerHeapDumpPreferenceController(context));
