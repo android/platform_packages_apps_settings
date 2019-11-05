@@ -19,5 +19,11 @@
         xmlns:settings="http://schemas.android.com/apk/res-auto"
         android:title="@string/adb_wireless_settings"
         settings:keywords="@string/keywords_adb_wireless">
+
+    <!-- In off position, will contain a message to turn wireless debugging on,
+         In on position, will contain the device name preference. -->
+    <PreferenceCategory
+      android:key="adb_wireless_status_category"
+      settings:allowDividerAbove="false" />
 </PreferenceScreen>
 
