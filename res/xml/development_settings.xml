@@ -147,7 +147,7 @@
 
         <com.android.settings.widget.MasterSwitchPreference
             android:fragment="com.android.settings.development.WirelessDebugging"
-            android:key="enable_adb_wireless"
+            android:key="toggle_adb_wireless"
             android:title="@string/enable_adb_wireless"
             android:summary="@string/enable_adb_wireless_summary" />
 

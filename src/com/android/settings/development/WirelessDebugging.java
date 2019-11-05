@@ -18,6 +18,8 @@ package com.android.settings.development;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -34,6 +36,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import androidx.preference.Preference;
+import androidx.preference.PreferenceCategory;
+
 import com.android.internal.logging.nano.MetricsProto;
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
 import com.android.settings.R;
@@ -44,19 +49,39 @@ import com.android.settings.search.SearchIndexableRaw;
 import com.android.settings.widget.SwitchBar;
 import com.android.settings.widget.SwitchBarController;
 import com.android.settingslib.search.SearchIndexable;
+import com.android.settingslib.widget.FooterPreference;
 
 @SearchIndexable
 public class WirelessDebugging extends DashboardFragment
-        implements Indexable {
+        implements Indexable, WirelessDebuggingEnabler.OnEnabledListener {
 
-    private static final String TAG = "WirelessDebugging";
+    private final String TAG = this.getClass().getSimpleName();
+
+    private WirelessDebuggingEnabler mWifiDebuggingEnabler;
+
+    // UI components
+    private static final String PREF_KEY_STATUS_CATEGORY = "adb_wireless_status_category";
+
+    private PreferenceCategory mStatusCategory;
+
+    private IntentFilter mIntentFilter;
+    private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            String action = intent.getAction();
+            if (WirelessDebuggingManager.WIRELESS_DEBUG_PAIRED_LIST_ACTION.equals(action)) {
+                Log.i(TAG, "Got the paired list, TODO need to show it");
+            }
+        }
+    };
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         final SettingsActivity activity = (SettingsActivity) getActivity();
-        final SwitchBar switchBar = activity.getSwitchBar();
-        switchBar.show();
+        mWifiDebuggingEnabler =  new WirelessDebuggingEnabler(activity,
+                                                              new SwitchBarController(activity.getSwitchBar()),
+                                                              this);
     }
 
     @Override
@@ -64,15 +89,21 @@ public class WirelessDebugging extends DashboardFragment
         super.onCreate(icicle);
 
         addPreferences();
+        mIntentFilter = new IntentFilter(WirelessDebuggingManager.WIRELESS_DEBUG_PAIRED_LIST_ACTION);
     }
 
     private void addPreferences() {
         addPreferencesFromResource(R.xml.adb_wireless_settings);
+
+        mStatusCategory =
+                (PreferenceCategory) findPreference(PREF_KEY_STATUS_CATEGORY);
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+
+        mWifiDebuggingEnabler.teardownSwitchController();
     }
 
     @Override
@@ -82,12 +113,19 @@ public class WirelessDebugging extends DashboardFragment
 
     @Override
     public void onResume() {
+        final Activity activity = getActivity();
         super.onResume();
+
+        getActivity().registerReceiver(mReceiver, mIntentFilter);
+        mWifiDebuggingEnabler.resume(activity);
     }
 
     @Override
     public void onPause() {
         super.onPause();
+
+        getActivity().unregisterReceiver(mReceiver);
+        mWifiDebuggingEnabler.pause();
     }
 
     @Override
@@ -142,5 +180,27 @@ public class WirelessDebugging extends DashboardFragment
     @Override
     protected String getLogTag() {
         return TAG;
+    }
+
+    @Override
+    public void onEnabled(boolean enabled) {
+        if (enabled) {
+            updateDeviceName();
+        } else {
+            setOffMessage();
+        }
+    }
+
+    private void setOffMessage() {
+        mStatusCategory.removeAll();
+        FooterPreference footerPreference =
+                new FooterPreference(mStatusCategory.getContext());
+        final CharSequence title = getText(R.string.adb_wireless_list_empty_off);
+        footerPreference.setTitle(title);
+        mStatusCategory.addPreference(footerPreference);
+    }
+
+    private void updateDeviceName() {
+        mStatusCategory.removeAll();
     }
 }
