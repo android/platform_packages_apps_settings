@@ -22,6 +22,24 @@
       "revId": "401b24287fe5425e2f0dff25a5d61f81e0e24792",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86b52543_610b5502",
+        "filename": "res/xml/tether_prefs.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2019-11-05T06:28:41Z",
+      "side": 1,
+      "message": "I\u0027ll do that then, thanks",
+      "parentUuid": "ae4d90df_f708bbe2",
+      "revId": "401b24287fe5425e2f0dff25a5d61f81e0e24792",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
