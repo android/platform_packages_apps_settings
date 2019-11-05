@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae4d90df_f708bbe2",
+        "filename": "res/xml/tether_prefs.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1403999
+      },
+      "writtenOn": "2019-11-05T02:36:27Z",
+      "side": 1,
+      "message": "I think settings:summaryLineCount\u003d\"2\" is to prevent the text being changed to ellipsis.\nIf you limit it to one line, when the font size and display size change to largest, the text is easily to be ellipsis.\n\nOne simple fix is just change com.android.settings.widget.FixedLineSummaryPreference to Preference which use default summary line count and resize when needed.",
+      "range": {
+        "startLine": 28,
+        "startChar": 8,
+        "endLine": 28,
+        "endChar": 37
+      },
+      "revId": "401b24287fe5425e2f0dff25a5d61f81e0e24792",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
