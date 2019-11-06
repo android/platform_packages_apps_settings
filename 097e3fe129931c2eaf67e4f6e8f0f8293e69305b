@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe413a71_d063a831",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2019-11-06T06:47:25Z",
+      "side": 1,
+      "message": "Remove the space.",
+      "range": {
+        "startLine": 20,
+        "startChar": 30,
+        "endLine": 20,
+        "endChar": 31
+      },
+      "revId": "097e3fe129931c2eaf67e4f6e8f0f8293e69305b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "573ec5d3_7592e2ec",
+        "filename": "src/com/android/settings/wifi/tether/WifiTetherSwitchBarController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2019-11-06T06:47:25Z",
+      "side": 1,
+      "message": "If we do nothing in onSwitchChange, I think WifiTetherSwitchBarController\ndoes not have to implement SwitchBar.OnSwitchChangeListener.",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 5
+      },
+      "revId": "097e3fe129931c2eaf67e4f6e8f0f8293e69305b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
