@@ -123,6 +123,8 @@ public class EnabledNetworkModePreferenceController extends
         super.updateState(preference);
         final ListPreference listPreference = (ListPreference) preference;
         final int networkMode = getPreferredNetworkMode();
+        Log.d(LOG_TAG, "updateState networkMode: " + networkMode);
+
         updatePreferenceEntries(listPreference);
         updatePreferenceValueAndSummary(listPreference, networkMode);
     }
@@ -133,9 +135,6 @@ public class EnabledNetworkModePreferenceController extends
 
         if (mTelephonyManager.setPreferredNetworkTypeBitmask(
                 MobileNetworkUtils.getRafFromNetworkType(newPreferredNetworkMode))) {
-            Settings.Global.putInt(mContext.getContentResolver(),
-                    Settings.Global.PREFERRED_NETWORK_MODE + mSubId,
-                    newPreferredNetworkMode);
             updatePreferenceValueAndSummary((ListPreference) preference, newPreferredNetworkMode);
             return true;
         }
@@ -157,16 +156,21 @@ public class EnabledNetworkModePreferenceController extends
                 : false;
 
         final long supportedRadioBitmask = mTelephonyManager.getSupportedRadioAccessFamily();
+        final boolean is5gEnabledByCarrier = (mTelephonyManager.getAllowedNetworkTypes()
+                & TelephonyManager.NETWORK_TYPE_BITMASK_NR) > 0;
         mDisplay5gList = checkSupportedRadioBitmask(
-                supportedRadioBitmask, mTelephonyManager.NETWORK_TYPE_BITMASK_NR);
-
+                supportedRadioBitmask, mTelephonyManager.NETWORK_TYPE_BITMASK_NR)
+                && is5gEnabledByCarrier;
         lifecycle.addObserver(this);
     }
 
     private int getPreferredNetworkMode() {
-        return Settings.Global.getInt(mContext.getContentResolver(),
+        long preferredNetworkBitMask = MobileNetworkUtils.getRafFromNetworkType(
+                Settings.Global.getInt(mContext.getContentResolver(),
                 Settings.Global.PREFERRED_NETWORK_MODE + mSubId,
-                Phone.PREFERRED_NT_MODE);
+                TelephonyManager.DEFAULT_PREFERRED_NETWORK_MODE));
+        return  MobileNetworkUtils.getNetworkTypeFromRaf((int)
+                (preferredNetworkBitMask & mTelephonyManager.getAllowedNetworkTypes()));
     }
 
     private void updatePreferenceEntries(ListPreference preference) {
@@ -177,11 +181,8 @@ public class EnabledNetworkModePreferenceController extends
                     mContext.getContentResolver(),
                     android.provider.Settings.Global.LTE_SERVICE_FORCED + mSubId,
                     0);
-            final int settingsNetworkMode = android.provider.Settings.Global.getInt(
-                    mContext.getContentResolver(),
-                    android.provider.Settings.Global.PREFERRED_NETWORK_MODE + mSubId,
-                    Phone.PREFERRED_NT_MODE);
-            if (mTelephonyManager.isLteCdmaEvdoGsmWcdmaEnabled()) {
+            final int settingsNetworkMode = getPreferredNetworkMode();
+            if (mTelephonyManager.isGlobalModeEnabled()) {
                 if (lteForced == 0) {
                     preference.setEntries(
                             R.array.enabled_networks_cdma_choices);
