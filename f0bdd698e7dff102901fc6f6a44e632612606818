@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06d256c0_d1d22e72",
+        "filename": "src/com/android/settings/development/WirelessDebugging.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-11-06T18:21:20Z",
+      "side": 1,
+      "message": "Is there a value in this function?",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 5
+      },
+      "revId": "f0bdd698e7dff102901fc6f6a44e632612606818",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
