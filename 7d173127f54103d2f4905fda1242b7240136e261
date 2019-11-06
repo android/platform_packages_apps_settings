@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81bcf015_37f5f409",
+        "filename": "src/com/android/settings/development/tests/PairedDeviceGenerator.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-11-06T18:29:30Z",
+      "side": 1,
+      "message": "Should this be final as well?",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 53,
+        "endChar": 11
+      },
+      "revId": "7d173127f54103d2f4905fda1242b7240136e261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c0966310_4c2ad865",
+        "filename": "src/com/android/settings/development/tests/PairedDeviceGenerator.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-11-06T18:29:30Z",
+      "side": 1,
+      "message": "Could you please init here?\n\nExecutors.newScheduledThreadPool(3);",
+      "range": {
+        "startLine": 54,
+        "startChar": 59,
+        "endLine": 54,
+        "endChar": 60
+      },
+      "revId": "7d173127f54103d2f4905fda1242b7240136e261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc7528a9_8a74c595",
+        "filename": "src/com/android/settings/development/tests/PairedDeviceGenerator.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-11-06T18:29:30Z",
+      "side": 1,
+      "message": "private final",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 11
+      },
+      "revId": "7d173127f54103d2f4905fda1242b7240136e261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7461c274_b3d445fe",
+        "filename": "src/com/android/settings/development/tests/PairedDeviceGenerator.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-11-06T18:29:30Z",
+      "side": 1,
+      "message": "Should this be just Map?",
+      "range": {
+        "startLine": 58,
+        "startChar": 19,
+        "endLine": 58,
+        "endChar": 26
+      },
+      "revId": "7d173127f54103d2f4905fda1242b7240136e261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eef6a4e_1b01b35e",
+        "filename": "src/com/android/settings/development/tests/PairedDeviceGenerator.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-11-06T18:29:30Z",
+      "side": 1,
+      "message": "Can we use \"of\" here?\n\nMap\u003cInteger, String\u003e map \u003d new HashMap\u003c\u003e( Map.of(1,\"a\", 2,\"b\", 3,\"c\") );",
+      "range": {
+        "startLine": 69,
+        "startChar": 12,
+        "endLine": 69,
+        "endChar": 15
+      },
+      "revId": "7d173127f54103d2f4905fda1242b7240136e261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "95653e3f_17147393",
+        "filename": "src/com/android/settings/development/tests/PairedDeviceGenerator.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-11-06T18:29:30Z",
+      "side": 1,
+      "message": "Do you expect this method to be called may times?",
+      "range": {
+        "startLine": 148,
+        "startChar": 12,
+        "endLine": 148,
+        "endChar": 20
+      },
+      "revId": "7d173127f54103d2f4905fda1242b7240136e261",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
