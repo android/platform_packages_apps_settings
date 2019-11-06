@@ -19,7 +19,9 @@ package com.android.settings.network.telephony.gsm;
 import android.app.settings.SettingsEnums;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Looper;
 import android.provider.Settings;
+import android.telephony.PhoneStateListener;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
@@ -34,21 +36,27 @@ import com.android.settings.core.SubSettingLauncher;
 import com.android.settings.network.telephony.MobileNetworkUtils;
 import com.android.settings.network.telephony.NetworkSelectSettings;
 import com.android.settings.network.telephony.TelephonyBasePreferenceController;
+import com.android.settingslib.core.lifecycle.LifecycleObserver;
+import com.android.settingslib.core.lifecycle.events.OnStart;
+import com.android.settingslib.core.lifecycle.events.OnStop;
 
 /**
  * Preference controller for "Open network select"
  */
 public class OpenNetworkSelectPagePreferenceController extends
         TelephonyBasePreferenceController implements
-        AutoSelectPreferenceController.OnNetworkSelectModeListener {
+        AutoSelectPreferenceController.OnNetworkSelectModeListener,
+        LifecycleObserver, OnStart, OnStop {
 
     private TelephonyManager mTelephonyManager;
     private Preference mPreference;
+    private PhoneCallStateListener mPhoneStateListener;
 
     public OpenNetworkSelectPagePreferenceController(Context context, String key) {
         super(context, key);
         mTelephonyManager = context.getSystemService(TelephonyManager.class);
         mSubId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
+        mPhoneStateListener = new PhoneCallStateListener(Looper.getMainLooper());
     }
 
     @Override
@@ -65,10 +73,21 @@ public class OpenNetworkSelectPagePreferenceController extends
     }
 
     @Override
+    public void onStart() {
+        mPhoneStateListener.register(mSubId);
+    }
+
+    @Override
+    public void onStop() {
+        mPhoneStateListener.unregister();
+    }
+
+    @Override
     public void updateState(Preference preference) {
         super.updateState(preference);
         preference.setEnabled(mTelephonyManager.getNetworkSelectionMode()
-                != TelephonyManager.NETWORK_SELECTION_MODE_AUTO);
+                != TelephonyManager.NETWORK_SELECTION_MODE_AUTO
+                && mTelephonyManager.getCallState(mSubId) == TelephonyManager.CALL_STATE_IDLE);
     }
 
     @Override
@@ -107,5 +126,26 @@ public class OpenNetworkSelectPagePreferenceController extends
     @Override
     public void onNetworkSelectModeChanged() {
         updateState(mPreference);
+    }
+
+    private class PhoneCallStateListener extends PhoneStateListener {
+
+        public PhoneCallStateListener(Looper looper) {
+            super(looper);
+        }
+
+        @Override
+        public void onCallStateChanged(int state, String incomingNumber) {
+            updateState(mPreference);
+        }
+
+        public void register(int subId) {
+            mSubId = subId;
+            mTelephonyManager.listen(this, PhoneStateListener.LISTEN_CALL_STATE);
+        }
+
+        public void unregister() {
+            mTelephonyManager.listen(this, PhoneStateListener.LISTEN_NONE);
+        }
     }
 }

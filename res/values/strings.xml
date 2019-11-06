@@ -10828,6 +10828,10 @@
     <string name="network_query_error">Couldn\u2019t find networks. Try again.</string>
     <!-- Text to show this network is forbidden [CHAR LIMIT=NONE] -->
     <string name="forbidden_network">(forbidden)</string>
+    <!-- Available networks screen, dialog title when user starts network scan [CHAR LIMIT=30] -->
+    <string name="network_scan_warning_title">Note</string>
+    <!-- Available networks screen, dialog message when user starts network scan [CHAR LIMIT=NONE] -->
+    <string name="network_scan_warning_message">Couldn\u2019t search networks while using mobile data. Temporary disable mobile data during network scanning.</string>
 
     <!-- Message informs the user that has no SIM card in personalized Settings [CHAR LIMIT=30] -->
     <string name="no_sim_card">No SIM card</string>

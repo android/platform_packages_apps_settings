@@ -26,6 +26,7 @@ import android.os.PersistableBundle;
 import android.os.SystemClock;
 import android.provider.Settings;
 import android.telephony.CarrierConfigManager;
+import android.telephony.PhoneStateListener;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 
@@ -39,6 +40,9 @@ import com.android.settings.core.SubSettingLauncher;
 import com.android.settings.network.telephony.MobileNetworkUtils;
 import com.android.settings.network.telephony.NetworkSelectSettings;
 import com.android.settings.network.telephony.TelephonyTogglePreferenceController;
+import com.android.settingslib.core.lifecycle.LifecycleObserver;
+import com.android.settingslib.core.lifecycle.events.OnStart;
+import com.android.settingslib.core.lifecycle.events.OnStop;
 import com.android.settingslib.utils.ThreadUtils;
 
 import java.util.ArrayList;
@@ -48,13 +52,15 @@ import java.util.concurrent.TimeUnit;
 /**
  * Preference controller for "Auto Select Network"
  */
-public class AutoSelectPreferenceController extends TelephonyTogglePreferenceController {
+public class AutoSelectPreferenceController extends TelephonyTogglePreferenceController implements
+        LifecycleObserver, OnStart, OnStop {
     private static final long MINIMUM_DIALOG_TIME_MILLIS = TimeUnit.SECONDS.toMillis(1);
 
     private final Handler mUiHandler;
     private TelephonyManager mTelephonyManager;
     private boolean mOnlyAutoSelectInHome;
     private List<OnNetworkSelectModeListener> mListeners;
+    private PhoneCallStateListener mPhoneStateListener;
     @VisibleForTesting
     ProgressDialog mProgressDialog;
     @VisibleForTesting
@@ -66,6 +72,7 @@ public class AutoSelectPreferenceController extends TelephonyTogglePreferenceCon
         mSubId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
         mListeners = new ArrayList<>();
         mUiHandler = new Handler(Looper.getMainLooper());
+        mPhoneStateListener = new PhoneCallStateListener(Looper.getMainLooper());
     }
 
     @Override
@@ -82,6 +89,16 @@ public class AutoSelectPreferenceController extends TelephonyTogglePreferenceCon
     }
 
     @Override
+    public void onStart() {
+        mPhoneStateListener.register(mSubId);
+    }
+
+    @Override
+    public void onStop() {
+        mPhoneStateListener.unregister();
+    }
+
+    @Override
     public boolean isChecked() {
         return mTelephonyManager.getNetworkSelectionMode()
                 == TelephonyManager.NETWORK_SELECTION_MODE_AUTO;
@@ -91,11 +108,13 @@ public class AutoSelectPreferenceController extends TelephonyTogglePreferenceCon
     public void updateState(Preference preference) {
         super.updateState(preference);
 
+        boolean isCallStateIdle = mTelephonyManager.getCallState(mSubId)
+                == TelephonyManager.CALL_STATE_IDLE;
         preference.setSummary(null);
         if (mTelephonyManager.getServiceState().getRoaming()) {
-            preference.setEnabled(true);
+            preference.setEnabled(isCallStateIdle);
         } else {
-            preference.setEnabled(!mOnlyAutoSelectInHome);
+            preference.setEnabled(!mOnlyAutoSelectInHome && isCallStateIdle);
             if (mOnlyAutoSelectInHome) {
                 preference.setSummary(mContext.getString(
                         R.string.manual_mode_disallowed_summary,
@@ -186,5 +205,26 @@ public class AutoSelectPreferenceController extends TelephonyTogglePreferenceCon
      */
     public interface OnNetworkSelectModeListener {
         void onNetworkSelectModeChanged();
+    }
+
+    private class PhoneCallStateListener extends PhoneStateListener {
+
+        public PhoneCallStateListener(Looper looper) {
+            super(looper);
+        }
+
+        @Override
+        public void onCallStateChanged(int state, String incomingNumber) {
+            updateState(mSwitchPreference);
+        }
+
+        public void register(int subId) {
+            mSubId = subId;
+            mTelephonyManager.listen(this, PhoneStateListener.LISTEN_CALL_STATE);
+        }
+
+        public void unregister() {
+            mTelephonyManager.listen(this, PhoneStateListener.LISTEN_NONE);
+        }
     }
 }

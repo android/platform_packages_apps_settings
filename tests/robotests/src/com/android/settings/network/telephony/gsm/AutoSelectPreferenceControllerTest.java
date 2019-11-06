@@ -121,6 +121,16 @@ public class AutoSelectPreferenceControllerTest {
     }
 
     @Test
+    public void updateState_notCallIdle_disable() {
+        when(mTelephonyManager.getCallState(SUB_ID)).thenReturn(
+                TelephonyManager.CALL_STATE_RINGING);
+
+        mController.updateState(mSwitchPreference);
+
+        assertThat(mSwitchPreference.isEnabled()).isFalse();
+    }
+
+    @Test
     public void init_carrierConfigNull_shouldNotCrash() {
         when(mCarrierConfigManager.getConfigForSubId(SUB_ID)).thenReturn(null);
 

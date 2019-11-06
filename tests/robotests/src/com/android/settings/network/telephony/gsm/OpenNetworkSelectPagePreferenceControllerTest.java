@@ -92,6 +92,16 @@ public class OpenNetworkSelectPagePreferenceControllerTest {
     }
 
     @Test
+    public void updateState_notCallIdle_disable() {
+        when(mTelephonyManager.getCallState(SUB_ID)).thenReturn(
+                TelephonyManager.CALL_STATE_RINGING);
+
+        mController.updateState(mPreference);
+
+        assertThat(mPreference.isEnabled()).isFalse();
+    }
+
+    @Test
     public void getSummary_inService_returnOperatorName() {
         when(mServiceState.getState()).thenReturn(ServiceState.STATE_IN_SERVICE);
         doReturn(OPERATOR_NAME).when(mTelephonyManager).getNetworkOperatorName();
