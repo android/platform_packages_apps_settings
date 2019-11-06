@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "5e5f1961_5f6773ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2019-11-06T06:49:05Z",
+      "side": 1,
+      "message": "Would you help to add bug number?\n\nBug: 142625203",
+      "revId": "097e3fe129931c2eaf67e4f6e8f0f8293e69305b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fe413a71_d063a831",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
