@@ -16,22 +16,28 @@
 
 package com.android.settings.network.telephony.gsm;
 
+import static androidx.lifecycle.Lifecycle.Event.ON_START;
+
 import static com.google.common.truth.Truth.assertThat;
 
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
 import android.os.PersistableBundle;
 import android.telephony.CarrierConfigManager;
+import android.telephony.PhoneStateListener;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 
+import androidx.lifecycle.LifecycleOwner;
 import androidx.preference.Preference;
 
 import com.android.settings.R;
+import com.android.settingslib.core.lifecycle.Lifecycle;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -59,6 +65,8 @@ public class OpenNetworkSelectPagePreferenceControllerTest {
     private OpenNetworkSelectPagePreferenceController mController;
     private Preference mPreference;
     private Context mContext;
+    private Lifecycle mLifecycle;
+    private LifecycleOwner mLifecycleOwner;
 
     @Before
     public void setUp() {
@@ -76,9 +84,14 @@ public class OpenNetworkSelectPagePreferenceControllerTest {
         when(mCarrierConfigManager.getConfigForSubId(SUB_ID)).thenReturn(mCarrierConfig);
 
         mPreference = new Preference(mContext);
-        mController = new OpenNetworkSelectPagePreferenceController(mContext,
-                "open_network_select");
+        mController = spy(new OpenNetworkSelectPagePreferenceController(mContext,
+                "open_network_select"));
+        mController.mPreference = mPreference;
         mController.init(SUB_ID);
+
+        mLifecycleOwner = () -> mLifecycle;
+        mLifecycle = new Lifecycle(mLifecycleOwner);
+        mLifecycle.addObserver(mController);
     }
 
     @Test
@@ -106,5 +119,37 @@ public class OpenNetworkSelectPagePreferenceControllerTest {
 
         assertThat(mController.getSummary()).isEqualTo(
                 mContext.getString(R.string.network_disconnected));
+    }
+
+    @Test
+    public void onCallStateChanged_callIdle_enabled() {
+        // Go through lifecycle to set up listener.
+        mLifecycle.handleLifecycleEvent(ON_START);
+        verify(mController).onStart();
+        verify(mTelephonyManager).listen(mController.mPhoneStateListener,
+                PhoneStateListener.LISTEN_CALL_STATE);
+
+        // Trigger listener update.
+        when(mTelephonyManager.getNetworkSelectionMode()).thenReturn(
+                TelephonyManager.NETWORK_SELECTION_MODE_MANUAL);
+        mController.mPhoneStateListener.onCallStateChanged(TelephonyManager.CALL_STATE_IDLE, "");
+
+        assertThat(mPreference.isEnabled()).isTrue();
+    }
+
+    @Test
+    public void onCallStateChanged_notCallIdle_disabled() {
+        // Go through lifecycle to set up listener.
+        mLifecycle.handleLifecycleEvent(ON_START);
+        verify(mController).onStart();
+        verify(mTelephonyManager).listen(mController.mPhoneStateListener,
+                PhoneStateListener.LISTEN_CALL_STATE);
+
+        // Trigger listener update.
+        when(mTelephonyManager.getNetworkSelectionMode()).thenReturn(
+                TelephonyManager.NETWORK_SELECTION_MODE_MANUAL);
+        mController.mPhoneStateListener.onCallStateChanged(TelephonyManager.CALL_STATE_OFFHOOK, "");
+
+        assertThat(mPreference.isEnabled()).isFalse();
     }
 }
