@@ -20,11 +20,13 @@ import android.app.settings.SettingsEnums;
 import android.content.Context;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.telephony.PhoneStateListener;
 import android.telephony.ServiceState;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 
+import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 
@@ -34,16 +36,24 @@ import com.android.settings.core.SubSettingLauncher;
 import com.android.settings.network.telephony.MobileNetworkUtils;
 import com.android.settings.network.telephony.NetworkSelectSettings;
 import com.android.settings.network.telephony.TelephonyBasePreferenceController;
+import com.android.settingslib.core.lifecycle.LifecycleObserver;
+import com.android.settingslib.core.lifecycle.events.OnStart;
+import com.android.settingslib.core.lifecycle.events.OnStop;
 
 /**
  * Preference controller for "Open network select"
  */
 public class OpenNetworkSelectPagePreferenceController extends
         TelephonyBasePreferenceController implements
-        AutoSelectPreferenceController.OnNetworkSelectModeListener {
+        AutoSelectPreferenceController.OnNetworkSelectModeListener,
+        LifecycleObserver, OnStart, OnStop {
 
     private TelephonyManager mTelephonyManager;
-    private Preference mPreference;
+    private boolean mIsCallStateIdle = true;
+    @VisibleForTesting
+    Preference mPreference;
+    @VisibleForTesting
+    PhoneStateListener mPhoneStateListener;
 
     public OpenNetworkSelectPagePreferenceController(Context context, String key) {
         super(context, key);
@@ -65,10 +75,27 @@ public class OpenNetworkSelectPagePreferenceController extends
     }
 
     @Override
+    public void onStart() {
+        mPhoneStateListener = new PhoneStateListener() {
+            @Override
+            public void onCallStateChanged(int state, String incomingNumber) {
+                mIsCallStateIdle = state == TelephonyManager.CALL_STATE_IDLE;
+                updateState(mPreference);
+            }
+        };
+        mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
+    }
+
+    @Override
+    public void onStop() {
+        mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_NONE);
+    }
+
+    @Override
     public void updateState(Preference preference) {
         super.updateState(preference);
         preference.setEnabled(mTelephonyManager.getNetworkSelectionMode()
-                != TelephonyManager.NETWORK_SELECTION_MODE_AUTO);
+                != TelephonyManager.NETWORK_SELECTION_MODE_AUTO && mIsCallStateIdle);
     }
 
     @Override

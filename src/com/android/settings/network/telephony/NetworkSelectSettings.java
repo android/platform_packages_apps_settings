@@ -28,6 +28,7 @@ import android.telephony.CarrierConfigManager;
 import android.telephony.CellIdentity;
 import android.telephony.CellInfo;
 import android.telephony.NetworkRegistrationInfo;
+import android.telephony.PhoneStateListener;
 import android.telephony.ServiceState;
 import android.telephony.SignalStrength;
 import android.telephony.SubscriptionManager;
@@ -36,6 +37,8 @@ import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.VisibleForTesting;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 
@@ -57,7 +60,8 @@ import java.util.concurrent.Executors;
 /**
  * "Choose network" settings UI for the Phone app.
  */
-public class NetworkSelectSettings extends DashboardFragment {
+public class NetworkSelectSettings extends DashboardFragment
+        implements NetworkScanWarningDialogFragment.NetworkScanWarningDialogListener {
 
     private static final String TAG = "NetworkSelectSettings";
 
@@ -89,6 +93,21 @@ public class NetworkSelectSettings extends DashboardFragment {
     private final ExecutorService mNetworkScanExecutor = Executors.newFixedThreadPool(1);
     private MetricsFeatureProvider mMetricsFeatureProvider;
     private boolean mUseNewApi;
+
+    private class PhoneCallStateListener extends PhoneStateListener {
+        @Override
+        public void onCallStateChanged(int state, String incomingNumber) {
+            Log.d(TAG, "onCallStateChanged: " + state);
+            if (state != TelephonyManager.CALL_STATE_IDLE) {
+                Activity activity = getActivity();
+                if (activity != null) {
+                    activity.finish();
+                }
+            }
+        }
+    }
+
+    private final PhoneCallStateListener mPhoneStateListener = new PhoneCallStateListener();
 
     @Override
     public void onCreate(Bundle icicle) {
@@ -134,6 +153,31 @@ public class NetworkSelectSettings extends DashboardFragment {
     public void onStart() {
         super.onStart();
 
+        if (mTelephonyManager.isDataEnabled()) {
+            FragmentManager fragmentManager = getChildFragmentManager();
+            if (fragmentManager.findFragmentByTag(NetworkScanWarningDialogFragment.TAG) == null) {
+                new NetworkScanWarningDialogFragment().show(fragmentManager,
+                        NetworkScanWarningDialogFragment.TAG);
+            }
+        } else {
+            startNetworkQuery();
+        }
+    }
+
+    @Override
+    public void onPositiveButtonClick(DialogFragment dialog) {
+        startNetworkQuery();
+    }
+
+    @Override
+    public void onNegativeButtonClick(DialogFragment dialog) {
+        final Activity activity = getActivity();
+        if (activity != null) {
+            activity.finish();
+        }
+    }
+
+    private void startNetworkQuery() {
         updateForbiddenPlmns();
         setProgressBarVisible(true);
 
@@ -152,6 +196,18 @@ public class NetworkSelectSettings extends DashboardFragment {
         mForbiddenPlmns = forbiddenPlmns != null
                 ? Arrays.asList(forbiddenPlmns)
                 : new ArrayList<>();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_NONE);
     }
 
     @Override
