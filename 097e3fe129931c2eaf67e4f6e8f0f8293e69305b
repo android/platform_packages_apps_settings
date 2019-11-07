@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "160f0b97_a00e1550",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1447810
+      },
+      "writtenOn": "2019-11-07T00:56:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e5f1961_5f6773ce",
+      "revId": "097e3fe129931c2eaf67e4f6e8f0f8293e69305b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe413a71_d063a831",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "e154aee9_fb354ae9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1447810
+      },
+      "writtenOn": "2019-11-07T00:56:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fe413a71_d063a831",
+      "range": {
+        "startLine": 20,
+        "startChar": 30,
+        "endLine": 20,
+        "endChar": 31
+      },
+      "revId": "097e3fe129931c2eaf67e4f6e8f0f8293e69305b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "573ec5d3_7592e2ec",
         "filename": "src/com/android/settings/wifi/tether/WifiTetherSwitchBarController.java",
         "patchSetId": 1
@@ -62,6 +104,30 @@
       "revId": "097e3fe129931c2eaf67e4f6e8f0f8293e69305b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "007e67df_6439baa4",
+        "filename": "src/com/android/settings/wifi/tether/WifiTetherSwitchBarController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1447810
+      },
+      "writtenOn": "2019-11-07T00:56:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "573ec5d3_7592e2ec",
+      "range": {
+        "startLine": 100,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 5
+      },
+      "revId": "097e3fe129931c2eaf67e4f6e8f0f8293e69305b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
