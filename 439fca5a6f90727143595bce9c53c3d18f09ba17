@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a069bf2_8f0e7fb9",
+        "filename": "src/com/android/settings/wifi/tether/WifiTetherSwitchBarController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2019-11-07T02:10:51Z",
+      "side": 1,
+      "message": "It\u0027s redundant.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 58
+      },
+      "revId": "439fca5a6f90727143595bce9c53c3d18f09ba17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "227c8f54_c2753b11",
+        "filename": "src/com/android/settings/wifi/tether/WifiTetherSwitchBarController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2019-11-07T02:10:51Z",
+      "side": 1,
+      "message": "Remove it if this class does not override onSwitchChange.",
+      "range": {
+        "startLine": 43,
+        "startChar": 55,
+        "endLine": 43,
+        "endChar": 87
+      },
+      "revId": "439fca5a6f90727143595bce9c53c3d18f09ba17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5892bc4f_7a995098",
+        "filename": "src/com/android/settings/wifi/tether/WifiTetherSwitchBarController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2019-11-07T02:10:51Z",
+      "side": 1,
+      "message": "Remove it if this class does not override onSwitchChange.",
+      "range": {
+        "startLine": 88,
+        "startChar": 8,
+        "endLine": 88,
+        "endChar": 51
+      },
+      "revId": "439fca5a6f90727143595bce9c53c3d18f09ba17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dbd02d1_aa04aa75",
+        "filename": "src/com/android/settings/wifi/tether/WifiTetherSwitchBarController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2019-11-07T02:10:51Z",
+      "side": 1,
+      "message": "Remove it if this class does not override onSwitchChange.",
+      "range": {
+        "startLine": 96,
+        "startChar": 8,
+        "endLine": 96,
+        "endChar": 54
+      },
+      "revId": "439fca5a6f90727143595bce9c53c3d18f09ba17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
