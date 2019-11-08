@@ -40,6 +40,24 @@
       "revId": "68ddb3afdb2836a9479ce94f703551422bf8490b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02d313c8_10197fd3",
+        "filename": "res/xml/tether_prefs.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2019-11-08T10:51:09Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "cbda29cb_c15a2849",
+      "revId": "68ddb3afdb2836a9479ce94f703551422bf8490b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
