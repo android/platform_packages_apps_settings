@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a36ea789_8023da60",
+        "filename": "res/xml/tether_prefs.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1403999
+      },
+      "writtenOn": "2019-11-08T01:54:32Z",
+      "side": 0,
+      "message": "Sorry I have to remove the vote.\n\nThe preference uses @string/summary_two_lines_placeholder to reserve a two line in summary space, and set the fix line. Because we don\u0027t want the preference height change after summary changing. \n\nIn Settings app, we see some UI shift due to preference height changing.\nDo you have any good reason that you must change it?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 40
+      },
+      "revId": "68ddb3afdb2836a9479ce94f703551422bf8490b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
