@@ -145,7 +145,7 @@ public class AppDialogFragment extends InstrumentedDialogFragment implements App
         }
         final int userId = getUserId();
         try {
-            mService.setVpnPackageAuthorization(mPackageInfo.packageName, userId, false);
+            mService.setVpnPackageAuthorization(mPackageInfo.packageName, userId, false, false);
             onDisconnect(dialog);
         } catch (RemoteException e) {
             Log.e(TAG, "Failed to forget authorization of " + mPackageInfo.packageName +
