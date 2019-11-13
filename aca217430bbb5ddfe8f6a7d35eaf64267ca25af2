@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c3572af_cb2ca4ec",
+        "filename": "res/xml/development_settings.xml",
+        "patchSetId": 10
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2019-11-13T04:40:39Z",
+      "side": 1,
+      "message": "You don\u0027t want this item be searched in Settings app?\nActually, we\u0027re increasing our search coverage now. So, we\u0027d like to know the reason :)",
+      "range": {
+        "startLine": 234,
+        "startChar": 11,
+        "endLine": 234,
+        "endChar": 39
+      },
+      "revId": "aca217430bbb5ddfe8f6a7d35eaf64267ca25af2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
