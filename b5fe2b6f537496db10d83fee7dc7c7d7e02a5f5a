@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "decd53f8_21fdaf97",
+        "filename": "res/xml/development_settings.xml",
+        "patchSetId": 11
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-11-14T20:04:04Z",
+      "side": 1,
+      "message": "Leaving this as a question to tmfang@: should I make a CL-wide search and replace from \u0027platform_compat\u0027 to \u0027app_compat\u0027 (with and without underscores)?",
+      "parentUuid": "50a959f8_698d95a6",
+      "range": {
+        "startLine": 230,
+        "startChar": 25,
+        "endLine": 230,
+        "endChar": 33
+      },
+      "revId": "b5fe2b6f537496db10d83fee7dc7c7d7e02a5f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05f8a97c_38358120",
         "filename": "res/xml/development_settings.xml",
         "patchSetId": 11
@@ -45,6 +69,30 @@
       "revId": "b5fe2b6f537496db10d83fee7dc7c7d7e02a5f5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "704db1cf_682bc7fc",
+        "filename": "res/xml/development_settings.xml",
+        "patchSetId": 11
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-11-14T20:04:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05f8a97c_38358120",
+      "range": {
+        "startLine": 234,
+        "startChar": 11,
+        "endLine": 234,
+        "endChar": 39
+      },
+      "revId": "b5fe2b6f537496db10d83fee7dc7c7d7e02a5f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e4b29102_92d11867",
+        "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-11-14T20:04:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ff9fd9c_2ef4b6d2",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 32
+      },
+      "revId": "b5fe2b6f537496db10d83fee7dc7c7d7e02a5f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6ffe5049_5df62438",
         "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
         "patchSetId": 11
@@ -91,6 +163,30 @@
       "revId": "b5fe2b6f537496db10d83fee7dc7c7d7e02a5f5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "356bd2de_9ebcf31e",
+        "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-11-14T20:04:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ffe5049_5df62438",
+      "range": {
+        "startLine": 64,
+        "startChar": 11,
+        "endLine": 64,
+        "endChar": 25
+      },
+      "revId": "b5fe2b6f537496db10d83fee7dc7c7d7e02a5f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "4b964999_97624902",
+        "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-11-14T20:04:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a2847588_218cd154",
+      "range": {
+        "startLine": 110,
+        "startChar": 39,
+        "endLine": 110,
+        "endChar": 53
+      },
+      "revId": "b5fe2b6f537496db10d83fee7dc7c7d7e02a5f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b912585d_b2344b22",
         "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
         "patchSetId": 11
@@ -137,6 +257,30 @@
       "revId": "b5fe2b6f537496db10d83fee7dc7c7d7e02a5f5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d31ef175_f38e76bd",
+        "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-11-14T20:04:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b912585d_b2344b22",
+      "range": {
+        "startLine": 131,
+        "startChar": 8,
+        "endLine": 131,
+        "endChar": 11
+      },
+      "revId": "b5fe2b6f537496db10d83fee7dc7c7d7e02a5f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "c7f4a4ec_82fa3dcb",
+        "filename": "tests/robotests/src/com/android/settings/development/compat/PlatformCompatDashboardTest.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-11-14T20:04:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "32d8bcac_fbd2b3a3",
+      "range": {
+        "startLine": 97,
+        "startChar": 16,
+        "endLine": 97,
+        "endChar": 41
+      },
+      "revId": "b5fe2b6f537496db10d83fee7dc7c7d7e02a5f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5217c976_b2c491e2",
         "filename": "tests/robotests/src/com/android/settings/development/compat/PlatformCompatDashboardTest.java",
         "patchSetId": 11
@@ -183,6 +351,30 @@
       "revId": "b5fe2b6f537496db10d83fee7dc7c7d7e02a5f5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e64ae301_2b5285c4",
+        "filename": "tests/robotests/src/com/android/settings/development/compat/PlatformCompatDashboardTest.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2019-11-14T20:04:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5217c976_b2c491e2",
+      "range": {
+        "startLine": 108,
+        "startChar": 16,
+        "endLine": 108,
+        "endChar": 39
+      },
+      "revId": "b5fe2b6f537496db10d83fee7dc7c7d7e02a5f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
