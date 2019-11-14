@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f219ac30_11489e74",
+        "filename": "src/com/android/settings/network/telephony/gsm/AutoSelectPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2019-11-14T08:39:32Z",
+      "side": 1,
+      "message": "It would be better to register through TelephonyManager#listen().",
+      "revId": "40b9928e00728f7ea3bd8d30365c9786db75edf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ee2e021_dce37824",
+        "filename": "src/com/android/settings/network/telephony/gsm/AutoSelectPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2019-11-14T08:39:32Z",
+      "side": 1,
+      "message": "It would be better to unregister through TelephonyManager#listen().",
+      "revId": "40b9928e00728f7ea3bd8d30365c9786db75edf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71b46f7c_1e5dc212",
+        "filename": "src/com/android/settings/network/telephony/gsm/AutoSelectPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2019-11-14T08:39:32Z",
+      "side": 1,
+      "message": "This could be avoided, since we\u0027ve got a PhoneCallStateListener which contains the information of call state.",
+      "revId": "40b9928e00728f7ea3bd8d30365c9786db75edf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62c1be0b_835596bf",
+        "filename": "src/com/android/settings/network/telephony/gsm/OpenNetworkSelectPagePreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2019-11-14T08:39:32Z",
+      "side": 1,
+      "message": "It would be better to register through TelephonyManager#listen().",
+      "revId": "40b9928e00728f7ea3bd8d30365c9786db75edf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc1b3eda_3780ca2a",
+        "filename": "src/com/android/settings/network/telephony/gsm/OpenNetworkSelectPagePreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2019-11-14T08:39:32Z",
+      "side": 1,
+      "message": "It would be better to unregister through TelephonyManager#listen().",
+      "revId": "40b9928e00728f7ea3bd8d30365c9786db75edf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dda243d9_615ad568",
+        "filename": "src/com/android/settings/network/telephony/gsm/OpenNetworkSelectPagePreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2019-11-14T08:39:32Z",
+      "side": 1,
+      "message": "This could be avoided, since we\u0027ve got a PhoneCallStateListener which contains the information of call state.",
+      "revId": "40b9928e00728f7ea3bd8d30365c9786db75edf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
