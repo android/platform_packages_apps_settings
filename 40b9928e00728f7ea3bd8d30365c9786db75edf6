@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "18134666_16517077",
+        "filename": "src/com/android/settings/network/telephony/gsm/AutoSelectPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2019-11-14T10:02:08Z",
+      "side": 1,
+      "message": "It\u0027s my fault. It\u0027s a method within PhoneCallStateListener.",
+      "parentUuid": "f219ac30_11489e74",
+      "revId": "40b9928e00728f7ea3bd8d30365c9786db75edf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5ee2e021_dce37824",
         "filename": "src/com/android/settings/network/telephony/gsm/AutoSelectPreferenceController.java",
         "patchSetId": 1
@@ -33,6 +51,24 @@
       "revId": "40b9928e00728f7ea3bd8d30365c9786db75edf6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5200fe9_47f087ba",
+        "filename": "src/com/android/settings/network/telephony/gsm/AutoSelectPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2019-11-14T10:02:08Z",
+      "side": 1,
+      "message": "It\u0027s my fault. It\u0027s a method within PhoneCallStateListener.",
+      "parentUuid": "5ee2e021_dce37824",
+      "revId": "40b9928e00728f7ea3bd8d30365c9786db75edf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -70,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "af0e0f1f_cf432094",
+        "filename": "src/com/android/settings/network/telephony/gsm/OpenNetworkSelectPagePreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2019-11-14T10:02:08Z",
+      "side": 1,
+      "message": "It\u0027s my fault. It\u0027s a method within PhoneCallStateListener.",
+      "parentUuid": "62c1be0b_835596bf",
+      "revId": "40b9928e00728f7ea3bd8d30365c9786db75edf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fc1b3eda_3780ca2a",
         "filename": "src/com/android/settings/network/telephony/gsm/OpenNetworkSelectPagePreferenceController.java",
         "patchSetId": 1
@@ -84,6 +138,24 @@
       "revId": "40b9928e00728f7ea3bd8d30365c9786db75edf6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32e576ae_4e7e3001",
+        "filename": "src/com/android/settings/network/telephony/gsm/OpenNetworkSelectPagePreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2019-11-14T10:02:08Z",
+      "side": 1,
+      "message": "It\u0027s my fault. It\u0027s a method within PhoneCallStateListener.",
+      "parentUuid": "fc1b3eda_3780ca2a",
+      "revId": "40b9928e00728f7ea3bd8d30365c9786db75edf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
