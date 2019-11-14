@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "05f8a97c_38358120",
+        "filename": "res/xml/development_settings.xml",
+        "patchSetId": 11
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2019-11-14T06:01:27Z",
+      "side": 1,
+      "message": "remove, default is true.",
+      "range": {
+        "startLine": 234,
+        "startChar": 11,
+        "endLine": 234,
+        "endChar": 39
+      },
+      "revId": "b5fe2b6f537496db10d83fee7dc7c7d7e02a5f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ff9fd9c_2ef4b6d2",
+        "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2019-11-14T06:01:27Z",
+      "side": 1,
+      "message": "@VisibleForTesting\nString mSelectedApp",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 62,
+        "endChar": 32
+      },
+      "revId": "b5fe2b6f537496db10d83fee7dc7c7d7e02a5f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ffe5049_5df62438",
+        "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2019-11-14T06:01:27Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 64,
+        "startChar": 11,
+        "endLine": 64,
+        "endChar": 25
+      },
+      "revId": "b5fe2b6f537496db10d83fee7dc7c7d7e02a5f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2847588_218cd154",
+        "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2019-11-14T06:01:27Z",
+      "side": 1,
+      "message": "prefer using mSelectedApp directly.",
+      "range": {
+        "startLine": 110,
+        "startChar": 39,
+        "endLine": 110,
+        "endChar": 53
+      },
+      "revId": "b5fe2b6f537496db10d83fee7dc7c7d7e02a5f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b912585d_b2344b22",
+        "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2019-11-14T06:01:27Z",
+      "side": 1,
+      "message": "for Settings convention, we usually add final for local variable.\n\nfinal CompatibilityChangeConfig configMappings \u003d getAppChangeMappings();\n\nsame as other places",
+      "range": {
+        "startLine": 131,
+        "startChar": 8,
+        "endLine": 131,
+        "endChar": 11
+      },
+      "revId": "b5fe2b6f537496db10d83fee7dc7c7d7e02a5f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32d8bcac_fbd2b3a3",
+        "filename": "tests/robotests/src/com/android/settings/development/compat/PlatformCompatDashboardTest.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2019-11-14T06:01:27Z",
+      "side": 1,
+      "message": "the naming rule for test case.\n\nmethodName_precondition_assert\n\nex: \ngetHelpResource_shouldNotHaveHelpResource\n\n\nplease revise other test case",
+      "range": {
+        "startLine": 97,
+        "startChar": 16,
+        "endLine": 97,
+        "endChar": 41
+      },
+      "revId": "b5fe2b6f537496db10d83fee7dc7c7d7e02a5f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5217c976_b2c491e2",
+        "filename": "tests/robotests/src/com/android/settings/development/compat/PlatformCompatDashboardTest.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2019-11-14T06:01:27Z",
+      "side": 1,
+      "message": "- createAppPreference_targetSdkEquals1_summaryReturnsXXXXX\n- We don\u0027t declare \"test\" as prefix\n\n\nFor test case structure.\n\npublic void name() {\n// Precondition\n// Space\n// method\n// Space\n// Assert\n}\n\npublic void createAppPreference_targetSdkEquals1_summaryReturnsXXXXX() {\n      mApplicationInfo.targetSdkVersion \u003d 1;\n\n      Preference appPreference \u003d mDashboard.createAppPreference(any(Drawable.class));\n\n      assertThat(appPreference.getSummary()).isEqualTo(APP_NAME + \" SDK 1\");\n}",
+      "range": {
+        "startLine": 108,
+        "startChar": 16,
+        "endLine": 108,
+        "endChar": 39
+      },
+      "revId": "b5fe2b6f537496db10d83fee7dc7c7d7e02a5f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
