@@ -89,6 +89,23 @@
     },
     {
       "key": {
+        "uuid": "f89e8113_1dd8c2e4",
+        "filename": "src/com/android/settings/network/telephony/gsm/AutoSelectPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2019-11-14T10:17:42Z",
+      "side": 1,
+      "message": "What\u0027s the purpose of this ?\nIs it to update mSubId within PhoneStateListener or AutoSelectPreferenceController?",
+      "revId": "40b9928e00728f7ea3bd8d30365c9786db75edf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "62c1be0b_835596bf",
         "filename": "src/com/android/settings/network/telephony/gsm/OpenNetworkSelectPagePreferenceController.java",
         "patchSetId": 1
@@ -170,6 +187,23 @@
       "writtenOn": "2019-11-14T08:39:32Z",
       "side": 1,
       "message": "This could be avoided, since we\u0027ve got a PhoneCallStateListener which contains the information of call state.",
+      "revId": "40b9928e00728f7ea3bd8d30365c9786db75edf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "713a4106_51bafdbc",
+        "filename": "src/com/android/settings/network/telephony/gsm/OpenNetworkSelectPagePreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2019-11-14T10:17:42Z",
+      "side": 1,
+      "message": "What\u0027s the purpose of this ?\nIs it to update mSubId within PhoneStateListener or OpenNetworkSelectPagePreferenceController?",
       "revId": "40b9928e00728f7ea3bd8d30365c9786db75edf6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
