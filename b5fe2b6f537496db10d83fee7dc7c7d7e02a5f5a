@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "50a959f8_698d95a6",
+        "filename": "res/xml/development_settings.xml",
+        "patchSetId": 11
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2019-11-14T13:50:45Z",
+      "side": 1,
+      "message": "perhaps app_compat_dashboard? if that\u0027s how it is presented in UI/strings.",
+      "range": {
+        "startLine": 230,
+        "startChar": 25,
+        "endLine": 230,
+        "endChar": 33
+      },
+      "revId": "b5fe2b6f537496db10d83fee7dc7c7d7e02a5f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05f8a97c_38358120",
         "filename": "res/xml/development_settings.xml",
         "patchSetId": 11
