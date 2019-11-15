@@ -1,0 +1,7 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Tsung-Mao Fang <tmfang@google.com>
+Submitted-by: James Mattis <jmattis@google.com>
+Submitted-at: Fri, 15 Nov 2019 23:17:48 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1166910
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
