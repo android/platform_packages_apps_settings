@@ -16,6 +16,24 @@
       "revId": "f3ee8f5424caca24f1666c462b2e01ceead2afcd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7c91b52_986c5cb9",
+        "filename": "src/com/android/settings/wifi/calling/WifiCallingSettingsForSub.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1591497
+      },
+      "writtenOn": "2019-11-19T20:18:56Z",
+      "side": 1,
+      "message": "The code in this file registers the PhoneStateListener @ line#363 without any subId(means it will take as default subscription).\nWhenever there is a call state change on any sub, the callback onCallStateChanged() will be invoked because of the condition @ http://androidxref.com/9.0.0_r3/xref/frameworks/base/services/core/java/com/android/server/TelephonyRegistry.java#744.\nHere,since, (r.subId \u003d\u003d SubscriptionManager.DEFAULT_SUBSCRIPTION_ID)) { \n\nwill be true, hence, onCallStateChanged() will be invoked irrespective of whether event was in non-default phone.\n\nNow, as per proposed fix, when callStateStateChanged() is invoked, the implementation in this class will check for telephonyManager.getCallState() --\u003e This checks for call on either subs. And will return IDLE only if no sub has any call.\n\nThe intention of the fix is to grey out the settings when some call is active on either sub.",
+      "parentUuid": "0c410e36_20aaec7a",
+      "revId": "f3ee8f5424caca24f1666c462b2e01ceead2afcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
