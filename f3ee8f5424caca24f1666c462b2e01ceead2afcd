@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c410e36_20aaec7a",
+        "filename": "src/com/android/settings/wifi/calling/WifiCallingSettingsForSub.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2019-11-19T07:07:23Z",
+      "side": 1,
+      "message": "Without mSubId, only phone state of default phone will be reported.\nThat is to say, when there\u0027s a call state change in non-default phone, there\u0027s no onCallStateChanged().\nIs this an intended behavior ?",
+      "revId": "f3ee8f5424caca24f1666c462b2e01ceead2afcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
