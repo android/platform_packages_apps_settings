@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "9dbd8bc9_a2e37b3c",
+        "filename": "res/xml/development_settings.xml",
+        "patchSetId": 11
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2019-11-20T02:34:00Z",
+      "side": 1,
+      "message": "Both are fine to me and need underscores",
+      "parentUuid": "decd53f8_21fdaf97",
+      "range": {
+        "startLine": 230,
+        "startChar": 25,
+        "endLine": 230,
+        "endChar": 33
+      },
+      "revId": "b5fe2b6f537496db10d83fee7dc7c7d7e02a5f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05f8a97c_38358120",
         "filename": "res/xml/development_settings.xml",
         "patchSetId": 11
