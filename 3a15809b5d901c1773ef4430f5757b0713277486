@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "928ebf81_38a5a63a",
+        "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
+        "patchSetId": 15
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2019-11-21T04:00:09Z",
+      "side": 1,
+      "message": "According to error message within pre-submit task.\nThere should be an public SEARCH_INDEX_DATA_PROVIDER for this class.",
+      "revId": "3a15809b5d901c1773ef4430f5757b0713277486",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
