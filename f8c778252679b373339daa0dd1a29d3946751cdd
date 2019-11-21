@@ -22,6 +22,30 @@
       "revId": "f8c778252679b373339daa0dd1a29d3946751cdd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33e4f40c_bc10afdd",
+        "filename": "src/com/android/settings/development/WirelessDebugging.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2019-11-21T02:18:47Z",
+      "side": 1,
+      "message": "It will be used in the next CL to tear down the WirelessDebuggingEnabler.",
+      "parentUuid": "a8243e93_8f1e3ce2",
+      "range": {
+        "startLine": 70,
+        "startChar": 5,
+        "endLine": 70,
+        "endChar": 13
+      },
+      "revId": "f8c778252679b373339daa0dd1a29d3946751cdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
