@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "fada46b2_7664ceaf",
+        "filename": "src/com/android/settings/network/telephony/gsm/AutoSelectPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2019-11-21T04:41:28Z",
+      "side": 1,
+      "message": "Thank you for your advice. I updated.",
+      "parentUuid": "71b46f7c_1e5dc212",
+      "revId": "40b9928e00728f7ea3bd8d30365c9786db75edf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f89e8113_1dd8c2e4",
         "filename": "src/com/android/settings/network/telephony/gsm/AutoSelectPreferenceController.java",
         "patchSetId": 1
@@ -100,6 +118,24 @@
       "writtenOn": "2019-11-14T10:17:42Z",
       "side": 1,
       "message": "What\u0027s the purpose of this ?\nIs it to update mSubId within PhoneStateListener or AutoSelectPreferenceController?",
+      "revId": "40b9928e00728f7ea3bd8d30365c9786db75edf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a80d02a_2c20905d",
+        "filename": "src/com/android/settings/network/telephony/gsm/AutoSelectPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2019-11-21T04:41:28Z",
+      "side": 1,
+      "message": "There was no meaning about this. Before Android Q, #onCallStateChanged was called based on subId PhoneCallStateListener has. But from Android Q, the design is changed and it depends on subId of TelephonyManager. So, we don\u0027t need this implementation. Removed in the latest patchset.",
+      "parentUuid": "f89e8113_1dd8c2e4",
       "revId": "40b9928e00728f7ea3bd8d30365c9786db75edf6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -193,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "84590270_be1241fd",
+        "filename": "src/com/android/settings/network/telephony/gsm/OpenNetworkSelectPagePreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2019-11-21T04:41:28Z",
+      "side": 1,
+      "message": "Thank you for your advice. I updated.",
+      "parentUuid": "dda243d9_615ad568",
+      "revId": "40b9928e00728f7ea3bd8d30365c9786db75edf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "713a4106_51bafdbc",
         "filename": "src/com/android/settings/network/telephony/gsm/OpenNetworkSelectPagePreferenceController.java",
         "patchSetId": 1
@@ -204,6 +258,24 @@
       "writtenOn": "2019-11-14T10:17:42Z",
       "side": 1,
       "message": "What\u0027s the purpose of this ?\nIs it to update mSubId within PhoneStateListener or OpenNetworkSelectPagePreferenceController?",
+      "revId": "40b9928e00728f7ea3bd8d30365c9786db75edf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05b3dc16_8afd4666",
+        "filename": "src/com/android/settings/network/telephony/gsm/OpenNetworkSelectPagePreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1237921
+      },
+      "writtenOn": "2019-11-21T04:41:28Z",
+      "side": 1,
+      "message": "There was no meaning about this. Before Android Q, #onCallStateChanged was called based on subId PhoneCallStateListener has. But from Android Q, the design is changed and it depends on subId of TelephonyManager. So, we don\u0027t need this implementation. Removed in the latest patchset.",
+      "parentUuid": "713a4106_51bafdbc",
       "revId": "40b9928e00728f7ea3bd8d30365c9786db75edf6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
