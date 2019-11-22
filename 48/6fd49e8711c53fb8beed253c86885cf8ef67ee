@@ -1,0 +1,7 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Tsung-Mao Fang <tmfang@google.com>
+Submitted-by: Andrei-Valentin Onea <andreionea@google.com>
+Submitted-at: Fri, 22 Nov 2019 13:02:41 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1137755
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
