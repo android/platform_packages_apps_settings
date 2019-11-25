@@ -46,6 +46,30 @@
       "revId": "f8c778252679b373339daa0dd1a29d3946751cdd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f76015de_7c3b2313",
+        "filename": "src/com/android/settings/development/WirelessDebugging.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-11-25T16:54:37Z",
+      "side": 1,
+      "message": "Maybe add them in the next cl then?",
+      "parentUuid": "33e4f40c_bc10afdd",
+      "range": {
+        "startLine": 70,
+        "startChar": 5,
+        "endLine": 70,
+        "endChar": 13
+      },
+      "revId": "f8c778252679b373339daa0dd1a29d3946751cdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
