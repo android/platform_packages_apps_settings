@@ -33,11 +33,13 @@ import android.os.SystemProperties;
 import android.provider.Settings;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
+import android.telephony.AccessNetworkConstants;
 import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.euicc.EuiccManager;
+import android.telephony.ims.ImsMmTelManager;
 import android.telephony.ims.ProvisioningManager;
 import android.telephony.ims.feature.ImsFeature;
 import android.telephony.ims.feature.MmTelFeature;
@@ -61,6 +63,7 @@ import com.android.settingslib.graph.SignalDrawable;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.Executors;
 
 public class MobileNetworkUtils {
 
@@ -112,6 +115,20 @@ public class MobileNetworkUtils {
         return false;
     }
 
+    @VisibleForTesting
+    public static boolean isWfcEnabledByPlatform(int subId) {
+        try {
+            final ImsMmTelBooleanState state = new ImsMmTelBooleanState(false);
+            ImsMmTelManager.createForSubscriptionId(subId).isSupported(
+                    MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE,
+                    AccessNetworkConstants.TRANSPORT_TYPE_WLAN,
+                    Executors.newSingleThreadExecutor(), state);
+            return state.get();
+        } catch (Exception ex) {
+        }
+        return false;
+    }
+
     /**
      * Returns true if Wifi calling is provisioned for the specific subscription with id
      * {@code subId}.
@@ -132,8 +149,8 @@ public class MobileNetworkUtils {
      * Returns true if Wifi calling is enabled for the specific subscription with id {@code subId}.
      */
     public static boolean isWifiCallingEnabled(Context context, int subId) {
-        final PhoneAccountHandle simCallManager =
-                TelecomManager.from(context).getSimCallManagerForSubscription(subId);
+        final PhoneAccountHandle simCallManager = context.getSystemService(TelecomManager.class)
+                .getSimCallManagerForSubscription(subId);
         final int phoneId = SubscriptionManager.getSlotIndex(subId);
 
         boolean isWifiCallingEnabled;
@@ -145,7 +162,7 @@ public class MobileNetworkUtils {
         } else {
             final ImsManager imsMgr = ImsManager.getInstance(context, phoneId);
             isWifiCallingEnabled = imsMgr != null
-                    && imsMgr.isWfcEnabledByPlatform()
+                    && isWfcEnabledByPlatform(subId)
                     && isWfcProvisionedOnDevice(subId)
                     && isImsServiceStateReady(imsMgr);
         }

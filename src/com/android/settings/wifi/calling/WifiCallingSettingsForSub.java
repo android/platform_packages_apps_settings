@@ -25,6 +25,8 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.os.PersistableBundle;
 import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneStateListener;
@@ -57,6 +59,8 @@ import com.android.settings.Utils;
 import com.android.settings.core.SubSettingLauncher;
 import com.android.settings.network.telephony.MobileNetworkUtils;
 import com.android.settings.widget.SwitchBar;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * This is the inner class of {@link WifiCallingSettings} fragment.
@@ -100,6 +104,7 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
 
     private int mSubId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
     private ImsManager mImsManager;
+    private ProvisioningManager mProvisioningManager;
     private ImsMmTelManager mImsMmTelManager;
     private TelephonyManager mTelephonyManager;
 
@@ -170,10 +175,38 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
                             || item == ImsConfig.ConfigConstants.VLT_SETTING_ENABLED) {
                         // The provisioning policy might have changed. Update the body to make sure
                         // this change takes effect if needed.
-                        updateBody();
+                        updateBodyInUiThread();
                     }
                 }
             };
+
+    private void updateBodyInUiThread() {
+        (new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                updateBody();
+            }}).sendEmptyMessage(0);
+    }
+
+    private void registerProvisioningChangedCallback() {
+        if (mProvisioningManager == null) {
+            return;
+        }
+        final ExecutorService executor = Executors.newSingleThreadExecutor();
+        try {
+            mProvisioningManager.registerProvisioningChangedCallback(executor, mProvisioningCallback);
+        } catch (Exception ex) {
+            executor.shutdown();
+            Log.w(TAG, "onResume: Unable to register callback for provisioning changes.");
+        }
+    }
+
+    private void unregisterProvisioningChangedCallback() {
+        if (mProvisioningManager == null) {
+            return;
+        }
+        mProvisioningManager.unregisterProvisioningChangedCallback(mProvisioningCallback);
+    }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -249,6 +282,11 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
     }
 
     @VisibleForTesting
+    ProvisioningManager getImsProvisioningManager() {
+        return ProvisioningManager.createForSubscriptionId(mSubId);
+    }
+
+    @VisibleForTesting
     ImsMmTelManager getImsMmTelManager() {
         return ImsMmTelManager.createForSubscriptionId(mSubId);
     }
@@ -269,6 +307,7 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
         }
 
         mImsManager = getImsManager();
+        mProvisioningManager = getImsProvisioningManager();
         mImsMmTelManager = getImsMmTelManager();
 
         mTelephonyManager = ((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE))
@@ -365,6 +404,11 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
         updateButtonWfcMode(wfcEnabled, wfcMode, wfcRoamingMode);
     }
 
+    @VisibleForTesting
+    boolean isWfcEnabledByPlatform() {
+        return MobileNetworkUtils.isWfcEnabledByPlatform(mSubId);
+    }
+
     @Override
     public void onResume() {
         super.onResume();
@@ -373,7 +417,7 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
 
         updateBody();
 
-        if (mImsManager.isWfcEnabledByPlatform()) {
+        if (isWfcEnabledByPlatform()) {
             mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
 
             mSwitchBar.addOnSwitchChangeListener(this);
@@ -389,12 +433,7 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
         }
 
         // Register callback for provisioning changes.
-        try {
-            mImsManager.getConfigInterface().addConfigCallback(mProvisioningCallback);
-        } catch (ImsException e) {
-            Log.w(TAG, "onResume: Unable to register callback for provisioning changes.");
-        }
-
+        registerProvisioningChangedCallback();
     }
 
     @Override
@@ -406,8 +445,7 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
         if (mValidListener) {
             mValidListener = false;
 
-            final TelephonyManager tm = (TelephonyManager)
-                    getSystemService(Context.TELEPHONY_SERVICE);
+            final TelephonyManager tm = context.getSystemService(TelephonyManager.class);
             tm.listen(mPhoneStateListener, PhoneStateListener.LISTEN_NONE);
 
             mSwitchBar.removeOnSwitchChangeListener(this);
@@ -416,13 +454,7 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
         context.unregisterReceiver(mIntentReceiver);
 
         // Remove callback for provisioning changes.
-        try {
-            mImsManager.getConfigInterface().removeConfigCallback(
-                    mProvisioningCallback.getBinder());
-        } catch (ImsException e) {
-            Log.w(TAG, "onPause: Unable to remove callback for provisioning changes");
-        }
-
+        unregisterProvisioningChangedCallback();
     }
 
     /**

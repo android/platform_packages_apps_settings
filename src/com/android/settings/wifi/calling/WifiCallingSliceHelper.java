@@ -137,15 +137,14 @@ public class WifiCallingSliceHelper {
             return null;
         }
 
-        final ImsManager imsManager = getImsManager(subId);
-
-        if (!imsManager.isWfcEnabledByPlatform()
+        if (!isWfcEnabledByPlatform(subId)
                 || !isWfcProvisionedOnDevice(subId)) {
             Log.d(TAG, "Wifi calling is either not provisioned or not enabled by Platform");
             return null;
         }
 
         try {
+            final ImsManager imsManager = getImsManager(subId);
             final boolean isWifiCallingEnabled = isWifiCallingEnabled(imsManager);
             final Intent activationAppIntent =
                     getWifiCallingCarrierActivityIntent(subId);
@@ -234,10 +233,9 @@ public class WifiCallingSliceHelper {
                 CarrierConfigManager.KEY_EDITABLE_WFC_MODE_BOOL, subId, false);
         final boolean isWifiOnlySupported = isCarrierConfigManagerKeyEnabled(
                 CarrierConfigManager.KEY_CARRIER_WFC_SUPPORTS_WIFI_ONLY_BOOL, subId, true);
-        final ImsManager imsManager = getImsManager(subId);
         final ImsMmTelManager imsMmTelManager = getImsMmTelManager(subId);
 
-        if (!imsManager.isWfcEnabledByPlatform()
+        if (!isWfcEnabledByPlatform(subId)
                 || !isWfcProvisionedOnDevice(subId)) {
             Log.d(TAG, "Wifi calling is either not provisioned or not enabled by platform");
             return null;
@@ -248,6 +246,7 @@ public class WifiCallingSliceHelper {
             return null;
         }
 
+        final ImsManager imsManager = getImsManager(subId);
         boolean isWifiCallingEnabled = false;
         int wfcMode = -1;
         try {
@@ -385,9 +384,9 @@ public class WifiCallingSliceHelper {
         final int subId = getDefaultVoiceSubId();
 
         if (subId > SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
-            final ImsManager imsManager = getImsManager(subId);
-            if (imsManager.isWfcEnabledByPlatform()
+            if (isWfcEnabledByPlatform(subId)
                     && isWfcProvisionedOnDevice(subId)) {
+                final ImsManager imsManager = getImsManager(subId);
                 final boolean currentValue = imsManager.isWfcEnabledByUser()
                         && imsManager.isNonTtyOrTtyOnVolteEnabled();
                 final boolean newValue = intent.getBooleanExtra(EXTRA_TOGGLE_STATE,
@@ -429,7 +428,7 @@ public class WifiCallingSliceHelper {
 
             final ImsManager imsManager = getImsManager(subId);
             if (isWifiCallingPrefEditable
-                    && imsManager.isWfcEnabledByPlatform()
+                    && isWfcEnabledByPlatform(subId)
                     && isWfcProvisionedOnDevice(subId)
                     && imsManager.isWfcEnabledByUser()
                     && imsManager.isNonTtyOrTtyOnVolteEnabled()) {
@@ -516,6 +515,11 @@ public class WifiCallingSliceHelper {
     @VisibleForTesting
     boolean isWfcProvisionedOnDevice(int subId) {
         return MobileNetworkUtils.isWfcProvisionedOnDevice(subId);
+    }
+
+    @VisibleForTesting
+    boolean isWfcEnabledByPlatform(int subId) {
+        return MobileNetworkUtils.isWfcEnabledByPlatform(subId);
     }
 
     /**
