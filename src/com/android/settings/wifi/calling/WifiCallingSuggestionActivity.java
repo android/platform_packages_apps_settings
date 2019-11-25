@@ -26,9 +26,9 @@ import com.android.settings.network.telephony.MobileNetworkUtils;
 public class WifiCallingSuggestionActivity extends SettingsActivity {
 
     public static boolean isSuggestionComplete(Context context) {
-        if (!ImsManager.isWfcEnabledByPlatform(context) ||
-                !MobileNetworkUtils.isWfcProvisionedOnDevice(
-                        SubscriptionManager.getDefaultVoiceSubscriptionId())) {
+        final int subId = SubscriptionManager.getDefaultVoiceSubscriptionId();
+        if (!MobileNetworkUtils.isWfcEnabledByPlatform(subId) ||
+                !MobileNetworkUtils.isWfcProvisionedOnDevice(subId)) {
             return true;
         }
         return ImsManager.isWfcEnabledByUser(context)

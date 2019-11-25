@@ -119,7 +119,7 @@ public class WifiCallingSliceHelperTest {
 
     @Test
     public void test_CreateWifiCallingSlice_wfcNotSupported() {
-        when(mMockImsManager.isWfcEnabledByPlatform()).thenReturn(false);
+        when(mWfcSliceHelper.isWfcEnabledByPlatform(anyInt())).thenReturn(false);
 
         final Slice slice = mWfcSliceHelper.createWifiCallingSlice(
                 CustomSliceRegistry.WIFI_CALLING_URI);
@@ -135,7 +135,7 @@ public class WifiCallingSliceHelperTest {
         turned off) we need to guide the user to wifi calling settings
         activity so the user can perform the activation there.(PrimaryAction)
          */
-        when(mMockImsManager.isWfcEnabledByPlatform()).thenReturn(true);
+        when(mWfcSliceHelper.isWfcEnabledByPlatform(anyInt())).thenReturn(true);
         when(mWfcSliceHelper.isWfcProvisionedOnDevice(anyInt())).thenReturn(true);
         when(mMockImsManager.isWfcEnabledByUser()).thenReturn(false);
         when(mMockImsManager.isNonTtyOrTtyOnVolteEnabled()).thenReturn(false);
@@ -153,7 +153,7 @@ public class WifiCallingSliceHelperTest {
 
     @Test
     public void test_CreateWifiCallingSlice_success() {
-        when(mMockImsManager.isWfcEnabledByPlatform()).thenReturn(true);
+        when(mWfcSliceHelper.isWfcEnabledByPlatform(anyInt())).thenReturn(true);
         when(mWfcSliceHelper.isWfcProvisionedOnDevice(anyInt())).thenReturn(true);
         when(mMockImsManager.isWfcEnabledByUser()).thenReturn(true);
         when(mMockImsManager.isNonTtyOrTtyOnVolteEnabled()).thenReturn(true);
@@ -168,7 +168,7 @@ public class WifiCallingSliceHelperTest {
 
     @Test
     public void test_SettingSliceProvider_getsRightSliceWifiCalling() {
-        when(mMockImsManager.isWfcEnabledByPlatform()).thenReturn(true);
+        when(mWfcSliceHelper.isWfcEnabledByPlatform(anyInt())).thenReturn(true);
         when(mWfcSliceHelper.isWfcProvisionedOnDevice(anyInt())).thenReturn(true);
         when(mMockImsManager.isWfcEnabledByUser()).thenReturn(true);
         when(mMockImsManager.isNonTtyOrTtyOnVolteEnabled()).thenReturn(true);
@@ -184,7 +184,7 @@ public class WifiCallingSliceHelperTest {
 
     @Test
     public void test_SliceBroadcastReceiver_toggleOnWifiCalling() {
-        when(mMockImsManager.isWfcEnabledByPlatform()).thenReturn(true);
+        when(mWfcSliceHelper.isWfcEnabledByPlatform(anyInt())).thenReturn(true);
         when(mWfcSliceHelper.isWfcProvisionedOnDevice(anyInt())).thenReturn(true);
         when(mMockImsManager.isWfcEnabledByUser()).thenReturn(false);
         when(mMockImsManager.isNonTtyOrTtyOnVolteEnabled()).thenReturn(true);
@@ -209,7 +209,7 @@ public class WifiCallingSliceHelperTest {
 
     @Test
     public void test_CreateWifiCallingPreferenceSlice_prefNotEditable() {
-        when(mMockImsManager.isWfcEnabledByPlatform()).thenReturn(true);
+        when(mWfcSliceHelper.isWfcEnabledByPlatform(anyInt())).thenReturn(true);
         when(mWfcSliceHelper.isWfcProvisionedOnDevice(anyInt())).thenReturn(true);
         when(mMockImsManager.isWfcEnabledByUser()).thenReturn(true);
         when(mMockImsManager.isNonTtyOrTtyOnVolteEnabled()).thenReturn(true);
@@ -224,7 +224,7 @@ public class WifiCallingSliceHelperTest {
 
     @Test
     public void test_CreateWifiCallingPreferenceSlice_wfcOff() {
-        when(mMockImsManager.isWfcEnabledByPlatform()).thenReturn(true);
+        when(mWfcSliceHelper.isWfcEnabledByPlatform(anyInt())).thenReturn(true);
         when(mWfcSliceHelper.isWfcProvisionedOnDevice(anyInt())).thenReturn(true);
         when(mMockImsManager.isWfcEnabledByUser()).thenReturn(false);
         when(mMockImsManager.isNonTtyOrTtyOnVolteEnabled()).thenReturn(true);
@@ -241,7 +241,7 @@ public class WifiCallingSliceHelperTest {
 
     @Test
     public void test_CreateWifiCallingPreferenceSlice_success() {
-        when(mMockImsManager.isWfcEnabledByPlatform()).thenReturn(true);
+        when(mWfcSliceHelper.isWfcEnabledByPlatform(anyInt())).thenReturn(true);
         when(mWfcSliceHelper.isWfcProvisionedOnDevice(anyInt())).thenReturn(true);
         when(mMockImsManager.isWfcEnabledByUser()).thenReturn(true);
         when(mMockImsManager.isNonTtyOrTtyOnVolteEnabled()).thenReturn(true);
@@ -259,7 +259,7 @@ public class WifiCallingSliceHelperTest {
 
     @Test
     public void test_SettingsSliceProvider_getWfcPreferenceSlice() {
-        when(mMockImsManager.isWfcEnabledByPlatform()).thenReturn(true);
+        when(mWfcSliceHelper.isWfcEnabledByPlatform(anyInt())).thenReturn(true);
         when(mWfcSliceHelper.isWfcProvisionedOnDevice(anyInt())).thenReturn(true);
         when(mMockImsManager.isWfcEnabledByUser()).thenReturn(true);
         when(mMockImsManager.isNonTtyOrTtyOnVolteEnabled()).thenReturn(true);
@@ -278,7 +278,7 @@ public class WifiCallingSliceHelperTest {
     }
     @Test
     public void test_SliceBroadcastReceiver_setWfcPrefCellularPref() {
-        when(mMockImsManager.isWfcEnabledByPlatform()).thenReturn(true);
+        when(mWfcSliceHelper.isWfcEnabledByPlatform(anyInt())).thenReturn(true);
         when(mWfcSliceHelper.isWfcProvisionedOnDevice(anyInt())).thenReturn(true);
         when(mMockImsManager.isWfcEnabledByUser()).thenReturn(true);
         when(mMockImsManager.isNonTtyOrTtyOnVolteEnabled()).thenReturn(true);

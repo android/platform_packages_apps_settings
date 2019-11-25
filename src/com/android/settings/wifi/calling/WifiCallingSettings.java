@@ -40,6 +40,7 @@ import com.android.internal.util.CollectionUtils;
 import com.android.settings.R;
 import com.android.settings.core.InstrumentedFragment;
 import com.android.settings.network.SubscriptionUtil;
+import com.android.settings.network.telephony.MobileNetworkUtils;
 import com.android.settings.search.actionbar.SearchMenuController;
 import com.android.settings.support.actionbar.HelpMenuController;
 import com.android.settings.support.actionbar.HelpResourceProvider;
@@ -198,9 +199,7 @@ public class WifiCallingSettings extends InstrumentedFragment implements HelpRes
 
     @VisibleForTesting
     boolean isWfcEnabledByPlatform(SubscriptionInfo info) {
-        final ImsManager imsManager = ImsManager.getInstance(getActivity(),
-                info.getSimSlotIndex());
-        return imsManager.isWfcEnabledByPlatform();
+        return MobileNetworkUtils.isWfcEnabledByPlatform(info.getSubscriptionId());
     }
 
     @VisibleForTesting

@@ -69,6 +69,7 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
 import org.robolectric.util.ReflectionHelpers;
+import java.util.concurrent.Executor;
 
 @Config(shadows = ShadowFragment.class)
 @RunWith(RobolectricTestRunner.class)
@@ -86,6 +87,7 @@ public class WifiCallingSettingsForSubTest {
     @Mock private static CarrierConfigManager sCarrierConfigManager;
     @Mock private CarrierConfigManager mMockConfigManager;
     @Mock private ImsManager mImsManager;
+    @Mock private ProvisioningManager mImsProvisioningManager;
     @Mock private ImsMmTelManager mImsMmTelManager;
     @Mock private TelephonyManager mTelephonyManager;
     @Mock private PreferenceScreen mPreferenceScreen;
@@ -189,11 +191,12 @@ public class WifiCallingSettingsForSubTest {
     public void onResumeOnPause_provisioningCallbackRegistration() throws Exception {
         // Verify that provisioning callback is registered after call to onResume().
         mFragment.onResume();
-        verify(mImsConfig).addConfigCallback(any(ProvisioningManager.Callback.class));
+        verify(mImsProvisioningManager).registerProvisioningChangedCallback(any(Executor.class),
+                any(ProvisioningManager.Callback.class));
 
         // Verify that provisioning callback is unregistered after call to onPause.
         mFragment.onPause();
-        verify(mImsConfig).removeConfigCallback(any());
+        verify(mImsProvisioningManager).unregisterProvisioningChangedCallback(any());
     }
 
     @Test
@@ -339,6 +342,11 @@ public class WifiCallingSettingsForSubTest {
     }
 
     protected class TestFragment extends WifiCallingSettingsForSub {
+        @Override
+        ProvisioningManager getImsProvisioningManager() {
+            return mImsProvisioningManager;
+        }
+
         @Override
         protected Object getSystemService(final String name) {
             switch (name) {
