@@ -16,9 +16,14 @@
 
 package com.android.settings.development.compat;
 
+import static com.android.internal.compat.OverrideAllowedState.ALLOWED;
+import static com.android.internal.compat.OverrideAllowedState.DISABLED_NOT_DEBUGGABLE;
+
 import static com.google.common.truth.Truth.assertThat;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
@@ -38,7 +43,9 @@ import androidx.preference.SwitchPreference;
 
 import com.android.internal.compat.CompatibilityChangeConfig;
 import com.android.internal.compat.CompatibilityChangeInfo;
+import com.android.internal.compat.IOverrideValidator;
 import com.android.internal.compat.IPlatformCompat;
+import com.android.internal.compat.OverrideAllowedState;
 import com.android.settings.R;
 
 import org.junit.Before;
@@ -66,6 +73,8 @@ public class PlatformCompatDashboardTest {
     private ApplicationInfo mApplicationInfo;
     @Mock
     private PreferenceManager mPreferenceManager;
+    @Mock
+    private IOverrideValidator mOverrideValidator;
 
     private Context mContext;
     private CompatibilityChangeInfo[] mChanges;
@@ -81,6 +90,10 @@ public class PlatformCompatDashboardTest {
         mChanges[3] = new CompatibilityChangeInfo(4L, "Enabled_After_SDK_1_2", 1, false, "");
         mChanges[4] = new CompatibilityChangeInfo(5L, "Enabled_After_SDK_2", 2, false, "");
         when(mPlatformCompat.listAllChanges()).thenReturn(mChanges);
+        when(mPlatformCompat.getOverrideValidator()).thenReturn(mOverrideValidator);
+        // By default, allow any change
+        when(mOverrideValidator.getOverrideAllowedState(anyLong(),anyString()))
+            .thenReturn(new OverrideAllowedState(ALLOWED, -1, -1));
         mContext = RuntimeEnvironment.application;
         mPreferenceManager = new PreferenceManager(mContext);
         mPreferenceScreen = mPreferenceManager.createPreferenceScreen(mContext);
@@ -128,6 +141,7 @@ public class PlatformCompatDashboardTest {
         assertThat(enabledPreference.getSummary()).isEqualTo(mChanges[0].getName());
         assertThat(enabledPreference instanceof SwitchPreference).isTrue();
         assertThat(enabledSwitchPreference.isChecked()).isTrue();
+        assertThat(enabledSwitchPreference.isEnabled()).isTrue();
     }
 
     @Test
@@ -139,10 +153,32 @@ public class PlatformCompatDashboardTest {
 
         Preference disabledPreference = mDashboard.createPreferenceForChange(mContext,
                 disabledChange, config);
-        
+
         assertThat(disabledPreference.getSummary()).isEqualTo(mChanges[1].getName());
         SwitchPreference disabledSwitchPreference = (SwitchPreference) disabledPreference;
         assertThat(disabledSwitchPreference.isChecked()).isFalse();
+        assertThat(disabledSwitchPreference.isEnabled()).isTrue();
+    }
+
+    @Test
+    public void createPreferenceForChange_cannotOverride_createDisabledEntry()
+                    throws RemoteException {
+        CompatibilityChangeInfo enabledChange = mChanges[0];
+        CompatibilityChangeConfig config = new CompatibilityChangeConfig(
+                new ChangeConfig(new HashSet<Long>(Arrays.asList(enabledChange.getId())),
+                        new HashSet<Long>()));
+        when(mOverrideValidator.getOverrideAllowedState(anyLong(),anyString()))
+            .thenReturn(new OverrideAllowedState(DISABLED_NOT_DEBUGGABLE, -1, -1));
+
+        Preference preference = mDashboard.createPreferenceForChange(mContext, enabledChange,
+                config);
+
+        SwitchPreference switchPreference = (SwitchPreference) preference;
+
+        assertThat(preference.getSummary()).isEqualTo(mChanges[0].getName());
+        assertThat(preference instanceof SwitchPreference).isTrue();
+        assertThat(switchPreference.isChecked()).isTrue();
+        assertThat(switchPreference.isEnabled()).isFalse();
     }
 
     @Test
