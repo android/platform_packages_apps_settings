@@ -16,6 +16,7 @@
 
 package com.android.settings.development.compat;
 
+import static com.android.settings.development.AppPicker.EXTRA_DEBUGGABLE;
 import static com.android.settings.development.DevelopmentOptionsActivityRequestCodes.REQUEST_COMPAT_CHANGE_APP;
 
 import android.app.Activity;
@@ -26,6 +27,7 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.ServiceManager;
@@ -147,10 +149,12 @@ public class PlatformCompatDashboard extends DashboardFragment {
                 enabledChanges.add(change);
             }
         }
-        createChangeCategoryPreference(enabledChanges, configMappings,
-                getString(R.string.platform_compat_default_enabled_title));
-        createChangeCategoryPreference(disabledChanges, configMappings,
-                getString(R.string.platform_compat_default_disabled_title));
+        if (!"REL".equals(android.os.Build.VERSION.CODENAME)) {
+            createChangeCategoryPreference(enabledChanges, configMappings,
+                    getString(R.string.platform_compat_default_enabled_title));
+            createChangeCategoryPreference(disabledChanges, configMappings,
+                    getString(R.string.platform_compat_default_disabled_title));
+        }
         for (Integer sdk : targetSdkChanges.keySet()) {
             createChangeCategoryPreference(targetSdkChanges.get(sdk), configMappings,
                     getString(R.string.platform_compat_target_sdk_title, sdk));
@@ -243,6 +247,10 @@ public class PlatformCompatDashboard extends DashboardFragment {
 
     private void startAppPicker() {
         final Intent intent = new Intent(getContext(), AppPicker.class);
+        // If build is neither userdebug nor eng, only include debuggable apps
+        if (!Build.IS_DEBUGGABLE) {
+            intent.putExtra(AppPicker.EXTRA_DEBUGGABLE, true /* value */);
+        }
         startActivityForResult(intent, REQUEST_COMPAT_CHANGE_APP);
     }
 
