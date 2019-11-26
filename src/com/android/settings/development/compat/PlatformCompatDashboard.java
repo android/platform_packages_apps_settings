@@ -16,7 +16,9 @@
 
 package com.android.settings.development.compat;
 
+import static com.android.settings.development.AppPicker.EXTRA_DEBUGGABLE;
 import static com.android.settings.development.DevelopmentOptionsActivityRequestCodes.REQUEST_COMPAT_CHANGE_APP;
+import static com.android.internal.compat.OverrideAllowedState.ALLOWED;
 
 import android.app.Activity;
 import android.app.settings.SettingsEnums;
@@ -26,6 +28,7 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.ServiceManager;
@@ -37,9 +40,12 @@ import androidx.preference.Preference.OnPreferenceChangeListener;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.SwitchPreference;
 
+import com.android.internal.compat.AndroidBuildClassifier;
 import com.android.internal.compat.CompatibilityChangeConfig;
 import com.android.internal.compat.CompatibilityChangeInfo;
 import com.android.internal.compat.IPlatformCompat;
+import com.android.internal.compat.IOverrideValidator;
+import com.android.internal.compat.OverrideAllowedState;
 import com.android.settings.R;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.development.AppPicker;
@@ -60,6 +66,8 @@ public class PlatformCompatDashboard extends DashboardFragment {
     private IPlatformCompat mPlatformCompat;
 
     private CompatibilityChangeInfo[] mChanges;
+
+    private AndroidBuildClassifier mAndroidBuildClassifier = new AndroidBuildClassifier();
 
     @VisibleForTesting
     String mSelectedApp;
@@ -180,7 +188,15 @@ public class PlatformCompatDashboard extends DashboardFragment {
                 change.getName() != null ? change.getName() : "Change_" + change.getId();
         item.setSummary(changeName);
         item.setKey(changeName);
-        item.setEnabled(true);
+        boolean shouldEnable = true;
+        try {
+            shouldEnable = getPlatformCompat().getOverrideValidator()
+                           .getOverrideAllowedState(change.getId(), mSelectedApp)
+                           .getAllowedState() == ALLOWED;
+        } catch (RemoteException e) {
+            throw new RuntimeException("Could not check if change can be overridden for app.", e);
+        }
+        item.setEnabled(shouldEnable);
         item.setChecked(currentValue);
         item.setOnPreferenceChangeListener(
                 new CompatChangePreferenceChangeListener(change.getId()));
@@ -243,6 +259,11 @@ public class PlatformCompatDashboard extends DashboardFragment {
 
     private void startAppPicker() {
         final Intent intent = new Intent(getContext(), AppPicker.class);
+        // If build is neither userdebug nor eng, only include debuggable apps
+        boolean debuggableBuild = mAndroidBuildClassifier.isDebuggableBuild();
+        if (debuggableBuild) {
+            intent.putExtra(AppPicker.EXTRA_DEBUGGABLE, true /* value */);
+        }
         startActivityForResult(intent, REQUEST_COMPAT_CHANGE_APP);
     }
 
