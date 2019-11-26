@@ -16,6 +16,7 @@
 
 package com.android.settings.development.compat;
 
+import static com.android.settings.development.AppPicker.EXTRA_DEBUGGABLE;
 import static com.android.settings.development.DevelopmentOptionsActivityRequestCodes.REQUEST_COMPAT_CHANGE_APP;
 
 import android.app.Activity;
@@ -26,6 +27,7 @@ import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.ServiceManager;
@@ -39,10 +41,14 @@ import androidx.preference.SwitchPreference;
 
 import com.android.internal.compat.CompatibilityChangeConfig;
 import com.android.internal.compat.CompatibilityChangeInfo;
+import com.android.internal.compat.IAndroidBuildClassifier;
 import com.android.internal.compat.IPlatformCompat;
+import com.android.internal.compat.IOverrideValidator;
 import com.android.settings.R;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.development.AppPicker;
+
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -147,10 +153,12 @@ public class PlatformCompatDashboard extends DashboardFragment {
                 enabledChanges.add(change);
             }
         }
+
         createChangeCategoryPreference(enabledChanges, configMappings,
                 getString(R.string.platform_compat_default_enabled_title));
         createChangeCategoryPreference(disabledChanges, configMappings,
                 getString(R.string.platform_compat_default_disabled_title));
+
         for (Integer sdk : targetSdkChanges.keySet()) {
             createChangeCategoryPreference(targetSdkChanges.get(sdk), configMappings,
                     getString(R.string.platform_compat_target_sdk_title, sdk));
@@ -180,7 +188,14 @@ public class PlatformCompatDashboard extends DashboardFragment {
                 change.getName() != null ? change.getName() : "Change_" + change.getId();
         item.setSummary(changeName);
         item.setKey(changeName);
-        item.setEnabled(true);
+        boolean shouldEnable = true;
+        try {
+            shouldEnable = getPlatformCompat().getOverrideValidator()
+                                              .allowOverride(change.getId(), mSelectedApp);
+        } catch (RemoteException e) {
+            throw new RuntimeException("Could not check if app is enabled.", e);
+        }
+        item.setEnabled(shouldEnable);
         item.setChecked(currentValue);
         item.setOnPreferenceChangeListener(
                 new CompatChangePreferenceChangeListener(change.getId()));
@@ -243,6 +258,16 @@ public class PlatformCompatDashboard extends DashboardFragment {
 
     private void startAppPicker() {
         final Intent intent = new Intent(getContext(), AppPicker.class);
+        // If build is neither userdebug nor eng, only include debuggable apps
+        boolean debuggableBuild = false;
+        try {
+            debuggableBuild = getPlatformCompat().getAndroidBuildClassifier().isDebuggableBuild();
+        } catch (RemoteException e) {
+            throw new RuntimeException("Could not get build type!", e);
+        }
+        if (debuggableBuild) {
+            intent.putExtra(AppPicker.EXTRA_DEBUGGABLE, true /* value */);
+        }
         startActivityForResult(intent, REQUEST_COMPAT_CHANGE_APP);
     }
 
