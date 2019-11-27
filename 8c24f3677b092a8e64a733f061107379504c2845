@@ -22,6 +22,30 @@
       "revId": "8c24f3677b092a8e64a733f061107379504c2845",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c408112_490728a9",
+        "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2019-11-27T13:59:59Z",
+      "side": 1,
+      "message": "+1. If there\u0027s a way to make things appear, but disabled for toggling - that would be perfect!",
+      "parentUuid": "79b1649c_2cedce9b",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 63
+      },
+      "revId": "8c24f3677b092a8e64a733f061107379504c2845",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
