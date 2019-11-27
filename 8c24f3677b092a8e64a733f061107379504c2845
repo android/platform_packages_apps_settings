@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79b1649c_2cedce9b",
+        "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1061164
+      },
+      "writtenOn": "2019-11-27T13:54:42Z",
+      "side": 1,
+      "message": "nit: this is okay as is, but I wonder if could still show the changes (and non-debugable apps) in the UI; so devs are more aware what\u0027s available? Maybe not worth it, if we have a list on DAC. Thoughts?",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 152,
+        "endChar": 63
+      },
+      "revId": "8c24f3677b092a8e64a733f061107379504c2845",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
