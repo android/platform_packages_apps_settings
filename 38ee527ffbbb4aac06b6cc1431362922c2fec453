@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "766d1088_df6d059f",
+        "filename": "src/com/android/settings/development/AdbDeviceDetailsController.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-12-03T21:03:04Z",
+      "side": 1,
+      "message": "Could you please remove these?",
+      "range": {
+        "startLine": 150,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 5
+      },
+      "revId": "38ee527ffbbb4aac06b6cc1431362922c2fec453",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4e5fe43_1bf872bb",
+        "filename": "src/com/android/settings/development/AdbDeviceDetailsController.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-12-03T21:03:04Z",
+      "side": 1,
+      "message": "Do want to introduce an interface here and to use it in AdbDeviceDetailsController\u0027s ctor?",
+      "range": {
+        "startLine": 177,
+        "startChar": 17,
+        "endLine": 177,
+        "endChar": 29
+      },
+      "revId": "38ee527ffbbb4aac06b6cc1431362922c2fec453",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7481c22b_f9891224",
+        "filename": "src/com/android/settings/development/AdbDeviceDetailsFragment.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-12-03T21:03:04Z",
+      "side": 1,
+      "message": "Do we need this ctor?",
+      "range": {
+        "startLine": 36,
+        "startChar": 11,
+        "endLine": 36,
+        "endChar": 35
+      },
+      "revId": "38ee527ffbbb4aac06b6cc1431362922c2fec453",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a53631e_e8289626",
+        "filename": "src/com/android/settings/development/AdbDeviceDetailsFragment.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-12-03T21:03:04Z",
+      "side": 1,
+      "message": "Is there a named constant for this?",
+      "range": {
+        "startLine": 53,
+        "startChar": 15,
+        "endLine": 53,
+        "endChar": 16
+      },
+      "revId": "38ee527ffbbb4aac06b6cc1431362922c2fec453",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9473562b_eb3528a4",
+        "filename": "src/com/android/settings/development/WirelessDebugging.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-12-03T21:03:04Z",
+      "side": 1,
+      "message": "Could you please move this variable definition inside of \"try {}\"?",
+      "range": {
+        "startLine": 348,
+        "startChar": 19,
+        "endLine": 348,
+        "endChar": 20
+      },
+      "revId": "38ee527ffbbb4aac06b6cc1431362922c2fec453",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
