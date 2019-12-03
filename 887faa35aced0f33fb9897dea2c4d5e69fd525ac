@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dac6916e_b0a5bdc1",
+        "filename": "src/com/android/settings/development/AdbDeviceNamePreferenceController.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-12-03T20:50:22Z",
+      "side": 1,
+      "message": "To it is better to have it as\n\nprivate String getDeviceName()\n\nnext to setDeviceName",
+      "range": {
+        "startLine": 70,
+        "startChar": 17,
+        "endLine": 70,
+        "endChar": 37
+      },
+      "revId": "887faa35aced0f33fb9897dea2c4d5e69fd525ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ae5cbb98_8ece0cd6",
+        "filename": "src/com/android/settings/development/AdbDeviceNamePreferenceController.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-12-03T20:50:22Z",
+      "side": 1,
+      "message": "rethrow the exception?",
+      "range": {
+        "startLine": 74,
+        "startChar": 12,
+        "endLine": 74,
+        "endChar": 15
+      },
+      "revId": "887faa35aced0f33fb9897dea2c4d5e69fd525ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
