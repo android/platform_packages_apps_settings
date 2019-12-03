@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c085aa57_62432591",
+        "filename": "src/com/android/settings/development/AdbPairedDevicePreference.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-12-03T20:54:48Z",
+      "side": 1,
+      "message": "Is it expected to have a device name while it is not connected?",
+      "range": {
+        "startLine": 79,
+        "startChar": 41,
+        "endLine": 79,
+        "endChar": 54
+      },
+      "revId": "edeec8f83186494a60ff5e5c901fc0135605aacc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb77e0d8_10040a54",
+        "filename": "src/com/android/settings/development/AdbPairedDevicePreference.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-12-03T20:54:48Z",
+      "side": 1,
+      "message": "Could you please introduce a constant and use it here?",
+      "range": {
+        "startLine": 82,
+        "startChar": 16,
+        "endLine": 82,
+        "endChar": 18
+      },
+      "revId": "edeec8f83186494a60ff5e5c901fc0135605aacc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b173fa16_af23ac9b",
+        "filename": "src/com/android/settings/development/WirelessDebugging.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-12-03T20:54:48Z",
+      "side": 1,
+      "message": "Can we init it in the ctor?",
+      "range": {
+        "startLine": 255,
+        "startChar": 12,
+        "endLine": 255,
+        "endChar": 44
+      },
+      "revId": "edeec8f83186494a60ff5e5c901fc0135605aacc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
