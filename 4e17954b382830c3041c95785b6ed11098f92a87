@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7be79b23_7ed7cdeb",
+        "filename": "src/com/android/settings/development/WirelessDebuggingMasterSwitchController.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-12-03T20:17:32Z",
+      "side": 1,
+      "message": "Is it possible to have a \"do nothing\" implementation to avoid these \"if ( !\u003d null)\"s?",
+      "range": {
+        "startLine": 74,
+        "startChar": 38,
+        "endLine": 74,
+        "endChar": 45
+      },
+      "revId": "4e17954b382830c3041c95785b6ed11098f92a87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a91a3db6_167cb7af",
+        "filename": "src/com/android/settings/development/WirelessDebuggingMasterSwitchController.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2019-12-03T20:17:32Z",
+      "side": 1,
+      "message": "Should this be set to null for symmetry (and to save memory)?",
+      "range": {
+        "startLine": 96,
+        "startChar": 12,
+        "endLine": 96,
+        "endChar": 37
+      },
+      "revId": "4e17954b382830c3041c95785b6ed11098f92a87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
