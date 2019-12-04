@@ -25,8 +25,12 @@ import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.PersistableBundle;
+import android.telephony.AccessNetworkConstants;
 import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionManager;
+import android.telephony.ims.ImsMmTelManager;
+import android.telephony.ims.feature.MmTelFeature;
+import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.util.Log;
 
 import androidx.annotation.VisibleForTesting;
@@ -36,19 +40,18 @@ import androidx.slice.builders.ListBuilder;
 import androidx.slice.builders.ListBuilder.RowBuilder;
 import androidx.slice.builders.SliceAction;
 
-import com.android.ims.ImsManager;
 import com.android.settings.R;
 import com.android.settings.Utils;
+import com.android.settings.network.ims.ImsQuery;
+import com.android.settings.network.ims.ImsQueryEnhanced4gLteModeUserSetting;
+import com.android.settings.network.ims.ImsQueryProvisioningStat;
+import com.android.settings.network.ims.ImsQueryResult;
+import com.android.settings.network.ims.ImsQuerySupportStat;
+import com.android.settings.network.ims.ImsQuerySystemTtyStat;
+import com.android.settings.network.ims.ImsQueryTtyOnVolteStat;
 import com.android.settings.slices.CustomSliceRegistry;
 import com.android.settings.slices.SliceBroadcastReceiver;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.FutureTask;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.TimeoutException;
 
 /**
  * Helper class to control slices for enhanced 4g LTE settings.
@@ -70,11 +73,6 @@ public class Enhanced4gLteSliceHelper {
      */
     public static final String ACTION_MOBILE_NETWORK_SETTINGS_ACTIVITY =
             "android.settings.NETWORK_OPERATOR_SETTINGS";
-
-    /**
-     * Timeout for querying enhanced 4g lte setting from ims manager.
-     */
-    private static final int TIMEOUT_MILLIS = 2000;
 
     private final Context mContext;
 
@@ -119,14 +117,6 @@ public class Enhanced4gLteSliceHelper {
             return null;
         }
 
-        final ImsManager imsManager = getImsManager(subId);
-
-        if (!imsManager.isVolteEnabledByPlatform()
-                || !imsManager.isVolteProvisionedOnDevice()) {
-            Log.d(TAG, "Setting is either not provisioned or not enabled by Platform");
-            return null;
-        }
-
         if (isCarrierConfigManagerKeyEnabled(
                 CarrierConfigManager.KEY_HIDE_ENHANCED_4G_LTE_BOOL, subId, false)
                 || !isCarrierConfigManagerKeyEnabled(
@@ -136,27 +126,23 @@ public class Enhanced4gLteSliceHelper {
             return null;
         }
 
-        try {
-            return getEnhanced4gLteSlice(sliceUri,
-                    isEnhanced4gLteModeEnabled(imsManager), subId);
-        } catch (InterruptedException | TimeoutException | ExecutionException e) {
-            Log.e(TAG, "Unable to read the current Enhanced 4g LTE status", e);
-            return null;
-        }
-    }
+        final ImsQuery isVolteProvisioned = isVolteProvisionedOnDevice(subId);
+        final ImsQuery isVoltePlatformEnabled = isVolteEnabledByPlatform(subId);
+        final ImsQuery isEnhanced4gLteModeEnabled =
+                isEnhanced4gLteModeSettingEnabledByUser(subId);
 
-    private boolean isEnhanced4gLteModeEnabled(ImsManager imsManager)
-            throws InterruptedException, ExecutionException, TimeoutException {
-        final FutureTask<Boolean> isEnhanced4gLteOnTask = new FutureTask<>(new Callable<Boolean>() {
-            @Override
-            public Boolean call() {
-                return imsManager.isEnhanced4gLteModeSettingEnabledByUser();
+        try (ImsQueryResult queryResult = new ImsQueryResult(
+                isVoltePlatformEnabled, isVolteProvisioned,
+                isEnhanced4gLteModeEnabled)) {
+            if (queryResult.get(isVoltePlatformEnabled) && queryResult.get(isVolteProvisioned)) {
+                return getEnhanced4gLteSlice(sliceUri,
+                        queryResult.get(isEnhanced4gLteModeEnabled), subId);
             }
-        });
-        final ExecutorService executor = Executors.newSingleThreadExecutor();
-        executor.execute(isEnhanced4gLteOnTask);
-
-        return isEnhanced4gLteOnTask.get(TIMEOUT_MILLIS, TimeUnit.MILLISECONDS);
+        } catch (Exception exception) {
+            Log.w(TAG, "fail to get Enhanced 4G LTE status for displaying slice. subId="
+                    + subId, exception);
+        }
+        return null;
     }
 
     /**
@@ -184,10 +170,6 @@ public class Enhanced4gLteSliceHelper {
                 .build();
     }
 
-    protected ImsManager getImsManager(int subId) {
-        return ImsManager.getInstance(mContext, SubscriptionManager.getPhoneId(subId));
-    }
-
     /**
      * Handles Enhanced 4G LTE mode setting change from Enhanced 4G LTE slice and posts
      * notification. Should be called when intent action is ACTION_ENHANCED_4G_LTE_CHANGED
@@ -197,22 +179,55 @@ public class Enhanced4gLteSliceHelper {
     public void handleEnhanced4gLteChanged(Intent intent) {
         final int subId = getDefaultVoiceSubId();
 
-        if (subId > SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
-            final ImsManager imsManager = getImsManager(subId);
-            if (imsManager.isVolteEnabledByPlatform()
-                    && imsManager.isVolteProvisionedOnDevice()) {
-                final boolean currentValue = imsManager.isEnhanced4gLteModeSettingEnabledByUser()
-                        && imsManager.isNonTtyOrTtyOnVolteEnabled();
+        if ((subId <= SubscriptionManager.INVALID_SUBSCRIPTION_ID)
+                || (intent.getBooleanExtra(EXTRA_TOGGLE_STATE, false)
+                != intent.getBooleanExtra(EXTRA_TOGGLE_STATE, true))) {
+            notifyEnhanced4gLteUpdate();
+            return;
+        }
+
+        final ImsQuery isTtyEnabled = isSystemTtyEnabled();
+        final ImsQuery isVolteTtyEnabled = isTtyOnVolteEnabled(subId);
+        final ImsQuery isVolteProvisioned = isVolteProvisionedOnDevice(subId);
+        final ImsQuery isVoltePlatformEnabled = isVolteEnabledByPlatform(subId);
+        final ImsQuery isEnhanced4gLteModeEnabled = isEnhanced4gLteModeSettingEnabledByUser(subId);
+
+        try (ImsQueryResult queryResult = new ImsQueryResult(
+                isVoltePlatformEnabled, isVolteProvisioned,
+                isEnhanced4gLteModeEnabled,
+                isVolteTtyEnabled, isTtyEnabled)) {
+            if (queryResult.get(isVoltePlatformEnabled) && queryResult.get(isVolteProvisioned)) {
+                final boolean currentValue = queryResult.get(isEnhanced4gLteModeEnabled)
+                        && (queryResult.get(isVolteTtyEnabled) || !queryResult.get(isTtyEnabled));
                 final boolean newValue = intent.getBooleanExtra(EXTRA_TOGGLE_STATE,
                         currentValue);
                 if (newValue != currentValue) {
-                    imsManager.setEnhanced4gLteModeSetting(newValue);
+                    setEnhanced4gLteModeSetting(subId, newValue);
                 }
             }
+        } catch (Exception exception) {
+            Log.w(TAG, "fail to get Enhanced 4G LTE status before updating. subId="
+                    + subId, exception);
         }
+        notifyEnhanced4gLteUpdate();
+    }
+
+    private void notifyEnhanced4gLteUpdate() {
         // notify change in slice in any case to get re-queried. This would result in displaying
         // appropriate message with the updated setting.
         mContext.getContentResolver().notifyChange(CustomSliceRegistry.ENHANCED_4G_SLICE_URI, null);
+    }
+
+    @VisibleForTesting
+    void setEnhanced4gLteModeSetting(int subId, boolean isEnabled) {
+        if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            return;
+        }
+        final ImsMmTelManager imsMmTelManager = ImsMmTelManager.createForSubscriptionId(subId);
+        if (imsMmTelManager == null) {
+            return;
+        }
+        imsMmTelManager.setAdvancedCallingSettingEnabled(isEnabled);
     }
 
     private CharSequence getEnhanced4glteModeTitle(int subId) {
@@ -277,6 +292,35 @@ public class Enhanced4gLteSliceHelper {
         final Intent intent = new Intent(action);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         return PendingIntent.getActivity(mContext, 0 /* requestCode */, intent, 0 /* flags */);
+    }
+
+    @VisibleForTesting
+    ImsQuery isSystemTtyEnabled() {
+        return new ImsQuerySystemTtyStat(mContext);
+    }
+
+    @VisibleForTesting
+    ImsQuery isTtyOnVolteEnabled(int subId) {
+        return new ImsQueryTtyOnVolteStat(subId);
+    }
+
+    @VisibleForTesting
+    ImsQuery isEnhanced4gLteModeSettingEnabledByUser(int subId) {
+        return new ImsQueryEnhanced4gLteModeUserSetting(subId);
+    }
+
+    @VisibleForTesting
+    ImsQuery isVolteProvisionedOnDevice(int subId) {
+        return new ImsQueryProvisioningStat(subId,
+                MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE,
+                ImsRegistrationImplBase.REGISTRATION_TECH_LTE);
+    }
+
+    @VisibleForTesting
+    ImsQuery isVolteEnabledByPlatform(int subId) {
+        return new ImsQuerySupportStat(subId,
+                MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE,
+                AccessNetworkConstants.TRANSPORT_TYPE_WWAN);
     }
 }
 

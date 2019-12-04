@@ -22,15 +22,19 @@ import static android.app.slice.SliceItem.FORMAT_TEXT;
 
 import static com.google.common.truth.Truth.assertThat;
 
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.robolectric.Shadows.shadowOf;
 
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.PersistableBundle;
 import android.telephony.CarrierConfigManager;
+import android.telephony.SubscriptionManager;
 
 import androidx.slice.Slice;
 import androidx.slice.SliceItem;
@@ -39,9 +43,11 @@ import androidx.slice.SliceProvider;
 import androidx.slice.core.SliceAction;
 import androidx.slice.core.SliceQuery;
 import androidx.slice.widget.SliceLiveData;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
 
-import com.android.ims.ImsManager;
 import com.android.settings.R;
+import com.android.settings.network.ims.ImsQuery;
+import com.android.settings.network.ims.ImsQueryResultTest;
 import com.android.settings.slices.CustomSliceRegistry;
 import com.android.settings.slices.SettingsSliceProvider;
 import com.android.settings.slices.SliceBroadcastReceiver;
@@ -54,31 +60,54 @@ import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
+import org.robolectric.shadow.api.Shadow;
+import org.robolectric.shadows.ShadowContextImpl;
+import org.robolectric.shadows.ShadowSubscriptionManager;
 
 import java.util.List;
 
-@RunWith(RobolectricTestRunner.class)
+@RunWith(AndroidJUnit4.class)
 public class Enhanced4gLteSliceHelperTest {
-
-    @Mock
-    private CarrierConfigManager mMockCarrierConfigManager;
-
-    @Mock
-    private ImsManager mMockImsManager;
+    private static final int SUB_ID = 1;
 
     private Context mContext;
-    private FakeEnhanced4gLteSliceHelper mEnhanced4gLteSliceHelper;
-    private SettingsSliceProvider mProvider;
-    private SliceBroadcastReceiver mReceiver;
+    private ShadowContextImpl mShadowContextImpl;
+
+    @Mock
+    private CarrierConfigManager mCarrierConfigManager;
+    private PersistableBundle mCarrierConfig;
+
+    private ShadowSubscriptionManager mShadowSubscriptionManager;
+
+    private ImsQuery mImsQueryTrue;
+    private ImsQuery mImsQueryFalse;
+
     private FakeFeatureFactory mFeatureFactory;
     private SlicesFeatureProvider mSlicesFeatureProvider;
+    private SettingsSliceProvider mProvider;
+    private SliceBroadcastReceiver mReceiver;
+
+    private Enhanced4gLteSliceHelper mEnhanced4gLteSliceHelper;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        mContext = RuntimeEnvironment.application;
+
+        mContext = RuntimeEnvironment.application.getBaseContext();
+        mShadowContextImpl = Shadow.extract(mContext);
+
+        mCarrierConfig = new PersistableBundle();
+        mShadowContextImpl.setSystemService(Context.CARRIER_CONFIG_SERVICE, mCarrierConfigManager);
+        doReturn(mCarrierConfig).when(mCarrierConfigManager).getConfigForSubId(anyInt());
+        mCarrierConfig.putBoolean(CarrierConfigManager.KEY_EDITABLE_ENHANCED_4G_LTE_BOOL, true);
+
+        mShadowSubscriptionManager = shadowOf(
+                mContext.getSystemService(SubscriptionManager.class));
+        mShadowSubscriptionManager.setDefaultVoiceSubscriptionId(SUB_ID);
+
+        mImsQueryTrue = new ImsQueryResultTest.ImsQueryBoolean(true);
+        mImsQueryFalse = new ImsQueryResultTest.ImsQueryBoolean(false);
 
         mFeatureFactory = FakeFeatureFactory.setupForTest();
         mSlicesFeatureProvider = mFeatureFactory.getSlicesFeatureProvider();
@@ -91,15 +120,25 @@ public class Enhanced4gLteSliceHelperTest {
         //setup for SliceBroadcastReceiver test
         mReceiver = spy(new SliceBroadcastReceiver());
 
-        mEnhanced4gLteSliceHelper = new FakeEnhanced4gLteSliceHelper(mContext);
-
         // Set-up specs for SliceMetadata.
         SliceProvider.setSpecs(SliceLiveData.SUPPORTED_SPECS);
+
+        mEnhanced4gLteSliceHelper = spy(new Enhanced4gLteSliceHelper(mContext));
+        doReturn(mImsQueryTrue).when(mEnhanced4gLteSliceHelper).isSystemTtyEnabled();
     }
 
     @Test
     public void test_CreateEnhanced4gLteSlice_invalidSubId() {
-        mEnhanced4gLteSliceHelper.setDefaultVoiceSubId(-1);
+        mShadowSubscriptionManager.setDefaultVoiceSubscriptionId(
+                SubscriptionManager.INVALID_SUBSCRIPTION_ID);
+        doReturn(mImsQueryTrue).when(mEnhanced4gLteSliceHelper)
+                .isTtyOnVolteEnabled(anyInt());
+        doReturn(mImsQueryTrue).when(mEnhanced4gLteSliceHelper)
+                .isVolteProvisionedOnDevice(anyInt());
+        doReturn(mImsQueryTrue).when(mEnhanced4gLteSliceHelper)
+                .isVolteEnabledByPlatform(anyInt());
+        doReturn(mImsQueryTrue).when(mEnhanced4gLteSliceHelper)
+                .isEnhanced4gLteModeSettingEnabledByUser(anyInt());
 
         final Slice slice = mEnhanced4gLteSliceHelper.createEnhanced4gLteSlice(
                 CustomSliceRegistry.ENHANCED_4G_SLICE_URI);
@@ -109,88 +148,87 @@ public class Enhanced4gLteSliceHelperTest {
 
     @Test
     public void test_CreateEnhanced4gLteSlice_enhanced4gLteNotSupported() {
-        when(mMockImsManager.isVolteEnabledByPlatform()).thenReturn(false);
+        doReturn(mImsQueryTrue).when(mEnhanced4gLteSliceHelper)
+                .isTtyOnVolteEnabled(anyInt());
+        doReturn(mImsQueryFalse).when(mEnhanced4gLteSliceHelper)
+                .isVolteProvisionedOnDevice(anyInt());
+        doReturn(mImsQueryFalse).when(mEnhanced4gLteSliceHelper)
+                .isVolteEnabledByPlatform(anyInt());
+        doReturn(mImsQueryTrue).when(mEnhanced4gLteSliceHelper)
+                .isEnhanced4gLteModeSettingEnabledByUser(anyInt());
 
         final Slice slice = mEnhanced4gLteSliceHelper.createEnhanced4gLteSlice(
                 CustomSliceRegistry.ENHANCED_4G_SLICE_URI);
 
-        assertThat(mEnhanced4gLteSliceHelper.getDefaultVoiceSubId()).isEqualTo(1);
         assertThat(slice).isNull();
     }
 
     @Test
     public void test_CreateEnhanced4gLteSlice_success() {
-        when(mMockImsManager.isVolteEnabledByPlatform()).thenReturn(true);
-        when(mMockImsManager.isVolteProvisionedOnDevice()).thenReturn(true);
-        when(mMockImsManager.isEnhanced4gLteModeSettingEnabledByUser()).thenReturn(true);
-        when(mMockImsManager.isNonTtyOrTtyOnVolteEnabled()).thenReturn(true);
-        when(mMockCarrierConfigManager.getConfigForSubId(1)).thenReturn(null);
+        doReturn(mImsQueryTrue).when(mEnhanced4gLteSliceHelper)
+                .isTtyOnVolteEnabled(anyInt());
+        doReturn(mImsQueryTrue).when(mEnhanced4gLteSliceHelper)
+                .isVolteProvisionedOnDevice(anyInt());
+        doReturn(mImsQueryTrue).when(mEnhanced4gLteSliceHelper)
+                .isVolteEnabledByPlatform(anyInt());
+        doReturn(mImsQueryTrue).when(mEnhanced4gLteSliceHelper)
+                .isEnhanced4gLteModeSettingEnabledByUser(anyInt());
 
         final Slice slice = mEnhanced4gLteSliceHelper.createEnhanced4gLteSlice(
                 CustomSliceRegistry.ENHANCED_4G_SLICE_URI);
 
-        assertThat(mEnhanced4gLteSliceHelper.getDefaultVoiceSubId()).isEqualTo(1);
         testEnhanced4gLteSettingsToggleSlice(slice);
     }
 
     @Test
     public void test_SettingSliceProvider_getsRightSliceEnhanced4gLte() {
-        when(mMockImsManager.isVolteEnabledByPlatform()).thenReturn(true);
-        when(mMockImsManager.isVolteProvisionedOnDevice()).thenReturn(true);
-        when(mMockImsManager.isEnhanced4gLteModeSettingEnabledByUser()).thenReturn(true);
-        when(mMockImsManager.isNonTtyOrTtyOnVolteEnabled()).thenReturn(true);
-        when(mMockCarrierConfigManager.getConfigForSubId(1)).thenReturn(null);
+        doReturn(mImsQueryTrue).when(mEnhanced4gLteSliceHelper)
+                .isTtyOnVolteEnabled(anyInt());
+        doReturn(mImsQueryTrue).when(mEnhanced4gLteSliceHelper)
+                .isVolteProvisionedOnDevice(anyInt());
+        doReturn(mImsQueryTrue).when(mEnhanced4gLteSliceHelper)
+                .isVolteEnabledByPlatform(anyInt());
+        doReturn(mImsQueryTrue).when(mEnhanced4gLteSliceHelper)
+                .isEnhanced4gLteModeSettingEnabledByUser(anyInt());
+
         when(mSlicesFeatureProvider.getNewEnhanced4gLteSliceHelper(mContext))
                 .thenReturn(mEnhanced4gLteSliceHelper);
 
         final Slice slice = mProvider.onBindSlice(CustomSliceRegistry.ENHANCED_4G_SLICE_URI);
 
-        assertThat(mEnhanced4gLteSliceHelper.getDefaultVoiceSubId()).isEqualTo(1);
+        assertThat(mEnhanced4gLteSliceHelper.getDefaultVoiceSubId()).isEqualTo(SUB_ID);
         testEnhanced4gLteSettingsToggleSlice(slice);
     }
 
     @Test
     public void test_SliceBroadcastReceiver_toggleOffEnhanced4gLte() {
-        when(mMockImsManager.isVolteEnabledByPlatform()).thenReturn(true);
-        when(mMockImsManager.isVolteProvisionedOnDevice()).thenReturn(true);
-        when(mMockImsManager.isEnhanced4gLteModeSettingEnabledByUser()).thenReturn(false);
-        when(mMockImsManager.isNonTtyOrTtyOnVolteEnabled()).thenReturn(true);
+        doReturn(mImsQueryTrue).when(mEnhanced4gLteSliceHelper)
+                .isTtyOnVolteEnabled(anyInt());
+        doReturn(mImsQueryTrue).when(mEnhanced4gLteSliceHelper)
+                .isVolteProvisionedOnDevice(anyInt());
+        doReturn(mImsQueryTrue).when(mEnhanced4gLteSliceHelper)
+                .isVolteEnabledByPlatform(anyInt());
+        doReturn(mImsQueryFalse).when(mEnhanced4gLteSliceHelper)
+                .isEnhanced4gLteModeSettingEnabledByUser(anyInt());
+
         when(mSlicesFeatureProvider.getNewEnhanced4gLteSliceHelper(mContext))
                 .thenReturn(mEnhanced4gLteSliceHelper);
 
-        ArgumentCaptor<Boolean> mEnhanced4gLteSettingCaptor = ArgumentCaptor.forClass(
+        final ArgumentCaptor<Boolean> mEnhanced4gLteSettingCaptor = ArgumentCaptor.forClass(
                 Boolean.class);
 
+        doNothing().when(mEnhanced4gLteSliceHelper).setEnhanced4gLteModeSetting(anyInt(),
+                mEnhanced4gLteSettingCaptor.capture());
+
         // turn on Enhanced4gLte setting
-        Intent intent = new Intent(Enhanced4gLteSliceHelper.ACTION_ENHANCED_4G_LTE_CHANGED);
+        final Intent intent = new Intent(Enhanced4gLteSliceHelper.ACTION_ENHANCED_4G_LTE_CHANGED);
         intent.putExtra(EXTRA_TOGGLE_STATE, true);
 
         // change the setting
         mReceiver.onReceive(mContext, intent);
 
-        verify((mMockImsManager)).setEnhanced4gLteModeSetting(
-                mEnhanced4gLteSettingCaptor.capture());
-
         // assert the change
         assertThat(mEnhanced4gLteSettingCaptor.getValue()).isTrue();
-    }
-
-    private void testEnhanced4gLteSettingsUnavailableSlice(Slice slice,
-            PendingIntent expectedPrimaryAction) {
-        final SliceMetadata metadata = SliceMetadata.from(mContext, slice);
-
-        //Check there is no toggle action
-        final List<SliceAction> toggles = metadata.getToggles();
-        assertThat(toggles).isEmpty();
-
-        // Check whether the primary action is to open Enhanced4gLte settings activity
-        final PendingIntent primaryPendingIntent =
-                metadata.getPrimaryAction().getAction();
-        assertThat(primaryPendingIntent).isEqualTo(expectedPrimaryAction);
-
-        // Check the title
-        final List<SliceItem> sliceItems = slice.getItems();
-        assertTitle(sliceItems, mContext.getString(R.string.enhanced_4g_lte_mode_title));
     }
 
     private void testEnhanced4gLteSettingsToggleSlice(Slice slice) {
@@ -234,7 +272,7 @@ public class Enhanced4gLteSliceHelperTest {
     private void assertTitle(List<SliceItem> sliceItems, String title) {
         boolean hasTitle = false;
         for (SliceItem item : sliceItems) {
-            List<SliceItem> titleItems = SliceQuery.findAll(item, FORMAT_TEXT, HINT_TITLE,
+            final List<SliceItem> titleItems = SliceQuery.findAll(item, FORMAT_TEXT, HINT_TITLE,
                     null /* non-hints */);
             if (titleItems == null) {
                 continue;
@@ -246,31 +284,5 @@ public class Enhanced4gLteSliceHelperTest {
             }
         }
         assertThat(hasTitle).isTrue();
-    }
-
-    private class FakeEnhanced4gLteSliceHelper extends Enhanced4gLteSliceHelper {
-        int mSubId = 1;
-
-        FakeEnhanced4gLteSliceHelper(Context context) {
-            super(context);
-        }
-
-        @Override
-        protected CarrierConfigManager getCarrierConfigManager() {
-            return mMockCarrierConfigManager;
-        }
-
-        @Override
-        protected ImsManager getImsManager(int subId) {
-            return mMockImsManager;
-        }
-
-        protected int getDefaultVoiceSubId() {
-            return mSubId;
-        }
-
-        private void setDefaultVoiceSubId(int id) {
-            mSubId = id;
-        }
     }
 }
