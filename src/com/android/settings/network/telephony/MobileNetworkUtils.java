@@ -33,29 +33,28 @@ import android.os.SystemProperties;
 import android.provider.Settings;
 import android.telecom.PhoneAccountHandle;
 import android.telecom.TelecomManager;
+import android.telephony.AccessNetworkConstants;
 import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.euicc.EuiccManager;
-import android.telephony.ims.ProvisioningManager;
-import android.telephony.ims.feature.ImsFeature;
 import android.telephony.ims.feature.MmTelFeature;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Gravity;
 
 import androidx.annotation.VisibleForTesting;
 
-import com.android.ims.ImsException;
-import com.android.ims.ImsManager;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.util.ArrayUtils;
 import com.android.settings.R;
 import com.android.settings.Utils;
 import com.android.settings.core.BasePreferenceController;
+import com.android.settings.network.ims.ImsQuery;
+import com.android.settings.network.ims.ImsQueryProvisioningStat;
+import com.android.settings.network.ims.ImsQuerySupportStat;
 import com.android.settingslib.development.DevelopmentSettingsEnabler;
 import com.android.settingslib.graph.SignalDrawable;
 
@@ -96,61 +95,23 @@ public class MobileNetworkUtils {
     }
 
     /**
-     * Returns true if Wifi calling is enabled for at least one subscription.
+     * Returns {@code ImsQuery} for querying Wifi calling provisioning status
+     * for the specific subscription with id {@code subId}.
      */
-    public static boolean isWifiCallingEnabled(Context context) {
-        final SubscriptionManager subManager = context.getSystemService(SubscriptionManager.class);
-        if (subManager == null) {
-            Log.e(TAG, "isWifiCallingEnabled: couldn't get system service.");
-            return false;
-        }
-        for (int subId : subManager.getActiveSubscriptionIdList()) {
-            if (isWifiCallingEnabled(context, subId)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    /**
-     * Returns true if Wifi calling is provisioned for the specific subscription with id
-     * {@code subId}.
-     */
-    @VisibleForTesting
-    public static boolean isWfcProvisionedOnDevice(int subId) {
-        final ProvisioningManager provisioningMgr =
-                ProvisioningManager.createForSubscriptionId(subId);
-        if (provisioningMgr == null) {
-            return true;
-        }
-        return provisioningMgr.getProvisioningStatusForCapability(
+    public static ImsQuery isWfcProvisionedOnDevice(int subId) {
+        return new ImsQueryProvisioningStat(subId,
                 MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE,
                 ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN);
     }
 
     /**
-     * Returns true if Wifi calling is enabled for the specific subscription with id {@code subId}.
+     * Returns {@code ImsQuery} for querying Wifi calling supporting status
+     * for the specific subscription with id {@code subId}.
      */
-    public static boolean isWifiCallingEnabled(Context context, int subId) {
-        final PhoneAccountHandle simCallManager =
-                TelecomManager.from(context).getSimCallManagerForSubscription(subId);
-        final int phoneId = SubscriptionManager.getSlotIndex(subId);
-
-        boolean isWifiCallingEnabled;
-        if (simCallManager != null) {
-            final Intent intent = buildPhoneAccountConfigureIntent(
-                    context, simCallManager);
-
-            isWifiCallingEnabled = intent != null;
-        } else {
-            final ImsManager imsMgr = ImsManager.getInstance(context, phoneId);
-            isWifiCallingEnabled = imsMgr != null
-                    && imsMgr.isWfcEnabledByPlatform()
-                    && isWfcProvisionedOnDevice(subId)
-                    && isImsServiceStateReady(imsMgr);
-        }
-
-        return isWifiCallingEnabled;
+    public static ImsQuery isWfcEnabledByPlatform(int subId) {
+        return new ImsQuerySupportStat(subId,
+                MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE,
+                AccessNetworkConstants.TRANSPORT_TYPE_WLAN);
     }
 
     @VisibleForTesting
@@ -188,21 +149,6 @@ public class MobileNetworkUtils {
         }
 
         return intent;
-    }
-
-    public static boolean isImsServiceStateReady(ImsManager imsMgr) {
-        boolean isImsServiceStateReady = false;
-
-        try {
-            if (imsMgr != null && imsMgr.getImsServiceState() == ImsFeature.STATE_READY) {
-                isImsServiceStateReady = true;
-            }
-        } catch (ImsException ex) {
-            Log.e(TAG, "Exception when trying to get ImsServiceStatus: " + ex);
-        }
-
-        Log.d(TAG, "isImsServiceStateReady=" + isImsServiceStateReady);
-        return isImsServiceStateReady;
     }
 
     /**

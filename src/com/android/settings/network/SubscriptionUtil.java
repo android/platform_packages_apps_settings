@@ -50,7 +50,7 @@ public class SubscriptionUtil {
         if (sActiveResultsForTesting != null) {
             return sActiveResultsForTesting;
         }
-        final List<SubscriptionInfo> subscriptions = manager.getActiveSubscriptionInfoList(true);
+        final List<SubscriptionInfo> subscriptions = manager.getActiveSubscriptionInfoList();
         if (subscriptions == null) {
             return new ArrayList<>();
         }
@@ -73,12 +73,12 @@ public class SubscriptionUtil {
         final SubscriptionManager subMgr = context.getSystemService(SubscriptionManager.class);
         final TelephonyManager telMgr = context.getSystemService(TelephonyManager.class);
 
-        List<SubscriptionInfo> subscriptions =
+        final List<SubscriptionInfo> subscriptions =
                 new ArrayList<>(emptyIfNull(subMgr.getSelectableSubscriptionInfoList()));
 
         // Look for inactive but present physical SIMs that are missing from the selectable list.
         final List<UiccSlotInfo> missing = new ArrayList<>();
-        UiccSlotInfo[] slotsInfo =  telMgr.getUiccSlotsInfo();
+        final UiccSlotInfo[] slotsInfo = telMgr.getUiccSlotsInfo();
         for (int i = 0; slotsInfo != null && i < slotsInfo.length; i++) {
             final UiccSlotInfo slotInfo = slotsInfo[i];
             if (isInactiveInsertedPSim(slotInfo)) {
@@ -92,14 +92,15 @@ public class SubscriptionUtil {
                 }
             }
         }
-        if (!missing.isEmpty()) {
-            for (SubscriptionInfo info : subMgr.getAllSubscriptionInfoList()) {
-                for (UiccSlotInfo slotInfo : missing) {
-                    if (info.getSimSlotIndex() == slotInfo.getLogicalSlotIdx() &&
-                    info.getCardString().equals(slotInfo.getCardId())) {
-                        subscriptions.add(info);
-                        break;
-                    }
+        if (missing.isEmpty()) {
+            return subscriptions;
+        }
+        for (SubscriptionInfo info : subMgr.getAllSubscriptionInfoList()) {
+            for (UiccSlotInfo slotInfo : missing) {
+                if (info.getSimSlotIndex() == slotInfo.getLogicalSlotIdx()
+                        && info.getCardString().equals(slotInfo.getCardId())) {
+                    subscriptions.add(info);
+                    break;
                 }
             }
         }

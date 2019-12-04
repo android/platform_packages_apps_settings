@@ -21,7 +21,6 @@ import static android.telephony.UiccSlotInfo.CARD_STATE_INFO_PRESENT;
 
 import static com.google.common.truth.Truth.assertThat;
 
-import static org.mockito.ArgumentMatchers.anyBoolean;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -39,7 +38,6 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -162,7 +160,7 @@ public class SubscriptionUtilTest {
 
     @Test
     public void getActiveSubscriptions_nullInfoFromSubscriptionManager_nonNullResult() {
-        when(mSubMgr.getActiveSubscriptionInfoList(anyBoolean())).thenReturn(null);
+        when(mSubMgr.getActiveSubscriptionInfoList()).thenReturn(null);
         final List<SubscriptionInfo> subs = SubscriptionUtil.getActiveSubscriptions(mSubMgr);
         assertThat(subs).isNotNull();
         assertThat(subs).isEmpty();
@@ -171,7 +169,7 @@ public class SubscriptionUtilTest {
     @Test
     public void getActiveSubscriptions_oneSubscription_oneResult() {
         final SubscriptionInfo info = mock(SubscriptionInfo.class);
-        when(mSubMgr.getActiveSubscriptionInfoList(anyBoolean())).thenReturn(Arrays.asList(info));
+        when(mSubMgr.getActiveSubscriptionInfoList()).thenReturn(Arrays.asList(info));
         final List<SubscriptionInfo> subs = SubscriptionUtil.getActiveSubscriptions(mSubMgr);
         assertThat(subs).isNotNull();
         assertThat(subs).hasSize(1);
@@ -181,7 +179,7 @@ public class SubscriptionUtilTest {
     public void getActiveSubscriptions_twoSubscriptions_twoResults() {
         final SubscriptionInfo info1 = mock(SubscriptionInfo.class);
         final SubscriptionInfo info2 = mock(SubscriptionInfo.class);
-        when(mSubMgr.getActiveSubscriptionInfoList(anyBoolean())).thenReturn(
+        when(mSubMgr.getActiveSubscriptionInfoList()).thenReturn(
                 Arrays.asList(info1, info2));
         final List<SubscriptionInfo> subs = SubscriptionUtil.getActiveSubscriptions(mSubMgr);
         assertThat(subs).isNotNull();
