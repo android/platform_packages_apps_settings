@@ -25,13 +25,18 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.os.PersistableBundle;
+import android.telephony.AccessNetworkConstants;
 import android.telephony.CarrierConfigManager;
 import android.telephony.PhoneStateListener;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.telephony.ims.ImsMmTelManager;
 import android.telephony.ims.ProvisioningManager;
+import android.telephony.ims.feature.MmTelFeature;
+import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -46,7 +51,6 @@ import androidx.preference.Preference.OnPreferenceClickListener;
 import androidx.preference.PreferenceScreen;
 
 import com.android.ims.ImsConfig;
-import com.android.ims.ImsException;
 import com.android.ims.ImsManager;
 import com.android.internal.annotations.VisibleForTesting;
 import com.android.internal.telephony.Phone;
@@ -55,8 +59,18 @@ import com.android.settings.SettingsActivity;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import com.android.settings.core.SubSettingLauncher;
-import com.android.settings.network.telephony.MobileNetworkUtils;
+import com.android.settings.network.ims.ImsQuery;
+import com.android.settings.network.ims.ImsQueryFeatureIsReady;
+import com.android.settings.network.ims.ImsQueryProvisioningStat;
+import com.android.settings.network.ims.ImsQueryResult;
+import com.android.settings.network.ims.ImsQuerySupportStat;
+import com.android.settings.network.ims.ImsQuerySystemTtyStat;
+import com.android.settings.network.ims.ImsQueryTtyOnVolteStat;
+import com.android.settings.network.ims.ImsQueryWfcUserSetting;
 import com.android.settings.widget.SwitchBar;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * This is the inner class of {@link WifiCallingSettings} fragment.
@@ -99,7 +113,7 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
     private boolean mUseWfcHomeModeForRoaming = false;
 
     private int mSubId = SubscriptionManager.INVALID_SUBSCRIPTION_ID;
-    private ImsManager mImsManager;
+    private ProvisioningManager mProvisioningManager;
     private ImsMmTelManager mImsMmTelManager;
     private TelephonyManager mTelephonyManager;
 
@@ -113,39 +127,54 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
         @Override
         public void onCallStateChanged(int state, String incomingNumber) {
             final SettingsActivity activity = (SettingsActivity) getActivity();
-            final boolean isNonTtyOrTtyOnVolteEnabled = mImsManager.isNonTtyOrTtyOnVolteEnabled();
+            final int subId = WifiCallingSettingsForSub.this.mSubId;
+
+            final boolean isCallStateIdle = (state == TelephonyManager.CALL_STATE_IDLE);
+
+            boolean isNonTtyOrTtyOnVolteEnabled = false;
+
+            if (mSwitchBar.isChecked() || isCallStateIdle) {
+                final ImsQuery isTtyEnabled = new ImsQuerySystemTtyStat(activity);
+                final ImsQuery isVolteTtyEnabled = new ImsQueryTtyOnVolteStat(subId);
+                try (ImsQueryResult queryResult = new ImsQueryResult(
+                        isVolteTtyEnabled, isTtyEnabled)) {
+                    isNonTtyOrTtyOnVolteEnabled =
+                            queryResult.get(isVolteTtyEnabled) || !queryResult.get(isTtyEnabled);
+                } catch (Exception exception) {
+                    Log.w(TAG, "fail to get TTY status for call. subId="
+                            + subId, exception);
+                }
+            }
+
             final boolean isWfcEnabled = mSwitchBar.isChecked()
                     && isNonTtyOrTtyOnVolteEnabled;
-            boolean isCallStateIdle =
-                    mTelephonyManager.getCallState() == TelephonyManager.CALL_STATE_IDLE;
             mSwitchBar.setEnabled(isCallStateIdle
                     && isNonTtyOrTtyOnVolteEnabled);
 
             boolean isWfcModeEditable = true;
             boolean isWfcRoamingModeEditable = false;
-            final CarrierConfigManager configManager = (CarrierConfigManager)
-                    activity.getSystemService(Context.CARRIER_CONFIG_SERVICE);
-            if (configManager != null) {
-                PersistableBundle b =
-                        configManager.getConfigForSubId(WifiCallingSettingsForSub.this.mSubId);
-                if (b != null) {
-                    isWfcModeEditable = b.getBoolean(
-                            CarrierConfigManager.KEY_EDITABLE_WFC_MODE_BOOL);
-                    isWfcRoamingModeEditable = b.getBoolean(
-                            CarrierConfigManager.KEY_EDITABLE_WFC_ROAMING_MODE_BOOL);
+            if (isWfcEnabled && isCallStateIdle) {
+                final CarrierConfigManager configManager = (CarrierConfigManager)
+                        activity.getSystemService(Context.CARRIER_CONFIG_SERVICE);
+                if (configManager != null) {
+                    final PersistableBundle b = configManager.getConfigForSubId(subId);
+                    if (b != null) {
+                        isWfcModeEditable = b.getBoolean(
+                                CarrierConfigManager.KEY_EDITABLE_WFC_MODE_BOOL);
+                        isWfcRoamingModeEditable = b.getBoolean(
+                                CarrierConfigManager.KEY_EDITABLE_WFC_ROAMING_MODE_BOOL);
+                    }
                 }
             }
 
             final Preference pref = getPreferenceScreen().findPreference(BUTTON_WFC_MODE);
             if (pref != null) {
-                pref.setEnabled(isWfcEnabled && isWfcModeEditable
-                        && isCallStateIdle);
+                pref.setEnabled(isWfcEnabled && isWfcModeEditable && isCallStateIdle);
             }
             final Preference pref_roam =
                     getPreferenceScreen().findPreference(BUTTON_WFC_ROAMING_MODE);
             if (pref_roam != null) {
-                pref_roam.setEnabled(isWfcEnabled && isWfcRoamingModeEditable
-                        && isCallStateIdle);
+                pref_roam.setEnabled(isWfcEnabled && isWfcRoamingModeEditable && isCallStateIdle);
             }
         }
     };
@@ -171,10 +200,39 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
                             || item == ImsConfig.ConfigConstants.VLT_SETTING_ENABLED) {
                         // The provisioning policy might have changed. Update the body to make sure
                         // this change takes effect if needed.
-                        updateBody();
+                        updateBodyInUiThread();
                     }
                 }
             };
+
+    private void updateBodyInUiThread() {
+        (new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                updateBody();
+            }}).sendEmptyMessage(0);
+    }
+
+    private void registerProvisioningChangedCallback() {
+        if (mProvisioningManager == null) {
+            return;
+        }
+        final ExecutorService executor = Executors.newSingleThreadExecutor();
+        try {
+            mProvisioningManager.registerProvisioningChangedCallback(executor,
+                    mProvisioningCallback);
+        } catch (Exception ex) {
+            executor.shutdown();
+            Log.w(TAG, "onResume: Unable to register callback for provisioning changes.");
+        }
+    }
+
+    private void unregisterProvisioningChangedCallback() {
+        if (mProvisioningManager == null) {
+            return;
+        }
+        mProvisioningManager.unregisterProvisioningChangedCallback(mProvisioningCallback);
+    }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -245,12 +303,18 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
     }
 
     @VisibleForTesting
-    ImsManager getImsManager() {
-        return ImsManager.getInstance(getActivity(), SubscriptionManager.getPhoneId(mSubId));
+    ProvisioningManager getImsProvisioningManager() {
+        if (mSubId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            return null;
+        }
+        return ProvisioningManager.createForSubscriptionId(mSubId);
     }
 
     @VisibleForTesting
     ImsMmTelManager getImsMmTelManager() {
+        if (mSubId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            return null;
+        }
         return ImsMmTelManager.createForSubscriptionId(mSubId);
     }
 
@@ -269,10 +333,10 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
                     FRAGMENT_BUNDLE_SUBID, SubscriptionManager.INVALID_SUBSCRIPTION_ID);
         }
 
-        mImsManager = getImsManager();
+        mProvisioningManager = getImsProvisioningManager();
         mImsMmTelManager = getImsMmTelManager();
 
-        mTelephonyManager = ((TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE));
+        mTelephonyManager = getActivity().getSystemService(TelephonyManager.class);
 
         mButtonWfcMode = findPreference(BUTTON_WFC_MODE);
         mButtonWfcMode.setOnPreferenceChangeListener(this);
@@ -309,16 +373,50 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
     }
 
     @VisibleForTesting
-    boolean isWfcProvisionedOnDevice() {
-        return MobileNetworkUtils.isWfcProvisionedOnDevice(mSubId);
+    ImsQuery isSystemTtyEnabled() {
+        return new ImsQuerySystemTtyStat(getActivity());
     }
 
-    private void updateBody() {
-        if (!isWfcProvisionedOnDevice()) {
-            // This screen is not allowed to be shown due to provisioning policy and should
-            // therefore be closed.
+    @VisibleForTesting
+    ImsQuery isTtyOnVolteEnabled(int subId) {
+        return new ImsQueryTtyOnVolteStat(subId);
+    }
+
+    @VisibleForTesting
+    ImsQuery isWfcEnabledByUser(int subId) {
+        return new ImsQueryWfcUserSetting(subId);
+    }
+
+    @VisibleForTesting
+    ImsQuery isImsServiceStateReady(int subId) {
+        return new ImsQueryFeatureIsReady(subId);
+    }
+
+    @VisibleForTesting
+    ImsQuery isWfcProvisionedOnDevice(int subId) {
+        return new ImsQueryProvisioningStat(subId,
+                MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE,
+                ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN);
+    }
+
+    @VisibleForTesting
+    ImsQuery isWfcEnabledByPlatform(int subId) {
+        return new ImsQuerySupportStat(subId,
+                MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE,
+                AccessNetworkConstants.TRANSPORT_TYPE_WLAN);
+    }
+
+    private boolean updateBody() {
+        boolean isProvisioned = false;
+        try {
+            isProvisioned = ImsQueryResult.andAll(isWfcProvisionedOnDevice(mSubId));
+        } catch (Exception exception) {
+            Log.w(TAG, "fail to update UI for provisioning stat change. subId="
+                    + mSubId, exception);
+        }
+        if (!isProvisioned) {
             finish();
-            return;
+            return false;
         }
 
         final CarrierConfigManager configManager = (CarrierConfigManager)
@@ -340,7 +438,7 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
             }
         }
 
-        Resources res = getResourcesForSubId();
+        final Resources res = getResourcesForSubId();
         mButtonWfcMode.setTitle(res.getString(R.string.wifi_calling_mode_title));
         mButtonWfcMode.setDialogTitle(res.getString(R.string.wifi_calling_mode_dialog_title));
         mButtonWfcRoamingMode.setTitle(res.getString(R.string.wifi_calling_roaming_mode_title));
@@ -381,30 +479,53 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
         }
 
         // NOTE: Buttons will be enabled/disabled in mPhoneStateListener
-        final boolean wfcEnabled = mImsManager.isWfcEnabledByUser()
-                && mImsManager.isNonTtyOrTtyOnVolteEnabled();
-        mSwitch.setChecked(wfcEnabled);
+        final ImsQuery isTtyEnabled = isSystemTtyEnabled();
+        final ImsQuery isVolteTtyEnabled = isTtyOnVolteEnabled(mSubId);
+        final ImsQuery isWfcSettingEnabled = isWfcEnabledByUser(mSubId);
+
+        boolean wfcEnabled = false;
+        boolean isNonTtyOrTtyOnVolteEnabled = false;
+        try (ImsQueryResult queryResult = new ImsQueryResult(isWfcSettingEnabled,
+                isVolteTtyEnabled, isTtyEnabled)) {
+            wfcEnabled = queryResult.get(isWfcSettingEnabled);
+            isNonTtyOrTtyOnVolteEnabled =
+                    queryResult.get(isVolteTtyEnabled) || !queryResult.get(isTtyEnabled);
+        } catch (Exception exception) {
+            Log.w(TAG, "fail to get Wfc status for update. subId=" + mSubId, exception);
+        }
+
+        mSwitch.setChecked(wfcEnabled && isNonTtyOrTtyOnVolteEnabled);
         final int wfcMode = mImsMmTelManager.getVoWiFiModeSetting();
         final int wfcRoamingMode = mImsMmTelManager.getVoWiFiRoamingModeSetting();
         mButtonWfcMode.setValue(Integer.toString(wfcMode));
         mButtonWfcRoamingMode.setValue(Integer.toString(wfcRoamingMode));
-        updateButtonWfcMode(wfcEnabled, wfcMode, wfcRoamingMode);
+        updateButtonWfcMode(wfcEnabled, isNonTtyOrTtyOnVolteEnabled, wfcMode, wfcRoamingMode);
+
+        return true;
     }
 
     @Override
     public void onResume() {
         super.onResume();
 
+        if (!updateBody()) {
+            return;
+        }
+
         final Context context = getActivity();
 
-        updateBody();
+        boolean isWfcEnabled = false;
+        try {
+            if (ImsQueryResult.andAll(isWfcEnabledByPlatform(mSubId))) {
+                mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
 
-        if (mImsManager.isWfcEnabledByPlatform()) {
-            mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_CALL_STATE);
+                mSwitchBar.addOnSwitchChangeListener(this);
 
-            mSwitchBar.addOnSwitchChangeListener(this);
-
-            mValidListener = true;
+                mValidListener = true;
+            }
+        } catch (Exception exception) {
+            Log.w(TAG, "fail to get Wfc enabled status before display. subId="
+                        + mSubId, exception);
         }
 
         context.registerReceiver(mIntentReceiver, mIntentFilter);
@@ -415,12 +536,7 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
         }
 
         // Register callback for provisioning changes.
-        try {
-            mImsManager.getConfigInterface().addConfigCallback(mProvisioningCallback);
-        } catch (ImsException e) {
-            Log.w(TAG, "onResume: Unable to register callback for provisioning changes.");
-        }
-
+        registerProvisioningChangedCallback();
     }
 
     @Override
@@ -440,13 +556,7 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
         context.unregisterReceiver(mIntentReceiver);
 
         // Remove callback for provisioning changes.
-        try {
-            mImsManager.getConfigInterface().removeConfigCallback(
-                    mProvisioningCallback.getBinder());
-        } catch (ImsException e) {
-            Log.w(TAG, "onPause: Unable to remove callback for provisioning changes");
-        }
-
+        unregisterProvisioningChangedCallback();
     }
 
     /**
@@ -506,11 +616,11 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
      */
     private void updateWfcMode(boolean wfcEnabled) {
         Log.i(TAG, "updateWfcMode(" + wfcEnabled + ")");
-        mImsManager.setWfcSetting(wfcEnabled);
+        mImsMmTelManager.setVoWiFiSettingEnabled(wfcEnabled);
 
         final int wfcMode = mImsMmTelManager.getVoWiFiModeSetting();
         final int wfcRoamingMode = mImsMmTelManager.getVoWiFiRoamingModeSetting();
-        updateButtonWfcMode(wfcEnabled, wfcMode, wfcRoamingMode);
+        updateButtonWfcMode(wfcEnabled, true, wfcMode, wfcRoamingMode);
         if (wfcEnabled) {
             mMetricsFeatureProvider.action(getActivity(), getMetricsCategory(), wfcMode);
         } else {
@@ -521,8 +631,6 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        final Context context = getActivity();
 
         Log.d(TAG, "WFC activity request = " + requestCode + " result = " + resultCode);
 
@@ -551,12 +659,13 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
         }
     }
 
-    private void updateButtonWfcMode(boolean wfcEnabled,
+    private void updateButtonWfcMode(boolean wfcEnabled, boolean isNonTtyOrTtyOnVolteEnabled,
             int wfcMode, int wfcRoamingMode) {
-        mButtonWfcMode.setSummary(getWfcModeSummary(wfcMode));
-        mButtonWfcMode.setEnabled(wfcEnabled && mEditableWfcMode);
+        mButtonWfcMode.setSummary(getWfcModeSummary(wfcEnabled, wfcMode));
+        mButtonWfcMode.setEnabled(wfcEnabled && isNonTtyOrTtyOnVolteEnabled && mEditableWfcMode);
         // mButtonWfcRoamingMode.setSummary is not needed; summary is just selected value.
-        mButtonWfcRoamingMode.setEnabled(wfcEnabled && mEditableWfcRoamingMode);
+        mButtonWfcRoamingMode.setEnabled(wfcEnabled
+                && isNonTtyOrTtyOnVolteEnabled && mEditableWfcRoamingMode);
 
         final PreferenceScreen preferenceScreen = getPreferenceScreen();
         final boolean updateAddressEnabled = (getCarrierActivityIntent() != null);
@@ -594,7 +703,16 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
             final int currentWfcMode = mImsMmTelManager.getVoWiFiModeSetting();
             if (buttonMode != currentWfcMode) {
                 mImsMmTelManager.setVoWiFiModeSetting(buttonMode);
-                mButtonWfcMode.setSummary(getWfcModeSummary(buttonMode));
+
+                boolean wfcUserConfig = false;
+                try {
+                    wfcUserConfig = ImsQueryResult.andAll(isWfcEnabledByUser(mSubId));
+                } catch (Exception exception) {
+                    Log.w(TAG, "fail to get Wfc status for pref update. subId="
+                                + mSubId, exception);
+                }
+
+                mButtonWfcMode.setSummary(getWfcModeSummary(wfcUserConfig, buttonMode));
                 mMetricsFeatureProvider.action(getActivity(), getMetricsCategory(), buttonMode);
 
                 if (mUseWfcHomeModeForRoaming) {
@@ -615,9 +733,9 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
         return true;
     }
 
-    private CharSequence getWfcModeSummary(int wfcMode) {
+    private CharSequence getWfcModeSummary(boolean wfcUserConfig, int wfcMode) {
         int resId = com.android.internal.R.string.wifi_calling_off_summary;
-        if (mImsManager.isWfcEnabledByUser()) {
+        if (wfcUserConfig) {
             switch (wfcMode) {
                 case ImsMmTelManager.WIFI_MODE_WIFI_ONLY:
                     resId = com.android.internal.R.string.wfc_mode_wifi_only_summary;

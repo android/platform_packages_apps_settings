@@ -20,9 +20,9 @@ import android.app.settings.SettingsEnums;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.telephony.AccessNetworkConstants;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
-import android.telephony.ims.ProvisioningManager;
 import android.telephony.ims.feature.MmTelFeature;
 import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.util.Log;
@@ -35,17 +35,21 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.android.ims.ImsManager;
 import com.android.internal.util.CollectionUtils;
 import com.android.settings.R;
 import com.android.settings.core.InstrumentedFragment;
 import com.android.settings.network.SubscriptionUtil;
+import com.android.settings.network.ims.ImsQuery;
+import com.android.settings.network.ims.ImsQueryProvisioningStat;
+import com.android.settings.network.ims.ImsQueryResult;
+import com.android.settings.network.ims.ImsQuerySupportStat;
 import com.android.settings.search.actionbar.SearchMenuController;
 import com.android.settings.support.actionbar.HelpMenuController;
 import com.android.settings.support.actionbar.HelpResourceProvider;
 import com.android.settings.widget.RtlCompatibleViewPager;
 import com.android.settings.widget.SlidingTabLayout;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -99,11 +103,16 @@ public class WifiCallingSettings extends InstrumentedFragment implements HelpRes
         return view;
     }
 
+    @VisibleForTesting
+    Intent getActivityIntent() {
+        return getActivity().getIntent();
+    }
+
     private void maybeSetViewForSubId() {
         if (mSil == null) {
             return;
         }
-        final Intent intent = getActivity().getIntent();
+        final Intent intent = getActivityIntent();
         if (intent == null) {
             return;
         }
@@ -197,22 +206,17 @@ public class WifiCallingSettings extends InstrumentedFragment implements HelpRes
     }
 
     @VisibleForTesting
-    boolean isWfcEnabledByPlatform(SubscriptionInfo info) {
-        final ImsManager imsManager = ImsManager.getInstance(getActivity(),
-                info.getSimSlotIndex());
-        return imsManager.isWfcEnabledByPlatform();
+    ImsQuery isWfcProvisionedOnDevice(int subId) {
+        return new ImsQueryProvisioningStat(subId,
+                MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE,
+                ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN);
     }
 
     @VisibleForTesting
-    boolean isWfcProvisionedOnDevice(SubscriptionInfo info) {
-        final ProvisioningManager provisioningMgr =
-                ProvisioningManager.createForSubscriptionId(info.getSubscriptionId());
-        if (provisioningMgr == null) {
-            return true;
-        }
-        return provisioningMgr.getProvisioningStatusForCapability(
+    ImsQuery isWfcEnabledByPlatform(int subId) {
+        return new ImsQuerySupportStat(subId,
                 MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE,
-                ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN);
+                AccessNetworkConstants.TRANSPORT_TYPE_WLAN);
     }
 
     private void updateSubList() {
@@ -223,14 +227,29 @@ public class WifiCallingSettings extends InstrumentedFragment implements HelpRes
         if (mSil == null) {
             return;
         }
-        for (int i = 0; i < mSil.size(); ) {
-            final SubscriptionInfo info = mSil.get(i);
-            if (!isWfcEnabledByPlatform(info) || !isWfcProvisionedOnDevice(info)) {
-                mSil.remove(i);
-            } else {
-                i++;
+
+        final List<ImsQuery> queryList = new ArrayList<ImsQuery>();
+        for (int i = 0; i < mSil.size(); i++) {
+            final int subId = mSil.get(i).getSubscriptionId();
+            queryList.add(isWfcEnabledByPlatform(subId));
+            queryList.add(isWfcProvisionedOnDevice(subId));
+        }
+        final List<SubscriptionInfo> remainingSil = new ArrayList<SubscriptionInfo>();
+        final ImsQueryResult queryResult = new ImsQueryResult(queryList);
+        for (int i = 0; i < mSil.size(); i++) {
+            try {
+                if (queryResult.get(queryList.get(i * 2))
+                        && queryResult.get(queryList.get((i * 2) + 1))) {
+                    remainingSil.add(mSil.get(i));
+                    continue;
+                }
+            } catch (Exception exception) {
+                Log.w(TAG, "fail to get Wfc status before listing. subId="
+                        + mSil.get(i).getSubscriptionId(), exception);
             }
         }
+        mSil = remainingSil;
+        queryResult.close();
     }
 
     private void updateTitleForCurrentSub() {
