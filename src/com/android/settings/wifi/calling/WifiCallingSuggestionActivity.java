@@ -18,20 +18,44 @@ package com.android.settings.wifi.calling;
 
 import android.content.Context;
 import android.telephony.SubscriptionManager;
+import android.util.Log;
 
-import com.android.ims.ImsManager;
 import com.android.settings.SettingsActivity;
+import com.android.settings.network.ims.ImsQuery;
+import com.android.settings.network.ims.ImsQueryResult;
+import com.android.settings.network.ims.ImsQuerySystemTtyStat;
+import com.android.settings.network.ims.ImsQueryTtyOnVolteStat;
+import com.android.settings.network.ims.ImsQueryWfcUserSetting;
 import com.android.settings.network.telephony.MobileNetworkUtils;
 
 public class WifiCallingSuggestionActivity extends SettingsActivity {
 
+    private static final String TAG = "WifiCallingSuggestionActivity";
+
     public static boolean isSuggestionComplete(Context context) {
-        if (!ImsManager.isWfcEnabledByPlatform(context) ||
-                !MobileNetworkUtils.isWfcProvisionedOnDevice(
-                        SubscriptionManager.getDefaultVoiceSubscriptionId())) {
-            return true;
+        final int subId = SubscriptionManager.getDefaultVoiceSubscriptionId();
+
+        final ImsQuery isWfcEnabledByPlatform =
+                MobileNetworkUtils.isWfcEnabledByPlatform(subId);
+        final ImsQuery isWfcProvisionedOnDevice =
+                MobileNetworkUtils.isWfcProvisionedOnDevice(subId);
+
+        final ImsQuery isWfcEnabledByUser = new ImsQueryWfcUserSetting(subId);
+        final ImsQuery isTtyEnabled = new ImsQuerySystemTtyStat(context);
+        final ImsQuery isVolteTtyEnabled = new ImsQueryTtyOnVolteStat(subId);
+
+        try (ImsQueryResult queryResult = new ImsQueryResult(
+                isWfcEnabledByPlatform, isWfcProvisionedOnDevice, isWfcEnabledByUser,
+                isVolteTtyEnabled, isTtyEnabled)) {
+            if (queryResult.get(isWfcEnabledByPlatform)
+                    && queryResult.get(isWfcProvisionedOnDevice)) {
+                return (queryResult.get(isWfcEnabledByUser)
+                        && (queryResult.get(isVolteTtyEnabled) || !queryResult.get(isTtyEnabled)));
+            }
+        } catch (Exception exception) {
+            Log.w(TAG, "fail to get Wfc status for suggestion. subId="
+                    + subId, exception);
         }
-        return ImsManager.isWfcEnabledByUser(context)
-                && ImsManager.isNonTtyOrTtyOnVolteEnabled(context);
+        return true;
     }
 }

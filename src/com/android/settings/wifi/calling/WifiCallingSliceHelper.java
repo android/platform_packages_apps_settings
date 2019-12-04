@@ -29,9 +29,12 @@ import android.content.res.Resources;
 import android.net.Uri;
 import android.os.PersistableBundle;
 import android.provider.Settings;
+import android.telephony.AccessNetworkConstants;
 import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionManager;
 import android.telephony.ims.ImsMmTelManager;
+import android.telephony.ims.feature.MmTelFeature;
+import android.telephony.ims.stub.ImsRegistrationImplBase;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -43,10 +46,16 @@ import androidx.slice.builders.ListBuilder.RowBuilder;
 import androidx.slice.builders.SliceAction;
 
 import com.android.ims.ImsConfig;
-import com.android.ims.ImsManager;
 import com.android.settings.R;
 import com.android.settings.Utils;
-import com.android.settings.network.telephony.MobileNetworkUtils;
+import com.android.settings.network.ims.ImsQuery;
+import com.android.settings.network.ims.ImsQueryFeatureIsReady;
+import com.android.settings.network.ims.ImsQueryProvisioningStat;
+import com.android.settings.network.ims.ImsQueryResult;
+import com.android.settings.network.ims.ImsQuerySupportStat;
+import com.android.settings.network.ims.ImsQuerySystemTtyStat;
+import com.android.settings.network.ims.ImsQueryTtyOnVolteStat;
+import com.android.settings.network.ims.ImsQueryWfcUserSetting;
 import com.android.settings.slices.SliceBroadcastReceiver;
 
 import java.util.concurrent.Callable;
@@ -132,57 +141,83 @@ public class WifiCallingSliceHelper {
      */
     public Slice createWifiCallingSlice(Uri sliceUri) {
         final int subId = getDefaultVoiceSubId();
-        Resources res = getResourcesForSubId(subId);
+        final Resources res = getResourcesForSubId(subId);
 
         if (subId <= SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
             Log.d(TAG, "Invalid subscription Id");
             return null;
         }
 
-        final ImsManager imsManager = getImsManager(subId);
+        final ImsQuery isTtyEnabled = isSystemTtyEnabled();
+        final ImsQuery isVolteTtyEnabled = isTtyOnVolteEnabled(subId);
+        final ImsQuery isWfcSettingEnabled = isWfcEnabledByUser(subId);
+        final ImsQuery isWfcProvisioned = isWfcProvisionedOnDevice(subId);
+        final ImsQuery isWfcPlatformEnabled = isWfcEnabledByPlatform(subId);
 
-        if (!imsManager.isWfcEnabledByPlatform()
-                || !isWfcProvisionedOnDevice(subId)) {
-            Log.d(TAG, "Wifi calling is either not provisioned or not enabled by Platform");
-            return null;
-        }
-
-        try {
-            final boolean isWifiCallingEnabled = isWifiCallingEnabled(imsManager);
-            final Intent activationAppIntent =
-                    getWifiCallingCarrierActivityIntent(subId);
-
-            // Send this actionable wifi calling slice to toggle the setting
-            // only when there is no need for wifi calling activation with the server
-            if (activationAppIntent != null && !isWifiCallingEnabled) {
-                Log.d(TAG, "Needs Activation");
-                // Activation needed for the next action of the user
-                // Give instructions to go to settings app
-                return getNonActionableWifiCallingSlice(
-                        res.getText(R.string.wifi_calling_settings_title),
-                        res.getText(R.string.wifi_calling_settings_activation_instructions),
-                        sliceUri, getActivityIntent(ACTION_WIFI_CALLING_SETTINGS_ACTIVITY));
+        boolean isWifiCallingEnabled = false;
+        try (ImsQueryResult queryResult = new ImsQueryResult(
+                isWfcPlatformEnabled, isWfcProvisioned, isWfcSettingEnabled,
+                isTtyEnabled, isVolteTtyEnabled)) {
+            if (queryResult.get(isWfcPlatformEnabled) && queryResult.get(isWfcProvisioned)) {
+                isWifiCallingEnabled = queryResult.get(isWfcSettingEnabled)
+                        && (queryResult.get(isVolteTtyEnabled) || !queryResult.get(isTtyEnabled));
+            } else {
+                return null;
             }
-            return getWifiCallingSlice(sliceUri, isWifiCallingEnabled, subId);
-        } catch (InterruptedException | TimeoutException | ExecutionException e) {
-            Log.e(TAG, "Unable to read the current WiFi calling status", e);
+        } catch (Exception exception) {
+            Log.e(TAG, "Unable to create wifi calling slice", exception);
             return null;
         }
+
+        final Intent activationAppIntent =
+                getWifiCallingCarrierActivityIntent(subId);
+
+        // Send this actionable wifi calling slice to toggle the setting
+        // only when there is no need for wifi calling activation with the server
+        if (activationAppIntent != null && !isWifiCallingEnabled) {
+            Log.d(TAG, "Needs Activation");
+            // Activation needed for the next action of the user
+            // Give instructions to go to settings app
+            return getNonActionableWifiCallingSlice(
+                    res.getText(R.string.wifi_calling_settings_title),
+                    res.getText(R.string.wifi_calling_settings_activation_instructions),
+                    sliceUri, getActivityIntent(ACTION_WIFI_CALLING_SETTINGS_ACTIVITY));
+        }
+        return getWifiCallingSlice(sliceUri, isWifiCallingEnabled, subId);
     }
 
-    private boolean isWifiCallingEnabled(ImsManager imsManager)
-            throws InterruptedException, ExecutionException, TimeoutException {
-        final FutureTask<Boolean> isWifiOnTask = new FutureTask<>(new Callable<Boolean>() {
-            @Override
-            public Boolean call() {
-                return imsManager.isWfcEnabledByUser();
-            }
-        });
-        final ExecutorService executor = Executors.newSingleThreadExecutor();
-        executor.execute(isWifiOnTask);
+    @VisibleForTesting
+    ImsQuery isWfcEnabledByUser(int subId) {
+        return new ImsQueryWfcUserSetting(subId);
+    }
 
-        return isWifiOnTask.get(TIMEOUT_MILLIS, TimeUnit.MILLISECONDS)
-                && imsManager.isNonTtyOrTtyOnVolteEnabled();
+    @VisibleForTesting
+    ImsQuery isSystemTtyEnabled() {
+        return new ImsQuerySystemTtyStat(mContext);
+    }
+
+    @VisibleForTesting
+    ImsQuery isTtyOnVolteEnabled(int subId) {
+        return new ImsQueryTtyOnVolteStat(subId);
+    }
+
+    @VisibleForTesting
+    ImsQuery isImsServiceStateReady(int subId) {
+        return new ImsQueryFeatureIsReady(subId);
+    }
+
+    @VisibleForTesting
+    ImsQuery isWfcProvisionedOnDevice(int subId) {
+        return new ImsQueryProvisioningStat(subId,
+                MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE,
+                ImsRegistrationImplBase.REGISTRATION_TECH_IWLAN);
+    }
+
+    @VisibleForTesting
+    ImsQuery isWfcEnabledByPlatform(int subId) {
+        return new ImsQuerySupportStat(subId,
+                MmTelFeature.MmTelCapabilities.CAPABILITY_TYPE_VOICE,
+                AccessNetworkConstants.TRANSPORT_TYPE_WLAN);
     }
 
     /**
@@ -191,7 +226,7 @@ public class WifiCallingSliceHelper {
      */
     private Slice getWifiCallingSlice(Uri sliceUri, boolean isWifiCallingEnabled, int subId) {
         final IconCompat icon = IconCompat.createWithResource(mContext, R.drawable.wifi_signal);
-        Resources res = getResourcesForSubId(subId);
+        final Resources res = getResourcesForSubId(subId);
 
         return new ListBuilder(mContext, sliceUri, ListBuilder.INFINITY)
                 .setAccentColor(Utils.getColorAccentDefaultColor(mContext))
@@ -236,32 +271,42 @@ public class WifiCallingSliceHelper {
                 CarrierConfigManager.KEY_EDITABLE_WFC_MODE_BOOL, subId, false);
         final boolean isWifiOnlySupported = isCarrierConfigManagerKeyEnabled(
                 CarrierConfigManager.KEY_CARRIER_WFC_SUPPORTS_WIFI_ONLY_BOOL, subId, true);
-        final ImsManager imsManager = getImsManager(subId);
-        final ImsMmTelManager imsMmTelManager = getImsMmTelManager(subId);
-
-        if (!imsManager.isWfcEnabledByPlatform()
-                || !isWfcProvisionedOnDevice(subId)) {
-            Log.d(TAG, "Wifi calling is either not provisioned or not enabled by platform");
-            return null;
-        }
-
         if (!isWifiCallingPrefEditable) {
             Log.d(TAG, "Wifi calling preference is not editable");
             return null;
         }
 
+        final ImsQuery isTtyEnabled = isSystemTtyEnabled();
+        final ImsQuery isVolteTtyEnabled = isTtyOnVolteEnabled(subId);
+        final ImsQuery isWfcSettingEnabled = isWfcEnabledByUser(subId);
+        final ImsQuery isWfcProvisioned = isWfcProvisionedOnDevice(subId);
+        final ImsQuery isWfcPlatformEnabled = isWfcEnabledByPlatform(subId);
+
         boolean isWifiCallingEnabled = false;
+        try (ImsQueryResult queryResult = new ImsQueryResult(
+                isWfcPlatformEnabled, isWfcProvisioned, isWfcSettingEnabled,
+                isTtyEnabled, isVolteTtyEnabled)) {
+            if (queryResult.get(isWfcPlatformEnabled) && queryResult.get(isWfcProvisioned)) {
+                isWifiCallingEnabled = queryResult.get(isWfcSettingEnabled)
+                        && (queryResult.get(isVolteTtyEnabled) || !queryResult.get(isTtyEnabled));
+            } else {
+                return null;
+            }
+        } catch (Exception exception) {
+            Log.e(TAG, "Unable to get wifi calling preferred mode", exception);
+            return null;
+        }
+
         int wfcMode = -1;
         try {
-            isWifiCallingEnabled = isWifiCallingEnabled(imsManager);
-            wfcMode = getWfcMode(imsMmTelManager);
+            wfcMode = getWfcMode(getImsMmTelManager(subId));
         } catch (InterruptedException | ExecutionException | TimeoutException e) {
             Log.e(TAG, "Unable to get wifi calling preferred mode", e);
             return null;
         }
         if (!isWifiCallingEnabled) {
             // wifi calling is not enabled. Ask user to enable wifi calling
-            Resources res = getResourcesForSubId(subId);
+            final Resources res = getResourcesForSubId(subId);
             return getNonActionableWifiCallingSlice(
                     res.getText(R.string.wifi_calling_mode_title),
                     res.getText(R.string.wifi_calling_turn_on),
@@ -286,7 +331,7 @@ public class WifiCallingSliceHelper {
             Uri sliceUri,
             int subId) {
         final IconCompat icon = IconCompat.createWithResource(mContext, R.drawable.wifi_signal);
-        Resources res = getResourcesForSubId(subId);
+        final Resources res = getResourcesForSubId(subId);
         // Top row shows information on current preference state
         final ListBuilder listBuilder = new ListBuilder(mContext, sliceUri, ListBuilder.INFINITY)
                 .setAccentColor(Utils.getColorAccentDefaultColor(mContext));
@@ -332,7 +377,7 @@ public class WifiCallingSliceHelper {
             int preferenceTitleResId, String action, boolean checked, int subId) {
         final IconCompat icon =
                 IconCompat.createWithResource(mContext, R.drawable.radio_button_check);
-        Resources res = getResourcesForSubId(subId);
+        final Resources res = getResourcesForSubId(subId);
         return new RowBuilder()
                 .setTitle(res.getText(preferenceTitleResId))
                 .setTitleItem(SliceAction.createToggle(getBroadcastIntent(action),
@@ -344,10 +389,11 @@ public class WifiCallingSliceHelper {
      * Returns the String describing wifi calling preference mentioned in wfcMode
      *
      * @param wfcMode ImsConfig constant for the preference {@link ImsConfig}
+     * @param subId   subscription id
      * @return summary/name of the wifi calling preference
      */
     private CharSequence getWifiCallingPreferenceSummary(int wfcMode, int subId) {
-        Resources res = getResourcesForSubId(subId);
+        final Resources res = getResourcesForSubId(subId);
         switch (wfcMode) {
             case ImsMmTelManager.WIFI_MODE_WIFI_ONLY:
                 return res.getText(
@@ -363,11 +409,10 @@ public class WifiCallingSliceHelper {
         }
     }
 
-    protected ImsManager getImsManager(int subId) {
-        return ImsManager.getInstance(mContext, SubscriptionManager.getPhoneId(subId));
-    }
-
     protected ImsMmTelManager getImsMmTelManager(int subId) {
+        if (subId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            return null;
+        }
         return ImsMmTelManager.createForSubscriptionId(subId);
     }
 
@@ -393,12 +438,25 @@ public class WifiCallingSliceHelper {
     public void handleWifiCallingChanged(Intent intent) {
         final int subId = getDefaultVoiceSubId();
 
-        if (subId > SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
-            final ImsManager imsManager = getImsManager(subId);
-            if (imsManager.isWfcEnabledByPlatform()
-                    && isWfcProvisionedOnDevice(subId)) {
-                final boolean currentValue = imsManager.isWfcEnabledByUser()
-                        && imsManager.isNonTtyOrTtyOnVolteEnabled();
+        if ((subId <= SubscriptionManager.INVALID_SUBSCRIPTION_ID)
+                || (intent.getBooleanExtra(EXTRA_TOGGLE_STATE, true)
+                != intent.getBooleanExtra(EXTRA_TOGGLE_STATE, false))) {
+            notifyWifiCallingChanged();
+            return;
+        }
+
+        final ImsQuery isTtyEnabled = isSystemTtyEnabled();
+        final ImsQuery isVolteTtyEnabled = isTtyOnVolteEnabled(subId);
+        final ImsQuery isWfcSettingEnabled = isWfcEnabledByUser(subId);
+        final ImsQuery isWfcProvisioned = isWfcProvisionedOnDevice(subId);
+        final ImsQuery isWfcPlatformEnabled = isWfcEnabledByPlatform(subId);
+
+        try (ImsQueryResult queryResult = new ImsQueryResult(
+                isWfcPlatformEnabled, isWfcProvisioned, isWfcSettingEnabled,
+                isTtyEnabled, isVolteTtyEnabled)) {
+            if (queryResult.get(isWfcPlatformEnabled) && queryResult.get(isWfcProvisioned)) {
+                final boolean currentValue = queryResult.get(isWfcSettingEnabled)
+                        && (queryResult.get(isVolteTtyEnabled) || !queryResult.get(isTtyEnabled));
                 final boolean newValue = intent.getBooleanExtra(EXTRA_TOGGLE_STATE,
                         currentValue);
                 final Intent activationAppIntent =
@@ -407,11 +465,18 @@ public class WifiCallingSliceHelper {
                     // If either the action is to turn off wifi calling setting
                     // or there is no activation involved - Update the setting
                     if (newValue != currentValue) {
-                        imsManager.setWfcSetting(newValue);
+                        getImsMmTelManager(subId).setVoWiFiSettingEnabled(newValue);
                     }
                 }
             }
+        } catch (Exception exception) {
+            Log.e(TAG, "Unable to get wifi calling status. subId=" + subId, exception);
         }
+        notifyWifiCallingChanged();
+    }
+
+
+    private void notifyWifiCallingChanged() {
         // notify change in slice in any case to get re-queried. This would result in displaying
         // appropriate message with the updated setting.
         mContext.getContentResolver().notifyChange(WIFI_CALLING_URI, null);
@@ -430,25 +495,40 @@ public class WifiCallingSliceHelper {
         final int subId = getDefaultVoiceSubId();
         final int errorValue = -1;
 
-        if (subId > SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
-            final boolean isWifiCallingPrefEditable = isCarrierConfigManagerKeyEnabled(
-                    CarrierConfigManager.KEY_EDITABLE_WFC_MODE_BOOL, subId, false);
-            final boolean isWifiOnlySupported = isCarrierConfigManagerKeyEnabled(
-                    CarrierConfigManager.KEY_CARRIER_WFC_SUPPORTS_WIFI_ONLY_BOOL, subId, true);
+        final boolean isWifiCallingPrefEditable = isCarrierConfigManagerKeyEnabled(
+                CarrierConfigManager.KEY_EDITABLE_WFC_MODE_BOOL, subId, false);
 
-            final ImsManager imsManager = getImsManager(subId);
-            if (isWifiCallingPrefEditable
-                    && imsManager.isWfcEnabledByPlatform()
-                    && isWfcProvisionedOnDevice(subId)
-                    && imsManager.isWfcEnabledByUser()
-                    && imsManager.isNonTtyOrTtyOnVolteEnabled()) {
+        if ((subId <= SubscriptionManager.INVALID_SUBSCRIPTION_ID)
+                || (!isWifiCallingPrefEditable)) {
+            notifyWifiCallingPreferenceChanged();
+            return;
+        }
+
+        final ImsQuery isTtyEnabled = isSystemTtyEnabled();
+        final ImsQuery isVolteTtyEnabled = isTtyOnVolteEnabled(subId);
+        final ImsQuery isWfcSettingEnabled = isWfcEnabledByUser(subId);
+        final ImsQuery isWfcProvisioned = isWfcProvisionedOnDevice(subId);
+        final ImsQuery isWfcPlatformEnabled = isWfcEnabledByPlatform(subId);
+
+        try (ImsQueryResult queryResult = new ImsQueryResult(
+                isWfcPlatformEnabled, isWfcProvisioned, isWfcSettingEnabled,
+                isTtyEnabled, isVolteTtyEnabled)) {
+            if (queryResult.get(isWfcPlatformEnabled)
+                    && queryResult.get(isWfcProvisioned)
+                    && queryResult.get(isWfcSettingEnabled)
+                    && (queryResult.get(isVolteTtyEnabled) || !queryResult.get(isTtyEnabled))
+                ) {
+                final ImsMmTelManager imsMmTelManager = getImsMmTelManager(subId);
+
                 // Change the preference only when wifi calling is enabled
                 // And when wifi calling preference is editable for the current carrier
-                final ImsMmTelManager imsMmTelManager = getImsMmTelManager(subId);
                 final int currentValue = imsMmTelManager.getVoWiFiModeSetting();
                 int newValue = errorValue;
                 switch (intent.getAction()) {
                     case ACTION_WIFI_CALLING_PREFERENCE_WIFI_ONLY:
+                        final boolean isWifiOnlySupported = isCarrierConfigManagerKeyEnabled(
+                                CarrierConfigManager.KEY_CARRIER_WFC_SUPPORTS_WIFI_ONLY_BOOL,
+                                subId, true);
                         if (isWifiOnlySupported) {
                             // change to wifi_only when wifi_only is enabled.
                             newValue = ImsMmTelManager.WIFI_MODE_WIFI_ONLY;
@@ -466,8 +546,13 @@ public class WifiCallingSliceHelper {
                     imsMmTelManager.setVoWiFiModeSetting(newValue);
                 }
             }
+        } catch (Exception exception) {
+            Log.e(TAG, "Unable to get wifi calling status. subId=" + subId, exception);
         }
+        notifyWifiCallingPreferenceChanged();
+    }
 
+    private void notifyWifiCallingPreferenceChanged() {
         // notify change in slice in any case to get re-queried. This would result in displaying
         // appropriate message.
         mContext.getContentResolver().notifyChange(WIFI_CALLING_PREFERENCE_URI, null);
@@ -520,11 +605,6 @@ public class WifiCallingSliceHelper {
      */
     protected int getDefaultVoiceSubId() {
         return SubscriptionManager.getDefaultVoiceSubscriptionId();
-    }
-
-    @VisibleForTesting
-    boolean isWfcProvisionedOnDevice(int subId) {
-        return MobileNetworkUtils.isWfcProvisionedOnDevice(subId);
     }
 
     /**

@@ -51,10 +51,10 @@ import android.widget.TextView;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 
-import com.android.ims.ImsConfig;
-import com.android.ims.ImsManager;
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
+import com.android.settings.network.ims.ImsQuery;
+import com.android.settings.network.ims.ImsQueryResultTest;
 import com.android.settings.testutils.shadow.ShadowFragment;
 import com.android.settings.widget.SwitchBar;
 import com.android.settings.widget.ToggleSwitch;
@@ -68,7 +68,11 @@ import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
+import org.robolectric.shadow.api.Shadow;
+import org.robolectric.shadows.ShadowContextImpl;
 import org.robolectric.util.ReflectionHelpers;
+
+import java.util.concurrent.Executor;
 
 @Config(shadows = ShadowFragment.class)
 @RunWith(RobolectricTestRunner.class)
@@ -79,13 +83,19 @@ public class WifiCallingSettingsForSubTest {
             "com.android.settings/.wifi.calling.TestEmergencyAddressCarrierApp";
 
     private TestFragment mFragment;
-    private Context mContext;
     private TextView mEmptyView;
-    private final PersistableBundle mBundle = new PersistableBundle();
 
-    @Mock private static CarrierConfigManager sCarrierConfigManager;
-    @Mock private CarrierConfigManager mMockConfigManager;
-    @Mock private ImsManager mImsManager;
+    private Context mContext;
+    private ShadowContextImpl mShadowContextImpl;
+
+    @Mock
+    private CarrierConfigManager mCarrierConfigManager;
+    private PersistableBundle mBundle;
+
+    private ImsQuery mImsQueryTrue;
+    private ImsQuery mImsQueryFalse;
+
+    @Mock private ProvisioningManager mImsProvisioningManager;
     @Mock private ImsMmTelManager mImsMmTelManager;
     @Mock private TelephonyManager mTelephonyManager;
     @Mock private PreferenceScreen mPreferenceScreen;
@@ -93,7 +103,6 @@ public class WifiCallingSettingsForSubTest {
     @Mock private SwitchBar mSwitchBar;
     @Mock private ToggleSwitch mToggleSwitch;
     @Mock private View mView;
-    @Mock private ImsConfig mImsConfig;
     @Mock private ListWithEntrySummaryPreference mButtonWfcMode;
     @Mock private ListWithEntrySummaryPreference mButtonWfcRoamingMode;
     @Mock private Preference mUpdateAddress;
@@ -102,7 +111,16 @@ public class WifiCallingSettingsForSubTest {
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
 
-        mContext = RuntimeEnvironment.application;
+        mContext = RuntimeEnvironment.application.getBaseContext();
+        mShadowContextImpl = Shadow.extract(mContext);
+
+        mBundle = new PersistableBundle();
+        mShadowContextImpl.setSystemService(Context.CARRIER_CONFIG_SERVICE, mCarrierConfigManager);
+        doReturn(mBundle).when(mCarrierConfigManager).getConfigForSubId(anyInt());
+
+        mImsQueryTrue = new ImsQueryResultTest.ImsQueryBoolean(true);
+        mImsQueryFalse = new ImsQueryResultTest.ImsQueryBoolean(false);
+
         doReturn(mContext.getTheme()).when(mActivity).getTheme();
 
         mFragment = spy(new TestFragment());
@@ -127,21 +145,20 @@ public class WifiCallingSettingsForSubTest {
         ReflectionHelpers.setField(mSwitchBar, "mSwitch", mToggleSwitch);
         doReturn(mSwitchBar).when(mView).findViewById(R.id.switch_bar);
 
-        doReturn(mImsManager).when(mFragment).getImsManager();
+        doReturn(mImsProvisioningManager).when(mFragment).getImsProvisioningManager();
         doReturn(mImsMmTelManager).when(mFragment).getImsMmTelManager();
-        doReturn(mImsConfig).when(mImsManager).getConfigInterface();
-        doReturn(true).when(mFragment).isWfcProvisionedOnDevice();
-        doReturn(true).when(mImsManager).isWfcEnabledByUser();
-        doReturn(true).when(mImsManager).isNonTtyOrTtyOnVolteEnabled();
+        doReturn(mImsQueryTrue).when(mFragment).isWfcProvisionedOnDevice(anyInt());
+        doReturn(mImsQueryTrue).when(mFragment).isWfcEnabledByUser(anyInt());
+        doReturn(mImsQueryFalse).when(mFragment).isSystemTtyEnabled();
+        doReturn(mImsQueryTrue).when(mFragment).isTtyOnVolteEnabled(anyInt());
         doReturn(ImsMmTelManager.WIFI_MODE_WIFI_PREFERRED)
                 .when(mImsMmTelManager).getVoWiFiModeSetting();
         doReturn(ImsMmTelManager.WIFI_MODE_WIFI_PREFERRED)
                 .when(mImsMmTelManager).getVoWiFiRoamingModeSetting();
 
-        doReturn(mBundle).when(sCarrierConfigManager).getConfigForSubId(anyInt());
         setDefaultCarrierConfigValues();
 
-        doReturn(sCarrierConfigManager).when(mActivity).getSystemService(
+        doReturn(mCarrierConfigManager).when(mActivity).getSystemService(
                 CarrierConfigManager.class);
         doReturn(mContext.getResources()).when(mFragment).getResourcesForSubId();
         doNothing().when(mFragment).startActivityForResult(any(Intent.class), anyInt());
@@ -178,7 +195,7 @@ public class WifiCallingSettingsForSubTest {
     @Test
     public void onResume_provisioningDisallowed_shouldFinish() {
         // Call onResume while provisioning is disallowed.
-        doReturn(false).when(mFragment).isWfcProvisionedOnDevice();
+        doReturn(mImsQueryFalse).when(mFragment).isWfcProvisionedOnDevice(anyInt());
         mFragment.onResume();
 
         // Verify that finish() is called
@@ -189,11 +206,12 @@ public class WifiCallingSettingsForSubTest {
     public void onResumeOnPause_provisioningCallbackRegistration() throws Exception {
         // Verify that provisioning callback is registered after call to onResume().
         mFragment.onResume();
-        verify(mImsConfig).addConfigCallback(any(ProvisioningManager.Callback.class));
+        verify(mImsProvisioningManager).registerProvisioningChangedCallback(any(Executor.class),
+                any(ProvisioningManager.Callback.class));
 
         // Verify that provisioning callback is unregistered after call to onPause.
         mFragment.onPause();
-        verify(mImsConfig).removeConfigCallback(any());
+        verify(mImsProvisioningManager).unregisterProvisioningChangedCallback(any());
     }
 
     @Test
@@ -319,6 +337,9 @@ public class WifiCallingSettingsForSubTest {
         ReflectionHelpers.setField(mFragment, "mButtonWfcRoamingMode", mButtonWfcRoamingMode);
         ReflectionHelpers.setField(mFragment, "mUpdateAddress", mUpdateAddress);
 
+        final ArgumentCaptor<Boolean> mWfcSettingCaptor = ArgumentCaptor.forClass(Boolean.class);
+        doNothing().when(mImsMmTelManager).setVoWiFiSettingEnabled(mWfcSettingCaptor.capture());
+
         mFragment.onActivityResult(WifiCallingSettingsForSub.REQUEST_CHECK_WFC_EMERGENCY_ADDRESS,
                 Activity.RESULT_OK, null);
 
@@ -327,7 +348,7 @@ public class WifiCallingSettingsForSubTest {
         verify(mPreferenceScreen).addPreference(mButtonWfcRoamingMode);
         verify(mPreferenceScreen).addPreference(mUpdateAddress);
         // Check the WFC enable request.
-        verify(mImsManager).setWfcSetting(true);
+        assertThat(mWfcSettingCaptor.getValue()).isTrue();
     }
 
     @Test
@@ -345,7 +366,7 @@ public class WifiCallingSettingsForSubTest {
                 case Context.TELEPHONY_SERVICE:
                     return mTelephonyManager;
                 case Context.CARRIER_CONFIG_SERVICE:
-                    return sCarrierConfigManager;
+                    return mCarrierConfigManager;
                 default:
                     return null;
             }

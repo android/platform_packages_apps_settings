@@ -18,62 +18,114 @@ package com.android.settings.wifi.calling;
 
 import static com.google.common.truth.Truth.assertThat;
 
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Matchers.anyInt;
 import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.when;
+import static org.robolectric.Shadows.shadowOf;
 
+import android.content.Context;
 import android.content.Intent;
+import android.os.PersistableBundle;
 import android.provider.Settings;
+import android.telephony.CarrierConfigManager;
 import android.telephony.SubscriptionInfo;
+import android.telephony.SubscriptionManager;
 import android.view.View;
 
 import androidx.fragment.app.FragmentActivity;
 
 import com.android.settings.R;
-import com.android.settings.network.SubscriptionUtil;
+import com.android.settings.network.ims.ImsQuery;
+import com.android.settings.network.ims.ImsQueryResultTest;
 import com.android.settings.widget.RtlCompatibleViewPager;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.RuntimeEnvironment;
+import org.robolectric.shadow.api.Shadow;
+import org.robolectric.shadows.ShadowContextImpl;
+import org.robolectric.shadows.ShadowSubscriptionManager;
+import org.robolectric.shadows.ShadowSubscriptionManager.SubscriptionInfoBuilder;
 import org.robolectric.shadows.androidx.fragment.FragmentController;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 
 @RunWith(RobolectricTestRunner.class)
 public class WifiCallingSettingsTest {
+
+    private Context mContext;
+    private ShadowContextImpl mShadowContextImpl;
+
+    @Mock
+    private CarrierConfigManager mCarrierConfigManager;
+    private PersistableBundle mCarrierConfig;
+
+    private ImsQuery mImsQueryTrue;
+    private ImsQuery mImsQueryFalse;
+
+    private static final int SUB_ID_111 = 111;
+    private static final int SUB_ID_222 = 222;
+
+    private SubscriptionManager mSubscriptionManager;
+    private ShadowSubscriptionManager mShadowSubscriptionManager;
+    private SubscriptionInfo mSubscriptionInfo1;
+    private SubscriptionInfo mSubscriptionInfo2;
 
     private WifiCallingSettings mFragment;
 
     @Before
     public void setUp() {
-        mFragment = spy(new WifiCallingSettings());
+        MockitoAnnotations.initMocks(this);
+
+        mContext = RuntimeEnvironment.application.getBaseContext();
+        mShadowContextImpl = Shadow.extract(mContext);
+
+        mCarrierConfig = new PersistableBundle();
+        mShadowContextImpl.setSystemService(Context.CARRIER_CONFIG_SERVICE, mCarrierConfigManager);
+        doReturn(mCarrierConfig).when(mCarrierConfigManager).getConfigForSubId(anyInt());
+
+        mImsQueryTrue = new ImsQueryResultTest.ImsQueryBoolean(true);
+        mImsQueryFalse = new ImsQueryResultTest.ImsQueryBoolean(false);
+
+        mSubscriptionManager = mContext.getSystemService(SubscriptionManager.class);
+        mShadowSubscriptionManager = shadowOf(mSubscriptionManager);
+        mSubscriptionInfo1 = SubscriptionInfoBuilder.newBuilder()
+                .setId(SUB_ID_111).buildSubscriptionInfo();
+        mSubscriptionInfo2 = SubscriptionInfoBuilder.newBuilder()
+                .setId(SUB_ID_222).buildSubscriptionInfo();
+
+    }
+
+    private WifiCallingSettings createFragment(Intent intent) {
+        return spy(new WifiCallingSettings() {
+            @Override
+            Intent getActivityIntent() {
+                return intent;
+            }
+        });
     }
 
     @Test
     public void setupFragment_noSubscriptions_noCrash() {
+        mFragment = createFragment(null);
         FragmentController.setupFragment(mFragment, FragmentActivity.class, 0 /* containerViewId*/,
                 null /* bundle */);
     }
 
     @Test
     public void setupFragment_oneSubscription_noCrash() {
-        final SubscriptionInfo info = mock(SubscriptionInfo.class);
-        when(info.getSubscriptionId()).thenReturn(111);
-
-        SubscriptionUtil.setActiveSubscriptionsForTesting(new ArrayList<>(
-                Collections.singletonList(info)));
-        doReturn(true).when(mFragment).isWfcEnabledByPlatform(any(SubscriptionInfo.class));
-        doReturn(true).when(mFragment).isWfcProvisionedOnDevice(any(SubscriptionInfo.class));
+        mShadowSubscriptionManager.setActiveSubscriptionInfos(mSubscriptionInfo1);
 
         final Intent intent = new Intent();
-        intent.putExtra(Settings.EXTRA_SUB_ID, info.getSubscriptionId());
+        intent.putExtra(Settings.EXTRA_SUB_ID, SUB_ID_111);
+        mFragment = createFragment(intent);
+
+        doReturn(mImsQueryTrue).when(mFragment).isWfcEnabledByPlatform(anyInt());
+        doReturn(mImsQueryTrue).when(mFragment).isWfcProvisionedOnDevice(anyInt());
+
         FragmentController.of(mFragment, intent).create(0 /* containerViewId*/,
                 null /* bundle */).start().resume().visible().get();
 
@@ -86,18 +138,16 @@ public class WifiCallingSettingsTest {
 
     @Test
     public void setupFragment_twoSubscriptions_correctSelection() {
-        final SubscriptionInfo info1 = mock(SubscriptionInfo.class);
-        final SubscriptionInfo info2 = mock(SubscriptionInfo.class);
-        when(info1.getSubscriptionId()).thenReturn(111);
-        when(info2.getSubscriptionId()).thenReturn(222);
-
-        SubscriptionUtil.setActiveSubscriptionsForTesting(new ArrayList<>(
-                Arrays.asList(info1, info2)));
-        doReturn(true).when(mFragment).isWfcEnabledByPlatform(any(SubscriptionInfo.class));
-        doReturn(true).when(mFragment).isWfcProvisionedOnDevice(any(SubscriptionInfo.class));
+        mShadowSubscriptionManager.setActiveSubscriptionInfos(
+                mSubscriptionInfo1, mSubscriptionInfo2);
 
         final Intent intent = new Intent();
-        intent.putExtra(Settings.EXTRA_SUB_ID, info2.getSubscriptionId());
+        intent.putExtra(Settings.EXTRA_SUB_ID, SUB_ID_222);
+        mFragment = createFragment(intent);
+
+        doReturn(mImsQueryTrue).when(mFragment).isWfcEnabledByPlatform(anyInt());
+        doReturn(mImsQueryTrue).when(mFragment).isWfcProvisionedOnDevice(anyInt());
+
         FragmentController.of(mFragment, intent).create(0 /* containerViewId*/,
                 null /* bundle */).start().resume().visible().get();
 
@@ -112,19 +162,17 @@ public class WifiCallingSettingsTest {
 
     @Test
     public void setupFragment_twoSubscriptionsOneNotProvisionedOnDevice_oneResult() {
-        final SubscriptionInfo info1 = mock(SubscriptionInfo.class);
-        final SubscriptionInfo info2 = mock(SubscriptionInfo.class);
-        when(info1.getSubscriptionId()).thenReturn(111);
-        when(info2.getSubscriptionId()).thenReturn(222);
-
-        SubscriptionUtil.setActiveSubscriptionsForTesting(new ArrayList<>(
-                Arrays.asList(info1, info2)));
-        doReturn(true).when(mFragment).isWfcEnabledByPlatform(any(SubscriptionInfo.class));
-        doReturn(true).when(mFragment).isWfcProvisionedOnDevice(eq(info1));
-        doReturn(false).when(mFragment).isWfcProvisionedOnDevice(eq(info2));
+        mShadowSubscriptionManager.setActiveSubscriptionInfos(
+                mSubscriptionInfo1, mSubscriptionInfo2);
 
         final Intent intent = new Intent();
-        intent.putExtra(Settings.EXTRA_SUB_ID, info1.getSubscriptionId());
+        intent.putExtra(Settings.EXTRA_SUB_ID, SUB_ID_111);
+        mFragment = createFragment(intent);
+
+        doReturn(mImsQueryTrue).when(mFragment).isWfcEnabledByPlatform(anyInt());
+        doReturn(mImsQueryTrue).when(mFragment).isWfcProvisionedOnDevice(SUB_ID_111);
+        doReturn(mImsQueryFalse).when(mFragment).isWfcProvisionedOnDevice(SUB_ID_222);
+
         FragmentController.of(mFragment, intent).create(0 /* containerViewId*/,
                 null /* bundle */).start().resume().visible().get();
 
