@@ -1637,7 +1637,6 @@
     <string name="tether_settings_summary_hotspot_on_tether_on" msgid="930464462687425777">"Hotspot ଅନ୍‌ ଅଛି, ଟିଥର୍‌ କରୁଛି"</string>
     <string name="tether_settings_summary_hotspot_on_tether_off" msgid="3473671453891735907">"ହଟସ୍ପଟ୍‌ ଅନ୍‌"</string>
     <string name="tether_settings_summary_hotspot_off_tether_on" msgid="1618256180720077354">"ଟିଥର୍‌ କରୁଛି"</string>
-    <string name="tether_settings_disabled_on_data_saver" msgid="1576908608463904152">"ଡାଟା ସେଭର୍‌ ଅନ୍‌ ଥିବାବେଳେ ଟିଥର୍‌ କିମ୍ୱା ପୋର୍ଟେବଲ୍‌ ହଟ୍‌ସ୍ପଟ୍‌ ବ୍ୟବହାର କରିପାରିବ ନାହିଁ"</string>
     <string name="usb_title" msgid="7483344855356312510">"USB"</string>
     <string name="usb_tethering_button_text" msgid="585829947108007917">"USB ଟିଥରିଙ୍ଗ୍‌"</string>
     <string name="usb_tethering_subtext" product="default" msgid="3711893746716442706">"USB ମାଧ୍ୟମରେ ଫୋନ୍‌ର ଇଣ୍ଟରନେଟ୍‌ କନେକ୍ସନ୍ ଶେୟାର୍‌ କରନ୍ତୁ"</string>

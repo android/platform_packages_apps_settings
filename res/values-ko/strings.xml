@@ -1637,7 +1637,6 @@
     <string name="tether_settings_summary_hotspot_on_tether_on" msgid="930464462687425777">"핫스팟 사용, 테더링"</string>
     <string name="tether_settings_summary_hotspot_on_tether_off" msgid="3473671453891735907">"핫스팟 사용"</string>
     <string name="tether_settings_summary_hotspot_off_tether_on" msgid="1618256180720077354">"테더링"</string>
-    <string name="tether_settings_disabled_on_data_saver" msgid="1576908608463904152">"데이터 절약 모드가 켜져 있으면 테더링하거나 휴대용 핫스팟을 사용할 수 없습니다."</string>
     <string name="usb_title" msgid="7483344855356312510">"USB"</string>
     <string name="usb_tethering_button_text" msgid="585829947108007917">"USB 테더링"</string>
     <string name="usb_tethering_subtext" product="default" msgid="3711893746716442706">"USB를 통해 휴대전화의 인터넷 연결 공유"</string>

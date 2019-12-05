@@ -30,14 +30,13 @@ import android.provider.Settings;
 
 import androidx.annotation.VisibleForTesting;
 
-import com.android.settings.datausage.DataSaverBackend;
 import com.android.settings.widget.SwitchWidgetController;
 import com.android.settingslib.core.lifecycle.LifecycleObserver;
 import com.android.settingslib.core.lifecycle.events.OnStart;
 import com.android.settingslib.core.lifecycle.events.OnStop;
 
 public class WifiTetherSwitchBarController implements SwitchWidgetController.OnSwitchChangeListener,
-        LifecycleObserver, OnStart, OnStop, DataSaverBackend.Listener {
+        LifecycleObserver, OnStart, OnStop {
 
     private static final IntentFilter WIFI_INTENT_FILTER;
 
@@ -46,8 +45,6 @@ public class WifiTetherSwitchBarController implements SwitchWidgetController.OnS
     private final ConnectivityManager mConnectivityManager;
     private final WifiManager mWifiManager;
 
-    @VisibleForTesting
-    final DataSaverBackend mDataSaverBackend;
     @VisibleForTesting
     final ConnectivityManager.OnStartTetheringCallback mOnStartTetheringCallback =
             new ConnectivityManager.OnStartTetheringCallback() {
@@ -66,7 +63,6 @@ public class WifiTetherSwitchBarController implements SwitchWidgetController.OnS
     WifiTetherSwitchBarController(Context context, SwitchWidgetController switchBar) {
         mContext = context;
         mSwitchBar = switchBar;
-        mDataSaverBackend = new DataSaverBackend(context);
         mConnectivityManager =
                 (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         mWifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
@@ -77,14 +73,12 @@ public class WifiTetherSwitchBarController implements SwitchWidgetController.OnS
 
     @Override
     public void onStart() {
-        mDataSaverBackend.addListener(this);
         mSwitchBar.startListening();
         mContext.registerReceiver(mReceiver, WIFI_INTENT_FILTER);
     }
 
     @Override
     public void onStop() {
-        mDataSaverBackend.remListener(this);
         mSwitchBar.stopListening();
         mContext.unregisterReceiver(mReceiver);
     }
@@ -151,21 +145,6 @@ public class WifiTetherSwitchBarController implements SwitchWidgetController.OnS
     }
 
     private void updateWifiSwitch() {
-        mSwitchBar.setEnabled(!mDataSaverBackend.isDataSaverEnabled());
-    }
-
-    @Override
-    public void onDataSaverChanged(boolean isDataSaving) {
-        updateWifiSwitch();
-    }
-
-    @Override
-    public void onWhitelistStatusChanged(int uid, boolean isWhitelisted) {
-        // we don't care, since we just want to read the value
-    }
-
-    @Override
-    public void onBlacklistStatusChanged(int uid, boolean isBlacklisted) {
-        // we don't care, since we just want to read the value
+        mSwitchBar.setEnabled(true);
     }
 }

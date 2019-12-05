@@ -1637,7 +1637,6 @@
     <string name="tether_settings_summary_hotspot_on_tether_on" msgid="930464462687425777">"已开启热点、网络共享"</string>
     <string name="tether_settings_summary_hotspot_on_tether_off" msgid="3473671453891735907">"已开启热点"</string>
     <string name="tether_settings_summary_hotspot_off_tether_on" msgid="1618256180720077354">"网络共享"</string>
-    <string name="tether_settings_disabled_on_data_saver" msgid="1576908608463904152">"当流量节省程序开启时，无法使用网络共享功能或便携式热点"</string>
     <string name="usb_title" msgid="7483344855356312510">"USB"</string>
     <string name="usb_tethering_button_text" msgid="585829947108007917">"USB 网络共享"</string>
     <string name="usb_tethering_subtext" product="default" msgid="3711893746716442706">"通过 USB 共享手机的互联网连接"</string>

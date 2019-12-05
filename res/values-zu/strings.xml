@@ -1638,7 +1638,6 @@
     <string name="tether_settings_summary_hotspot_on_tether_on" msgid="930464462687425777">"I-hotspot ivuliwe, isebenzisa ifoni njengemodemu"</string>
     <string name="tether_settings_summary_hotspot_on_tether_off" msgid="3473671453891735907">"I-hotspot ivuliwe"</string>
     <string name="tether_settings_summary_hotspot_off_tether_on" msgid="1618256180720077354">"Ukusebenzisa ifoni njengemodemu"</string>
-    <string name="tether_settings_disabled_on_data_saver" msgid="1576908608463904152">"Thola i-tether noma sebenzisa ama-hotspots aphathekayo ngenkathi iseva yedatha ivulekile"</string>
     <string name="usb_title" msgid="7483344855356312510">"I-USB"</string>
     <string name="usb_tethering_button_text" msgid="585829947108007917">"Imodemu nge-USB"</string>
     <string name="usb_tethering_subtext" product="default" msgid="3711893746716442706">"Yabelana ngoxhumo lwe-inthanethi lwefoni nge-USB"</string>

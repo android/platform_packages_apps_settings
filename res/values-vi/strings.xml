@@ -1637,7 +1637,6 @@
     <string name="tether_settings_summary_hotspot_on_tether_on" msgid="930464462687425777">"Điểm phát sóng bật, chia sẻ kết nối"</string>
     <string name="tether_settings_summary_hotspot_on_tether_off" msgid="3473671453891735907">"Điểm phát sóng bật"</string>
     <string name="tether_settings_summary_hotspot_off_tether_on" msgid="1618256180720077354">"Chia sẻ kết nối"</string>
-    <string name="tether_settings_disabled_on_data_saver" msgid="1576908608463904152">"Không thể chia sẻ kết nối hoặc sử dụng điểm phát sóng di động khi Trình tiết kiệm dữ liệu đang bật"</string>
     <string name="usb_title" msgid="7483344855356312510">"USB"</string>
     <string name="usb_tethering_button_text" msgid="585829947108007917">"Chia sẻ kết nối Internet qua USB"</string>
     <string name="usb_tethering_subtext" product="default" msgid="3711893746716442706">"Chia sẻ kết nối Internet của điện thoại qua USB"</string>

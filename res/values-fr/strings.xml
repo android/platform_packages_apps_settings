@@ -1637,7 +1637,6 @@
     <string name="tether_settings_summary_hotspot_on_tether_on" msgid="930464462687425777">"Point d\'accès activé, partage de connexion"</string>
     <string name="tether_settings_summary_hotspot_on_tether_off" msgid="3473671453891735907">"Point d\'accès activé"</string>
     <string name="tether_settings_summary_hotspot_off_tether_on" msgid="1618256180720077354">"Partage de connexion"</string>
-    <string name="tether_settings_disabled_on_data_saver" msgid="1576908608463904152">"Impossible de partager la connexion ou d\'utiliser des points d\'accès mobiles lorsque la sauvegarde des données est activée"</string>
     <string name="usb_title" msgid="7483344855356312510">"USB"</string>
     <string name="usb_tethering_button_text" msgid="585829947108007917">"Via USB"</string>
     <string name="usb_tethering_subtext" product="default" msgid="3711893746716442706">"Partager la connexion Internet du téléphone via un câble USB"</string>

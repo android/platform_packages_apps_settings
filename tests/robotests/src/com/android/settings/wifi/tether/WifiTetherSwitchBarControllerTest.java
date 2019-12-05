@@ -86,21 +86,6 @@ public class WifiTetherSwitchBarControllerTest {
     }
 
     @Test
-    public void onDataSaverChanged_setsEnabledCorrectly() {
-        assertThat(mSwitchBar.isEnabled()).isTrue();
-
-        // try to turn data saver on
-        when(mNetworkPolicyManager.getRestrictBackground()).thenReturn(true);
-        mController.onDataSaverChanged(true);
-        assertThat(mSwitchBar.isEnabled()).isFalse();
-
-        // lets turn data saver off again
-        when(mNetworkPolicyManager.getRestrictBackground()).thenReturn(false);
-        mController.onDataSaverChanged(false);
-        assertThat(mSwitchBar.isEnabled()).isTrue();
-    }
-
-    @Test
     public void onSwitchToggled_onlyStartsTetherWhenNeeded() {
         when(mWifiManager.isWifiApEnabled()).thenReturn(true);
         mController.onSwitchToggled(true);

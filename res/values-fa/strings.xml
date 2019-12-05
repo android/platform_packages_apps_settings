@@ -1637,7 +1637,6 @@
     <string name="tether_settings_summary_hotspot_on_tether_on" msgid="930464462687425777">"نقطه اتصال روشن، اتصال به اینترنت با تلفن همراه"</string>
     <string name="tether_settings_summary_hotspot_on_tether_off" msgid="3473671453891735907">"نقطه اتصال روشن"</string>
     <string name="tether_settings_summary_hotspot_off_tether_on" msgid="1618256180720077354">"اتصال به اینترنت با تلفن همراه"</string>
-    <string name="tether_settings_disabled_on_data_saver" msgid="1576908608463904152">"هنگامی که محافظ صفحه روشن است نمی‌توانید از نقاط اتصال قابل حمل یا اتصال به اینترنت با تلفن همراه استفاده کنید"</string>
     <string name="usb_title" msgid="7483344855356312510">"USB"</string>
     <string name="usb_tethering_button_text" msgid="585829947108007917">"‏اتصال داده با سیم USB"</string>
     <string name="usb_tethering_subtext" product="default" msgid="3711893746716442706">"‏هم‌رسانی اتصال اینترنت تلفن ازطریق USB"</string>

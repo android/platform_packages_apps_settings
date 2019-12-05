@@ -41,7 +41,6 @@ import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
 import androidx.preference.SwitchPreference;
 
-import com.android.settings.datausage.DataSaverBackend;
 import com.android.settings.search.BaseSearchIndexProvider;
 import com.android.settings.search.Indexable;
 import com.android.settings.wifi.tether.WifiTetherPreferenceController;
@@ -58,8 +57,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * Displays preferences for Tethering.
  */
 @SearchIndexable
-public class TetherSettings extends RestrictedSettingsFragment
-        implements DataSaverBackend.Listener {
+public class TetherSettings extends RestrictedSettingsFragment {
 
     @VisibleForTesting
     static final String KEY_TETHER_PREFS_SCREEN = "tether_prefs_screen";
@@ -95,10 +93,6 @@ public class TetherSettings extends RestrictedSettingsFragment
     private boolean mBluetoothEnableForTether;
     private boolean mUnavailable;
 
-    private DataSaverBackend mDataSaverBackend;
-    private boolean mDataSaverEnabled;
-    private Preference mDataSaverFooter;
-
     @Override
     public int getMetricsCategory() {
         return SettingsEnums.TETHER;
@@ -123,10 +117,6 @@ public class TetherSettings extends RestrictedSettingsFragment
         mFooterPreferenceMixin.createFooterPreference()
             .setTitle(R.string.tethering_footer_info);
 
-        mDataSaverBackend = new DataSaverBackend(getContext());
-        mDataSaverEnabled = mDataSaverBackend.isDataSaverEnabled();
-        mDataSaverFooter = findPreference(KEY_DATA_SAVER_FOOTER);
-
         setIfOnlyAvailableForAdmins(true);
         if (isUiRestricted()) {
             mUnavailable = true;
@@ -143,8 +133,6 @@ public class TetherSettings extends RestrictedSettingsFragment
 
         mUsbTether = (SwitchPreference) findPreference(KEY_USB_TETHER_SETTINGS);
         mBluetoothTether = (SwitchPreference) findPreference(KEY_ENABLE_BLUETOOTH_TETHERING);
-
-        mDataSaverBackend.addListener(this);
 
         mCm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
 
@@ -170,13 +158,10 @@ public class TetherSettings extends RestrictedSettingsFragment
                 mBluetoothTether.setChecked(false);
             }
         }
-        // Set initial state based on Data Saver mode.
-        onDataSaverChanged(mDataSaverBackend.isDataSaverEnabled());
     }
 
     @Override
     public void onDestroy() {
-        mDataSaverBackend.remListener(this);
 
         BluetoothAdapter adapter = BluetoothAdapter.getDefaultAdapter();
         BluetoothProfile profile = mBluetoothPan.getAndSet(null);
@@ -185,22 +170,6 @@ public class TetherSettings extends RestrictedSettingsFragment
         }
 
         super.onDestroy();
-    }
-
-    @Override
-    public void onDataSaverChanged(boolean isDataSaving) {
-        mDataSaverEnabled = isDataSaving;
-        mUsbTether.setEnabled(!mDataSaverEnabled);
-        mBluetoothTether.setEnabled(!mDataSaverEnabled);
-        mDataSaverFooter.setVisible(mDataSaverEnabled);
-    }
-
-    @Override
-    public void onWhitelistStatusChanged(int uid, boolean isWhitelisted) {
-    }
-
-    @Override
-    public void onBlacklistStatusChanged(int uid, boolean isBlacklisted)  {
     }
 
     private class TetherChangeReceiver extends BroadcastReceiver {
@@ -342,10 +311,10 @@ public class TetherSettings extends RestrictedSettingsFragment
         }
 
         if (usbTethered) {
-            mUsbTether.setEnabled(!mDataSaverEnabled);
+            mUsbTether.setEnabled(true);
             mUsbTether.setChecked(true);
         } else if (usbAvailable) {
-            mUsbTether.setEnabled(!mDataSaverEnabled);
+            mUsbTether.setEnabled(true);
             mUsbTether.setChecked(false);
         } else {
             mUsbTether.setEnabled(false);
@@ -368,9 +337,9 @@ public class TetherSettings extends RestrictedSettingsFragment
             if (btState == BluetoothAdapter.STATE_ON && bluetoothPan != null
                     && bluetoothPan.isTetheringOn()) {
                 mBluetoothTether.setChecked(true);
-                mBluetoothTether.setEnabled(!mDataSaverEnabled);
+                mBluetoothTether.setEnabled(true);
             } else {
-                mBluetoothTether.setEnabled(!mDataSaverEnabled);
+                mBluetoothTether.setEnabled(true);
                 mBluetoothTether.setChecked(false);
             }
         }

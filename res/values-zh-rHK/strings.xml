@@ -1638,7 +1638,6 @@
     <string name="tether_settings_summary_hotspot_on_tether_on" msgid="930464462687425777">"已開啟熱點和網絡共享功能"</string>
     <string name="tether_settings_summary_hotspot_on_tether_off" msgid="3473671453891735907">"已開啟熱點"</string>
     <string name="tether_settings_summary_hotspot_off_tether_on" msgid="1618256180720077354">"已開啟網絡共享功能"</string>
-    <string name="tether_settings_disabled_on_data_saver" msgid="1576908608463904152">"「數據節省模式」開啟時，網絡共享功能或便攜熱點便無法使用。"</string>
     <string name="usb_title" msgid="7483344855356312510">"USB"</string>
     <string name="usb_tethering_button_text" msgid="585829947108007917">"USB 網絡共享"</string>
     <string name="usb_tethering_subtext" product="default" msgid="3711893746716442706">"透過 USB 分享手機的互聯網連線"</string>

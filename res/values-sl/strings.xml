@@ -1673,7 +1673,6 @@
     <string name="tether_settings_summary_hotspot_on_tether_on" msgid="930464462687425777">"Dostopna točka je vklopljena, internetna povezava prek telefona"</string>
     <string name="tether_settings_summary_hotspot_on_tether_off" msgid="3473671453891735907">"Dostopna točka je vklopljena"</string>
     <string name="tether_settings_summary_hotspot_off_tether_on" msgid="1618256180720077354">"Internetna povezava prek telefona"</string>
-    <string name="tether_settings_disabled_on_data_saver" msgid="1576908608463904152">"Dokler je vklopljeno varčevanje s podatki, ni mogoče vzpostaviti povezave z internetom prek mobilnega telefona ali uporabljati prenosnih dostopnih točk."</string>
     <string name="usb_title" msgid="7483344855356312510">"USB"</string>
     <string name="usb_tethering_button_text" msgid="585829947108007917">"Internetna povezava prek USB"</string>
     <string name="usb_tethering_subtext" product="default" msgid="3711893746716442706">"Skupna raba internetne povezave telefona prek USB-ja"</string>

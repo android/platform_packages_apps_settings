@@ -1637,7 +1637,6 @@
     <string name="tether_settings_summary_hotspot_on_tether_on" msgid="930464462687425777">"Zona wifi e conexión compartida activadas"</string>
     <string name="tether_settings_summary_hotspot_on_tether_off" msgid="3473671453891735907">"Zona wifi activada"</string>
     <string name="tether_settings_summary_hotspot_off_tether_on" msgid="1618256180720077354">"Conexión compartida activada"</string>
-    <string name="tether_settings_disabled_on_data_saver" msgid="1576908608463904152">"Non se pode compartir a conexión nin utilizar zonas wifi portátiles mentres o economizador de datos estea activado"</string>
     <string name="usb_title" msgid="7483344855356312510">"USB"</string>
     <string name="usb_tethering_button_text" msgid="585829947108007917">"Compartir conexión por USB"</string>
     <string name="usb_tethering_subtext" product="default" msgid="3711893746716442706">"Compartir a conexión a Internet do teléfono por USB"</string>

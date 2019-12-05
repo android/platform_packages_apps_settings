@@ -1637,7 +1637,6 @@
     <string name="tether_settings_summary_hotspot_on_tether_on" msgid="930464462687425777">"হটস্পট  অন হৈ আছে, টেডাৰিং কৰা হৈছে"</string>
     <string name="tether_settings_summary_hotspot_on_tether_off" msgid="3473671453891735907">"হটস্পট  অন হৈ আছে"</string>
     <string name="tether_settings_summary_hotspot_off_tether_on" msgid="1618256180720077354">"টেডাৰ কৰি থকা হৈছে"</string>
-    <string name="tether_settings_disabled_on_data_saver" msgid="1576908608463904152">"ডেটা সঞ্চয়কাৰী অন হৈ থাকোতে টেডাৰ কৰিব বা প\'ৰ্টেবল হটস্পট  ব্যৱহাৰ কৰিব নোৱাৰি"</string>
     <string name="usb_title" msgid="7483344855356312510">"USB"</string>
     <string name="usb_tethering_button_text" msgid="585829947108007917">"ইউএছবি টেডাৰিং"</string>
     <string name="usb_tethering_subtext" product="default" msgid="3711893746716442706">"ইউএছবিৰ মাধ্যমেৰে ফ\'নৰ ইণ্টাৰনেট সংযোগ শ্বেয়াৰ কৰক"</string>

@@ -1637,7 +1637,6 @@
     <string name="tether_settings_summary_hotspot_on_tether_on" msgid="930464462687425777">"Το σημείο πρόσβασης είναι ενεργό, σε σύνδεση"</string>
     <string name="tether_settings_summary_hotspot_on_tether_off" msgid="3473671453891735907">"Το σημείο πρόσβασης είναι ενεργό"</string>
     <string name="tether_settings_summary_hotspot_off_tether_on" msgid="1618256180720077354">"Σύνδεση"</string>
-    <string name="tether_settings_disabled_on_data_saver" msgid="1576908608463904152">"Δεν είναι δυνατή η σύνδεση σε φορητό σημείο πρόσβασης Wi-Fi, ενώ είναι ενεργοποιημένη η Εξοικονόμηση δεδομένων"</string>
     <string name="usb_title" msgid="7483344855356312510">"USB"</string>
     <string name="usb_tethering_button_text" msgid="585829947108007917">"Πρόσδεση USB"</string>
     <string name="usb_tethering_subtext" product="default" msgid="3711893746716442706">"Μοιραστείτε τη σύνδεση του τηλεφώνου στο διαδίκτυο μέσω USB"</string>

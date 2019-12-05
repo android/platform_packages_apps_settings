@@ -1673,7 +1673,6 @@
     <string name="tether_settings_summary_hotspot_on_tether_on" msgid="930464462687425777">"Viešosios interneto prieigos taškas įjungtas, įrenginys naudojamas kaip modemas"</string>
     <string name="tether_settings_summary_hotspot_on_tether_off" msgid="3473671453891735907">"Viešosios interneto prieigos taškas įjungtas"</string>
     <string name="tether_settings_summary_hotspot_off_tether_on" msgid="1618256180720077354">"Įrenginio kaip modemo naudojimas"</string>
-    <string name="tether_settings_disabled_on_data_saver" msgid="1576908608463904152">"Negalima naudoti įrenginio kaip modemo arba viešosios interneto prieigos taškų, kai įjungta Duomenų taupymo priemonė"</string>
     <string name="usb_title" msgid="7483344855356312510">"USB"</string>
     <string name="usb_tethering_button_text" msgid="585829947108007917">"USB susiejimas"</string>
     <string name="usb_tethering_subtext" product="default" msgid="3711893746716442706">"Bendrinkite telefono interneto ryšį per USB"</string>

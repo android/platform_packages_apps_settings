@@ -1637,7 +1637,6 @@
     <string name="tether_settings_summary_hotspot_on_tether_on" msgid="930464462687425777">"ஹாட்ஸ்பாட்டும் இணைப்பு முறையும் இயக்கத்திலுள்ளன"</string>
     <string name="tether_settings_summary_hotspot_on_tether_off" msgid="3473671453891735907">"ஹாட்ஸ்பாட் இயக்கத்திலுள்ளது"</string>
     <string name="tether_settings_summary_hotspot_off_tether_on" msgid="1618256180720077354">"இணைப்பு முறை"</string>
-    <string name="tether_settings_disabled_on_data_saver" msgid="1576908608463904152">"டேட்டா சேமிப்பான் இயக்கப்பட்டிருக்கும் போது, இணைக்கவோ போர்ட்டபிள் ஹாட்ஸ்பாட்டுகளைப் பயன்படுத்தவோ முடியாது"</string>
     <string name="usb_title" msgid="7483344855356312510">"USB"</string>
     <string name="usb_tethering_button_text" msgid="585829947108007917">"USB டெதெரிங்"</string>
     <string name="usb_tethering_subtext" product="default" msgid="3711893746716442706">"USB மூலம் ஃபோனின் இண்டர்நெட்டைப் பகிரவும்"</string>

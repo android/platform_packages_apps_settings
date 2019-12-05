@@ -1637,7 +1637,6 @@
     <string name="tether_settings_summary_hotspot_on_tether_on" msgid="930464462687425777">"ഹോട്ട്‌സ്‌പോട്ട് ഓണാണ്, ടെതർ ചെയ്യുന്നു"</string>
     <string name="tether_settings_summary_hotspot_on_tether_off" msgid="3473671453891735907">"ഹോട്ട്‌സ്‌പോട്ട് ഓണാണ്"</string>
     <string name="tether_settings_summary_hotspot_off_tether_on" msgid="1618256180720077354">"ടെതറിംഗ്"</string>
-    <string name="tether_settings_disabled_on_data_saver" msgid="1576908608463904152">"ഡാറ്റ സേവർ ഓണായിരിക്കുന്ന സമയത്ത് പോർട്ടബിൾ ഹോട്ട്സ്പോട്ടുകൾ ടെതർ ചെയ്യാനോ ഉപയോഗിക്കാനോ കഴിയില്ല"</string>
     <string name="usb_title" msgid="7483344855356312510">"USB"</string>
     <string name="usb_tethering_button_text" msgid="585829947108007917">"USB ടെതറിംഗ്"</string>
     <string name="usb_tethering_subtext" product="default" msgid="3711893746716442706">"USB വഴി, ഫോണിന്‍റെ ഇന്‍റർനെറ്റ് കണക്ഷൻ പങ്കിടുക"</string>

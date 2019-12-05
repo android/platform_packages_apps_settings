@@ -1655,7 +1655,6 @@
     <string name="tether_settings_summary_hotspot_on_tether_on" msgid="930464462687425777">"Pristupna tačka je uključena, veza se dijeli"</string>
     <string name="tether_settings_summary_hotspot_on_tether_off" msgid="3473671453891735907">"Pristupna tačka je uključena"</string>
     <string name="tether_settings_summary_hotspot_off_tether_on" msgid="1618256180720077354">"Povezivanje putem mobitela"</string>
-    <string name="tether_settings_disabled_on_data_saver" msgid="1576908608463904152">"Dok je upaljena Ušteda podataka nije moguće povezati uređaj niti koristiti prijenosne pristupne tačke"</string>
     <string name="usb_title" msgid="7483344855356312510">"USB"</string>
     <string name="usb_tethering_button_text" msgid="585829947108007917">"Dijeljenje USB veze"</string>
     <string name="usb_tethering_subtext" product="default" msgid="3711893746716442706">"Dijeljenje internetske veze telefona putem USB-a"</string>

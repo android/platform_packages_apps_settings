@@ -1638,7 +1638,6 @@
     <string name="tether_settings_summary_hotspot_on_tether_on" msgid="930464462687425777">"हॉटस्पॉट चालू, टेदरिंग करत आहे"</string>
     <string name="tether_settings_summary_hotspot_on_tether_off" msgid="3473671453891735907">"हॉटस्पॉट चालू"</string>
     <string name="tether_settings_summary_hotspot_off_tether_on" msgid="1618256180720077354">"टेदरिंग"</string>
-    <string name="tether_settings_disabled_on_data_saver" msgid="1576908608463904152">"डेटा बचतकर्ता चालू असताना टिथर करू शकत नाही किंवा पोर्टेबल हॉटस्पॉटचा वापर करू शकत नाही"</string>
     <string name="usb_title" msgid="7483344855356312510">"USB"</string>
     <string name="usb_tethering_button_text" msgid="585829947108007917">"USB टेदरिंग"</string>
     <string name="usb_tethering_subtext" product="default" msgid="3711893746716442706">"फोनचे इंटरनेट कनेक्शन USB ने शेअर करा"</string>

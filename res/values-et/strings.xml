@@ -1637,7 +1637,6 @@
     <string name="tether_settings_summary_hotspot_on_tether_on" msgid="930464462687425777">"Kuumkoht on sees, jagamine"</string>
     <string name="tether_settings_summary_hotspot_on_tether_off" msgid="3473671453891735907">"Kuumkoht on sees"</string>
     <string name="tether_settings_summary_hotspot_off_tether_on" msgid="1618256180720077354">"Jagamine"</string>
-    <string name="tether_settings_disabled_on_data_saver" msgid="1576908608463904152">"Kui andmeside mahu säästja on sisse lülitatud, siis ei saa jagada ega kasutada teisaldatavat leviala"</string>
     <string name="usb_title" msgid="7483344855356312510">"USB"</string>
     <string name="usb_tethering_button_text" msgid="585829947108007917">"USB jagamine"</string>
     <string name="usb_tethering_subtext" product="default" msgid="3711893746716442706">"Telefoni Interneti-ühenduse jagamine USB kaudu"</string>

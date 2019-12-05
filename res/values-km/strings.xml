@@ -1637,7 +1637,6 @@
     <string name="tether_settings_summary_hotspot_on_tether_on" msgid="930464462687425777">"បាន​បើក​ហតស្ប៉ត និង​ការ​ភ្ជាប់"</string>
     <string name="tether_settings_summary_hotspot_on_tether_off" msgid="3473671453891735907">"បាន​បើក​ហតស្ប៉ត"</string>
     <string name="tether_settings_summary_hotspot_off_tether_on" msgid="1618256180720077354">"ការ​ភ្ជាប់"</string>
-    <string name="tether_settings_disabled_on_data_saver" msgid="1576908608463904152">"មិនអាចភ្ជាប់ ឬប្រើហតស្ពតចល័តបានទេ នៅពេលបើកកម្មវិធីសន្សំសំចៃទិន្នន័យ"</string>
     <string name="usb_title" msgid="7483344855356312510">"យូអេសប៊ី"</string>
     <string name="usb_tethering_button_text" msgid="585829947108007917">"ការ​ភ្ជាប់​តាម USB"</string>
     <string name="usb_tethering_subtext" product="default" msgid="3711893746716442706">"ចែករំលែកការភ្ជាប់អ៊ីនធឺណិតរបស់ទូរសព្ទតាមរយៈ USB"</string>

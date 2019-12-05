@@ -1637,7 +1637,6 @@
     <string name="tether_settings_summary_hotspot_on_tether_on" msgid="930464462687425777">"హాట్‌స్పాట్ ఆన్, టెథెరింగ్"</string>
     <string name="tether_settings_summary_hotspot_on_tether_off" msgid="3473671453891735907">"హాట్‌స్పాట్ ఆన్"</string>
     <string name="tether_settings_summary_hotspot_off_tether_on" msgid="1618256180720077354">"టెథెరింగ్"</string>
-    <string name="tether_settings_disabled_on_data_saver" msgid="1576908608463904152">"డేటా సేవర్ ఆన్‌లో ఉన్నప్పుడు టీథర్ చేయలేరు లేదా పోర్టబుల్ హాట్‌స్పాట్‌లను ఉపయోగించలేరు"</string>
     <string name="usb_title" msgid="7483344855356312510">"USB"</string>
     <string name="usb_tethering_button_text" msgid="585829947108007917">"USB టెథెరింగ్"</string>
     <string name="usb_tethering_subtext" product="default" msgid="3711893746716442706">"ఫోన్ యొక్క ఇంటర్నెట్ కనెక్షన్‌ని USB ద్వారా షేర్ చేయండి"</string>

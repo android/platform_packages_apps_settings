@@ -1637,7 +1637,6 @@
     <string name="tether_settings_summary_hotspot_on_tether_on" msgid="930464462687425777">"Точката на пристап е вклучена, се поврзува"</string>
     <string name="tether_settings_summary_hotspot_on_tether_off" msgid="3473671453891735907">"Точката на пристап е вклучена"</string>
     <string name="tether_settings_summary_hotspot_off_tether_on" msgid="1618256180720077354">"Поврзување"</string>
-    <string name="tether_settings_disabled_on_data_saver" msgid="1576908608463904152">"Не може да се врзе или се да користат преносни точки на пристап додека е вклучен Штедачот на интернет"</string>
     <string name="usb_title" msgid="7483344855356312510">"USB"</string>
     <string name="usb_tethering_button_text" msgid="585829947108007917">"Поврзување со USB"</string>
     <string name="usb_tethering_subtext" product="default" msgid="3711893746716442706">"Споделете ја интернет-врската на телефонот преку USB"</string>

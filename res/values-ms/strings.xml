@@ -1637,7 +1637,6 @@
     <string name="tether_settings_summary_hotspot_on_tether_on" msgid="930464462687425777">"Tempat liputan dihidupkan, menambat"</string>
     <string name="tether_settings_summary_hotspot_on_tether_off" msgid="3473671453891735907">"Tempat liputan dihidupkan"</string>
     <string name="tether_settings_summary_hotspot_off_tether_on" msgid="1618256180720077354">"Penambatan"</string>
-    <string name="tether_settings_disabled_on_data_saver" msgid="1576908608463904152">"Tidak boleh menambat atau menggunakan tempat liputan mudah alih semasa Penjimat Data dihidupkan"</string>
     <string name="usb_title" msgid="7483344855356312510">"USB"</string>
     <string name="usb_tethering_button_text" msgid="585829947108007917">"Penambatan USB"</string>
     <string name="usb_tethering_subtext" product="default" msgid="3711893746716442706">"Kongsi sambungan Internet telefon melalui USB"</string>

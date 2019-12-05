@@ -1637,7 +1637,6 @@
     <string name="tether_settings_summary_hotspot_on_tether_on" msgid="930464462687425777">"Hotspot yoniq, modem rejimi"</string>
     <string name="tether_settings_summary_hotspot_on_tether_off" msgid="3473671453891735907">"Hotspot yoniq"</string>
     <string name="tether_settings_summary_hotspot_off_tether_on" msgid="1618256180720077354">"Modem rejimi"</string>
-    <string name="tether_settings_disabled_on_data_saver" msgid="1576908608463904152">"Trafik tejash rejimida hotspotga ulanib bo‘lmaydi"</string>
     <string name="usb_title" msgid="7483344855356312510">"USB"</string>
     <string name="usb_tethering_button_text" msgid="585829947108007917">"USB modem"</string>
     <string name="usb_tethering_subtext" product="default" msgid="3711893746716442706">"Telefondagi internetni USB orqali tarqatish"</string>

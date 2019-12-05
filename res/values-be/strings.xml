@@ -1674,7 +1674,6 @@
     <string name="tether_settings_summary_hotspot_on_tether_on" msgid="930464462687425777">"Хот-спот і мадэм уключаны"</string>
     <string name="tether_settings_summary_hotspot_on_tether_off" msgid="3473671453891735907">"Хот-спот уключаны"</string>
     <string name="tether_settings_summary_hotspot_off_tether_on" msgid="1618256180720077354">"Мадэм"</string>
-    <string name="tether_settings_disabled_on_data_saver" msgid="1576908608463904152">"У рэжыме эканоміі трафіку нельга падключацца да кропак доступу"</string>
     <string name="usb_title" msgid="7483344855356312510">"USB"</string>
     <string name="usb_tethering_button_text" msgid="585829947108007917">"USB-мадэм"</string>
     <string name="usb_tethering_subtext" product="default" msgid="3711893746716442706">"Абагуліць падключэнне да інтэрнэту гэтага тэлефона праз USB"</string>
