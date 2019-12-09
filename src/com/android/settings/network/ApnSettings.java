@@ -330,6 +330,8 @@ public class ApnSettings extends RestrictedSettingsFragment
                 if (selectable) {
                     if ((mSelectedKey != null) && mSelectedKey.equals(key)) {
                         pref.setChecked();
+                    } else {
+                        pref.unsetChecked();
                     }
                     apnList.add(pref);
                 } else {
