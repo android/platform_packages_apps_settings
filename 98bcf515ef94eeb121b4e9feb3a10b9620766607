@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d864b2c0_b0f4e514",
+        "filename": "src/com/android/settings/bluetooth/BluetoothPairingController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1051483
+      },
+      "writtenOn": "2019-12-09T20:01:48Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 397,
+        "startChar": 16,
+        "endLine": 397,
+        "endChar": 53
+      },
+      "revId": "98bcf515ef94eeb121b4e9feb3a10b9620766607",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
