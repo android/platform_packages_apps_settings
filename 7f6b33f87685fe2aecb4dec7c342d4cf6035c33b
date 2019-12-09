@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dff68a89_ad4ede9b",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-09T04:07:43Z",
+      "side": 1,
+      "message": "This should be lifted out of the inner if()",
+      "range": {
+        "startLine": 342,
+        "startChar": 16,
+        "endLine": 342,
+        "endChar": 32
+      },
+      "revId": "7f6b33f87685fe2aecb4dec7c342d4cf6035c33b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "133706b4_3afbf5bd",
+        "filename": "src/com/android/settings/wifi/tether/WifiTetherSwitchBarController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-09T04:07:43Z",
+      "side": 1,
+      "message": "It looks to me like this function is not useful any more. The switch bar is always enabled, nothing ever disables it, so presumably you can just remove this function and all the calls to it.",
+      "range": {
+        "startLine": 147,
+        "startChar": 17,
+        "endLine": 147,
+        "endChar": 33
+      },
+      "revId": "7f6b33f87685fe2aecb4dec7c342d4cf6035c33b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
