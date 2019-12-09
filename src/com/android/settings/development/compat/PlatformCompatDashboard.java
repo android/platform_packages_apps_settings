@@ -178,7 +178,11 @@ public class PlatformCompatDashboard extends DashboardFragment {
         final SwitchPreference item = new SwitchPreference(context);
         final String changeName =
                 change.getName() != null ? change.getName() : "Change_" + change.getId();
-        item.setSummary(changeName);
+        item.setTitle(changeName);
+        final String changeDescription = change.getDescription();
+        if (changeDescription != null && !changeDescription.isEmpty()){
+            item.setSummary(changeDescription);
+        }
         item.setKey(changeName);
         item.setEnabled(true);
         item.setChecked(currentValue);

@@ -88,6 +88,7 @@ public class PlatformCompatDashboardTest {
         mDashboard = spy(new PlatformCompatDashboard());
         mDashboard.mSelectedApp = APP_NAME;
         doReturn(mApplicationInfo).when(mDashboard).getApplicationInfo();
+        doReturn(mContext).when(mDashboard).getContext();
         doReturn(mPlatformCompat).when(mDashboard).getPlatformCompat();
         doReturn(mPreferenceScreen).when(mDashboard).getPreferenceScreen();
         doReturn(mPreferenceManager).when(mDashboard).getPreferenceManager();
@@ -110,7 +111,8 @@ public class PlatformCompatDashboardTest {
 
         Preference appPreference = mDashboard.createAppPreference(any(Drawable.class));
 
-        assertThat(appPreference.getSummary()).isEqualTo(APP_NAME + " SDK 1");
+        assertThat(appPreference.getSummary()).isEqualTo(mContext.getResources().getString(
+                R.string.platform_compat_selected_app_summary, APP_NAME, 1));
     }
 
     @Test
@@ -139,7 +141,7 @@ public class PlatformCompatDashboardTest {
 
         Preference disabledPreference = mDashboard.createPreferenceForChange(mContext,
                 disabledChange, config);
-        
+
         assertThat(disabledPreference.getSummary()).isEqualTo(mChanges[1].getName());
         SwitchPreference disabledSwitchPreference = (SwitchPreference) disabledPreference;
         assertThat(disabledSwitchPreference.isChecked()).isFalse();
