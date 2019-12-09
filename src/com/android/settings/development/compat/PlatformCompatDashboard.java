@@ -210,9 +210,8 @@ public class PlatformCompatDashboard extends DashboardFragment {
         final ApplicationInfo applicationInfo = getApplicationInfo();
         final Preference appPreference = new Preference(getPreferenceScreen().getContext());
         appPreference.setIcon(icon);
-        appPreference.setSummary(mSelectedApp
-                + " SDK "
-                + applicationInfo.targetSdkVersion);
+        appPreference.setSummary(getString(R.string.platform_compat_selected_app_summary,
+                                         mSelectedApp, applicationInfo.targetSdkVersion));
         appPreference.setKey(mSelectedApp);
         appPreference.setOnPreferenceClickListener(
                 preference -> {
