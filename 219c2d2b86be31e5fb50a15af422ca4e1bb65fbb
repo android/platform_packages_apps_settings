@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83341430_858cef99",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 10720,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2019-12-10T11:08:51Z",
+      "side": 1,
+      "message": "Perhaps \"Toggle app compatibility changes\"?",
+      "range": {
+        "startLine": 10720,
+        "startChar": 53,
+        "endLine": 10720,
+        "endChar": 94
+      },
+      "revId": "219c2d2b86be31e5fb50a15af422ca4e1bb65fbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
