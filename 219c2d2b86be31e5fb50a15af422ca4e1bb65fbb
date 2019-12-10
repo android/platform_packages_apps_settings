@@ -22,6 +22,29 @@
       "revId": "219c2d2b86be31e5fb50a15af422ca4e1bb65fbb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05af15bf_08b72651",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 10728,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2019-12-10T12:51:27Z",
+      "side": 1,
+      "message": "\"Enabled for targetSdk greater than \" ?\n\nAlso, maybe clearer to use \"targetSdkVersion\" (the name of the manifest attribute), and mark that part of the string non-translatable?",
+      "range": {
+        "startLine": 10728,
+        "startChar": 52,
+        "endLine": 10728,
+        "endChar": 77
+      },
+      "revId": "219c2d2b86be31e5fb50a15af422ca4e1bb65fbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
