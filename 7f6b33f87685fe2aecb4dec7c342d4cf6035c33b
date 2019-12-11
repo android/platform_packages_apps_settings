@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6c49ccda_2bb30135",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-12-11T05:50:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dff68a89_ad4ede9b",
+      "range": {
+        "startLine": 342,
+        "startChar": 16,
+        "endLine": 342,
+        "endChar": 32
+      },
+      "revId": "7f6b33f87685fe2aecb4dec7c342d4cf6035c33b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "133706b4_3afbf5bd",
         "filename": "src/com/android/settings/wifi/tether/WifiTetherSwitchBarController.java",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "7f6b33f87685fe2aecb4dec7c342d4cf6035c33b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "531c2d58_ead4ac18",
+        "filename": "src/com/android/settings/wifi/tether/WifiTetherSwitchBarController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2019-12-11T05:50:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "133706b4_3afbf5bd",
+      "range": {
+        "startLine": 147,
+        "startChar": 17,
+        "endLine": 147,
+        "endChar": 33
+      },
+      "revId": "7f6b33f87685fe2aecb4dec7c342d4cf6035c33b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
