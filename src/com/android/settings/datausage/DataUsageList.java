@@ -368,6 +368,7 @@ public class DataUsageList extends DataUsageBaseFragment {
                     }
                 }
             } else if (uid == UID_REMOVED || uid == UID_TETHERING
+                    || uid == Process.DNS_TETHER_UID
                     || uid == Process.OTA_UPDATE_UID) {
                 collapseKey = uid;
                 category = AppItem.CATEGORY_APP;
