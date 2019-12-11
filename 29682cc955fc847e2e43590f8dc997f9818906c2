@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0f3221f_7283d508",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2019-12-11T14:43:26Z",
+      "side": 1,
+      "message": "also this now should be enabled",
+      "range": {
+        "startLine": 9,
+        "startChar": 53,
+        "endLine": 9,
+        "endChar": 57
+      },
+      "revId": "29682cc955fc847e2e43590f8dc997f9818906c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "628f8847_3b7d7b17",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2019-12-11T14:43:26Z",
+      "side": 1,
+      "message": "nit: this can be updated now that the logic is not here",
+      "range": {
+        "startLine": 9,
+        "startChar": 47,
+        "endLine": 10,
+        "endChar": 69
+      },
+      "revId": "29682cc955fc847e2e43590f8dc997f9818906c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "46102824_e390c652",
+        "filename": "tests/robotests/src/com/android/settings/development/compat/PlatformCompatDashboardTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2019-12-11T14:43:26Z",
+      "side": 1,
+      "message": "this is not used, but perhaps should be?",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 59
+      },
+      "revId": "29682cc955fc847e2e43590f8dc997f9818906c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
