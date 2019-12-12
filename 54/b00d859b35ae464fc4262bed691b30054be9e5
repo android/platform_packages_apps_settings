@@ -1,0 +1,8 @@
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Bonian Chen <bonianchen@google.com>
+Code-Review+2: Raff Tsai <rafftsai@google.com>
+Submitted-by: SongFerng Wang <songferngwang@google.com>
+Submitted-at: Thu, 12 Dec 2019 10:01:18 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1186360
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
