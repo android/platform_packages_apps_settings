@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a294d0be_4f2f2c6d",
+        "filename": "res/xml/testing_settings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1316472
+      },
+      "writtenOn": "2019-12-13T11:13:04Z",
+      "side": 1,
+      "message": "If this is not needed, I would like to make sure we remove the unnecessary code. Please make sure there will have next CL to remove it.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 7
+      },
+      "revId": "be5216cacb22946de1a0c0c13c5cf3939ab6d405",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
