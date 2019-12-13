@@ -196,7 +196,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
 
     private void updateCallValues() {
         final Preference simPref = findPreference(KEY_CALLS);
-        final TelecomManager telecomManager = TelecomManager.from(mContext);
+        final TelecomManager telecomManager = mContext.getSystemService(TelecomManager.class);
         final PhoneAccountHandle phoneAccount =
             telecomManager.getUserSelectedOutgoingPhoneAccount();
         final List<PhoneAccountHandle> allPhoneAccounts =
