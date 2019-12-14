@@ -1,0 +1,7 @@
+Build-Cop-Override+1: Raman Tenneti <rtenneti@google.com>
+Presubmit-Ready+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Bonian Chen <bonianchen@google.com>
+Submitted-at: Sat, 14 Dec 2019 01:01:38 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1189503
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
