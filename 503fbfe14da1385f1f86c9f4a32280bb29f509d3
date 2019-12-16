@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1537cfa8_34ca0a33",
+        "filename": "src/com/android/settings/vpn2/AppDialogFragment.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2019-12-16T12:01:21Z",
+      "side": 1,
+      "message": "I don\u0027t think there is such a method in CS either today or any of the patches submitted together : are you missing a topic ?",
+      "range": {
+        "startLine": 148,
+        "startChar": 21,
+        "endLine": 148,
+        "endChar": 47
+      },
+      "revId": "503fbfe14da1385f1f86c9f4a32280bb29f509d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
