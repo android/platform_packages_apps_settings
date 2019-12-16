@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9f49ad8c_406b4d96",
+        "filename": "tests/robotests/src/com/android/settings/network/ActiveSubsciptionsListenerTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1316472
+      },
+      "writtenOn": "2019-12-16T13:03:26Z",
+      "side": 1,
+      "message": "is that possible we exam the cached subscription content? To just exam how many times listener is called, seems can\u0027t really detect issue.",
+      "range": {
+        "startLine": 159,
+        "startChar": 8,
+        "endLine": 159,
+        "endChar": 48
+      },
+      "revId": "74c6ceed241239ff8ed2e82422c48229b11bccd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
