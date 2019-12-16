@@ -114,7 +114,7 @@ public class SimSettings extends RestrictedSettingsFragment implements Indexable
     };
 
     private void updateSubscriptions() {
-        mSubInfoList = mSubscriptionManager.getActiveSubscriptionInfoList(true);
+        mSubInfoList = mSubscriptionManager.getActiveSubscriptionInfoList();
         for (int i = 0; i < mNumSlots; ++i) {
             Preference pref = mSimCards.findPreference("sim" + i);
             if (pref instanceof SimPreference) {

@@ -21,7 +21,6 @@ import static android.telephony.TelephonyManager.SIM_STATE_READY;
 import static com.google.common.truth.Truth.assertThat;
 
 import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -142,7 +141,7 @@ public class SimLockPreferenceControllerTest {
         SubscriptionInfo info = mock(SubscriptionInfo.class);
         subscriptionInfoList.add(info);
         when(mTelephonyManager.hasIccCard(anyInt())).thenReturn(true);
-        when(mSubscriptionManager.getActiveSubscriptionInfoList(eq(true)))
+        when(mSubscriptionManager.getActiveSubscriptionInfoList())
                 .thenReturn(subscriptionInfoList);
     }
 
@@ -151,7 +150,7 @@ public class SimLockPreferenceControllerTest {
         SubscriptionInfo info = mock(SubscriptionInfo.class);
         subscriptionInfoList.add(info);
         when(mTelephonyManager.getSimState(anyInt())).thenReturn(SIM_STATE_READY);
-        when(mSubscriptionManager.getActiveSubscriptionInfoList(eq(true)))
+        when(mSubscriptionManager.getActiveSubscriptionInfoList())
                 .thenReturn(subscriptionInfoList);
     }
 }

@@ -233,7 +233,7 @@ public class CellDataPreference extends CustomDialogPreferenceCompat implements 
 
     private void disableDataForOtherSubscriptions(int subId) {
         List<SubscriptionInfo> subInfoList = mSubscriptionManager
-                .getActiveSubscriptionInfoList(true);
+                .getActiveSubscriptionInfoList();
         if (subInfoList != null) {
             for (SubscriptionInfo subInfo : subInfoList) {
                 if (subInfo.getSubscriptionId() != subId) {

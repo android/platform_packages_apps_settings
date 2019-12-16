@@ -71,7 +71,7 @@ public class MobileNetworkActivity extends SettingsBaseActivity {
         @Override
         public void onSubscriptionsChanged() {
             if (!Objects.equals(mSubscriptionInfos,
-                    mSubscriptionManager.getActiveSubscriptionInfoList(true))) {
+                    mSubscriptionManager.getActiveSubscriptionInfoList())) {
                 updateSubscriptions(null);
             }
         }
@@ -108,7 +108,7 @@ public class MobileNetworkActivity extends SettingsBaseActivity {
             }
         });
         mSubscriptionManager = getSystemService(SubscriptionManager.class);
-        mSubscriptionInfos = mSubscriptionManager.getActiveSubscriptionInfoList(true);
+        mSubscriptionInfos = mSubscriptionManager.getActiveSubscriptionInfoList();
         mCurSubscriptionId = savedInstanceState != null
                 ? savedInstanceState.getInt(Settings.EXTRA_SUB_ID, SUB_ID_NULL)
                 : SUB_ID_NULL;
@@ -156,7 +156,7 @@ public class MobileNetworkActivity extends SettingsBaseActivity {
             setTitle(subscription.getDisplayName());
         }
 
-        mSubscriptionInfos = mSubscriptionManager.getActiveSubscriptionInfoList(true);
+        mSubscriptionInfos = mSubscriptionManager.getActiveSubscriptionInfoList();
 
         if (!FeatureFlagPersistent.isEnabled(this, FeatureFlags.NETWORK_INTERNET_V2)) {
             updateBottomNavigationView();
