@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be965577_c79d5e56",
+        "filename": "tests/robotests/src/com/android/settings/deviceinfo/simstatus/SimStatusDialogControllerTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2019-12-16T14:25:29Z",
+      "side": 1,
+      "message": "You can just ignore here next time.",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 3
+      },
+      "revId": "911b6e4b3ba6d5124377d178264046a27f571467",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
