@@ -22,6 +22,30 @@
       "revId": "74c6ceed241239ff8ed2e82422c48229b11bccd1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19ca6f4a_62baa089",
+        "filename": "tests/robotests/src/com/android/settings/network/ActiveSubsciptionsListenerTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2019-12-17T03:08:47Z",
+      "side": 1,
+      "message": "It seems to be an enhancement of test case \"start_alwaysFetchAndCacheResult\".\nWe may create another test case for this request in future CL.\n\nThe number of times listener been called within this case is to verify if we only generate onChanged() when subscriptions within cache been listed within carrier config update list.",
+      "parentUuid": "9f49ad8c_406b4d96",
+      "range": {
+        "startLine": 159,
+        "startChar": 8,
+        "endLine": 159,
+        "endChar": 48
+      },
+      "revId": "74c6ceed241239ff8ed2e82422c48229b11bccd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
