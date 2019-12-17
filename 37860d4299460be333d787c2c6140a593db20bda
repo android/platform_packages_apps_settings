@@ -16,6 +16,24 @@
       "revId": "37860d4299460be333d787c2c6140a593db20bda",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60e6121a_c00b3dd0",
+        "filename": "src/com/android/settings/slices/SliceBuilderUtils.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1403999
+      },
+      "writtenOn": "2019-12-17T06:56:05Z",
+      "side": 1,
+      "message": "no. They comes from different places in SettingsSliceProvider",
+      "parentUuid": "bd6a1ccb_011a30f9",
+      "revId": "37860d4299460be333d787c2c6140a593db20bda",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
