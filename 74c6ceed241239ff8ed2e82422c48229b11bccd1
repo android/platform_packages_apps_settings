@@ -46,6 +46,30 @@
       "revId": "74c6ceed241239ff8ed2e82422c48229b11bccd1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0bd0ba4b_f78a4f2c",
+        "filename": "tests/robotests/src/com/android/settings/network/ActiveSubsciptionsListenerTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1316472
+      },
+      "writtenOn": "2019-12-18T08:25:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "19ca6f4a_62baa089",
+      "range": {
+        "startLine": 159,
+        "startChar": 8,
+        "endLine": 159,
+        "endChar": 48
+      },
+      "revId": "74c6ceed241239ff8ed2e82422c48229b11bccd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
