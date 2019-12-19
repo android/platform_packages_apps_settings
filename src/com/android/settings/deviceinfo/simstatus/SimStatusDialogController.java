@@ -25,6 +25,7 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.os.UserHandle;
+import android.telephony.Annotation;
 import android.telephony.CarrierConfigManager;
 import android.telephony.CellSignalStrength;
 import android.telephony.PhoneStateListener;
@@ -342,13 +343,15 @@ public class SimStatusDialogController implements LifecycleObserver, OnResume, O
         String dataNetworkTypeName = null;
         String voiceNetworkTypeName = null;
         final int subId = mSubscriptionInfo.getSubscriptionId();
-        final int actualDataNetworkType = mTelephonyManager.getDataNetworkType(subId);
-        final int actualVoiceNetworkType = mTelephonyManager.getVoiceNetworkType(subId);
+        final TelephonyManager telephonyManagerWithSubId =
+                mTelephonyManager.createForSubscriptionId(subId);
+        final int actualDataNetworkType = telephonyManagerWithSubId.getDataNetworkType();
+        final int actualVoiceNetworkType = telephonyManagerWithSubId.getVoiceNetworkType();
         if (TelephonyManager.NETWORK_TYPE_UNKNOWN != actualDataNetworkType) {
-            dataNetworkTypeName = mTelephonyManager.getNetworkTypeName(actualDataNetworkType);
+            dataNetworkTypeName = getNetworkTypeName(actualDataNetworkType);
         }
         if (TelephonyManager.NETWORK_TYPE_UNKNOWN != actualVoiceNetworkType) {
-            voiceNetworkTypeName = mTelephonyManager.getNetworkTypeName(actualVoiceNetworkType);
+            voiceNetworkTypeName = getNetworkTypeName(actualVoiceNetworkType);
         }
 
         boolean show4GForLTE = false;
@@ -497,5 +500,53 @@ public class SimStatusDialogController implements LifecycleObserver, OnResume, O
     @VisibleForTesting
     String getSimSerialNumber(int subscriptionId) {
         return mTelephonyManager.getSimSerialNumber(subscriptionId);
+    }
+
+    @VisibleForTesting
+    static String getNetworkTypeName(@Annotation.NetworkType int type) {
+        switch (type) {
+            case TelephonyManager.NETWORK_TYPE_GPRS:
+                return "GPRS";
+            case TelephonyManager.NETWORK_TYPE_EDGE:
+                return "EDGE";
+            case TelephonyManager.NETWORK_TYPE_UMTS:
+                return "UMTS";
+            case TelephonyManager.NETWORK_TYPE_HSDPA:
+                return "HSDPA";
+            case TelephonyManager.NETWORK_TYPE_HSUPA:
+                return "HSUPA";
+            case TelephonyManager.NETWORK_TYPE_HSPA:
+                return "HSPA";
+            case TelephonyManager.NETWORK_TYPE_CDMA:
+                return "CDMA";
+            case TelephonyManager.NETWORK_TYPE_EVDO_0:
+                return "CDMA - EvDo rev. 0";
+            case TelephonyManager.NETWORK_TYPE_EVDO_A:
+                return "CDMA - EvDo rev. A";
+            case TelephonyManager.NETWORK_TYPE_EVDO_B:
+                return "CDMA - EvDo rev. B";
+            case TelephonyManager.NETWORK_TYPE_1xRTT:
+                return "CDMA - 1xRTT";
+            case TelephonyManager.NETWORK_TYPE_LTE:
+                return "LTE";
+            case TelephonyManager.NETWORK_TYPE_EHRPD:
+                return "CDMA - eHRPD";
+            case TelephonyManager.NETWORK_TYPE_IDEN:
+                return "iDEN";
+            case TelephonyManager.NETWORK_TYPE_HSPAP:
+                return "HSPA+";
+            case TelephonyManager.NETWORK_TYPE_GSM:
+                return "GSM";
+            case TelephonyManager.NETWORK_TYPE_TD_SCDMA:
+                return "TD_SCDMA";
+            case TelephonyManager.NETWORK_TYPE_IWLAN:
+                return "IWLAN";
+            case TelephonyManager.NETWORK_TYPE_LTE_CA:
+                return "LTE_CA";
+            case TelephonyManager.NETWORK_TYPE_NR:
+                return "NR";
+            default:
+                return "UNKNOWN";
+        }
     }
 }
