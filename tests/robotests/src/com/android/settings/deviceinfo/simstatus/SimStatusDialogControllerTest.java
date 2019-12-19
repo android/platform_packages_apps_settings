@@ -125,7 +125,6 @@ public class SimStatusDialogControllerTest {
         mLifecycle = new Lifecycle(mLifecycleOwner);
         mController = spy(new SimStatusDialogController(mDialog, mLifecycle, 0 /* phone id */));
         ShadowDeviceInfoUtils.setPhoneNumber("");
-        doReturn(mServiceState).when(mController).getCurrentServiceState();
         //CellSignalStrength setup
         doReturn(0).when(mCellSignalStrengthCdma).getDbm();
         doReturn(0).when(mCellSignalStrengthCdma).getAsuLevel();
@@ -136,7 +135,6 @@ public class SimStatusDialogControllerTest {
 
         doReturn(null).when(mSignalStrength).getCellSignalStrengths();
         doReturn(mPhoneStateListener).when(mController).getPhoneStateListener();
-        doReturn(mSignalStrength).when(mController).getSignalStrength();
         doReturn(mSubscriptionInfo).when(mSubscriptionManager).getActiveSubscriptionInfo(anyInt());
 
         when(mEuiccManager.isEnabled()).thenReturn(true);
@@ -150,6 +148,9 @@ public class SimStatusDialogControllerTest {
         when(mPersistableBundle.getBoolean(
                 CarrierConfigManager.KEY_SHOW_SIGNAL_STRENGTH_IN_SIM_STATUS_BOOL))
                 .thenReturn(true);
+        when(mTelephonyManager.createForSubscriptionId(anyInt())).thenReturn(mTelephonyManager);
+        doReturn(mServiceState).when(mTelephonyManager).getServiceState();
+        doReturn(mSignalStrength).when(mTelephonyManager).getSignalStrength();
 
         final ShadowPackageManager shadowPackageManager =
                 Shadows.shadowOf(RuntimeEnvironment.application.getPackageManager());
@@ -301,24 +302,24 @@ public class SimStatusDialogControllerTest {
 
     @Test
     public void initialize_updateVoiceNetworkTypeWithEdge_shouldUpdateSettingToEdge() {
-        when(mTelephonyManager.getVoiceNetworkType(anyInt())).thenReturn(
+        when(mTelephonyManager.getVoiceNetworkType()).thenReturn(
                 TelephonyManager.NETWORK_TYPE_EDGE);
 
         mController.initialize();
 
         verify(mDialog).setText(CELL_VOICE_NETWORK_TYPE_VALUE_ID,
-                TelephonyManager.getNetworkTypeName(TelephonyManager.NETWORK_TYPE_EDGE));
+                SimStatusDialogController.getNetworkTypeName(TelephonyManager.NETWORK_TYPE_EDGE));
     }
 
     @Test
     public void initialize_updateDataNetworkTypeWithEdge_shouldUpdateSettingToEdge() {
-        when(mTelephonyManager.getDataNetworkType(anyInt())).thenReturn(
+        when(mTelephonyManager.getDataNetworkType()).thenReturn(
                 TelephonyManager.NETWORK_TYPE_EDGE);
 
         mController.initialize();
 
         verify(mDialog).setText(CELL_DATA_NETWORK_TYPE_VALUE_ID,
-                TelephonyManager.getNetworkTypeName(TelephonyManager.NETWORK_TYPE_EDGE));
+                SimStatusDialogController.getNetworkTypeName(TelephonyManager.NETWORK_TYPE_EDGE));
     }
 
     @Test
@@ -381,7 +382,7 @@ public class SimStatusDialogControllerTest {
         final String iccid = "12351351231241";
         when(mPersistableBundle.getBoolean(
                 CarrierConfigManager.KEY_SHOW_ICCID_IN_SIM_STATUS_BOOL)).thenReturn(true);
-        doReturn(iccid).when(mController).getSimSerialNumber(anyInt());
+        doReturn(iccid).when(mTelephonyManager).getSimSerialNumber();
 
         mController.initialize();
 
@@ -456,7 +457,7 @@ public class SimStatusDialogControllerTest {
 
     @Test
     public void initialize_nullSignalStrength_noCrash() {
-        doReturn(null).when(mController).getSignalStrength();
+        doReturn(null).when(mTelephonyManager).getSignalStrength();
         // we should not crash when running the following line
         mController.initialize();
     }
