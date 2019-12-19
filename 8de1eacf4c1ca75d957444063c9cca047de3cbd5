@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32b03126_f7d30745",
+        "filename": "src/com/android/settings/network/ApnEditor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1316472
+      },
+      "writtenOn": "2019-12-19T08:23:32Z",
+      "side": 1,
+      "message": "Please consider to create TelephonyManager with the corresponding subId. It seems you don\u0027t have to access SubscriptionManager.",
+      "range": {
+        "startLine": 518,
+        "startChar": 16,
+        "endLine": 519,
+        "endChar": 84
+      },
+      "revId": "8de1eacf4c1ca75d957444063c9cca047de3cbd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
