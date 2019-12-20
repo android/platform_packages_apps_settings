@@ -18,6 +18,7 @@ package com.android.settings.deviceinfo.simstatus;
 
 import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController.CELL_DATA_NETWORK_TYPE_VALUE_ID;
 import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController.CELL_VOICE_NETWORK_TYPE_VALUE_ID;
+import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController.EID_INFO_LABEL_ID;
 import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController.EID_INFO_VALUE_ID;
 import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController.ICCID_INFO_LABEL_ID;
 import static com.android.settings.deviceinfo.simstatus.SimStatusDialogController.ICCID_INFO_VALUE_ID;
@@ -416,6 +417,7 @@ public class SimStatusDialogControllerTest {
         mController.initialize();
 
         verify(mDialog).setText(EID_INFO_VALUE_ID, eid);
+        verify(mDialog, never()).removeSettingFromScreen(eq(EID_INFO_LABEL_ID));
         verify(mDialog, never()).removeSettingFromScreen(eq(EID_INFO_VALUE_ID));
     }
 
@@ -427,6 +429,7 @@ public class SimStatusDialogControllerTest {
         mController.initialize();
 
         verify(mDialog, never()).setText(eq(EID_INFO_VALUE_ID), any());
+        verify(mDialog).removeSettingFromScreen(eq(EID_INFO_LABEL_ID));
         verify(mDialog).removeSettingFromScreen(eq(EID_INFO_VALUE_ID));
     }
 

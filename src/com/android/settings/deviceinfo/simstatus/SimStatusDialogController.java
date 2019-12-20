@@ -82,6 +82,8 @@ public class SimStatusDialogController implements LifecycleObserver, OnResume, O
     @VisibleForTesting
     final static int ICCID_INFO_VALUE_ID = R.id.icc_id_value;
     @VisibleForTesting
+    final static int EID_INFO_LABEL_ID = R.id.esim_id_label;
+    @VisibleForTesting
     final static int EID_INFO_VALUE_ID = R.id.esim_id_value;
     @VisibleForTesting
     final static int IMS_REGISTRATION_STATE_LABEL_ID = R.id.ims_reg_state_label;
@@ -401,6 +403,7 @@ public class SimStatusDialogController implements LifecycleObserver, OnResume, O
         if (mEuiccManager.isEnabled()) {
             mDialog.setText(EID_INFO_VALUE_ID, mEuiccManager.getEid());
         } else {
+            mDialog.removeSettingFromScreen(EID_INFO_LABEL_ID);
             mDialog.removeSettingFromScreen(EID_INFO_VALUE_ID);
         }
     }
