@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0117d129_fb78d6e9",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1288034
+      },
+      "writtenOn": "2019-12-23T04:30:26Z",
+      "side": 0,
+      "message": "Similarly to what was discussed in the bug, I also think turning off tethering when data saver is turned on could be helpful, even if the user can enable it back afterwards, as this is a clear signal from the user that they would like to limit data usage from now on.\nThis could be implemented looking at the broadcast in https://developer.android.com/training/basics/network-ops/data-saver.",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 55
+      },
+      "revId": "84a2951a335a465b8eb25eaaf43bd97b6c443ce3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
