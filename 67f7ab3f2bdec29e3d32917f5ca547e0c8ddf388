@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3021e0b_975520c6",
+        "filename": "src/com/android/settings/network/telephony/EuiccPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1615850
+      },
+      "writtenOn": "2019-12-26T03:30:44Z",
+      "side": 1,
+      "message": "can use mTelephonyManager instead",
+      "range": {
+        "startLine": 53,
+        "startChar": 28,
+        "endLine": 53,
+        "endChar": 77
+      },
+      "revId": "67f7ab3f2bdec29e3d32917f5ca547e0c8ddf388",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
