@@ -19,9 +19,7 @@ package com.android.settings.datausage;
 import static com.google.common.truth.Truth.assertThat;
 
 import static org.mockito.ArgumentMatchers.anyInt;
-import static org.mockito.ArgumentMatchers.anyObject;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.ArgumentMatchers.endsWith;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.never;
@@ -36,7 +34,6 @@ import android.telephony.TelephonyManager;
 
 import androidx.fragment.app.FragmentActivity;
 
-import com.android.settings.dashboard.SummaryLoader;
 import com.android.settings.testutils.shadow.ShadowDashboardFragment;
 import com.android.settings.testutils.shadow.ShadowDataUsageUtils;
 import com.android.settings.testutils.shadow.ShadowUserManager;
@@ -66,15 +63,12 @@ import org.robolectric.shadows.ShadowTelephonyManager;
 public class DataUsageSummaryTest {
 
     @Mock
-    private SummaryLoader mSummaryLoader;
-    @Mock
     private NetworkPolicyManager mNetworkPolicyManager;
     @Mock
     private NetworkStatsManager mNetworkStatsManager;
     private TelephonyManager mTelephonyManager;
     private Context mContext;
     private FragmentActivity mActivity;
-    private SummaryLoader.SummaryProvider mSummaryProvider;
 
     /**
      * This set up is contrived to get a passing test so that the build doesn't block without tests.
@@ -96,9 +90,6 @@ public class DataUsageSummaryTest {
         shadowTelephonyManager.setTelephonyManagerForSubscriptionId(1, mTelephonyManager);
         mActivity = spy(Robolectric.buildActivity(FragmentActivity.class).get());
         doReturn(mNetworkStatsManager).when(mActivity).getSystemService(NetworkStatsManager.class);
-
-        mSummaryProvider = DataUsageSummary.SUMMARY_PROVIDER_FACTORY
-                .createSummaryProvider(mActivity, mSummaryLoader);
     }
 
     @Test
@@ -108,20 +99,6 @@ public class DataUsageSummaryTest {
                 DataUsageSummary.formatUsage(mContext, "^1", usage).toString();
         final CharSequence formattedInIECUnit = DataUsageUtils.formatDataUsage(mContext, usage);
         assertThat(formattedUsage).isEqualTo(formattedInIECUnit);
-    }
-
-    @Test
-    public void setListening_shouldBlankSummaryWithNoSim() {
-        ShadowDataUsageUtils.HAS_SIM = false;
-        mSummaryProvider.setListening(true);
-        verify(mSummaryLoader).setSummary(mSummaryProvider, null);
-    }
-
-    @Test
-    public void setListening_shouldSetSummaryWithSim() {
-        ShadowDataUsageUtils.HAS_SIM = true;
-        mSummaryProvider.setListening(true);
-        verify(mSummaryLoader).setSummary(anyObject(), endsWith(" of data used"));
     }
 
     @Test
