@@ -42,6 +42,7 @@ import androidx.preference.PreferenceManager;
 
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
+import com.android.settings.network.MobileDataEnabledListener;
 import com.android.settings.testutils.FakeFeatureFactory;
 import com.android.settings.widget.LoadingViewController;
 import com.android.settingslib.AppItem;
@@ -67,7 +68,7 @@ import java.util.List;
 public class DataUsageListTest {
 
     @Mock
-    private CellDataPreference.DataStateListener mListener;
+    private MobileDataEnabledListener mMobileDataEnabledListener;
     @Mock
     private TemplatePreference.NetworkServices mNetworkServices;
 
@@ -83,14 +84,16 @@ public class DataUsageListTest {
         mActivity = spy(mActivityController.get());
         mNetworkServices.mPolicyEditor = mock(NetworkPolicyEditor.class);
         mDataUsageList = spy(DataUsageList.class);
+        mDataUsageList.mDataStateListener = mMobileDataEnabledListener;
 
         doReturn(mActivity).when(mDataUsageList).getContext();
-        ReflectionHelpers.setField(mDataUsageList, "mDataStateListener", mListener);
+        ReflectionHelpers.setField(mDataUsageList, "mDataStateListener",
+                mMobileDataEnabledListener);
         ReflectionHelpers.setField(mDataUsageList, "services", mNetworkServices);
     }
 
     @Test
-    public void resumePause_shouldListenUnlistenDataStateChange() {
+    public void resume_shouldListenDataStateChange() {
         ReflectionHelpers.setField(
                 mDataUsageList, "mVisibilityLoggerMixin", mock(VisibilityLoggerMixin.class));
         ReflectionHelpers.setField(
@@ -98,12 +101,32 @@ public class DataUsageListTest {
 
         mDataUsageList.onResume();
 
-        verify(mListener).setListener(true, mDataUsageList.mSubId, mActivity);
+        verify(mMobileDataEnabledListener).start(anyInt());
 
         mDataUsageList.onPause();
-
-        verify(mListener).setListener(false, mDataUsageList.mSubId, mActivity);
     }
+
+    @Test
+    public void resumePause_shouldUnlistenDataStateChange() {
+        ReflectionHelpers.setField(
+                mDataUsageList, "mVisibilityLoggerMixin", mock(VisibilityLoggerMixin.class));
+        ReflectionHelpers.setField(
+                mDataUsageList, "mPreferenceManager", mock(PreferenceManager.class));
+
+        mDataUsageList.onResume();
+        mDataUsageList.onPause();
+
+        verify(mMobileDataEnabledListener).stop();
+    }
+
+    @Test
+    public void processArgument_shouldGetTemplateFromArgument() {
+        final Bundle args = new Bundle();
+        args.putParcelable(DataUsageList.EXTRA_NETWORK_TEMPLATE, mock(NetworkTemplate.class));
+        args.putInt(DataUsageList.EXTRA_SUB_ID, 3);
+        mDataUsageList.setArguments(args);
+
+        mDataUsageList.processArgument();
 
     @Test
     public void processArgument_shouldGetTemplateFromArgument() {
