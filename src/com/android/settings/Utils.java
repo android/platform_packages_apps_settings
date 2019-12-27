@@ -148,19 +148,19 @@ public final class Utils extends com.android.settingslib.Utils {
     public static boolean updatePreferenceToSpecificActivityOrRemove(Context context,
             PreferenceGroup parentPreferenceGroup, String preferenceKey, int flags) {
 
-        Preference preference = parentPreferenceGroup.findPreference(preferenceKey);
+        final Preference preference = parentPreferenceGroup.findPreference(preferenceKey);
         if (preference == null) {
             return false;
         }
 
-        Intent intent = preference.getIntent();
+        final Intent intent = preference.getIntent();
         if (intent != null) {
             // Find the activity that is in the system image
-            PackageManager pm = context.getPackageManager();
-            List<ResolveInfo> list = pm.queryIntentActivities(intent, 0);
-            int listSize = list.size();
+            final PackageManager pm = context.getPackageManager();
+            final List<ResolveInfo> list = pm.queryIntentActivities(intent, 0);
+            final int listSize = list.size();
             for (int i = 0; i < listSize; i++) {
-                ResolveInfo resolveInfo = list.get(i);
+                final ResolveInfo resolveInfo = list.get(i);
                 if ((resolveInfo.activityInfo.applicationInfo.flags & ApplicationInfo.FLAG_SYSTEM)
                         != 0) {
 
@@ -186,19 +186,6 @@ public final class Utils extends com.android.settingslib.Utils {
     }
 
     /**
-     * Returns the UserManager for a given context
-     *
-     * @throws IllegalStateException if no UserManager could be retrieved.
-     */
-    public static UserManager getUserManager(Context context) {
-        UserManager um = UserManager.get(context);
-        if (um == null) {
-            throw new IllegalStateException("Unable to load UserManager");
-        }
-        return um;
-    }
-
-    /**
      * Returns true if Monkey is running.
      */
     public static boolean isMonkeyRunning() {
@@ -209,7 +196,7 @@ public final class Utils extends com.android.settingslib.Utils {
      * Returns whether the device is voice-capable (meaning, it is also a phone).
      */
     public static boolean isVoiceCapable(Context context) {
-        TelephonyManager telephony =
+        final TelephonyManager telephony =
                 (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         return telephony != null && telephony.isVoiceCapable();
     }
@@ -220,12 +207,12 @@ public final class Utils extends com.android.settingslib.Utils {
      * @return the formatted and newline-separated IP addresses, or null if none.
      */
     public static String getWifiIpAddresses(Context context) {
-        WifiManager wifiManager = context.getSystemService(WifiManager.class);
-        Network currentNetwork = wifiManager.getCurrentNetwork();
+        final WifiManager wifiManager = context.getSystemService(WifiManager.class);
+        final Network currentNetwork = wifiManager.getCurrentNetwork();
         if (currentNetwork != null) {
-            ConnectivityManager cm = (ConnectivityManager)
+            final ConnectivityManager cm = (ConnectivityManager)
                 context.getSystemService(Context.CONNECTIVITY_SERVICE);
-            LinkProperties prop = cm.getLinkProperties(currentNetwork);
+            final LinkProperties prop = cm.getLinkProperties(currentNetwork);
             return formatIpAddresses(prop);
         }
         return null;
@@ -233,7 +220,7 @@ public final class Utils extends com.android.settingslib.Utils {
 
     private static String formatIpAddresses(LinkProperties prop) {
         if (prop == null) return null;
-        Iterator<InetAddress> iter = prop.getAllAddresses().iterator();
+        final Iterator<InetAddress> iter = prop.getAllAddresses().iterator();
         // If there are no entries, return null
         if (!iter.hasNext()) return null;
         // Concatenate all available addresses, comma separated
@@ -254,7 +241,7 @@ public final class Utils extends com.android.settingslib.Utils {
         // And : new Locale("en_US").toString() => "en_us"
         if (null == localeStr)
             return Locale.getDefault();
-        String[] brokenDownLocale = localeStr.split("_", 3);
+        final String[] brokenDownLocale = localeStr.split("_", 3);
         // split may not return a 0-length array.
         if (1 == brokenDownLocale.length) {
             return new Locale(brokenDownLocale[0]);
@@ -388,7 +375,7 @@ public final class Utils extends com.android.settingslib.Utils {
      * exists but it is disabled.
      */
     public static UserHandle getManagedProfile(UserManager userManager) {
-        List<UserHandle> userProfiles = userManager.getUserProfiles();
+        final List<UserHandle> userProfiles = userManager.getUserProfiles();
         for (UserHandle profile : userProfiles) {
             if (profile.getIdentifier() == userManager.getUserHandle()) {
                 continue;
@@ -412,7 +399,7 @@ public final class Utils extends com.android.settingslib.Utils {
         // we need to use UserManager.getProfiles that is available on API 23 (the one currently
         // used for Settings Robolectric tests).
         final int myUserId = UserHandle.myUserId();
-        List<UserInfo> profiles = userManager.getProfiles(myUserId);
+        final List<UserInfo> profiles = userManager.getProfiles(myUserId);
         final int count = profiles.size();
         for (int i = 0; i < count; i++) {
             final UserInfo profile = profiles.get(i);
@@ -430,7 +417,7 @@ public final class Utils extends com.android.settingslib.Utils {
      * @return the managed profile id or UserHandle.USER_NULL if there is none.
      */
     public static int getManagedProfileId(UserManager um, int parentUserId) {
-        int[] profileIds = um.getProfileIdsWithDisabled(parentUserId);
+        final int[] profileIds = um.getProfileIdsWithDisabled(parentUserId);
         for (int profileId : profileIds) {
             if (profileId != parentUserId) {
                 return profileId;
@@ -456,13 +443,14 @@ public final class Utils extends com.android.settingslib.Utils {
      */
     public static UserHandle getSecureTargetUser(IBinder activityToken,
             UserManager um, @Nullable Bundle arguments, @Nullable Bundle intentExtras) {
-        UserHandle currentUser = new UserHandle(UserHandle.myUserId());
-        IActivityManager am = ActivityManager.getService();
+        final UserHandle currentUser = new UserHandle(UserHandle.myUserId());
+        final IActivityManager am = ActivityManager.getService();
         try {
-            String launchedFromPackage = am.getLaunchedFromPackage(activityToken);
-            boolean launchedFromSettingsApp = SETTINGS_PACKAGE_NAME.equals(launchedFromPackage);
+            final String launchedFromPackage = am.getLaunchedFromPackage(activityToken);
+            final boolean launchedFromSettingsApp =
+                    SETTINGS_PACKAGE_NAME.equals(launchedFromPackage);
 
-            UserHandle launchedFromUser = new UserHandle(UserHandle.getUserId(
+            final UserHandle launchedFromUser = new UserHandle(UserHandle.getUserId(
                     am.getLaunchedFromUid(activityToken)));
             if (launchedFromUser != null && !launchedFromUser.equals(currentUser)) {
                 // Check it's secure
@@ -470,14 +458,14 @@ public final class Utils extends com.android.settingslib.Utils {
                     return launchedFromUser;
                 }
             }
-            UserHandle extrasUser = getUserHandleFromBundle(intentExtras);
+            final UserHandle extrasUser = getUserHandleFromBundle(intentExtras);
             if (extrasUser != null && !extrasUser.equals(currentUser)) {
                 // Check it's secure
                 if (launchedFromSettingsApp && isProfileOf(um, extrasUser)) {
                     return extrasUser;
                 }
             }
-            UserHandle argumentsUser = getUserHandleFromBundle(arguments);
+            final UserHandle argumentsUser = getUserHandleFromBundle(arguments);
             if (argumentsUser != null && !argumentsUser.equals(currentUser)) {
                 // Check it's secure
                 if (launchedFromSettingsApp && isProfileOf(um, argumentsUser)) {
@@ -562,10 +550,11 @@ public final class Utils extends com.android.settingslib.Utils {
     }
 
     public static ArraySet<String> getHandledDomains(PackageManager pm, String packageName) {
-        List<IntentFilterVerificationInfo> iviList = pm.getIntentFilterVerifications(packageName);
-        List<IntentFilter> filters = pm.getAllIntentFilters(packageName);
+        final List<IntentFilterVerificationInfo> iviList =
+                pm.getIntentFilterVerifications(packageName);
+        final List<IntentFilter> filters = pm.getAllIntentFilters(packageName);
 
-        ArraySet<String> result = new ArraySet<>();
+        final ArraySet<String> result = new ArraySet<>();
         if (iviList != null && iviList.size() > 0) {
             for (IntentFilterVerificationInfo ivi : iviList) {
                 for (String host : ivi.getDomains()) {
@@ -589,16 +578,16 @@ public final class Utils extends com.android.settingslib.Utils {
      * Returns the application info of the currently installed MDM package.
      */
     public static ApplicationInfo getAdminApplicationInfo(Context context, int profileId) {
-        DevicePolicyManager dpm =
+        final DevicePolicyManager dpm =
                 (DevicePolicyManager) context.getSystemService(Context.DEVICE_POLICY_SERVICE);
-        ComponentName mdmPackage = dpm.getProfileOwnerAsUser(profileId);
+        final ComponentName mdmPackage = dpm.getProfileOwnerAsUser(profileId);
         if (mdmPackage == null) {
             return null;
         }
-        String mdmPackageName = mdmPackage.getPackageName();
+        final String mdmPackageName = mdmPackage.getPackageName();
         try {
-            IPackageManager ipm = AppGlobals.getPackageManager();
-            ApplicationInfo mdmApplicationInfo =
+            final IPackageManager ipm = AppGlobals.getPackageManager();
+            final ApplicationInfo mdmApplicationInfo =
                     ipm.getApplicationInfo(mdmPackageName, 0, profileId);
             return mdmApplicationInfo;
         } catch (RemoteException e) {
@@ -625,7 +614,7 @@ public final class Utils extends com.android.settingslib.Utils {
      */
     public static SpannableString createAccessibleSequence(CharSequence displayText,
             String accessibileText) {
-        SpannableString str = new SpannableString(displayText);
+        final SpannableString str = new SpannableString(displayText);
         str.setSpan(new TtsSpan.TextBuilder(accessibileText).build(), 0,
                 displayText.length(),
                 Spannable.SPAN_INCLUSIVE_INCLUSIVE);
@@ -659,7 +648,7 @@ public final class Utils extends com.android.settingslib.Utils {
         }
         final boolean allowAnyUser = isInternal
                 && bundle.getBoolean(ChooseLockSettingsHelper.EXTRA_ALLOW_ANY_USER, false);
-        int userId = bundle.getInt(Intent.EXTRA_USER_ID, UserHandle.myUserId());
+        final int userId = bundle.getInt(Intent.EXTRA_USER_ID, UserHandle.myUserId());
         if (userId == LockPatternUtils.USER_FRP) {
             return allowAnyUser ? userId : enforceSystemUser(context, userId);
         } else {
@@ -686,7 +675,7 @@ public final class Utils extends com.android.settingslib.Utils {
      * @throws SecurityException if the given userId does not belong to the current user group.
      */
     public static int enforceSameOwner(Context context, int userId) {
-        final UserManager um = getUserManager(context);
+        final UserManager um = UserManager.get(context);
         final int[] profileIds = um.getProfileIdsWithDisabled(UserHandle.myUserId());
         if (ArrayUtils.contains(profileIds, userId)) {
             return userId;
@@ -706,7 +695,7 @@ public final class Utils extends com.android.settingslib.Utils {
      * Returns the user id of the credential owner of the given user id.
      */
     public static int getCredentialOwnerUserId(Context context, int userId) {
-        UserManager um = getUserManager(context);
+        final UserManager um = UserManager.get(context);
         return um.getCredentialOwnerProfile(userId);
     }
 
@@ -811,7 +800,7 @@ public final class Utils extends com.android.settingslib.Utils {
     }
 
     public static boolean hasFingerprintHardware(Context context) {
-        FingerprintManager fingerprintManager = getFingerprintManagerOrNull(context);
+        final FingerprintManager fingerprintManager = getFingerprintManagerOrNull(context);
         return fingerprintManager != null && fingerprintManager.isHardwareDetected();
     }
 
@@ -824,7 +813,7 @@ public final class Utils extends com.android.settingslib.Utils {
     }
 
     public static boolean hasFaceHardware(Context context) {
-        FaceManager faceManager = getFaceManagerOrNull(context);
+        final FaceManager faceManager = getFaceManagerOrNull(context);
         return faceManager != null && faceManager.isHardwareDetected();
     }
 
@@ -848,7 +837,7 @@ public final class Utils extends com.android.settingslib.Utils {
     }
 
     public static boolean isDemoUser(Context context) {
-        return UserManager.isDeviceInDemoMode(context) && getUserManager(context).isDemoUser();
+        return UserManager.isDeviceInDemoMode(context) && UserManager.get(context).isDemoUser();
     }
 
     public static ComponentName getDeviceOwnerComponent(Context context) {
@@ -877,7 +866,7 @@ public final class Utils extends com.android.settingslib.Utils {
     public static VolumeInfo maybeInitializeVolume(StorageManager sm, Bundle bundle) {
         final String volumeId = bundle.getString(VolumeInfo.EXTRA_VOLUME_ID,
                 VolumeInfo.ID_PRIVATE_INTERNAL);
-        VolumeInfo volume = sm.findVolumeById(volumeId);
+        final VolumeInfo volume = sm.findVolumeById(volumeId);
         return isVolumeValid(volume) ? volume : null;
     }
 
@@ -890,12 +879,13 @@ public final class Utils extends com.android.settingslib.Utils {
      */
     public static boolean isProfileOrDeviceOwner(UserManager userManager,
             DevicePolicyManager devicePolicyManager, String packageName) {
-        List<UserInfo> userInfos = userManager.getUsers();
+        final List<UserInfo> userInfos = userManager.getUsers();
         if (devicePolicyManager.isDeviceOwnerAppOnAnyUser(packageName)) {
             return true;
         }
         for (int i = 0, size = userInfos.size(); i < size; i++) {
-            ComponentName cn = devicePolicyManager.getProfileOwnerAsUser(userInfos.get(i).id);
+            final ComponentName cn = devicePolicyManager
+                    .getProfileOwnerAsUser(userInfos.get(i).id);
             if (cn != null && cn.getPackageName().equals(packageName)) {
                 return true;
             }
@@ -950,9 +940,9 @@ public final class Utils extends com.android.settingslib.Utils {
             return original;
         }
 
-        float scaleWidth = ((float) maxWidth) / actualWidth;
-        float scaleHeight = ((float) maxHeight) / actualHeight;
-        float scale = Math.min(scaleWidth, scaleHeight);
+        final float scaleWidth = ((float) maxWidth) / actualWidth;
+        final float scaleHeight = ((float) maxHeight) / actualHeight;
+        final float scale = Math.min(scaleWidth, scaleHeight);
         final int width = (int) (actualWidth * scale);
         final int height = (int) (actualHeight * scale);
 
