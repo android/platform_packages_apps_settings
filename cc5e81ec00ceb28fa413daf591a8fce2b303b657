@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e94728c8_869be4e3",
+        "filename": "src/com/android/settings/AirplaneModeEnabler.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1403999
+      },
+      "writtenOn": "2019-12-27T18:49:31Z",
+      "side": 1,
+      "message": "I know it stands for servicestatelistener. But ss has no meaning.\nIt is a local variable, just rename to listener",
+      "range": {
+        "startLine": 107,
+        "startChar": 34,
+        "endLine": 107,
+        "endChar": 44
+      },
+      "revId": "cc5e81ec00ceb28fa413daf591a8fce2b303b657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f8498ca_843cd6cf",
+        "filename": "src/com/android/settings/AirplaneModeEnabler.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1403999
+      },
+      "writtenOn": "2019-12-27T18:49:31Z",
+      "side": 1,
+      "message": "the same as above",
+      "range": {
+        "startLine": 116,
+        "startChar": 34,
+        "endLine": 116,
+        "endChar": 44
+      },
+      "revId": "cc5e81ec00ceb28fa413daf591a8fce2b303b657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a67e6a8_cb8f2480",
+        "filename": "src/com/android/settings/AirplaneModeEnabler.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1403999
+      },
+      "writtenOn": "2019-12-27T18:49:31Z",
+      "side": 1,
+      "message": "all can be final",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 215,
+        "endChar": 45
+      },
+      "revId": "cc5e81ec00ceb28fa413daf591a8fce2b303b657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
