@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "106cc5d3_734fa7a6",
+        "filename": "src/com/android/settings/AirplaneModeEnabler.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2019-12-31T08:03:36Z",
+      "side": 1,
+      "message": "This class inherent from GlobalSettingsChangeListener.\nYou may found registerContentObserver within GlobalSettingsChangeListener.",
+      "parentUuid": "7a5a7213_defdcc85",
+      "range": {
+        "startLine": 83,
+        "startChar": 16,
+        "endLine": 83,
+        "endChar": 25
+      },
+      "revId": "0542c88f6a6dc014ae48706d732f5d9e18643f8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cfd2894e_16e23570",
         "filename": "src/com/android/settings/AirplaneModeEnabler.java",
         "patchSetId": 4
