@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b19a342c_68be9c7a",
+        "filename": "src/com/android/settings/AirplaneModeEnabler.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2019-12-31T05:10:35Z",
+      "side": 1,
+      "message": "public AirplaneModeEnabler(Context context, OnAirplaneModeChangedListener listener) {",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 50
+      },
+      "revId": "0542c88f6a6dc014ae48706d732f5d9e18643f8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cfd2894e_16e23570",
+        "filename": "src/com/android/settings/AirplaneModeEnabler.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2019-12-31T05:10:35Z",
+      "side": 1,
+      "message": "Why do we need to listen multiple service state?",
+      "range": {
+        "startLine": 94,
+        "startChar": 8,
+        "endLine": 94,
+        "endChar": 71
+      },
+      "revId": "0542c88f6a6dc014ae48706d732f5d9e18643f8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
