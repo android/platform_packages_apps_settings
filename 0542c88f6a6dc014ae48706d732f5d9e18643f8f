@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "7a5a7213_defdcc85",
+        "filename": "src/com/android/settings/AirplaneModeEnabler.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1316472
+      },
+      "writtenOn": "2019-12-31T07:57:28Z",
+      "side": 1,
+      "message": "where is the code to registerContentObserver? Or how this onChanged is callback?",
+      "range": {
+        "startLine": 83,
+        "startChar": 16,
+        "endLine": 83,
+        "endChar": 25
+      },
+      "revId": "0542c88f6a6dc014ae48706d732f5d9e18643f8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cfd2894e_16e23570",
         "filename": "src/com/android/settings/AirplaneModeEnabler.java",
         "patchSetId": 4
@@ -36,6 +59,30 @@
       "writtenOn": "2019-12-31T05:10:35Z",
       "side": 1,
       "message": "Why do we need to listen multiple service state?",
+      "range": {
+        "startLine": 94,
+        "startChar": 8,
+        "endLine": 94,
+        "endChar": 71
+      },
+      "revId": "0542c88f6a6dc014ae48706d732f5d9e18643f8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf279a63_6982a9d0",
+        "filename": "src/com/android/settings/AirplaneModeEnabler.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1316472
+      },
+      "writtenOn": "2019-12-31T07:57:28Z",
+      "side": 1,
+      "message": "Agree with TM, I am confused about the design of ServiceStateListener. Airplane mode setting should just one toggle, it will not separated for different slot.\nAlso, it seems AirplaneModeEnabler just has one and it is assigned to several ServiceStateListener. Then either one ServiceStateListener will already react on AirplaneModeEnabler.\nSo it seems this design doesn\u0027t make sense",
+      "parentUuid": "cfd2894e_16e23570",
       "range": {
         "startLine": 94,
         "startChar": 8,
