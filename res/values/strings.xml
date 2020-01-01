@@ -11238,4 +11238,9 @@
     <!-- Summary for Enterprise Privacy settings, explaining what the user can expect to find under it [CHAR LIMIT=NONE]-->
     <string name="work_policy_privacy_settings_summary">Settings managed by your IT admin</string>
 
+    <!-- Shown in "Managed Roaming" dialog when registration is denied with rejCode 10. -->
+    <string name="managed_roaming_title">Managed Roaming</string>
+    <string name="managed_roaming_title_sub">Managed Roaming (SUB<xliff:g id="index" example="1">%d</xliff:g>)</string>
+    <string name="managed_roaming_dialog_content">Network with Limited Service found. Do you want to change Network Settings?</string>
+
 </resources>
