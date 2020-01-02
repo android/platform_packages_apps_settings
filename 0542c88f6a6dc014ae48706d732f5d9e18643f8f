@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "786be4e5_ec82d165",
+        "filename": "src/com/android/settings/AirplaneModeEnabler.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-01-02T10:32:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b19a342c_68be9c7a",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 50
+      },
+      "revId": "0542c88f6a6dc014ae48706d732f5d9e18643f8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a5a7213_defdcc85",
         "filename": "src/com/android/settings/AirplaneModeEnabler.java",
         "patchSetId": 4
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "This class inherent from GlobalSettingsChangeListener.\nYou may found registerContentObserver within GlobalSettingsChangeListener.",
       "parentUuid": "7a5a7213_defdcc85",
+      "range": {
+        "startLine": 83,
+        "startChar": 16,
+        "endLine": 83,
+        "endChar": 25
+      },
+      "revId": "0542c88f6a6dc014ae48706d732f5d9e18643f8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1323cc3f_42e81a6e",
+        "filename": "src/com/android/settings/AirplaneModeEnabler.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-01-02T10:32:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "106cc5d3_734fa7a6",
       "range": {
         "startLine": 83,
         "startChar": 16,
@@ -116,6 +164,30 @@
       "revId": "0542c88f6a6dc014ae48706d732f5d9e18643f8f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3a5496a_0a8393fe",
+        "filename": "src/com/android/settings/AirplaneModeEnabler.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-01-02T10:32:13Z",
+      "side": 1,
+      "message": "Changed the design here, only 1 instance which listening radio power state is required.\nThanks.",
+      "parentUuid": "bf279a63_6982a9d0",
+      "range": {
+        "startLine": 94,
+        "startChar": 8,
+        "endLine": 94,
+        "endChar": 71
+      },
+      "revId": "0542c88f6a6dc014ae48706d732f5d9e18643f8f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
