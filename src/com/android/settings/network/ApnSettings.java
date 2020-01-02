@@ -38,6 +38,8 @@ import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.Telephony;
 import android.telephony.CarrierConfigManager;
+import android.telephony.PhoneStateListener;
+import android.telephony.PreciseDataConnectionState;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
@@ -52,8 +54,6 @@ import android.widget.Toast;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceGroup;
 
-import com.android.internal.telephony.PhoneConstants;
-import com.android.internal.telephony.TelephonyIntents;
 import com.android.settings.R;
 import com.android.settings.RestrictedSettingsFragment;
 import com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
@@ -121,6 +121,7 @@ public class ApnSettings extends RestrictedSettingsFragment
     private IntentFilter mIntentFilter;
 
     private boolean mUnavailable;
+    private boolean mListeningDataConnectionState;
 
     private boolean mHideImsApn;
     private boolean mAllowAddingApns;
@@ -130,32 +131,35 @@ public class ApnSettings extends RestrictedSettingsFragment
         super(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS);
     }
 
+    private final PhoneStateListener mPhoneStateListener = new PhoneStateListener() {
+        @Override
+        public void onPreciseDataConnectionStateChanged(
+                PreciseDataConnectionState dataConnectionState) {
+            if (dataConnectionState.getState() == TelephonyManager.DATA_CONNECTED) {
+                if (!mRestoreDefaultApnMode) {
+                    fillList();
+                } else {
+                    showDialog(DIALOG_RESTORE_DEFAULTAPN);
+                }
+            }
+        }
+    };
+
     private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             if (intent.getAction().equals(
-                    TelephonyIntents.ACTION_ANY_DATA_CONNECTION_STATE_CHANGED)) {
-                PhoneConstants.DataState state = getMobileDataState(intent);
-                switch (state) {
-                case CONNECTED:
-                    if (!mRestoreDefaultApnMode) {
-                        fillList();
-                    } else {
-                        showDialog(DIALOG_RESTORE_DEFAULTAPN);
-                    }
-                    break;
-                }
-            } else if(intent.getAction().equals(
                     TelephonyManager.ACTION_SUBSCRIPTION_CARRIER_IDENTITY_CHANGED)) {
                 if (!mRestoreDefaultApnMode) {
                     int extraSubId = intent.getIntExtra(TelephonyManager.EXTRA_SUBSCRIPTION_ID,
                             SubscriptionManager.INVALID_SUBSCRIPTION_ID);
-                    if (SubscriptionManager.isValidSubscriptionId(extraSubId) &&
-                            mPhoneId == SubscriptionManager.getPhoneId(extraSubId) &&
-                            extraSubId != mSubId) {
+                    if (SubscriptionManager.isValidSubscriptionId(extraSubId)
+                            && mPhoneId == SubscriptionUtil.getPhoneId(context, extraSubId)
+                            && extraSubId != mSubId) {
                         // subscription has changed
                         mSubId = extraSubId;
                         mSubscriptionInfo = getSubscriptionInfo(mSubId);
+                        updatePhoneStateListner(mSubId);
                     }
                     fillList();
                 }
@@ -163,13 +167,28 @@ public class ApnSettings extends RestrictedSettingsFragment
         }
     };
 
-    private static PhoneConstants.DataState getMobileDataState(Intent intent) {
-        String str = intent.getStringExtra(PhoneConstants.STATE_KEY);
-        if (str != null) {
-            return Enum.valueOf(PhoneConstants.DataState.class, str);
-        } else {
-            return PhoneConstants.DataState.DISCONNECTED;
+    private void updatePhoneStateListner(int subId) {
+        if (mRestoreDefaultApnMode) {
+            return;
         }
+        if (!mListeningDataConnectionState) {
+            return;
+        }
+
+        final TelephonyManager updatedTelephonyManager =
+                mTelephonyManager.createForSubscriptionId(subId);
+        if (updatedTelephonyManager == null) {
+            return;
+        }
+
+        // restart monitoring when subscription has been changed
+        mTelephonyManager.listen(mPhoneStateListener,
+                PhoneStateListener.LISTEN_NONE);
+
+        mTelephonyManager = updatedTelephonyManager;
+
+        mTelephonyManager.listen(mPhoneStateListener,
+                PhoneStateListener.LISTEN_PRECISE_DATA_CONNECTION_STATE);
     }
 
     @Override
@@ -183,14 +202,15 @@ public class ApnSettings extends RestrictedSettingsFragment
         final Activity activity = getActivity();
         mSubId = activity.getIntent().getIntExtra(SUB_ID,
                 SubscriptionManager.INVALID_SUBSCRIPTION_ID);
-        mPhoneId = SubscriptionManager.getPhoneId(mSubId);
+        mPhoneId = SubscriptionUtil.getPhoneId(activity, mSubId);
         mIntentFilter = new IntentFilter(
-                TelephonyIntents.ACTION_ANY_DATA_CONNECTION_STATE_CHANGED);
-        mIntentFilter.addAction(TelephonyManager.ACTION_SUBSCRIPTION_CARRIER_IDENTITY_CHANGED);
+                TelephonyManager.ACTION_SUBSCRIPTION_CARRIER_IDENTITY_CHANGED);
 
         setIfOnlyAvailableForAdmins(true);
 
         mSubscriptionInfo = getSubscriptionInfo(mSubId);
+        mTelephonyManager = activity.getSystemService(TelephonyManager.class);
+        updatePhoneStateListner(mSubId);
 
         CarrierConfigManager configManager = (CarrierConfigManager)
                 getSystemService(Context.CARRIER_CONFIG_SERVICE);
@@ -235,6 +255,9 @@ public class ApnSettings extends RestrictedSettingsFragment
 
         getActivity().registerReceiver(mReceiver, mIntentFilter);
 
+        mListeningDataConnectionState = true;
+        updatePhoneStateListner(mSubId);
+
         if (!mRestoreDefaultApnMode) {
             fillList();
         }
@@ -249,6 +272,10 @@ public class ApnSettings extends RestrictedSettingsFragment
         }
 
         getActivity().unregisterReceiver(mReceiver);
+
+        mListeningDataConnectionState = false;
+        mTelephonyManager.listen(mPhoneStateListener,
+                PhoneStateListener.LISTEN_NONE);
     }
 
     @Override
