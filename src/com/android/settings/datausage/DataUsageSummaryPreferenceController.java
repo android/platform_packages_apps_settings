@@ -288,11 +288,8 @@ public class DataUsageSummaryPreferenceController extends BasePreferenceControll
                 mDataBarSize = mDataplanSize;
                 mDataplanUse = primaryPlan.getDataUsageBytes();
 
-                RecurrenceRule rule = primaryPlan.getCycleRule();
-                if (rule != null && rule.start != null && rule.end != null) {
-                    mCycleStart = rule.start.toEpochSecond() * 1000L;
-                    mCycleEnd = rule.end.toEpochSecond() * 1000L;
-                }
+                mCycleStart = primaryPlan.getCycleRuleStartTime().toEpochSecond() * 1000L;
+                mCycleEnd = primaryPlan.getCycleRuleEndTime().toEpochSecond() * 1000L;
                 mSnapshotTime = primaryPlan.getDataUsageTime();
             }
         }
@@ -310,8 +307,7 @@ public class DataUsageSummaryPreferenceController extends BasePreferenceControll
         // First plan in the list is the primary plan
         SubscriptionPlan plan = plans.get(0);
         return plan.getDataLimitBytes() > 0
-                && saneSize(plan.getDataUsageBytes())
-                && plan.getCycleRule() != null ? plan : null;
+                && saneSize(plan.getDataUsageBytes()) ? plan : null;
     }
 
     private static boolean saneSize(long value) {
