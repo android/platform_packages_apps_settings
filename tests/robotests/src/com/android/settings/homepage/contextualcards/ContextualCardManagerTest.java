@@ -33,13 +33,18 @@ import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
+import static org.robolectric.Shadows.shadowOf;
 
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyManager;
 import android.util.ArrayMap;
+import android.util.FeatureFlagUtils;
 
+import com.android.settings.core.FeatureFlags;
 import com.android.settings.homepage.contextualcards.conditional.ConditionContextualCardController;
 import com.android.settings.homepage.contextualcards.conditional.ConditionFooterContextualCard;
 import com.android.settings.homepage.contextualcards.conditional.ConditionHeaderContextualCard;
@@ -51,6 +56,8 @@ import com.android.settingslib.core.lifecycle.LifecycleObserver;
 import com.android.settingslib.core.lifecycle.events.OnStart;
 import com.android.settingslib.core.lifecycle.events.OnStop;
 
+import androidx.test.ext.junit.runners.AndroidJUnit4;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -58,6 +65,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
+import org.robolectric.shadows.ShadowSubscriptionManager;
+import org.robolectric.shadows.ShadowTelephonyManager;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -65,8 +74,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-@RunWith(RobolectricTestRunner.class)
+@RunWith(AndroidJUnit4.class)
 public class ContextualCardManagerTest {
+    private static final int SUB_ID = 2;
 
     private static final String TEST_SLICE_URI = "context://test/test";
     private static final String TEST_SLICE_NAME = "test_name";
@@ -77,12 +87,25 @@ public class ContextualCardManagerTest {
     Lifecycle mLifecycle;
 
     private Context mContext;
+    private ShadowSubscriptionManager mShadowSubscriptionManager;
+    private ShadowTelephonyManager mShadowTelephonyManager;
     private ContextualCardManager mManager;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         mContext = RuntimeEnvironment.application;
+        FeatureFlagUtils.setEnabled(mContext, FeatureFlags.CONDITIONAL_CARDS, true);
+
+        mShadowSubscriptionManager = shadowOf(
+                mContext.getSystemService(SubscriptionManager.class));
+        mShadowSubscriptionManager.setDefaultDataSubscriptionId(SUB_ID);
+
+        final TelephonyManager telephonyManager =
+                mContext.getSystemService(TelephonyManager.class);
+        mShadowTelephonyManager = shadowOf(telephonyManager);
+        mShadowTelephonyManager.setTelephonyManagerForSubscriptionId(SUB_ID, telephonyManager);
+
         mManager = new ContextualCardManager(mContext, mLifecycle, null /* bundle */);
     }
 
@@ -122,6 +145,27 @@ public class ContextualCardManagerTest {
         final List<Integer> expected = Arrays.asList(ContextualCard.CardType.CONDITIONAL,
                 ContextualCard.CardType.LEGACY_SUGGESTION);
         assertThat(actual).containsExactlyElementsIn(expected);
+    }
+
+    @Test
+    public void getSettingsCards_conditionalsEnabled_shouldContainLegacyAndConditionals() {
+        FeatureFlagUtils.setEnabled(mContext, FeatureFlags.CONDITIONAL_CARDS, true);
+        final int[] expected = {ContextualCard.CardType.CONDITIONAL,
+                ContextualCard.CardType.LEGACY_SUGGESTION};
+
+        final int[] actual = mManager.getSettingsCards();
+
+        assertThat(actual).isEqualTo(expected);
+    }
+
+    @Test
+    public void getSettingsCards_conditionalsDisabled_shouldContainLegacy() {
+        FeatureFlagUtils.setEnabled(mContext, FeatureFlags.CONDITIONAL_CARDS, false);
+        final int[] expected = {ContextualCard.CardType.LEGACY_SUGGESTION};
+
+        final int[] actual = mManager.getSettingsCards();
+
+        assertThat(actual).isEqualTo(expected);
     }
 
     @Test
