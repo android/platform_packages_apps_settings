@@ -142,7 +142,7 @@ public class SimLockPreferenceControllerTest {
         SubscriptionInfo info = mock(SubscriptionInfo.class);
         subscriptionInfoList.add(info);
         when(mTelephonyManager.hasIccCard(anyInt())).thenReturn(true);
-        when(mSubscriptionManager.getActiveSubscriptionInfoList(eq(true)))
+        when(mSubscriptionManager.getActiveSubscriptionInfoList())
                 .thenReturn(subscriptionInfoList);
     }
 
@@ -151,7 +151,7 @@ public class SimLockPreferenceControllerTest {
         SubscriptionInfo info = mock(SubscriptionInfo.class);
         subscriptionInfoList.add(info);
         when(mTelephonyManager.getSimState(anyInt())).thenReturn(SIM_STATE_READY);
-        when(mSubscriptionManager.getActiveSubscriptionInfoList(eq(true)))
+        when(mSubscriptionManager.getActiveSubscriptionInfoList())
                 .thenReturn(subscriptionInfoList);
     }
 }
