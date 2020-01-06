@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ae864e8_ea1110d1",
+        "filename": "src/com/android/settings/network/telephony/NetworkSelectSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1432429
+      },
+      "writtenOn": "2020-01-06T10:53:51Z",
+      "side": 1,
+      "message": "Maybe use this method instead of ?\nhttps://developer.android.com/reference/android/os/PowerManager.html#isInteractive()",
+      "range": {
+        "startLine": 244,
+        "startChar": 24,
+        "endLine": 244,
+        "endChar": 38
+      },
+      "revId": "3689dbab39a28efc3022bbc6751e7db6f2b728bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
