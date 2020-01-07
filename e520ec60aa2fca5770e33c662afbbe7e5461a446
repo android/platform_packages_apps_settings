@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e6b1ce41_01d212a6",
+        "filename": "src/com/android/settings/AirplaneModeEnabler.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-01-07T05:07:59Z",
+      "side": 1,
+      "message": "The code logic here need to scan all of the subscriptions for anyone which stays in emergency callback mode.\nAn immediate return will break the design here.",
+      "parentUuid": "f2105dcd_47a5cf45",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 17
+      },
+      "revId": "e520ec60aa2fca5770e33c662afbbe7e5461a446",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6168cbd0_ab2f2141",
         "filename": "src/com/android/settings/AirplaneModeEnabler.java",
         "patchSetId": 5
