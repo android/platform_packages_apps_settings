@@ -118,6 +118,30 @@
     },
     {
       "key": {
+        "uuid": "d93d8692_98817a18",
+        "filename": "src/com/android/settings/network/telephony/NetworkOperatorPreference.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1432429
+      },
+      "writtenOn": "2020-01-07T07:32:18Z",
+      "side": 1,
+      "message": "ok, that\u0027s fine.",
+      "parentUuid": "a3df4998_4040ca4d",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 24
+      },
+      "revId": "3689dbab39a28efc3022bbc6751e7db6f2b728bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4ae864e8_ea1110d1",
         "filename": "src/com/android/settings/network/telephony/NetworkSelectSettings.java",
         "patchSetId": 2
@@ -153,6 +177,30 @@
       "side": 1,
       "message": "This is designed to detect if fragment is showing in front of all of the UIs.\nPowerManager#isInteractive() may return true when this fragment is in background.\nTherefore, it is not likely to be a good idea for replacing original code into PowerManager#isInteractive().",
       "parentUuid": "4ae864e8_ea1110d1",
+      "range": {
+        "startLine": 244,
+        "startChar": 24,
+        "endLine": 244,
+        "endChar": 38
+      },
+      "revId": "3689dbab39a28efc3022bbc6751e7db6f2b728bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e90eaf0f_0f32734e",
+        "filename": "src/com/android/settings/network/telephony/NetworkSelectSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1432429
+      },
+      "writtenOn": "2020-01-07T07:32:18Z",
+      "side": 1,
+      "message": "isResumed() may correspond with your requirement.",
+      "parentUuid": "9a1bcbac_3200a029",
       "range": {
         "startLine": 244,
         "startChar": 24,
