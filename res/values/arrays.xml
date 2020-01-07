@@ -442,6 +442,7 @@
     <!-- Bearer Info used in APN editor -->
     <string-array name="bearer_entries">
         <item>Unspecified</item>
+        <item>NR</item>
         <item>LTE</item>
         <item>HSPAP</item>
         <item>HSPA</item>
@@ -462,6 +463,8 @@
     <string-array translatable="false" name="bearer_values">
         <!-- Do not translate. -->
         <item>0</item>
+        <!-- Do not translate. -->
+        <item>20</item>
         <!-- Do not translate. -->
         <item>14</item>
         <!-- Do not translate. -->
