@@ -94,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "a3df4998_4040ca4d",
+        "filename": "src/com/android/settings/network/telephony/NetworkOperatorPreference.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-01-07T04:57:10Z",
+      "side": 1,
+      "message": "In following code, CellIdentity will return null for getMobileNetworkOperator().\nTo be consistant, return null here.",
+      "parentUuid": "7326608b_096bc0ce",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 24
+      },
+      "revId": "3689dbab39a28efc3022bbc6751e7db6f2b728bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4ae864e8_ea1110d1",
         "filename": "src/com/android/settings/network/telephony/NetworkSelectSettings.java",
         "patchSetId": 2
@@ -105,6 +129,30 @@
       "writtenOn": "2020-01-06T10:53:51Z",
       "side": 1,
       "message": "Maybe use this method instead of ?\nhttps://developer.android.com/reference/android/os/PowerManager.html#isInteractive()",
+      "range": {
+        "startLine": 244,
+        "startChar": 24,
+        "endLine": 244,
+        "endChar": 38
+      },
+      "revId": "3689dbab39a28efc3022bbc6751e7db6f2b728bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a1bcbac_3200a029",
+        "filename": "src/com/android/settings/network/telephony/NetworkSelectSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-01-07T04:57:10Z",
+      "side": 1,
+      "message": "This is designed to detect if fragment is showing in front of all of the UIs.\nPowerManager#isInteractive() may return true when this fragment is in background.\nTherefore, it is not likely to be a good idea for replacing original code into PowerManager#isInteractive().",
+      "parentUuid": "4ae864e8_ea1110d1",
       "range": {
         "startLine": 244,
         "startChar": 24,
