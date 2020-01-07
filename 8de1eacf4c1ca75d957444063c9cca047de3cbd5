@@ -22,6 +22,30 @@
       "revId": "8de1eacf4c1ca75d957444063c9cca047de3cbd5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1532a8a3_93663ac4",
+        "filename": "src/com/android/settings/network/ApnEditor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-01-07T10:39:49Z",
+      "side": 1,
+      "message": "Accessing SubscriptionManager have following benefits:\n1. Allowing user to edit APN when SIM card been disabled but remain in the slot\n2. Less time require to access MNC and MCC through the sharing of ProxySubscriptionManager.",
+      "parentUuid": "32b03126_f7d30745",
+      "range": {
+        "startLine": 518,
+        "startChar": 16,
+        "endLine": 519,
+        "endChar": 84
+      },
+      "revId": "8de1eacf4c1ca75d957444063c9cca047de3cbd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
