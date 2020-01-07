@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "104ca247_1a7e909a",
+        "filename": "src/com/android/settings/AirplaneModeEnabler.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1432429
+      },
+      "writtenOn": "2020-01-07T07:48:47Z",
+      "side": 1,
+      "message": "I understand. thanks for the explanation.",
+      "parentUuid": "e6b1ce41_01d212a6",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 17
+      },
+      "revId": "e520ec60aa2fca5770e33c662afbbe7e5461a446",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6168cbd0_ab2f2141",
         "filename": "src/com/android/settings/AirplaneModeEnabler.java",
         "patchSetId": 5
