@@ -142,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "284bfd75_e5e48263",
+        "filename": "src/com/android/settings/network/telephony/NetworkOperatorPreference.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-01-07T16:18:30Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d93d8692_98817a18",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 24
+      },
+      "revId": "3689dbab39a28efc3022bbc6751e7db6f2b728bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4ae864e8_ea1110d1",
         "filename": "src/com/android/settings/network/telephony/NetworkSelectSettings.java",
         "patchSetId": 2
@@ -210,6 +234,30 @@
       "revId": "3689dbab39a28efc3022bbc6751e7db6f2b728bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac431f70_2883c3ae",
+        "filename": "src/com/android/settings/network/telephony/NetworkSelectSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-01-07T16:18:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e90eaf0f_0f32734e",
+      "range": {
+        "startLine": 244,
+        "startChar": 24,
+        "endLine": 244,
+        "endChar": 38
+      },
+      "revId": "3689dbab39a28efc3022bbc6751e7db6f2b728bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
