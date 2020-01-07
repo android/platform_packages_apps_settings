@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2105dcd_47a5cf45",
+        "filename": "src/com/android/settings/AirplaneModeEnabler.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1432429
+      },
+      "writtenOn": "2020-01-07T03:00:43Z",
+      "side": 1,
+      "message": "What about this?\nreturn telephonyManager.getEmergencyCallbackMode();",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 17
+      },
+      "revId": "e520ec60aa2fca5770e33c662afbbe7e5461a446",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6168cbd0_ab2f2141",
+        "filename": "src/com/android/settings/AirplaneModeEnabler.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1432429
+      },
+      "writtenOn": "2020-01-07T03:00:43Z",
+      "side": 1,
+      "message": "How about to add space to make the log read clearly? \nexmaple : \"ECM airplane mode \u003d \"",
+      "range": {
+        "startLine": 166,
+        "startChar": 12,
+        "endLine": 166,
+        "endChar": 68
+      },
+      "revId": "e520ec60aa2fca5770e33c662afbbe7e5461a446",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a319776e_8d151fbe",
+        "filename": "src/com/android/settings/AirplaneModeEnabler.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1432429
+      },
+      "writtenOn": "2020-01-07T03:00:43Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 175,
+        "startChar": 8,
+        "endLine": 175,
+        "endChar": 94
+      },
+      "revId": "e520ec60aa2fca5770e33c662afbbe7e5461a446",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
