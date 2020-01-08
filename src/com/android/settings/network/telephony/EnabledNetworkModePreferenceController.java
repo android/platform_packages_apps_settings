@@ -26,7 +26,6 @@ import android.os.Looper;
 import android.os.PersistableBundle;
 import android.provider.Settings;
 import android.telephony.CarrierConfigManager;
-import android.telephony.RadioAccessFamily;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
@@ -279,7 +278,7 @@ public class EnabledNetworkModePreferenceController extends
     }
 
     /***
-     * Preferred network list add 5G item.
+     * Generate preferred network choices list for 5G
      *
      * @string/enabled_networks_cdma_choices
      *         Before            |        After
@@ -382,22 +381,49 @@ public class EnabledNetworkModePreferenceController extends
     }
 
     /**
-     * LTE network mode transform to 5G network mode.
+     * transform LTE network mode to 5G network mode.
      *
-     * @param networkMode this is LTE network mode.
-     * @return 5G network mode.
+     * @param networkMode an LTE network mode without 5G.
+     * @return the corresponding network mode with 5G.
      */
     private CharSequence transformLteEntryValueTo5gEntryValue(CharSequence networkMode) {
         int networkModeInt = Integer.valueOf(networkMode.toString());
-        return Integer.toString(addNrToNetworkType(networkModeInt));
+        return Integer.toString(addNrToLteNetworkType(networkModeInt));
+    }
+    private int addNrToLteNetworkType(int networkType) {
+        switch(networkType) {
+            case TelephonyManager.NETWORK_MODE_LTE_ONLY:
+                return TelephonyManager.NETWORK_MODE_NR_LTE;
+            case TelephonyManager.NETWORK_MODE_LTE_CDMA_EVDO:
+                return TelephonyManager.NETWORK_MODE_NR_LTE_CDMA_EVDO;
+            case TelephonyManager.NETWORK_MODE_LTE_GSM_WCDMA:
+                return TelephonyManager.NETWORK_MODE_NR_LTE_GSM_WCDMA;
+            case TelephonyManager.NETWORK_MODE_LTE_CDMA_EVDO_GSM_WCDMA:
+                return TelephonyManager.NETWORK_MODE_NR_LTE_CDMA_EVDO_GSM_WCDMA;
+            case TelephonyManager.NETWORK_MODE_LTE_WCDMA:
+                return TelephonyManager.NETWORK_MODE_NR_LTE_WCDMA;
+            case TelephonyManager.NETWORK_MODE_LTE_TDSCDMA:
+                return TelephonyManager.NETWORK_MODE_NR_LTE_TDSCDMA;
+            case TelephonyManager.NETWORK_MODE_LTE_TDSCDMA_GSM:
+                return TelephonyManager.NETWORK_MODE_NR_LTE_TDSCDMA_GSM;
+            case TelephonyManager.NETWORK_MODE_LTE_TDSCDMA_WCDMA:
+                return TelephonyManager.NETWORK_MODE_NR_LTE_TDSCDMA_WCDMA;
+            case TelephonyManager.NETWORK_MODE_LTE_TDSCDMA_GSM_WCDMA:
+                return TelephonyManager.NETWORK_MODE_NR_LTE_TDSCDMA_GSM_WCDMA;
+            case TelephonyManager.NETWORK_MODE_LTE_TDSCDMA_CDMA_EVDO_GSM_WCDMA:
+                return TelephonyManager.NETWORK_MODE_NR_LTE_TDSCDMA_CDMA_EVDO_GSM_WCDMA;
+            default:
+                return networkType; // not LTE
+        }
     }
 
-    private int addNrToNetworkType(int networkType) {
-        long networkTypeBitmasks = RadioAccessFamily.getRafFromNetworkType(networkType);
-        networkTypeBitmasks |= mTelephonyManager.NETWORK_TYPE_BITMASK_NR;
-        return RadioAccessFamily.getNetworkTypeFromRaf((int) networkTypeBitmasks);
-    }
-
+    /**
+     * Sets the display string for the network mode choice and selects the corresponding item
+     *
+     * @param preference ListPreference for selecting the preferred network mode.
+     * @param networkMode the current network mode. The current mode might not be an option in the
+     *                    choice list. The nearest choice is selected instead
+     */
     private void updatePreferenceValueAndSummary(ListPreference preference, int networkMode) {
         preference.setValue(Integer.toString(networkMode));
         switch (networkMode) {
