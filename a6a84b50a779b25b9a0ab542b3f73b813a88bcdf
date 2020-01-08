@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d37cada_4282bfe5",
+        "filename": "src/com/android/settings/datausage/BillingCyclePreference.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-01-08T09:25:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3869271b_db225664",
+      "range": {
+        "startLine": 99,
+        "startChar": 7,
+        "endLine": 99,
+        "endChar": 57
+      },
+      "revId": "a6a84b50a779b25b9a0ab542b3f73b813a88bcdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b40b5946_3294ea41",
         "filename": "src/com/android/settings/datausage/CellDataPreference.java",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "250154ed_79660c75",
+        "filename": "src/com/android/settings/datausage/CellDataPreference.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-01-08T09:25:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b40b5946_3294ea41",
+      "range": {
+        "startLine": 243,
+        "startChar": 25,
+        "endLine": 243,
+        "endChar": 57
+      },
+      "revId": "a6a84b50a779b25b9a0ab542b3f73b813a88bcdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "df73bc9a_25f746d0",
         "filename": "src/com/android/settings/datausage/DataUsageList.java",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2020-01-08T08:47:19Z",
       "side": 1,
       "message": "redundant?",
+      "range": {
+        "startLine": 204,
+        "startChar": 8,
+        "endLine": 204,
+        "endChar": 34
+      },
+      "revId": "a6a84b50a779b25b9a0ab542b3f73b813a88bcdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97abd4f1_73c832e9",
+        "filename": "src/com/android/settings/datausage/DataUsageList.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-01-08T09:25:03Z",
+      "side": 1,
+      "message": "No. This is to avoid from the case of not having onPause() but simply onStart() and onStop().",
+      "parentUuid": "df73bc9a_25f746d0",
       "range": {
         "startLine": 204,
         "startChar": 8,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "cb2b86c0_d64f2953",
+        "filename": "src/com/android/settings/datausage/DataUsageSummary.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-01-08T09:25:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "998d07d1_cee9a86b",
+      "range": {
+        "startLine": 81,
+        "startChar": 11,
+        "endLine": 81,
+        "endChar": 17
+      },
+      "revId": "a6a84b50a779b25b9a0ab542b3f73b813a88bcdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cefa1e74_8a763a35",
         "filename": "src/com/android/settings/network/MobileDataEnabledListener.java",
         "patchSetId": 3
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "683aef97_2684e504",
+        "filename": "src/com/android/settings/network/MobileDataEnabledListener.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-01-08T09:25:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cefa1e74_8a763a35",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 7
+      },
+      "revId": "a6a84b50a779b25b9a0ab542b3f73b813a88bcdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2c30fba5_a6e80ef3",
         "filename": "tests/robotests/src/com/android/settings/datausage/DataUsageListTest.java",
         "patchSetId": 3
@@ -137,6 +257,30 @@
       "revId": "a6a84b50a779b25b9a0ab542b3f73b813a88bcdf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ebd6576_4890254e",
+        "filename": "tests/robotests/src/com/android/settings/datausage/DataUsageListTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-01-08T09:25:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c30fba5_a6e80ef3",
+      "range": {
+        "startLine": 102,
+        "startChar": 1,
+        "endLine": 108,
+        "endChar": 50
+      },
+      "revId": "a6a84b50a779b25b9a0ab542b3f73b813a88bcdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
