@@ -22,6 +22,30 @@
       "revId": "d3203666795cf62dda589fc8f4b7f13817174452",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7704ca52_7eb6614c",
+        "filename": "src/com/android/settings/development/compat/PlatformCompatDashboard.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2020-01-08T12:42:00Z",
+      "side": 1,
+      "message": "This variable is sent to the intent that starts the app picker, before changes are listed; the app picker will either show only debuggable apps, or all apps.",
+      "parentUuid": "47ca159c_02fa43d8",
+      "range": {
+        "startLine": 264,
+        "startChar": 12,
+        "endLine": 264,
+        "endChar": 27
+      },
+      "revId": "d3203666795cf62dda589fc8f4b7f13817174452",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
