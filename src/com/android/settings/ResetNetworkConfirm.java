@@ -126,8 +126,6 @@ public class ResetNetworkConfirm extends InstrumentedFragment {
                 }
             }
 
-            ImsManager.getInstance(mContext,
-                    SubscriptionManager.getPhoneId(mSubId)).factoryReset();
             restoreDefaultApn(mContext);
             if (mEraseEsim) {
                 return RecoverySystem.wipeEuiccData(mContext, mPackageName);
