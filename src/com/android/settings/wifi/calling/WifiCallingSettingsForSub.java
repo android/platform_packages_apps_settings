@@ -637,6 +637,6 @@ public class WifiCallingSettingsForSub extends SettingsPreferenceFragment
 
     @VisibleForTesting
     Resources getResourcesForSubId() {
-        return SubscriptionManager.getResourcesForSubId(getContext(), mSubId, false);
+        return SubscriptionManager.getResourcesForSubId(getContext(), mSubId);
     }
 }
