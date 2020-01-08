@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ab07900_06fb9619",
+        "filename": "src/com/android/settings/datausage/DataUsageSummaryPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1432429
+      },
+      "writtenOn": "2020-01-08T14:45:51Z",
+      "side": 1,
+      "message": "Is it really necessary to return null?",
+      "range": {
+        "startLine": 313,
+        "startChar": 15,
+        "endLine": 314,
+        "endChar": 59
+      },
+      "revId": "2cb54cdaf71e4424d3df4975c54c2cb339c0fe08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef3ca3ac_ae4907bf",
+        "filename": "src/com/android/settings/datausage/DataUsageSummaryPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1432429
+      },
+      "writtenOn": "2020-01-08T14:45:51Z",
+      "side": 1,
+      "message": "do not set this as null pointer. Please use empty string instead of it.",
+      "range": {
+        "startLine": 319,
+        "startChar": 8,
+        "endLine": 319,
+        "endChar": 28
+      },
+      "revId": "2cb54cdaf71e4424d3df4975c54c2cb339c0fe08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "320ac889_bd6a9eb9",
+        "filename": "src/com/android/settings/datausage/DataUsageSummaryPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1432429
+      },
+      "writtenOn": "2020-01-08T14:45:51Z",
+      "side": 1,
+      "message": "Avoid to return null pointer. Try to new a empty intent for the return value.\nhttps://engdoc.corp.google.com/eng/doc/devguide/java/practices/null.md?cl\u003dhead",
+      "range": {
+        "startLine": 327,
+        "startChar": 12,
+        "endLine": 327,
+        "endChar": 24
+      },
+      "revId": "2cb54cdaf71e4424d3df4975c54c2cb339c0fe08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d1e282d_a2f767a4",
+        "filename": "src/com/android/settings/datausage/DataUsageSummaryPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1432429
+      },
+      "writtenOn": "2020-01-08T14:45:51Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 332,
+        "startChar": 12,
+        "endLine": 332,
+        "endChar": 24
+      },
+      "revId": "2cb54cdaf71e4424d3df4975c54c2cb339c0fe08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f878c4cf_d3158c41",
+        "filename": "src/com/android/settings/datausage/DataUsageSummaryPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 341,
+      "author": {
+        "id": 1432429
+      },
+      "writtenOn": "2020-01-08T14:45:51Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 341,
+        "startChar": 12,
+        "endLine": 341,
+        "endChar": 24
+      },
+      "revId": "2cb54cdaf71e4424d3df4975c54c2cb339c0fe08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
