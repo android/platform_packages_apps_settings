@@ -167,6 +167,30 @@
     },
     {
       "key": {
+        "uuid": "c406372f_c60fac62",
+        "filename": "src/com/android/settings/datausage/DataUsageList.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-01-08T11:10:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3c269ac_9c4861be",
+      "range": {
+        "startLine": 204,
+        "startChar": 8,
+        "endLine": 204,
+        "endChar": 34
+      },
+      "revId": "a6a84b50a779b25b9a0ab542b3f73b813a88bcdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "998d07d1_cee9a86b",
         "filename": "src/com/android/settings/datausage/DataUsageSummary.java",
         "patchSetId": 3
