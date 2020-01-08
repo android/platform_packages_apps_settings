@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0a6cd36_54fa4070",
+        "filename": "src/com/android/settings/ResetNetworkConfirm.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1407552
+      },
+      "writtenOn": "2020-01-08T12:40:35Z",
+      "side": 1,
+      "message": "unused import.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "8d882ffd4aa86cff2e6fa5eaf7d2b3a62768003c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
