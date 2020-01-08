@@ -22,6 +22,30 @@
       "revId": "8d882ffd4aa86cff2e6fa5eaf7d2b3a62768003c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7be974a5_5ee7a476",
+        "filename": "src/com/android/settings/ResetNetworkConfirm.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-01-08T13:48:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0a6cd36_54fa4070",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 34
+      },
+      "revId": "8d882ffd4aa86cff2e6fa5eaf7d2b3a62768003c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
