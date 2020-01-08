@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "b3c269ac_9c4861be",
+        "filename": "src/com/android/settings/datausage/DataUsageList.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1432429
+      },
+      "writtenOn": "2020-01-08T11:03:53Z",
+      "side": 1,
+      "message": "mDataStateListener.start is only happened on onResume.\nBase on android life cycle, onPause should must be called by system.\n\nThat\u0027s mean that it do not need to call stop again.",
+      "parentUuid": "97abd4f1_73c832e9",
+      "range": {
+        "startLine": 204,
+        "startChar": 8,
+        "endLine": 204,
+        "endChar": 34
+      },
+      "revId": "a6a84b50a779b25b9a0ab542b3f73b813a88bcdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "998d07d1_cee9a86b",
         "filename": "src/com/android/settings/datausage/DataUsageSummary.java",
         "patchSetId": 3
