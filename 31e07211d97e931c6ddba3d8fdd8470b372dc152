@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d383de1_cb41621b",
+        "filename": "src/com/android/settings/datausage/DataUsageSummaryPreferenceController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1432429
+      },
+      "writtenOn": "2020-01-09T04:30:23Z",
+      "side": 1,
+      "message": "It do not need to use TextUtils. \nif (owner.isEmpty()) {\n}",
+      "range": {
+        "startLine": 326,
+        "startChar": 12,
+        "endLine": 326,
+        "endChar": 37
+      },
+      "revId": "31e07211d97e931c6ddba3d8fdd8470b372dc152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
