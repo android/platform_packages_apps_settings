@@ -1,0 +1,9 @@
+Code-Review+2: Sarah Chin <sarahchin@google.com>
+Code-Review+2: Raff Tsai <rafftsai@google.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Sarah Chin <sarahchin@google.com>
+Submitted-at: Thu, 09 Jan 2020 05:03:21 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1188476
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
