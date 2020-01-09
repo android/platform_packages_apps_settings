@@ -22,6 +22,30 @@
       "revId": "31e07211d97e931c6ddba3d8fdd8470b372dc152",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7deda60_1c21f8a0",
+        "filename": "src/com/android/settings/datausage/DataUsageSummaryPreferenceController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-01-09T04:34:31Z",
+      "side": 1,
+      "message": "The return value from getSubscriptionPlansOwner could be null.\nTherefore, having TextUtils.isEmpty() to avoid from both cases : \"\" and null.",
+      "parentUuid": "4d383de1_cb41621b",
+      "range": {
+        "startLine": 326,
+        "startChar": 12,
+        "endLine": 326,
+        "endChar": 37
+      },
+      "revId": "31e07211d97e931c6ddba3d8fdd8470b372dc152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
