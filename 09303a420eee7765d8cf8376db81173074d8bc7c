@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b0d8cce0_cd683d03",
+        "filename": "src/com/android/settings/network/telephony/CellInfoUtil.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-01-09T10:36:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "736dee8b_92b6a493",
+      "range": {
+        "startLine": 55,
+        "startChar": 21,
+        "endLine": 55,
+        "endChar": 61
+      },
+      "revId": "09303a420eee7765d8cf8376db81173074d8bc7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "278f18f3_8b367a4d",
         "filename": "src/com/android/settings/network/telephony/CellInfoUtil.java",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f026c840_0c7b8d2a",
+        "filename": "src/com/android/settings/network/telephony/CellInfoUtil.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-01-09T10:36:29Z",
+      "side": 1,
+      "message": "TextUtils#isEmpty() provides better readability.",
+      "parentUuid": "278f18f3_8b367a4d",
+      "range": {
+        "startLine": 63,
+        "startChar": 16,
+        "endLine": 63,
+        "endChar": 40
+      },
+      "revId": "09303a420eee7765d8cf8376db81173074d8bc7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "05a5966b_10d81248",
         "filename": "src/com/android/settings/network/telephony/CellInfoUtil.java",
         "patchSetId": 7
@@ -59,6 +107,30 @@
       "writtenOn": "2020-01-09T05:21:55Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 66,
+        "startChar": 17,
+        "endLine": 66,
+        "endChar": 41
+      },
+      "revId": "09303a420eee7765d8cf8376db81173074d8bc7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40905f5e_9397d7dd",
+        "filename": "src/com/android/settings/network/telephony/CellInfoUtil.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-01-09T10:36:29Z",
+      "side": 1,
+      "message": "TextUtils#isEmpty() provides better readability.",
+      "parentUuid": "05a5966b_10d81248",
       "range": {
         "startLine": 66,
         "startChar": 17,
