@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cfeb494d_ec9f5c56",
+        "filename": "src/com/android/settings/Utils.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1302099
+      },
+      "writtenOn": "2020-01-09T05:58:01Z",
+      "side": 1,
+      "message": "nit: Use Context.WIFI_SERVICE?",
+      "range": {
+        "startLine": 210,
+        "startChar": 65,
+        "endLine": 210,
+        "endChar": 82
+      },
+      "revId": "5c29376191d8d1a3e1e9dae217d20d24d187c74f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30fb8040_0f45dd57",
+        "filename": "src/com/android/settings/Utils.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1302099
+      },
+      "writtenOn": "2020-01-09T05:58:01Z",
+      "side": 1,
+      "message": "The UserManager.get() is a hidden API. Could you use (UserManager) context.getSystemService(Context.USER_SERVICE)?",
+      "range": {
+        "startLine": 678,
+        "startChar": 31,
+        "endLine": 678,
+        "endChar": 56
+      },
+      "revId": "5c29376191d8d1a3e1e9dae217d20d24d187c74f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7402acfc_45f7741e",
+        "filename": "src/com/android/settings/Utils.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1302099
+      },
+      "writtenOn": "2020-01-09T05:58:01Z",
+      "side": 1,
+      "message": "The UserManager.get() is a hidden API. Could you use (UserManager) context.getSystemService(Context.USER_SERVICE)?",
+      "range": {
+        "startLine": 698,
+        "startChar": 31,
+        "endLine": 698,
+        "endChar": 56
+      },
+      "revId": "5c29376191d8d1a3e1e9dae217d20d24d187c74f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c9f24a0_d6983cde",
+        "filename": "src/com/android/settings/Utils.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 840,
+      "author": {
+        "id": 1302099
+      },
+      "writtenOn": "2020-01-09T05:58:01Z",
+      "side": 1,
+      "message": "The UserManager.get() is a hidden API. Could you use (UserManager) context.getSystemService(Context.USER_SERVICE)?",
+      "range": {
+        "startLine": 840,
+        "startChar": 58,
+        "endLine": 840,
+        "endChar": 82
+      },
+      "revId": "5c29376191d8d1a3e1e9dae217d20d24d187c74f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b35f43d_07f33bf3",
+        "filename": "src/com/android/settings/datausage/CellDataPreference.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1302099
+      },
+      "writtenOn": "2020-01-09T05:58:01Z",
+      "side": 1,
+      "message": "nit: Use Context.TELEPHONY_SERVICE?",
+      "range": {
+        "startLine": 119,
+        "startChar": 49,
+        "endLine": 119,
+        "endChar": 71
+      },
+      "revId": "5c29376191d8d1a3e1e9dae217d20d24d187c74f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4adb3fe_e3bafc92",
+        "filename": "src/com/android/settings/datausage/CellDataPreference.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1302099
+      },
+      "writtenOn": "2020-01-09T05:58:01Z",
+      "side": 1,
+      "message": "nit: Use Context.TELEPHONY_SERVICE?",
+      "range": {
+        "startLine": 151,
+        "startChar": 38,
+        "endLine": 151,
+        "endChar": 60
+      },
+      "revId": "5c29376191d8d1a3e1e9dae217d20d24d187c74f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94dc7400_34a6b550",
+        "filename": "src/com/android/settings/datausage/CellDataPreference.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1302099
+      },
+      "writtenOn": "2020-01-09T05:58:01Z",
+      "side": 1,
+      "message": "nit: Use Context.TELEPHONY_SERVICE?\n\nMay I know the reason for removing mTelephonyManager because CellDataPreferece needs to get an instance of TelephonyManager every time.",
+      "range": {
+        "startLine": 211,
+        "startChar": 42,
+        "endLine": 211,
+        "endChar": 64
+      },
+      "revId": "5c29376191d8d1a3e1e9dae217d20d24d187c74f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f024f8ec_661f33d8",
+        "filename": "src/com/android/settings/network/MobileDataEnabledListener.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1302099
+      },
+      "writtenOn": "2020-01-09T05:58:01Z",
+      "side": 1,
+      "message": "Would you move them before \"if (mListener \u003d\u003d null)\"? If so, you don\u0027t need to register mListener and then stopMonitor().",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 10
+      },
+      "revId": "5c29376191d8d1a3e1e9dae217d20d24d187c74f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
