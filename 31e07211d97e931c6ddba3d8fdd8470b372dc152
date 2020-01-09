@@ -46,6 +46,30 @@
       "revId": "31e07211d97e931c6ddba3d8fdd8470b372dc152",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce81d13b_bdfaf290",
+        "filename": "src/com/android/settings/datausage/DataUsageSummaryPreferenceController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1432429
+      },
+      "writtenOn": "2020-01-09T04:57:09Z",
+      "side": 1,
+      "message": "Understood. Wrong subId will return null, due to SparseArray\u003cString\u003e",
+      "parentUuid": "f7deda60_1c21f8a0",
+      "range": {
+        "startLine": 326,
+        "startChar": 12,
+        "endLine": 326,
+        "endChar": 37
+      },
+      "revId": "31e07211d97e931c6ddba3d8fdd8470b372dc152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
