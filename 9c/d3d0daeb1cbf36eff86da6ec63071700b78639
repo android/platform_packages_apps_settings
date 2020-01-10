@@ -1,0 +1,10 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+2: Hall Liu <hallliu@google.com>
+Autosubmit+1: SongFerng Wang <songferngwang@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Fri, 10 Jan 2020 07:24:55 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1205624
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
