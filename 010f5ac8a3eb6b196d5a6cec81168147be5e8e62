@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b96e6623_684eea22",
+        "filename": "src/com/android/settings/network/ApnSettings.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1302099
+      },
+      "writtenOn": "2020-01-13T06:34:53Z",
+      "side": 1,
+      "message": "Can we remove this protection if mTelephonyManager.createForSubscriptionId won\u0027t return null.",
+      "range": {
+        "startLine": 177,
+        "startChar": 7,
+        "endLine": 177,
+        "endChar": 46
+      },
+      "revId": "010f5ac8a3eb6b196d5a6cec81168147be5e8e62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f9edf854_3904d396",
         "filename": "src/com/android/settings/network/SubscriptionUtil.java",
         "patchSetId": 9
