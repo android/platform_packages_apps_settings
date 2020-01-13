@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9edf854_3904d396",
+        "filename": "src/com/android/settings/network/SubscriptionUtil.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1302099
+      },
+      "writtenOn": "2020-01-13T06:26:17Z",
+      "side": 1,
+      "message": "nit: SubscriptionManager.class?",
+      "range": {
+        "startLine": 130,
+        "startChar": 41,
+        "endLine": 130,
+        "endChar": 79
+      },
+      "revId": "010f5ac8a3eb6b196d5a6cec81168147be5e8e62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
