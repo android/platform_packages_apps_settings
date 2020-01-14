@@ -47,6 +47,7 @@ import com.android.settingslib.core.lifecycle.LifecycleObserver;
 import com.android.settingslib.core.lifecycle.events.OnStart;
 import com.android.settingslib.net.DataUsageController;
 
+import java.time.ZonedDateTime;
 import java.util.List;
 
 /**
@@ -292,9 +293,13 @@ public class DataUsageSummaryPreferenceController extends BasePreferenceControll
                 mDataplanUse = primaryPlan.getDataUsageBytes();
 
                 RecurrenceRule rule = primaryPlan.getCycleRule();
-                if (rule != null && rule.start != null && rule.end != null) {
-                    mCycleStart = rule.start.toEpochSecond() * 1000L;
-                    mCycleEnd = rule.end.toEpochSecond() * 1000L;
+                if (rule != null) {
+                    ZonedDateTime start = rule.getRecurrenceRuleStartTime();
+                    ZonedDateTime end = rule.getRecurrenceRuleEndTime();
+                    if (start != null && end != null) {
+                        mCycleStart = start.toEpochSecond() * 1000L;
+                        mCycleEnd = end.toEpochSecond() * 1000L;
+                    }
                 }
                 mSnapshotTime = primaryPlan.getDataUsageTime();
             }
