@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ab7c1c22_9eb497c0",
+        "filename": "src/com/android/settings/development/AdbDeviceNamePreferenceController.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-01-15T01:43:26Z",
+      "side": 1,
+      "message": "The design has changed to make it property read-only (in sync with the device name in the Settings \u003e About).",
+      "parentUuid": "dac6916e_b0a5bdc1",
+      "range": {
+        "startLine": 70,
+        "startChar": 17,
+        "endLine": 70,
+        "endChar": 37
+      },
+      "revId": "887faa35aced0f33fb9897dea2c4d5e69fd525ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ae5cbb98_8ece0cd6",
         "filename": "src/com/android/settings/development/AdbDeviceNamePreferenceController.java",
         "patchSetId": 10
