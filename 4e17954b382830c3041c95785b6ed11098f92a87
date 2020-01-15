@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6f09ce54_36f43604",
+        "filename": "src/com/android/settings/development/WirelessDebuggingMasterSwitchController.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-01-15T01:11:55Z",
+      "side": 1,
+      "message": "Done. I\u0027ll just recreate it in onResume().",
+      "parentUuid": "7be79b23_7ed7cdeb",
+      "range": {
+        "startLine": 74,
+        "startChar": 38,
+        "endLine": 74,
+        "endChar": 45
+      },
+      "revId": "4e17954b382830c3041c95785b6ed11098f92a87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a91a3db6_167cb7af",
         "filename": "src/com/android/settings/development/WirelessDebuggingMasterSwitchController.java",
         "patchSetId": 10
@@ -45,6 +69,30 @@
       "revId": "4e17954b382830c3041c95785b6ed11098f92a87",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99822754_7f5f5de6",
+        "filename": "src/com/android/settings/development/WirelessDebuggingMasterSwitchController.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-01-15T01:11:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a91a3db6_167cb7af",
+      "range": {
+        "startLine": 96,
+        "startChar": 12,
+        "endLine": 96,
+        "endChar": 37
+      },
+      "revId": "4e17954b382830c3041c95785b6ed11098f92a87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
