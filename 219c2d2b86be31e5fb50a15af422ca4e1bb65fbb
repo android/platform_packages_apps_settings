@@ -93,6 +93,30 @@
       "revId": "219c2d2b86be31e5fb50a15af422ca4e1bb65fbb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c2d3d6b_0caba169",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 10728,
+      "author": {
+        "id": 1463094
+      },
+      "writtenOn": "2020-01-16T20:27:12Z",
+      "side": 1,
+      "message": "AFAIU just replace targetSdk -\u003e targetSdkVersion",
+      "parentUuid": "e8f33fa4_2162630c",
+      "range": {
+        "startLine": 10728,
+        "startChar": 52,
+        "endLine": 10728,
+        "endChar": 77
+      },
+      "revId": "219c2d2b86be31e5fb50a15af422ca4e1bb65fbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
