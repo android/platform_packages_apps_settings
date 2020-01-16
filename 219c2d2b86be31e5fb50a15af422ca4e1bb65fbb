@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "82cb58e7_787e2aca",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 10720,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2020-01-16T17:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83341430_858cef99",
+      "range": {
+        "startLine": 10720,
+        "startChar": 53,
+        "endLine": 10720,
+        "endChar": 94
+      },
+      "revId": "219c2d2b86be31e5fb50a15af422ca4e1bb65fbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "05af15bf_08b72651",
         "filename": "res/values/strings.xml",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2019-12-10T12:51:27Z",
       "side": 1,
       "message": "\"Enabled for targetSdk greater than \" ?\n\nAlso, maybe clearer to use \"targetSdkVersion\" (the name of the manifest attribute), and mark that part of the string non-translatable?",
+      "range": {
+        "startLine": 10728,
+        "startChar": 52,
+        "endLine": 10728,
+        "endChar": 77
+      },
+      "revId": "219c2d2b86be31e5fb50a15af422ca4e1bb65fbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8f33fa4_2162630c",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 10728,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2020-01-16T17:34:50Z",
+      "side": 1,
+      "message": "Done first thing, not sure I understood the second part?",
+      "parentUuid": "05af15bf_08b72651",
       "range": {
         "startLine": 10728,
         "startChar": 52,
