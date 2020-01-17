@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "bf97aa0d_5344f2b0",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 10560,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2020-01-17T17:07:53Z",
+      "side": 1,
+      "message": "I think you can use \u003cxliff:g\u003e to mark it non-translatable:\n \n  \u003cxliff:g id\u003d\"targetSdk\" example\u003d\"targetSdkVersion\"\u003etargetSdkVersion\u003c/xliff:g\u003e\n\nlooks odd, but should do the trick?\n\nBut making the whole thing non-translatable is just as good.",
+      "parentUuid": "c7f585fa_9b80c966",
+      "range": {
+        "startLine": 10560,
+        "startChar": 130,
+        "endLine": 10560,
+        "endChar": 139
+      },
+      "revId": "3f699e8d2371bdd46bd7d769acaf2e685d4cb6e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34a07565_f95479b8",
         "filename": "res/values/strings.xml",
         "patchSetId": 2
