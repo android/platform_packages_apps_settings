@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "25790032_baea46ff",
+        "filename": "src/com/android/settings/development/WirelessDebugging.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-01-17T17:02:32Z",
+      "side": 1,
+      "message": "I actually have an entire stack of CLs to make this feature complete, but was planning to reformat it and submit it incrementally for easier code reviews. I can squash the whole stack if that\u0027s easier. Also easier for me 😊.\n\nThe only problem is it depends on new framework APIs, and those CLs are not in yet, so it won\u0027t build.",
+      "parentUuid": "c8b54f95_19ecb4fe",
+      "range": {
+        "startLine": 32,
+        "startChar": 13,
+        "endLine": 32,
+        "endChar": 30
+      },
+      "revId": "187d81da95f03a33b9f1d25655e5a630be360f1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2e540034_5b24fea3",
         "filename": "src/com/android/settings/development/WirelessDebugging.java",
         "patchSetId": 12
