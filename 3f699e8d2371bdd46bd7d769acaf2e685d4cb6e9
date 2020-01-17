@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c7f585fa_9b80c966",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 10560,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2020-01-17T16:59:12Z",
+      "side": 1,
+      "message": "I haven\u0027t seen any way of marking a _section_ of a string non-translatable; however, the first string can become fully non-translatable and I added a comment for translators on the second string; inflection rules can be really weird in some languages, but I trust the translators to do the right thing.",
+      "parentUuid": "081126ef_3b6cd92d",
+      "range": {
+        "startLine": 10560,
+        "startChar": 130,
+        "endLine": 10560,
+        "endChar": 139
+      },
+      "revId": "3f699e8d2371bdd46bd7d769acaf2e685d4cb6e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "34a07565_f95479b8",
         "filename": "res/values/strings.xml",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "3f699e8d2371bdd46bd7d769acaf2e685d4cb6e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99d0957c_4bdd5492",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 10566,
+      "author": {
+        "id": 1431994
+      },
+      "writtenOn": "2020-01-17T16:59:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "34a07565_f95479b8",
+      "range": {
+        "startLine": 10566,
+        "startChar": 74,
+        "endLine": 10566,
+        "endChar": 86
+      },
+      "revId": "3f699e8d2371bdd46bd7d769acaf2e685d4cb6e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
