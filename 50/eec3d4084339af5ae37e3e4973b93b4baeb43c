@@ -1,0 +1,9 @@
+Code-Review+1: Chalard Jean <jchalard@google.com>
+Code-Review+2: Tsung-Mao Fang <tmfang@google.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Presubmit-Verified-1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Benedict Wong <benedictwong@google.com>
+Submitted-at: Thu, 23 Jan 2020 05:11:44 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1153349
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
