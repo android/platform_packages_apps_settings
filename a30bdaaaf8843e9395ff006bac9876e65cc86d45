@@ -16,6 +16,24 @@
       "revId": "a30bdaaaf8843e9395ff006bac9876e65cc86d45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfa56c6d_3e60badc",
+        "filename": "src/com/android/settings/sim/SimPreferenceDialog.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1112039
+      },
+      "writtenOn": "2020-01-28T06:30:25Z",
+      "side": 1,
+      "message": "Yes, I do not see this file in internal master. But this is there in aosp. Hence changing it. I believe when the original auther cherrypick changes, will remove the file",
+      "parentUuid": "de004666_7ba288df",
+      "revId": "a30bdaaaf8843e9395ff006bac9876e65cc86d45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
