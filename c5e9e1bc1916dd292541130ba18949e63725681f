@@ -46,6 +46,30 @@
       "revId": "c5e9e1bc1916dd292541130ba18949e63725681f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e0651bd_fbf56838",
+        "filename": "src/com/android/settings/development/AdbIpAddressPreferenceController.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1278660
+      },
+      "writtenOn": "2020-01-29T19:31:11Z",
+      "side": 1,
+      "message": "return addresses.toString();\n\nI don\u0027t think this can return null.",
+      "parentUuid": "aff4a513_42e2e57a",
+      "range": {
+        "startLine": 128,
+        "startChar": 68,
+        "endLine": 128,
+        "endChar": 80
+      },
+      "revId": "c5e9e1bc1916dd292541130ba18949e63725681f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
