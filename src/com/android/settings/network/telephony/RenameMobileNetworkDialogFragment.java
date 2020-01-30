@@ -39,14 +39,14 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.android.settings.R;
-import com.android.settings.core.instrumentation.InstrumentedDialogFragment;
-import com.android.settingslib.DeviceInfoUtils;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.AlertDialog;
+
+import com.android.settings.R;
+import com.android.settings.core.instrumentation.InstrumentedDialogFragment;
+import com.android.settingslib.DeviceInfoUtils;
 
 /**
  * A dialog allowing the display name of a mobile network subscription to be changed
@@ -109,6 +109,7 @@ public class RenameMobileNetworkDialogFragment extends InstrumentedDialogFragmen
         final LayoutInflater layoutInflater = builder.getContext().getSystemService(
                 LayoutInflater.class);
         final View view = layoutInflater.inflate(R.layout.dialog_mobile_network_rename, null);
+        mColorSpinner = view.findViewById(R.id.color_spinner);
         populateView(view);
         builder.setTitle(R.string.mobile_network_sim_name)
                 .setView(view)
@@ -137,7 +138,6 @@ public class RenameMobileNetworkDialogFragment extends InstrumentedDialogFragmen
             mNameView.setSelection(displayName.length());
         }
 
-        mColorSpinner = view.findViewById(R.id.color_spinner);
         final ColorAdapter adapter = new ColorAdapter(getContext(),
                 R.layout.dialog_mobile_network_color_picker_item, mColors);
         mColorSpinner.setAdapter(adapter);

@@ -23,12 +23,12 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.telephony.ServiceState;
@@ -55,7 +55,10 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
+import org.robolectric.shadow.api.Shadow;
+import org.robolectric.shadows.ShadowTelephonyManager;
 
 @RunWith(RobolectricTestRunner.class)
 @Config(shadows = ShadowAlertDialogCompat.class)
@@ -63,6 +66,8 @@ public class RenameMobileNetworkDialogFragmentTest {
 
     @Mock
     private TelephonyManager mTelephonyMgr;
+    @Mock
+    private ServiceState mServiceState;
     @Mock
     private SubscriptionManager mSubscriptionMgr;
     @Mock
@@ -75,19 +80,25 @@ public class RenameMobileNetworkDialogFragmentTest {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        mActivity = spy(Robolectric.buildActivity(FragmentActivity.class).setup().get());
+
+        Context context = spy(RuntimeEnvironment.application);
+
+        final ShadowTelephonyManager stm = Shadow.extract(context.getSystemService(
+                TelephonyManager.class));
+        stm.setTelephonyManagerForSubscriptionId(mSubscriptionId, mTelephonyMgr);
+        when(mTelephonyMgr.createForSubscriptionId(anyInt())).thenReturn(mTelephonyMgr);
+
+        when(mTelephonyMgr.getServiceState()).thenReturn(mServiceState);
+        when(mServiceState.getOperatorAlphaLong()).thenReturn("fake carrier name");
 
         when(mSubscriptionInfo.getSubscriptionId()).thenReturn(mSubscriptionId);
         when(mSubscriptionInfo.getDisplayName()).thenReturn("test");
+        when(mSubscriptionMgr.setDisplayName(any(), anyInt(), anyInt())).thenReturn(0);
+
+        mActivity = spy(Robolectric.buildActivity(FragmentActivity.class).setup().get());
 
         mFragment = spy(RenameMobileNetworkDialogFragment.newInstance(mSubscriptionId));
-        doReturn(mTelephonyMgr).when(mFragment).getTelephonyManager(any());
         doReturn(mSubscriptionMgr).when(mFragment).getSubscriptionManager(any());
-
-        final ServiceState serviceState = mock(ServiceState.class);
-        when(serviceState.getOperatorAlphaLong()).thenReturn("fake carrier name");
-        when(mTelephonyMgr.createForSubscriptionId(anyInt())).thenReturn(mTelephonyMgr);
-        when(mTelephonyMgr.getServiceState()).thenReturn(serviceState);
     }
 
     @Test
