@@ -1,0 +1,234 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3b6b536_00637f87",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 3686,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-01-31T10:20:20Z",
+      "side": 1,
+      "message": "Ethernet",
+      "range": {
+        "startLine": 3686,
+        "startChar": 9,
+        "endLine": 3686,
+        "endChar": 18
+      },
+      "revId": "59383f1b993a8dbbb3f3dae8374a94e73a3493f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d454559e_61e3d5b2",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 3687,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-01-31T10:20:20Z",
+      "side": 1,
+      "message": "USB Ethernet",
+      "range": {
+        "startLine": 3687,
+        "startChar": 107,
+        "endLine": 3687,
+        "endChar": 119
+      },
+      "revId": "59383f1b993a8dbbb3f3dae8374a94e73a3493f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f017bc6f_dd08ba7e",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-01-31T10:20:20Z",
+      "side": 1,
+      "message": "This doesn\u0027t exist. You can use android.net.TetheringManager.TETHERING_ETHERNET.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 65
+      },
+      "revId": "59383f1b993a8dbbb3f3dae8374a94e73a3493f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ccfb899_7d22ccdc",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-01-31T10:20:20Z",
+      "side": 1,
+      "message": "Why do you need to do this? Generally it\u0027s preferred always to use the most specific context you have. In this case, that would the the activity itself, not the application context. So maybe instead of adding a mContext member, add an mActivityMember?\n\nThat said, it looks like you only use this to call getContentResolver(). In that case, you can just store an mContentResolver member. And in fact, it looks like you don\u0027t need this at all if we remove the setting, which I think we should do.",
+      "range": {
+        "startLine": 170,
+        "startChar": 8,
+        "endLine": 170,
+        "endChar": 52
+      },
+      "revId": "59383f1b993a8dbbb3f3dae8374a94e73a3493f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da5452d0_f0792569",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-01-31T10:20:20Z",
+      "side": 1,
+      "message": "This won\u0027t work because we don\u0027t have regexps for Ethernet. Also, even if we did, we only want to show this setting if an Ethernet is plugged in. Maybe just use mEthernetManager.isAvailable()? Not sure if that\u0027s 100% correct but it might be good enough for now.",
+      "range": {
+        "startLine": 176,
+        "startChar": 8,
+        "endLine": 176,
+        "endChar": 70
+      },
+      "revId": "59383f1b993a8dbbb3f3dae8374a94e73a3493f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ada3bb6_60f7830a",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-01-31T10:20:20Z",
+      "side": 1,
+      "message": "Do we need this? It looks like this is necessary to support ethernet tethering automatically starting on boot. But perhaps for this CL we can focus on enabling tethering when the user clicks the toggle (just like the other tethering types in this file). If so, then can we remove this code? We already have the startTethering(TETHERING_ETHERNET code later on, in the onPreferenceTreeClick method.",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 27
+      },
+      "revId": "59383f1b993a8dbbb3f3dae8374a94e73a3493f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ed39133_7c3c6c84",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-01-31T10:20:20Z",
+      "side": 1,
+      "message": "We don\u0027t have this method in EthernetManager at the moment. Perhaps you could add one, though. It could be called hasTetheredInterface(). It would just call mService.hasTetheredInterface(), and that would just do mTracker.hasTetheredInterface(). And that could \"return (mDefaultInterfaceMode \u003d\u003d INTERFACE_MODE_SERVER);\"\n\nIt looks like there is a bug in EthernetTracker#updateServerModeInterfaceState where if the tethered interface goes down, then we don\u0027t put it back into client mode. I think we need to fix that for this to work.",
+      "range": {
+        "startLine": 420,
+        "startChar": 0,
+        "endLine": 426,
+        "endChar": 5
+      },
+      "revId": "59383f1b993a8dbbb3f3dae8374a94e73a3493f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daeff591_83ac825c",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-01-31T10:20:20Z",
+      "side": 1,
+      "message": "No tabs in this file please :-)",
+      "range": {
+        "startLine": 477,
+        "startChar": 0,
+        "endLine": 477,
+        "endChar": 1
+      },
+      "revId": "59383f1b993a8dbbb3f3dae8374a94e73a3493f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aab2dd6f_bfeea2f2",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-01-31T10:20:20Z",
+      "side": 1,
+      "message": "I don\u0027t think we need this.",
+      "range": {
+        "startLine": 479,
+        "startChar": 0,
+        "endLine": 480,
+        "endChar": 91
+      },
+      "revId": "59383f1b993a8dbbb3f3dae8374a94e73a3493f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e872f3f_91b861b1",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-01-31T10:20:20Z",
+      "side": 1,
+      "message": "Can this call EthernetManager#isAvailable instead?",
+      "range": {
+        "startLine": 539,
+        "startChar": 0,
+        "endLine": 543,
+        "endChar": 21
+      },
+      "revId": "59383f1b993a8dbbb3f3dae8374a94e73a3493f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
