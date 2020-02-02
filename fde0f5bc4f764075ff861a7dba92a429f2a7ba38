@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b8156fe_a38ddb49",
+        "filename": "src/com/android/settings/vpn2/AppDialogFragment.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-02-02T04:57:21Z",
+      "side": 1,
+      "message": "Need a rebase",
+      "range": {
+        "startLine": 150,
+        "startChar": 54,
+        "endLine": 150,
+        "endChar": 59
+      },
+      "revId": "fde0f5bc4f764075ff861a7dba92a429f2a7ba38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
