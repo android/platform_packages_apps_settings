@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "66fd87de_4425d23e",
+        "filename": "src/com/android/settings/vpn2/AppManagementFragment.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-02-02T05:34:20Z",
+      "side": 1,
+      "message": "Looks like a strange message to show if the app doesn\u0027t have the required ops.",
+      "range": {
+        "startLine": 304,
+        "startChar": 24,
+        "endLine": 304,
+        "endChar": 59
+      },
+      "revId": "bcd6b8cbca52901002d32f165616091e165e780b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "092f08bb_d2575165",
+        "filename": "src/com/android/settings/vpn2/AppManagementFragment.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-02-02T05:34:20Z",
+      "side": 1,
+      "message": "Should we rename this to appHasAnyVpnPermission in an effort to avoid using this for services only ?",
+      "range": {
+        "startLine": 312,
+        "startChar": 19,
+        "endLine": 312,
+        "endChar": 38
+      },
+      "revId": "bcd6b8cbca52901002d32f165616091e165e780b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
