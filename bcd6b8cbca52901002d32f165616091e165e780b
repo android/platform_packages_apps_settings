@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e19ecdf7_f54d8fe0",
+        "filename": "src/com/android/settings/vpn2/AppManagementFragment.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-02-03T22:41:33Z",
+      "side": 1,
+      "message": "I think these will need to happen as part of a bigger Settings VPN scrub. There\u0027s too much that may be out of date, and I\u0027d like to fight scope creep.\n\nIn the worst case, shipping in R with this doesn\u0027t affect anything user-facing (it\u0027s a log statement, and does happen to be unique enough that we can always find the source.\n\nI can file a bug (b/148804553) to clean the Settings app up, but I suspect a lot of it makes more sense with a migration to VpnManager (that would remove a significant chunk of this legacy code)",
+      "parentUuid": "66fd87de_4425d23e",
+      "range": {
+        "startLine": 304,
+        "startChar": 24,
+        "endLine": 304,
+        "endChar": 59
+      },
+      "revId": "bcd6b8cbca52901002d32f165616091e165e780b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "092f08bb_d2575165",
         "filename": "src/com/android/settings/vpn2/AppManagementFragment.java",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-02-02T05:34:20Z",
       "side": 1,
       "message": "Should we rename this to appHasAnyVpnPermission in an effort to avoid using this for services only ?",
+      "range": {
+        "startLine": 312,
+        "startChar": 19,
+        "endLine": 312,
+        "endChar": 38
+      },
+      "revId": "bcd6b8cbca52901002d32f165616091e165e780b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b55f89d_a9aea450",
+        "filename": "src/com/android/settings/vpn2/AppManagementFragment.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-02-03T22:41:33Z",
+      "side": 1,
+      "message": "Ditto",
+      "parentUuid": "092f08bb_d2575165",
       "range": {
         "startLine": 312,
         "startChar": 19,
