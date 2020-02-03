@@ -60,6 +60,8 @@ public class RoamingPreferenceController extends TelephonyTogglePreferenceContro
 
     @VisibleForTesting
     FragmentManager mFragmentManager;
+    @VisibleForTesting
+    boolean mNeedDialog;
 
     public RoamingPreferenceController(Context context, String key) {
         super(context, key);
@@ -68,6 +70,8 @@ public class RoamingPreferenceController extends TelephonyTogglePreferenceContro
 
     @Override
     public void onStart() {
+        mNeedDialog = isDialogNeeded();
+
         if (mListener == null) {
             mListener = new GlobalSettingsChangeListener(mContext,
                     Settings.Global.DATA_ROAMING) {
@@ -113,7 +117,7 @@ public class RoamingPreferenceController extends TelephonyTogglePreferenceContro
     @Override
     public boolean handlePreferenceTreeClick(Preference preference) {
         if (TextUtils.equals(preference.getKey(), getPreferenceKey())) {
-            if (isDialogNeeded()) {
+            if (mNeedDialog) {
                 showDialog();
             }
             return true;
@@ -124,7 +128,9 @@ public class RoamingPreferenceController extends TelephonyTogglePreferenceContro
 
     @Override
     public boolean setChecked(boolean isChecked) {
-        if (!isDialogNeeded()) {
+        mNeedDialog = isDialogNeeded();
+
+        if (!mNeedDialog) {
             // Update data directly if we don't need dialog
             mTelephonyManager.setDataRoamingEnabled(isChecked);
             return true;
