@@ -19,12 +19,16 @@ package com.android.settings.homepage.contextualcards.conditional;
 import static com.google.common.truth.Truth.assertThat;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
+import static org.robolectric.Shadows.shadowOf;
 
 import android.content.Context;
+import android.telephony.SubscriptionManager;
+import android.telephony.TelephonyManager;
 
 import com.android.settings.homepage.contextualcards.ContextualCard;
 import com.android.settings.homepage.contextualcards.ContextualCard.CardType;
@@ -37,6 +41,8 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
+import org.robolectric.shadows.ShadowSubscriptionManager;
+import org.robolectric.shadows.ShadowTelephonyManager;
 import org.robolectric.util.ReflectionHelpers;
 
 import java.util.ArrayList;
@@ -45,6 +51,7 @@ import java.util.Map;
 
 @RunWith(RobolectricTestRunner.class)
 public class ConditionContextualCardControllerTest {
+    private static final int SUB_ID = 2;
 
     @Mock
     private ConditionManager mConditionManager;
@@ -57,6 +64,18 @@ public class ConditionContextualCardControllerTest {
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         mContext = spy(RuntimeEnvironment.application);
+
+        // parameters required by CellularDataConditionController
+        final ShadowSubscriptionManager shadowSubscriptionMgr = shadowOf(
+                mContext.getSystemService(SubscriptionManager.class));
+        shadowSubscriptionMgr.setDefaultDataSubscriptionId(SUB_ID);
+
+        final TelephonyManager telephonyManager =
+                spy(mContext.getSystemService(TelephonyManager.class));
+        final ShadowTelephonyManager shadowTelephonyMgr = shadowOf(telephonyManager);
+        shadowTelephonyMgr.setTelephonyManagerForSubscriptionId(SUB_ID, telephonyManager);
+        doReturn(telephonyManager).when(telephonyManager).createForSubscriptionId(SUB_ID);
+
         mController = spy(new ConditionContextualCardController(mContext));
         ReflectionHelpers.setField(mController, "mConditionManager", mConditionManager);
     }
