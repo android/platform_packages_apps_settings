@@ -397,6 +397,30 @@
       "revId": "59383f1b993a8dbbb3f3dae8374a94e73a3493f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76855678_9708b307",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1033528
+      },
+      "writtenOn": "2020-02-04T00:22:41Z",
+      "side": 1,
+      "message": "Sorry, please ignore me.\nIt was strange behavior and should be aligned with availability of mEthernetTether in onCreate().",
+      "parentUuid": "acf037bd_5c1f206b",
+      "range": {
+        "startLine": 539,
+        "startChar": 0,
+        "endLine": 543,
+        "endChar": 21
+      },
+      "revId": "59383f1b993a8dbbb3f3dae8374a94e73a3493f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
