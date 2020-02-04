@@ -314,6 +314,21 @@ public abstract class DashboardFragment extends SettingsPreferenceFragment
     }
 
     /**
+     * @return {@code true} if the underlying controllers should be executed in parallel.
+     * Override this function to enable/disable the behavior.
+     */
+    protected boolean isParalleledControllers() {
+        return false;
+    }
+
+    /**
+     * Get current PreferenceController(s)
+     */
+    protected Collection<List<AbstractPreferenceController>> getPreferenceControllers() {
+        return mPreferenceControllers.values();
+    }
+
+    /**
      * Update state of each preference managed by PreferenceController.
      */
     protected void updatePreferenceStates() {
