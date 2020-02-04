@@ -17,6 +17,7 @@
 package com.android.settings.development;
 
 import android.bluetooth.BluetoothCodecConfig;
+import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 
 import com.android.settings.R;
@@ -109,14 +110,16 @@ public class BluetoothAudioCodecPreferenceController extends
             case 6:
                 synchronized (mBluetoothA2dpConfigStore) {
                     if (mBluetoothA2dp != null) {
-                        mBluetoothA2dp.enableOptionalCodecs(null); // Use current active device
+                        BluetoothDevice activeDevice = mBluetoothA2dp.getActiveDevice();
+                        mBluetoothA2dp.enableOptionalCodecs(activeDevice); // Use current active device
                     }
                 }
                 return;
             case 7:
                 synchronized (mBluetoothA2dpConfigStore) {
                     if (mBluetoothA2dp != null) {
-                        mBluetoothA2dp.disableOptionalCodecs(null); // Use current active device
+                        BluetoothDevice activeDevice = mBluetoothA2dp.getActiveDevice();
+                        mBluetoothA2dp.disableOptionalCodecs(activeDevice); // Use current active device
                     }
                 }
                 return;
