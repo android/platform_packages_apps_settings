@@ -264,6 +264,14 @@ public abstract class SettingsPreferenceFragment extends InstrumentedPreferenceF
         return 0;
     }
 
+    /**
+     * Returns false when preference has not been expanded
+     */
+    public boolean isPreferenceExpanded(Preference preference) {
+        return ((mAdapter == null)
+                || (mAdapter.getPreferenceAdapterPosition(preference) != RecyclerView.NO_POSITION));
+    }
+
     protected void onDataSetChanged() {
         highlightPreferenceIfNeeded();
         updateEmptyView();
