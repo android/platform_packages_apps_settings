@@ -56,6 +56,8 @@ public abstract class ActiveSubsciptionsListener
         mLooper = looper;
         mContext = context;
 
+        mIsFirstSubscriptionChangedCallback = true;
+
         mCacheState = new AtomicInteger(STATE_NOT_LISTENING);
         mMaxActiveSubscriptionInfos = new AtomicInteger(MAX_SUBSCRIPTION_UNKNOWN);
 
@@ -88,7 +90,7 @@ public abstract class ActiveSubsciptionsListener
                         return;
                     }
                 }
-                onSubscriptionsChanged();
+                onChangedOfActiveSubscription();
             }
         };
     }
@@ -104,6 +106,7 @@ public abstract class ActiveSubsciptionsListener
 
     private AtomicInteger mCacheState;
     private SubscriptionManager mSubscriptionManager;
+    private boolean mIsFirstSubscriptionChangedCallback;
 
     private IntentFilter mSubscriptionChangeIntentFilter;
     private BroadcastReceiver mSubscriptionChangeReceiver;
@@ -115,11 +118,24 @@ public abstract class ActiveSubsciptionsListener
 
     /**
      * Active subscriptions got changed
+     *
+     * Note: This method is invoked when there's a subscription change been detected.
+     *       It will no be invoked when this class been constructed or enabled by {@link start()}.
      */
     public abstract void onChanged();
 
     @Override
     public void onSubscriptionsChanged() {
+        // drop first onSubscriptionsChanged() due to TelephonyRegistry invoke it
+        // each time listener got registered.
+        if (mIsFirstSubscriptionChangedCallback) {
+            mIsFirstSubscriptionChangedCallback = false;
+            return;
+        }
+        onChangedOfActiveSubscription();
+    }
+
+    private void onChangedOfActiveSubscription() {
         // clear value in cache
         clearCache();
         listenerNotify();
@@ -127,6 +143,11 @@ public abstract class ActiveSubsciptionsListener
 
     /**
      * Start listening subscriptions change
+     *
+     * Note: This is the start of monitoring subscription change.
+     *       There's no inital {@link onChange()} after start of listening.
+     *       {@link onChange()} will be invoked only when there's a subsciption change been
+     *       detected.
      */
     public void start() {
         monitorSubscriptionsChange(true);
@@ -277,7 +298,8 @@ public abstract class ActiveSubsciptionsListener
             }
             mContext.registerReceiver(mSubscriptionChangeReceiver,
                     mSubscriptionChangeIntentFilter, null, new Handler(mLooper));
-            getSubscriptionManager().addOnSubscriptionsChangedListener(this);
+            getSubscriptionManager().addOnSubscriptionsChangedListener(
+                mContext.getMainExecutor(), this);
             mCacheState.compareAndSet(STATE_PREPARING, STATE_LISTENING);
             return;
         }

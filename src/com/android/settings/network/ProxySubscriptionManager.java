@@ -216,14 +216,15 @@ public class ProxySubscriptionManager implements LifecycleObserver {
 
     /**
      * Add listener to active subscriptions monitor list
+     * Note: a callback will be generated immediately
      *
      * @param listener listener to active subscriptions change
      */
     public void addActiveSubscriptionsListener(OnActiveSubscriptionChangedListener listener) {
-        if (mActiveSubscriptionsListeners.contains(listener)) {
-            return;
+        if (!mActiveSubscriptionsListeners.contains(listener)) {
+            mActiveSubscriptionsListeners.add(listener);
         }
-        mActiveSubscriptionsListeners.add(listener);
+        listener.onChanged();
     }
 
     /**
