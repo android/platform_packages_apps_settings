@@ -100,7 +100,7 @@ public class VpnUtils {
             LegacyVpnInfo currentLegacyVpn = connectivityService.getLegacyVpnInfo(userId);
             if (currentLegacyVpn != null) {
                 clearLockdownVpn(context);
-                connectivityService.prepareVpn(null, VpnConfig.LEGACY_VPN, userId);
+                connectivityService.prepareVpn(null, VpnConfig.SETTINGS_VPN, userId);
                 return true;
             }
         } catch (RemoteException e) {
