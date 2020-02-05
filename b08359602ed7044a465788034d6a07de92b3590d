@@ -22,6 +22,30 @@
       "revId": "b08359602ed7044a465788034d6a07de92b3590d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1857217b_6843ec7b",
+        "filename": "src/com/android/settings/development/BluetoothAudioCodecPreferenceController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1546552
+      },
+      "writtenOn": "2020-02-05T01:10:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ab59b49_1a68a16f",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 21
+      },
+      "revId": "b08359602ed7044a465788034d6a07de92b3590d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
