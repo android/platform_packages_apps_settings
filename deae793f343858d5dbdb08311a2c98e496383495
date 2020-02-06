@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "437a8dac_722b35cd",
+        "filename": "src/com/android/settings/network/ActiveSubsciptionsListener.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1316472
+      },
+      "writtenOn": "2020-02-06T11:02:05Z",
+      "side": 1,
+      "message": "Still feel weird that ActiveSubsciptionsListener is just a listener and not specify it will ignore the first subscription change.\nUnless there is clear Javadoc to clarify the usage, otherwise the readiness of this code will not be good.\nPlease either change design or have clear information on Javadoc",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 44
+      },
+      "revId": "deae793f343858d5dbdb08311a2c98e496383495",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
