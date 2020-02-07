@@ -71,6 +71,52 @@
     },
     {
       "key": {
+        "uuid": "2c906523_a0cc1969",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1407552
+      },
+      "writtenOn": "2020-02-07T05:33:18Z",
+      "side": 1,
+      "message": "It has better to not use if in the test case. You can separate inot many test case here.",
+      "range": {
+        "startLine": 74,
+        "startChar": 8,
+        "endLine": 74,
+        "endChar": 45
+      },
+      "revId": "6325250656557f0c4613d48005dc50d1c4cbd81d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aeff425a_1b28c075",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1407552
+      },
+      "writtenOn": "2020-02-07T05:33:18Z",
+      "side": 1,
+      "message": "Here I suggest you each page has one test case",
+      "range": {
+        "startLine": 79,
+        "startChar": 12,
+        "endLine": 82,
+        "endChar": 0
+      },
+      "revId": "6325250656557f0c4613d48005dc50d1c4cbd81d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87628505_0a8bd3f1",
         "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
         "patchSetId": 1
