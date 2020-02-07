@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3864473e_baae19fe",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1403999
+      },
+      "writtenOn": "2020-02-07T04:13:03Z",
+      "side": 1,
+      "message": "General comment:\n\nThis file needs to reformat.\nhttps://docs.google.com/document/d/12snDKZpCeXGBJuEZYinW7DSyJIe6dXZewQkPV0vstcI/edit#heading\u003dh.wormqxtzn4ff\n\nplease read android code style:\nhttps://source.android.com/setup/contribute/code-style",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 33
+      },
+      "revId": "6325250656557f0c4613d48005dc50d1c4cbd81d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d51785b_32663dc4",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1403999
+      },
+      "writtenOn": "2020-02-07T04:13:03Z",
+      "side": 1,
+      "message": "private member variable starts with m.\n\ns can be member variable.",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 26
+      },
+      "revId": "6325250656557f0c4613d48005dc50d1c4cbd81d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0887efb7_9de6f621",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1403999
+      },
+      "writtenOn": "2020-02-07T04:13:03Z",
+      "side": 1,
+      "message": "function name starts with lower case.",
+      "range": {
+        "startLine": 71,
+        "startChar": 16,
+        "endLine": 71,
+        "endChar": 39
+      },
+      "revId": "6325250656557f0c4613d48005dc50d1c4cbd81d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87628505_0a8bd3f1",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1403999
+      },
+      "writtenOn": "2020-02-07T04:13:03Z",
+      "side": 1,
+      "message": "Those part are repeated, it is better to integrate them into a function.\n\nprivate void launchPage(String action) {\n    final String command \u003d \"am start -W -a \" + action;\n    s \u003d mDevice.executeShellCommand(command);\n    mDevice.wait(Until.findObject(By.text(\"Mobile data\")), LAUNCH_TIMEOUT);\n    mDevice.executeShellCommand(\"pm clear com.android.settings\");\n    stringHandling(1, s);\n    Thread.sleep(1000);\n}",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 0
+      },
+      "revId": "6325250656557f0c4613d48005dc50d1c4cbd81d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "012469fe_24b198e1",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1403999
+      },
+      "writtenOn": "2020-02-07T04:13:03Z",
+      "side": 1,
+      "message": "private if this function is only accessed in this file.",
+      "range": {
+        "startLine": 132,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 10
+      },
+      "revId": "6325250656557f0c4613d48005dc50d1c4cbd81d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
