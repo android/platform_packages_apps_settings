@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "52b84f49_8be7ae48",
+        "filename": "AndroidManifest.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-02-07T03:24:51Z",
+      "side": 1,
+      "message": "This one duplicate with line 42.",
+      "revId": "3a2dee8eff590ddd173eefa5f89a68d03f37a260",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
