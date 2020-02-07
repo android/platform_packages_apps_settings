@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "7a21af7c_3f7c5f2c",
+        "filename": "src/com/android/settings/development/WirelessDebugging.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-07T18:22:56Z",
+      "side": 1,
+      "message": "We\u0027ve made some minor modifications to the UI. Please have a look. https://docs.google.com/document/d/1vDx9txnBLESHKG4fv7BQrMSlUIp8xYJkRIxNjIocLFw/edit?ts\u003d5e2f3db9#",
+      "parentUuid": "25790032_baea46ff",
+      "range": {
+        "startLine": 32,
+        "startChar": 13,
+        "endLine": 32,
+        "endChar": 30
+      },
+      "revId": "187d81da95f03a33b9f1d25655e5a630be360f1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2e540034_5b24fea3",
         "filename": "src/com/android/settings/development/WirelessDebugging.java",
         "patchSetId": 12
@@ -213,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "7305cfdf_e7b6ed6e",
+        "filename": "src/com/android/settings/development/WirelessDebuggingEnabler.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-07T18:22:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6531122_e89b82fc",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "187d81da95f03a33b9f1d25655e5a630be360f1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fea1f6b0_b99a547d",
         "filename": "src/com/android/settings/development/WirelessDebuggingEnabler.java",
         "patchSetId": 12
@@ -248,6 +296,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "fea1f6b0_b99a547d",
+      "range": {
+        "startLine": 32,
+        "startChar": 91,
+        "endLine": 32,
+        "endChar": 119
+      },
+      "revId": "187d81da95f03a33b9f1d25655e5a630be360f1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fd966c7e_1f1054d6",
+        "filename": "src/com/android/settings/development/WirelessDebuggingEnabler.java",
+        "patchSetId": 12
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-07T18:22:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "52c4edf4_cf1c628f",
       "range": {
         "startLine": 32,
         "startChar": 91,

@@ -94,6 +94,30 @@
       "revId": "c5e9e1bc1916dd292541130ba18949e63725681f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2636427a_84fbf124",
+        "filename": "src/com/android/settings/development/AdbIpAddressPreferenceController.java",
+        "patchSetId": 14
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-02-07T18:22:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a6cc70f_299c8567",
+      "range": {
+        "startLine": 128,
+        "startChar": 68,
+        "endLine": 128,
+        "endChar": 80
+      },
+      "revId": "c5e9e1bc1916dd292541130ba18949e63725681f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
