@@ -22,6 +22,30 @@
       "revId": "deae793f343858d5dbdb08311a2c98e496383495",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a0a190c_d530e346",
+        "filename": "src/com/android/settings/network/ActiveSubsciptionsListener.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-02-09T19:01:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "437a8dac_722b35cd",
+      "range": {
+        "startLine": 40,
+        "startChar": 2,
+        "endLine": 40,
+        "endChar": 44
+      },
+      "revId": "deae793f343858d5dbdb08311a2c98e496383495",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
