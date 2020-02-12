@@ -27,6 +27,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.os.RemoteException;
 import android.os.UserManager;
 import android.provider.SearchIndexableResource;
 import android.util.Log;
@@ -57,6 +58,7 @@ import com.android.settingslib.search.SearchIndexable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @SearchIndexable(forTarget = SearchIndexable.ALL & ~SearchIndexable.ARC)
 public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFragment
@@ -425,6 +427,7 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
         controllers.add(new SelectDebugAppPreferenceController(context, fragment));
         controllers.add(new WaitForDebuggerPreferenceController(context));
         controllers.add(new EnableGpuDebugLayersPreferenceController(context));
+        controllers.add(new EnableVendorLoggingPreferenceController(context));
         controllers.add(new VerifyAppsOverUsbPreferenceController(context));
         controllers.add(new ArtVerifierPreferenceController(context));
         controllers.add(new LogdSizePreferenceController(context));
