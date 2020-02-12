@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a49834b_c5a26a47",
+        "filename": "res/xml/development_settings.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2020-02-12T08:50:12Z",
+      "side": 1,
+      "message": "Can we put this right below bugreport_in_power? That keeps it as close by as possible for when support gives the customer more steps to turn both switches on.",
+      "range": {
+        "startLine": 237,
+        "startChar": 25,
+        "endLine": 237,
+        "endChar": 46
+      },
+      "revId": "b169937d83f9c32c7da73d4da8b03de9372b25f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3690ddd9_ea81f06d",
+        "filename": "src/com/android/settings/development/DevelopmentSettingsDashboardFragment.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2020-02-12T08:50:12Z",
+      "side": 1,
+      "message": "If we\u0027re treating these the same, they can be combined:\ntry {\n  ...\n} catch (RemoteException | NoSuchElementException e) {\n  return false;\n}\n\nSame for the controller\u0027s code too",
+      "range": {
+        "startLine": 391,
+        "startChar": 0,
+        "endLine": 394,
+        "endChar": 0
+      },
+      "revId": "b169937d83f9c32c7da73d4da8b03de9372b25f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16a723c9_359c9b6a",
+        "filename": "src/com/android/settings/development/DevelopmentSettingsDashboardFragment.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2020-02-12T08:50:12Z",
+      "side": 1,
+      "message": "Nit: IDumpstateDevice 1.1",
+      "range": {
+        "startLine": 444,
+        "startChar": 51,
+        "endLine": 444,
+        "endChar": 67
+      },
+      "revId": "b169937d83f9c32c7da73d4da8b03de9372b25f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3b7224c_1f91e3e0",
+        "filename": "src/com/android/settings/development/DevelopmentSettingsDashboardFragment.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2020-02-12T08:50:12Z",
+      "side": 1,
+      "message": "Thoughts on some additional behavior here?\n\nIf IDumpstateDevice 1.1 is available:\n-\u003e Show toggle, let the user turn it on/off (what this CL already does)\nElse, if IDumpstateDevice 1.0 is available:\n-\u003e Show the toggle, but make it greyed out/unclickable and permanently on\nElse (no IDumpstateDevice at all):\n-\u003e Show the toggle, but make it greyed out/unclickable and permanently off\n\nWe may also want to consult with leejustin@ (platform UX) on those behaviors, but that\u0027s what makes the most sense in my mind.",
+      "range": {
+        "startLine": 445,
+        "startChar": 12,
+        "endLine": 445,
+        "endChar": 47
+      },
+      "revId": "b169937d83f9c32c7da73d4da8b03de9372b25f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42686b7d_5a0687a4",
+        "filename": "src/com/android/settings/development/EnableVendorLoggingPreferenceController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2020-02-12T08:50:12Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 0
+      },
+      "revId": "b169937d83f9c32c7da73d4da8b03de9372b25f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f00f5b98_8b969bbb",
+        "filename": "src/com/android/settings/development/EnableVendorLoggingPreferenceController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2020-02-12T08:50:12Z",
+      "side": 1,
+      "message": "Ditto",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 0
+      },
+      "revId": "b169937d83f9c32c7da73d4da8b03de9372b25f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
