@@ -26,7 +26,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.hardware.dumpstate.V1_1.IDumpstateDevice;
 import android.os.Bundle;
+import android.os.RemoteException;
 import android.os.UserManager;
 import android.provider.SearchIndexableResource;
 import android.util.Log;
@@ -57,6 +59,7 @@ import com.android.settingslib.search.SearchIndexable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @SearchIndexable(forTarget = SearchIndexable.ALL & ~SearchIndexable.ARC)
 public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFragment
@@ -74,6 +77,7 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
     private DevelopmentSwitchBarController mSwitchBarController;
     private List<AbstractPreferenceController> mPreferenceControllers = new ArrayList<>();
     private BluetoothA2dp mBluetoothA2dp;
+    private static boolean mIsIDumpstateDeviceServiceAvailable = true;
 
     private final BroadcastReceiver mEnableAdbReceiver = new BroadcastReceiver() {
         @Override
@@ -147,6 +151,7 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
             getActivity().finish();
             return;
         }
+        mIsIDumpstateDeviceServiceAvailable = isIDumpstateDeviceServiceAvailable();
     }
 
     @Override
@@ -380,6 +385,17 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
         poker.poke();
     }
 
+    private static boolean isIDumpstateDeviceServiceAvailable() {
+        try {
+            IDumpstateDevice server = IDumpstateDevice.getService(true /*retry*/);
+        } catch (RemoteException re) {
+            return false;
+        } catch(NoSuchElementException nsee) {
+            return false;
+        }
+        return true;
+    }
+
     void onEnableDevelopmentOptionsConfirmed() {
         enableDeveloperOptions();
     }
@@ -425,6 +441,10 @@ public class DevelopmentSettingsDashboardFragment extends RestrictedDashboardFra
         controllers.add(new SelectDebugAppPreferenceController(context, fragment));
         controllers.add(new WaitForDebuggerPreferenceController(context));
         controllers.add(new EnableGpuDebugLayersPreferenceController(context));
+        // only add vendor logging preference when IDumpstateDevice service is available
+        if (mIsIDumpstateDeviceServiceAvailable) {
+            controllers.add(new EnableVendorLoggingPreferenceController(context));
+        }
         controllers.add(new VerifyAppsOverUsbPreferenceController(context));
         controllers.add(new ArtVerifierPreferenceController(context));
         controllers.add(new LogdSizePreferenceController(context));
