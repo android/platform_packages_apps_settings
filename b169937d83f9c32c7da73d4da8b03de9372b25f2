@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1ac6e9a4_a5df436d",
+        "filename": "res/xml/development_settings.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1609802
+      },
+      "writtenOn": "2020-02-12T23:39:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a49834b_c5a26a47",
+      "range": {
+        "startLine": 237,
+        "startChar": 25,
+        "endLine": 237,
+        "endChar": 46
+      },
+      "revId": "b169937d83f9c32c7da73d4da8b03de9372b25f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3690ddd9_ea81f06d",
         "filename": "src/com/android/settings/development/DevelopmentSettingsDashboardFragment.java",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "b169937d83f9c32c7da73d4da8b03de9372b25f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6da97417_fa8f172f",
+        "filename": "src/com/android/settings/development/DevelopmentSettingsDashboardFragment.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1609802
+      },
+      "writtenOn": "2020-02-12T23:39:29Z",
+      "side": 1,
+      "message": "Good idea, thanks!",
+      "parentUuid": "3690ddd9_ea81f06d",
+      "range": {
+        "startLine": 391,
+        "startChar": 0,
+        "endLine": 394,
+        "endChar": 0
+      },
+      "revId": "b169937d83f9c32c7da73d4da8b03de9372b25f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e3a2d04c_cf5accfe",
+        "filename": "src/com/android/settings/development/DevelopmentSettingsDashboardFragment.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 444,
+      "author": {
+        "id": 1609802
+      },
+      "writtenOn": "2020-02-12T23:39:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "16a723c9_359c9b6a",
+      "range": {
+        "startLine": 444,
+        "startChar": 51,
+        "endLine": 444,
+        "endChar": 67
+      },
+      "revId": "b169937d83f9c32c7da73d4da8b03de9372b25f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3b7224c_1f91e3e0",
         "filename": "src/com/android/settings/development/DevelopmentSettingsDashboardFragment.java",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "b169937d83f9c32c7da73d4da8b03de9372b25f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97f08c74_6d1ccbf3",
+        "filename": "src/com/android/settings/development/DevelopmentSettingsDashboardFragment.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1609802
+      },
+      "writtenOn": "2020-02-12T23:39:29Z",
+      "side": 1,
+      "message": "I will follow up with leejustin@. Keep the old logic before the best strategy provided. This is not the right class to determine if we turn on/off enable/disable a preference. I will update the logic in next patch.\nThanks for the suggestion!",
+      "parentUuid": "a3b7224c_1f91e3e0",
+      "range": {
+        "startLine": 445,
+        "startChar": 12,
+        "endLine": 445,
+        "endChar": 47
+      },
+      "revId": "b169937d83f9c32c7da73d4da8b03de9372b25f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "9f9bfe84_ed26bb11",
+        "filename": "src/com/android/settings/development/EnableVendorLoggingPreferenceController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1609802
+      },
+      "writtenOn": "2020-02-12T23:39:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42686b7d_5a0687a4",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 0
+      },
+      "revId": "b169937d83f9c32c7da73d4da8b03de9372b25f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f00f5b98_8b969bbb",
         "filename": "src/com/android/settings/development/EnableVendorLoggingPreferenceController.java",
         "patchSetId": 4
@@ -137,6 +257,30 @@
       "revId": "b169937d83f9c32c7da73d4da8b03de9372b25f2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "173b49f4_f159bb65",
+        "filename": "src/com/android/settings/development/EnableVendorLoggingPreferenceController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1609802
+      },
+      "writtenOn": "2020-02-12T23:39:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f00f5b98_8b969bbb",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 0
+      },
+      "revId": "b169937d83f9c32c7da73d4da8b03de9372b25f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
