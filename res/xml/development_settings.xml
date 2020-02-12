@@ -233,6 +233,12 @@
             android:fragment="com.android.settings.development.compat.PlatformCompatDashboard"
             />
 
+        <SwitchPreference
+            android:key="enable_vendor_logging"
+            android:title="@string/enable_vendor_logging"
+            android:summary="@string/enable_vendor_logging_summary"
+            />
+
     </PreferenceCategory>
 
     <PreferenceCategory
