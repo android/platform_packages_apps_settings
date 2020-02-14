@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1073f907_e39cf08f",
+        "filename": "res/values/styles.xml",
+        "patchSetId": 18
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-02-14T09:16:41Z",
+      "side": 1,
+      "message": "use dp. same as other",
+      "range": {
+        "startLine": 157,
+        "startChar": 47,
+        "endLine": 157,
+        "endChar": 50
+      },
+      "revId": "e441c421bfe093595798ab684b0a8ecab00bef86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1bd7713_fee8aa7b",
+        "filename": "res/xml/adb_wireless_settings.xml",
+        "patchSetId": 18
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-02-14T09:16:41Z",
+      "side": 1,
+      "message": "Set it in development_settings.xml\n\n \u003ccom.android.settings.widget.MasterSwitchPreference\n            android:fragment\u003d\"com.android.settings.development.WirelessDebuggingFragment\"\n            android:key\u003d\"toggle_adb_wireless\"\n            android:title\u003d\"@string/enable_adb_wireless\"\n            android:summary\u003d\"@string/enable_adb_wireless_summary\"\n            settings:keywords\u003d\"@string/keywords_adb_wireless\"",
+      "range": {
+        "startLine": 21,
+        "startChar": 7,
+        "endLine": 21,
+        "endChar": 57
+      },
+      "revId": "e441c421bfe093595798ab684b0a8ecab00bef86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "687d2f32_d1ff2243",
+        "filename": "res/xml/adb_wireless_settings.xml",
+        "patchSetId": 18
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-02-14T09:16:41Z",
+      "side": 1,
+      "message": "I guess you don\u0027t need order. Why do you need it?",
+      "range": {
+        "startLine": 25,
+        "startChar": 8,
+        "endLine": 25,
+        "endChar": 26
+      },
+      "revId": "e441c421bfe093595798ab684b0a8ecab00bef86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7ade954_a7b3c184",
+        "filename": "src/com/android/settings/development/AdbDeviceDetailsController.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-02-14T09:16:41Z",
+      "side": 1,
+      "message": "a) Do you need to reset something while master developer option is disabled?\n\nIf yes, you need to extends from DeveloperOptionsPreferenceController\n\n\nb) You handle a lot of things in this controller, can we only handle one thing in a controller?\nSo, at least you need have three controller for header, action preference, category preference",
+      "range": {
+        "startLine": 44,
+        "startChar": 13,
+        "endLine": 44,
+        "endChar": 39
+      },
+      "revId": "e441c421bfe093595798ab684b0a8ecab00bef86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f536e818_a2b3a087",
+        "filename": "src/com/android/settings/development/AdbDeviceDetailsController.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-02-14T09:16:41Z",
+      "side": 1,
+      "message": "character should be less than 23",
+      "range": {
+        "startLine": 47,
+        "startChar": 39,
+        "endLine": 47,
+        "endChar": 65
+      },
+      "revId": "e441c421bfe093595798ab684b0a8ecab00bef86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b644fc18_b75ff6ea",
+        "filename": "src/com/android/settings/development/AdbDeviceDetailsFragment.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-02-14T09:16:41Z",
+      "side": 1,
+      "message": "You need to create an event in frameworks/base/core/proto/android/app/settings_enums.proto",
+      "range": {
+        "startLine": 56,
+        "startChar": 15,
+        "endLine": 56,
+        "endChar": 16
+      },
+      "revId": "e441c421bfe093595798ab684b0a8ecab00bef86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fd76a20_2ee067f5",
+        "filename": "src/com/android/settings/development/AdbDeviceDetailsFragment.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-02-14T09:16:41Z",
+      "side": 1,
+      "message": "It\u0027s fine with creating newInstance() method.\n\nHowever, we usually *new controller* in most Settings code base.\nI might hope we can have consistent style here. :)",
+      "range": {
+        "startLine": 72,
+        "startChar": 65,
+        "endLine": 72,
+        "endChar": 76
+      },
+      "revId": "e441c421bfe093595798ab684b0a8ecab00bef86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fda5a4dd_3fc6e97d",
+        "filename": "src/com/android/settings/development/AdbDeviceNamePreferenceController.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-02-14T09:16:41Z",
+      "side": 1,
+      "message": "too long, character should be less than 23",
+      "range": {
+        "startLine": 38,
+        "startChar": 39,
+        "endLine": 38,
+        "endChar": 72
+      },
+      "revId": "e441c421bfe093595798ab684b0a8ecab00bef86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0076fde_2925c21b",
+        "filename": "src/com/android/settings/development/AdbDeviceNamePreferenceController.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-02-14T09:16:41Z",
+      "side": 1,
+      "message": "Remove, you don\u0027t need it.\nDashboardFragment will help you automatically.",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 66
+      },
+      "revId": "e441c421bfe093595798ab684b0a8ecab00bef86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49f5cd97_3337fe53",
+        "filename": "src/com/android/settings/development/AdbDeviceNamePreferenceController.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-02-14T09:16:41Z",
+      "side": 1,
+      "message": "(Context context, String Key)",
+      "range": {
+        "startLine": 43,
+        "startChar": 44,
+        "endLine": 43,
+        "endChar": 63
+      },
+      "revId": "e441c421bfe093595798ab684b0a8ecab00bef86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57cef54b_6fa59737",
+        "filename": "src/com/android/settings/development/AdbDeviceNamePreferenceController.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-02-14T09:16:41Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 69,
+        "startChar": 2,
+        "endLine": 72,
+        "endChar": 5
+      },
+      "revId": "e441c421bfe093595798ab684b0a8ecab00bef86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60755a5a_e9fa20a2",
+        "filename": "src/com/android/settings/development/AdbIpAddressPreferenceController.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-02-14T09:16:41Z",
+      "side": 1,
+      "message": "Too long",
+      "range": {
+        "startLine": 44,
+        "startChar": 39,
+        "endLine": 44,
+        "endChar": 71
+      },
+      "revId": "e441c421bfe093595798ab684b0a8ecab00bef86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "618e9724_1f5ed19a",
+        "filename": "src/com/android/settings/development/AdbQrcodeScannerFragment.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-02-14T09:16:41Z",
+      "side": 1,
+      "message": "Can you initialize it in onCreate() ?",
+      "range": {
+        "startLine": 150,
+        "startChar": 8,
+        "endLine": 150,
+        "endChar": 90
+      },
+      "revId": "e441c421bfe093595798ab684b0a8ecab00bef86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "972718cb_9a0c0e96",
+        "filename": "tests/robotests/src/com/android/settings/development/WirelessDebuggingFragmentTest.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-02-14T09:16:41Z",
+      "side": 1,
+      "message": "Why do you ignore it?",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 7
+      },
+      "revId": "e441c421bfe093595798ab684b0a8ecab00bef86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
