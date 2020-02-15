@@ -140,6 +140,29 @@
     },
     {
       "key": {
+        "uuid": "6a75d340_24ac653a",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1621690
+      },
+      "writtenOn": "2020-02-15T06:01:10Z",
+      "side": 1,
+      "message": "Suggested to use sendStatus() of Instrumentation.",
+      "range": {
+        "startLine": 128,
+        "startChar": 12,
+        "endLine": 128,
+        "endChar": 17
+      },
+      "revId": "6325250656557f0c4613d48005dc50d1c4cbd81d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "012469fe_24b198e1",
         "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
         "patchSetId": 1
