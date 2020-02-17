@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "687eae2d_e960fd16",
+        "filename": "res/layout/vpn_dialog.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-02-17T02:30:15Z",
+      "side": 1,
+      "message": "This is very generic, can you give it a more specific name ?",
+      "range": {
+        "startLine": 68,
+        "startChar": 43,
+        "endLine": 68,
+        "endChar": 53
+      },
+      "revId": "6f658f1c5cbca7d5ad369aa69230daf051956878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74a6103f_5e8cc4c1",
+        "filename": "res/layout/vpn_dialog.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-02-17T02:30:15Z",
+      "side": 1,
+      "message": "This will change seriously how the animation looks like.\n(There used to be a single container with contents sliding into place, now there are two containers sliding into place and each of them having contents sliding into place).\n\nI am not completely sure this is not equivalent because I don\u0027t know what interpolators are used but do check the visual result of the animation is fine – it looks to me like it could be very ugly.",
+      "range": {
+        "startLine": 222,
+        "startChar": 16,
+        "endLine": 222,
+        "endChar": 44
+      },
+      "revId": "6f658f1c5cbca7d5ad369aa69230daf051956878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e355045_55419a27",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-02-17T02:30:15Z",
+      "side": 1,
+      "message": "I guess this works but should it be done in a section where the leading comment is \"hide everything\" ? I think it\u0027s better done in configureAdvancedOptionsVisibility as you\u0027re already doing that there in the relevant cases – which means IIUC you could simply remove these three lines and it would work the same.",
+      "range": {
+        "startLine": 379,
+        "startChar": 8,
+        "endLine": 381,
+        "endChar": 9
+      },
+      "revId": "6f658f1c5cbca7d5ad369aa69230daf051956878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9ffea4c_c950360b",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-02-17T02:30:15Z",
+      "side": 1,
+      "message": "So we validate in USER_PASS even if both fields are empty ? Does this make sense ?\n\nIf that\u0027s because it\u0027s handled in l.436 I think this is obscure ; I\u0027d much prefer to have the relevant tests in the switch rather than handling *some* cases first and then ignoring them in the switch.",
+      "range": {
+        "startLine": 446,
+        "startChar": 28,
+        "endLine": 446,
+        "endChar": 54
+      },
+      "revId": "6f658f1c5cbca7d5ad369aa69230daf051956878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f99d6541_a9715c0a",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-02-17T02:30:15Z",
+      "side": 1,
+      "message": "Nit : suggest having a local visibility int like you\u0027re doing in other places, or a ternary to inline, so you don\u0027t duplicate this code",
+      "range": {
+        "startLine": 517,
+        "startChar": 8,
+        "endLine": 521,
+        "endChar": 9
+      },
+      "revId": "6f658f1c5cbca7d5ad369aa69230daf051956878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
