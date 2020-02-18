@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fda8f64b_a8ffdce0",
+        "filename": "res/layout/vpn_dialog.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-02-18T04:43:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "687eae2d_e960fd16",
+      "range": {
+        "startLine": 68,
+        "startChar": 43,
+        "endLine": 68,
+        "endChar": 53
+      },
+      "revId": "6f658f1c5cbca7d5ad369aa69230daf051956878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74a6103f_5e8cc4c1",
         "filename": "res/layout/vpn_dialog.xml",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "96c5a4b3_de63d1c6",
+        "filename": "res/layout/vpn_dialog.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-02-18T04:43:22Z",
+      "side": 1,
+      "message": "Done. Removed animateLayoutChanges on the userpass section. It seems like none of the other configuration sections use that flag, and those look fine.\n\nThanks.",
+      "parentUuid": "74a6103f_5e8cc4c1",
+      "range": {
+        "startLine": 222,
+        "startChar": 16,
+        "endLine": 222,
+        "endChar": 44
+      },
+      "revId": "6f658f1c5cbca7d5ad369aa69230daf051956878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e355045_55419a27",
         "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2020-02-17T02:30:15Z",
       "side": 1,
       "message": "I guess this works but should it be done in a section where the leading comment is \"hide everything\" ? I think it\u0027s better done in configureAdvancedOptionsVisibility as you\u0027re already doing that there in the relevant cases – which means IIUC you could simply remove these three lines and it would work the same.",
+      "range": {
+        "startLine": 379,
+        "startChar": 8,
+        "endLine": 381,
+        "endChar": 9
+      },
+      "revId": "6f658f1c5cbca7d5ad369aa69230daf051956878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c62ecc16_bec67fee",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-02-18T04:43:22Z",
+      "side": 1,
+      "message": "Hmm; since this isn\u0027t part of the \"advanced\" options (like DNS, routes and proxy) are, and this is type-specific, it seems to fit here better?\n\nAlso, since this is making something visible, it didn\u0027t seem to go with the \"hide everything\" block.",
+      "parentUuid": "5e355045_55419a27",
       "range": {
         "startLine": 379,
         "startChar": 8,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "eaf2aacf_6f22fb99",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-02-18T04:43:22Z",
+      "side": 1,
+      "message": "Yeah, this is expected behavior. Basically, based on the current UI (not saying this is the best option, but we\u0027d have to change user-facing UI workflows), a profile is still \"valid\" if it is only missing the username/password.\n\nThe \"connect\" dialog allows for setting username/password when connecting, and choosing whether or not to save them. Why there\u0027s a difference between the username/password and psk with regards to which is allowed to be saved, I do not know.",
+      "parentUuid": "f9ffea4c_c950360b",
+      "range": {
+        "startLine": 446,
+        "startChar": 28,
+        "endLine": 446,
+        "endChar": 54
+      },
+      "revId": "6f658f1c5cbca7d5ad369aa69230daf051956878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f99d6541_a9715c0a",
         "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
         "patchSetId": 2
@@ -114,6 +210,30 @@
       "revId": "6f658f1c5cbca7d5ad369aa69230daf051956878",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7dfb7d1_0ea437eb",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-02-18T04:43:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f99d6541_a9715c0a",
+      "range": {
+        "startLine": 517,
+        "startChar": 8,
+        "endLine": 521,
+        "endChar": 9
+      },
+      "revId": "6f658f1c5cbca7d5ad369aa69230daf051956878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
