@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "92ac74bf_843a3eb6",
+        "filename": "res/layout/vpn_dialog.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-02-18T18:30:11Z",
+      "side": 1,
+      "message": "It\u0027s a fade-into-place.",
+      "parentUuid": "f35d58ca_5d9bb41d",
+      "range": {
+        "startLine": 222,
+        "startChar": 16,
+        "endLine": 222,
+        "endChar": 44
+      },
+      "revId": "6f658f1c5cbca7d5ad369aa69230daf051956878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5e355045_55419a27",
         "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
         "patchSetId": 2
