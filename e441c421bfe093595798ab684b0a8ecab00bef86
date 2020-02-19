@@ -657,6 +657,30 @@
       "revId": "e441c421bfe093595798ab684b0a8ecab00bef86",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce96dbfc_b0da8786",
+        "filename": "tests/robotests/src/com/android/settings/development/WirelessDebuggingFragmentTest.java",
+        "patchSetId": 18
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-02-19T07:10:17Z",
+      "side": 1,
+      "message": "We still want to have related test cases for your changes.\nI understand time is sensitive, can you file a bug for these test cases?\n\nYou can submit it on internal branch",
+      "parentUuid": "dd197cd6_48a605ca",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 7
+      },
+      "revId": "e441c421bfe093595798ab684b0a8ecab00bef86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

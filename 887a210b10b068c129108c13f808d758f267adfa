@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ffdf4a3_2b72fdc2",
+        "filename": "src/com/android/settings/development/AdbDeviceDetailsHeaderController.java",
+        "patchSetId": 19
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-02-19T07:10:17Z",
+      "side": 1,
+      "message": "mEntityHeaderController\n                  .setIcon(xxxx)\n                  .setLabel(xxxx)\n                  .done(xxxx)",
+      "range": {
+        "startLine": 83,
+        "startChar": 16,
+        "endLine": 83,
+        "endChar": 24
+      },
+      "revId": "887a210b10b068c129108c13f808d758f267adfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5c804ed_9c59458a",
+        "filename": "src/com/android/settings/development/AdbQrcodeScannerFragment.java",
+        "patchSetId": 19
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-02-19T07:10:17Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 147,
+        "startChar": 1,
+        "endLine": 149,
+        "endChar": 5
+      },
+      "revId": "887a210b10b068c129108c13f808d758f267adfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4fdd46d_d1922ac0",
+        "filename": "tests/robotests/src/com/android/settings/development/WirelessDebuggingEnablerTest.java",
+        "patchSetId": 19
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-02-19T07:10:17Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 5
+      },
+      "revId": "887a210b10b068c129108c13f808d758f267adfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83814e34_34a8dc74",
+        "filename": "tests/robotests/src/com/android/settings/development/WirelessDebuggingEnablerTest.java",
+        "patchSetId": 19
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-02-19T07:10:17Z",
+      "side": 1,
+      "message": "Test case convention in Settings app:\n\npublic void method_precondition_assert() {\n// percondition\n// empty space\n// method\n// empty space\n// assert\n}\n\nPlease help change related format here.\n\n\nfor this case\n\npublic void teardownSwitchController_shouldHideSwitchBar() {\n   mWirelessDebuggingEnabler.teardownSwitchController();\n\n   verify(mSwitchBar).hide();\n}",
+      "range": {
+        "startLine": 84,
+        "startChar": 8,
+        "endLine": 85,
+        "endChar": 34
+      },
+      "revId": "887a210b10b068c129108c13f808d758f267adfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
