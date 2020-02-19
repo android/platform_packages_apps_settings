@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.telephony.SubscriptionInfo;
 import android.telephony.euicc.EuiccManager;
+import android.text.TextUtils;
 
 import androidx.fragment.app.Fragment;
 import androidx.preference.Preference;
@@ -53,16 +54,31 @@ public class DeleteSimProfilePreferenceController extends BasePreferenceControll
     }
 
     @Override
-    public void displayPreference(PreferenceScreen screen) {
-        super.displayPreference(screen);
-        final Preference pref = screen.findPreference(getPreferenceKey());
-        pref.setOnPreferenceClickListener(p -> {
-            final Intent intent = new Intent(EuiccManager.ACTION_DELETE_SUBSCRIPTION_PRIVILEGED);
-            intent.putExtra(EuiccManager.EXTRA_SUBSCRIPTION_ID,
-                    mSubscriptionInfo.getSubscriptionId());
-            mParentFragment.startActivityForResult(intent, mRequestCode);
+    public boolean handlePreferenceTreeClick(Preference preference) {
+        if (TextUtils.equals(preference.getKey(), getPreferenceKey())) {
+            boolean confirmDeletion =
+                    Settings.Global.getInt(
+                            mContext.getContentResolver(),
+                            ConfirmSimDeletionPreferenceController.KEY_CONFIRM_SIM_DELETION,
+                            mConfirmationDefaultOn ? 1 : 0)
+                            == 1;
+            if (confirmDeletion) {
+                WifiDppUtils.showLockScreen(mContext, () -> deleteSim());
+            } else {
+                deleteSim();
+            }
+
             return true;
-        });
+        }
+
+        return false;
+    }
+
+    private void deleteSim() {
+        final Intent intent = new Intent(EuiccManager.ACTION_DELETE_SUBSCRIPTION_PRIVILEGED);
+        intent.putExtra(EuiccManager.EXTRA_SUBSCRIPTION_ID, mSubscriptionInfo.getSubscriptionId());
+        mParentFragment.startActivityForResult(intent, mRequestCode);
+        // result handled in MobileNetworkSettings
     }
 
     @Override
