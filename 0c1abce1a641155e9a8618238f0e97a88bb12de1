@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a95d2165_1694d0d0",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-02-19T02:36:34Z",
+      "side": 1,
+      "message": "isAdvancedOptionsEnabled",
+      "range": {
+        "startLine": 345,
+        "startChar": 20,
+        "endLine": 345,
+        "endChar": 23
+      },
+      "revId": "0c1abce1a641155e9a8618238f0e97a88bb12de1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
