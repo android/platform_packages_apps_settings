@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "1df409c3_b2c69d16",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1468646
+      },
+      "writtenOn": "2020-02-20T09:02:47Z",
+      "side": 1,
+      "message": "Nit: How about put private member together?",
+      "range": {
+        "startLine": 44,
+        "startChar": 4,
+        "endLine": 44,
+        "endChar": 29
+      },
+      "revId": "6325250656557f0c4613d48005dc50d1c4cbd81d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8d51785b_32663dc4",
         "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
         "patchSetId": 1
@@ -140,6 +163,52 @@
     },
     {
       "key": {
+        "uuid": "ad28d0e3_15a93218",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1468646
+      },
+      "writtenOn": "2020-02-20T09:02:47Z",
+      "side": 1,
+      "message": "Java code has a column limit of 100 characters.\nplease refer to go/java-sg",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 104
+      },
+      "revId": "6325250656557f0c4613d48005dc50d1c4cbd81d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b82f7084_ac8ab23d",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1468646
+      },
+      "writtenOn": "2020-02-20T09:02:47Z",
+      "side": 1,
+      "message": "Java code has a column limit of 100 characters.\nplease refer to go/java-sg",
+      "range": {
+        "startLine": 87,
+        "startChar": 16,
+        "endLine": 87,
+        "endChar": 116
+      },
+      "revId": "6325250656557f0c4613d48005dc50d1c4cbd81d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87628505_0a8bd3f1",
         "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
         "patchSetId": 1
@@ -202,6 +271,29 @@
         "startChar": 4,
         "endLine": 132,
         "endChar": 10
+      },
+      "revId": "6325250656557f0c4613d48005dc50d1c4cbd81d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "520d527a_a7a50f89",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1468646
+      },
+      "writtenOn": "2020-02-20T09:02:47Z",
+      "side": 1,
+      "message": "Some pages can\u0027t be found？",
+      "range": {
+        "startLine": 142,
+        "startChar": 17,
+        "endLine": 142,
+        "endChar": 39
       },
       "revId": "6325250656557f0c4613d48005dc50d1c4cbd81d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
