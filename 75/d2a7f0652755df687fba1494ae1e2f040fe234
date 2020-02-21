@@ -1,0 +1,11 @@
+Autosubmit+1: George Chang <georgekgchang@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+2: Zach Johnson <zachoverflow@google.com>
+Code-Review+2: Jack Yu <jackcwyu@google.com>
+Verified+1: George Chang <georgekgchang@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Fri, 21 Feb 2020 06:54:10 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1237766
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
