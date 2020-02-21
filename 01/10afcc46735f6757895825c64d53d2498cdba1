@@ -1,0 +1,11 @@
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Verified+1: Joshua Duong <joshuaduong@google.com>
+Code-Review+1: Joshua Duong <joshuaduong@google.com>
+Code-Review+2: Tsung-Mao Fang <tmfang@google.com>
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Submitted-by: Joshua Duong <joshuaduong@google.com>
+Submitted-at: Fri, 21 Feb 2020 16:27:06 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1153742
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
