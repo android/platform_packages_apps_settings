@@ -29,6 +29,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.telephony.SubscriptionInfo;
+import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -123,6 +124,7 @@ public class IccLockSettings extends SettingsPreferenceFragment
     private static final long LONG_DURATION_TIMEOUT = 7000;
 
     private int mSlotId;
+
     private int mSubId;
     private TelephonyManager mTelephonyManager;
 
@@ -247,7 +249,7 @@ public class IccLockSettings extends SettingsPreferenceFragment
             }
             final SubscriptionInfo sir = getActiveSubscriptionInfoForSimSlotIndex(
                     subInfoList, mSlotId);
-            mSubId = sir.getSubscriptionId();
+            mSubId = (sir == null) ? SubscriptionManager.INVALID_SUBSCRIPTION_ID : sir.getSubscriptionId();
 
             if (savedInstanceState != null && savedInstanceState.containsKey(CURRENT_TAB)) {
                 mTabHost.setCurrentTabByTag(savedInstanceState.getString(CURRENT_TAB));
@@ -269,7 +271,7 @@ public class IccLockSettings extends SettingsPreferenceFragment
         final List<SubscriptionInfo> subInfoList =
                 mProxySubscriptionMgr.getActiveSubscriptionsInfo();
         final SubscriptionInfo sir = getActiveSubscriptionInfoForSimSlotIndex(subInfoList, mSlotId);
-        mSubId = sir.getSubscriptionId();
+        mSubId = (sir == null) ? SubscriptionManager.INVALID_SUBSCRIPTION_ID : sir.getSubscriptionId();
 
         if (mPinDialog != null) {
             mPinDialog.setEnabled(sir != null);
