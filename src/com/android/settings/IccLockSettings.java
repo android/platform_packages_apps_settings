@@ -123,6 +123,12 @@ public class IccLockSettings extends SettingsPreferenceFragment
     // @see android.widget.Toast$TN
     private static final long LONG_DURATION_TIMEOUT = 7000;
 
+    // An invalid subscription identifier
+    private static final int INVALID_SUBSCRIPTION_ID = -1;
+
+    // An DEFAULT_SLOT_ID
+    private static final int DEFAULT_SLOT_ID = 0;
+
     private int mSubId;
     private TelephonyManager mTelephonyManager;
 
@@ -131,7 +137,8 @@ public class IccLockSettings extends SettingsPreferenceFragment
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case MSG_SIM_STATE_CHANGED:
-                    updatePreferences();
+                    int slotId = msg.arg2;
+                    updatePreferences(slotId);
                     break;
             }
 
@@ -142,8 +149,9 @@ public class IccLockSettings extends SettingsPreferenceFragment
     private final BroadcastReceiver mSimStateReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             final String action = intent.getAction();
+            int slot_id = intent.getIntExtra("SLOT_ID", 0);
             if (TelephonyIntents.ACTION_SIM_STATE_CHANGED.equals(action)) {
-                mHandler.sendMessage(mHandler.obtainMessage(MSG_SIM_STATE_CHANGED));
+                mHandler.sendMessage(mHandler.obtainMessage(MSG_SIM_STATE_CHANGED, slot_id));
             }
         }
     };
@@ -245,7 +253,7 @@ public class IccLockSettings extends SettingsPreferenceFragment
                             : subInfo.getDisplayName())));
             }
             final SubscriptionInfo sir = getActiveSubscriptionInfoForSimSlotIndex(subInfoList, 0);
-            mSubId = sir.getSubscriptionId();
+            mSubId = (sir == null) ? INVALID_SUBSCRIPTION_ID : sir.getSubscriptionId();
 
             if (savedInstanceState != null && savedInstanceState.containsKey(CURRENT_TAB)) {
                 mTabHost.setCurrentTabByTag(savedInstanceState.getString(CURRENT_TAB));
@@ -259,15 +267,15 @@ public class IccLockSettings extends SettingsPreferenceFragment
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        updatePreferences();
+        updatePreferences(DEFAULT_SLOT_ID); // default slot id
     }
 
-    private void updatePreferences() {
+    private void updatePreferences(int slotid) {
 
         final List<SubscriptionInfo> subInfoList =
                 mProxySubscriptionMgr.getActiveSubscriptionsInfo();
-        final SubscriptionInfo sir = getActiveSubscriptionInfoForSimSlotIndex(subInfoList, 0);
-        mSubId = sir.getSubscriptionId();
+        final SubscriptionInfo sir = getActiveSubscriptionInfoForSimSlotIndex(subInfoList, slotid);
+        mSubId = (sir == null) ? INVALID_SUBSCRIPTION_ID : sir.getSubscriptionId();
 
         if (mPinDialog != null) {
             mPinDialog.setEnabled(sir != null);
@@ -657,7 +665,7 @@ public class IccLockSettings extends SettingsPreferenceFragment
                     mProxySubscriptionMgr.getActiveSubscriptionsInfo(), slotId);
 
             // The User has changed tab; update the body.
-            updatePreferences();
+            updatePreferences(slotId);
         }
     };
 
