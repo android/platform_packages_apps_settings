@@ -230,13 +230,15 @@ public class IccLockSettings extends SettingsPreferenceFragment
         for (int i = 0; i < numSims; ++i) {
             final SubscriptionInfo subInfo =
                     getActiveSubscriptionInfoForSimSlotIndex(subInfoList, i);
-            final CarrierConfigManager carrierConfigManager = getContext().getSystemService(
-                    CarrierConfigManager.class);
-            final PersistableBundle bundle = carrierConfigManager.getConfigForSubId(
-                    subInfo.getSubscriptionId());
-            if (bundle != null
-                    && !bundle.getBoolean(CarrierConfigManager.KEY_HIDE_SIM_LOCK_SETTINGS_BOOL)) {
-                componenterList.add(subInfo);
+            if (subInfo != null) {
+                final CarrierConfigManager carrierConfigManager = getContext().getSystemService(
+                        CarrierConfigManager.class);
+                final PersistableBundle bundle = carrierConfigManager.getConfigForSubId(
+                        subInfo.getSubscriptionId());
+                if (bundle != null
+                        && !bundle.getBoolean(CarrierConfigManager.KEY_HIDE_SIM_LOCK_SETTINGS_BOOL)) {
+                    componenterList.add(subInfo);
+                }
             }
         }
 
