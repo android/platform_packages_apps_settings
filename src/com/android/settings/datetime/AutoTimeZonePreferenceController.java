@@ -16,6 +16,8 @@
 
 package com.android.settings.datetime;
 
+import android.app.timezonedetector.TimeZoneDetector;
+import android.app.timezonedetector.TimeZoneDetectorConfiguration;
 import android.content.Context;
 import android.provider.Settings;
 
@@ -33,12 +35,14 @@ public class AutoTimeZonePreferenceController extends AbstractPreferenceControll
 
     private final boolean mIsFromSUW;
     private final UpdateTimeAndDateCallback mCallback;
+    private final TimeZoneDetector mTimeZoneDetector;
 
     public AutoTimeZonePreferenceController(Context context, UpdateTimeAndDateCallback callback,
             boolean isFromSUW) {
         super(context);
         mCallback = callback;
         mIsFromSUW = isFromSUW;
+        mTimeZoneDetector = mContext.getSystemService(TimeZoneDetector.class);
     }
 
     @Override
@@ -62,14 +66,17 @@ public class AutoTimeZonePreferenceController extends AbstractPreferenceControll
     @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         boolean autoZoneEnabled = (Boolean) newValue;
-        Settings.Global.putInt(mContext.getContentResolver(), Settings.Global.AUTO_TIME_ZONE,
-                autoZoneEnabled ? 1 : 0);
+        TimeZoneDetectorConfiguration configuration =
+                new TimeZoneDetectorConfiguration.Builder()
+                        .setAutomaticDetectionEnabled(autoZoneEnabled)
+                        .build();
+        mTimeZoneDetector.updateConfiguration(configuration);
         mCallback.updateTimeAndDateDisplay(mContext);
         return true;
     }
 
     public boolean isEnabled() {
-        return isAvailable() && Settings.Global.getInt(mContext.getContentResolver(),
-                Settings.Global.AUTO_TIME_ZONE, 0) > 0;
+        TimeZoneDetectorConfiguration configuration = mTimeZoneDetector.getConfiguration();
+        return isAvailable() && configuration.isAutomaticDetectionEnabled();
     }
 }
