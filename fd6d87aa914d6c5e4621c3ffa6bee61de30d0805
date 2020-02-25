@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "236188b1_39fdaf9c",
+        "filename": "src/com/android/settings/datetime/AutoTimeZonePreferenceController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2020-02-25T18:20:33Z",
+      "side": 1,
+      "message": "FYI - I also want to replace this logic with a call to TimeZoneDetector.\n\nMaybe getCapabilities() (or similar name) which will enable SettingsUI to avoid hardcoding knowledge about when this (and future settings around geolocation-based tz detection) should be shown.",
+      "range": {
+        "startLine": 50,
+        "startChar": 23,
+        "endLine": 50,
+        "endChar": 33
+      },
+      "revId": "fd6d87aa914d6c5e4621c3ffa6bee61de30d0805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
