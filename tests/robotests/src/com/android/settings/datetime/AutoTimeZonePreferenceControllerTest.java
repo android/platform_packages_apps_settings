@@ -108,6 +108,8 @@ public class AutoTimeZonePreferenceControllerTest {
         mController = new AutoTimeZonePreferenceController(
                 mContext, null /* callback */, false /* fromSUW */);
 
+        // TODO Switch to faking TimeZoneDetector?
+
         // Disabled
         Settings.Global.putInt(mContext.getContentResolver(), Settings.Global.AUTO_TIME_ZONE, 0);
         assertThat(mController.isEnabled()).isFalse();
