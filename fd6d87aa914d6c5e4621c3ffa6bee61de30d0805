@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "6d7b8dcb_02aee76b",
+        "filename": "src/com/android/settings/datetime/AutoTimeZonePreferenceController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1394985
+      },
+      "writtenOn": "2020-02-26T01:55:57Z",
+      "side": 1,
+      "message": "add final. and also the one in isEnabled() :)",
+      "range": {
+        "startLine": 69,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 9
+      },
+      "revId": "fd6d87aa914d6c5e4621c3ffa6bee61de30d0805",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33e0b1d4_95fa19e3",
         "filename": "tests/robotests/src/com/android/settings/datetime/AutoTimeZonePreferenceControllerTest.java",
         "patchSetId": 2
