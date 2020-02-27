@@ -88,8 +88,10 @@ public class DataUsageList extends DataUsageBaseFragment {
     private static final String KEY_APP = "app";
     private static final String KEY_FIELDS = "fields";
 
-    private static final int LOADER_CHART_DATA = 2;
-    private static final int LOADER_SUMMARY = 3;
+    @VisibleForTesting
+    static final int LOADER_CHART_DATA = 2;
+    @VisibleForTesting
+    static final int LOADER_SUMMARY = 3;
 
     private final CellDataPreference.DataStateListener mDataStateListener =
             new CellDataPreference.DataStateListener() {
@@ -190,14 +192,24 @@ public class DataUsageList extends DataUsageBaseFragment {
     @Override
     public void onResume() {
         super.onResume();
-        mDataStateListener.setListener(true, mSubId, getContext());
+        mDataStateListener.start(mSubId);
+
+        // kick off loader for network history
+        // TODO: consider chaining two loaders together instead of reloading
+        // network history when showing app detail.
+        getLoaderManager().restartLoader(LOADER_CHART_DATA,
+                buildArgs(mTemplate), mNetworkCycleDataCallbacks);
+
         updateBody();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        mDataStateListener.setListener(false, mSubId, getContext());
+        mDataStateListener.stop();
+
+        getLoaderManager().destroyLoader(LOADER_CHART_DATA);
+        getLoaderManager().destroyLoader(LOADER_SUMMARY);
     }
 
     @Override
@@ -241,12 +253,6 @@ public class DataUsageList extends DataUsageBaseFragment {
         if (!isAdded()) return;
 
         final Context context = getActivity();
-
-        // kick off loader for network history
-        // TODO: consider chaining two loaders together instead of reloading
-        // network history when showing app detail.
-        getLoaderManager().restartLoader(LOADER_CHART_DATA,
-                buildArgs(mTemplate), mNetworkCycleDataCallbacks);
 
         // detail mode can change visible menus, invalidate
         getActivity().invalidateOptionsMenu();
