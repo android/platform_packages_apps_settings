@@ -165,7 +165,11 @@ public class WifiCallingPreferenceController extends TelephonyBasePreferenceCont
     }
 
     protected ImsMmTelManager getImsMmTelManager(int subId) {
-        return ImsMmTelManager.createForSubscriptionId(subId);
+        try {
+            return ImsMmTelManager.createForSubscriptionId(subId);
+        } catch (Exception e) {
+            return null;
+        }
     }
 
     @VisibleForTesting
