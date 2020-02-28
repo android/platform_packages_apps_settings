@@ -26,6 +26,7 @@ import android.provider.SearchIndexableResource;
 import android.provider.Settings;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
+import android.telephony.ims.ImsRcsManager;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Menu;
@@ -74,6 +75,7 @@ public class MobileNetworkSettings extends RestrictedDashboardFragment {
 
     private CdmaSystemSelectPreferenceController mCdmaSystemSelectPreferenceController;
     private CdmaSubscriptionPreferenceController mCdmaSubscriptionPreferenceController;
+    private ContactDiscoveryPreferenceController mContactDiscoveryPreferenceController;
 
     private UserManager mUserManager;
     private String mClickedPrefKey;
@@ -178,6 +180,9 @@ public class MobileNetworkSettings extends RestrictedDashboardFragment {
                 Arrays.asList(wifiCallingPreferenceController, videoCallingPreferenceController));
         use(Enhanced4gLtePreferenceController.class).init(mSubId)
                 .addListener(videoCallingPreferenceController);
+        mContactDiscoveryPreferenceController = use(ContactDiscoveryPreferenceController.class);
+        mContactDiscoveryPreferenceController.init(getParentFragmentManager(), mSubId,
+                getLifecycle());
     }
 
     @Override
@@ -191,6 +196,21 @@ public class MobileNetworkSettings extends RestrictedDashboardFragment {
                 .createForSubscriptionId(mSubId);
 
         onRestoreInstance(icicle);
+
+        // If this activity was launched using ACTION_SHOW_CAPABILITY_DISCOVERY_OPT_IN, show the
+        // associated dialog only if the opt-in has not been granted yet.
+        String intentAction = (getIntent() != null ? getIntent().getAction() : null);
+        boolean showOptInDialog = TextUtils.equals(intentAction,
+                ImsRcsManager.ACTION_SHOW_CAPABILITY_DISCOVERY_OPT_IN)
+                // has the carrier config enabled capability discovery?
+                && mContactDiscoveryPreferenceController.isAvailable()
+                // has the user already enabled this configuration?
+                && !mContactDiscoveryPreferenceController.isChecked();
+        if (showOptInDialog) {
+            ContactDiscoveryDialogFragment dialog = ContactDiscoveryDialogFragment.newInstance(
+                    mSubId);
+            dialog.show(getParentFragmentManager(), LOG_TAG);
+        }
     }
 
     @VisibleForTesting
