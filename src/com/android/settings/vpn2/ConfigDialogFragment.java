@@ -204,6 +204,12 @@ public class ConfigDialogFragment extends InstrumentedDialogFragment implements
     private void connect(VpnProfile profile, boolean lockdown) {
         save(profile, lockdown);
 
+        // Always clear the always-on VPN app; if the user has consented to replacing the VPN,
+        // it should also turn off the always-on setting on app-based VPNs.
+        final ConnectivityManager cm = ConnectivityManager.from(mContext);
+        cm.setAlwaysOnVpnPackageForUser(UserHandle.myUserId(), null /* pkgName */,
+                false /* lockdownEnabled */, null /* lockdownWhitelist */);
+
         // Now try to start the VPN - this is not necessary if the profile is set as lockdown,
         // because just saving the profile in this mode will start a connection.
         if (!VpnUtils.isVpnLockdown(profile.key)) {
