@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "64731109_c5ca0f6f",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-03-03T13:14:14Z",
+      "side": 1,
+      "message": "Redundant empty line.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 0
+      },
+      "revId": "c61c0879ea5731be147f8637861d4777aa127ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f289f22_049d462e",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-03-03T13:14:14Z",
+      "side": 1,
+      "message": "It seems you only care tethered interfaces. So onTetherableInterfacesChanged seems don\u0027t take any real effect, it just make more noise ?\n    private void updateEthernetState(String[] tethered)\n\nProbably use onTetheredInterfacesChanged(@NonNull List\u003cString\u003e interfaces) instead ?\n\npublic void onTetherableInterfacesChanged(List\u003cString\u003e interfaces) {\n    mHandler.post(() -\u003e updateEthernetState(interfaces));\n}",
+      "range": {
+        "startLine": 570,
+        "startChar": 13,
+        "endLine": 570,
+        "endChar": 60
+      },
+      "revId": "c61c0879ea5731be147f8637861d4777aa127ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
