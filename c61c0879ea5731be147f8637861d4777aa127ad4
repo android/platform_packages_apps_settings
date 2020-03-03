@@ -25,6 +25,98 @@
     },
     {
       "key": {
+        "uuid": "c45b3dc6_3c2bcafd",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-03-03T15:02:29Z",
+      "side": 1,
+      "message": "Limit lines to 100 characters.",
+      "range": {
+        "startLine": 168,
+        "startChar": 100,
+        "endLine": 168,
+        "endChar": 122
+      },
+      "revId": "c61c0879ea5731be147f8637861d4777aa127ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9ae26d4_54d6f484",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-03-03T15:02:29Z",
+      "side": 1,
+      "message": "Do you need to update Ethernet state here too? It looks like updateEthernetState tries hard not to enable tethering when data saver is enabled.",
+      "range": {
+        "startLine": 214,
+        "startChar": 4,
+        "endLine": 214,
+        "endChar": 5
+      },
+      "revId": "c61c0879ea5731be147f8637861d4777aa127ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d662e2e1_4b2acc05",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-03-03T15:02:29Z",
+      "side": 1,
+      "message": "I think it would be more elegant to use \"new HandlerExecutor(mHandler)\" here, and remove the post statements from the TetheringEventCallback class.",
+      "range": {
+        "startLine": 287,
+        "startChar": 43,
+        "endLine": 287,
+        "endChar": 71
+      },
+      "revId": "c61c0879ea5731be147f8637861d4777aa127ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7145ec0c_d1c32f1a",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-03-03T15:02:29Z",
+      "side": 1,
+      "message": "mEm.isAvailable is true iff EthernetManager has at least one interface. While I don\u0027t think this is 100% correct, because it\u0027s possible that there is an Ethernet interface on the system that is hardcoded and cannot be tethered, I think this is approximately correct here, at least on a phone which does not have any hardcoded Ethernet interface configuration.\n\nHowever: how does this code know when mEm.isAvailable() changes? For example, what enables the setting when the first Ethernet interface is added? Most importantly, what disables the setting when the last Ethernet interface is unplugged? I don\u0027t see any use of EthernetManager.Listener in this class. Should you register one?",
+      "range": {
+        "startLine": 413,
+        "startChar": 19,
+        "endLine": 413,
+        "endChar": 36
+      },
+      "revId": "c61c0879ea5731be147f8637861d4777aa127ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2f289f22_049d462e",
         "filename": "src/com/android/settings/TetherSettings.java",
         "patchSetId": 2
