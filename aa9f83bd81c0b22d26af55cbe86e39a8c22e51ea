@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "19551285_5da0ea5d",
+        "filename": "AndroidManifest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-03-04T13:39:35Z",
+      "side": 1,
+      "message": "Can you elaborate the reason of this design ?\n\nIt seems to be a feature which triggerred a dialog under some conditions and bring user to mobile network settings. However,\n1. Will it annoyed to the user ?\n2. Will it better to implemented as a notification which allows user to disable it ?\n3. How about the use case of SIM change or SIM removed ?",
+      "revId": "aa9f83bd81c0b22d26af55cbe86e39a8c22e51ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
