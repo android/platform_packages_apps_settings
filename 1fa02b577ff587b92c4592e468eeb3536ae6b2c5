@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bab48b83_ab948a26",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1407552
+      },
+      "writtenOn": "2020-03-05T06:57:22Z",
+      "side": 1,
+      "message": "too log",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 101
+      },
+      "revId": "1fa02b577ff587b92c4592e468eeb3536ae6b2c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd93df92_d2ce8d27",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1407552
+      },
+      "writtenOn": "2020-03-05T06:57:22Z",
+      "side": 1,
+      "message": "Use the meaning name in here and start with the mXXXX.",
+      "range": {
+        "startLine": 51,
+        "startChar": 42,
+        "endLine": 51,
+        "endChar": 45
+      },
+      "revId": "1fa02b577ff587b92c4592e468eeb3536ae6b2c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b1f9dc7_421605a4",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1407552
+      },
+      "writtenOn": "2020-03-05T06:57:22Z",
+      "side": 1,
+      "message": "use the mPattern to replace",
+      "range": {
+        "startLine": 52,
+        "startChar": 18,
+        "endLine": 52,
+        "endChar": 25
+      },
+      "revId": "1fa02b577ff587b92c4592e468eeb3536ae6b2c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e04cc4c5_7e95799a",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1407552
+      },
+      "writtenOn": "2020-03-05T06:57:22Z",
+      "side": 1,
+      "message": "DITTO.",
+      "range": {
+        "startLine": 54,
+        "startChar": 18,
+        "endLine": 54,
+        "endChar": 25
+      },
+      "revId": "1fa02b577ff587b92c4592e468eeb3536ae6b2c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6d30848_f944889c",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1407552
+      },
+      "writtenOn": "2020-03-05T06:57:22Z",
+      "side": 1,
+      "message": "nit.\nadd final",
+      "range": {
+        "startLine": 93,
+        "startChar": 4,
+        "endLine": 93,
+        "endChar": 18
+      },
+      "revId": "1fa02b577ff587b92c4592e468eeb3536ae6b2c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7d37103_728e51f5",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1407552
+      },
+      "writtenOn": "2020-03-05T06:57:22Z",
+      "side": 1,
+      "message": "This return value is useless and you can declare it as void.",
+      "range": {
+        "startLine": 100,
+        "startChar": 2,
+        "endLine": 100,
+        "endChar": 13
+      },
+      "revId": "1fa02b577ff587b92c4592e468eeb3536ae6b2c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01b6e1e9_0495e1f1",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1407552
+      },
+      "writtenOn": "2020-03-05T06:57:22Z",
+      "side": 1,
+      "message": "here uses the TextUtils.isEmpty(s)",
+      "range": {
+        "startLine": 101,
+        "startChar": 8,
+        "endLine": 101,
+        "endChar": 15
+      },
+      "revId": "1fa02b577ff587b92c4592e468eeb3536ae6b2c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bba7ff83_2bad5a11",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1407552
+      },
+      "writtenOn": "2020-03-05T06:57:22Z",
+      "side": 1,
+      "message": "There three lines just for debug and you can remove it after code finished.\nIf you insist to keep it, plese declare a static TAG to replace the \"Pages\".",
+      "range": {
+        "startLine": 124,
+        "startChar": 6,
+        "endLine": 126,
+        "endChar": 84
+      },
+      "revId": "1fa02b577ff587b92c4592e468eeb3536ae6b2c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f0f0f9d_043ea4c4",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1407552
+      },
+      "writtenOn": "2020-03-05T06:57:22Z",
+      "side": 1,
+      "message": "use the stream to get average value.\nhttps://stackoverflow.com/questions/10791568/calculating-average-of-an-array-list",
+      "range": {
+        "startLine": 144,
+        "startChar": 17,
+        "endLine": 144,
+        "endChar": 23
+      },
+      "revId": "1fa02b577ff587b92c4592e468eeb3536ae6b2c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
