@@ -111,6 +111,7 @@ public class IccLockSettings extends SettingsPreferenceFragment
     private ListView mListView;
 
     private ProxySubscriptionManager mProxySubscriptionMgr;
+    private SubscriptionInfo mSubscriptionInfo;
 
     private EditPinPreference mPinDialog;
     private SwitchPreference mPinToggle;
@@ -244,8 +245,8 @@ public class IccLockSettings extends SettingsPreferenceFragment
                             ? getContext().getString(R.string.sim_editor_title, i + 1)
                             : subInfo.getDisplayName())));
             }
-            final SubscriptionInfo sir = getActiveSubscriptionInfoForSimSlotIndex(subInfoList, 0);
-            mSubId = sir.getSubscriptionId();
+            mSubscriptionInfo = getActiveSubscriptionInfoForSimSlotIndex(subInfoList, 0);
+            mSubId = mSubscriptionInfo.getSubscriptionId();
 
             if (savedInstanceState != null && savedInstanceState.containsKey(CURRENT_TAB)) {
                 mTabHost.setCurrentTabByTag(savedInstanceState.getString(CURRENT_TAB));
@@ -264,10 +265,7 @@ public class IccLockSettings extends SettingsPreferenceFragment
 
     private void updatePreferences() {
 
-        final List<SubscriptionInfo> subInfoList =
-                mProxySubscriptionMgr.getActiveSubscriptionsInfo();
-        final SubscriptionInfo sir = getActiveSubscriptionInfoForSimSlotIndex(subInfoList, 0);
-        mSubId = sir.getSubscriptionId();
+        mSubId = mSubscriptionInfo.getSubscriptionId();
 
         if (mPinDialog != null) {
             mPinDialog.setEnabled(sir != null);
@@ -653,7 +651,7 @@ public class IccLockSettings extends SettingsPreferenceFragment
         @Override
         public void onTabChanged(String tabId) {
             final int slotId = Integer.parseInt(tabId);
-            final SubscriptionInfo sir = getActiveSubscriptionInfoForSimSlotIndex(
+            mSubscriptionInfo = getActiveSubscriptionInfoForSimSlotIndex(
                     mProxySubscriptionMgr.getActiveSubscriptionsInfo(), slotId);
 
             // The User has changed tab; update the body.
