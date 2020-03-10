@@ -36,6 +36,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowInsets.Type;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -50,7 +51,6 @@ import android.widget.Toast;
 import androidx.preference.Preference;
 import androidx.preference.SwitchPreference;
 
-import com.android.internal.telephony.TelephonyIntents;
 import com.android.settings.network.ProxySubscriptionManager;
 
 import java.util.List;
@@ -123,6 +123,7 @@ public class IccLockSettings extends SettingsPreferenceFragment
     // @see android.widget.Toast$TN
     private static final long LONG_DURATION_TIMEOUT = 7000;
 
+    private int mSlotId;
     private int mSubId;
     private TelephonyManager mTelephonyManager;
 
@@ -142,7 +143,7 @@ public class IccLockSettings extends SettingsPreferenceFragment
     private final BroadcastReceiver mSimStateReceiver = new BroadcastReceiver() {
         public void onReceive(Context context, Intent intent) {
             final String action = intent.getAction();
-            if (TelephonyIntents.ACTION_SIM_STATE_CHANGED.equals(action)) {
+            if (Intent.ACTION_SIM_STATE_CHANGED.equals(action)) {
                 mHandler.sendMessage(mHandler.obtainMessage(MSG_SIM_STATE_CHANGED));
             }
         }
@@ -266,7 +267,7 @@ public class IccLockSettings extends SettingsPreferenceFragment
 
         final List<SubscriptionInfo> subInfoList =
                 mProxySubscriptionMgr.getActiveSubscriptionsInfo();
-        final SubscriptionInfo sir = getActiveSubscriptionInfoForSimSlotIndex(subInfoList, 0);
+        final SubscriptionInfo sir = getActiveSubscriptionInfoForSimSlotIndex(subInfoList, mSlotId);
         mSubId = sir.getSubscriptionId();
 
         if (mPinDialog != null) {
@@ -292,7 +293,7 @@ public class IccLockSettings extends SettingsPreferenceFragment
 
         // ACTION_SIM_STATE_CHANGED is sticky, so we'll receive current state after this call,
         // which will call updatePreferences().
-        final IntentFilter filter = new IntentFilter(TelephonyIntents.ACTION_SIM_STATE_CHANGED);
+        final IntentFilter filter = new IntentFilter(Intent.ACTION_SIM_STATE_CHANGED);
         getContext().registerReceiver(mSimStateReceiver, filter);
 
         if (mDialogState != OFF_MODE) {
@@ -543,7 +544,8 @@ public class IccLockSettings extends SettingsPreferenceFragment
         params.width = WindowManager.LayoutParams.WRAP_CONTENT;
         params.format = PixelFormat.TRANSLUCENT;
         params.windowAnimations = com.android.internal.R.style.Animation_Toast;
-        params.type = WindowManager.LayoutParams.TYPE_STATUS_BAR_PANEL;
+        params.type = WindowManager.LayoutParams.TYPE_STATUS_BAR_SUB_PANEL;
+        params.setFitInsetsTypes(params.getFitInsetsTypes() & ~Type.statusBars());
         params.setTitle(errorMessage);
         params.flags = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
                 | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
@@ -652,9 +654,9 @@ public class IccLockSettings extends SettingsPreferenceFragment
     private OnTabChangeListener mTabListener = new OnTabChangeListener() {
         @Override
         public void onTabChanged(String tabId) {
-            final int slotId = Integer.parseInt(tabId);
+            mSlotId = Integer.parseInt(tabId);
             final SubscriptionInfo sir = getActiveSubscriptionInfoForSimSlotIndex(
-                    mProxySubscriptionMgr.getActiveSubscriptionsInfo(), slotId);
+                    mProxySubscriptionMgr.getActiveSubscriptionsInfo(), mSlotId);
 
             // The User has changed tab; update the body.
             updatePreferences();
