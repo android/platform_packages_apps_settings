@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5f65440_f2656687",
+        "filename": "src/com/android/settings/IccLockSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-03-10T13:18:58Z",
+      "side": 1,
+      "message": "An SubscriptionInfo instance here means following work would be required:\n1. Store this instance within onSaveInstanceState(Bundle)\n2. Restore this instance from Bundle within onCreate(Bundle)\nIs that belongs to part of this design ?",
+      "revId": "83ea087519bf9811b37d3402a3b434fe83a0e501",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
