@@ -1,0 +1,10 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+2: Daniel Bright <dbright@google.com>
+Code-Review+2: Bonian Chen <bonianchen@google.com>
+Autosubmit+1: Daniel Bright <dbright@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Tue, 10 Mar 2020 17:26:25 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1252997
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
