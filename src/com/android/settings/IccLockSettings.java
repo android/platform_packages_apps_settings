@@ -123,6 +123,7 @@ public class IccLockSettings extends SettingsPreferenceFragment
     // @see android.widget.Toast$TN
     private static final long LONG_DURATION_TIMEOUT = 7000;
 
+    private int mSlotId;
     private int mSubId;
     private TelephonyManager mTelephonyManager;
 
@@ -266,7 +267,7 @@ public class IccLockSettings extends SettingsPreferenceFragment
 
         final List<SubscriptionInfo> subInfoList =
                 mProxySubscriptionMgr.getActiveSubscriptionsInfo();
-        final SubscriptionInfo sir = getActiveSubscriptionInfoForSimSlotIndex(subInfoList, 0);
+        final SubscriptionInfo sir = getActiveSubscriptionInfoForSimSlotIndex(subInfoList, mSlotId);
         mSubId = sir.getSubscriptionId();
 
         if (mPinDialog != null) {
@@ -652,9 +653,9 @@ public class IccLockSettings extends SettingsPreferenceFragment
     private OnTabChangeListener mTabListener = new OnTabChangeListener() {
         @Override
         public void onTabChanged(String tabId) {
-            final int slotId = Integer.parseInt(tabId);
+            mSlotId = Integer.parseInt(tabId);
             final SubscriptionInfo sir = getActiveSubscriptionInfoForSimSlotIndex(
-                    mProxySubscriptionMgr.getActiveSubscriptionsInfo(), slotId);
+                    mProxySubscriptionMgr.getActiveSubscriptionsInfo(), mSlotId);
 
             // The User has changed tab; update the body.
             updatePreferences();
