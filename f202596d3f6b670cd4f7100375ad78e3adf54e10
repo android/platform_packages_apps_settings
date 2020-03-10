@@ -22,6 +22,30 @@
       "revId": "f202596d3f6b670cd4f7100375ad78e3adf54e10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f37c6627_966d810f",
+        "filename": "src/com/android/settings/TestingSettingsBroadcastReceiver.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1606087
+      },
+      "writtenOn": "2020-03-10T05:30:26Z",
+      "side": 1,
+      "message": "My bad, I did that last time.  All taken care of.",
+      "parentUuid": "a7ab9431_f8633a17",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 2
+      },
+      "revId": "f202596d3f6b670cd4f7100375ad78e3adf54e10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
