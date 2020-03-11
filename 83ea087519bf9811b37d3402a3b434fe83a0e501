@@ -62,6 +62,29 @@
       "revId": "83ea087519bf9811b37d3402a3b434fe83a0e501",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a242882_59e195e2",
+        "filename": "src/com/android/settings/IccLockSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1308560
+      },
+      "writtenOn": "2020-03-11T03:16:26Z",
+      "side": 1,
+      "message": "mSubscriptionInfo",
+      "range": {
+        "startLine": 276,
+        "startChar": 16,
+        "endLine": 276,
+        "endChar": 19
+      },
+      "revId": "83ea087519bf9811b37d3402a3b434fe83a0e501",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
