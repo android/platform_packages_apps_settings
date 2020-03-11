@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "9e6d702c_8bc89c4c",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1403999
+      },
+      "writtenOn": "2020-03-11T03:27:54Z",
+      "side": 1,
+      "message": "private Bundle mBundle;\n\nWe prefer local variable to private variable to static variable.\nIn this case, Bundle can be private variable.",
+      "range": {
+        "startLine": 49,
+        "startChar": 30,
+        "endLine": 49,
+        "endChar": 36
+      },
+      "revId": "26d35470ee6c0d0ad13b1fb2d266feba3e5893f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13c149c5_f86655bf",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1403999
+      },
+      "writtenOn": "2020-03-11T03:27:54Z",
+      "side": 1,
+      "message": "upper case",
+      "range": {
+        "startLine": 50,
+        "startChar": 32,
+        "endLine": 50,
+        "endChar": 37
+      },
+      "revId": "26d35470ee6c0d0ad13b1fb2d266feba3e5893f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9fb2e349_c2234644",
         "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
         "patchSetId": 7
@@ -49,6 +95,29 @@
     },
     {
       "key": {
+        "uuid": "99bf4e46_cd0814fa",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1403999
+      },
+      "writtenOn": "2020-03-11T03:27:54Z",
+      "side": 1,
+      "message": "Normally data member is initialized in constructor. In this case, mResult is initialized in setup().",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 74
+      },
+      "revId": "26d35470ee6c0d0ad13b1fb2d266feba3e5893f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51959f1c_c736867c",
         "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
         "patchSetId": 7
@@ -65,6 +134,52 @@
         "startChar": 45,
         "endLine": 53,
         "endChar": 66
+      },
+      "revId": "26d35470ee6c0d0ad13b1fb2d266feba3e5893f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b753598_401c57cb",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1403999
+      },
+      "writtenOn": "2020-03-11T03:27:54Z",
+      "side": 1,
+      "message": "private static final Pattern PATTERN \u003d Pattern.compile(\"TotalTime:\\\\s[0-9]*\");\n\nWe use uppper case to show the constant variable.\nSee https://source.android.com/setup/contribute/code-style#follow-field-naming-conventions",
+      "range": {
+        "startLine": 53,
+        "startChar": 2,
+        "endLine": 53,
+        "endChar": 68
+      },
+      "revId": "26d35470ee6c0d0ad13b1fb2d266feba3e5893f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d723cea_93443ab1",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1403999
+      },
+      "writtenOn": "2020-03-11T03:27:54Z",
+      "side": 1,
+      "message": "initialized in setup().",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 54,
+        "endChar": 90
       },
       "revId": "26d35470ee6c0d0ad13b1fb2d266feba3e5893f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -95,6 +210,29 @@
     },
     {
       "key": {
+        "uuid": "763bf513_35f646c2",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1403999
+      },
+      "writtenOn": "2020-03-11T03:27:54Z",
+      "side": 1,
+      "message": "can be a local variable because it is used only in handleShellCommandResult",
+      "range": {
+        "startLine": 55,
+        "startChar": 2,
+        "endLine": 55,
+        "endChar": 34
+      },
+      "revId": "26d35470ee6c0d0ad13b1fb2d266feba3e5893f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0eccb0d1_e81f79ff",
         "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
         "patchSetId": 7
@@ -111,6 +249,29 @@
         "startChar": 0,
         "endLine": 79,
         "endChar": 5
+      },
+      "revId": "26d35470ee6c0d0ad13b1fb2d266feba3e5893f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b63fa741_5df2a4f6",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1403999
+      },
+      "writtenOn": "2020-03-11T03:27:54Z",
+      "side": 1,
+      "message": "remove it.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 0
       },
       "revId": "26d35470ee6c0d0ad13b1fb2d266feba3e5893f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -180,6 +341,29 @@
         "startChar": 57,
         "endLine": 101,
         "endChar": 59
+      },
+      "revId": "26d35470ee6c0d0ad13b1fb2d266feba3e5893f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0461a25d_3c212e5a",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1403999
+      },
+      "writtenOn": "2020-03-11T03:27:54Z",
+      "side": 1,
+      "message": "remove it.",
+      "range": {
+        "startLine": 105,
+        "startChar": 0,
+        "endLine": 105,
+        "endChar": 66
       },
       "revId": "26d35470ee6c0d0ad13b1fb2d266feba3e5893f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
