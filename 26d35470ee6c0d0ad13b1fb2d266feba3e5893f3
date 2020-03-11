@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fb2e349_c2234644",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-03-11T03:03:07Z",
+      "side": 1,
+      "message": "Out of curiosity, why do you want to use LinkedHashMap ?\nCan we just use ArrayMap?",
+      "range": {
+        "startLine": 52,
+        "startChar": 57,
+        "endLine": 52,
+        "endChar": 70
+      },
+      "revId": "26d35470ee6c0d0ad13b1fb2d266feba3e5893f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51959f1c_c736867c",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-03-11T03:03:07Z",
+      "side": 1,
+      "message": "make it as a static string variable and initialize mPattern in setUp()",
+      "range": {
+        "startLine": 53,
+        "startChar": 45,
+        "endLine": 53,
+        "endChar": 66
+      },
+      "revId": "26d35470ee6c0d0ad13b1fb2d266feba3e5893f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e00db49_578fd2be",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-03-11T03:03:07Z",
+      "side": 1,
+      "message": "no needed. Default is null",
+      "range": {
+        "startLine": 55,
+        "startChar": 27,
+        "endLine": 55,
+        "endChar": 33
+      },
+      "revId": "26d35470ee6c0d0ad13b1fb2d266feba3e5893f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0eccb0d1_e81f79ff",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-03-11T03:03:07Z",
+      "side": 1,
+      "message": "Remove if it\u0027s not used.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 5
+      },
+      "revId": "26d35470ee6c0d0ad13b1fb2d266feba3e5893f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d38b3b6_08815cc7",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-03-11T03:03:07Z",
+      "side": 1,
+      "message": "make it more clear. assertText or something better",
+      "range": {
+        "startLine": 93,
+        "startChar": 51,
+        "endLine": 93,
+        "endChar": 55
+      },
+      "revId": "26d35470ee6c0d0ad13b1fb2d266feba3e5893f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f94ff643_eed3d7de",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-03-11T03:03:07Z",
+      "side": 1,
+      "message": "You do not only launch page in this method, you also close this app.\n\nPlease rename this method as executePerformanceTest or something better name",
+      "range": {
+        "startLine": 93,
+        "startChar": 15,
+        "endLine": 93,
+        "endChar": 26
+      },
+      "revId": "26d35470ee6c0d0ad13b1fb2d266feba3e5893f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b71f2d3_16f8d488",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-03-11T03:03:07Z",
+      "side": 1,
+      "message": "make this name more clear.",
+      "range": {
+        "startLine": 101,
+        "startChar": 57,
+        "endLine": 101,
+        "endChar": 59
+      },
+      "revId": "26d35470ee6c0d0ad13b1fb2d266feba3e5893f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02bf1db2_254e2d61",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-03-11T03:03:07Z",
+      "side": 1,
+      "message": "the implementation is not \"print\". You just put some results in a bundle. Can you rename it?\nMaybe updateResult or something better.",
+      "range": {
+        "startLine": 117,
+        "startChar": 15,
+        "endLine": 117,
+        "endChar": 26
+      },
+      "revId": "26d35470ee6c0d0ad13b1fb2d266feba3e5893f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ce437c6_23fc97b0",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-03-11T03:03:07Z",
+      "side": 1,
+      "message": "Please make it clear. what is al? :)",
+      "range": {
+        "startLine": 128,
+        "startChar": 43,
+        "endLine": 128,
+        "endChar": 45
+      },
+      "revId": "26d35470ee6c0d0ad13b1fb2d266feba3e5893f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
