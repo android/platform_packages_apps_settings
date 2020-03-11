@@ -16,6 +16,52 @@
       "revId": "83ea087519bf9811b37d3402a3b434fe83a0e501",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f96fc60d_12b613a8",
+        "filename": "src/com/android/settings/IccLockSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1308560
+      },
+      "writtenOn": "2020-03-11T03:13:23Z",
+      "side": 1,
+      "message": "We can use mSubscriptionInfo instead.",
+      "range": {
+        "startLine": 127,
+        "startChar": 16,
+        "endLine": 127,
+        "endChar": 22
+      },
+      "revId": "83ea087519bf9811b37d3402a3b434fe83a0e501",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91821194_10fdd107",
+        "filename": "src/com/android/settings/IccLockSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1308560
+      },
+      "writtenOn": "2020-03-11T03:13:23Z",
+      "side": 1,
+      "message": "mSubscriptionInfo is null when device with single sim.",
+      "range": {
+        "startLine": 268,
+        "startChar": 17,
+        "endLine": 268,
+        "endChar": 34
+      },
+      "revId": "83ea087519bf9811b37d3402a3b434fe83a0e501",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
