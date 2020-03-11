@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e03ea96_bee81c34",
+        "filename": "src/com/android/settings/IccLockSettings.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1308560
+      },
+      "writtenOn": "2020-03-11T07:43:01Z",
+      "side": 1,
+      "message": "please help to initialize mSlotId.",
+      "range": {
+        "startLine": 126,
+        "startChar": 16,
+        "endLine": 126,
+        "endChar": 23
+      },
+      "revId": "b58dda51e67cb3f1b23ebc72a16b70b20f6c22f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
