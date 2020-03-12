@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a40f0467_da7d883c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1615850
+      },
+      "writtenOn": "2020-03-12T08:46:35Z",
+      "side": 1,
+      "message": "Update TelephonyAPI in CallsDefaultSubscriptionController\n\nuse TelephonyManager\u0027s setDefaultVoiceSubscriptionId instead of setDefaultVoiceSubId",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "78ee3e0ebe8aded0bf42fb411d5a5611c4deb0db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
