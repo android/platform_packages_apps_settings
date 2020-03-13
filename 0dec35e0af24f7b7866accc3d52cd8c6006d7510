@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "89ff27e9_4effab39",
+        "filename": "src/com/android/settings/network/telephony/TelephonyConstants.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1432429
+      },
+      "writtenOn": "2020-03-13T09:45:52Z",
+      "side": 1,
+      "message": "remove line?",
+      "revId": "0dec35e0af24f7b7866accc3d52cd8c6006d7510",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c99f052_4e27b0e5",
+        "filename": "src/com/android/settings/network/telephony/TelephonyConstants.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1432429
+      },
+      "writtenOn": "2020-03-13T09:45:52Z",
+      "side": 1,
+      "message": "In RadioAccessFamily class, there are ToDo lists, it should not copied together to remind for modification in future.\n    /**\n     * TODO: get rid of RAF definition in RadioAccessFamily and\n     * use {@link TelephonyManager.NetworkTypeBitMask}\n     * TODO: public definition {@link TelephonyManager.NetworkTypeBitMask} is long.\n     * TODO: Convert from int to long everywhere including HAL definitions.\n     */",
+      "range": {
+        "startLine": 212,
+        "startChar": 4,
+        "endLine": 212,
+        "endChar": 43
+      },
+      "revId": "0dec35e0af24f7b7866accc3d52cd8c6006d7510",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f2c96c4_636d1b21",
+        "filename": "src/com/android/settings/network/telephony/TelephonyConstants.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1432429
+      },
+      "writtenOn": "2020-03-13T09:45:52Z",
+      "side": 1,
+      "message": "remove line.",
+      "revId": "0dec35e0af24f7b7866accc3d52cd8c6006d7510",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
