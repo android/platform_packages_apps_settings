@@ -122,6 +122,9 @@ public class IccLockSettings extends SettingsPreferenceFragment
     // @see android.widget.Toast$TN
     private static final long LONG_DURATION_TIMEOUT = 7000;
 
+    // An invalid subscription identifier
+    private static final int INVALID_SUBSCRIPTION_ID = -1;
+
     private int mSlotId;
     private int mSubId;
     private TelephonyManager mTelephonyManager;
@@ -247,7 +250,7 @@ public class IccLockSettings extends SettingsPreferenceFragment
             }
             final SubscriptionInfo sir = getActiveSubscriptionInfoForSimSlotIndex(
                     subInfoList, mSlotId);
-            mSubId = sir.getSubscriptionId();
+            mSubId = (sir == null) ? INVALID_SUBSCRIPTION_ID : sir.getSubscriptionId();
 
             if (savedInstanceState != null && savedInstanceState.containsKey(CURRENT_TAB)) {
                 mTabHost.setCurrentTabByTag(savedInstanceState.getString(CURRENT_TAB));
@@ -265,11 +268,10 @@ public class IccLockSettings extends SettingsPreferenceFragment
     }
 
     private void updatePreferences() {
-
         final List<SubscriptionInfo> subInfoList =
                 mProxySubscriptionMgr.getActiveSubscriptionsInfo();
         final SubscriptionInfo sir = getActiveSubscriptionInfoForSimSlotIndex(subInfoList, mSlotId);
-        mSubId = sir.getSubscriptionId();
+        mSubId = (sir == null) ? INVALID_SUBSCRIPTION_ID : sir.getSubscriptionId();
 
         if (mPinDialog != null) {
             mPinDialog.setEnabled(sir != null);
