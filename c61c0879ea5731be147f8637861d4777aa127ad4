@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "96647a08_14622415",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-03-17T14:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64731109_c5ca0f6f",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 0
+      },
+      "revId": "c61c0879ea5731be147f8637861d4777aa127ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c45b3dc6_3c2bcafd",
         "filename": "src/com/android/settings/TetherSettings.java",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "c61c0879ea5731be147f8637861d4777aa127ad4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11dc4fac_3354c4bb",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-03-17T14:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c45b3dc6_3c2bcafd",
+      "range": {
+        "startLine": 168,
+        "startChar": 100,
+        "endLine": 168,
+        "endChar": 122
+      },
+      "revId": "c61c0879ea5731be147f8637861d4777aa127ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "68c509c6_f85f8df8",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-03-17T14:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9ae26d4_54d6f484",
+      "range": {
+        "startLine": 214,
+        "startChar": 4,
+        "endLine": 214,
+        "endChar": 5
+      },
+      "revId": "c61c0879ea5731be147f8637861d4777aa127ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d662e2e1_4b2acc05",
         "filename": "src/com/android/settings/TetherSettings.java",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "c61c0879ea5731be147f8637861d4777aa127ad4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "36824c3e_452e280c",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-03-17T14:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d662e2e1_4b2acc05",
+      "range": {
+        "startLine": 287,
+        "startChar": 43,
+        "endLine": 287,
+        "endChar": 71
+      },
+      "revId": "c61c0879ea5731be147f8637861d4777aa127ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "b60c192b_c0f68746",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-03-17T14:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7145ec0c_d1c32f1a",
+      "range": {
+        "startLine": 413,
+        "startChar": 19,
+        "endLine": 413,
+        "endChar": 36
+      },
+      "revId": "c61c0879ea5731be147f8637861d4777aa127ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f289f22_049d462e",
         "filename": "src/com/android/settings/TetherSettings.java",
         "patchSetId": 2
@@ -137,6 +257,30 @@
       "revId": "c61c0879ea5731be147f8637861d4777aa127ad4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c948d478_63e943eb",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-03-17T14:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f289f22_049d462e",
+      "range": {
+        "startLine": 570,
+        "startChar": 13,
+        "endLine": 570,
+        "endChar": 60
+      },
+      "revId": "c61c0879ea5731be147f8637861d4777aa127ad4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
