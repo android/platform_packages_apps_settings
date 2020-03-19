@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0be4e4b2_cb7865bf",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-03-19T16:11:48Z",
+      "side": 1,
+      "message": "Added a TODO.",
+      "parentUuid": "51593d0f_47f9d93c",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 69
+      },
+      "revId": "ab776e75b24f8dbca3ec06d0ff2ded5c59f8b99d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "707da241_7750b7f8",
         "filename": "src/com/android/settings/TetherSettings.java",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "752ce743_3f64eac6",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-03-19T16:11:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "707da241_7750b7f8",
+      "range": {
+        "startLine": 423,
+        "startChar": 18,
+        "endLine": 423,
+        "endChar": 39
+      },
+      "revId": "ab776e75b24f8dbca3ec06d0ff2ded5c59f8b99d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1747dc9_c92ce350",
         "filename": "src/com/android/settings/TetherSettings.java",
         "patchSetId": 5
@@ -68,6 +116,30 @@
       "revId": "ab776e75b24f8dbca3ec06d0ff2ded5c59f8b99d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38550a95_37200077",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2020-03-19T16:11:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1747dc9_c92ce350",
+      "range": {
+        "startLine": 481,
+        "startChar": 12,
+        "endLine": 482,
+        "endChar": 25
+      },
+      "revId": "ab776e75b24f8dbca3ec06d0ff2ded5c59f8b99d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
