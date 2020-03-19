@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51593d0f_47f9d93c",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-03-19T16:03:30Z",
+      "side": 1,
+      "message": "We should replace ACTION_TETHER_STATE_CHANGED as TetheringEventCallback(l.576 ~ 582). Current patch may caused duplicated event. but this is fine that feel free to address in other CL.",
+      "range": {
+        "startLine": 233,
+        "startChar": 0,
+        "endLine": 243,
+        "endChar": 69
+      },
+      "revId": "ab776e75b24f8dbca3ec06d0ff2ded5c59f8b99d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "707da241_7750b7f8",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-03-19T16:03:30Z",
+      "side": 1,
+      "message": "This is strange but probably safe.\nEthernetManager#isAvailable() means there are ethernet interfaces and be client mode. When ethernet set to server mode, EthernetManager#isAvailable() may be false if there is only one ethernet iface. If tethering start but not tethered yet, it is fine to be false here that ethernet toggle would be gray out. This logic potentially protect user quickly ON \u003c-\u003e OFF. In other word, after user enable ethernet tethering, ui would be gray-out till ethernet tethering successful tethered. If tethering has problem which not able to be tethered, user need to plug-out and plug-in to let UI leave gray out status.\n\nHere is alternative way that allow Settings not be gray out if tethering start but not tethered yet.\n\n-private void updateEthernetState(String[] tethered) {\n+private void updateEthernetState(String[] available, String[] tethered) {\n        boolean ethTethered \u003d false;\n+        boolean ethTetherAvailable \u003d false;\n        for (String s : tethered) {\n            if (s.matches(mEthernetRegex)) ethTethered \u003d true;\n        }\n+        for (String s : available) {\n+            if (s.matches(mEthernetRegex)) ethTetherAvailable \u003d true;\n+        }\n        if (ethTethered) {\n            mEthernetTether.setEnabled(!mDataSaverEnabled);\n            mEthernetTether.setChecked(true);\n-        } else if (mEm.isAvailable()) {\n+        } else if (mEm.isAvailable() || tetherAvailable) {\n            mEthernetTether.setEnabled(!mDataSaverEnabled);\n            mEthernetTether.setChecked(false);",
+      "range": {
+        "startLine": 423,
+        "startChar": 18,
+        "endLine": 423,
+        "endChar": 39
+      },
+      "revId": "ab776e75b24f8dbca3ec06d0ff2ded5c59f8b99d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1747dc9_c92ce350",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1308504
+      },
+      "writtenOn": "2020-03-19T16:03:30Z",
+      "side": 1,
+      "message": "nits: follow the same style as other perference\n         if (mEthernetTether.isChecked()) {",
+      "range": {
+        "startLine": 481,
+        "startChar": 12,
+        "endLine": 482,
+        "endChar": 25
+      },
+      "revId": "ab776e75b24f8dbca3ec06d0ff2ded5c59f8b99d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
