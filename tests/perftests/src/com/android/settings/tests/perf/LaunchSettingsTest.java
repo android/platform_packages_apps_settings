@@ -26,6 +26,7 @@ import android.support.test.uiautomator.By;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiSelector;
 import android.support.test.uiautomator.Until;
+import android.view.KeyEvent;
 
 import androidx.test.InstrumentationRegistry;
 import androidx.test.runner.AndroidJUnit4;
@@ -48,8 +49,18 @@ public class LaunchSettingsTest {
     private static final int TIME_OUT = 5000;
     private static final int TEST_TIME = 10;
     private static final Pattern PATTERN = Pattern.compile("TotalTime:\\s[0-9]*");
+    private static final String[] ACTIVITIES =
+            {
+                    "android.settings.SETTINGS",
+                    "android.settings.WIFI_SETTINGS",
+                    "android.settings.BLUETOOTH_SETTINGS",
+                    "android.settings.APPLICATION_SETTINGS",
+                    "android.intent.action.POWER_USAGE_SUMMARY"
+            };
     private static final String[] PAGES =
             {"Settings", "Wi-Fi", "BlueTooth", "Application", "Battery"};
+    private static final String[] TEXTS =
+            {"Search settings", "Use Wi‑Fi", "Connected devices", "App info", "Battery"};
     private Bundle mBundle;
     private UiDevice mDevice;
     private Instrumentation mInstrumentation;
@@ -71,18 +82,16 @@ public class LaunchSettingsTest {
 
     @After
     public void tearDown() throws Exception {
-        sendResult();
+        putResultToBundle();
         mInstrumentation.sendStatus(0, mBundle);
     }
 
     @Test
     public void settingsPerformanceTest() throws Exception {
         for (int i = 0; i < TEST_TIME; i++) {
-            executePreformanceTest("android.settings.SETTINGS", "Search settings", 0);
-            executePreformanceTest("android.settings.WIFI_SETTINGS", "Use Wi‑Fi", 1);
-            executePreformanceTest("android.settings.BLUETOOTH_SETTINGS", "Connected devices", 2);
-            executePreformanceTest("android.settings.APPLICATION_SETTINGS", "App info", 3);
-            executePreformanceTest("android.intent.action.POWER_USAGE_SUMMARY", "Battery", 4);
+            for (int j = 0; j < ACTIVITIES.length; j++) {
+                executePreformanceTest(ACTIVITIES[j], TEXTS[j], j);
+            }
         }
 
     }
@@ -105,12 +114,11 @@ public class LaunchSettingsTest {
     }
 
     private void closeApp() throws Exception {
-        mDevice.pressRecentApps();
-        mDevice.findObject(new UiSelector().resourceId("com.android.launcher3:id/snapshot"))
-                .swipeUp(10);
+        mDevice.executeShellCommand("am force-stop com.android.settings");
+        Thread.sleep(1000);
     }
 
-    private void sendResult() {
+    private void putResultToBundle() {
         for (String string : mResult.keySet()) {
             mBundle.putString(String.format("LaunchSettingsTest_%s_%s", string, "max"),
                     getMax(mResult.get(string)));
