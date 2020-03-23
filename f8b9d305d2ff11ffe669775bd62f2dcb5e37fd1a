@@ -16,6 +16,24 @@
       "revId": "f8b9d305d2ff11ffe669775bd62f2dcb5e37fd1a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85c570dd_de0337be",
+        "filename": "src/com/android/settings/IccLockSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1122483
+      },
+      "writtenOn": "2020-03-23T05:37:57Z",
+      "side": 1,
+      "message": "Resloved",
+      "parentUuid": "f2b190b8_4dd764df",
+      "revId": "f8b9d305d2ff11ffe669775bd62f2dcb5e37fd1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
