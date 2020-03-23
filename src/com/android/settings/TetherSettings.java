@@ -41,6 +41,7 @@ import android.os.HandlerExecutor;
 import android.os.UserManager;
 import android.provider.SearchIndexableResource;
 import android.text.TextUtils;
+import android.util.Log;
 
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
@@ -409,6 +410,10 @@ public class TetherSettings extends RestrictedSettingsFragment
     }
 
     private void updateEthernetState(String[] available, String[] tethered) {
+Log.d(TAG, "updateEthernetState "
++ "ethernetAvailable=" + mEm.isAvailable()
++ "available=" + Arrays.toString(available)
++ "tethered=" + Arrays.toString(tethered));
 
         boolean isAvailable = false;
         boolean isTethered = false;
@@ -579,13 +584,18 @@ public class TetherSettings extends RestrictedSettingsFragment
     private final class TetheringEventCallback implements TetheringManager.TetheringEventCallback {
         @Override
         public void onTetheredInterfacesChanged(List<String> interfaces) {
+Log.d(TAG, "onAvailabilityChanged interfaces=" + interfaces);
             updateState();
         }
     }
 
     private final class EthernetListener implements EthernetManager.Listener {
         public void onAvailabilityChanged(String iface, boolean isAvailable) {
-            mHandler.post(TetherSettings.this::updateState);
+//            mHandler.post(TetherSettings.this::updateState);
+            mHandler.post(() -> {
+                Log.d(TAG, "onAvailabilityChanged iface=" + iface + " isAvailable=" + isAvailable);
+                updateState();
+            });
         }
     }
 }
