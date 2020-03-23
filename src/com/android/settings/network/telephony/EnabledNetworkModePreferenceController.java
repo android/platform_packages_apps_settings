@@ -208,6 +208,8 @@ public class EnabledNetworkModePreferenceController extends
         }
 
         void setPreferenceEntries() {
+            clearAllEntries();
+
             switch (getEnabledNetworkType()) {
                 case ENABLED_NETWORKS_CDMA_CHOICES:
                     add5gEntry(addNrToLteNetworkType(
@@ -610,6 +612,11 @@ public class EnabledNetworkModePreferenceController extends
 
         private String[] getEntries() {
             return mEntries.toArray(new String[0]);
+        }
+
+        private void clearAllEntries() {
+            mEntries.clear();
+            mEntriesValue.clear();
         }
 
         private String[] getEntryValues() {
