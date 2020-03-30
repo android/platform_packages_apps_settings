@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a296185_30d013cb",
+        "filename": "src/com/android/settings/vpn2/ConfigDialogFragment.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-03-30T10:09:28Z",
+      "side": 1,
+      "message": "It\u0027s also already done by save() if lockdown. https://osscs.corp.google.com/android/platform/superproject/+/master:packages/apps/Settings/src/com/android/settings/vpn2/ConfigDialogFragment.java;l\u003d182?q\u003dconfigdialogfragment.java\n\nSuggest just saying\n\n  save()\n  if (lockdown) return;\n  // rest of the code",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 75
+      },
+      "revId": "7c3cc88982456913eb671f782e28fcaf8b24370c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
