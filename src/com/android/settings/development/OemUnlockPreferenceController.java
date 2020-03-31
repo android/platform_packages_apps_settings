@@ -23,6 +23,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.service.oemlock.OemLockManager;
@@ -52,7 +53,11 @@ public class OemUnlockPreferenceController extends DeveloperOptionsPreferenceCon
     public OemUnlockPreferenceController(Context context, Activity activity,
             DevelopmentSettingsDashboardFragment fragment) {
         super(context);
-        mOemLockManager = (OemLockManager) context.getSystemService(Context.OEM_LOCK_SERVICE);
+        if (Build.IS_EMULATOR && Build.IS_ENG) {
+            mOemLockManager = null;
+        } else {
+            mOemLockManager = (OemLockManager) context.getSystemService(Context.OEM_LOCK_SERVICE);
+        }
         mUserManager = (UserManager) context.getSystemService(Context.USER_SERVICE);
         mTelephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         mFragment = fragment;
