@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "48b2d1fd_0932637a",
+        "filename": "res/values/config.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1221112
+      },
+      "writtenOn": "2020-04-02T18:37:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "54127e68_2553f382",
+      "range": {
+        "startLine": 141,
+        "startChar": 16,
+        "endLine": 141,
+        "endChar": 36
+      },
+      "revId": "944252b167ab5de38a0fe844a6b5e661b5dd4eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a67fe43_a6e66254",
         "filename": "src/com/android/settings/dream/DreamSettings.java",
         "patchSetId": 1
@@ -39,6 +63,24 @@
       "revId": "944252b167ab5de38a0fe844a6b5e661b5dd4eb2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8532e96_6f62d551",
+        "filename": "src/com/android/settings/dream/DreamSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1221112
+      },
+      "writtenOn": "2020-04-02T18:37:18Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0a67fe43_a6e66254",
+      "revId": "944252b167ab5de38a0fe844a6b5e661b5dd4eb2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
