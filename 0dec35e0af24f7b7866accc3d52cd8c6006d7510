@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a26ba2a8_02ca8891",
+        "filename": "src/com/android/settings/network/telephony/TelephonyConstants.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-04-06T14:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89ff27e9_4effab39",
+      "revId": "0dec35e0af24f7b7866accc3d52cd8c6006d7510",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5c99f052_4e27b0e5",
         "filename": "src/com/android/settings/network/telephony/TelephonyConstants.java",
         "patchSetId": 2
@@ -42,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "c4f4e785_1599fd7a",
+        "filename": "src/com/android/settings/network/telephony/TelephonyConstants.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-04-06T14:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c99f052_4e27b0e5",
+      "range": {
+        "startLine": 212,
+        "startChar": 4,
+        "endLine": 212,
+        "endChar": 43
+      },
+      "revId": "0dec35e0af24f7b7866accc3d52cd8c6006d7510",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0f2c96c4_636d1b21",
         "filename": "src/com/android/settings/network/telephony/TelephonyConstants.java",
         "patchSetId": 2
@@ -56,6 +98,24 @@
       "revId": "0dec35e0af24f7b7866accc3d52cd8c6006d7510",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f7a2de9a_fc594ab6",
+        "filename": "src/com/android/settings/network/telephony/TelephonyConstants.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-04-06T14:42:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f2c96c4_636d1b21",
+      "revId": "0dec35e0af24f7b7866accc3d52cd8c6006d7510",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
