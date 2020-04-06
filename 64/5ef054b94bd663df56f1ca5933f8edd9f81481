@@ -1,0 +1,6 @@
+Code-Review+2: Automerger Merge Worker <android-build-automerger-merge-worker@system.gserviceaccount.com>
+Submitted-by: Automerger Merge Worker <android-build-automerger-merge-worker@system.gserviceaccount.com>
+Submitted-at: Mon, 06 Apr 2020 18:21:24 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1278666
+Project: platform/packages/apps/Settings
+Branch: refs/heads/android10-gsi
