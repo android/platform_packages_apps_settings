@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5febaa06_ed17f7aa",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1356080
+      },
+      "writtenOn": "2020-04-07T01:41:42Z",
+      "side": 1,
+      "message": "Nitpick: We can remove line 412",
+      "revId": "8e177ae1c7a74a45993421e203344f4523a55117",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
