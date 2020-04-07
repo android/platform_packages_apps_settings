@@ -375,6 +375,7 @@
       <item quantity="one">सुरू करा - <xliff:g id="COUNT_1">%1$d</xliff:g> अ‍ॅप स्थान अ‍ॅक्सेस करू शकतो</item>
       <item quantity="other">सुरू करा - <xliff:g id="COUNT_1">%1$d</xliff:g> अ‍ॅप्स स्थान अ‍ॅक्सेस करू शकतात</item>
     </plurals>
+<<<<<<< HEAD   (937131 Merge "[Settings] Refactor TelephonyConstants")
     <string name="location_settings_loading_app_permission_stats" msgid="8523775367089431611">"लोड करत आहे…"</string>
     <string name="account_settings_title" msgid="626177544686329806">"खाती"</string>
     <string name="security_settings_title" msgid="7945465324818485460">"सुरक्षितता"</string>
@@ -437,6 +438,90 @@
     <string name="fingerprint_enable_keyguard_toggle_title" msgid="5078060939636911795">"स्क्रीन लॉक"</string>
     <plurals name="security_settings_fingerprint_preference_summary" formatted="false" msgid="624961700033979880">
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> फिंगरप्रिंट सेटअप</item>
+=======
+    <string name="location_settings_loading_app_permission_stats" msgid="6054103701535557342">"लोड करत आहे…"</string>
+    <string name="account_settings_title" msgid="9138880127246241885">"खाती"</string>
+    <string name="security_settings_title" msgid="6710768415432791970">"सुरक्षितता"</string>
+    <string name="encryption_and_credential_settings_title" msgid="5856216318961482983">"एंक्रिप्शन आणि क्रेडेंशियल"</string>
+    <string name="encryption_and_credential_settings_summary" product="default" msgid="5298195959570992363">"फोन एंक्रिप्ट केला"</string>
+    <string name="decryption_settings_summary" product="default" msgid="1742645256103613503">"फोन एंक्रिप्‍ट केला नाही"</string>
+    <string name="encryption_and_credential_settings_summary" product="tablet" msgid="3776741531205406800">"डिव्हाइस एन्क्रिप्‍ट केले"</string>
+    <string name="decryption_settings_summary" product="tablet" msgid="1864963068216544631">"डिव्‍हाइस एंक्रिप्‍ट केले नाही"</string>
+    <string name="lockscreen_settings_title" msgid="5324197107343656770">"लॉक स्क्रीन डिस्प्ले"</string>
+    <string name="lockscreen_settings_what_to_show_category" msgid="9205490627927741254">"काय दाखवायचे"</string>
+    <string name="security_settings_summary" msgid="1627059516127354233">"माझे स्थान, स्क्रीन अनलॉक, सिम कार्ड लॉक, क्रेडेन्शियल स्टोरेज लॉक सेट करा"</string>
+    <string name="cdma_security_settings_summary" msgid="2455517905101186330">"माझे स्थान, स्क्रीन लॉक, क्रेडेन्शियल स्टोरेज लॉक सेट करा"</string>
+    <string name="security_passwords_title" msgid="4154420930973818581">"गोपनीयता"</string>
+    <string name="disabled_by_administrator_summary" msgid="4181894719300350343">"प्रशासकाने अक्षम केलेले"</string>
+    <string name="security_status_title" msgid="6958004275337618656">"सुरक्षितता स्थिती"</string>
+    <string name="security_dashboard_summary_face" msgid="4198949293847206382">"स्क्रीन लॉक, फेस अनलॉक"</string>
+    <string name="security_dashboard_summary" msgid="8750183806533140464">"स्क्रीन लॉक, फिंगरप्रिंट"</string>
+    <string name="security_dashboard_summary_no_fingerprint" msgid="1044589595710115123">"स्क्रीन लॉक"</string>
+    <string name="security_settings_face_preference_summary" msgid="6675126437396914838">"चेहरा जोडला आहे"</string>
+    <string name="security_settings_face_preference_summary_none" msgid="3758209126322559995">"फेस अनलॉक सेट करा"</string>
+    <string name="security_settings_face_preference_title" msgid="821557938243856757">"फेस अनलॉक"</string>
+    <string name="security_settings_face_profile_preference_title" msgid="4618796080378248740">"ऑफिसमध्ये वापरण्यायोग्य फेस अनलॉक"</string>
+    <string name="security_settings_face_enroll_education_title" msgid="8662585502032112675">"फेस अनलॉक कसे सेट करावे"</string>
+    <string name="security_settings_face_enroll_education_title_accessibility" msgid="4632402390714441918">"फेस अनलॉक सेट करा"</string>
+    <string name="security_settings_face_enroll_education_title_unlock_disabled" msgid="8810954233979716906">"ऑथेंटिकेट करण्यासाठी तुमचा चेहरा वापरा"</string>
+    <string name="security_settings_face_enroll_education_message" msgid="4308030157487176799"></string>
+    <string name="security_settings_face_enroll_education_start" msgid="8830924400907195590">"सुरू करा"</string>
+    <string name="security_settings_face_enroll_introduction_accessibility" msgid="5748221179069430975">"अ‍ॅक्सेसिबिलिटी सेटअप वापरा"</string>
+    <string name="security_settings_face_enroll_introduction_accessibility_expanded" msgid="6763509014732769185"></string>
+    <string name="security_settings_face_enroll_introduction_accessibility_diversity" msgid="2774962371839179206"></string>
+    <string name="security_settings_face_enroll_introduction_accessibility_vision" msgid="7700394302162170363"></string>
+    <string name="security_settings_face_enroll_introduction_cancel" msgid="7551159644361639436">"रद्द करा"</string>
+    <string name="security_settings_face_enroll_introduction_no_thanks" msgid="1820618982738898717">"नाही, नको"</string>
+    <string name="security_settings_face_enroll_introduction_agree" msgid="1822303197642630076">"सहमत आहे"</string>
+    <string name="security_settings_face_enroll_introduction_more" msgid="1970820298889710532">"आणखी"</string>
+    <string name="security_settings_face_enroll_introduction_title" msgid="7061610077237098046">"तुमच्या चेहऱ्यासह अनलॉक करा"</string>
+    <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"ऑथेंटिकेट करण्यासाठी तुमचा चेहरा वापरा"</string>
+    <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"तुमचा फोन अनलॉक करण्यासाठी, खरेदी मान्यता देण्यासाठी किंवा ॲप्समध्ये साइन इन करण्यासाठी तुमचा चेहरा वापरा."</string>
+    <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"फोन अनलॉक करण्यासाठी किंवा खरेदींना मंजूरी देण्यासाठी तुमचा चेहरा वापरा.\n\nटीप: तुम्ही हे डिव्हाइस अनलॉक करण्यासाठी तुमचा चेहरा वापरू शकत नाही. अधिक माहितीसाठी, तुमच्या संस्थेच्या प्रशासकाशी संपर्क साधा."</string>
+    <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"तुमचा फोन अनलॉक करण्यासाठी, खरेदी परवानगी देण्यासाठी किंवा ॲप्सवर साइन इन करण्यासाठी तुमचा चेहरा वापरा"</string>
+    <string name="security_settings_face_enroll_introduction_footer_part_0" msgid="908831787971630413"></string>
+    <string name="security_settings_face_enroll_introduction_footer_part_1" msgid="4438129587730915782"></string>
+    <string name="security_settings_face_enroll_introduction_footer_part_2" msgid="6099785970191751036"></string>
+    <string name="security_settings_face_enroll_introduction_footer_part_3" msgid="8708726599723727710"></string>
+    <string name="security_settings_face_enroll_repeat_title" msgid="4446229670377418717">"तुमचा चेहरा वर्तुळाच्या मध्यभागी ठेवा"</string>
+    <string name="security_settings_face_enroll_enrolling_skip" msgid="5568617401632528567">"वगळा"</string>
+    <string name="face_add_max" msgid="4578405795494514876">"तुम्ही <xliff:g id="COUNT">%d</xliff:g> पर्यंत चेहरे जोडू शकता"</string>
+    <string name="face_intro_error_max" msgid="2474735057709291626">"तुम्ही चेहरे जोडण्याची कमाल संख्या गाठली आहे"</string>
+    <string name="face_intro_error_unknown" msgid="1626057493054989995">"अधिक चेहरे जोडता येणार नाहीत"</string>
+    <string name="security_settings_face_enroll_error_dialog_title" msgid="2460820099922775936">"नोंदणी पूर्ण झाली नाही"</string>
+    <string name="security_settings_face_enroll_dialog_ok" msgid="1674650455786434426">"ओके"</string>
+    <string name="security_settings_face_enroll_error_timeout_dialog_message" msgid="7768349698547951750">"चेहरा नोंदणी वेळ मर्यादा गाठली. पुन्हा प्रयत्न करा."</string>
+    <string name="security_settings_face_enroll_error_generic_dialog_message" msgid="3186810411630091490">"चेहरा नोंदणी करू शकलो नाही."</string>
+    <string name="security_settings_face_enroll_finish_title" msgid="5882322568359775393">"चेहरा नोंदणी पूर्ण झाली."</string>
+    <string name="security_settings_face_enroll_done" msgid="3048687969498187442">"पूर्ण झाले"</string>
+    <string name="security_settings_face_enroll_should_re_enroll_title" msgid="9080635904939148410">"फेस अनलॉकच्या परफॉर्मन्समध्ये सुधारणा करा"</string>
+    <string name="security_settings_face_enroll_should_re_enroll_subtitle" msgid="2318506792574194633">"फेस अनलॉक पुन्हा सेट करा"</string>
+    <string name="security_settings_face_enroll_must_re_enroll_title" msgid="8907917317111783249">"फेस अनलॉक पुन्हा सेट करा"</string>
+    <string name="security_settings_face_enroll_must_re_enroll_subtitle" msgid="3584740139535177961">"सुरक्षितता व परफॉर्मन्समध्ये सुधारणा करा"</string>
+    <string name="security_settings_face_enroll_improve_face_alert_title" msgid="7124713074067550039">"फेस अनलॉक सेट करा"</string>
+    <string name="security_settings_face_enroll_improve_face_alert_body" msgid="950213874209080175">"फेस लॉक पुन्हा सेट करण्यासाठी तुमचा सध्याचा फेस डेटा हटवा.\n\nफेस अनलॉकने वापरलेला फेस डेटा कायमस्वरूपी आणि सुरक्षितरीत्या हटवला जाईल. काढून टाकल्यानंतर, तुमचा फोन अनलॉक करण्यासाठी, अ‍ॅप्समध्ये साइन इन करण्यासाठी आणि पेमेंट निश्चित करण्यासाठी तुम्हाला तुमचा पिन, पॅटर्न किंवा पासवर्ड लागेल."</string>
+    <string name="security_settings_face_settings_use_face_category" msgid="2374998717426341095">"साठी फेस अनलॉक वापरा"</string>
+    <string name="security_settings_face_settings_use_face_unlock_phone" msgid="5209963876503148501">"फोन अनलॉक करत आहे"</string>
+    <string name="security_settings_face_settings_use_face_for_apps" msgid="8813038341122613020">"अ‍ॅप साइन इन आणि पेमेंट"</string>
+    <string name="security_settings_face_settings_require_category" msgid="3906382658164073665">"फेस अनलॉक करण्यासाठी आवश्यक असलेले"</string>
+    <string name="security_settings_face_settings_require_attention" msgid="4395309855914391104">"डोळे उघडे असणे आवश्यक आहे"</string>
+    <string name="security_settings_face_settings_require_attention_details" msgid="2546230511769544074">"फोन अनलॉक करण्यासाठी, तुमचे डोळे उघडे असणे आवश्यक आहे"</string>
+    <string name="security_settings_face_settings_require_confirmation" msgid="6603039421004198334">"नेहमी खात्री करणे आवश्यक आहे"</string>
+    <string name="security_settings_face_settings_require_confirmation_details" msgid="6454776517804994007">"ॲप्समध्ये फेस अनलॉक वापरताना, नेहमी खात्री करणे आवश्यक आहे"</string>
+    <string name="security_settings_face_settings_remove_face_data" msgid="6491161841504747384">"फेस डेटा हटवा"</string>
+    <string name="security_settings_face_settings_enroll" msgid="4656842124181309056">"फेस अनलॉक सेट करा"</string>
+    <string name="security_settings_face_settings_footer" msgid="5545455769328594736">"तुमचे डिव्हाइस अनलॉक करण्यासाठी, अ‍ॅप्समध्ये साइन इन करण्यासाठी आणि पेमेंटची खात्री करण्यासाठी फेस अनलॉक वापरा. \n\n लक्षात ठेवा:\nतुमचा हेतू नसताना देखील फोनकडे पाहिल्यास तो अनलॉक होऊ शकतो.\n\n एखाद्या व्यक्तीने तुमचा फोन तुमच्या चेहऱ्याकडे धरल्यास तुमचा फोन अनलॉक केला जाऊ शकतो\n\nतुमच्यासारखी दिसणारी व्यक्ती तुमचा फोन संभाव्यत: अनलॉक करू शकते, जसे की, तुमच्यासारखे दिसणारे भावंड."</string>
+    <string name="security_settings_face_settings_footer_attention_not_supported" msgid="4460565590744451205">"तुमचे डिव्हाइस अनलॉक करण्यासाठी, अ‍ॅप्समध्ये साइन इन करण्यासाठी आणि पेमेंटची खात्री करण्यासाठी फेस अनलॉक वापरा. \n\n लक्षात ठेवा:\nतुम्हाला फोन अनलॉक करायचा नसताना देखील तुम्ही फोनकडे पाहिल्यामुळे तो अनलॉक होऊ शकतो.\n\nतुमचे डोळे बंद असताना देखील दुसऱ्या कोणीतरी तुमचा फोन तुमच्या चेहऱ्यासमोर धरल्यास, तुमचा फोन अनलॉक केला जाऊ शकतो.\n\nअगदी तुमच्यासारख्या दिसणाऱ्या व्यक्तीकडून उदा. जुळ्या भावंडाकडून तुमचा फोन अनलॉक केला जाऊ शकतो."</string>
+    <string name="security_settings_face_settings_remove_dialog_title" msgid="2596803378375165362">"फेस डेटा हटवायचा?"</string>
+    <string name="security_settings_face_settings_remove_dialog_details" msgid="3458998128212675289">"फेस अनलॉकद्वारे वापरला जाणारा फेस डेटा कायमचा आणि सुरक्षितपणे हटवला जाईल. काढून टाकल्यानंतर, तुमचा फोन अनलॉक करण्यासाठी, अ‍ॅप्समध्ये साइन इन करण्यासाठी आणि पेमेंट निश्चित करण्यासाठी तुम्हाला तुमचा पिन, पॅटर्न किंवा पासवर्ड लागेल."</string>
+    <string name="security_settings_face_settings_context_subtitle" msgid="9197485417007952865">"तुमचा फोन अनलॉक करण्यासाठी फेस अनलॉक वापरा"</string>
+    <string name="security_settings_fingerprint_preference_title" msgid="2484965173528415458">"फिंगरप्रिंट"</string>
+    <string name="fingerprint_manage_category_title" msgid="1249349505688268850">"फिंगरप्रिंट व्यवस्‍थापित करा"</string>
+    <string name="fingerprint_usage_category_title" msgid="8757959085075024856">"फिंगरप्रिंट यासाठी वापरा"</string>
+    <string name="fingerprint_add_title" msgid="1837610443487902050">"फिंगरप्रिंट जोडा"</string>
+    <string name="fingerprint_enable_keyguard_toggle_title" msgid="5451094461919440992">"स्क्रीन लॉक"</string>
+    <plurals name="security_settings_fingerprint_preference_summary" formatted="false" msgid="988602245530967106">
+>>>>>>> BRANCH (360a04 Merge cherrypicks of [10460465, 10460521, 10460352, 10458819)
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> फिंगरप्रिंट सेटअप</item>
     </plurals>
     <string name="security_settings_fingerprint_preference_summary_none" msgid="1507739327565151923"></string>

@@ -375,6 +375,7 @@
       <item quantity="other">ဖွင့်ထားသည် - အက်ပ် <xliff:g id="COUNT_1">%1$d</xliff:g> ခုသည် တည်နေရာကို အသုံးပြုနိုင်သည်</item>
       <item quantity="one">ဖွင့်ထားသည် - အက်ပ် <xliff:g id="COUNT_0">%1$d</xliff:g> ခုသည် တည်နေရာကို အသုံးပြုနိုင်သည်</item>
     </plurals>
+<<<<<<< HEAD   (937131 Merge "[Settings] Refactor TelephonyConstants")
     <string name="location_settings_loading_app_permission_stats" msgid="8523775367089431611">"ဖွင့်နေသည်…"</string>
     <string name="account_settings_title" msgid="626177544686329806">"အကောင့်များ"</string>
     <string name="security_settings_title" msgid="7945465324818485460">"လုံခြုံရေး"</string>
@@ -438,6 +439,92 @@
     <plurals name="security_settings_fingerprint_preference_summary" formatted="false" msgid="624961700033979880">
       <item quantity="other">လက်ဗွေရာ <xliff:g id="COUNT_1">%1$d</xliff:g> ခု ပြင်ဆင်သတ်မှတ်ရန်</item>
       <item quantity="one">လက်ဗွေရာ <xliff:g id="COUNT_0">%1$d</xliff:g> ခု ပြင်ဆင်သတ်မှတ်ရန်</item>
+=======
+    <string name="location_settings_loading_app_permission_stats" msgid="6054103701535557342">"ဖွင့်နေသည်…"</string>
+    <string name="account_settings_title" msgid="9138880127246241885">"အကောင့်များ"</string>
+    <string name="security_settings_title" msgid="6710768415432791970">"လုံခြုံရေး"</string>
+    <string name="encryption_and_credential_settings_title" msgid="5856216318961482983">"အသွင်ဝှက်ခြင်းနှင့် အထောက်အထားများ"</string>
+    <string name="encryption_and_credential_settings_summary" product="default" msgid="5298195959570992363">"ဖုန်းကို အသွင်ဝှက်ထားသည်"</string>
+    <string name="decryption_settings_summary" product="default" msgid="1742645256103613503">"ဖုန်းကို အသွင်ဝှက်မထားပါ"</string>
+    <string name="encryption_and_credential_settings_summary" product="tablet" msgid="3776741531205406800">"စက်ပစ္စည်းကို အသွင်ဝှက်ထားသည်"</string>
+    <string name="decryption_settings_summary" product="tablet" msgid="1864963068216544631">"စက်ပစ္စည်းကို အသွင်ဝှက်မထားပါ"</string>
+    <string name="lockscreen_settings_title" msgid="5324197107343656770">"လော့ခ်ချထားချိန် မျက်နှာပြင်ပြသမှု"</string>
+    <string name="lockscreen_settings_what_to_show_category" msgid="9205490627927741254">"ပြသမည့်အရာ"</string>
+    <string name="security_settings_summary" msgid="1627059516127354233">"ကျွန်ုပ်၏တည်နေရာ စကရင်ကိုသော့ဖွင့်ခြင်း ဆင်းမ်ကဒ်သော့ချခြင်း ယုံကြည်စိတ်ချရသောသိုလှောင်ရာနေရာတို့ကို သတ်မှတ်မည်"</string>
+    <string name="cdma_security_settings_summary" msgid="2455517905101186330">"ကျွန်ုပ်၏တည်နေရာ၊ စကရင်ပြန်ဖွင့်ခြင်း၊ ယုံကြည်စိတ်ချရသောသိုလှောင်ရာနေရာတို့အား သတ်မှတ်မည်"</string>
+    <string name="security_passwords_title" msgid="4154420930973818581">"ကန့်သတ်ရန် ဆက်တင်"</string>
+    <string name="disabled_by_administrator_summary" msgid="4181894719300350343">"စီမံခန့်ခွဲသူက ပိတ်ထားသည်"</string>
+    <string name="security_status_title" msgid="6958004275337618656">"လုံခြုံရေး အခြေအနေ"</string>
+    <string name="security_dashboard_summary_face" msgid="4198949293847206382">"ဖုန်းမျက်နှာပြင် လော့ခ်၊ မျက်နှာမှတ် သော့ဖွင့်ခြင်း"</string>
+    <string name="security_dashboard_summary" msgid="8750183806533140464">"ဖန်သားပြင် လော့ခ်ချခြင်း၊ လက်ဗွေ"</string>
+    <string name="security_dashboard_summary_no_fingerprint" msgid="1044589595710115123">"ဖန်သားပြင် လော့ခ်ချခြင်း"</string>
+    <string name="security_settings_face_preference_summary" msgid="6675126437396914838">"မျက်နှာ ထည့်သွင်းပြီး"</string>
+    <string name="security_settings_face_preference_summary_none" msgid="3758209126322559995">"မျက်နှာမှတ် သော့ဖွင့်ခြင်း ထည့်သွင်းပါ"</string>
+    <string name="security_settings_face_preference_title" msgid="821557938243856757">"မျက်နှာမှတ် သော့ဖွင့်ခြင်း"</string>
+    <string name="security_settings_face_profile_preference_title" msgid="4618796080378248740">"အလုပ်အတွက် မျက်နှာမှတ် သော့ဖွင့်ခြင်း"</string>
+    <string name="security_settings_face_enroll_education_title" msgid="8662585502032112675">"မျက်နှာမှတ် သော့ဖွင့်ခြင်း ထည့်နည်း"</string>
+    <string name="security_settings_face_enroll_education_title_accessibility" msgid="4632402390714441918">"မျက်နှာမှတ် သော့ဖွင့်ခြင်းကို ထည့်သွင်းပါ"</string>
+    <string name="security_settings_face_enroll_education_title_unlock_disabled" msgid="8810954233979716906">"အထောက်အထားစိစစ်ရန် သင့်မျက်နှာကို သုံးပါ"</string>
+    <string name="security_settings_face_enroll_education_message" msgid="4308030157487176799"></string>
+    <string name="security_settings_face_enroll_education_start" msgid="8830924400907195590">"စတင်ရန်"</string>
+    <string name="security_settings_face_enroll_introduction_accessibility" msgid="5748221179069430975">"အများသုံးစွဲနိုင်မှုကို သုံးရန်"</string>
+    <string name="security_settings_face_enroll_introduction_accessibility_expanded" msgid="6763509014732769185"></string>
+    <string name="security_settings_face_enroll_introduction_accessibility_diversity" msgid="2774962371839179206"></string>
+    <string name="security_settings_face_enroll_introduction_accessibility_vision" msgid="7700394302162170363"></string>
+    <string name="security_settings_face_enroll_introduction_cancel" msgid="7551159644361639436">"မလုပ်တော့"</string>
+    <string name="security_settings_face_enroll_introduction_no_thanks" msgid="1820618982738898717">"မလိုတော့ပါ"</string>
+    <string name="security_settings_face_enroll_introduction_agree" msgid="1822303197642630076">"သဘောတူသည်"</string>
+    <string name="security_settings_face_enroll_introduction_more" msgid="1970820298889710532">"နောက်ထပ်"</string>
+    <string name="security_settings_face_enroll_introduction_title" msgid="7061610077237098046">"သင့်မျက်နှာဖြင့် လော့ခ်ဖွင့်ပါ"</string>
+    <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"အထောက်အထားစိစစ်ရန် သင့်မျက်နှာသုံးပါ"</string>
+    <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"သင့်ဖုန်းကိုလော့ခ်ဖွင့်ရန်၊ ဝယ်ယူမှုများကို အတည်ပြုရန် သို့မဟုတ် အက်ပ်များသို့ လက်မှတ်ထိုးဝင်ရန် သင့်မျက်နှာကို အသုံးပြုပါ။"</string>
+    <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"သင့်ဖုန်းကို လော့ခ်ဖွင့်ရန် သို့မဟုတ် ဝယ်ယူမှုများကို ခွင့်ပြုပေးရန် သင့်မျက်နှာကို အသုံးပြုပါ။\n\nမှတ်ချက်- ဤစက်ပစ္စည်းကို လော့ခ်ဖွင့်ရန် သင့်မျက်နှာကို အသုံးပြု၍ မရနိုင်ပါ။ အသေးစိတ်အချက်များအတွက် သင့်အဖွဲ့အစည်း၏ စီမံခန့်ခွဲသူကို ဆက်သွယ်ပါ။"</string>
+    <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"သင့်ဖုန်းကိုလော့ခ်ဖွင့်ရန်၊ ဝယ်ယူမှုများကို အတည်ပြုရန် သို့မဟုတ် အက်ပ်များသို့ လက်မှတ်ထိုးဝင်ရန် သင့်မျက်နှာကို အသုံးပြုပါ"</string>
+    <string name="security_settings_face_enroll_introduction_footer_part_0" msgid="908831787971630413"></string>
+    <string name="security_settings_face_enroll_introduction_footer_part_1" msgid="4438129587730915782"></string>
+    <string name="security_settings_face_enroll_introduction_footer_part_2" msgid="6099785970191751036"></string>
+    <string name="security_settings_face_enroll_introduction_footer_part_3" msgid="8708726599723727710"></string>
+    <string name="security_settings_face_enroll_repeat_title" msgid="4446229670377418717">"သင့်မျက်နှာကို စက်ဝိုင်းအလယ်တွင်ဖြစ်အောင် ချိန်ပါ"</string>
+    <string name="security_settings_face_enroll_enrolling_skip" msgid="5568617401632528567">"ကျော်ရန်"</string>
+    <string name="face_add_max" msgid="4578405795494514876">"မျက်နှာ <xliff:g id="COUNT">%d</xliff:g> ခုအထိ ထည့်နိုင်သည်"</string>
+    <string name="face_intro_error_max" msgid="2474735057709291626">"အများဆုံးထည့်နိုင်သည့် မျက်နှာအရေအတွက် ပြည့်သွားပါပြီ"</string>
+    <string name="face_intro_error_unknown" msgid="1626057493054989995">"မျက်နှာများ ထပ်ထည့်၍မရပါ"</string>
+    <string name="security_settings_face_enroll_error_dialog_title" msgid="2460820099922775936">"စာရင်းသွင်းမှု မပြီးစီးခဲ့ပါ"</string>
+    <string name="security_settings_face_enroll_dialog_ok" msgid="1674650455786434426">"OK"</string>
+    <string name="security_settings_face_enroll_error_timeout_dialog_message" msgid="7768349698547951750">"မျက်နှာစာရင်းသွင်းခြင်း ကန့်သတ်ချိန် ကုန်သွားပါပြီ။ ထပ်စမ်းကြည့်ပါ။"</string>
+    <string name="security_settings_face_enroll_error_generic_dialog_message" msgid="3186810411630091490">"မျက်နှာကို စာရင်းသွင်း၍မရပါ။"</string>
+    <string name="security_settings_face_enroll_finish_title" msgid="5882322568359775393">"အားလုံး သတ်မှတ်ပြီးပါပြီ။ အဆင်သင့်ဖြစ်ပါပြီ။"</string>
+    <string name="security_settings_face_enroll_done" msgid="3048687969498187442">"ပြီးပါပြီ"</string>
+    <string name="security_settings_face_enroll_should_re_enroll_title" msgid="9080635904939148410">"မျက်နှာသော့ဖွင့်ခြင်း စွမ်းဆောင်ရည် တိုးမြှင့်ပါ"</string>
+    <string name="security_settings_face_enroll_should_re_enroll_subtitle" msgid="2318506792574194633">"မျက်နှာသော့ဖွင့်ခြင်းကို ထပ်ထည့်ပါ"</string>
+    <string name="security_settings_face_enroll_must_re_enroll_title" msgid="8907917317111783249">"မျက်နှာမှတ်သော့ဖွင့်ခြင်းကို ထပ်မံစနစ်ထည့်သွင်းပါ"</string>
+    <string name="security_settings_face_enroll_must_re_enroll_subtitle" msgid="3584740139535177961">"လုံခြုံရေး၊ စွမ်းဆောင်ရည် တိုးမြှင့်ပါ"</string>
+    <string name="security_settings_face_enroll_improve_face_alert_title" msgid="7124713074067550039">"မျက်နှာမှတ် သော့ဖွင့်ခြင်းကို စနစ်ထည့်သွင်းခြင်း"</string>
+    <string name="security_settings_face_enroll_improve_face_alert_body" msgid="950213874209080175">"မျက်နှာမှတ်သော့ဖွင့်ခြင်းကို ထပ်ထည့်ရန် လက်ရှိမျက်နှာဒေတာများ ဖျက်ပါ။\n\nမျက်နှာမှတ်သော့ဖွင့်ခြင်းက သုံးသည့် မျက်နှာဒေတာကို အပြီးအပိုင် လုံခြုံစွာ ဖျက်လိုက်ပါမည်။ ဖျက်ပြီးလျှင် ဖုန်းလော့ခ်ဖွင့်ရန် ပင်နံပါတ်၊ ပုံစံ (သို့) စကားဝှက်၊ အက်ပ်သို့ လက်မှတ်ထိုးဝင်ခြင်းနှင့် ငွေပေးချေမှုအတည်ပြုခြင်းတို့ လိုပါမည်။"</string>
+    <string name="security_settings_face_settings_use_face_category" msgid="2374998717426341095">"မျက်နှာလော့ခ်သုံးရန်"</string>
+    <string name="security_settings_face_settings_use_face_unlock_phone" msgid="5209963876503148501">"ဖုန်းကို ဖွင့်ခြင်း"</string>
+    <string name="security_settings_face_settings_use_face_for_apps" msgid="8813038341122613020">"အက်ပ်ဝင်ခြင်း၊ ငွေပေးချေမှု"</string>
+    <string name="security_settings_face_settings_require_category" msgid="3906382658164073665">"မျက်နှာမှတ် သော့ဖွင့်ခြင်းအတွက် လိုအပ်ချက်များ"</string>
+    <string name="security_settings_face_settings_require_attention" msgid="4395309855914391104">"မျက်လုံးများ ဖွင့်ထားရမည်"</string>
+    <string name="security_settings_face_settings_require_attention_details" msgid="2546230511769544074">"ဖုန်းလော့ခ်ဖွင့်ရန် သင့်မျက်လုံးများ ဖွင့်ထားရမည်"</string>
+    <string name="security_settings_face_settings_require_confirmation" msgid="6603039421004198334">"အတည်ပြုချက် အမြဲလိုအပ်သည်"</string>
+    <string name="security_settings_face_settings_require_confirmation_details" msgid="6454776517804994007">"အက်ပ်တွင် မျက်နှာမှတ် သော့ဖွင့်ခြင်းသုံးလျှင် အတည်ပြုရန်အမြဲလိုအပ်သည်"</string>
+    <string name="security_settings_face_settings_remove_face_data" msgid="6491161841504747384">"မျက်နှာဒေတာဖျက်ရန်"</string>
+    <string name="security_settings_face_settings_enroll" msgid="4656842124181309056">"မျက်နှာမှတ်သော့ဖွင့်ခြင်း ထည့်သွင်းရန်"</string>
+    <string name="security_settings_face_settings_footer" msgid="5545455769328594736">"သင့်စက်ကို ဖွင့်ရန်၊ အက်ပ်များသို့ လက်မှတ်ထိုးဝင်ရန်နှင့် ငွေပေးချေမှုများကို အတည်ပြုရန် မျက်နှာမှတ် သော့ဖွင့်ခြင်းကို အသုံးပြုပါ။\n\nသတိပြုရန်-\nမတော်တဆ သင့်ဖုန်းကို ကြည့်မိရုံမျှဖြင့် ဖုန်းပွင့်သွားနိုင်ပါသည်။\n\nတစ်စုံတစ်ယောက်က သင့်မျက်နှာအနီး သင့်ဖုန်းကိုကိုင်၍လည်း ဖွင့်နိုင်သည်။\n\nသင့်အမြွှာကဲ့သို့ သင်နှင့် အလွန်တူသူများသည်လည်း သင့်ဖုန်းကို ဖွင့်နိုင်သည်။"</string>
+    <string name="security_settings_face_settings_footer_attention_not_supported" msgid="4460565590744451205">"သင့်စက်ကို ဖွင့်ရန်၊ အက်ပ်များသို့ လက်မှတ်ထိုးဝင်ရန်နှင့် ငွေပေးချေမှုများကို အတည်ပြုရန် \'မျက်နှာမှတ် သော့ဖွင့်ခြင်း\' ကို အသုံးပြုပါ။\n\nသတိပြုရန်-\nသင့်ဖုန်းကို မတော်တဆကြည့်မိရုံဖြင့် ဖုန်းပွင့်သွားနိုင်သည်။\n\nမျက်လုံးများပိတ်ထားသော်လည်း တစ်စုံတစ်ယောက်က သင်၏မျက်နှာအနီးတွင် သင့်ဖုန်းကို ကိုင်ထားခြင်းဖြင့် လော့ခ်ဖွင့်နိုင်သည်။\n\nတထေရာတည်းတူသော မောင်နှမကဲ့သို့ သင်နှင့်အလွန်တူသူ တစ်ယောက်ယောက်က သင်၏ဖုန်းကို ဖွင့်နိုင်သည်။"</string>
+    <string name="security_settings_face_settings_remove_dialog_title" msgid="2596803378375165362">"မျက်နှာဒေတာ ဖျက်လိုသလား။"</string>
+    <string name="security_settings_face_settings_remove_dialog_details" msgid="3458998128212675289">"မျက်နှာမှတ် သော့ဖွင့်ခြင်းက အသုံးပြုသည့် မျက်နှာဒေတာများကို လုံခြုံစွာ အပြီးအပိုင်ဖျက်လိုက်ပါမည်။ ဖျက်ပြီးသည့်အခါ သင့်ဖုန်းကိုလော့ခ်ဖွင့်ရန် ပင်နံပါတ်၊ ပုံစံ သို့မဟုတ် စကားဝှက်၊ အက်ပ်များသို့ လက်မှတ်ထိုးဝင်ခြင်းနှင့် ငွေပေးချေမှုများ အတည်ပြုခြင်းတို့ လိုအပ်ပါမည်။"</string>
+    <string name="security_settings_face_settings_context_subtitle" msgid="9197485417007952865">"သင့်ဖုန်းကို လော့ခ်ဖွင့်ရန် မျက်နှာမှတ် သော့ဖွင့်ခြင်းကို အသုံးပြုပါ"</string>
+    <string name="security_settings_fingerprint_preference_title" msgid="2484965173528415458">"လက်ဗွေ"</string>
+    <string name="fingerprint_manage_category_title" msgid="1249349505688268850">"လက်ဗွေရာများ စီမံရန်"</string>
+    <string name="fingerprint_usage_category_title" msgid="8757959085075024856">"လက်ဗွေ သုံးရန်"</string>
+    <string name="fingerprint_add_title" msgid="1837610443487902050">"လက်ဗွေထည့်သွင်းမည်"</string>
+    <string name="fingerprint_enable_keyguard_toggle_title" msgid="5451094461919440992">"ဖုန်းမျက်နှာပြင်အား သော့ချရန်"</string>
+    <plurals name="security_settings_fingerprint_preference_summary" formatted="false" msgid="988602245530967106">
+      <item quantity="other">လက်ဗွေ <xliff:g id="COUNT_1">%1$d</xliff:g> ခု သတ်မှတ်ရန်</item>
+      <item quantity="one">လက်ဗွေ <xliff:g id="COUNT_0">%1$d</xliff:g> ခု သတ်မှတ်ရန်</item>
+>>>>>>> BRANCH (360a04 Merge cherrypicks of [10460465, 10460521, 10460352, 10458819)
     </plurals>
     <string name="security_settings_fingerprint_preference_summary_none" msgid="1507739327565151923"></string>
     <string name="security_settings_fingerprint_enroll_introduction_title" msgid="3201556857492526098">"လက်ဗွေရာသုံး၍ ဖွင့်ပါ"</string>

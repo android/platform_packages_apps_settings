@@ -375,6 +375,7 @@
       <item quantity="other">Activada: <xliff:g id="COUNT_1">%1$d</xliff:g> aplicacións poden acceder á localización</item>
       <item quantity="one">Activada: <xliff:g id="COUNT_0">%1$d</xliff:g> aplicación pode acceder á localización</item>
     </plurals>
+<<<<<<< HEAD   (937131 Merge "[Settings] Refactor TelephonyConstants")
     <string name="location_settings_loading_app_permission_stats" msgid="8523775367089431611">"Cargando…"</string>
     <string name="account_settings_title" msgid="626177544686329806">"Contas"</string>
     <string name="security_settings_title" msgid="7945465324818485460">"Seguranza"</string>
@@ -436,6 +437,90 @@
     <string name="fingerprint_add_title" msgid="1926752654454033904">"Engadir impresión dixital"</string>
     <string name="fingerprint_enable_keyguard_toggle_title" msgid="5078060939636911795">"bloqueo de pantalla"</string>
     <plurals name="security_settings_fingerprint_preference_summary" formatted="false" msgid="624961700033979880">
+=======
+    <string name="location_settings_loading_app_permission_stats" msgid="6054103701535557342">"Cargando…"</string>
+    <string name="account_settings_title" msgid="9138880127246241885">"Contas"</string>
+    <string name="security_settings_title" msgid="6710768415432791970">"Seguranza"</string>
+    <string name="encryption_and_credential_settings_title" msgid="5856216318961482983">"Encriptación e credenciais"</string>
+    <string name="encryption_and_credential_settings_summary" product="default" msgid="5298195959570992363">"Teléfono encriptado"</string>
+    <string name="decryption_settings_summary" product="default" msgid="1742645256103613503">"O teléfono non está encriptado"</string>
+    <string name="encryption_and_credential_settings_summary" product="tablet" msgid="3776741531205406800">"O dispositivo está encriptado"</string>
+    <string name="decryption_settings_summary" product="tablet" msgid="1864963068216544631">"O dispositivo non está encriptado"</string>
+    <string name="lockscreen_settings_title" msgid="5324197107343656770">"Pantalla de bloqueo"</string>
+    <string name="lockscreen_settings_what_to_show_category" msgid="9205490627927741254">"Que se debe mostrar"</string>
+    <string name="security_settings_summary" msgid="1627059516127354233">"Define A miña localización, o desbloqueo da pantalla, o bloqueo da tarxeta SIM e o bloqueo do almacenamento de credenciais"</string>
+    <string name="cdma_security_settings_summary" msgid="2455517905101186330">"Define A miña localización, o desbloqueo da pantalla e o bloqueo do almacenamento de credenciais"</string>
+    <string name="security_passwords_title" msgid="4154420930973818581">"Privacidade"</string>
+    <string name="disabled_by_administrator_summary" msgid="4181894719300350343">"Desactivado polo administrador"</string>
+    <string name="security_status_title" msgid="6958004275337618656">"Estado de seguranza"</string>
+    <string name="security_dashboard_summary_face" msgid="4198949293847206382">"Bloqueo de pantalla e Desbloqueo facial"</string>
+    <string name="security_dashboard_summary" msgid="8750183806533140464">"Bloqueo de pantalla, impresión dixital"</string>
+    <string name="security_dashboard_summary_no_fingerprint" msgid="1044589595710115123">"Bloqueo de pantalla"</string>
+    <string name="security_settings_face_preference_summary" msgid="6675126437396914838">"Engadiuse a cara"</string>
+    <string name="security_settings_face_preference_summary_none" msgid="3758209126322559995">"Configura o desbloqueo facial"</string>
+    <string name="security_settings_face_preference_title" msgid="821557938243856757">"Desbloqueo facial"</string>
+    <string name="security_settings_face_profile_preference_title" msgid="4618796080378248740">"Desbloqueo facial para o perfil de traballo"</string>
+    <string name="security_settings_face_enroll_education_title" msgid="8662585502032112675">"Como configurar o desbloqueo facial?"</string>
+    <string name="security_settings_face_enroll_education_title_accessibility" msgid="4632402390714441918">"Configurar a o desbloqueo facial"</string>
+    <string name="security_settings_face_enroll_education_title_unlock_disabled" msgid="8810954233979716906">"Utilizar a autenticación facial"</string>
+    <string name="security_settings_face_enroll_education_message" msgid="4308030157487176799"></string>
+    <string name="security_settings_face_enroll_education_start" msgid="8830924400907195590">"Comezar"</string>
+    <string name="security_settings_face_enroll_introduction_accessibility" msgid="5748221179069430975">"Usar configur. de accesibilidade"</string>
+    <string name="security_settings_face_enroll_introduction_accessibility_expanded" msgid="6763509014732769185"></string>
+    <string name="security_settings_face_enroll_introduction_accessibility_diversity" msgid="2774962371839179206"></string>
+    <string name="security_settings_face_enroll_introduction_accessibility_vision" msgid="7700394302162170363"></string>
+    <string name="security_settings_face_enroll_introduction_cancel" msgid="7551159644361639436">"Cancelar"</string>
+    <string name="security_settings_face_enroll_introduction_no_thanks" msgid="1820618982738898717">"Non, grazas"</string>
+    <string name="security_settings_face_enroll_introduction_agree" msgid="1822303197642630076">"Aceptar"</string>
+    <string name="security_settings_face_enroll_introduction_more" msgid="1970820298889710532">"Máis"</string>
+    <string name="security_settings_face_enroll_introduction_title" msgid="7061610077237098046">"Desbloquear coa túa cara"</string>
+    <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"Utilizar a autenticación facial"</string>
+    <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"Utiliza a túa cara para desbloquear o teléfono, autorizar compras e iniciar sesión en aplicacións."</string>
+    <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"Utiliza a cara para desbloquear o teléfono ou autorizar as compras.\n\nNota: Non podes utilizar a cara para desbloquear este dispositivo. Para obter máis información, ponte en contacto co administrador da túa organización."</string>
+    <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"Utiliza a túa cara para desbloquear o teléfono, autorizar compras e iniciar sesión en aplicacións"</string>
+    <string name="security_settings_face_enroll_introduction_footer_part_0" msgid="908831787971630413"></string>
+    <string name="security_settings_face_enroll_introduction_footer_part_1" msgid="4438129587730915782"></string>
+    <string name="security_settings_face_enroll_introduction_footer_part_2" msgid="6099785970191751036"></string>
+    <string name="security_settings_face_enroll_introduction_footer_part_3" msgid="8708726599723727710"></string>
+    <string name="security_settings_face_enroll_repeat_title" msgid="4446229670377418717">"Centra a cara no círculo"</string>
+    <string name="security_settings_face_enroll_enrolling_skip" msgid="5568617401632528567">"Omitir"</string>
+    <string name="face_add_max" msgid="4578405795494514876">"Podes engadir ata <xliff:g id="COUNT">%d</xliff:g> caras"</string>
+    <string name="face_intro_error_max" msgid="2474735057709291626">"Engadiches o número máximo de caras"</string>
+    <string name="face_intro_error_unknown" msgid="1626057493054989995">"Non se poden engadir máis caras"</string>
+    <string name="security_settings_face_enroll_error_dialog_title" msgid="2460820099922775936">"Non se completou o rexistro"</string>
+    <string name="security_settings_face_enroll_dialog_ok" msgid="1674650455786434426">"Aceptar"</string>
+    <string name="security_settings_face_enroll_error_timeout_dialog_message" msgid="7768349698547951750">"Esgotouse o tempo de espera do rexistro da cara. Téntao de novo."</string>
+    <string name="security_settings_face_enroll_error_generic_dialog_message" msgid="3186810411630091490">"Produciuse un erro ao rexistrar a cara."</string>
+    <string name="security_settings_face_enroll_finish_title" msgid="5882322568359775393">"Todo listo. Saíches moi ben."</string>
+    <string name="security_settings_face_enroll_done" msgid="3048687969498187442">"Feito"</string>
+    <string name="security_settings_face_enroll_should_re_enroll_title" msgid="9080635904939148410">"Mellorar o rendemento do desbloqueo facial"</string>
+    <string name="security_settings_face_enroll_should_re_enroll_subtitle" msgid="2318506792574194633">"Configura de novo o desbloqueo facial"</string>
+    <string name="security_settings_face_enroll_must_re_enroll_title" msgid="8907917317111783249">"Configurar de novo o desbloqueo facial"</string>
+    <string name="security_settings_face_enroll_must_re_enroll_subtitle" msgid="3584740139535177961">"Mellora a seguranza e o rendemento"</string>
+    <string name="security_settings_face_enroll_improve_face_alert_title" msgid="7124713074067550039">"Configurar o desbloqueo facial"</string>
+    <string name="security_settings_face_enroll_improve_face_alert_body" msgid="950213874209080175">"Elimina os datos faciais actuais para volver configurar o desbloqueo facial.\n\nOs datos das caras usados por esta función eliminaranse de modo permanente e seguro. Tras quitalos, deberás usar o teu PIN, padrón ou contrasinal para desbloquear o teléfono, iniciar sesión nas aplicacións e confirmar pagos."</string>
+    <string name="security_settings_face_settings_use_face_category" msgid="2374998717426341095">"Usar desbloqueo facial para"</string>
+    <string name="security_settings_face_settings_use_face_unlock_phone" msgid="5209963876503148501">"Desbloquear o teléfono"</string>
+    <string name="security_settings_face_settings_use_face_for_apps" msgid="8813038341122613020">"Pagos/inicio de sesión en apps"</string>
+    <string name="security_settings_face_settings_require_category" msgid="3906382658164073665">"Requisitos para o desbloqueo facial"</string>
+    <string name="security_settings_face_settings_require_attention" msgid="4395309855914391104">"Os ollos deben estar abertos"</string>
+    <string name="security_settings_face_settings_require_attention_details" msgid="2546230511769544074">"Para desbloquear o teléfono, debes ter os ollos abertos"</string>
+    <string name="security_settings_face_settings_require_confirmation" msgid="6603039421004198334">"Pedir sempre confirmación"</string>
+    <string name="security_settings_face_settings_require_confirmation_details" msgid="6454776517804994007">"Ao utilizar o desbloqueo facial en aplicacións, pedir confirmación"</string>
+    <string name="security_settings_face_settings_remove_face_data" msgid="6491161841504747384">"Eliminar datos faciais"</string>
+    <string name="security_settings_face_settings_enroll" msgid="4656842124181309056">"Configurar desbloqueo facial"</string>
+    <string name="security_settings_face_settings_footer" msgid="5545455769328594736">"Utiliza o desbloqueo facial para desbloquear o teu dispositivo, iniciar sesión en aplicacións e confirmar pagos.\n\nTen en conta o seguinte:\nAo mirar o teléfono, podes desbloquealo sen querer.\n\nOutra persoa pode desbloquealo se che pon o teléfono diante da cara.\n\nTamén pode desbloquealo alguén que se pareza moito a ti, como un xemelgo."</string>
+    <string name="security_settings_face_settings_footer_attention_not_supported" msgid="4460565590744451205">"Utiliza o desbloqueo facial para desbloquear o teu dispositivo, iniciar sesión en aplicacións e confirmar pagos.\n\nTen en conta o seguinte:\nAo mirar o teléfono, podes desbloquealo sen querer.\n\nOutra persoa pode desbloquealo se che pon o teléfono diante da cara, aínda que teñas os ollos pechados.\n\nTamén pode desbloquealo alguén que se pareza moito a ti, como un xemelgo."</string>
+    <string name="security_settings_face_settings_remove_dialog_title" msgid="2596803378375165362">"Queres eliminar os datos faciais?"</string>
+    <string name="security_settings_face_settings_remove_dialog_details" msgid="3458998128212675289">"Os datos das caras utilizados polo desbloqueo facial eliminaranse de modo permanente e seguro. Tras quitalos, deberás utilizar o teu PIN, padrón ou contrasinal para desbloquear o teléfono, iniciar sesión nas aplicacións e confirmar pagos."</string>
+    <string name="security_settings_face_settings_context_subtitle" msgid="9197485417007952865">"Utiliza o desbloqueo facial para desbloquear o teu teléfono"</string>
+    <string name="security_settings_fingerprint_preference_title" msgid="2484965173528415458">"Impresión dixital"</string>
+    <string name="fingerprint_manage_category_title" msgid="1249349505688268850">"Xest. identificación"</string>
+    <string name="fingerprint_usage_category_title" msgid="8757959085075024856">"Usar impresión para"</string>
+    <string name="fingerprint_add_title" msgid="1837610443487902050">"Engadir impresión dixital"</string>
+    <string name="fingerprint_enable_keyguard_toggle_title" msgid="5451094461919440992">"bloqueo de pantalla"</string>
+    <plurals name="security_settings_fingerprint_preference_summary" formatted="false" msgid="988602245530967106">
+>>>>>>> BRANCH (360a04 Merge cherrypicks of [10460465, 10460521, 10460352, 10458819)
       <item quantity="other">Configuráronse <xliff:g id="COUNT_1">%1$d</xliff:g> impresións dixitais</item>
       <item quantity="one">Configurouse <xliff:g id="COUNT_0">%1$d</xliff:g> impresión dixital</item>
     </plurals>

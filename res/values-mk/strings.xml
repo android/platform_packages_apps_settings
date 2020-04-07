@@ -375,6 +375,7 @@
       <item quantity="one">Вклучено - <xliff:g id="COUNT_1">%1$d</xliff:g> апликација може да пристапи до локацијата</item>
       <item quantity="other">Вклучено - <xliff:g id="COUNT_1">%1$d</xliff:g> апликации може да пристапат до локацијата</item>
     </plurals>
+<<<<<<< HEAD   (937131 Merge "[Settings] Refactor TelephonyConstants")
     <string name="location_settings_loading_app_permission_stats" msgid="8523775367089431611">"Се вчитува…"</string>
     <string name="account_settings_title" msgid="626177544686329806">"Сметки"</string>
     <string name="security_settings_title" msgid="7945465324818485460">"Безбедност"</string>
@@ -436,6 +437,90 @@
     <string name="fingerprint_add_title" msgid="1926752654454033904">"Додадете отпечаток"</string>
     <string name="fingerprint_enable_keyguard_toggle_title" msgid="5078060939636911795">"заклучување екран"</string>
     <plurals name="security_settings_fingerprint_preference_summary" formatted="false" msgid="624961700033979880">
+=======
+    <string name="location_settings_loading_app_permission_stats" msgid="6054103701535557342">"Се вчитува…"</string>
+    <string name="account_settings_title" msgid="9138880127246241885">"Сметки"</string>
+    <string name="security_settings_title" msgid="6710768415432791970">"Безбедност"</string>
+    <string name="encryption_and_credential_settings_title" msgid="5856216318961482983">"Шифрирање и акредитиви"</string>
+    <string name="encryption_and_credential_settings_summary" product="default" msgid="5298195959570992363">"Телефонот е шифриран"</string>
+    <string name="decryption_settings_summary" product="default" msgid="1742645256103613503">"Телефонот не е шифриран"</string>
+    <string name="encryption_and_credential_settings_summary" product="tablet" msgid="3776741531205406800">"Уредот е шифриран"</string>
+    <string name="decryption_settings_summary" product="tablet" msgid="1864963068216544631">"Уредот не е шифриран"</string>
+    <string name="lockscreen_settings_title" msgid="5324197107343656770">"Приказ на заклучен екран"</string>
+    <string name="lockscreen_settings_what_to_show_category" msgid="9205490627927741254">"Што да се прикажува"</string>
+    <string name="security_settings_summary" msgid="1627059516127354233">"Постави „Моја локација“, отклучување на екран, заклучување на SIM картичка, заклучување на меморија со акредитиви"</string>
+    <string name="cdma_security_settings_summary" msgid="2455517905101186330">"Постави „Моја локација“, отклучување на екран, заклучување на меморија за акредитиви"</string>
+    <string name="security_passwords_title" msgid="4154420930973818581">"Приватност"</string>
+    <string name="disabled_by_administrator_summary" msgid="4181894719300350343">"Оневозможено од администраторот"</string>
+    <string name="security_status_title" msgid="6958004275337618656">"Безбедносен статус"</string>
+    <string name="security_dashboard_summary_face" msgid="4198949293847206382">"Заклучување екран, отклучување со лик"</string>
+    <string name="security_dashboard_summary" msgid="8750183806533140464">"Заклучување екран, отпечаток"</string>
+    <string name="security_dashboard_summary_no_fingerprint" msgid="1044589595710115123">"Заклучување екран"</string>
+    <string name="security_settings_face_preference_summary" msgid="6675126437396914838">"Додаден е лик"</string>
+    <string name="security_settings_face_preference_summary_none" msgid="3758209126322559995">"Поставете „Отклучување со лик“"</string>
+    <string name="security_settings_face_preference_title" msgid="821557938243856757">"Отклучување со лик"</string>
+    <string name="security_settings_face_profile_preference_title" msgid="4618796080378248740">"Отклучување со лик за работа"</string>
+    <string name="security_settings_face_enroll_education_title" msgid="8662585502032112675">"Како да поставите „Отклучување со лик“"</string>
+    <string name="security_settings_face_enroll_education_title_accessibility" msgid="4632402390714441918">"Поставете „Отклучување со лик“"</string>
+    <string name="security_settings_face_enroll_education_title_unlock_disabled" msgid="8810954233979716906">"Користење на лицето за проверка"</string>
+    <string name="security_settings_face_enroll_education_message" msgid="4308030157487176799"></string>
+    <string name="security_settings_face_enroll_education_start" msgid="8830924400907195590">"Започни"</string>
+    <string name="security_settings_face_enroll_introduction_accessibility" msgid="5748221179069430975">"Поставување на пристапноста"</string>
+    <string name="security_settings_face_enroll_introduction_accessibility_expanded" msgid="6763509014732769185"></string>
+    <string name="security_settings_face_enroll_introduction_accessibility_diversity" msgid="2774962371839179206"></string>
+    <string name="security_settings_face_enroll_introduction_accessibility_vision" msgid="7700394302162170363"></string>
+    <string name="security_settings_face_enroll_introduction_cancel" msgid="7551159644361639436">"Откажи"</string>
+    <string name="security_settings_face_enroll_introduction_no_thanks" msgid="1820618982738898717">"Не, фала"</string>
+    <string name="security_settings_face_enroll_introduction_agree" msgid="1822303197642630076">"Се согласувам"</string>
+    <string name="security_settings_face_enroll_introduction_more" msgid="1970820298889710532">"Повеќе"</string>
+    <string name="security_settings_face_enroll_introduction_title" msgid="7061610077237098046">"Отклучување со лице"</string>
+    <string name="security_settings_face_enroll_introduction_title_unlock_disabled" msgid="5903924766168353113">"Користење на лицето за проверка"</string>
+    <string name="security_settings_face_enroll_introduction_message" msgid="3015751486939484934">"Користете го лицето за отклучување на телефонот, за одобрување купувања или за најавување на апликации."</string>
+    <string name="security_settings_face_enroll_introduction_message_unlock_disabled" msgid="5841976283789481311">"Користете го вашиот лик за да го отклучите телефонот или да ги одобрите купувањата.\n\nЗабелешка: не може да го користите ликот за да го отклучите уредов. За повеќе информации, контактирајте со администраторот на вашата организација."</string>
+    <string name="security_settings_face_enroll_introduction_message_setup" msgid="765965418187421753">"Користете го лицето за отклучување на телефонот, за одобрување купувања или за најавување на апликации"</string>
+    <string name="security_settings_face_enroll_introduction_footer_part_0" msgid="908831787971630413"></string>
+    <string name="security_settings_face_enroll_introduction_footer_part_1" msgid="4438129587730915782"></string>
+    <string name="security_settings_face_enroll_introduction_footer_part_2" msgid="6099785970191751036"></string>
+    <string name="security_settings_face_enroll_introduction_footer_part_3" msgid="8708726599723727710"></string>
+    <string name="security_settings_face_enroll_repeat_title" msgid="4446229670377418717">"Центрирајте го лицето во кругот"</string>
+    <string name="security_settings_face_enroll_enrolling_skip" msgid="5568617401632528567">"Прескокни"</string>
+    <string name="face_add_max" msgid="4578405795494514876">"Може да додадете до <xliff:g id="COUNT">%d</xliff:g> лица"</string>
+    <string name="face_intro_error_max" msgid="2474735057709291626">"Додадовте максимален број лица"</string>
+    <string name="face_intro_error_unknown" msgid="1626057493054989995">"Не може да додадете повеќе лица"</string>
+    <string name="security_settings_face_enroll_error_dialog_title" msgid="2460820099922775936">"Запишувањето не е завршено"</string>
+    <string name="security_settings_face_enroll_dialog_ok" msgid="1674650455786434426">"Во ред"</string>
+    <string name="security_settings_face_enroll_error_timeout_dialog_message" msgid="7768349698547951750">"Се достигна временското ограничување на запишувањето со лице. Обидете се повторно."</string>
+    <string name="security_settings_face_enroll_error_generic_dialog_message" msgid="3186810411630091490">"Не успеа запишувањето со лице."</string>
+    <string name="security_settings_face_enroll_finish_title" msgid="5882322568359775393">"Готово. Изгледа добро."</string>
+    <string name="security_settings_face_enroll_done" msgid="3048687969498187442">"Готово"</string>
+    <string name="security_settings_face_enroll_should_re_enroll_title" msgid="9080635904939148410">"Подобрете ги перформансите на „Отклучување со лик“"</string>
+    <string name="security_settings_face_enroll_should_re_enroll_subtitle" msgid="2318506792574194633">"Поставете „Отклучување со лик“ повторно"</string>
+    <string name="security_settings_face_enroll_must_re_enroll_title" msgid="8907917317111783249">"Поставете „Отклучување со лик“ повторно"</string>
+    <string name="security_settings_face_enroll_must_re_enroll_subtitle" msgid="3584740139535177961">"Подобрете ги сигурноста и перформансите"</string>
+    <string name="security_settings_face_enroll_improve_face_alert_title" msgid="7124713074067550039">"Поставете „Отклучување со лик“"</string>
+    <string name="security_settings_face_enroll_improve_face_alert_body" msgid="950213874209080175">"Избришете ги податоците за ликот за да поставите „Отклучување со лик“ пак.\n\nПодатоците за ликот што се користат ќе се избришат трајно и безбедно. По отстранувањето, ќе ви треба PIN, шема или лозинка за да го отклучувате телефонот, да се најавувате на апликациите и да ги потврдувате плаќањата."</string>
+    <string name="security_settings_face_settings_use_face_category" msgid="2374998717426341095">"Отклучи со лик за"</string>
+    <string name="security_settings_face_settings_use_face_unlock_phone" msgid="5209963876503148501">"Отклучување телефон"</string>
+    <string name="security_settings_face_settings_use_face_for_apps" msgid="8813038341122613020">"Најавување на аплик. и плаќања"</string>
+    <string name="security_settings_face_settings_require_category" msgid="3906382658164073665">"Барања за „Отклучување со лик“"</string>
+    <string name="security_settings_face_settings_require_attention" msgid="4395309855914391104">"Очите треба да бидат отворени"</string>
+    <string name="security_settings_face_settings_require_attention_details" msgid="2546230511769544074">"За да го отклучите телефонот, очите мора да ви бидат отворени"</string>
+    <string name="security_settings_face_settings_require_confirmation" msgid="6603039421004198334">"Секогаш барај потврда"</string>
+    <string name="security_settings_face_settings_require_confirmation_details" msgid="6454776517804994007">"При користење „Отклучување со лик“ во апликации, секогаш барај потврда"</string>
+    <string name="security_settings_face_settings_remove_face_data" msgid="6491161841504747384">"Избриши под. за лик"</string>
+    <string name="security_settings_face_settings_enroll" msgid="4656842124181309056">"Поставете „Отклучување со лик“"</string>
+    <string name="security_settings_face_settings_footer" msgid="5545455769328594736">"Користете „Отклучување со лик“ за отклучување на уредот, најавување на апликации и потврдување плаќања.\n\nИмајте предвид:\nТелефонот може да се отклучи кога гледате во него, дури и ако немате таква намера.\n\nНекој друг може да го отклучи вашиот телефон ако го подигне до вашиот лик.\n\nТелефонот може да го отклучи некој што многу наликува на вас, на пример, ваш идентичен близнак."</string>
+    <string name="security_settings_face_settings_footer_attention_not_supported" msgid="4460565590744451205">"Користете „Отклучување со лик“ за отклучување на уредот, најавување на апликации и потврдување плаќања.\n\nИмајте предвид:\nПоглед кон телефонот може да го отклучи и кога немате таква намера.\n\nНекој друг може да го отклучи вашиот телефон ако го подигне до вашиот лик, дури и ако очите ви се затворени.\n\nНекој што многу наликува на вас може да го отклучи вашиот телефон, на пример, ваш идентичен близнак."</string>
+    <string name="security_settings_face_settings_remove_dialog_title" msgid="2596803378375165362">"Да се избришат податоците за ликот?"</string>
+    <string name="security_settings_face_settings_remove_dialog_details" msgid="3458998128212675289">"Податоците за лицето што се користат за „Отклучување со лик“ ќе се избришат трајно и безбедно. По отстранувањето, ќе ви треба PIN, шема или лозинка за да го отклучувате телефонот, да се најавувате на апликациите и да ги потврдувате плаќањата."</string>
+    <string name="security_settings_face_settings_context_subtitle" msgid="9197485417007952865">"Користете „Отклучување со лик“ за отклучување на телефонот"</string>
+    <string name="security_settings_fingerprint_preference_title" msgid="2484965173528415458">"Отпечаток"</string>
+    <string name="fingerprint_manage_category_title" msgid="1249349505688268850">"Управување отпечатоци"</string>
+    <string name="fingerprint_usage_category_title" msgid="8757959085075024856">"Користи отпечаток за"</string>
+    <string name="fingerprint_add_title" msgid="1837610443487902050">"Додајте отпечаток"</string>
+    <string name="fingerprint_enable_keyguard_toggle_title" msgid="5451094461919440992">"заклучување екран"</string>
+    <plurals name="security_settings_fingerprint_preference_summary" formatted="false" msgid="988602245530967106">
+>>>>>>> BRANCH (360a04 Merge cherrypicks of [10460465, 10460521, 10460352, 10458819)
       <item quantity="one"><xliff:g id="COUNT_1">%1$d</xliff:g> поставен отпечаток</item>
       <item quantity="other"><xliff:g id="COUNT_1">%1$d</xliff:g> поставени отпечатоци</item>
     </plurals>
@@ -3596,6 +3681,7 @@
       <item quantity="one">Промени на аларми само за <xliff:g id="DURATION">%1$d</xliff:g> час до <xliff:g id="FORMATTEDTIME_1">%2$s</xliff:g></item>
       <item quantity="other">Промени на аларми само за <xliff:g id="DURATION">%1$d</xliff:g> часа до <xliff:g id="FORMATTEDTIME_1">%2$s</xliff:g></item>
     </plurals>
+<<<<<<< HEAD   (937131 Merge "[Settings] Refactor TelephonyConstants")
     <string name="zen_mode_summary_alarms_only_by_time" msgid="7465525754879341907">"Промена на аларми само до <xliff:g id="FORMATTEDTIME">%1$s</xliff:g>"</string>
     <string name="zen_mode_summary_always" msgid="6172985102689237703">"Промени секогаш да се прекине"</string>
     <string name="zen_mode_screen_on" msgid="8774571998575673502">"Кога екранот е вклучен"</string>
@@ -3669,6 +3755,81 @@
     <string name="notification_summary_level" msgid="2726571692704140826">"Ниво %d"</string>
     <string name="notification_summary_channel" msgid="5831124672372023524">"<xliff:g id="CHANNEL_NAME">%1$s</xliff:g> • <xliff:g id="GROUP_NAME">%2$s</xliff:g>"</string>
     <plurals name="notifications_categories_off" formatted="false" msgid="5583365573683409754">
+=======
+    <string name="zen_mode_summary_alarms_only_by_time" msgid="8140619669703968810">"Промена на аларми само до <xliff:g id="FORMATTEDTIME">%1$s</xliff:g>"</string>
+    <string name="zen_mode_summary_always" msgid="722093064250082317">"Промени секогаш да се прекине"</string>
+    <string name="zen_mode_screen_on" msgid="7312758100468915319">"Кога екранот е вклучен"</string>
+    <string name="zen_mode_screen_on_summary" msgid="510055058460316698">"Дозволи известувањата стишени од „Не вознемирувај“ да се појават на екранот и прикажи икона во статусната лента"</string>
+    <string name="zen_mode_screen_off" msgid="7069798697669366075">"Кога екранот е исклучен"</string>
+    <string name="zen_mode_screen_off_summary" msgid="4698018253505406152">"Дозволи известувањата стишени од „Не вознемирувај“ да го вклучат екранот, а сијаличката да трепка"</string>
+    <string name="zen_mode_screen_off_summary_no_led" msgid="1958271859408992636">"Дозволи известувањата стишени од „Не вознемирувај“ да го вклучат екранот"</string>
+    <string name="notification_app_settings_button" msgid="4692549882609342128">"Поставки на известувања"</string>
+    <string name="suggestion_button_text" msgid="4370673818678692873">"Во ред"</string>
+    <string name="device_feedback" msgid="5351614458411688608">"Испрати информации за уредот"</string>
+    <string name="restr_pin_enter_admin_pin" msgid="4435410646541671918">"Внесете PIN на админстратор"</string>
+    <string name="switch_on_text" msgid="5664542327776075105">"Вклучено"</string>
+    <string name="switch_off_text" msgid="1315547447393646667">"Исклучено"</string>
+    <string name="screen_pinning_title" msgid="5203530107022449124">"Прикачување екран"</string>
+    <string name="screen_pinning_description" msgid="5181462036494390860">"Кога поставкава е вклучена, може да користите прикачување екран за да се прикажува тековниот екран додека не го откачите.\n\nЗа да користите прикачување екран:\n\n1. Проверете дали прикачувањето екран е вклучено\n\n2. Отворете „Преглед“\n\n3. Допрете ја иконата на апликацијата на врвот од екранот и допрете „Прикачи“"</string>
+    <string name="screen_pinning_unlock_pattern" msgid="1345877794180829153">"Побарај шема за откл. пред откачување"</string>
+    <string name="screen_pinning_unlock_pin" msgid="8716638956097417023">"Побарај PIN пред откачување"</string>
+    <string name="screen_pinning_unlock_password" msgid="4957969621904790573">"Прашај за лозинка пред откачување"</string>
+    <string name="screen_pinning_unlock_none" msgid="2474959642431856316">"Заклучи го уредот при откачување"</string>
+    <string name="opening_paragraph_delete_profile_unknown_company" msgid="2951348192319498135">"Овој работен профил е управуван од:"</string>
+    <string name="managing_admin" msgid="2633920317425356619">"Управувано од <xliff:g id="ADMIN_APP_LABEL">%s</xliff:g>"</string>
+    <string name="experimental_preference" msgid="869354050717870055">"(Експериментално)"</string>
+    <string name="encryption_interstitial_header" msgid="4418014339568737685">"Безбедно стартување"</string>
+    <string name="encryption_continue_button" msgid="3591796237625134622">"Продолжи"</string>
+    <string name="encryption_interstitial_message_pin" msgid="1413575143234269985">"Може дополнително да го заштитите уредот ако го бара PIN-кодот пред да се стартува. Сѐ додека уредот не се стартува, не може да прима повици, пораки или известувања, како и аларми. \n\nОва помага да се заштитат податоците на загубени или украдени уреди. Да се бара PIN за стартување на уредот?"</string>
+    <string name="encryption_interstitial_message_pattern" msgid="726550613252236854">"Може дополнително да го заштитите уредот ако ја бара шемата пред да се стартува. Сѐ додека уредот не се стартува, не може да прима повици, пораки или известувања, како и аларми. \n\nОва помага да се заштитат податоците на загубени или украдени уреди. Да се бара шема за стартување на уредот?"</string>
+    <string name="encryption_interstitial_message_password" msgid="6051054565294909975">"Може дополнително да го заштитите уредот ако ја бара лозинката пред да се стартува. Сѐ додека уредот не се стартува, не може да прима повици, пораки или известувања, како и аларми. \n\nОва помага да се заштитат податоците на загубени или украдени уреди. Да се бара лозинка за стартување на уредот?"</string>
+    <string name="encryption_interstitial_message_pin_for_fingerprint" msgid="7152770518093102916">"Освен со користење на отпечатокот за отклучување на уредот, може да го заштитите уредот дополнително ако бара PIN пред да се стартува. Сѐ додека уредот не се стартува, не може да прима повици, пораки или известувања, како и аларми.\n\nТоа помага да се заштитат податоците на загубени или украдени уреди. Да се бара PIN за стартување на уредот?"</string>
+    <string name="encryption_interstitial_message_pattern_for_fingerprint" msgid="6257856552043740490">"Освен со користење на отпечатокот за отклучување на уредот, може да го заштитите уредот дополнително ако ја бара шемата пред да се стартува. Сѐ додека уредот не се стартува, не може да прима повици, пораки или известувања, како и аларми.\n\nТоа помага да се заштитат податоците на загубени или украдени уреди. Да се бара шема за стартување на уредот?"</string>
+    <string name="encryption_interstitial_message_password_for_fingerprint" msgid="7710804822643612867">"Освен со користење на отпечатокот за отклучување на уредот, може дополнително да го заштитите ако бара лозинка пред да се стартува. Сѐ додека уредот не се стартува, не може да прима повици, пораки или известувања, вклучувајќи и аларми.\n\nТоа помага да се заштитат податоците на загубени или украдени уреди. Да се бара лозинка за стартување на уредот?"</string>
+    <string name="encryption_interstitial_message_pin_for_face" msgid="8577135499926738241">"Покрај користењето на лицето за отклучување на уредот, може дополнително да го заштитите со барање PIN пред да се стартува. Сѐ додека уредот не се стартува, не може да прима повици, пораки или известувања, како и аларми.\n\nТоа помага да се заштитат податоците на загубени или украдени уреди. Да се бара PIN за стартување на уредот?"</string>
+    <string name="encryption_interstitial_message_pattern_for_face" msgid="5851725964283239644">"Покрај користењето на лицето за отклучување на уредот, може дополнително да го заштитите со барање шема пред да се стартува. Сѐ додека уредот не се стартува, не може да прима повици, пораки или известувања, како и аларми.\n\nТоа помага да се заштитат податоците на загубени или украдени уреди. Да се бара шема за стартување на уредот?"</string>
+    <string name="encryption_interstitial_message_password_for_face" msgid="3553329272456428461">"Покрај користењето на лицето за отклучување на уредот, може дополнително да го заштитите со барање лозинка пред да се стартува. Сѐ додека уредот не се стартува, не може да прима повици, пораки или известувања, како и аларми.\n\nТоа помага да се заштитат податоците на загубени или украдени уреди. Да се бара лозинка за стартување на уредот?"</string>
+    <string name="encryption_interstitial_yes" msgid="1948016725089728181">"Да"</string>
+    <string name="encryption_interstitial_no" msgid="3352331535473118487">"Не"</string>
+    <string name="restricted_true_label" msgid="612852292488747564">"Ограничено"</string>
+    <string name="restricted_false_label" msgid="2837053797913490628">"Апликацијата може да користи батерија во заднина"</string>
+    <string name="encrypt_talkback_dialog_require_pin" msgid="8974156384205924887">"Барајте PIN?"</string>
+    <string name="encrypt_talkback_dialog_require_pattern" msgid="1587587568721873184">"Барајте шема?"</string>
+    <string name="encrypt_talkback_dialog_require_password" msgid="2701793623210531836">"Барајте лозинка?"</string>
+    <string name="encrypt_talkback_dialog_message_pin" msgid="4482887117824444481">"Кога ќе го внесете PIN-кодот за да го вклучите уредот, услугите за пристапност како <xliff:g id="SERVICE">%1$s</xliff:g> сè уште нема да бидат достапни."</string>
+    <string name="encrypt_talkback_dialog_message_pattern" msgid="5156321541636018756">"Кога ќе ја внесете шемата за да го вклучите уредот, услугите за пристапност како <xliff:g id="SERVICE">%1$s</xliff:g> сè уште нема да бидат достапни."</string>
+    <string name="encrypt_talkback_dialog_message_password" msgid="1917287751192953034">"Кога ќе ја внесете лозинката за да го вклучите уредот, услугите за пристапност како <xliff:g id="SERVICE">%1$s</xliff:g> сè уште нема да бидат достапни."</string>
+    <string name="direct_boot_unaware_dialog_message" msgid="5766006106305996844">"Забелешка: ако го рестартирате телефонот, а имате поставено заклучување на екранот, апликацијава нема да може да се стартува додека не го отклучите телефонот"</string>
+    <string name="imei_information_title" msgid="8703564992893669514">"Информации за IMEI"</string>
+    <string name="imei_information_summary" msgid="4763358372990258786">"Информации во врска со IMEI"</string>
+    <string name="slot_number" msgid="2663789411468530397">"(Отвор<xliff:g id="SLOT_NUM">%1$d</xliff:g>)"</string>
+    <string name="launch_by_default" msgid="892824422067985734">"Отвори стандардно"</string>
+    <string name="app_launch_domain_links_title" msgid="6702041169676128550">"За отворање линкови"</string>
+    <string name="app_launch_open_domain_urls_title" msgid="4805388403977096285">"Отворај поддржани линкови"</string>
+    <string name="app_launch_open_domain_urls_summary" msgid="3609156836041234957">"Отвори без прашање"</string>
+    <string name="app_launch_supported_domain_urls_title" msgid="5088779668667217369">"Поддржани линкови"</string>
+    <string name="app_launch_other_defaults_title" msgid="3296350563585863885">"Останати стандарди"</string>
+    <string name="storage_summary_format" msgid="5721782272185284276">"<xliff:g id="SIZE">%1$s</xliff:g> употребени во <xliff:g id="STORAGE_TYPE">%2$s</xliff:g>"</string>
+    <string name="storage_type_internal" msgid="8072987826282477558">"Внатрешен капацитет"</string>
+    <string name="storage_type_external" msgid="8258689891893683905">"Надворешна меморија"</string>
+    <string name="data_summary_format" msgid="8802057788950096650">"<xliff:g id="SIZE">%1$s</xliff:g> користени од <xliff:g id="DATE">%2$s</xliff:g>"</string>
+    <string name="storage_used" msgid="2591194906751432725">"Искористена меморија"</string>
+    <string name="change" msgid="273206077375322595">"Промени"</string>
+    <string name="change_storage" msgid="8773820275624113401">"Промени ја меморијата"</string>
+    <string name="notifications_label" msgid="8471624476040164538">"Известувања"</string>
+    <string name="notifications_enabled" msgid="7743168481579361019">"Вклучено"</string>
+    <string name="notifications_enabled_with_info" msgid="1808946629277684308">"<xliff:g id="NOTIFICATIONS_SENT">%1$s</xliff:g>/<xliff:g id="NOTIFICATIONS_CATEGORIES_OFF">%2$s</xliff:g>"</string>
+    <string name="notifications_disabled" msgid="5603160425378437143">"Исклучи"</string>
+    <string name="notifications_partly_blocked" msgid="5738239705473445725">"<xliff:g id="COUNT_0">%1$d</xliff:g> од <xliff:g id="COUNT_1">%2$d</xliff:g> категории се исклучени"</string>
+    <string name="notifications_silenced" msgid="2673798575466545098">"Стишено"</string>
+    <string name="notifications_redacted" msgid="8820993927920208612">"Без чувствителни содржини на заклучен екран"</string>
+    <string name="notifications_hidden" msgid="2415415452913806859">"Не на заклучен екран"</string>
+    <string name="notifications_priority" msgid="9068574646650663837">"„Не вознемирувај“ е отфрлено"</string>
+    <string name="notifications_summary_divider" msgid="6877149909390030983">" / "</string>
+    <string name="notification_summary_level" msgid="4074326972839105652">"Ниво %d"</string>
+    <string name="notification_summary_channel" msgid="8459033623057872803">"<xliff:g id="CHANNEL_NAME">%1$s</xliff:g> • <xliff:g id="GROUP_NAME">%2$s</xliff:g>"</string>
+    <plurals name="notifications_categories_off" formatted="false" msgid="1385401442703692986">
+>>>>>>> BRANCH (360a04 Merge cherrypicks of [10460465, 10460521, 10460352, 10458819)
       <item quantity="one"><xliff:g id="COUNT_1">%d</xliff:g> категорија е исклучена</item>
       <item quantity="other"><xliff:g id="COUNT_1">%d</xliff:g> категории се исклучени</item>
     </plurals>
@@ -3684,6 +3845,7 @@
       <item quantity="one"><xliff:g id="COUNT_1">%d</xliff:g> дополнителна дозвола</item>
       <item quantity="other"><xliff:g id="COUNT_1">%d</xliff:g> дополнителни дозволи</item>
     </plurals>
+<<<<<<< HEAD   (937131 Merge "[Settings] Refactor TelephonyConstants")
     <string name="runtime_permissions_summary_no_permissions_granted" msgid="1679758182657005375">"Не се доделени дозволи"</string>
     <string name="runtime_permissions_summary_no_permissions_requested" msgid="7655100570513818534">"Не се побарани дозволи"</string>
     <string name="filter_all_apps" msgid="1988403195820688644">"Сите апликации"</string>
@@ -3710,6 +3872,34 @@
     <string name="domain_urls_summary_some" msgid="3950089361819428455">"Отворете <xliff:g id="DOMAIN">%s</xliff:g> и други URL-адреси"</string>
     <string name="domain_urls_apps_summary_off" msgid="1833056772600031220">"Ниедна апликација не отвора поддржани линкови"</string>
     <plurals name="domain_urls_apps_summary_on" formatted="false" msgid="240214361240709399">
+=======
+    <string name="runtime_permissions_summary_no_permissions_granted" msgid="7456745929035665029">"Не се доделени дозволи"</string>
+    <string name="runtime_permissions_summary_no_permissions_requested" msgid="7174876170116073356">"Не се побарани дозволи"</string>
+    <string name="filter_all_apps" msgid="6645539744080251371">"Сите апликации"</string>
+    <string name="filter_enabled_apps" msgid="8868356616126759124">"Инсталирани апликации"</string>
+    <string name="filter_instant_apps" msgid="2292108467020380068">"Инстант апликации"</string>
+    <string name="filter_personal_apps" msgid="6381137559116555485">"Лични"</string>
+    <string name="filter_work_apps" msgid="5080158572515936510">"Службени"</string>
+    <string name="filter_notif_all_apps" msgid="2764590815789208306">"Апликации: сите"</string>
+    <string name="filter_notif_blocked_apps" msgid="1065653868850012325">"Исклучени"</string>
+    <string name="filter_notif_urgent_channels" msgid="875381675739324318">"Категории: итна важност"</string>
+    <string name="filter_notif_low_channels" msgid="2163005243095264537">"Категории: мала важност"</string>
+    <string name="filter_notif_blocked_channels" msgid="1131444963543380495">"Категории: исклучени"</string>
+    <string name="filter_notif_dnd_channels" msgid="13445325087914932">"Категории: отфрла „Не вознем.“"</string>
+    <string name="advanced_apps" msgid="7643010673326578815">"Напредни"</string>
+    <string name="configure_apps" msgid="5468359087126598115">"Конфигурирање апликации"</string>
+    <string name="unknown_app" msgid="2027248925719898714">"Непозната апликација"</string>
+    <string name="app_permissions" msgid="8666537659217653626">"Управник со дозволи"</string>
+    <string name="app_permissions_summary" msgid="2709819220672938860">"Апликации што користат <xliff:g id="APPS">%1$s</xliff:g>"</string>
+    <string name="tap_to_wake" msgid="3313433536261440068">"Допрете за будење"</string>
+    <string name="tap_to_wake_summary" msgid="6641039858241611072">"Допрете двапати каде било на екранот за да го разбудите уредот"</string>
+    <string name="domain_urls_title" msgid="7012209752049678876">"За отворање линкови"</string>
+    <string name="domain_urls_summary_none" msgid="1132578967643384733">"Не отворај поддржани линкови"</string>
+    <string name="domain_urls_summary_one" msgid="3312008753802762892">"Отвори <xliff:g id="DOMAIN">%s</xliff:g>"</string>
+    <string name="domain_urls_summary_some" msgid="1197692164421314523">"Отворете <xliff:g id="DOMAIN">%s</xliff:g> и други URL-адреси"</string>
+    <string name="domain_urls_apps_summary_off" msgid="2534980824850890416">"Ниедна апликација не отвора поддржани линкови"</string>
+    <plurals name="domain_urls_apps_summary_on" formatted="false" msgid="7864816862441985323">
+>>>>>>> BRANCH (360a04 Merge cherrypicks of [10460465, 10460521, 10460352, 10458819)
       <item quantity="one"><xliff:g id="COUNT">%d</xliff:g> апликација отвора поддржани линкови</item>
       <item quantity="other"><xliff:g id="COUNT">%d</xliff:g> апликации отвораат поддржани линкови</item>
     </plurals>
