@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec52ef31_60f4e8fd",
+        "filename": "src/com/android/settings/network/telephony/TelephonyConstants.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1432429
+      },
+      "writtenOn": "2020-04-07T03:38:26Z",
+      "side": 1,
+      "message": "May it also remove this line to align above style?",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 0
+      },
+      "revId": "9403431026f3757db2ca83fc16e661259f0cde0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
