@@ -20,7 +20,6 @@ import static androidx.lifecycle.Lifecycle.Event.ON_START;
 import static androidx.lifecycle.Lifecycle.Event.ON_STOP;
 
 import android.content.Context;
-import android.database.ContentObserver;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.PersistableBundle;
@@ -42,8 +41,9 @@ import androidx.preference.PreferenceScreen;
 
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
-import com.android.settings.network.telephony.TelephonyConstants.TelephonyManagerConstants;
 import com.android.settings.R;
+import com.android.settings.network.PreferredNetworkModeContentObserver;
+import com.android.settings.network.telephony.TelephonyConstants.TelephonyManagerConstants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,26 +57,28 @@ public class EnabledNetworkModePreferenceController extends
 
     private static final String LOG_TAG = "EnabledNetworkMode";
     private CarrierConfigManager mCarrierConfigManager;
-    private ContentObserver mPreferredNetworkModeObserver;
+    private PreferredNetworkModeContentObserver mPreferredNetworkModeObserver;
+    private Preference mPreference;
+    private PreferenceScreen mPreferenceScreen;
     private TelephonyManager mTelephonyManager;
     private boolean mIsGlobalCdma;
     @VisibleForTesting
     boolean mShow4GForLTE;
-    private Preference mPreference;
     @VisibleForTesting
     boolean mDisplay5gList = false;
 
     public EnabledNetworkModePreferenceController(Context context, String key) {
         super(context, key);
         mCarrierConfigManager = context.getSystemService(CarrierConfigManager.class);
-        mPreferredNetworkModeObserver = new ContentObserver(new Handler(Looper.getMainLooper())) {
-            @Override
-            public void onChange(boolean selfChange) {
-                if (mPreference != null) {
-                    updateState(mPreference);
-                }
-            }
-        };
+        mPreferredNetworkModeObserver = new PreferredNetworkModeContentObserver(
+            new Handler(Looper.getMainLooper()));
+        mPreferredNetworkModeObserver.setPreferredNetworkModeChangedListener(
+            () -> updatePreference());
+    }
+
+    private void updatePreference() {
+        displayPreference(mPreferenceScreen);
+        updateState(mPreference);
     }
 
     @Override
@@ -105,19 +107,18 @@ public class EnabledNetworkModePreferenceController extends
 
     @OnLifecycleEvent(ON_START)
     public void onStart() {
-        mContext.getContentResolver().registerContentObserver(
-                Settings.Global.getUriFor(Settings.Global.PREFERRED_NETWORK_MODE + mSubId), true,
-                mPreferredNetworkModeObserver);
+        mPreferredNetworkModeObserver.register(mContext, mSubId);
     }
 
     @OnLifecycleEvent(ON_STOP)
     public void onStop() {
-        mContext.getContentResolver().unregisterContentObserver(mPreferredNetworkModeObserver);
+        mPreferredNetworkModeObserver.unregister(mContext);
     }
 
     @Override
     public void displayPreference(PreferenceScreen screen) {
         super.displayPreference(screen);
+        mPreferenceScreen = screen;
         mPreference = screen.findPreference(getPreferenceKey());
     }
 
