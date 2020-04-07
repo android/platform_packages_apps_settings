@@ -22,6 +22,30 @@
       "revId": "9403431026f3757db2ca83fc16e661259f0cde0d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ff35201_87704477",
+        "filename": "src/com/android/settings/network/telephony/TelephonyConstants.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-04-07T04:19:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec52ef31_60f4e8fd",
+      "range": {
+        "startLine": 253,
+        "startChar": 0,
+        "endLine": 253,
+        "endChar": 0
+      },
+      "revId": "9403431026f3757db2ca83fc16e661259f0cde0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
