@@ -37,12 +37,14 @@ import android.widget.CompoundButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.AlertDialog;
 
 import com.android.internal.net.VpnProfile;
 import com.android.settings.R;
 
 import java.net.InetAddress;
+import java.util.Arrays;
 
 /**
  * Dialog showing information about a VPN configuration. The dialog
@@ -54,7 +56,6 @@ import java.net.InetAddress;
 class ConfigDialog extends AlertDialog implements TextWatcher,
         View.OnClickListener, AdapterView.OnItemSelectedListener,
         CompoundButton.OnCheckedChangeListener {
-    private final KeyStore mKeyStore = KeyStore.getInstance();
     private final DialogInterface.OnClickListener mListener;
     private final VpnProfile mProfile;
 
@@ -85,6 +86,12 @@ class ConfigDialog extends AlertDialog implements TextWatcher,
     private CheckBox mShowOptions;
     private CheckBox mAlwaysOnVpn;
     private TextView mAlwaysOnInvalidReason;
+
+    private static final String UNDESIRED_CERTIFICATE_WIFICONFIGSTORE = "WifiConfigStore";
+    @VisibleForTesting
+    static final String[] UNDESIRED_CERTIFICATES = {
+        UNDESIRED_CERTIFICATE_WIFICONFIGSTORE
+    };
 
     ConfigDialog(Context context, DialogInterface.OnClickListener listener,
             VpnProfile profile, boolean editing, boolean exists) {
@@ -486,14 +493,30 @@ class ConfigDialog extends AlertDialog implements TextWatcher,
         return true;
     }
 
-    private void loadCertificates(Spinner spinner, String prefix, int firstId, String selected) {
+    @VisibleForTesting
+    KeyStore getKeyStore() {
+        return KeyStore.getInstance();
+    }
+
+    @VisibleForTesting
+    void loadCertificates(Spinner spinner, String prefix, int firstId, String selected) {
         Context context = getContext();
         String first = (firstId == 0) ? "" : context.getString(firstId);
-        String[] certificates = mKeyStore.list(prefix);
+        String[] certificates = getKeyStore().list(prefix);
 
         if (certificates == null || certificates.length == 0) {
             certificates = new String[] {first};
         } else {
+            certificates = Arrays.stream(certificates)
+                    .filter(certificate -> {
+                        for (String undesired : UNDESIRED_CERTIFICATES) {
+                            if (certificate.startsWith(undesired)) {
+                                return false;
+                            }
+                        }
+                        return true;
+                    }).toArray(size -> new String[size]);
+
             String[] array = new String[certificates.length + 1];
             array[0] = first;
             System.arraycopy(certificates, 0, array, 1, certificates.length);
