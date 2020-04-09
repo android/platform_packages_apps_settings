@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9176911_93dc5db4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1615850
+      },
+      "writtenOn": "2020-04-09T01:32:08Z",
+      "side": 1,
+      "message": "Refactor of Wifi Calling to avoid accessing hidden APIs. \nThis includes the following cherry-picks on the corresponding files:",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 0
+      },
+      "revId": "f1f8a3a38b68190a6952feeb14d85a2b1e90fca2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
