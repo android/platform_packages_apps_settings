@@ -150,8 +150,8 @@ public class VideoCallingPreferenceController extends TelephonyTogglePreferenceC
 
     private class PhoneCallStateListener extends PhoneStateListener {
 
-        public PhoneCallStateListener(Looper looper) {
-            super(looper);
+        PhoneCallStateListener() {
+            super(Looper.getMainLooper());
         }
 
         @Override
