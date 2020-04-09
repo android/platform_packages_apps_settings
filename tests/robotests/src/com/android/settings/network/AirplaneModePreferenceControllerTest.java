@@ -101,8 +101,8 @@ public class AirplaneModePreferenceControllerTest {
         mController.displayPreference(mScreen);
 
         // This should not crash
-        mController.onResume();
-        mController.onPause();
+        mController.onStart();
+        mController.onStop();
     }
 
     @Test
@@ -114,8 +114,8 @@ public class AirplaneModePreferenceControllerTest {
         mController.displayPreference(mScreen);
 
         // This should not crash
-        mController.onResume();
-        mController.onPause();
+        mController.onStart();
+        mController.onStop();
     }
 
     @Test
@@ -166,7 +166,7 @@ public class AirplaneModePreferenceControllerTest {
         Settings.Global.putInt(mResolver, Settings.Global.AIRPLANE_MODE_ON, ON);
 
         mController.displayPreference(mScreen);
-        mController.onResume();
+        mController.onStart();
 
         assertThat(mController.isChecked()).isTrue();
 
@@ -180,7 +180,7 @@ public class AirplaneModePreferenceControllerTest {
         Settings.Global.putInt(mResolver, Settings.Global.AIRPLANE_MODE_ON, OFF);
 
         mController.displayPreference(mScreen);
-        mController.onResume();
+        mController.onStop();
 
         assertThat(mPreference.isChecked()).isFalse();
 
