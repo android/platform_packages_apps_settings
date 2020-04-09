@@ -7773,6 +7773,9 @@
     <!-- Sound: Other sounds: Title for the option enabling touch sounds for dial pad tones. [CHAR LIMIT=30] -->
     <string name="dial_pad_tones_title">Dial pad tones</string>
 
+    <!-- Sound: Other sounds: Title for the option enabling tones after call connected. [CHAR LIMIT=30] -->
+    <string name="call_connected_tones_title">Call connected tones</string>
+
     <!-- Sound: Other sounds: Title for the option enabling touch sounds for screen locking sounds. [CHAR LIMIT=30] -->
     <string name="screen_locking_sounds_title">Screen locking sound</string>
 
