@@ -16,7 +16,8 @@
 
 package com.android.settings.gestures;
 
-import static android.provider.Settings.Secure.CAMERA_LONG_PRESS_GESTURE_DISABLED;
+import static android.provider.Settings.Secure.CAMERA_LIFT_TRIGGER_ENABLED;
+import static android.provider.Settings.Secure.CAMERA_LIFT_TRIGGER_ENABLED_DEFAULT;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -25,29 +26,29 @@ import android.text.TextUtils;
 
 import androidx.annotation.VisibleForTesting;
 
-public class CameraLongPressPreferenceController extends GesturePreferenceController {
+public class CameraLiftTriggerPreferenceController extends GesturePreferenceController {
 
     @VisibleForTesting
-    static final int ON = 0;
+    static final int ON = 1;
     @VisibleForTesting
-    static final int OFF = 1;
+    static final int OFF = 0;
 
-    private static final String PREF_KEY_VIDEO = "gesture_camera_button_video";
+    private static final String PREF_KEY_VIDEO = "gesture_camera_lift_trigger_video";
 
-    private final String SECURE_KEY = CAMERA_LONG_PRESS_GESTURE_DISABLED;
+    private final String SECURE_KEY = CAMERA_LIFT_TRIGGER_ENABLED;
 
-    public CameraLongPressPreferenceController(Context context, String key) {
+    public CameraLiftTriggerPreferenceController(Context context, String key) {
         super(context, key);
     }
 
     public static boolean isSuggestionComplete(Context context, SharedPreferences prefs) {
         return !isGestureAvailable(context)
-                || prefs.getBoolean(CameraLongPressSettings.PREF_KEY_SUGGESTION_COMPLETE, false);
+                || prefs.getBoolean(CameraLiftTriggerSettings.PREF_KEY_SUGGESTION_COMPLETE, false);
     }
 
     private static boolean isGestureAvailable(Context context) {
         return context.getResources()
-                .getBoolean(com.android.internal.R.bool.config_cameraButtonLaunchEnabled);
+                .getInteger(com.android.internal.R.integer.config_cameraLiftTriggerSensorType) != -1;
     }
 
     @Override
@@ -57,7 +58,7 @@ public class CameraLongPressPreferenceController extends GesturePreferenceContro
 
     @Override
     public boolean isSliceable() {
-        return TextUtils.equals(getPreferenceKey(), "gesture_camera_long_press");
+        return TextUtils.equals(getPreferenceKey(), "gesture_camera_lift_trigger");
     }
 
     @Override
@@ -67,9 +68,9 @@ public class CameraLongPressPreferenceController extends GesturePreferenceContro
 
     @Override
     public boolean isChecked() {
-        final int cameraDisabled = Settings.Secure.getInt(mContext.getContentResolver(),
-                SECURE_KEY, ON);
-        return cameraDisabled == ON;
+        final int cameraEnabled = Settings.Secure.getInt(mContext.getContentResolver(),
+                SECURE_KEY, CAMERA_LIFT_TRIGGER_ENABLED_DEFAULT);
+        return cameraEnabled == ON;
     }
 
     @Override
@@ -78,4 +79,5 @@ public class CameraLongPressPreferenceController extends GesturePreferenceContro
                 isChecked ? ON : OFF);
     }
 }
+
 

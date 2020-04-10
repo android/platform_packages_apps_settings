@@ -9379,6 +9379,12 @@
     <!-- Description of setting that controls gesture to open camera by long-pressing the camera button [CHAR LIMIT=NONE] -->
     <string name="camera_button_long_press_gesture_desc">Quickly open camera from anywhere without unlocking your screen</string>
 
+    <!-- Title of setting that controls gesture to open camera by lifting the device [CHAR LIMIT=40] -->
+    <string name="camera_lift_trigger_gesture_title">Lift device for camera</string>
+
+    <!-- Description of setting that controls gesture to open camera by lifting the device [CHAR LIMIT=NONE] -->
+    <string name="camera_lift_trigger_gesture_desc">Quickly open camera from anywhere without unlocking your screen</string>
+
     <!-- Title of setting that controls screen zoom (e.g. how large interface elements appear). [CHAR LIMIT=40] -->
     <string name="screen_zoom_title">Display size</string>
     <!-- Short summary for Magnification gesture. Lets the user know that this makes items on screen larger or smaller. Appears in the accessibility portion of Setup Wizard. [CHAR LIMIT=NONE] -->
@@ -10128,7 +10134,16 @@
     <string name="camera_button_long_press_for_camera_summary">To quickly open camera, hold down the camera button.</string>
 
     <!-- Title for settings suggestion for long-press camera button for camera [CHAR LIMIT=60] -->
-    <string name="camera_button_long_press_for__camera_suggestion_title">Open camera quickly with camera button</string>
+    <string name="camera_button_long_press_for_camera_suggestion_title">Open camera quickly with camera button</string>
+
+    <!-- Title text for lift device for launching camera [CHAR LIMIT=60]-->
+    <string name="lift_trigger_for_camera_title">Lift device as if to take a picture</string>
+
+    <!-- Summary text for lift device for launching camera [CHAR LIMIT=160]-->
+    <string name="lift_trigger_for_camera_summary">To quickly open camera, lift the device as if to take a picture.</string>
+
+    <!-- Title for settings suggestion for lift device for camera [CHAR LIMIT=60] -->
+    <string name="lift_trigger_for_camera_suggestion_title">Open camera quickly by lifting device</string>
 
     <!-- Title text for double twist for camera mode [CHAR LIMIT=60]-->
     <string name="double_twist_for_camera_mode_title">Flip camera</string>
