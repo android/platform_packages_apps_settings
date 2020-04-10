@@ -32,12 +32,12 @@ import java.util.Arrays;
 import java.util.List;
 
 @SearchIndexable
-public class CameraLongPressSettings extends DashboardFragment {
+public class CameraLiftTriggerSettings extends DashboardFragment {
 
-    private static final String TAG = "CameraLongPress";
+    private static final String TAG = "CameraLiftTrigger";
 
     public static final String PREF_KEY_SUGGESTION_COMPLETE =
-            "pref_long_press_camera_suggestion_complete";
+            "pref_camera_lift_trigger_suggestion_complete";
 
     @Override
     public void onAttach(Context context) {
@@ -50,7 +50,7 @@ public class CameraLongPressSettings extends DashboardFragment {
 
     @Override
     public int getMetricsCategory() {
-        return SettingsEnums.SETTINGS_GESTURE_LONG_PRESS_CAMERA;
+        return SettingsEnums.SETTINGS_GESTURE_CAMERA_LIFT_TRIGGER;
     }
 
     @Override
@@ -60,7 +60,7 @@ public class CameraLongPressSettings extends DashboardFragment {
 
     @Override
     protected int getPreferenceScreenResId() {
-        return R.xml.camera_button_long_press_settings;
+        return R.xml.camera_lift_trigger_settings;
     }
 
     public static final SearchIndexProvider SEARCH_INDEX_DATA_PROVIDER =
@@ -69,8 +69,9 @@ public class CameraLongPressSettings extends DashboardFragment {
                 public List<SearchIndexableResource> getXmlResourcesToIndex(
                         Context context, boolean enabled) {
                     final SearchIndexableResource sir = new SearchIndexableResource(context);
-                    sir.xmlResId = R.xml.camera_button_long_press_settings;
+                    sir.xmlResId = R.xml.camera_lift_trigger_settings;
                     return Arrays.asList(sir);
                 }
             };
 }
+
