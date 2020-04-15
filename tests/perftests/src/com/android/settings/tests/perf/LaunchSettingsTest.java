@@ -26,6 +26,7 @@ import android.support.test.uiautomator.By;
 import android.support.test.uiautomator.UiDevice;
 import android.support.test.uiautomator.UiSelector;
 import android.support.test.uiautomator.Until;
+import android.view.KeyEvent;
 
 import androidx.test.InstrumentationRegistry;
 import androidx.test.runner.AndroidJUnit4;
@@ -44,33 +45,23 @@ import java.util.regex.Pattern;
 
 @RunWith(AndroidJUnit4.class)
 public class LaunchSettingsTest {
-    private static class Page {
-        String action;
-        String displayName;
-        String title;
-
-        Page(String action, String displayName, String title) {
-            this.action = action;
-            this.displayName = displayName;
-            this.title = title;
-        }
-    }
 
     private static final int TIME_OUT = 5000;
     private static final int TEST_TIME = 10;
     private static final Pattern PATTERN = Pattern.compile("TotalTime:\\s[0-9]*");
-    private static final Page[] PAGES;
-
-    static {
-        PAGES = new Page[]{
-                new Page("android.settings.SETTINGS", "Search settings", "Settings"),
-                new Page("android.settings.WIFI_SETTINGS", "Use Wi‑Fi", "Wi-Fi"),
-                new Page("android.settings.BLUETOOTH_SETTINGS", "Connected devices", "BlueTooth"),
-                new Page("android.settings.APPLICATION_SETTINGS", "App info", "Application"),
-                new Page("android.intent.action.POWER_USAGE_SUMMARY", "Battery", "Battery")
-        };
-    }
-
+    private static final String[] ACTIVITIES =
+            {
+                    "android.settings.SETTINGS",
+                    "android.settings.WIFI_SETTINGS",
+                    "android.settings.BLUETOOTH_SETTINGS",
+                    "android.settings.APPLICATION_SETTINGS",
+                    "android.intent.action.POWER_USAGE_SUMMARY",
+                    "android.settings.INTERNAL_STORAGE_SETTINGS"
+            };
+    private static final String[] PAGES =
+            {"Settings", "Wi-Fi", "BlueTooth", "Application", "Battery", "Storage"};
+    private static final String[] TEXTS =
+            {"Search settings", "Use Wi‑Fi", "Connected devices", "App info", "Battery", "Storage"};
     private Bundle mBundle;
     private UiDevice mDevice;
     private Instrumentation mInstrumentation;
@@ -85,8 +76,8 @@ public class LaunchSettingsTest {
         mDevice.pressHome();
         mDevice.waitForIdle(TIME_OUT);
 
-        for (Page page : PAGES) {
-            mResult.put(page.title, new ArrayList<Integer>());
+        for (String string : PAGES) {
+            mResult.put(string, new ArrayList<Integer>());
         }
     }
 
@@ -99,25 +90,25 @@ public class LaunchSettingsTest {
     @Test
     public void settingsPerformanceTest() throws Exception {
         for (int i = 0; i < TEST_TIME; i++) {
-            for (Page page : PAGES) {
-                executePreformanceTest(page.action, page.displayName, page.title);
+            for (int j = 0; j < ACTIVITIES.length; j++) {
+                executePreformanceTest(ACTIVITIES[j], TEXTS[j], j);
             }
         }
+
     }
 
-    private void executePreformanceTest(String action, String displayName, String title)
-            throws Exception {
-        final String mString = mDevice.executeShellCommand("am start -W -a" + action);
-        mDevice.wait(Until.findObject(By.text(displayName)), TIME_OUT);
-        handleLaunchResult(title, mString);
+    private void executePreformanceTest(String activity, String text, int page) throws Exception {
+        final String mString = mDevice.executeShellCommand("am start -W -a" + activity);
+        mDevice.wait(Until.findObject(By.text(text)), TIME_OUT);
+        handleLaunchResult(page, mString);
         closeApp();
         mDevice.waitForIdle(TIME_OUT);
     }
 
-    private void handleLaunchResult(String title, String s) {
+    private void handleLaunchResult(int page, String s) {
         Matcher mMatcher = PATTERN.matcher(s);
         if (mMatcher.find()) {
-            mResult.get(title).add(Integer.valueOf(mMatcher.group().split("\\s")[1]));
+            mResult.get(PAGES[page]).add(Integer.valueOf(mMatcher.group().split("\\s")[1]));
         } else {
             fail("Some pages can't be found");
         }
