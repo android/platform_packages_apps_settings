@@ -34,7 +34,8 @@ import android.view.MenuItem;
 
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.settings.R;
-import com.android.settings.core.FeatureFlags;
+
+import com.android.settings.core.BasePreferenceController;
 import com.android.settings.dashboard.RestrictedDashboardFragment;
 import com.android.settings.datausage.BillingCyclePreferenceController;
 import com.android.settings.datausage.DataUsageSummaryPreferenceController;
@@ -48,10 +49,13 @@ import com.android.settings.search.Indexable;
 import com.android.settings.widget.PreferenceCategoryController;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.search.SearchIndexable;
+import com.android.settingslib.utils.ThreadUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
 
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
@@ -185,16 +189,104 @@ public class MobileNetworkSettings extends RestrictedDashboardFragment {
     @Override
     public void onCreate(Bundle icicle) {
         Log.i(LOG_TAG, "onCreate:+");
+
+        final Collection<List<AbstractPreferenceController>> controllerLists =
+                getPreferenceControllers();
+        final Future<Boolean> result = ThreadUtils.postOnBackgroundThread(() ->
+                setupAvailabilityStatus(controllerLists)
+        );
+
         super.onCreate(icicle);
         final Context context = getContext();
-
         mUserManager = (UserManager) context.getSystemService(Context.USER_SERVICE);
         mTelephonyManager = context.getSystemService(TelephonyManager.class)
                 .createForSubscriptionId(mSubId);
 
+        //check the background thread is finished then unset the status of availability.
+        try {
+            result.get();
+        } catch (ExecutionException | InterruptedException exception) {
+            Log.e(LOG_TAG, "onCreate, setup availability status failed!", exception);
+        }
+        unsetAvailabilityStatus(controllerLists);
+
         onRestoreInstance(icicle);
     }
 
+    private Boolean setupAvailabilityStatus(
+            Collection<List<AbstractPreferenceController>> controllerLists) {
+        try {
+            controllerLists.stream().flatMap(Collection::stream)
+                    .filter(controller -> controller instanceof TelephonyAvailabilityHandler)
+                    .map(TelephonyAvailabilityHandler.class::cast)
+                    .forEach(controller -> {
+                        int status = ((BasePreferenceController) controller)
+                                .getAvailabilityStatus();
+                        controller.unsetAvailabilityStatus(true);
+                        controller.setAvailabilityStatus(status);
+                    });
+            return true;
+        } catch (Exception exception) {
+            Log.e(LOG_TAG, "Setup availability status failed!", exception);
+            return false;
+        }
+    }
+
+    private void unsetAvailabilityStatus(
+            Collection<List<AbstractPreferenceController>> controllerLists) {
+        controllerLists.stream().flatMap(Collection::stream)
+                .filter(controller -> controller instanceof TelephonyAvailabilityHandler)
+                .map(TelephonyAvailabilityHandler.class::cast)
+                .forEach(controller -> {
+                    controller.unsetAvailabilityStatus(false);
+                });
+    }
+
+    @Override
+    public void onExpandButtonClick() {
+        final PreferenceScreen screen = getPreferenceScreen();
+        mHiddenControllerList.stream()
+                .filter(controller -> controller.isAvailable())
+                .forEach(controller -> {
+                    final String key = controller.getPreferenceKey();
+                    final Preference preference = screen.findPreference(key);
+                    controller.updateState(preference);
+                });
+        super.onExpandButtonClick();
+    }
+
+    /*
+     * Replace design within {@link DashboardFragment#updatePreferenceStates()}
+     */
+    @Override
+    protected void updatePreferenceStates() {
+        mHiddenControllerList = new ArrayList<AbstractPreferenceController>();
+
+        final PreferenceScreen screen = getPreferenceScreen();
+        final Collection<List<AbstractPreferenceController>> controllerLists =
+                getPreferenceControllers();
+        controllerLists.stream().flatMap(Collection::stream)
+                .forEach(controller -> {
+                    final String key = controller.getPreferenceKey();
+                    if (TextUtils.isEmpty(key)) {
+                        return;
+                    }
+                    final Preference preference = screen.findPreference(key);
+                    if (preference == null) {
+                        return;
+                    }
+                    if (!isPreferenceExpanded(preference)) {
+                        mHiddenControllerList.add(controller);
+                        return;
+                    }
+                    if (!controller.isAvailable()) {
+                        return;
+                    }
+                    controller.updateState(preference);
+                });
+    }
+
+>>>>>>> 84587b1aa3... Improve the performance of displaying preference.
     @VisibleForTesting
     void onRestoreInstance(Bundle icicle) {
         if (icicle != null) {
