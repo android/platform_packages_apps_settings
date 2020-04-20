@@ -1,0 +1,8 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+2: Brad Ebinger <breadley@google.com>
+Presubmit-Verified+1: Brad Ebinger <breadley@google.com>
+Submitted-by: Brad Ebinger <breadley@google.com>
+Submitted-at: Mon, 20 Apr 2020 20:40:02 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1291075
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
