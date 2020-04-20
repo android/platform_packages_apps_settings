@@ -74,7 +74,7 @@ public class LaunchSettingsTest {
         mInstrumentation = InstrumentationRegistry.getInstrumentation();
         mResult = new LinkedHashMap<>();
         mDevice.pressHome();
-        mDevice.waitForIdle(TIME_OUT);
+        Thread.sleep(60000);
 
         for (String string : PAGES) {
             mResult.put(string, new ArrayList<Integer>());
@@ -117,16 +117,24 @@ public class LaunchSettingsTest {
     private void closeApp() throws Exception {
         mDevice.executeShellCommand("am force-stop com.android.settings");
         Thread.sleep(1000);
-    }
+        }
 
-    private void putResultToBundle() {
-        for (String string : mResult.keySet()) {
+        private void putResultToBundle() {
+            for (String string : mResult.keySet()) {
             mBundle.putString(String.format("LaunchSettingsTest_%s_%s", string, "max"),
                     getMax(mResult.get(string)));
             mBundle.putString(String.format("LaunchSettingsTest_%s_%s", string, "min"),
                     getMin(mResult.get(string)));
             mBundle.putString(String.format("LaunchSettingsTest_%s_%s", string, "avg"),
                     getAvg(mResult.get(string)));
+            mBundle.putString(String.format("LaunchSettingsTest_%s_%s", string, "25 Percentile"),
+                    getPercentile(mResult.get(string), 25));
+            mBundle.putString(String.format("LaunchSettingsTest_%s_%s", string, "50 Percentile"),
+                    getPercentile(mResult.get(string), 50));
+            mBundle.putString(String.format("LaunchSettingsTest_%s_%s", string, "75 Percentile"),
+                    getPercentile(mResult.get(string), 75));
+            mBundle.putString(String.format("LaunchSettingsTest_%s_%s", string, "all_results"),
+                    mResult.get(string).toString());
         }
     }
 
@@ -140,5 +148,9 @@ public class LaunchSettingsTest {
 
     private String getAvg(ArrayList<Integer> launchResult) {
         return String.valueOf((int) launchResult.stream().mapToInt(i -> i).average().orElse(0));
+    }
+    private String getPercentile(ArrayList<Integer> launchResult, double position){
+        Collections.sort(launchResult);
+        return String.valueOf(launchResult.get((int)(Math.ceil(TEST_TIME * position / 100)) - 1));
     }
 }
