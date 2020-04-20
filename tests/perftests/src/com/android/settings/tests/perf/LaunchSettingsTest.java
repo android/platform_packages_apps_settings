@@ -48,6 +48,7 @@ public class LaunchSettingsTest {
 
     private static final int TIME_OUT = 5000;
     private static final int TEST_TIME = 10;
+    private static final int WAIT_TIME = 60000;
     private static final Pattern PATTERN = Pattern.compile("TotalTime:\\s[0-9]*");
     private static final String[] ACTIVITIES =
             {
@@ -61,7 +62,7 @@ public class LaunchSettingsTest {
     private static final String[] PAGES =
             {"Settings", "Wi-Fi", "BlueTooth", "Application", "Battery", "Storage"};
     private static final String[] TEXTS =
-            {"Search settings", "Use Wi‑Fi", "Connected devices", "App info", "Battery", "Storage"};
+            {"Search settings", "Use Wi-Fi", "Connected devices", "App info", "Battery", "Storage"};
     private Bundle mBundle;
     private UiDevice mDevice;
     private Instrumentation mInstrumentation;
@@ -74,7 +75,7 @@ public class LaunchSettingsTest {
         mInstrumentation = InstrumentationRegistry.getInstrumentation();
         mResult = new LinkedHashMap<>();
         mDevice.pressHome();
-        mDevice.waitForIdle(TIME_OUT);
+        Thread.sleep(WAIT_TIME);
 
         for (String string : PAGES) {
             mResult.put(string, new ArrayList<Integer>());
@@ -117,16 +118,24 @@ public class LaunchSettingsTest {
     private void closeApp() throws Exception {
         mDevice.executeShellCommand("am force-stop com.android.settings");
         Thread.sleep(1000);
-    }
+        }
 
-    private void putResultToBundle() {
-        for (String string : mResult.keySet()) {
+        private void putResultToBundle() {
+            for (String string : mResult.keySet()) {
             mBundle.putString(String.format("LaunchSettingsTest_%s_%s", string, "max"),
                     getMax(mResult.get(string)));
             mBundle.putString(String.format("LaunchSettingsTest_%s_%s", string, "min"),
                     getMin(mResult.get(string)));
             mBundle.putString(String.format("LaunchSettingsTest_%s_%s", string, "avg"),
                     getAvg(mResult.get(string)));
+            mBundle.putString(String.format("LaunchSettingsTest_%s_%s", string, "25 Percentile"),
+                    getPercentile(mResult.get(string), 25));
+            mBundle.putString(String.format("LaunchSettingsTest_%s_%s", string, "50 Percentile"),
+                    getPercentile(mResult.get(string), 50));
+            mBundle.putString(String.format("LaunchSettingsTest_%s_%s", string, "75 Percentile"),
+                    getPercentile(mResult.get(string), 75));
+            mBundle.putString(String.format("LaunchSettingsTest_%s_%s", string, "all_results"),
+                    mResult.get(string).toString());
         }
     }
 
@@ -140,5 +149,9 @@ public class LaunchSettingsTest {
 
     private String getAvg(ArrayList<Integer> launchResult) {
         return String.valueOf((int) launchResult.stream().mapToInt(i -> i).average().orElse(0));
+    }
+    private String getPercentile(ArrayList<Integer> launchResult, double position){
+        Collections.sort(launchResult);
+        return String.valueOf(launchResult.get((int)(Math.ceil(TEST_TIME * position / 100)) - 1));
     }
 }
