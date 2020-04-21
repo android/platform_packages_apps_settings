@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d9fc468_994ea6e0",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-04-21T06:19:04Z",
+      "side": 1,
+      "message": "make it as a constant.",
+      "range": {
+        "startLine": 77,
+        "startChar": 21,
+        "endLine": 77,
+        "endChar": 26
+      },
+      "revId": "43406c602676380a351be252649ab5144933edfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
