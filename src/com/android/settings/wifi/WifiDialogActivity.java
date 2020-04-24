@@ -20,6 +20,7 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.NetworkInfo;
+import android.net.NetworkInfo.DetailedState;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
 import android.net.wifi.WifiManager.ActionListener;
@@ -81,8 +82,16 @@ public class WifiDialogActivity extends Activity implements WifiDialog.WifiDialo
             mDialog = WifiDialog.createModal(this, this, accessPoint,
                     WifiConfigUiBase.MODE_CONNECT, R.style.SuwAlertDialogThemeCompat_Light);
         } else {
-            mDialog = WifiDialog.createModal(
+            WifiDialog dialog = null;
+            if (WizardManagerHelper.isSetupWizardIntent(intent)
+                && accessPoint != null
+                && accessPoint.getDetailedState() == DetailedState.CONNECTED) {
+                dialog = WifiDialog.createModal(
+                    this, this, accessPoint, WifiConfigUiBase.MODE_VIEW);
+            } else {
+                dialog = WifiDialog.createModal(
                     this, this, accessPoint, WifiConfigUiBase.MODE_CONNECT);
+            }
         }
         mDialog.show();
         mDialog.setOnDismissListener(this);
