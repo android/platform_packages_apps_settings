@@ -45,6 +45,30 @@
       "revId": "246fd21694e3ef33958c23d519c35013090ba907",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "081f5070_e26fe848",
+        "filename": "src/com/android/settings/wifi/WifiDialogActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1466941
+      },
+      "writtenOn": "2020-04-24T09:33:52Z",
+      "side": 1,
+      "message": "WizardManagerHelper.isAnySetupWizard(getIntent()) covered \"WizardManagerHelper.isSetupWizardIntent(getIntent())\"; if it entered into else block, here will never be true.",
+      "parentUuid": "de973d4b_b5bc3d0b",
+      "range": {
+        "startLine": 86,
+        "startChar": 36,
+        "endLine": 86,
+        "endChar": 55
+      },
+      "revId": "246fd21694e3ef33958c23d519c35013090ba907",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
