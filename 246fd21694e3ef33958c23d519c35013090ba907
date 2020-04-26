@@ -69,6 +69,30 @@
       "revId": "246fd21694e3ef33958c23d519c35013090ba907",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "586185a3_324043e9",
+        "filename": "src/com/android/settings/wifi/WifiDialogActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1297437
+      },
+      "writtenOn": "2020-04-26T00:47:48Z",
+      "side": 1,
+      "message": "There are some problems with the logic, and the changes are as follows\n\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\n       if (WizardManagerHelper.isAnySetupWizard(getIntent())) {\n-            mDialog \u003d WifiDialog.createModal(this, this, accessPoint,\n-                    WifiConfigUiBase.MODE_CONNECT, R.style.SuwAlertDialogThemeCompat_Light);\n+            if (accessPoint !\u003d null\n+                    \u0026\u0026 accessPoint.getDetailedState() \u003d\u003d DetailedState.CONNECTED) {\n+                mDialog \u003d WifiDialog.createModal(this, this, accessPoint,\n+                    WifiConfigUiBase.MODE_VIEW, R.style.SuwAlertDialogThemeCompat_Light);\n            } else {\n                mDialog \u003d WifiDialog.createModal(this, this, accessPoint,\n                        WifiConfigUiBase.MODE_CONNECT, R.style.SuwAlertDialogThemeCompat_Light);\n            }   \n        } else {\n            mDialog \u003d WifiDialog.createModal(\n                    this, this, accessPoint, WifiConfigUiBase.MODE_CONNECT);\n        }",
+      "parentUuid": "76238e1d_aa45b12f",
+      "range": {
+        "startLine": 86,
+        "startChar": 56,
+        "endLine": 86,
+        "endChar": 62
+      },
+      "revId": "246fd21694e3ef33958c23d519c35013090ba907",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
