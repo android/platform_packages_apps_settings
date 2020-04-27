@@ -22,6 +22,29 @@
       "revId": "c1ce65031e2460726c6279a065d0f2c2b090f863",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "927a5d3e_bb597320",
+        "filename": "src/com/android/settings/network/telephony/MobileDataPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1087703
+      },
+      "writtenOn": "2020-04-27T22:14:00Z",
+      "side": 1,
+      "message": "do you want to add an explanation as to why it\u0027s not selectable, sorta like the summary things below?",
+      "range": {
+        "startLine": 125,
+        "startChar": 23,
+        "endLine": 125,
+        "endChar": 36
+      },
+      "revId": "c1ce65031e2460726c6279a065d0f2c2b090f863",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
