@@ -45,6 +45,54 @@
       "revId": "c1ce65031e2460726c6279a065d0f2c2b090f863",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dfa748c_6a915c72",
+        "filename": "src/com/android/settings/network/telephony/MobileDataPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1570596
+      },
+      "writtenOn": "2020-04-27T23:49:37Z",
+      "side": 1,
+      "message": "setEnabled just made the mobile data setting to \"off\" instead of preventing it from toggling. If the user remove the SIM card, the mobile data setting turned off but can still be toggled. setSelectable can avoid this.",
+      "parentUuid": "9ef8c94a_0d867b2b",
+      "range": {
+        "startLine": 125,
+        "startChar": 23,
+        "endLine": 125,
+        "endChar": 36
+      },
+      "revId": "c1ce65031e2460726c6279a065d0f2c2b090f863",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc24dea0_2970c212",
+        "filename": "src/com/android/settings/network/telephony/MobileDataPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1570596
+      },
+      "writtenOn": "2020-04-27T23:49:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "927a5d3e_bb597320",
+      "range": {
+        "startLine": 125,
+        "startChar": 23,
+        "endLine": 125,
+        "endChar": 36
+      },
+      "revId": "c1ce65031e2460726c6279a065d0f2c2b090f863",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
