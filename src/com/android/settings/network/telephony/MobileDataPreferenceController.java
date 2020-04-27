@@ -121,6 +121,12 @@ public class MobileDataPreferenceController extends TelephonyTogglePreferenceCon
     @Override
     public void updateState(Preference preference) {
         super.updateState(preference);
+        if (mSubId == SubscriptionManager.INVALID_SUBSCRIPTION_ID) {
+            preference.setSelectable(false);
+        } else {
+            preference.setSelectable(true);
+        }
+
         if (isOpportunistic()) {
             preference.setEnabled(false);
             preference.setSummary(R.string.mobile_data_settings_summary_auto_switch);
