@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ef8c94a_0d867b2b",
+        "filename": "src/com/android/settings/network/telephony/MobileDataPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1056478
+      },
+      "writtenOn": "2020-04-27T22:12:53Z",
+      "side": 1,
+      "message": "What\u0027s the difference between selectable here and enabled below?",
+      "range": {
+        "startLine": 125,
+        "startChar": 23,
+        "endLine": 125,
+        "endChar": 36
+      },
+      "revId": "c1ce65031e2460726c6279a065d0f2c2b090f863",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
