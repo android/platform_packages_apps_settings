@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8ad93b8_838a8307",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-04-28T03:00:48Z",
+      "side": 1,
+      "message": "Out of curiosity, why we change this dash symbol?",
+      "range": {
+        "startLine": 65,
+        "startChar": 39,
+        "endLine": 65,
+        "endChar": 40
+      },
+      "revId": "15bbdc4e4f7e83cc3f519822b66e36860c19ab3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "feeb131e_7d8ea002",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-04-28T03:00:48Z",
+      "side": 1,
+      "message": "May I know the reason why we extend the waiting time?",
+      "range": {
+        "startLine": 78,
+        "startChar": 21,
+        "endLine": 78,
+        "endChar": 30
+      },
+      "revId": "15bbdc4e4f7e83cc3f519822b66e36860c19ab3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c7008ca_38fc9652",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-04-28T03:00:48Z",
+      "side": 1,
+      "message": "nit: fix this style problem if you are available.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 52
+      },
+      "revId": "15bbdc4e4f7e83cc3f519822b66e36860c19ab3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
