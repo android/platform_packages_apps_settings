@@ -1,0 +1,31 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000002701017",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1296354?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "feef0211_58927772",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-04-28T07:18:34Z",
+      "side": 1,
+      "message": "Third-party license (BSD) disallowed in repository platform/packages/apps/Settings:\nRedistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and or other materials provided with the distribution.\n",
+      "range": {
+        "startLine": 20,
+        "startChar": 6,
+        "endLine": 26,
+        "endChar": 28
+      },
+      "revId": "431d7004ff30e0a66acceb219e431dc4e3b17982",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
