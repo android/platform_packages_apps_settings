@@ -20,7 +20,6 @@ import static android.net.ConnectivityManager.EXTRA_ADD_TETHER_TYPE;
 import static android.net.ConnectivityManager.EXTRA_PROVISION_CALLBACK;
 import static android.net.ConnectivityManager.EXTRA_REM_TETHER_TYPE;
 import static android.net.ConnectivityManager.EXTRA_RUN_PROVISION;
-import static android.net.ConnectivityManager.EXTRA_SET_ALARM;
 import static android.net.ConnectivityManager.TETHERING_BLUETOOTH;
 import static android.net.ConnectivityManager.TETHERING_INVALID;
 import static android.net.ConnectivityManager.TETHERING_USB;
@@ -30,13 +29,11 @@ import static android.net.ConnectivityManager.TETHER_ERROR_PROVISION_FAILED;
 import static android.telephony.SubscriptionManager.INVALID_SUBSCRIPTION_ID;
 
 import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyLong;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.app.Activity;
-import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.app.usage.UsageStatsManager;
 import android.content.BroadcastReceiver;
@@ -92,7 +89,6 @@ public class TetherServiceTest extends ServiceTestCase<TetherService> {
     private ProvisionReceiver mProvisionReceiver;
     private Receiver mResultReceiver;
 
-    @Mock private AlarmManager mAlarmManager;
     @Mock private ConnectivityManager mConnectivityManager;
     @Mock private PackageManager mPackageManager;
     @Mock private WifiManager mWifiManager;
@@ -184,19 +180,6 @@ public class TetherServiceTest extends ServiceTestCase<TetherService> {
         assertTrue(mWrapper.isAppInactive(FAKE_PACKAGE_NAME));
     }
 
-    public void testScheduleRechecks() {
-        Intent intent = new Intent();
-        intent.putExtra(EXTRA_ADD_TETHER_TYPE, TETHERING_WIFI);
-        intent.putExtra(EXTRA_SET_ALARM, true);
-        startService(intent);
-
-        long period = TEST_CHECK_PERIOD * MS_PER_HOUR;
-        verify(mAlarmManager).setRepeating(eq(AlarmManager.ELAPSED_REALTIME), anyLong(),
-                eq(period), mPiCaptor.capture());
-        PendingIntent pi = mPiCaptor.getValue();
-        assertEquals(TetherService.class.getName(), pi.getIntent().getComponent().getClassName());
-    }
-
     public void testStartMultiple() {
         runProvisioningForType(TETHERING_WIFI);
 
@@ -249,21 +232,6 @@ public class TetherServiceTest extends ServiceTestCase<TetherService> {
         assertTrue(waitForProvisionResponse(TETHER_ERROR_PROVISION_FAILED));
 
         verify(mConnectivityManager).setUsbTethering(eq(false));
-    }
-
-    public void testCancelAlarm() {
-        runProvisioningForType(TETHERING_WIFI);
-
-        assertTrue(waitForProvisionRequest(TETHERING_WIFI));
-        assertTrue(waitForProvisionResponse(TETHER_ERROR_NO_ERROR));
-
-        Intent intent = new Intent();
-        intent.putExtra(EXTRA_REM_TETHER_TYPE, TETHERING_WIFI);
-        startService(intent);
-
-        verify(mAlarmManager).cancel(mPiCaptor.capture());
-        PendingIntent pi = mPiCaptor.getValue();
-        assertEquals(TetherService.class.getName(), pi.getIntent().getComponent().getClassName());
     }
 
     public void testIgnoreOutdatedRequest() {
@@ -387,9 +355,7 @@ public class TetherServiceTest extends ServiceTestCase<TetherService> {
 
         @Override
         public Object getSystemService(String name) {
-            if (ALARM_SERVICE.equals(name)) {
-                return mAlarmManager;
-            } else if (CONNECTIVITY_SERVICE.equals(name)) {
+            if (CONNECTIVITY_SERVICE.equals(name)) {
                 return mConnectivityManager;
             } else if (WIFI_SERVICE.equals(name)) {
                 return mWifiManager;
