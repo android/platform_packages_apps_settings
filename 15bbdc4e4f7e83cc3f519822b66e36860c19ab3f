@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "7676127d_99437b9b",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-04-29T11:15:17Z",
+      "side": 1,
+      "message": "Supposed we have a reason to change it.\nWhat\u0027s problem we encountered with current dash symbol?\nIf this is a required change, please also note it in commit message.",
+      "parentUuid": "3cd8ee7c_36ccc880",
+      "range": {
+        "startLine": 65,
+        "startChar": 39,
+        "endLine": 65,
+        "endChar": 40
+      },
+      "revId": "15bbdc4e4f7e83cc3f519822b66e36860c19ab3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "feeb131e_7d8ea002",
         "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
         "patchSetId": 2
@@ -96,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "8996d81b_a6a6d595",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-04-29T11:15:17Z",
+      "side": 1,
+      "message": "To double confirm, do you mean we change the waiting time from 5 seconds to 1 min?\nWhat\u0027s problem we encountered when we keep 5 seconds?\nIf this is a required change, please also note it in commit message.",
+      "parentUuid": "f722d35a_41dfeba2",
+      "range": {
+        "startLine": 78,
+        "startChar": 21,
+        "endLine": 78,
+        "endChar": 30
+      },
+      "revId": "15bbdc4e4f7e83cc3f519822b66e36860c19ab3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c7008ca_38fc9652",
         "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
         "patchSetId": 2
@@ -131,6 +179,30 @@
       "side": 1,
       "message": "sure, will do that.",
       "parentUuid": "2c7008ca_38fc9652",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 52
+      },
+      "revId": "15bbdc4e4f7e83cc3f519822b66e36860c19ab3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25c64d3b_bfa7ae65",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-04-29T11:15:17Z",
+      "side": 1,
+      "message": "I saw you have corrected it but this comment was not marked as resolved.\nMark \"Resolved\" is good for reviewer to check what has been done.",
+      "parentUuid": "194819c4_84318ec8",
       "range": {
         "startLine": 121,
         "startChar": 0,
