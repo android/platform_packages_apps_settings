@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3cd8ee7c_36ccc880",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1610957
+      },
+      "writtenOn": "2020-04-29T03:49:04Z",
+      "side": 1,
+      "message": "not sure it will be effort the test result,\nwill check it and reply it.",
+      "parentUuid": "a8ad93b8_838a8307",
+      "range": {
+        "startLine": 65,
+        "startChar": 39,
+        "endLine": 65,
+        "endChar": 40
+      },
+      "revId": "15bbdc4e4f7e83cc3f519822b66e36860c19ab3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "feeb131e_7d8ea002",
         "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f722d35a_41dfeba2",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1610957
+      },
+      "writtenOn": "2020-04-29T03:49:04Z",
+      "side": 1,
+      "message": "since we have a pre-condition wait 5 mins to avoid system do something background,\nbut after discuss, we decide to set it to 1 min first.",
+      "parentUuid": "feeb131e_7d8ea002",
+      "range": {
+        "startLine": 78,
+        "startChar": 21,
+        "endLine": 78,
+        "endChar": 30
+      },
+      "revId": "15bbdc4e4f7e83cc3f519822b66e36860c19ab3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c7008ca_38fc9652",
         "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2020-04-28T03:00:48Z",
       "side": 1,
       "message": "nit: fix this style problem if you are available.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 52
+      },
+      "revId": "15bbdc4e4f7e83cc3f519822b66e36860c19ab3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "194819c4_84318ec8",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1610957
+      },
+      "writtenOn": "2020-04-29T03:49:04Z",
+      "side": 1,
+      "message": "sure, will do that.",
+      "parentUuid": "2c7008ca_38fc9652",
       "range": {
         "startLine": 121,
         "startChar": 0,
