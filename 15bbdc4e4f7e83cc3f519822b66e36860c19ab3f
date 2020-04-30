@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "74b1a682_867ba185",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1610957
+      },
+      "writtenOn": "2020-04-30T06:14:57Z",
+      "side": 1,
+      "message": "i changed to previous one in patchset 3.",
+      "parentUuid": "7676127d_99437b9b",
+      "range": {
+        "startLine": 65,
+        "startChar": 39,
+        "endLine": 65,
+        "endChar": 40
+      },
+      "revId": "15bbdc4e4f7e83cc3f519822b66e36860c19ab3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "feeb131e_7d8ea002",
         "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
         "patchSetId": 2
@@ -132,6 +156,30 @@
       "side": 1,
       "message": "To double confirm, do you mean we change the waiting time from 5 seconds to 1 min?\nWhat\u0027s problem we encountered when we keep 5 seconds?\nIf this is a required change, please also note it in commit message.",
       "parentUuid": "f722d35a_41dfeba2",
+      "range": {
+        "startLine": 78,
+        "startChar": 21,
+        "endLine": 78,
+        "endChar": 30
+      },
+      "revId": "15bbdc4e4f7e83cc3f519822b66e36860c19ab3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ceb4010_3b5c58fc",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1610957
+      },
+      "writtenOn": "2020-04-30T06:14:57Z",
+      "side": 1,
+      "message": "We just want to let phone idle 1 min before we start testing since we want avoid there has something running during we do the test.",
+      "parentUuid": "8996d81b_a6a6d595",
       "range": {
         "startLine": 78,
         "startChar": 21,
@@ -212,6 +260,30 @@
       "revId": "15bbdc4e4f7e83cc3f519822b66e36860c19ab3f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1744b3f6_632e1aa0",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1610957
+      },
+      "writtenOn": "2020-04-30T06:14:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "25c64d3b_bfa7ae65",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 52
+      },
+      "revId": "15bbdc4e4f7e83cc3f519822b66e36860c19ab3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
