@@ -17,6 +17,7 @@
 package com.android.settings.development;
 
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.provider.Settings;
 
 import androidx.preference.Preference;
@@ -32,8 +33,13 @@ public class TrustAgentsExtendUnlockPreferenceController extends
     private static final String KEY_TRUST_AGENTS_EXTEND_UNLOCK =
         "security_setting_trust_agents_extend_unlock";
 
+    private final boolean mIsAutomotive;
+
     public TrustAgentsExtendUnlockPreferenceController(Context context) {
         super(context);
+
+        PackageManager packageManager = context.getPackageManager();
+        mIsAutomotive = packageManager.hasSystemFeature(PackageManager.FEATURE_AUTOMOTIVE);
     }
 
     @Override
@@ -51,8 +57,12 @@ public class TrustAgentsExtendUnlockPreferenceController extends
 
     @Override
     public void updateState(Preference preference) {
+        // Smart lock should only extend unlock. The only exception is for automotive,
+        // where it can actively unlock the head unit.
+        int defaultValue = mIsAutomotive ? 0 : 1;
+
         int trustAgentsExtendUnlock = Settings.Secure.getInt(mContext.getContentResolver(),
-                Settings.Secure.TRUST_AGENTS_EXTEND_UNLOCK, 0);
+                Settings.Secure.TRUST_AGENTS_EXTEND_UNLOCK, defaultValue);
         ((SwitchPreference) mPreference).setChecked(trustAgentsExtendUnlock != 0);
     }
 }
