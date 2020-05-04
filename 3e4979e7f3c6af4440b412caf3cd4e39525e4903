@@ -16,6 +16,24 @@
       "revId": "3e4979e7f3c6af4440b412caf3cd4e39525e4903",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a583fefc_494c7688",
+        "filename": "src/com/android/settings/network/telephony/CarrierSettingsVersionPreferenceController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2020-05-04T11:05:17Z",
+      "side": 1,
+      "message": "Can be done, but the other controllers create it once in the ctor",
+      "parentUuid": "3f5c7393_4c292732",
+      "revId": "3e4979e7f3c6af4440b412caf3cd4e39525e4903",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
