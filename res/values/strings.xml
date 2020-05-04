@@ -11321,4 +11321,7 @@
     <string name="no_5g_in_dsds_text" product="device">When using 2 SIMs, this device will be limited to 4G. <annotation id="url">Learn more</annotation>.</string>
     <!-- Help URI, 5G limitation in DSDS condition. [DO NOT TRANSLATE] -->
     <string name="help_uri_5g_dsds" translatable="false"></string>
+
+    <!-- Preference category for misc debugging development settings. [CHAR LIMIT=25] -->
+    <string name="debug_misc_category">Misc</string>
 </resources>

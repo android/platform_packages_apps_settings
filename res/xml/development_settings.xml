@@ -21,6 +21,7 @@
 
     <PreferenceCategory
         android:key="debug_misc_category"
+        android:title="@string/debug_misc_category"
         android:order="100">
 
         <Preference
