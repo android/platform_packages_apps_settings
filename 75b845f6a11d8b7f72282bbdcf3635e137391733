@@ -16,6 +16,24 @@
       "revId": "75b845f6a11d8b7f72282bbdcf3635e137391733",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a250b33d_ec46dc25",
+        "filename": "src/com/android/settings/network/telephony/CarrierSettingsVersionPreferenceController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2020-05-04T10:44:37Z",
+      "side": 1,
+      "message": "Seems like it could be an issue, I\u0027ll revert to PS1 that retrieves the value every time",
+      "parentUuid": "126141a7_4fffd5c0",
+      "revId": "75b845f6a11d8b7f72282bbdcf3635e137391733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
