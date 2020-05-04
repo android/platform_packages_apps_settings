@@ -34,8 +34,11 @@ import android.view.MenuItem;
 
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.settings.R;
+<<<<<<< HEAD
 import com.android.settings.core.FeatureFlags;
 import com.android.settings.dashboard.RestrictedDashboardFragment;
+=======
+>>>>>>> 7ea8e7ef1e... [Settings] Code refactor for availability session
 import com.android.settings.datausage.BillingCyclePreferenceController;
 import com.android.settings.datausage.DataUsageSummaryPreferenceController;
 import com.android.settings.development.featureflags.FeatureFlagPersistent;
@@ -57,7 +60,7 @@ import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
 
 @SearchIndexable(forTarget = SearchIndexable.ALL & ~SearchIndexable.ARC)
-public class MobileNetworkSettings extends RestrictedDashboardFragment {
+public class MobileNetworkSettings extends AbstractMobileNetworkSettings {
 
     private static final String LOG_TAG = "NetworkSettings";
     public static final int REQUEST_CODE_EXIT_ECM = 17;
@@ -185,6 +188,10 @@ public class MobileNetworkSettings extends RestrictedDashboardFragment {
     @Override
     public void onCreate(Bundle icicle) {
         Log.i(LOG_TAG, "onCreate:+");
+
+        final TelephonyStatusControlSession session =
+                setTelephonyAvailabilityStatus(getPreferenceControllersAsList());
+
         super.onCreate(icicle);
         final Context context = getContext();
 
@@ -193,6 +200,50 @@ public class MobileNetworkSettings extends RestrictedDashboardFragment {
                 .createForSubscriptionId(mSubId);
 
         onRestoreInstance(icicle);
+    }
+
+    @Override
+    public void onExpandButtonClick() {
+        final PreferenceScreen screen = getPreferenceScreen();
+        mHiddenControllerList.stream()
+                .filter(controller -> controller.isAvailable())
+                .forEach(controller -> {
+                    final String key = controller.getPreferenceKey();
+                    final Preference preference = screen.findPreference(key);
+                    controller.updateState(preference);
+                });
+        super.onExpandButtonClick();
+    }
+
+    /*
+     * Replace design within {@link DashboardFragment#updatePreferenceStates()}
+     */
+    @Override
+    protected void updatePreferenceStates() {
+        mHiddenControllerList = new ArrayList<AbstractPreferenceController>();
+
+        final PreferenceScreen screen = getPreferenceScreen();
+        final Collection<List<AbstractPreferenceController>> controllerLists =
+                getPreferenceControllers();
+        controllerLists.stream().flatMap(Collection::stream)
+                .forEach(controller -> {
+                    final String key = controller.getPreferenceKey();
+                    if (TextUtils.isEmpty(key)) {
+                        return;
+                    }
+                    final Preference preference = screen.findPreference(key);
+                    if (preference == null) {
+                        return;
+                    }
+                    if (!isPreferenceExpanded(preference)) {
+                        mHiddenControllerList.add(controller);
+                        return;
+                    }
+                    if (!controller.isAvailable()) {
+                        return;
+                    }
+                    controller.updateState(preference);
+                });
     }
 
     @VisibleForTesting
