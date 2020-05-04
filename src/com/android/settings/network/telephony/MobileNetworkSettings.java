@@ -35,7 +35,6 @@ import android.view.MenuItem;
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.settings.R;
 import com.android.settings.core.FeatureFlags;
-import com.android.settings.dashboard.RestrictedDashboardFragment;
 import com.android.settings.datausage.BillingCyclePreferenceController;
 import com.android.settings.datausage.DataUsageSummaryPreferenceController;
 import com.android.settings.development.featureflags.FeatureFlagPersistent;
@@ -57,7 +56,7 @@ import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
 
 @SearchIndexable(forTarget = SearchIndexable.ALL & ~SearchIndexable.ARC)
-public class MobileNetworkSettings extends RestrictedDashboardFragment {
+public class MobileNetworkSettings extends AbstractMobileNetworkSettings {
 
     private static final String LOG_TAG = "NetworkSettings";
     public static final int REQUEST_CODE_EXIT_ECM = 17;
@@ -185,6 +184,10 @@ public class MobileNetworkSettings extends RestrictedDashboardFragment {
     @Override
     public void onCreate(Bundle icicle) {
         Log.i(LOG_TAG, "onCreate:+");
+
+        final TelephonyStatusControlSession session =
+                setTelephonyAvailabilityStatus(getPreferenceControllersAsList());
+
         super.onCreate(icicle);
         final Context context = getContext();
 
@@ -192,6 +195,8 @@ public class MobileNetworkSettings extends RestrictedDashboardFragment {
         mTelephonyManager = context.getSystemService(TelephonyManager.class)
                 .createForSubscriptionId(mSubId);
 
+        session.close();
+        
         onRestoreInstance(icicle);
     }
 
