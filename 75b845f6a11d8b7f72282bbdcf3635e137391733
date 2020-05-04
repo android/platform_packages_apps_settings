@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "126141a7_4fffd5c0",
+        "filename": "src/com/android/settings/network/telephony/CarrierSettingsVersionPreferenceController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-05-04T10:39:42Z",
+      "side": 1,
+      "message": "1. Would timing be an issue ?\n\nValue within carrier config would be changed based on subscription(SIM).\nHowever, it should be altered after a latency (that\u0027s to say, a few milli-seconds after subscriptionId appears).\n\nCould this be an issue if carrier config string only read within init() ?\n\n2. Would activity re-create be an issue ?\n\nFor the case of activity re-create, values within memory has better saved to instances.\nOtherwise, reload would be required.\n\nCould this be an issue if carrier config string only read within init() ?",
+      "revId": "75b845f6a11d8b7f72282bbdcf3635e137391733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
