@@ -147,6 +147,8 @@ public class MobileNetworkActivity extends SettingsBaseActivity {
         }
         updateSubscriptions(savedInstanceState);
         maybeShowContactDiscoveryDialog(mCurSubscriptionId);
+
+        updateSubscriptions(subscription);
     }
 
     @Override
