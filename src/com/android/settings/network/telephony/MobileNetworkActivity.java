@@ -139,7 +139,40 @@ public class MobileNetworkActivity extends SettingsBaseActivity {
         validate(startIntent);
         mCurSubscriptionId = savedInstanceState != null
                 ? savedInstanceState.getInt(Settings.EXTRA_SUB_ID, SUB_ID_NULL)
-                : SUB_ID_NULL;
+                : ((startIntent != null)
+                ? startIntent.getIntExtra(Settings.EXTRA_SUB_ID, SUB_ID_NULL)
+                : SUB_ID_NULL);
+
+        final SubscriptionInfo subscription = getSubscription();
+        maybeShowContactDiscoveryDialog(subscription);
+
+        // Since onChanged() will take place immediately when addActiveSubscriptionsListener(),
+        // perform registration after mCurSubscriptionId been configured.
+        registerActiveSubscriptionsListener();
+
+        updateSubscriptions(subscription);
+    }
+
+    @VisibleForTesting
+    ProxySubscriptionManager getProxySubscriptionManager() {
+        if (mProxySubscriptionMgr == null) {
+            mProxySubscriptionMgr = ProxySubscriptionManager.getInstance(this);
+        }
+        return mProxySubscriptionMgr;
+    }
+
+    @VisibleForTesting
+    void registerActiveSubscriptionsListener() {
+        getProxySubscriptionManager().addActiveSubscriptionsListener(this);
+    }
+
+    /**
+     * Implementation of ProxySubscriptionManager.OnActiveSubscriptionChangedListener
+     */
+    public void onChanged() {
+        SubscriptionInfo info = getSubscription();
+        int oldSubIndex = mCurSubscriptionId;
+        updateSubscriptions(info);
 
         final ActionBar actionBar = getActionBar();
         if (actionBar != null) {
