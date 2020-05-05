@@ -34,6 +34,24 @@
       "revId": "75b845f6a11d8b7f72282bbdcf3635e137391733",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d22b3dd1_98c58cac",
+        "filename": "src/com/android/settings/network/telephony/CarrierSettingsVersionPreferenceController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2020-05-05T07:35:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a250b33d_ec46dc25",
+      "revId": "75b845f6a11d8b7f72282bbdcf3635e137391733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
