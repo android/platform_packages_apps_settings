@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "008145de_8ab48858",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-05-06T11:37:25Z",
+      "side": 1,
+      "message": "I try to run this test case in sargo device with R platform but got bellow exception:\njava.lang.IndexOutOfBoundsException: Index: 24, Size: 19\nat java.util.ArrayList.get(ArrayList.java:437)\nat com.android.settings.tests.perf.LaunchSettingsTest.getPercentile(LaunchSettingsTest.java:163)\nat com.android.settings.tests.perf.LaunchSettingsTest.putResultToBundle(LaunchSettingsTest.java:139)\nat com.android.settings.tests.perf.LaunchSettingsTest.tearDown(LaunchSettingsTest.java:94)\n\nHave you ever encountered this problem?\nI run twice with atest com.android.settings.tests.perf LaunchSettingsTest, and both have this exception.\nNot sure if it is related with screen timeout.\n\nThis might be a potential risk that we may lost data in testing if we increase the test time to 100.",
+      "range": {
+        "startLine": 156,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 99
+      },
+      "revId": "9886d2cb39385ee1eb12b5cc4ef80a5ddd4344b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
