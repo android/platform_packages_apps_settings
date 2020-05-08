@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "904f40b9_57f21fb1",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-05-08T04:18:28Z",
+      "side": 1,
+      "message": "We have applied the Raff\u0027s suggestion before.\n\nhttps://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1262704/2/tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java#63\n\n\nPer offline discussion, will rollback to base version and add storage page.",
+      "range": {
+        "startLine": 53,
+        "startChar": 25,
+        "endLine": 53,
+        "endChar": 46
+      },
+      "revId": "042a52b0c9b85096dce2768dd5560239a38954c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
