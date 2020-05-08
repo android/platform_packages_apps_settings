@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9493f0db_523e9d58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1610957
+      },
+      "writtenOn": "2020-05-08T06:45:43Z",
+      "side": 1,
+      "message": "OK, will remove that.",
+      "parentUuid": "12cb2ea3_3518ab75",
+      "range": {
+        "startLine": 7,
+        "startChar": 28,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "099d55d251f95f6bc9e03221b477f658ab397105",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2df94c8_f3abe989",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "099d55d251f95f6bc9e03221b477f658ab397105",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "144fe882_4d88a8c0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1610957
+      },
+      "writtenOn": "2020-05-08T06:45:43Z",
+      "side": 1,
+      "message": "OK, will modify to that.",
+      "parentUuid": "e2df94c8_f3abe989",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 13,
+        "endChar": 62
+      },
+      "revId": "099d55d251f95f6bc9e03221b477f658ab397105",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
