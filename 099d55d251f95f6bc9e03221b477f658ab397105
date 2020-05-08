@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "9f948303_d391aa46",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1610957
+      },
+      "writtenOn": "2020-05-08T06:44:16Z",
+      "side": 1,
+      "message": "sure, will upload a new patchset for that.",
+      "parentUuid": "53d0a1c9_198d07a1",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 97
+      },
+      "revId": "099d55d251f95f6bc9e03221b477f658ab397105",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51bcbe3f_84865d80",
         "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
         "patchSetId": 2
@@ -118,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "acf7d858_046aadc0",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1610957
+      },
+      "writtenOn": "2020-05-08T06:44:16Z",
+      "side": 1,
+      "message": "That is for cold start.\nAnd since we set screen time off via adb command, it not requires to open settings page, and press home just i used to do that before testing.",
+      "parentUuid": "ce2728be_f192268e",
+      "range": {
+        "startLine": 90,
+        "startChar": 8,
+        "endLine": 90,
+        "endChar": 74
+      },
+      "revId": "099d55d251f95f6bc9e03221b477f658ab397105",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4fae0102_04cb00e0",
         "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
         "patchSetId": 2
@@ -138,6 +186,30 @@
       "revId": "099d55d251f95f6bc9e03221b477f658ab397105",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4b62bbe_edfcf667",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1610957
+      },
+      "writtenOn": "2020-05-08T06:44:16Z",
+      "side": 1,
+      "message": "Sure, i will try to improve that.",
+      "parentUuid": "4fae0102_04cb00e0",
+      "range": {
+        "startLine": 128,
+        "startChar": 12,
+        "endLine": 128,
+        "endChar": 46
+      },
+      "revId": "099d55d251f95f6bc9e03221b477f658ab397105",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
