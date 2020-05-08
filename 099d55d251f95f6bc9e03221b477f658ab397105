@@ -48,6 +48,29 @@
     },
     {
       "key": {
+        "uuid": "53d0a1c9_198d07a1",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-05-08T06:24:21Z",
+      "side": 1,
+      "message": "Need to reset to default screen timeout in tearDown() to avoid impacting another tests outside SettingsPerfTests.",
+      "range": {
+        "startLine": 88,
+        "startChar": 0,
+        "endLine": 88,
+        "endChar": 97
+      },
+      "revId": "099d55d251f95f6bc9e03221b477f658ab397105",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51bcbe3f_84865d80",
         "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
         "patchSetId": 2
