@@ -56,8 +56,9 @@ public class LaunchSettingsTest {
         }
     }
 
+    private static final int SCREEN_TIME_OUT = 7200000;
     private static final int TIME_OUT = 5000;
-    private static final int TEST_TIME = 10;
+    private static final int TEST_TIME = 100;
     private static final Pattern PATTERN = Pattern.compile("TotalTime:\\s[0-9]*");
     private static final Page[] PAGES;
 
@@ -67,7 +68,8 @@ public class LaunchSettingsTest {
                 new Page("android.settings.WIFI_SETTINGS", "Use Wi‑Fi", "Wi-Fi"),
                 new Page("android.settings.BLUETOOTH_SETTINGS", "Connected devices", "BlueTooth"),
                 new Page("android.settings.APPLICATION_SETTINGS", "App info", "Application"),
-                new Page("android.intent.action.POWER_USAGE_SUMMARY", "Battery", "Battery")
+                new Page("android.intent.action.POWER_USAGE_SUMMARY", "Battery", "Battery"),
+                new Page("android.settings.INTERNAL_STORAGE_SETTINGS", "Storage", "Storage")
         };
     }
 
@@ -82,7 +84,11 @@ public class LaunchSettingsTest {
         mDevice = UiDevice.getInstance(getInstrumentation());
         mInstrumentation = InstrumentationRegistry.getInstrumentation();
         mResult = new LinkedHashMap<>();
+
+        mDevice.executeShellCommand("settings put system screen_off_timeout " + SCREEN_TIME_OUT);
         mDevice.pressHome();
+        mDevice.executeShellCommand("am force-stop com.android.settings");
+
         mDevice.waitForIdle(TIME_OUT);
 
         for (Page page : PAGES) {
