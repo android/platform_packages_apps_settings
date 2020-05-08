@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "78f450e9_4752bac0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-05-08T08:42:49Z",
+      "side": 1,
+      "message": "As discussion, please update commit message like below and modify if you need:\n\n1. Add storage page as test target.\n2. Set screen timeout to 2 hours to avoid screen timeout during testing.\n3. Force close settings before launching each page.\n4. Reset screen timeout after testing.\n5. Increase test times from 10 to 100.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 47
+      },
+      "revId": "7a78f88fa7cb17e996adb1c36b3aa549b2b875fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77c7ba9c_5e5854b8",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-05-08T08:42:49Z",
+      "side": 1,
+      "message": "As discussion, please remove it and update the executePerformanceTest() like below to achive the cold launch purpose for each page.\n    \n    private void executePreformanceTest(String action, String displayName, String title)\n            throws Exception {\n        closeApp();\n        mDevice.waitForIdle(TIME_OUT);\n        final String mString \u003d mDevice.executeShellCommand(\"am start -W -a\" + action);\n        mDevice.wait(Until.findObject(By.text(displayName)), TIME_OUT);\n        handleLaunchResult(title, mString);\n    }",
+      "range": {
+        "startLine": 91,
+        "startChar": 8,
+        "endLine": 91,
+        "endChar": 74
+      },
+      "revId": "7a78f88fa7cb17e996adb1c36b3aa549b2b875fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee07f02d_c2354a4e",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-05-08T08:42:49Z",
+      "side": 1,
+      "message": "It\u0027s better to get the origial screen timeout value by \"adb shell settings get system screen_off_timeout\" in setUp(), and then reset it in tearDown().\n\nIf we can not get the origial value successfully, use DEFAULT_SCREEN_TIMEOUT to do reset.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 104
+      },
+      "revId": "7a78f88fa7cb17e996adb1c36b3aa549b2b875fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
