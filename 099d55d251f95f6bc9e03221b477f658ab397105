@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "12cb2ea3_3518ab75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-05-08T05:43:08Z",
+      "side": 1,
+      "message": "nit:\nWe usually don\u0027t add . in the title of commit message.\nYou could remove it.",
+      "range": {
+        "startLine": 7,
+        "startChar": 28,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "099d55d251f95f6bc9e03221b477f658ab397105",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2df94c8_f3abe989",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-05-08T05:43:08Z",
+      "side": 1,
+      "message": "This may not the proper command to directly run the LaunchSettingsTest with atest.\nHere\u0027s a way I run it directly with atest:\natest SettingsPerfTests:LaunchSettingsTest",
+      "range": {
+        "startLine": 13,
+        "startChar": 6,
+        "endLine": 13,
+        "endChar": 62
+      },
+      "revId": "099d55d251f95f6bc9e03221b477f658ab397105",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "51bcbe3f_84865d80",
         "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
         "patchSetId": 2
@@ -18,6 +64,29 @@
         "startChar": 8,
         "endLine": 90,
         "endChar": 74
+      },
+      "revId": "099d55d251f95f6bc9e03221b477f658ab397105",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4fae0102_04cb00e0",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-05-08T05:43:08Z",
+      "side": 1,
+      "message": "In my local test, it\u0027s not clear to identify which page fail when I got this error.\nCould we improve it in next CL?",
+      "range": {
+        "startLine": 128,
+        "startChar": 12,
+        "endLine": 128,
+        "endChar": 46
       },
       "revId": "099d55d251f95f6bc9e03221b477f658ab397105",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
