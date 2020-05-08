@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "74985273_488cebe7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1610957
+      },
+      "writtenOn": "2020-05-08T09:28:09Z",
+      "side": 1,
+      "message": "Done.",
+      "parentUuid": "78f450e9_4752bac0",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 47
+      },
+      "revId": "7a78f88fa7cb17e996adb1c36b3aa549b2b875fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "77c7ba9c_5e5854b8",
         "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
         "patchSetId": 4
@@ -68,6 +92,30 @@
       "revId": "7a78f88fa7cb17e996adb1c36b3aa549b2b875fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2dd6a573_4d113089",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1610957
+      },
+      "writtenOn": "2020-05-08T09:28:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee07f02d_c2354a4e",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 104
+      },
+      "revId": "7a78f88fa7cb17e996adb1c36b3aa549b2b875fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
