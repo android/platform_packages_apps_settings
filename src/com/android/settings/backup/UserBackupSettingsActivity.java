@@ -65,6 +65,17 @@ public class UserBackupSettingsActivity extends FragmentActivity implements Inde
             }
             Intent intent = backupHelper.getIntentForBackupSettings();
             try {
+                // enable the package before launching it
+                getPackageManager().setApplicationEnabledSetting(
+                        intent.getComponent().getPackageName(),
+                        PackageManager.COMPONENT_ENABLED_STATE_ENABLED,
+                        PackageManager.DONT_KILL_APP);
+            } catch (SecurityException e) {
+                Log.w(TAG, "Trying to enable package " + intent.getComponent().getPackageName()
+                        + " but couldn't: " + e.getMessage());
+                // the package may already be enabled
+            }
+            try {
                 // enable the activity before launching it
                 getPackageManager().setComponentEnabledSetting(
                         intent.getComponent(),
