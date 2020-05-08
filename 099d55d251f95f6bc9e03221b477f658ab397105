@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "51bcbe3f_84865d80",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-05-08T05:14:36Z",
+      "side": 1,
+      "message": "Could you help to elaborate the purpose of this command?\nIs it for setting screen_off_timeout or cold launch?",
+      "range": {
+        "startLine": 90,
+        "startChar": 8,
+        "endLine": 90,
+        "endChar": 74
+      },
+      "revId": "099d55d251f95f6bc9e03221b477f658ab397105",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
