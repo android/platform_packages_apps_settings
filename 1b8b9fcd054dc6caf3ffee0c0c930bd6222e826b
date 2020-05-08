@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82d88936_0310eb97",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-05-08T10:20:49Z",
+      "side": 1,
+      "message": "For readiability, try to use a function to do and reuse it in tearDown().\nprivate void setScreenTimeout(String timeout) {\n    mDevice.executeShellCommand(\"settings put system screen_off_timeout \" + timeout);\n}",
+      "range": {
+        "startLine": 90,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 97
+      },
+      "revId": "1b8b9fcd054dc6caf3ffee0c0c930bd6222e826b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "773328a9_763d156c",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-05-08T10:20:49Z",
+      "side": 1,
+      "message": "Suggestion:\nprivate void resetScreenTimeout() {\n    String timeout \u003d DEFAULT_SCREEN_TIMEOUT;\n    if (!mDefaultScreenTimeout.isEmpty()) {\n        timeout \u003d mDefaultScreenTimeout;\n    }\n    setScreenTimeout(timeout);\n}\n\nBTW, format code before uploading patch.",
+      "range": {
+        "startLine": 103,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 9
+      },
+      "revId": "1b8b9fcd054dc6caf3ffee0c0c930bd6222e826b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
