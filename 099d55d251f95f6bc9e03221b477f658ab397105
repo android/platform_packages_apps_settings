@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "ce2728be_f192268e",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-05-08T06:04:07Z",
+      "side": 1,
+      "message": "If it\u0027s a required action for screen off timeout, could we use closeApp() to instead of it.\nOne more question, why we set screen off time before pressHome() and stop settings after?",
+      "parentUuid": "51bcbe3f_84865d80",
+      "range": {
+        "startLine": 90,
+        "startChar": 8,
+        "endLine": 90,
+        "endChar": 74
+      },
+      "revId": "099d55d251f95f6bc9e03221b477f658ab397105",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4fae0102_04cb00e0",
         "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
         "patchSetId": 2
