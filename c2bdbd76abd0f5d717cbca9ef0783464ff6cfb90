@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7445f13d_aa6a8314",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-05-12T08:32:03Z",
+      "side": 1,
+      "message": "it\u0027s more useful to see the result from shell command.\nCould we also include parameter s into log?",
+      "range": {
+        "startLine": 132,
+        "startChar": 48,
+        "endLine": 132,
+        "endChar": 53
+      },
+      "revId": "c2bdbd76abd0f5d717cbca9ef0783464ff6cfb90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e69b7b50_aa1cf95b",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-05-12T08:32:03Z",
+      "side": 1,
+      "message": "add final since it\u0027s no changed after.",
+      "range": {
+        "startLine": 181,
+        "startChar": 8,
+        "endLine": 181,
+        "endChar": 14
+      },
+      "revId": "c2bdbd76abd0f5d717cbca9ef0783464ff6cfb90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07b7758d_ced73f43",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-05-12T08:32:03Z",
+      "side": 1,
+      "message": "can we also reset default in tearDown?",
+      "range": {
+        "startLine": 185,
+        "startChar": 17,
+        "endLine": 185,
+        "endChar": 34
+      },
+      "revId": "c2bdbd76abd0f5d717cbca9ef0783464ff6cfb90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
