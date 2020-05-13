@@ -1,0 +1,31 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000002937872",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1310694?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "b961f665_7f9e2650",
+        "filename": "src/com/android/settings/network/telephony/MobileNetworkSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-05-13T11:57:06Z",
+      "side": 1,
+      "message": "This file contains a set of conflict markers.If this is a false alarm, add IGNORE_MERGE_CONFLICT_CHECK\u003d\u003d\u003creason\u003e to your commit message.",
+      "range": {
+        "startLine": 37,
+        "startChar": 1,
+        "endLine": 37,
+        "endChar": 7
+      },
+      "revId": "be35b3f344515c38368f043b987cf9b433036356",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
