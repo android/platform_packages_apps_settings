@@ -87,6 +87,9 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings {
     private String mClickedPrefKey;
 
     private List<AbstractPreferenceController> mHiddenControllerList;
+    private ActiveSubsciptionsListener mActiveSubsciptionsListener;
+    private boolean mDropFirstSubscriptionChangeNotify;
+    private int mActiveSubsciptionsListenerCount;
 
     public MobileNetworkSettings() {
         super(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS);
@@ -252,6 +255,45 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings {
                     }
                     controller.updateState(preference);
                 });
+    }
+
+    public void onResume() {
+        super.onResume();
+        if (mActiveSubsciptionsListener == null) {
+            mActiveSubsciptionsListener = new ActiveSubsciptionsListener(
+                    getContext().getMainLooper(), getContext(), mSubId) {
+                public void onChanged() {
+                    onSubscriptionDetailChanged();
+                }
+            };
+            mDropFirstSubscriptionChangeNotify = true;
+        }
+        mActiveSubsciptionsListener.start();
+    }
+
+    private void onSubscriptionDetailChanged() {
+        if (mDropFirstSubscriptionChangeNotify) {
+            mDropFirstSubscriptionChangeNotify = false;
+            Log.d(LOG_TAG, "Callback during onResume()");
+            return;
+        }
+        mActiveSubsciptionsListenerCount++;
+        if (mActiveSubsciptionsListenerCount != 1) {
+            return;
+        }
+
+        ThreadUtils.postOnMainThread(() -> {
+            mActiveSubsciptionsListenerCount = 0;
+            redrawPreferenceControllers();
+        });
+    }
+
+    @Override
+    public void onDestroy() {
+        if (mActiveSubsciptionsListener != null) {
+            mActiveSubsciptionsListener.stop();
+        }
+        super.onDestroy();
     }
 
     @VisibleForTesting
