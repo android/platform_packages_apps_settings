@@ -85,8 +85,11 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings {
 
     private UserManager mUserManager;
     private String mClickedPrefKey;
+    
+    private ActiveSubsciptionsListener mActiveSubsciptionsListener;
+    private boolean mDropFirstSubscriptionChangeNotify;
+    private int mActiveSubsciptionsListenerCount;
 
-    private List<AbstractPreferenceController> mHiddenControllerList;
 
     public MobileNetworkSettings() {
         super(UserManager.DISALLOW_CONFIG_MOBILE_NETWORKS);
@@ -210,48 +213,43 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings {
         onRestoreInstance(icicle);
     }
 
-    @Override
-    public void onExpandButtonClick() {
-        final PreferenceScreen screen = getPreferenceScreen();
-        mHiddenControllerList.stream()
-                .filter(controller -> controller.isAvailable())
-                .forEach(controller -> {
-                    final String key = controller.getPreferenceKey();
-                    final Preference preference = screen.findPreference(key);
-                    controller.updateState(preference);
-                });
-        super.onExpandButtonClick();
+    public void onResume() {
+        super.onResume();
+        if (mActiveSubsciptionsListener == null) {
+            mActiveSubsciptionsListener = new ActiveSubsciptionsListener(
+                    getContext().getMainLooper(), getContext(), mSubId) {
+                public void onChanged() {
+                    onSubscriptionDetailChanged();
+                }
+            };
+            mDropFirstSubscriptionChangeNotify = true;
+        }
+        mActiveSubsciptionsListener.start();
     }
 
-    /*
-     * Replace design within {@link DashboardFragment#updatePreferenceStates()}
-     */
-    @Override
-    protected void updatePreferenceStates() {
-        mHiddenControllerList = new ArrayList<AbstractPreferenceController>();
+    private void onSubscriptionDetailChanged() {
+        if (mDropFirstSubscriptionChangeNotify) {
+            mDropFirstSubscriptionChangeNotify = false;
+            Log.d(LOG_TAG, "Callback during onResume()");
+            return;
+        }
+        mActiveSubsciptionsListenerCount++;
+        if (mActiveSubsciptionsListenerCount != 1) {
+            return;
+        }
 
-        final PreferenceScreen screen = getPreferenceScreen();
-        final Collection<List<AbstractPreferenceController>> controllerLists =
-                getPreferenceControllers();
-        controllerLists.stream().flatMap(Collection::stream)
-                .forEach(controller -> {
-                    final String key = controller.getPreferenceKey();
-                    if (TextUtils.isEmpty(key)) {
-                        return;
-                    }
-                    final Preference preference = screen.findPreference(key);
-                    if (preference == null) {
-                        return;
-                    }
-                    if (!isPreferenceExpanded(preference)) {
-                        mHiddenControllerList.add(controller);
-                        return;
-                    }
-                    if (!controller.isAvailable()) {
-                        return;
-                    }
-                    controller.updateState(preference);
-                });
+        ThreadUtils.postOnMainThread(() -> {
+            mActiveSubsciptionsListenerCount = 0;
+            redrawPreferenceControllers();
+        });
+    }
+
+    @Override
+    public void onDestroy() {
+        if (mActiveSubsciptionsListener != null) {
+            mActiveSubsciptionsListener.stop();
+        }
+        super.onDestroy();
     }
 
     @VisibleForTesting
