@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4377d92f_7ed38f34",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1610957
+      },
+      "writtenOn": "2020-05-13T07:45:21Z",
+      "side": 1,
+      "message": "Sure, and i also modify s to shellCommandResult.",
+      "parentUuid": "7445f13d_aa6a8314",
+      "range": {
+        "startLine": 132,
+        "startChar": 48,
+        "endLine": 132,
+        "endChar": 53
+      },
+      "revId": "c2bdbd76abd0f5d717cbca9ef0783464ff6cfb90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e69b7b50_aa1cf95b",
         "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
         "patchSetId": 1
