@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff0fb526_b1e9553e",
+        "filename": "src/com/android/settings/dashboard/DashboardFragment.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1407552
+      },
+      "writtenOn": "2020-05-14T13:35:22Z",
+      "side": 1,
+      "message": "remove these code which have no use.",
+      "range": {
+        "startLine": 316,
+        "startChar": 4,
+        "endLine": 322,
+        "endChar": 5
+      },
+      "revId": "bf935baab8984a747b18e97d2284238b10edf12f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
