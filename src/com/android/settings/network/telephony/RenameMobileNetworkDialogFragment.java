@@ -19,6 +19,7 @@ package com.android.settings.network.telephony;
 import android.app.Dialog;
 import android.app.settings.SettingsEnums;
 import android.content.Context;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Paint;
 import android.graphics.drawable.ShapeDrawable;
@@ -46,6 +47,7 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.android.settings.R;
 import com.android.settings.core.instrumentation.InstrumentedDialogFragment;
+import com.android.settings.network.SubscriptionUtil;
 import com.android.settingslib.DeviceInfoUtils;
 
 import java.util.List;
@@ -196,8 +198,13 @@ public class RenameMobileNetworkDialogFragment extends InstrumentedDialogFragmen
             if (convertView == null) {
                 convertView = inflater.inflate(mItemResId, null);
             }
+            boolean isDarkMode = false;
+            if ((getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK)
+                    == Configuration.UI_MODE_NIGHT_YES) {
+                isDarkMode = true;
+            }
             ((ImageView) convertView.findViewById(R.id.color_icon))
-                    .setImageDrawable(getItem(position).getDrawable());
+                    .setImageDrawable(getItem(position).getDrawable(isDarkMode));
             ((TextView) convertView.findViewById(R.id.color_label))
                     .setText(getItem(position).getLabel());
 
@@ -248,7 +255,10 @@ public class RenameMobileNetworkDialogFragment extends InstrumentedDialogFragmen
             return mColor;
         }
 
-        private ShapeDrawable getDrawable() {
+        private ShapeDrawable getDrawable(boolean isDarkMode) {
+            if (isDarkMode) {
+                mDrawable.getPaint().setColor(SubscriptionUtil.getDarkColor(mColor));
+            }
             return mDrawable;
         }
     }
