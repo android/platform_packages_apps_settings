@@ -31,13 +31,46 @@ import android.text.TextUtils;
 
 import androidx.annotation.VisibleForTesting;
 
+import com.google.common.collect.ImmutableMap;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class SubscriptionUtil {
     private static final String TAG = "SubscriptionUtil";
     private static List<SubscriptionInfo> sAvailableResultsForTesting;
     private static List<SubscriptionInfo> sActiveResultsForTesting;
+
+    /**
+     * Highlight color palette from android OS (frameworks/base/core/res/res/values/arrays.xml)
+     */
+    static final int TEAL_700 = 0xff00796b;
+    static final int BLUE_700 = 0xff1976d2;
+    static final int INDIGO_700 = 0xff303f9f;
+    static final int PURPLE_700 = 0xff7b1fa2;
+    static final int PINK_700 = 0xffc2185b;
+    static final int RED_700 = 0xffd32f2f;
+
+    /**
+     * Dark palette
+     */
+    static final int TEAL_200 = 0xff80cbc4;
+    static final int BLUE_200 = 0xff90caf9;
+    static final int INDIGO_100 = 0xffc5cae9;
+    static final int PURPLE_100 = 0xffe1bee7;
+    static final int PINK_200 = 0xfff48fb1;
+    static final int RED_200 = 0xffef9a9a;
+
+    private static final Map<Integer, Integer> sDarkHighlightColorMap =
+            ImmutableMap.<Integer, Integer>builder()
+            .put(TEAL_700, TEAL_200)
+            .put(BLUE_700, BLUE_200)
+            .put(INDIGO_700, INDIGO_100)
+            .put(PURPLE_700, PURPLE_100)
+            .put(PINK_700, PINK_200)
+            .put(RED_700, RED_200)
+            .build();
 
     @VisibleForTesting
     public static void setAvailableSubscriptionsForTesting(List<SubscriptionInfo> results) {
@@ -287,5 +320,14 @@ public class SubscriptionUtil {
             return INVALID_SIM_SLOT_INDEX;
         }
         return info.getSimSlotIndex();
+    }
+
+    /**
+     * Get corresponding SIM color in dark mode for a light mode color.
+     * @param lightColor the light mode color
+     * @return the dark mode color
+     */
+    public static int getDarkColor(int lightColor) {
+        return sDarkHighlightColorMap.getOrDefault(lightColor, lightColor);
     }
 }
