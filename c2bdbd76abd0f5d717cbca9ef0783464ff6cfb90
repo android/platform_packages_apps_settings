@@ -72,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3dedaac6_5ea7e2fb",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1610957
+      },
+      "writtenOn": "2020-05-15T02:55:29Z",
+      "side": 1,
+      "message": "It change to global argument for log the default airplane mode status.",
+      "parentUuid": "e69b7b50_aa1cf95b",
+      "range": {
+        "startLine": 181,
+        "startChar": 8,
+        "endLine": 181,
+        "endChar": 14
+      },
+      "revId": "c2bdbd76abd0f5d717cbca9ef0783464ff6cfb90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07b7758d_ced73f43",
         "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
         "patchSetId": 1
@@ -92,6 +116,30 @@
       "revId": "c2bdbd76abd0f5d717cbca9ef0783464ff6cfb90",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9877dd3_6e8427fe",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1610957
+      },
+      "writtenOn": "2020-05-15T02:55:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07b7758d_ced73f43",
+      "range": {
+        "startLine": 185,
+        "startChar": 17,
+        "endLine": 185,
+        "endChar": 34
+      },
+      "revId": "c2bdbd76abd0f5d717cbca9ef0783464ff6cfb90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
