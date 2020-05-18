@@ -22,6 +22,30 @@
       "revId": "bf935baab8984a747b18e97d2284238b10edf12f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "50f8b476_e58177a4",
+        "filename": "src/com/android/settings/dashboard/DashboardFragment.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1468646
+      },
+      "writtenOn": "2020-05-18T03:18:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff0fb526_b1e9553e",
+      "range": {
+        "startLine": 316,
+        "startChar": 4,
+        "endLine": 322,
+        "endChar": 5
+      },
+      "revId": "bf935baab8984a747b18e97d2284238b10edf12f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
