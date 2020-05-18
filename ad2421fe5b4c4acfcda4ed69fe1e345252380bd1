@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "44bf0a5a_71e8e4b6",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-05-18T06:00:51Z",
+      "side": 1,
+      "message": "This should be a blank final for security and readability",
+      "range": {
+        "startLine": 496,
+        "startChar": 8,
+        "endLine": 496,
+        "endChar": 14
+      },
+      "revId": "ad2421fe5b4c4acfcda4ed69fe1e345252380bd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
