@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7974ed7f_2df93536",
+        "filename": "res/xml/camera_button_long_press_settings.xml",
+        "patchSetId": 11
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-05-19T10:36:09Z",
+      "side": 1,
+      "message": "2020",
+      "range": {
+        "startLine": 3,
+        "startChar": 16,
+        "endLine": 3,
+        "endChar": 20
+      },
+      "revId": "da23b6a628570cbd2d77f78de5fe27f3f4e696eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2e33ef3_23aeee10",
+        "filename": "src/com/android/settings/gestures/CameraLongPressPreferenceController.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-05-19T10:36:09Z",
+      "side": 1,
+      "message": "Please help add a robolectric test for this controller. Thank you",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 22
+      },
+      "revId": "da23b6a628570cbd2d77f78de5fe27f3f4e696eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
