@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d5bef9e6_286738f6",
+        "filename": "src/com/android/settings/gestures/CameraLiftTriggerPreferenceController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1421169
+      },
+      "writtenOn": "2020-05-19T13:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9503f235_1f0460b0",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "07abdb79244b199297b44264cb1c2863acfdc697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "56eadc7f_9dbf370f",
         "filename": "src/com/android/settings/gestures/CameraLiftTriggerPreferenceController.java",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "d676d704_2290c0ae",
+        "filename": "src/com/android/settings/gestures/CameraLiftTriggerPreferenceController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1421169
+      },
+      "writtenOn": "2020-05-19T13:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56eadc7f_9dbf370f",
+      "range": {
+        "startLine": 51,
+        "startChar": 16,
+        "endLine": 51,
+        "endChar": 101
+      },
+      "revId": "07abdb79244b199297b44264cb1c2863acfdc697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6805d368_acbec751",
         "filename": "src/com/android/settings/gestures/CameraLiftTriggerPreferenceController.java",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "07abdb79244b199297b44264cb1c2863acfdc697",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aa2f90f_3cb1cc64",
+        "filename": "src/com/android/settings/gestures/CameraLiftTriggerPreferenceController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1421169
+      },
+      "writtenOn": "2020-05-19T13:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6805d368_acbec751",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 0
+      },
+      "revId": "07abdb79244b199297b44264cb1c2863acfdc697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
