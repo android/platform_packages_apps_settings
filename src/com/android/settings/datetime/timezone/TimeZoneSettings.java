@@ -210,10 +210,21 @@ public class TimeZoneSettings extends DashboardFragment {
                 mTimeZoneData.lookupCountryTimeZones(regionId);
 
         use(RegionZonePreferenceController.class).setTimeZoneInfo(tzInfo);
-        // Only clickable when the region has more than 1 time zones or no time zone is selected.
 
-        use(RegionZonePreferenceController.class).setClickable(tzInfo == null ||
-                (countryTimeZones != null && countryTimeZones.getTimeZoneIds().size() > 1));
+        // The zone is only clickable when no time zone is selected, the region has more than 1 time
+        // zone to choose from, or (rarely, if zone IDs aliases have been introduced or similar edge
+        // case) if the region has one zone but it's not exactly the same as tzId.
+        boolean isClickable;
+        if (tzInfo == null) {
+            isClickable = true;
+        } else if (countryTimeZones == null) {
+            isClickable = false;
+        } else {
+            List<String> timeZoneIds = countryTimeZones.getTimeZoneIds();
+            isClickable = timeZoneIds.size() > 1 || !timeZoneIds.contains(tzId);
+        }
+        use(RegionZonePreferenceController.class).setClickable(isClickable);
+
         use(TimeZoneInfoPreferenceController.class).setTimeZoneInfo(tzInfo);
 
         updatePreferenceStates();
@@ -371,7 +382,7 @@ public class TimeZoneSettings extends DashboardFragment {
             return localeRegionId;
         }
 
-        return matchedRegions.toArray(new String[matchedRegions.size()])[0];
+        return matchedRegions.iterator().next();
     }
 
     private void setPreferenceCategoryVisible(PreferenceCategory category,
