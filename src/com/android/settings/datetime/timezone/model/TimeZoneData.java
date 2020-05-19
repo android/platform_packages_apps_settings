@@ -66,13 +66,13 @@ public class TimeZoneData {
         if (tzId == null) {
             return Collections.emptySet();
         }
-        List<CountryTimeZones> countryTimeZones = mCountryZonesFinder
-                .lookupCountryTimeZonesForZoneId(tzId);
+        List<CountryTimeZones> countryTimeZones =
+                mCountryZonesFinder.lookupCountryTimeZonesForZoneId(tzId);
         Set<String> regionIds = new ArraySet<>();
         for (CountryTimeZones countryTimeZone : countryTimeZones) {
-            FilteredCountryTimeZones filteredZones = new FilteredCountryTimeZones(countryTimeZone);
-            if (filteredZones.getTimeZoneIds().contains(tzId)) {
-                regionIds.add(filteredZones.getRegionId());
+            String regionId = TimeZoneData.normalizeRegionId(countryTimeZone.getCountryIso());
+            if (regionId != null) {
+                regionIds.add(regionId);
             }
         }
         return regionIds;
