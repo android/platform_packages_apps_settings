@@ -93,6 +93,30 @@
       "revId": "da23b6a628570cbd2d77f78de5fe27f3f4e696eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef228ed9_5e976ddb",
+        "filename": "src/com/android/settings/gestures/CameraLongPressPreferenceController.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1421169
+      },
+      "writtenOn": "2020-05-19T16:21:14Z",
+      "side": 1,
+      "message": "Added tests in https://r.android.com/1315245",
+      "parentUuid": "42c7f484_6031e7db",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 22
+      },
+      "revId": "da23b6a628570cbd2d77f78de5fe27f3f4e696eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
