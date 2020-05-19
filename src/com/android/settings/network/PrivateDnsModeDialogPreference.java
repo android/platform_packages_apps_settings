@@ -15,7 +15,6 @@
  */
 package com.android.settings.network;
 
-import static android.net.ConnectivityManager.PRIVATE_DNS_DEFAULT_MODE_FALLBACK;
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_OFF;
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_OPPORTUNISTIC;
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_PROVIDER_HOSTNAME;
@@ -87,7 +86,7 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
         if (!PRIVATE_DNS_MAP.containsKey(mode)) {
             mode = Settings.Global.getString(cr, Settings.Global.PRIVATE_DNS_DEFAULT_MODE);
         }
-        return PRIVATE_DNS_MAP.containsKey(mode) ? mode : PRIVATE_DNS_DEFAULT_MODE_FALLBACK;
+        return PRIVATE_DNS_MAP.containsKey(mode) ? mode : PRIVATE_DNS_MODE_OPPORTUNISTIC;
     }
 
     public static String getHostnameFromSettings(ContentResolver cr) {
