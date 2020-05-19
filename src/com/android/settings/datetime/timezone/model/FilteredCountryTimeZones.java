@@ -63,8 +63,4 @@ public class FilteredCountryTimeZones {
     public CountryTimeZones getCountryTimeZones() {
         return mCountryTimeZones;
     }
-
-    public String getRegionId() {
-        return TimeZoneData.normalizeRegionId(mCountryTimeZones.getCountryIso());
-    }
 }
