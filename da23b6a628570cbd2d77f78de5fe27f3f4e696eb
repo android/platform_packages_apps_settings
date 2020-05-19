@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "84730f41_2b933637",
+        "filename": "res/xml/camera_button_long_press_settings.xml",
+        "patchSetId": 11
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1421169
+      },
+      "writtenOn": "2020-05-19T13:58:30Z",
+      "side": 1,
+      "message": "When I wrote this code, it was still 2019.\n\"Copyright 2019-2020\" would be more accurate I guess.",
+      "parentUuid": "7974ed7f_2df93536",
+      "range": {
+        "startLine": 3,
+        "startChar": 16,
+        "endLine": 3,
+        "endChar": 20
+      },
+      "revId": "da23b6a628570cbd2d77f78de5fe27f3f4e696eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b2e33ef3_23aeee10",
         "filename": "src/com/android/settings/gestures/CameraLongPressPreferenceController.java",
         "patchSetId": 11
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-19T10:36:09Z",
       "side": 1,
       "message": "Please help add a robolectric test for this controller. Thank you",
+      "range": {
+        "startLine": 30,
+        "startChar": 5,
+        "endLine": 30,
+        "endChar": 22
+      },
+      "revId": "da23b6a628570cbd2d77f78de5fe27f3f4e696eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42c7f484_6031e7db",
+        "filename": "src/com/android/settings/gestures/CameraLongPressPreferenceController.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1421169
+      },
+      "writtenOn": "2020-05-19T13:58:30Z",
+      "side": 1,
+      "message": "I can do this of course, but I am still waiting for the internals in frameworks/base to be merged. Else any tests in Settings make little sense.",
+      "parentUuid": "b2e33ef3_23aeee10",
       "range": {
         "startLine": 30,
         "startChar": 5,
