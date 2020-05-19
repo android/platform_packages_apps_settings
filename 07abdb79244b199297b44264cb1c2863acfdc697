@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9503f235_1f0460b0",
+        "filename": "src/com/android/settings/gestures/CameraLiftTriggerPreferenceController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-05-19T10:33:21Z",
+      "side": 1,
+      "message": "can you help add robolectric test for this controllers?",
+      "range": {
+        "startLine": 31,
+        "startChar": 4,
+        "endLine": 31,
+        "endChar": 22
+      },
+      "revId": "07abdb79244b199297b44264cb1c2863acfdc697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56eadc7f_9dbf370f",
+        "filename": "src/com/android/settings/gestures/CameraLiftTriggerPreferenceController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-05-19T10:33:21Z",
+      "side": 1,
+      "message": "it\u0027s too long. \n\ncontext.getResources().getInteger(\n          com.android.internal.R.integer.config_cameraLiftTriggerSensorType) !\u003d -1;",
+      "range": {
+        "startLine": 51,
+        "startChar": 16,
+        "endLine": 51,
+        "endChar": 101
+      },
+      "revId": "07abdb79244b199297b44264cb1c2863acfdc697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6805d368_acbec751",
+        "filename": "src/com/android/settings/gestures/CameraLiftTriggerPreferenceController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-05-19T10:33:21Z",
+      "side": 1,
+      "message": "remove empty space.",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 0
+      },
+      "revId": "07abdb79244b199297b44264cb1c2863acfdc697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
