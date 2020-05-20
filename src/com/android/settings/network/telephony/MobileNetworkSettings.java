@@ -37,11 +37,8 @@ import androidx.preference.Preference;
 
 import com.android.internal.telephony.TelephonyIntents;
 import com.android.settings.R;
-import com.android.settings.core.BasePreferenceController;
-import com.android.settings.core.FeatureFlags;
 import com.android.settings.datausage.BillingCyclePreferenceController;
 import com.android.settings.datausage.DataUsageSummaryPreferenceController;
-import com.android.settings.development.featureflags.FeatureFlagPersistent;
 import com.android.settings.network.telephony.cdma.CdmaSubscriptionPreferenceController;
 import com.android.settings.network.telephony.cdma.CdmaSystemSelectPreferenceController;
 import com.android.settings.network.telephony.gsm.AutoSelectPreferenceController;
@@ -51,16 +48,10 @@ import com.android.settings.search.Indexable;
 import com.android.settings.widget.PreferenceCategoryController;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.search.SearchIndexable;
-import com.android.settingslib.utils.ThreadUtils;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.Future;
-
-import androidx.annotation.VisibleForTesting;
-import androidx.preference.Preference;
 
 @SearchIndexable(forTarget = SearchIndexable.ALL & ~SearchIndexable.ARC)
 public class MobileNetworkSettings extends AbstractMobileNetworkSettings {
@@ -137,19 +128,17 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings {
     public void onAttach(Context context) {
         super.onAttach(context);
 
-        if (FeatureFlagPersistent.isEnabled(getContext(), FeatureFlags.NETWORK_INTERNET_V2)) {
-            use(CallsDefaultSubscriptionController.class).init(getLifecycle());
-            use(SmsDefaultSubscriptionController.class).init(getLifecycle());
-            use(MobileNetworkSwitchController.class).init(getLifecycle(), mSubId);
-            use(CarrierSettingsVersionPreferenceController.class).init(mSubId);
-            use(BillingCyclePreferenceController.class).init(mSubId);
-            use(MmsMessagePreferenceController.class).init(mSubId);
-            use(DataDuringCallsPreferenceController.class).init(getLifecycle(), mSubId);
-            use(DisabledSubscriptionController.class).init(getLifecycle(), mSubId);
-            use(DeleteSimProfilePreferenceController.class).init(mSubId, this,
-                    REQUEST_CODE_DELETE_SUBSCRIPTION);
-            use(DisableSimFooterPreferenceController.class).init(mSubId);
-        }
+        use(CallsDefaultSubscriptionController.class).init(getLifecycle());
+        use(SmsDefaultSubscriptionController.class).init(getLifecycle());
+        use(MobileNetworkSwitchController.class).init(getLifecycle(), mSubId);
+        use(CarrierSettingsVersionPreferenceController.class).init(mSubId);
+        use(BillingCyclePreferenceController.class).init(mSubId);
+        use(MmsMessagePreferenceController.class).init(mSubId);
+        use(DataDuringCallsPreferenceController.class).init(getLifecycle(), mSubId);
+        use(DisabledSubscriptionController.class).init(getLifecycle(), mSubId);
+        use(DeleteSimProfilePreferenceController.class).init(mSubId, this,
+                REQUEST_CODE_DELETE_SUBSCRIPTION);
+        use(DisableSimFooterPreferenceController.class).init(mSubId);
         use(MobileDataPreferenceController.class).init(getFragmentManager(), mSubId);
         use(RoamingPreferenceController.class).init(getFragmentManager(), mSubId);
         use(ApnPreferenceController.class).init(mSubId);
@@ -158,9 +147,7 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings {
         use(PreferredNetworkModePreferenceController.class).init(mSubId);
         use(EnabledNetworkModePreferenceController.class).init(getLifecycle(), mSubId);
         use(DataServiceSetupPreferenceController.class).init(mSubId);
-        if (!FeatureFlagPersistent.isEnabled(getContext(), FeatureFlags.NETWORK_INTERNET_V2)) {
-            use(EuiccPreferenceController.class).init(mSubId);
-        }
+
         final WifiCallingPreferenceController wifiCallingPreferenceController =
                 use(WifiCallingPreferenceController.class).init(mSubId);
 
@@ -215,11 +202,7 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings {
 
     @Override
     protected int getPreferenceScreenResId() {
-        if (FeatureFlagPersistent.isEnabled(getContext(), FeatureFlags.NETWORK_INTERNET_V2)) {
-            return R.xml.mobile_network_settings_v2;
-        } else {
-            return R.xml.mobile_network_settings;
-        }
+        return R.xml.mobile_network_settings_v2;
     }
 
     @Override
