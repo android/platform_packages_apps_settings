@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a34f5bd_c1e211b4",
+        "filename": "tests/robotests/src/com/android/settings/gestures/CameraLiftTriggerPreferenceControllerTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-05-20T08:33:52Z",
+      "side": 1,
+      "message": "can you make the precondition more precise?\ne.g isSuggestionCompleted_isGeatureUnAvailable(Or something better)_returnTrue",
+      "range": {
+        "startLine": 58,
+        "startChar": 38,
+        "endLine": 58,
+        "endChar": 42
+      },
+      "revId": "7199e6b781790efabdf8c9524334080c6f60a850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de010ca2_b3133891",
+        "filename": "tests/robotests/src/com/android/settings/gestures/CameraLiftTriggerPreferenceControllerTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-05-20T08:33:52Z",
+      "side": 1,
+      "message": "it\u0027s too long.",
+      "range": {
+        "startLine": 64,
+        "startChar": 8,
+        "endLine": 64,
+        "endChar": 103
+      },
+      "revId": "7199e6b781790efabdf8c9524334080c6f60a850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85d0cf17_d6f53306",
+        "filename": "tests/robotests/src/com/android/settings/gestures/CameraLiftTriggerPreferenceControllerTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-05-20T08:33:52Z",
+      "side": 1,
+      "message": "Our format for test cases.\n\n// Precondition\n// Empty space\n// Action\n// Empty space\n// Assertion\n\nfinal CameraLiftTriggerPreferenceController controller \u003d\n      new CameraLiftTriggerPreferenceController(mContext, KEY_LIFT_TRIGGER);\n\nassertThat(controller.isSliceable()).isTrue();",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 54
+      },
+      "revId": "7199e6b781790efabdf8c9524334080c6f60a850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
