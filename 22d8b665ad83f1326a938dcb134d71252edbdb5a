@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79449a91_da4b64c2",
+        "filename": "tests/robotests/src/com/android/settings/gestures/CameraLongPressPreferenceControllerTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-05-20T09:25:27Z",
+      "side": 1,
+      "message": "it\u0027s too long.",
+      "range": {
+        "startLine": 65,
+        "startChar": 7,
+        "endLine": 65,
+        "endChar": 101
+      },
+      "revId": "22d8b665ad83f1326a938dcb134d71252edbdb5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fe8ec41_75389a67",
+        "filename": "tests/robotests/src/com/android/settings/gestures/CameraLongPressPreferenceControllerTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-05-20T09:25:27Z",
+      "side": 1,
+      "message": "can you make it more clear? What is the meaning of \"no enabled\"",
+      "range": {
+        "startLine": 72,
+        "startChar": 38,
+        "endLine": 72,
+        "endChar": 48
+      },
+      "revId": "22d8b665ad83f1326a938dcb134d71252edbdb5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13e766a8_b2ab32c9",
+        "filename": "tests/robotests/src/com/android/settings/gestures/CameraLongPressPreferenceControllerTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-05-20T09:25:27Z",
+      "side": 1,
+      "message": "isSliceable_setCorrectKey_returnsTrue",
+      "range": {
+        "startLine": 92,
+        "startChar": 16,
+        "endLine": 92,
+        "endChar": 49
+      },
+      "revId": "22d8b665ad83f1326a938dcb134d71252edbdb5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67c4bc40_c6192520",
+        "filename": "tests/robotests/src/com/android/settings/gestures/CameraLongPressPreferenceControllerTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-05-20T09:25:27Z",
+      "side": 1,
+      "message": "isSliceable_setIncorrectKey_returnsFalse",
+      "range": {
+        "startLine": 99,
+        "startChar": 16,
+        "endLine": 99,
+        "endChar": 52
+      },
+      "revId": "22d8b665ad83f1326a938dcb134d71252edbdb5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
