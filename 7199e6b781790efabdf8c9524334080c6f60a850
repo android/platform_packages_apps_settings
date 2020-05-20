@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9d3e06e3_119d563a",
+        "filename": "tests/robotests/src/com/android/settings/gestures/CameraLiftTriggerPreferenceControllerTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1421169
+      },
+      "writtenOn": "2020-05-20T14:40:06Z",
+      "side": 1,
+      "message": "Took the logic from DoubleTagPowerPreferenceControllerTest instead and adjusted the names.",
+      "parentUuid": "0a34f5bd_c1e211b4",
+      "range": {
+        "startLine": 58,
+        "startChar": 38,
+        "endLine": 58,
+        "endChar": 42
+      },
+      "revId": "7199e6b781790efabdf8c9524334080c6f60a850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "de010ca2_b3133891",
         "filename": "tests/robotests/src/com/android/settings/gestures/CameraLiftTriggerPreferenceControllerTest.java",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "64d5975a_32a8d412",
+        "filename": "tests/robotests/src/com/android/settings/gestures/CameraLiftTriggerPreferenceControllerTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1421169
+      },
+      "writtenOn": "2020-05-20T14:40:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "de010ca2_b3133891",
+      "range": {
+        "startLine": 64,
+        "startChar": 8,
+        "endLine": 64,
+        "endChar": 103
+      },
+      "revId": "7199e6b781790efabdf8c9524334080c6f60a850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "85d0cf17_d6f53306",
         "filename": "tests/robotests/src/com/android/settings/gestures/CameraLiftTriggerPreferenceControllerTest.java",
         "patchSetId": 4
@@ -68,6 +116,30 @@
       "revId": "7199e6b781790efabdf8c9524334080c6f60a850",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74976beb_3a130461",
+        "filename": "tests/robotests/src/com/android/settings/gestures/CameraLiftTriggerPreferenceControllerTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1421169
+      },
+      "writtenOn": "2020-05-20T14:40:06Z",
+      "side": 1,
+      "message": "I copypasted that section from DoubleTapPowerPreferenceControllerTest.\nChanged to include an empty line nevertheless.",
+      "parentUuid": "85d0cf17_d6f53306",
+      "range": {
+        "startLine": 99,
+        "startChar": 0,
+        "endLine": 101,
+        "endChar": 54
+      },
+      "revId": "7199e6b781790efabdf8c9524334080c6f60a850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
