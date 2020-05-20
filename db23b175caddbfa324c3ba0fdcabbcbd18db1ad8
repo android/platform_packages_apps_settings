@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "608bd2e7_04359fb4",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-05-20T02:03:08Z",
+      "side": 1,
+      "message": "This could be merged into setAirplanMode() and create a new function clickAirplanMode() instead of following lines:\nmDevice.executeShellCommand(\"am start -W -a android.settings.AIRPLANE_MODE_SETTINGS\");\nmDevice.waitForIdle(TIME_OUT);\nmDevice.findObject(By.textContains(\"Airplane\")).click();\nmDevice.waitForIdle(TIME_OUT);\n\nThen we can reuse the clickAirplanMode() in resetAirplanMode().",
+      "range": {
+        "startLine": 185,
+        "startChar": 15,
+        "endLine": 185,
+        "endChar": 70
+      },
+      "revId": "db23b175caddbfa324c3ba0fdcabbcbd18db1ad8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7257889c_51713d53",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-05-20T02:03:08Z",
+      "side": 1,
+      "message": "typo",
+      "range": {
+        "startLine": 197,
+        "startChar": 22,
+        "endLine": 197,
+        "endChar": 30
+      },
+      "revId": "db23b175caddbfa324c3ba0fdcabbcbd18db1ad8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b641b2e1_6bf49e07",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-05-20T02:03:08Z",
+      "side": 1,
+      "message": "It\u0027s not making sense we just call setAirplanMode() again. One uses case come to my mind is that if setAirplanMode() failed, we should not depend on mDefaultAirplaneModeStatus to click again.\n\nIn general we will check the mDefaultAirplaneModeStatus and current airplan mode to decide reset or not.",
+      "range": {
+        "startLine": 198,
+        "startChar": 8,
+        "endLine": 198,
+        "endChar": 25
+      },
+      "revId": "db23b175caddbfa324c3ba0fdcabbcbd18db1ad8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
