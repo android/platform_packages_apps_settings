@@ -28,6 +28,8 @@ import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.ims.ImsRcsManager;
 import android.text.TextUtils;
+import android.view.View;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.VisibleForTesting;
@@ -108,8 +110,16 @@ public class MobileNetworkActivity extends SettingsBaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mobile_network_settings_container_v2);
-        setActionBar(findViewById(R.id.mobile_action_bar));
+
+        final Toolbar toolbar = findViewById(R.id.action_bar);
+        toolbar.setVisibility(View.VISIBLE);
+        setActionBar(toolbar);
+
+        final ActionBar actionBar = getActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
         mPhoneChangeReceiver = new PhoneChangeReceiver(this, new PhoneChangeReceiver.Client() {
             @Override
             public void onPhoneChange() {
@@ -131,10 +141,6 @@ public class MobileNetworkActivity extends SettingsBaseActivity {
                 ? savedInstanceState.getInt(Settings.EXTRA_SUB_ID, SUB_ID_NULL)
                 : SUB_ID_NULL;
 
-        final ActionBar actionBar = getActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-        }
         updateSubscriptions(savedInstanceState);
         maybeShowContactDiscoveryDialog(mCurSubscriptionId);
     }
@@ -246,7 +252,7 @@ public class MobileNetworkActivity extends SettingsBaseActivity {
         bundle.putInt(Settings.EXTRA_SUB_ID, subscriptionId);
 
         fragment.setArguments(bundle);
-        fragmentTransaction.replace(R.id.main_content, fragment,
+        fragmentTransaction.replace(R.id.content_frame, fragment,
                 buildFragmentTag(subscriptionId));
         fragmentTransaction.commit();
         mCurSubscriptionId = subscriptionId;

@@ -58,7 +58,7 @@ public class NetworkDashboardFragment extends DashboardFragment implements
 
     @Override
     protected int getPreferenceScreenResId() {
-        return R.xml.network_and_internet_v2;
+        return R.xml.network_and_internet;
     }
 
     @Override
@@ -148,7 +148,7 @@ public class NetworkDashboardFragment extends DashboardFragment implements
                 public List<SearchIndexableResource> getXmlResourcesToIndex(
                         Context context, boolean enabled) {
                     final SearchIndexableResource sir = new SearchIndexableResource(context);
-                    sir.xmlResId = R.xml.network_and_internet_v2;
+                    sir.xmlResId = R.xml.network_and_internet;
                     return Arrays.asList(sir);
                 }
 
