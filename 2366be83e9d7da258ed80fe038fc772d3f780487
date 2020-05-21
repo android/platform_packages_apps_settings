@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0a6b70a8_5587afd2",
+        "filename": "tests/robotests/src/com/android/settings/gestures/CameraLiftTriggerPreferenceControllerTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1421169
+      },
+      "writtenOn": "2020-05-21T13:09:54Z",
+      "side": 1,
+      "message": "Further down I already test for getAvailabilityStatus, but I agree that testing isAvailable() can be dropped.\n\nAlso used the shadow resources for getAvailabilityStatus as well.",
+      "parentUuid": "5c0572bf_1920fe4b",
+      "range": {
+        "startLine": 78,
+        "startChar": 16,
+        "endLine": 78,
+        "endChar": 27
+      },
+      "revId": "2366be83e9d7da258ed80fe038fc772d3f780487",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7fd2aa7a_dd21422e",
         "filename": "tests/robotests/src/com/android/settings/gestures/CameraLiftTriggerPreferenceControllerTest.java",
         "patchSetId": 5
@@ -68,6 +92,30 @@
       "revId": "2366be83e9d7da258ed80fe038fc772d3f780487",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c1fa55f_40b73002",
+        "filename": "tests/robotests/src/com/android/settings/gestures/CameraLiftTriggerPreferenceControllerTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1421169
+      },
+      "writtenOn": "2020-05-21T13:09:54Z",
+      "side": 1,
+      "message": "Yeah, I wanted to keep the convention here, but your suggestion makes more sense.\nDropped the \"test\" prefix.",
+      "parentUuid": "cc36b2da_85b32922",
+      "range": {
+        "startLine": 96,
+        "startChar": 16,
+        "endLine": 96,
+        "endChar": 20
+      },
+      "revId": "2366be83e9d7da258ed80fe038fc772d3f780487",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
