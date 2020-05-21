@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb056bb5_1c5952e4",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-05-21T09:22:15Z",
+      "side": 1,
+      "message": "We need to get mDevice.executeShellCommand(\"settings get global airplane_mode_on\") and compare with mDefaultAirplaneModeStatus, since we can not make sure current airplan mode is the same with mDefaultAirplaneModeStatus.\n\nSuggest create getAirplanMode() to do mDevice.executeShellCommand(\"settings get global airplane_mode_on\") and use it in setUp() and here.",
+      "range": {
+        "startLine": 191,
+        "startChar": 12,
+        "endLine": 191,
+        "endChar": 51
+      },
+      "revId": "91e7a912071e03a340fc3e878feeb23a89fe7be4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
