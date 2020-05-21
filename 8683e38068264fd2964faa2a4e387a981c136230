@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4dbe3814_0fa7f50b",
+        "filename": "src/com/android/settings/datetime/timezone/model/TimeZoneData.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2020-05-21T18:52:26Z",
+      "side": 0,
+      "message": "I think this check was necessary because a shownInPicker\u003d\"false\" tzId needs to be excluded because we don\u0027t want to link it to any country here. Is it no longer the case?",
+      "range": {
+        "startLine": 74,
+        "startChar": 16,
+        "endLine": 74,
+        "endChar": 61
+      },
+      "revId": "8683e38068264fd2964faa2a4e387a981c136230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
