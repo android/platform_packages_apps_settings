@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c0572bf_1920fe4b",
+        "filename": "tests/robotests/src/com/android/settings/gestures/CameraLiftTriggerPreferenceControllerTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-05-21T03:01:05Z",
+      "side": 1,
+      "message": "I would prefer testing *getAvailabilityStatus* since there\u0027s no isAvailable method in this controller.",
+      "range": {
+        "startLine": 78,
+        "startChar": 16,
+        "endLine": 78,
+        "endChar": 27
+      },
+      "revId": "2366be83e9d7da258ed80fe038fc772d3f780487",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fd2aa7a_dd21422e",
+        "filename": "tests/robotests/src/com/android/settings/gestures/CameraLiftTriggerPreferenceControllerTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-05-21T03:01:05Z",
+      "side": 1,
+      "message": "nice :) better than previous one.",
+      "range": {
+        "startLine": 79,
+        "startChar": 8,
+        "endLine": 79,
+        "endChar": 47
+      },
+      "revId": "2366be83e9d7da258ed80fe038fc772d3f780487",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc36b2da_85b32922",
+        "filename": "tests/robotests/src/com/android/settings/gestures/CameraLiftTriggerPreferenceControllerTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-05-21T03:01:05Z",
+      "side": 1,
+      "message": "Don\u0027t use *test* as a prefix, since it\u0027s clear that we\u0027re testing something in Test file.\n\n(note: I understand this is Android test naming rule, however, it\u0027s a convention in Settings app.)",
+      "range": {
+        "startLine": 96,
+        "startChar": 16,
+        "endLine": 96,
+        "endChar": 20
+      },
+      "revId": "2366be83e9d7da258ed80fe038fc772d3f780487",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
