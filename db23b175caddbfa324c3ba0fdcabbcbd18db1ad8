@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0381af6b_004222d3",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1610957
+      },
+      "writtenOn": "2020-05-22T07:40:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "608bd2e7_04359fb4",
+      "range": {
+        "startLine": 185,
+        "startChar": 15,
+        "endLine": 185,
+        "endChar": 70
+      },
+      "revId": "db23b175caddbfa324c3ba0fdcabbcbd18db1ad8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7257889c_51713d53",
         "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3644e36d_136d63df",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1610957
+      },
+      "writtenOn": "2020-05-22T07:40:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7257889c_51713d53",
+      "range": {
+        "startLine": 197,
+        "startChar": 22,
+        "endLine": 197,
+        "endChar": 30
+      },
+      "revId": "db23b175caddbfa324c3ba0fdcabbcbd18db1ad8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b641b2e1_6bf49e07",
         "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
         "patchSetId": 2
@@ -68,6 +116,30 @@
       "revId": "db23b175caddbfa324c3ba0fdcabbcbd18db1ad8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "386429ba_9347647f",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1610957
+      },
+      "writtenOn": "2020-05-22T07:40:31Z",
+      "side": 1,
+      "message": "Hi Yanting,\ni\u0027ve modify the methods as your comment,\nand had verified that airplane will set successfully.",
+      "parentUuid": "b641b2e1_6bf49e07",
+      "range": {
+        "startLine": 198,
+        "startChar": 8,
+        "endLine": 198,
+        "endChar": 25
+      },
+      "revId": "db23b175caddbfa324c3ba0fdcabbcbd18db1ad8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
