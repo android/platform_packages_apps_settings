@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d98fa4c8_96721656",
+        "filename": "tests/robotests/src/com/android/settings/gestures/CameraLiftTriggerSettingsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1421169
+      },
+      "writtenOn": "2020-05-25T09:14:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33f203cd_cdfc97a5",
+      "range": {
+        "startLine": 41,
+        "startChar": 8,
+        "endLine": 41,
+        "endChar": 26
+      },
+      "revId": "e6318946cd7272e824fedb0cb68b4ae3cbb1a31d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6acd608_0fe2ffb2",
         "filename": "tests/robotests/src/com/android/settings/gestures/CameraLiftTriggerSettingsTest.java",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "e6318946cd7272e824fedb0cb68b4ae3cbb1a31d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5752bfd2_4cc3b961",
+        "filename": "tests/robotests/src/com/android/settings/gestures/CameraLiftTriggerSettingsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1421169
+      },
+      "writtenOn": "2020-05-25T09:14:33Z",
+      "side": 1,
+      "message": "I\u0027ll just leave it in to keep parity with the other tests in this folder. If anyone wants to clean them up, they should do it in another CL.",
+      "parentUuid": "d6acd608_0fe2ffb2",
+      "range": {
+        "startLine": 47,
+        "startChar": 16,
+        "endLine": 47,
+        "endChar": 44
+      },
+      "revId": "e6318946cd7272e824fedb0cb68b4ae3cbb1a31d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
