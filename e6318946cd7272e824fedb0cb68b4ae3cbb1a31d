@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33f203cd_cdfc97a5",
+        "filename": "tests/robotests/src/com/android/settings/gestures/CameraLiftTriggerSettingsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-05-25T06:25:00Z",
+      "side": 1,
+      "message": "You don\u0027t need it since you\u0027re not using Mockito.",
+      "range": {
+        "startLine": 41,
+        "startChar": 8,
+        "endLine": 41,
+        "endChar": 26
+      },
+      "revId": "e6318946cd7272e824fedb0cb68b4ae3cbb1a31d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6acd608_0fe2ffb2",
+        "filename": "tests/robotests/src/com/android/settings/gestures/CameraLiftTriggerSettingsTest.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-05-25T06:25:00Z",
+      "side": 1,
+      "message": "nit: Honestly, we\u0027re rarely test this method. Up to you.",
+      "range": {
+        "startLine": 47,
+        "startChar": 16,
+        "endLine": 47,
+        "endChar": 44
+      },
+      "revId": "e6318946cd7272e824fedb0cb68b4ae3cbb1a31d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
