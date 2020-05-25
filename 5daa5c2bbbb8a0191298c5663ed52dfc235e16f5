@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cae2d75_c6c62c49",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-05-25T08:25:11Z",
+      "side": 1,
+      "message": "You overrided the airplane mode logic to screen timeout.\nPlease correct it.",
+      "range": {
+        "startLine": 90,
+        "startChar": 8,
+        "endLine": 92,
+        "endChar": 56
+      },
+      "revId": "5daa5c2bbbb8a0191298c5663ed52dfc235e16f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
