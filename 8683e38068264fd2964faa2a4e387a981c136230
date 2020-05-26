@@ -22,6 +22,30 @@
       "revId": "8683e38068264fd2964faa2a4e387a981c136230",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca8bcca8_02aecf60",
+        "filename": "src/com/android/settings/datetime/timezone/model/TimeZoneData.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2020-05-26T11:01:36Z",
+      "side": 0,
+      "message": "I think that should have been commented.\n\nWe\u0027re into edge cases here so I\u0027m going to say the behavior here is whatever we want to make it, and I think simple code is better. The old code would add null to the regionIds, which worked but wasn\u0027t exactly expected.\n\nAIUI, the important thing for shownInPicker is that we don\u0027t show it when the user selects the region. That\u0027s still the case with this change if my testing is to be believed.\n\nIf the device is already set to a zone when we make it \"shownInPicker\u003dn\" (or however the device ended up set to a now \"hidden\" or \"unused\" zone ID), I\u0027m ok with it showing the region the zone is associated with in our data, as opposed to USA (which is what it does today).",
+      "parentUuid": "4dbe3814_0fa7f50b",
+      "range": {
+        "startLine": 74,
+        "startChar": 16,
+        "endLine": 74,
+        "endChar": 61
+      },
+      "revId": "8683e38068264fd2964faa2a4e387a981c136230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
