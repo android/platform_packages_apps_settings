@@ -46,6 +46,30 @@
       "revId": "8683e38068264fd2964faa2a4e387a981c136230",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ddda5d8_e1e0e31a",
+        "filename": "src/com/android/settings/datetime/timezone/model/TimeZoneData.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1047684
+      },
+      "writtenOn": "2020-05-27T14:06:38Z",
+      "side": 0,
+      "message": "yeah. i agree null region id needs to be fixed.\n\n\u003e I think that should have been commented.\nah. sorry for no comment here. But I think it\u0027s tested. Perhaps, you can try to run the test and see if it passes?\nhttps://cs.android.com/android/platform/superproject/+/master:packages/apps/Settings/tests/unit/src/com/android/settings/datetime/timezone/model/TimeZoneDataTest.java?q\u003dTimeZoneDataTest\n\nI think the USA comes from the country in the en_US locale, as I think this default was mostly designed for the case when the phone started with no network signal and no time zone at all. I can\u0027t remember the exact details, but. I think the default region of hidden zone can be discussed and get fixed if the default from locale is problematic.",
+      "parentUuid": "ca8bcca8_02aecf60",
+      "range": {
+        "startLine": 74,
+        "startChar": 16,
+        "endLine": 74,
+        "endChar": 61
+      },
+      "revId": "8683e38068264fd2964faa2a4e387a981c136230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
