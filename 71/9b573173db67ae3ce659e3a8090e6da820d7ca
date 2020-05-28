@@ -1,0 +1,10 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+1: Luca Stefani <luca.stefani.ge1@gmail.com>
+Code-Review+2: Edgar Wang <edgarwang@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Submitted-by: Edgar Wang <edgarwang@google.com>
+Submitted-at: Thu, 28 May 2020 06:30:45 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1312653
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
