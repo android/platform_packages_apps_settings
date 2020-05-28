@@ -2654,6 +2654,7 @@
         <receiver android:name=".sim.SimSelectNotification">
             <intent-filter>
                 <action android:name="android.telephony.action.PRIMARY_SUBSCRIPTION_LIST_CHANGED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
                 <action android:name="android.settings.ENABLE_MMS_DATA_REQUEST"/>
             </intent-filter>
         </receiver>

@@ -61,6 +61,9 @@ public class SimSelectNotification extends BroadcastReceiver {
     @VisibleForTesting
     public static final int SIM_WARNING_NOTIFICATION_ID = 3;
 
+    private static boolean sIsBootCompleted = false;
+    private static Intent sIntent = null;
+
     @VisibleForTesting
     public static final String SIM_SELECT_NOTIFICATION_CHANNEL =
             "sim_select_notification_channel";
@@ -81,10 +84,22 @@ public class SimSelectNotification extends BroadcastReceiver {
             Log.w(TAG, "Received unexpected intent with null action.");
             return;
         }
+        Log.d(TAG, "onReceive action:" + action);
 
         switch (action) {
+            case Intent.ACTION_BOOT_COMPLETED:
+                sIsBootCompleted = true;
+                if (sIntent != null) {
+                    onPrimarySubscriptionListChanged(context, sIntent);
+                }
+                break;
             case TelephonyManager.ACTION_PRIMARY_SUBSCRIPTION_LIST_CHANGED:
-                onPrimarySubscriptionListChanged(context, intent);
+                if (sIsBootCompleted) {
+                    onPrimarySubscriptionListChanged(context, intent);
+                } else {
+                    Log.d(TAG, "Not BOOT completed yet, so save intent");
+                    sIntent = (Intent) intent.clone();
+                }
                 break;
             case Settings.ACTION_ENABLE_MMS_DATA_REQUEST:
                 onEnableMmsDataRequest(context, intent);
