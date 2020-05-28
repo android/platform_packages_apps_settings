@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd1ad2d0_448fe455",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-05-28T15:12:26Z",
+      "side": 1,
+      "message": "Why we choose RuntimeException rather than IndexOutOfBoundsException?\nI know the IndexOutOfBoundsException inherite RuntimeException, any other exception you met in your test?\n\nIn theory, we intend to catch the precise exception, it\u0027s good for readabiliy in future maintainance.",
+      "range": {
+        "startLine": 217,
+        "startChar": 17,
+        "endLine": 217,
+        "endChar": 33
+      },
+      "revId": "f639da116fc9daf02fa8b45f809a685f9da9e14e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc224ed7_632465e5",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-05-28T15:12:26Z",
+      "side": 1,
+      "message": "I also curious why we ignore the exception and return Null.\nIn my opinion, we should add fail() to make test case fail here, otherwise it\u0027s hard to debug when we see the anomaly value on launch time dashboard.\nWhat do you think about it?",
+      "range": {
+        "startLine": 218,
+        "startChar": 12,
+        "endLine": 218,
+        "endChar": 26
+      },
+      "revId": "f639da116fc9daf02fa8b45f809a685f9da9e14e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
