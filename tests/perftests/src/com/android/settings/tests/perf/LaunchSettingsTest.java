@@ -149,6 +149,12 @@ public class LaunchSettingsTest {
                     getMin(mResult.get(string)));
             mBundle.putString(String.format("LaunchSettingsTest_%s_%s", string, "avg"),
                     getAvg(mResult.get(string)));
+            mBundle.putString(String.format("LaunchSettingsTest_%s_%s", string, "25 Percentile"),
+                    getPercentile(mResult.get(string), 25));
+            mBundle.putString(String.format("LaunchSettingsTest_%s_%s", string, "50 Percentile"),
+                    getPercentile(mResult.get(string), 50));
+            mBundle.putString(String.format("LaunchSettingsTest_%s_%s", string, "75 Percentile"),
+                    getPercentile(mResult.get(string), 75));
             mBundle.putString(String.format("LaunchSettingsTest_%s_%s", string, "all_results"),
                     mResult.get(string).toString());
             mBundle.putString(String.format("LaunchSettingsTest_%s_%s", string, "results_count"),
@@ -201,5 +207,15 @@ public class LaunchSettingsTest {
 
     private String getAirplaneModeStatus() throws Exception {
         return mDevice.executeShellCommand("settings get global airplane_mode_on");
+    }
+
+    private String getPercentile(ArrayList<Integer> launchResult, double position) {
+        Collections.sort(launchResult);
+        try {
+            return String.valueOf(
+                    launchResult.get((int) (Math.ceil(TEST_TIME * position / 100)) - 1));
+        } catch (IndexOutOfBoundsException e) {
+            return "Null";
+        }
     }
 }
