@@ -40,6 +40,7 @@ import com.android.internal.util.CollectionUtils;
 import com.android.settings.R;
 import com.android.settings.core.BasePreferenceController;
 import com.android.settings.core.PreferenceControllerMixin;
+import com.android.settings.datausage.lib.DataUsageLib;
 import com.android.settings.network.ProxySubscriptionManager;
 import com.android.settings.widget.EntityHeaderController;
 import com.android.settingslib.NetworkPolicyEditor;
@@ -127,7 +128,8 @@ public class DataUsageSummaryPreferenceController extends BasePreferenceControll
 
         if (mHasMobileData) {
             mDataUsageTemplate = R.string.cell_data_template;
-        } else if (DataUsageUtils.hasWifiRadio(activity)) {
+            mDefaultTemplate = DataUsageLib.getMobileTemplate(context, subscriptionId);
+        } else if (DataUsageUtils.hasWifiRadio(context)) {
             mDataUsageTemplate = R.string.wifi_data_template;
         } else {
             mDataUsageTemplate = R.string.ethernet_data_template;
