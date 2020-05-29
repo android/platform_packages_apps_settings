@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7efb8c23_aeab4f4f",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1610957
+      },
+      "writtenOn": "2020-05-29T01:34:56Z",
+      "side": 1,
+      "message": "Yes, you\u0027re right,\nuse IndexOutOfBoundsException will be better here.",
+      "parentUuid": "cd1ad2d0_448fe455",
+      "range": {
+        "startLine": 217,
+        "startChar": 17,
+        "endLine": 217,
+        "endChar": 33
+      },
+      "revId": "f639da116fc9daf02fa8b45f809a685f9da9e14e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc224ed7_632465e5",
         "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "f639da116fc9daf02fa8b45f809a685f9da9e14e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2cb092b1_39d82b29",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1610957
+      },
+      "writtenOn": "2020-05-29T01:34:56Z",
+      "side": 1,
+      "message": "If we got this issue means we can\u0027t find the result of one page,\nand we already called fail() in handleLaunchResult(),\nthis function just avoid the IndexOutOfBoundsException when put percentile result.",
+      "parentUuid": "bc224ed7_632465e5",
+      "range": {
+        "startLine": 218,
+        "startChar": 12,
+        "endLine": 218,
+        "endChar": 26
+      },
+      "revId": "f639da116fc9daf02fa8b45f809a685f9da9e14e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
