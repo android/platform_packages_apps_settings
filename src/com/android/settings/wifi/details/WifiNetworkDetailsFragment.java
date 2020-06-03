@@ -28,6 +28,8 @@ import android.os.Looper;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.app.Activity;
+import android.content.Intent;
 
 import com.android.settings.R;
 import com.android.settings.dashboard.DashboardFragment;
@@ -37,7 +39,7 @@ import com.android.settingslib.RestrictedLockUtils;
 import com.android.settingslib.RestrictedLockUtilsInternal;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.wifi.AccessPoint;
-
+import com.android.settings.wifi.dpp.WifiDppUtils;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,6 +57,7 @@ public class WifiNetworkDetailsFragment extends DashboardFragment implements
     private AccessPoint mAccessPoint;
     private WifiDetailPreferenceController mWifiDetailPreferenceController;
     private List<WifiDialog.WifiDialogListener> mWifiDialogListeners = new ArrayList<>();
+    private static final int REQUEST_CODE_WIFI_DPP_ENROLLEE_QR_CODE_SCANNER = 0;
 
     @Override
     public void onAttach(Context context) {
@@ -157,6 +160,24 @@ public class WifiNetworkDetailsFragment extends DashboardFragment implements
 
         return controllers;
     }
+     @Override
+    public void onScan(WifiDialog dialog, String ssid) {
+       
+        startActivityForResult(WifiDppUtils.getEnrolleeQrCodeScannerIntent(ssid),
+                REQUEST_CODE_WIFI_DPP_ENROLLEE_QR_CODE_SCANNER);
+    }
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CODE_WIFI_DPP_ENROLLEE_QR_CODE_SCANNER) {
+            if (resultCode != Activity.RESULT_OK) {
+                return;
+            }
+
+            finish();
+        }
+    }
+    
+   
 
     @Override
     public void onSubmit(WifiDialog dialog) {
