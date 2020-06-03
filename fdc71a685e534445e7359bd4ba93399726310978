@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5e91619_dfd3c9ee",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-06-03T09:21:59Z",
+      "side": 1,
+      "message": "Define static variable in class and use it to instead of duplicated tag name, like:\n\ne.g.,\nprivate static final String TAG \u003d \"SettingsPerfTests\";\nLog.e(TAG, String.format(\"Fail to get max of %s.\", page));",
+      "range": {
+        "startLine": 170,
+        "startChar": 15,
+        "endLine": 170,
+        "endChar": 32
+      },
+      "revId": "fdc71a685e534445e7359bd4ba93399726310978",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56ac2361_3273c1f0",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-06-03T09:21:59Z",
+      "side": 1,
+      "message": "Looks like mResult.get(page).isEmpty() is redundant, because you have checked the size before.\nTherefore, we don\u0027t need \"null\" anymore and can just use String.valueOf() to tranform the Integer to String.\n\nPlease also update the similar functions.",
+      "range": {
+        "startLine": 176,
+        "startChar": 8,
+        "endLine": 179,
+        "endChar": 9
+      },
+      "revId": "fdc71a685e534445e7359bd4ba93399726310978",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "071a19f1_8b5617da",
+        "filename": "tests/perftests/src/com/android/settings/tests/perf/LaunchSettingsTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2020-06-03T09:21:59Z",
+      "side": 1,
+      "message": "For all error logs, using Log.w or Log.e",
+      "range": {
+        "startLine": 180,
+        "startChar": 12,
+        "endLine": 180,
+        "endChar": 13
+      },
+      "revId": "fdc71a685e534445e7359bd4ba93399726310978",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
