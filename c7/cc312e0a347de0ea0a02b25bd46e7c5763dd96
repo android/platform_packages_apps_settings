@@ -1,0 +1,11 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+2: Yanting Yang <yantingyang@google.com>
+Code-Review+2: Tsung-Mao Fang <tmfang@google.com>
+Autosubmit+1: Yanting Yang <yantingyang@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Mon, 08 Jun 2020 07:05:21 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1318235
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
