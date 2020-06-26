@@ -18,8 +18,10 @@ package com.android.settings.notification;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.os.PersistableBundle;
 import android.os.UserHandle;
 import android.os.UserManager;
+import android.telephony.CarrierConfigManager;
 
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
@@ -41,6 +43,7 @@ public class EmergencyBroadcastPreferenceController extends AbstractPreferenceCo
     private AccountRestrictionHelper mHelper;
     private UserManager mUserManager;
     private PackageManager mPm;
+    private CarrierConfigManager mCarrierConfigManager;
 
     public EmergencyBroadcastPreferenceController(Context context, String prefKey) {
         this(context, new AccountRestrictionHelper(context), prefKey);
@@ -53,6 +56,8 @@ public class EmergencyBroadcastPreferenceController extends AbstractPreferenceCo
         mPrefKey = prefKey;
         mHelper = helper;
         mUserManager = (UserManager) context.getSystemService(Context.USER_SERVICE);
+        mCarrierConfigManager =
+                (CarrierConfigManager) context.getSystemService(Context.CARRIER_CONFIG_SERVICE);
         mPm = mContext.getPackageManager();
     }
 
@@ -83,20 +88,20 @@ public class EmergencyBroadcastPreferenceController extends AbstractPreferenceCo
     }
 
     private boolean isCellBroadcastAppLinkEnabled() {
-        // Enable link to CMAS app settings depending on the value in config.xml.
-        boolean enabled = mContext.getResources().getBoolean(
-                com.android.internal.R.bool.config_cellBroadcastAppLinks);
-        if (enabled) {
-            try {
-                if (mPm.getApplicationEnabledSetting("com.android.cellbroadcastreceiver")
-                        == PackageManager.COMPONENT_ENABLED_STATE_DISABLED) {
-                    enabled = false;  // CMAS app disabled
+        if (mCarrierConfigManager != null) {
+            PersistableBundle carrierConfig = mCarrierConfigManager.getConfig();
+            if (carrierConfig != null
+                    && carrierConfig.getBoolean(
+                            CarrierConfigManager.KEY_MMS_SHOW_CELL_BROADCAST_APP_LINKS_BOOL,
+                            true)) {
+                try {
+                    return mPm.getApplicationEnabledSetting("com.android.cellbroadcastreceiver")
+                            != PackageManager.COMPONENT_ENABLED_STATE_DISABLED;
+                } catch (IllegalArgumentException ignored) {
+                    // CMAS app not installed
                 }
-            } catch (IllegalArgumentException ignored) {
-                enabled = false;  // CMAS app not installed
             }
         }
-        return enabled;
+        return false;
     }
-
 }
