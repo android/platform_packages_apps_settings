@@ -39,7 +39,6 @@ public class RestrictedEncryptionPreferenceControllerTest {
 
     private Context mContext;
     private ShadowUserManager mUserManager;
-    private CredentialStoragePreferenceController mCredentialStoragePreferenceController;
     private InstallCredentialsPreferenceController mInstallCredentialsPreferenceController;
     private ResetCredentialsPreferenceController mResetCredentialsPreferenceController;
     private UserCredentialsPreferenceController mUserCredentialsPreferenceController;
@@ -51,8 +50,6 @@ public class RestrictedEncryptionPreferenceControllerTest {
         mContext = RuntimeEnvironment.application;
         mLifecycleOwner = () -> mLifecycle;
         mLifecycle = new Lifecycle(mLifecycleOwner);
-        mCredentialStoragePreferenceController =
-                new CredentialStoragePreferenceController(mContext);
         mInstallCredentialsPreferenceController =
                 new InstallCredentialsPreferenceController(mContext);
         mResetCredentialsPreferenceController =
@@ -64,7 +61,6 @@ public class RestrictedEncryptionPreferenceControllerTest {
 
     @Test
     public void isAvailable_noRestriction_shouldReturnTrue() {
-        assertThat(mCredentialStoragePreferenceController.isAvailable()).isTrue();
         assertThat(mInstallCredentialsPreferenceController.isAvailable()).isTrue();
         assertThat(mResetCredentialsPreferenceController.isAvailable()).isTrue();
         assertThat(mUserCredentialsPreferenceController.isAvailable()).isTrue();
@@ -74,7 +70,6 @@ public class RestrictedEncryptionPreferenceControllerTest {
     public void isAvailable_hasRestriction_shouldReturnFalse() {
         mUserManager.addBaseUserRestriction(UserManager.DISALLOW_CONFIG_CREDENTIALS);
 
-        assertThat(mCredentialStoragePreferenceController.isAvailable()).isFalse();
         assertThat(mInstallCredentialsPreferenceController.isAvailable()).isFalse();
         assertThat(mResetCredentialsPreferenceController.isAvailable()).isFalse();
         assertThat(mUserCredentialsPreferenceController.isAvailable()).isFalse();
