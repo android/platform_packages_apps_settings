@@ -27,7 +27,6 @@ import android.app.admin.DevicePolicyManager;
 import android.app.settings.SettingsEnums;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.UserInfo;
@@ -65,7 +64,8 @@ import android.widget.TextView;
 import com.android.internal.annotations.GuardedBy;
 import com.android.internal.app.UnlaunchableAppActivity;
 import com.android.internal.widget.LockPatternUtils;
-import com.android.settings.core.InstrumentedFragment;
+import com.android.settings.TrustedCredentialsDetailsPreference.DelegateInterface;
+import com.android.settings.core.SubSettingLauncher;
 
 import java.security.cert.CertificateEncodingException;
 import java.security.cert.X509Certificate;
@@ -75,8 +75,11 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.IntConsumer;
 
-public class TrustedCredentialsSettings extends InstrumentedFragment
-        implements TrustedCredentialsDialogBuilder.DelegateInterface {
+/**
+ * Implements Trusted Credentials screen containing list of system certificates
+ */
+public class TrustedCredentialsSettings extends SettingsPreferenceFragment
+        implements DelegateInterface {
 
     public static final String ARG_SHOW_NEW_FOR_USER = "ARG_SHOW_NEW_FOR_USER";
 
@@ -716,6 +719,7 @@ public class TrustedCredentialsSettings extends InstrumentedFragment
                             List<String> aliases = mTab.getAliases(service);
                             if (isCancelled()) {
                                 return new SparseArray<List<CertHolder>>();
+                                return new SparseArray<List<CertHolder>>();
                             }
                             max += aliases.size();
                             aliasesByProfileId.put(profileId, aliases);
@@ -924,23 +928,37 @@ public class TrustedCredentialsSettings extends InstrumentedFragment
     private void showTrustAllCaDialog(List<CertHolder> unapprovedCertHolders) {
         final CertHolder[] arr = unapprovedCertHolders.toArray(
                 new CertHolder[unapprovedCertHolders.size()]);
-        new TrustedCredentialsDialogBuilder(getActivity(), this)
-                .setCertHolders(arr)
-                .setOnDismissListener(new DialogInterface.OnDismissListener() {
-                    @Override
-                    public void onDismiss(DialogInterface dialogInterface) {
-                        // Avoid starting dialog again after Activity restart.
-                        getActivity().getIntent().removeExtra(ARG_SHOW_NEW_FOR_USER);
-                        mTrustAllCaUserId = UserHandle.USER_NULL;
-                    }
-                })
-                .show();
+
+//        new TrustedCredentialsDialogBuilder(getActivity(), this)
+//                .setCertHolders(arr)
+//                .setOnDismissListener(new DialogInterface.OnDismissListener() {
+//                    @Override
+//                    public void onDismiss(DialogInterface dialogInterface) {
+//                        // Avoid starting dialog again after Activity restart.
+//                        getActivity().getIntent().removeExtra(ARG_SHOW_NEW_FOR_USER);
+//                        mTrustAllCaUserId = UserHandle.USER_NULL;
+//                    }
+//                })
+//                .show();
     }
 
     private void showCertDialog(final CertHolder certHolder) {
-        new TrustedCredentialsDialogBuilder(getActivity(), this)
-                .setCertHolder(certHolder)
-                .show();
+        Bundle args = new Bundle();
+        try {
+            args.putString("alias", certHolder.mAlias);
+            args.putByteArray("cert", certHolder.mX509Cert.getEncoded());
+            args.putInt("profileId", certHolder.mProfileId);
+        } catch (CertificateEncodingException e) {
+            Log.e(TAG, "CertificateEncodingException while retrieving "
+                    + "X509Certificate byte array for bundle " + e);
+        }
+        new SubSettingLauncher(this.getContext())
+                .setDestination(TrustedCredentialsDetailsPreference.class.getName())
+                .setSourceMetricsCategory(getMetricsCategory())
+                .setArguments(args)
+                .setUserHandle(new UserHandle(certHolder.mProfileId))
+                .setResultListener(this, 1)
+                .launch();
     }
 
     @Override
