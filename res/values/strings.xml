@@ -6541,6 +6541,14 @@
     <string name="trusted_credentials_remove_label">Remove</string>
     <!-- Button label for trusting a user CA certificate. -->
     <string name="trusted_credentials_trust_label">Trust</string>
+    <!-- State of trusted credential when disabled [CHAR LIMIT=30]-->
+    <string name="trusted_credential_disabled">Disabled</string>
+    <!-- State of trusted credential when disabled [CHAR LIMIT=30]-->
+    <string name="trusted_credential_enabled">Enabled</string>
+    <!-- Positive button of trusted credential dialog when disabling certificate [CHAR LIMIT=30]-->
+    <string name="trusted_credential_dialog_positive">Disable</string>
+    <!-- Negative button of trusted credential dialog when disabling certificate [CHAR LIMIT=30]-->
+    <string name="trusted_credential_dialog_negative">Cancel</string>
     <!-- Alert dialog confirmation when enabling a system CA certificate. -->
     <string name="trusted_credentials_enable_confirmation">Enable the system CA certificate?</string>
     <!-- Alert dialog confirmation when disabling a system CA certificate. -->
