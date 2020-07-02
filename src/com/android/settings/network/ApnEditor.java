@@ -660,7 +660,6 @@ public class ApnEditor extends SettingsPreferenceFragment
                 checkNull(bearerMultiDescription(mBearerMulti.getValues())));
         mMvnoType.setSummary(
                 checkNull(mvnoDescription(mMvnoType.getValue())));
-        mMvnoMatchData.setSummary(checkNull(mMvnoMatchData.getText()));
         // allow user to edit carrier_enabled for some APN
         final boolean ceEditable = getResources().getBoolean(
                 R.bool.config_allow_edit_carrier_enabled);
@@ -728,6 +727,7 @@ public class ApnEditor extends SettingsPreferenceFragment
                             .contains(Telephony.Carriers.MVNO_MATCH_DATA));
             mMvnoMatchData.setEnabled(!mvnoMatchDataUneditable && mvnoIndex != 0);
             if (newValue != null && newValue.equals(oldValue) == false) {
+                String mMvnoMatchDataText = sNotSet;
                 if (values[mvnoIndex].equals("SPN")) {
                     TelephonyManager telephonyManager = (TelephonyManager)
                             getContext().getSystemService(TelephonyManager.class);
@@ -736,7 +736,7 @@ public class ApnEditor extends SettingsPreferenceFragment
                     if (telephonyManagerForSubId != null) {
                         telephonyManager = telephonyManagerForSubId;
                     }
-                    mMvnoMatchData.setText(telephonyManager.getSimOperatorName());
+                    mMvnoMatchDataText = telephonyManager.getSimOperatorName();
                 } else if (values[mvnoIndex].equals("IMSI")) {
                     final SubscriptionInfo subInfo =
                             mProxySubscriptionMgr.getAccessibleSubscriptionInfo(mSubId);
@@ -744,7 +744,7 @@ public class ApnEditor extends SettingsPreferenceFragment
                             Objects.toString(subInfo.getMccString(), "");
                     final String mnc = (subInfo == null) ? "" :
                             Objects.toString(subInfo.getMncString(), "");
-                    mMvnoMatchData.setText(mcc + mnc + "x");
+                    mMvnoMatchDataText = mcc + mnc + "x";
                 } else if (values[mvnoIndex].equals("GID")) {
                     TelephonyManager telephonyManager = (TelephonyManager)
                             getContext().getSystemService(TelephonyManager.class);
@@ -753,9 +753,15 @@ public class ApnEditor extends SettingsPreferenceFragment
                     if (telephonyManagerForSubId != null) {
                         telephonyManager = telephonyManagerForSubId;
                     }
-                    mMvnoMatchData.setText(telephonyManager.getGroupIdLevel1());
+                    mMvnoMatchDataText = telephonyManager.getGroupIdLevel1();
                 }
+
+                if (TextUtils.isEmpty(checkNotSet(mMvnoMatchDataText))) {
+                    mMvnoMatchDataText = "";
+                }
+                mMvnoMatchData.setText(mMvnoMatchDataText);
             }
+            mMvnoMatchData.setSummary(checkNull(mMvnoMatchData.getText()));
 
             try {
                 return values[mvnoIndex];
