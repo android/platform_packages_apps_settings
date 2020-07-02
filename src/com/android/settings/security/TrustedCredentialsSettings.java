@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2011 The Android Open Source Project
+ * Copyright (C) 2020 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings;
+package com.android.settings.security;
 
 import static android.widget.LinearLayout.LayoutParams.MATCH_PARENT;
 import static android.widget.LinearLayout.LayoutParams.WRAP_CONTENT;
@@ -27,7 +27,6 @@ import android.app.admin.DevicePolicyManager;
 import android.app.settings.SettingsEnums;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.UserInfo;
@@ -65,7 +64,10 @@ import android.widget.TextView;
 import com.android.internal.annotations.GuardedBy;
 import com.android.internal.app.UnlaunchableAppActivity;
 import com.android.internal.widget.LockPatternUtils;
-import com.android.settings.core.InstrumentedFragment;
+import com.android.settings.R;
+import com.android.settings.SettingsPreferenceFragment;
+import com.android.settings.Utils;
+import com.android.settings.core.SubSettingLauncher;
 
 import java.security.cert.CertificateEncodingException;
 import java.security.cert.X509Certificate;
@@ -75,8 +77,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.IntConsumer;
 
-public class TrustedCredentialsSettings extends InstrumentedFragment
-        implements TrustedCredentialsDialogBuilder.DelegateInterface {
+/**
+ * Implements Trusted Credentials screen containing list of system certificates
+ */
+public class TrustedCredentialsSettings extends SettingsPreferenceFragment {
 
     public static final String ARG_SHOW_NEW_FOR_USER = "ARG_SHOW_NEW_FOR_USER";
 
@@ -117,7 +121,7 @@ public class TrustedCredentialsSettings extends InstrumentedFragment
         private final int mContentView;
         private final boolean mSwitch;
 
-        private Tab(String tag, int label, int view, int progress, int contentView,
+        Tab(String tag, int label, int view, int progress, int contentView,
                 boolean withSwitch) {
             mTag = tag;
             mLabel = label;
@@ -160,13 +164,12 @@ public class TrustedCredentialsSettings extends InstrumentedFragment
             mKeyChainConnectionByProfileId = new SparseArray<KeyChainConnection>();
 
     private BroadcastReceiver mWorkProfileChangedReceiver = new BroadcastReceiver() {
-
         @Override
         public void onReceive(Context context, Intent intent) {
             final String action = intent.getAction();
-            if (Intent.ACTION_MANAGED_PROFILE_AVAILABLE.equals(action) ||
-                    Intent.ACTION_MANAGED_PROFILE_UNAVAILABLE.equals(action) ||
-                    Intent.ACTION_MANAGED_PROFILE_UNLOCKED.equals(action)) {
+            if (Intent.ACTION_MANAGED_PROFILE_AVAILABLE.equals(action)
+                    || Intent.ACTION_MANAGED_PROFILE_UNAVAILABLE.equals(action)
+                    || Intent.ACTION_MANAGED_PROFILE_UNLOCKED.equals(action)) {
                 for (GroupAdapter adapter : mGroupAdapters) {
                     adapter.load();
                 }
@@ -222,12 +225,20 @@ public class TrustedCredentialsSettings extends InstrumentedFragment
         addTab(Tab.SYSTEM);
         // TODO add Install button on Tab.USER to go to CertInstaller like KeyChainActivity
         addTab(Tab.USER);
-        if (getActivity().getIntent() != null &&
-                USER_ACTION.equals(getActivity().getIntent().getAction())) {
+        if (getActivity().getIntent() != null
+                && USER_ACTION.equals(getActivity().getIntent().getAction())) {
             mTabHost.setCurrentTabByTag(Tab.USER.mTag);
         }
         return mTabHost;
     }
+
+    @Override public void onResume() {
+        super.onResume();
+        for (GroupAdapter adapter : mGroupAdapters) {
+            adapter.load();
+        }
+    }
+
     @Override
     public void onDestroy() {
         getActivity().unregisterReceiver(mWorkProfileChangedReceiver);
@@ -514,13 +525,13 @@ public class TrustedCredentialsSettings extends InstrumentedFragment
 
     private class ChildAdapter extends BaseAdapter implements View.OnClickListener,
             AdapterView.OnItemClickListener {
-        private final int[] GROUP_EXPANDED_STATE_SET = {com.android.internal.R.attr.state_expanded};
-        private final int[] EMPTY_STATE_SET = {};
-        private final LinearLayout.LayoutParams HIDE_CONTAINER_LAYOUT_PARAMS =
+        private final int[] mGroupExpandedStateSet = {com.android.internal.R.attr.state_expanded};
+        private final int[] mEmptyStateSet = {};
+        private final LinearLayout.LayoutParams mHideContainerLayoutParams =
                 new LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT, 0f);
-        private final LinearLayout.LayoutParams HIDE_LIST_LAYOUT_PARAMS =
+        private final LinearLayout.LayoutParams mHideListLayoutParams =
                 new LinearLayout.LayoutParams(MATCH_PARENT, 0);
-        private final LinearLayout.LayoutParams SHOW_LAYOUT_PARAMS = new LinearLayout.LayoutParams(
+        private final LinearLayout.LayoutParams mShowLayoutParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, MATCH_PARENT, 1f);
         private final GroupAdapter mParent;
         private final int mGroupPosition;
@@ -618,7 +629,7 @@ public class TrustedCredentialsSettings extends InstrumentedFragment
 
         public void showDivider(boolean showDivider) {
             View dividerView = mHeaderView.findViewById(R.id.header_divider);
-            dividerView.setVisibility(showDivider ? View.VISIBLE : View.GONE );
+            dividerView.setVisibility(showDivider ? View.VISIBLE : View.GONE);
         }
 
         public void setExpandIfAvailable(boolean expanded) {
@@ -632,12 +643,12 @@ public class TrustedCredentialsSettings extends InstrumentedFragment
         }
 
         private void refreshViews() {
-            mIndicatorView.setImageState(mIsListExpanded ? GROUP_EXPANDED_STATE_SET
-                    : EMPTY_STATE_SET, false);
-            mListView.setLayoutParams(mIsListExpanded ? SHOW_LAYOUT_PARAMS
-                    : HIDE_LIST_LAYOUT_PARAMS);
-            mContainerView.setLayoutParams(mIsListExpanded ? SHOW_LAYOUT_PARAMS
-                    : HIDE_CONTAINER_LAYOUT_PARAMS);
+            mIndicatorView.setImageState(mIsListExpanded ? mGroupExpandedStateSet
+                    : mEmptyStateSet, false);
+            mListView.setLayoutParams(mIsListExpanded ? mShowLayoutParams
+                    : mHideListLayoutParams);
+            mContainerView.setLayoutParams(mIsListExpanded ? mShowLayoutParams
+                    : mHideContainerLayoutParams);
         }
 
         // Get group indicator from styles of ExpandableListView
@@ -668,7 +679,7 @@ public class TrustedCredentialsSettings extends InstrumentedFragment
             private View mContentView;
             private Context mContext;
 
-            public AliasLoader() {
+            AliasLoader() {
                 mContext = getActivity();
                 mAliasLoaders.add(this);
                 List<UserHandle> profiles = mUserManager.getUserProfiles();
@@ -693,7 +704,7 @@ public class TrustedCredentialsSettings extends InstrumentedFragment
                 SparseArray<List<CertHolder>> certHoldersByProfile =
                         new SparseArray<List<CertHolder>>();
                 try {
-                    synchronized(mKeyChainConnectionByProfileId) {
+                    synchronized (mKeyChainConnectionByProfileId) {
                         List<UserHandle> profiles = mUserManager.getUserProfiles();
                         final int n = profiles.size();
                         // First we get all aliases for all profiles in order to show progress
@@ -727,8 +738,8 @@ public class TrustedCredentialsSettings extends InstrumentedFragment
                             if (isCancelled()) {
                                 return new SparseArray<List<CertHolder>>();
                             }
-                            KeyChainConnection keyChainConnection = mKeyChainConnectionByProfileId.get(
-                                    profileId);
+                            KeyChainConnection keyChainConnection =
+                                    mKeyChainConnectionByProfileId.get(profileId);
                             if (shouldSkipProfile(profile) || aliases == null
                                     || keyChainConnection == null) {
                                 certHoldersByProfile.put(profileId, new ArrayList<CertHolder>(0));
@@ -924,26 +935,29 @@ public class TrustedCredentialsSettings extends InstrumentedFragment
     private void showTrustAllCaDialog(List<CertHolder> unapprovedCertHolders) {
         final CertHolder[] arr = unapprovedCertHolders.toArray(
                 new CertHolder[unapprovedCertHolders.size()]);
-        new TrustedCredentialsDialogBuilder(getActivity(), this)
-                .setCertHolders(arr)
-                .setOnDismissListener(new DialogInterface.OnDismissListener() {
-                    @Override
-                    public void onDismiss(DialogInterface dialogInterface) {
-                        // Avoid starting dialog again after Activity restart.
-                        getActivity().getIntent().removeExtra(ARG_SHOW_NEW_FOR_USER);
-                        mTrustAllCaUserId = UserHandle.USER_NULL;
-                    }
-                })
-                .show();
+
+        //TODO: Implement trust all using DetailsPreference instead of first cert
+        CertHolder certHolder = arr[0];
+        showCertDialog(certHolder);
     }
 
     private void showCertDialog(final CertHolder certHolder) {
-        new TrustedCredentialsDialogBuilder(getActivity(), this)
-                .setCertHolder(certHolder)
-                .show();
-    }
+        Bundle args = new Bundle();
+        args.putString(TrustedCredentialsDetailsPreference.ARG_ALIAS, certHolder.mAlias);
+        args.putInt(TrustedCredentialsDetailsPreference.ARG_PROFILE_ID, certHolder.mProfileId);
 
-    @Override
+        new SubSettingLauncher(this.getContext())
+                .setDestination(TrustedCredentialsDetailsPreference.class.getName())
+                .setSourceMetricsCategory(getMetricsCategory())
+                .setArguments(args)
+                .setResultListener(this, 1)
+                .launch();
+    }
+    /**
+     * Retrieves list of X509 CA Certificates associated with the certHolder alias
+     * @param certHolder
+     * @return list of certificates
+     */
     public List<X509Certificate> getX509CertsFromCertHolder(CertHolder certHolder) {
         List<X509Certificate> certificates = null;
         try {
@@ -967,12 +981,21 @@ public class TrustedCredentialsSettings extends InstrumentedFragment
         return certificates;
     }
 
-    @Override
+    /**
+     * Triggers an Async Task to remove the CertHolder certificate,
+     * or install it if it doesn't currently exist.
+     * @param certHolder
+     */
     public void removeOrInstallCert(CertHolder certHolder) {
         new AliasOperation(certHolder).execute();
     }
 
-    @Override
+    /**
+     * Checks if userId is a confirmed user, if not starts confirmation.
+     * @param userId
+     * @param onCredentialConfirmedListener
+     * @return whether userId is already confirmed
+     */
     public boolean startConfirmCredentialIfNotConfirmed(int userId,
             IntConsumer onCredentialConfirmedListener) {
         if (mConfirmedCredentialUsers.contains(userId)) {

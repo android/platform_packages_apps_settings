@@ -6553,10 +6553,19 @@
     <string name="trusted_credentials_remove_label">Remove</string>
     <!-- Button label for trusting a user CA certificate. -->
     <string name="trusted_credentials_trust_label">Trust</string>
-    <!-- Alert dialog confirmation when enabling a system CA certificate. -->
-    <string name="trusted_credentials_enable_confirmation">Enable the system CA certificate?</string>
-    <!-- Alert dialog confirmation when disabling a system CA certificate. -->
-    <string name="trusted_credentials_disable_confirmation">Disable the system CA certificate?</string>
+    <!-- State of trusted credential when disabled [CHAR LIMIT=30]-->
+    <string name="trusted_credential_disabled">Disabled</string>
+    <!-- State of trusted credential when enabled [CHAR LIMIT=30]-->
+    <string name="trusted_credential_enabled">Enabled</string>
+    <!-- Positive button of trusted credential dialog when disabling certificate [CHAR LIMIT=30]-->
+    <string name="trusted_credential_dialog_positive">Disable</string>
+    <!-- Negative button of trusted credential dialog when disabling certificate [CHAR LIMIT=30]-->
+    <string name="trusted_credential_dialog_negative">Cancel</string>
+    <!-- Alert dialog confirmation title when disabling a system CA certificate [CHAR LIMIT=NONE] -->
+    <string name="trusted_credentials_disable_title">Disable this certificate?</string>
+    <!-- Alert dialog confirmation title when disabling a system CA certificate [CHAR LIMIT=NONE] -->
+    <string name="trusted_credentials_disable_message">Disabling certificates could prevent certain
+    apps and website from running properly and may have an impact on your privacy</string>
     <!-- Alert dialog confirmation when removing a user CA certificate. -->
     <string name="trusted_credentials_remove_confirmation">Permanently remove the user CA certificate?</string>
 
