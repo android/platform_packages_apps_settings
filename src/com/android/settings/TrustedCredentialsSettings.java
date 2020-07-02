@@ -27,7 +27,6 @@ import android.app.admin.DevicePolicyManager;
 import android.app.settings.SettingsEnums;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.UserInfo;
@@ -65,6 +64,7 @@ import android.widget.TextView;
 import com.android.internal.annotations.GuardedBy;
 import com.android.internal.app.UnlaunchableAppActivity;
 import com.android.internal.widget.LockPatternUtils;
+import com.android.settings.TrustedCredentialsDetailsPreference.DelegateInterface;
 import com.android.settings.core.InstrumentedFragment;
 
 import java.security.cert.CertificateEncodingException;
@@ -76,7 +76,7 @@ import java.util.Set;
 import java.util.function.IntConsumer;
 
 public class TrustedCredentialsSettings extends InstrumentedFragment
-        implements TrustedCredentialsDialogBuilder.DelegateInterface {
+        implements DelegateInterface {
 
     public static final String ARG_SHOW_NEW_FOR_USER = "ARG_SHOW_NEW_FOR_USER";
 
@@ -924,23 +924,33 @@ public class TrustedCredentialsSettings extends InstrumentedFragment
     private void showTrustAllCaDialog(List<CertHolder> unapprovedCertHolders) {
         final CertHolder[] arr = unapprovedCertHolders.toArray(
                 new CertHolder[unapprovedCertHolders.size()]);
-        new TrustedCredentialsDialogBuilder(getActivity(), this)
-                .setCertHolders(arr)
-                .setOnDismissListener(new DialogInterface.OnDismissListener() {
-                    @Override
-                    public void onDismiss(DialogInterface dialogInterface) {
-                        // Avoid starting dialog again after Activity restart.
-                        getActivity().getIntent().removeExtra(ARG_SHOW_NEW_FOR_USER);
-                        mTrustAllCaUserId = UserHandle.USER_NULL;
-                    }
-                })
-                .show();
+//        new TrustedCredentialsDialogBuilder(getActivity(), this)
+//                .setCertHolders(arr)
+//                .setOnDismissListener(new DialogInterface.OnDismissListener() {
+//                    @Override
+//                    public void onDismiss(DialogInterface dialogInterface) {
+//                        // Avoid starting dialog again after Activity restart.
+//                        getActivity().getIntent().removeExtra(ARG_SHOW_NEW_FOR_USER);
+//                        mTrustAllCaUserId = UserHandle.USER_NULL;
+//                    }
+//                })
+//                .show();
     }
 
     private void showCertDialog(final CertHolder certHolder) {
-        new TrustedCredentialsDialogBuilder(getActivity(), this)
-                .setCertHolder(certHolder)
-                .show();
+        TrustedCredentialsDetailsPreference details = new TrustedCredentialsDetailsPreference();
+        details.setCertHolder(certHolder);
+        details.setDelegate(this);
+//        details.setArguments(bundle);
+
+        getActivity().getSupportFragmentManager().beginTransaction()
+                .replace(((ViewGroup) getView().getParent()).getId(), details)
+                .addToBackStack(null)
+                .commit();
+
+//        new TrustedCredentialsDialogBuilder(getActivity(), this)
+//                .setCertHolder(certHolder)
+//                .show();
     }
 
     @Override

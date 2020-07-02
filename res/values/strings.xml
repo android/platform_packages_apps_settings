@@ -5903,6 +5903,10 @@
     <string name="trusted_credentials">Trusted credentials</string>
     <!-- Summary of preference to display trusted credentials (aka CA certificates) [CHAR LIMIT=NONE] -->
     <string name="trusted_credentials_summary">Display trusted CA certificates</string>
+    <!-- State of trusted credential when disabled [CHAR LIMIT=30]-->
+    <string name="credential_disabled">Disabled</string>
+    <!-- State of trusted credential when disabled [CHAR LIMIT=30]-->
+    <string name="credential_enabled">Enabled</string>
     <!-- Title of preference to display user credentials and keys [CHAR LIMIT=30] -->
     <string name="user_credentials">User credentials</string>
     <!-- Summary of preference to display user credentials and keys [CHAR LIMIT=NONE] -->
