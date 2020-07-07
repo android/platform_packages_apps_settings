@@ -22,6 +22,30 @@
       "revId": "84a2951a335a465b8eb25eaaf43bd97b6c443ce3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22f8c88d_03acbdb9",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-07-07T00:55:25Z",
+      "side": 0,
+      "message": "I\u0027m not sure we want to do this. In favor :\n• That\u0027s how it worked before, so if anyone relies on data saver to turn off tethering, they\u0027ll have an unpleasant surprise.\nAgainst :\n• It\u0027s counter-intuitive and inconsistent to have a setting turn off another setting, especially if that other setting can be turned on again (but there is precedent with airplane mode / wifi that users seem to understand, but then again it\u0027s also derided as a bizarre way to work).\nMaybe we want to get UX to decide.\n\nIt\u0027s also questionable whether it\u0027s a good idea to remove existing, working code based on listeners to switch to broadcasts. This is the opposite of what quality code usually does. In this case this file is already listening to many broadcasts and has the code factorized, which means it would probably make the code a bit simpler, but also less reliable and slower.",
+      "parentUuid": "0117d129_fb78d6e9",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 55
+      },
+      "revId": "84a2951a335a465b8eb25eaaf43bd97b6c443ce3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

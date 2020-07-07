@@ -2,6 +2,92 @@
   "comments": [
     {
       "key": {
+        "uuid": "b6cd2791_a2ed6cd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-07-07T00:55:25Z",
+      "side": 1,
+      "message": "LGTM after we make sure this works on non-ebpf devices",
+      "revId": "7f6b33f87685fe2aecb4dec7c342d4cf6035c33b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef5ee190_6d4e5670",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-07-07T00:55:25Z",
+      "side": 1,
+      "message": "I guess in a followup we\u0027ll want to migrate this to TetherManager, maybe leave a TODO now",
+      "range": {
+        "startLine": 139,
+        "startChar": 25,
+        "endLine": 139,
+        "endChar": 47
+      },
+      "revId": "7f6b33f87685fe2aecb4dec7c342d4cf6035c33b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c999c72c_79738630",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-07-07T00:55:25Z",
+      "side": 1,
+      "message": "...and switch to TetherManager",
+      "range": {
+        "startLine": 180,
+        "startChar": 19,
+        "endLine": 180,
+        "endChar": 23
+      },
+      "revId": "7f6b33f87685fe2aecb4dec7c342d4cf6035c33b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6560d88c_427da0ce",
+        "filename": "src/com/android/settings/TetherSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-07-07T00:55:25Z",
+      "side": 1,
+      "message": "Do you want to take this opportunity to remove this code that only computes a write-only local ? or add a todo for it ?\n\n(I\u0027m bringing this up because I\u0027m noticing it by chance, but as it\u0027s completely unrelated to your change you don\u0027t have to do anything)",
+      "range": {
+        "startLine": 290,
+        "startChar": 8,
+        "endLine": 299,
+        "endChar": 9
+      },
+      "revId": "7f6b33f87685fe2aecb4dec7c342d4cf6035c33b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dff68a89_ad4ede9b",
         "filename": "src/com/android/settings/TetherSettings.java",
         "patchSetId": 1
@@ -84,6 +170,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "133706b4_3afbf5bd",
+      "range": {
+        "startLine": 147,
+        "startChar": 17,
+        "endLine": 147,
+        "endChar": 33
+      },
+      "revId": "7f6b33f87685fe2aecb4dec7c342d4cf6035c33b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d395c610_03a557f5",
+        "filename": "src/com/android/settings/wifi/tether/WifiTetherSwitchBarController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-07-07T00:55:25Z",
+      "side": 1,
+      "message": "Noticing that I\u0027m saying something pretty confusing – it\u0027s not true at all that nothing ever disables it. But considering the name of this function and what it does, it is better inlined.",
+      "parentUuid": "531c2d58_ead4ac18",
       "range": {
         "startLine": 147,
         "startChar": 17,
