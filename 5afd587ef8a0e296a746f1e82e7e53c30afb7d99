@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f44917ee_98753ef2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2020-07-16T20:14:33Z",
+      "side": 1,
+      "message": "Looks good from our side. Bonian can you also please review?\n\nSneh - We also need  QC review vote before we can submit",
+      "revId": "5afd587ef8a0e296a746f1e82e7e53c30afb7d99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
