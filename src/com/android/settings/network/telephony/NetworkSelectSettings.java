@@ -190,11 +190,13 @@ public class NetworkSelectSettings extends DashboardFragment {
             // Disable the screen until network is manually set
             getPreferenceScreen().setEnabled(false);
 
-            final OperatorInfo operatorInfo = CellInfoUtil.getOperatorInfoFromCellInfo(cellInfo);
+            mRequestIdManualNetworkSelect = getNewRequestId();
+            mWaitingForNumberOfScanResults = MIN_NUMBER_OF_SCAN_REQUIRED;
+            final OperatorInfo operator = mSelectedPreference.getOperatorInfo();
             ThreadUtils.postOnBackgroundThread(() -> {
                 Message msg = mHandler.obtainMessage(EVENT_SET_NETWORK_SELECTION_MANUALLY_DONE);
                 msg.obj = mTelephonyManager.setNetworkSelectionModeManual(
-                        operatorInfo, true /* persistSelection */);
+                        operator, true /* persistSelection */);
                 msg.sendToTarget();
             });
         }
