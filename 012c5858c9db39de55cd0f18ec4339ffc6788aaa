@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "9cad5b51_0286dfe4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-07-17T13:51:14Z",
+      "side": 1,
+      "message": "This change looks good to me since it increased user experience within APN editor.",
+      "revId": "012c5858c9db39de55cd0f18ec4339ffc6788aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba6b5192_cd94728f",
         "filename": "src/com/android/settings/network/ApnEditor.java",
         "patchSetId": 3
