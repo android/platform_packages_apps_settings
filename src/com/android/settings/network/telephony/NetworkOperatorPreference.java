@@ -25,6 +25,7 @@ import android.util.Log;
 
 import androidx.preference.Preference;
 
+import com.android.internal.telephony.OperatorInfo;
 import com.android.settings.R;
 import com.android.settings.Utils;
 
@@ -86,6 +87,52 @@ public class NetworkOperatorPreference extends Preference {
      */
     public void setIcon(int level) {
         updateIcon(level);
+    }
+
+    /**
+     * Operator numeric of this cell
+     */
+    public String getOperatorNumeric() {
+        final CellIdentity cellId = mCellId;
+        if (cellId == null) {
+            return null;
+        }
+        if (cellId instanceof CellIdentityGsm) {
+            return ((CellIdentityGsm) cellId).getMobileNetworkOperator();
+        }
+        if (cellId instanceof CellIdentityWcdma) {
+            return ((CellIdentityWcdma) cellId).getMobileNetworkOperator();
+        }
+        if (cellId instanceof CellIdentityTdscdma) {
+            return ((CellIdentityTdscdma) cellId).getMobileNetworkOperator();
+        }
+        if (cellId instanceof CellIdentityLte) {
+            return ((CellIdentityLte) cellId).getMobileNetworkOperator();
+        }
+        if (cellId instanceof CellIdentityNr) {
+            final String mcc = ((CellIdentityNr) cellId).getMccString();
+            if (mcc == null) {
+                return null;
+            }
+            return mcc.concat(((CellIdentityNr) cellId).getMncString());
+        }
+        return null;
+    }
+
+    /**
+     * Operator name of this cell
+     */
+    public String getOperatorName() {
+        return CellInfoUtil.getNetworkTitle(mCellId, getOperatorNumeric());
+    }
+
+    /**
+     * Operator info of this cell
+     */
+    public OperatorInfo getOperatorInfo() {
+        return new OperatorInfo(Objects.toString(mCellId.getOperatorAlphaLong(), ""),
+                Objects.toString(mCellId.getOperatorAlphaShort(), ""),
+                getOperatorNumeric());
     }
 
     private int getIconIdForCell(CellInfo ci) {
