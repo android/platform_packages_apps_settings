@@ -94,6 +94,30 @@
       "revId": "8683e38068264fd2964faa2a4e387a981c136230",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9af59279_af5256d5",
+        "filename": "src/com/android/settings/datetime/timezone/model/TimeZoneData.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2020-07-20T15:54:11Z",
+      "side": 0,
+      "message": "No. I haven\u0027t had a chance to look at it. I\u0027ve split out the core platform API change and submitted that separately. I\u0027ve left Settings not using the new info for now, but that isn\u0027t the planned end state.",
+      "parentUuid": "094d3184_7e761463",
+      "range": {
+        "startLine": 74,
+        "startChar": 16,
+        "endLine": 74,
+        "endChar": 61
+      },
+      "revId": "8683e38068264fd2964faa2a4e387a981c136230",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
