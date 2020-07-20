@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98b1f9d2_cc755ae5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2020-07-20T10:29:14Z",
+      "side": 1,
+      "message": "Added settings folks for OWNERS.",
+      "revId": "d1c4ea906f22c07b9912b3857c5b6fe50983943e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
