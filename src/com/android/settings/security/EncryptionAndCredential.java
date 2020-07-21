@@ -73,9 +73,6 @@ public class EncryptionAndCredential extends DashboardFragment {
         controllers.add(new PreferenceCategoryController(context,
                 "encryption_and_credentials_status_category").setChildren(
                 Arrays.asList(encryptStatusController)));
-        controllers.add(new UserCredentialsPreferenceController(context));
-        controllers.add(new ResetCredentialsPreferenceController(context, lifecycle));
-        controllers.add(new InstallCertificatePreferenceController(context));
         return controllers;
     }
 

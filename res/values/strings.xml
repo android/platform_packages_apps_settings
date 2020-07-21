@@ -693,7 +693,7 @@
     <!-- Main Settings screen setting option title for the item to take you to the security screen -->
     <string name="security_settings_title">Security</string>
     <!-- Security Settings screen setting option title for the item to take you to the encryption and credential screen -->
-    <string name="encryption_and_credential_settings_title">Encryption &amp; credentials</string>
+    <string name="encryption_and_credential_settings_title">Encryption &amp; certificates</string>
     <!-- Security Settings screen Encryption and crendential summary -->
     <string name="encryption_and_credential_settings_summary" product="default">Phone encrypted</string>
     <string name="decryption_settings_summary" product="default">Phone not encrypted</string>
@@ -5890,7 +5890,11 @@
     <string name="vpn_settings_title">VPN</string>
 
     <!-- Title of preference group for credential storage settings [CHAR LIMIT=30] -->
-    <string name="credentials_title">Credential storage</string>
+    <string name="credentials_title">Certificates</string>
+    <!-- Title of preference for certificate management [CHAR LIMIT=30] -->
+    <string name="manage_certificates">Manage certificates</string>
+    <!-- Summary of preference for certificate management [CHAR LIMIT=30] -->
+    <string name="manage_certificates_summary">Install, manage and remove certificates</string>
     <!-- Title of preference to install certificates [CHAR LIMIT=30] -->
     <string name="credentials_install">Install a certificate</string>
     <!-- Summary of preference to install certificates from SD card [CHAR LIMIT=NONE] -->
@@ -6911,6 +6915,8 @@
     <string name="help_url_security" translatable="false"></string>
     <!-- Help URL, Encryption settings [DO NOT TRANSLATE] -->
     <string name="help_url_encryption" translatable="false"></string>
+    <!-- Help URL, Manage certificates settings [DO NOT TRANSLATE] -->
+    <string name="help_url_certificates" translatable="false"></string>
     <!-- Help URL, Install certificate settings [DO NOT TRANSLATE] -->
     <string name="help_url_install_certificate" translatable="false"></string>
     <!-- Help URL, Tap & pay [DO NOT TRANSLATE] -->
@@ -7343,6 +7349,9 @@
 
     <!-- Search keyword for fingerprint settings. [CHAR_LIMIT=NONE]-->
     <string name="keywords_fingerprint_settings">fingerprint, add fingerprint</string>
+
+    <!-- Search keyword for certificate management settings. [CHAR_LIMIT=NONE]-->
+    <string name="keywords_certificates">certificates, credentials, encryption</string>
 
     <!-- Search keywords for adaptive brightness setting [CHAR LIMIT=NONE]-->
     <string name="keywords_display_auto_brightness">dim screen, touchscreen, battery, smart brightness, dynamic brightness, Auto brightness</string>

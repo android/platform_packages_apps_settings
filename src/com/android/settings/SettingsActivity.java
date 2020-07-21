@@ -33,7 +33,6 @@ import android.os.Bundle;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.text.TextUtils;
-import android.util.FeatureFlagUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -52,7 +51,6 @@ import com.android.internal.util.ArrayUtils;
 import com.android.settings.Settings.WifiSettingsActivity;
 import com.android.settings.applications.manageapplications.ManageApplications;
 import com.android.settings.backup.UserBackupSettingsActivity;
-import com.android.settings.core.FeatureFlags;
 import com.android.settings.core.OnActivityResultListener;
 import com.android.settings.core.SettingsBaseActivity;
 import com.android.settings.core.SubSettingLauncher;
@@ -559,8 +557,7 @@ public class SettingsActivity extends SettingsBaseActivity
                     + fragmentName);
         }
         Fragment f = null;
-        if (FeatureFlagUtils.isEnabled(this, FeatureFlags.PERSONAL_WORK_PROFILE)
-                && UserManager.get(this).getUserProfiles().size() > 1
+        if (UserManager.get(this).getUserProfiles().size() > 1
                 && ProfileFragmentBridge.FRAGMENT_MAP.get(fragmentName) != null) {
             f = Fragment.instantiate(this, ProfileFragmentBridge.FRAGMENT_MAP.get(fragmentName),
                     args);
