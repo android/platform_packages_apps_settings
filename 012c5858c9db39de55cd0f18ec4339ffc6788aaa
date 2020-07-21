@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5a13d9cc_e5feafb8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1140984
+      },
+      "writtenOn": "2020-07-21T04:34:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "262fdfd7_d20c09d2",
+      "revId": "012c5858c9db39de55cd0f18ec4339ffc6788aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9cad5b51_0286dfe4",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -95,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "fab30c30_fdafadfa",
+        "filename": "src/com/android/settings/network/ApnEditor.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 663,
+      "author": {
+        "id": 1140984
+      },
+      "writtenOn": "2020-07-21T04:34:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ba6b5192_cd94728f",
+      "range": {
+        "startLine": 663,
+        "startChar": 23,
+        "endLine": 663,
+        "endChar": 33
+      },
+      "revId": "012c5858c9db39de55cd0f18ec4339ffc6788aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d44dd854_e2b9fcf0",
         "filename": "src/com/android/settings/network/ApnEditor.java",
         "patchSetId": 3
@@ -109,6 +151,24 @@
       "revId": "012c5858c9db39de55cd0f18ec4339ffc6788aaa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e3b7cf2_1a2a580c",
+        "filename": "src/com/android/settings/network/ApnEditor.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 811,
+      "author": {
+        "id": 1140984
+      },
+      "writtenOn": "2020-07-21T04:34:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d44dd854_e2b9fcf0",
+      "revId": "012c5858c9db39de55cd0f18ec4339ffc6788aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
