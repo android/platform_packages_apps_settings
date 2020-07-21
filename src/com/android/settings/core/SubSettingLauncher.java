@@ -23,6 +23,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.UserHandle;
 import android.text.TextUtils;
+import android.util.Log;
 
 import androidx.annotation.VisibleForTesting;
 import androidx.fragment.app.Fragment;
@@ -128,14 +129,19 @@ public class SubSettingLauncher {
         boolean launchAsUser = mLaunchRequest.userHandle != null
                 && mLaunchRequest.userHandle.getIdentifier() != UserHandle.myUserId();
         boolean launchForResult = mLaunchRequest.mResultListener != null;
+
         if (launchAsUser && launchForResult) {
+            Log.d("SubSettingLauncher", "Case 1 and intent: " + intent);
             launchForResultAsUser(intent, mLaunchRequest.userHandle, mLaunchRequest.mResultListener,
                     mLaunchRequest.mRequestCode);
         } else if (launchAsUser && !launchForResult) {
+            Log.d("SubSettingLauncher", "Case 2 and intent: " + intent);
             launchAsUser(intent, mLaunchRequest.userHandle);
         } else if (!launchAsUser && launchForResult) {
+            Log.d("SubSettingLauncher", "Case 3 and intent: " + intent);
             launchForResult(mLaunchRequest.mResultListener, intent, mLaunchRequest.mRequestCode);
         } else {
+            Log.d("SubSettingLauncher", "Case 4 and intent: " + intent);
             launch(intent);
         }
     }

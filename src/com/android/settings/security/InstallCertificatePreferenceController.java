@@ -17,19 +17,63 @@
 package com.android.settings.security;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.UserHandle;
 import android.os.UserManager;
+import android.util.Log;
 
-public class InstallCertificatePreferenceController extends
-        RestrictedEncryptionPreferenceController {
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.preference.PreferenceScreen;
+
+import com.android.settings.core.SubSettingLauncher;
+import com.android.settingslib.RestrictedPreference;
+
+public class InstallCertificatePreferenceController extends RestrictedEncryptionPreferenceController {
 
     private static final String KEY_INSTALL_CERTIFICATE = "install_certificate";
 
-    public InstallCertificatePreferenceController(Context context) {
+    RestrictedPreference mPreference;
+    int mUserId;
+    Context mContext;
+
+    public InstallCertificatePreferenceController(Context context, int userId) {
         super(context, UserManager.DISALLOW_CONFIG_CREDENTIALS);
+        mContext = context;
+        mUserId = userId;
+
+//        FragmentManager fragmentManager = getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        InstallCertificateFromStorage fragment = new InstallCertificateFromStorage();
+//        Bundle bundle = new Bundle();
+//        bundle.putInt("user_id", mUserId);
+//        fragment.setArguments(bundle);
+//        fragmentTransaction.add(fragment.getPreferenceScreenResId(), fragment);
+//        fragmentTransaction.commit();
     }
 
     @Override
     public String getPreferenceKey() {
         return KEY_INSTALL_CERTIFICATE;
+    }
+
+    @Override
+    public void displayPreference(PreferenceScreen screen) {
+        super.displayPreference(screen);
+        Log.d("InstallController", "displaying Preference");
+        mPreference = screen.findPreference(getPreferenceKey());
+        mPreference.setOnPreferenceClickListener(
+                preference -> {
+                    Log.d("InstallController", "mUserId is " + mUserId);
+                    new SubSettingLauncher(mContext)
+                            .setDestination(InstallCertificateFromStorage.class.getName())
+                            .setSourceMetricsCategory(0)
+                            .setArguments(null)
+                            .setUserHandle(UserHandle.of(mUserId))
+                            .launch();
+                    return true;
+                });
     }
 }
