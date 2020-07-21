@@ -121,8 +121,7 @@ public class TrustedCredentialsSettings extends SettingsPreferenceFragment {
         private final int mContentView;
         private final boolean mSwitch;
 
-        Tab(String tag, int label, int view, int progress, int contentView,
-                boolean withSwitch) {
+        Tab(String tag, int label, int view, int progress, int contentView, boolean withSwitch) {
             mTag = tag;
             mLabel = label;
             mView = view;
@@ -634,7 +633,7 @@ public class TrustedCredentialsSettings extends SettingsPreferenceFragment {
 
         public void setExpandIfAvailable(boolean expanded) {
             mIsListExpanded = expanded && mParent.checkGroupExpandableAndStartWarningActivity(
-                    mGroupPosition, false /* startActivity */);
+                    mGroupPosition, false);
             refreshViews();
         }
 
@@ -742,7 +741,8 @@ public class TrustedCredentialsSettings extends SettingsPreferenceFragment {
                                     mKeyChainConnectionByProfileId.get(profileId);
                             if (shouldSkipProfile(profile) || aliases == null
                                     || keyChainConnection == null) {
-                                certHoldersByProfile.put(profileId, new ArrayList<CertHolder>(0));
+                                certHoldersByProfile.put(profileId,
+                                        new ArrayList<CertHolder>(0));
                                 continue;
                             }
                             IKeyChainService service = keyChainConnection.getService();
@@ -953,6 +953,7 @@ public class TrustedCredentialsSettings extends SettingsPreferenceFragment {
                 .setResultListener(this, 1)
                 .launch();
     }
+
     /**
      * Retrieves list of X509 CA Certificates associated with the certHolder alias
      * @param certHolder

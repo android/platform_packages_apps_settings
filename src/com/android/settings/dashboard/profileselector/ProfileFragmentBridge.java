@@ -20,6 +20,8 @@ import android.util.ArrayMap;
 
 import com.android.settings.accounts.AccountDashboardFragment;
 import com.android.settings.accounts.AccountProfileSelectFragment;
+import com.android.settings.security.CertificatesAllDashboardFragment;
+import com.android.settings.security.CertificatesProfileSelectFragment;
 
 import java.util.Map;
 
@@ -38,5 +40,7 @@ public class ProfileFragmentBridge {
         FRAGMENT_MAP = new ArrayMap<>();
         FRAGMENT_MAP.put(AccountDashboardFragment.class.getName(),
                 AccountProfileSelectFragment.class.getName());
+        FRAGMENT_MAP.put(CertificatesAllDashboardFragment.class.getName(),
+                CertificatesProfileSelectFragment.class.getName());
     }
 }

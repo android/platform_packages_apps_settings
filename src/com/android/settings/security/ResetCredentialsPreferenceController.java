@@ -17,9 +17,11 @@
 package com.android.settings.security;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.UserHandle;
 import android.os.UserManager;
-import android.security.KeyStore;
 
+import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 
 import com.android.settingslib.RestrictedPreference;
@@ -32,16 +34,15 @@ public class ResetCredentialsPreferenceController extends RestrictedEncryptionPr
 
     private static final String KEY_RESET_CREDENTIALS = "credentials_reset";
 
-    private final KeyStore mKeyStore;
-
     private RestrictedPreference mPreference;
+    private int mUserId;
 
-    public ResetCredentialsPreferenceController(Context context, Lifecycle lifecycle) {
+    public ResetCredentialsPreferenceController(Context context, int userId, Lifecycle lifecycle) {
         super(context, UserManager.DISALLOW_CONFIG_CREDENTIALS);
-        mKeyStore = KeyStore.getInstance();
         if (lifecycle != null) {
             lifecycle.addObserver(this);
         }
+        mUserId = userId;
     }
 
     @Override
@@ -56,9 +57,20 @@ public class ResetCredentialsPreferenceController extends RestrictedEncryptionPr
     }
 
     @Override
-    public void onResume() {
-        if (mPreference != null && !mPreference.isDisabledByAdmin()) {
-            mPreference.setEnabled(!mKeyStore.isEmpty());
+    public boolean handlePreferenceTreeClick(Preference preference) {
+        if (preference.getKey() == mPreference.getKey()) {
+            Intent deleteIntent = new Intent(CredentialStorage.ACTION_RESET);
+            deleteIntent.setPackage("com.android.settings");
+            mContext.startActivityAsUser(deleteIntent, UserHandle.of(mUserId));
+            return true;
         }
+        return false;
     }
+
+    @Override
+    public void onResume() {
+        mPreference.checkRestrictionAndSetDisabled(UserManager.DISALLOW_CONFIG_CREDENTIALS,
+                mUserId);
+    }
+
 }
