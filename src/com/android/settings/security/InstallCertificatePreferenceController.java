@@ -17,19 +17,51 @@
 package com.android.settings.security;
 
 import android.content.Context;
+import android.os.UserHandle;
 import android.os.UserManager;
 
-public class InstallCertificatePreferenceController extends
-        RestrictedEncryptionPreferenceController {
+import androidx.preference.PreferenceScreen;
+
+import com.android.settings.core.SubSettingLauncher;
+import com.android.settingslib.RestrictedPreference;
+
+/**
+ * Controller implemented in the Certificates Dashboard fragments in order to manage the
+ * installation preference.
+ */
+public class InstallCertificatePreferenceController
+        extends RestrictedEncryptionPreferenceController {
 
     private static final String KEY_INSTALL_CERTIFICATE = "install_certificate";
 
-    public InstallCertificatePreferenceController(Context context) {
+    RestrictedPreference mPreference;
+    int mUserId;
+    Context mContext;
+
+    public InstallCertificatePreferenceController(Context context, int userId) {
         super(context, UserManager.DISALLOW_CONFIG_CREDENTIALS);
+        mContext = context;
+        mUserId = userId;
     }
 
     @Override
     public String getPreferenceKey() {
         return KEY_INSTALL_CERTIFICATE;
+    }
+
+    @Override
+    public void displayPreference(PreferenceScreen screen) {
+        super.displayPreference(screen);
+        mPreference = screen.findPreference(getPreferenceKey());
+        mPreference.setOnPreferenceClickListener(
+                preference -> {
+                    new SubSettingLauncher(mContext)
+                            .setDestination(InstallCertificateFromStorage.class.getName())
+                            .setSourceMetricsCategory(0)
+                            .setArguments(null)
+                            .setUserHandle(UserHandle.of(mUserId))
+                            .launch();
+                    return true;
+                });
     }
 }

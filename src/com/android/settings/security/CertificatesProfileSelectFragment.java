@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The Android Open Source Project
+ * Copyright (C) 2020 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,21 +15,20 @@
  */
 
 package com.android.settings.security;
+import androidx.fragment.app.Fragment;
 
-import android.content.Context;
-import android.os.UserManager;
+import com.android.settings.dashboard.profileselector.ProfileSelectFragment;
 
-public class UserCredentialsPreferenceController extends
-        RestrictedEncryptionPreferenceController {
-
-    private static final String KEY_USER_CREDENTIALS = "user_credentials";
-
-    public UserCredentialsPreferenceController(Context context) {
-        super(context, UserManager.DISALLOW_CONFIG_CREDENTIALS);
-    }
+/**
+ * Equivalent of CertificatesDashBoardFragment for managed devices.
+ */
+public class CertificatesProfileSelectFragment extends ProfileSelectFragment {
 
     @Override
-    public String getPreferenceKey() {
-        return KEY_USER_CREDENTIALS;
+    public Fragment[] getFragments() {
+        return new Fragment[] {
+                new CertificatesPersonalDashboardFragment(),
+                new CertificatesWorkProfileDashboardFragment()
+        };
     }
 }
