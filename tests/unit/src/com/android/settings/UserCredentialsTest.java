@@ -16,7 +16,7 @@
 
 package com.android.settings;
 
-import static com.android.settings.UserCredentialsSettings.Credential;
+import com.android.settings.security.Credential;
 
 import android.os.Parcel;
 import android.os.Process;

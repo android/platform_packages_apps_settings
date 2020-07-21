@@ -559,8 +559,7 @@ public class SettingsActivity extends SettingsBaseActivity
                     + fragmentName);
         }
         Fragment f = null;
-        if (FeatureFlagUtils.isEnabled(this, FeatureFlags.PERSONAL_WORK_PROFILE)
-                && UserManager.get(this).getUserProfiles().size() > 1
+        if (UserManager.get(this).getUserProfiles().size() > 1
                 && ProfileFragmentBridge.FRAGMENT_MAP.get(fragmentName) != null) {
             f = Fragment.instantiate(this, ProfileFragmentBridge.FRAGMENT_MAP.get(fragmentName),
                     args);
