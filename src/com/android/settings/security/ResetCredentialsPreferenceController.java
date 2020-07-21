@@ -22,6 +22,7 @@ import android.security.KeyStore;
 
 import androidx.preference.PreferenceScreen;
 
+import com.android.settings.dashboard.profileselector.ProfileSelectFragment;
 import com.android.settingslib.RestrictedPreference;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.core.lifecycle.LifecycleObserver;
@@ -30,15 +31,20 @@ import com.android.settingslib.core.lifecycle.events.OnResume;
 public class ResetCredentialsPreferenceController extends RestrictedEncryptionPreferenceController
         implements LifecycleObserver, OnResume {
 
-    private static final String KEY_RESET_CREDENTIALS = "credentials_reset";
+    private static final String KEY_RESET_CREDENTIALS_PERSONAL = "credentials_reset_personal";
+    private static final String KEY_RESET_CREDENTIALS_WORK = "credentials_reset_work";
+
 
     private final KeyStore mKeyStore;
 
     private RestrictedPreference mPreference;
+    private int mType;
 
-    public ResetCredentialsPreferenceController(Context context, Lifecycle lifecycle) {
+    public ResetCredentialsPreferenceController(Context context,
+            @ProfileSelectFragment.ProfileType int type, Lifecycle lifecycle) {
         super(context, UserManager.DISALLOW_CONFIG_CREDENTIALS);
         mKeyStore = KeyStore.getInstance();
+        mType = type;
         if (lifecycle != null) {
             lifecycle.addObserver(this);
         }
@@ -46,7 +52,8 @@ public class ResetCredentialsPreferenceController extends RestrictedEncryptionPr
 
     @Override
     public String getPreferenceKey() {
-        return KEY_RESET_CREDENTIALS;
+        if(mType == ProfileSelectFragment.WORK) return KEY_RESET_CREDENTIALS_WORK;
+        else return KEY_RESET_CREDENTIALS_PERSONAL;
     }
 
     @Override

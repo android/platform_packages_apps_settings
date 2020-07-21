@@ -68,7 +68,6 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.Utils;
 import com.android.settings.core.SubSettingLauncher;
-import com.android.settings.security.TrustedCredentialsDetailsPreference;
 
 import java.security.cert.CertificateEncodingException;
 import java.security.cert.X509Certificate;
@@ -122,7 +121,7 @@ public class TrustedCredentialsSettings extends SettingsPreferenceFragment {
         private final int mContentView;
         private final boolean mSwitch;
 
-        private Tab(String tag, int label, int view, int progress, int contentView,
+        Tab(String tag, int label, int view, int progress, int contentView,
                 boolean withSwitch) {
             mTag = tag;
             mLabel = label;
@@ -168,9 +167,9 @@ public class TrustedCredentialsSettings extends SettingsPreferenceFragment {
         @Override
         public void onReceive(Context context, Intent intent) {
             final String action = intent.getAction();
-            if (Intent.ACTION_MANAGED_PROFILE_AVAILABLE.equals(action) ||
-                    Intent.ACTION_MANAGED_PROFILE_UNAVAILABLE.equals(action) ||
-                    Intent.ACTION_MANAGED_PROFILE_UNLOCKED.equals(action)) {
+            if (Intent.ACTION_MANAGED_PROFILE_AVAILABLE.equals(action)
+                    || Intent.ACTION_MANAGED_PROFILE_UNAVAILABLE.equals(action)
+                    || Intent.ACTION_MANAGED_PROFILE_UNLOCKED.equals(action)) {
                 for (GroupAdapter adapter : mGroupAdapters) {
                     adapter.load();
                 }
@@ -226,8 +225,8 @@ public class TrustedCredentialsSettings extends SettingsPreferenceFragment {
         addTab(Tab.SYSTEM);
         // TODO add Install button on Tab.USER to go to CertInstaller like KeyChainActivity
         addTab(Tab.USER);
-        if (getActivity().getIntent() != null &&
-                USER_ACTION.equals(getActivity().getIntent().getAction())) {
+        if (getActivity().getIntent() != null
+                && USER_ACTION.equals(getActivity().getIntent().getAction())) {
             mTabHost.setCurrentTabByTag(Tab.USER.mTag);
         }
         return mTabHost;
@@ -630,7 +629,7 @@ public class TrustedCredentialsSettings extends SettingsPreferenceFragment {
 
         public void showDivider(boolean showDivider) {
             View dividerView = mHeaderView.findViewById(R.id.header_divider);
-            dividerView.setVisibility(showDivider ? View.VISIBLE : View.GONE );
+            dividerView.setVisibility(showDivider ? View.VISIBLE : View.GONE);
         }
 
         public void setExpandIfAvailable(boolean expanded) {
@@ -705,7 +704,7 @@ public class TrustedCredentialsSettings extends SettingsPreferenceFragment {
                 SparseArray<List<CertHolder>> certHoldersByProfile =
                         new SparseArray<List<CertHolder>>();
                 try {
-                    synchronized(mKeyChainConnectionByProfileId) {
+                    synchronized (mKeyChainConnectionByProfileId) {
                         List<UserHandle> profiles = mUserManager.getUserProfiles();
                         final int n = profiles.size();
                         // First we get all aliases for all profiles in order to show progress
@@ -739,8 +738,8 @@ public class TrustedCredentialsSettings extends SettingsPreferenceFragment {
                             if (isCancelled()) {
                                 return new SparseArray<List<CertHolder>>();
                             }
-                            KeyChainConnection keyChainConnection = mKeyChainConnectionByProfileId.get(
-                                    profileId);
+                            KeyChainConnection keyChainConnection =
+                                    mKeyChainConnectionByProfileId.get(profileId);
                             if (shouldSkipProfile(profile) || aliases == null
                                     || keyChainConnection == null) {
                                 certHoldersByProfile.put(profileId, new ArrayList<CertHolder>(0));

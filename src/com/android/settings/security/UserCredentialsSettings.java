@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2015 The Android Open Source Project
+ * Copyright (C) 2020 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.android.settings;
+package com.android.settings.security;
 
 import android.annotation.LayoutRes;
 import android.annotation.Nullable;
@@ -50,10 +50,14 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.android.internal.widget.LockPatternUtils;
+import com.android.settings.R;
+import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.core.instrumentation.InstrumentedDialogFragment;
+import com.android.settings.dashboard.DashboardFragment;
 import com.android.settingslib.RestrictedLockUtils;
 import com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 import com.android.settingslib.RestrictedLockUtilsInternal;
+import com.android.settings.security.Credential;
 
 import java.security.UnrecoverableKeyException;
 import java.util.ArrayList;
@@ -81,7 +85,7 @@ public class UserCredentialsSettings extends SettingsPreferenceFragment
     public void onClick(final View view) {
         final Credential item = (Credential) view.getTag();
         if (item != null) {
-            CredentialDialogFragment.show(this, item);
+//            CredentialDialogFragment.show(this, item);
         }
     }
 
@@ -107,10 +111,15 @@ public class UserCredentialsSettings extends SettingsPreferenceFragment
     public static class CredentialDialogFragment extends InstrumentedDialogFragment {
         private static final String TAG = "CredentialDialogFragment";
         private static final String ARG_CREDENTIAL = "credential";
+        private static int myUserId;
+        private static CertificatesPreferenceController mController;
 
-        public static void show(Fragment target, Credential item) {
+        public static void show(Fragment target, Credential item,
+                CertificatesPreferenceController controller) {
             final Bundle args = new Bundle();
             args.putParcelable(ARG_CREDENTIAL, item);
+            myUserId = UserHandle.getUserId(item.uid);
+            mController = controller;
 
             if (target.getFragmentManager().findFragmentByTag(TAG) == null) {
                 final DialogFragment frag = new CredentialDialogFragment();
@@ -137,9 +146,9 @@ public class UserCredentialsSettings extends SettingsPreferenceFragment
                     .setPositiveButton(R.string.done, null);
 
             final String restriction = UserManager.DISALLOW_CONFIG_CREDENTIALS;
-            final int myUserId = UserHandle.myUserId();
             if (!RestrictedLockUtilsInternal.hasBaseUserRestriction(getContext(), restriction,
                     myUserId)) {
+                Log.d(TAG, "Inside not restricted dialog of user " + myUserId);
                 DialogInterface.OnClickListener listener = new DialogInterface.OnClickListener() {
                     @Override public void onClick(DialogInterface dialog, int id) {
                         final EnforcedAdmin admin = RestrictedLockUtilsInternal
@@ -184,6 +193,7 @@ public class UserCredentialsSettings extends SettingsPreferenceFragment
             private Fragment targetFragment;
 
             public RemoveCredentialsTask(Context context, Fragment targetFragment) {
+                Log.d(TAG, "RemoveCredentialsTask doInBackground started");
                 this.context = context;
                 this.targetFragment = targetFragment;
             }
@@ -240,13 +250,7 @@ public class UserCredentialsSettings extends SettingsPreferenceFragment
 
             @Override
             protected void onPostExecute(Credential... credentials) {
-                if (targetFragment instanceof UserCredentialsSettings && targetFragment.isAdded()) {
-                    final UserCredentialsSettings target = (UserCredentialsSettings) targetFragment;
-                    for (final Credential credential : credentials) {
-                        target.announceRemoval(credential.alias);
-                    }
-                    target.refreshItems();
-                }
+                mController.onResume();
             }
         }
     }
@@ -431,91 +435,4 @@ public class UserCredentialsSettings extends SettingsPreferenceFragment
         public int uid;
     }
 
-    static class Credential implements Parcelable {
-        static enum Type {
-            CA_CERTIFICATE (Credentials.CA_CERTIFICATE),
-            USER_CERTIFICATE (Credentials.USER_CERTIFICATE),
-            USER_KEY(Credentials.USER_PRIVATE_KEY, Credentials.USER_SECRET_KEY);
-
-            final String[] prefix;
-
-            Type(String... prefix) {
-                this.prefix = prefix;
-            }
-        }
-
-        /**
-         * Main part of the credential's alias. To fetch an item from KeyStore, prepend one of the
-         * prefixes from {@link CredentialItem.storedTypes}.
-         */
-        final String alias;
-
-        /**
-         * UID under which this credential is stored. Typically {@link Process#SYSTEM_UID} but can
-         * also be {@link Process#WIFI_UID} for credentials installed as wifi certificates.
-         */
-        final int uid;
-
-        /**
-         * Should contain some non-empty subset of:
-         * <ul>
-         *   <li>{@link Credentials.CA_CERTIFICATE}</li>
-         *   <li>{@link Credentials.USER_CERTIFICATE}</li>
-         *   <li>{@link Credentials.USER_KEY}</li>
-         * </ul>
-         */
-        final EnumSet<Type> storedTypes = EnumSet.noneOf(Type.class);
-
-        Credential(final String alias, final int uid) {
-            this.alias = alias;
-            this.uid = uid;
-        }
-
-        Credential(Parcel in) {
-            this(in.readString(), in.readInt());
-
-            long typeBits = in.readLong();
-            for (Type i : Type.values()) {
-                if ((typeBits & (1L << i.ordinal())) != 0L) {
-                    storedTypes.add(i);
-                }
-            }
-        }
-
-        public void writeToParcel(Parcel out, int flags) {
-            out.writeString(alias);
-            out.writeInt(uid);
-
-            long typeBits = 0;
-            for (Type i : storedTypes) {
-                typeBits |= 1L << i.ordinal();
-            }
-            out.writeLong(typeBits);
-        }
-
-        public int describeContents() {
-            return 0;
-        }
-
-        public static final Parcelable.Creator<Credential> CREATOR
-                = new Parcelable.Creator<Credential>() {
-            public Credential createFromParcel(Parcel in) {
-                return new Credential(in);
-            }
-
-            public Credential[] newArray(int size) {
-                return new Credential[size];
-            }
-        };
-
-        public boolean isSystem() {
-            return UserHandle.getAppId(uid) == Process.SYSTEM_UID;
-        }
-
-        public String getAlias() { return alias; }
-
-        public EnumSet<Type> getStoredTypes() {
-            return storedTypes;
-        }
-    }
 }
