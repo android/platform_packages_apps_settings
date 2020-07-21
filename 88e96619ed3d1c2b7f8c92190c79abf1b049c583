@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b2db0e0_8385cb2a",
+        "filename": "res/values/arrays.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-07-21T08:23:50Z",
+      "side": 1,
+      "message": "I don\u0027t see any code which is using this, should we remove entire \"vpn_types_long\"?\nOr do I miss something?",
+      "range": {
+        "startLine": 921,
+        "startChar": 24,
+        "endLine": 921,
+        "endChar": 38
+      },
+      "revId": "88e96619ed3d1c2b7f8c92190c79abf1b049c583",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
