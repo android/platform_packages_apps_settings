@@ -23,6 +23,7 @@ import android.os.UserManager;
 
 import androidx.lifecycle.LifecycleOwner;
 
+import com.android.settings.dashboard.profileselector.ProfileSelectFragment;
 import com.android.settings.testutils.shadow.ShadowUserManager;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 
@@ -41,7 +42,6 @@ public class RestrictedEncryptionPreferenceControllerTest {
     private ShadowUserManager mUserManager;
     private InstallCertificatePreferenceController mInstallCertificatePreferenceController;
     private ResetCredentialsPreferenceController mResetCredentialsPreferenceController;
-    private UserCredentialsPreferenceController mUserCredentialsPreferenceController;
     private InstallCaCertificatePreferenceController mInstallCaCertificatePreferenceController;
     private InstallUserCertificatePreferenceController mInstallUserCertificatePreferenceController;
     private InstallWifiCertificatePreferenceController mInstallWifiCertificatePreferenceController;
@@ -56,9 +56,8 @@ public class RestrictedEncryptionPreferenceControllerTest {
         mInstallCertificatePreferenceController =
                 new InstallCertificatePreferenceController(mContext);
         mResetCredentialsPreferenceController =
-                new ResetCredentialsPreferenceController(mContext, mLifecycle);
-        mUserCredentialsPreferenceController =
-                new UserCredentialsPreferenceController(mContext);
+                new ResetCredentialsPreferenceController(mContext,
+                        ProfileSelectFragment.ALL, mLifecycle);
         mInstallCaCertificatePreferenceController =
                 new InstallCaCertificatePreferenceController(mContext);
         mInstallUserCertificatePreferenceController =
@@ -72,7 +71,6 @@ public class RestrictedEncryptionPreferenceControllerTest {
     public void isAvailable_noRestriction_shouldReturnTrue() {
         assertThat(mInstallCertificatePreferenceController.isAvailable()).isTrue();
         assertThat(mResetCredentialsPreferenceController.isAvailable()).isTrue();
-        assertThat(mUserCredentialsPreferenceController.isAvailable()).isTrue();
         assertThat(mInstallCaCertificatePreferenceController.isAvailable()).isTrue();
         assertThat(mInstallUserCertificatePreferenceController.isAvailable()).isTrue();
         assertThat(mInstallWifiCertificatePreferenceController.isAvailable()).isTrue();
@@ -84,7 +82,6 @@ public class RestrictedEncryptionPreferenceControllerTest {
 
         assertThat(mInstallCertificatePreferenceController.isAvailable()).isFalse();
         assertThat(mResetCredentialsPreferenceController.isAvailable()).isFalse();
-        assertThat(mUserCredentialsPreferenceController.isAvailable()).isFalse();
         assertThat(mInstallCaCertificatePreferenceController.isAvailable()).isFalse();
         assertThat(mInstallUserCertificatePreferenceController.isAvailable()).isFalse();
         assertThat(mInstallWifiCertificatePreferenceController.isAvailable()).isFalse();
