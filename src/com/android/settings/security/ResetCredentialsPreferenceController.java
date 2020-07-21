@@ -17,11 +17,15 @@
 package com.android.settings.security;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.UserInfo;
+import android.os.UserHandle;
 import android.os.UserManager;
 import android.security.KeyStore;
 
 import androidx.preference.PreferenceScreen;
 
+import com.android.settings.dashboard.profileselector.ProfileSelectFragment;
 import com.android.settingslib.RestrictedPreference;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.core.lifecycle.LifecycleObserver;
@@ -33,14 +37,26 @@ public class ResetCredentialsPreferenceController extends RestrictedEncryptionPr
     private static final String KEY_RESET_CREDENTIALS = "credentials_reset";
 
     private final KeyStore mKeyStore;
-
+    private final UserManager mUm;
     private RestrictedPreference mPreference;
+    private final int mType;
+    private int mUserId;
 
-    public ResetCredentialsPreferenceController(Context context, Lifecycle lifecycle) {
+    public ResetCredentialsPreferenceController(Context context,
+            @ProfileSelectFragment.ProfileType int type, Lifecycle lifecycle) {
         super(context, UserManager.DISALLOW_CONFIG_CREDENTIALS);
         mKeyStore = KeyStore.getInstance();
+        mUm = (UserManager) context.getSystemService(Context.USER_SERVICE);
+        mType = type;
         if (lifecycle != null) {
             lifecycle.addObserver(this);
+        }
+        mUserId = UserHandle.myUserId();
+
+        if (mType == ProfileSelectFragment.WORK) {
+            for (UserInfo user : mUm.getProfiles(UserHandle.myUserId())) {
+                if (user.isManagedProfile()) mUserId = user.id;
+            }
         }
     }
 
@@ -53,12 +69,19 @@ public class ResetCredentialsPreferenceController extends RestrictedEncryptionPr
     public void displayPreference(PreferenceScreen screen) {
         super.displayPreference(screen);
         mPreference = screen.findPreference(getPreferenceKey());
+        mPreference.setOnPreferenceClickListener(
+                preference -> {
+                    Intent deleteIntent = new Intent(CredentialStorage.ACTION_RESET);
+                    deleteIntent.setPackage("com.android.settings");
+                    mContext.startActivityAsUser(deleteIntent, UserHandle.of(mUserId));
+                    return true;
+                });
     }
 
     @Override
     public void onResume() {
-        if (mPreference != null && !mPreference.isDisabledByAdmin()) {
-            mPreference.setEnabled(!mKeyStore.isEmpty());
-        }
+        mPreference.checkRestrictionAndSetDisabled(UserManager.DISALLOW_CONFIG_CREDENTIALS,
+                mUserId);
     }
+
 }
