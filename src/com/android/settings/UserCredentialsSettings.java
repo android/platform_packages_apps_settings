@@ -432,7 +432,7 @@ public class UserCredentialsSettings extends SettingsPreferenceFragment
     }
 
     static class Credential implements Parcelable {
-        static enum Type {
+        public static enum Type {
             CA_CERTIFICATE (Credentials.CA_CERTIFICATE),
             USER_CERTIFICATE (Credentials.USER_CERTIFICATE),
             USER_KEY(Credentials.USER_PRIVATE_KEY, Credentials.USER_SECRET_KEY);
@@ -448,13 +448,13 @@ public class UserCredentialsSettings extends SettingsPreferenceFragment
          * Main part of the credential's alias. To fetch an item from KeyStore, prepend one of the
          * prefixes from {@link CredentialItem.storedTypes}.
          */
-        final String alias;
+        public final String alias;
 
         /**
          * UID under which this credential is stored. Typically {@link Process#SYSTEM_UID} but can
          * also be {@link Process#WIFI_UID} for credentials installed as wifi certificates.
          */
-        final int uid;
+        public final int uid;
 
         /**
          * Should contain some non-empty subset of:
@@ -464,7 +464,7 @@ public class UserCredentialsSettings extends SettingsPreferenceFragment
          *   <li>{@link Credentials.USER_KEY}</li>
          * </ul>
          */
-        final EnumSet<Type> storedTypes = EnumSet.noneOf(Type.class);
+        public final EnumSet<Type> storedTypes = EnumSet.noneOf(Type.class);
 
         Credential(final String alias, final int uid) {
             this.alias = alias;
