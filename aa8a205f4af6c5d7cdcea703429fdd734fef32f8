@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65b59db4_44bfe2c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-07-22T14:24:06Z",
+      "side": 1,
+      "message": "Hi Ben,\n\nThe framework code isn’t removed with the Settings code, so there is a function - convertType() which is trying to convert the VPN type selected by user to the VPN type defined in VpnProfile.java.",
+      "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
