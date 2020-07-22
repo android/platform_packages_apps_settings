@@ -16,6 +16,161 @@
       "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3056d1ad_e414e820",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-07-22T15:22:15Z",
+      "side": 1,
+      "message": "Not go through all yet,just initial review. Will keep reviewing tomorrow",
+      "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "338c83d5_3fac8173",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-07-22T15:22:15Z",
+      "side": 1,
+      "message": "remove? also comment in l.352 and l.355",
+      "range": {
+        "startLine": 348,
+        "startChar": 50,
+        "endLine": 348,
+        "endChar": 65
+      },
+      "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9603a25d_38a5fc5d",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-07-22T15:22:15Z",
+      "side": 1,
+      "message": "Optional: \nmaybe we could define a NON_LEAGCY_VPN_SHIFT(or IKEV2_SHIFT) as VpnProfile.TYPE_IKEV2_IPSEC_USER_PASS and have logic here as something like\nfinal int type \u003d mType.getSelectedItemPosition() + NON_LEAGCY_VPN_SHIFT;\nor just \nfinal int type \u003d mType.getSelectedItemPosition() + VpnProfile.TYPE_IKEV2_IPSEC_USER_PASS;",
+      "range": {
+        "startLine": 385,
+        "startChar": 25,
+        "endLine": 385,
+        "endChar": 70
+      },
+      "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86337961_e48df569",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-07-22T15:22:15Z",
+      "side": 1,
+      "message": "not fall through now?",
+      "range": {
+        "startLine": 406,
+        "startChar": 50,
+        "endLine": 406,
+        "endChar": 65
+      },
+      "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5cb14914_2fea16b6",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-07-22T15:22:15Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 409,
+        "startChar": 50,
+        "endLine": 409,
+        "endChar": 65
+      },
+      "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "326e38c5_b7cb9568",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-07-22T15:22:15Z",
+      "side": 1,
+      "message": "Probably this comment is no longer valid?",
+      "range": {
+        "startLine": 511,
+        "startChar": 50,
+        "endLine": 511,
+        "endChar": 54
+      },
+      "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6db75c0c_042f8558",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2020-07-22T15:22:15Z",
+      "side": 1,
+      "message": "also this and comment in l.521",
+      "range": {
+        "startLine": 516,
+        "startChar": 50,
+        "endLine": 516,
+        "endChar": 65
+      },
+      "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
