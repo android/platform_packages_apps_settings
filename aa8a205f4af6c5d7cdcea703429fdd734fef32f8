@@ -36,6 +36,92 @@
     },
     {
       "key": {
+        "uuid": "977fe0d3_e4a48821",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-07-23T01:38:45Z",
+      "side": 1,
+      "message": "High level questions that we\u0027ll need to answer as a group:\n1. What happens if a user has a LegacyVpnProfile saved during the R -\u003e S upgrade? Do we simply delete it? or throw a warning?\n2. Is there the possibility that a R-\u003eS upgrading device does NOT have the FEATURE_IPSEC_TUNNELS? My understanding is this is a possibility (albeit unlikely). But then again, this is somewhat of a security bug.",
+      "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f818484c_6cacca60",
+        "filename": "res/values/arrays.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-07-23T01:38:45Z",
+      "side": 1,
+      "message": "This probably needs to be updated, since we no longer exactly match. Probably discuss how we translate between the two",
+      "range": {
+        "startLine": 911,
+        "startChar": 0,
+        "endLine": 911,
+        "endChar": 66
+      },
+      "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f046a7f1_9293192e",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-07-23T01:38:45Z",
+      "side": 1,
+      "message": "This looks like it\u0027ll be wrong; it\u0027ll set the selection past the number of options that exist.",
+      "range": {
+        "startLine": 124,
+        "startChar": 27,
+        "endLine": 124,
+        "endChar": 40
+      },
+      "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5da080fd_77f9fb58",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-07-23T01:38:45Z",
+      "side": 1,
+      "message": "Suggest \"convertTypeToVpnProfileConstant\" or similar, so we know exactly what this does from a glance.",
+      "range": {
+        "startLine": 176,
+        "startChar": 23,
+        "endLine": 176,
+        "endChar": 34
+      },
+      "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "338c83d5_3fac8173",
         "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
         "patchSetId": 1
@@ -52,6 +138,29 @@
         "startChar": 50,
         "endLine": 348,
         "endChar": 65
+      },
+      "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43963cf0_9297334b",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-07-23T01:38:45Z",
+      "side": 1,
+      "message": "Nit: first line of javadoc should always be a single line.",
+      "range": {
+        "startLine": 364,
+        "startChar": 7,
+        "endLine": 365,
+        "endChar": 48
       },
       "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -128,6 +237,29 @@
     },
     {
       "key": {
+        "uuid": "0736833c_68c5209c",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-07-23T01:38:45Z",
+      "side": 1,
+      "message": "This may be a policy decision that needs broader discussion. We might be able to assert in S that all devices have FEATURE_IPSEC_TUNNELS (FIRST_SDK_VERSION \u003e Q), given the 3-year window, but I don\u0027t think we can leave users without ANY platform VPN options.",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 420,
+        "endChar": 0
+      },
+      "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "326e38c5_b7cb9568",
         "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
         "patchSetId": 1
@@ -144,6 +276,29 @@
         "startChar": 50,
         "endLine": 511,
         "endChar": 54
+      },
+      "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ef4def4_cc5416ed",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-07-23T01:38:45Z",
+      "side": 1,
+      "message": "No longer necessary; we unconditionally do this in l.497",
+      "range": {
+        "startLine": 512,
+        "startChar": 0,
+        "endLine": 512,
+        "endChar": 80
       },
       "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",

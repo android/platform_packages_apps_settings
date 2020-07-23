@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c6506e9f_f3c6dab1",
+        "filename": "res/values/arrays.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-07-23T01:38:45Z",
+      "side": 0,
+      "message": "Removing these will result in the indicies of the IKEv2 options being 0-2, which will no longer match the constant values in VpnProfile.java.",
+      "range": {
+        "startLine": 914,
+        "startChar": 0,
+        "endLine": 919,
+        "endChar": 37
+      },
+      "revId": "268371c44eb32ee401a39468756c20812c4195bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "278d248b_c7b1e066",
         "filename": "res/values/arrays.xml",
         "patchSetId": 1
