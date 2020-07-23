@@ -76,6 +76,30 @@
     },
     {
       "key": {
+        "uuid": "89c3a93f_70bb65bc",
+        "filename": "res/values/arrays.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-07-23T07:32:04Z",
+      "side": 1,
+      "message": "ok, I will update the comment, but we may update it back after removing the legacy VPN types from VpnProfile.java.",
+      "parentUuid": "f818484c_6cacca60",
+      "range": {
+        "startLine": 911,
+        "startChar": 0,
+        "endLine": 911,
+        "endChar": 66
+      },
+      "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f046a7f1_9293192e",
         "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
         "patchSetId": 1
@@ -96,6 +120,30 @@
       "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efd5fc0a_8bd41393",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-07-23T07:32:04Z",
+      "side": 1,
+      "message": "Yes, you\u0027re right.\nThere will be a problem when editing the exist VPN item.\nFix this problem by having a new function to convert the VPN type to the selected item position.",
+      "parentUuid": "f046a7f1_9293192e",
+      "range": {
+        "startLine": 124,
+        "startChar": 27,
+        "endLine": 124,
+        "endChar": 40
+      },
+      "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -122,6 +170,30 @@
     },
     {
       "key": {
+        "uuid": "5c939683_74f91b8e",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-07-23T07:32:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5da080fd_77f9fb58",
+      "range": {
+        "startLine": 176,
+        "startChar": 23,
+        "endLine": 176,
+        "endChar": 34
+      },
+      "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "338c83d5_3fac8173",
         "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
         "patchSetId": 1
@@ -142,6 +214,30 @@
       "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b2db0bb_6548af17",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-07-23T07:32:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "338c83d5_3fac8173",
+      "range": {
+        "startLine": 348,
+        "startChar": 50,
+        "endLine": 348,
+        "endChar": 65
+      },
+      "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -168,6 +264,30 @@
     },
     {
       "key": {
+        "uuid": "e92657ef_3805f0a9",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-07-23T07:32:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43963cf0_9297334b",
+      "range": {
+        "startLine": 364,
+        "startChar": 7,
+        "endLine": 365,
+        "endChar": 48
+      },
+      "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9603a25d_38a5fc5d",
         "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
         "patchSetId": 1
@@ -188,6 +308,30 @@
       "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d79e849_a6a2d707",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-07-23T07:32:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9603a25d_38a5fc5d",
+      "range": {
+        "startLine": 385,
+        "startChar": 25,
+        "endLine": 385,
+        "endChar": 70
+      },
+      "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -214,6 +358,30 @@
     },
     {
       "key": {
+        "uuid": "d9a2e9e8_f4913eb0",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-07-23T07:32:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86337961_e48df569",
+      "range": {
+        "startLine": 406,
+        "startChar": 50,
+        "endLine": 406,
+        "endChar": 65
+      },
+      "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5cb14914_2fea16b6",
         "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
         "patchSetId": 1
@@ -234,6 +402,30 @@
       "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d7bc018_14eb027a",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-07-23T07:32:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5cb14914_2fea16b6",
+      "range": {
+        "startLine": 409,
+        "startChar": 50,
+        "endLine": 409,
+        "endChar": 65
+      },
+      "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -260,6 +452,30 @@
     },
     {
       "key": {
+        "uuid": "9eac41ab_3dcc0e41",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-07-23T07:32:04Z",
+      "side": 1,
+      "message": "I see, let me remove the TODO.\n\nProvide a link for other reviewers reference:\nhttps://source.corp.google.com/aosp-master/frameworks/base/core/java/com/android/server/SystemConfig.java;l\u003d1018?q\u003dsystemconfig.java\u0026sq\u003dpackage:%5Eaosp-master$",
+      "parentUuid": "0736833c_68c5209c",
+      "range": {
+        "startLine": 417,
+        "startChar": 0,
+        "endLine": 420,
+        "endChar": 0
+      },
+      "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "326e38c5_b7cb9568",
         "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
         "patchSetId": 1
@@ -280,6 +496,30 @@
       "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23a474f5_87e48659",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-07-23T07:32:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "326e38c5_b7cb9568",
+      "range": {
+        "startLine": 511,
+        "startChar": 50,
+        "endLine": 511,
+        "endChar": 54
+      },
+      "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -306,6 +546,30 @@
     },
     {
       "key": {
+        "uuid": "97e75444_360e2f4b",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-07-23T07:32:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ef4def4_cc5416ed",
+      "range": {
+        "startLine": 512,
+        "startChar": 0,
+        "endLine": 512,
+        "endChar": 80
+      },
+      "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6db75c0c_042f8558",
         "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
         "patchSetId": 1
@@ -326,6 +590,30 @@
       "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb3e95e0_767cf9cf",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-07-23T07:32:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6db75c0c_042f8558",
+      "range": {
+        "startLine": 516,
+        "startChar": 50,
+        "endLine": 516,
+        "endChar": 65
+      },
+      "revId": "aa8a205f4af6c5d7cdcea703429fdd734fef32f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

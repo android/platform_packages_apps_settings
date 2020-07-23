@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "306bb351_bbea8501",
+        "filename": "res/values/arrays.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-07-23T07:32:04Z",
+      "side": 0,
+      "message": "Yes, so we need convertTypeToVpnProfileConstant() to do a favor.",
+      "parentUuid": "c6506e9f_f3c6dab1",
+      "range": {
+        "startLine": 914,
+        "startChar": 0,
+        "endLine": 919,
+        "endChar": 37
+      },
+      "revId": "268371c44eb32ee401a39468756c20812c4195bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "278d248b_c7b1e066",
         "filename": "res/values/arrays.xml",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "268371c44eb32ee401a39468756c20812c4195bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02f4edbb_39b3654c",
+        "filename": "res/values/arrays.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 936,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-07-23T07:32:04Z",
+      "side": 0,
+      "message": "VpnSettings.java didn\u0027t use vpn_types_long since Android M.",
+      "parentUuid": "278d248b_c7b1e066",
+      "range": {
+        "startLine": 934,
+        "startChar": 7,
+        "endLine": 936,
+        "endChar": 54
+      },
+      "revId": "268371c44eb32ee401a39468756c20812c4195bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
