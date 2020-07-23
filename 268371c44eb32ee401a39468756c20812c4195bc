@@ -142,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "c4001907_df00fb50",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-07-23T08:27:49Z",
+      "side": 0,
+      "message": "Because there is no PPTP in VPN Settings, I think isTypeValidForLockdown() only returns true.\n\n```\npublic boolean isTypeValidForLockdown() {\n    // b/7064069: lockdown firewall blocks ports used for PPTP\n    return type !\u003d TYPE_PPTP;\n}\n```",
+      "parentUuid": "74a07ef2_5c65d889",
+      "range": {
+        "startLine": 312,
+        "startChar": 25,
+        "endLine": 312,
+        "endChar": 47
+      },
+      "revId": "268371c44eb32ee401a39468756c20812c4195bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3c828e33_73958fe8",
         "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
         "patchSetId": 2
@@ -162,6 +186,30 @@
       "revId": "268371c44eb32ee401a39468756c20812c4195bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22cba32c_c56a525b",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-07-23T08:27:49Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "3c828e33_73958fe8",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 87
+      },
+      "revId": "268371c44eb32ee401a39468756c20812c4195bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
