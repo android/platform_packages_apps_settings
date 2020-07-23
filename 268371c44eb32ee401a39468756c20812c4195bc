@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "dd862ca5_cdf93df2",
+        "filename": "res/layout/vpn_dialog.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-07-23T07:59:13Z",
+      "side": 0,
+      "message": "Question for Ben : What happens in IKEv2 platform VPNs with respect to DNS servers ? At least for VpnService, when the app does not supply DNS servers, the system will use the underlying network to do the DNS queries, leaking the DNS queries outside of the VPN.",
+      "range": {
+        "startLine": 145,
+        "startChar": 68,
+        "endLine": 145,
+        "endChar": 79
+      },
+      "revId": "268371c44eb32ee401a39468756c20812c4195bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c6506e9f_f3c6dab1",
         "filename": "res/values/arrays.xml",
         "patchSetId": 1
@@ -93,6 +116,52 @@
       "revId": "268371c44eb32ee401a39468756c20812c4195bc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "74a07ef2_5c65d889",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 312,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-07-23T07:59:13Z",
+      "side": 0,
+      "message": "I think this can still happen ?",
+      "range": {
+        "startLine": 312,
+        "startChar": 25,
+        "endLine": 312,
+        "endChar": 47
+      },
+      "revId": "268371c44eb32ee401a39468756c20812c4195bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c828e33_73958fe8",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-07-23T07:59:13Z",
+      "side": 0,
+      "message": "I guess you probably want to keep this TODO",
+      "range": {
+        "startLine": 363,
+        "startChar": 0,
+        "endLine": 363,
+        "endChar": 87
+      },
+      "revId": "268371c44eb32ee401a39468756c20812c4195bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

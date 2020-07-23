@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a46887a7_f9381cda",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-07-23T07:59:13Z",
+      "side": 1,
+      "message": "Looks great to me, Ben can you give +2 if you think this is fine ?",
+      "revId": "ff641577af4b72d004fa1ef39eabc75515541cac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2483d6cc_f1402b1c",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-07-23T07:59:13Z",
+      "side": 1,
+      "message": "been removed yet",
+      "range": {
+        "startLine": 367,
+        "startChar": 25,
+        "endLine": 367,
+        "endChar": 32
+      },
+      "revId": "ff641577af4b72d004fa1ef39eabc75515541cac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54959294_069d7b5b",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-07-23T07:59:13Z",
+      "side": 1,
+      "message": "Nit : Maybe call \"type\" the \"typeIndex\" or something similar, I think it\u0027s clearer",
+      "range": {
+        "startLine": 369,
+        "startChar": 23,
+        "endLine": 369,
+        "endChar": 27
+      },
+      "revId": "ff641577af4b72d004fa1ef39eabc75515541cac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
