@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "309ce4da_93d389d1",
+        "filename": "res/values/arrays.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 919,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-07-23T01:22:40Z",
+      "side": 0,
+      "message": "Do bear in mind that this changes the index of the IKEv2 VPN options to 0-2, which might cause a mismatch with VpnProfile.\n\nDo we have a shim to handle this somewhere that i\u0027m not seeing?",
+      "range": {
+        "startLine": 914,
+        "startChar": 0,
+        "endLine": 919,
+        "endChar": 37
+      },
+      "revId": "cd85c6436237e1cac6a5121d465be09e391a6d6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

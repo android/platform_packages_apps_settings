@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "523bad2b_9c67bf8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-07-23T01:22:40Z",
+      "side": 1,
+      "message": "Oh... this is my own CL? 😮\n\nThis should just be abandoned.",
+      "revId": "88e96619ed3d1c2b7f8c92190c79abf1b049c583",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dffe8630_c97e42f4",
+        "filename": "res/values/arrays.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-07-23T01:22:40Z",
+      "side": 1,
+      "message": "This probably needs to be updated if it no longer matches, and discuss how we bridge the constants-indexing gap.",
+      "range": {
+        "startLine": 911,
+        "startChar": 0,
+        "endLine": 911,
+        "endChar": 66
+      },
+      "revId": "88e96619ed3d1c2b7f8c92190c79abf1b049c583",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8b2db0e0_8385cb2a",
         "filename": "res/values/arrays.xml",
         "patchSetId": 1
@@ -37,6 +77,30 @@
       "side": 1,
       "message": "If you\u0027re agree that we should remove entire \"vpn_types_long\", then I\u0027ll remove it in another commit.\nYou don\u0027t need to update this patch. 😊",
       "parentUuid": "8b2db0e0_8385cb2a",
+      "range": {
+        "startLine": 921,
+        "startChar": 24,
+        "endLine": 921,
+        "endChar": 38
+      },
+      "revId": "88e96619ed3d1c2b7f8c92190c79abf1b049c583",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98c5a5f3_09f3cefb",
+        "filename": "res/values/arrays.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-07-23T01:22:40Z",
+      "side": 1,
+      "message": "Yeah, I think this can be removed entirely.",
+      "parentUuid": "4529da04_80eb9b23",
       "range": {
         "startLine": 921,
         "startChar": 24,
