@@ -908,32 +908,13 @@
         <item>-1</item>
     </integer-array>
 
-    <!-- Match this with the constants in VpnProfile. --> <skip />
+    <!-- Currently, there are only 3 vpn types in VPN Settings and there is a function in
+         ConfigDialog.java which is translating these 3 types to the constants in VpnProfile. -->
     <!-- Short names for each VPN type, not really translatable. [CHAR LIMIT=20] -->
     <string-array name="vpn_types" translatable="false">
-        <item>PPTP</item>
-        <item>L2TP/IPSec PSK</item>
-        <item>L2TP/IPSec RSA</item>
-        <item>IPSec Xauth PSK</item>
-        <item>IPSec Xauth RSA</item>
-        <item>IPSec Hybrid RSA</item>
         <item>IKEv2/IPSec MSCHAPv2</item>
         <item>IKEv2/IPSec PSK</item>
         <item>IKEv2/IPSec RSA</item>
-    </string-array>
-
-    <!-- Match this with the constants in VpnProfile. --> <skip />
-    <!-- Longer descriptions for each VPN type. [CHAR LIMIT=100] -->
-    <string-array name="vpn_types_long">
-        <item>PPTP VPN</item>
-        <item>L2TP/IPSec VPN with pre-shared keys</item>
-        <item>L2TP/IPSec VPN with certificates</item>
-        <item>IPSec VPN with pre-shared keys and Xauth authentication</item>
-        <item>IPSec VPN with certificates and Xauth authentication</item>
-        <item>IPSec VPN with certificates and hybrid authentication</item>
-        <item>IKEv2/IPSec VPN with certificates and username/password authentication</item>
-        <item>IKEv2/IPSec VPN with pre-shared keys</item>
-        <item>IKEv2/IPSec VPN with certificates</item>
     </string-array>
 
     <!-- VPN proxy settings. -->
