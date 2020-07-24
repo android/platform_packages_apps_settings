@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65c02a8d_602d32c9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-07-24T04:56:39Z",
+      "side": 1,
+      "message": "If user have already had legacy VPN items in VPN Settings, then when user gets upgrading and taps the legacy VPN item the VPN Settings will crash.\nChange the default value of convertTypeToSelectedItemPosition() to 0 can prevent this problem.",
+      "revId": "41cb2901648b6a2af2517428c7dfdf20159d7719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
