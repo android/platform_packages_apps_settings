@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3c063a78_873f8601",
+        "filename": "res/layout/vpn_dialog.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-07-24T22:04:57Z",
+      "side": 0,
+      "message": "IIRC, the modes that the Platform VPNs currently work in is:\n\n1. User-configured private-DNS\n2. Server-provided DNS servers\n3. Fallback to underlying network\n\nI think we eventually want to allow the Ikev2VpnRunner to prioritize user-provided DNS servers above server-provided DNS servers (insert as new option 2), but whether we delete this code at the moment does depend on whether we want to include the plumbing of this DNS into this effort to delete Legacy VPN (should be simple, but it *may* be scope creep)",
+      "parentUuid": "dd862ca5_cdf93df2",
+      "range": {
+        "startLine": 145,
+        "startChar": 68,
+        "endLine": 145,
+        "endChar": 79
+      },
+      "revId": "268371c44eb32ee401a39468756c20812c4195bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c6506e9f_f3c6dab1",
         "filename": "res/values/arrays.xml",
         "patchSetId": 1
