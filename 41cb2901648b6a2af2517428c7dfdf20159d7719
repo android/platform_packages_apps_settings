@@ -54,6 +54,23 @@
     },
     {
       "key": {
+        "uuid": "00ab395a_e19c2f94",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221725
+      },
+      "writtenOn": "2020-07-24T22:05:58Z",
+      "side": 1,
+      "message": "But otherwise, code looks good.",
+      "revId": "41cb2901648b6a2af2517428c7dfdf20159d7719",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c063ff9_434ab56b",
         "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
         "patchSetId": 4
