@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0c5fc16_45f0bdcd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1595364
+      },
+      "writtenOn": "2020-07-24T17:16:28Z",
+      "side": 1,
+      "message": "Bonian, could you check the presubmit verification errors?",
+      "revId": "99a0db35f33315be3a122e8d858c32e6d0f58953",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
