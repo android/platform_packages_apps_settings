@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "cf429d99_3f2ae5b8",
+        "filename": "res/layout/vpn_dialog.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1308163
+      },
+      "writtenOn": "2020-07-27T08:15:42Z",
+      "side": 0,
+      "message": "b/149070123 is tracking this, so maybe we can add \"dns server\" and \"routes\" back when we start doing this item.",
+      "parentUuid": "3c063a78_873f8601",
+      "range": {
+        "startLine": 145,
+        "startChar": 68,
+        "endLine": 145,
+        "endChar": 79
+      },
+      "revId": "268371c44eb32ee401a39468756c20812c4195bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c6506e9f_f3c6dab1",
         "filename": "res/values/arrays.xml",
         "patchSetId": 1
