@@ -1,0 +1,247 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004092119",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376379?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "c90d3dec_42140880",
+        "filename": "src/com/android/settings/security/CertificatesPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-29T15:08:48Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027primary/secondary\u0027 or \u0027manager/worker\u0027; see https://source.android.com/setup/contribute/respectful-code for more details.",
+      "range": {
+        "startLine": 28,
+        "startChar": 27,
+        "endLine": 28,
+        "endChar": 33
+      },
+      "revId": "b01ab552a5111991cd988e3af700426234dc2e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004092119",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376379?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "16448307_7cbd978b",
+        "filename": "src/com/android/settings/security/CertificatesPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-29T15:08:48Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027primary/secondary\u0027 or \u0027manager/worker\u0027; see https://source.android.com/setup/contribute/respectful-code for more details.",
+      "range": {
+        "startLine": 29,
+        "startChar": 27,
+        "endLine": 29,
+        "endChar": 33
+      },
+      "revId": "b01ab552a5111991cd988e3af700426234dc2e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004092119",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376379?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "3bba2459_0012a623",
+        "filename": "src/com/android/settings/security/CertificatesPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-29T15:08:48Z",
+      "side": 1,
+      "message": "Prefer to use context.getSystemService(UserManager.class) instead to avoid the cast.",
+      "range": {
+        "startLine": 72,
+        "startChar": 14,
+        "endLine": 72,
+        "endChar": 53
+      },
+      "revId": "b01ab552a5111991cd988e3af700426234dc2e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004092119",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376379?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "089f13ce_9d19df66",
+        "filename": "src/com/android/settings/security/CertificatesPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-29T15:08:48Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027complex\u0027, \u0027unexpected\u0027, or \u0027placeholder\u0027; see https://developers.google.com/style/inclusive-documentation#ableist-language for more details.",
+      "range": {
+        "startLine": 112,
+        "startChar": 36,
+        "endLine": 112,
+        "endChar": 41
+      },
+      "revId": "b01ab552a5111991cd988e3af700426234dc2e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004092119",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376379?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "fdfce25b_90962b13",
+        "filename": "src/com/android/settings/security/CertificatesPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-29T15:08:48Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027primary/secondary\u0027 or \u0027manager/worker\u0027; see https://source.android.com/setup/contribute/respectful-code for more details.",
+      "range": {
+        "startLine": 200,
+        "startChar": 23,
+        "endLine": 200,
+        "endChar": 29
+      },
+      "revId": "b01ab552a5111991cd988e3af700426234dc2e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004092119",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376379?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "1902be99_e6d21062",
+        "filename": "src/com/android/settings/security/CertificatesPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-29T15:08:48Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027primary/secondary\u0027 or \u0027manager/worker\u0027; see https://source.android.com/setup/contribute/respectful-code for more details.",
+      "range": {
+        "startLine": 201,
+        "startChar": 23,
+        "endLine": 201,
+        "endChar": 29
+      },
+      "revId": "b01ab552a5111991cd988e3af700426234dc2e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004092119",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376379?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "1d56e540_7b5225b9",
+        "filename": "src/com/android/settings/security/CertificatesPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-29T15:08:48Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027primary/secondary\u0027 or \u0027manager/worker\u0027; see https://source.android.com/setup/contribute/respectful-code for more details.",
+      "range": {
+        "startLine": 202,
+        "startChar": 19,
+        "endLine": 202,
+        "endChar": 25
+      },
+      "revId": "b01ab552a5111991cd988e3af700426234dc2e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004092119",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376379?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "0e0372c7_5d67bcd7",
+        "filename": "src/com/android/settings/security/CertificatesPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-29T15:08:48Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027primary/secondary\u0027 or \u0027manager/worker\u0027; see https://source.android.com/setup/contribute/respectful-code for more details.",
+      "range": {
+        "startLine": 205,
+        "startChar": 22,
+        "endLine": 205,
+        "endChar": 28
+      },
+      "revId": "b01ab552a5111991cd988e3af700426234dc2e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004092119",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376379?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "83518add_23330871",
+        "filename": "src/com/android/settings/security/CertificatesPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-29T15:08:48Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027primary/secondary\u0027 or \u0027manager/worker\u0027; see https://source.android.com/setup/contribute/respectful-code for more details.",
+      "range": {
+        "startLine": 206,
+        "startChar": 23,
+        "endLine": 206,
+        "endChar": 29
+      },
+      "revId": "b01ab552a5111991cd988e3af700426234dc2e1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
