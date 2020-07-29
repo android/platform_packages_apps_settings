@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "f1399f6f_8a7a3fa7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2020-07-29T02:17:46Z",
+      "side": 1,
+      "message": "Do we still want to pursue this ?",
+      "revId": "7c3cc88982456913eb671f782e28fcaf8b24370c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a296185_30d013cb",
         "filename": "src/com/android/settings/vpn2/ConfigDialogFragment.java",
         "patchSetId": 1
