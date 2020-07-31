@@ -1,0 +1,303 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "13ee5406_583d6561",
+        "filename": "res/layout/trusted_credential_details.xml",
+        "patchSetId": 13
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1059499
+      },
+      "writtenOn": "2020-07-31T08:21:10Z",
+      "side": 1,
+      "message": "This \"~\" looks spurious?",
+      "range": {
+        "startLine": 3,
+        "startChar": 2,
+        "endLine": 3,
+        "endChar": 3
+      },
+      "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dda6d7e_0dd98d98",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 13
+      },
+      "lineNbr": 6554,
+      "author": {
+        "id": 1059499
+      },
+      "writtenOn": "2020-07-31T08:21:10Z",
+      "side": 1,
+      "message": "enabled",
+      "range": {
+        "startLine": 6554,
+        "startChar": 42,
+        "endLine": 6554,
+        "endChar": 50
+      },
+      "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5902d3f9_408737d4",
+        "filename": "src/com/android/settings/TrustedCredentialsDetailsPreference.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1059499
+      },
+      "writtenOn": "2020-07-31T08:21:10Z",
+      "side": 1,
+      "message": "I don\u0027t think this is needed, since we completely decoupled TrustedCredentialsDetailsPreference from TrustedCredentialsSettings",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 40
+      },
+      "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c20f3ce1_6935ca34",
+        "filename": "src/com/android/settings/TrustedCredentialsDetailsPreference.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1059499
+      },
+      "writtenOn": "2020-07-31T08:21:10Z",
+      "side": 1,
+      "message": "extra space",
+      "range": {
+        "startLine": 110,
+        "startChar": 59,
+        "endLine": 110,
+        "endChar": 63
+      },
+      "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "510dbc2b_a2171e70",
+        "filename": "src/com/android/settings/TrustedCredentialsDetailsPreference.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1059499
+      },
+      "writtenOn": "2020-07-31T08:21:10Z",
+      "side": 1,
+      "message": "mActivity",
+      "range": {
+        "startLine": 114,
+        "startChar": 15,
+        "endLine": 114,
+        "endChar": 30
+      },
+      "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6d69300_61fe8cd5",
+        "filename": "src/com/android/settings/TrustedCredentialsDetailsPreference.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1059499
+      },
+      "writtenOn": "2020-07-31T08:21:10Z",
+      "side": 1,
+      "message": "define this as a class-level constant:\npublic static final String ARG_ALIAS \u003d \"alias\";",
+      "range": {
+        "startLine": 123,
+        "startChar": 35,
+        "endLine": 123,
+        "endChar": 42
+      },
+      "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91b23d8d_c14f3aa1",
+        "filename": "src/com/android/settings/TrustedCredentialsDetailsPreference.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1059499
+      },
+      "writtenOn": "2020-07-31T08:21:10Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 124,
+        "startChar": 37,
+        "endLine": 124,
+        "endChar": 46
+      },
+      "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e6f4b3b_b9c3cd02",
+        "filename": "src/com/android/settings/TrustedCredentialsDetailsPreference.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1059499
+      },
+      "writtenOn": "2020-07-31T08:21:10Z",
+      "side": 1,
+      "message": "not needed.",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 46
+      },
+      "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee65250a_b436a835",
+        "filename": "src/com/android/settings/TrustedCredentialsDetailsPreference.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1059499
+      },
+      "writtenOn": "2020-07-31T08:21:10Z",
+      "side": 1,
+      "message": "move this to onCreateView()",
+      "range": {
+        "startLine": 145,
+        "startChar": 8,
+        "endLine": 147,
+        "endChar": 52
+      },
+      "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c709b4df_3b3382f4",
+        "filename": "src/com/android/settings/TrustedCredentialsSettings.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1059499
+      },
+      "writtenOn": "2020-07-31T08:21:10Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 430,
+        "startChar": 0,
+        "endLine": 430,
+        "endChar": 41
+      },
+      "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d15cde2d_b9867e51",
+        "filename": "src/com/android/settings/TrustedCredentialsSettings.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1059499
+      },
+      "writtenOn": "2020-07-31T08:21:10Z",
+      "side": 1,
+      "message": "reference the public constant in TrustedCredentialsDetailsPreference",
+      "range": {
+        "startLine": 943,
+        "startChar": 24,
+        "endLine": 943,
+        "endChar": 29
+      },
+      "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d44a08bf_64b79612",
+        "filename": "src/com/android/settings/TrustedCredentialsSettings.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1059499
+      },
+      "writtenOn": "2020-07-31T08:21:10Z",
+      "side": 1,
+      "message": "Is this necessary?",
+      "range": {
+        "startLine": 976,
+        "startChar": 0,
+        "endLine": 976,
+        "endChar": 69
+      },
+      "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1796f3b4_9c718b1c",
+        "filename": "src/com/android/settings/TrustedCredentialsSettings.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1059499
+      },
+      "writtenOn": "2020-07-31T08:21:10Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 1007,
+        "startChar": 0,
+        "endLine": 1007,
+        "endChar": 41
+      },
+      "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
