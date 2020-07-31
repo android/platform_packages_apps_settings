@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "336042f1_cd97e355",
+        "filename": "res/layout/trusted_credential_details.xml",
+        "patchSetId": 13
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1716061
+      },
+      "writtenOn": "2020-07-31T17:49:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13ee5406_583d6561",
+      "range": {
+        "startLine": 3,
+        "startChar": 2,
+        "endLine": 3,
+        "endChar": 3
+      },
+      "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7dda6d7e_0dd98d98",
         "filename": "res/values/strings.xml",
         "patchSetId": 13
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "6e88ff70_d58a9169",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 13
+      },
+      "lineNbr": 6554,
+      "author": {
+        "id": 1716061
+      },
+      "writtenOn": "2020-07-31T17:49:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7dda6d7e_0dd98d98",
+      "range": {
+        "startLine": 6554,
+        "startChar": 42,
+        "endLine": 6554,
+        "endChar": 50
+      },
+      "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5902d3f9_408737d4",
         "filename": "src/com/android/settings/TrustedCredentialsDetailsPreference.java",
         "patchSetId": 13
@@ -59,6 +107,30 @@
       "writtenOn": "2020-07-31T08:21:10Z",
       "side": 1,
       "message": "I don\u0027t think this is needed, since we completely decoupled TrustedCredentialsDetailsPreference from TrustedCredentialsSettings",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 40
+      },
+      "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13f366e2_91f8738d",
+        "filename": "src/com/android/settings/TrustedCredentialsDetailsPreference.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1716061
+      },
+      "writtenOn": "2020-07-31T17:49:35Z",
+      "side": 1,
+      "message": "It is implemented in TrustedCredentialsSettings as these methods are used both there and here.",
+      "parentUuid": "5902d3f9_408737d4",
       "range": {
         "startLine": 63,
         "startChar": 0,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "da1e8257_03e05522",
+        "filename": "src/com/android/settings/TrustedCredentialsDetailsPreference.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1716061
+      },
+      "writtenOn": "2020-07-31T17:49:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c20f3ce1_6935ca34",
+      "range": {
+        "startLine": 110,
+        "startChar": 59,
+        "endLine": 110,
+        "endChar": 63
+      },
+      "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "510dbc2b_a2171e70",
         "filename": "src/com/android/settings/TrustedCredentialsDetailsPreference.java",
         "patchSetId": 13
@@ -114,6 +210,30 @@
       "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59a1f8fd_9c4dec7b",
+        "filename": "src/com/android/settings/TrustedCredentialsDetailsPreference.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1716061
+      },
+      "writtenOn": "2020-07-31T17:49:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "510dbc2b_a2171e70",
+      "range": {
+        "startLine": 114,
+        "startChar": 15,
+        "endLine": 114,
+        "endChar": 30
+      },
+      "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "67ee049c_6b808b09",
+        "filename": "src/com/android/settings/TrustedCredentialsDetailsPreference.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1716061
+      },
+      "writtenOn": "2020-07-31T17:49:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6d69300_61fe8cd5",
+      "range": {
+        "startLine": 123,
+        "startChar": 35,
+        "endLine": 123,
+        "endChar": 42
+      },
+      "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "91b23d8d_c14f3aa1",
         "filename": "src/com/android/settings/TrustedCredentialsDetailsPreference.java",
         "patchSetId": 13
@@ -160,6 +304,30 @@
       "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3f3448d_e9ee5346",
+        "filename": "src/com/android/settings/TrustedCredentialsDetailsPreference.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1716061
+      },
+      "writtenOn": "2020-07-31T17:49:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91b23d8d_c14f3aa1",
+      "range": {
+        "startLine": 124,
+        "startChar": 37,
+        "endLine": 124,
+        "endChar": 46
+      },
+      "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "1139b629_6e19c149",
+        "filename": "src/com/android/settings/TrustedCredentialsDetailsPreference.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1716061
+      },
+      "writtenOn": "2020-07-31T17:49:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e6f4b3b_b9c3cd02",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 46
+      },
+      "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee65250a_b436a835",
         "filename": "src/com/android/settings/TrustedCredentialsDetailsPreference.java",
         "patchSetId": 13
@@ -206,6 +398,30 @@
       "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e039685f_69485d6a",
+        "filename": "src/com/android/settings/TrustedCredentialsDetailsPreference.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1716061
+      },
+      "writtenOn": "2020-07-31T17:49:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee65250a_b436a835",
+      "range": {
+        "startLine": 145,
+        "startChar": 8,
+        "endLine": 147,
+        "endChar": 52
+      },
+      "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "f6b911de_5db56711",
+        "filename": "src/com/android/settings/TrustedCredentialsSettings.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 430,
+      "author": {
+        "id": 1716061
+      },
+      "writtenOn": "2020-07-31T17:49:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c709b4df_3b3382f4",
+      "range": {
+        "startLine": 430,
+        "startChar": 0,
+        "endLine": 430,
+        "endChar": 41
+      },
+      "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d15cde2d_b9867e51",
         "filename": "src/com/android/settings/TrustedCredentialsSettings.java",
         "patchSetId": 13
@@ -252,6 +492,30 @@
       "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c30de81d_ec7187da",
+        "filename": "src/com/android/settings/TrustedCredentialsSettings.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 943,
+      "author": {
+        "id": 1716061
+      },
+      "writtenOn": "2020-07-31T17:49:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d15cde2d_b9867e51",
+      "range": {
+        "startLine": 943,
+        "startChar": 24,
+        "endLine": 943,
+        "endChar": 29
+      },
+      "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -278,6 +542,30 @@
     },
     {
       "key": {
+        "uuid": "9cff9f91_c61b270f",
+        "filename": "src/com/android/settings/TrustedCredentialsSettings.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 976,
+      "author": {
+        "id": 1716061
+      },
+      "writtenOn": "2020-07-31T17:49:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d44a08bf_64b79612",
+      "range": {
+        "startLine": 976,
+        "startChar": 0,
+        "endLine": 976,
+        "endChar": 69
+      },
+      "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1796f3b4_9c718b1c",
         "filename": "src/com/android/settings/TrustedCredentialsSettings.java",
         "patchSetId": 13
@@ -298,6 +586,30 @@
       "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bae9f73c_3bba91d7",
+        "filename": "src/com/android/settings/TrustedCredentialsSettings.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 1007,
+      "author": {
+        "id": 1716061
+      },
+      "writtenOn": "2020-07-31T17:49:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1796f3b4_9c718b1c",
+      "range": {
+        "startLine": 1007,
+        "startChar": 0,
+        "endLine": 1007,
+        "endChar": 41
+      },
+      "revId": "173a5f5029f2e6f2ec9c1155dfad7f000fefe560",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
