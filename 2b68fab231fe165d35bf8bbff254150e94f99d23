@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9df2ee4_b62b9f62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-08-02T14:43:05Z",
+      "side": 1,
+      "message": "Hi,\nCan you help to review this cherry-pick ? Thanks.",
+      "revId": "2b68fab231fe165d35bf8bbff254150e94f99d23",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
