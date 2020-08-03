@@ -50,6 +50,23 @@
       "revId": "694c63d55476c863d914f2cccf9762d8213340bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27fc5025_71756682",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1175858
+      },
+      "writtenOn": "2020-08-03T13:14:21Z",
+      "side": 1,
+      "message": "Hi Wang,\n\nThanks for sending the CL and bringing our attention to this.\n\nAs others mentioned, enabling the disabled package is not the right approach. Moreover, it would fix a symptom and not the underlying problem. \n\nThe correct behaviour here is to fall back to the default settings screen. The fallback should already happen, but doesn\u0027t happen because BackupSettingsHelper returns an intent from the transport instead of the default activity intent.\n\nThis in turn happens because TransportManager caches the values of the current transport name and the settings intent. So even though the actual component is disabled, it returns a non-null cached intent when BackupSettingsHelper asks it.\n\nThe correct behaviour for TransportManager is to unregister the transport when the package is disabled. The rest will fix then fix itself automatically. We\u0027ll work on a fix for that.\n\n",
+      "revId": "694c63d55476c863d914f2cccf9762d8213340bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
