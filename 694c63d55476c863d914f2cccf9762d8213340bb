@@ -67,6 +67,24 @@
       "revId": "694c63d55476c863d914f2cccf9762d8213340bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57f1aa86_b8e733a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1103203
+      },
+      "writtenOn": "2020-08-03T14:30:03Z",
+      "side": 1,
+      "message": "\u003e The correct behaviour for TransportManager is to unregister the transport when \n\u003e the package is disabled. The rest will fix then fix itself automatically. We\u0027ll \n\u003e work on a fix for that.\n\nFor reference for those who have access to internal bugs, the internal bug tracking this fix work is bug 162725876.\n\nWang Han: If you happen to already have filed an issue in the public issuetracker regarding this, then please let us know so we can mark it as blocking the internal one. If you haven\u0027t, then that\u0027s fine too - no further action needed from your side.",
+      "parentUuid": "27fc5025_71756682",
+      "revId": "694c63d55476c863d914f2cccf9762d8213340bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
