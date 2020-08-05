@@ -16,6 +16,23 @@
       "revId": "80edde750a1ab6f4c939e914c4152e7b636ff6e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ac00a01_56dd0b4a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-08-05T11:14:46Z",
+      "side": 1,
+      "message": "Hi, please help to review this cherry-pick. Thanks.",
+      "revId": "80edde750a1ab6f4c939e914c4152e7b636ff6e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
