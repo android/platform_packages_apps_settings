@@ -85,6 +85,24 @@
       "revId": "694c63d55476c863d914f2cccf9762d8213340bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0858dce8_1290df15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1319385
+      },
+      "writtenOn": "2020-08-05T09:48:08Z",
+      "side": 1,
+      "message": "Thx. Would you mind picking the fix into master when it is ready?",
+      "parentUuid": "57f1aa86_b8e733a0",
+      "revId": "694c63d55476c863d914f2cccf9762d8213340bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
