@@ -33,6 +33,23 @@
       "revId": "defa3f47b593bf18ef3b5cf27db68e82cb3e8a38",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99e10061_ed190842",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1742746
+      },
+      "writtenOn": "2020-08-06T06:23:36Z",
+      "side": 1,
+      "message": "1390856: [Settings] Sync summary of call preference with dialer | https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1390856",
+      "revId": "defa3f47b593bf18ef3b5cf27db68e82cb3e8a38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
