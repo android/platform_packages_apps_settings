@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "82861622_70439f87",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-08-07T01:53:49Z",
+      "side": 1,
+      "message": "Please reformat the commit message.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 15
+      },
+      "revId": "3795b49ccc6779352e0cc21e7acd12f1e3190d4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31dac249_b7396c0e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
