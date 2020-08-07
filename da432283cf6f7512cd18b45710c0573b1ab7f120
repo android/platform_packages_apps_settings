@@ -16,6 +16,23 @@
       "revId": "da432283cf6f7512cd18b45710c0573b1ab7f120",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c0f25c30_4a4a3999",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1595364
+      },
+      "writtenOn": "2020-08-07T08:54:48Z",
+      "side": 1,
+      "message": "The modification after the rebase looks good.",
+      "revId": "da432283cf6f7512cd18b45710c0573b1ab7f120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
