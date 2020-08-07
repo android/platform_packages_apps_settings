@@ -1,0 +1,31 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004267043",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1351482?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "8b897fdf_5682ee7b",
+        "filename": "src/com/android/settings/notification/EmergencyBroadcastPreferenceController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-07T09:45:06Z",
+      "side": 1,
+      "message": "Prefer to use context.getSystemService(CarrierConfigManager.class) instead to avoid the cast.",
+      "range": {
+        "startLine": 60,
+        "startChar": 16,
+        "endLine": 60,
+        "endChar": 64
+      },
+      "revId": "efa8f1a0a713e6f89cb2e4d3674c39bd3c399c16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
