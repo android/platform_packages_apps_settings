@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "f99c2aad_282cc846",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-08-07T06:18:27Z",
+      "side": 1,
+      "message": "This is a cherry-pick instead of porting, therefore, most of the items are kept as it was.\n\nWould you prefer to alter the description into simply statement of this modification and exclude some other rationales?",
+      "parentUuid": "b88be774_01636795",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 15
+      },
+      "revId": "3795b49ccc6779352e0cc21e7acd12f1e3190d4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "31dac249_b7396c0e",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 1
