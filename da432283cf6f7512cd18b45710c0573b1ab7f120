@@ -33,6 +33,23 @@
       "revId": "da432283cf6f7512cd18b45710c0573b1ab7f120",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2f735699_a8f12b86",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-08-09T18:12:52Z",
+      "side": 1,
+      "message": "Hi Garik,\nCan you help to review this CL after rebase ? Thanks.",
+      "revId": "da432283cf6f7512cd18b45710c0573b1ab7f120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
