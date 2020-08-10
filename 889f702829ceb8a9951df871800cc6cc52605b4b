@@ -1,0 +1,58 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004303980",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1394560?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "e3f94368_26342e63",
+        "filename": "src/com/android/settings/network/telephony/MobileNetworkUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 740,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-10T14:57:24Z",
+      "side": 1,
+      "message": "Prefer to use context.getSystemService(EuiccManager.class) instead to avoid the cast.",
+      "range": {
+        "startLine": 740,
+        "startChar": 32,
+        "endLine": 740,
+        "endChar": 72
+      },
+      "revId": "889f702829ceb8a9951df871800cc6cc52605b4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004303980",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1394560?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "fd265f31_bc51ebe8",
+        "filename": "src/com/android/settings/network/telephony/MobileNetworkUtils.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-10T14:57:24Z",
+      "side": 1,
+      "message": "Prefer to use context.getSystemService(TelephonyManager.class) instead to avoid the cast.",
+      "range": {
+        "startLine": 742,
+        "startChar": 16,
+        "endLine": 742,
+        "endChar": 60
+      },
+      "revId": "889f702829ceb8a9951df871800cc6cc52605b4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
