@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2a2b046_b1b35193",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-08-10T09:49:58Z",
+      "side": 1,
+      "message": "Wait, these CLs were submitted since early of 2019, how come do we need to manually cherry-pick them one by one. \n\nBonian, do you know the reason?",
+      "revId": "f609df425d61f757357856c62e6c111ac7d4a73e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
