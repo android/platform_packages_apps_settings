@@ -16,6 +16,24 @@
       "revId": "f609df425d61f757357856c62e6c111ac7d4a73e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd4f8a77_28205fff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-08-10T10:17:15Z",
+      "side": 1,
+      "message": "Sliceable#getSliceUri() didn\u0027t get merged into here.\nThat\u0027s the root cause of this cherry-pick.",
+      "parentUuid": "b2a2b046_b1b35193",
+      "revId": "f609df425d61f757357856c62e6c111ac7d4a73e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
