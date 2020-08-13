@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e0ec257_2999c10f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-08-13T10:44:34Z",
+      "side": 1,
+      "message": "Hi, please help to review these OWNERS file change. Thanks.",
+      "revId": "e86b96190cbc724e87c92c4c3f173470de5e821c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
