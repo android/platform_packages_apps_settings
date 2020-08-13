@@ -1,0 +1,11 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+1: Jackal Guo <jackalguo@google.com>
+Autosubmit+1: Jackal Guo <jackalguo@google.com>
+Bypass-Presubmit+1: Jackal Guo <jackalguo@google.com>
+Build-Cop-Override+1: Jackal Guo <jackalguo@google.com>
+Presubmit-Ready+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Jackal Guo <jackalguo@google.com>
+Submitted-at: Thu, 13 Aug 2020 08:52:47 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1398396
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
