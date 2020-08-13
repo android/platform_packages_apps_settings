@@ -1,0 +1,31 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004392585",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376379?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "689ab89c_2fc562ea",
+        "filename": "src/com/android/settings/security/CertificatesPreferenceController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-13T10:00:46Z",
+      "side": 1,
+      "message": "Prefer to use context.getSystemService(UserManager.class) instead to avoid the cast.",
+      "range": {
+        "startLine": 75,
+        "startChar": 14,
+        "endLine": 75,
+        "endChar": 53
+      },
+      "revId": "13bb593b409df2dffab69fae64fd54ab77ea4a10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
