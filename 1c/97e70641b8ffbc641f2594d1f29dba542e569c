@@ -1,0 +1,9 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+2: Tsung-Mao Fang <tmfang@google.com>
+Submitted-by: Bonian Chen <bonianchen@google.com>
+Submitted-at: Fri, 14 Aug 2020 07:45:47 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1398398
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
