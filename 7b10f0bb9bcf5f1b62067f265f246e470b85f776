@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a2fca38_4fa3f2b6",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-08-17T16:41:42Z",
+      "side": 1,
+      "message": "[Question] Can you help to share some cases where mSubscriptionInfo changing from not Null into Null ?",
+      "revId": "7b10f0bb9bcf5f1b62067f265f246e470b85f776",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
