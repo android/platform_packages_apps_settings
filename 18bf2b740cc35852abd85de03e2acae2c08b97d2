@@ -1,0 +1,75 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004459012",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376379?revision\u003d4",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "32fb15ce_bfa1c5c6",
+        "filename": "src/com/android/settings/security/CertificatesPreferenceController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-17T17:09:09Z",
+      "side": 1,
+      "message": "Prefer to use context.getSystemService(UserManager.class) instead to avoid the cast.",
+      "range": {
+        "startLine": 78,
+        "startChar": 14,
+        "endLine": 78,
+        "endChar": 53
+      },
+      "revId": "18bf2b740cc35852abd85de03e2acae2c08b97d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004459011",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376379?revision\u003d4",
+      "fixSuggestions": [
+        {
+          "fixId": "fc5b2829_e75c105a",
+          "description": "Change to \"src/com/android/settings/security/CertificatesPreferenceController.java\"",
+          "replacements": [
+            {
+              "path": "src/com/android/settings/security/CertificatesPreferenceController.java",
+              "range": {
+                "startLine": 145,
+                "startChar": 52,
+                "endLine": 145,
+                "endChar": 61
+              },
+              "replacement": "Restricted"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "feb67c25_bf41b126",
+        "filename": "src/com/android/settings/security/CertificatesPreferenceController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-17T17:09:09Z",
+      "side": 1,
+      "message": "Common typo found: \"Resticted\" -- should it be \"Restricted\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 145,
+        "startChar": 52,
+        "endLine": 145,
+        "endChar": 61
+      },
+      "revId": "18bf2b740cc35852abd85de03e2acae2c08b97d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
