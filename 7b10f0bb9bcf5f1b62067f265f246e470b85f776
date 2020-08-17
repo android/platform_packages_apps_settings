@@ -16,6 +16,24 @@
       "revId": "7b10f0bb9bcf5f1b62067f265f246e470b85f776",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59a99466_da39d7da",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1413437
+      },
+      "writtenOn": "2020-08-17T22:53:46Z",
+      "side": 1,
+      "message": "Hi Bonian,\nPlease refer to buganizer https://partnerissuetracker.corp.google.com/u/2/issues/159410236. the test steps is:\n1. Insert SIM card into slot 0\n2. Go to Settings -\u003e About phone -\u003e Slot 0 SIM status.\n3. Remove Slot 0 SIM card.\n4. Go to Slot 1 SIM Status and insert slot 0 SIM card in to device.\n5. Observe the behavior.\n\nOccurence:\n100%",
+      "parentUuid": "5a2fca38_4fa3f2b6",
+      "revId": "7b10f0bb9bcf5f1b62067f265f246e470b85f776",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
