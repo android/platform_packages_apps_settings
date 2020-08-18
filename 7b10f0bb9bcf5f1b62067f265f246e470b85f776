@@ -34,6 +34,24 @@
       "revId": "7b10f0bb9bcf5f1b62067f265f246e470b85f776",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "772085b6_b5315f74",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-08-18T00:06:29Z",
+      "side": 1,
+      "message": "First of all, many thanks for the fix.\nHow about rephrase the subject or title part into something more relavent to the steps provided here, which allows others to identify the intention of this submission easier?",
+      "parentUuid": "59a99466_da39d7da",
+      "revId": "7b10f0bb9bcf5f1b62067f265f246e470b85f776",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
