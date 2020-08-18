@@ -52,6 +52,24 @@
       "revId": "7b10f0bb9bcf5f1b62067f265f246e470b85f776",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "246b7e3f_ab3bd771",
+        "filename": "src/com/android/settings/deviceinfo/simstatus/SimStatusDialogController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1413437
+      },
+      "writtenOn": "2020-08-18T01:29:06Z",
+      "side": 1,
+      "message": "Good suggestion. Will add testcase part for future gerrit submittion.  Thanks Bonian.",
+      "parentUuid": "772085b6_b5315f74",
+      "revId": "7b10f0bb9bcf5f1b62067f265f246e470b85f776",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
