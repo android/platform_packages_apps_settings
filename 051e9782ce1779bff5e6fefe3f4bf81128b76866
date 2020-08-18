@@ -1,0 +1,58 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004485878",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376379?revision\u003d6",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "4cf13b8f_4bcfb863",
+        "filename": "src/com/android/settings/security/CertificatesPreferenceController.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-18T17:57:41Z",
+      "side": 1,
+      "message": "Prefer to use context.getSystemService(UserManager.class) instead to avoid the cast.",
+      "range": {
+        "startLine": 91,
+        "startChar": 14,
+        "endLine": 91,
+        "endChar": 53
+      },
+      "revId": "051e9782ce1779bff5e6fefe3f4bf81128b76866",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004485878",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376379?revision\u003d6",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "8a65313a_a9870a4a",
+        "filename": "src/com/android/settings/security/ResetCredentialsPreferenceController.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-18T17:57:41Z",
+      "side": 1,
+      "message": "Prefer to use context.getSystemService(UserManager.class) instead to avoid the cast.",
+      "range": {
+        "startLine": 49,
+        "startChar": 14,
+        "endLine": 49,
+        "endChar": 53
+      },
+      "revId": "051e9782ce1779bff5e6fefe3f4bf81128b76866",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
