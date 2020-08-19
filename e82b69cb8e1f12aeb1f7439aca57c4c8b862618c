@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "76468dcc_3d0c4d03",
+        "filename": "res/values/arrays.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 1253,
+      "author": {
+        "id": 1308560
+      },
+      "writtenOn": "2020-08-19T06:54:24Z",
+      "side": 1,
+      "message": "Please help to add comment about Global is \"NR/LTE/CDMA/EvDo/GSM/WCDMA\".",
+      "range": {
+        "startLine": 1253,
+        "startChar": 8,
+        "endLine": 1253,
+        "endChar": 27
+      },
+      "revId": "e82b69cb8e1f12aeb1f7439aca57c4c8b862618c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
