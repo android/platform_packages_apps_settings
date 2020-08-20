@@ -1,0 +1,166 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004537427",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376379?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "7eb931ad_141aec50",
+        "filename": "src/com/android/settings/security/CertificatesDashboardFragment.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-20T09:18:52Z",
+      "side": 1,
+      "message": "Wrong casing for \"mType\". static final variables should be ALL_UPPERCASE.",
+      "range": {
+        "startLine": 48,
+        "startChar": 12,
+        "endLine": 48,
+        "endChar": 34
+      },
+      "revId": "06ae6f8ccb448195ffa4a6e261cd2ee767a319cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004537427",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376379?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "b17d36c4_abd90bad",
+        "filename": "src/com/android/settings/security/CertificatesDashboardFragment.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-20T09:18:52Z",
+      "side": 1,
+      "message": "Prefer to use context.getSystemService(UserManager.class) instead to avoid the cast.",
+      "range": {
+        "startLine": 77,
+        "startChar": 26,
+        "endLine": 77,
+        "endChar": 65
+      },
+      "revId": "06ae6f8ccb448195ffa4a6e261cd2ee767a319cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004537427",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376379?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "a84e6d74_b16d619e",
+        "filename": "src/com/android/settings/security/CertificatesPersonalDashboardFragment.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-20T09:18:52Z",
+      "side": 1,
+      "message": "Wrong casing for \"mType\". static final variables should be ALL_UPPERCASE.",
+      "range": {
+        "startLine": 43,
+        "startChar": 12,
+        "endLine": 43,
+        "endChar": 34
+      },
+      "revId": "06ae6f8ccb448195ffa4a6e261cd2ee767a319cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004537427",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376379?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "bb4dd02b_4314f856",
+        "filename": "src/com/android/settings/security/CertificatesPersonalDashboardFragment.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-20T09:18:52Z",
+      "side": 1,
+      "message": "Prefer to use context.getSystemService(UserManager.class) instead to avoid the cast.",
+      "range": {
+        "startLine": 72,
+        "startChar": 26,
+        "endLine": 72,
+        "endChar": 65
+      },
+      "revId": "06ae6f8ccb448195ffa4a6e261cd2ee767a319cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004537427",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376379?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "59706fc1_2d5d4cd9",
+        "filename": "src/com/android/settings/security/CertificatesWorkProfileDashboardFragment.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-20T09:18:52Z",
+      "side": 1,
+      "message": "Wrong casing for \"mType\". static final variables should be ALL_UPPERCASE.",
+      "range": {
+        "startLine": 43,
+        "startChar": 12,
+        "endLine": 43,
+        "endChar": 34
+      },
+      "revId": "06ae6f8ccb448195ffa4a6e261cd2ee767a319cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004537427",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376379?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "3451bef0_c1f23272",
+        "filename": "src/com/android/settings/security/CertificatesWorkProfileDashboardFragment.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-20T09:18:52Z",
+      "side": 1,
+      "message": "Prefer to use context.getSystemService(UserManager.class) instead to avoid the cast.",
+      "range": {
+        "startLine": 72,
+        "startChar": 26,
+        "endLine": 72,
+        "endChar": 65
+      },
+      "revId": "06ae6f8ccb448195ffa4a6e261cd2ee767a319cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
