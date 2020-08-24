@@ -42,23 +42,31 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 
+import com.android.internal.annotations.GuardedBy;
 import com.android.internal.widget.LockPatternUtils;
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.widget.SwitchBar;
+import com.android.settingslib.RestrictedLockUtilsInternal;
 
 import java.security.cert.X509Certificate;
 import java.util.function.IntConsumer;
 
 
 /**
- * Screen containing certificate details of trusted credential clicked
+ * Screen containing certificate details of trusted credential clicked.
+ * If System certificate, switch enables and disables.
+ * If User-added certificate, switch approves and disproves.
  */
 public class TrustedCredentialsDetailsPreference extends SettingsPreferenceFragment
         implements SwitchBar.OnSwitchChangeListener {
 
     private static final String TAG = "TrustedCredentialsDetailsPreference";
+
+    public static final String ARG_ALIAS = "alias";
+    public static final String ARG_PROFILE_ID = "profileId";
+    public static final String ARG_IS_SYSTEM = "isSystem";
 
     private SettingsActivity mActivity;
     private DevicePolicyManager mDpm;
@@ -70,12 +78,12 @@ public class TrustedCredentialsDetailsPreference extends SettingsPreferenceFragm
 
     private boolean mDeleted;
     private boolean mNeedsApproval;
+
     private int mProfileId;
     private String mAlias;
+    private boolean mIsSystem;
+    @GuardedBy("mLock")
     private Object mLock = new Object();
-
-    public static final String ARG_ALIAS = "alias";
-    public static final String ARG_PROFILE_ID = "profileId";
 
     @Override
     public int getMetricsCategory() {
@@ -93,15 +101,20 @@ public class TrustedCredentialsDetailsPreference extends SettingsPreferenceFragm
         mKeyguardManager = (KeyguardManager) mActivity
                 .getSystemService(Context.KEYGUARD_SERVICE);
 
-        mSwitchBar = mActivity.getSwitchBar();
-        mSwitchBar.setSwitchBarText(
-                R.string.trusted_credential_enabled,
-                R.string.trusted_credential_disabled);
-        mSwitchBar.addOnSwitchChangeListener(this);
-
         Bundle args = getArguments();
         mAlias = (String) args.get(ARG_ALIAS);
         mProfileId = (int) args.get(ARG_PROFILE_ID);
+        mIsSystem = (boolean) args.get(ARG_IS_SYSTEM);
+
+        mSwitchBar = mActivity.getSwitchBar();
+        if (mIsSystem && !isRestricted()) {
+            mSwitchBar.setSwitchBarText(
+                    R.string.trusted_credential_enabled,
+                    R.string.trusted_credential_disabled);
+            mSwitchBar.addOnSwitchChangeListener(this);
+        } else {
+            mSwitchBar.hide();
+        }
 
         View view = inflater.inflate(R.layout.trusted_credential_details,
                 container, false);
@@ -112,15 +125,19 @@ public class TrustedCredentialsDetailsPreference extends SettingsPreferenceFragm
 
     @Override
     public void onDestroyView() {
-        mSwitchBar.removeOnSwitchChangeListener(this);
-        mSwitchBar.hide();
+        if (mIsSystem && !isRestricted()) {
+            mSwitchBar.removeOnSwitchChangeListener(this);
+            mSwitchBar.hide();
+        }
         super.onDestroyView();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        mSwitchBar.show();
+        if (mIsSystem && !isRestricted()) {
+            mSwitchBar.show();
+        }
         new AliasLoader().execute();
     }
 
@@ -147,6 +164,12 @@ public class TrustedCredentialsDetailsPreference extends SettingsPreferenceFragm
             mNeedsApproval = isUserSecure(mProfileId)
                     && !mDpm.isCaCertApproved(mAlias, mProfileId);
         }
+    }
+
+    private boolean isRestricted() {
+        final String restriction = UserManager.DISALLOW_CONFIG_CREDENTIALS;
+        return RestrictedLockUtilsInternal.hasBaseUserRestriction(getContext(), restriction,
+                mProfileId);
     }
 
     private void onClickTrust() {
@@ -252,9 +275,9 @@ public class TrustedCredentialsDetailsPreference extends SettingsPreferenceFragm
             }
             mContainerView.addView(cert.inflateCertificateView(mActivity));
             mActivity.setTitle(cert.getIssuedTo().getCName());
-
-            mSwitchBar.setChecked(!mDeleted);
-
+            if (mIsSystem && !isRestricted()) {
+                mSwitchBar.setChecked(!mDeleted);
+            }
             mContainerView.setVisibility(View.VISIBLE);
         }
 

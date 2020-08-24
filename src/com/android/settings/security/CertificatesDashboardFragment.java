@@ -86,6 +86,7 @@ public class CertificatesDashboardFragment extends DashboardFragment {
         controllers.add(new CertificatesPreferenceController(context, parent, mUserId, lifecycle));
         controllers.add(new ResetCredentialsPreferenceController(context, mUserId, lifecycle));
         controllers.add(new InstallCertificatePreferenceController(context, mUserId));
+        controllers.add(new TrustedCredentialsController(context, mUserId));
         return controllers;
     }
 
