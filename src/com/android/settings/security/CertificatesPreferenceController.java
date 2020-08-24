@@ -22,6 +22,7 @@ import android.app.Dialog;
 import android.app.settings.SettingsEnums;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.net.http.SslCertificate;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Process;
@@ -53,6 +54,7 @@ import com.android.internal.widget.LockPatternUtils;
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.core.PreferenceControllerMixin;
+import com.android.settings.core.SubSettingLauncher;
 import com.android.settings.core.instrumentation.InstrumentedDialogFragment;
 import com.android.settingslib.RestrictedLockUtils;
 import com.android.settingslib.RestrictedLockUtilsInternal;
@@ -62,9 +64,12 @@ import com.android.settingslib.core.lifecycle.LifecycleObserver;
 import com.android.settingslib.core.lifecycle.events.OnResume;
 
 import java.security.UnrecoverableKeyException;
+import java.security.cert.X509Certificate;
 import java.util.ArrayList;
 import java.util.EnumSet;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -128,11 +133,44 @@ public class CertificatesPreferenceController extends AbstractPreferenceControll
                 });
         pref.setTitle(cred.getAlias());
         pref.setSummary(cred.isSystem()
-                ? R.string.credential_for_vpn_and_apps
-                : R.string.credential_for_wifi);
+                ? R.string.user_certificate
+                : R.string.wifi_certificate);
         pref.setIcon(R.drawable.ic_friction_lock_closed);
         mUserCredentialsPreferenceCategory.addPreference(pref);
     }
+
+    /**
+     * Creates a Preference for the given {@link Credential} and adds it to the
+     * {@link #mUserCredentialsPreferenceCategory}.
+     */
+    private void addCaCertificatePreference(Credential cred, String title) {
+        final Preference pref = new Preference(mContext);
+
+        // Launch details page or captive portal on click.
+        pref.setOnPreferenceClickListener(
+                preference -> {
+                    showCertDialog(cred);
+                    return true;
+                });
+        pref.setTitle(title);
+        pref.setSummary(R.string.ca_certificate);
+        pref.setIcon(R.drawable.ic_friction_lock_closed);
+        mUserCredentialsPreferenceCategory.addPreference(pref);
+    }
+
+    private void showCertDialog(final Credential cred) {
+        Bundle args = new Bundle();
+        args.putString(TrustedCredentialsDetailsPreference.ARG_ALIAS, cred.getAlias());
+        args.putInt(TrustedCredentialsDetailsPreference.ARG_PROFILE_ID, mUserId);
+        args.putBoolean(TrustedCredentialsDetailsPreference.ARG_IS_SYSTEM, false);
+
+        new SubSettingLauncher(mContext)
+                .setDestination(TrustedCredentialsDetailsPreference.class.getName())
+                .setSourceMetricsCategory(SettingsEnums.MANAGE_CERTIFICATES)
+                .setArguments(args)
+                .launch();
+    }
+
 
     private void updateUi() {
         if (!isAvailable()) {
@@ -148,6 +186,8 @@ public class CertificatesPreferenceController extends AbstractPreferenceControll
      * A preference is then created for each credentials in the fragment.
      */
     private class AliasLoader extends AsyncTask<Void, Void, List<Credential>> {
+        Map<Credential, SslCertificate> mCaCerts = new HashMap<>();
+
         /**
          * @return a list of credentials ordered:
          * <ol>
@@ -162,67 +202,92 @@ public class CertificatesPreferenceController extends AbstractPreferenceControll
             final int wifiUid = UserHandle.getUid(mUserId, Process.WIFI_UID);
 
             List<Credential> credentials = new ArrayList<>();
-            credentials.addAll(getCredentialsForUid(systemUid).values());
-            if (mUserId == UserHandle.USER_SYSTEM) {
-                credentials.addAll(getCredentialsForUid(wifiUid).values());
-            }
-            return credentials;
-        }
 
-        private SortedMap<String, Credential> getCredentialsForUid(int uid) {
             final KeyChainConnection connection;
             try {
                 connection = KeyChain.bindAsUser(mContext, UserHandle.of(mUserId));
+                IKeyChainService service = connection.getService();
+                credentials.addAll(getCredentialsForUid(systemUid, service).values());
+                if (mUserId == UserHandle.USER_SYSTEM) {
+                    credentials.addAll(getCredentialsForUid(wifiUid, service).values());
+                }
+                credentials.addAll(getCaCredentials(service).values());
             } catch (InterruptedException e) {
                 Log.e(TAG, "InterruptedException while binding KeyChain profile.");
                 return null;
-            }
-            try {
-                IKeyChainService keyChainService = connection.getService();
-                final SortedMap<String, Credential> aliasMap = new TreeMap<>();
-                for (final Credential.Type type : Credential.Type.values()) {
-                    for (final String prefix : type.prefix) {
-                        for (final String alias :
-                                keyChainService.getUserCertificateAliases(prefix, uid)) {
-                            if (UserHandle.getAppId(uid) == Process.SYSTEM_UID) {
-                                // Do not show work profile keys in user credentials
-                                if (alias.startsWith(LockPatternUtils.PROFILE_KEY_NAME_ENCRYPT)
-                                        || alias.startsWith(
-                                                LockPatternUtils.PROFILE_KEY_NAME_DECRYPT)) {
-                                    continue;
-                                }
-                                // Do not show synthetic password keys in user credential
-                                if (alias.startsWith(
-                                        LockPatternUtils.SYNTHETIC_PASSWORD_KEY_PREFIX)) {
-                                    continue;
-                                }
-                            }
-                            try {
-                                if (type == Credential.Type.USER_KEY && !isAsymmetric(
-                                        keyChainService, prefix + alias, uid)) {
-                                    continue;
-                                }
-                            } catch (UnrecoverableKeyException e) {
-                                Log.e(TAG, "Unable to determine algorithm of key: "
-                                        + prefix + alias, e);
-                                continue;
-                            }
-                            Credential c = aliasMap.get(alias);
-                            if (c == null) {
-                                c = new Credential(alias, uid);
-                                aliasMap.put(alias, c);
-                            }
-                            c.storedTypes.add(type);
-                        }
-                    }
-                }
-                return aliasMap;
             } catch (RemoteException e) {
                 Log.e(TAG, "RemoteException while getting certificate aliases from KeyChain");
                 return null;
-            }  finally {
-                connection.close();
             }
+            connection.close();
+            return credentials;
+        }
+
+        private SortedMap<String, Credential> getCaCredentials(IKeyChainService keyChainService)
+                throws RemoteException {
+            final SortedMap<String, Credential> aliasMap = new TreeMap<>();
+            for (final String alias : keyChainService.getUserCaAliases().getList()) {
+                Credential c = aliasMap.get(alias);
+                if (c == null) {
+                    c = Credential.buildCaCertificate(alias, mUserId);
+                    aliasMap.put(alias, c);
+                    c.storedTypes.add(Credential.Type.CA_CERTIFICATE);
+
+                    byte[] encodedCertificate = new byte[0];
+                    encodedCertificate = keyChainService.getEncodedCaCertificate(alias,
+                            true);
+                    X509Certificate cert = KeyChain.toCertificate(encodedCertificate);
+                    SslCertificate sslCert = new SslCertificate(cert);
+                    mCaCerts.put(c, sslCert);
+                }
+            }
+            return aliasMap;
+        }
+
+        private SortedMap<String, Credential> getCredentialsForUid(int uid,
+                IKeyChainService keyChainService) throws RemoteException {
+            final SortedMap<String, Credential> aliasMap = new TreeMap<>();
+            for (final Credential.Type type : Credential.Type.values()) {
+                for (final String prefix : type.prefix) {
+                    for (final String alias :
+                            keyChainService.getUserCertificateAliases(prefix, uid)) {
+                        if (UserHandle.getAppId(uid) == Process.SYSTEM_UID) {
+                            // Do not show work profile keys in user credentials
+                            if (alias.startsWith(LockPatternUtils.PROFILE_KEY_NAME_ENCRYPT)
+                                    || alias.startsWith(
+                                            LockPatternUtils.PROFILE_KEY_NAME_DECRYPT)) {
+                                continue;
+                            }
+                            // Do not show synthetic password keys in user credential
+                            if (alias.startsWith(
+                                    LockPatternUtils.SYNTHETIC_PASSWORD_KEY_PREFIX)) {
+                                continue;
+                            }
+                        }
+                        try {
+                            if (type == Credential.Type.USER_KEY && !isAsymmetric(keyChainService,
+                                    prefix + alias, uid)) {
+                                continue;
+                            }
+                        } catch (UnrecoverableKeyException e) {
+                            Log.e(TAG, "Unable to determine algorithm of key: "
+                                    + prefix + alias, e);
+                            continue;
+                        } catch (RemoteException e) {
+                            Log.e(TAG, "Unable to get KeyCharacteristics of key: "
+                                    + prefix + alias, e);
+                            continue;
+                        }
+                        Credential c = aliasMap.get(alias);
+                        if (c == null) {
+                            c = Credential.buildUserCredential(alias, uid);
+                            aliasMap.put(alias, c);
+                        }
+                        c.storedTypes.add(type);
+                    }
+                }
+            }
+            return aliasMap;
         }
 
         private boolean isAsymmetric(IKeyChainService keyChainService, String alias, int uid)
@@ -248,7 +313,25 @@ public class CertificatesPreferenceController extends AbstractPreferenceControll
         protected void onPostExecute(List<Credential> credentials) {
             mUserCredentialsPreferenceCategory.removeAll();
             for (Credential item : credentials) {
-                addUserCredentialPreference(item);
+                if (item.isCA()) {
+                    SslCertificate ssl = mCaCerts.get(item);
+                    addCaCertificatePreference(item, getTitle(ssl));
+                } else {
+                    addUserCredentialPreference(item);
+                }
+            }
+        }
+
+        private String getTitle(SslCertificate cert) {
+            String OName = cert.getIssuedTo().getOName();
+            String CName = cert.getIssuedTo().getCName();
+            String DName = cert.getIssuedTo().getDName();
+            if (!OName.isEmpty()) {
+                return OName;
+            } else if (!CName.isEmpty()) {
+                return CName;
+            } else {
+                return DName;
             }
         }
     }

@@ -25,7 +25,10 @@ import android.security.Credentials;
 import java.util.EnumSet;
 
 /**
- * User Credential
+ * Credential can represent either CA or User Certificate, depending on boolean constructor argument
+ * Used in Certificates dashboard.
+ * If CA, uid won't be used and userId specified.
+ * If User, userId won't be used and uid specified.
  */
 public class Credential implements Parcelable {
     public enum Type {
@@ -42,34 +45,73 @@ public class Credential implements Parcelable {
 
     /**
      * Main part of the credential's alias. To fetch an item from KeyStore, prepend one of the
-     * prefixes from {@link CredentialItem.storedTypes}.
+     * prefixes from {@link Credential#storedTypes}.
      */
     public final String alias;
 
     /**
      * UID under which this credential is stored. Typically {@link Process#SYSTEM_UID} but can
      * also be {@link Process#WIFI_UID} for credentials installed as wifi certificates.
+     * Equals {@link Process#INVALID_UID} if type is CA_CERTIFICATE.
      */
     public final int uid;
 
     /**
+     * User Id under which this credential is stored.
+     * Only used for {@link Credential.Type#CA_CERTIFICATE},
+     * else it equals {@link UserHandle#USER_NULL}.
+     */
+    public final int userId;
+
+    /**
      * Should contain some non-empty subset of:
      * <ul>
-     *   <li>{@link Credentials.CA_CERTIFICATE}</li>
-     *   <li>{@link Credentials.USER_CERTIFICATE}</li>
-     *   <li>{@link Credentials.USER_KEY}</li>
+     *   <li>{@link Credential.Type#CA_CERTIFICATE}</li>
+     *   <li>{@link Credential.Type#USER_CERTIFICATE}</li>
+     *   <li>{@link Credential.Type#USER_KEY}</li>
      * </ul>
      */
     public final EnumSet<Credential.Type> storedTypes = EnumSet.noneOf(
             Credential.Type.class);
 
-    public Credential(final String alias, final int uid) {
+    /**
+     * Creates either CA or User certificate
+     * @param alias
+     * @param userId used for CA certificates
+     * @param uid used for User certificates
+     */
+    private Credential(String alias, int userId, int uid) {
         this.alias = alias;
+        this.userId = userId;
         this.uid = uid;
     }
 
+    /**
+     * Called to create User Credential
+     * @param alias
+     * @param uid
+     * @return initialised Credential object
+     */
+    public static Credential buildUserCredential(String alias, int uid) {
+        return new Credential(alias, UserHandle.USER_NULL, uid);
+    }
+
+    /**
+     * Called to create Trusted Credential (CA certificate)
+     * @param alias
+     * @param userId
+     * @return initialised Credential object
+     */
+    public static Credential buildCaCertificate(String alias, int userId) {
+        return new Credential(alias, userId, Process.INVALID_UID);
+    }
+
+    /**
+     * Creates a User certificate using a Parcel
+     * @param in
+     */
     public Credential(Parcel in) {
-        this(in.readString(), in.readInt());
+        this(in.readString(), UserHandle.USER_NULL, in.readInt());
 
         long typeBits = in.readLong();
         for (Credential.Type i : Credential.Type.values()) {
@@ -77,6 +119,11 @@ public class Credential implements Parcelable {
                 storedTypes.add(i);
             }
         }
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
     }
 
     /**
@@ -95,14 +142,6 @@ public class Credential implements Parcelable {
         out.writeLong(typeBits);
     }
 
-    /**
-     * Describes contents
-     * @return 0
-     */
-    public int describeContents() {
-        return 0;
-    }
-
     public static final Parcelable.Creator<Credential> CREATOR =
             new Parcelable.Creator<Credential>() {
                 public Credential createFromParcel(Parcel in) {
@@ -114,8 +153,20 @@ public class Credential implements Parcelable {
                 }
     };
 
+    /**
+     * Checks whether User Credential is from system
+     * @return
+     */
     public boolean isSystem() {
         return UserHandle.getAppId(uid) == Process.SYSTEM_UID;
+    }
+
+    /**
+     * Checks whether Credential is a Trusted CA certificate
+     * @return boolean
+     */
+    public boolean isCA() {
+        return userId != UserHandle.USER_NULL;
     }
 
     public String getAlias() {

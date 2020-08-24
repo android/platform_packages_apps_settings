@@ -36,7 +36,6 @@ public class CertificatesPersonalDashboardFragment extends CertificatesDashboard
         return "CertificatesPersonalDashboardFrag";
     }
 
-
     @Override
     protected int getPreferenceScreenResId() {
         return R.xml.certificates_personal_dashboard;

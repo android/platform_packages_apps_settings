@@ -50,11 +50,10 @@
         android:order="100"
         android:layout="@layout/preference_category_no_label">
 
-<!--        <Preference-->
-<!--            android:key="trusted_credentials"-->
-<!--            android:title="@string/trusted_credentials"-->
-<!--            android:summary="@string/trusted_credentials_summary"-->
-<!--            android:fragment="com.android.settings.security.TrustedCredentialsSettings" />-->
+        <Preference
+            android:key="trusted_credentials"
+            android:title="@string/trusted_credentials"
+            android:summary="@string/trusted_credentials_summary"/>
 
 
     </PreferenceCategory>
