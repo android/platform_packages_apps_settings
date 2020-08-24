@@ -25,7 +25,10 @@ import android.security.Credentials;
 import java.util.EnumSet;
 
 /**
- * User Credential
+ * Credential can represent either CA or User Certificate, depending on boolean constructor argument
+ * Used in Certificates dashboard.
+ * If CA, uid won't be used and userId specified.
+ * If User, userId won't be used and uid specified.
  */
 public class Credential implements Parcelable {
     public enum Type {
@@ -42,34 +45,54 @@ public class Credential implements Parcelable {
 
     /**
      * Main part of the credential's alias. To fetch an item from KeyStore, prepend one of the
-     * prefixes from {@link CredentialItem.storedTypes}.
+     * prefixes from {@link Credential#storedTypes}.
      */
     public final String alias;
 
     /**
      * UID under which this credential is stored. Typically {@link Process#SYSTEM_UID} but can
      * also be {@link Process#WIFI_UID} for credentials installed as wifi certificates.
+     * Equals {@link Process#INVALID_UID} if type is CA_CERTIFICATE.
      */
     public final int uid;
 
     /**
+     * User Id under which this credential is stored.
+     * Only used for {@link Credential.Type#CA_CERTIFICATE},
+     * else it equals {@link UserHandle#USER_NULL}.
+     */
+    public final int userId;
+
+    /**
      * Should contain some non-empty subset of:
      * <ul>
-     *   <li>{@link Credentials.CA_CERTIFICATE}</li>
-     *   <li>{@link Credentials.USER_CERTIFICATE}</li>
-     *   <li>{@link Credentials.USER_KEY}</li>
+     *   <li>{@link Credential.Type#CA_CERTIFICATE}</li>
+     *   <li>{@link Credential.Type#USER_CERTIFICATE}</li>
+     *   <li>{@link Credential.Type#USER_KEY}</li>
      * </ul>
      */
     public final EnumSet<Credential.Type> storedTypes = EnumSet.noneOf(
             Credential.Type.class);
 
-    public Credential(final String alias, final int uid) {
+    /**
+     * Creates either CA or User certificate
+     * @param alias
+     * @param id can be either userId or uid depending on isCA
+     * @param isCa whether intended Credential is User or Trusted Credential
+     */
+    public Credential(final String alias, final int id, final boolean isCa) {
         this.alias = alias;
-        this.uid = uid;
+        if (isCa) {
+            this.uid = Process.INVALID_UID;
+            userId = id;
+        } else {
+            this.uid = id;
+            userId = UserHandle.USER_NULL;
+        }
     }
 
     public Credential(Parcel in) {
-        this(in.readString(), in.readInt());
+        this(in.readString(), in.readInt(), false);
 
         long typeBits = in.readLong();
         for (Credential.Type i : Credential.Type.values()) {
@@ -116,6 +139,9 @@ public class Credential implements Parcelable {
 
     public boolean isSystem() {
         return UserHandle.getAppId(uid) == Process.SYSTEM_UID;
+    }
+    public boolean isCA() {
+        return userId != UserHandle.USER_NULL;
     }
 
     public String getAlias() {
