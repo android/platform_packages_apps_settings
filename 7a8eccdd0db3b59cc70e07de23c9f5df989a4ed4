@@ -1,0 +1,85 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004621984",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376379?revision\u003d10",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "78093064_7a47111e",
+        "filename": "src/com/android/settings/security/CertificatesDashboardFragment.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-26T10:23:21Z",
+      "side": 1,
+      "message": "Prefer to use context.getSystemService(UserManager.class) instead to avoid the cast.",
+      "range": {
+        "startLine": 77,
+        "startChar": 26,
+        "endLine": 77,
+        "endChar": 65
+      },
+      "revId": "7a8eccdd0db3b59cc70e07de23c9f5df989a4ed4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004621984",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376379?revision\u003d10",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "cb5fd613_d962cb01",
+        "filename": "src/com/android/settings/security/CertificatesPersonalDashboardFragment.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-26T10:23:21Z",
+      "side": 1,
+      "message": "Prefer to use context.getSystemService(UserManager.class) instead to avoid the cast.",
+      "range": {
+        "startLine": 72,
+        "startChar": 26,
+        "endLine": 72,
+        "endChar": 65
+      },
+      "revId": "7a8eccdd0db3b59cc70e07de23c9f5df989a4ed4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004621984",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1376379?revision\u003d10",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "946321f7_7131562d",
+        "filename": "src/com/android/settings/security/CertificatesWorkProfileDashboardFragment.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-26T10:23:21Z",
+      "side": 1,
+      "message": "Prefer to use context.getSystemService(UserManager.class) instead to avoid the cast.",
+      "range": {
+        "startLine": 72,
+        "startChar": 26,
+        "endLine": 72,
+        "endChar": 65
+      },
+      "revId": "7a8eccdd0db3b59cc70e07de23c9f5df989a4ed4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
