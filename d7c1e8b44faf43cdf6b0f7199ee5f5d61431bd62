@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84a639f6_f90273a0",
+        "filename": "res/values/arrays.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 1253,
+      "author": {
+        "id": 1308560
+      },
+      "writtenOn": "2020-08-26T03:42:23Z",
+      "side": 1,
+      "message": "Remove it. It will cause BB.",
+      "range": {
+        "startLine": 1253,
+        "startChar": 58,
+        "endLine": 1253,
+        "endChar": 59
+      },
+      "revId": "d7c1e8b44faf43cdf6b0f7199ee5f5d61431bd62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
