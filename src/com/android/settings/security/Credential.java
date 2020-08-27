@@ -27,8 +27,8 @@ import java.util.EnumSet;
 /**
  * Credential can represent either CA or User Certificate, depending on boolean constructor argument
  * Used in Certificates dashboard.
- * If CA, uid won't be used and userId specified.
- * If User, userId won't be used and uid specified.
+ * If CA, mUid won't be used and mUserId specified.
+ * If User, mUserId won't be used and mUid specified.
  */
 public class Credential implements Parcelable {
     public enum Type {
@@ -47,47 +47,47 @@ public class Credential implements Parcelable {
      * Main part of the credential's alias. To fetch an item from KeyStore, prepend one of the
      * prefixes from {@link Credential#storedTypes}.
      */
-    public final String alias;
+    private final String mAlias;
 
     /**
      * UID under which this credential is stored. Typically {@link Process#SYSTEM_UID} but can
      * also be {@link Process#WIFI_UID} for credentials installed as wifi certificates.
-     * Equals {@link Process#INVALID_UID} if type is CA_CERTIFICATE.
+     * Equals {@link Process#INVALID_UID} if it's a Trusted CA Credential.
      */
-    public final int uid;
+    private final int mUid;
 
     /**
      * User Id under which this credential is stored.
-     * Only used for {@link Credential.Type#CA_CERTIFICATE},
+     * Only used for Trusted CA Credential,
      * else it equals {@link UserHandle#USER_NULL}.
      */
-    public final int userId;
+    private final int mUserId;
 
     /**
      * Should contain some non-empty subset of:
      * <ul>
-     *   <li>{@link Credential.Type#CA_CERTIFICATE}</li>
-     *   <li>{@link Credential.Type#USER_CERTIFICATE}</li>
-     *   <li>{@link Credential.Type#USER_KEY}</li>
+     *   <li>{@link Type#CA_CERTIFICATE}</li>
+     *   <li>{@link Type#USER_CERTIFICATE}</li>
+     *   <li>{@link Type#USER_KEY}</li>
      * </ul>
      */
-    public final EnumSet<Credential.Type> storedTypes = EnumSet.noneOf(
-            Credential.Type.class);
+    private final EnumSet<Type> mStoredTypes = EnumSet.noneOf(
+            Type.class);
 
     /**
      * Creates either CA or User certificate
      * @param alias
-     * @param id can be either userId or uid depending on isCA
+     * @param id can be either mUserId or mUid depending on isCA
      * @param isCa whether intended Credential is User or Trusted Credential
      */
     public Credential(final String alias, final int id, final boolean isCa) {
-        this.alias = alias;
+        this.mAlias = alias;
         if (isCa) {
-            this.uid = Process.INVALID_UID;
-            userId = id;
+            this.mUid = Process.INVALID_UID;
+            mUserId = id;
         } else {
-            this.uid = id;
-            userId = UserHandle.USER_NULL;
+            this.mUid = id;
+            mUserId = UserHandle.USER_NULL;
         }
     }
 
@@ -95,9 +95,9 @@ public class Credential implements Parcelable {
         this(in.readString(), in.readInt(), false);
 
         long typeBits = in.readLong();
-        for (Credential.Type i : Credential.Type.values()) {
+        for (Type i : Type.values()) {
             if ((typeBits & (1L << i.ordinal())) != 0L) {
-                storedTypes.add(i);
+                mStoredTypes.add(i);
             }
         }
     }
@@ -108,11 +108,11 @@ public class Credential implements Parcelable {
      * @param flags Additional flags about how the object should be written.
      */
     public void writeToParcel(Parcel out, int flags) {
-        out.writeString(alias);
-        out.writeInt(uid);
+        out.writeString(mAlias);
+        out.writeInt(mUid);
 
         long typeBits = 0;
-        for (Credential.Type i : storedTypes) {
+        for (Type i : mStoredTypes) {
             typeBits |= 1L << i.ordinal();
         }
         out.writeLong(typeBits);
@@ -138,17 +138,38 @@ public class Credential implements Parcelable {
     };
 
     public boolean isSystem() {
-        return UserHandle.getAppId(uid) == Process.SYSTEM_UID;
+        return UserHandle.getAppId(mUid) == Process.SYSTEM_UID;
     }
     public boolean isCA() {
-        return userId != UserHandle.USER_NULL;
+        return mUserId != UserHandle.USER_NULL;
     }
 
     public String getAlias() {
-        return alias;
+        return mAlias;
     }
 
-    public EnumSet<Credential.Type> getStoredTypes() {
-        return storedTypes;
+    /**
+     * If CA Certificate, mUserId will be used.
+     * If User Certificate,mUid will be used.
+     * @return
+     */
+    public int getId() {
+        if (isCA()) {
+            return mUserId;
+        } else {
+            return mUid;
+        }
+    }
+
+    /**
+     * Adds a type to the stored types of this certificate.
+     * @param type
+     */
+    public void addType(Type type) {
+        mStoredTypes.add(type);
+    }
+
+    public EnumSet<Type> getStoredTypes() {
+        return mStoredTypes;
     }
 }

@@ -16,20 +16,14 @@
 
 package com.android.settings.security;
 
-import android.annotation.LayoutRes;
-import android.annotation.Nullable;
-import android.app.Dialog;
 import android.app.settings.SettingsEnums;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.net.http.SslCertificate;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Process;
 import android.os.RemoteException;
 import android.os.UserHandle;
-import android.os.UserManager;
-import android.security.Credentials;
 import android.security.IKeyChainService;
 import android.security.KeyChain;
 import android.security.KeyChain.KeyChainConnection;
@@ -37,15 +31,7 @@ import android.security.KeyStore;
 import android.security.keymaster.KeyCharacteristics;
 import android.security.keymaster.KeymasterDefs;
 import android.util.Log;
-import android.util.SparseArray;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceCategory;
 import androidx.preference.PreferenceScreen;
@@ -55,9 +41,6 @@ import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settings.core.SubSettingLauncher;
-import com.android.settings.core.instrumentation.InstrumentedDialogFragment;
-import com.android.settingslib.RestrictedLockUtils;
-import com.android.settingslib.RestrictedLockUtilsInternal;
 import com.android.settingslib.core.AbstractPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.core.lifecycle.LifecycleObserver;
@@ -66,7 +49,6 @@ import com.android.settingslib.core.lifecycle.events.OnResume;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.X509Certificate;
 import java.util.ArrayList;
-import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -128,7 +110,7 @@ public class CertificatesPreferenceController extends AbstractPreferenceControll
         // Launch details page or captive portal on click.
         pref.setOnPreferenceClickListener(
                 preference -> {
-                    CredentialDialogFragment.show(mParent, cred, this);
+                    showUserCert(cred);
                     return true;
                 });
         pref.setTitle(cred.getAlias());
@@ -149,7 +131,7 @@ public class CertificatesPreferenceController extends AbstractPreferenceControll
         // Launch details page or captive portal on click.
         pref.setOnPreferenceClickListener(
                 preference -> {
-                    showCertDialog(cred);
+                    showCaCert(cred);
                     return true;
                 });
         pref.setTitle(title);
@@ -158,7 +140,7 @@ public class CertificatesPreferenceController extends AbstractPreferenceControll
         mUserCredentialsPreferenceCategory.addPreference(pref);
     }
 
-    private void showCertDialog(final Credential cred) {
+    private void showCaCert(final Credential cred) {
         Bundle args = new Bundle();
         args.putString(TrustedCredentialsDetailsPreference.ARG_ALIAS, cred.getAlias());
         args.putInt(TrustedCredentialsDetailsPreference.ARG_PROFILE_ID, mUserId);
@@ -166,6 +148,25 @@ public class CertificatesPreferenceController extends AbstractPreferenceControll
 
         new SubSettingLauncher(mContext)
                 .setDestination(TrustedCredentialsDetailsPreference.class.getName())
+                .setSourceMetricsCategory(SettingsEnums.MANAGE_CERTIFICATES)
+                .setArguments(args)
+                .launch();
+    }
+
+    private void showUserCert(final Credential cred) {
+        Bundle args = new Bundle();
+        args.putString(UserCredentialsDetailsFragment.ARG_ALIAS, cred.getAlias());
+        args.putInt(UserCredentialsDetailsFragment.ARG_UID, cred.getId());
+        args.putInt(UserCredentialsDetailsFragment.ARG_USER_ID, mUserId);
+        args.putBoolean(Credential.Type.USER_KEY.toString(),
+                cred.getStoredTypes().contains(Credential.Type.USER_KEY));
+        args.putBoolean(Credential.Type.USER_CERTIFICATE.toString(),
+                cred.getStoredTypes().contains(Credential.Type.USER_CERTIFICATE));
+        args.putBoolean(Credential.Type.CA_CERTIFICATE.toString(),
+                cred.getStoredTypes().contains(Credential.Type.CA_CERTIFICATE));
+
+        new SubSettingLauncher(mContext)
+                .setDestination(UserCredentialsDetailsFragment.class.getName())
                 .setSourceMetricsCategory(SettingsEnums.MANAGE_CERTIFICATES)
                 .setArguments(args)
                 .launch();
@@ -231,7 +232,7 @@ public class CertificatesPreferenceController extends AbstractPreferenceControll
                 if (c == null) {
                     c = new Credential(alias, mUserId, true);
                     aliasMap.put(alias, c);
-                    c.storedTypes.add(Credential.Type.CA_CERTIFICATE);
+                    c.addType(Credential.Type.CA_CERTIFICATE);
 
                     byte[] encodedCertificate = new byte[0];
                     encodedCertificate = keyChainService.getEncodedCaCertificate(alias,
@@ -283,7 +284,7 @@ public class CertificatesPreferenceController extends AbstractPreferenceControll
                             c = new Credential(alias, uid, false);
                             aliasMap.put(alias, c);
                         }
-                        c.storedTypes.add(type);
+                        c.addType(type);
                     }
                 }
             }
@@ -334,177 +335,5 @@ public class CertificatesPreferenceController extends AbstractPreferenceControll
                 return DName;
             }
         }
-    }
-
-    /**
-     * Dialog to handle click on individual user credential. Can remove credential.
-     */
-    public static class CredentialDialogFragment extends InstrumentedDialogFragment {
-        private static final String TAG = "CredentialDialogFragment";
-        private static final String ARG_CREDENTIAL = "credential";
-        private static int sMyUserId;
-        private static CertificatesPreferenceController sController;
-
-        private static void show(Fragment target, Credential item,
-                CertificatesPreferenceController controller) {
-            final Bundle args = new Bundle();
-            args.putParcelable(ARG_CREDENTIAL, item);
-            sMyUserId = UserHandle.getUserId(item.uid);
-            sController = controller;
-
-            if (target.getFragmentManager().findFragmentByTag(TAG) == null) {
-                final DialogFragment frag = new CredentialDialogFragment();
-                frag.setTargetFragment(target, /* requestCode */ -1);
-                frag.setArguments(args);
-                frag.show(target.getFragmentManager(), TAG);
-            }
-        }
-
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            final Credential item = (Credential) getArguments().getParcelable(ARG_CREDENTIAL);
-            View root = getActivity().getLayoutInflater()
-                    .inflate(R.layout.user_credential_dialog, null);
-            ViewGroup infoContainer = (ViewGroup) root.findViewById(R.id.credential_container);
-            View contentView = getCredentialView(item, R.layout.user_credential, null,
-                    infoContainer, /* expanded */ true);
-            infoContainer.addView(contentView);
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
-                    .setView(root)
-                    .setTitle(R.string.user_credential_title)
-                    .setPositiveButton(R.string.done, null);
-
-            final String restriction = UserManager.DISALLOW_CONFIG_CREDENTIALS;
-            if (!RestrictedLockUtilsInternal.hasBaseUserRestriction(getContext(), restriction,
-                    sMyUserId)) {
-                DialogInterface.OnClickListener listener = (dialog, id) -> {
-                    final RestrictedLockUtils.EnforcedAdmin admin = RestrictedLockUtilsInternal
-                            .checkIfRestrictionEnforced(getContext(), restriction, sMyUserId);
-                    if (admin != null) {
-                        RestrictedLockUtils.sendShowAdminSupportDetailsIntent(getContext(),
-                                admin);
-                    } else {
-                        new CredentialDialogFragment.RemoveCredentialsTask(getContext())
-                                .execute(item);
-                    }
-                    dialog.dismiss();
-                };
-                // TODO: b/127865361
-                //       a safe means of clearing wifi certificates. Configs refer to aliases
-                //       directly so deleting certs will break dependent access points.
-                //       However, Wi-Fi used to remove this certificate from storage if the network
-                //       was removed, regardless if it is used in more than one network.
-                //       It has been decided to allow removing certificates from this menu, as we
-                //       assume that the user who manually adds certificates must have a way to
-                //       manually remove them.
-                builder.setNegativeButton(R.string.trusted_credentials_remove_label, listener);
-            }
-            return builder.create();
-        }
-
-        @Override
-        public int getMetricsCategory() {
-            return SettingsEnums.DIALOG_USER_CREDENTIAL;
-        }
-
-        /**
-         * Deletes all certificates and keys under a given alias.
-         *
-         * If the {@link Credential} is for a system alias, all active grants to the alias will be
-         * removed using {@link KeyChain}. If the {@link Credential} is for Wi-Fi alias, all
-         * credentials and keys will be removed using {@link KeyStore}.
-         */
-        private class RemoveCredentialsTask extends AsyncTask<Credential, Void, Credential[]> {
-            private Context mContext;
-
-            RemoveCredentialsTask(Context context) {
-                this.mContext = context;
-            }
-
-            @Override
-            protected Credential[] doInBackground(Credential... credentials) {
-                final KeyChainConnection conn;
-                try {
-                    conn = KeyChain.bindAsUser(mContext, UserHandle.of(sMyUserId));
-                } catch (InterruptedException e) {
-                    Log.w(TAG, "Connecting to KeyChain", e);
-                    return null;
-                }
-                try {
-                    IKeyChainService service = conn.getService();
-                    for (final Credential credential : credentials) {
-                        if (credential.isSystem()) {
-                            service.removeKeyPair(credential.alias);
-                        } else {
-                            deleteWifiCredential(service, credential);
-                        }
-                    }
-                    return credentials;
-                } catch (RemoteException e) {
-                    Log.w(TAG, "Removing credentials", e);
-                    return null;
-                } finally {
-                    conn.close();
-                }
-
-            }
-
-            private void deleteWifiCredential(IKeyChainService service, final Credential credential)
-                    throws RemoteException {
-                final EnumSet<Credential.Type> storedTypes = credential.getStoredTypes();
-
-                // Remove all Wi-Fi credentials
-                if (storedTypes.contains(Credential.Type.USER_KEY)) {
-                    service.deleteWifiCertificate(Credentials.USER_PRIVATE_KEY
-                                    + credential.getAlias(), Process.WIFI_UID);
-                }
-                if (storedTypes.contains(Credential.Type.USER_CERTIFICATE)) {
-                    service.deleteWifiCertificate(Credentials.USER_CERTIFICATE
-                                    + credential.getAlias(), Process.WIFI_UID);
-                }
-                if (storedTypes.contains(Credential.Type.CA_CERTIFICATE)) {
-                    service.deleteWifiCertificate(Credentials.CA_CERTIFICATE
-                                    + credential.getAlias(), Process.WIFI_UID);
-                }
-            }
-
-            @Override
-            protected void onPostExecute(Credential... credentials) {
-                sController.onResume();
-            }
-        }
-    }
-
-    /**
-     * Mapping from View IDs in {@link R} to the types of credentials they describe.
-     */
-    private static final SparseArray<Credential.Type> sCredentialViewTypes = new SparseArray<>();
-    static {
-        sCredentialViewTypes.put(R.id.contents_userkey, Credential.Type.USER_KEY);
-        sCredentialViewTypes.put(R.id.contents_usercrt, Credential.Type.USER_CERTIFICATE);
-        sCredentialViewTypes.put(R.id.contents_cacrt, Credential.Type.CA_CERTIFICATE);
-    }
-
-    protected static View getCredentialView(Credential item, @LayoutRes int layoutResource,
-            @Nullable View view, ViewGroup parent, boolean expanded) {
-        if (view == null) {
-            view = LayoutInflater.from(parent.getContext()).inflate(layoutResource, parent, false);
-        }
-
-        ((TextView) view.findViewById(R.id.alias)).setText(item.alias);
-        ((TextView) view.findViewById(R.id.purpose)).setText(item.isSystem()
-                ? R.string.credential_for_vpn_and_apps
-                : R.string.credential_for_wifi);
-
-        view.findViewById(R.id.contents).setVisibility(expanded ? View.VISIBLE : View.GONE);
-        if (expanded) {
-            for (int i = 0; i < sCredentialViewTypes.size(); i++) {
-                final View detail = view.findViewById(sCredentialViewTypes.keyAt(i));
-                detail.setVisibility(item.storedTypes.contains(sCredentialViewTypes.valueAt(i))
-                        ? View.VISIBLE : View.GONE);
-            }
-        }
-        return view;
     }
 }
