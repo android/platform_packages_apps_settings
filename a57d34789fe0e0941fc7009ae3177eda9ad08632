@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "679d07fb_4e9df7e0",
+        "filename": "src/com/android/settings/security/Credential.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1059499
+      },
+      "writtenOn": "2020-08-27T22:02:01Z",
+      "side": 1,
+      "message": "Consider use static builder methods to make the two cases distinct:\n\npublic static Credential buildUserCredential(String alias, int uid) {}\npublic static Credential buildCaCertificate(String alias, int userId) {}",
+      "range": {
+        "startLine": 78,
+        "startChar": 7,
+        "endLine": 78,
+        "endChar": 44
+      },
+      "revId": "a57d34789fe0e0941fc7009ae3177eda9ad08632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a3a4751_0254cc61",
+        "filename": "src/com/android/settings/security/TrustedCredentialsController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1059499
+      },
+      "writtenOn": "2020-08-27T22:02:01Z",
+      "side": 1,
+      "message": "move to handlePreferenceTreeClick()",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 0
+      },
+      "revId": "a57d34789fe0e0941fc7009ae3177eda9ad08632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
