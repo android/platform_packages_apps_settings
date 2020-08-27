@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "518b4f54_0d041c81",
+        "filename": "src/com/android/settings/security/CertificatesPersonalDashboardFragment.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1059499
+      },
+      "writtenOn": "2020-08-27T21:56:25Z",
+      "side": 1,
+      "message": "Unused",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 67
+      },
+      "revId": "8de8cb90f06373236266f93cd550acb0009d99ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aaaba02e_5c13a68a",
+        "filename": "src/com/android/settings/security/CertificatesPersonalDashboardFragment.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1059499
+      },
+      "writtenOn": "2020-08-27T21:56:25Z",
+      "side": 1,
+      "message": "dead code",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 0
+      },
+      "revId": "8de8cb90f06373236266f93cd550acb0009d99ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6929b873_3a7a0bda",
+        "filename": "src/com/android/settings/security/CertificatesWorkProfileDashboardFragment.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1059499
+      },
+      "writtenOn": "2020-08-27T21:56:25Z",
+      "side": 1,
+      "message": "always true so can simplify.",
+      "range": {
+        "startLine": 75,
+        "startChar": 12,
+        "endLine": 75,
+        "endChar": 47
+      },
+      "revId": "8de8cb90f06373236266f93cd550acb0009d99ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cabf3b16_40e232de",
+        "filename": "src/com/android/settings/security/InstallCertificatePreferenceController.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1059499
+      },
+      "writtenOn": "2020-08-27T21:56:25Z",
+      "side": 1,
+      "message": "This can be moved to the overriden method handlePreferenceTreeClick()",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 0
+      },
+      "revId": "8de8cb90f06373236266f93cd550acb0009d99ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "129d9332_e810c219",
+        "filename": "src/com/android/settings/security/ResetCredentialsPreferenceController.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1059499
+      },
+      "writtenOn": "2020-08-27T21:56:25Z",
+      "side": 1,
+      "message": "Move to handlePreferenceTreeClick().",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 0
+      },
+      "revId": "8de8cb90f06373236266f93cd550acb0009d99ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
