@@ -5909,8 +5909,14 @@
     <string name="trusted_credentials">System certificates</string>
     <!-- Summary of preference to display trusted credentials (aka CA certificates) [CHAR LIMIT=NONE] -->
     <string name="trusted_credentials_summary">Display trusted CA certificates</string>
+    <!-- Title of preference to display user certificate of user credential [CHAR LIMIT=30] -->
+    <string name="credential_user_certificate">User certificate</string>
+    <!-- Title of preference category to display user certificates of user credential [CHAR LIMIT=30] -->
+    <string name="user_credential_details">Certificate details</string>
     <!-- Title of preference to display user credentials and keys [CHAR LIMIT=30] -->
     <string name="user_credentials">User credentials</string>
+    <!-- Title of preference to remove single user credential [CHAR LIMIT=30] -->
+    <string name="user_credential_remove">Remove certificate</string>
     <!-- Summary of preference to display user credentials and keys [CHAR LIMIT=NONE] -->
     <string name="user_credentials_summary">View and modify stored credentials</string>
     <!-- Title of preference group for advance security settings [CHAR LIMIT=30] -->
