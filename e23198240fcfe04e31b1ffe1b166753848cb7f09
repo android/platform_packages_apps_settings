@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67c1093d_7ea82027",
+        "filename": "res/values/arrays.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 1253,
+      "author": {
+        "id": 1308560
+      },
+      "writtenOn": "2020-08-27T03:33:58Z",
+      "side": 1,
+      "message": "Sorry, I didn\u0027t describe more detail at Patchset3. Because your comment is wrong symptom. it should be \u003c!--  comment somethings --\u003e, not \u003c!-- comment somethings --!\u003e. \n\u003d\u003d\u003d\n        \u003citem\u003eNR/LTE/GSM/WCDMA\u003c/item\u003e \n        \u003c!-- Global includes NR/LTE/CDMA/EvDo/GSM/WCDMA --\u003e\n        \u003citem\u003eGlobal\u003c/item\u003e",
+      "range": {
+        "startLine": 1253,
+        "startChar": 0,
+        "endLine": 1253,
+        "endChar": 27
+      },
+      "revId": "e23198240fcfe04e31b1ffe1b166753848cb7f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
