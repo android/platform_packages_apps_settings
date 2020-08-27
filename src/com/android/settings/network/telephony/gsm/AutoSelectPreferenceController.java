@@ -44,6 +44,8 @@ import androidx.preference.SwitchPreference;
 import com.android.settings.R;
 import com.android.settings.core.SubSettingLauncher;
 import com.android.settings.network.PreferredNetworkModeContentObserver;
+import com.android.settings.network.SubscriptionsChangeListener;
+import com.android.settings.network.telephony.Enhanced4gBasePreferenceController;
 import com.android.settings.network.telephony.MobileNetworkUtils;
 import com.android.settings.network.telephony.NetworkSelectSettings;
 import com.android.settings.network.telephony.TelephonyTogglePreferenceController;
@@ -57,7 +59,9 @@ import java.util.concurrent.TimeUnit;
  * Preference controller for "Auto Select Network"
  */
 public class AutoSelectPreferenceController extends TelephonyTogglePreferenceController
-        implements LifecycleObserver{
+        implements LifecycleObserver,
+        Enhanced4gBasePreferenceController.On4gLteUpdateListener,
+        SubscriptionsChangeListener.SubscriptionsChangeListenerClient {
     private static final long MINIMUM_DIALOG_TIME_MILLIS = TimeUnit.SECONDS.toMillis(1);
 
     private final Handler mUiHandler;
@@ -66,6 +70,7 @@ public class AutoSelectPreferenceController extends TelephonyTogglePreferenceCon
     private TelephonyManager mTelephonyManager;
     private boolean mOnlyAutoSelectInHome;
     private List<OnNetworkSelectModeListener> mListeners;
+    private SubscriptionsChangeListener mSubscriptionsListener;
     @VisibleForTesting
     ProgressDialog mProgressDialog;
     @VisibleForTesting
@@ -80,6 +85,12 @@ public class AutoSelectPreferenceController extends TelephonyTogglePreferenceCon
         mPreferredNetworkModeObserver = new PreferredNetworkModeContentObserver(mUiHandler);
         mPreferredNetworkModeObserver.setPreferredNetworkModeChangedListener(
                 () -> updatePreference());
+        mSubscriptionsListener = new SubscriptionsChangeListener(context, this);
+    }
+
+    @Override
+    public void on4gLteUpdated() {
+        updateState(mSwitchPreference);
     }
 
     private void updatePreference() {
@@ -94,11 +105,13 @@ public class AutoSelectPreferenceController extends TelephonyTogglePreferenceCon
     @OnLifecycleEvent(ON_START)
     public void onStart() {
         mPreferredNetworkModeObserver.register(mContext, mSubId);
+        mSubscriptionsListener.start();
     }
 
     @OnLifecycleEvent(ON_STOP)
     public void onStop() {
         mPreferredNetworkModeObserver.unregister(mContext);
+        mSubscriptionsListener.stop();
     }
 
     @Override
@@ -124,7 +137,6 @@ public class AutoSelectPreferenceController extends TelephonyTogglePreferenceCon
     @Override
     public void updateState(Preference preference) {
         super.updateState(preference);
-
         preference.setSummary(null);
         final ServiceState serviceState = mTelephonyManager.getServiceState();
         if (serviceState == null) {
@@ -132,14 +144,19 @@ public class AutoSelectPreferenceController extends TelephonyTogglePreferenceCon
             return;
         }
 
-        if (serviceState.getRoaming()) {
-            preference.setEnabled(true);
+        final int phoneType = mTelephonyManager.getPhoneType();
+        if (phoneType == TelephonyManager.PHONE_TYPE_CDMA) {
+             preference.setEnabled(false);
         } else {
-            preference.setEnabled(!mOnlyAutoSelectInHome);
-            if (mOnlyAutoSelectInHome) {
-                preference.setSummary(mContext.getString(
-                        R.string.manual_mode_disallowed_summary,
-                        mTelephonyManager.getSimOperatorName()));
+            if (serviceState.getRoaming()) {
+                preference.setEnabled(true);
+            } else {
+                preference.setEnabled(!mOnlyAutoSelectInHome);
+                if (mOnlyAutoSelectInHome) {
+                    preference.setSummary(mContext.getString(
+                            R.string.manual_mode_disallowed_summary,
+                            mTelephonyManager.getSimOperatorName()));
+                }
             }
         }
     }
@@ -225,6 +242,14 @@ public class AutoSelectPreferenceController extends TelephonyTogglePreferenceCon
         }
     }
 
+    @Override
+    public void onAirplaneModeChanged(boolean airplaneModeEnabled) {
+    }
+
+    @Override
+    public void onSubscriptionsChanged() {
+        updateState(mSwitchPreference);
+    }
     /**
      * Callback when network select mode is changed
      *
