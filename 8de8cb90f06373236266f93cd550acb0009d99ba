@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6a50c34d_2f279bea",
+        "filename": "src/com/android/settings/security/CertificatesPersonalDashboardFragment.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1716061
+      },
+      "writtenOn": "2020-08-28T12:41:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "518b4f54_0d041c81",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 67
+      },
+      "revId": "8de8cb90f06373236266f93cd550acb0009d99ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aaaba02e_5c13a68a",
         "filename": "src/com/android/settings/security/CertificatesPersonalDashboardFragment.java",
         "patchSetId": 11
@@ -45,6 +69,30 @@
       "revId": "8de8cb90f06373236266f93cd550acb0009d99ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14af3153_6b4f3796",
+        "filename": "src/com/android/settings/security/CertificatesPersonalDashboardFragment.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1716061
+      },
+      "writtenOn": "2020-08-28T12:41:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaaba02e_5c13a68a",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 0
+      },
+      "revId": "8de8cb90f06373236266f93cd550acb0009d99ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e6726ac5_03c3475b",
+        "filename": "src/com/android/settings/security/CertificatesWorkProfileDashboardFragment.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1716061
+      },
+      "writtenOn": "2020-08-28T12:41:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6929b873_3a7a0bda",
+      "range": {
+        "startLine": 75,
+        "startChar": 12,
+        "endLine": 75,
+        "endChar": 47
+      },
+      "revId": "8de8cb90f06373236266f93cd550acb0009d99ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cabf3b16_40e232de",
         "filename": "src/com/android/settings/security/InstallCertificatePreferenceController.java",
         "patchSetId": 11
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "cd82a1a9_26eef44c",
+        "filename": "src/com/android/settings/security/InstallCertificatePreferenceController.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1716061
+      },
+      "writtenOn": "2020-08-28T12:41:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cabf3b16_40e232de",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 0
+      },
+      "revId": "8de8cb90f06373236266f93cd550acb0009d99ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "129d9332_e810c219",
         "filename": "src/com/android/settings/security/ResetCredentialsPreferenceController.java",
         "patchSetId": 11
@@ -114,6 +210,30 @@
       "revId": "8de8cb90f06373236266f93cd550acb0009d99ba",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75f91568_d07b2e41",
+        "filename": "src/com/android/settings/security/ResetCredentialsPreferenceController.java",
+        "patchSetId": 11
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1716061
+      },
+      "writtenOn": "2020-08-28T12:41:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "129d9332_e810c219",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 0
+      },
+      "revId": "8de8cb90f06373236266f93cd550acb0009d99ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
