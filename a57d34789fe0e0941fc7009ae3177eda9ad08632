@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b70c00dd_23e81628",
+        "filename": "src/com/android/settings/security/Credential.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1716061
+      },
+      "writtenOn": "2020-08-28T15:02:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "679d07fb_4e9df7e0",
+      "range": {
+        "startLine": 78,
+        "startChar": 7,
+        "endLine": 78,
+        "endChar": 44
+      },
+      "revId": "a57d34789fe0e0941fc7009ae3177eda9ad08632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a3a4751_0254cc61",
         "filename": "src/com/android/settings/security/TrustedCredentialsController.java",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "a57d34789fe0e0941fc7009ae3177eda9ad08632",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9ddfc0d_34d640e4",
+        "filename": "src/com/android/settings/security/TrustedCredentialsController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1716061
+      },
+      "writtenOn": "2020-08-28T15:02:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a3a4751_0254cc61",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 0
+      },
+      "revId": "a57d34789fe0e0941fc7009ae3177eda9ad08632",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
