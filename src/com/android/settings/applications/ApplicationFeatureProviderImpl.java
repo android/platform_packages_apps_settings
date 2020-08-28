@@ -180,6 +180,11 @@ public class ApplicationFeatureProviderImpl implements ApplicationFeatureProvide
         // Keep Package Installer enabled.
         keepEnabledPackages.add(mContext.getString(R.string.config_package_installer_package_name));
 
+        // Add for bug: 1402161 keep Package Installer from Google enabled,
+        // otherwise android system will fail rebooting after disable this package.
+        keepEnabledPackages.add(
+                mContext.getString(R.string.config_google_package_installer_package_name));
+
         return keepEnabledPackages;
     }
 
