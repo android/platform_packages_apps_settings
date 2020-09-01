@@ -1,0 +1,12 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Code-Review+2: SongFerng Wang <songferngwang@google.com>
+Code-Review+1: Yashdev Singh <yashdevs%quicinc.com@gtempaccount.com>
+Code-Review+1: Tsung-Mao Fang <tmfang@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Qualcomm-Review+1: Ajay Nambi <anambi@quicinc.com>
+Submitted-by: SongFerng Wang <songferngwang@google.com>
+Submitted-at: Tue, 01 Sep 2020 04:09:33 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1395568
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
