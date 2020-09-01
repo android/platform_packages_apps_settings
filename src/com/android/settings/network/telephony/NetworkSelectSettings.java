@@ -126,7 +126,6 @@ public class NetworkSelectSettings extends DashboardFragment {
                     .findViewById(R.id.progress_bar_animation);
             setProgressBarVisible(false);
         }
-        forceUpdateConnectedPreferenceCategory();
     }
 
     @Override
