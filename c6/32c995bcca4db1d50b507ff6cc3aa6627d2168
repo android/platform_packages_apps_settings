@@ -1,0 +1,13 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Verified+1: SzuWei Lin <szuweilin@google.com>
+Lint+2: SzuWei Lin <szuweilin@google.com>
+Lint+1: Lint 🤖 <android-build-prod-ayeaye@system.gserviceaccount.com>
+Bypass-Presubmit+1: SzuWei Lin <szuweilin@google.com>
+Code-Review+2: Hung-ying Tyan <tyanh@google.com>
+DrNo-Review+1: Hung-ying Tyan <tyanh@google.com>
+Presubmit-Verified-1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Hung-ying Tyan <tyanh@google.com>
+Submitted-at: Wed, 02 Sep 2020 05:09:12 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1416141
+Project: platform/packages/apps/Settings
+Branch: refs/heads/android10-gsi
