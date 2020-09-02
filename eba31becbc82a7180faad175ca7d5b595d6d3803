@@ -16,6 +16,23 @@
       "revId": "eba31becbc82a7180faad175ca7d5b595d6d3803",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "960d85fd_1721566b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1128729
+      },
+      "writtenOn": "2020-09-02T07:52:07Z",
+      "side": 1,
+      "message": "The original patch had been override by merging process:\n\nhttps://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1202653/\nhttps://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1416141\n\nCP the patch and apply it again...\n",
+      "revId": "eba31becbc82a7180faad175ca7d5b595d6d3803",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
