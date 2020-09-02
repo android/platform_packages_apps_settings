@@ -81,7 +81,7 @@ public class MobileNetworkActivity extends SettingsBaseActivity
         }
         int oldSubId = mCurSubscriptionId;
         mCurSubscriptionId = updateSubscriptionIndex;
-        mFragmentForceReload = (mCurSubscriptionId == oldSubId);
+        mFragmentForceReload = (mCurSubscriptionId != oldSubId);
         final SubscriptionInfo info = getSubscription();
         updateSubscriptions(info, null);
 
