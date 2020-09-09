@@ -1235,11 +1235,12 @@ public class ApnEditor extends SettingsPreferenceFragment
 
     private String getEditableApnType(String[] apnTypeList) {
         final StringBuilder editableApnTypes = new StringBuilder();
-        final List<String> readOnlyApnTypes = Arrays.asList(mReadOnlyApnTypes);
+        final List<String> readOnlyApnTypes =
+                ArrayUtils.isEmpty(mReadOnlyApnTypes)?null:Arrays.asList(mReadOnlyApnTypes);
         boolean first = true;
         for (String apnType : apnTypeList) {
             // add APN type if it is not read-only and is not wild-cardable
-            if (!readOnlyApnTypes.contains(apnType)
+            if ((readOnlyApnTypes == null || !readOnlyApnTypes.contains(apnType))
                     && !apnType.equals(APN_TYPE_IA)
                     && !apnType.equals(APN_TYPE_EMERGENCY)
                     && !apnType.equals(APN_TYPE_MCX)) {
