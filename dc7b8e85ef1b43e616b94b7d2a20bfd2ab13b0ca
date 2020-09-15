@@ -1,0 +1,31 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004934413",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1426559?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "6d966ff2_12cb92d1",
+        "filename": "tests/unit/src/com/android/settings/network/telephony/DataServiceSetupPreferenceControllerTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-15T03:00:28Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 102
+      },
+      "revId": "dc7b8e85ef1b43e616b94b7d2a20bfd2ab13b0ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
