@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "14a69a81_86dc0b4d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1762265
+      },
+      "writtenOn": "2020-09-15T20:20:14Z",
+      "side": 1,
+      "message": "Retrying the presubmits, they\u0027re failing due to an unresolved import which I believe depends on the changes in aosp/1427810 (https://screenshot.googleplex.com/AarAZCESCCke3V2). If they fail again for this reason, please sync this change past that CL",
+      "revId": "ca5aa8786d732c4f80a1cf019d5c2d973c9f1d33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
