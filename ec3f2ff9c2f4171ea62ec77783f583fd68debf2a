@@ -1,0 +1,31 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004935501",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1426563?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "81bd3bb0_f5a00b92",
+        "filename": "tests/unit/src/com/android/settings/network/telephony/PreferredNetworkModePreferenceControllerTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-15T04:09:20Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 102
+      },
+      "revId": "ec3f2ff9c2f4171ea62ec77783f583fd68debf2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
