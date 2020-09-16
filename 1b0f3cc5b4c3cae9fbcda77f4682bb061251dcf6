@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3e6bad7_00f33525",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1039338
+      },
+      "writtenOn": "2020-09-16T18:42:55Z",
+      "side": 1,
+      "message": "This should be unnecessary as \"org.apache.http.legacy\" is tracked automatically.",
+      "revId": "1b0f3cc5b4c3cae9fbcda77f4682bb061251dcf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
