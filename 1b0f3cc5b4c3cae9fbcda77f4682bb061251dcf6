@@ -16,6 +16,24 @@
       "revId": "1b0f3cc5b4c3cae9fbcda77f4682bb061251dcf6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1ffd912_8793c8ac",
+        "filename": "Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-09-17T10:23:25Z",
+      "side": 1,
+      "message": "This is necessary for \"org.apache.http.legacy\" because it is treated by Soong as optional since aosp/1424793, so it would be automatically added to `optional_uses_libs`, and not `uses_libs`.",
+      "parentUuid": "e3e6bad7_00f33525",
+      "revId": "1b0f3cc5b4c3cae9fbcda77f4682bb061251dcf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
