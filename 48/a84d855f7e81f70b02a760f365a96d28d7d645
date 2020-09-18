@@ -1,0 +1,8 @@
+Lint+1: Lint 🤖 <android-build-ayeaye@system.gserviceaccount.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Build-Cop-Override+1: Bill Yi <byi@google.com>
+Submitted-by: Bill Yi <byi@google.com>
+Submitted-at: Fri, 18 Sep 2020 18:47:43 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1430073
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
