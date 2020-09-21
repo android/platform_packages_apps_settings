@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2eaa091_63c64cf9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308560
+      },
+      "writtenOn": "2020-09-21T11:55:30Z",
+      "side": 1,
+      "message": "It need the Qualcomm-Review. Please find the owner.",
+      "revId": "5f5f75cb3d547f86d95a5f3cf8925c734cf6b85d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
