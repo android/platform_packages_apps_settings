@@ -46,6 +46,30 @@
       "revId": "304d5c31848c66cb01deb0ba161fbab71fce022a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de13c432_f3ecae15",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-09-22T11:48:01Z",
+      "side": 1,
+      "message": "Proper link to commit: http://ag/2584999.",
+      "parentUuid": "ac130ad8_f67e7351",
+      "range": {
+        "startLine": 10,
+        "startChar": 52,
+        "endLine": 11,
+        "endChar": 26
+      },
+      "revId": "304d5c31848c66cb01deb0ba161fbab71fce022a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
