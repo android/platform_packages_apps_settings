@@ -1,0 +1,10 @@
+Open-Source-Licensing+1: Lint 🤖 <android-build-ayeaye@system.gserviceaccount.com>
+Code-Review+2: tim peng <timhypeng@google.com>
+Code-Review+1: Tsung-Mao Fang <tmfang@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <android-build-ayeaye@system.gserviceaccount.com>
+Submitted-by: tim peng <timhypeng@google.com>
+Submitted-at: Thu, 24 Sep 2020 11:48:49 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1435258
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
