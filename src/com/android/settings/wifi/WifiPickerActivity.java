@@ -55,10 +55,17 @@ public class WifiPickerActivity extends SettingsActivity implements ButtonBarHan
                 || isSavedAccessPointsWifiSettings) {
             return true;
         }
+
+        if (FeatureFlagUtils.isEnabled(this, FeatureFlagUtils.SETTINGS_WIFITRACKER2)
+                && WifiSettings2.class.getName().equals(fragmentName)) {
+            return true;
+        }
+
         return false;
     }
 
     /* package */ Class<? extends PreferenceFragmentCompat> getWifiSettingsClass() {
-        return WifiSettings.class;
+        return FeatureFlagUtils.isEnabled(this, FeatureFlagUtils.SETTINGS_WIFITRACKER2)
+                ? WifiSettings2.class : WifiSettings.class;
     }
 }
