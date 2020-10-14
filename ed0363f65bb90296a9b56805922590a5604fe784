@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1fe7b54d_e3a42f90",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1542950
+      },
+      "writtenOn": "2020-10-14T22:40:28Z",
+      "side": 1,
+      "message": "LGTM, but a few comments.",
+      "revId": "ed0363f65bb90296a9b56805922590a5604fe784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36de8d8a_be2b85a0",
+        "filename": "src/com/android/settings/network/telephony/EnabledNetworkModePreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1542950
+      },
+      "writtenOn": "2020-10-14T22:40:28Z",
+      "side": 1,
+      "message": "nit: this ternary check can go inside of mContext.getString:\n\n```\nsetSummary((mContext.getString(mShow4gForLTE ? R.string.network_5G : R.string.network_5G_lte) + mContext.getString(R.string.network_recommended));\n```",
+      "range": {
+        "startLine": 568,
+        "startChar": 32,
+        "endLine": 568,
+        "endChar": 45
+      },
+      "revId": "ed0363f65bb90296a9b56805922590a5604fe784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df84fda3_394064c3",
+        "filename": "src/com/android/settings/network/telephony/EnabledNetworkModePreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1542950
+      },
+      "writtenOn": "2020-10-14T22:40:28Z",
+      "side": 1,
+      "message": "Can this method be combined with the existing add5gEntry method? Similar to below:\n\n```\nadd5gEntry(int value, boolean displayLte) {\n  [...]\n  mEntries.add(mContext.getString(displayLte ? R.string.network_5G_lte : R.string.network_5G)\n    + mContext.getString(r.string.network_recommended));\n  [...]\n}\n```",
+      "range": {
+        "startLine": 669,
+        "startChar": 0,
+        "endLine": 684,
+        "endChar": 9
+      },
+      "revId": "ed0363f65bb90296a9b56805922590a5604fe784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
