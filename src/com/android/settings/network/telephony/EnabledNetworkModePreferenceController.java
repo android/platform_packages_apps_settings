@@ -340,7 +340,7 @@ public class EnabledNetworkModePreferenceController extends
                     if (entryValuesInt.length < 3) {
                         throw new IllegalArgumentException("ENABLED_NETWORKS_CHOICES index error.");
                     }
-                    add5gEntry(addNrToLteNetworkType(entryValuesInt[0]));
+                    add5gLteEntry(addNrToLteNetworkType(entryValuesInt[0]));
                     addLteEntry(entryValuesInt[0]);
                     add3gEntry(entryValuesInt[1]);
                     add2gEntry(entryValuesInt[2]);
@@ -565,7 +565,8 @@ public class EnabledNetworkModePreferenceController extends
                 case TelephonyManagerConstants.NETWORK_MODE_NR_LTE_WCDMA:
                     setSelectedEntry(
                             TelephonyManagerConstants.NETWORK_MODE_NR_LTE_GSM_WCDMA);
-                    setSummary(mContext.getString(R.string.network_5G)
+                    setSummary((mShow4gForLTE ? mContext.getString(R.string.network_5G)
+                            : mContext.getString(R.string.network_5G_lte))
                             + mContext.getString(R.string.network_recommended));
                     break;
                 case TelephonyManagerConstants.NETWORK_MODE_NR_LTE_TDSCDMA:
@@ -575,12 +576,14 @@ public class EnabledNetworkModePreferenceController extends
                 case TelephonyManagerConstants.NETWORK_MODE_NR_LTE_TDSCDMA_CDMA_EVDO_GSM_WCDMA:
                     setSelectedEntry(TelephonyManagerConstants
                             .NETWORK_MODE_NR_LTE_TDSCDMA_CDMA_EVDO_GSM_WCDMA);
-                    setSummary(mContext.getString(R.string.network_5G)
+                    setSummary((mShow4gForLTE ? mContext.getString(R.string.network_5G)
+                            : mContext.getString(R.string.network_5G_lte))
                             + mContext.getString(R.string.network_recommended));
                     break;
                 case TelephonyManagerConstants.NETWORK_MODE_NR_LTE_CDMA_EVDO:
                     setSelectedEntry(TelephonyManagerConstants.NETWORK_MODE_NR_LTE_CDMA_EVDO);
-                    setSummary(mContext.getString(R.string.network_5G)
+                    setSummary((mShow4gForLTE ? mContext.getString(R.string.network_5G)
+                            : mContext.getString(R.string.network_5G_lte))
                             + mContext.getString(R.string.network_recommended));
                     break;
                 case TelephonyManagerConstants.NETWORK_MODE_NR_LTE_CDMA_EVDO_GSM_WCDMA:
@@ -591,7 +594,8 @@ public class EnabledNetworkModePreferenceController extends
                             || MobileNetworkUtils.isWorldMode(mContext, mSubId)) {
                         setSummary(R.string.network_global);
                     } else {
-                        setSummary(mContext.getString(R.string.network_5G)
+                        setSummary((mShow4gForLTE ? mContext.getString(R.string.network_5G)
+                                : mContext.getString(R.string.network_5G_lte))
                                 + mContext.getString(R.string.network_recommended));
                     }
                     break;
@@ -650,6 +654,23 @@ public class EnabledNetworkModePreferenceController extends
             boolean isNRValue = value >= TelephonyManagerConstants.NETWORK_MODE_NR_ONLY;
             if (showNrList() && isNRValue) {
                 mEntries.add(mContext.getString(R.string.network_5G)
+                        + mContext.getString(R.string.network_recommended));
+                mEntriesValue.add(value);
+                mIs5gEntryDisplayed = true;
+            } else {
+                mIs5gEntryDisplayed = false;
+                Log.d(LOG_TAG, "Hide 5G option. "
+                        + " supported5GRadioAccessFamily: " + mSupported5gRadioAccessFamily
+                        + " allowed5GNetworkType: " + mAllowed5gNetworkType
+                        + " isNRValue: " + isNRValue);
+            }
+        }
+
+        // This entry is used to support for 5G/LTE display in resource overlay
+        private void add5gLteEntry(int value) {
+            boolean isNRValue = value >= TelephonyManagerConstants.NETWORK_MODE_NR_ONLY;
+            if (showNrList() && isNRValue) {
+                mEntries.add(mContext.getString(R.string.network_5G_lte)
                         + mContext.getString(R.string.network_recommended));
                 mEntriesValue.add(value);
                 mIs5gEntryDisplayed = true;
