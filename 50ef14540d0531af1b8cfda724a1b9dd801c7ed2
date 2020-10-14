@@ -16,6 +16,23 @@
       "message": "@Tsung-Mao,\nCould you review it?",
       "revId": "50ef14540d0531af1b8cfda724a1b9dd801c7ed2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8647265b_b65af967",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-10-14T00:19:32Z",
+      "side": 1,
+      "message": "SongFerng, do you have some time helping on this ?",
+      "revId": "50ef14540d0531af1b8cfda724a1b9dd801c7ed2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
