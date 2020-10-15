@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0babf02d_b11fab5c",
+        "filename": "src/com/android/settings/network/telephony/EnabledNetworkModePreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1423906
+      },
+      "writtenOn": "2020-10-15T06:21:42Z",
+      "side": 1,
+      "message": "fine",
+      "parentUuid": "36de8d8a_be2b85a0",
+      "range": {
+        "startLine": 568,
+        "startChar": 32,
+        "endLine": 568,
+        "endChar": 45
+      },
+      "revId": "ed0363f65bb90296a9b56805922590a5604fe784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df84fda3_394064c3",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-10-14T22:40:28Z",
       "side": 1,
       "message": "Can this method be combined with the existing add5gEntry method? Similar to below:\n\n```\nadd5gEntry(int value, boolean displayLte) {\n  [...]\n  mEntries.add(mContext.getString(displayLte ? R.string.network_5G_lte : R.string.network_5G)\n    + mContext.getString(r.string.network_recommended));\n  [...]\n}\n```",
+      "range": {
+        "startLine": 669,
+        "startChar": 0,
+        "endLine": 684,
+        "endChar": 9
+      },
+      "revId": "ed0363f65bb90296a9b56805922590a5604fe784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff5e1c9b_79b92c81",
+        "filename": "src/com/android/settings/network/telephony/EnabledNetworkModePreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 684,
+      "author": {
+        "id": 1423906
+      },
+      "writtenOn": "2020-10-15T06:21:42Z",
+      "side": 1,
+      "message": "yeah, we consider combining both on upstreaming.\n\ncurrently, it just avoids any conflicts happening with AOSP in future",
+      "parentUuid": "df84fda3_394064c3",
       "range": {
         "startLine": 669,
         "startChar": 0,
