@@ -18,6 +18,46 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1181ce18_36d923d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308560
+      },
+      "writtenOn": "2020-10-19T04:17:59Z",
+      "side": 1,
+      "message": "Hi Mengjun,\nWhy add a new 5G_lte and \nENABLED_NETWORKS_CHOICES",
+      "revId": "7aec107e0e2e9bce90ebe4000d93e00d83c6cd12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e899f480_5ae0e72f",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 11562,
+      "author": {
+        "id": 1308560
+      },
+      "writtenOn": "2020-10-19T04:17:59Z",
+      "side": 1,
+      "message": "Hi Mengjun,\nIf OEM want to overlay the res string from \u00275G\u0027 to \u00272G/3G/4G/5G\u0027 or \u00272G/3G/LTE/5G\u0027.\nWhy do we add a new string? They can override \u0027network_5G\u0027 directly.",
+      "range": {
+        "startLine": 11561,
+        "startChar": 0,
+        "endLine": 11562,
+        "endChar": 66
+      },
+      "revId": "7aec107e0e2e9bce90ebe4000d93e00d83c6cd12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "382e56d3_a18bf19c",
@@ -36,6 +76,29 @@
         "startChar": 73,
         "endLine": 236,
         "endChar": 77
+      },
+      "revId": "7aec107e0e2e9bce90ebe4000d93e00d83c6cd12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fca4659_2157cff0",
+        "filename": "src/com/android/settings/network/telephony/EnabledNetworkModePreferenceController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 656,
+      "author": {
+        "id": 1308560
+      },
+      "writtenOn": "2020-10-19T04:17:59Z",
+      "side": 1,
+      "message": "we use the mShow4gForLTE to check the LTE or 4g. Here don\u0027t need a parameter.\n\n              mEntries.add(mContext.getString(mShow4gForLTE ? R.string.network_5G_lte\n                        : R.string.network_5G)",
+      "range": {
+        "startLine": 652,
+        "startChar": 0,
+        "endLine": 656,
+        "endChar": 46
       },
       "revId": "7aec107e0e2e9bce90ebe4000d93e00d83c6cd12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
