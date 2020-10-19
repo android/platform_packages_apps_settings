@@ -16,6 +16,29 @@
       "message": "LGTM, adding owners to review",
       "revId": "7aec107e0e2e9bce90ebe4000d93e00d83c6cd12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "382e56d3_a18bf19c",
+        "filename": "src/com/android/settings/network/telephony/EnabledNetworkModePreferenceController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-10-19T03:28:31Z",
+      "side": 1,
+      "message": "true /* displayLte */\n\nPlease correct it for same cases.",
+      "range": {
+        "startLine": 236,
+        "startChar": 73,
+        "endLine": 236,
+        "endChar": 77
+      },
+      "revId": "7aec107e0e2e9bce90ebe4000d93e00d83c6cd12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
