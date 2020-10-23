@@ -62,6 +62,10 @@ android_library {
         "ims-common",
         "app-compat-annotations",
     ],
+
+    aaptflags: [
+        "--no-resource-deduping",
+    ],
 }
 
 platform_compat_config {
@@ -85,6 +89,10 @@ android_app {
     optimize: {
         proguard_flags_files: ["proguard.flags"],
     },
+
+    aaptflags: [
+        "--no-resource-deduping",
+    ],
 }
 
 android_library_import {
