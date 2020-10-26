@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c6e868c_87269bc0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1090594
+      },
+      "writtenOn": "2020-10-26T23:09:22Z",
+      "side": 1,
+      "message": "There\u0027s also two more VideoPreference usages in tests/robotests/res/xml-mcc999/video_preference.xml, should I update these too?",
+      "revId": "89192bb716d0de2c7054f2eaee73218536f2d4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
