@@ -16,6 +16,23 @@
       "message": "checked that the resource is back",
       "revId": "e64ae22d77d3f51b0ee8f8457f20c85a5b1078e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0036af11_64ee098e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221112
+      },
+      "writtenOn": "2020-10-28T19:00:41Z",
+      "side": 1,
+      "message": "please have a look, this was introduced in Android 11",
+      "revId": "e64ae22d77d3f51b0ee8f8457f20c85a5b1078e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
