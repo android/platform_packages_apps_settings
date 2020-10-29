@@ -50,6 +50,23 @@
       "message": "Hi, Sony\n\nThanks for contributing your code.\nwill this change make apk size increase? If so, can you share the apk size data with us? Thanks",
       "revId": "e64ae22d77d3f51b0ee8f8457f20c85a5b1078e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9adbd7a_cbefc49b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-10-29T02:40:37Z",
+      "side": 1,
+      "message": "Hi, Ryan\n\nI saw you will submit a cl by end of this week. Will your cl address overall problem ? Thanks",
+      "revId": "e64ae22d77d3f51b0ee8f8457f20c85a5b1078e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
