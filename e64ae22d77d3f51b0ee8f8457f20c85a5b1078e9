@@ -67,6 +67,24 @@
       "message": "Hi, Ryan\n\nI saw you will submit a cl by end of this week. Will your cl address overall problem ? Thanks",
       "revId": "e64ae22d77d3f51b0ee8f8457f20c85a5b1078e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d51e789b_50f353d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1221112
+      },
+      "writtenOn": "2020-10-30T14:08:21Z",
+      "side": 1,
+      "message": "Yes, slightly, Sony Settings app grew from 76149629 to 76194685 bytes",
+      "parentUuid": "72a5fadf_44b41556",
+      "revId": "e64ae22d77d3f51b0ee8f8457f20c85a5b1078e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
