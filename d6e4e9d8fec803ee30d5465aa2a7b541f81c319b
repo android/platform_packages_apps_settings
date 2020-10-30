@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5afea2d6_a4aa5fb7",
+        "filename": "src/com/android/settings/datausage/DataUsageSummaryPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1407552
+      },
+      "writtenOn": "2020-10-30T02:46:13Z",
+      "side": 1,
+      "message": "nit \nThis comment length is too long. Please rearrange it.",
+      "range": {
+        "startLine": 328,
+        "startChar": 8,
+        "endLine": 328,
+        "endChar": 100
+      },
+      "revId": "d6e4e9d8fec803ee30d5465aa2a7b541f81c319b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
