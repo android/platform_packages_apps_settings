@@ -85,6 +85,23 @@
       "parentUuid": "72a5fadf_44b41556",
       "revId": "e64ae22d77d3f51b0ee8f8457f20c85a5b1078e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a991774_d8bc6c24",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1339996
+      },
+      "writtenOn": "2020-10-30T20:18:29Z",
+      "side": 1,
+      "message": "Fix in aapt2: https://android-review.googlesource.com/c/platform/frameworks/base/+/1481918",
+      "revId": "e64ae22d77d3f51b0ee8f8457f20c85a5b1078e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
