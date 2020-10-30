@@ -22,6 +22,30 @@
       },
       "revId": "d6e4e9d8fec803ee30d5465aa2a7b541f81c319b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc246800_cafa7860",
+        "filename": "src/com/android/settings/datausage/DataUsageSummaryPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1542950
+      },
+      "writtenOn": "2020-10-30T02:48:07Z",
+      "side": 1,
+      "message": "It\u0027s actually within the character limit, but just looks like it\u0027s over on gerrit.",
+      "parentUuid": "5afea2d6_a4aa5fb7",
+      "range": {
+        "startLine": 328,
+        "startChar": 8,
+        "endLine": 328,
+        "endChar": 100
+      },
+      "revId": "d6e4e9d8fec803ee30d5465aa2a7b541f81c319b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
