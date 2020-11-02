@@ -33,6 +33,23 @@
       "message": "Ruslan, did you perhaps mean to grant Code-Review +2 instead of Open-Source-Licensing +2?\n\n(Why do we even have that lever?)",
       "revId": "efd5a23b737c2a9d4915a6ce44818227dc45db73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18a504c5_9b2742c8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1448820
+      },
+      "writtenOn": "2020-11-02T21:38:46Z",
+      "side": 1,
+      "message": "Oops, sorry :)",
+      "revId": "efd5a23b737c2a9d4915a6ce44818227dc45db73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
