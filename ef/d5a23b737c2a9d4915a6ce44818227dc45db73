@@ -1,0 +1,10 @@
+Autosubmit+1: Tobias Thierer <tobiast@google.com>
+Code-Review+2: Ruslan Tkhakokhov <rthakohov@google.com>
+Code-Review+2: Niamh Walsh <niamhfw@google.com>
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Mon, 02 Nov 2020 21:55:47 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1480538
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
