@@ -20,10 +20,12 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 
 import androidx.preference.Preference;
+import androidx.preference.PreferenceScreen;
 
 import com.android.settings.Utils;
 import com.android.settings.applications.AppDomainsPreference;
 import com.android.settingslib.applications.AppUtils;
+import com.android.settingslib.applications.ApplicationsState;
 
 import java.util.Set;
 
@@ -34,6 +36,17 @@ public class InstantAppDomainsPreferenceController extends AppInfoPreferenceCont
     public InstantAppDomainsPreferenceController(Context context, String key) {
         super(context, key);
         mPackageManager = mContext.getPackageManager();
+    }
+
+    @Override
+    public void displayPreference(PreferenceScreen screen) {
+        super.displayPreference(screen);
+        final ApplicationsState.AppEntry appEntry = mParent.getAppEntry();
+        if (appEntry == null
+                || appEntry.info == null
+                || appEntry.info.isResourceOverlay()) {
+            mPreference.setVisible(false);
+        }
     }
 
     @Override

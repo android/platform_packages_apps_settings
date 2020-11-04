@@ -27,8 +27,10 @@ import android.util.Log;
 
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
+import androidx.preference.PreferenceScreen;
 
 import com.android.settings.R;
+import com.android.settingslib.applications.ApplicationsState;
 import com.android.settingslib.applications.PermissionsSummaryHelper;
 import com.android.settingslib.core.lifecycle.LifecycleObserver;
 import com.android.settingslib.core.lifecycle.events.OnStart;
@@ -102,6 +104,17 @@ public class AppPermissionPreferenceController extends AppInfoPreferenceControll
     @Override
     public void onStop() {
         mPackageManager.removeOnPermissionsChangeListener(mOnPermissionsChangedListener);
+    }
+
+    @Override
+    public void displayPreference(PreferenceScreen screen) {
+        super.displayPreference(screen);
+        final ApplicationsState.AppEntry appEntry = mParent.getAppEntry();
+        if (appEntry == null
+                || appEntry.info == null
+                || appEntry.info.isResourceOverlay()) {
+            mPreference.setVisible(false);
+        }
     }
 
     @Override

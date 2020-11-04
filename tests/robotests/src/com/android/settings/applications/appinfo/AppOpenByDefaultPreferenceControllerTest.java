@@ -63,10 +63,9 @@ public class AppOpenByDefaultPreferenceControllerTest {
     @Mock
     private PreferenceScreen mScreen;
     @Mock
-    private Preference mPreference;
-    @Mock
     private PackageManager mPackageManager;
 
+    private Preference mPreference;
     private Context mContext;
     private AppOpenByDefaultPreferenceController mController;
 
@@ -74,6 +73,7 @@ public class AppOpenByDefaultPreferenceControllerTest {
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         mContext = spy(RuntimeEnvironment.application.getApplicationContext());
+        mPreference = spy(new Preference(RuntimeEnvironment.application));
         mController = spy(new AppOpenByDefaultPreferenceController(mContext, "preferred_app"));
         mController.setParentFragment(mFragment);
         when(mScreen.findPreference(mController.getPreferenceKey())).thenReturn(mPreference);
@@ -140,6 +140,18 @@ public class AppOpenByDefaultPreferenceControllerTest {
     }
 
     @Test
+    public void displayPreference_rro_shouldNotShowPreference() {
+        final AppEntry appEntry = mock(AppEntry.class);
+        appEntry.info = mock(ApplicationInfo.class);
+        when(mFragment.getAppEntry()).thenReturn(appEntry);
+        when(appEntry.info.isResourceOverlay()).thenReturn(true);
+
+        mController.displayPreference(mScreen);
+
+        verify(mPreference).setVisible(false);
+    }
+
+    @Test
     public void updateState_noPackageInfo_shouldNotShowPreference() {
         mController.updateState(mPreference);
 
@@ -181,7 +193,14 @@ public class AppOpenByDefaultPreferenceControllerTest {
     public void updateState_notBrowserApp_notInstantApp_shouldShowPreferenceAndSetSummary() {
         final PackageInfo packageInfo = new PackageInfo();
         packageInfo.packageName = "com.package.test.browser";
+        packageInfo.applicationInfo = mock(ApplicationInfo.class);
+        packageInfo.applicationInfo.packageName = packageInfo.packageName;
+        final AppEntry appEntry = mock(AppEntry.class);
+        appEntry.info = packageInfo.applicationInfo;
+        when(mFragment.getAppEntry()).thenReturn(appEntry);
         when(mFragment.getPackageInfo()).thenReturn(packageInfo);
+        when(packageInfo.applicationInfo.isResourceOverlay()).thenReturn(false);
+
         ReflectionHelpers.setStaticField(AppUtils.class, "sInstantAppDataProvider",
                 (InstantAppDataProvider) (i -> false));
         final ResolveInfo resolveInfo = new ResolveInfo();
@@ -191,9 +210,6 @@ public class AppOpenByDefaultPreferenceControllerTest {
         when(mPackageManager
                 .queryIntentActivitiesAsUser(any(Intent.class), anyInt(), anyInt()))
                 .thenReturn(resolveInfos);
-        final AppEntry appEntry = mock(AppEntry.class);
-        appEntry.info = new ApplicationInfo();
-        when(mFragment.getAppEntry()).thenReturn(appEntry);
 
         mController.updateState(mPreference);
 

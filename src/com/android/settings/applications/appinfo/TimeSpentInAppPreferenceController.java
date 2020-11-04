@@ -31,6 +31,7 @@ import androidx.preference.PreferenceScreen;
 import com.android.settings.applications.ApplicationFeatureProvider;
 import com.android.settings.core.LiveDataController;
 import com.android.settings.overlay.FeatureFactory;
+import com.android.settingslib.applications.ApplicationsState;
 
 import java.util.List;
 
@@ -45,6 +46,7 @@ public class TimeSpentInAppPreferenceController extends LiveDataController {
     private final ApplicationFeatureProvider mAppFeatureProvider;
     private Intent mIntent;
     private String mPackageName;
+    protected AppInfoDashboardFragment mParent;
 
     public TimeSpentInAppPreferenceController(Context context, String preferenceKey) {
         super(context, preferenceKey);
@@ -57,6 +59,10 @@ public class TimeSpentInAppPreferenceController extends LiveDataController {
         mPackageName = packageName;
         mIntent = new Intent(SEE_TIME_IN_APP_TEMPLATE)
                 .putExtra(Intent.EXTRA_PACKAGE_NAME, mPackageName);
+    }
+
+    public void setParentFragment(AppInfoDashboardFragment parent) {
+        mParent = parent;
     }
 
     @Override
@@ -81,7 +87,14 @@ public class TimeSpentInAppPreferenceController extends LiveDataController {
     public void displayPreference(PreferenceScreen screen) {
         super.displayPreference(screen);
         final Preference pref = screen.findPreference(getPreferenceKey());
-        if (pref != null) {
+        if (pref == null) return;
+
+        final ApplicationsState.AppEntry appEntry = mParent.getAppEntry();
+        if (appEntry == null
+                || appEntry.info == null
+                || appEntry.info.isResourceOverlay()) {
+            pref.setVisible(false);
+        } else {
             pref.setIntent(mIntent);
         }
     }

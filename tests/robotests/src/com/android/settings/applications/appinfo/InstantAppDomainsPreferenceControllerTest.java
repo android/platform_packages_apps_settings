@@ -19,6 +19,7 @@ package com.android.settings.applications.appinfo;
 import static com.google.common.truth.Truth.assertThat;
 
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -30,9 +31,12 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.util.ArraySet;
 
+import androidx.preference.PreferenceScreen;
+
 import com.android.settings.applications.AppDomainsPreference;
 import com.android.settings.core.BasePreferenceController;
 import com.android.settingslib.applications.AppUtils;
+import com.android.settingslib.applications.ApplicationsState.AppEntry;
 import com.android.settingslib.applications.instantapps.InstantAppDataProvider;
 
 import org.junit.Before;
@@ -58,6 +62,9 @@ public class InstantAppDomainsPreferenceControllerTest {
     private AppInfoDashboardFragment mFragment;
     @Mock
     private AppDomainsPreference mPreference;
+    @Mock
+    private PreferenceScreen mScreen;
+
 
     private Context mContext;
     private InstantAppDomainsPreferenceController mController;
@@ -108,5 +115,17 @@ public class InstantAppDomainsPreferenceControllerTest {
         mController.updateState(mPreference);
 
         verify(mPreference).setTitles(domain);
+    }
+
+    @Test
+    public void displayPreference_rro_shouldNotShowPreference() {
+        final AppEntry appEntry = mock(AppEntry.class);
+        appEntry.info = new ApplicationInfo();
+        appEntry.info.flags |= ApplicationInfo.PRIVATE_FLAG_IS_RESOURCE_OVERLAY;
+        when(mFragment.getAppEntry()).thenReturn(appEntry);
+
+        mController.displayPreference(mScreen);
+
+        verify(mPreference, never()).setVisible(false);
     }
 }

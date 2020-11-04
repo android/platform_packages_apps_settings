@@ -22,11 +22,12 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.preference.Preference;
+import androidx.preference.PreferenceScreen;
 
 import com.android.settings.R;
 import com.android.settings.SettingsPreferenceFragment;
-import com.android.settings.notification.app.AppNotificationSettings;
 import com.android.settings.notification.NotificationBackend;
+import com.android.settings.notification.app.AppNotificationSettings;
 import com.android.settingslib.applications.ApplicationsState;
 
 public class AppNotificationPreferenceController extends AppInfoPreferenceControllerBase {
@@ -38,6 +39,17 @@ public class AppNotificationPreferenceController extends AppInfoPreferenceContro
 
     public AppNotificationPreferenceController(Context context, String key) {
         super(context, key);
+    }
+
+    @Override
+    public void displayPreference(PreferenceScreen screen) {
+        super.displayPreference(screen);
+        final ApplicationsState.AppEntry appEntry = mParent.getAppEntry();
+        if (appEntry == null
+                || appEntry.info == null
+                || appEntry.info.isResourceOverlay()) {
+            mPreference.setVisible(false);
+        }
     }
 
     @Override

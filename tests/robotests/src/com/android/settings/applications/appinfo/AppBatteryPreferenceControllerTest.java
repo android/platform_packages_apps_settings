@@ -28,6 +28,7 @@ import static org.mockito.Mockito.when;
 
 import android.app.AppOpsManager;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.BatteryStats;
@@ -41,6 +42,7 @@ import com.android.internal.os.BatterySipper;
 import com.android.internal.os.BatteryStatsHelper;
 import com.android.settings.SettingsActivity;
 import com.android.settings.fuelgauge.BatteryUtils;
+import com.android.settingslib.applications.ApplicationsState;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -113,6 +115,18 @@ public class AppBatteryPreferenceControllerTest {
     }
 
     @Test
+    public void displayPreference_isRro_shouldNotShowPreference() {
+        final ApplicationsState.AppEntry appEntry = mock(ApplicationsState.AppEntry.class);
+        appEntry.info = mock(ApplicationInfo.class);
+        when(mFragment.getAppEntry()).thenReturn(appEntry);
+        when(appEntry.info.isResourceOverlay()).thenReturn(true);
+
+        mController.displayPreference(mScreen);
+
+        verify(mBatteryPreference).setVisible(false);
+    }
+
+    @Test
     @Config(qualifiers = "mcc999")
     public void testAppBattery_ifDisabled_shouldNotBeShown() {
         assertThat(mController.isAvailable()).isFalse();
@@ -131,6 +145,11 @@ public class AppBatteryPreferenceControllerTest {
 
     @Test
     public void updateBattery_noBatteryStats_summaryNo() {
+        final ApplicationsState.AppEntry appEntry = mock(ApplicationsState.AppEntry.class);
+        appEntry.info = mock(ApplicationInfo.class);
+        when(mFragment.getAppEntry()).thenReturn(appEntry);
+        when(appEntry.info.isResourceOverlay()).thenReturn(false);
+
         mController.displayPreference(mScreen);
 
         mController.updateBattery();
@@ -141,6 +160,11 @@ public class AppBatteryPreferenceControllerTest {
 
     @Test
     public void updateBattery_hasBatteryStats_summaryPercent() {
+        final ApplicationsState.AppEntry appEntry = mock(ApplicationsState.AppEntry.class);
+        appEntry.info = mock(ApplicationInfo.class);
+        when(mFragment.getAppEntry()).thenReturn(appEntry);
+        when(appEntry.info.isResourceOverlay()).thenReturn(false);
+
         mController.mBatteryHelper = mBatteryStatsHelper;
         mController.mSipper = mBatterySipper;
         doReturn(BATTERY_LEVEL).when(mBatteryUtils).calculateBatteryPercent(anyDouble(),

@@ -36,6 +36,7 @@ import androidx.preference.PreferenceScreen;
 import com.android.settings.R;
 import com.android.settings.SettingsActivity;
 import com.android.settingslib.applications.ApplicationsState;
+import com.android.settingslib.applications.ApplicationsState.AppEntry;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -61,6 +62,8 @@ public class AppPermissionPreferenceControllerTest {
     private Preference mPreference;
     @Mock
     private PackageManager mPackageManager;
+    @Mock
+    private ApplicationInfo mAppInfo;
 
     private Context mContext;
     private AppPermissionPreferenceController mController;
@@ -100,6 +103,26 @@ public class AppPermissionPreferenceControllerTest {
     public void getAvailabilityStatus_isAlwaysAvailable() {
         assertThat(mController.getAvailabilityStatus())
                 .isEqualTo(AppPermissionPreferenceController.AVAILABLE);
+    }
+
+    @Test
+    public void displayPreference_appInstalled_shouldShowPreference() {
+        final AppEntry appEntry = mock(AppEntry.class);
+        appEntry.info = new ApplicationInfo();
+        appEntry.info.flags &= ApplicationInfo.FLAG_INSTALLED;
+        when(mFragment.getAppEntry()).thenReturn(appEntry);
+
+        mController.displayPreference(mScreen);
+
+        verify(mPreference).setVisible(true);
+    }
+
+    @Test
+    public void displayPreference_rro_shouldNotShowPreference() {
+        when(mAppInfo.isResourceOverlay()).thenReturn(true);
+        mController.displayPreference(mScreen);
+
+        verify(mPreference).setVisible(false);
     }
 
     @Test

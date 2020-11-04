@@ -35,8 +35,8 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 
-import com.android.settings.notification.app.AppNotificationSettings;
 import com.android.settings.notification.NotificationBackend;
+import com.android.settings.notification.app.AppNotificationSettings;
 import com.android.settingslib.applications.ApplicationsState;
 
 import org.junit.Before;
@@ -57,6 +57,8 @@ public class AppNotificationPreferenceControllerTest {
     private PreferenceScreen mScreen;
     @Mock
     private Preference mPreference;
+    @Mock
+    private ApplicationInfo mAppInfo;
 
     private Context mContext;
     private AppNotificationPreferenceController mController;
@@ -181,5 +183,13 @@ public class AppNotificationPreferenceControllerTest {
             AppNotificationPreferenceController.getNotificationSummary(appRow, mContext).toString())
             .isEqualTo(
                 NotificationBackend.getSentSummary(mContext, appRow.sentByApp, false));
+    }
+
+    @Test
+    public void displayPreference_rro_shouldNotShowPreference() {
+        when(mAppInfo.isResourceOverlay()).thenReturn(true);
+        mController.displayPreference(mScreen);
+
+        verify(mPreference).setVisible(false);
     }
 }

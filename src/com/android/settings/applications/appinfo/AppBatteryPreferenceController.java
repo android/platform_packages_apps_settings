@@ -37,6 +37,7 @@ import com.android.settings.fuelgauge.AdvancedPowerUsageDetail;
 import com.android.settings.fuelgauge.BatteryEntry;
 import com.android.settings.fuelgauge.BatteryStatsHelperLoader;
 import com.android.settings.fuelgauge.BatteryUtils;
+import com.android.settingslib.applications.ApplicationsState;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.core.lifecycle.LifecycleObserver;
 import com.android.settingslib.core.lifecycle.events.OnPause;
@@ -85,7 +86,14 @@ public class AppBatteryPreferenceController extends BasePreferenceController
     public void displayPreference(PreferenceScreen screen) {
         super.displayPreference(screen);
         mPreference = screen.findPreference(getPreferenceKey());
-        mPreference.setEnabled(false);
+        final ApplicationsState.AppEntry appEntry = mParent.getAppEntry();
+        if (appEntry == null
+                || appEntry.info == null
+                || appEntry.info.isResourceOverlay()) {
+            mPreference.setVisible(false);
+        } else {
+            mPreference.setEnabled(false);
+        }
     }
 
     @Override
@@ -142,20 +150,29 @@ public class AppBatteryPreferenceController extends BasePreferenceController
 
     @VisibleForTesting
     void updateBattery() {
-        mPreference.setEnabled(true);
-        if (isBatteryStatsAvailable()) {
-            final int dischargeAmount = mBatteryHelper.getStats().getDischargeAmount(
-                    BatteryStats.STATS_SINCE_CHARGED);
-
-            final List<BatterySipper> usageList = new ArrayList<>(mBatteryHelper.getUsageList());
-            final double hiddenAmount = mBatteryUtils.removeHiddenBatterySippers(usageList);
-            final int percentOfMax = (int) mBatteryUtils.calculateBatteryPercent(
-                    mSipper.totalPowerMah, mBatteryHelper.getTotalPower(), hiddenAmount,
-                    dischargeAmount);
-            mBatteryPercent = Utils.formatPercentage(percentOfMax);
-            mPreference.setSummary(mContext.getString(R.string.battery_summary, mBatteryPercent));
+        final ApplicationsState.AppEntry appEntry = mParent.getAppEntry();
+        if (appEntry == null
+                || appEntry.info == null
+                || appEntry.info.isResourceOverlay()) {
+            mPreference.setVisible(false);
         } else {
-            mPreference.setSummary(mContext.getString(R.string.no_battery_summary));
+            mPreference.setEnabled(true);
+            if (isBatteryStatsAvailable()) {
+                final int dischargeAmount = mBatteryHelper.getStats().getDischargeAmount(
+                        BatteryStats.STATS_SINCE_CHARGED);
+
+                final List<BatterySipper> usageList = new ArrayList<>(
+                        mBatteryHelper.getUsageList());
+                final double hiddenAmount = mBatteryUtils.removeHiddenBatterySippers(usageList);
+                final int percentOfMax = (int) mBatteryUtils.calculateBatteryPercent(
+                        mSipper.totalPowerMah, mBatteryHelper.getTotalPower(), hiddenAmount,
+                        dischargeAmount);
+                mBatteryPercent = Utils.formatPercentage(percentOfMax);
+                mPreference.setSummary(mContext.getString(
+                        R.string.battery_summary, mBatteryPercent));
+            } else {
+                mPreference.setSummary(mContext.getString(R.string.no_battery_summary));
+            }
         }
     }
 

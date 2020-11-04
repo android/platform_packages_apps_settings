@@ -400,6 +400,17 @@ public class AppButtonsPreferenceControllerTest {
     }
 
     @Test
+    public void updateForceStopButton_isRro_setButtonVisible() {
+        doReturn(false).when(mDpm).packageHasActiveAdmins(anyString());
+
+        when(mAppInfo.isResourceOverlay()).thenReturn(true);
+
+        mController.updateForceStopButton();
+
+        verify(mButtonPrefs).setButton3Visible(false);
+    }
+
+    @Test
     public void uninstallPkg_intentSent() {
         mController.uninstallPkg(PACKAGE_NAME, ALL_USERS, DISABLE_AFTER_INSTALL);
 

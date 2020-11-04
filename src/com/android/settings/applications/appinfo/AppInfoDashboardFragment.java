@@ -140,8 +140,9 @@ public class AppInfoDashboardFragment extends DashboardFragment
         final String packageName = getPackageName();
         final TimeSpentInAppPreferenceController timeSpentInAppPreferenceController = use(
                 TimeSpentInAppPreferenceController.class);
-        timeSpentInAppPreferenceController.setPackageName(packageName);
         timeSpentInAppPreferenceController.initLifeCycleOwner(this);
+        timeSpentInAppPreferenceController.setParentFragment(this);
+        timeSpentInAppPreferenceController.setPackageName(packageName);
 
         use(AppDataUsagePreferenceController.class).setParentFragment(this);
         final AppInstallerInfoPreferenceController installer =

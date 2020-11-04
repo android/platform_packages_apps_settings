@@ -56,6 +56,8 @@ public class AppOpenByDefaultPreferenceController extends AppInfoPreferenceContr
         final ApplicationsState.AppEntry appEntry = mParent.getAppEntry();
         if (appEntry == null || appEntry.info == null) {
             mPreference.setEnabled(false);
+        } else if (appEntry.info.isResourceOverlay()) {
+            mPreference.setVisible(false);
         } else if ((appEntry.info.flags & ApplicationInfo.FLAG_INSTALLED) == 0
                 || !appEntry.info.enabled) {
             mPreference.setEnabled(false);
@@ -67,7 +69,8 @@ public class AppOpenByDefaultPreferenceController extends AppInfoPreferenceContr
         final PackageInfo packageInfo = mParent.getPackageInfo();
         if (packageInfo != null && !AppUtils.isInstant(packageInfo.applicationInfo)
                 && !AppUtils.isBrowserApp(mContext, packageInfo.packageName,
-                UserHandle.myUserId())) {
+                UserHandle.myUserId())
+                && !packageInfo.applicationInfo.isResourceOverlay()) {
             preference.setVisible(true);
             preference.setSummary(AppUtils.getLaunchByDefaultSummary(mParent.getAppEntry(),
                     mUsbManager, mPackageManager, mContext));

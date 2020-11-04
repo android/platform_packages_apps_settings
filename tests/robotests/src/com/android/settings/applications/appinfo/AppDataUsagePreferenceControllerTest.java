@@ -34,6 +34,10 @@ import android.content.pm.ApplicationInfo;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 
+import androidx.loader.app.LoaderManager;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceScreen;
+
 import com.android.settings.core.BasePreferenceController;
 import com.android.settings.datausage.AppDataUsage;
 import com.android.settingslib.applications.ApplicationsState.AppEntry;
@@ -42,13 +46,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-
 import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
-
-import androidx.loader.app.LoaderManager;
-import androidx.preference.Preference;
 
 @RunWith(RobolectricTestRunner.class)
 public class AppDataUsagePreferenceControllerTest {
@@ -57,16 +57,23 @@ public class AppDataUsagePreferenceControllerTest {
     private LoaderManager mLoaderManager;
     @Mock
     private AppInfoDashboardFragment mFragment;
+    @Mock
+    private PreferenceScreen mScreen;
+    @Mock
+    private ApplicationInfo mAppInfo;
 
     private Context mContext;
     private AppDataUsagePreferenceController mController;
+    private Preference mPreference;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         mContext = spy(RuntimeEnvironment.application.getApplicationContext());
+        mPreference = spy(new Preference(RuntimeEnvironment.application));
         mController = spy(new AppDataUsagePreferenceController(mContext, "test_key"));
         mController.setParentFragment(mFragment);
+        when(mScreen.findPreference(mController.getPreferenceKey())).thenReturn(mPreference);
     }
 
     @Test
@@ -83,6 +90,20 @@ public class AppDataUsagePreferenceControllerTest {
 
         assertThat(mController.getAvailabilityStatus())
             .isEqualTo(BasePreferenceController.CONDITIONALLY_UNAVAILABLE);
+    }
+
+    @Test
+    public void displayPreference_rro_shouldNotShowPreference() {
+        doReturn(true).when(mController).isBandwidthControlEnabled();
+
+        final AppEntry appEntry = mock(AppEntry.class);
+        appEntry.info = mock(ApplicationInfo.class);
+        when(mFragment.getAppEntry()).thenReturn(appEntry);
+        when(appEntry.info.isResourceOverlay()).thenReturn(true);
+
+        mController.displayPreference(mScreen);
+
+        verify(mPreference).setVisible(false);
     }
 
     @Test

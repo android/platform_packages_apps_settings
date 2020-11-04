@@ -507,6 +507,8 @@ public class AppButtonsPreferenceController extends BasePreferenceController imp
             // User can't force stop device admin.
             Log.w(TAG, "User can't force stop device admin");
             updateForceStopButtonInner(false /* enabled */);
+        } else if (mAppEntry.info.isResourceOverlay()) {
+            mButtonsPref.setButton3Visible(false);
         } else if ((mAppEntry.info.flags & ApplicationInfo.FLAG_STOPPED) == 0) {
             // If the app isn't explicitly stopped, then always show the
             // force stop button.
@@ -695,6 +697,13 @@ public class AppButtonsPreferenceController extends BasePreferenceController imp
                 .setButton3Icon(R.drawable.ic_settings_force_stop)
                 .setButton3OnClickListener(new ForceStopButtonListener())
                 .setButton3Enabled(false);
+
+        if (mAppEntry != null
+            && mAppEntry.info != null
+            && mAppEntry.info.isResourceOverlay()) {
+            mButtonsPref.setButton1Visible(false);
+            mButtonsPref.setButton3Visible(false);
+        }
     }
 
     private void startListeningToPackageRemove() {
