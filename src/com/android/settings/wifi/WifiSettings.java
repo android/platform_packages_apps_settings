@@ -105,6 +105,11 @@ public class WifiSettings extends RestrictedSettingsFragment
     @VisibleForTesting
     static final int MENU_ID_FORGET = Menu.FIRST + 7;
     private static final int MENU_ID_MODIFY = Menu.FIRST + 8;
+    static final int MENU_ID_DISCONNECT = Menu.FIRST + 2;
+    @VisibleForTesting
+    static final int MENU_ID_FORGET = Menu.FIRST + 3;
+    static final int MENU_ID_MODIFY = Menu.FIRST + 4;
+    static final int MENU_ID_SHARE = Menu.FIRST + 5;
 
     public static final int WIFI_DIALOG_ID = 1;
 
@@ -500,6 +505,17 @@ public class WifiSettings extends RestrictedSettingsFragment
                 menu.add(Menu.NONE, MENU_ID_CONNECT, 0 /* order */, R.string.wifi_connect);
             }
 
+            menu.setHeaderTitle(mSelectedWifiEntry.getTitle());
+            if (mSelectedWifiEntry.canConnect()) {
+                menu.add(Menu.NONE, MENU_ID_CONNECT, 0 /* order */, R.string.wifi_connect);
+            }
+
+            if (mSelectedWifiEntry.canDisconnect()) {
+                menu.add(Menu.NONE, MENU_ID_SHARE, 0 /* order */, R.string.share);
+                menu.add(Menu.NONE, MENU_ID_DISCONNECT, 1 /* order */,
+                        R.string.wifi_disconnect_button_text);
+            }
+
             WifiConfiguration config = mSelectedAccessPoint.getConfig();
             // Some configs are ineditable
             if (WifiUtils.isNetworkLockedDown(getActivity(), config)) {
@@ -548,6 +564,10 @@ public class WifiSettings extends RestrictedSettingsFragment
             }
             case MENU_ID_MODIFY: {
                 showDialog(mSelectedAccessPoint, WifiConfigUiBase.MODE_MODIFY);
+                return true;
+            case MENU_ID_SHARE:
+                WifiDppUtils.showLockScreen(getContext(),
+                        () -> launchWifiDppConfiguratorActivity(mSelectedWifiEntry));
                 return true;
             }
         }
