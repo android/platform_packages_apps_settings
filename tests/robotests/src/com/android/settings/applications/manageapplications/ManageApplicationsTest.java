@@ -19,9 +19,12 @@ package com.android.settings.applications.manageapplications;
 import static androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_DRAGGING;
 import static androidx.recyclerview.widget.RecyclerView.SCROLL_STATE_IDLE;
 
-import static com.android.settings.applications.manageapplications.AppFilterRegistry.FILTER_APPS_ALL;
-import static com.android.settings.applications.manageapplications.ManageApplications.LIST_TYPE_MAIN;
-import static com.android.settings.applications.manageapplications.ManageApplications.LIST_TYPE_NOTIFICATION;
+import static com.android.settings.applications.manageapplications.AppFilterRegistry
+        .FILTER_APPS_ALL;
+import static com.android.settings.applications.manageapplications.ManageApplications
+        .LIST_TYPE_MAIN;
+import static com.android.settings.applications.manageapplications.ManageApplications
+        .LIST_TYPE_NOTIFICATION;
 
 import static com.google.common.truth.Truth.assertThat;
 
@@ -138,6 +141,16 @@ public class ManageApplicationsTest {
     public void updateMenu_batteryListType_hideAppReset() {
         setUpOptionMenus();
         ReflectionHelpers.setField(mFragment, "mListType", ManageApplications.LIST_TYPE_HIGH_POWER);
+        ReflectionHelpers.setField(mFragment, "mOptionsMenu", mMenu);
+
+        mFragment.updateOptionsMenu();
+        assertThat(mMenu.findItem(R.id.reset_app_preferences).isVisible()).isFalse();
+    }
+
+    @Test
+    public void updateMenu_rroListType_hideAppReset() {
+        setUpOptionMenus();
+        ReflectionHelpers.setField(mFragment, "mListType", ManageApplications.LIST_TYPE_RRO);
         ReflectionHelpers.setField(mFragment, "mOptionsMenu", mMenu);
 
         mFragment.updateOptionsMenu();

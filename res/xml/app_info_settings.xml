@@ -89,6 +89,16 @@
         settings:controller="com.android.settings.applications.appinfo.AppOpenByDefaultPreferenceController" />
 
     <Preference
+        android:key="resource_overlay_target"
+        android:title="@string/resource_overlay_target_summary_title"
+        android:summary="@string/summary_placeholder" />
+
+    <Preference
+        android:key="resource_overlays"
+        android:title="@string/resource_overlays_title"
+        android:summary="@string/summary_placeholder" />
+
+    <Preference
         android:key="memory"
         android:title="@string/memory_settings_title"
         android:summary="@string/summary_placeholder"

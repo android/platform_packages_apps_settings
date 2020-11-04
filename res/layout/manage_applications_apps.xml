@@ -50,7 +50,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:layout_gravity="center"
-                android:text="@string/no_applications"
+                android:text="@string/no_packages"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:visibility="invisible"/>
 

@@ -37,6 +37,14 @@
         android:title="@string/menu_hide_system"
         android:showAsAction="never" />
     <item
+        android:id="@+id/show_rro"
+        android:title="@string/menu_show_rro"
+        android:showAsAction="never" />
+    <item
+        android:id="@+id/hide_rro"
+        android:title="@string/menu_hide_rro"
+        android:showAsAction="never" />
+    <item
         android:id="@+id/sort_order_alpha"
         android:title="@string/sort_order_alpha"
         android:showAsAction="never" />

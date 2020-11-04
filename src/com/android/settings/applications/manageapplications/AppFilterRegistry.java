@@ -50,6 +50,7 @@ public class AppFilterRegistry {
             FILTER_APPS_WRITE_SETTINGS,
             FILTER_APPS_INSTALL_SOURCES,
             FILTER_APPS_BLOCKED,
+            FILTER_APPS_RRO,
     })
     @interface FilterType {
     }
@@ -73,14 +74,15 @@ public class AppFilterRegistry {
     public static final int FILTER_APP_CAN_CHANGE_WIFI_STATE = 15;
     public static final int FILTER_APPS_BLOCKED = 16;
     public static final int FILTER_MANAGE_EXTERNAL_STORAGE = 17;
-    // Next id: 18. If you add an entry here, length of mFilters should be updated
+    public static final int FILTER_APPS_RRO = 18;
+    // Next id: 19. If you add an entry here, length of mFilters should be updated
 
     private static AppFilterRegistry sRegistry;
 
     private final AppFilterItem[] mFilters;
 
     private AppFilterRegistry() {
-        mFilters = new AppFilterItem[18];
+        mFilters = new AppFilterItem[19];
 
         // High power whitelist, on
         mFilters[FILTER_APPS_POWER_WHITELIST] = new AppFilterItem(

@@ -28,6 +28,7 @@ import static com.android.settings.applications.manageapplications.AppFilterRegi
 import static com.android.settings.applications.manageapplications.AppFilterRegistry.FILTER_APPS_POWER_WHITELIST;
 import static com.android.settings.applications.manageapplications.AppFilterRegistry.FILTER_APPS_POWER_WHITELIST_ALL;
 import static com.android.settings.applications.manageapplications.AppFilterRegistry.FILTER_APPS_RECENT;
+import static com.android.settings.applications.manageapplications.AppFilterRegistry.FILTER_APPS_RRO;
 import static com.android.settings.applications.manageapplications.AppFilterRegistry.FILTER_APPS_WORK;
 import static com.android.settings.search.actionbar.SearchMenuController.MENU_SEARCH;
 
@@ -123,6 +124,7 @@ import com.android.settingslib.applications.ApplicationsState;
 import com.android.settingslib.applications.ApplicationsState.AppEntry;
 import com.android.settingslib.applications.ApplicationsState.AppFilter;
 import com.android.settingslib.applications.ApplicationsState.CompoundFilter;
+import com.android.settingslib.applications.ApplicationsState.ResourceOverlayFilter;
 import com.android.settingslib.applications.ApplicationsState.VolumeFilter;
 import com.android.settingslib.applications.StorageStatsSource;
 import com.android.settingslib.fuelgauge.PowerWhitelistBackend;
@@ -149,6 +151,8 @@ public class ManageApplications extends InstrumentedFragment
 
     // Intent extras.
     public static final String EXTRA_CLASSNAME = "classname";
+    // Used for RROs only.
+    public static final String EXTRA_RRO_TARGET = "targetPackageName";
     // Used for storage only.
     public static final String EXTRA_VOLUME_UUID = "volumeUuid";
     public static final String EXTRA_VOLUME_NAME = "volumeName";
@@ -157,6 +161,7 @@ public class ManageApplications extends InstrumentedFragment
 
     private static final String EXTRA_SORT_ORDER = "sortOrder";
     private static final String EXTRA_SHOW_SYSTEM = "showSystem";
+    private static final String EXTRA_SHOW_RRO = "showRro";
     private static final String EXTRA_HAS_ENTRIES = "hasEntries";
     private static final String EXTRA_HAS_BRIDGE = "hasBridge";
     private static final String EXTRA_FILTER_TYPE = "filterType";
@@ -190,12 +195,15 @@ public class ManageApplications extends InstrumentedFragment
     @LoggingOnly
     private static final long CHANGE_RESTRICT_SAW_INTENT = 135920175L;
 
+    // whether showing system apps.
+    private static boolean sShowSystem;
+
+    // whether showing resource overlays
+    private static boolean sShowResourceOverlays;
+
     // sort order
     @VisibleForTesting
     int mSortOrder = R.id.sort_order_alpha;
-
-    // whether showing system apps.
-    private boolean mShowSystem;
 
     private ApplicationsState mApplicationsState;
 
@@ -228,6 +236,7 @@ public class ManageApplications extends InstrumentedFragment
     public static final int LIST_TYPE_PHOTOGRAPHY = 11;
     public static final int LIST_TYPE_WIFI_ACCESS = 13;
     public static final int LIST_MANAGE_EXTERNAL_STORAGE = 14;
+    public static final int LIST_TYPE_RRO = 15;
 
     // List types that should show instant apps.
     public static final Set<Integer> LIST_TYPES_WITH_INSTANT = new ArraySet<>(Arrays.asList(
@@ -257,6 +266,7 @@ public class ManageApplications extends InstrumentedFragment
     private boolean mIsPersonalOnly;
     private View mEmptyView;
     private int mFilterType;
+    private String mPkgName;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -290,7 +300,7 @@ public class ManageApplications extends InstrumentedFragment
         } else if (className.equals(HighPowerApplicationsActivity.class.getName())) {
             mListType = LIST_TYPE_HIGH_POWER;
             // Default to showing system.
-            mShowSystem = true;
+            sShowSystem = true;
             screenTitle = R.string.high_power_apps;
         } else if (className.equals(OverlaySettingsActivity.class.getName())) {
             mListType = LIST_TYPE_OVERLAY;
@@ -326,6 +336,10 @@ public class ManageApplications extends InstrumentedFragment
             mNotificationBackend = new NotificationBackend();
             mSortOrder = R.id.sort_order_recent_notification;
             screenTitle = R.string.app_notifications_title;
+        } else if (args != null && args.containsKey(EXTRA_RRO_TARGET)) {
+            mPkgName = args.getString(EXTRA_RRO_TARGET);
+            mListType = LIST_TYPE_RRO;
+            sShowResourceOverlays = true;
         } else {
             if (screenTitle == -1) {
                 screenTitle = R.string.application_info_label;
@@ -347,7 +361,9 @@ public class ManageApplications extends InstrumentedFragment
 
         if (savedInstanceState != null) {
             mSortOrder = savedInstanceState.getInt(EXTRA_SORT_ORDER, mSortOrder);
-            mShowSystem = savedInstanceState.getBoolean(EXTRA_SHOW_SYSTEM, mShowSystem);
+            sShowSystem = savedInstanceState.getBoolean(EXTRA_SHOW_SYSTEM, sShowSystem);
+            sShowResourceOverlays = savedInstanceState.getBoolean(EXTRA_SHOW_RRO,
+                                        sShowResourceOverlays);
             mFilterType =
                     savedInstanceState.getInt(EXTRA_FILTER_TYPE, AppFilterRegistry.FILTER_APPS_ALL);
             mExpandSearch = savedInstanceState.getBoolean(EXTRA_EXPAND_SEARCH_VIEW);
@@ -482,7 +498,17 @@ public class ManageApplications extends InstrumentedFragment
             mFilterAdapter.enableFilter(FILTER_APPS_POWER_WHITELIST_ALL);
         }
 
-        setCompositeFilter();
+        if (mListType == LIST_TYPE_RRO) {
+            AppFilterItem filter = new AppFilterItem(
+                                       new ResourceOverlayFilter(mPkgName,
+                                           true,
+                                           ResourceOverlayFilter.ListType.OVERLAYS_LIST),
+                                       FILTER_APPS_RRO,
+                                       R.string.filter_rros);
+            mApplications.setFilter(filter);
+        } else {
+            setCompositeFilter();
+        }
     }
 
     @VisibleForTesting
@@ -539,6 +565,8 @@ public class ManageApplications extends InstrumentedFragment
                 return SettingsEnums.CONFIGURE_WIFI;
             case LIST_MANAGE_EXTERNAL_STORAGE:
                 return SettingsEnums.MANAGE_EXTERNAL_STORAGE;
+            case LIST_TYPE_RRO:
+                return SettingsEnums.MANAGE_APPLICATIONS;
             default:
                 return SettingsEnums.PAGE_UNKNOWN;
         }
@@ -560,7 +588,8 @@ public class ManageApplications extends InstrumentedFragment
         mResetAppsHelper.onSaveInstanceState(outState);
         outState.putInt(EXTRA_SORT_ORDER, mSortOrder);
         outState.putInt(EXTRA_FILTER_TYPE, mFilter.getFilterType());
-        outState.putBoolean(EXTRA_SHOW_SYSTEM, mShowSystem);
+        outState.putBoolean(EXTRA_SHOW_SYSTEM, sShowSystem);
+        outState.putBoolean(EXTRA_SHOW_RRO, sShowResourceOverlays);
         outState.putBoolean(EXTRA_HAS_ENTRIES, mApplications.mHasReceivedLoadEntries);
         outState.putBoolean(EXTRA_HAS_BRIDGE, mApplications.mHasReceivedBridgeCallback);
         if (mSearchView != null) {
@@ -752,10 +781,17 @@ public class ManageApplications extends InstrumentedFragment
         mOptionsMenu.findItem(R.id.sort_order_size).setVisible(mListType == LIST_TYPE_STORAGE
                 && mSortOrder != R.id.sort_order_size);
 
-        mOptionsMenu.findItem(R.id.show_system).setVisible(!mShowSystem
+        mOptionsMenu.findItem(R.id.show_system).setVisible(!sShowSystem
                 && mListType != LIST_TYPE_HIGH_POWER);
-        mOptionsMenu.findItem(R.id.hide_system).setVisible(mShowSystem
+        mOptionsMenu.findItem(R.id.hide_system).setVisible(sShowSystem
                 && mListType != LIST_TYPE_HIGH_POWER);
+
+        mOptionsMenu.findItem(R.id.show_rro).setVisible(mListType != LIST_TYPE_RRO
+                && mListType != LIST_TYPE_HIGH_POWER
+                && !sShowResourceOverlays);
+        mOptionsMenu.findItem(R.id.hide_rro).setVisible(mListType != LIST_TYPE_RRO
+                && mListType != LIST_TYPE_HIGH_POWER
+                && sShowResourceOverlays);
 
         mOptionsMenu.findItem(R.id.reset_app_preferences).setVisible(mListType == LIST_TYPE_MAIN);
 
@@ -777,7 +813,7 @@ public class ManageApplications extends InstrumentedFragment
                 mApplications.rebuild(menuId);
             }
         } else if (i == R.id.show_system || i == R.id.hide_system) {
-            mShowSystem = !mShowSystem;
+            sShowSystem = !sShowSystem;
             mApplications.rebuild();
         } else if (i == R.id.reset_app_preferences) {
             mResetAppsHelper.buildResetDialog();
@@ -796,7 +832,10 @@ public class ManageApplications extends InstrumentedFragment
                 startActivityForResult(intent, ADVANCED_SETTINGS);
             }
             return true;
-        } else {// Handle the home button
+        } else if (i == R.id.show_rro || i == R.id.hide_rro) {
+            sShowResourceOverlays = !sShowResourceOverlays;
+            mApplications.rebuild();
+        } else {
             return false;
         }
         updateOptionsMenu();
@@ -1203,7 +1242,7 @@ public class ManageApplications extends InstrumentedFragment
             if (mCompositeFilter != null) {
                 filterObj = new CompoundFilter(filterObj, mCompositeFilter);
             }
-            if (!mManageApplications.mShowSystem) {
+            if (!mManageApplications.sShowSystem) {
                 if (LIST_TYPES_WITH_INSTANT.contains(mManageApplications.mListType)) {
                     filterObj = new CompoundFilter(filterObj,
                             ApplicationsState.FILTER_DOWNLOADED_AND_LAUNCHER_AND_INSTANT);
@@ -1232,8 +1271,15 @@ public class ManageApplications extends InstrumentedFragment
                 comparatorObj = ApplicationsState.ALPHA_COMPARATOR;
             }
 
-            final AppFilter finalFilterObj = new CompoundFilter(filterObj,
-                    ApplicationsState.FILTER_NOT_HIDE);
+            filterObj = new CompoundFilter(filterObj, ApplicationsState.FILTER_NOT_HIDE);
+            if (mManageApplications.mListType != LIST_TYPE_RRO) {
+                filterObj = new CompoundFilter(filterObj,
+                                new ResourceOverlayFilter("",
+                                     mManageApplications.sShowResourceOverlays,
+                                     ResourceOverlayFilter.ListType.APPLICATIONS_LIST));
+            }
+
+            final AppFilter finalFilterObj = filterObj;
             ThreadUtils.postOnBackgroundThread(() -> {
                 mSession.rebuild(finalFilterObj, comparatorObj, false);
             });
@@ -1396,7 +1442,7 @@ public class ManageApplications extends InstrumentedFragment
 
         @Override
         public void onLauncherInfoChanged() {
-            if (!mManageApplications.mShowSystem) {
+            if (!mManageApplications.sShowSystem) {
                 rebuild();
             }
         }

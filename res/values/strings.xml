@@ -4450,12 +4450,22 @@
     <!-- Text for filter option in ManageApps screen to display list of
     packages installed on sdcard. -->
     <string name="filter_apps_onsdcard" product="default">On SD card</string>
+    <!--  [CHAR LIMIT=32] Text for filter option in ManageApps screen to display list of resource overlays -->
+    <string name="filter_rros">Resource Overlays</string>
+    <!-- [CHAR LIMIT=32] Title of the fragment displaying the list of Runtime Resource Overlays. -->
+    <string name="resource_overlays_title">Resource Overlays</string>
+    <!-- [CHAR_LIMIT=NONE] Text displayed if no runtime resource overlay is installed for a selected package/app. -->
+    <string name="resource_overlays_applied_none">None applied.</string>
+
     <!-- [CHAR LIMIT=30] Manage applications, text telling using an application is not installed for the current user. The key part is that it's not installed. -->
     <string name="not_installed">Not installed for this user</string>
     <!-- [CHAR LIMIT=30] App details, text telling an application is installed. -->
     <string name="installed">Installed</string>
     <!-- [CHAR LIMIT=25] Text shown when there are no applications to display. -->
     <string name="no_applications">No apps.</string>
+    <!-- [CHAR LIMIT=25] Text shown when there are no packages to display. -->
+    <string name="no_packages">Nothing to display.</string>
+
     <!-- [CHAR LIMIT=15] Manage applications, label for chart showing internal storage use. -->
     <string name="internal_storage">Internal storage</string>
     <!-- Manage app screen, shown when the activity is busy recomputing the size of each app -->
@@ -5527,6 +5537,11 @@
     <!-- Display time remaining until battery is charged [CHAR_LIMIT=60] -->
     <string name="power_charge_remaining"><xliff:g id="until_charged">%1$s</xliff:g> to charge</string>
 
+    <!-- Activity title for Runtime Resource Overlay summary [CHAR_LIMIT=NONE]-->
+    <string name="resource_overlay_target_summary_title">Resource Overlay target</string>
+    <!-- Text of "Resource overlay target" item summary if the target is not present on device. [CHAR_LIMIT=30]-->
+    <string name="resource_overlay_target_summary_missing">not installed</string>
+
     <!-- Title for the background activity setting, which allows a user to control whether an app can run in the background [CHAR_LIMIT=40] -->
     <string name="background_activity_title">Background restriction</string>
     <!-- Summary for the background activity [CHAR_LIMIT=120] -->
@@ -6093,6 +6108,11 @@
     <string name="menu_show_system">Show system</string>
     <!-- [CHAR LIMIT=NONE] Menu for manage apps to control whether system processes are hidden -->
     <string name="menu_hide_system">Hide system</string>
+    <!-- [CHAR LIMIT=NONE] Menu for manage apps to control whether resource overlays are shown -->
+    <string name="menu_show_rro">Show Resource Overlays</string>
+    <!-- [CHAR LIMIT=NONE] Menu for manage apps to control whether resource overlays are hidden -->
+    <string name="menu_hide_rro">Hide Resource Overlays</string>
+
     <!-- [CHAR LIMIT=NONE] Menu for process stats to control whether stats are shown
          as percentages-->
     <string name="menu_show_percentage">Show percentages</string>
