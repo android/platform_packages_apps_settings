@@ -103,8 +103,16 @@ public class WifiSettings extends RestrictedSettingsFragment
 
     private static final int MENU_ID_CONNECT = Menu.FIRST + 6;
     @VisibleForTesting
+<<<<<<< HEAD
     static final int MENU_ID_FORGET = Menu.FIRST + 7;
     private static final int MENU_ID_MODIFY = Menu.FIRST + 8;
+=======
+    static final int MENU_ID_DISCONNECT = Menu.FIRST + 2;
+    @VisibleForTesting
+    static final int MENU_ID_FORGET = Menu.FIRST + 3;
+    static final int MENU_ID_MODIFY = Menu.FIRST + 4;
+    static final int MENU_ID_SHARE = Menu.FIRST + 5;
+>>>>>>> 8881f91349 (Implemented nearby button that displays wifi sharing intent and long press button that opens wifi qr share fragment)
 
     public static final int WIFI_DIALOG_ID = 1;
 
@@ -492,6 +500,7 @@ public class WifiSettings extends RestrictedSettingsFragment
     public void onCreateContextMenu(ContextMenu menu, View view, ContextMenuInfo info) {
         Preference preference = (Preference) view.getTag();
 
+<<<<<<< HEAD
         if (preference instanceof LongPressAccessPointPreference) {
             mSelectedAccessPoint =
                     ((LongPressAccessPointPreference) preference).getAccessPoint();
@@ -499,6 +508,18 @@ public class WifiSettings extends RestrictedSettingsFragment
             if (mSelectedAccessPoint.isConnectable()) {
                 menu.add(Menu.NONE, MENU_ID_CONNECT, 0 /* order */, R.string.wifi_connect);
             }
+=======
+        menu.setHeaderTitle(mSelectedWifiEntry.getTitle());
+        if (mSelectedWifiEntry.canConnect()) {
+            menu.add(Menu.NONE, MENU_ID_CONNECT, 0 /* order */, R.string.wifi_connect);
+        }
+
+        if (mSelectedWifiEntry.canDisconnect()) {
+            menu.add(Menu.NONE, MENU_ID_SHARE, 0 /* order */, R.string.share);
+            menu.add(Menu.NONE, MENU_ID_DISCONNECT, 1 /* order */,
+                    R.string.wifi_disconnect_button_text);
+        }
+>>>>>>> 8881f91349 (Implemented nearby button that displays wifi sharing intent and long press button that opens wifi qr share fragment)
 
             WifiConfiguration config = mSelectedAccessPoint.getConfig();
             // Some configs are ineditable
@@ -545,9 +566,18 @@ public class WifiSettings extends RestrictedSettingsFragment
             case MENU_ID_FORGET: {
                 forget();
                 return true;
+<<<<<<< HEAD
             }
             case MENU_ID_MODIFY: {
                 showDialog(mSelectedAccessPoint, WifiConfigUiBase.MODE_MODIFY);
+=======
+            case MENU_ID_SHARE:
+                WifiDppUtils.showLockScreen(getContext(),
+                        () -> launchWifiDppConfiguratorActivity(mSelectedWifiEntry));
+                return true;
+            case MENU_ID_MODIFY:
+                showDialog(mSelectedWifiEntry, WifiConfigUiBase2.MODE_MODIFY);
+>>>>>>> 8881f91349 (Implemented nearby button that displays wifi sharing intent and long press button that opens wifi qr share fragment)
                 return true;
             }
         }
@@ -1317,4 +1347,106 @@ public class WifiSettings extends RestrictedSettingsFragment
                     return keys;
                 }
             };
+<<<<<<< HEAD
+=======
+
+    private class WifiEntryConnectCallback implements ConnectCallback {
+        final WifiEntry mConnectWifiEntry;
+        final boolean mEditIfNoConfig;
+        final boolean mFullScreenEdit;
+
+        WifiEntryConnectCallback(WifiEntry connectWifiEntry, boolean editIfNoConfig,
+                boolean fullScreenEdit) {
+            mConnectWifiEntry = connectWifiEntry;
+            mEditIfNoConfig = editIfNoConfig;
+            mFullScreenEdit = fullScreenEdit;
+        }
+
+        @Override
+        public void onConnectResult(@ConnectStatus int status) {
+            if (isFinishingOrDestroyed()) {
+                return;
+            }
+
+            if (status == ConnectCallback.CONNECT_STATUS_SUCCESS) {
+                mClickedConnect = true;
+            } else if (status == ConnectCallback.CONNECT_STATUS_FAILURE_NO_CONFIG) {
+                if (mEditIfNoConfig) {
+                    // Edit an unsaved secure Wi-Fi network.
+                    if (mFullScreenEdit) {
+                        launchConfigNewNetworkFragment(mConnectWifiEntry);
+                    } else {
+                        showDialog(mConnectWifiEntry, WifiConfigUiBase2.MODE_CONNECT);
+                    }
+                }
+            } else if (status == CONNECT_STATUS_FAILURE_UNKNOWN) {
+                Toast.makeText(getContext(), R.string.wifi_failed_connect_message,
+                        Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    private void launchConfigNewNetworkFragment(WifiEntry wifiEntry) {
+        final Bundle bundle = new Bundle();
+        bundle.putString(WifiNetworkDetailsFragment2.KEY_CHOSEN_WIFIENTRY_KEY,
+                wifiEntry.getKey());
+        new SubSettingLauncher(getContext())
+                .setTitleText(wifiEntry.getTitle())
+                .setDestination(ConfigureWifiEntryFragment.class.getName())
+                .setArguments(bundle)
+                .setSourceMetricsCategory(getMetricsCategory())
+                .setResultListener(WifiSettings.this, CONFIG_NETWORK_REQUEST)
+                .launch();
+    }
+
+    private void launchWifiDppConfiguratorActivity(WifiEntry wifiEntry) {
+        final Intent intent = WifiDppUtils.getConfiguratorQrCodeGeneratorIntentOrNull(getContext(),
+                mWifiManager, wifiEntry);
+
+        if (intent == null) {
+            Log.e(TAG, "Launch Wi-Fi DPP QR code generator with a wrong Wi-Fi network!");
+        } else {
+            mMetricsFeatureProvider.action(SettingsEnums.PAGE_UNKNOWN,
+                    SettingsEnums.ACTION_SETTINGS_SHARE_WIFI_QR_CODE,
+                    SettingsEnums.SETTINGS_WIFI_DPP_CONFIGURATOR,
+                    /* key */ null,
+                    /* value */ Integer.MIN_VALUE);
+
+            startActivity(intent);
+        }
+    }
+
+    /** Helper method to return whether a WifiEntry is disabled due to a wrong password */
+    private static boolean isDisabledByWrongPassword(WifiEntry wifiEntry) {
+        WifiConfiguration config = wifiEntry.getWifiConfiguration();
+        if (config == null) {
+            return false;
+        }
+        WifiConfiguration.NetworkSelectionStatus networkStatus =
+                config.getNetworkSelectionStatus();
+        if (networkStatus == null
+                || networkStatus.getNetworkSelectionStatus() == NETWORK_SELECTION_ENABLED) {
+            return false;
+        }
+        int reason = networkStatus.getNetworkSelectionDisableReason();
+        return WifiConfiguration.NetworkSelectionStatus.DISABLED_BY_WRONG_PASSWORD == reason;
+    }
+
+    @VisibleForTesting
+    void openSubscriptionHelpPage(WifiEntry wifiEntry) {
+        final Intent intent = getHelpIntent(getContext(), wifiEntry.getHelpUriString());
+        if (intent != null) {
+            try {
+                startActivityForResult(intent, MANAGE_SUBSCRIPTION);
+            } catch (ActivityNotFoundException e) {
+                Log.e(TAG, "Activity was not found for intent, " + intent.toString());
+            }
+        }
+    }
+
+    @VisibleForTesting
+    Intent getHelpIntent(Context context, String helpUrlString) {
+        return HelpUtils.getHelpIntent(context, helpUrlString, context.getClass().getName());
+    }
+>>>>>>> 8881f91349 (Implemented nearby button that displays wifi sharing intent and long press button that opens wifi qr share fragment)
 }
