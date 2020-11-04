@@ -1264,6 +1264,23 @@ public class WifiSettings extends RestrictedSettingsFragment
                 .launch();
     }
 
+    private void launchWifiDppConfiguratorActivity(AccessPoint accessPoint) {
+        final Intent intent = WifiDppUtils.getConfiguratorQrCodeGeneratorIntentOrNull(getContext(),
+                mWifiManager, accessPoint);
+
+        if (intent == null) {
+            Log.e(TAG, "Launch Wi-Fi DPP QR code generator with a wrong Wi-Fi network!");
+        } else {
+            mMetricsFeatureProvider.action(SettingsEnums.PAGE_UNKNOWN,
+                    SettingsEnums.ACTION_SETTINGS_SHARE_WIFI_QR_CODE,
+                    SettingsEnums.SETTINGS_WIFI_DPP_CONFIGURATOR,
+                    /* key */ null,
+                    /* value */ Integer.MIN_VALUE);
+
+            startActivity(intent);
+        }
+    }
+
     /**
      * Starts the captive portal for current network if it's been clicked from the available
      * networks (or contextual menu). We only do it *once* for a picked network, to avoid connecting
