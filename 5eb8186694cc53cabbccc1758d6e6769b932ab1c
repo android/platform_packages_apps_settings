@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e8a5b7c_7c76c56d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1762265
+      },
+      "writtenOn": "2020-11-12T06:11:22Z",
+      "side": 1,
+      "message": "It looks like the presubmits are failing, because they are unable to build avd_boot_test_cloud_tf. This issue looks unrelated to your change, however. \n\nWould you mind syncing to a more recent commit on the branch, and then re-running the presubmit? I suspect that this issue has been fixed by now.\n\nAlso, because this changes settings widget code (rather than telephony-specific code), reassigning review to tmfang.",
+      "revId": "5eb8186694cc53cabbccc1758d6e6769b932ab1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
