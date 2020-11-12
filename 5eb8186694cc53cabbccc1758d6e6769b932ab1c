@@ -34,6 +34,24 @@
       "parentUuid": "0e8a5b7c_7c76c56d",
       "revId": "5eb8186694cc53cabbccc1758d6e6769b932ab1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05f3ba17_a41855a2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1762265
+      },
+      "writtenOn": "2020-11-12T08:20:33Z",
+      "side": 1,
+      "message": "Sure thing, running the presubmits now. For what it\u0027s worth I think they also automatically run once the patch is rebased.",
+      "parentUuid": "487ce004_bdfcafce",
+      "revId": "5eb8186694cc53cabbccc1758d6e6769b932ab1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
