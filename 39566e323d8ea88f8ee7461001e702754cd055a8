@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "376f70c8_012f651d",
+        "filename": "src/com/android/settings/widget/HighlightablePreferenceGroupAdapter.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-11-13T04:07:27Z",
+      "side": 1,
+      "message": "nit: \nWe usually use TextUtils.equals(a, b) in Settings app.",
+      "range": {
+        "startLine": 117,
+        "startChar": 45,
+        "endLine": 117,
+        "endChar": 92
+      },
+      "revId": "39566e323d8ea88f8ee7461001e702754cd055a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
