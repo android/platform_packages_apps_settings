@@ -22,6 +22,30 @@
       },
       "revId": "39566e323d8ea88f8ee7461001e702754cd055a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a6e2f9f_8c5408ca",
+        "filename": "src/com/android/settings/widget/HighlightablePreferenceGroupAdapter.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1121603
+      },
+      "writtenOn": "2020-11-13T05:43:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "376f70c8_012f651d",
+      "range": {
+        "startLine": 117,
+        "startChar": 45,
+        "endLine": 117,
+        "endChar": 92
+      },
+      "revId": "39566e323d8ea88f8ee7461001e702754cd055a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
