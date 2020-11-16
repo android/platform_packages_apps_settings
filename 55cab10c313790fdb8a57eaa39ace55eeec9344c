@@ -16,6 +16,23 @@
       "message": "Good commit, this should appear in AOSP.",
       "revId": "55cab10c313790fdb8a57eaa39ace55eeec9344c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72e588f8_5ea130fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1634819
+      },
+      "writtenOn": "2020-11-16T11:14:36Z",
+      "side": 1,
+      "message": "I\u0027m adding you as reviewer based on your previous reviews on a similar change (Ia54a1d130e77b4440753f0ce69ae1726cc2c08d9).\nThere are quite many devices (eg. xiaomi devices) that don\u0027t expose androidboot.hardware.revision which results in having an empty but clickable and copyable entry on aosp builds for these devices.\nDisabling config_show_device_model would also remove the model and serial number entry.",
+      "revId": "55cab10c313790fdb8a57eaa39ace55eeec9344c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
