@@ -73,6 +73,30 @@
       },
       "revId": "55cab10c313790fdb8a57eaa39ace55eeec9344c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34657c7a_ad2247d9",
+        "filename": "src/com/android/settings/deviceinfo/hardwareinfo/HardwareRevisionPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1634819
+      },
+      "writtenOn": "2020-11-16T15:50:18Z",
+      "side": 1,
+      "message": "I think it should not be || because in case config_show_device_model is not true it was set to false explicitly and when someone did this he probably would not want to see this, even if androidboot.hardware.revision is set. By using \u0026\u0026 it just ensures that it does not show an empty entry, while still respecting the config_show_device_model bool.",
+      "parentUuid": "3594f914_d3eb85aa",
+      "range": {
+        "startLine": 35,
+        "startChar": 83,
+        "endLine": 35,
+        "endChar": 85
+      },
+      "revId": "55cab10c313790fdb8a57eaa39ace55eeec9344c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
