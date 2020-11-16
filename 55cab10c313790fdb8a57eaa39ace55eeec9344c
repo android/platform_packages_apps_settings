@@ -33,6 +33,29 @@
       "message": "I\u0027m adding you as reviewer based on your previous reviews on a similar change (Ia54a1d130e77b4440753f0ce69ae1726cc2c08d9).\nThere are quite many devices (eg. xiaomi devices) that don\u0027t expose androidboot.hardware.revision which results in having an empty but clickable and copyable entry on aosp builds for these devices.\nDisabling config_show_device_model would also remove the model and serial number entry.",
       "revId": "55cab10c313790fdb8a57eaa39ace55eeec9344c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3594f914_d3eb85aa",
+        "filename": "src/com/android/settings/deviceinfo/hardwareinfo/HardwareRevisionPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-11-16T12:22:17Z",
+      "side": 1,
+      "message": "should it be || ?",
+      "range": {
+        "startLine": 35,
+        "startChar": 83,
+        "endLine": 35,
+        "endChar": 85
+      },
+      "revId": "55cab10c313790fdb8a57eaa39ace55eeec9344c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
