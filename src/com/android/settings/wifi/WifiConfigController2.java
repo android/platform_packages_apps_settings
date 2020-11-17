@@ -18,6 +18,7 @@ package com.android.settings.wifi;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.net.InetAddresses;
 import android.net.IpConfiguration;
 import android.net.IpConfiguration.IpAssignment;
 import android.net.IpConfiguration.ProxySettings;
@@ -881,7 +882,7 @@ public class WifiConfigController2 implements TextWatcher,
 
     private Inet4Address getIPv4Address(String text) {
         try {
-            return (Inet4Address) NetworkUtils.numericToInetAddress(text);
+            return (Inet4Address) InetAddresses.numericToInetAddress(text);
         } catch (IllegalArgumentException | ClassCastException e) {
             return null;
         }

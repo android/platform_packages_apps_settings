@@ -18,6 +18,7 @@ package com.android.settings.wifi;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.net.InetAddresses;
 import android.net.IpConfiguration;
 import android.net.IpConfiguration.IpAssignment;
 import android.net.IpConfiguration.ProxySettings;
@@ -900,7 +901,7 @@ public class WifiConfigController implements TextWatcher,
 
     private Inet4Address getIPv4Address(String text) {
         try {
-            return (Inet4Address) NetworkUtils.numericToInetAddress(text);
+            return (Inet4Address) InetAddresses.parseNumericAddress(text);
         } catch (IllegalArgumentException | ClassCastException e) {
             return null;
         }
@@ -935,7 +936,7 @@ public class WifiConfigController implements TextWatcher,
         String gateway = mGatewayView.getText().toString();
         if (TextUtils.isEmpty(gateway)) {
             try {
-                //Extract a default gateway from IP address
+                // Extract a default gateway from IP address
                 InetAddress netPart = NetworkUtils.getNetworkPart(inetAddr, networkPrefixLength);
                 byte[] addr = netPart.getAddress();
                 addr[addr.length - 1] = 1;
