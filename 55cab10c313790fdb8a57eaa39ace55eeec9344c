@@ -97,6 +97,30 @@
       },
       "revId": "55cab10c313790fdb8a57eaa39ace55eeec9344c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "752381f2_0731a301",
+        "filename": "src/com/android/settings/deviceinfo/hardwareinfo/HardwareRevisionPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-11-17T03:28:48Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "34657c7a_ad2247d9",
+      "range": {
+        "startLine": 35,
+        "startChar": 83,
+        "endLine": 35,
+        "endChar": 85
+      },
+      "revId": "55cab10c313790fdb8a57eaa39ace55eeec9344c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
