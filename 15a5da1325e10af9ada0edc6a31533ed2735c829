@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "199e85b9_e8a721bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1463276
+      },
+      "writtenOn": "2020-11-18T21:45:53Z",
+      "side": 1,
+      "message": "Ping on this issue. Any blockers for submission?",
+      "revId": "15a5da1325e10af9ada0edc6a31533ed2735c829",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
