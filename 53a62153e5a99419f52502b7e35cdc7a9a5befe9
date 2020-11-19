@@ -16,6 +16,24 @@
       "message": "Ping on this issue. Any blockers for submission?",
       "revId": "53a62153e5a99419f52502b7e35cdc7a9a5befe9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2dc8b3f_41cc8ba9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061057
+      },
+      "writtenOn": "2020-11-19T02:59:48Z",
+      "side": 1,
+      "message": "I left comments in b/159848003#comment21.",
+      "parentUuid": "7bf09e94_72e05278",
+      "revId": "53a62153e5a99419f52502b7e35cdc7a9a5befe9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
