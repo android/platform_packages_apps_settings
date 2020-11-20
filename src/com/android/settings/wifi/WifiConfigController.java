@@ -879,7 +879,7 @@ public class WifiConfigController implements TextWatcher,
                 result = R.string.proxy_error_invalid_port;
             }
             if (result == 0) {
-                mHttpProxy = new ProxyInfo(host, port, exclusionList);
+                mHttpProxy = ProxyInfo.buildDirectProxy(host, port, exclusionList);
             } else {
                 return false;
             }
@@ -893,7 +893,7 @@ public class WifiConfigController implements TextWatcher,
             if (uri == null) {
                 return false;
             }
-            mHttpProxy = new ProxyInfo(uri);
+            mHttpProxy = ProxyInfo.buildPacProxy(uri);
         }
         return true;
     }

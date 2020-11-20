@@ -229,7 +229,7 @@ public class ProxySelector extends InstrumentedFragment implements DialogCreatab
                 return false;
             }
         }
-        ProxyInfo p = new ProxyInfo(hostname, port, exclList);
+        ProxyInfo p = ProxyInfo.buildDirectProxy(hostname, port, exclList);
         // FIXME: The best solution would be to make a better UI that would
         // disable editing of the text boxes if the user chooses to use the
         // default settings. i.e. checking a box to always use the default
