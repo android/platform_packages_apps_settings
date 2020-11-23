@@ -1,0 +1,10 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Code-Review+2: Sarah Chin <sarahchin@google.com>
+Code-Review+2: Tsung-Mao Fang <tmfang@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Presubmit-Verified+1: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-by: Sarah Chin <sarahchin@google.com>
+Submitted-at: Mon, 23 Nov 2020 17:50:16 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1506478
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
