@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006359541",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1509829?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "be3c2f43_7b15a6fa",
+        "filename": "tests/robotests/src/com/android/settings/applications/manageapplications/AppFilterRegistryTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-11-24T13:44:28Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 73,
+        "startChar": 41,
+        "endLine": 73,
+        "endChar": 50
+      },
+      "revId": "2654a6d5f1cd820135f1adedbd93c71c0917bb85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
