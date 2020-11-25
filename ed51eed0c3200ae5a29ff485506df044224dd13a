@@ -33,6 +33,23 @@
       "message": "Ping",
       "revId": "ed51eed0c3200ae5a29ff485506df044224dd13a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f62cdfc6_66758ec4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1352498
+      },
+      "writtenOn": "2020-11-25T03:30:34Z",
+      "side": 1,
+      "message": "Hi Tsung-Mao,\n\ncould you please review the updated patchset again and check CR+2 if you are okay with the proposed CL? thanks",
+      "revId": "ed51eed0c3200ae5a29ff485506df044224dd13a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
