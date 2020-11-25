@@ -16,6 +16,23 @@
       "message": "@Tsung-Mao Fang,\nCould you merge it?",
       "revId": "ed51eed0c3200ae5a29ff485506df044224dd13a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "448ef9a5_49b76782",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121603
+      },
+      "writtenOn": "2020-11-25T02:54:42Z",
+      "side": 1,
+      "message": "Ping",
+      "revId": "ed51eed0c3200ae5a29ff485506df044224dd13a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
