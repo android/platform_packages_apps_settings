@@ -159,7 +159,7 @@ public class ContactDiscoveryPreferenceControllerTest {
     }
 
     private void setRcsPresenceConfig(boolean isEnabled) {
-        mCarrierConfig.putBoolean(CarrierConfigManager.KEY_USE_RCS_PRESENCE_BOOL, isEnabled);
+        mCarrierConfig.putBoolean(CarrierConfigManager.KEY_RCS_PRESENCE_SUPPORTED_BOOL, isEnabled);
     }
 
     private ContentObserver getUceChangeObserver() {
