@@ -28,7 +28,6 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.NetworkUtils;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.Settings;
@@ -48,6 +47,7 @@ import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.AlertDialog;
 import androidx.preference.PreferenceViewHolder;
 
+import com.android.internal.net.NetworkUtilsInternal;
 import com.android.settings.R;
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settings.utils.AnnotationSpan;
@@ -278,7 +278,7 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
         final Button saveButton = getSaveButton();
         if (saveButton != null) {
             saveButton.setEnabled(modeProvider
-                    ? NetworkUtils.isWeaklyValidatedHostname(mEditText.getText().toString())
+                    ? NetworkUtilsInternal.isWeaklyValidatedHostname(mEditText.getText().toString())
                     : true);
         }
     }
