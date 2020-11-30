@@ -69,6 +69,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc7d076a_fb0bc6d4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-11-30T11:35:45Z",
+      "side": 1,
+      "message": "Thanks.\nLook good to me.",
+      "revId": "55cab10c313790fdb8a57eaa39ace55eeec9344c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3594f914_d3eb85aa",
