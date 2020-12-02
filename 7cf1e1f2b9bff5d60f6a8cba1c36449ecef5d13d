@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c1065f6_da16e732",
+        "filename": "src/com/android/settings/network/telephony/ContactDiscoveryPreferenceController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2020-12-02T21:29:05Z",
+      "side": 1,
+      "message": "This should only be shown if KEY_RCS_BULK_CAPABILITY_EXCHANGE_BOOL is set.",
+      "range": {
+        "startLine": 102,
+        "startChar": 37,
+        "endLine": 102,
+        "endChar": 68
+      },
+      "revId": "7cf1e1f2b9bff5d60f6a8cba1c36449ecef5d13d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61b76159_310e4bf0",
+        "filename": "src/com/android/settings/network/telephony/MobileNetworkUtils.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2020-12-02T21:29:05Z",
+      "side": 1,
+      "message": "This should only be shown if KEY_RCS_BULK_CAPABILITY_EXCHANGE_BOOL is set.",
+      "range": {
+        "startLine": 202,
+        "startChar": 54,
+        "endLine": 202,
+        "endChar": 85
+      },
+      "revId": "7cf1e1f2b9bff5d60f6a8cba1c36449ecef5d13d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
