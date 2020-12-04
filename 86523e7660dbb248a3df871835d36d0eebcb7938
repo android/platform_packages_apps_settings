@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eeb8bd39_eba8155e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1061009
+      },
+      "writtenOn": "2020-12-04T15:21:26Z",
+      "side": 1,
+      "message": "I\u0027d just remove this paragraph",
+      "parentUuid": "d1c52c78_8e3c0dff",
+      "range": {
+        "startLine": 9,
+        "startChar": 41,
+        "endLine": 9,
+        "endChar": 49
+      },
+      "revId": "86523e7660dbb248a3df871835d36d0eebcb7938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
