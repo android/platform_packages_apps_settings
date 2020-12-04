@@ -16,6 +16,23 @@
       "message": "Add Bonian to help review.",
       "revId": "9d3dfd11b18ebaff9f0a1f29f9779ffb129d58b5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c553a0e_dcd0d598",
+        "filename": "src/com/android/settings/network/PrivateDnsModeDialogPreference.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2020-12-04T03:37:36Z",
+      "side": 1,
+      "message": "How about import following method from Guava library instead of implementation here ?\ncom.google.common.net.InternetDomainName.from()",
+      "revId": "9d3dfd11b18ebaff9f0a1f29f9779ffb129d58b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
