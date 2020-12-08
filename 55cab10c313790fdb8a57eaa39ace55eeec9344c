@@ -104,6 +104,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "64465e2b_523f3161",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1634819
+      },
+      "writtenOn": "2020-12-08T11:08:38Z",
+      "side": 1,
+      "message": "Hi there.\nIs the warning in the last presubmit run just about the \"unresolved\" comment which is fixed now?\nIf that\u0027s not the case, can i do something about the warning myself?\nThanks for your help (:",
+      "revId": "55cab10c313790fdb8a57eaa39ace55eeec9344c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3594f914_d3eb85aa",
