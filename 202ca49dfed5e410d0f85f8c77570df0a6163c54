@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d378d40_e8fde8dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1550939
+      },
+      "writtenOn": "2020-12-09T16:30:58Z",
+      "side": 1,
+      "message": "Bypassing presubmit for the following reason: cf_x86_auto-userdebug tests have been broken before this change.",
+      "revId": "202ca49dfed5e410d0f85f8c77570df0a6163c54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
