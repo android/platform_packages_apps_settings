@@ -48,6 +48,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6adb6bfb_598bf50f",
+        "filename": "src/com/android/settings/network/telephony/ContactDiscoveryPreferenceController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1373692
+      },
+      "writtenOn": "2020-12-10T10:32:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f82baf0_5be2331c",
+      "range": {
+        "startLine": 102,
+        "startChar": 37,
+        "endLine": 102,
+        "endChar": 68
+      },
+      "revId": "7cf1e1f2b9bff5d60f6a8cba1c36449ecef5d13d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a63fcdad_14caf4d7",
+        "filename": "src/com/android/settings/network/telephony/ContactDiscoveryPreferenceController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1373692
+      },
+      "writtenOn": "2020-12-10T10:32:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f82baf0_5be2331c",
+      "range": {
+        "startLine": 102,
+        "startChar": 37,
+        "endLine": 102,
+        "endChar": 68
+      },
+      "revId": "7cf1e1f2b9bff5d60f6a8cba1c36449ecef5d13d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61b76159_310e4bf0",
@@ -85,6 +133,54 @@
       "side": 1,
       "message": "Actually, we will need to check  KEY_USE_RCS_PRESENCE_BOOL || KEY_RCS_BULK_CAPABILITY_EXCHANGE_BOOL here",
       "parentUuid": "61b76159_310e4bf0",
+      "range": {
+        "startLine": 202,
+        "startChar": 54,
+        "endLine": 202,
+        "endChar": 85
+      },
+      "revId": "7cf1e1f2b9bff5d60f6a8cba1c36449ecef5d13d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26353ac2_9a3ad869",
+        "filename": "src/com/android/settings/network/telephony/MobileNetworkUtils.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1373692
+      },
+      "writtenOn": "2020-12-10T10:32:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73956297_756024b4",
+      "range": {
+        "startLine": 202,
+        "startChar": 54,
+        "endLine": 202,
+        "endChar": 85
+      },
+      "revId": "7cf1e1f2b9bff5d60f6a8cba1c36449ecef5d13d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a29aea47_f8f32fd8",
+        "filename": "src/com/android/settings/network/telephony/MobileNetworkUtils.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1373692
+      },
+      "writtenOn": "2020-12-10T10:32:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73956297_756024b4",
       "range": {
         "startLine": 202,
         "startChar": 54,
