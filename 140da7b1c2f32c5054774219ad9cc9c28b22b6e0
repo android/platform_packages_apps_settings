@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bacc5f46_5620583f",
+        "filename": "src/com/android/settings/network/telephony/ContactDiscoveryPreferenceController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2020-12-11T20:37:32Z",
+      "side": 1,
+      "message": "This should be KEY_USE_RCS_PRESENCE_BOOL to keep backwards compat with the old implementation.\n\nKEY_ENABLE_PRESENCE_CAPABILITY_EXCHANGE_BOOL should not be used to enable/disable this capability.",
+      "range": {
+        "startLine": 103,
+        "startChar": 41,
+        "endLine": 103,
+        "endChar": 85
+      },
+      "revId": "140da7b1c2f32c5054774219ad9cc9c28b22b6e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4469a969_8adff5ca",
+        "filename": "src/com/android/settings/network/telephony/MobileNetworkUtils.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1098053
+      },
+      "writtenOn": "2020-12-11T20:37:32Z",
+      "side": 1,
+      "message": "KEY_USE_RCS_PRESENCE_BOOL",
+      "range": {
+        "startLine": 203,
+        "startChar": 41,
+        "endLine": 203,
+        "endChar": 85
+      },
+      "revId": "140da7b1c2f32c5054774219ad9cc9c28b22b6e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
