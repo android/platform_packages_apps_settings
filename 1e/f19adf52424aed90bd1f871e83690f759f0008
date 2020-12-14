@@ -1,0 +1,9 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Code-Review+2: Ulyana Trafimovich <skvadrik@google.com>
+Autosubmit+1: Diego Vela <diegovela@google.com>
+Build-Cop-Override+1: Diego Vela <diegovela@google.com>
+Submitted-by: Diego Vela <diegovela@google.com>
+Submitted-at: Mon, 14 Dec 2020 22:09:56 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1526684
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
