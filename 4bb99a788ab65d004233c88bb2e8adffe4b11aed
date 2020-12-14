@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0a61702_ad6825b2",
+        "filename": "src/com/android/settings/development/WirelessDebuggingPreferenceController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1128973
+      },
+      "writtenOn": "2020-12-14T15:37:58Z",
+      "side": 0,
+      "message": "Should we keep the null check?",
+      "range": {
+        "startLine": 144,
+        "startChar": 8,
+        "endLine": 144,
+        "endChar": 25
+      },
+      "revId": "4bb99a788ab65d004233c88bb2e8adffe4b11aed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
