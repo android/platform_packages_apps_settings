@@ -16,6 +16,23 @@
       "message": "PTAL, thanks! This is to enable WiFi ADB when WiFi is not the default network.\nAdding tmfang@ for review owner from joshuaduong@ commit history for this feature.",
       "revId": "d2cd7f9ab7ad06d85204321113b5506a28e12c3b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fea98e6e_00d5fd34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1107893
+      },
+      "writtenOn": "2020-12-14T14:15:06Z",
+      "side": 1,
+      "message": "LGTM.",
+      "revId": "d2cd7f9ab7ad06d85204321113b5506a28e12c3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
