@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006780114",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1529801?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "9b64d3a0_76b0b741",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-12-15T08:34:01Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 10,
+        "startChar": 61,
+        "endLine": 10,
+        "endChar": 70
+      },
+      "revId": "5e54159b1f38a6a98c33a07e4b752ee3a56ac191",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006780114",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1529801?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "4f59c912_cbc64443",
+        "filename": "res/values/config.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-12-15T08:34:01Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 1
+      },
+      "revId": "5e54159b1f38a6a98c33a07e4b752ee3a56ac191",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
