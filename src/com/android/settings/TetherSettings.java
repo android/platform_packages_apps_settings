@@ -19,6 +19,7 @@ package com.android.settings;
 import static android.net.ConnectivityManager.TETHERING_BLUETOOTH;
 import static android.net.ConnectivityManager.TETHERING_USB;
 import static android.net.TetheringManager.TETHERING_ETHERNET;
+import static android.net.TetheringManager.TETHERING_NCM;
 
 import android.app.Activity;
 import android.app.settings.SettingsEnums;
@@ -468,8 +469,10 @@ public class TetherSettings extends RestrictedSettingsFragment
         if (preference == mUsbTether) {
             if (mUsbTether.isChecked()) {
                 startTethering(TETHERING_USB);
+                startTethering(TETHERING_NCM);
             } else {
                 mCm.stopTethering(TETHERING_USB);
+                mCm.stopTethering(TETHERING_NCM);
             }
         } else if (preference == mBluetoothTether) {
             if (mBluetoothTether.isChecked()) {
