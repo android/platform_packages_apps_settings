@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e522b67_80d20459",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1758561
+      },
+      "writtenOn": "2020-12-15T09:12:03Z",
+      "side": 1,
+      "message": "In gms version, default package installer is com.google.android.packageinstaller",
+      "parentUuid": "4a455eed_b91e458a",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "6a30ebfa3ddee57c12838209334dde3091f546b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "ca3f28f0_75a86d01",
