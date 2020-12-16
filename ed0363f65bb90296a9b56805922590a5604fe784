@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e91c46a3_2b003e6f",
+        "filename": "src/com/android/settings/network/telephony/EnabledNetworkModePreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1817624
+      },
+      "writtenOn": "2020-12-16T06:05:50Z",
+      "side": 1,
+      "message": "\u003e fine",
+      "parentUuid": "0babf02d_b11fab5c",
+      "range": {
+        "startLine": 568,
+        "startChar": 32,
+        "endLine": 568,
+        "endChar": 45
+      },
+      "revId": "ed0363f65bb90296a9b56805922590a5604fe784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df84fda3_394064c3",
