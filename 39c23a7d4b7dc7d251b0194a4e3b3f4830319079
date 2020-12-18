@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e61a525_b86f24d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1815668
+      },
+      "writtenOn": "2020-12-18T02:11:16Z",
+      "side": 1,
+      "message": "- sorry, I thought I had deleted that!\n- filed b/175911991",
+      "parentUuid": "1c923277_887b767e",
+      "revId": "39c23a7d4b7dc7d251b0194a4e3b3f4830319079",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9653c89a_9cc94d66",
@@ -48,6 +66,30 @@
       "writtenOn": "2020-12-17T03:56:50Z",
       "side": 1,
       "message": "android:exported\u003d\"true\"\n\nIf you don\u0027t write it, can you launch this activity?",
+      "range": {
+        "startLine": 2578,
+        "startChar": 12,
+        "endLine": 2578,
+        "endChar": 18
+      },
+      "revId": "39c23a7d4b7dc7d251b0194a4e3b3f4830319079",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "617d5a9d_42a72325",
+        "filename": "AndroidManifest.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2578,
+      "author": {
+        "id": 1815668
+      },
+      "writtenOn": "2020-12-18T02:11:16Z",
+      "side": 1,
+      "message": "Yes, the activity is able to launch.\n\nThe documentation for android:exported says that the default value is \"true\" if there is at least one intent filter (https://developer.android.com/guide/topics/manifest/service-element#exported).",
+      "parentUuid": "9653c89a_9cc94d66",
       "range": {
         "startLine": 2578,
         "startChar": 12,
