@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ccde5cd_c30e74ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2020-12-24T01:34:49Z",
+      "side": 1,
+      "message": "Looks like there\u0027s failing test in robolectric test but it\u0027s not related to your cl.\nYou can submit this cl directly.",
+      "revId": "934fdbd5e1a2993b2fde781e60e7de38994d8072",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
