@@ -1,0 +1,11 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Code-Review+2: Beverly Tai <beverlyt@google.com>
+Code-Review+2: Edgar Wang <edgarwang@google.com>
+Autosubmit+1: Beverly Tai <beverlyt@google.com>
+Presubmit-Verified+2: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Tue, 29 Dec 2020 05:26:10 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1535665
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
