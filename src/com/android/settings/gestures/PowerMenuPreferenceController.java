@@ -57,7 +57,7 @@ public class PowerMenuPreferenceController extends BasePreferenceController {
 
     @Override
     public int getAvailabilityStatus() {
-        return isCardsAvailable() || isControlsAvailable() ? AVAILABLE : CONDITIONALLY_UNAVAILABLE;
+        return AVAILABLE;
     }
 
     private boolean isControlsAvailable() {
