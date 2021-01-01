@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dae0d70a_3e932f18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1075502
+      },
+      "writtenOn": "2021-01-01T20:26:10Z",
+      "side": 1,
+      "message": "Power menu settings now accessible on a Go-built device.\nAdvanced restart features working as it used to, drawn properly by the UI.\n\nThe menu contains: \u0027Advanced restart\u0027 (toggle) and \u0027Sensitive content\u0027 (disabled)",
+      "revId": "fd104237810781667074a74f810b3b4900388568",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
