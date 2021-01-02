@@ -1,0 +1,9 @@
+Autosubmit+1: Bill Yi <byi@google.com>
+Build-Cop-Override+1: Bill Yi <byi@google.com>
+Presubmit-Verified+2: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Sat, 02 Jan 2021 03:14:44 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1539147
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
