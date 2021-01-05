@@ -33,6 +33,29 @@
       "message": "LGTM, thanks Jason!",
       "revId": "821fe891a5ddc9bd36f18968ef1dd342b116424b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83ae3fa9_73312ed6",
+        "filename": "src/com/android/settings/development/WirelessDebuggingPreferenceController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2021-01-05T02:39:55Z",
+      "side": 1,
+      "message": "if (nc \u003d\u003d null) {\n    continue;\n}\n\nif (nc.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {\n    return true;\n}",
+      "range": {
+        "startLine": 150,
+        "startChar": 12,
+        "endLine": 151,
+        "endChar": 81
+      },
+      "revId": "821fe891a5ddc9bd36f18968ef1dd342b116424b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
