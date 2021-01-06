@@ -1,0 +1,12 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Verified+1: Jason Jeremy Iman <jasongustaman@google.com>
+Code-Review+2: Hugo Benichi <hugobenichi@google.com>
+Code-Review+2: Tsung-Mao Fang <tmfang@google.com>
+Presubmit-Verified+2: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Autosubmit+1: Jason Jeremy Iman <jasongustaman@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Wed, 06 Jan 2021 04:24:23 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1526372
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
