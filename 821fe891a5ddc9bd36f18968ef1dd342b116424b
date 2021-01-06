@@ -56,6 +56,30 @@
       },
       "revId": "821fe891a5ddc9bd36f18968ef1dd342b116424b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a93cc3f_ac1e00f7",
+        "filename": "src/com/android/settings/development/WirelessDebuggingPreferenceController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1504563
+      },
+      "writtenOn": "2021-01-06T02:04:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83ae3fa9_73312ed6",
+      "range": {
+        "startLine": 150,
+        "startChar": 12,
+        "endLine": 151,
+        "endChar": 81
+      },
+      "revId": "821fe891a5ddc9bd36f18968ef1dd342b116424b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2555ccb_0fda9cf7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1504563
+      },
+      "writtenOn": "2021-01-06T02:04:27Z",
+      "side": 1,
+      "message": "Thanks for the review! Can you take another look for the latest formatting change. thanks!",
+      "revId": "620158be52e260ade3226a302f313cad2166bdfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
