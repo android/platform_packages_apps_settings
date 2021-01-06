@@ -68,6 +68,23 @@
       "message": "I can still CR +2 on aosp as a previous Android member: carrying +2 from previous patch set.\nBut I can\u0027t give owner approval of course.",
       "revId": "620158be52e260ade3226a302f313cad2166bdfa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a613fc7_79c67013",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1504563
+      },
+      "writtenOn": "2021-01-06T04:24:11Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "620158be52e260ade3226a302f313cad2166bdfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
