@@ -33,6 +33,24 @@
       "message": "LGTM",
       "revId": "620158be52e260ade3226a302f313cad2166bdfa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee6d435e_b874dc48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1504563
+      },
+      "writtenOn": "2021-01-06T02:12:40Z",
+      "side": 1,
+      "message": "Do you mind re-adding the CR as owner? Thanks!",
+      "parentUuid": "199aa0b6_8f2b18f7",
+      "revId": "620158be52e260ade3226a302f313cad2166bdfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
