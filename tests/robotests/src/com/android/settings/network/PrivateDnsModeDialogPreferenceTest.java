@@ -60,6 +60,10 @@ public class PrivateDnsModeDialogPreferenceTest {
     private static final String HOST_NAME = "dns.example.com";
     private static final String INVALID_HOST_NAME = "...,";
 
+    private static final String VALID_URL = "https://dns.example/dns-query";
+    private static final String INVALID_URL1 = "http://dns.example/dns-query";
+    private static final String INVALID_URL2 = "https://";
+
     private PrivateDnsModeDialogPreference mPreference;
 
     private Context mContext;
@@ -121,7 +125,7 @@ public class PrivateDnsModeDialogPreferenceTest {
         Settings.Global.putString(mContext.getContentResolver(),
                 PrivateDnsModeDialogPreference.MODE_KEY, PRIVATE_DNS_MODE_OFF);
         Settings.Global.putString(mContext.getContentResolver(),
-                PrivateDnsModeDialogPreference.HOSTNAME_KEY, HOST_NAME);
+                PrivateDnsModeDialogPreference.CUSTOMIZATION_KEY, HOST_NAME);
 
         final LayoutInflater inflater = LayoutInflater.from(mContext);
         final View view = inflater.inflate(R.layout.private_dns_mode_dialog,
@@ -135,14 +139,16 @@ public class PrivateDnsModeDialogPreferenceTest {
 
     @Test
     public void testOnCheckedChanged_switchMode_saveButtonHasCorrectState() {
-        final String[] INVALID_HOST_NAMES = new String[] {
+        final String[] invalidInputs = new String[] {
                 INVALID_HOST_NAME,
+                INVALID_URL1,
+                INVALID_URL2,
                 "2001:db8::53",  // IPv6 string literal
                 "192.168.1.1",   // IPv4 string literal
         };
 
-        for (String invalid : INVALID_HOST_NAMES) {
-            // Set invalid hostname
+        for (String invalid : invalidInputs) {
+            // Set invalid input
             mPreference.mEditText.setText(invalid);
 
             mPreference.onCheckedChanged(null, R.id.private_dns_mode_off);
@@ -153,6 +159,18 @@ public class PrivateDnsModeDialogPreferenceTest {
 
             mPreference.onCheckedChanged(null, R.id.private_dns_mode_provider);
             assertWithMessage("provider: " + invalid).that(mSaveButton.isEnabled()).isFalse();
+        }
+
+        final String[] validInputs = new String[] {
+            HOST_NAME,
+            VALID_URL,
+        };
+        for (String valid : validInputs) {
+            // Set valid input
+            mPreference.mEditText.setText(valid);
+
+            mPreference.onCheckedChanged(null, R.id.private_dns_mode_provider);
+            assertWithMessage("provider: " + valid).that(mSaveButton.isEnabled()).isTrue();
         }
     }
 

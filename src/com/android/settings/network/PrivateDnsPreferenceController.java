@@ -130,7 +130,7 @@ public class PrivateDnsPreferenceController extends BasePreferenceController
                         : res.getString(R.string.private_dns_mode_opportunistic);
             case PRIVATE_DNS_MODE_PROVIDER_HOSTNAME:
                 return dnsesResolved
-                        ? PrivateDnsModeDialogPreference.getHostnameFromSettings(cr)
+                        ? PrivateDnsModeDialogPreference.getCustomizationFromSettings(cr)
                         : res.getString(R.string.private_dns_mode_provider_failure);
         }
         return "";
