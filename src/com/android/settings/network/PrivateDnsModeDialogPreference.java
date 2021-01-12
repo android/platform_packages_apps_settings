@@ -36,7 +36,9 @@ import android.text.TextWatcher;
 import android.text.method.LinkMovementMethod;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
+import android.webkit.URLUtil;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -76,13 +78,16 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
         PRIVATE_DNS_MAP = new HashMap<>();
         PRIVATE_DNS_MAP.put(PRIVATE_DNS_MODE_OFF, R.id.private_dns_mode_off);
         PRIVATE_DNS_MAP.put(PRIVATE_DNS_MODE_OPPORTUNISTIC, R.id.private_dns_mode_opportunistic);
+        // TODO(huangluke): Have a proper mode to represent the customize option instead of keeping
+        // current PRIVATE_DNS_MODE_PROVIDER_HOSTNAME since now the customize option might be a
+        // https URL not only a hostname.
         PRIVATE_DNS_MAP.put(PRIVATE_DNS_MODE_PROVIDER_HOSTNAME, R.id.private_dns_mode_provider);
     }
 
     @VisibleForTesting
     static final String MODE_KEY = Settings.Global.PRIVATE_DNS_MODE;
     @VisibleForTesting
-    static final String HOSTNAME_KEY = Settings.Global.PRIVATE_DNS_SPECIFIER;
+    static final String CUSTOMIZATION_KEY = Settings.Global.PRIVATE_DNS_SPECIFIER;
 
     public static String getModeFromSettings(ContentResolver cr) {
         String mode = Settings.Global.getString(cr, MODE_KEY);
@@ -92,8 +97,11 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
         return PRIVATE_DNS_MAP.containsKey(mode) ? mode : PRIVATE_DNS_DEFAULT_MODE_FALLBACK;
     }
 
-    public static String getHostnameFromSettings(ContentResolver cr) {
-        return Settings.Global.getString(cr, HOSTNAME_KEY);
+    /**
+     * Get the stored customization private DNS specifier from Settings.
+     */
+    public static String getCustomizationFromSettings(ContentResolver cr) {
+        return Settings.Global.getString(cr, CUSTOMIZATION_KEY);
     }
 
     @VisibleForTesting
@@ -172,7 +180,7 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
 
         mEditText = view.findViewById(R.id.private_dns_mode_provider_hostname);
         mEditText.addTextChangedListener(this);
-        mEditText.setText(getHostnameFromSettings(contentResolver));
+        mEditText.setText(getCustomizationFromSettings(contentResolver));
 
         mRadioGroup = view.findViewById(R.id.private_dns_radio_group);
         mRadioGroup.setOnCheckedChangeListener(this);
@@ -204,9 +212,11 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
     public void onClick(DialogInterface dialog, int which) {
         if (which == DialogInterface.BUTTON_POSITIVE) {
             final Context context = getContext();
+            // TODO(huangluke): Have a real time validation for the customize input to
+            // ensure that the broken server won't be stored into Settings.
             if (mMode.equals(PRIVATE_DNS_MODE_PROVIDER_HOSTNAME)) {
-                // Only clickable if hostname is valid, so we could save it safely
-                Settings.Global.putString(context.getContentResolver(), HOSTNAME_KEY,
+                // Only clickable if url/hostname is valid, so we could save it safely
+                Settings.Global.putString(context.getContentResolver(), CUSTOMIZATION_KEY,
                         mEditText.getText().toString());
             }
 
@@ -278,9 +288,14 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
         }
         final Button saveButton = getSaveButton();
         if (saveButton != null) {
+            final String input = mEditText.getText().toString();
             saveButton.setEnabled(modeProvider
-                    ? InternetDomainName.isValid(mEditText.getText().toString())
+                    ? isValidHttpsUrl(input) || InternetDomainName.isValid(input)
                     : true);
         }
+    }
+
+    private boolean isValidHttpsUrl(String input) {
+        return URLUtil.isHttpsUrl(input) && Patterns.WEB_URL.matcher(input).matches();
     }
 }
