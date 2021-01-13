@@ -18,9 +18,11 @@ package com.android.settings.network;
 
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_OFF;
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_OPPORTUNISTIC;
+import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_PREDEFINED_PROVIDER;
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_PROVIDER_HOSTNAME;
 import static android.provider.Settings.Global.PRIVATE_DNS_DEFAULT_MODE;
 import static android.provider.Settings.Global.PRIVATE_DNS_MODE;
+import static android.provider.Settings.Global.PRIVATE_DNS_PREDEFINED_PROVIDER;
 import static android.provider.Settings.Global.PRIVATE_DNS_SPECIFIER;
 
 import static androidx.lifecycle.Lifecycle.Event.ON_START;
@@ -60,8 +62,8 @@ import androidx.preference.Preference;
 import androidx.preference.PreferenceScreen;
 
 import com.android.settings.R;
-import com.android.settings.testutils.shadow.ShadowUserManager;
 import com.android.settings.testutils.shadow.ShadowDevicePolicyManager;
+import com.android.settings.testutils.shadow.ShadowUserManager;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 
 import org.junit.Before;
@@ -90,8 +92,9 @@ import java.util.List;
 })
 public class PrivateDnsPreferenceControllerTest {
 
-    private final static String HOSTNAME = "dns.example.com";
-    private final static List<InetAddress> NON_EMPTY_ADDRESS_LIST;
+    private static final String HOSTNAME = "dns.example.com";
+    private static final String PROVIDER = "Google";
+    private static final List<InetAddress> NON_EMPTY_ADDRESS_LIST;
     static {
         try {
             NON_EMPTY_ADDRESS_LIST = Arrays.asList(
@@ -249,6 +252,31 @@ public class PrivateDnsPreferenceControllerTest {
     }
 
     @Test
+    public void getSummary_PrivateDnsModePredefinedProvider() {
+        mLifecycle.handleLifecycleEvent(ON_START);
+        setPrivateDnsMode(PRIVATE_DNS_MODE_PREDEFINED_PROVIDER);
+        setPrivateDnsPredefinedProvider(PROVIDER);
+        mController.updateState(mPreference);
+        verify(mController, atLeastOnce()).getSummary();
+        verify(mPreference).setSummary(
+                getResourceString(R.string.private_dns_mode_provider_failure));
+
+        LinkProperties lp = mock(LinkProperties.class);
+        when(lp.getValidatedPrivateDnsServers()).thenReturn(NON_EMPTY_ADDRESS_LIST);
+        updateLinkProperties(lp);
+        mController.updateState(mPreference);
+        verify(mPreference).setSummary(PROVIDER);
+
+        reset(mPreference);
+        lp = mock(LinkProperties.class);
+        when(lp.getValidatedPrivateDnsServers()).thenReturn(Collections.emptyList());
+        updateLinkProperties(lp);
+        mController.updateState(mPreference);
+        verify(mPreference).setSummary(
+                getResourceString(R.string.private_dns_mode_provider_failure));
+    }
+
+    @Test
     public void getSummary_PrivateDnsDefaultMode() {
         // Default mode is opportunistic, unless overridden by a Settings push.
         setPrivateDnsMode("");
@@ -307,6 +335,10 @@ public class PrivateDnsPreferenceControllerTest {
 
     private void setPrivateDnsProviderHostname(String name) {
         Settings.Global.putString(mContentResolver, PRIVATE_DNS_SPECIFIER, name);
+    }
+
+    private void setPrivateDnsPredefinedProvider(String name) {
+        Settings.Global.putString(mContentResolver, PRIVATE_DNS_PREDEFINED_PROVIDER, name);
     }
 
     private String getResourceString(int which) {

@@ -40,6 +40,20 @@
                 layout="@layout/preference_widget_dialog_radiobutton"/>
 
             <include
+                android:id="@+id/private_dns_mode_predefined_provider"
+                android:visibility="gone"
+                layout="@layout/preference_widget_dialog_radiobutton"/>
+            <Spinner
+                android:id="@+id/private_dns_provider_spinner"
+                style="@android:style/Widget.CompoundButton.RadioButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="8dp"
+                android:visibility="gone"
+                android:minHeight="@dimen/developer_option_dialog_min_height"/>
+
+            <include
                 android:id="@+id/private_dns_mode_provider"
                 layout="@layout/preference_widget_dialog_radiobutton"/>
 

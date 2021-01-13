@@ -18,6 +18,7 @@ package com.android.settings.network;
 
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_OFF;
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_OPPORTUNISTIC;
+import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_PREDEFINED_PROVIDER;
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_PROVIDER_HOSTNAME;
 import static android.provider.Settings.Global.PRIVATE_DNS_MODE;
 
@@ -25,16 +26,21 @@ import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assertWithMessage;
 
 import static org.mockito.Mockito.anyInt;
+import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.reset;
+import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.net.ConnectivityManager;
+import android.net.PrivateDnsProvider;
 import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -44,9 +50,14 @@ import com.android.settings.R;
 import com.android.settings.testutils.shadow.ShadowOs;
 import com.android.settingslib.CustomDialogPreferenceCompat.CustomPreferenceDialogFragment;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
@@ -64,10 +75,17 @@ public class PrivateDnsModeDialogPreferenceTest {
     private static final String INVALID_URL1 = "http://dns.example/dns-query";
     private static final String INVALID_URL2 = "https://";
 
+    private static final List<PrivateDnsProvider> PROVIDER_LIST =
+            Arrays.asList(new PrivateDnsProvider("Google"), new PrivateDnsProvider("Cloudflare"));
+    private static final String PROVIDER_NAME = "Google";
+    private static final String PROVIDER_NAME_NOT_IN_LIST = "OpenDNS";
     private PrivateDnsModeDialogPreference mPreference;
 
     private Context mContext;
     private Button mSaveButton;
+
+    @Mock
+    private ConnectivityManager mConnectivityManager;
 
     @Before
     public void setUp() {
@@ -76,7 +94,10 @@ public class PrivateDnsModeDialogPreferenceTest {
         ReflectionHelpers.setStaticField(android.system.OsConstants.class, "AF_INET", 2);
         ReflectionHelpers.setStaticField(android.system.OsConstants.class, "AF_INET6", 10);
 
-        mContext = RuntimeEnvironment.application;
+        mContext = spy(RuntimeEnvironment.application);
+        when(mContext.getSystemService(Context.CONNECTIVITY_SERVICE))
+                .thenReturn(mConnectivityManager);
+        doReturn(PROVIDER_LIST).when(mConnectivityManager).getPrivateDnsProviders();
         mSaveButton = new Button(mContext);
 
         final CustomPreferenceDialogFragment fragment = mock(CustomPreferenceDialogFragment.class);
@@ -95,19 +116,21 @@ public class PrivateDnsModeDialogPreferenceTest {
     }
 
     @Test
-    public void testOnCheckedChanged_dnsModeOff_disableEditText() {
+    public void testOnCheckedChanged_dnsModeOff_disableOthers() {
         mPreference.onCheckedChanged(null, R.id.private_dns_mode_off);
 
         assertThat(mPreference.mMode).isEqualTo(PRIVATE_DNS_MODE_OFF);
         assertThat(mPreference.mEditText.isEnabled()).isFalse();
+        assertThat(mPreference.mSp.isEnabled()).isFalse();
     }
 
     @Test
-    public void testOnCheckedChanged_dnsModeOpportunistic_disableEditText() {
+    public void testOnCheckedChanged_dnsModeOpportunistic_disableOthers() {
         mPreference.onCheckedChanged(null, R.id.private_dns_mode_opportunistic);
 
         assertThat(mPreference.mMode).isEqualTo(PRIVATE_DNS_MODE_OPPORTUNISTIC);
         assertThat(mPreference.mEditText.isEnabled()).isFalse();
+        assertThat(mPreference.mSp.isEnabled()).isFalse();
     }
 
     @Test
@@ -119,6 +142,14 @@ public class PrivateDnsModeDialogPreferenceTest {
     }
 
     @Test
+    public void testOnCheckedChanged_dnsModePreDefinedProvider_enableSpinner() {
+        mPreference.onCheckedChanged(null, R.id.private_dns_mode_predefined_provider);
+
+        assertThat(mPreference.mMode).isEqualTo(PRIVATE_DNS_MODE_PREDEFINED_PROVIDER);
+        assertThat(mPreference.mSp.isEnabled()).isTrue();
+    }
+
+    @Test
     public void testOnBindDialogView_containsCorrectData() {
         // Don't set settings to the default value ("opportunistic") as that
         // risks masking failure to read the mode from settings.
@@ -126,6 +157,8 @@ public class PrivateDnsModeDialogPreferenceTest {
                 PrivateDnsModeDialogPreference.MODE_KEY, PRIVATE_DNS_MODE_OFF);
         Settings.Global.putString(mContext.getContentResolver(),
                 PrivateDnsModeDialogPreference.CUSTOMIZATION_KEY, HOST_NAME);
+        Settings.Global.putString(mContext.getContentResolver(),
+                PrivateDnsModeDialogPreference.PREDEFINED_PROVIDER_KEY, PROVIDER_NAME);
 
         final LayoutInflater inflater = LayoutInflater.from(mContext);
         final View view = inflater.inflate(R.layout.private_dns_mode_dialog,
@@ -133,8 +166,53 @@ public class PrivateDnsModeDialogPreferenceTest {
         mPreference.onBindDialogView(view);
 
         assertThat(mPreference.mEditText.getText().toString()).isEqualTo(HOST_NAME);
+        assertThat(mPreference.mSp.getSelectedItem().toString()).isEqualTo(PROVIDER_NAME);
         assertThat(mPreference.mRadioGroup.getCheckedRadioButtonId()).isEqualTo(
                 R.id.private_dns_mode_off);
+
+        final Adapter adapter = mPreference.mSp.getAdapter();
+        int count = adapter.getCount();
+        final List<PrivateDnsProvider> providers = new ArrayList<PrivateDnsProvider>(count);
+        for (int i = 0; i < count; i++) {
+            providers.add(new PrivateDnsProvider((String) adapter.getItem(i)));
+        }
+        assertThat(providers).isEqualTo(PROVIDER_LIST);
+
+        Settings.Global.putString(mContext.getContentResolver(),
+                PrivateDnsModeDialogPreference.PREDEFINED_PROVIDER_KEY, PROVIDER_NAME_NOT_IN_LIST);
+        mPreference.onBindDialogView(view);
+        assertThat(
+                mPreference.mSp.getSelectedItem().toString()).isEqualTo(PROVIDER_NAME_NOT_IN_LIST);
+
+        reset(mConnectivityManager);
+        doReturn(List.of()).when(mConnectivityManager).getPrivateDnsProviders();
+        mPreference.onBindDialogView(view);
+        assertThat(
+                mPreference.mSp.getSelectedItem().toString()).isEqualTo(PROVIDER_NAME_NOT_IN_LIST);
+    }
+
+    @Test
+    public void testOnBindDialogView_spinnerHasCorrectState() {
+        // Don't set settings to the default value ("opportunistic") as that
+        // risks masking failure to read the mode from settings.
+        Settings.Global.putString(mContext.getContentResolver(),
+                PrivateDnsModeDialogPreference.MODE_KEY, PRIVATE_DNS_MODE_OFF);
+        Settings.Global.putString(mContext.getContentResolver(),
+                PrivateDnsModeDialogPreference.PREDEFINED_PROVIDER_KEY, "");
+
+        final LayoutInflater inflater = LayoutInflater.from(mContext);
+        final View view = inflater.inflate(R.layout.private_dns_mode_dialog,
+                new LinearLayout(mContext), false);
+        mPreference.onBindDialogView(view);
+
+        assertThat(mPreference.mSp.getVisibility()).isEqualTo(View.VISIBLE);
+
+        reset(mConnectivityManager);
+        doReturn(List.of()).when(mConnectivityManager).getPrivateDnsProviders();
+        final View view2 = inflater.inflate(R.layout.private_dns_mode_dialog,
+                new LinearLayout(mContext), false);
+        mPreference.onBindDialogView(view2);
+        assertThat(mPreference.mSp.getVisibility()).isEqualTo(View.GONE);
     }
 
     @Test
@@ -198,8 +276,7 @@ public class PrivateDnsModeDialogPreferenceTest {
         mPreference.onClick(null, DialogInterface.BUTTON_NEGATIVE);
 
         // Still equal to OFF
-        assertThat(Settings.Global.getString(contentResolver,
-                Settings.Global.PRIVATE_DNS_MODE)).isEqualTo(
-                ConnectivityManager.PRIVATE_DNS_MODE_OFF);
+        assertThat(Settings.Global.getString(contentResolver, PRIVATE_DNS_MODE)).isEqualTo(
+                PRIVATE_DNS_MODE_OFF);
     }
 }

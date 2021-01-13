@@ -18,9 +18,11 @@ package com.android.settings.network;
 
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_OFF;
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_OPPORTUNISTIC;
+import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_PREDEFINED_PROVIDER;
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_PROVIDER_HOSTNAME;
 import static android.provider.Settings.Global.PRIVATE_DNS_DEFAULT_MODE;
 import static android.provider.Settings.Global.PRIVATE_DNS_MODE;
+import static android.provider.Settings.Global.PRIVATE_DNS_PREDEFINED_PROVIDER;
 import static android.provider.Settings.Global.PRIVATE_DNS_SPECIFIER;
 
 import android.content.ContentResolver;
@@ -62,6 +64,7 @@ public class PrivateDnsPreferenceController extends BasePreferenceController
         Settings.Global.getUriFor(PRIVATE_DNS_MODE),
         Settings.Global.getUriFor(PRIVATE_DNS_DEFAULT_MODE),
         Settings.Global.getUriFor(PRIVATE_DNS_SPECIFIER),
+        Settings.Global.getUriFor(PRIVATE_DNS_PREDEFINED_PROVIDER),
     };
 
     private final Handler mHandler;
@@ -132,6 +135,10 @@ public class PrivateDnsPreferenceController extends BasePreferenceController
                 return dnsesResolved
                         ? PrivateDnsModeDialogPreference.getCustomizationFromSettings(cr)
                         : res.getString(R.string.private_dns_mode_provider_failure);
+            case PRIVATE_DNS_MODE_PREDEFINED_PROVIDER:
+                return dnsesResolved
+                    ? PrivateDnsModeDialogPreference.getPredefinedProviderFromSettings(cr)
+                    : res.getString(R.string.private_dns_mode_provider_failure);
         }
         return "";
     }

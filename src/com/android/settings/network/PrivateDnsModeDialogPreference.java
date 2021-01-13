@@ -18,6 +18,7 @@ package com.android.settings.network;
 import static android.net.ConnectivityManager.PRIVATE_DNS_DEFAULT_MODE_FALLBACK;
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_OFF;
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_OPPORTUNISTIC;
+import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_PREDEFINED_PROVIDER;
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_PROVIDER_HOSTNAME;
 
 import static com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
@@ -28,10 +29,13 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.PrivateDnsProvider;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.Settings;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.LinkMovementMethod;
 import android.util.AttributeSet;
@@ -39,10 +43,12 @@ import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.webkit.URLUtil;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.VisibleForTesting;
@@ -60,7 +66,9 @@ import com.android.settingslib.RestrictedLockUtilsInternal;
 import com.google.common.net.InternetDomainName;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * Dialog to set the Private DNS
@@ -82,12 +90,16 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
         // current PRIVATE_DNS_MODE_PROVIDER_HOSTNAME since now the customize option might be a
         // https URL not only a hostname.
         PRIVATE_DNS_MAP.put(PRIVATE_DNS_MODE_PROVIDER_HOSTNAME, R.id.private_dns_mode_provider);
+        PRIVATE_DNS_MAP.put(PRIVATE_DNS_MODE_PREDEFINED_PROVIDER,
+                R.id.private_dns_mode_predefined_provider);
     }
 
     @VisibleForTesting
     static final String MODE_KEY = Settings.Global.PRIVATE_DNS_MODE;
     @VisibleForTesting
     static final String CUSTOMIZATION_KEY = Settings.Global.PRIVATE_DNS_SPECIFIER;
+    @VisibleForTesting
+    static final String PREDEFINED_PROVIDER_KEY = Settings.Global.PRIVATE_DNS_PREDEFINED_PROVIDER;
 
     public static String getModeFromSettings(ContentResolver cr) {
         String mode = Settings.Global.getString(cr, MODE_KEY);
@@ -104,32 +116,43 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
         return Settings.Global.getString(cr, CUSTOMIZATION_KEY);
     }
 
+    /**
+     * Get the stored predefined private DNS provider from Settings.
+     */
+    public static String getPredefinedProviderFromSettings(ContentResolver cr) {
+        return Settings.Global.getString(cr, PREDEFINED_PROVIDER_KEY);
+    }
+
     @VisibleForTesting
     EditText mEditText;
     @VisibleForTesting
     RadioGroup mRadioGroup;
     @VisibleForTesting
     String mMode;
+    @VisibleForTesting
+    Spinner mSp;
+
+    ConnectivityManager mCM;
 
     public PrivateDnsModeDialogPreference(Context context) {
         super(context);
-        initialize();
+        initialize(context);
     }
 
     public PrivateDnsModeDialogPreference(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initialize();
+        initialize(context);
     }
 
     public PrivateDnsModeDialogPreference(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initialize();
+        initialize(context);
     }
 
     public PrivateDnsModeDialogPreference(Context context, AttributeSet attrs, int defStyleAttr,
             int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        initialize();
+        initialize(context);
     }
 
     private final AnnotationSpan.LinkInfo mUrlLinkInfo = new AnnotationSpan.LinkInfo(
@@ -147,10 +170,11 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
         }
     });
 
-    private void initialize() {
+    private void initialize(Context context) {
         // Add the "Restricted" icon resource so that if the preference is disabled by the
         // admin, an information button will be shown.
         setWidgetLayoutResource(R.layout.restricted_icon);
+        mCM = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
     }
 
     @Override
@@ -182,6 +206,8 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
         mEditText.addTextChangedListener(this);
         mEditText.setText(getCustomizationFromSettings(contentResolver));
 
+        mSp = view.findViewById(R.id.private_dns_provider_spinner);
+
         mRadioGroup = view.findViewById(R.id.private_dns_radio_group);
         mRadioGroup.setOnCheckedChangeListener(this);
         mRadioGroup.check(PRIVATE_DNS_MAP.getOrDefault(mMode, R.id.private_dns_mode_opportunistic));
@@ -194,6 +220,9 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
         opportunisticRadioButton.setText(R.string.private_dns_mode_opportunistic);
         final RadioButton providerRadioButton = view.findViewById(R.id.private_dns_mode_provider);
         providerRadioButton.setText(R.string.private_dns_mode_provider);
+        final RadioButton providersRadioButton =
+                view.findViewById(R.id.private_dns_mode_predefined_provider);
+        providersRadioButton.setText(R.string.private_dns_mode_predefined_provider);
 
         final TextView helpTextView = view.findViewById(R.id.private_dns_help_info);
         helpTextView.setMovementMethod(LinkMovementMethod.getInstance());
@@ -206,6 +235,30 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
             helpTextView.setText(AnnotationSpan.linkify(
                     context.getText(R.string.private_dns_help_message), linkInfo));
         }
+        // Get the predefined private DNS provider list and setup the spinner.
+        final List<PrivateDnsProvider> privateDnsProviders = mCM.getPrivateDnsProviders();
+        final String storedProvider = getPredefinedProviderFromSettings(contentResolver);
+        // If there are no available predefined providers, and no stored provider,
+        // the spinner shouldn't be visible.
+        if (privateDnsProviders.isEmpty() && TextUtils.isEmpty(storedProvider)) {
+            return;
+        }
+        final List<String> list =
+                privateDnsProviders.stream().map(s -> s.name).collect(Collectors.toList());
+
+        // If the system provider list doesn't contain the stored provider, just add it back.
+        if (!list.contains(storedProvider)) {
+            list.add(storedProvider);
+        }
+        providersRadioButton.setVisibility(View.VISIBLE);
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                getContext(), android.R.layout.simple_spinner_item,
+                list.toArray(new String[0]));
+        mSp.setVisibility(View.VISIBLE);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSp.setAdapter(adapter);
+        // Restore the selected item.
+        mSp.setSelection(adapter.getPosition(storedProvider));
     }
 
     @Override
@@ -218,6 +271,10 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
                 // Only clickable if url/hostname is valid, so we could save it safely
                 Settings.Global.putString(context.getContentResolver(), CUSTOMIZATION_KEY,
                         mEditText.getText().toString());
+            }
+            if (mMode.equals(PRIVATE_DNS_MODE_PREDEFINED_PROVIDER)) {
+                Settings.Global.putString(context.getContentResolver(), PREDEFINED_PROVIDER_KEY,
+                        mSp.getSelectedItem().toString());
             }
 
             FeatureFactory.getFactory(context).getMetricsFeatureProvider().action(context,
@@ -234,6 +291,8 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
             mMode = PRIVATE_DNS_MODE_OPPORTUNISTIC;
         } else if (checkedId == R.id.private_dns_mode_provider) {
             mMode = PRIVATE_DNS_MODE_PROVIDER_HOSTNAME;
+        } else if (checkedId == R.id.private_dns_mode_predefined_provider) {
+            mMode = PRIVATE_DNS_MODE_PREDEFINED_PROVIDER;
         }
         updateDialogInfo();
     }
@@ -285,6 +344,10 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
         final boolean modeProvider = PRIVATE_DNS_MODE_PROVIDER_HOSTNAME.equals(mMode);
         if (mEditText != null) {
             mEditText.setEnabled(modeProvider);
+        }
+        final boolean modeSpinner = PRIVATE_DNS_MODE_PREDEFINED_PROVIDER.equals(mMode);
+        if (mSp != null) {
+            mSp.setEnabled(modeSpinner);
         }
         final Button saveButton = getSaveButton();
         if (saveButton != null) {
