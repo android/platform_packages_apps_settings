@@ -1,0 +1,134 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007346374",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1552081?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "9ab547d7_1817a879",
+        "filename": "src/com/android/settings/wifi/WifiSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-16T00:17:22Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 136
+      },
+      "revId": "706e78338d08d7740479f6d3beef183e91057b30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007346374",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1552081?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "b95ff14e_5b7230a7",
+        "filename": "src/com/android/settings/wifi/WifiSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-16T00:17:22Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 522,
+        "startChar": 0,
+        "endLine": 522,
+        "endChar": 136
+      },
+      "revId": "706e78338d08d7740479f6d3beef183e91057b30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007346374",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1552081?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "c2e502ec_dafa048f",
+        "filename": "src/com/android/settings/wifi/WifiSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-16T00:17:22Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 580,
+        "startChar": 0,
+        "endLine": 580,
+        "endChar": 136
+      },
+      "revId": "706e78338d08d7740479f6d3beef183e91057b30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007346370",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1552081?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "32c39e67_84303806",
+        "filename": "src/com/android/settings/wifi/WifiSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1350,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-16T00:17:22Z",
+      "side": 1,
+      "message": "This file contains a set of conflict markers.If this is a false alarm, add IGNORE_MERGE_CONFLICT_CHECK\u003d\u003d\u003creason\u003e to your commit message.",
+      "range": {
+        "startLine": 1350,
+        "startChar": 1,
+        "endLine": 1350,
+        "endChar": 7
+      },
+      "revId": "706e78338d08d7740479f6d3beef183e91057b30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007346374",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1552081?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "f4860f6f_cb8e88b6",
+        "filename": "src/com/android/settings/wifi/WifiSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1451,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-16T00:17:22Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 1451,
+        "startChar": 0,
+        "endLine": 1451,
+        "endChar": 136
+      },
+      "revId": "706e78338d08d7740479f6d3beef183e91057b30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
