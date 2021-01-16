@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007347027",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1552081?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "51fce874_d3d38e68",
+        "filename": "src/com/android/settings/wifi/WifiSettings.java.orig",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-16T00:38:53Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027deny list\u0027 or \u0027allow list\u0027; see https://developers.google.com/style/word-list#blacklist for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 531,
+        "startChar": 56,
+        "endLine": 531,
+        "endChar": 65
+      },
+      "revId": "39febff0c15e7e881c7c218d05c8e1884cc6ffc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007347023",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1552081?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "8b3500b4_91198003",
+        "filename": "src/com/android/settings/wifi/WifiSettings.java.orig",
+        "patchSetId": 2
+      },
+      "lineNbr": 1350,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-16T00:38:53Z",
+      "side": 1,
+      "message": "This file contains a set of conflict markers.If this is a false alarm, add IGNORE_MERGE_CONFLICT_CHECK\u003d\u003d\u003creason\u003e to your commit message.",
+      "range": {
+        "startLine": 1350,
+        "startChar": 1,
+        "endLine": 1350,
+        "endChar": 7
+      },
+      "revId": "39febff0c15e7e881c7c218d05c8e1884cc6ffc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
