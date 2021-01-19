@@ -20,16 +20,24 @@ import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_OFF;
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_OPPORTUNISTIC;
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_PREDEFINED_PROVIDER;
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_PROVIDER_HOSTNAME;
+import static android.net.ConnectivityManager.PRIVATE_DNS_VALIDATION_RESULT_FAIL;
+import static android.net.ConnectivityManager.PRIVATE_DNS_VALIDATION_RESULT_SUCCESS;
+import static android.net.ConnectivityManager.ValidationCallback;
 import static android.provider.Settings.Global.PRIVATE_DNS_MODE;
 
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assertWithMessage;
 
-import static org.mockito.Mockito.anyInt;
+import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.eq;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.reset;
 import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.content.ContentResolver;
@@ -57,6 +65,7 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
@@ -82,7 +91,8 @@ public class PrivateDnsModeDialogPreferenceTest {
     private PrivateDnsModeDialogPreference mPreference;
 
     private Context mContext;
-    private Button mSaveButton;
+    private Button mPositiveButton;
+    private Button mNegativeButton;
 
     @Mock
     private ConnectivityManager mConnectivityManager;
@@ -98,12 +108,15 @@ public class PrivateDnsModeDialogPreferenceTest {
         when(mContext.getSystemService(Context.CONNECTIVITY_SERVICE))
                 .thenReturn(mConnectivityManager);
         doReturn(PROVIDER_LIST).when(mConnectivityManager).getPrivateDnsProviders();
-        mSaveButton = new Button(mContext);
+
+        mPositiveButton = new Button(mContext);
+        mNegativeButton = new Button(mContext);
 
         final CustomPreferenceDialogFragment fragment = mock(CustomPreferenceDialogFragment.class);
         final AlertDialog dialog = mock(AlertDialog.class);
         when(fragment.getDialog()).thenReturn(dialog);
-        when(dialog.getButton(anyInt())).thenReturn(mSaveButton);
+        when(dialog.getButton(eq(DialogInterface.BUTTON_POSITIVE))).thenReturn(mPositiveButton);
+        when(dialog.getButton(eq(DialogInterface.BUTTON_NEGATIVE))).thenReturn(mNegativeButton);
 
         mPreference = new PrivateDnsModeDialogPreference(mContext);
         ReflectionHelpers.setField(mPreference, "mFragment", fragment);
@@ -230,13 +243,14 @@ public class PrivateDnsModeDialogPreferenceTest {
             mPreference.mEditText.setText(invalid);
 
             mPreference.onCheckedChanged(null, R.id.private_dns_mode_off);
-            assertWithMessage("off: " + invalid).that(mSaveButton.isEnabled()).isTrue();
+            assertWithMessage("off: " + invalid).that(mPositiveButton.isEnabled()).isTrue();
 
             mPreference.onCheckedChanged(null, R.id.private_dns_mode_opportunistic);
-            assertWithMessage("opportunistic: " + invalid).that(mSaveButton.isEnabled()).isTrue();
+            assertWithMessage(
+                    "opportunistic: " + invalid).that(mPositiveButton.isEnabled()).isTrue();
 
             mPreference.onCheckedChanged(null, R.id.private_dns_mode_provider);
-            assertWithMessage("provider: " + invalid).that(mSaveButton.isEnabled()).isFalse();
+            assertWithMessage("provider: " + invalid).that(mPositiveButton.isEnabled()).isFalse();
         }
 
         final String[] validInputs = new String[] {
@@ -248,7 +262,7 @@ public class PrivateDnsModeDialogPreferenceTest {
             mPreference.mEditText.setText(valid);
 
             mPreference.onCheckedChanged(null, R.id.private_dns_mode_provider);
-            assertWithMessage("provider: " + valid).that(mSaveButton.isEnabled()).isTrue();
+            assertWithMessage("provider: " + valid).that(mPositiveButton.isEnabled()).isTrue();
         }
     }
 
@@ -258,9 +272,12 @@ public class PrivateDnsModeDialogPreferenceTest {
         final ContentResolver contentResolver = mContext.getContentResolver();
         Settings.Global.putString(contentResolver, PRIVATE_DNS_MODE, PRIVATE_DNS_MODE_OFF);
 
-        mPreference.mMode = ConnectivityManager.PRIVATE_DNS_MODE_OPPORTUNISTIC;
-        mPreference.onClick(null, DialogInterface.BUTTON_POSITIVE);
+        mPreference.mMode = PRIVATE_DNS_MODE_OPPORTUNISTIC;
+        final AlertDialog dialog = mock(AlertDialog.class);
+        mPreference.onShow(dialog);
+        mPositiveButton.performClick();
 
+        verify(dialog, times(1)).dismiss();
         // Change to OPPORTUNISTIC
         assertThat(Settings.Global.getString(contentResolver, PRIVATE_DNS_MODE)).isEqualTo(
                 PRIVATE_DNS_MODE_OPPORTUNISTIC);
@@ -272,9 +289,76 @@ public class PrivateDnsModeDialogPreferenceTest {
         final ContentResolver contentResolver = mContext.getContentResolver();
         Settings.Global.putString(contentResolver, PRIVATE_DNS_MODE, PRIVATE_DNS_MODE_OFF);
 
-        mPreference.mMode = ConnectivityManager.PRIVATE_DNS_MODE_OPPORTUNISTIC;
-        mPreference.onClick(null, DialogInterface.BUTTON_NEGATIVE);
+        mPreference.mMode = PRIVATE_DNS_MODE_OPPORTUNISTIC;
+        mNegativeButton.performClick();
 
+        // Still equal to OFF
+        assertThat(Settings.Global.getString(contentResolver, PRIVATE_DNS_MODE)).isEqualTo(
+                PRIVATE_DNS_MODE_OFF);
+    }
+
+    @Test
+    public void testOnClick_positiveButtonClicked_validation_success() {
+        // Set the default settings to OFF
+        final ContentResolver contentResolver = mContext.getContentResolver();
+        Settings.Global.putString(contentResolver, PRIVATE_DNS_MODE, PRIVATE_DNS_MODE_OFF);
+
+        mPreference.mMode = PRIVATE_DNS_MODE_PROVIDER_HOSTNAME;
+        mPreference.mEditText.setText(HOST_NAME);
+        final AlertDialog dialog = mock(AlertDialog.class);
+        mPreference.onShow(dialog);
+        mPositiveButton.performClick();
+
+        final ArgumentCaptor<ValidationCallback> callbackCaptor =
+                ArgumentCaptor.forClass(ValidationCallback.class);
+        verify(mConnectivityManager, times(1))
+                .validatePrivateDnsSetting(eq(HOST_NAME), any(), callbackCaptor.capture());
+        final ValidationCallback cb = callbackCaptor.getValue();
+        cb.onResult(PRIVATE_DNS_VALIDATION_RESULT_SUCCESS);
+
+        verify(dialog, times(1)).dismiss();
+        // Change to HOSTNAME
+        assertThat(Settings.Global.getString(contentResolver, PRIVATE_DNS_MODE)).isEqualTo(
+                PRIVATE_DNS_MODE_PROVIDER_HOSTNAME);
+        assertThat(Settings.Global.getString(contentResolver,
+                PrivateDnsModeDialogPreference.CUSTOMIZATION_KEY)).isEqualTo(HOST_NAME);
+    }
+
+    private void assertComponentsHaveCorrectState(boolean enabled) {
+        assertEquals(mPreference.mProgressBar.getVisibility(), enabled ? View.GONE : View.VISIBLE);
+        for (int i = 0; i < mPreference.mRadioGroup.getChildCount(); i++) {
+            assertEquals(mPreference.mRadioGroup.getChildAt(i).isEnabled(), enabled);
+        }
+        assertEquals(mPositiveButton.isEnabled(), enabled);
+    }
+
+    @Test
+    public void testOnClick_positiveButtonClicked_validation_fail() {
+        // Set the default settings to OFF
+        final ContentResolver contentResolver = mContext.getContentResolver();
+        Settings.Global.putString(contentResolver, PRIVATE_DNS_MODE, PRIVATE_DNS_MODE_OFF);
+
+        mPreference.mMode = PRIVATE_DNS_MODE_PROVIDER_HOSTNAME;
+        mPreference.mEditText.setText(INVALID_HOST_NAME);
+        final AlertDialog dialog = mock(AlertDialog.class);
+        mPreference.onShow(dialog);
+        mPositiveButton.performClick();
+
+        final ArgumentCaptor<ValidationCallback> callbackCaptor =
+                ArgumentCaptor.forClass(ValidationCallback.class);
+        verify(mConnectivityManager, times(1)).validatePrivateDnsSetting(
+                eq(INVALID_HOST_NAME), any(), callbackCaptor.capture());
+
+        // Before validation result is received, private DNS UI components should be disabled.
+        assertComponentsHaveCorrectState(false);
+
+        final ValidationCallback cb = callbackCaptor.getValue();
+        cb.onResult(PRIVATE_DNS_VALIDATION_RESULT_FAIL);
+        // After validation result is received, private DNS UI components should be enabled.
+        assertComponentsHaveCorrectState(true);
+
+        // dialog still exists because validation failed.
+        verify(dialog, never()).dismiss();
         // Still equal to OFF
         assertThat(Settings.Global.getString(contentResolver, PRIVATE_DNS_MODE)).isEqualTo(
                 PRIVATE_DNS_MODE_OFF);

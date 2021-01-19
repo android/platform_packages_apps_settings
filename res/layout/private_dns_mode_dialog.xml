@@ -25,6 +25,16 @@
         android:orientation="vertical"
         android:padding="8dp">
 
+        <ProgressBar
+           android:id="@+id/private_dns_validation_progress"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_below="@android:id/summary"
+            android:layout_alignStart="@android:id/summary"
+            android:max="100"
+            android:indeterminate="true"
+            style="?android:attr/progressBarStyleHorizontal" />
         <RadioGroup
             android:id="@+id/private_dns_radio_group"
             android:layout_width="match_parent"

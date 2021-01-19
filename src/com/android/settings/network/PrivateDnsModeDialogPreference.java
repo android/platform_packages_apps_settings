@@ -20,6 +20,7 @@ import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_OFF;
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_OPPORTUNISTIC;
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_PREDEFINED_PROVIDER;
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_PROVIDER_HOSTNAME;
+import static android.net.ConnectivityManager.PRIVATE_DNS_VALIDATION_RESULT_SUCCESS;
 
 import static com.android.settingslib.RestrictedLockUtils.EnforcedAdmin;
 
@@ -29,8 +30,14 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.PrivateDnsProvider;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.UserHandle;
 import android.os.UserManager;
 import android.provider.Settings;
@@ -46,6 +53,7 @@ import android.webkit.URLUtil;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -68,13 +76,14 @@ import com.google.common.net.InternetDomainName;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Executor;
 import java.util.stream.Collectors;
 
 /**
  * Dialog to set the Private DNS
  */
 public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat implements
-        DialogInterface.OnClickListener, RadioGroup.OnCheckedChangeListener, TextWatcher {
+        DialogInterface.OnShowListener, RadioGroup.OnCheckedChangeListener, TextWatcher {
 
     public static final String ANNOTATION_URL = "url";
 
@@ -131,8 +140,12 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
     String mMode;
     @VisibleForTesting
     Spinner mSp;
+    @VisibleForTesting
+    ProgressBar mProgressBar;
 
     ConnectivityManager mCM;
+
+    Executor mExecutor;
 
     public PrivateDnsModeDialogPreference(Context context) {
         super(context);
@@ -175,6 +188,8 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
         // admin, an information button will be shown.
         setWidgetLayoutResource(R.layout.restricted_icon);
         mCM = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        mExecutor = new Handler(Looper.getMainLooper())::post;
+        setOnShowListener(this);
     }
 
     @Override
@@ -207,6 +222,8 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
         mEditText.setText(getCustomizationFromSettings(contentResolver));
 
         mSp = view.findViewById(R.id.private_dns_provider_spinner);
+        mProgressBar = view.findViewById(R.id.private_dns_validation_progress);
+        mProgressBar.setVisibility(View.GONE);
 
         mRadioGroup = view.findViewById(R.id.private_dns_radio_group);
         mRadioGroup.setOnCheckedChangeListener(this);
@@ -261,25 +278,78 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
         mSp.setSelection(adapter.getPosition(storedProvider));
     }
 
-    @Override
-    public void onClick(DialogInterface dialog, int which) {
-        if (which == DialogInterface.BUTTON_POSITIVE) {
-            final Context context = getContext();
-            // TODO(huangluke): Have a real time validation for the customize input to
-            // ensure that the broken server won't be stored into Settings.
-            if (mMode.equals(PRIVATE_DNS_MODE_PROVIDER_HOSTNAME)) {
-                // Only clickable if url/hostname is valid, so we could save it safely
-                Settings.Global.putString(context.getContentResolver(), CUSTOMIZATION_KEY,
-                        mEditText.getText().toString());
-            }
-            if (mMode.equals(PRIVATE_DNS_MODE_PREDEFINED_PROVIDER)) {
-                Settings.Global.putString(context.getContentResolver(), PREDEFINED_PROVIDER_KEY,
-                        mSp.getSelectedItem().toString());
-            }
+    private void setPrivateDnsSettingStatus(boolean status) {
+        mProgressBar.setVisibility(status ? View.GONE : View.VISIBLE);
+        for (int i = 0; i < mRadioGroup.getChildCount(); i++) {
+            mRadioGroup.getChildAt(i).setEnabled(status);
+        }
+        final Button saveButton = getSaveButton();
+        if (saveButton != null) {
+            saveButton.setEnabled(status);
+        }
+    }
 
-            FeatureFactory.getFactory(context).getMetricsFeatureProvider().action(context,
-                    SettingsEnums.ACTION_PRIVATE_DNS_MODE, mMode);
-            Settings.Global.putString(context.getContentResolver(), MODE_KEY, mMode);
+    private void savePrivateDnsSettings() {
+        final Context context = getContext();
+        if (mMode.equals(PRIVATE_DNS_MODE_PROVIDER_HOSTNAME)) {
+            // Only clickable if hostname is valid, so we could save it safely
+            Settings.Global.putString(context.getContentResolver(), CUSTOMIZATION_KEY,
+                    mEditText.getText().toString());
+        }
+        if (mMode.equals(PRIVATE_DNS_MODE_PREDEFINED_PROVIDER)) {
+            Settings.Global.putString(context.getContentResolver(), PREDEFINED_PROVIDER_KEY,
+                    mSp.getSelectedItem().toString());
+        }
+        FeatureFactory.getFactory(context).getMetricsFeatureProvider().action(context,
+                SettingsEnums.ACTION_PRIVATE_DNS_MODE, mMode);
+        Settings.Global.putString(context.getContentResolver(), MODE_KEY, mMode);
+    }
+
+    private void setEditTextError(boolean isError) {
+        if (isError) {
+            final Context context = getContext();
+            final PorterDuffColorFilter redColorFilter =
+                    new PorterDuffColorFilter(Color.RED, PorterDuff.Mode.SRC_ATOP);
+            mEditText.getBackground().setColorFilter(redColorFilter);
+            final Drawable drawable =
+                    context.getResources().getDrawable(R.drawable.ic_info_outline_24dp);
+            drawable.setColorFilter(redColorFilter);
+            final int lineHeight = mEditText.getLineHeight();
+            drawable.setBounds(0, 0, lineHeight, lineHeight);
+            mEditText.setError(
+                    context.getString(R.string.private_dns_validation_failure), drawable);
+            mEditText.clearFocus();
+            return;
+        }
+        mEditText.getBackground().clearColorFilter();
+    }
+
+    @Override
+    public void onShow(DialogInterface dialog) {
+        final Button saveButton = getSaveButton();
+        if (saveButton != null) {
+            saveButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final Context context = getContext();
+                    if (mMode.equals(PRIVATE_DNS_MODE_PROVIDER_HOSTNAME)) {
+                        setPrivateDnsSettingStatus(false);
+                        mCM.validatePrivateDnsSetting(mEditText.getText().toString(), mExecutor,
+                                (result) -> {
+                                    if (result == PRIVATE_DNS_VALIDATION_RESULT_SUCCESS) {
+                                        savePrivateDnsSettings();
+                                        dialog.dismiss();
+                                        return;
+                                    }
+                                    setEditTextError(true);
+                                    setPrivateDnsSettingStatus(true);
+                                });
+                        return;
+                    }
+                    savePrivateDnsSettings();
+                    dialog.dismiss();
+                }
+            });
         }
     }
 
@@ -308,6 +378,7 @@ public class PrivateDnsModeDialogPreference extends CustomDialogPreferenceCompat
     @Override
     public void afterTextChanged(Editable s) {
         updateDialogInfo();
+        setEditTextError(false);
     }
 
     @Override
