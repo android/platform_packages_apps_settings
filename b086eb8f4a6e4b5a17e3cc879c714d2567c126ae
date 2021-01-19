@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007381830",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1553998?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "74ed95e6_e4715f5c",
+        "filename": "src/com/android/settings/network/PrivateDnsModeDialogPreference.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-19T02:56:31Z",
+      "side": 1,
+      "message": "Prefer to use context.getSystemService(ConnectivityManager.class) instead to avoid the cast.",
+      "range": {
+        "startLine": 177,
+        "startChar": 14,
+        "endLine": 177,
+        "endChar": 61
+      },
+      "revId": "b086eb8f4a6e4b5a17e3cc879c714d2567c126ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
