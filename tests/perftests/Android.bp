@@ -1,3 +1,7 @@
+package {
+    default_applicable_licenses: ["packages_apps_Settings_license"],
+}
+
 android_test {
     name: "SettingsPerfTests",
 
