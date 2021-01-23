@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "64bcf643_5bbf2e9d",
+        "filename": "src/com/android/settings/network/telephony/NetworkSelectSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2021-01-23T01:12:16Z",
+      "side": 0,
+      "message": "I think this config can also get removed from the overlay xml too now",
+      "range": {
+        "startLine": 98,
+        "startChar": 44,
+        "endLine": 98,
+        "endChar": 79
+      },
+      "revId": "39a920dd222539de673b3f4e43b870f7e3ba02ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

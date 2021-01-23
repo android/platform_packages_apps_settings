@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "792b1513_e1935fbd",
+        "filename": "src/com/android/settings/network/telephony/NetworkSelectSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2021-01-23T01:12:16Z",
+      "side": 1,
+      "message": "We can go further and remove this method too, right?",
+      "range": {
+        "startLine": 186,
+        "startChar": 42,
+        "endLine": 186,
+        "endChar": 77
+      },
+      "revId": "f324d217549cc775c3ef4c6072d95f0e90c78829",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7275a79c_06de50b1",
+        "filename": "src/com/android/settings/network/telephony/NetworkSelectSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2021-01-23T01:12:16Z",
+      "side": 1,
+      "message": "I think technically this doesn\u0027t have to be part of the same topic as the TM changes, right? Since this method should already be visible to Settings regardless. Might be one less headache when it comes to the impending merge conflicts.",
+      "range": {
+        "startLine": 190,
+        "startChar": 44,
+        "endLine": 190,
+        "endChar": 73
+      },
+      "revId": "f324d217549cc775c3ef4c6072d95f0e90c78829",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "093d545e_76839d2c",
+        "filename": "src/com/android/settings/network/telephony/NetworkSelectSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1124543
+      },
+      "writtenOn": "2021-01-23T01:12:16Z",
+      "side": 1,
+      "message": "mSelectedPreference.getOperatorNumeric() to get rid of the temporary variable and unnecessary OperatorInfo allocation",
+      "range": {
+        "startLine": 191,
+        "startChar": 24,
+        "endLine": 191,
+        "endChar": 51
+      },
+      "revId": "f324d217549cc775c3ef4c6072d95f0e90c78829",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
