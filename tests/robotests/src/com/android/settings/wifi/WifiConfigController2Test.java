@@ -32,7 +32,6 @@ import android.net.wifi.WifiEnterpriseConfig.Eap;
 import android.net.wifi.WifiEnterpriseConfig.Phase2;
 import android.net.wifi.WifiManager;
 import android.os.ServiceSpecificException;
-import android.security.KeyStore;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
@@ -74,8 +73,6 @@ public class WifiConfigController2Test {
     private Context mContext;
     @Mock
     private WifiEntry mWifiEntry;
-    @Mock
-    private KeyStore mKeyStore;
     private View mView;
     private Spinner mHiddenSettingsSpinner;
     private ShadowSubscriptionManager mShadowSubscriptionManager;
@@ -270,27 +267,11 @@ public class WifiConfigController2Test {
     }
 
     @Test
-    public void loadCertificates_keyStoreListFail_shouldNotCrash() {
-        // Set up
-        when(mWifiEntry.getSecurity()).thenReturn(WifiEntry.SECURITY_EAP);
-        when(mKeyStore.list(anyString()))
-            .thenThrow(new ServiceSpecificException(-1, "permission error"));
-
-        mController = new TestWifiConfigController2(mConfigUiBase, mView, mWifiEntry,
-              WifiConfigUiBase2.MODE_CONNECT);
-
-        // Verify that the EAP method menu is visible.
-        assertThat(mView.findViewById(R.id.eap).getVisibility()).isEqualTo(View.VISIBLE);
-        // No Crash
-    }
-
-    @Test
     public void loadCertificates_undesiredCertificates_shouldNotLoadUndesiredCertificates() {
         final Spinner spinner = new Spinner(mContext);
-        when(mKeyStore.list(anyString())).thenReturn(WifiConfigController.UNDESIRED_CERTIFICATES);
 
         mController.loadCertificates(spinner,
-                "prefix",
+                Arrays.asList(WifiConfigController.UNDESIRED_CERTIFICATES),
                 "doNotProvideEapUserCertString",
                 false /* showMultipleCerts */,
                 false /* showUsePreinstalledCertOption */);
@@ -418,11 +399,6 @@ public class WifiConfigController2Test {
         @Override
         boolean isSplitSystemUser() {
             return false;
-        }
-
-        @Override
-        KeyStore getKeyStore() {
-            return mKeyStore;
         }
     }
 
