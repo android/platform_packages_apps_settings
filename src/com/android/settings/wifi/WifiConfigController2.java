@@ -33,8 +33,7 @@ import android.net.wifi.WifiEnterpriseConfig.Phase2;
 import android.net.wifi.WifiManager;
 import android.os.IBinder;
 import android.os.UserManager;
-import android.security.Credentials;
-import android.security.KeyStore;
+import android.security.keystore.KeyProperties;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.text.Editable;
@@ -44,6 +43,7 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.FeatureFlagUtils;
 import android.util.Log;
+import android.util.Pair;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.AccessibilityDelegate;
@@ -71,6 +71,7 @@ import com.android.net.module.util.NetUtils;
 import com.android.net.module.util.ProxyUtils;
 import com.android.settings.ProxySelector;
 import com.android.settings.R;
+import com.android.settings.utils.AndroidKeystore;
 import com.android.settings.wifi.details.WifiPrivacyPreferenceController;
 import com.android.settings.wifi.details2.WifiPrivacyPreferenceController2;
 import com.android.settings.wifi.dpp.WifiDppUtils;
@@ -83,7 +84,7 @@ import com.android.wifitrackerlib.WifiEntry.ConnectedInfo;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -1033,15 +1034,17 @@ public class WifiConfigController2 implements TextWatcher,
         if (refreshCertificates) {
             loadSims();
 
+            Pair<Collection<String>, Collection<String>> keyAndCertAliases =
+                    AndroidKeystore.loadKeyAndCertificateAliases(KeyProperties.NAMESPACE_WIFI);
             loadCertificates(
                     mEapCaCertSpinner,
-                    Credentials.CA_CERTIFICATE,
+                    keyAndCertAliases.second,
                     null /* noCertificateString */,
                     false /* showMultipleCerts */,
                     true /* showUsePreinstalledCertOption */);
             loadCertificates(
                     mEapUserCertSpinner,
-                    Credentials.USER_PRIVATE_KEY,
+                    keyAndCertAliases.first,
                     mDoNotProvideEapUserCertString,
                     false /* showMultipleCerts */,
                     false /* showUsePreinstalledCertOption */);
@@ -1125,9 +1128,12 @@ public class WifiConfigController2 implements TextWatcher,
                     setSelection(mEapCaCertSpinner, caCerts[0]);
                 } else {
                     // Reload the cert spinner with an extra "multiple certificates added" item.
+                    Pair<Collection<String>, Collection<String>> keyAndCertAliases =
+                            AndroidKeystore.loadKeyAndCertificateAliases(
+                                    KeyProperties.NAMESPACE_WIFI);
                     loadCertificates(
                             mEapCaCertSpinner,
-                            Credentials.CA_CERTIFICATE,
+                            keyAndCertAliases.second,
                             null /* noCertificateString */,
                             true /* showMultipleCerts */,
                             true /* showUsePreinstalledCertOption */);
@@ -1446,11 +1452,6 @@ public class WifiConfigController2 implements TextWatcher,
     }
 
     @VisibleForTesting
-    KeyStore getKeyStore() {
-        return KeyStore.getInstance();
-    }
-
-    @VisibleForTesting
     void loadSims() {
         List<SubscriptionInfo> activeSubscriptionInfos = mContext
                 .getSystemService(SubscriptionManager.class).getActiveSubscriptionInfoList();
@@ -1491,7 +1492,7 @@ public class WifiConfigController2 implements TextWatcher,
     @VisibleForTesting
     void loadCertificates(
             Spinner spinner,
-            String prefix,
+            Collection<String> choices,
             String noCertificateString,
             boolean showMultipleCerts,
             boolean showUsePreinstalledCertOption) {
@@ -1506,14 +1507,8 @@ public class WifiConfigController2 implements TextWatcher,
             certs.add(mUseSystemCertsString);
         }
 
-        String[] certificateNames = null;
-        try {
-            certificateNames = getKeyStore().list(prefix, android.os.Process.WIFI_UID);
-        } catch (Exception e) {
-            Log.e(TAG, "can't get the certificate list from KeyStore");
-        }
-        if (certificateNames != null && certificateNames.length != 0) {
-            certs.addAll(Arrays.stream(certificateNames)
+        if (choices != null && choices.size() != 0) {
+            certs.addAll(choices.stream()
                     .filter(certificateName -> {
                         for (String undesired : UNDESIRED_CERTIFICATES) {
                             if (certificateName.startsWith(undesired)) {
