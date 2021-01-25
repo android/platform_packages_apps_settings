@@ -52,7 +52,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 @RunWith(AndroidJUnit4.class)
-public class ActiveSubsciptionsListenerTest {
+public class ActiveSubscriptionsListenerTest {
     private static final int SUB_ID1 = 3;
     private static final int SUB_ID2 = 7;
 
@@ -71,7 +71,7 @@ public class ActiveSubsciptionsListenerTest {
     private ShadowSubscriptionManager mShadowSubscriptionManager;
     private List<SubscriptionInfo> mActiveSubscriptions;
 
-    private ActiveSubsciptionsListenerImpl mListener;
+    private ActiveSubscriptionsListenerImpl mListener;
     private BroadcastReceiver mReceiver;
     private ShadowBroadcastReceiver mShadowReceiver;
 
@@ -92,7 +92,7 @@ public class ActiveSubsciptionsListenerTest {
                 .newBuilder().setId(SUB_ID2).buildSubscriptionInfo());
         mShadowSubscriptionManager.setActiveSubscriptionInfoList(mActiveSubscriptions);
 
-        mListener = spy(new ActiveSubsciptionsListenerImpl(Looper.getMainLooper(), mContext));
+        mListener = spy(new ActiveSubscriptionsListenerImpl(Looper.getMainLooper(), mContext));
         doReturn(mSubscriptionManager).when(mListener).getSubscriptionManager();
         mReceiver = mListener.getSubscriptionChangeReceiver();
         mShadowReceiver = shadowOf(mReceiver);
@@ -104,8 +104,8 @@ public class ActiveSubsciptionsListenerTest {
         mListener.close();
     }
 
-    private class ActiveSubsciptionsListenerImpl extends ActiveSubsciptionsListener {
-        private ActiveSubsciptionsListenerImpl(Looper looper, Context context) {
+    private class ActiveSubscriptionsListenerImpl extends ActiveSubscriptionsListener {
+        private ActiveSubscriptionsListenerImpl(Looper looper, Context context) {
             super(looper, context);
         }
 

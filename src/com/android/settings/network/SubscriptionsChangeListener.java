@@ -29,6 +29,7 @@ import android.telephony.SubscriptionManager;
 import android.telephony.SubscriptionManager.OnSubscriptionsChangedListener;
 
 import com.android.internal.telephony.TelephonyIntents;
+import java.lang.ref.WeakReference;
 
 /** Helper class for listening to changes in availability of telephony subscriptions */
 public class SubscriptionsChangeListener extends ContentObserver {
@@ -45,17 +46,31 @@ public class SubscriptionsChangeListener extends ContentObserver {
     private Uri mAirplaneModeSettingUri;
     private BroadcastReceiver mBroadcastReceiver;
 
+    private final static class MyOnSubscriptionsChangedListener extends
+            OnSubscriptionsChangedListener {
+        private WeakReference<SubscriptionsChangeListener> mOwner;
+
+        public MyOnSubscriptionsChangedListener(Looper looper, SubscriptionsChangeListener owner) {
+            super(looper);
+            mOwner = new WeakReference<SubscriptionsChangeListener>(owner);
+        }
+
+        @Override
+        public void onSubscriptionsChanged() {
+            SubscriptionsChangeListener listener = mOwner.get();
+            if (listener!= null) {
+                listener.subscriptionsChangedCallback();
+            }
+        }
+    }
+
     public SubscriptionsChangeListener(Context context, SubscriptionsChangeListenerClient client) {
         super(new Handler(Looper.getMainLooper()));
         mContext = context;
         mClient = client;
         mSubscriptionManager = mContext.getSystemService(SubscriptionManager.class);
-        mSubscriptionsChangedListener = new OnSubscriptionsChangedListener(Looper.getMainLooper()) {
-            @Override
-            public void onSubscriptionsChanged() {
-                subscriptionsChangedCallback();
-            }
-        };
+        mSubscriptionsChangedListener =
+                new MyOnSubscriptionsChangedListener(Looper.getMainLooper(), this);
         mAirplaneModeSettingUri = Settings.Global.getUriFor(Settings.Global.AIRPLANE_MODE_ON);
         mBroadcastReceiver = new BroadcastReceiver() {
             @Override

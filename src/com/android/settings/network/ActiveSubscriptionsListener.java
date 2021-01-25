@@ -33,17 +33,16 @@ import androidx.annotation.VisibleForTesting;
 
 import com.android.internal.telephony.TelephonyIntents;
 
+import java.lang.ref.WeakReference;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
-
 /**
  * A listener for active subscription change
  */
-public abstract class ActiveSubsciptionsListener
-        extends SubscriptionManager.OnSubscriptionsChangedListener
+public abstract class ActiveSubscriptionsListener
         implements AutoCloseable {
 
-    private static final String TAG = "ActiveSubsciptions";
+    private static final String TAG = "ActiveSubscriptions";
     private static final boolean DEBUG = false;
 
     private Looper mLooper;
@@ -66,6 +65,25 @@ public abstract class ActiveSubsciptionsListener
 
     private AtomicInteger mMaxActiveSubscriptionInfos;
     private List<SubscriptionInfo> mCachedActiveSubscriptionInfo;
+    private MyOnSubscriptionsChangedListener mMyOnSubscriptionsChangedListener;
+
+    private final static class MyOnSubscriptionsChangedListener extends
+            SubscriptionManager.OnSubscriptionsChangedListener {
+        private WeakReference<ActiveSubscriptionsListener> mOwner;
+
+        public MyOnSubscriptionsChangedListener(Looper looper, ActiveSubscriptionsListener owner) {
+            super(looper);
+            mOwner = new WeakReference<ActiveSubscriptionsListener>(owner);
+        }
+
+        @Override
+        public void onSubscriptionsChanged() {
+            ActiveSubscriptionsListener listener = mOwner.get();
+            if (listener != null) {
+                listener.onSubscriptionsChanged();
+            }
+        }
+     }
 
     /**
      * Constructor
@@ -73,7 +91,7 @@ public abstract class ActiveSubsciptionsListener
      * @param looper {@code Looper} of this listener
      * @param context {@code Context} of this listener
      */
-    public ActiveSubsciptionsListener(Looper looper, Context context) {
+    public ActiveSubscriptionsListener(Looper looper, Context context) {
         this(looper, context, SubscriptionManager.INVALID_SUBSCRIPTION_ID);
     }
 
@@ -84,8 +102,7 @@ public abstract class ActiveSubsciptionsListener
      * @param context {@code Context} of this listener
      * @param subscriptionId for subscription on this listener
      */
-    public ActiveSubsciptionsListener(Looper looper, Context context, int subscriptionId) {
-        super(looper);
+    public ActiveSubscriptionsListener(Looper looper, Context context, int subscriptionId) {
         mLooper = looper;
         mContext = context;
         mTargetSubscriptionId = subscriptionId;
@@ -100,6 +117,8 @@ public abstract class ActiveSubsciptionsListener
                 TelephonyIntents.ACTION_RADIO_TECHNOLOGY_CHANGED);
         mSubscriptionChangeIntentFilter.addAction(
                 TelephonyManager.ACTION_MULTI_SIM_CONFIG_CHANGED);
+        mMyOnSubscriptionsChangedListener =
+                new MyOnSubscriptionsChangedListener(looper, this);
     }
 
     @VisibleForTesting
@@ -138,7 +157,6 @@ public abstract class ActiveSubsciptionsListener
      */
     public abstract void onChanged();
 
-    @Override
     public void onSubscriptionsChanged() {
         // clear value in cache
         clearCache();
@@ -289,7 +307,7 @@ public abstract class ActiveSubsciptionsListener
     @VisibleForTesting
     void registerForSubscriptionsChange() {
         getSubscriptionManager().addOnSubscriptionsChangedListener(
-                mContext.getMainExecutor(), this);
+                mContext.getMainExecutor(), mMyOnSubscriptionsChangedListener);
     }
 
     private void monitorSubscriptionsChange(boolean on) {
@@ -316,7 +334,8 @@ public abstract class ActiveSubsciptionsListener
         if (mSubscriptionChangeReceiver != null) {
             mContext.unregisterReceiver(mSubscriptionChangeReceiver);
         }
-        getSubscriptionManager().removeOnSubscriptionsChangedListener(this);
+        getSubscriptionManager().removeOnSubscriptionsChangedListener(
+                mMyOnSubscriptionsChangedListener);
         clearCache();
         mCacheState.compareAndSet(STATE_STOPPING, STATE_NOT_LISTENING);
     }
