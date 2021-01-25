@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007564786",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1557123?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "4589f91c_99a15643",
+          "description": "Change to \"src/com/android/settings/network/ActiveSubsciptionsListener.java\"",
+          "replacements": [
+            {
+              "path": "src/com/android/settings/network/ActiveSubsciptionsListener.java",
+              "range": {
+                "startLine": 72,
+                "startChar": 36,
+                "endLine": 72,
+                "endChar": 48
+              },
+              "replacement": "Subscriptions"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "ae5062b4_57fa0665",
+        "filename": "src/com/android/settings/network/ActiveSubsciptionsListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-25T07:02:55Z",
+      "side": 1,
+      "message": "Common typo found: \"Subsciptions\" -- should it be \"Subscriptions\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 72,
+        "startChar": 36,
+        "endLine": 72,
+        "endChar": 48
+      },
+      "revId": "2beda89ed4d503030d7ca1aba19c6ba40c6f189e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007564786",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1557123?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "39838422_8c688ed3",
+          "description": "Change to \"src/com/android/settings/network/ActiveSubsciptionsListener.java\"",
+          "replacements": [
+            {
+              "path": "src/com/android/settings/network/ActiveSubsciptionsListener.java",
+              "range": {
+                "startLine": 74,
+                "startChar": 69,
+                "endLine": 74,
+                "endChar": 81
+              },
+              "replacement": "Subscriptions"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "06fd138b_9644f207",
+        "filename": "src/com/android/settings/network/ActiveSubsciptionsListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-25T07:02:55Z",
+      "side": 1,
+      "message": "Common typo found: \"Subsciptions\" -- should it be \"Subscriptions\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 74,
+        "startChar": 69,
+        "endLine": 74,
+        "endChar": 81
+      },
+      "revId": "2beda89ed4d503030d7ca1aba19c6ba40c6f189e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007564786",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1557123?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "3bd01847_831fe48c",
+          "description": "Change to \"src/com/android/settings/network/ActiveSubsciptionsListener.java\"",
+          "replacements": [
+            {
+              "path": "src/com/android/settings/network/ActiveSubsciptionsListener.java",
+              "range": {
+                "startLine": 76,
+                "startChar": 45,
+                "endLine": 76,
+                "endChar": 57
+              },
+              "replacement": "Subscriptions"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "3833a09e_c7697b1f",
+        "filename": "src/com/android/settings/network/ActiveSubsciptionsListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-25T07:02:55Z",
+      "side": 1,
+      "message": "Common typo found: \"Subsciptions\" -- should it be \"Subscriptions\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 76,
+        "startChar": 45,
+        "endLine": 76,
+        "endChar": 57
+      },
+      "revId": "2beda89ed4d503030d7ca1aba19c6ba40c6f189e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007564786",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1557123?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "e28d3c84_033d3353",
+          "description": "Change to \"src/com/android/settings/network/ActiveSubsciptionsListener.java\"",
+          "replacements": [
+            {
+              "path": "src/com/android/settings/network/ActiveSubsciptionsListener.java",
+              "range": {
+                "startLine": 81,
+                "startChar": 18,
+                "endLine": 81,
+                "endChar": 30
+              },
+              "replacement": "Subscriptions"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "92199799_2473209b",
+        "filename": "src/com/android/settings/network/ActiveSubsciptionsListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-25T07:02:55Z",
+      "side": 1,
+      "message": "Common typo found: \"Subsciptions\" -- should it be \"Subscriptions\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 81,
+        "startChar": 18,
+        "endLine": 81,
+        "endChar": 30
+      },
+      "revId": "2beda89ed4d503030d7ca1aba19c6ba40c6f189e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
