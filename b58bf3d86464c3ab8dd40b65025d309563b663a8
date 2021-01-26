@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bd52f0c_2d145d25",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1464582
+      },
+      "writtenOn": "2021-01-26T02:32:01Z",
+      "side": 1,
+      "message": "We are sending it directly to the hardcoded component. Nobody but that component can access it. Does that address this concern?",
+      "parentUuid": "3d8619f2_f1f5511e",
+      "revId": "b58bf3d86464c3ab8dd40b65025d309563b663a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5ef9ef30_fb627402",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-01-26T01:27:21Z",
       "side": 1,
       "message": "How about sending the network ID (WifiNetworkConfig#getNetworkId()) and protect this intent through permissions ?",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 81
+      },
+      "revId": "b58bf3d86464c3ab8dd40b65025d309563b663a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16a70104_f5b820c2",
+        "filename": "src/com/android/settings/wifi/dpp/WifiDppQrCodeGeneratorFragment.java",
+        "patchSetId": 13
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1464582
+      },
+      "writtenOn": "2021-01-26T02:32:01Z",
+      "side": 1,
+      "message": "We are sending it to the nearby sharing component directly.",
+      "parentUuid": "5ef9ef30_fb627402",
       "range": {
         "startLine": 144,
         "startChar": 0,
