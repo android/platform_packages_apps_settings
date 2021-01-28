@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7fe8594_083906e3",
+        "filename": "src/com/android/settings/network/PrivateDnsModeDialogPreference.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2021-01-28T05:54:00Z",
+      "side": 1,
+      "message": "How about early returning ?\nIt could improve readability.",
+      "range": {
+        "startLine": 330,
+        "startChar": 8,
+        "endLine": 330,
+        "endChar": 33
+      },
+      "revId": "9d2dbdc0a8856ca730b68b2c170964e7c413b6d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
