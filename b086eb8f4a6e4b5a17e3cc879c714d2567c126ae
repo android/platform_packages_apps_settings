@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58fdaf4c_d2a22f8c",
+        "filename": "src/com/android/settings/network/PrivateDnsModeDialogPreference.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2021-01-28T05:59:53Z",
+      "side": 1,
+      "message": "would privateDnsProviders.replaceAll(s -\u003e s.name) make things clear ?",
+      "range": {
+        "startLine": 247,
+        "startChar": 16,
+        "endLine": 247,
+        "endChar": 91
+      },
+      "revId": "b086eb8f4a6e4b5a17e3cc879c714d2567c126ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
