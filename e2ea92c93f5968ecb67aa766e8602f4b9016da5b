@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007803635",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1569702?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "ca0193b8_b44d2e69",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-02T05:05:58Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 526,
+        "startChar": 0,
+        "endLine": 526,
+        "endChar": 110
+      },
+      "revId": "e2ea92c93f5968ecb67aa766e8602f4b9016da5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
