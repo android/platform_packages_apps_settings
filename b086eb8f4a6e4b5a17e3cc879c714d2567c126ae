@@ -22,6 +22,30 @@
       },
       "revId": "b086eb8f4a6e4b5a17e3cc879c714d2567c126ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37d96b23_5be49cef",
+        "filename": "src/com/android/settings/network/PrivateDnsModeDialogPreference.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1337176
+      },
+      "writtenOn": "2021-02-03T08:58:32Z",
+      "side": 1,
+      "message": "Not sure I misunderstood something but we probably can\u0027t do that because we need a List\u003cString\u003e here, and ConnectivityManager will return a List\u003cPrivateDnsProvider\u003e.",
+      "parentUuid": "58fdaf4c_d2a22f8c",
+      "range": {
+        "startLine": 247,
+        "startChar": 16,
+        "endLine": 247,
+        "endChar": 91
+      },
+      "revId": "b086eb8f4a6e4b5a17e3cc879c714d2567c126ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
