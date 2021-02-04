@@ -30,7 +30,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.ConnectivityManager.NetworkCallback;
-import android.net.IConnectivityManager;
+import android.net.IVpnManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
 import android.net.NetworkRequest;
@@ -92,8 +92,8 @@ public class VpnSettings extends RestrictedSettingsFragment implements
             .removeCapability(NetworkCapabilities.NET_CAPABILITY_TRUSTED)
             .build();
 
-    private final IConnectivityManager mConnectivityService = IConnectivityManager.Stub
-            .asInterface(ServiceManager.getService(Context.CONNECTIVITY_SERVICE));
+    private final IVpnManager mVpnService = IVpnManager.Stub
+            .asInterface(ServiceManager.getService(Context.VPN_MANAGER_SERVICE));
     private ConnectivityManager mConnectivityManager;
     private UserManager mUserManager;
 
@@ -468,7 +468,7 @@ public class VpnSettings extends RestrictedSettingsFragment implements
     @WorkerThread
     private Map<String, LegacyVpnInfo> getConnectedLegacyVpns() {
         try {
-            mConnectedLegacyVpn = mConnectivityService.getLegacyVpnInfo(UserHandle.myUserId());
+            mConnectedLegacyVpn = mVpnService.getLegacyVpnInfo(UserHandle.myUserId());
             if (mConnectedLegacyVpn != null) {
                 return Collections.singletonMap(mConnectedLegacyVpn.key, mConnectedLegacyVpn);
             }
@@ -484,7 +484,7 @@ public class VpnSettings extends RestrictedSettingsFragment implements
         Set<AppVpnInfo> connections = new ArraySet<>();
         try {
             for (UserHandle profile : mUserManager.getUserProfiles()) {
-                VpnConfig config = mConnectivityService.getVpnConfig(profile.getIdentifier());
+                VpnConfig config = mVpnService.getVpnConfig(profile.getIdentifier());
                 if (config != null && !config.legacy) {
                     connections.add(new AppVpnInfo(profile.getIdentifier(), config.user));
                 }

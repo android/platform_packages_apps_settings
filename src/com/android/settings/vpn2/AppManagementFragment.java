@@ -29,7 +29,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.ConnectivityManager;
-import android.net.IConnectivityManager;
+import android.net.IVpnManager;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.ServiceManager;
@@ -72,7 +72,7 @@ public class AppManagementFragment extends SettingsPreferenceFragment
     private PackageManager mPackageManager;
     private DevicePolicyManager mDevicePolicyManager;
     private ConnectivityManager mConnectivityManager;
-    private IConnectivityManager mConnectivityService;
+    private IVpnManager mVpnManagerService;
 
     // VPN app info
     private final int mUserId = UserHandle.myUserId();
@@ -125,8 +125,8 @@ public class AppManagementFragment extends SettingsPreferenceFragment
         mPackageManager = getContext().getPackageManager();
         mDevicePolicyManager = getContext().getSystemService(DevicePolicyManager.class);
         mConnectivityManager = getContext().getSystemService(ConnectivityManager.class);
-        mConnectivityService = IConnectivityManager.Stub
-                .asInterface(ServiceManager.getService(Context.CONNECTIVITY_SERVICE));
+        mVpnManagerService = IVpnManager.Stub
+                .asInterface(ServiceManager.getService(Context.VPN_MANAGER_SERVICE));
 
         mPreferenceVersion = findPreference(KEY_VERSION);
         mPreferenceAlwaysOn = (RestrictedSwitchPreference) findPreference(KEY_ALWAYS_ON_VPN);
@@ -336,7 +336,7 @@ public class AppManagementFragment extends SettingsPreferenceFragment
      */
     private boolean isAnotherVpnActive() {
         try {
-            final VpnConfig config = mConnectivityService.getVpnConfig(mUserId);
+            final VpnConfig config = mVpnManagerService.getVpnConfig(mUserId);
             return config != null && !TextUtils.equals(config.user, mPackageName);
         } catch (RemoteException e) {
             Log.w(TAG, "Failure to look up active VPN", e);

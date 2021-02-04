@@ -21,7 +21,7 @@ import android.app.settings.SettingsEnums;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageInfo;
-import android.net.IConnectivityManager;
+import android.net.IVpnManager;
 import android.net.VpnManager;
 import android.os.Bundle;
 import android.os.RemoteException;
@@ -53,8 +53,8 @@ public class AppDialogFragment extends InstrumentedDialogFragment implements App
     private Listener mListener;
 
     private UserManager mUserManager;
-    private final IConnectivityManager mService = IConnectivityManager.Stub.asInterface(
-            ServiceManager.getService(Context.CONNECTIVITY_SERVICE));
+    private final IVpnManager mService = IVpnManager.Stub.asInterface(
+            ServiceManager.getService(Context.VPN_MANAGER_SERVICE));
 
     @Override
     public int getMetricsCategory() {

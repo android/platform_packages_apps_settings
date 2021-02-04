@@ -19,7 +19,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.content.pm.UserInfo;
 import android.net.ConnectivityManager;
-import android.net.IConnectivityManager;
+import android.net.IVpnManager;
 import android.net.Network;
 import android.net.NetworkCapabilities;
 import android.net.NetworkRequest;
@@ -64,7 +64,7 @@ public class VpnPreferenceController extends AbstractPreferenceController
     private final String mToggleable;
     private final UserManager mUserManager;
     private final ConnectivityManager mConnectivityManager;
-    private final IConnectivityManager mConnectivityManagerService;
+    private final IVpnManager mVpnManager;
     private Preference mPreference;
 
     public VpnPreferenceController(Context context) {
@@ -74,8 +74,8 @@ public class VpnPreferenceController extends AbstractPreferenceController
         mUserManager = (UserManager) context.getSystemService(Context.USER_SERVICE);
         mConnectivityManager =
                 (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        mConnectivityManagerService = IConnectivityManager.Stub.asInterface(
-                ServiceManager.getService(Context.CONNECTIVITY_SERVICE));
+        mVpnManager = IVpnManager.Stub.asInterface(
+                ServiceManager.getService(Context.VPN_MANAGER_SERVICE));
     }
 
     @Override
@@ -125,14 +125,14 @@ public class VpnPreferenceController extends AbstractPreferenceController
         try {
             final List<UserInfo> users = mUserManager.getUsers();
             for (UserInfo user : users) {
-                VpnConfig cfg = mConnectivityManagerService.getVpnConfig(user.id);
+                VpnConfig cfg = mVpnManager.getVpnConfig(user.id);
                 if (cfg == null) {
                     continue;
                 } else if (cfg.legacy) {
                     // Legacy VPNs should do nothing if the network is disconnected. Third-party
                     // VPN warnings need to continue as traffic can still go to the app.
                     final LegacyVpnInfo legacyVpn =
-                            mConnectivityManagerService.getLegacyVpnInfo(user.id);
+                            mVpnManager.getLegacyVpnInfo(user.id);
                     if (legacyVpn == null || legacyVpn.state != LegacyVpnInfo.STATE_CONNECTED) {
                         continue;
                     }

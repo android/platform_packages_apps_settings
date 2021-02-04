@@ -21,7 +21,7 @@ import android.app.settings.SettingsEnums;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.net.ConnectivityManager;
-import android.net.IConnectivityManager;
+import android.net.IVpnManager;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.ServiceManager;
@@ -52,8 +52,8 @@ public class ConfigDialogFragment extends InstrumentedDialogFragment implements
     private static final String ARG_EDITING = "editing";
     private static final String ARG_EXISTS = "exists";
 
-    private final IConnectivityManager mService = IConnectivityManager.Stub.asInterface(
-            ServiceManager.getService(Context.CONNECTIVITY_SERVICE));
+    private final IVpnManager mService = IVpnManager.Stub.asInterface(
+            ServiceManager.getService(Context.VPN_MANAGER_SERVICE));
     private Context mContext;
 
 
