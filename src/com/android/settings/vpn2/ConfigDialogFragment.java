@@ -21,10 +21,9 @@ import android.app.settings.SettingsEnums;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.net.ConnectivityManager;
-import android.net.IConnectivityManager;
+import android.net.VpnManager;
 import android.os.Bundle;
 import android.os.RemoteException;
-import android.os.ServiceManager;
 import android.os.UserHandle;
 import android.security.Credentials;
 import android.security.KeyStore;
@@ -52,8 +51,6 @@ public class ConfigDialogFragment extends InstrumentedDialogFragment implements
     private static final String ARG_EDITING = "editing";
     private static final String ARG_EXISTS = "exists";
 
-    private final IConnectivityManager mService = IConnectivityManager.Stub.asInterface(
-            ServiceManager.getService(Context.CONNECTIVITY_SERVICE));
     private Context mContext;
 
 
@@ -209,11 +206,9 @@ public class ConfigDialogFragment extends InstrumentedDialogFragment implements
         if (!VpnUtils.isVpnLockdown(profile.key)) {
             VpnUtils.clearLockdownVpn(mContext);
             try {
-                mService.startLegacyVpn(profile);
+                getVpnManager(mContext).startLegacyVpn(profile);
             } catch (IllegalStateException e) {
                 Toast.makeText(mContext, R.string.vpn_no_network, Toast.LENGTH_LONG).show();
-            } catch (RemoteException e) {
-                Log.e(TAG, "Failed to connect", e);
             }
         }
     }
@@ -237,7 +232,11 @@ public class ConfigDialogFragment extends InstrumentedDialogFragment implements
     }
 
     private boolean isConnected(VpnProfile profile) throws RemoteException {
-        LegacyVpnInfo connected = mService.getLegacyVpnInfo(UserHandle.myUserId());
+        LegacyVpnInfo connected = getVpnManager(mContext).getLegacyVpnInfo(UserHandle.myUserId());
         return connected != null && profile.key.equals(connected.key);
+    }
+
+    private VpnManager getVpnManager(Context context) {
+        return context.getSystemService(VpnManager.class);
     }
 }
