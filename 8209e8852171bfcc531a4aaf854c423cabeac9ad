@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe0ab6e5_30292286",
+        "filename": "src/com/android/settings/network/PrivateDnsModeDialogPreference.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2021-02-04T14:26:31Z",
+      "side": 1,
+      "message": "1. How about Context#getMainExecutor() ?\n2. Do we really nee mExecutor to be created within constructor ?\n   Can we have this within line 338 and remove mExecutor ?",
+      "range": {
+        "startLine": 191,
+        "startChar": 20,
+        "endLine": 191,
+        "endChar": 62
+      },
+      "revId": "8209e8852171bfcc531a4aaf854c423cabeac9ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d76b79b_868bcfcb",
+        "filename": "src/com/android/settings/network/PrivateDnsModeDialogPreference.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2021-02-04T14:26:31Z",
+      "side": 1,
+      "message": "How about changing the ordering into following for readibility ?\n\nif (!isError) {\n    mEditText.getBackground().clearColorFilter();\n    return;\n}\n// remove the tab in front of each line\nfinal Context context \u003d getContext();\n....",
+      "range": {
+        "startLine": 309,
+        "startChar": 0,
+        "endLine": 309,
+        "endChar": 22
+      },
+      "revId": "8209e8852171bfcc531a4aaf854c423cabeac9ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5fd11ceb_7b1e2f89",
+        "filename": "src/com/android/settings/network/PrivateDnsModeDialogPreference.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2021-02-04T14:26:31Z",
+      "side": 1,
+      "message": "How about changing the ordering of source code for readibility ?",
+      "range": {
+        "startLine": 336,
+        "startChar": 16,
+        "endLine": 336,
+        "endChar": 71
+      },
+      "revId": "8209e8852171bfcc531a4aaf854c423cabeac9ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
