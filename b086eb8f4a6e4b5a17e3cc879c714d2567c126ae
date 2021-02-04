@@ -46,6 +46,30 @@
       },
       "revId": "b086eb8f4a6e4b5a17e3cc879c714d2567c126ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "af585e4f_db0d7d76",
+        "filename": "src/com/android/settings/network/PrivateDnsModeDialogPreference.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2021-02-04T14:31:28Z",
+      "side": 1,
+      "message": "I mean ...\nhttps://developer.android.com/reference/java/lang/String#replaceAll(java.lang.String,%20java.lang.String)",
+      "parentUuid": "37d96b23_5be49cef",
+      "range": {
+        "startLine": 247,
+        "startChar": 16,
+        "endLine": 247,
+        "endChar": 91
+      },
+      "revId": "b086eb8f4a6e4b5a17e3cc879c714d2567c126ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
