@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007992442",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1574947?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "7b108786_ae928b99",
+        "filename": "src/com/android/settings/network/VpnPreferenceController.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-07T13:06:43Z",
+      "side": 1,
+      "message": "Prefer to use context.getSystemService(VpnManager.class) instead to avoid the cast.",
+      "range": {
+        "startLine": 75,
+        "startChar": 22,
+        "endLine": 75,
+        "endChar": 60
+      },
+      "revId": "aa409d34b31a7c4792f12e50b5645d75c0c02945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007992442",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1574947?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "49f84d92_19d426e7",
+        "filename": "src/com/android/settings/vpn2/VpnSettings.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-07T13:06:43Z",
+      "side": 1,
+      "message": "Prefer to use getSystemService(VpnManager.class) instead to avoid the cast.",
+      "range": {
+        "startLine": 124,
+        "startChar": 22,
+        "endLine": 124,
+        "endChar": 52
+      },
+      "revId": "aa409d34b31a7c4792f12e50b5645d75c0c02945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
