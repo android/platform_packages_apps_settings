@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06f896bf_12d7e2f4",
+        "filename": "src/com/android/settings/datausage/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2021-02-08T14:54:07Z",
+      "side": 1,
+      "message": "Please help to follow alphabet order, thanks.",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 3,
+        "endChar": 19
+      },
+      "revId": "37a6ae6dde0b362704052a2338258e92fd3d75ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89acae1b_edd0e62a",
+        "filename": "src/com/android/settings/datausage/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2021-02-08T14:54:07Z",
+      "side": 1,
+      "message": "Please help to follow alphabet order, thanks.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 17
+      },
+      "revId": "37a6ae6dde0b362704052a2338258e92fd3d75ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40400222_2f276cc0",
+        "filename": "src/com/android/settings/deviceinfo/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2021-02-08T14:54:07Z",
+      "side": 1,
+      "message": "Please help to follow alphabet order, thanks.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 20
+      },
+      "revId": "37a6ae6dde0b362704052a2338258e92fd3d75ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d34fc985_a81ae685",
+        "filename": "src/com/android/settings/sim/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2021-02-08T14:54:07Z",
+      "side": 1,
+      "message": "Please help to follow alphabet order, thanks.",
+      "range": {
+        "startLine": 5,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 20
+      },
+      "revId": "37a6ae6dde0b362704052a2338258e92fd3d75ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "336a93a9_f2d6a661",
+        "filename": "src/com/android/settings/wifi/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2021-02-08T14:54:07Z",
+      "side": 1,
+      "message": "Please help to follow alphabet order, thanks.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 13
+      },
+      "revId": "37a6ae6dde0b362704052a2338258e92fd3d75ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
