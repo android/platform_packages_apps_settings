@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05e80b5d_68f0ddd5",
+        "filename": "src/com/android/settings/vpn2/VpnSettings.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2021-02-08T07:53:09Z",
+      "side": 1,
+      "message": "This cannot use getSystemService(VpnManager.class) because that is a method on Activity. This is a Fragment, which does not have getSystemService. The getSystemService method is implemented in SettingsPreferenceFragment, but it only implements the method that takes a String:\n\n    /**\n     * Returns the specified system service from the owning Activity.\n     */\n    protected Object getSystemService(final String name) {\n        return getActivity().getSystemService(name);\n    }",
+      "revId": "04d34ced59f89b2f4089f1ca2010ab16f2f24f60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
