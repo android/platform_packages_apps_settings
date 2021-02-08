@@ -21,8 +21,9 @@ import static com.android.settings.development.DevelopmentOptionsActivityRequest
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.compat.CompatChanges;
+import android.app.compat.PackageOverride;
 import android.app.settings.SettingsEnums;
-import android.compat.Compatibility.ChangeConfig;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -31,7 +32,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.RemoteException;
 import android.os.ServiceManager;
-import android.util.ArraySet;
 
 import androidx.annotation.VisibleForTesting;
 import androidx.preference.Preference;
@@ -42,12 +42,14 @@ import androidx.preference.SwitchPreference;
 import com.android.internal.compat.AndroidBuildClassifier;
 import com.android.internal.compat.CompatibilityChangeConfig;
 import com.android.internal.compat.CompatibilityChangeInfo;
+import com.android.internal.compat.CompatibilityOverrideConfig;
 import com.android.internal.compat.IPlatformCompat;
 import com.android.settings.R;
 import com.android.settings.dashboard.DashboardFragment;
 import com.android.settings.development.AppPicker;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -282,21 +284,10 @@ public class PlatformCompatDashboard extends DashboardFragment {
 
         @Override
         public boolean onPreferenceChange(Preference preference, Object newValue) {
-            try {
-                final ArraySet<Long> enabled = new ArraySet<>();
-                final ArraySet<Long> disabled = new ArraySet<>();
-                if ((Boolean) newValue) {
-                    enabled.add(changeId);
-                } else {
-                    disabled.add(changeId);
-                }
-                final CompatibilityChangeConfig overrides =
-                        new CompatibilityChangeConfig(new ChangeConfig(enabled, disabled));
-                getPlatformCompat().setOverrides(overrides, mSelectedApp);
-            } catch (RemoteException e) {
-                e.printStackTrace();
-                return false;
-            }
+            CompatChanges.setPackageOverride(mSelectedApp, Collections.singletonMap(changeId,
+                    new PackageOverride.Builder()
+                            .addForAllVersions((Boolean) newValue)
+                            .build()));
             return true;
         }
     }
