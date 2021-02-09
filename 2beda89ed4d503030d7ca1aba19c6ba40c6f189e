@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b91a6a49_c4823467",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2021-02-09T02:41:37Z",
+      "side": 1,
+      "message": "Can you help to split each of the files into different submit seperately ?\nI mean .... 7 submit(s) instead of one. Which could help to speedup the review process.",
+      "revId": "2beda89ed4d503030d7ca1aba19c6ba40c6f189e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
