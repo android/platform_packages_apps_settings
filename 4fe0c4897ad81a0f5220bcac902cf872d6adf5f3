@@ -46,6 +46,30 @@
       },
       "revId": "4fe0c4897ad81a0f5220bcac902cf872d6adf5f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "adfe925b_d952d81f",
+        "filename": "src/com/android/settings/fuelgauge/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1165283
+      },
+      "writtenOn": "2021-02-11T20:00:52Z",
+      "side": 1,
+      "message": "Sigh... +2\u0027s aren\u0027t sticky in aosp.",
+      "parentUuid": "34a904a2_bd845edd",
+      "range": {
+        "startLine": 6,
+        "startChar": 29,
+        "endLine": 6,
+        "endChar": 30
+      },
+      "revId": "4fe0c4897ad81a0f5220bcac902cf872d6adf5f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
