@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2cc3ecb_2ce02eb7",
+        "filename": "src/com/android/settings/fuelgauge/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1003473
+      },
+      "writtenOn": "2021-02-11T19:52:46Z",
+      "side": 1,
+      "message": "no space after file:",
+      "range": {
+        "startLine": 6,
+        "startChar": 29,
+        "endLine": 6,
+        "endChar": 30
+      },
+      "revId": "4fe0c4897ad81a0f5220bcac902cf872d6adf5f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
