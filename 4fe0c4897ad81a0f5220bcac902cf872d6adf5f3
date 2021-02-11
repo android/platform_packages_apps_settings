@@ -22,6 +22,30 @@
       },
       "revId": "4fe0c4897ad81a0f5220bcac902cf872d6adf5f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34a904a2_bd845edd",
+        "filename": "src/com/android/settings/fuelgauge/OWNERS",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1165283
+      },
+      "writtenOn": "2021-02-11T19:59:53Z",
+      "side": 1,
+      "message": "Okay. The code I copied it from had a space (I was guessing due to the extra color after the repo name) so I kept it too. But we can try without it.",
+      "parentUuid": "b2cc3ecb_2ce02eb7",
+      "range": {
+        "startLine": 6,
+        "startChar": 29,
+        "endLine": 6,
+        "endChar": 30
+      },
+      "revId": "4fe0c4897ad81a0f5220bcac902cf872d6adf5f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
