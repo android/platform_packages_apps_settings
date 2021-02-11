@@ -2,3 +2,9 @@
 tifn@google.com
 wesleycwwang@google.com
 ykhung@google.com
+<<<<<<< PATCH SET (6697a4 Grant BatteryStats OWNERS for FakeUid.java)
+
+# BatteryStats
+per-file FakeUid.java = file:platform/frameworks/base:/BATTERY_STATS_OWNERS
+=======
+>>>>>>> BASE      (450a59 Merge "fuelgauge OWNERS eof newline merge conflict")
