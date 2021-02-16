@@ -66,7 +66,11 @@ public class AutomaticStorageManagementSwitchPreferenceController extends
 
     @Override
     public int getAvailabilityStatus() {
-        return !ActivityManager.isLowRamDeviceStatic() ? AVAILABLE : UNSUPPORTED_ON_DEVICE;
+        int returnValue = UNSUPPORTED_ON_DEVICE;
+        if (Utils.isAutomaticStorageManagerAvailable(mContext) && !ActivityManager.isLowRamDeviceStatic()) {
+            returnValue = AVAILABLE;
+        }
+        return returnValue;
     }
 
     @Override
