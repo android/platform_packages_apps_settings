@@ -20,6 +20,7 @@ import android.app.AppGlobals;
 import android.app.admin.DevicePolicyManager;
 import android.content.Context;
 import android.net.ConnectivityManager;
+import android.net.VpnManager;
 import android.os.UserManager;
 
 import androidx.annotation.Keep;
@@ -170,6 +171,7 @@ public class FeatureFactoryImpl extends FeatureFactory {
                     appContext.getPackageManager(),
                     UserManager.get(appContext),
                     (ConnectivityManager) appContext.getSystemService(Context.CONNECTIVITY_SERVICE),
+                    (VpnManager) appContext.getSystemService(Context.VPN_MANAGEMENT_SERVICE),
                     appContext.getResources());
         }
         return mEnterprisePrivacyFeatureProvider;
