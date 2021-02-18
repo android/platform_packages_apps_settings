@@ -1,0 +1,9 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Presubmit-Verified-Together+1: Treehugger Robot <treehugger-gerrit@google.com>
+Code-Review+1: Sunny Shao <sunnyshao@google.com>
+Code-Review+2: Remi NGUYEN VAN <reminv@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Thu, 18 Feb 2021 15:47:11 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1592132
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
