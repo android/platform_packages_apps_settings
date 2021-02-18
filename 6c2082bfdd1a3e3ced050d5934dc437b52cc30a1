@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008246436",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1592132?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "b84d136a_dda4a8e5",
+        "filename": "src/com/android/settings/overlay/FeatureFactoryImpl.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-18T05:15:03Z",
+      "side": 1,
+      "message": "Prefer to use appContext.getSystemService(VpnManager.class) instead to avoid the cast.",
+      "range": {
+        "startLine": 174,
+        "startChar": 20,
+        "endLine": 174,
+        "endChar": 61
+      },
+      "revId": "6c2082bfdd1a3e3ced050d5934dc437b52cc30a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
