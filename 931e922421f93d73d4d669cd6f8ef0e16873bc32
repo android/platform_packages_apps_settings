@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16a0faec_930a9c30",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165283
+      },
+      "writtenOn": "2021-02-18T23:52:37Z",
+      "side": 1,
+      "message": "Hmmm. Now there\u0027s a merge conflict. Evidently, just last week, ag/13609225 changed the OWNERS. But they did so internally, instead of in AOSP (which is where it should probably live). I\u0027ll update this cl to reflect those changes, I guess.",
+      "revId": "931e922421f93d73d4d669cd6f8ef0e16873bc32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
