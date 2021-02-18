@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e6eb158_35e933cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2021-02-18T11:58:28Z",
+      "side": 1,
+      "message": "Updated to better match sc-dev change that was merged. PTAL:\n\nhttps://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1592132/2..3",
+      "revId": "f96e7e54596c5ab7c0a6f6a97487d675d7ae99a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
