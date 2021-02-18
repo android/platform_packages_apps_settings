@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8867a5f1_fdfe63f8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2021-02-18T12:00:32Z",
+      "side": 1,
+      "message": "Cherry-pick of ag/13609302 merged into sc-dev.",
+      "revId": "e35ad905f60f06a04396ee4e2c127c3916d17eb3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
