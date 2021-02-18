@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008270627",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1595331?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "3ffb7785_0cbc3d47",
+        "filename": "src/com/android/settings/deviceinfo/storage/AutomaticStorageManagementSwitchPreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-18T19:56:30Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 108
+      },
+      "revId": "be950aef5d358ddf9cfdabeb607d3b7b995bb740",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
