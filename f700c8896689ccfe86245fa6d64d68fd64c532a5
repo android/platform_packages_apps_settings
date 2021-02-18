@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008272762",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1595331?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "df891dfd_15fd46cf",
+        "filename": "src/com/android/settings/deviceinfo/storage/AutomaticStorageManagementSwitchPreferenceController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-18T20:26:55Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 70,
+        "startChar": 65,
+        "endLine": 70,
+        "endChar": 66
+      },
+      "revId": "f700c8896689ccfe86245fa6d64d68fd64c532a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
