@@ -16,6 +16,23 @@
       "message": "Look good to me.",
       "revId": "b5ea7d584ec005c7b68c6307ad047bd490e837e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c01ce2a_558c54ef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1000835
+      },
+      "writtenOn": "2021-02-19T07:11:03Z",
+      "side": 1,
+      "message": "Tests all failed with ACLOUD_DOWNLOAD_ARTIFACT_ERROR, which is a known issue - b/180644088.",
+      "revId": "b5ea7d584ec005c7b68c6307ad047bd490e837e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
