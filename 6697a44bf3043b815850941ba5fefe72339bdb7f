@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb51d5a3_32db8a68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165283
+      },
+      "writtenOn": "2021-02-19T18:48:32Z",
+      "side": 1,
+      "message": "Sorry, ykhung@. I lost the +2 when I rebased the file (+2\u0027s aren\u0027t sticky in AOSP). Can you please +2 it again?",
+      "revId": "6697a44bf3043b815850941ba5fefe72339bdb7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
