@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008304384",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1584225?revision\u003d5",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "28c7924d_f6181e96",
+        "filename": "src/com/android/settings/fuelgauge/OWNERS",
+        "patchSetId": 5
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-19T18:46:42Z",
+      "side": 1,
+      "message": "This file contains a set of conflict markers.If this is a false alarm, add IGNORE_MERGE_CONFLICT_CHECK\u003d\u003d\u003creason\u003e to your commit message.",
+      "range": {
+        "startLine": 4,
+        "startChar": 1,
+        "endLine": 4,
+        "endChar": 7
+      },
+      "revId": "3d204cb06796c2282a79dbe06e6f6881175aeb83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
