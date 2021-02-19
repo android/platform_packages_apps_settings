@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d26aa81_f9499cc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1165283
+      },
+      "writtenOn": "2021-02-19T01:11:43Z",
+      "side": 1,
+      "message": "This will have merge conflicts until aosp/1595832 is submitted.",
+      "revId": "1b8357a62576aa8acda0265d8986d9e51b101da9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
