@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "21420939_787960e5",
+        "filename": "src/com/android/settings/wifi/details/WifiDetailPreferenceController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 938,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2021-02-20T08:44:15Z",
+      "side": 1,
+      "message": "Done in follow up commit, aosp/1579987",
+      "parentUuid": "c53aae70_6f309362",
+      "range": {
+        "startLine": 932,
+        "startChar": 8,
+        "endLine": 938,
+        "endChar": 9
+      },
+      "revId": "1fc357d2cb1abea9961f256745a4111de566bfa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "159b58cd_9b484b04",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-05T06:56:06Z",
       "side": 1,
       "message": "Also getPrefixMaskAsInet4Address",
+      "range": {
+        "startLine": 868,
+        "startChar": 26,
+        "endLine": 868,
+        "endChar": 54
+      },
+      "revId": "1fc357d2cb1abea9961f256745a4111de566bfa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2a38079_213905f2",
+        "filename": "src/com/android/settings/wifi/details2/WifiDetailPreferenceController2.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2021-02-20T08:44:15Z",
+      "side": 1,
+      "message": "Done in follow up commit, aosp/1579987",
+      "parentUuid": "159b58cd_9b484b04",
       "range": {
         "startLine": 868,
         "startChar": 26,
