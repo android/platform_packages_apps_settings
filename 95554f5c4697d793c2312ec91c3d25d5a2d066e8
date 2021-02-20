@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5463129_8a338a97",
+        "filename": "tests/robotests/src/com/android/settings/network/BluetoothTetherPreferenceControllerTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1367652
+      },
+      "writtenOn": "2021-02-20T18:18:26Z",
+      "side": 1,
+      "message": "Is this necessary?",
+      "range": {
+        "startLine": 60,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 55
+      },
+      "revId": "95554f5c4697d793c2312ec91c3d25d5a2d066e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fd691dd_df8dc834",
+        "filename": "tests/robotests/src/com/android/settings/wifi/tether/WifiTetherSettingsTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1367652
+      },
+      "writtenOn": "2021-02-20T18:18:26Z",
+      "side": 1,
+      "message": "Is this necessary?",
+      "range": {
+        "startLine": 83,
+        "startChar": 8,
+        "endLine": 84,
+        "endChar": 77
+      },
+      "revId": "95554f5c4697d793c2312ec91c3d25d5a2d066e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
