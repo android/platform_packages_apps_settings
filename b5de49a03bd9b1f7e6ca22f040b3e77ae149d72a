@@ -22,6 +22,30 @@
       },
       "revId": "b5de49a03bd9b1f7e6ca22f040b3e77ae149d72a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcf3b05f_bb0a3017",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1367652
+      },
+      "writtenOn": "2021-02-20T13:00:17Z",
+      "side": 1,
+      "message": "Update the title without LDAP. Thank you for your reminder.",
+      "parentUuid": "c05ce2d1_4065aa28",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 10
+      },
+      "revId": "b5de49a03bd9b1f7e6ca22f040b3e77ae149d72a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
