@@ -28,7 +28,7 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
 import android.content.Context;
-import android.net.ConnectivityManager;
+import android.net.TetheringManager;
 
 import androidx.preference.PreferenceScreen;
 import androidx.preference.SwitchPreference;
@@ -77,7 +77,7 @@ public class WifiTetherDisablePreferenceControllerTest {
     }
 
     @Mock
-    private ConnectivityManager mConnectivityManager;
+    private TetheringManager mTetheringManager;
     @Mock
     private PreferenceScreen mPreferenceScreen;
     @Mock
@@ -100,9 +100,10 @@ public class WifiTetherDisablePreferenceControllerTest {
 
         mContext = spy(ApplicationProvider.getApplicationContext());
         mPreference = spy(SwitchPreference.class);
-        when(mContext.getSystemService(Context.CONNECTIVITY_SERVICE)).thenReturn(
-                mConnectivityManager);
-        when(mConnectivityManager.getTetherableWifiRegexs()).thenReturn(new String[]{""});
+        when(mContext.getSystemServiceName(TetheringManager.class))
+                .thenReturn(Context.TETHERING_SERVICE);
+        when(mContext.getSystemService(Context.TETHERING_SERVICE)).thenReturn(mTetheringManager);
+        when(mTetheringManager.getTetherableWifiRegexs()).thenReturn(new String[]{""});
         mController = new WifiTetherDisablePreferenceController(mContext, WIFI_TETHER_DISABLE_KEY);
         mController.setTetherEnabler(mTetherEnabler);
         ReflectionHelpers.setField(mController, "mScreen", mPreferenceScreen);
@@ -112,7 +113,7 @@ public class WifiTetherDisablePreferenceControllerTest {
 
     @Test
     public void shouldShow_noTetherableWifi() {
-        when(mConnectivityManager.getTetherableWifiRegexs()).thenReturn(new String[0]);
+        when(mTetheringManager.getTetherableWifiRegexs()).thenReturn(new String[0]);
         assertThat(mController.shouldShow()).isFalse();
     }
 
