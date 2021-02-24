@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008408854",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1597453?revision\u003d4",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "40a0ee5b_e6aedfb0",
+        "filename": "src/com/android/settings/wifi/tether/WifiTetherBasePreferenceController.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-24T03:48:06Z",
+      "side": 1,
+      "message": "Prefer to use context.getSystemService(TetheringManager.class) instead to avoid the cast.",
+      "range": {
+        "startLine": 49,
+        "startChar": 14,
+        "endLine": 49,
+        "endChar": 58
+      },
+      "revId": "c11ac849293a7c1bf0d16bd2156ed4cfa7f579a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
