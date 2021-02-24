@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce57ac6b_aad21936",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-02-24T17:44:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "02f51a79_b1e77cc4",
+      "range": {
+        "startLine": 7,
+        "startChar": 49,
+        "endLine": 7,
+        "endChar": 54
+      },
+      "revId": "d9716f6704e0a455aad9e9654de36e113b739288",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "53f33a3d_528a0b47",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-24T15:45:36Z",
       "side": 1,
       "message": "suggest to use camel style naming. \nkeyAndCertAliases \u003d",
+      "range": {
+        "startLine": 1054,
+        "startChar": 57,
+        "endLine": 1054,
+        "endChar": 77
+      },
+      "revId": "d9716f6704e0a455aad9e9654de36e113b739288",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bfa408c_07254245",
+        "filename": "src/com/android/settings/wifi/WifiConfigController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1054,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-02-24T17:44:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53f33a3d_528a0b47",
       "range": {
         "startLine": 1054,
         "startChar": 57,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1ef77b20_05e18f30",
+        "filename": "src/com/android/settings/wifi/WifiConfigController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-02-24T17:44:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e085e0f_acf7ef60",
+      "range": {
+        "startLine": 1147,
+        "startChar": 65,
+        "endLine": 1147,
+        "endChar": 85
+      },
+      "revId": "d9716f6704e0a455aad9e9654de36e113b739288",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "62c176c3_39540049",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df7b1db0_aa1391c1",
+        "filename": "src/com/android/settings/wifi/WifiConfigController2.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1036,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-02-24T17:44:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "62c176c3_39540049",
+      "range": {
+        "startLine": 1036,
+        "startChar": 57,
+        "endLine": 1036,
+        "endChar": 77
+      },
+      "revId": "d9716f6704e0a455aad9e9654de36e113b739288",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "93da6f71_8f59280d",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-02-24T15:45:36Z",
       "side": 1,
       "message": "ditto.",
+      "range": {
+        "startLine": 1130,
+        "startChar": 65,
+        "endLine": 1130,
+        "endChar": 85
+      },
+      "revId": "d9716f6704e0a455aad9e9654de36e113b739288",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a7a49f2_6294a032",
+        "filename": "src/com/android/settings/wifi/WifiConfigController2.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-02-24T17:44:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93da6f71_8f59280d",
       "range": {
         "startLine": 1130,
         "startChar": 65,
