@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ffd7bc22_4d54a8a5",
+        "filename": "src/com/android/settings/security/ResetCredentialsPreferenceController.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1407552
+      },
+      "writtenOn": "2021-02-24T15:30:17Z",
+      "side": 1,
+      "message": "nit.\nsuggest to rename as \"isEnabled\"",
+      "range": {
+        "startLine": 69,
+        "startChar": 20,
+        "endLine": 69,
+        "endChar": 27
+      },
+      "revId": "11ec55d5fc41421e19c94e26109ab98b126ff170",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
