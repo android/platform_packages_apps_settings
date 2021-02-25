@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3ea0bb8_f0486100",
+        "filename": "src/com/android/settings/homepage/contextualcards/conditional/ConditionContextualCardController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1786490
+      },
+      "writtenOn": "2021-02-25T06:38:18Z",
+      "side": 1,
+      "message": "\u003e Please remove the trailing whitespace.\n\nPlease fix.",
+      "parentUuid": "37148dad_3fa03d2d",
+      "range": {
+        "startLine": 57,
+        "startChar": 51,
+        "endLine": 57,
+        "endChar": 52
+      },
+      "revId": "a78e5d42fcb3773036de17f4a61d35af3b895d3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
