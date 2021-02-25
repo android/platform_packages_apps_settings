@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e59dd604_e1238fb3",
+        "filename": "src/com/android/settings/UserCredentialsSettings.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-02-25T23:59:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13e1701d_246f9e35",
+      "range": {
+        "startLine": 224,
+        "startChar": 70,
+        "endLine": 224,
+        "endChar": 75
+      },
+      "revId": "766cccbde18db883d6903397804c6ec1ee655a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7534f55_97fbc743",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-25T19:34:44Z",
       "side": 1,
       "message": "is there any reason for not using mKeyStore directly here?",
+      "range": {
+        "startLine": 45,
+        "startChar": 12,
+        "endLine": 45,
+        "endChar": 20
+      },
+      "revId": "766cccbde18db883d6903397804c6ec1ee655a21",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeb817c9_a10eb42a",
+        "filename": "src/com/android/settings/security/ResetCredentialsPreferenceController.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-02-25T23:59:56Z",
+      "side": 1,
+      "message": "Yes, mKeyStore is final.",
+      "parentUuid": "f7534f55_97fbc743",
       "range": {
         "startLine": 45,
         "startChar": 12,
