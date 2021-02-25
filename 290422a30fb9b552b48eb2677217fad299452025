@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7aafb2d_71f14902",
+        "filename": "src/com/android/settings/utils/AndroidKeystore.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-02-25T23:30:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ede1b4d6_d4dd0535",
+      "range": {
+        "startLine": 46,
+        "startChar": 42,
+        "endLine": 46,
+        "endChar": 57
+      },
+      "revId": "290422a30fb9b552b48eb2677217fad299452025",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "00c875b7_8d012ae6",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ef087d6_5356b0f1",
+        "filename": "src/com/android/settings/wifi/WifiConfigController.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 1529,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-02-25T23:30:59Z",
+      "side": 1,
+      "message": "choices is passed to this function as parameter.",
+      "parentUuid": "00c875b7_8d012ae6",
+      "range": {
+        "startLine": 1529,
+        "startChar": 12,
+        "endLine": 1529,
+        "endChar": 41
+      },
+      "revId": "290422a30fb9b552b48eb2677217fad299452025",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c9b37e4_f8071875",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-25T20:08:28Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 1511,
+        "startChar": 12,
+        "endLine": 1511,
+        "endChar": 41
+      },
+      "revId": "290422a30fb9b552b48eb2677217fad299452025",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf7c5bac_6c9f243a",
+        "filename": "src/com/android/settings/wifi/WifiConfigController2.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 1511,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-02-25T23:30:59Z",
+      "side": 1,
+      "message": "yep same here.",
+      "parentUuid": "2c9b37e4_f8071875",
       "range": {
         "startLine": 1511,
         "startChar": 12,
