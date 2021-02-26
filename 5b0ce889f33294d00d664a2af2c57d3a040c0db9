@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ee735ef_5859b12a",
+        "filename": "src/com/android/settings/utils/AndroidKeystoreAliasLoader.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1678423
+      },
+      "writtenOn": "2021-02-26T19:49:36Z",
+      "side": 1,
+      "message": "Nit key pairs",
+      "range": {
+        "startLine": 46,
+        "startChar": 56,
+        "endLine": 46,
+        "endChar": 66
+      },
+      "revId": "5b0ce889f33294d00d664a2af2c57d3a040c0db9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6287e677_e3c47cdf",
+        "filename": "tests/robotests/src/com/android/settings/wifi/WifiConfigController2Test.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1678423
+      },
+      "writtenOn": "2021-02-26T19:49:36Z",
+      "side": 1,
+      "message": "This isn\u0027t initialized.",
+      "range": {
+        "startLine": 407,
+        "startChar": 19,
+        "endLine": 407,
+        "endChar": 46
+      },
+      "revId": "5b0ce889f33294d00d664a2af2c57d3a040c0db9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
