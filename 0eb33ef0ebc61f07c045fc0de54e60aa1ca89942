@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c7d567e_f6559177",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2021-02-26T13:57:21Z",
+      "side": 1,
+      "message": "Is this commit a right statement? I think it\u0027s different from what you mentioned in the bug.\n\nI saw the final result is \"Keeping Digital Wellbeing enabled\"",
+      "range": {
+        "startLine": 7,
+        "startChar": 31,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "0eb33ef0ebc61f07c045fc0de54e60aa1ca89942",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
