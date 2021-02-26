@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e994aa6_df5568fd",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-02-26T09:14:41Z",
+      "side": 1,
+      "message": "I can\u0027t say I understand well what might be returned by these methods, but if the new code is equivalent to the old code, it implies the old code used to always return the same list of certificates for the CA_CERTIFICATE and the USER_CERTIFICATE prefix. Is this true ?",
+      "range": {
+        "startLine": 162,
+        "startChar": 61,
+        "endLine": 162,
+        "endChar": 67
+      },
+      "revId": "6a57d68f88822be17d76ae291f2a31eafeb19ce3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e155bce0_6a325a7d",
+        "filename": "src/com/android/settings/vpn2/VpnSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1015428
+      },
+      "writtenOn": "2021-02-26T09:14:41Z",
+      "side": 1,
+      "message": "So IIUC this method was only ever used in l.225 ? Since you\u0027ve changed the prototype to remove the keystore, and only had to update that one line in this patch, apparently ; if this was used anywhere else you should be getting build errors.\n\nIf that\u0027s true, then we should :\n- Make this method private\n- Remove the array of excludeTypes, because it\u0027s always empty.",
+      "range": {
+        "startLine": 541,
+        "startChar": 44,
+        "endLine": 541,
+        "endChar": 63
+      },
+      "revId": "6a57d68f88822be17d76ae291f2a31eafeb19ce3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
