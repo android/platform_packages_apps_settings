@@ -1,0 +1,11 @@
+Open-Source-Licensing+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Autosubmit+1: Janis Danisevskis <jdanis@google.com>
+Code-Review+2: Hasini Gunasinghe <hasinitg@google.com>
+Code-Review+1: Sunny Shao <sunnyshao@google.com>
+Presubmit-Verified+2: Treehugger Robot <treehugger-gerrit@google.com>
+Lint+1: Lint 🤖 <ayeaye-gerrit@google.com>
+Submitted-by: Treehugger Robot <treehugger-gerrit@google.com>
+Submitted-at: Fri, 26 Feb 2021 01:50:14 +0000
+Reviewed-on: https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1569700
+Project: platform/packages/apps/Settings
+Branch: refs/heads/master
