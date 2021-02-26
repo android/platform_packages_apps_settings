@@ -46,6 +46,30 @@
       },
       "revId": "0eb33ef0ebc61f07c045fc0de54e60aa1ca89942",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fdb7ecdd_26202fd0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1335058
+      },
+      "writtenOn": "2021-02-26T15:09:29Z",
+      "side": 1,
+      "message": "Thanks !! Updated the commit message",
+      "parentUuid": "12aa1365_48c93419",
+      "range": {
+        "startLine": 7,
+        "startChar": 31,
+        "endLine": 7,
+        "endChar": 39
+      },
+      "revId": "0eb33ef0ebc61f07c045fc0de54e60aa1ca89942",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
