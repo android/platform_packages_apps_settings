@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1cb9c5d_74f85431",
+        "filename": "src/com/android/settings/utils/AndroidKeystoreAliasLoader.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1367652
+      },
+      "writtenOn": "2021-02-26T03:53:06Z",
+      "side": 1,
+      "message": "nit: remove unnecessary line?",
+      "revId": "497dfbe0d0a8297dba72429fb64255827d47b98f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f853c326_5efeb094",
+        "filename": "src/com/android/settings/utils/AndroidKeystoreAliasLoader.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1367652
+      },
+      "writtenOn": "2021-02-26T03:53:06Z",
+      "side": 1,
+      "message": "nit: add final",
+      "range": {
+        "startLine": 86,
+        "startChar": 12,
+        "endLine": 86,
+        "endChar": 24
+      },
+      "revId": "497dfbe0d0a8297dba72429fb64255827d47b98f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
