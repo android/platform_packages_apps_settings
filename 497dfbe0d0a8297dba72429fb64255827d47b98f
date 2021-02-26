@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5712c312_ab0c759e",
+        "filename": "src/com/android/settings/utils/AndroidKeystoreAliasLoader.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-02-26T19:35:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1cb9c5d_74f85431",
+      "revId": "497dfbe0d0a8297dba72429fb64255827d47b98f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f853c326_5efeb094",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-02-26T03:53:06Z",
       "side": 1,
       "message": "nit: add final",
+      "range": {
+        "startLine": 86,
+        "startChar": 12,
+        "endLine": 86,
+        "endChar": 24
+      },
+      "revId": "497dfbe0d0a8297dba72429fb64255827d47b98f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9577548a_6c96d6e1",
+        "filename": "src/com/android/settings/utils/AndroidKeystoreAliasLoader.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-02-26T19:35:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f853c326_5efeb094",
       "range": {
         "startLine": 86,
         "startChar": 12,
