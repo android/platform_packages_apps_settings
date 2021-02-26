@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bcba2c6f_195e60c2",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-02-26T21:28:00Z",
+      "side": 1,
+      "message": "A little background USER_CERTIFICATE_\u003calias\u003e can only be populated if USER_PRIVATE_KEY_\u003calias\u003e is as well for a given alias. So it is a little weird that USER_CERTIFICATE this is used as IpsecServerCert, because USER_CERTIFICATE should always be the certificate of the corresponding private key. CA_CERTIFICATE_\u003calias\u003e may be populated in two cases.\n\n1. USER_PRIVATE_KEY and USER_CERTIFICATE for the alias are also populated. In this case USER_CERTIFICATE holds the certificate of the private key and CA_CERTIFICATE_\u003calias\u003e holds the certificate chain of the private key.\n2. USER_PRIVATE_KEY and USER_CERTIFICATE are not populated for the alias. In this case the alias points to a trusted certificate entry.\n\nkeystore.getCertificate() would return USER_CERTIFICATE in case 1. and CA_CERTIFICATE in case 2.\nNote that the list of USER_PRIVATE_KEY and USER_CERTIFICATE must be identical, because you cannot not have only one of them populated.\n\nSo what I did here was keyAndCertAlias.second would return all aliases that would return a certificate on keystore.getCertificate() so that all certificates are selectable even if the IpsecCaCert list would also show user certificates. And `first` would return the entries that have private keys which must be a subset of the first.\n\nTo match more closely the current behavior, I could make two lists. USER_KEY/CERT and CA_CERT. Then I would use the first for IpsecUserCert and IpsecServerCert and the second for IpsecCaCert.",
+      "parentUuid": "2e994aa6_df5568fd",
+      "range": {
+        "startLine": 162,
+        "startChar": 61,
+        "endLine": 162,
+        "endChar": 67
+      },
+      "revId": "6a57d68f88822be17d76ae291f2a31eafeb19ce3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e155bce0_6a325a7d",
         "filename": "src/com/android/settings/vpn2/VpnSettings.java",
         "patchSetId": 7
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-26T09:14:41Z",
       "side": 1,
       "message": "So IIUC this method was only ever used in l.225 ? Since you\u0027ve changed the prototype to remove the keystore, and only had to update that one line in this patch, apparently ; if this was used anywhere else you should be getting build errors.\n\nIf that\u0027s true, then we should :\n- Make this method private\n- Remove the array of excludeTypes, because it\u0027s always empty.",
+      "range": {
+        "startLine": 541,
+        "startChar": 44,
+        "endLine": 541,
+        "endChar": 63
+      },
+      "revId": "6a57d68f88822be17d76ae291f2a31eafeb19ce3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "392df00d_972951d7",
+        "filename": "src/com/android/settings/vpn2/VpnSettings.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-02-26T21:28:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e155bce0_6a325a7d",
       "range": {
         "startLine": 541,
         "startChar": 44,
