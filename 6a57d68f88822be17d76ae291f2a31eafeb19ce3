@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2ec4159_0a826e88",
+        "filename": "src/com/android/settings/vpn2/ConfigDialog.java",
+        "patchSetId": 7
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-03-01T22:07:52Z",
+      "side": 1,
+      "message": "I am using the same class with the wifi settings dialog and added it in an earlier commit. It looks like I got internal merge conflicts so I am landing these patches on goog before back porting them to AOSP. I\u0027ll send you a few cherry pick later today.",
+      "parentUuid": "f2508f1e_fc99c53e",
+      "range": {
+        "startLine": 162,
+        "startChar": 61,
+        "endLine": 162,
+        "endChar": 67
+      },
+      "revId": "6a57d68f88822be17d76ae291f2a31eafeb19ce3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e155bce0_6a325a7d",
