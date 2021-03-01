@@ -37,10 +37,15 @@
             android:selectable="false"/>
 
         <ListPreference
+            android:key="data_preference"
+            android:title="@string/data_preference"
+            settings:controller="com.android.settings.network.telephony.DataDefaultSubscriptionController"
+            settings:allowDividerAbove="true"/>
+
+        <ListPreference
             android:key="calls_preference"
             android:title="@string/calls_preference"
-            settings:controller="com.android.settings.network.telephony.CallsDefaultSubscriptionController"
-            settings:allowDividerAbove="true"/>
+            settings:controller="com.android.settings.network.telephony.CallsDefaultSubscriptionController"/>
 
         <ListPreference
             android:key="sms_preference"

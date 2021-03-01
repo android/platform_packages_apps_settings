@@ -134,6 +134,11 @@ public class MobileNetworkSettings extends AbstractMobileNetworkSettings {
         if (dataUsageSummaryPreferenceController != null) {
             dataUsageSummaryPreferenceController.init(mSubId);
         }
+
+        if (context.getResources().getBoolean(
+                com.android.internal.R.bool.config_disable_ddsswitch_with_mobiledata)) {
+            use(DataDefaultSubscriptionController.class).init(getLifecycle());
+        }
         use(CallsDefaultSubscriptionController.class).init(getLifecycle());
         use(SmsDefaultSubscriptionController.class).init(getLifecycle());
         use(MobileNetworkSwitchController.class).init(getLifecycle(), mSubId);
