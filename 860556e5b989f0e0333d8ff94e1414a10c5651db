@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008534337",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1611914?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "8c5d26be_58db9b81",
+        "filename": "src/com/android/settings/network/telephony/DataDefaultSubscriptionController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-03-01T15:50:36Z",
+      "side": 1,
+      "message": "Disapproved license (NOT_A_CONTRIBUTION) :\nNot a contribution\n",
+      "range": {
+        "startLine": 3,
+        "startChar": 4,
+        "endLine": 3,
+        "endChar": 22
+      },
+      "revId": "860556e5b989f0e0333d8ff94e1414a10c5651db",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
