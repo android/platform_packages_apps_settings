@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c35adc10_46703a38",
+        "filename": "src/com/android/settings/utils/AndroidKeystoreAliasLoader.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-03-02T04:35:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ee735ef_5859b12a",
+      "range": {
+        "startLine": 46,
+        "startChar": 56,
+        "endLine": 46,
+        "endChar": 66
+      },
+      "revId": "5b0ce889f33294d00d664a2af2c57d3a040c0db9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6287e677_e3c47cdf",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-26T19:49:36Z",
       "side": 1,
       "message": "This isn\u0027t initialized.",
+      "range": {
+        "startLine": 407,
+        "startChar": 19,
+        "endLine": 407,
+        "endChar": 46
+      },
+      "revId": "5b0ce889f33294d00d664a2af2c57d3a040c0db9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a601592a_99b75e70",
+        "filename": "tests/robotests/src/com/android/settings/wifi/WifiConfigController2Test.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 407,
+      "author": {
+        "id": 1092085
+      },
+      "writtenOn": "2021-03-02T04:35:21Z",
+      "side": 1,
+      "message": "Apparently, it is initialized by the @Mock annotation at the declaration site.",
+      "parentUuid": "6287e677_e3c47cdf",
       "range": {
         "startLine": 407,
         "startChar": 19,
