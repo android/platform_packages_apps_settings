@@ -16,6 +16,23 @@
       "message": "Look good to me.",
       "revId": "fbb61ba4d0b88211c5b7322fc749d97a2872a698",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bccc0a1_03c6aa8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1762265
+      },
+      "writtenOn": "2021-03-04T03:34:41Z",
+      "side": 1,
+      "message": "Can we delete the corresponding robolectric tests as well?",
+      "revId": "fbb61ba4d0b88211c5b7322fc749d97a2872a698",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
