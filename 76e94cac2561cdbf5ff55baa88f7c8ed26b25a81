@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "041006ee_a7f0ee20",
+        "filename": "src/com/android/settings/network/EraseEuiccDataController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2021-03-05T05:42:20Z",
+      "side": 1,
+      "message": "do not think you need it.",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 33
+      },
+      "revId": "76e94cac2561cdbf5ff55baa88f7c8ed26b25a81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d5e72db_2cccf6fd",
+        "filename": "src/com/android/settings/network/EraseEuiccDataDialogFragment.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2021-03-05T05:42:20Z",
+      "side": 1,
+      "message": "final, keep the coding style consistent",
+      "range": {
+        "startLine": 70,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 9
+      },
+      "revId": "76e94cac2561cdbf5ff55baa88f7c8ed26b25a81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94584900_d808fa91",
+        "filename": "tests/unit/src/com/android/settings/network/EraseEuiccDataControllerTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2021-03-05T05:42:20Z",
+      "side": 1,
+      "message": "returnAVAILABLE_UNSEARCHABLE",
+      "range": {
+        "startLine": 48,
+        "startChar": 48,
+        "endLine": 48,
+        "endChar": 52
+      },
+      "revId": "76e94cac2561cdbf5ff55baa88f7c8ed26b25a81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2511e59e_30d59c2f",
+        "filename": "tests/unit/src/com/android/settings/network/EraseEuiccDataControllerTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2021-03-05T05:42:20Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 48,
+        "startChar": 38,
+        "endLine": 48,
+        "endChar": 46
+      },
+      "revId": "76e94cac2561cdbf5ff55baa88f7c8ed26b25a81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
