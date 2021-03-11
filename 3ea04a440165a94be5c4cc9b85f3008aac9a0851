@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "568081bc_fcbe3775",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1815899
+      },
+      "writtenOn": "2021-03-11T07:57:35Z",
+      "side": 1,
+      "message": "Maybe this should be capitalized too, to match \"Previously connected devices\"",
+      "revId": "3ea04a440165a94be5c4cc9b85f3008aac9a0851",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
