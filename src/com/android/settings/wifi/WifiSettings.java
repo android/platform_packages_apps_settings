@@ -272,7 +272,8 @@ public class WifiSettings extends RestrictedSettingsFragment
         mUserBadgeCache = new AccessPointPreference.UserBadgeCache(getPackageManager());
         mDataUsagePreference = findPreference(PREF_KEY_DATA_USAGE);
         mDataUsagePreference.setVisible(DataUsageUtils.hasWifiRadio(getContext()));
-        mDataUsagePreference.setTemplate(NetworkTemplate.buildTemplateWifiWildcard(),
+        mDataUsagePreference.setTemplate(
+                NetworkTemplate.buildTemplateWifi(NetworkTemplate.WIFI_NETWORKID_ALL, null),
                 0 /*subId*/,
                 null /*service*/);
     }
