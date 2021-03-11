@@ -109,7 +109,7 @@ public class SettingsDumpService extends Service {
             for (SubscriptionInfo info : manager.getAvailableSubscriptionInfoList()) {
                 telephonyManager = telephonyManager
                         .createForSubscriptionId(info.getSubscriptionId());
-                NetworkTemplate mobileAll = NetworkTemplate.buildTemplateMobileAll(
+                NetworkTemplate mobileAll = NetworkTemplate.buildTemplateCarrierWildcard(
                         telephonyManager.getSubscriberId());
                 final JSONObject usage = dumpDataUsage(mobileAll, controller);
                 usage.put("subId", info.getSubscriptionId());
@@ -118,7 +118,9 @@ public class SettingsDumpService extends Service {
             obj.put("cell", array);
         }
         if (connectivityManager.isNetworkSupported(ConnectivityManager.TYPE_WIFI)) {
-            obj.put("wifi", dumpDataUsage(NetworkTemplate.buildTemplateWifiWildcard(), controller));
+            obj.put("wifi", dumpDataUsage(
+                    NetworkTemplate.buildTemplateWifi(
+                    NetworkTemplate.WIFI_NETWORKID_ALL, null), controller));
         }
         if (connectivityManager.isNetworkSupported(ConnectivityManager.TYPE_ETHERNET)) {
             obj.put("ethernet", dumpDataUsage(NetworkTemplate.buildTemplateEthernet(), controller));
