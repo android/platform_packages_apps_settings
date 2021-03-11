@@ -511,11 +511,12 @@ public class DataUsageSummaryPreferenceTest {
 
         final Bundle expect = new Bundle(1);
         expect.putParcelable(DataUsageList.EXTRA_NETWORK_TEMPLATE,
-                NetworkTemplate.buildTemplateWifiWildcard());
+                NetworkTemplate.buildTemplateWifi(NetworkTemplate.WIFI_NETWORKID_ALL, null));
         final Bundle actual = startedIntent
                 .getBundleExtra(SettingsActivity.EXTRA_SHOW_FRAGMENT_ARGUMENTS);
         assertThat((NetworkTemplate) actual.getParcelable(DataUsageList.EXTRA_NETWORK_TEMPLATE))
-                .isEqualTo(NetworkTemplate.buildTemplateWifiWildcard());
+                .isEqualTo(NetworkTemplate.buildTemplateWifi(
+                NetworkTemplate.WIFI_NETWORKID_ALL, null));
 
         assertThat(startedIntent.getIntExtra(SettingsActivity.EXTRA_SHOW_FRAGMENT_TITLE_RESID, 0))
                 .isEqualTo(R.string.wifi_data_usage);
