@@ -65,7 +65,7 @@ public class AirplaneModeConditionController implements ConditionalCardControlle
 
     @Override
     public void onActionClick() {
-        ConnectivityManager.from(mAppContext).setAirplaneMode(false);
+        mAppContext.getSystemService(ConnectivityManager.class).setAirplaneMode(false);
     }
 
     @Override
