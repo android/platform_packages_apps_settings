@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7bab9a6_12832ba1",
+        "filename": "src/com/android/settings/network/AllowedNetworkTypesListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2021-03-16T10:24:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "457d2324_5eeebef4",
+      "range": {
+        "startLine": 51,
+        "startChar": 18,
+        "endLine": 51,
+        "endChar": 36
+      },
+      "revId": "7ce5bd7396f22afba9c46798653f609ad4bc2420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d7fc010_548b343b",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-16T09:58:50Z",
       "side": 1,
       "message": "TelephonyCallback",
+      "range": {
+        "startLine": 62,
+        "startChar": 20,
+        "endLine": 62,
+        "endChar": 38
+      },
+      "revId": "7ce5bd7396f22afba9c46798653f609ad4bc2420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bdf5b387_2999a7f4",
+        "filename": "src/com/android/settings/network/AllowedNetworkTypesListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2021-03-16T10:24:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d7fc010_548b343b",
       "range": {
         "startLine": 62,
         "startChar": 20,
