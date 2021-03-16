@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73afe214_9552ddf3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1308560
+      },
+      "writtenOn": "2021-03-16T09:58:50Z",
+      "side": 1,
+      "message": "LGTM",
+      "revId": "7ce5bd7396f22afba9c46798653f609ad4bc2420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "457d2324_5eeebef4",
+        "filename": "src/com/android/settings/network/AllowedNetworkTypesListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1308560
+      },
+      "writtenOn": "2021-03-16T09:58:50Z",
+      "side": 1,
+      "message": "TelephonyCallback",
+      "range": {
+        "startLine": 51,
+        "startChar": 18,
+        "endLine": 51,
+        "endChar": 36
+      },
+      "revId": "7ce5bd7396f22afba9c46798653f609ad4bc2420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d7fc010_548b343b",
+        "filename": "src/com/android/settings/network/AllowedNetworkTypesListener.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1308560
+      },
+      "writtenOn": "2021-03-16T09:58:50Z",
+      "side": 1,
+      "message": "TelephonyCallback",
+      "range": {
+        "startLine": 62,
+        "startChar": 20,
+        "endLine": 62,
+        "endChar": 38
+      },
+      "revId": "7ce5bd7396f22afba9c46798653f609ad4bc2420",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
