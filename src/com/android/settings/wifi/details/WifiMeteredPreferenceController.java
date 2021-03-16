@@ -28,7 +28,6 @@ import androidx.preference.PreferenceScreen;
 
 import com.android.settings.core.BasePreferenceController;
 import com.android.settings.wifi.WifiDialog;
-import com.android.settingslib.core.AbstractPreferenceController;
 
 /**
  * {@link AbstractPreferenceController} that controls whether the wifi network is metered or not.

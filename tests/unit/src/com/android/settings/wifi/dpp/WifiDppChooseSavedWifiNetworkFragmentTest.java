@@ -25,12 +25,12 @@ import static com.android.settings.wifi.dpp.WifiDppUtils.TAG_FRAGMENT_CHOOSE_SAV
 
 import static com.google.common.truth.Truth.assertThat;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
 import android.provider.Settings;
+
 import androidx.fragment.app.FragmentManager;
 import androidx.test.InstrumentationRegistry;
 import androidx.test.rule.ActivityTestRule;

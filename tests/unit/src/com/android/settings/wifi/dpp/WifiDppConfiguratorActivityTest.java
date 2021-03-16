@@ -18,9 +18,7 @@ package com.android.settings.wifi.dpp;
 
 import static com.google.common.truth.Truth.assertThat;
 
-import android.app.Instrumentation;
 import android.content.Intent;
-import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.RemoteException;
 import android.provider.Settings;

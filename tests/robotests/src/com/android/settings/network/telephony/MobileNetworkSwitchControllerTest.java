@@ -30,6 +30,9 @@ import android.content.Context;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 
+import androidx.lifecycle.LifecycleOwner;
+import androidx.preference.PreferenceScreen;
+
 import com.android.settings.R;
 import com.android.settings.network.SubscriptionUtil;
 import com.android.settings.widget.SwitchBar;
@@ -46,9 +49,6 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 
 import java.util.Arrays;
-
-import androidx.lifecycle.LifecycleOwner;
-import androidx.preference.PreferenceScreen;
 
 @RunWith(RobolectricTestRunner.class)
 public class MobileNetworkSwitchControllerTest {

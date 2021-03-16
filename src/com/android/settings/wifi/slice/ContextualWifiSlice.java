@@ -37,7 +37,6 @@ import com.android.settings.R;
 import com.android.settings.Utils;
 import com.android.settings.overlay.FeatureFactory;
 import com.android.settings.slices.CustomSliceRegistry;
-import com.android.settings.slices.CustomSliceable;
 import com.android.settingslib.wifi.AccessPoint;
 
 /**

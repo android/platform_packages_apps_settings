@@ -33,8 +33,8 @@ import android.net.ConnectivityManager;
 import android.net.IConnectivityManager;
 import android.net.NetworkRequest;
 import android.os.IBinder;
-import android.os.UserHandle;
 import android.os.ServiceManager;
+import android.os.UserHandle;
 import android.provider.SettingsSlicesContract;
 
 import androidx.lifecycle.LifecycleOwner;

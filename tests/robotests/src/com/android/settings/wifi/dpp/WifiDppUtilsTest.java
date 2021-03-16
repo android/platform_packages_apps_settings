@@ -29,8 +29,6 @@ import android.net.wifi.WifiManager;
 
 import com.android.settingslib.wifi.AccessPoint;
 
-import java.util.BitSet;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -39,6 +37,8 @@ import org.mockito.MockitoAnnotations;
 import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 import org.robolectric.shadows.ShadowApplication;
+
+import java.util.BitSet;
 
 @RunWith(RobolectricTestRunner.class)
 public class WifiDppUtilsTest {

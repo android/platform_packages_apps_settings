@@ -29,6 +29,10 @@ import static org.mockito.Mockito.when;
 
 import android.content.Context;
 
+import androidx.lifecycle.LifecycleOwner;
+import androidx.preference.PreferenceCategory;
+import androidx.preference.PreferenceScreen;
+
 import com.android.settings.wifi.WifiConnectionPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 import com.android.settingslib.wifi.AccessPoint;
@@ -47,10 +51,6 @@ import org.robolectric.RuntimeEnvironment;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
-import androidx.lifecycle.LifecycleOwner;
-import androidx.preference.PreferenceCategory;
-import androidx.preference.PreferenceScreen;
 
 @RunWith(RobolectricTestRunner.class)
 public class WifiConnectionPreferenceControllerTest {

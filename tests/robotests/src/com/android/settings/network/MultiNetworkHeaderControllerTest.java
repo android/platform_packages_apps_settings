@@ -30,6 +30,10 @@ import static org.mockito.Mockito.when;
 import android.content.Context;
 import android.telephony.SubscriptionManager;
 
+import androidx.lifecycle.LifecycleOwner;
+import androidx.preference.PreferenceCategory;
+import androidx.preference.PreferenceScreen;
+
 import com.android.settings.wifi.WifiConnectionPreferenceController;
 import com.android.settingslib.core.lifecycle.Lifecycle;
 
@@ -43,10 +47,6 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 
 import java.util.List;
-
-import androidx.lifecycle.LifecycleOwner;
-import androidx.preference.PreferenceCategory;
-import androidx.preference.PreferenceScreen;
 
 @RunWith(RobolectricTestRunner.class)
 public class MultiNetworkHeaderControllerTest {

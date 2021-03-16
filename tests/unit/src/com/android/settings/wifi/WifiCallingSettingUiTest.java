@@ -45,11 +45,11 @@ import androidx.test.espresso.NoMatchingViewException;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.runner.AndroidJUnit4;
 
+import junit.framework.Assert;
+
 import com.android.ims.ImsManager;
 import com.android.internal.telephony.SubscriptionController;
 import com.android.settings.testutils.MockedServiceManager;
-
-import junit.framework.Assert;
 
 import org.junit.After;
 import org.junit.Before;

@@ -28,15 +28,10 @@ import static org.mockito.Mockito.when;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.ApplicationInfo;
 import android.content.pm.ModuleInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.content.res.AssetFileDescriptor;
-import android.content.res.AssetManager;
-import android.content.res.Resources;
 import android.net.Uri;
-import android.os.ParcelFileDescriptor;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
