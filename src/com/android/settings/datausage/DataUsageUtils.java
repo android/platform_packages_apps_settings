@@ -14,13 +14,14 @@
 
 package com.android.settings.datausage;
 
-import static android.net.ConnectivityManager.TYPE_MOBILE;
-import static android.net.ConnectivityManager.TYPE_WIFI;
+import static android.content.pm.PackageManager.FEATURE_TELEPHONY;
+import static android.content.pm.PackageManager.FEATURE_WIFI;
 import static android.telephony.TelephonyManager.SIM_STATE_READY;
 
 import android.app.usage.NetworkStats.Bucket;
 import android.app.usage.NetworkStatsManager;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkTemplate;
 import android.os.RemoteException;
@@ -69,8 +70,7 @@ public final class DataUsageUtils extends com.android.settingslib.net.DataUsageU
             return SystemProperties.get(DataUsageUtils.TEST_RADIOS_PROP).contains(ETHERNET);
         }
 
-        final ConnectivityManager conn = context.getSystemService(ConnectivityManager.class);
-        if (!conn.isNetworkSupported(ConnectivityManager.TYPE_ETHERNET)) {
+        if (context.getSystemService(Context.ETHERNET_SERVICE) == null) {
             return false;
         }
 
@@ -96,10 +96,8 @@ public final class DataUsageUtils extends com.android.settingslib.net.DataUsageU
      * TODO: This is the opposite to Utils.isWifiOnly(), it should be refactored into 1 method.
      */
     public static boolean hasMobileData(Context context) {
-        final ConnectivityManager connectivityManager =
-                context.getSystemService(ConnectivityManager.class);
-        return connectivityManager != null && connectivityManager
-                .isNetworkSupported(ConnectivityManager.TYPE_MOBILE);
+        final PackageManager mPackageManager = context.getPackageManager();
+        return mPackageManager.hasSystemFeature(FEATURE_TELEPHONY);
     }
 
     /**
@@ -128,12 +126,13 @@ public final class DataUsageUtils extends com.android.settingslib.net.DataUsageU
                 Log.d(TAG, "hasReadyMobileRadio: subInfo=" + subInfo);
             }
         }
-        final ConnectivityManager conn = context.getSystemService(ConnectivityManager.class);
-        final boolean retVal = conn.isNetworkSupported(TYPE_MOBILE) && isReady;
+        final PackageManager packageManager = context.getPackageManager();
+        final boolean hasTelephony = packageManager.hasSystemFeature(FEATURE_TELEPHONY);
+        final boolean retVal = hasTelephony && isReady;
         if (LOGD) {
             Log.d(TAG, "hasReadyMobileRadio:"
-                    + " conn.isNetworkSupported(TYPE_MOBILE)="
-                    + conn.isNetworkSupported(TYPE_MOBILE)
+                    + " packageManager.hasSystemFeature(FEATURE_TELEPHONY)="
+                    + hasTelephony
                     + " isReady=" + isReady);
         }
         return retVal;
@@ -147,9 +146,8 @@ public final class DataUsageUtils extends com.android.settingslib.net.DataUsageU
             return SystemProperties.get(TEST_RADIOS_PROP).contains("wifi");
         }
 
-        final ConnectivityManager connectivityManager =
-                context.getSystemService(ConnectivityManager.class);
-        return connectivityManager != null && connectivityManager.isNetworkSupported(TYPE_WIFI);
+        final PackageManager packageManager = context.getPackageManager();
+        return packageManager != null && packageManager.hasSystemFeature(FEATURE_WIFI);
     }
 
     /**
