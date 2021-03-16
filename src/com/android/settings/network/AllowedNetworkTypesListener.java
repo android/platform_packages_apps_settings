@@ -17,7 +17,6 @@
 package com.android.settings.network;
 
 import android.content.Context;
-import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyCallback;
 import android.telephony.TelephonyManager;
 import android.util.Log;
@@ -26,7 +25,6 @@ import androidx.annotation.VisibleForTesting;
 
 import java.util.Map;
 import java.util.concurrent.Executor;
-
 
 /**
  * {@link TelephonyCallback} to listen to Allowed Network Types changed
