@@ -16,8 +16,6 @@
 
 package com.android.settings.wifi;
 
-import com.android.wifitrackerlib.WifiEntry;
-
 /**
  * {@link WifiEntry is working in progess, many methods are not available, this class is to group
  * all the unavalable {@link AccessPoint} methods & constants.

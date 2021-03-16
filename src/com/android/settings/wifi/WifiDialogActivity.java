@@ -22,7 +22,6 @@ import android.content.Intent;
 import android.net.NetworkInfo;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
-import android.net.wifi.WifiManager.ActionListener;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -32,7 +31,6 @@ import com.android.settings.R;
 import com.android.settings.SetupWizardUtils;
 import com.android.settings.wifi.dpp.WifiDppUtils;
 import com.android.settingslib.wifi.AccessPoint;
-
 import com.google.android.setupcompat.util.WizardManagerHelper;
 
 public class WifiDialogActivity extends Activity implements WifiDialog.WifiDialogListener,

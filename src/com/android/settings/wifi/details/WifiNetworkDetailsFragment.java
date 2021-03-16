@@ -22,7 +22,6 @@ import android.app.settings.SettingsEnums;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.wifi.WifiManager;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.Menu;
