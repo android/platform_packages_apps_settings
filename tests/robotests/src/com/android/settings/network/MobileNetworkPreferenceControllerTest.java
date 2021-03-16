@@ -66,6 +66,8 @@ public class MobileNetworkPreferenceControllerTest {
     private SubscriptionManager mSubscriptionManager;
     @Mock
     private PreferenceScreen mScreen;
+    @Mock
+    private PackageManager mPm;
 
     private Lifecycle mLifecycle;
     private LifecycleOwner mLifecycleOwner;
@@ -80,6 +82,7 @@ public class MobileNetworkPreferenceControllerTest {
         mLifecycle = new Lifecycle(mLifecycleOwner);
         when(mContext.getSystemService(Context.TELEPHONY_SERVICE)).thenReturn(mTelephonyManager);
         when(mContext.getSystemService(SubscriptionManager.class)).thenReturn(mSubscriptionManager);
+        when(mContext.getPackagerManager()).thenReturn(mPm);
         mPreference = new Preference(mContext);
         mPreference.setKey(MobileNetworkPreferenceController.KEY_MOBILE_NETWORK_SETTINGS);
     }
@@ -88,9 +91,7 @@ public class MobileNetworkPreferenceControllerTest {
     public void secondaryUser_prefIsNotAvailable() {
         ShadowUserManager userManager = extract(mContext.getSystemService(UserManager.class));
         userManager.setIsAdminUser(false);
-        ShadowConnectivityManager connectivityManager =
-                extract(mContext.getSystemService(ConnectivityManager.class));
-        connectivityManager.setNetworkSupported(ConnectivityManager.TYPE_MOBILE, true);
+        when(pm.hasSystemFeature(FEATURE_TELEPHONY)).thenReturn(true);
 
         mController = new MobileNetworkPreferenceController(mContext);
         assertThat(mController.isAvailable()).isFalse();
@@ -100,10 +101,7 @@ public class MobileNetworkPreferenceControllerTest {
     public void wifiOnly_prefIsNotAvailable() {
         ShadowUserManager userManager = extract(mContext.getSystemService(UserManager.class));
         userManager.setIsAdminUser(true);
-        ShadowConnectivityManager connectivityManager =
-                extract(mContext.getSystemService(ConnectivityManager.class));
-        connectivityManager.setNetworkSupported(ConnectivityManager.TYPE_MOBILE, false);
-
+        when(pm.hasSystemFeature(FEATURE_TELEPHONY)).thenReturn(false);
         mController = new MobileNetworkPreferenceController(mContext);
         assertThat(mController.isAvailable()).isFalse();
     }
