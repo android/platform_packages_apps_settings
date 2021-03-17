@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a1f2c6f_e65a8e16",
+        "filename": "src/com/android/settings/network/EraseEuiccDataController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1326377
+      },
+      "writtenOn": "2021-03-17T22:53:02Z",
+      "side": 1,
+      "message": "Thanks! I\u0027ve submitted ag/13894357, can I submit this change and cherrypick ag/13894357 later, just to keep a clean track of changes?",
+      "parentUuid": "da36b6cb_6fe47ef2",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 33
+      },
+      "revId": "76e94cac2561cdbf5ff55baa88f7c8ed26b25a81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8d5e72db_2cccf6fd",
@@ -133,6 +157,30 @@
       "writtenOn": "2021-03-05T05:42:20Z",
       "side": 1,
       "message": "final, keep the coding style consistent",
+      "range": {
+        "startLine": 70,
+        "startChar": 8,
+        "endLine": 70,
+        "endChar": 9
+      },
+      "revId": "76e94cac2561cdbf5ff55baa88f7c8ed26b25a81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d70bb62a_13a7ad80",
+        "filename": "src/com/android/settings/network/EraseEuiccDataDialogFragment.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1326377
+      },
+      "writtenOn": "2021-03-17T22:53:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8d5e72db_2cccf6fd",
       "range": {
         "startLine": 70,
         "startChar": 8,
@@ -184,6 +232,54 @@
         "startChar": 38,
         "endLine": 48,
         "endChar": 46
+      },
+      "revId": "76e94cac2561cdbf5ff55baa88f7c8ed26b25a81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1e9824e_1a72b8e4",
+        "filename": "tests/unit/src/com/android/settings/network/EraseEuiccDataControllerTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1326377
+      },
+      "writtenOn": "2021-03-17T22:53:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "2511e59e_30d59c2f",
+      "range": {
+        "startLine": 48,
+        "startChar": 38,
+        "endLine": 48,
+        "endChar": 46
+      },
+      "revId": "76e94cac2561cdbf5ff55baa88f7c8ed26b25a81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3a872f0_7126f778",
+        "filename": "tests/unit/src/com/android/settings/network/EraseEuiccDataControllerTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1326377
+      },
+      "writtenOn": "2021-03-17T22:53:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "94584900_d808fa91",
+      "range": {
+        "startLine": 48,
+        "startChar": 48,
+        "endLine": 48,
+        "endChar": 52
       },
       "revId": "76e94cac2561cdbf5ff55baa88f7c8ed26b25a81",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
