@@ -16,6 +16,23 @@
       "message": "Hi,\nCan you help to review this change in Settings UI framework ? Thanks.",
       "revId": "49cdb602ea29462c3a8bd66d31cad3f8cabcf00a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec9c3220_cc9b7833",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2021-03-17T07:52:30Z",
+      "side": 1,
+      "message": "Can you have a cl to show how to use it?",
+      "revId": "49cdb602ea29462c3a8bd66d31cad3f8cabcf00a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
