@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95d69183_086d39a8",
+        "filename": "src/com/android/settings/wifi/WifiConfigController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2021-03-17T11:14:28Z",
+      "side": 1,
+      "message": "Removed",
+      "parentUuid": "51cb1281_fa252dbe",
+      "range": {
+        "startLine": 955,
+        "startChar": 20,
+        "endLine": 955,
+        "endChar": 68
+      },
+      "revId": "ad3631c69ea9b990611fd275a12fec10bd2df3f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a1e0999_794d8bfb",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa75d7cf_70f9f23b",
+        "filename": "src/com/android/settings/wifi/WifiConfigController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 988,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2021-03-17T11:14:28Z",
+      "side": 1,
+      "message": "The method requires the set the change back to the staticIpConfiguration. The builder should be the final result whenever it returns, so I put the build() at finally which will always perform  after the try. Then it could cover all the returns.",
+      "parentUuid": "1a1e0999_794d8bfb",
+      "range": {
+        "startLine": 988,
+        "startChar": 12,
+        "endLine": 988,
+        "endChar": 21
+      },
+      "revId": "ad3631c69ea9b990611fd275a12fec10bd2df3f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "157a4f58_53d12328",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-03-17T10:12:01Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 972,
+        "startChar": 12,
+        "endLine": 972,
+        "endChar": 21
+      },
+      "revId": "ad3631c69ea9b990611fd275a12fec10bd2df3f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1a2171b_b1e62a94",
+        "filename": "src/com/android/settings/wifi/WifiConfigController2.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 972,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2021-03-17T11:14:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "157a4f58_53d12328",
       "range": {
         "startLine": 972,
         "startChar": 12,
