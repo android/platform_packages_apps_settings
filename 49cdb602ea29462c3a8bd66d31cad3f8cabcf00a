@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c724b073_2ea06132",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1387063
+      },
+      "writtenOn": "2021-03-17T05:37:31Z",
+      "side": 1,
+      "message": "Hi,\nCan you help to review this change in Settings UI framework ? Thanks.",
+      "revId": "49cdb602ea29462c3a8bd66d31cad3f8cabcf00a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
