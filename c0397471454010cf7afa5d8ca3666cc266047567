@@ -22,6 +22,30 @@
       },
       "revId": "c0397471454010cf7afa5d8ca3666cc266047567",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4d4b9d9_526f6e95",
+        "filename": "tests/robotests/src/com/android/settings/deviceinfo/firmwareversion/BasebandVersionPreferenceControllerTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2021-03-18T06:53:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b140a3c_d687e5ac",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 11
+      },
+      "revId": "c0397471454010cf7afa5d8ca3666cc266047567",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
