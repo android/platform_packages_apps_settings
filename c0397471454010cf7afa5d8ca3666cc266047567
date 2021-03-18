@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b140a3c_d687e5ac",
+        "filename": "tests/robotests/src/com/android/settings/deviceinfo/firmwareversion/BasebandVersionPreferenceControllerTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2021-03-18T06:44:59Z",
+      "side": 1,
+      "message": "Here are two newlines, could we remove the exta one?",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 11
+      },
+      "revId": "c0397471454010cf7afa5d8ca3666cc266047567",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
