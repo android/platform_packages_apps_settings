@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27886087_f7fb9cbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1332604
+      },
+      "writtenOn": "2021-03-18T08:40:35Z",
+      "side": 1,
+      "message": "Verified on sc-dev done.\nThanks for your quick fixing!",
+      "revId": "6290ad950990a823d5df569d8265265feef65ca0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
