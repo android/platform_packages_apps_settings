@@ -807,9 +807,12 @@ public class WifiConfigController2 implements TextWatcher,
                 return null;
         }
 
-        config.setIpConfiguration(
-                new IpConfiguration(mIpAssignment, mProxySettings,
-                                    mStaticIpConfiguration, mHttpProxy));
+        final IpConfiguration ipConfig = new IpConfiguration();
+        ipConfig.setIpAssignment(mIpAssignment);
+        ipConfig.setProxySettings(mProxySettings);
+        ipConfig.setStaticIpConfiguration(mStaticIpConfiguration);
+        ipConfig.setHttpProxy(mHttpProxy);
+        config.setIpConfiguration(ipConfig);
         if (mMeteredSettingsSpinner != null) {
             config.meteredOverride = mMeteredSettingsSpinner.getSelectedItemPosition();
         }
