@@ -60,8 +60,8 @@ public class MobileNetworkPreferenceController extends AbstractPreferenceControl
 
     public MobileNetworkPreferenceController(Context context) {
         super(context);
-        mUserManager = (UserManager) context.getSystemService(Context.USER_SERVICE);
-        mTelephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+        mUserManager = context.getSystemService(UserManager.class);
+        mTelephonyManager = context.getSystemService(TelephonyManager.class);
         mIsSecondaryUser = !mUserManager.isAdminUser();
 
         mAirplanModeChangedReceiver = new BroadcastReceiver() {
