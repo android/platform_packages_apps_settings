@@ -16,6 +16,24 @@
       "message": "aosp-master cls will be merged to internal master branch automatically.\n\nDo you need to merge the cl in master branch?",
       "revId": "eedfa1d3078221ae3d54a53b1e84c38df9a77736",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "07c4a1c6_d84cefe1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1304263
+      },
+      "writtenOn": "2021-03-19T06:01:58Z",
+      "side": 1,
+      "message": "I tried to merge from aosp but TH showed code conflict.\nhttps://android-build.googleplex.com/builds/treetop/android-review/1644546?ref\u003dCOMMENT\u0026revision\u003d1\n\nso I need to prepare the internal one.",
+      "parentUuid": "a9e296c8_52c91363",
+      "revId": "eedfa1d3078221ae3d54a53b1e84c38df9a77736",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
