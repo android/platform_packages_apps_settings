@@ -107,13 +107,13 @@ public class SimSelectNotificationTest {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        when(mContext.getSystemService(Context.NOTIFICATION_SERVICE))
+        when(mContext.getSystemService(NotificationManager.class))
                 .thenReturn(mNotificationManager);
         when(mContext.getSystemService(NotificationManager.class))
                 .thenReturn(mNotificationManager);
-        when(mContext.getSystemService(Context.TELEPHONY_SERVICE))
+        when(mContext.getSystemService(TelephonyManager.class))
                 .thenReturn(mTelephonyManager);
-        when(mContext.getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE))
+        when(mContext.getSystemService(SubscriptionManager.class))
                 .thenReturn(mSubscriptionManager);
         when(mContext.getApplicationInfo()).thenReturn(new ApplicationInfo());
         when(mContext.getPackageManager()).thenReturn(mPackageManager);

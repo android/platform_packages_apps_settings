@@ -68,9 +68,9 @@ public class VpnPreferenceController extends AbstractPreferenceController
         super(context);
         mToggleable = Settings.Global.getString(context.getContentResolver(),
                 Settings.Global.AIRPLANE_MODE_TOGGLEABLE_RADIOS);
-        mUserManager = (UserManager) context.getSystemService(Context.USER_SERVICE);
+        mUserManager = context.getSystemService(UserManager.class);
         mConnectivityManager =
-                (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+                context.getSystemService(ConnectivityManager.class);
         mVpnManager = context.getSystemService(VpnManager.class);
     }
 

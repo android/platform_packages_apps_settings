@@ -285,11 +285,11 @@ public class WifiSettingsTest {
         when(activity.getTheme()).thenReturn(theme);
         when(activity.getIntent()).thenReturn(mActivityIntent);
         UserManager userManager = mock(UserManager.class);
-        when(activity.getSystemService(Context.USER_SERVICE))
+        when(activity.getSystemService(UserManager.class))
                 .thenReturn(userManager);
         when(mWifiSettings.findPreference(WifiSettings.PREF_KEY_DATA_USAGE))
                 .thenReturn(mDataUsagePreference);
-        when(activity.getSystemService(Context.WIFI_SERVICE)).thenReturn(mWifiManager);
+        when(activity.getSystemService(WifiManager.class)).thenReturn(mWifiManager);
         when(activity.getSystemService(ConnectivityManager.class)).thenReturn(mConnectivityManager);
         when(activity.getPackageManager()).thenReturn(mPackageManager);
     }

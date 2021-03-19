@@ -67,7 +67,7 @@ public class BuildNumberPreferenceController extends BasePreferenceController im
 
     public BuildNumberPreferenceController(Context context, String key) {
         super(context, key);
-        mUm = (UserManager) context.getSystemService(Context.USER_SERVICE);
+        mUm = context.getSystemService(UserManager.class);
         mMetricsFeatureProvider = FeatureFactory.getFactory(context).getMetricsFeatureProvider();
     }
 

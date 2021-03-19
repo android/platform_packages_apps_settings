@@ -48,7 +48,7 @@ public class WifiMeteredPreferenceController extends BasePreferenceController im
     public WifiMeteredPreferenceController(Context context, WifiConfiguration wifiConfiguration) {
         super(context, KEY_WIFI_METERED);
         mWifiConfiguration = wifiConfiguration;
-        mWifiManager = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
+        mWifiManager = context.getSystemService(WifiManager.class);
     }
 
     @Override

@@ -138,7 +138,7 @@ public class NetworkRequestDialogFragmentTest {
         Context applicationContext = spy(RuntimeEnvironment.application.getApplicationContext());
         when(mContext.getApplicationContext()).thenReturn(applicationContext);
         WifiManager wifiManager = mock(WifiManager.class);
-        when(applicationContext.getSystemService(Context.WIFI_SERVICE)).thenReturn(wifiManager);
+        when(applicationContext.getSystemService(WifiManager.class)).thenReturn(wifiManager);
         networkRequestDialogFragment.onResume();
 
         List<AccessPoint> accessPointList = createAccessPointList();
@@ -173,7 +173,7 @@ public class NetworkRequestDialogFragmentTest {
         Context applicationContext = spy(RuntimeEnvironment.application.getApplicationContext());
         when(mContext.getApplicationContext()).thenReturn(applicationContext);
         WifiManager wifiManager = mock(WifiManager.class);
-        when(applicationContext.getSystemService(Context.WIFI_SERVICE)).thenReturn(wifiManager);
+        when(applicationContext.getSystemService(WifiManager.class)).thenReturn(wifiManager);
         networkRequestDialogFragment.onResume();
 
         List<AccessPoint> accessPointList = new ArrayList<>();

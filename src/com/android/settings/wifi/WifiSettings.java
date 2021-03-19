@@ -339,8 +339,8 @@ public class WifiSettings extends RestrictedSettingsFragment
 
         if (mEnableNextOnConnection) {
             if (hasNextButton()) {
-                final ConnectivityManager connectivity = (ConnectivityManager)
-                        getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+                final ConnectivityManager connectivity =
+                        getActivity().getSystemService(ConnectivityManager.class);
                 if (connectivity != null) {
                     NetworkInfo info = connectivity.getNetworkInfo(
                             ConnectivityManager.TYPE_WIFI);

@@ -77,8 +77,8 @@ public class WifiTetherPreferenceControllerTest {
         mLifecycle = new Lifecycle(mLifecycleOwner);
         FakeFeatureFactory.setupForTest();
         mPreference = new MasterSwitchPreference(RuntimeEnvironment.application);
-        when(mContext.getSystemService(Context.TETHERING_SERVICE)).thenReturn(mTetheringManager);
-        when(mContext.getSystemService(Context.WIFI_SERVICE)).thenReturn(mWifiManager);
+        when(mContext.getSystemService(TetheringManager.class)).thenReturn(mTetheringManager);
+        when(mContext.getSystemService(WifiManager.class)).thenReturn(mWifiManager);
         when(mScreen.findPreference(anyString())).thenReturn(mPreference);
         mSoftApConfiguration = new SoftApConfiguration.Builder().setSsid(SSID).build();
         when(mWifiManager.getSoftApConfiguration()).thenReturn(mSoftApConfiguration);

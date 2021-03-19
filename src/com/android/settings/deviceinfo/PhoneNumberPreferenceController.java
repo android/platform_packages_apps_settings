@@ -97,8 +97,8 @@ public class PhoneNumberPreferenceController extends BasePreferenceController {
 
     @Override
     public void copy() {
-        final ClipboardManager clipboard = (ClipboardManager) mContext.getSystemService(
-                CLIPBOARD_SERVICE);
+        final ClipboardManager clipboard = mContext.getSystemService(
+                ClipboardManager.class);
         clipboard.setPrimaryClip(ClipData.newPlainText("text", getFirstPhoneNumber()));
 
         final String toast = mContext.getString(R.string.copyable_slice_toast,

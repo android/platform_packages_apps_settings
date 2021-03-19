@@ -233,7 +233,7 @@ public class WifiConfigController implements TextWatcher,
         mRequestFocus = requestFocus;
 
         // Init Wi-Fi manager
-        mWifiManager = (WifiManager) mContext.getSystemService(Context.WIFI_SERVICE);
+        mWifiManager = mContext.getSystemService(WifiManager.class);
         initWifiConfigController(accessPoint, mode);
     }
 
@@ -470,7 +470,7 @@ public class WifiConfigController implements TextWatcher,
     @VisibleForTesting
     boolean isSplitSystemUser() {
         final UserManager userManager =
-                (UserManager) mContext.getSystemService(Context.USER_SERVICE);
+                mContext.getSystemService(UserManager.class);
         return userManager.isSplitSystemUser();
     }
 

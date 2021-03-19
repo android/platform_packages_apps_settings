@@ -63,8 +63,8 @@ public class WifiTetherSwitchBarControllerTest {
 
         mContext = spy(RuntimeEnvironment.application);
         mSwitchBar = new SwitchBar(mContext);
-        when(mContext.getSystemService(Context.WIFI_SERVICE)).thenReturn(mWifiManager);
-        when(mContext.getSystemService(Context.CONNECTIVITY_SERVICE)).thenReturn(
+        when(mContext.getSystemService(WifiManager.class)).thenReturn(mWifiManager);
+        when(mContext.getSystemService(ConnectivityManager.class)).thenReturn(
                 mConnectivityManager);
         when(mContext.getSystemService(Context.NETWORK_POLICY_SERVICE)).thenReturn(
                 mNetworkPolicyManager);

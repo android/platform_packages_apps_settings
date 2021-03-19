@@ -52,8 +52,8 @@ public class HardwareRevisionPreferenceControllerTest {
 
         mController.copy();
 
-        final ClipboardManager clipboard = (ClipboardManager) mContext.getSystemService(
-                CLIPBOARD_SERVICE);
+        final ClipboardManager clipboard = mContext.getSystemService(
+                ClipboardManager.class);
         final CharSequence data = clipboard.getPrimaryClip().getItemAt(0).getText();
 
         assertThat(data.toString()).isEqualTo(fakeHardwareVer);

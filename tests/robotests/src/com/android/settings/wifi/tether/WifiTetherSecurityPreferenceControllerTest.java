@@ -49,9 +49,9 @@ public class WifiTetherSecurityPreferenceControllerTest {
                 SoftApConfiguration.SECURITY_TYPE_WPA2_PSK).build();
         mContext = spy(RuntimeEnvironment.application);
 
-        when(mContext.getSystemService(Context.WIFI_SERVICE)).thenReturn(mWifiManager);
+        when(mContext.getSystemService(WifiManager.class)).thenReturn(mWifiManager);
         when(mWifiManager.getSoftApConfiguration()).thenReturn(mConfig);
-        when(mContext.getSystemService(Context.TETHERING_SERVICE)).thenReturn(mTetheringManager);
+        when(mContext.getSystemService(TetheringManager.class)).thenReturn(mTetheringManager);
         when(mTetheringManager.getTetherableWifiRegexs()).thenReturn(new String[]{"1", "2"});
         when(mScreen.findPreference(anyString())).thenReturn(mPreference);
 
