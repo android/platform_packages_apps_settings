@@ -85,11 +85,11 @@ public class NrDisabledInDsdsFooterPreferenceController extends BasePreferenceCo
             return CONDITIONALLY_UNAVAILABLE;
         }
 
-        final TelephonyManager teleManager = ((TelephonyManager)
-                mContext.getSystemService(Context.TELEPHONY_SERVICE))
+        final TelephonyManager teleManager = (
+                mContext.getSystemService(TelephonyManager.class))
                 .createForSubscriptionId(mSubId);
-        final SubscriptionManager subManager = ((SubscriptionManager)
-                mContext.getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE));
+        final SubscriptionManager subManager = (
+                mContext.getSystemService(SubscriptionManager.class));
         final int[] activeSubIdList = subManager.getActiveSubscriptionIdList();
         final int activeSubCount = activeSubIdList == null ? 0 : activeSubIdList.length;
         // Show the footer only when DSDS is enabled, and mobile data is enabled on this SIM, and

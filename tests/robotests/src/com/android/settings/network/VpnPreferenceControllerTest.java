@@ -74,7 +74,7 @@ public class VpnPreferenceControllerTest {
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        when(mContext.getSystemService(Context.CONNECTIVITY_SERVICE))
+        when(mContext.getSystemService(ConnectivityManager.class))
                 .thenReturn(mConnectivityManager);
         when(mBinder.queryLocalInterface("android.net.IConnectivityManager"))
                 .thenReturn(mConnectivityManagerService);

@@ -52,9 +52,9 @@ public class NrDisabledInDsdsFooterPreferenceControllerTest {
     public void setUp() {
         MockitoAnnotations.initMocks(this);
         mContext = spy(RuntimeEnvironment.application);
-        doReturn(mTelephonyManager).when(mContext).getSystemService(Context.TELEPHONY_SERVICE);
+        doReturn(mTelephonyManager).when(mContext).getSystemService(TelephonyManager.class);
         doReturn(mSubscriptionManager).when(mContext).getSystemService(
-                Context.TELEPHONY_SUBSCRIPTION_SERVICE);
+                SubscriptionManager.class);
         doReturn(mTelephonyManager).when(mTelephonyManager).createForSubscriptionId(anyInt());
         mController = new NrDisabledInDsdsFooterPreferenceController(mContext, PREF_KEY);
     }

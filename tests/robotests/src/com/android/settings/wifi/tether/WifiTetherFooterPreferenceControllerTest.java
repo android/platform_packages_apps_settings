@@ -57,8 +57,8 @@ public class WifiTetherFooterPreferenceControllerTest {
     public void setUp() {
         MockitoAnnotations.initMocks(this);
 
-        when(mContext.getSystemService(Context.WIFI_SERVICE)).thenReturn(mWifiManager);
-        when(mContext.getSystemService(Context.TETHERING_SERVICE)).thenReturn(mTetheringManager);
+        when(mContext.getSystemService(WifiManager.class)).thenReturn(mWifiManager);
+        when(mContext.getSystemService(TetheringManager.class)).thenReturn(mTetheringManager);
         when(mTetheringManager.getTetherableWifiRegexs()).thenReturn(new String[]{"1", "2"});
         mController = new WifiTetherFooterPreferenceController(mContext);
         when(mScreen.findPreference(anyString())).thenReturn(mPreference);
