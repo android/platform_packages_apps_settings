@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a222b6b0_202a8276",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2021-03-22T02:38:35Z",
+      "side": 1,
+      "message": "Is it intended that you submit cl to aosp-master? ",
+      "revId": "c1438838862846f3139e03ce9734a97b8bd0a2cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
