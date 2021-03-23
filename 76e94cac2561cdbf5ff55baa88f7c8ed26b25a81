@@ -146,6 +146,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "479fa254_9bb35613",
+        "filename": "src/com/android/settings/network/EraseEuiccDataController.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1326377
+      },
+      "writtenOn": "2021-03-23T23:36:03Z",
+      "side": 1,
+      "message": "Unresolve",
+      "parentUuid": "9a1f2c6f_e65a8e16",
+      "range": {
+        "startLine": 32,
+        "startChar": 8,
+        "endLine": 32,
+        "endChar": 33
+      },
+      "revId": "76e94cac2561cdbf5ff55baa88f7c8ed26b25a81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8d5e72db_2cccf6fd",
         "filename": "src/com/android/settings/network/EraseEuiccDataDialogFragment.java",
         "patchSetId": 2
