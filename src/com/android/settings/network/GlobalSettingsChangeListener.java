@@ -113,6 +113,14 @@ public abstract class GlobalSettingsChangeListener extends ContentObserver
         close();
     }
 
+    public void start() {
+        onStart();
+    }
+
+    public void stop() {
+        onStop();
+    }
+
     /**
      * Implementation of AutoCloseable
      */

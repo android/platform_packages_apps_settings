@@ -122,6 +122,23 @@ public class TetherEnabler implements SwitchWidgetController.OnSwitchChangeListe
     private boolean mBluetoothEnableForTether;
     private final BluetoothAdapter mBluetoothAdapter;
 
+    private final static class MyTetheringEventCallback implements
+            TetheringManager.TetheringEventCallback {
+        private WeakReference<TetherEnabler> mOwner;
+
+        public MyTetheringEventCallback (TetherEnabler owner) {
+            mOwner = new WeakReference<TetherEnabler>(owner);
+        }
+
+        @Override
+        public void onTetheredInterfacesChanged(List<String> interfaces) {
+            TetherEnabler tetherEnabler = mOwner.get();
+            if (tetherEnabler != null) {
+                tetherEnabler.updateState(interfaces.toArray(new String[interfaces.size()]));
+            }
+        }
+    }
+
     public TetherEnabler(Context context, SwitchWidgetController switchWidgetController,
             AtomicReference<BluetoothPan> bluetoothPan) {
         mContext = context;
@@ -129,7 +146,8 @@ public class TetherEnabler implements SwitchWidgetController.OnSwitchChangeListe
         mDataSaverBackend = new DataSaverBackend(context);
         mConnectivityManager =
                 context.getSystemService(ConnectivityManager.class);
-        mTetheringManager = context.getSystemService(TetheringManager.class);
+        mTetheringManager = context.getApplicationContext()
+                .getSystemService(TetheringManager.class);
         mWifiManager = context.getSystemService(WifiManager.class);
         mUserManager = context.getSystemService(UserManager.class);
         mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -151,13 +169,7 @@ public class TetherEnabler implements SwitchWidgetController.OnSwitchChangeListe
         filter.addAction(WifiManager.WIFI_AP_STATE_CHANGED_ACTION);
         filter.addAction(BluetoothAdapter.ACTION_STATE_CHANGED);
         mContext.registerReceiver(mTetherChangeReceiver, filter);
-        mTetheringEventCallback  =
-                new TetheringManager.TetheringEventCallback() {
-                    @Override
-                    public void onTetheredInterfacesChanged(List<String> interfaces) {
-                        updateState(interfaces.toArray(new String[interfaces.size()]));
-                    }
-                };
+        mTetheringEventCallback  = new MyTetheringEventCallback(this);
         mTetheringManager.registerTetheringEventCallback(new HandlerExecutor(mMainThreadHandler),
                 mTetheringEventCallback);
 

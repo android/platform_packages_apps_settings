@@ -98,6 +98,7 @@ public class AirplaneModeEnabler extends GlobalSettingsChangeListener {
      * Start listening to the phone state change
      */
     public void start() {
+        super.start();
         mTelephonyManager.listen(mPhoneStateListener,
                 PhoneStateListener.LISTEN_RADIO_POWER_STATE_CHANGED);
     }
@@ -106,6 +107,7 @@ public class AirplaneModeEnabler extends GlobalSettingsChangeListener {
      * Stop listening to the phone state change
      */
     public void stop() {
+        super.stop();
         mTelephonyManager.listen(mPhoneStateListener,
                 PhoneStateListener.LISTEN_NONE);
     }
