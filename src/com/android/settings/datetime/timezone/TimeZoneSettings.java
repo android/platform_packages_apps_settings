@@ -214,8 +214,8 @@ public class TimeZoneSettings extends DashboardFragment {
                 mTimeZoneData.lookupCountryTimeZones(regionId);
 
         use(RegionZonePreferenceController.class).setTimeZoneInfo(tzInfo);
-        // Only clickable when the region has more than 1 time zones or no time zone is selected.
 
+        // Only clickable when the region has more than 1 time zones or no time zone is selected.
         use(RegionZonePreferenceController.class).setClickable(tzInfo == null ||
                 (countryTimeZones != null && countryTimeZones.getTimeZoneIds().size() > 1));
         use(TimeZoneInfoPreferenceController.class).setTimeZoneInfo(tzInfo);
