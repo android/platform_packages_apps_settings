@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "918f0b9a_a648449d",
+        "filename": "src/com/android/settings/datetime/timezone/model/FilteredCountryTimeZones.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2021-03-25T19:45:05Z",
+      "side": 1,
+      "message": "Comments that split javadoc from declaration can cause problems for parsers / tools.\n\nPerhaps /* */ in the brackets, or stick it back on the end?",
+      "range": {
+        "startLine": 46,
+        "startChar": 6,
+        "endLine": 46,
+        "endChar": 7
+      },
+      "revId": "24c52c3da60488227b67811633900b6f8114174c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1682dc4_9dee07d7",
+        "filename": "src/com/android/settings/datetime/timezone/model/FilteredCountryTimeZones.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1038039
+      },
+      "writtenOn": "2021-03-25T19:45:05Z",
+      "side": 1,
+      "message": "This naming becomes a bit confusing now - contains() should either be renamed, or getTimeZoneIds() should be renamed, because I think the combination of \"getTimeZoneIds()\" not containing an ID where contains(id) might return true is too weird / confusing.\n\ncontains() -\u003e matches() / matchesTimeZoneId() ?\n\ngetTimeZoneIds() -\u003e getPreferredTimeZoneIds() ?\n\nI think getPreferredTimeZoneIds(), or doing both. Perhaps also rename the field to \"mPreferredTimeZoneIds\" as well if you agree.",
+      "range": {
+        "startLine": 69,
+        "startChar": 24,
+        "endLine": 69,
+        "endChar": 38
+      },
+      "revId": "24c52c3da60488227b67811633900b6f8114174c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
