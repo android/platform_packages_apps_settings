@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98bf50ac_2777be8d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1869910
+      },
+      "writtenOn": "2021-03-26T01:51:22Z",
+      "side": 1,
+      "message": "1648047: [Settings] Rollback design for getSystemService(String) | https://android-review.googlesource.com/c/platform/packages/apps/Settings/+/1648047",
+      "revId": "0fd51cc9eab5c4dade559e5e89d4c0fe13c6a88c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
