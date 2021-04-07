@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05e9a4d7_d22f9e8e",
+        "filename": "AndroidManifest.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1388435
+      },
+      "writtenOn": "2021-04-07T08:32:49Z",
+      "side": 1,
+      "message": "I am curious about this premission, I searched our codebase, we already use DeviceConfig.setProperty() in LocationIndicatorsPreferenceController.java\n\nDo we really need use this permission? if yes, how it work in the past?\nCan you help to clarify it?",
+      "range": {
+        "startLine": 61,
+        "startChar": 5,
+        "endLine": 61,
+        "endChar": 73
+      },
+      "revId": "b76c9a82b237002321a781db062c7bb2debb98b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41622958_8cf80789",
+        "filename": "tests/robotests/src/com/android/settings/development/BluetoothGabeldorschePreferenceControllerTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1388435
+      },
+      "writtenOn": "2021-04-07T08:32:49Z",
+      "side": 1,
+      "message": "nit: add one more line between L84(precondition) and L85(testing_method)",
+      "revId": "b76c9a82b237002321a781db062c7bb2debb98b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
