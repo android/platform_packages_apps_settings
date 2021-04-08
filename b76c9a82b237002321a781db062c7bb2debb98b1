@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a5580fc7_7fe73306",
+        "filename": "AndroidManifest.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2021-04-08T18:54:36Z",
+      "side": 1,
+      "message": "So it seems that the preference works without WRITE_DEVICE_CONFIG permission. However, the documentation of DevieConfig.setProperty() clearly says that the permission is required. \n\nI removed the permission on the latest patch set, but I don\u0027t mind add it back later. \n\nIt works without the permission, but I don\u0027t know how it worked unfortunately.",
+      "parentUuid": "05e9a4d7_d22f9e8e",
+      "range": {
+        "startLine": 61,
+        "startChar": 5,
+        "endLine": 61,
+        "endChar": 73
+      },
+      "revId": "b76c9a82b237002321a781db062c7bb2debb98b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "41622958_8cf80789",
         "filename": "tests/robotests/src/com/android/settings/development/BluetoothGabeldorschePreferenceControllerTest.java",
         "patchSetId": 3
@@ -37,6 +61,24 @@
       "writtenOn": "2021-04-07T08:32:49Z",
       "side": 1,
       "message": "nit: add one more line between L84(precondition) and L85(testing_method)",
+      "revId": "b76c9a82b237002321a781db062c7bb2debb98b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f98bd09a_5b836dea",
+        "filename": "tests/robotests/src/com/android/settings/development/BluetoothGabeldorschePreferenceControllerTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2021-04-08T18:54:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41622958_8cf80789",
       "revId": "b76c9a82b237002321a781db062c7bb2debb98b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
