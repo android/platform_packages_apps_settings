@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74984c2c_3330f379",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1815899
+      },
+      "writtenOn": "2021-04-11T17:56:43Z",
+      "side": 1,
+      "message": "Updated screenshot after patch: https://imgur.com/a/jRRmIGr",
+      "revId": "aec283361ad08a87e23f3092267bb1861eee69d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
