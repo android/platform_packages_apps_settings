@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad69ac36_6038298f",
+        "filename": "src/com/android/settings/network/PrivateDnsModeDialogPreference.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1388435
+      },
+      "writtenOn": "2021-04-13T17:35:40Z",
+      "side": 1,
+      "message": "\u003e TODO statements should not reference a specific human; consider using a bug number instead; see https://source.android.com/setup/contribute/code-style#use-todo-comments for more details.\n\nPlease fix. create a bug to track this instead adding ldap here\n//TODO(b/xxxxxxx): XXX",
+      "parentUuid": "15f0ca3d_9ac9e9fe",
+      "range": {
+        "startLine": 81,
+        "startChar": 11,
+        "endLine": 81,
+        "endChar": 26
+      },
+      "revId": "6280aec7b6b778acde577f447cbe6484d62d8baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49fd674c_a57dcfe0",
+        "filename": "src/com/android/settings/network/PrivateDnsModeDialogPreference.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 215,
+      "author": {
+        "id": 1388435
+      },
+      "writtenOn": "2021-04-13T17:35:40Z",
+      "side": 1,
+      "message": "\u003e TODO statements should not reference a specific human; consider using a bug number instead; see https://source.android.com/setup/contribute/code-style#use-todo-comments for more details.\n\nPlease fix.",
+      "parentUuid": "5dc47294_154e4619",
+      "range": {
+        "startLine": 215,
+        "startChar": 15,
+        "endLine": 215,
+        "endChar": 30
+      },
+      "revId": "6280aec7b6b778acde577f447cbe6484d62d8baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
