@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55278c1d_8269f545",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2021-04-14T01:30:56Z",
+      "side": 1,
+      "message": "Hi, Rakesh\n\nSystem doesn\u0027t allow me to add minhtruong@ in the OWNER file, do you have any concern for this change?",
+      "revId": "b6b63bec6c34b6b019ecaef4ee9a4f30073f24df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
