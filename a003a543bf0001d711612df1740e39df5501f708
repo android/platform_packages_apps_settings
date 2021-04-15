@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "24458b43_83db5ff2",
         "filename": "src/com/android/settings/display/ShowOperatorNamePreferenceController.java",
@@ -20,10 +21,34 @@
         "endChar": 44
       },
       "revId": "a003a543bf0001d711612df1740e39df5501f708",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bb13319_02fac110",
+        "filename": "src/com/android/settings/display/ShowOperatorNamePreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1221112
+      },
+      "writtenOn": "2021-04-15T17:49:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24458b43_83db5ff2",
+      "range": {
+        "startLine": 42,
+        "startChar": 29,
+        "endLine": 42,
+        "endChar": 44
+      },
+      "revId": "a003a543bf0001d711612df1740e39df5501f708",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "a16b78e2_70e94bdd",
         "filename": "src/com/android/settings/display/ShowOperatorNamePreferenceController.java",
@@ -43,8 +68,31 @@
         "endChar": 9
       },
       "revId": "a003a543bf0001d711612df1740e39df5501f708",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "899836c9_745d55f4",
+        "filename": "src/com/android/settings/display/ShowOperatorNamePreferenceController.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1221112
+      },
+      "writtenOn": "2021-04-15T17:49:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a16b78e2_70e94bdd",
+      "range": {
+        "startLine": 43,
+        "startChar": 7,
+        "endLine": 43,
+        "endChar": 9
+      },
+      "revId": "a003a543bf0001d711612df1740e39df5501f708",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
