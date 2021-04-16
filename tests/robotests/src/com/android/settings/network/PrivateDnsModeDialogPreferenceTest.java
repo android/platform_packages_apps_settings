@@ -19,7 +19,6 @@ package com.android.settings.network;
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_OFF;
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_OPPORTUNISTIC;
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_PROVIDER_HOSTNAME;
-import static android.provider.Settings.Global.PRIVATE_DNS_MODE;
 
 import static com.google.common.truth.Truth.assertThat;
 import static com.google.common.truth.Truth.assertWithMessage;
@@ -28,7 +27,6 @@ import static org.mockito.Mockito.anyInt;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.net.ConnectivityManager;
@@ -118,8 +116,7 @@ public class PrivateDnsModeDialogPreferenceTest {
     public void testOnBindDialogView_containsCorrectData() {
         // Don't set settings to the default value ("opportunistic") as that
         // risks masking failure to read the mode from settings.
-        Settings.Global.putString(mContext.getContentResolver(),
-                PrivateDnsModeDialogPreference.MODE_KEY, PRIVATE_DNS_MODE_OFF);
+        ConnectivityManager.setPrivateDnsMode(mContext, PRIVATE_DNS_MODE_OFF);
         Settings.Global.putString(mContext.getContentResolver(),
                 PrivateDnsModeDialogPreference.HOSTNAME_KEY, HOST_NAME);
 
@@ -159,29 +156,25 @@ public class PrivateDnsModeDialogPreferenceTest {
     @Test
     public void testOnClick_positiveButtonClicked_saveData() {
         // Set the default settings to OFF
-        final ContentResolver contentResolver = mContext.getContentResolver();
-        Settings.Global.putString(contentResolver, PRIVATE_DNS_MODE, PRIVATE_DNS_MODE_OFF);
+        ConnectivityManager.setPrivateDnsMode(mContext, PRIVATE_DNS_MODE_OFF);
 
         mPreference.mMode = ConnectivityManager.PRIVATE_DNS_MODE_OPPORTUNISTIC;
         mPreference.onClick(null, DialogInterface.BUTTON_POSITIVE);
 
         // Change to OPPORTUNISTIC
-        assertThat(Settings.Global.getString(contentResolver, PRIVATE_DNS_MODE)).isEqualTo(
-                PRIVATE_DNS_MODE_OPPORTUNISTIC);
+        assertThat(
+                ConnectivityManager.getPrivateDnsMode(mContext) == PRIVATE_DNS_MODE_OPPORTUNISTIC);
     }
 
     @Test
     public void testOnClick_negativeButtonClicked_doNothing() {
         // Set the default settings to OFF
-        final ContentResolver contentResolver = mContext.getContentResolver();
-        Settings.Global.putString(contentResolver, PRIVATE_DNS_MODE, PRIVATE_DNS_MODE_OFF);
+        ConnectivityManager.setPrivateDnsMode(mContext, PRIVATE_DNS_MODE_OFF);
 
         mPreference.mMode = ConnectivityManager.PRIVATE_DNS_MODE_OPPORTUNISTIC;
         mPreference.onClick(null, DialogInterface.BUTTON_NEGATIVE);
 
         // Still equal to OFF
-        assertThat(Settings.Global.getString(contentResolver,
-                Settings.Global.PRIVATE_DNS_MODE)).isEqualTo(
-                ConnectivityManager.PRIVATE_DNS_MODE_OFF);
+        assertThat(ConnectivityManager.getPrivateDnsMode(mContext) == PRIVATE_DNS_MODE_OFF);
     }
 }
