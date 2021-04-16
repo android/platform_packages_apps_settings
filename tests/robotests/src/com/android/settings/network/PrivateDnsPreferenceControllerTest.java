@@ -19,7 +19,6 @@ package com.android.settings.network;
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_OFF;
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_OPPORTUNISTIC;
 import static android.net.ConnectivityManager.PRIVATE_DNS_MODE_PROVIDER_HOSTNAME;
-import static android.provider.Settings.Global.PRIVATE_DNS_DEFAULT_MODE;
 import static android.provider.Settings.Global.PRIVATE_DNS_MODE;
 import static android.provider.Settings.Global.PRIVATE_DNS_SPECIFIER;
 
@@ -48,6 +47,7 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.ConnectivityManager.NetworkCallback;
+import android.net.ConnectivitySettingsManager;
 import android.net.LinkProperties;
 import android.net.Network;
 import android.os.Handler;
@@ -193,7 +193,7 @@ public class PrivateDnsPreferenceControllerTest {
 
     @Test
     public void getSummary_PrivateDnsModeOff() {
-        setPrivateDnsMode(PRIVATE_DNS_MODE_OFF);
+        ConnectivityManager.setPrivateDnsMode(mContext, PRIVATE_DNS_MODE_OFF);
         setPrivateDnsProviderHostname(HOSTNAME);
         mController.updateState(mPreference);
         verify(mController, atLeastOnce()).getSummary();
@@ -203,7 +203,7 @@ public class PrivateDnsPreferenceControllerTest {
     @Test
     public void getSummary_PrivateDnsModeOpportunistic() {
         mLifecycle.handleLifecycleEvent(ON_START);
-        setPrivateDnsMode(PRIVATE_DNS_MODE_OPPORTUNISTIC);
+        ConnectivityManager.setPrivateDnsMode(mContext, PRIVATE_DNS_MODE_OPPORTUNISTIC);
         setPrivateDnsProviderHostname(HOSTNAME);
         mController.updateState(mPreference);
         verify(mController, atLeastOnce()).getSummary();
@@ -226,7 +226,7 @@ public class PrivateDnsPreferenceControllerTest {
     @Test
     public void getSummary_PrivateDnsModeProviderHostname() {
         mLifecycle.handleLifecycleEvent(ON_START);
-        setPrivateDnsMode(PRIVATE_DNS_MODE_PROVIDER_HOSTNAME);
+        ConnectivityManager.setPrivateDnsMode(mContext, PRIVATE_DNS_MODE_PROVIDER_HOSTNAME);
         setPrivateDnsProviderHostname(HOSTNAME);
         mController.updateState(mPreference);
         verify(mController, atLeastOnce()).getSummary();
@@ -260,7 +260,7 @@ public class PrivateDnsPreferenceControllerTest {
         reset(mController);
         reset(mPreference);
         // Pretend an emergency gservices setting has disabled default-opportunistic.
-        Settings.Global.putString(mContentResolver, PRIVATE_DNS_DEFAULT_MODE, PRIVATE_DNS_MODE_OFF);
+        ConnectivitySettingsManager.setPrivateDnsDefaultMode(mContext, PRIVATE_DNS_MODE_OFF);
         mController.updateState(mPreference);
         verify(mController, atLeastOnce()).getSummary();
         verify(mPreference).setSummary(getResourceString(R.string.private_dns_mode_off));
@@ -270,7 +270,7 @@ public class PrivateDnsPreferenceControllerTest {
         // The user interacting with the Private DNS menu, explicitly choosing
         // opportunistic mode, will be able to use despite the change to the
         // default setting above.
-        setPrivateDnsMode(PRIVATE_DNS_MODE_OPPORTUNISTIC);
+        ConnectivityManager.setPrivateDnsMode(mContext, PRIVATE_DNS_MODE_OPPORTUNISTIC);
         mController.updateState(mPreference);
         verify(mController, atLeastOnce()).getSummary();
         verify(mPreference).setSummary(getResourceString(R.string.private_dns_mode_opportunistic));
