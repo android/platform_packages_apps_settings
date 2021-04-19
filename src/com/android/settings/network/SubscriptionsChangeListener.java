@@ -27,6 +27,7 @@ import android.os.Looper;
 import android.provider.Settings;
 import android.telephony.SubscriptionManager;
 import android.telephony.SubscriptionManager.OnSubscriptionsChangedListener;
+import android.util.Log;
 
 import com.android.internal.telephony.TelephonyIntents;
 
@@ -46,6 +47,9 @@ public class SubscriptionsChangeListener extends ContentObserver {
     private BroadcastReceiver mBroadcastReceiver;
 
     public SubscriptionsChangeListener(Context context, SubscriptionsChangeListenerClient client) {
+
+        private static final String TAG = "SubscriptionsChangeListener";
+
         super(new Handler(Looper.getMainLooper()));
         mContext = context;
         mClient = client;
@@ -75,12 +79,19 @@ public class SubscriptionsChangeListener extends ContentObserver {
         final IntentFilter radioTechnologyChangedFilter = new IntentFilter(
                 TelephonyIntents.ACTION_RADIO_TECHNOLOGY_CHANGED);
         mContext.registerReceiver(mBroadcastReceiver, radioTechnologyChangedFilter);
+        mRunning = true;
     }
 
     public void stop() {
-        mSubscriptionManager.removeOnSubscriptionsChangedListener(mSubscriptionsChangedListener);
-        mContext.getContentResolver().unregisterContentObserver(this);
-        mContext.unregisterReceiver(mBroadcastReceiver);
+        if (mRunning) {
+            mSubscriptionManager.removeOnSubscriptionsChangedListener(
+                    mSubscriptionsChangedListener);
+            mContext.getContentResolver().unregisterContentObserver(this);
+            mContext.unregisterReceiver(mBroadcastReceiver);
+            mRunning = false;
+        } else {
+            Log.d(TAG, "Stop has been called without associated Start.");
+        }
     }
 
     public boolean isAirplaneModeOn() {
