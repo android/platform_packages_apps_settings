@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2b196cf_4d0d3f5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2021-04-20T02:22:10Z",
+      "side": 1,
+      "message": "Hi, \n\nCan you share before/After screenshot with us?",
+      "revId": "87be61d4ec01c174736f2e365767f37e6e88e709",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
