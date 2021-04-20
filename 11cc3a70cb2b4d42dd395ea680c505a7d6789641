@@ -16,6 +16,24 @@
       "message": "Hi, \n\nCan you share before/After screenshot with us?",
       "revId": "11cc3a70cb2b4d42dd395ea680c505a7d6789641",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "710bfcca_3c1c29d0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1815899
+      },
+      "writtenOn": "2021-04-20T07:03:00Z",
+      "side": 1,
+      "message": "Hi,\nbefore: https://imgur.com/a/Wt5ROQg\nafter: https://imgur.com/a/7oIZaHO",
+      "parentUuid": "a4419e99_93b8e92c",
+      "revId": "11cc3a70cb2b4d42dd395ea680c505a7d6789641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
