@@ -204,11 +204,11 @@ public class AppStorageSettings extends AppInfoWithHeader
     }
 
     @VisibleForTesting
-    void handleClearDataClick() {
+    void handleClearDataClick(boolean isManageSpace) {
         if (mAppsControlDisallowedAdmin != null && !mAppsControlDisallowedBySystem) {
             RestrictedLockUtils.sendShowAdminSupportDetailsIntent(
                     getActivity(), mAppsControlDisallowedAdmin);
-        } else if (mAppEntry.info.manageSpaceActivityName != null) {
+        } else if (isManageSpace && mAppEntry.info.manageSpaceActivityName != null) {
             if (!Utils.isMonkeyRunning()) {
                 Intent intent = new Intent(Intent.ACTION_DEFAULT);
                 intent.setClassName(mAppEntry.info.packageName,
@@ -301,21 +301,21 @@ public class AppStorageSettings extends AppInfoWithHeader
         final boolean isManageSpaceActivityAvailable =
                 getPackageManager().resolveActivity(intent, 0) != null;
 
-        if ((!appHasSpaceManagementUI && appRestrictsClearingData)
-                || !isManageSpaceActivityAvailable) {
+        if (!appHasSpaceManagementUI && appRestrictsClearingData) {
             mButtonsPref
                     .setButton1Text(R.string.clear_user_data_text)
                     .setButton1Icon(R.drawable.ic_settings_delete)
                     .setButton1Enabled(false);
             mCanClearData = false;
         } else {
-            if (appHasSpaceManagementUI) {
+            if (appHasSpaceManagementUI && isManageSpaceActivityAvailable) {
                 mButtonsPref.setButton1Text(R.string.manage_space_text);
+                mButtonsPref.setButton1OnClickListener(v -> handleClearDataClick(true));
             } else {
                 mButtonsPref.setButton1Text(R.string.clear_user_data_text);
+                mButtonsPref.setButton1OnClickListener(v -> handleClearDataClick(false));
             }
-            mButtonsPref.setButton1Icon(R.drawable.ic_settings_delete)
-                    .setButton1OnClickListener(v -> handleClearDataClick());
+            mButtonsPref.setButton1Icon(R.drawable.ic_settings_delete);
         }
 
         if (mAppsControlDisallowedBySystem || AppUtils.isMainlineModule(mPm, mPackageName)) {

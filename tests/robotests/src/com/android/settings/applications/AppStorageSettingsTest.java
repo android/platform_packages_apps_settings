@@ -102,7 +102,7 @@ public class AppStorageSettingsTest {
         when(stats.getCacheBytes()).thenReturn(5000L);
         when(stats.getDataBytes()).thenReturn(10000L);
         doNothing().when(mSettings).handleClearCacheClick();
-        doNothing().when(mSettings).handleClearDataClick();
+        doNothing().when(mSettings).handleClearDataClick(false);
         mockMainlineModule(mSettings.mPackageName, false /* isMainlineModule */);
 
 
@@ -110,11 +110,11 @@ public class AppStorageSettingsTest {
         verify(mButtonsPref).setButton1Enabled(true);
         verify(mButtonsPref).setButton2Enabled(true);
         mLeftButton.performClick();
-        verify(mSettings).handleClearDataClick();
+        verify(mSettings).handleClearDataClick(false);
         verify(mSettings, never()).handleClearCacheClick();
 
         mRightButton.performClick();
-        verify(mSettings).handleClearDataClick();
+        verify(mSettings).handleClearDataClick(false);
         verify(mSettings).handleClearCacheClick();
     }
 
@@ -125,7 +125,7 @@ public class AppStorageSettingsTest {
         when(stats.getCacheBytes()).thenReturn(5000L);
         when(stats.getDataBytes()).thenReturn(10000L);
         doNothing().when(mSettings).handleClearCacheClick();
-        doNothing().when(mSettings).handleClearDataClick();
+        doNothing().when(mSettings).handleClearDataClick(false);
         mockMainlineModule(mSettings.mPackageName, true /* isMainlineModule */);
 
 
