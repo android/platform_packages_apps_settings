@@ -301,15 +301,14 @@ public class AppStorageSettings extends AppInfoWithHeader
         final boolean isManageSpaceActivityAvailable =
                 getPackageManager().resolveActivity(intent, 0) != null;
 
-        if ((!appHasSpaceManagementUI && appRestrictsClearingData)
-                || !isManageSpaceActivityAvailable) {
+        if (!appHasSpaceManagementUI && appRestrictsClearingData) {
             mButtonsPref
                     .setButton1Text(R.string.clear_user_data_text)
                     .setButton1Icon(R.drawable.ic_settings_delete)
                     .setButton1Enabled(false);
             mCanClearData = false;
         } else {
-            if (appHasSpaceManagementUI) {
+            if (appHasSpaceManagementUI && isManageSpaceActivityAvailable) {
                 mButtonsPref.setButton1Text(R.string.manage_space_text);
             } else {
                 mButtonsPref.setButton1Text(R.string.clear_user_data_text);
