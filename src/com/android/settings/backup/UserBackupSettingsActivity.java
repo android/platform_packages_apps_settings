@@ -54,6 +54,8 @@ public class UserBackupSettingsActivity extends FragmentActivity implements Inde
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+
         BackupSettingsHelper backupHelper = new BackupSettingsHelper(this);
 
         if (!backupHelper.isBackupProvidedByManufacturer()) {
@@ -91,6 +93,12 @@ public class UserBackupSettingsActivity extends FragmentActivity implements Inde
                     .replace(android.R.id.content, new BackupSettingsFragment())
                     .commit();
         }
+    }
+
+    @Override
+    public boolean onNavigateUp() {
+        finish();
+        return true;
     }
 
     /**
