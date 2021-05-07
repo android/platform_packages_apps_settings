@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41dae20f_47853005",
+        "filename": "AndroidManifest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2021-05-07T05:22:08Z",
+      "side": 1,
+      "message": "do you still need it? why?",
+      "range": {
+        "startLine": 303,
+        "startChar": 12,
+        "endLine": 303,
+        "endChar": 55
+      },
+      "revId": "5a2e8c9e6251b9e4ff48a906c5771de9bd7cae62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
