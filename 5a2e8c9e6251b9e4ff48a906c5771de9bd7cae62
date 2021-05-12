@@ -22,6 +22,30 @@
       },
       "revId": "5a2e8c9e6251b9e4ff48a906c5771de9bd7cae62",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5bc575a_b8a342f8",
+        "filename": "AndroidManifest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1004882
+      },
+      "writtenOn": "2021-05-12T21:43:28Z",
+      "side": 1,
+      "message": "This is unneeded. Thank you for highlighting this.  Removed.",
+      "parentUuid": "41dae20f_47853005",
+      "range": {
+        "startLine": 303,
+        "startChar": 12,
+        "endLine": 303,
+        "endChar": 55
+      },
+      "revId": "5a2e8c9e6251b9e4ff48a906c5771de9bd7cae62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
