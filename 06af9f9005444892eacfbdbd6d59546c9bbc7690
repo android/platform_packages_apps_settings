@@ -85,6 +85,24 @@
       "message": "Hello, Hugh\n\nIs this new text looks good to you?",
       "revId": "06af9f9005444892eacfbdbd6d59546c9bbc7690",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80c54ab8_216a0018",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1815899
+      },
+      "writtenOn": "2021-05-13T14:10:35Z",
+      "side": 1,
+      "message": "Please note that the text style is updated in I2d31d14279782b58d5b7c761aba6b683bb337b7d . Without it the text style would look like this: https://imgur.com/a/N6S7NTK.",
+      "parentUuid": "5b686808_1a94beff",
+      "revId": "06af9f9005444892eacfbdbd6d59546c9bbc7690",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
