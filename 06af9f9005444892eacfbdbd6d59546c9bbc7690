@@ -33,6 +33,23 @@
       "message": "Hi, any thoughts here?",
       "revId": "06af9f9005444892eacfbdbd6d59546c9bbc7690",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a3f89e2_a5af9e81",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2021-05-13T13:51:27Z",
+      "side": 1,
+      "message": "Do you mind to attach a before/after screenshots to us? Thanks",
+      "revId": "06af9f9005444892eacfbdbd6d59546c9bbc7690",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
