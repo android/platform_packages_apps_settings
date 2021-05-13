@@ -68,6 +68,23 @@
       "parentUuid": "0a3f89e2_a5af9e81",
       "revId": "06af9f9005444892eacfbdbd6d59546c9bbc7690",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b8de236_10ba1463",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2021-05-13T14:07:08Z",
+      "side": 1,
+      "message": "Hello, Hugh\n\nIs this new text looks good to you?",
+      "revId": "06af9f9005444892eacfbdbd6d59546c9bbc7690",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
