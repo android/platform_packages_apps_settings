@@ -16,6 +16,29 @@
       "message": "Hi, is there any update on this?",
       "revId": "c7fab2ce8badc7e28b9a39cf683637c07bb55ea2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dac47fcf_b2e2635f",
+        "filename": "res/layout/preference_progress_category.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1388435
+      },
+      "writtenOn": "2021-05-13T14:19:41Z",
+      "side": 1,
+      "message": "If you want to make consistent with PreferenceCategory, you can keep use DeviceDefault.Body2 and colorAccent, since we tweak PreferenceCategory style in this year.",
+      "range": {
+        "startLine": 49,
+        "startChar": 8,
+        "endLine": 50,
+        "endChar": 62
+      },
+      "revId": "c7fab2ce8badc7e28b9a39cf683637c07bb55ea2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
