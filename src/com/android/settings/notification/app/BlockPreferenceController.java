@@ -73,19 +73,6 @@ public class BlockPreferenceController extends NotificationPreferenceController
             }
             bar.setDisabledByAdmin(mAdmin);
 
-            if (mChannel != null && !isChannelBlockable()) {
-                bar.setEnabled(false);
-            }
-
-            if (mChannelGroup != null && !isChannelGroupBlockable()) {
-                bar.setEnabled(false);
-            }
-
-            if (mChannel == null && mAppRow.systemApp
-                    && (!mAppRow.banned || mAppRow.lockedImportance)) {
-                bar.setEnabled(false);
-            }
-
             if (mChannel != null) {
                 bar.setChecked(!mAppRow.banned
                         && mChannel.getImportance() != NotificationManager.IMPORTANCE_NONE);
@@ -93,6 +80,22 @@ public class BlockPreferenceController extends NotificationPreferenceController
                 bar.setChecked(!mAppRow.banned && !mChannelGroup.isBlocked());
             } else {
                 bar.setChecked(!mAppRow.banned);
+            }
+
+            if (mChannel != null && !isChannelBlockable()) {
+                bar.setEnabled(false);
+                bar.setTextViewLabelAndBackground(false);
+            }
+
+            if (mChannelGroup != null && !isChannelGroupBlockable()) {
+                bar.setEnabled(false);
+                bar.setTextViewLabelAndBackground(false);
+            }
+
+            if (mChannel == null && mAppRow.systemApp
+                    && (!mAppRow.banned || mAppRow.lockedImportance)) {
+                bar.setEnabled(false);
+                bar.setTextViewLabelAndBackground(false);
             }
         }
     }
