@@ -33,6 +33,24 @@
       "message": "It seems like the change here is to move setEnabled after setChecked - maybe instead the method setChecked should be fixed so other screens don\u0027t run into this issue?",
       "revId": "6124580df993772b8c994c1873751d2218cd1598",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf8325f2_29a6afd8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1815899
+      },
+      "writtenOn": "2021-05-14T17:12:30Z",
+      "side": 1,
+      "message": "The change in UI is from setTextViewLabelAndBackground(false) and it needs to be after setChecked() in order to not be overidden.\n\nBut as other settings items use the setTextViewLabelAndBackground for signaling enabled/disabled state, maybe it is better to change the dark mode text color in setChecked.",
+      "parentUuid": "9ec452e7_ef4288c4",
+      "revId": "6124580df993772b8c994c1873751d2218cd1598",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
