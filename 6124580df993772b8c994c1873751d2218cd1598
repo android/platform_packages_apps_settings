@@ -16,6 +16,23 @@
       "message": "Hi, please see screenshots:\n before: https://imgur.com/a/T1ocgUI\n after: https://imgur.com/a/e1Zl8bU.\n\nIssue exists mainly in dark theme as the disabled color is not achieved at all.",
       "revId": "6124580df993772b8c994c1873751d2218cd1598",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ec452e7_ef4288c4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060562
+      },
+      "writtenOn": "2021-05-14T17:02:58Z",
+      "side": 1,
+      "message": "It seems like the change here is to move setEnabled after setChecked - maybe instead the method setChecked should be fixed so other screens don\u0027t run into this issue?",
+      "revId": "6124580df993772b8c994c1873751d2218cd1598",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
