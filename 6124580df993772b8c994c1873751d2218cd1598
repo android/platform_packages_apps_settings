@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f9031d6_5937753a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1815899
+      },
+      "writtenOn": "2021-05-14T16:56:21Z",
+      "side": 1,
+      "message": "Hi, please see screenshots:\n before: https://imgur.com/a/T1ocgUI\n after: https://imgur.com/a/e1Zl8bU.\n\nIssue exists mainly in dark theme as the disabled color is not achieved at all.",
+      "revId": "6124580df993772b8c994c1873751d2218cd1598",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
