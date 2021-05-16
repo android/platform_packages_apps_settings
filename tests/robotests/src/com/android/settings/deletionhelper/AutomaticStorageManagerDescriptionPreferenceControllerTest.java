@@ -45,7 +45,7 @@ public class AutomaticStorageManagerDescriptionPreferenceControllerTest {
     public void displayPreference_asmDisabled_shouldHaveDescription() {
         mController.displayPreference(mScreen);
 
-        verify(mPreference).setSummary(eq(R.string.automatic_storage_manager_text));
+        verify(mPreference).setTitle(eq(R.string.automatic_storage_manager_text));
     }
 
     @Test
@@ -57,7 +57,7 @@ public class AutomaticStorageManagerDescriptionPreferenceControllerTest {
 
         mController.displayPreference(mScreen);
 
-        verify(mPreference).setSummary(eq(R.string.automatic_storage_manager_text));
+        verify(mPreference).setTitle(eq(R.string.automatic_storage_manager_text));
     }
 
     @Ignore("Robolectric doesn't do locale switching for date localization -- yet.")
@@ -80,6 +80,6 @@ public class AutomaticStorageManagerDescriptionPreferenceControllerTest {
         mController.displayPreference(mScreen);
 
         verify(mPreference)
-                .setSummary(eq("10.00B total made available\n\nLast ran on January 1, 1970"));
+                .setTitle(eq("10.00B total made available\n\nLast ran on January 1, 1970"));
     }
 }

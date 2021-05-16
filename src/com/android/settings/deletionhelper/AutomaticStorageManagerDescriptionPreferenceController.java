@@ -60,9 +60,9 @@ public class AutomaticStorageManagerDescriptionPreferenceController
         long lastRunMillis =
                 Settings.Secure.getLong(cr, Settings.Secure.AUTOMATIC_STORAGE_MANAGER_LAST_RUN, 0);
         if (freedBytes == 0 || lastRunMillis == 0 || !Utils.isStorageManagerEnabled(context)) {
-            preference.setSummary(R.string.automatic_storage_manager_text);
+            preference.setTitle(R.string.automatic_storage_manager_text);
         } else {
-            preference.setSummary(
+            preference.setTitle(
                     context.getString(
                             R.string.automatic_storage_manager_freed_bytes,
                             Formatter.formatFileSize(context, freedBytes),
