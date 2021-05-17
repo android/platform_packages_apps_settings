@@ -16,6 +16,24 @@
       "message": "tmfang@\n\nThank you for the +2.  Is there anything that I need to look at regarding the TreeHugger fail?  I cannot see the output of the error (no access).  Thanks!",
       "revId": "8161d1c0ac2d4d7348194f5e112f284dcf6ef1ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be87c940_7fc191a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2021-05-17T12:37:31Z",
+      "side": 1,
+      "message": "nope, looks like a merge conflict in our internal branch. I will help submit your code to our branch.",
+      "parentUuid": "d13b8b50_38817b79",
+      "revId": "8161d1c0ac2d4d7348194f5e112f284dcf6ef1ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
