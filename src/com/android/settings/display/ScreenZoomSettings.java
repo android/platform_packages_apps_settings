@@ -22,6 +22,7 @@ import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Display;
+import android.view.WindowManager;
 
 import com.android.settings.R;
 import com.android.settings.search.BaseSearchIndexProvider;
@@ -94,10 +95,13 @@ public class ScreenZoomSettings extends PreviewSeekBarPreferenceFragment {
     @Override
     protected void commit() {
         final int densityDpi = mValues[mCurrentIndex];
+        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        final int displayId = display != null ? display.getDisplayId() : Display.DEFAULT_DISPLAY;
         if (densityDpi == mDefaultDensity) {
-            DisplayDensityConfiguration.clearForcedDisplayDensity(Display.DEFAULT_DISPLAY);
+            DisplayDensityConfiguration.clearForcedDisplayDensity(displayId);
         } else {
-            DisplayDensityConfiguration.setForcedDisplayDensity(Display.DEFAULT_DISPLAY, densityDpi);
+            DisplayDensityConfiguration.setForcedDisplayDensity(displayId, densityDpi);
         }
     }
 
