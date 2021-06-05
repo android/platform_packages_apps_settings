@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc53a1df_90a70d95",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1882047
+      },
+      "writtenOn": "2021-06-05T05:22:13Z",
+      "side": 1,
+      "message": "fixed all code software updates for my phone",
+      "revId": "5babfac3d157643e87886d52d7824c285cb31921",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
