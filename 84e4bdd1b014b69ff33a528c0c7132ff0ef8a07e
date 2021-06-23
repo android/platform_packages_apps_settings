@@ -67,6 +67,24 @@
       "message": "In what case would this scenario exist? The device should always have at least one color mode (its default mode).",
       "revId": "84e4bdd1b014b69ff33a528c0c7132ff0ef8a07e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0efff23_a0c06a5a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1702152
+      },
+      "writtenOn": "2021-06-23T08:04:11Z",
+      "side": 1,
+      "message": "I saw this scenario in the following cases: on GSIs, where config_availableColorModes is empty unless overlaying it using a RRO (as it is empty by default), or in my case, where I want to have the wide color display enabled on the SF so it can load the default color mode correctly, but I want to keep config_availableColorModes empty.",
+      "parentUuid": "5c1e0630_1396b689",
+      "revId": "84e4bdd1b014b69ff33a528c0c7132ff0ef8a07e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
