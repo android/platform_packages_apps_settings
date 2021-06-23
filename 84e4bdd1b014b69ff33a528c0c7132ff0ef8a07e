@@ -50,6 +50,23 @@
       "message": "Add the owner of the ColorMode to review.\n\nHi Christine,\nThe current AOSP\u0027s codes are different sc-dev\u0027s codes. Could you help to review it? Thank you very much.",
       "revId": "84e4bdd1b014b69ff33a528c0c7132ff0ef8a07e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c1e0630_1396b689",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347463
+      },
+      "writtenOn": "2021-06-23T07:58:45Z",
+      "side": 1,
+      "message": "In what case would this scenario exist? The device should always have at least one color mode (its default mode).",
+      "revId": "84e4bdd1b014b69ff33a528c0c7132ff0ef8a07e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
