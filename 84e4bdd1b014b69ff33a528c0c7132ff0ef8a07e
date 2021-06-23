@@ -85,6 +85,24 @@
       "parentUuid": "5c1e0630_1396b689",
       "revId": "84e4bdd1b014b69ff33a528c0c7132ff0ef8a07e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "768d207b_e50aea03",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1347463
+      },
+      "writtenOn": "2021-06-23T08:11:36Z",
+      "side": 1,
+      "message": "I would generally consider both of those unsupported cases (there should always be at least one color mode provided, as so much in ColorDisplayService depends on a valid color mode being set) but I\u0027ll give it some more thought.",
+      "parentUuid": "d0efff23_a0c06a5a",
+      "revId": "84e4bdd1b014b69ff33a528c0c7132ff0ef8a07e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
