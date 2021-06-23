@@ -103,6 +103,24 @@
       "parentUuid": "d0efff23_a0c06a5a",
       "revId": "84e4bdd1b014b69ff33a528c0c7132ff0ef8a07e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8610d430_d08e7032",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1702152
+      },
+      "writtenOn": "2021-06-23T08:31:02Z",
+      "side": 1,
+      "message": "Will explain a bit more my case:\nFor me without the wide color display enabled, this preference is hidden as it should be, but as I want to enable the wide color display (so the HWC loads the color mode correctly) this preference is shown but empty. I\u0027m not sure if the color mode I\u0027m talking about is directly related to this color modes, but this is the info I got from `dumpsys SurfaceFlinger`:\nWithout the wide color display enabled:\nCurrent Color Mode:\n(empty)\nWith the wide color display enabled:\nCurrent Color Mode: smart_MC1\nSo it loads the (default) color mode even if config_availableColorModes is empty, maybe its an usecase (a very specific one indeed).\nAnd as I want to keep that property enabled so it loads the color mode, but I want to keep config_availableColorModes without modes, this preference is empty.",
+      "parentUuid": "768d207b_e50aea03",
+      "revId": "84e4bdd1b014b69ff33a528c0c7132ff0ef8a07e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
