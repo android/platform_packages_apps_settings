@@ -33,6 +33,23 @@
       "message": "+ developer owner to review this cl.",
       "revId": "9deb600326b3df6aea2e011cb0684d7616913551",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06b28434_d0d61592",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1328430
+      },
+      "writtenOn": "2021-07-01T07:33:09Z",
+      "side": 1,
+      "message": "dmail@, please help to review the strings used in this patch.\nThanks.",
+      "revId": "9deb600326b3df6aea2e011cb0684d7616913551",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
