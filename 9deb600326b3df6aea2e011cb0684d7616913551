@@ -16,6 +16,23 @@
       "message": "Thanks for adding this setting in developer options.\n\nBecause developer page is overwhelming now, we\u0027re careful to review any new setting in this page.\n\nCan you follow this process to review this new setting? Thanks a lot.\nhttps://g3doc.corp.google.com/company/teams/apps-android-settings/howto/add_a_developer_option.md?cl\u003dhead\n",
       "revId": "9deb600326b3df6aea2e011cb0684d7616913551",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f5612b0_6a052792",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1429802
+      },
+      "writtenOn": "2021-07-01T05:34:13Z",
+      "side": 1,
+      "message": "+ developer owner to review this cl.",
+      "revId": "9deb600326b3df6aea2e011cb0684d7616913551",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
