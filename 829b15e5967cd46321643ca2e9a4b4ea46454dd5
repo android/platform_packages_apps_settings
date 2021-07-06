@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000012845489",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1757370?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "bfe04d2f_7ffeca8e",
+          "description": "Change to \"tests/unit/src/com/android/settings/network/ActiveSubscriptionsListenerTest.java\"",
+          "replacements": [
+            {
+              "path": "tests/unit/src/com/android/settings/network/ActiveSubscriptionsListenerTest.java",
+              "range": {
+                "startLine": 107,
+                "startChar": 68,
+                "endLine": 107,
+                "endChar": 80
+              },
+              "replacement": "Subscriptions"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "6fa416ff_fd53915e",
+        "filename": "tests/unit/src/com/android/settings/network/ActiveSubscriptionsListenerTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-07-06T15:23:18Z",
+      "side": 1,
+      "message": "Common typo found: \"Subsciptions\" -- should it be \"Subscriptions\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 107,
+        "startChar": 68,
+        "endLine": 107,
+        "endChar": 80
+      },
+      "revId": "829b15e5967cd46321643ca2e9a4b4ea46454dd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000012845491",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1757370?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "c7398199_e4faca61",
+        "filename": "tests/unit/src/com/android/settings/network/ActiveSubscriptionsListenerTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-07-06T15:23:18Z",
+      "side": 1,
+      "message": "This file contains a set of conflict markers.If this is a false alarm, add IGNORE_MERGE_CONFLICT_CHECK\u003d\u003d\u003creason\u003e to your commit message.",
+      "range": {
+        "startLine": 107,
+        "startChar": 1,
+        "endLine": 107,
+        "endChar": 7
+      },
+      "revId": "829b15e5967cd46321643ca2e9a4b4ea46454dd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000012845487",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1757370?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "c714f261_7de18380",
+        "filename": "tests/unit/src/com/android/settings/network/ActiveSubscriptionsListenerTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-07-06T15:23:18Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 155
+      },
+      "revId": "829b15e5967cd46321643ca2e9a4b4ea46454dd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000012845489",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1757370?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "edbddbef_54f7b5ac",
+          "description": "Change to \"tests/unit/src/com/android/settings/network/ActiveSubscriptionsListenerTest.java\"",
+          "replacements": [
+            {
+              "path": "tests/unit/src/com/android/settings/network/ActiveSubscriptionsListenerTest.java",
+              "range": {
+                "startLine": 113,
+                "startChar": 53,
+                "endLine": 113,
+                "endChar": 65
+              },
+              "replacement": "Subscriptions"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "bbd5f8ff_d925efb0",
+        "filename": "tests/unit/src/com/android/settings/network/ActiveSubscriptionsListenerTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-07-06T15:23:18Z",
+      "side": 1,
+      "message": "Common typo found: \"Subsciptions\" -- should it be \"Subscriptions\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 113,
+        "startChar": 53,
+        "endLine": 113,
+        "endChar": 65
+      },
+      "revId": "829b15e5967cd46321643ca2e9a4b4ea46454dd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
