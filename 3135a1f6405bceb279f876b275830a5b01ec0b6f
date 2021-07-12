@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2e9ecf9_55df0be7",
+        "filename": "src/com/android/settings/display/ScreenZoomSettings.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1407552
+      },
+      "writtenOn": "2021-07-12T09:19:37Z",
+      "side": 1,
+      "message": "use the new added DisplayDensityUtils.getCurrentDisplayId() api and modify code as\n    final int displayId \u003d DisplayDensityUtils.getCurrentDisplayId(getContext());",
+      "range": {
+        "startLine": 98,
+        "startChar": 8,
+        "endLine": 100,
+        "endChar": 97
+      },
+      "revId": "3135a1f6405bceb279f876b275830a5b01ec0b6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
