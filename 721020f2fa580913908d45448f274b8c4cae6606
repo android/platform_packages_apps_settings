@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e9e671f_740e0c69",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1723,
+      "author": {
+        "id": 1328430
+      },
+      "writtenOn": "2021-07-12T08:41:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "241fae7a_62321e22",
+      "range": {
+        "startLine": 1723,
+        "startChar": 66,
+        "endLine": 1723,
+        "endChar": 78
+      },
+      "revId": "721020f2fa580913908d45448f274b8c4cae6606",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e96b8c80_173bb1b4",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-07-12T08:15:37Z",
       "side": 1,
       "message": "Is it translatable?",
+      "range": {
+        "startLine": 1724,
+        "startChar": 44,
+        "endLine": 1724,
+        "endChar": 63
+      },
+      "revId": "721020f2fa580913908d45448f274b8c4cae6606",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a383fd55_10c1f99b",
+        "filename": "res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1724,
+      "author": {
+        "id": 1328430
+      },
+      "writtenOn": "2021-07-12T08:41:20Z",
+      "side": 1,
+      "message": "Yes.",
+      "parentUuid": "e96b8c80_173bb1b4",
       "range": {
         "startLine": 1724,
         "startChar": 44,
